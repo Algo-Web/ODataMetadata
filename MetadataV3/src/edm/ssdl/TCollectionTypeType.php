@@ -71,7 +71,4 @@ class TCollectionTypeType
         $this->rowType = $rowType;
         return $this;
     }
-
-
 }
-

@@ -449,7 +449,4 @@ class TValueTermType
         $this->rowType = $rowType;
         return $this;
     }
-
-
 }
-

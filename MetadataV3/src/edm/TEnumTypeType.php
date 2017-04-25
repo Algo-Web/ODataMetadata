@@ -208,7 +208,4 @@ class TEnumTypeType
         $this->member = $member;
         return $this;
     }
-
-
 }
-

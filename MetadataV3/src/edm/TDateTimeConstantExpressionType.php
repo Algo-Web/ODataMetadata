@@ -49,7 +49,4 @@ class TDateTimeConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

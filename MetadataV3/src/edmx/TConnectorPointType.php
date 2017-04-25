@@ -64,7 +64,4 @@ class TConnectorPointType
         $this->pointY = $pointY;
         return $this;
     }
-
-
 }
-

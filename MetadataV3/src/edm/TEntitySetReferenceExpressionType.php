@@ -37,7 +37,4 @@ class TEntitySetReferenceExpressionType
         $this->entitySet = $entitySet;
         return $this;
     }
-
-
 }
-

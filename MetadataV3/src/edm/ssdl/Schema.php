@@ -7,7 +7,4 @@ namespace MetadataV3\edm\ssdl;
  */
 class Schema extends TSchemaType
 {
-
-
 }
-

@@ -49,7 +49,4 @@ class TEnumConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

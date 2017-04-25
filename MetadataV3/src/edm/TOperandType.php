@@ -631,7 +631,4 @@ class TOperandType
         $this->valueTermReference = $valueTermReference;
         return $this;
     }
-
-
 }
-

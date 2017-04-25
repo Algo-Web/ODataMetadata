@@ -49,7 +49,4 @@ class TIntConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

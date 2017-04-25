@@ -604,7 +604,4 @@ class TEntityPropertyType
         $this->typeAnnotation = $typeAnnotation;
         return $this;
     }
-
-
 }
-

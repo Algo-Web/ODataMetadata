@@ -334,7 +334,4 @@ class TPropertyType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

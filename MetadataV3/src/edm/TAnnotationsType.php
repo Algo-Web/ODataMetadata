@@ -190,7 +190,4 @@ class TAnnotationsType
         $this->typeAnnotation = $typeAnnotation;
         return $this;
     }
-
-
 }
-

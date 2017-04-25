@@ -120,7 +120,4 @@ class TModificationFunctionMappingAssociationEndType
         $this->scalarProperty = $scalarProperty;
         return $this;
     }
-
-
 }
-

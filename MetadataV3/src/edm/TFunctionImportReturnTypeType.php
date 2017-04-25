@@ -64,7 +64,4 @@ class TFunctionImportReturnTypeType
         $this->entitySet = $entitySet;
         return $this;
     }
-
-
 }
-

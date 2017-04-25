@@ -154,7 +154,4 @@ class TAssociationType
         $this->referentialConstraint = $referentialConstraint;
         return $this;
     }
-
-
 }
-

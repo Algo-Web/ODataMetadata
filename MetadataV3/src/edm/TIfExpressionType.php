@@ -1462,7 +1462,4 @@ class TIfExpressionType
         $this->valueTermReference = $valueTermReference;
         return $this;
     }
-
-
 }
-

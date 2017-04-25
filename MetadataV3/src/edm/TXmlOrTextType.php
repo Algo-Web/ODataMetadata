@@ -10,7 +10,4 @@ namespace MetadataV3\edm;
  */
 class TXmlOrTextType
 {
-
-
 }
-

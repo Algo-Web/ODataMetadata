@@ -628,7 +628,4 @@ class AppliedFunctionAnonymousType
         $this->valueTermReference = $valueTermReference;
         return $this;
     }
-
-
 }
-

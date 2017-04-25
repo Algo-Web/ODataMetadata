@@ -442,7 +442,4 @@ class TFunctionType
         $this->commandText = $commandText;
         return $this;
     }
-
-
 }
-

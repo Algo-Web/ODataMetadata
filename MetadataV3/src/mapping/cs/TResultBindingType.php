@@ -64,7 +64,4 @@ class TResultBindingType
         $this->name = $name;
         return $this;
     }
-
-
 }
-

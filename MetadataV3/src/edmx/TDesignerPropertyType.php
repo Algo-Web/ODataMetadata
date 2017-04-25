@@ -64,7 +64,4 @@ class TDesignerPropertyType
         $this->value = $value;
         return $this;
     }
-
-
 }
-

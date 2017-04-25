@@ -66,7 +66,4 @@ class TDocumentationType
         $this->longDescription = $longDescription;
         return $this;
     }
-
-
 }
-

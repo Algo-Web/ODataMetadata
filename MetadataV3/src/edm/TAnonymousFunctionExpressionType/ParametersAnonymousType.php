@@ -70,7 +70,4 @@ class ParametersAnonymousType
         $this->parameter = $parameter;
         return $this;
     }
-
-
 }
-

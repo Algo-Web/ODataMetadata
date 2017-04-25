@@ -158,7 +158,4 @@ class AssociationSetAnonymousType
         $this->end = $end;
         return $this;
     }
-
-
 }
-

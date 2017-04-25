@@ -370,7 +370,4 @@ class TSchemaType
         $this->function = $function;
         return $this;
     }
-
-
 }
-

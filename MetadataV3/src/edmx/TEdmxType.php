@@ -152,7 +152,4 @@ class TEdmxType
         $this->dataServices = $dataServices;
         return $this;
     }
-
-
 }
-

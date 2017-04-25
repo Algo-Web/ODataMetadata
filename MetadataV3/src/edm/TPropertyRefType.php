@@ -37,7 +37,4 @@ class TPropertyRefType
         $this->name = $name;
         return $this;
     }
-
-
 }
-

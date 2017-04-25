@@ -658,7 +658,4 @@ class TPropertyValueType
         $this->valueTermReference = $valueTermReference;
         return $this;
     }
-
-
 }
-
