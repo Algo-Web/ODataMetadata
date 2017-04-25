@@ -196,7 +196,4 @@ class EntitySetAnonymousType
         $this->definingQuery = $definingQuery;
         return $this;
     }
-
-
 }
-

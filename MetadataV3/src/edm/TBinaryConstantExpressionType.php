@@ -49,7 +49,4 @@ class TBinaryConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

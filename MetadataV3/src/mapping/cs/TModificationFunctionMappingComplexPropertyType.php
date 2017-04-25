@@ -122,7 +122,4 @@ class TModificationFunctionMappingComplexPropertyType
         $this->complexProperty = $complexProperty;
         return $this;
     }
-
-
 }
-

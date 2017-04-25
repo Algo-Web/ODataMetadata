@@ -100,7 +100,4 @@ class TFunctionImportComplexTypeMappingType
         $this->scalarProperty = $scalarProperty;
         return $this;
     }
-
-
 }
-

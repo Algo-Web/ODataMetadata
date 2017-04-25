@@ -221,7 +221,4 @@ class ParameterAnonymousType
         $this->rowType = $rowType;
         return $this;
     }
-
-
 }
-

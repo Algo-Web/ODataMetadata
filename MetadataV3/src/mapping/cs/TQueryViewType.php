@@ -76,7 +76,4 @@ class TQueryViewType
         $this->typeName = $typeName;
         return $this;
     }
-
-
 }
-

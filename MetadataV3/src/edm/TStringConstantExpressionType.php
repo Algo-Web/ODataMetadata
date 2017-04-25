@@ -49,7 +49,4 @@ class TStringConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

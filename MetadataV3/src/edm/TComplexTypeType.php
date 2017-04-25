@@ -280,7 +280,4 @@ class TComplexTypeType
         $this->typeAnnotation = $typeAnnotation;
         return $this;
     }
-
-
 }
-

@@ -685,7 +685,4 @@ class TValueTermReferenceExpressionType
         $this->valueTermReference = $valueTermReference;
         return $this;
     }
-
-
 }
-

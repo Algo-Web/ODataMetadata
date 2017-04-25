@@ -307,7 +307,4 @@ class TTypeRefType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

@@ -10,7 +10,4 @@ namespace MetadataV3\edm\ssdl;
  */
 class TTextType
 {
-
-
 }
-

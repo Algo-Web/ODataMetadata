@@ -388,7 +388,4 @@ class TEntitySetMappingType
         $this->condition = $condition;
         return $this;
     }
-
-
 }
-

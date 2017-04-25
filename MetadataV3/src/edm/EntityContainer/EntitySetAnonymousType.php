@@ -277,7 +277,4 @@ class EntitySetAnonymousType
         $this->typeAnnotation = $typeAnnotation;
         return $this;
     }
-
-
 }
-

@@ -49,7 +49,4 @@ class TGuidConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

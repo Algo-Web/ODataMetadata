@@ -577,7 +577,4 @@ class TComplexTypePropertyType
         $this->typeAnnotation = $typeAnnotation;
         return $this;
     }
-
-
 }
-

@@ -422,7 +422,4 @@ class TPropertyType
         $this->rowType = $rowType;
         return $this;
     }
-
-
 }
-

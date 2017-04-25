@@ -1462,7 +1462,4 @@ class TCollectionExpressionType
         $this->valueTermReference = $valueTermReference;
         return $this;
     }
-
-
 }
-

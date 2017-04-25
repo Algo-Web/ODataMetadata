@@ -49,7 +49,4 @@ class TDateTimeOffsetConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

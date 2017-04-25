@@ -91,7 +91,4 @@ class TConstraintType
         $this->dependent = $dependent;
         return $this;
     }
-
-
 }
-

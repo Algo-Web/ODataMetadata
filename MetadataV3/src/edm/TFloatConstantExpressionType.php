@@ -49,7 +49,4 @@ class TFloatConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

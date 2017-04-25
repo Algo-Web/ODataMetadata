@@ -1459,7 +1459,4 @@ class ArgumentsAnonymousType
         $this->valueTermReference = $valueTermReference;
         return $this;
     }
-
-
 }
-

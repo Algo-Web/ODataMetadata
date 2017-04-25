@@ -49,7 +49,4 @@ class TBoolConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

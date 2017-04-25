@@ -91,7 +91,4 @@ class TEnumTypeMemberType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

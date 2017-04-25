@@ -37,7 +37,4 @@ class TFunctionReturnTypeType
         $this->collectionType = $collectionType;
         return $this;
     }
-
-
 }
-

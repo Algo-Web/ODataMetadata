@@ -71,7 +71,4 @@ class TOptionsType
         $this->designerInfoPropertySet = $designerInfoPropertySet;
         return $this;
     }
-
-
 }
-

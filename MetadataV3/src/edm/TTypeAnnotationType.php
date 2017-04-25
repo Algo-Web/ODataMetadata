@@ -424,7 +424,4 @@ class TTypeAnnotationType
         $this->propertyValue = $propertyValue;
         return $this;
     }
-
-
 }
-

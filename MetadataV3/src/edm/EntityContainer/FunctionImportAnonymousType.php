@@ -322,7 +322,4 @@ class FunctionImportAnonymousType
         $this->parameter = $parameter;
         return $this;
     }
-
-
 }
-

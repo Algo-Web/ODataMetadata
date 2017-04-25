@@ -167,7 +167,4 @@ class TApplyExpressionType
         $this->arguments = $arguments;
         return $this;
     }
-
-
 }
-

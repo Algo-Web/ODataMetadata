@@ -37,7 +37,4 @@ class TRuntimeStorageModelsType
         $this->schema = $schema;
         return $this;
     }
-
-
 }
-

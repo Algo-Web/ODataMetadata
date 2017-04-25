@@ -100,7 +100,4 @@ class TEndPropertyType
         $this->scalarProperty = $scalarProperty;
         return $this;
     }
-
-
 }
-

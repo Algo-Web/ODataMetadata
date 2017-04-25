@@ -530,7 +530,4 @@ class TTypeAssertExpressionType
         $this->rowType = $rowType;
         return $this;
     }
-
-
 }
-

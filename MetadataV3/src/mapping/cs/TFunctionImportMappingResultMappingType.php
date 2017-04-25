@@ -105,7 +105,4 @@ class TFunctionImportMappingResultMappingType
         $this->complexTypeMapping = $complexTypeMapping;
         return $this;
     }
-
-
 }
-

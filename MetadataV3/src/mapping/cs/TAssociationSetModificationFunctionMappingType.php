@@ -68,7 +68,4 @@ class TAssociationSetModificationFunctionMappingType
         $this->insertFunction = $insertFunction;
         return $this;
     }
-
-
 }
-

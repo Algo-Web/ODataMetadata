@@ -118,7 +118,4 @@ class TUsingType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

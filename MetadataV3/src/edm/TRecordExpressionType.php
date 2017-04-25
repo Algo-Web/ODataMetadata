@@ -100,7 +100,4 @@ class TRecordExpressionType
         $this->propertyValue = $propertyValue;
         return $this;
     }
-
-
 }
-

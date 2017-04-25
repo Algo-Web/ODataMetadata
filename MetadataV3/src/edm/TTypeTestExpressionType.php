@@ -530,7 +530,4 @@ class TTypeTestExpressionType
         $this->rowType = $rowType;
         return $this;
     }
-
-
 }
-

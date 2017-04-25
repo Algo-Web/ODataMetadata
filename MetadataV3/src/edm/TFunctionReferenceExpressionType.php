@@ -105,7 +105,4 @@ class TFunctionReferenceExpressionType
         $this->parameter = $parameter;
         return $this;
     }
-
-
 }
-

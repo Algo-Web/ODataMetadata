@@ -145,7 +145,4 @@ class TMappingFragmentType
         $this->condition = $condition;
         return $this;
     }
-
-
 }
-

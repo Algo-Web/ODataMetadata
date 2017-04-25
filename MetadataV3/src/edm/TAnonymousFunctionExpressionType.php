@@ -692,7 +692,4 @@ class TAnonymousFunctionExpressionType
         $this->valueTermReference = $valueTermReference;
         return $this;
     }
-
-
 }
-
