@@ -34,7 +34,7 @@ class TGuidConstantExpressionType
      */
     public function value(...$value)
     {
-        if(0 < count($value)){
+        if (0 < count($value)) {
             $this->__value = $value[0];
         }
         return $this->__value;
