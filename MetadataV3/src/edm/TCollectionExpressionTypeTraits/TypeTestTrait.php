@@ -7,7 +7,7 @@ namespace MetadataV3\edm\TCollectionExpressionTypeTraits;
  *
  * XSD Type: TCollectionExpression
  */
-trait TypeTrait
+trait TypeTestTrait
 {
     /**
      * @property \MetadataV3\edm\TTypeTestExpressionType[] $typeTest
@@ -72,5 +72,4 @@ trait TypeTrait
         $this->typeTest = $typeTest;
         return $this;
     }
-
 }

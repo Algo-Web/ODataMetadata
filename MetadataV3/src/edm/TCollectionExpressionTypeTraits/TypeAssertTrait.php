@@ -73,6 +73,4 @@ trait TypeAssertTrait
         $this->typeAssert = $typeAssert;
         return $this;
     }
-
-
 }

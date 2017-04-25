@@ -71,5 +71,4 @@ trait ApplyTrait
         $this->apply = $apply;
         return $this;
     }
-
 }

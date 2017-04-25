@@ -72,5 +72,4 @@ trait PathTrait
         $this->path = $path;
         return $this;
     }
-
 }

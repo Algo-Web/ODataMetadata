@@ -9,7 +9,7 @@ namespace MetadataV3\edm\TCollectionExpressionTypeTraits;
  */
 trait CollectionTrait
 {
-   /**
+    /**
      * @property \MetadataV3\edm\TCollectionExpressionType[] $collection
      */
     private $collection = array(
@@ -71,5 +71,4 @@ trait CollectionTrait
         $this->collection = $collection;
         return $this;
     }
-
 }

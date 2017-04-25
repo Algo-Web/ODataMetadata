@@ -73,5 +73,4 @@ trait EntitySetReferenceTrait
         $this->entitySetReference = $entitySetReference;
         return $this;
     }
-
 }

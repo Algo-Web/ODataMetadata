@@ -71,5 +71,4 @@ trait FunctionReferenceTrait
         $this->functionReference = $functionReference;
         return $this;
     }
-
 }

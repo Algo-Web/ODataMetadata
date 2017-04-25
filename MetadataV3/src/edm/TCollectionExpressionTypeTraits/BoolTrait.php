@@ -71,5 +71,4 @@ trait BoolTrait
         $this->bool = $bool;
         return $this;
     }
-
 }

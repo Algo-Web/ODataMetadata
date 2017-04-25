@@ -72,5 +72,4 @@ trait GUIDTrait
         $this->guid = $guid;
         return $this;
     }
-
 }

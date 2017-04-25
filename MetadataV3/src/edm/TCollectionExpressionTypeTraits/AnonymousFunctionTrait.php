@@ -74,6 +74,4 @@ trait AnonymousFunctionTrait
         $this->anonymousFunction = $anonymousFunction;
         return $this;
     }
-
-
 }
