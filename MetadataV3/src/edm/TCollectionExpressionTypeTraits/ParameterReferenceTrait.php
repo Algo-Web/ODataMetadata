@@ -18,12 +18,7 @@ trait ParameterReferenceTrait
     private $parameterReference = array(
         
     );
-      /**
-     * @property \MetadataV3\edm\TPropertyReferenceExpressionType[] $propertyReference
-     */
-    private $propertyReference = array(
-        
-    );
+
     
     /**
      * Adds as parameterReference

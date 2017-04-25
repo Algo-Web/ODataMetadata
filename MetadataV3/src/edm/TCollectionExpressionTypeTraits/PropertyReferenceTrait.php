@@ -10,7 +10,12 @@ namespace MetadataV3\edm\TCollectionExpressionTypeTraits;
 trait PropertyReferenceTrait
 {
 
-  
+    /**
+     * @property \MetadataV3\edm\TPropertyReferenceExpressionType[] $propertyReference
+     */
+    private $propertyReference = array(
+        
+    );
 
 
     
