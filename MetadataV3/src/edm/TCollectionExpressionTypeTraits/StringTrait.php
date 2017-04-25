@@ -19,11 +19,11 @@ trait StringTrait
     );
 
         /**
-     * Adds as string
-     *
-     * @return self
-     * @param string $string
-     */
+         * Adds as string
+         *
+         * @return self
+         * @param string $string
+         */
     public function addToString($string)
     {
         $this->string[] = $string;
