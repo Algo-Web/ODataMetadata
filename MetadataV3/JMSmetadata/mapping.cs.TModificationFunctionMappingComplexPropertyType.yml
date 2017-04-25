@@ -1,0 +1,40 @@
+MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        typeName:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeName
+            accessor:
+                getter: getTypeName
+                setter: setTypeName
+            xml_attribute: true
+            type: string
+        scalarProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: ScalarProperty
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getScalarProperty
+                setter: setScalarProperty
+            type: MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
+        complexProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: ComplexProperty
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getComplexProperty
+                setter: setComplexProperty
+            type: MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType

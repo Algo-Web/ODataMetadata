@@ -1,0 +1,10 @@
+MetadataV3\edm\TDecimalConstantExpressionType:
+    properties:
+        __value:
+            expose: true
+            xml_value: true
+            access_type: public_method
+            accessor:
+                getter: value
+                setter: value
+            type: float

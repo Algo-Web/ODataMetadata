@@ -1,0 +1,133 @@
+MetadataV3\edm\TTypeAnnotationType:
+    properties:
+        term:
+            expose: true
+            access_type: public_method
+            serialized_name: Term
+            accessor:
+                getter: getTerm
+                setter: setTerm
+            xml_attribute: true
+            type: string
+        qualifier:
+            expose: true
+            access_type: public_method
+            serialized_name: Qualifier
+            accessor:
+                getter: getQualifier
+                setter: setQualifier
+            xml_attribute: true
+            type: string
+        string:
+            expose: true
+            access_type: public_method
+            serialized_name: String
+            accessor:
+                getter: getString
+                setter: setString
+            xml_attribute: true
+            type: string
+        binary:
+            expose: true
+            access_type: public_method
+            serialized_name: Binary
+            accessor:
+                getter: getBinary
+                setter: setBinary
+            xml_attribute: true
+            type: \AnySimpleTypeType
+        int:
+            expose: true
+            access_type: public_method
+            serialized_name: Int
+            accessor:
+                getter: getInt
+                setter: setInt
+            xml_attribute: true
+            type: integer
+        float:
+            expose: true
+            access_type: public_method
+            serialized_name: Float
+            accessor:
+                getter: getFloat
+                setter: setFloat
+            xml_attribute: true
+            type: float
+        guid:
+            expose: true
+            access_type: public_method
+            serialized_name: Guid
+            accessor:
+                getter: getGuid
+                setter: setGuid
+            xml_attribute: true
+            type: string
+        decimal:
+            expose: true
+            access_type: public_method
+            serialized_name: Decimal
+            accessor:
+                getter: getDecimal
+                setter: setDecimal
+            xml_attribute: true
+            type: float
+        bool:
+            expose: true
+            access_type: public_method
+            serialized_name: Bool
+            accessor:
+                getter: getBool
+                setter: setBool
+            xml_attribute: true
+            type: boolean
+        dateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: DateTime
+            accessor:
+                getter: getDateTime
+                setter: setDateTime
+            xml_attribute: true
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        dateTimeOffset:
+            expose: true
+            access_type: public_method
+            serialized_name: DateTimeOffset
+            accessor:
+                getter: getDateTimeOffset
+                setter: setDateTimeOffset
+            xml_attribute: true
+            type: GoetasWebservices\Xsd\XsdToPhp\XMLSchema\DateTime
+        enum:
+            expose: true
+            access_type: public_method
+            serialized_name: Enum
+            accessor:
+                getter: getEnum
+                setter: setEnum
+            xml_attribute: true
+            type: string
+        path:
+            expose: true
+            access_type: public_method
+            serialized_name: Path
+            accessor:
+                getter: getPath
+                setter: setPath
+            xml_attribute: true
+            type: string
+        propertyValue:
+            expose: true
+            access_type: public_method
+            serialized_name: PropertyValue
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getPropertyValue
+                setter: setPropertyValue
+            xml_list:
+                inline: true
+                entry_name: PropertyValue
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            type: array<MetadataV3\edm\TPropertyValueType>

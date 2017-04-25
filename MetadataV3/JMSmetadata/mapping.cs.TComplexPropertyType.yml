@@ -1,0 +1,85 @@
+MetadataV3\mapping\cs\TComplexPropertyType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        typeName:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeName
+            accessor:
+                getter: getTypeName
+                setter: setTypeName
+            xml_attribute: true
+            type: string
+        isPartial:
+            expose: true
+            access_type: public_method
+            serialized_name: IsPartial
+            accessor:
+                getter: getIsPartial
+                setter: setIsPartial
+            xml_attribute: true
+            type: boolean
+        scalarProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: ScalarProperty
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getScalarProperty
+                setter: setScalarProperty
+            xml_list:
+                inline: true
+                entry_name: ScalarProperty
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            type: array<MetadataV3\mapping\cs\TScalarPropertyType>
+        complexProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: ComplexProperty
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getComplexProperty
+                setter: setComplexProperty
+            xml_list:
+                inline: true
+                entry_name: ComplexProperty
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            type: array<MetadataV3\mapping\cs\TComplexPropertyType>
+        complexTypeMapping:
+            expose: true
+            access_type: public_method
+            serialized_name: ComplexTypeMapping
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getComplexTypeMapping
+                setter: setComplexTypeMapping
+            xml_list:
+                inline: true
+                entry_name: ComplexTypeMapping
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            type: array<MetadataV3\mapping\cs\TComplexTypeMappingType>
+        condition:
+            expose: true
+            access_type: public_method
+            serialized_name: Condition
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getCondition
+                setter: setCondition
+            xml_list:
+                inline: true
+                entry_name: Condition
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            type: array<MetadataV3\mapping\cs\TConditionType>

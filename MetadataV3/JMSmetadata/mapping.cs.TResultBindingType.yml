@@ -1,0 +1,20 @@
+MetadataV3\mapping\cs\TResultBindingType:
+    properties:
+        columnName:
+            expose: true
+            access_type: public_method
+            serialized_name: ColumnName
+            accessor:
+                getter: getColumnName
+                setter: setColumnName
+            xml_attribute: true
+            type: string
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string

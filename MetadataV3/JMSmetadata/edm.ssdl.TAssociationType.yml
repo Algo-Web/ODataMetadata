@@ -1,0 +1,45 @@
+MetadataV3\edm\ssdl\TAssociationType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        documentation:
+            expose: true
+            access_type: public_method
+            serialized_name: Documentation
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+            accessor:
+                getter: getDocumentation
+                setter: setDocumentation
+            type: MetadataV3\edm\ssdl\TDocumentationType
+        end:
+            expose: true
+            access_type: public_method
+            serialized_name: End
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+            accessor:
+                getter: getEnd
+                setter: setEnd
+            xml_list:
+                inline: true
+                entry_name: End
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+            type: array<MetadataV3\edm\ssdl\TAssociationEndType>
+        referentialConstraint:
+            expose: true
+            access_type: public_method
+            serialized_name: ReferentialConstraint
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+            accessor:
+                getter: getReferentialConstraint
+                setter: setReferentialConstraint
+            type: MetadataV3\edm\ssdl\TConstraintType

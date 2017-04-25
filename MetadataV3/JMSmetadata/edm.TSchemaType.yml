@@ -1,0 +1,155 @@
+MetadataV3\edm\TSchemaType:
+    properties:
+        namespace:
+            expose: true
+            access_type: public_method
+            serialized_name: Namespace
+            accessor:
+                getter: getNamespace
+                setter: setNamespace
+            xml_attribute: true
+            type: string
+        namespaceUri:
+            expose: true
+            access_type: public_method
+            serialized_name: NamespaceUri
+            accessor:
+                getter: getNamespaceUri
+                setter: setNamespaceUri
+            xml_attribute: true
+            type: string
+        alias:
+            expose: true
+            access_type: public_method
+            serialized_name: Alias
+            accessor:
+                getter: getAlias
+                setter: setAlias
+            xml_attribute: true
+            type: string
+        using:
+            expose: true
+            access_type: public_method
+            serialized_name: Using
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getUsing
+                setter: setUsing
+            xml_list:
+                inline: true
+                entry_name: Using
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            type: array<MetadataV3\edm\TUsingType>
+        association:
+            expose: true
+            access_type: public_method
+            serialized_name: Association
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getAssociation
+                setter: setAssociation
+            xml_list:
+                inline: true
+                entry_name: Association
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            type: array<MetadataV3\edm\TAssociationType>
+        complexType:
+            expose: true
+            access_type: public_method
+            serialized_name: ComplexType
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getComplexType
+                setter: setComplexType
+            xml_list:
+                inline: true
+                entry_name: ComplexType
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            type: array<MetadataV3\edm\TComplexTypeType>
+        entityType:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityType
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getEntityType
+                setter: setEntityType
+            xml_list:
+                inline: true
+                entry_name: EntityType
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            type: array<MetadataV3\edm\TEntityTypeType>
+        enumType:
+            expose: true
+            access_type: public_method
+            serialized_name: EnumType
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getEnumType
+                setter: setEnumType
+            xml_list:
+                inline: true
+                entry_name: EnumType
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            type: array<MetadataV3\edm\TEnumTypeType>
+        valueTerm:
+            expose: true
+            access_type: public_method
+            serialized_name: ValueTerm
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getValueTerm
+                setter: setValueTerm
+            xml_list:
+                inline: true
+                entry_name: ValueTerm
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            type: array<MetadataV3\edm\TValueTermType>
+        function:
+            expose: true
+            access_type: public_method
+            serialized_name: Function
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getFunction
+                setter: setFunction
+            xml_list:
+                inline: true
+                entry_name: Function
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            type: array<MetadataV3\edm\TFunctionType>
+        annotations:
+            expose: true
+            access_type: public_method
+            serialized_name: Annotations
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getAnnotations
+                setter: setAnnotations
+            xml_list:
+                inline: true
+                entry_name: Annotations
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            type: array<MetadataV3\edm\TAnnotationsType>
+        entityContainer:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityContainer
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getEntityContainer
+                setter: setEntityContainer
+            xml_list:
+                inline: true
+                entry_name: EntityContainer
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            type: array<MetadataV3\edm\EntityContainer>

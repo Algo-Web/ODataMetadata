@@ -1,0 +1,34 @@
+MetadataV3\mapping\cs\TFunctionImportMappingType:
+    properties:
+        functionName:
+            expose: true
+            access_type: public_method
+            serialized_name: FunctionName
+            accessor:
+                getter: getFunctionName
+                setter: setFunctionName
+            xml_attribute: true
+            type: string
+        functionImportName:
+            expose: true
+            access_type: public_method
+            serialized_name: FunctionImportName
+            accessor:
+                getter: getFunctionImportName
+                setter: setFunctionImportName
+            xml_attribute: true
+            type: string
+        resultMapping:
+            expose: true
+            access_type: public_method
+            serialized_name: ResultMapping
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getResultMapping
+                setter: setResultMapping
+            xml_list:
+                inline: true
+                entry_name: ResultMapping
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            type: array<MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType>

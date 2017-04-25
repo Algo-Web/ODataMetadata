@@ -1,0 +1,20 @@
+MetadataV3\mapping\cs\TAliasType:
+    properties:
+        key:
+            expose: true
+            access_type: public_method
+            serialized_name: Key
+            accessor:
+                getter: getKey
+                setter: setKey
+            xml_attribute: true
+            type: string
+        value:
+            expose: true
+            access_type: public_method
+            serialized_name: Value
+            accessor:
+                getter: getValue
+                setter: setValue
+            xml_attribute: true
+            type: string

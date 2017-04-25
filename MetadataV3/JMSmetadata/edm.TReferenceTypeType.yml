@@ -1,0 +1,21 @@
+MetadataV3\edm\TReferenceTypeType:
+    properties:
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: Type
+            accessor:
+                getter: getType
+                setter: setType
+            xml_attribute: true
+            type: string
+        documentation:
+            expose: true
+            access_type: public_method
+            serialized_name: Documentation
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getDocumentation
+                setter: setDocumentation
+            type: MetadataV3\edm\TDocumentationType

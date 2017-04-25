@@ -1,0 +1,22 @@
+MetadataV3\edm\TDocumentationType:
+    properties:
+        summary:
+            expose: true
+            access_type: public_method
+            serialized_name: Summary
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getSummary
+                setter: setSummary
+            type: MetadataV3\edm\TTextType
+        longDescription:
+            expose: true
+            access_type: public_method
+            serialized_name: LongDescription
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getLongDescription
+                setter: setLongDescription
+            type: MetadataV3\edm\TTextType

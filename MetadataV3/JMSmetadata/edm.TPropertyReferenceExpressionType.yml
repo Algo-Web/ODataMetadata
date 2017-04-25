@@ -1,0 +1,241 @@
+MetadataV3\edm\TPropertyReferenceExpressionType:
+    properties:
+        property:
+            expose: true
+            access_type: public_method
+            serialized_name: Property
+            accessor:
+                getter: getProperty
+                setter: setProperty
+            xml_attribute: true
+            type: string
+        string:
+            expose: true
+            access_type: public_method
+            serialized_name: String
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getString
+                setter: setString
+            type: MetadataV3\edm\TStringConstantExpressionType
+        binary:
+            expose: true
+            access_type: public_method
+            serialized_name: Binary
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getBinary
+                setter: setBinary
+            type: MetadataV3\edm\TBinaryConstantExpressionType
+        int:
+            expose: true
+            access_type: public_method
+            serialized_name: Int
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getInt
+                setter: setInt
+            type: MetadataV3\edm\TIntConstantExpressionType
+        float:
+            expose: true
+            access_type: public_method
+            serialized_name: Float
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getFloat
+                setter: setFloat
+            type: MetadataV3\edm\TFloatConstantExpressionType
+        guid:
+            expose: true
+            access_type: public_method
+            serialized_name: Guid
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getGuid
+                setter: setGuid
+            type: MetadataV3\edm\TGuidConstantExpressionType
+        decimal:
+            expose: true
+            access_type: public_method
+            serialized_name: Decimal
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getDecimal
+                setter: setDecimal
+            type: MetadataV3\edm\TDecimalConstantExpressionType
+        bool:
+            expose: true
+            access_type: public_method
+            serialized_name: Bool
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getBool
+                setter: setBool
+            type: MetadataV3\edm\TBoolConstantExpressionType
+        dateTime:
+            expose: true
+            access_type: public_method
+            serialized_name: DateTime
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getDateTime
+                setter: setDateTime
+            type: MetadataV3\edm\TDateTimeConstantExpressionType
+        dateTimeOffset:
+            expose: true
+            access_type: public_method
+            serialized_name: DateTimeOffset
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getDateTimeOffset
+                setter: setDateTimeOffset
+            type: MetadataV3\edm\TDateTimeOffsetConstantExpressionType
+        enum:
+            expose: true
+            access_type: public_method
+            serialized_name: Enum
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getEnum
+                setter: setEnum
+            type: MetadataV3\edm\TEnumConstantExpressionType
+        path:
+            expose: true
+            access_type: public_method
+            serialized_name: Path
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getPath
+                setter: setPath
+            type: MetadataV3\edm\TPathExpressionType
+        if:
+            expose: true
+            access_type: public_method
+            serialized_name: If
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getIf
+                setter: setIf
+            type: MetadataV3\edm\TIfExpressionType
+        record:
+            expose: true
+            access_type: public_method
+            serialized_name: Record
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getRecord
+                setter: setRecord
+            type: MetadataV3\edm\TRecordExpressionType
+        collection:
+            expose: true
+            access_type: public_method
+            serialized_name: Collection
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getCollection
+                setter: setCollection
+            type: MetadataV3\edm\TCollectionExpressionType
+        typeAssert:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeAssert
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getTypeAssert
+                setter: setTypeAssert
+            type: MetadataV3\edm\TTypeAssertExpressionType
+        typeTest:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeTest
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getTypeTest
+                setter: setTypeTest
+            type: MetadataV3\edm\TTypeTestExpressionType
+        functionReference:
+            expose: true
+            access_type: public_method
+            serialized_name: FunctionReference
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getFunctionReference
+                setter: setFunctionReference
+            type: MetadataV3\edm\TFunctionReferenceExpressionType
+        entitySetReference:
+            expose: true
+            access_type: public_method
+            serialized_name: EntitySetReference
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getEntitySetReference
+                setter: setEntitySetReference
+            type: MetadataV3\edm\TEntitySetReferenceExpressionType
+        anonymousFunction:
+            expose: true
+            access_type: public_method
+            serialized_name: AnonymousFunction
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getAnonymousFunction
+                setter: setAnonymousFunction
+            type: MetadataV3\edm\TAnonymousFunctionExpressionType
+        parameterReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ParameterReference
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getParameterReference
+                setter: setParameterReference
+            type: MetadataV3\edm\TParameterReferenceExpressionType
+        apply:
+            expose: true
+            access_type: public_method
+            serialized_name: Apply
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getApply
+                setter: setApply
+            type: MetadataV3\edm\TApplyExpressionType
+        propertyReference:
+            expose: true
+            access_type: public_method
+            serialized_name: PropertyReference
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getPropertyReference
+                setter: setPropertyReference
+            type: MetadataV3\edm\TPropertyReferenceExpressionType
+        valueTermReference:
+            expose: true
+            access_type: public_method
+            serialized_name: ValueTermReference
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getValueTermReference
+                setter: setValueTermReference
+            type: MetadataV3\edm\TValueTermReferenceExpressionType

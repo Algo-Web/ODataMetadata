@@ -1,0 +1,32 @@
+MetadataV3\edmx\TRuntimeType:
+    properties:
+        storageModels:
+            expose: true
+            access_type: public_method
+            serialized_name: StorageModels
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+            accessor:
+                getter: getStorageModels
+                setter: setStorageModels
+            type: MetadataV3\edmx\TRuntimeStorageModelsType
+        conceptualModels:
+            expose: true
+            access_type: public_method
+            serialized_name: ConceptualModels
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+            accessor:
+                getter: getConceptualModels
+                setter: setConceptualModels
+            type: MetadataV3\edmx\TRuntimeConceptualModelsType
+        mappings:
+            expose: true
+            access_type: public_method
+            serialized_name: Mappings
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+            accessor:
+                getter: getMappings
+                setter: setMappings
+            type: MetadataV3\edmx\TRuntimeMappingsType

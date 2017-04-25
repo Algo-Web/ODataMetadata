@@ -1,0 +1,46 @@
+MetadataV3\edmx\TEdmxType:
+    properties:
+        version:
+            expose: true
+            access_type: public_method
+            serialized_name: Version
+            accessor:
+                getter: getVersion
+                setter: setVersion
+            xml_attribute: true
+            type: string
+        designer:
+            expose: true
+            access_type: public_method
+            serialized_name: Designer
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+            accessor:
+                getter: getDesigner
+                setter: setDesigner
+            type: MetadataV3\edmx\TDesignerType
+        runtime:
+            expose: true
+            access_type: public_method
+            serialized_name: Runtime
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+            accessor:
+                getter: getRuntime
+                setter: setRuntime
+            type: MetadataV3\edmx\TRuntimeType
+        dataServices:
+            expose: true
+            access_type: public_method
+            serialized_name: DataServices
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+            accessor:
+                getter: getDataServices
+                setter: setDataServices
+            type: array<MetadataV3\edm\Schema>
+            xml_list:
+                inline: false
+                entry_name: Schema
+                skip_when_empty: true
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'

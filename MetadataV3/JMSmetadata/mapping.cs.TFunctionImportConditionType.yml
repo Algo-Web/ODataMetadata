@@ -1,0 +1,29 @@
+MetadataV3\mapping\cs\TFunctionImportConditionType:
+    properties:
+        value:
+            expose: true
+            access_type: public_method
+            serialized_name: Value
+            accessor:
+                getter: getValue
+                setter: setValue
+            xml_attribute: true
+            type: string
+        columnName:
+            expose: true
+            access_type: public_method
+            serialized_name: ColumnName
+            accessor:
+                getter: getColumnName
+                setter: setColumnName
+            xml_attribute: true
+            type: string
+        isNull:
+            expose: true
+            access_type: public_method
+            serialized_name: IsNull
+            accessor:
+                getter: getIsNull
+                setter: setIsNull
+            xml_attribute: true
+            type: boolean

@@ -1,0 +1,50 @@
+MetadataV3\mapping\cs\TEntityTypeModificationFunctionType:
+    properties:
+        functionName:
+            expose: true
+            access_type: public_method
+            serialized_name: FunctionName
+            accessor:
+                getter: getFunctionName
+                setter: setFunctionName
+            xml_attribute: true
+            type: string
+        rowsAffectedParameter:
+            expose: true
+            access_type: public_method
+            serialized_name: RowsAffectedParameter
+            accessor:
+                getter: getRowsAffectedParameter
+                setter: setRowsAffectedParameter
+            xml_attribute: true
+            type: string
+        scalarProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: ScalarProperty
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getScalarProperty
+                setter: setScalarProperty
+            type: MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
+        associationEnd:
+            expose: true
+            access_type: public_method
+            serialized_name: AssociationEnd
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getAssociationEnd
+                setter: setAssociationEnd
+            type: MetadataV3\mapping\cs\TModificationFunctionMappingAssociationEndType
+        complexProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: ComplexProperty
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getComplexProperty
+                setter: setComplexProperty
+            type: MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType

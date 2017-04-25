@@ -1,0 +1,34 @@
+MetadataV3\edmx\TAssociationConnectorType:
+    properties:
+        association:
+            expose: true
+            access_type: public_method
+            serialized_name: Association
+            accessor:
+                getter: getAssociation
+                setter: setAssociation
+            xml_attribute: true
+            type: string
+        manuallyRouted:
+            expose: true
+            access_type: public_method
+            serialized_name: ManuallyRouted
+            accessor:
+                getter: getManuallyRouted
+                setter: setManuallyRouted
+            xml_attribute: true
+            type: boolean
+        connectorPoint:
+            expose: true
+            access_type: public_method
+            serialized_name: ConnectorPoint
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+            accessor:
+                getter: getConnectorPoint
+                setter: setConnectorPoint
+            xml_list:
+                inline: true
+                entry_name: ConnectorPoint
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+            type: array<MetadataV3\edmx\TConnectorPointType>

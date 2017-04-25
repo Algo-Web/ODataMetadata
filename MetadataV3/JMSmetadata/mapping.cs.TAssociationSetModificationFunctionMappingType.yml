@@ -1,0 +1,22 @@
+MetadataV3\mapping\cs\TAssociationSetModificationFunctionMappingType:
+    properties:
+        deleteFunction:
+            expose: true
+            access_type: public_method
+            serialized_name: DeleteFunction
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getDeleteFunction
+                setter: setDeleteFunction
+            type: MetadataV3\mapping\cs\TAssociationSetModificationFunctionType
+        insertFunction:
+            expose: true
+            access_type: public_method
+            serialized_name: InsertFunction
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+            accessor:
+                getter: getInsertFunction
+                setter: setInsertFunction
+            type: MetadataV3\mapping\cs\TAssociationSetModificationFunctionType
