@@ -73,5 +73,4 @@ trait RecordTrait
         $this->record = $record;
         return $this;
     }
-
 }

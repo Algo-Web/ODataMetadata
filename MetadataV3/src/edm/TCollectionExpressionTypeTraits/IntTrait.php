@@ -72,5 +72,4 @@ trait IntTrait
         $this->int = $int;
         return $this;
     }
-
 }

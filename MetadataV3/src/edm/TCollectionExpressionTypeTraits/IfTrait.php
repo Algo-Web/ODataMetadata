@@ -71,5 +71,4 @@ trait IfTrait
         $this->if = $if;
         return $this;
     }
-
 }

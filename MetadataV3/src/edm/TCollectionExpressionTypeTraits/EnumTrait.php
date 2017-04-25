@@ -72,5 +72,4 @@ trait EnumTrait
         $this->enum = $enum;
         return $this;
     }
-
 }

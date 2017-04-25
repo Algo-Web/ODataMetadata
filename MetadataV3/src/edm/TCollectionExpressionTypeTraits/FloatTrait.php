@@ -7,7 +7,7 @@ namespace MetadataV3\edm\TCollectionExpressionTypeTraits;
  *
  * XSD Type: TCollectionExpression
  */
-trait  FloatTrait
+trait FloatTrait
 {
     /**
      * @property float[] $float
@@ -72,5 +72,4 @@ trait  FloatTrait
         $this->float = $float;
         return $this;
     }
-
 }

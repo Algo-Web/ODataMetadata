@@ -69,6 +69,4 @@ trait PropertyReferenceTrait
         $this->propertyReference = $propertyReference;
         return $this;
     }
-
-
 }

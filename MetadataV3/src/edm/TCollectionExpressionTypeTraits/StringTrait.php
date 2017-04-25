@@ -73,5 +73,4 @@ trait StringTrait
         $this->string = $string;
         return $this;
     }
-
 }

@@ -7,9 +7,9 @@ namespace MetadataV3\edm\TCollectionExpressionTypeTraits;
  *
  * XSD Type: TCollectionExpression
  */
-trait  DecimalTrait
+trait DecimalTrait
 {
-   /**
+    /**
      * @property float[] $decimal
      */
     private $decimal = array(
@@ -71,6 +71,4 @@ trait  DecimalTrait
         $this->decimal = $decimal;
         return $this;
     }
-
-
 }

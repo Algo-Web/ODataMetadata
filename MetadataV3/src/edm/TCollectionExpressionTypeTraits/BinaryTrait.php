@@ -73,6 +73,4 @@ trait BinaryTrait
         $this->binary = $binary;
         return $this;
     }
-
-}	
-
+}
