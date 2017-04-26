@@ -33,5 +33,4 @@ class TIfExpressionType
         \MetadataV3\edm\GExpressionGroupTraits\BinaryTrait,
         \MetadataV3\edm\GExpressionGroupTraits\ApplyTrait,
         \MetadataV3\edm\GExpressionGroupTraits\AnonymousFunctionTrait;
-
 }
