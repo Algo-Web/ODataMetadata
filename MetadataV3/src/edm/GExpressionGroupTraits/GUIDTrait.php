@@ -1,11 +1,11 @@
 <?php
-namespace MetadataV3\edm\TCollectionExpressionTypeTraits;
+namespace MetadataV3\edm\GExpressionGroupTraits;
 
 /**
  * Trait representing the GUID Component of  MetadataV3\edm\TCollectionExpressionType
  *
  *
- * XSD Type: TCollectionExpression
+ * XSD Type: GExpression
  */
 trait GUIDTrait
 {
