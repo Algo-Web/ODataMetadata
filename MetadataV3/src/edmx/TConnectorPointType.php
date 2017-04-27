@@ -64,4 +64,15 @@ class TConnectorPointType
         $this->pointY = $pointY;
         return $this;
     }
+
+    public function isOK()
+    {
+        if (null == $this->pointX) {
+            return false;
+        }
+        if (null == $this->pointY) {
+            return false;
+        }
+        return true;
+    }
 }

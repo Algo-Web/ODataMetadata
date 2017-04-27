@@ -199,4 +199,15 @@ class TEntityTypeShapeType
         $this->fillColor = $fillColor;
         return $this;
     }
+
+    /**
+     * @return bool
+     */
+    public function isOK()
+    {
+        if (null == $this->entityType || "" == $this->entityType) {
+            return false;
+        }
+        return true;
+    }
 }

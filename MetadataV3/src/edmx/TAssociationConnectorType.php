@@ -127,4 +127,12 @@ class TAssociationConnectorType
         $this->connectorPoint = $connectorPoint;
         return $this;
     }
+
+    public function isOK()
+    {
+        if (null == $this->association) {
+            return false;
+        }
+        return true;
+    }
 }

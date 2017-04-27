@@ -64,4 +64,15 @@ class TDesignerPropertyType
         $this->value = $value;
         return $this;
     }
+
+    public function isOK()
+    {
+        if (null == $this->name) {
+            return false;
+        }
+        if (null == $this->value) {
+            return false;
+        }
+        return true;
+    }
 }
