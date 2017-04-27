@@ -7,7 +7,4 @@ namespace MetadataV1\edm;
  */
 class Schema extends TSchemaType
 {
-
-
 }
-

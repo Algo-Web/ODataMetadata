@@ -199,7 +199,4 @@ class TFunctionImportParameterType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

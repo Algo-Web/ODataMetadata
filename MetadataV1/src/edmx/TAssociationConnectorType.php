@@ -127,7 +127,4 @@ class TAssociationConnectorType
         $this->connectorPoint = $connectorPoint;
         return $this;
     }
-
-
 }
-

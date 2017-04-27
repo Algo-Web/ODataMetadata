@@ -1113,7 +1113,4 @@ class TPropertyValueType
         $this->record = $record;
         return $this;
     }
-
-
 }
-

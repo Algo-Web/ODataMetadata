@@ -10,7 +10,4 @@ namespace MetadataV1\mapping\cs;
  */
 class TEntityTypeModificationFunctionWithResultType extends TEntityTypeModificationFunctionType
 {
-
-
 }
-

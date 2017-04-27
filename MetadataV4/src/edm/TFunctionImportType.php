@@ -181,7 +181,4 @@ class TFunctionImportType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

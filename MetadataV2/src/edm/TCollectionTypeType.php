@@ -395,7 +395,4 @@ class TCollectionTypeType
         $this->typeRef = $typeRef;
         return $this;
     }
-
-
 }
-

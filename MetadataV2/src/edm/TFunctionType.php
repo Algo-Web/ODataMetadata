@@ -469,7 +469,4 @@ class TFunctionType
         $this->definingExpression = $definingExpression;
         return $this;
     }
-
-
 }
-

@@ -64,7 +64,4 @@ class TPropertyRefType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

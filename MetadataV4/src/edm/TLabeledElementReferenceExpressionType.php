@@ -49,7 +49,4 @@ class TLabeledElementReferenceExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

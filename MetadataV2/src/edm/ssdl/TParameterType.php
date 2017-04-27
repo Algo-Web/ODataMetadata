@@ -199,7 +199,4 @@ class TParameterType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

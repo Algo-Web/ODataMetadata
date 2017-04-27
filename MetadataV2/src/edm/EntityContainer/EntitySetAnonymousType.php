@@ -115,7 +115,4 @@ class EntitySetAnonymousType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

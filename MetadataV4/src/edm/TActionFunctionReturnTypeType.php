@@ -172,7 +172,4 @@ class TActionFunctionReturnTypeType
         $this->sRID = $sRID;
         return $this;
     }
-
-
 }
-

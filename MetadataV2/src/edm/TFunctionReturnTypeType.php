@@ -368,7 +368,4 @@ class TFunctionReturnTypeType
         $this->rowType = $rowType;
         return $this;
     }
-
-
 }
-

@@ -2274,7 +2274,4 @@ class TIfExpressionType
         $this->urlRef = $urlRef;
         return $this;
     }
-
-
 }
-

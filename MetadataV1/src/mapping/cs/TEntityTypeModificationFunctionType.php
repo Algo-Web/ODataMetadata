@@ -149,7 +149,4 @@ class TEntityTypeModificationFunctionType
         $this->complexProperty = $complexProperty;
         return $this;
     }
-
-
 }
-

@@ -127,7 +127,4 @@ class TReferentialConstraintRoleElementType
         $this->propertyRef = $propertyRef;
         return $this;
     }
-
-
 }
-

@@ -100,7 +100,4 @@ class TOnDeleteType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

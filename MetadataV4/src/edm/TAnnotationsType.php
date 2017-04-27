@@ -127,7 +127,4 @@ class TAnnotationsType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

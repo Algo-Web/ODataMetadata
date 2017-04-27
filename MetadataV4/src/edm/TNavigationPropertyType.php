@@ -334,7 +334,4 @@ class TNavigationPropertyType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

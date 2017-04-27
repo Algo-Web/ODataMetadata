@@ -379,7 +379,4 @@ class TEntityContainerType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

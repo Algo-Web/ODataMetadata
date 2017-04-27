@@ -388,7 +388,4 @@ class TComplexTypePropertyType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

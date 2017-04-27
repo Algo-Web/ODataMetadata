@@ -64,7 +64,4 @@ class TPropertyRefType
         $this->alias = $alias;
         return $this;
     }
-
-
 }
-

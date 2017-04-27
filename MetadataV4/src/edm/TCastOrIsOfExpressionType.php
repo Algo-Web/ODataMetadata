@@ -1221,7 +1221,4 @@ class TCastOrIsOfExpressionType
         $this->urlRef = $urlRef;
         return $this;
     }
-
-
 }
-

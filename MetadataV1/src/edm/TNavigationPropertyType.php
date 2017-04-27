@@ -199,7 +199,4 @@ class TNavigationPropertyType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

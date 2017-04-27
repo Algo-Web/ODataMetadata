@@ -284,7 +284,4 @@ class TEntityContainerMappingType
         $this->functionImportMapping = $functionImportMapping;
         return $this;
     }
-
-
 }
-

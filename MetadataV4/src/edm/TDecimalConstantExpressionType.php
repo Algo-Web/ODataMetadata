@@ -49,7 +49,4 @@ class TDecimalConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

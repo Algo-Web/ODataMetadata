@@ -307,7 +307,4 @@ class TComplexTypeType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

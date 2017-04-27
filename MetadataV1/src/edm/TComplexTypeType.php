@@ -154,7 +154,4 @@ class TComplexTypeType
         $this->property = $property;
         return $this;
     }
-
-
 }
-

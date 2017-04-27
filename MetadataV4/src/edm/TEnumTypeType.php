@@ -217,7 +217,4 @@ class TEnumTypeType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

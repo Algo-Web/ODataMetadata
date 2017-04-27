@@ -10,7 +10,4 @@ namespace MetadataV2\edm;
  */
 class TTextType
 {
-
-
 }
-

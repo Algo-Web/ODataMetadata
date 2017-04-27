@@ -691,7 +691,4 @@ class Schema
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

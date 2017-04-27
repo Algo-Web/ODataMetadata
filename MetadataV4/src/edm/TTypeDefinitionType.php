@@ -262,7 +262,4 @@ class TTypeDefinitionType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

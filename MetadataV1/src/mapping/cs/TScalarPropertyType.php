@@ -64,7 +64,4 @@ class TScalarPropertyType
         $this->columnName = $columnName;
         return $this;
     }
-
-
 }
-

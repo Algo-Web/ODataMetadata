@@ -273,7 +273,4 @@ class TAssociationSetMappingType
         $this->modificationFunctionMapping = $modificationFunctionMapping;
         return $this;
     }
-
-
 }
-

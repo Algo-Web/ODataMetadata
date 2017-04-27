@@ -361,7 +361,4 @@ class TDiagramType
         $this->inheritanceConnector = $inheritanceConnector;
         return $this;
     }
-
-
 }
-

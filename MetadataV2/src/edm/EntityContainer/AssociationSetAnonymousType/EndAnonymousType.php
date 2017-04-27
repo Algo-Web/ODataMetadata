@@ -88,7 +88,4 @@ class EndAnonymousType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

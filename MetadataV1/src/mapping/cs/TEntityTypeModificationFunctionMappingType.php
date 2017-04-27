@@ -97,7 +97,4 @@ class TEntityTypeModificationFunctionMappingType
         $this->updateFunction = $updateFunction;
         return $this;
     }
-
-
 }
-

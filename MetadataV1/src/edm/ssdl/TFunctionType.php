@@ -370,7 +370,4 @@ class TFunctionType
         $this->parameter = $parameter;
         return $this;
     }
-
-
 }
-

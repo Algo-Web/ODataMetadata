@@ -49,7 +49,4 @@ class TPathExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

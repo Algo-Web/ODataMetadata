@@ -181,7 +181,4 @@ class TAssociationEndType
         $this->onDelete = $onDelete;
         return $this;
     }
-
-
 }
-

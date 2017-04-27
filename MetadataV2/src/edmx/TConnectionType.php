@@ -71,7 +71,4 @@ class TConnectionType
         $this->designerInfoPropertySet = $designerInfoPropertySet;
         return $this;
     }
-
-
 }
-
