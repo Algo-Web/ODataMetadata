@@ -1,0 +1,3 @@
+MetadataV1\mapping\cs\Mapping:
+    xml_root_name: Mapping
+    xml_root_namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'

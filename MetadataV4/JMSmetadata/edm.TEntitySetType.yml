@@ -1,0 +1,57 @@
+MetadataV4\edm\TEntitySetType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        entityType:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityType
+            accessor:
+                getter: getEntityType
+                setter: setEntityType
+            xml_attribute: true
+            type: string
+        includeInServiceDocument:
+            expose: true
+            access_type: public_method
+            serialized_name: IncludeInServiceDocument
+            accessor:
+                getter: getIncludeInServiceDocument
+                setter: setIncludeInServiceDocument
+            xml_attribute: true
+            type: boolean
+        navigationPropertyBinding:
+            expose: true
+            access_type: public_method
+            serialized_name: NavigationPropertyBinding
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getNavigationPropertyBinding
+                setter: setNavigationPropertyBinding
+            xml_list:
+                inline: true
+                entry_name: NavigationPropertyBinding
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TNavigationPropertyBindingType>
+        annotation:
+            expose: true
+            access_type: public_method
+            serialized_name: Annotation
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getAnnotation
+                setter: setAnnotation
+            xml_list:
+                inline: true
+                entry_name: Annotation
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\Annotation>

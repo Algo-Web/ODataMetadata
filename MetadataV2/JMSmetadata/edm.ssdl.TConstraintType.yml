@@ -1,0 +1,32 @@
+MetadataV2\edm\ssdl\TConstraintType:
+    properties:
+        documentation:
+            expose: true
+            access_type: public_method
+            serialized_name: Documentation
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
+            accessor:
+                getter: getDocumentation
+                setter: setDocumentation
+            type: MetadataV2\edm\ssdl\TDocumentationType
+        principal:
+            expose: true
+            access_type: public_method
+            serialized_name: Principal
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
+            accessor:
+                getter: getPrincipal
+                setter: setPrincipal
+            type: MetadataV2\edm\ssdl\TReferentialConstraintRoleElementType
+        dependent:
+            expose: true
+            access_type: public_method
+            serialized_name: Dependent
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
+            accessor:
+                getter: getDependent
+                setter: setDependent
+            type: MetadataV2\edm\ssdl\TReferentialConstraintRoleElementType

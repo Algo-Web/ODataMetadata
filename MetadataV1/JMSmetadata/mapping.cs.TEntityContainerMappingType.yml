@@ -1,0 +1,62 @@
+MetadataV1\mapping\cs\TEntityContainerMappingType:
+    properties:
+        cdmEntityContainer:
+            expose: true
+            access_type: public_method
+            serialized_name: CdmEntityContainer
+            accessor:
+                getter: getCdmEntityContainer
+                setter: setCdmEntityContainer
+            xml_attribute: true
+            type: string
+        storageEntityContainer:
+            expose: true
+            access_type: public_method
+            serialized_name: StorageEntityContainer
+            accessor:
+                getter: getStorageEntityContainer
+                setter: setStorageEntityContainer
+            xml_attribute: true
+            type: string
+        entitySetMapping:
+            expose: true
+            access_type: public_method
+            serialized_name: EntitySetMapping
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getEntitySetMapping
+                setter: setEntitySetMapping
+            xml_list:
+                inline: true
+                entry_name: EntitySetMapping
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            type: array<MetadataV1\mapping\cs\TEntitySetMappingType>
+        associationSetMapping:
+            expose: true
+            access_type: public_method
+            serialized_name: AssociationSetMapping
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getAssociationSetMapping
+                setter: setAssociationSetMapping
+            xml_list:
+                inline: true
+                entry_name: AssociationSetMapping
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            type: array<MetadataV1\mapping\cs\TAssociationSetMappingType>
+        functionImportMapping:
+            expose: true
+            access_type: public_method
+            serialized_name: FunctionImportMapping
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getFunctionImportMapping
+                setter: setFunctionImportMapping
+            xml_list:
+                inline: true
+                entry_name: FunctionImportMapping
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            type: array<MetadataV1\mapping\cs\TFunctionImportMappingType>

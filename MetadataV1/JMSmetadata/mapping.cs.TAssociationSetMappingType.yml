@@ -1,0 +1,77 @@
+MetadataV1\mapping\cs\TAssociationSetMappingType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        typeName:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeName
+            accessor:
+                getter: getTypeName
+                setter: setTypeName
+            xml_attribute: true
+            type: string
+        storeEntitySet:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreEntitySet
+            accessor:
+                getter: getStoreEntitySet
+                setter: setStoreEntitySet
+            xml_attribute: true
+            type: string
+        queryView:
+            expose: true
+            access_type: public_method
+            serialized_name: QueryView
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getQueryView
+                setter: setQueryView
+            type: string
+        endProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: EndProperty
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getEndProperty
+                setter: setEndProperty
+            xml_list:
+                inline: true
+                entry_name: EndProperty
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            type: array<MetadataV1\mapping\cs\TEndPropertyType>
+        condition:
+            expose: true
+            access_type: public_method
+            serialized_name: Condition
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getCondition
+                setter: setCondition
+            xml_list:
+                inline: true
+                entry_name: Condition
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            type: array<MetadataV1\mapping\cs\TConditionType>
+        modificationFunctionMapping:
+            expose: true
+            access_type: public_method
+            serialized_name: ModificationFunctionMapping
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getModificationFunctionMapping
+                setter: setModificationFunctionMapping
+            type: MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType

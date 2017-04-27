@@ -1,0 +1,79 @@
+MetadataV4\edm\TActionFunctionParameterType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: Type
+            accessor:
+                getter: getType
+                setter: setType
+            xml_attribute: true
+            type: string
+        nullable:
+            expose: true
+            access_type: public_method
+            serialized_name: Nullable
+            accessor:
+                getter: getNullable
+                setter: setNullable
+            xml_attribute: true
+            type: boolean
+        maxLength:
+            expose: true
+            access_type: public_method
+            serialized_name: MaxLength
+            accessor:
+                getter: getMaxLength
+                setter: setMaxLength
+            xml_attribute: true
+            type: string
+        precision:
+            expose: true
+            access_type: public_method
+            serialized_name: Precision
+            accessor:
+                getter: getPrecision
+                setter: setPrecision
+            xml_attribute: true
+            type: integer
+        scale:
+            expose: true
+            access_type: public_method
+            serialized_name: Scale
+            accessor:
+                getter: getScale
+                setter: setScale
+            xml_attribute: true
+            type: string
+        sRID:
+            expose: true
+            access_type: public_method
+            serialized_name: SRID
+            accessor:
+                getter: getSRID
+                setter: setSRID
+            xml_attribute: true
+            type: string
+        annotation:
+            expose: true
+            access_type: public_method
+            serialized_name: Annotation
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getAnnotation
+                setter: setAnnotation
+            xml_list:
+                inline: true
+                entry_name: Annotation
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\Annotation>

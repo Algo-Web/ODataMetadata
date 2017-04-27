@@ -1,0 +1,39 @@
+MetadataV2\edm\EntityContainer\EntitySetAnonymousType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        entityType:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityType
+            accessor:
+                getter: getEntityType
+                setter: setEntityType
+            xml_attribute: true
+            type: string
+        getterAccess:
+            expose: true
+            access_type: public_method
+            serialized_name: GetterAccess
+            accessor:
+                getter: getGetterAccess
+                setter: setGetterAccess
+            xml_attribute: true
+            type: string
+        documentation:
+            expose: true
+            access_type: public_method
+            serialized_name: Documentation
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2008/09/edm'
+            accessor:
+                getter: getDocumentation
+                setter: setDocumentation
+            type: MetadataV2\edm\TDocumentationType

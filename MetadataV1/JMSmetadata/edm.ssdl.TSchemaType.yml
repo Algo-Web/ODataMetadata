@@ -1,0 +1,94 @@
+MetadataV1\edm\ssdl\TSchemaType:
+    properties:
+        namespace:
+            expose: true
+            access_type: public_method
+            serialized_name: Namespace
+            accessor:
+                getter: getNamespace
+                setter: setNamespace
+            xml_attribute: true
+            type: string
+        alias:
+            expose: true
+            access_type: public_method
+            serialized_name: Alias
+            accessor:
+                getter: getAlias
+                setter: setAlias
+            xml_attribute: true
+            type: string
+        provider:
+            expose: true
+            access_type: public_method
+            serialized_name: Provider
+            accessor:
+                getter: getProvider
+                setter: setProvider
+            xml_attribute: true
+            type: string
+        providerManifestToken:
+            expose: true
+            access_type: public_method
+            serialized_name: ProviderManifestToken
+            accessor:
+                getter: getProviderManifestToken
+                setter: setProviderManifestToken
+            xml_attribute: true
+            type: string
+        association:
+            expose: true
+            access_type: public_method
+            serialized_name: Association
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm/ssdl'
+            accessor:
+                getter: getAssociation
+                setter: setAssociation
+            xml_list:
+                inline: true
+                entry_name: Association
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm/ssdl'
+            type: array<MetadataV1\edm\ssdl\TAssociationType>
+        entityType:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityType
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm/ssdl'
+            accessor:
+                getter: getEntityType
+                setter: setEntityType
+            xml_list:
+                inline: true
+                entry_name: EntityType
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm/ssdl'
+            type: array<MetadataV1\edm\ssdl\TEntityTypeType>
+        entityContainer:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityContainer
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm/ssdl'
+            accessor:
+                getter: getEntityContainer
+                setter: setEntityContainer
+            xml_list:
+                inline: true
+                entry_name: EntityContainer
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm/ssdl'
+            type: array<MetadataV1\edm\ssdl\EntityContainer>
+        function:
+            expose: true
+            access_type: public_method
+            serialized_name: Function
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm/ssdl'
+            accessor:
+                getter: getFunction
+                setter: setFunction
+            xml_list:
+                inline: true
+                entry_name: Function
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm/ssdl'
+            type: array<MetadataV1\edm\ssdl\TFunctionType>

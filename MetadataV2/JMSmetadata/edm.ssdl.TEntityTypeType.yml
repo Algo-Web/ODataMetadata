@@ -1,0 +1,50 @@
+MetadataV2\edm\ssdl\TEntityTypeType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        documentation:
+            expose: true
+            access_type: public_method
+            serialized_name: Documentation
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
+            accessor:
+                getter: getDocumentation
+                setter: setDocumentation
+            type: MetadataV2\edm\ssdl\TDocumentationType
+        key:
+            expose: true
+            access_type: public_method
+            serialized_name: Key
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
+            accessor:
+                getter: getKey
+                setter: setKey
+            type: array<MetadataV2\edm\ssdl\TPropertyRefType>
+            xml_list:
+                inline: false
+                entry_name: PropertyRef
+                skip_when_empty: true
+                namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
+        property:
+            expose: true
+            access_type: public_method
+            serialized_name: Property
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
+            accessor:
+                getter: getProperty
+                setter: setProperty
+            xml_list:
+                inline: true
+                entry_name: Property
+                namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
+            type: array<MetadataV2\edm\ssdl\TEntityPropertyType>

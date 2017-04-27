@@ -1,0 +1,35 @@
+MetadataV2\mapping\cs\TEntityTypeMappingType:
+    properties:
+        typeName:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeName
+            accessor:
+                getter: getTypeName
+                setter: setTypeName
+            xml_attribute: true
+            type: string
+        mappingFragment:
+            expose: true
+            access_type: public_method
+            serialized_name: MappingFragment
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2008/09/mapping/cs'
+            accessor:
+                getter: getMappingFragment
+                setter: setMappingFragment
+            xml_list:
+                inline: true
+                entry_name: MappingFragment
+                namespace: 'http://schemas.microsoft.com/ado/2008/09/mapping/cs'
+            type: array<MetadataV2\mapping\cs\TMappingFragmentType>
+        modificationFunctionMapping:
+            expose: true
+            access_type: public_method
+            serialized_name: ModificationFunctionMapping
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2008/09/mapping/cs'
+            accessor:
+                getter: getModificationFunctionMapping
+                setter: setModificationFunctionMapping
+            type: MetadataV2\mapping\cs\TEntityTypeModificationFunctionMappingType

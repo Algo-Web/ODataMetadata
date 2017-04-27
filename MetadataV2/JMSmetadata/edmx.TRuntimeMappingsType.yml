@@ -1,0 +1,12 @@
+MetadataV2\edmx\TRuntimeMappingsType:
+    properties:
+        mapping:
+            expose: true
+            access_type: public_method
+            serialized_name: Mapping
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2008/09/mapping/cs'
+            accessor:
+                getter: getMapping
+                setter: setMapping
+            type: MetadataV2\mapping\cs\Mapping

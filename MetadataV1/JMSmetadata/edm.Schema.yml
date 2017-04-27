@@ -1,0 +1,3 @@
+MetadataV1\edm\Schema:
+    xml_root_name: Schema
+    xml_root_namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'

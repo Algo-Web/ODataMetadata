@@ -1,0 +1,30 @@
+MetadataV1\mapping\cs\TAssociationSetModificationFunctionType:
+    properties:
+        functionName:
+            expose: true
+            access_type: public_method
+            serialized_name: FunctionName
+            accessor:
+                getter: getFunctionName
+                setter: setFunctionName
+            xml_attribute: true
+            type: string
+        rowsAffectedParameter:
+            expose: true
+            access_type: public_method
+            serialized_name: RowsAffectedParameter
+            accessor:
+                getter: getRowsAffectedParameter
+                setter: setRowsAffectedParameter
+            xml_attribute: true
+            type: string
+        endProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: EndProperty
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getEndProperty
+                setter: setEndProperty
+            type: MetadataV1\mapping\cs\TFunctionMappingEndPropertyType

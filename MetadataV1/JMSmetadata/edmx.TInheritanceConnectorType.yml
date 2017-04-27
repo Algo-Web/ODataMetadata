@@ -1,0 +1,34 @@
+MetadataV1\edmx\TInheritanceConnectorType:
+    properties:
+        entityType:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityType
+            accessor:
+                getter: getEntityType
+                setter: setEntityType
+            xml_attribute: true
+            type: string
+        manuallyRouted:
+            expose: true
+            access_type: public_method
+            serialized_name: ManuallyRouted
+            accessor:
+                getter: getManuallyRouted
+                setter: setManuallyRouted
+            xml_attribute: true
+            type: boolean
+        connectorPoint:
+            expose: true
+            access_type: public_method
+            serialized_name: ConnectorPoint
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2007/06/edmx'
+            accessor:
+                getter: getConnectorPoint
+                setter: setConnectorPoint
+            xml_list:
+                inline: true
+                entry_name: ConnectorPoint
+                namespace: 'http://schemas.microsoft.com/ado/2007/06/edmx'
+            type: array<MetadataV1\edmx\TConnectorPointType>

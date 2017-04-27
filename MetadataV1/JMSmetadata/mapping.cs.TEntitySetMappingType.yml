@@ -1,0 +1,101 @@
+MetadataV1\mapping\cs\TEntitySetMappingType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        typeName:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeName
+            accessor:
+                getter: getTypeName
+                setter: setTypeName
+            xml_attribute: true
+            type: string
+        storeEntitySet:
+            expose: true
+            access_type: public_method
+            serialized_name: StoreEntitySet
+            accessor:
+                getter: getStoreEntitySet
+                setter: setStoreEntitySet
+            xml_attribute: true
+            type: string
+        queryView:
+            expose: true
+            access_type: public_method
+            serialized_name: QueryView
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getQueryView
+                setter: setQueryView
+            xml_list:
+                inline: true
+                entry_name: QueryView
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            type: array<MetadataV1\mapping\cs\TQueryViewType>
+        entityTypeMapping:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityTypeMapping
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getEntityTypeMapping
+                setter: setEntityTypeMapping
+            xml_list:
+                inline: true
+                entry_name: EntityTypeMapping
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            type: array<MetadataV1\mapping\cs\TEntityTypeMappingType>
+        mappingFragment:
+            expose: true
+            access_type: public_method
+            serialized_name: MappingFragment
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getMappingFragment
+                setter: setMappingFragment
+            xml_list:
+                inline: true
+                entry_name: MappingFragment
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            type: array<MetadataV1\mapping\cs\TMappingFragmentType>
+        complexProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: ComplexProperty
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getComplexProperty
+                setter: setComplexProperty
+            type: MetadataV1\mapping\cs\TComplexPropertyType
+        scalarProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: ScalarProperty
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getScalarProperty
+                setter: setScalarProperty
+            type: MetadataV1\mapping\cs\TScalarPropertyType
+        condition:
+            expose: true
+            access_type: public_method
+            serialized_name: Condition
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getCondition
+                setter: setCondition
+            type: MetadataV1\mapping\cs\TConditionType

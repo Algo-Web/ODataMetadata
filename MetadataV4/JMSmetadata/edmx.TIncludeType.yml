@@ -1,0 +1,20 @@
+MetadataV4\edmx\TIncludeType:
+    properties:
+        namespace:
+            expose: true
+            access_type: public_method
+            serialized_name: Namespace
+            accessor:
+                getter: getNamespace
+                setter: setNamespace
+            xml_attribute: true
+            type: string
+        alias:
+            expose: true
+            access_type: public_method
+            serialized_name: Alias
+            accessor:
+                getter: getAlias
+                setter: setAlias
+            xml_attribute: true
+            type: string

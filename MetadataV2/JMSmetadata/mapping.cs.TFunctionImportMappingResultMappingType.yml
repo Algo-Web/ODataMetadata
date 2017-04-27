@@ -1,0 +1,30 @@
+MetadataV2\mapping\cs\TFunctionImportMappingResultMappingType:
+    properties:
+        entityTypeMapping:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityTypeMapping
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2008/09/mapping/cs'
+            accessor:
+                getter: getEntityTypeMapping
+                setter: setEntityTypeMapping
+            xml_list:
+                inline: true
+                entry_name: EntityTypeMapping
+                namespace: 'http://schemas.microsoft.com/ado/2008/09/mapping/cs'
+            type: array<MetadataV2\mapping\cs\TFunctionImportEntityTypeMappingType>
+        complexTypeMapping:
+            expose: true
+            access_type: public_method
+            serialized_name: ComplexTypeMapping
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2008/09/mapping/cs'
+            accessor:
+                getter: getComplexTypeMapping
+                setter: setComplexTypeMapping
+            xml_list:
+                inline: true
+                entry_name: ComplexTypeMapping
+                namespace: 'http://schemas.microsoft.com/ado/2008/09/mapping/cs'
+            type: array<MetadataV2\mapping\cs\TFunctionImportComplexTypeMappingType>

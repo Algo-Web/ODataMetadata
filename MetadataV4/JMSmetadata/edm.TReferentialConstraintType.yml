@@ -1,0 +1,34 @@
+MetadataV4\edm\TReferentialConstraintType:
+    properties:
+        property:
+            expose: true
+            access_type: public_method
+            serialized_name: Property
+            accessor:
+                getter: getProperty
+                setter: setProperty
+            xml_attribute: true
+            type: string
+        referencedProperty:
+            expose: true
+            access_type: public_method
+            serialized_name: ReferencedProperty
+            accessor:
+                getter: getReferencedProperty
+                setter: setReferencedProperty
+            xml_attribute: true
+            type: string
+        annotation:
+            expose: true
+            access_type: public_method
+            serialized_name: Annotation
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getAnnotation
+                setter: setAnnotation
+            xml_list:
+                inline: true
+                entry_name: Annotation
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\Annotation>

@@ -1,0 +1,74 @@
+MetadataV1\edm\EntityContainer:
+    xml_root_name: EntityContainer
+    xml_root_namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        extends:
+            expose: true
+            access_type: public_method
+            serialized_name: Extends
+            accessor:
+                getter: getExtends
+                setter: setExtends
+            xml_attribute: true
+            type: string
+        documentation:
+            expose: true
+            access_type: public_method
+            serialized_name: Documentation
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
+            accessor:
+                getter: getDocumentation
+                setter: setDocumentation
+            type: MetadataV1\edm\TDocumentationType
+        functionImport:
+            expose: true
+            access_type: public_method
+            serialized_name: FunctionImport
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
+            accessor:
+                getter: getFunctionImport
+                setter: setFunctionImport
+            xml_list:
+                inline: true
+                entry_name: FunctionImport
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
+            type: array<MetadataV1\edm\EntityContainer\FunctionImportAnonymousType>
+        entitySet:
+            expose: true
+            access_type: public_method
+            serialized_name: EntitySet
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
+            accessor:
+                getter: getEntitySet
+                setter: setEntitySet
+            xml_list:
+                inline: true
+                entry_name: EntitySet
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
+            type: array<MetadataV1\edm\EntityContainer\EntitySetAnonymousType>
+        associationSet:
+            expose: true
+            access_type: public_method
+            serialized_name: AssociationSet
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
+            accessor:
+                getter: getAssociationSet
+                setter: setAssociationSet
+            xml_list:
+                inline: true
+                entry_name: AssociationSet
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
+            type: array<MetadataV1\edm\EntityContainer\AssociationSetAnonymousType>

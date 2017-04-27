@@ -1,0 +1,29 @@
+MetadataV4\edmx\TIncludeAnnotationsType:
+    properties:
+        termNamespace:
+            expose: true
+            access_type: public_method
+            serialized_name: TermNamespace
+            accessor:
+                getter: getTermNamespace
+                setter: setTermNamespace
+            xml_attribute: true
+            type: string
+        qualifier:
+            expose: true
+            access_type: public_method
+            serialized_name: Qualifier
+            accessor:
+                getter: getQualifier
+                setter: setQualifier
+            xml_attribute: true
+            type: string
+        targetNamespace:
+            expose: true
+            access_type: public_method
+            serialized_name: TargetNamespace
+            accessor:
+                getter: getTargetNamespace
+                setter: setTargetNamespace
+            xml_attribute: true
+            type: string

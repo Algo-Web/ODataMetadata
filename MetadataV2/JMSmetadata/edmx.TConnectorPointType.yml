@@ -1,0 +1,20 @@
+MetadataV2\edmx\TConnectorPointType:
+    properties:
+        pointX:
+            expose: true
+            access_type: public_method
+            serialized_name: PointX
+            accessor:
+                getter: getPointX
+                setter: setPointX
+            xml_attribute: true
+            type: float
+        pointY:
+            expose: true
+            access_type: public_method
+            serialized_name: PointY
+            accessor:
+                getter: getPointY
+                setter: setPointY
+            xml_attribute: true
+            type: float

@@ -1,0 +1,89 @@
+MetadataV4\edm\TNavigationPropertyType:
+    properties:
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: Name
+            accessor:
+                getter: getName
+                setter: setName
+            xml_attribute: true
+            type: string
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: Type
+            accessor:
+                getter: getType
+                setter: setType
+            xml_attribute: true
+            type: string
+        nullable:
+            expose: true
+            access_type: public_method
+            serialized_name: Nullable
+            accessor:
+                getter: getNullable
+                setter: setNullable
+            xml_attribute: true
+            type: boolean
+        partner:
+            expose: true
+            access_type: public_method
+            serialized_name: Partner
+            accessor:
+                getter: getPartner
+                setter: setPartner
+            xml_attribute: true
+            type: string
+        containsTarget:
+            expose: true
+            access_type: public_method
+            serialized_name: ContainsTarget
+            accessor:
+                getter: getContainsTarget
+                setter: setContainsTarget
+            xml_attribute: true
+            type: boolean
+        referentialConstraint:
+            expose: true
+            access_type: public_method
+            serialized_name: ReferentialConstraint
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getReferentialConstraint
+                setter: setReferentialConstraint
+            xml_list:
+                inline: true
+                entry_name: ReferentialConstraint
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TReferentialConstraintType>
+        onDelete:
+            expose: true
+            access_type: public_method
+            serialized_name: OnDelete
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getOnDelete
+                setter: setOnDelete
+            xml_list:
+                inline: true
+                entry_name: OnDelete
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TOnDeleteType>
+        annotation:
+            expose: true
+            access_type: public_method
+            serialized_name: Annotation
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getAnnotation
+                setter: setAnnotation
+            xml_list:
+                inline: true
+                entry_name: Annotation
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\Annotation>

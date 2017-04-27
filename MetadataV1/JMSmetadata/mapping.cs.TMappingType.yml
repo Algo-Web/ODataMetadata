@@ -1,0 +1,35 @@
+MetadataV1\mapping\cs\TMappingType:
+    properties:
+        space:
+            expose: true
+            access_type: public_method
+            serialized_name: Space
+            accessor:
+                getter: getSpace
+                setter: setSpace
+            xml_attribute: true
+            type: string
+        alias:
+            expose: true
+            access_type: public_method
+            serialized_name: Alias
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getAlias
+                setter: setAlias
+            xml_list:
+                inline: true
+                entry_name: Alias
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            type: array<MetadataV1\mapping\cs\TAliasType>
+        entityContainerMapping:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityContainerMapping
+            xml_element:
+                namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
+            accessor:
+                getter: getEntityContainerMapping
+                setter: setEntityContainerMapping
+            type: MetadataV1\mapping\cs\TEntityContainerMappingType

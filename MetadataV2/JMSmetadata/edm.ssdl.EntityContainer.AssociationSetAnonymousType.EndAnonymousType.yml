@@ -1,0 +1,30 @@
+MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType:
+    properties:
+        role:
+            expose: true
+            access_type: public_method
+            serialized_name: Role
+            accessor:
+                getter: getRole
+                setter: setRole
+            xml_attribute: true
+            type: string
+        entitySet:
+            expose: true
+            access_type: public_method
+            serialized_name: EntitySet
+            accessor:
+                getter: getEntitySet
+                setter: setEntitySet
+            xml_attribute: true
+            type: string
+        documentation:
+            expose: true
+            access_type: public_method
+            serialized_name: Documentation
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
+            accessor:
+                getter: getDocumentation
+                setter: setDocumentation
+            type: MetadataV2\edm\ssdl\TDocumentationType

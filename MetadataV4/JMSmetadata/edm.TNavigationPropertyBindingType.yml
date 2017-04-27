@@ -1,0 +1,20 @@
+MetadataV4\edm\TNavigationPropertyBindingType:
+    properties:
+        path:
+            expose: true
+            access_type: public_method
+            serialized_name: Path
+            accessor:
+                getter: getPath
+                setter: setPath
+            xml_attribute: true
+            type: string
+        target:
+            expose: true
+            access_type: public_method
+            serialized_name: Target
+            accessor:
+                getter: getTarget
+                setter: setTarget
+            xml_attribute: true
+            type: string

@@ -1,0 +1,162 @@
+MetadataV4\edm\Schema:
+    xml_root_name: Schema
+    xml_root_namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+    properties:
+        namespace:
+            expose: true
+            access_type: public_method
+            serialized_name: Namespace
+            accessor:
+                getter: getNamespace
+                setter: setNamespace
+            xml_attribute: true
+            type: string
+        alias:
+            expose: true
+            access_type: public_method
+            serialized_name: Alias
+            accessor:
+                getter: getAlias
+                setter: setAlias
+            xml_attribute: true
+            type: string
+        complexType:
+            expose: true
+            access_type: public_method
+            serialized_name: ComplexType
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getComplexType
+                setter: setComplexType
+            xml_list:
+                inline: true
+                entry_name: ComplexType
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TComplexTypeType>
+        entityType:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityType
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getEntityType
+                setter: setEntityType
+            xml_list:
+                inline: true
+                entry_name: EntityType
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TEntityTypeType>
+        typeDefinition:
+            expose: true
+            access_type: public_method
+            serialized_name: TypeDefinition
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getTypeDefinition
+                setter: setTypeDefinition
+            xml_list:
+                inline: true
+                entry_name: TypeDefinition
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TTypeDefinitionType>
+        enumType:
+            expose: true
+            access_type: public_method
+            serialized_name: EnumType
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getEnumType
+                setter: setEnumType
+            xml_list:
+                inline: true
+                entry_name: EnumType
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TEnumTypeType>
+        action:
+            expose: true
+            access_type: public_method
+            serialized_name: Action
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getAction
+                setter: setAction
+            xml_list:
+                inline: true
+                entry_name: Action
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TActionType>
+        function:
+            expose: true
+            access_type: public_method
+            serialized_name: Function
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getFunction
+                setter: setFunction
+            xml_list:
+                inline: true
+                entry_name: Function
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TFunctionType>
+        term:
+            expose: true
+            access_type: public_method
+            serialized_name: Term
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getTerm
+                setter: setTerm
+            xml_list:
+                inline: true
+                entry_name: Term
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TTermType>
+        annotations:
+            expose: true
+            access_type: public_method
+            serialized_name: Annotations
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getAnnotations
+                setter: setAnnotations
+            xml_list:
+                inline: true
+                entry_name: Annotations
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TAnnotationsType>
+        entityContainer:
+            expose: true
+            access_type: public_method
+            serialized_name: EntityContainer
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getEntityContainer
+                setter: setEntityContainer
+            xml_list:
+                inline: true
+                entry_name: EntityContainer
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\TEntityContainerType>
+        annotation:
+            expose: true
+            access_type: public_method
+            serialized_name: Annotation
+            xml_element:
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            accessor:
+                getter: getAnnotation
+                setter: setAnnotation
+            xml_list:
+                inline: true
+                entry_name: Annotation
+                namespace: 'http://docs.oasis-open.org/odata/ns/edm'
+            type: array<MetadataV4\edm\Annotation>
