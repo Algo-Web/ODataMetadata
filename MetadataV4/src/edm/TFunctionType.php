@@ -271,7 +271,4 @@ class TFunctionType
         $this->returnType = $returnType;
         return $this;
     }
-
-
 }
-

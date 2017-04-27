@@ -118,7 +118,4 @@ class TConditionType
         $this->isNull = $isNull;
         return $this;
     }
-
-
 }
-

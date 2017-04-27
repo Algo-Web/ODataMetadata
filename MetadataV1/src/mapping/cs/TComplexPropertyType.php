@@ -343,7 +343,4 @@ class TComplexPropertyType
         $this->condition = $condition;
         return $this;
     }
-
-
 }
-

@@ -91,7 +91,4 @@ class TIncludeAnnotationsType
         $this->targetNamespace = $targetNamespace;
         return $this;
     }
-
-
 }
-

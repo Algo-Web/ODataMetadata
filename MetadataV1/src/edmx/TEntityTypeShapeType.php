@@ -199,7 +199,4 @@ class TEntityTypeShapeType
         $this->fillColor = $fillColor;
         return $this;
     }
-
-
 }
-

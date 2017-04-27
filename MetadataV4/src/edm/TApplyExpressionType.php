@@ -2301,7 +2301,4 @@ class TApplyExpressionType
         $this->urlRef = $urlRef;
         return $this;
     }
-
-
 }
-

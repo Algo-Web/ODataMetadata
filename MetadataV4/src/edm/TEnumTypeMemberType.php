@@ -127,7 +127,4 @@ class TEnumTypeMemberType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

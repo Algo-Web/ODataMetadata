@@ -1023,7 +1023,4 @@ class TCollectionExpressionType
         $this->urlRef = $urlRef;
         return $this;
     }
-
-
 }
-

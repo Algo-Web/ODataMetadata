@@ -395,7 +395,4 @@ class TFunctionParameterType
         $this->rowType = $rowType;
         return $this;
     }
-
-
 }
-

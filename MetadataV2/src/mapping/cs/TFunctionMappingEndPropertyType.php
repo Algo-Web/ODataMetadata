@@ -65,7 +65,4 @@ class TFunctionMappingEndPropertyType
         $this->scalarProperty = $scalarProperty;
         return $this;
     }
-
-
 }
-

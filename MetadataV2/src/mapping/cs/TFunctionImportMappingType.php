@@ -93,7 +93,4 @@ class TFunctionImportMappingType
         $this->resultMapping = $resultMapping;
         return $this;
     }
-
-
 }
-

@@ -64,7 +64,4 @@ class TOnActionType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

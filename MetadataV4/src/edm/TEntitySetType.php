@@ -219,7 +219,4 @@ class TEntitySetType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

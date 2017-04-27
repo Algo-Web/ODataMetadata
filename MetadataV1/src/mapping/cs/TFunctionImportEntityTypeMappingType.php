@@ -100,7 +100,4 @@ class TFunctionImportEntityTypeMappingType
         $this->condition = $condition;
         return $this;
     }
-
-
 }
-

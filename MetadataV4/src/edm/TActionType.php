@@ -244,7 +244,4 @@ class TActionType
         $this->returnType = $returnType;
         return $this;
     }
-
-
 }
-

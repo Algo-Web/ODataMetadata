@@ -377,7 +377,4 @@ class TTermType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

@@ -395,7 +395,4 @@ class TEntityTypeType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

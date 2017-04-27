@@ -37,7 +37,4 @@ class TRuntimeConceptualModelsType
         $this->schema = $schema;
         return $this;
     }
-
-
 }
-

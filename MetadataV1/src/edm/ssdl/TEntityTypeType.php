@@ -188,7 +188,4 @@ class TEntityTypeType
         $this->property = $property;
         return $this;
     }
-
-
 }
-

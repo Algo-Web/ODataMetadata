@@ -388,7 +388,4 @@ class TEntityPropertyType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

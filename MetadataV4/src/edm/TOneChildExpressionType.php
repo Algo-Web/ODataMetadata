@@ -1086,7 +1086,4 @@ class TOneChildExpressionType
         $this->urlRef = $urlRef;
         return $this;
     }
-
-
 }
-

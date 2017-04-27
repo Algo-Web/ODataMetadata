@@ -129,7 +129,4 @@ class TMappingType
         $this->entityContainerMapping = $entityContainerMapping;
         return $this;
     }
-
-
 }
-

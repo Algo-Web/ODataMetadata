@@ -262,7 +262,4 @@ class TActionFunctionParameterType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

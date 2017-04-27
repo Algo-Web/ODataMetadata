@@ -64,7 +64,4 @@ class TIncludeType
         $this->alias = $alias;
         return $this;
     }
-
-
 }
-

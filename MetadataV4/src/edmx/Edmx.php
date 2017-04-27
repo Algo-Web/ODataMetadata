@@ -7,7 +7,4 @@ namespace MetadataV4\edmx;
  */
 class Edmx extends TEdmxType
 {
-
-
 }
-

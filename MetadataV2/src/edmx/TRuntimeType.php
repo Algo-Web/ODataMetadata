@@ -91,7 +91,4 @@ class TRuntimeType
         $this->mappings = $mappings;
         return $this;
     }
-
-
 }
-

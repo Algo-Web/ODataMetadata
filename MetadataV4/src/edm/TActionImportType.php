@@ -181,7 +181,4 @@ class TActionImportType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

@@ -7,7 +7,4 @@ namespace MetadataV1\mapping\cs;
  */
 class Mapping extends TMappingType
 {
-
-
 }
-

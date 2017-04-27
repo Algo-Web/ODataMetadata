@@ -226,7 +226,4 @@ class TReferenceType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

@@ -332,7 +332,4 @@ class TEntityTypeType
         $this->navigationProperty = $navigationProperty;
         return $this;
     }
-
-
 }
-

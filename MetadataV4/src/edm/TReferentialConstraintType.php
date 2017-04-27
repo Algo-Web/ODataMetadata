@@ -127,7 +127,4 @@ class TReferentialConstraintType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

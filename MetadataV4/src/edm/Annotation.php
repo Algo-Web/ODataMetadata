@@ -1137,7 +1137,4 @@ class Annotation
         $this->record = $record;
         return $this;
     }
-
-
 }
-

@@ -129,7 +129,4 @@ class TEntityTypeMappingType
         $this->modificationFunctionMapping = $modificationFunctionMapping;
         return $this;
     }
-
-
 }
-

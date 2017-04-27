@@ -283,7 +283,4 @@ class EntityContainer
         $this->associationSet = $associationSet;
         return $this;
     }
-
-
 }
-

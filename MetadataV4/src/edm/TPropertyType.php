@@ -316,7 +316,4 @@ class TPropertyType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

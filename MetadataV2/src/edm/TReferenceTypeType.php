@@ -64,7 +64,4 @@ class TReferenceTypeType
         $this->documentation = $documentation;
         return $this;
     }
-
-
 }
-

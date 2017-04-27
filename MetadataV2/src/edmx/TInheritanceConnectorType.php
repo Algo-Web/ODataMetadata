@@ -127,7 +127,4 @@ class TInheritanceConnectorType
         $this->connectorPoint = $connectorPoint;
         return $this;
     }
-
-
 }
-

@@ -49,7 +49,4 @@ class TDurationConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

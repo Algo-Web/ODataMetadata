@@ -64,7 +64,4 @@ class TAliasType
         $this->value = $value;
         return $this;
     }
-
-
 }
-

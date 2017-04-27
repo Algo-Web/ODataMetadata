@@ -163,7 +163,4 @@ class TRecordExpressionType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

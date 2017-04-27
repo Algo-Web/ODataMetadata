@@ -253,7 +253,4 @@ class TComplexTypeMappingType
         $this->condition = $condition;
         return $this;
     }
-
-
 }
-

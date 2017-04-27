@@ -125,7 +125,4 @@ class TDesignerType
         $this->diagrams = $diagrams;
         return $this;
     }
-
-
 }
-

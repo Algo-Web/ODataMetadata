@@ -49,7 +49,4 @@ class TTimeOfDayConstantExpressionType
     {
         return strval($this->__value);
     }
-
-
 }
-

@@ -91,7 +91,4 @@ class TAssociationSetModificationFunctionType
         $this->endProperty = $endProperty;
         return $this;
     }
-
-
 }
-

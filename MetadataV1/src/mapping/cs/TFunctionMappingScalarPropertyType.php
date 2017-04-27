@@ -91,7 +91,4 @@ class TFunctionMappingScalarPropertyType
         $this->version = $version;
         return $this;
     }
-
-
 }
-

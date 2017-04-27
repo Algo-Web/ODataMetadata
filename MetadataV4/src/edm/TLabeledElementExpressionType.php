@@ -1113,7 +1113,4 @@ class TLabeledElementExpressionType
         $this->record = $record;
         return $this;
     }
-
-
 }
-

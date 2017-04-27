@@ -2274,7 +2274,4 @@ class TTwoChildrenExpressionType
         $this->urlRef = $urlRef;
         return $this;
     }
-
-
 }
-

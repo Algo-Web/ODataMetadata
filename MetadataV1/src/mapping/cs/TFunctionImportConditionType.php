@@ -91,7 +91,4 @@ class TFunctionImportConditionType
         $this->isNull = $isNull;
         return $this;
     }
-
-
 }
-

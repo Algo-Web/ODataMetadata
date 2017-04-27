@@ -64,7 +64,4 @@ class TNavigationPropertyBindingType
         $this->target = $target;
         return $this;
     }
-
-
 }
-

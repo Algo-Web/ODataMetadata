@@ -192,7 +192,4 @@ class TSingletonType
         $this->annotation = $annotation;
         return $this;
     }
-
-
 }
-

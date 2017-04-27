@@ -442,7 +442,4 @@ class TSchemaType
         $this->entityContainer = $entityContainer;
         return $this;
     }
-
-
 }
-
