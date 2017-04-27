@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV1\edm\ssdl\EntityContainer;
+namespace AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\EntityContainer;
 
 /**
  * Class representing AssociationSetAnonymousType

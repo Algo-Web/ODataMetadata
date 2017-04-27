@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV3\edm\TApplyExpressionType;
+namespace AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType;
 
 /**
  * Class representing AppliedFunctionAnonymousType

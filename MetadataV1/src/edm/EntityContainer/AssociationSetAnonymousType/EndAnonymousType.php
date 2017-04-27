@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV1\edm\EntityContainer\AssociationSetAnonymousType;
+namespace AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\AssociationSetAnonymousType;
 
 /**
  * Class representing EndAnonymousType

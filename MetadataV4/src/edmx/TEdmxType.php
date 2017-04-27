@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV4\edmx;
+namespace AlgoWeb\ODataMetadata\MetadataV4\edmx;
 
 /**
  * Class representing TEdmxType

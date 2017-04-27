@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV1\edm\EntityContainer;
+namespace AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer;
 
 /**
  * Class representing EntitySetAnonymousType

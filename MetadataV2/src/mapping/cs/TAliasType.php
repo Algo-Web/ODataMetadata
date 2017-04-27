@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV2\mapping\cs;
+namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 
 /**
  * Class representing TAliasType

@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV3\edmx;
+namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
 
 /**
  * Class representing TEntityTypeShapeType

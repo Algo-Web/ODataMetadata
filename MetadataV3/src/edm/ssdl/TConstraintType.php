@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV3\edm\ssdl;
+namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 
 /**
  * Class representing TConstraintType

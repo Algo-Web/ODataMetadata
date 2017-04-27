@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV2\edmx;
+namespace AlgoWeb\ODataMetadata\MetadataV2\edmx;
 
 /**
  * Class representing TRuntimeStorageModelsType

@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV1\edmx;
+namespace AlgoWeb\ODataMetadata\MetadataV1\edmx;
 
 /**
  * Class representing Edmx

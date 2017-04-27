@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV1\edm\ssdl;
+namespace AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl;
 
 /**
  * Class representing TAssociationType

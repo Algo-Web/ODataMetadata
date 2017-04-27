@@ -1,5 +1,5 @@
 <?php
-namespace MetadataV3\edm\GExpressionGroupTraits;
+namespace AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits;
 
 /**
  * Trait representing the TypeAssert Component of  MetadataV3\edm\TCollectionExpressionType

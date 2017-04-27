@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV2\edm;
+namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
 
 /**
  * Class representing Schema

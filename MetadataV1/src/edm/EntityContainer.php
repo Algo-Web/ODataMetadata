@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV1\edm;
+namespace AlgoWeb\ODataMetadata\MetadataV1\edm;
 
 /**
  * Class representing EntityContainer

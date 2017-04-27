@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV3\mapping\cs;
+namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 /**
  * Class representing TModificationFunctionMappingScalarPropertyType

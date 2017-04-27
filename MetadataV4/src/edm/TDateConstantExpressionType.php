@@ -1,6 +1,6 @@
 <?php
 
-namespace MetadataV4\edm;
+namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 
 /**
  * Class representing TDateConstantExpressionType
