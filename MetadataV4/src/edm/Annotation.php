@@ -99,89 +99,89 @@ class Annotation
     private $propertyPath = null;
 
     /**
-     * @property \MetadataV4\edm\TOneChildExpressionType $urlRef
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $urlRef
      */
     private $urlRef = null;
 
     /**
-     * @property \MetadataV4\edm\Annotation[] $annotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
     private $annotation = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TApplyExpressionType $apply
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType $apply
      */
     private $apply = null;
 
     /**
-     * @property \MetadataV4\edm\TCastOrIsOfExpressionType $cast
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $cast
      */
     private $cast = null;
 
     /**
-     * @property \MetadataV4\edm\TCollectionExpressionType $collection
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType $collection
      */
     private $collection = null;
 
     /**
-     * @property \MetadataV4\edm\TIfExpressionType $if
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType $if
      */
     private $if = null;
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType $eq
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $eq
      */
     private $eq = null;
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType $ne
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ne
      */
     private $ne = null;
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType $ge
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ge
      */
     private $ge = null;
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType $gt
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $gt
      */
     private $gt = null;
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType $le
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $le
      */
     private $le = null;
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType $lt
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $lt
      */
     private $lt = null;
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType $and
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $and
      */
     private $and = null;
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType $or
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $or
      */
     private $or = null;
 
     /**
-     * @property \MetadataV4\edm\TOneChildExpressionType $not
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $not
      */
     private $not = null;
 
     /**
-     * @property \MetadataV4\edm\TCastOrIsOfExpressionType $isOf
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $isOf
      */
     private $isOf = null;
 
     /**
-     * @property \MetadataV4\edm\TLabeledElementExpressionType $labeledElement
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType $labeledElement
      */
     private $labeledElement = null;
 
@@ -191,12 +191,12 @@ class Annotation
     private $labeledElementReference = null;
 
     /**
-     * @property \MetadataV4\edm\Annotation[] $null
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $null
      */
     private $null = null;
 
     /**
-     * @property \MetadataV4\edm\TRecordExpressionType $record
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType $record
      */
     private $record = null;
 
@@ -633,7 +633,7 @@ class Annotation
     /**
      * Gets as urlRef
      *
-     * @return \MetadataV4\edm\TOneChildExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType
      */
     public function getUrlRef()
     {
@@ -643,10 +643,10 @@ class Annotation
     /**
      * Sets a new urlRef
      *
-     * @param \MetadataV4\edm\TOneChildExpressionType $urlRef
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $urlRef
      * @return self
      */
-    public function setUrlRef(\MetadataV4\edm\TOneChildExpressionType $urlRef)
+    public function setUrlRef(TOneChildExpressionType $urlRef)
     {
         $this->urlRef = $urlRef;
         return $this;
@@ -656,9 +656,9 @@ class Annotation
      * Adds as annotation
      *
      * @return self
-     * @param \MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
-    public function addToAnnotation(\MetadataV4\edm\Annotation $annotation)
+    public function addToAnnotation(Annotation $annotation)
     {
         $this->annotation[] = $annotation;
         return $this;
@@ -689,7 +689,7 @@ class Annotation
     /**
      * Gets as annotation
      *
-     * @return \MetadataV4\edm\Annotation[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
     public function getAnnotation()
     {
@@ -699,7 +699,7 @@ class Annotation
     /**
      * Sets a new annotation
      *
-     * @param \MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)
@@ -711,7 +711,7 @@ class Annotation
     /**
      * Gets as apply
      *
-     * @return \MetadataV4\edm\TApplyExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType
      */
     public function getApply()
     {
@@ -721,10 +721,10 @@ class Annotation
     /**
      * Sets a new apply
      *
-     * @param \MetadataV4\edm\TApplyExpressionType $apply
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType $apply
      * @return self
      */
-    public function setApply(\MetadataV4\edm\TApplyExpressionType $apply)
+    public function setApply(TApplyExpressionType $apply)
     {
         $this->apply = $apply;
         return $this;
@@ -733,7 +733,7 @@ class Annotation
     /**
      * Gets as cast
      *
-     * @return \MetadataV4\edm\TCastOrIsOfExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType
      */
     public function getCast()
     {
@@ -743,10 +743,10 @@ class Annotation
     /**
      * Sets a new cast
      *
-     * @param \MetadataV4\edm\TCastOrIsOfExpressionType $cast
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $cast
      * @return self
      */
-    public function setCast(\MetadataV4\edm\TCastOrIsOfExpressionType $cast)
+    public function setCast(TCastOrIsOfExpressionType $cast)
     {
         $this->cast = $cast;
         return $this;
@@ -755,7 +755,7 @@ class Annotation
     /**
      * Gets as collection
      *
-     * @return \MetadataV4\edm\TCollectionExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType
      */
     public function getCollection()
     {
@@ -765,10 +765,10 @@ class Annotation
     /**
      * Sets a new collection
      *
-     * @param \MetadataV4\edm\TCollectionExpressionType $collection
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType $collection
      * @return self
      */
-    public function setCollection(\MetadataV4\edm\TCollectionExpressionType $collection)
+    public function setCollection(TCollectionExpressionType $collection)
     {
         $this->collection = $collection;
         return $this;
@@ -777,7 +777,7 @@ class Annotation
     /**
      * Gets as if
      *
-     * @return \MetadataV4\edm\TIfExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType
      */
     public function getIf()
     {
@@ -787,10 +787,10 @@ class Annotation
     /**
      * Sets a new if
      *
-     * @param \MetadataV4\edm\TIfExpressionType $if
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType $if
      * @return self
      */
-    public function setIf(\MetadataV4\edm\TIfExpressionType $if)
+    public function setIf(TIfExpressionType $if)
     {
         $this->if = $if;
         return $this;
@@ -799,7 +799,7 @@ class Annotation
     /**
      * Gets as eq
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
     public function getEq()
     {
@@ -809,10 +809,10 @@ class Annotation
     /**
      * Sets a new eq
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $eq
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $eq
      * @return self
      */
-    public function setEq(\MetadataV4\edm\TTwoChildrenExpressionType $eq)
+    public function setEq(TTwoChildrenExpressionType $eq)
     {
         $this->eq = $eq;
         return $this;
@@ -821,7 +821,7 @@ class Annotation
     /**
      * Gets as ne
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
     public function getNe()
     {
@@ -831,10 +831,10 @@ class Annotation
     /**
      * Sets a new ne
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $ne
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ne
      * @return self
      */
-    public function setNe(\MetadataV4\edm\TTwoChildrenExpressionType $ne)
+    public function setNe(TTwoChildrenExpressionType $ne)
     {
         $this->ne = $ne;
         return $this;
@@ -843,7 +843,7 @@ class Annotation
     /**
      * Gets as ge
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
     public function getGe()
     {
@@ -853,10 +853,10 @@ class Annotation
     /**
      * Sets a new ge
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $ge
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ge
      * @return self
      */
-    public function setGe(\MetadataV4\edm\TTwoChildrenExpressionType $ge)
+    public function setGe(TTwoChildrenExpressionType $ge)
     {
         $this->ge = $ge;
         return $this;
@@ -865,7 +865,7 @@ class Annotation
     /**
      * Gets as gt
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
     public function getGt()
     {
@@ -875,10 +875,10 @@ class Annotation
     /**
      * Sets a new gt
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $gt
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $gt
      * @return self
      */
-    public function setGt(\MetadataV4\edm\TTwoChildrenExpressionType $gt)
+    public function setGt(TTwoChildrenExpressionType $gt)
     {
         $this->gt = $gt;
         return $this;
@@ -887,7 +887,7 @@ class Annotation
     /**
      * Gets as le
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
     public function getLe()
     {
@@ -897,10 +897,10 @@ class Annotation
     /**
      * Sets a new le
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $le
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $le
      * @return self
      */
-    public function setLe(\MetadataV4\edm\TTwoChildrenExpressionType $le)
+    public function setLe(TTwoChildrenExpressionType $le)
     {
         $this->le = $le;
         return $this;
@@ -909,7 +909,7 @@ class Annotation
     /**
      * Gets as lt
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
     public function getLt()
     {
@@ -919,10 +919,10 @@ class Annotation
     /**
      * Sets a new lt
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $lt
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $lt
      * @return self
      */
-    public function setLt(\MetadataV4\edm\TTwoChildrenExpressionType $lt)
+    public function setLt(TTwoChildrenExpressionType $lt)
     {
         $this->lt = $lt;
         return $this;
@@ -931,7 +931,7 @@ class Annotation
     /**
      * Gets as and
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
     public function getAnd()
     {
@@ -941,10 +941,10 @@ class Annotation
     /**
      * Sets a new and
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $and
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $and
      * @return self
      */
-    public function setAnd(\MetadataV4\edm\TTwoChildrenExpressionType $and)
+    public function setAnd(TTwoChildrenExpressionType $and)
     {
         $this->and = $and;
         return $this;
@@ -953,7 +953,7 @@ class Annotation
     /**
      * Gets as or
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
     public function getOr()
     {
@@ -963,10 +963,10 @@ class Annotation
     /**
      * Sets a new or
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $or
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $or
      * @return self
      */
-    public function setOr(\MetadataV4\edm\TTwoChildrenExpressionType $or)
+    public function setOr(TTwoChildrenExpressionType $or)
     {
         $this->or = $or;
         return $this;
@@ -975,7 +975,7 @@ class Annotation
     /**
      * Gets as not
      *
-     * @return \MetadataV4\edm\TOneChildExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType
      */
     public function getNot()
     {
@@ -985,10 +985,10 @@ class Annotation
     /**
      * Sets a new not
      *
-     * @param \MetadataV4\edm\TOneChildExpressionType $not
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $not
      * @return self
      */
-    public function setNot(\MetadataV4\edm\TOneChildExpressionType $not)
+    public function setNot(TOneChildExpressionType $not)
     {
         $this->not = $not;
         return $this;
@@ -997,7 +997,7 @@ class Annotation
     /**
      * Gets as isOf
      *
-     * @return \MetadataV4\edm\TCastOrIsOfExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType
      */
     public function getIsOf()
     {
@@ -1007,10 +1007,10 @@ class Annotation
     /**
      * Sets a new isOf
      *
-     * @param \MetadataV4\edm\TCastOrIsOfExpressionType $isOf
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $isOf
      * @return self
      */
-    public function setIsOf(\MetadataV4\edm\TCastOrIsOfExpressionType $isOf)
+    public function setIsOf(TCastOrIsOfExpressionType $isOf)
     {
         $this->isOf = $isOf;
         return $this;
@@ -1019,7 +1019,7 @@ class Annotation
     /**
      * Gets as labeledElement
      *
-     * @return \MetadataV4\edm\TLabeledElementExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType
      */
     public function getLabeledElement()
     {
@@ -1029,10 +1029,10 @@ class Annotation
     /**
      * Sets a new labeledElement
      *
-     * @param \MetadataV4\edm\TLabeledElementExpressionType $labeledElement
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType $labeledElement
      * @return self
      */
-    public function setLabeledElement(\MetadataV4\edm\TLabeledElementExpressionType $labeledElement)
+    public function setLabeledElement(TLabeledElementExpressionType $labeledElement)
     {
         $this->labeledElement = $labeledElement;
         return $this;
@@ -1064,9 +1064,9 @@ class Annotation
      * Adds as annotation
      *
      * @return self
-     * @param \MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
-    public function addToNull(\MetadataV4\edm\Annotation $annotation)
+    public function addToNull(Annotation $annotation)
     {
         $this->null[] = $annotation;
         return $this;
@@ -1097,7 +1097,7 @@ class Annotation
     /**
      * Gets as null
      *
-     * @return \MetadataV4\edm\Annotation[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
     public function getNull()
     {
@@ -1107,7 +1107,7 @@ class Annotation
     /**
      * Sets a new null
      *
-     * @param \MetadataV4\edm\Annotation[] $null
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $null
      * @return self
      */
     public function setNull(array $null)
@@ -1119,7 +1119,7 @@ class Annotation
     /**
      * Gets as record
      *
-     * @return \MetadataV4\edm\TRecordExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType
      */
     public function getRecord()
     {
@@ -1129,10 +1129,10 @@ class Annotation
     /**
      * Sets a new record
      *
-     * @param \MetadataV4\edm\TRecordExpressionType $record
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType $record
      * @return self
      */
-    public function setRecord(\MetadataV4\edm\TRecordExpressionType $record)
+    public function setRecord(TRecordExpressionType $record)
     {
         $this->record = $record;
         return $this;

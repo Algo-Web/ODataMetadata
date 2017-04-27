@@ -2,6 +2,9 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edm\EntityContainer;
 
+use AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType;
+use AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType;
+
 /**
  * Class representing FunctionImportAnonymousType
  */
@@ -29,12 +32,12 @@ class FunctionImportAnonymousType
     private $methodAccess = null;
 
     /**
-     * @property \MetadataV2\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV2\edm\TFunctionImportParameterType[] $parameter
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType[] $parameter
      */
     private $parameter = array(
         
@@ -131,7 +134,7 @@ class FunctionImportAnonymousType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV2\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -141,10 +144,10 @@ class FunctionImportAnonymousType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV2\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV2\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -154,9 +157,9 @@ class FunctionImportAnonymousType
      * Adds as parameter
      *
      * @return self
-     * @param \MetadataV2\edm\TFunctionImportParameterType $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType $parameter
      */
-    public function addToParameter(\MetadataV2\edm\TFunctionImportParameterType $parameter)
+    public function addToParameter(TFunctionImportParameterType $parameter)
     {
         $this->parameter[] = $parameter;
         return $this;
@@ -187,7 +190,7 @@ class FunctionImportAnonymousType
     /**
      * Gets as parameter
      *
-     * @return \MetadataV2\edm\TFunctionImportParameterType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType[]
      */
     public function getParameter()
     {
@@ -197,7 +200,7 @@ class FunctionImportAnonymousType
     /**
      * Sets a new parameter
      *
-     * @param \MetadataV2\edm\TFunctionImportParameterType[] $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)

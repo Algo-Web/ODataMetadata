@@ -10,7 +10,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits;
 trait ApplyTrait
 {
     /**
-     * @property \MetadataV3\edm\TApplyExpressionType[] $apply
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType[] $apply
      */
     private $apply = array(
         
@@ -20,9 +20,9 @@ trait ApplyTrait
      * Adds as apply
      *
      * @return self
-     * @param \MetadataV3\edm\TApplyExpressionType $apply
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType $apply
      */
-    public function addToApply(\MetadataV3\edm\TApplyExpressionType $apply)
+    public function addToApply(TApplyExpressionType $apply)
     {
         $this->apply[] = $apply;
         return $this;
@@ -53,7 +53,7 @@ trait ApplyTrait
     /**
      * Gets as apply
      *
-     * @return \MetadataV3\edm\TApplyExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType[]
      */
     public function getApply()
     {
@@ -63,7 +63,7 @@ trait ApplyTrait
     /**
      * Sets a new apply
      *
-     * @param \MetadataV3\edm\TApplyExpressionType[] $apply
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType[] $apply
      * @return self
      */
     public function setApply(array $apply)

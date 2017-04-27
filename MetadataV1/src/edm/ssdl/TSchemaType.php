@@ -32,28 +32,28 @@ class TSchemaType
     private $providerManifestToken = null;
 
     /**
-     * @property \MetadataV1\edm\ssdl\TAssociationType[] $association
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TAssociationType[] $association
      */
     private $association = array(
         
     );
 
     /**
-     * @property \MetadataV1\edm\ssdl\TEntityTypeType[] $entityType
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TEntityTypeType[] $entityType
      */
     private $entityType = array(
         
     );
 
     /**
-     * @property \MetadataV1\edm\ssdl\EntityContainer[] $entityContainer
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\EntityContainer[] $entityContainer
      */
     private $entityContainer = array(
         
     );
 
     /**
-     * @property \MetadataV1\edm\ssdl\TFunctionType[] $function
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TFunctionType[] $function
      */
     private $function = array(
         
@@ -151,9 +151,9 @@ class TSchemaType
      * Adds as association
      *
      * @return self
-     * @param \MetadataV1\edm\ssdl\TAssociationType $association
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TAssociationType $association
      */
-    public function addToAssociation(\MetadataV1\edm\ssdl\TAssociationType $association)
+    public function addToAssociation(TAssociationType $association)
     {
         $this->association[] = $association;
         return $this;
@@ -184,7 +184,7 @@ class TSchemaType
     /**
      * Gets as association
      *
-     * @return \MetadataV1\edm\ssdl\TAssociationType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TAssociationType[]
      */
     public function getAssociation()
     {
@@ -194,7 +194,7 @@ class TSchemaType
     /**
      * Sets a new association
      *
-     * @param \MetadataV1\edm\ssdl\TAssociationType[] $association
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TAssociationType[] $association
      * @return self
      */
     public function setAssociation(array $association)
@@ -207,9 +207,9 @@ class TSchemaType
      * Adds as entityType
      *
      * @return self
-     * @param \MetadataV1\edm\ssdl\TEntityTypeType $entityType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TEntityTypeType $entityType
      */
-    public function addToEntityType(\MetadataV1\edm\ssdl\TEntityTypeType $entityType)
+    public function addToEntityType(TEntityTypeType $entityType)
     {
         $this->entityType[] = $entityType;
         return $this;
@@ -240,7 +240,7 @@ class TSchemaType
     /**
      * Gets as entityType
      *
-     * @return \MetadataV1\edm\ssdl\TEntityTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TEntityTypeType[]
      */
     public function getEntityType()
     {
@@ -250,7 +250,7 @@ class TSchemaType
     /**
      * Sets a new entityType
      *
-     * @param \MetadataV1\edm\ssdl\TEntityTypeType[] $entityType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TEntityTypeType[] $entityType
      * @return self
      */
     public function setEntityType(array $entityType)
@@ -263,9 +263,9 @@ class TSchemaType
      * Adds as entityContainer
      *
      * @return self
-     * @param \MetadataV1\edm\ssdl\EntityContainer $entityContainer
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\EntityContainer $entityContainer
      */
-    public function addToEntityContainer(\MetadataV1\edm\ssdl\EntityContainer $entityContainer)
+    public function addToEntityContainer(EntityContainer $entityContainer)
     {
         $this->entityContainer[] = $entityContainer;
         return $this;
@@ -296,7 +296,7 @@ class TSchemaType
     /**
      * Gets as entityContainer
      *
-     * @return \MetadataV1\edm\ssdl\EntityContainer[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\EntityContainer[]
      */
     public function getEntityContainer()
     {
@@ -306,7 +306,7 @@ class TSchemaType
     /**
      * Sets a new entityContainer
      *
-     * @param \MetadataV1\edm\ssdl\EntityContainer[] $entityContainer
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\EntityContainer[] $entityContainer
      * @return self
      */
     public function setEntityContainer(array $entityContainer)
@@ -319,9 +319,9 @@ class TSchemaType
      * Adds as function
      *
      * @return self
-     * @param \MetadataV1\edm\ssdl\TFunctionType $function
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TFunctionType $function
      */
-    public function addToFunction(\MetadataV1\edm\ssdl\TFunctionType $function)
+    public function addToFunction(TFunctionType $function)
     {
         $this->function[] = $function;
         return $this;
@@ -352,7 +352,7 @@ class TSchemaType
     /**
      * Gets as function
      *
-     * @return \MetadataV1\edm\ssdl\TFunctionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TFunctionType[]
      */
     public function getFunction()
     {
@@ -362,7 +362,7 @@ class TSchemaType
     /**
      * Sets a new function
      *
-     * @param \MetadataV1\edm\ssdl\TFunctionType[] $function
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TFunctionType[] $function
      * @return self
      */
     public function setFunction(array $function)

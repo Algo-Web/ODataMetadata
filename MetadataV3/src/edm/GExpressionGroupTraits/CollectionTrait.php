@@ -10,7 +10,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits;
 trait CollectionTrait
 {
     /**
-     * @property \MetadataV3\edm\TCollectionExpressionType[] $collection
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType[] $collection
      */
     private $collection = array(
         
@@ -20,9 +20,9 @@ trait CollectionTrait
      * Adds as collection
      *
      * @return self
-     * @param \MetadataV3\edm\TCollectionExpressionType $collection
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType $collection
      */
-    public function addToCollection(\MetadataV3\edm\TCollectionExpressionType $collection)
+    public function addToCollection(TCollectionExpressionType $collection)
     {
         $this->collection[] = $collection;
         return $this;
@@ -53,7 +53,7 @@ trait CollectionTrait
     /**
      * Gets as collection
      *
-     * @return \MetadataV3\edm\TCollectionExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType[]
      */
     public function getCollection()
     {
@@ -63,7 +63,7 @@ trait CollectionTrait
     /**
      * Sets a new collection
      *
-     * @param \MetadataV3\edm\TCollectionExpressionType[] $collection
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType[] $collection
      * @return self
      */
     public function setCollection(array $collection)

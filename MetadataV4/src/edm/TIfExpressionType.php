@@ -12,7 +12,7 @@ class TIfExpressionType
 {
 
     /**
-     * @property \MetadataV4\edm\Annotation[] $annotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
     private $annotation = array(
         
@@ -108,105 +108,105 @@ class TIfExpressionType
     );
 
     /**
-     * @property \MetadataV4\edm\TApplyExpressionType[] $apply
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType[] $apply
      */
     private $apply = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TCastOrIsOfExpressionType[] $cast
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[] $cast
      */
     private $cast = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TCollectionExpressionType[] $collection
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType[] $collection
      */
     private $collection = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TIfExpressionType[] $if
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType[] $if
      */
     private $if = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType[] $eq
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $eq
      */
     private $eq = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType[] $ne
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $ne
      */
     private $ne = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType[] $ge
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $ge
      */
     private $ge = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType[] $gt
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $gt
      */
     private $gt = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType[] $le
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $le
      */
     private $le = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType[] $lt
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $lt
      */
     private $lt = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType[] $and
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $and
      */
     private $and = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TTwoChildrenExpressionType[] $or
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $or
      */
     private $or = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TOneChildExpressionType[] $not
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[] $not
      */
     private $not = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TCastOrIsOfExpressionType[] $isOf
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[] $isOf
      */
     private $isOf = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TLabeledElementExpressionType[] $labeledElement
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType[] $labeledElement
      */
     private $labeledElement = array(
         
@@ -220,7 +220,7 @@ class TIfExpressionType
     );
 
     /**
-     * @property \MetadataV4\edm\Annotation[] $null
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $null
      */
     private $null = null;
 
@@ -246,14 +246,14 @@ class TIfExpressionType
     );
 
     /**
-     * @property \MetadataV4\edm\TRecordExpressionType[] $record
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType[] $record
      */
     private $record = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TOneChildExpressionType[] $urlRef
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[] $urlRef
      */
     private $urlRef = array(
         
@@ -263,9 +263,9 @@ class TIfExpressionType
      * Adds as annotation
      *
      * @return self
-     * @param \MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
-    public function addToAnnotation(\MetadataV4\edm\Annotation $annotation)
+    public function addToAnnotation(Annotation $annotation)
     {
         $this->annotation[] = $annotation;
         return $this;
@@ -296,7 +296,7 @@ class TIfExpressionType
     /**
      * Gets as annotation
      *
-     * @return \MetadataV4\edm\Annotation[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
     public function getAnnotation()
     {
@@ -306,7 +306,7 @@ class TIfExpressionType
     /**
      * Sets a new annotation
      *
-     * @param \MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)
@@ -1047,9 +1047,9 @@ class TIfExpressionType
      * Adds as apply
      *
      * @return self
-     * @param \MetadataV4\edm\TApplyExpressionType $apply
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType $apply
      */
-    public function addToApply(\MetadataV4\edm\TApplyExpressionType $apply)
+    public function addToApply(TApplyExpressionType $apply)
     {
         $this->apply[] = $apply;
         return $this;
@@ -1080,7 +1080,7 @@ class TIfExpressionType
     /**
      * Gets as apply
      *
-     * @return \MetadataV4\edm\TApplyExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType[]
      */
     public function getApply()
     {
@@ -1090,7 +1090,7 @@ class TIfExpressionType
     /**
      * Sets a new apply
      *
-     * @param \MetadataV4\edm\TApplyExpressionType[] $apply
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType[] $apply
      * @return self
      */
     public function setApply(array $apply)
@@ -1103,9 +1103,9 @@ class TIfExpressionType
      * Adds as cast
      *
      * @return self
-     * @param \MetadataV4\edm\TCastOrIsOfExpressionType $cast
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $cast
      */
-    public function addToCast(\MetadataV4\edm\TCastOrIsOfExpressionType $cast)
+    public function addToCast(TCastOrIsOfExpressionType $cast)
     {
         $this->cast[] = $cast;
         return $this;
@@ -1136,7 +1136,7 @@ class TIfExpressionType
     /**
      * Gets as cast
      *
-     * @return \MetadataV4\edm\TCastOrIsOfExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[]
      */
     public function getCast()
     {
@@ -1146,7 +1146,7 @@ class TIfExpressionType
     /**
      * Sets a new cast
      *
-     * @param \MetadataV4\edm\TCastOrIsOfExpressionType[] $cast
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[] $cast
      * @return self
      */
     public function setCast(array $cast)
@@ -1159,9 +1159,9 @@ class TIfExpressionType
      * Adds as collection
      *
      * @return self
-     * @param \MetadataV4\edm\TCollectionExpressionType $collection
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType $collection
      */
-    public function addToCollection(\MetadataV4\edm\TCollectionExpressionType $collection)
+    public function addToCollection(TCollectionExpressionType $collection)
     {
         $this->collection[] = $collection;
         return $this;
@@ -1192,7 +1192,7 @@ class TIfExpressionType
     /**
      * Gets as collection
      *
-     * @return \MetadataV4\edm\TCollectionExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType[]
      */
     public function getCollection()
     {
@@ -1202,7 +1202,7 @@ class TIfExpressionType
     /**
      * Sets a new collection
      *
-     * @param \MetadataV4\edm\TCollectionExpressionType[] $collection
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType[] $collection
      * @return self
      */
     public function setCollection(array $collection)
@@ -1215,9 +1215,9 @@ class TIfExpressionType
      * Adds as if
      *
      * @return self
-     * @param \MetadataV4\edm\TIfExpressionType $if
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType $if
      */
-    public function addToIf(\MetadataV4\edm\TIfExpressionType $if)
+    public function addToIf(TIfExpressionType $if)
     {
         $this->if[] = $if;
         return $this;
@@ -1248,7 +1248,7 @@ class TIfExpressionType
     /**
      * Gets as if
      *
-     * @return \MetadataV4\edm\TIfExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType[]
      */
     public function getIf()
     {
@@ -1258,7 +1258,7 @@ class TIfExpressionType
     /**
      * Sets a new if
      *
-     * @param \MetadataV4\edm\TIfExpressionType[] $if
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType[] $if
      * @return self
      */
     public function setIf(array $if)
@@ -1271,9 +1271,9 @@ class TIfExpressionType
      * Adds as eq
      *
      * @return self
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $eq
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $eq
      */
-    public function addToEq(\MetadataV4\edm\TTwoChildrenExpressionType $eq)
+    public function addToEq(TTwoChildrenExpressionType $eq)
     {
         $this->eq[] = $eq;
         return $this;
@@ -1304,7 +1304,7 @@ class TIfExpressionType
     /**
      * Gets as eq
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[]
      */
     public function getEq()
     {
@@ -1314,7 +1314,7 @@ class TIfExpressionType
     /**
      * Sets a new eq
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType[] $eq
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $eq
      * @return self
      */
     public function setEq(array $eq)
@@ -1327,9 +1327,9 @@ class TIfExpressionType
      * Adds as ne
      *
      * @return self
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $ne
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ne
      */
-    public function addToNe(\MetadataV4\edm\TTwoChildrenExpressionType $ne)
+    public function addToNe(TTwoChildrenExpressionType $ne)
     {
         $this->ne[] = $ne;
         return $this;
@@ -1360,7 +1360,7 @@ class TIfExpressionType
     /**
      * Gets as ne
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[]
      */
     public function getNe()
     {
@@ -1370,7 +1370,7 @@ class TIfExpressionType
     /**
      * Sets a new ne
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType[] $ne
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $ne
      * @return self
      */
     public function setNe(array $ne)
@@ -1383,9 +1383,9 @@ class TIfExpressionType
      * Adds as ge
      *
      * @return self
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $ge
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ge
      */
-    public function addToGe(\MetadataV4\edm\TTwoChildrenExpressionType $ge)
+    public function addToGe(TTwoChildrenExpressionType $ge)
     {
         $this->ge[] = $ge;
         return $this;
@@ -1416,7 +1416,7 @@ class TIfExpressionType
     /**
      * Gets as ge
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[]
      */
     public function getGe()
     {
@@ -1426,7 +1426,7 @@ class TIfExpressionType
     /**
      * Sets a new ge
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType[] $ge
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $ge
      * @return self
      */
     public function setGe(array $ge)
@@ -1439,9 +1439,9 @@ class TIfExpressionType
      * Adds as gt
      *
      * @return self
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $gt
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $gt
      */
-    public function addToGt(\MetadataV4\edm\TTwoChildrenExpressionType $gt)
+    public function addToGt(TTwoChildrenExpressionType $gt)
     {
         $this->gt[] = $gt;
         return $this;
@@ -1472,7 +1472,7 @@ class TIfExpressionType
     /**
      * Gets as gt
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[]
      */
     public function getGt()
     {
@@ -1482,7 +1482,7 @@ class TIfExpressionType
     /**
      * Sets a new gt
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType[] $gt
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $gt
      * @return self
      */
     public function setGt(array $gt)
@@ -1495,9 +1495,9 @@ class TIfExpressionType
      * Adds as le
      *
      * @return self
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $le
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $le
      */
-    public function addToLe(\MetadataV4\edm\TTwoChildrenExpressionType $le)
+    public function addToLe(TTwoChildrenExpressionType $le)
     {
         $this->le[] = $le;
         return $this;
@@ -1528,7 +1528,7 @@ class TIfExpressionType
     /**
      * Gets as le
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[]
      */
     public function getLe()
     {
@@ -1538,7 +1538,7 @@ class TIfExpressionType
     /**
      * Sets a new le
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType[] $le
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $le
      * @return self
      */
     public function setLe(array $le)
@@ -1551,9 +1551,9 @@ class TIfExpressionType
      * Adds as lt
      *
      * @return self
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $lt
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $lt
      */
-    public function addToLt(\MetadataV4\edm\TTwoChildrenExpressionType $lt)
+    public function addToLt(TTwoChildrenExpressionType $lt)
     {
         $this->lt[] = $lt;
         return $this;
@@ -1584,7 +1584,7 @@ class TIfExpressionType
     /**
      * Gets as lt
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[]
      */
     public function getLt()
     {
@@ -1594,7 +1594,7 @@ class TIfExpressionType
     /**
      * Sets a new lt
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType[] $lt
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $lt
      * @return self
      */
     public function setLt(array $lt)
@@ -1607,9 +1607,9 @@ class TIfExpressionType
      * Adds as and
      *
      * @return self
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $and
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $and
      */
-    public function addToAnd(\MetadataV4\edm\TTwoChildrenExpressionType $and)
+    public function addToAnd(TTwoChildrenExpressionType $and)
     {
         $this->and[] = $and;
         return $this;
@@ -1640,7 +1640,7 @@ class TIfExpressionType
     /**
      * Gets as and
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[]
      */
     public function getAnd()
     {
@@ -1650,7 +1650,7 @@ class TIfExpressionType
     /**
      * Sets a new and
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType[] $and
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $and
      * @return self
      */
     public function setAnd(array $and)
@@ -1663,9 +1663,9 @@ class TIfExpressionType
      * Adds as or
      *
      * @return self
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType $or
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $or
      */
-    public function addToOr(\MetadataV4\edm\TTwoChildrenExpressionType $or)
+    public function addToOr(TTwoChildrenExpressionType $or)
     {
         $this->or[] = $or;
         return $this;
@@ -1696,7 +1696,7 @@ class TIfExpressionType
     /**
      * Gets as or
      *
-     * @return \MetadataV4\edm\TTwoChildrenExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[]
      */
     public function getOr()
     {
@@ -1706,7 +1706,7 @@ class TIfExpressionType
     /**
      * Sets a new or
      *
-     * @param \MetadataV4\edm\TTwoChildrenExpressionType[] $or
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $or
      * @return self
      */
     public function setOr(array $or)
@@ -1719,9 +1719,9 @@ class TIfExpressionType
      * Adds as not
      *
      * @return self
-     * @param \MetadataV4\edm\TOneChildExpressionType $not
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $not
      */
-    public function addToNot(\MetadataV4\edm\TOneChildExpressionType $not)
+    public function addToNot(TOneChildExpressionType $not)
     {
         $this->not[] = $not;
         return $this;
@@ -1752,7 +1752,7 @@ class TIfExpressionType
     /**
      * Gets as not
      *
-     * @return \MetadataV4\edm\TOneChildExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[]
      */
     public function getNot()
     {
@@ -1762,7 +1762,7 @@ class TIfExpressionType
     /**
      * Sets a new not
      *
-     * @param \MetadataV4\edm\TOneChildExpressionType[] $not
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[] $not
      * @return self
      */
     public function setNot(array $not)
@@ -1775,9 +1775,9 @@ class TIfExpressionType
      * Adds as isOf
      *
      * @return self
-     * @param \MetadataV4\edm\TCastOrIsOfExpressionType $isOf
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $isOf
      */
-    public function addToIsOf(\MetadataV4\edm\TCastOrIsOfExpressionType $isOf)
+    public function addToIsOf(TCastOrIsOfExpressionType $isOf)
     {
         $this->isOf[] = $isOf;
         return $this;
@@ -1808,7 +1808,7 @@ class TIfExpressionType
     /**
      * Gets as isOf
      *
-     * @return \MetadataV4\edm\TCastOrIsOfExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[]
      */
     public function getIsOf()
     {
@@ -1818,7 +1818,7 @@ class TIfExpressionType
     /**
      * Sets a new isOf
      *
-     * @param \MetadataV4\edm\TCastOrIsOfExpressionType[] $isOf
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[] $isOf
      * @return self
      */
     public function setIsOf(array $isOf)
@@ -1831,9 +1831,9 @@ class TIfExpressionType
      * Adds as labeledElement
      *
      * @return self
-     * @param \MetadataV4\edm\TLabeledElementExpressionType $labeledElement
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType $labeledElement
      */
-    public function addToLabeledElement(\MetadataV4\edm\TLabeledElementExpressionType $labeledElement)
+    public function addToLabeledElement(TLabeledElementExpressionType $labeledElement)
     {
         $this->labeledElement[] = $labeledElement;
         return $this;
@@ -1864,7 +1864,7 @@ class TIfExpressionType
     /**
      * Gets as labeledElement
      *
-     * @return \MetadataV4\edm\TLabeledElementExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType[]
      */
     public function getLabeledElement()
     {
@@ -1874,7 +1874,7 @@ class TIfExpressionType
     /**
      * Sets a new labeledElement
      *
-     * @param \MetadataV4\edm\TLabeledElementExpressionType[] $labeledElement
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType[] $labeledElement
      * @return self
      */
     public function setLabeledElement(array $labeledElement)
@@ -1943,9 +1943,9 @@ class TIfExpressionType
      * Adds as annotation
      *
      * @return self
-     * @param \MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
-    public function addToNull(\MetadataV4\edm\Annotation $annotation)
+    public function addToNull(Annotation $annotation)
     {
         $this->null[] = $annotation;
         return $this;
@@ -1976,7 +1976,7 @@ class TIfExpressionType
     /**
      * Gets as null
      *
-     * @return \MetadataV4\edm\Annotation[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
     public function getNull()
     {
@@ -1986,7 +1986,7 @@ class TIfExpressionType
     /**
      * Sets a new null
      *
-     * @param \MetadataV4\edm\Annotation[] $null
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $null
      * @return self
      */
     public function setNull(array $null)
@@ -2167,9 +2167,9 @@ class TIfExpressionType
      * Adds as record
      *
      * @return self
-     * @param \MetadataV4\edm\TRecordExpressionType $record
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType $record
      */
-    public function addToRecord(\MetadataV4\edm\TRecordExpressionType $record)
+    public function addToRecord(TRecordExpressionType $record)
     {
         $this->record[] = $record;
         return $this;
@@ -2200,7 +2200,7 @@ class TIfExpressionType
     /**
      * Gets as record
      *
-     * @return \MetadataV4\edm\TRecordExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType[]
      */
     public function getRecord()
     {
@@ -2210,7 +2210,7 @@ class TIfExpressionType
     /**
      * Sets a new record
      *
-     * @param \MetadataV4\edm\TRecordExpressionType[] $record
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType[] $record
      * @return self
      */
     public function setRecord(array $record)
@@ -2223,9 +2223,9 @@ class TIfExpressionType
      * Adds as urlRef
      *
      * @return self
-     * @param \MetadataV4\edm\TOneChildExpressionType $urlRef
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $urlRef
      */
-    public function addToUrlRef(\MetadataV4\edm\TOneChildExpressionType $urlRef)
+    public function addToUrlRef(TOneChildExpressionType $urlRef)
     {
         $this->urlRef[] = $urlRef;
         return $this;
@@ -2256,7 +2256,7 @@ class TIfExpressionType
     /**
      * Gets as urlRef
      *
-     * @return \MetadataV4\edm\TOneChildExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[]
      */
     public function getUrlRef()
     {
@@ -2266,7 +2266,7 @@ class TIfExpressionType
     /**
      * Sets a new urlRef
      *
-     * @param \MetadataV4\edm\TOneChildExpressionType[] $urlRef
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[] $urlRef
      * @return self
      */
     public function setUrlRef(array $urlRef)

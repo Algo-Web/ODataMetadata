@@ -42,7 +42,7 @@ class TParameterType
     private $scale = null;
 
     /**
-     * @property \MetadataV2\edm\ssdl\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      */
     private $documentation = null;
 
@@ -181,7 +181,7 @@ class TParameterType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV2\edm\ssdl\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -191,10 +191,10 @@ class TParameterType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV2\edm\ssdl\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV2\edm\ssdl\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;

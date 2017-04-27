@@ -22,7 +22,7 @@ class TAssociationConnectorType
     private $manuallyRouted = null;
 
     /**
-     * @property \MetadataV2\edmx\TConnectorPointType[] $connectorPoint
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edmx\TConnectorPointType[] $connectorPoint
      */
     private $connectorPoint = array(
         
@@ -76,9 +76,9 @@ class TAssociationConnectorType
      * Adds as connectorPoint
      *
      * @return self
-     * @param \MetadataV2\edmx\TConnectorPointType $connectorPoint
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edmx\TConnectorPointType $connectorPoint
      */
-    public function addToConnectorPoint(\MetadataV2\edmx\TConnectorPointType $connectorPoint)
+    public function addToConnectorPoint(TConnectorPointType $connectorPoint)
     {
         $this->connectorPoint[] = $connectorPoint;
         return $this;
@@ -109,7 +109,7 @@ class TAssociationConnectorType
     /**
      * Gets as connectorPoint
      *
-     * @return \MetadataV2\edmx\TConnectorPointType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edmx\TConnectorPointType[]
      */
     public function getConnectorPoint()
     {
@@ -119,7 +119,7 @@ class TAssociationConnectorType
     /**
      * Sets a new connectorPoint
      *
-     * @param \MetadataV2\edmx\TConnectorPointType[] $connectorPoint
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edmx\TConnectorPointType[] $connectorPoint
      * @return self
      */
     public function setConnectorPoint(array $connectorPoint)

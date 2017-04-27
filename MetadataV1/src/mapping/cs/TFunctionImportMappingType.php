@@ -22,7 +22,7 @@ class TFunctionImportMappingType
     private $functionImportName = null;
 
     /**
-     * @property \MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType[]
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType[]
      * $resultMapping
      */
     private $resultMapping = null;
@@ -75,10 +75,10 @@ class TFunctionImportMappingType
      * Adds as entityTypeMapping
      *
      * @return self
-     * @param \MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType
      * $entityTypeMapping
      */
-    public function addToResultMapping(\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType $entityTypeMapping)
+    public function addToResultMapping(TFunctionImportEntityTypeMappingType $entityTypeMapping)
     {
         $this->resultMapping[] = $entityTypeMapping;
         return $this;
@@ -109,7 +109,7 @@ class TFunctionImportMappingType
     /**
      * Gets as resultMapping
      *
-     * @return \MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType[]
      */
     public function getResultMapping()
     {
@@ -119,7 +119,7 @@ class TFunctionImportMappingType
     /**
      * Sets a new resultMapping
      *
-     * @param \MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType[]
      * $resultMapping
      * @return self
      */

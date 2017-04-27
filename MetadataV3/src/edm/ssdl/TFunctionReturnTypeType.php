@@ -12,14 +12,14 @@ class TFunctionReturnTypeType
 {
 
     /**
-     * @property \MetadataV3\edm\ssdl\TCollectionTypeType $collectionType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TCollectionTypeType $collectionType
      */
     private $collectionType = null;
 
     /**
      * Gets as collectionType
      *
-     * @return \MetadataV3\edm\ssdl\TCollectionTypeType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TCollectionTypeType
      */
     public function getCollectionType()
     {
@@ -29,10 +29,10 @@ class TFunctionReturnTypeType
     /**
      * Sets a new collectionType
      *
-     * @param \MetadataV3\edm\ssdl\TCollectionTypeType $collectionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TCollectionTypeType $collectionType
      * @return self
      */
-    public function setCollectionType(\MetadataV3\edm\ssdl\TCollectionTypeType $collectionType)
+    public function setCollectionType(TCollectionTypeType $collectionType)
     {
         $this->collectionType = $collectionType;
         return $this;

@@ -32,38 +32,38 @@ class TEntitySetMappingType
     private $makeColumnsDistinct = null;
 
     /**
-     * @property \MetadataV2\mapping\cs\TQueryViewType[] $queryView
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TQueryViewType[] $queryView
      */
     private $queryView = array(
         
     );
 
     /**
-     * @property \MetadataV2\mapping\cs\TEntityTypeMappingType[] $entityTypeMapping
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeMappingType[] $entityTypeMapping
      */
     private $entityTypeMapping = array(
         
     );
 
     /**
-     * @property \MetadataV2\mapping\cs\TMappingFragmentType[] $mappingFragment
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingFragmentType[] $mappingFragment
      */
     private $mappingFragment = array(
         
     );
 
     /**
-     * @property \MetadataV2\mapping\cs\TComplexPropertyType $complexProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TComplexPropertyType $complexProperty
      */
     private $complexProperty = null;
 
     /**
-     * @property \MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty
      */
     private $scalarProperty = null;
 
     /**
-     * @property \MetadataV2\mapping\cs\TConditionType $condition
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TConditionType $condition
      */
     private $condition = null;
 
@@ -159,9 +159,9 @@ class TEntitySetMappingType
      * Adds as queryView
      *
      * @return self
-     * @param \MetadataV2\mapping\cs\TQueryViewType $queryView
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TQueryViewType $queryView
      */
-    public function addToQueryView(\MetadataV2\mapping\cs\TQueryViewType $queryView)
+    public function addToQueryView(TQueryViewType $queryView)
     {
         $this->queryView[] = $queryView;
         return $this;
@@ -192,7 +192,7 @@ class TEntitySetMappingType
     /**
      * Gets as queryView
      *
-     * @return \MetadataV2\mapping\cs\TQueryViewType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TQueryViewType[]
      */
     public function getQueryView()
     {
@@ -202,7 +202,7 @@ class TEntitySetMappingType
     /**
      * Sets a new queryView
      *
-     * @param \MetadataV2\mapping\cs\TQueryViewType[] $queryView
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TQueryViewType[] $queryView
      * @return self
      */
     public function setQueryView(array $queryView)
@@ -215,9 +215,9 @@ class TEntitySetMappingType
      * Adds as entityTypeMapping
      *
      * @return self
-     * @param \MetadataV2\mapping\cs\TEntityTypeMappingType $entityTypeMapping
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeMappingType $entityTypeMapping
      */
-    public function addToEntityTypeMapping(\MetadataV2\mapping\cs\TEntityTypeMappingType $entityTypeMapping)
+    public function addToEntityTypeMapping(TEntityTypeMappingType $entityTypeMapping)
     {
         $this->entityTypeMapping[] = $entityTypeMapping;
         return $this;
@@ -248,7 +248,7 @@ class TEntitySetMappingType
     /**
      * Gets as entityTypeMapping
      *
-     * @return \MetadataV2\mapping\cs\TEntityTypeMappingType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeMappingType[]
      */
     public function getEntityTypeMapping()
     {
@@ -258,7 +258,7 @@ class TEntitySetMappingType
     /**
      * Sets a new entityTypeMapping
      *
-     * @param \MetadataV2\mapping\cs\TEntityTypeMappingType[] $entityTypeMapping
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeMappingType[] $entityTypeMapping
      * @return self
      */
     public function setEntityTypeMapping(array $entityTypeMapping)
@@ -271,9 +271,9 @@ class TEntitySetMappingType
      * Adds as mappingFragment
      *
      * @return self
-     * @param \MetadataV2\mapping\cs\TMappingFragmentType $mappingFragment
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingFragmentType $mappingFragment
      */
-    public function addToMappingFragment(\MetadataV2\mapping\cs\TMappingFragmentType $mappingFragment)
+    public function addToMappingFragment(TMappingFragmentType $mappingFragment)
     {
         $this->mappingFragment[] = $mappingFragment;
         return $this;
@@ -304,7 +304,7 @@ class TEntitySetMappingType
     /**
      * Gets as mappingFragment
      *
-     * @return \MetadataV2\mapping\cs\TMappingFragmentType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingFragmentType[]
      */
     public function getMappingFragment()
     {
@@ -314,7 +314,7 @@ class TEntitySetMappingType
     /**
      * Sets a new mappingFragment
      *
-     * @param \MetadataV2\mapping\cs\TMappingFragmentType[] $mappingFragment
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingFragmentType[] $mappingFragment
      * @return self
      */
     public function setMappingFragment(array $mappingFragment)
@@ -326,7 +326,7 @@ class TEntitySetMappingType
     /**
      * Gets as complexProperty
      *
-     * @return \MetadataV2\mapping\cs\TComplexPropertyType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TComplexPropertyType
      */
     public function getComplexProperty()
     {
@@ -336,10 +336,10 @@ class TEntitySetMappingType
     /**
      * Sets a new complexProperty
      *
-     * @param \MetadataV2\mapping\cs\TComplexPropertyType $complexProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TComplexPropertyType $complexProperty
      * @return self
      */
-    public function setComplexProperty(\MetadataV2\mapping\cs\TComplexPropertyType $complexProperty)
+    public function setComplexProperty(TComplexPropertyType $complexProperty)
     {
         $this->complexProperty = $complexProperty;
         return $this;
@@ -348,7 +348,7 @@ class TEntitySetMappingType
     /**
      * Gets as scalarProperty
      *
-     * @return \MetadataV2\mapping\cs\TScalarPropertyType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType
      */
     public function getScalarProperty()
     {
@@ -358,10 +358,10 @@ class TEntitySetMappingType
     /**
      * Sets a new scalarProperty
      *
-     * @param \MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty
      * @return self
      */
-    public function setScalarProperty(\MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty)
+    public function setScalarProperty(TScalarPropertyType $scalarProperty)
     {
         $this->scalarProperty = $scalarProperty;
         return $this;
@@ -370,7 +370,7 @@ class TEntitySetMappingType
     /**
      * Gets as condition
      *
-     * @return \MetadataV2\mapping\cs\TConditionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TConditionType
      */
     public function getCondition()
     {
@@ -380,10 +380,10 @@ class TEntitySetMappingType
     /**
      * Sets a new condition
      *
-     * @param \MetadataV2\mapping\cs\TConditionType $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TConditionType $condition
      * @return self
      */
-    public function setCondition(\MetadataV2\mapping\cs\TConditionType $condition)
+    public function setCondition(TConditionType $condition)
     {
         $this->condition = $condition;
         return $this;

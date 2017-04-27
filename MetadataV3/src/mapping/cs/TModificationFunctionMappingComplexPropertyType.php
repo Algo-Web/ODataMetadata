@@ -22,13 +22,13 @@ class TModificationFunctionMappingComplexPropertyType
     private $typeName = null;
 
     /**
-     * @property \MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      * $scalarProperty
      */
     private $scalarProperty = null;
 
     /**
-     * @property \MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
      * $complexProperty
      */
     private $complexProperty = null;
@@ -80,7 +80,7 @@ class TModificationFunctionMappingComplexPropertyType
     /**
      * Gets as scalarProperty
      *
-     * @return \MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      */
     public function getScalarProperty()
     {
@@ -90,11 +90,11 @@ class TModificationFunctionMappingComplexPropertyType
     /**
      * Sets a new scalarProperty
      *
-     * @param \MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      * $scalarProperty
      * @return self
      */
-    public function setScalarProperty(\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType $scalarProperty)
+    public function setScalarProperty(TModificationFunctionMappingScalarPropertyType $scalarProperty)
     {
         $this->scalarProperty = $scalarProperty;
         return $this;
@@ -103,7 +103,7 @@ class TModificationFunctionMappingComplexPropertyType
     /**
      * Gets as complexProperty
      *
-     * @return \MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
      */
     public function getComplexProperty()
     {
@@ -113,11 +113,11 @@ class TModificationFunctionMappingComplexPropertyType
     /**
      * Sets a new complexProperty
      *
-     * @param \MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
      * $complexProperty
      * @return self
      */
-    public function setComplexProperty(\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType $complexProperty)
+    public function setComplexProperty(TModificationFunctionMappingComplexPropertyType $complexProperty)
     {
         $this->complexProperty = $complexProperty;
         return $this;

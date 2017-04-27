@@ -17,7 +17,7 @@ class TFunctionImportComplexTypeMappingType
     private $typeName = null;
 
     /**
-     * @property \MetadataV2\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
     private $scalarProperty = array(
         
@@ -49,9 +49,9 @@ class TFunctionImportComplexTypeMappingType
      * Adds as scalarProperty
      *
      * @return self
-     * @param \MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty
      */
-    public function addToScalarProperty(\MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty)
+    public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
         $this->scalarProperty[] = $scalarProperty;
         return $this;
@@ -82,7 +82,7 @@ class TFunctionImportComplexTypeMappingType
     /**
      * Gets as scalarProperty
      *
-     * @return \MetadataV2\mapping\cs\TScalarPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType[]
      */
     public function getScalarProperty()
     {
@@ -92,7 +92,7 @@ class TFunctionImportComplexTypeMappingType
     /**
      * Sets a new scalarProperty
      *
-     * @param \MetadataV2\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
      */
     public function setScalarProperty(array $scalarProperty)

@@ -17,7 +17,7 @@ class TPropertyRefType
     private $name = null;
 
     /**
-     * @property \MetadataV1\edm\ssdl\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType $documentation
      */
     private $documentation = null;
 
@@ -46,7 +46,7 @@ class TPropertyRefType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV1\edm\ssdl\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -56,10 +56,10 @@ class TPropertyRefType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV1\edm\ssdl\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV1\edm\ssdl\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;

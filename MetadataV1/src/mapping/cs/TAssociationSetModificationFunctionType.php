@@ -22,7 +22,7 @@ class TAssociationSetModificationFunctionType
     private $rowsAffectedParameter = null;
 
     /**
-     * @property \MetadataV1\mapping\cs\TFunctionMappingEndPropertyType $endProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingEndPropertyType $endProperty
      */
     private $endProperty = null;
 
@@ -73,7 +73,7 @@ class TAssociationSetModificationFunctionType
     /**
      * Gets as endProperty
      *
-     * @return \MetadataV1\mapping\cs\TFunctionMappingEndPropertyType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingEndPropertyType
      */
     public function getEndProperty()
     {
@@ -83,10 +83,10 @@ class TAssociationSetModificationFunctionType
     /**
      * Sets a new endProperty
      *
-     * @param \MetadataV1\mapping\cs\TFunctionMappingEndPropertyType $endProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingEndPropertyType $endProperty
      * @return self
      */
-    public function setEndProperty(\MetadataV1\mapping\cs\TFunctionMappingEndPropertyType $endProperty)
+    public function setEndProperty(TFunctionMappingEndPropertyType $endProperty)
     {
         $this->endProperty = $endProperty;
         return $this;

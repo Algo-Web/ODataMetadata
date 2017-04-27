@@ -17,7 +17,7 @@ class TOnDeleteType
     private $action = null;
 
     /**
-     * @property \MetadataV4\edm\Annotation[] $annotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
     private $annotation = array(
         
@@ -49,9 +49,9 @@ class TOnDeleteType
      * Adds as annotation
      *
      * @return self
-     * @param \MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
-    public function addToAnnotation(\MetadataV4\edm\Annotation $annotation)
+    public function addToAnnotation(Annotation $annotation)
     {
         $this->annotation[] = $annotation;
         return $this;
@@ -82,7 +82,7 @@ class TOnDeleteType
     /**
      * Gets as annotation
      *
-     * @return \MetadataV4\edm\Annotation[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
     public function getAnnotation()
     {
@@ -92,7 +92,7 @@ class TOnDeleteType
     /**
      * Sets a new annotation
      *
-     * @param \MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

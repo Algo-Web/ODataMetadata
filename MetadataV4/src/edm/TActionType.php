@@ -27,21 +27,21 @@ class TActionType
     private $isBound = null;
 
     /**
-     * @property \MetadataV4\edm\TActionFunctionParameterType[] $parameter
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType[] $parameter
      */
     private $parameter = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\Annotation[] $annotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
     private $annotation = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TActionFunctionReturnTypeType $returnType
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionReturnTypeType $returnType
      */
     private $returnType = null;
 
@@ -115,9 +115,9 @@ class TActionType
      * Adds as parameter
      *
      * @return self
-     * @param \MetadataV4\edm\TActionFunctionParameterType $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType $parameter
      */
-    public function addToParameter(\MetadataV4\edm\TActionFunctionParameterType $parameter)
+    public function addToParameter(TActionFunctionParameterType $parameter)
     {
         $this->parameter[] = $parameter;
         return $this;
@@ -148,7 +148,7 @@ class TActionType
     /**
      * Gets as parameter
      *
-     * @return \MetadataV4\edm\TActionFunctionParameterType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType[]
      */
     public function getParameter()
     {
@@ -158,7 +158,7 @@ class TActionType
     /**
      * Sets a new parameter
      *
-     * @param \MetadataV4\edm\TActionFunctionParameterType[] $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)
@@ -171,9 +171,9 @@ class TActionType
      * Adds as annotation
      *
      * @return self
-     * @param \MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
-    public function addToAnnotation(\MetadataV4\edm\Annotation $annotation)
+    public function addToAnnotation(Annotation $annotation)
     {
         $this->annotation[] = $annotation;
         return $this;
@@ -204,7 +204,7 @@ class TActionType
     /**
      * Gets as annotation
      *
-     * @return \MetadataV4\edm\Annotation[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
     public function getAnnotation()
     {
@@ -214,7 +214,7 @@ class TActionType
     /**
      * Sets a new annotation
      *
-     * @param \MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)
@@ -226,7 +226,7 @@ class TActionType
     /**
      * Gets as returnType
      *
-     * @return \MetadataV4\edm\TActionFunctionReturnTypeType
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionReturnTypeType
      */
     public function getReturnType()
     {
@@ -236,10 +236,10 @@ class TActionType
     /**
      * Sets a new returnType
      *
-     * @param \MetadataV4\edm\TActionFunctionReturnTypeType $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionReturnTypeType $returnType
      * @return self
      */
-    public function setReturnType(\MetadataV4\edm\TActionFunctionReturnTypeType $returnType)
+    public function setReturnType(TActionFunctionReturnTypeType $returnType)
     {
         $this->returnType = $returnType;
         return $this;

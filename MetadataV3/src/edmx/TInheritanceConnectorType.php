@@ -22,7 +22,7 @@ class TInheritanceConnectorType
     private $manuallyRouted = null;
 
     /**
-     * @property \MetadataV3\edmx\TConnectorPointType[] $connectorPoint
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType[] $connectorPoint
      */
     private $connectorPoint = array(
         
@@ -76,9 +76,9 @@ class TInheritanceConnectorType
      * Adds as connectorPoint
      *
      * @return self
-     * @param \MetadataV3\edmx\TConnectorPointType $connectorPoint
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType $connectorPoint
      */
-    public function addToConnectorPoint(\MetadataV3\edmx\TConnectorPointType $connectorPoint)
+    public function addToConnectorPoint(TConnectorPointType $connectorPoint)
     {
         $this->connectorPoint[] = $connectorPoint;
         return $this;
@@ -109,7 +109,7 @@ class TInheritanceConnectorType
     /**
      * Gets as connectorPoint
      *
-     * @return \MetadataV3\edmx\TConnectorPointType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType[]
      */
     public function getConnectorPoint()
     {
@@ -119,7 +119,7 @@ class TInheritanceConnectorType
     /**
      * Sets a new connectorPoint
      *
-     * @param \MetadataV3\edmx\TConnectorPointType[] $connectorPoint
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType[] $connectorPoint
      * @return self
      */
     public function setConnectorPoint(array $connectorPoint)

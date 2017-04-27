@@ -22,35 +22,35 @@ class TSchemaType
     private $alias = null;
 
     /**
-     * @property \MetadataV1\edm\TUsingType[] $using
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\TUsingType[] $using
      */
     private $using = array(
         
     );
 
     /**
-     * @property \MetadataV1\edm\TAssociationType[] $association
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\TAssociationType[] $association
      */
     private $association = array(
         
     );
 
     /**
-     * @property \MetadataV1\edm\TComplexTypeType[] $complexType
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypeType[] $complexType
      */
     private $complexType = array(
         
     );
 
     /**
-     * @property \MetadataV1\edm\TEntityTypeType[] $entityType
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\TEntityTypeType[] $entityType
      */
     private $entityType = array(
         
     );
 
     /**
-     * @property \MetadataV1\edm\EntityContainer[] $entityContainer
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer[] $entityContainer
      */
     private $entityContainer = array(
         
@@ -104,9 +104,9 @@ class TSchemaType
      * Adds as using
      *
      * @return self
-     * @param \MetadataV1\edm\TUsingType $using
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TUsingType $using
      */
-    public function addToUsing(\MetadataV1\edm\TUsingType $using)
+    public function addToUsing(TUsingType $using)
     {
         $this->using[] = $using;
         return $this;
@@ -137,7 +137,7 @@ class TSchemaType
     /**
      * Gets as using
      *
-     * @return \MetadataV1\edm\TUsingType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TUsingType[]
      */
     public function getUsing()
     {
@@ -147,7 +147,7 @@ class TSchemaType
     /**
      * Sets a new using
      *
-     * @param \MetadataV1\edm\TUsingType[] $using
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TUsingType[] $using
      * @return self
      */
     public function setUsing(array $using)
@@ -160,9 +160,9 @@ class TSchemaType
      * Adds as association
      *
      * @return self
-     * @param \MetadataV1\edm\TAssociationType $association
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TAssociationType $association
      */
-    public function addToAssociation(\MetadataV1\edm\TAssociationType $association)
+    public function addToAssociation(TAssociationType $association)
     {
         $this->association[] = $association;
         return $this;
@@ -193,7 +193,7 @@ class TSchemaType
     /**
      * Gets as association
      *
-     * @return \MetadataV1\edm\TAssociationType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TAssociationType[]
      */
     public function getAssociation()
     {
@@ -203,7 +203,7 @@ class TSchemaType
     /**
      * Sets a new association
      *
-     * @param \MetadataV1\edm\TAssociationType[] $association
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TAssociationType[] $association
      * @return self
      */
     public function setAssociation(array $association)
@@ -216,9 +216,9 @@ class TSchemaType
      * Adds as complexType
      *
      * @return self
-     * @param \MetadataV1\edm\TComplexTypeType $complexType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypeType $complexType
      */
-    public function addToComplexType(\MetadataV1\edm\TComplexTypeType $complexType)
+    public function addToComplexType(TComplexTypeType $complexType)
     {
         $this->complexType[] = $complexType;
         return $this;
@@ -249,7 +249,7 @@ class TSchemaType
     /**
      * Gets as complexType
      *
-     * @return \MetadataV1\edm\TComplexTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypeType[]
      */
     public function getComplexType()
     {
@@ -259,7 +259,7 @@ class TSchemaType
     /**
      * Sets a new complexType
      *
-     * @param \MetadataV1\edm\TComplexTypeType[] $complexType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypeType[] $complexType
      * @return self
      */
     public function setComplexType(array $complexType)
@@ -272,9 +272,9 @@ class TSchemaType
      * Adds as entityType
      *
      * @return self
-     * @param \MetadataV1\edm\TEntityTypeType $entityType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TEntityTypeType $entityType
      */
-    public function addToEntityType(\MetadataV1\edm\TEntityTypeType $entityType)
+    public function addToEntityType(TEntityTypeType $entityType)
     {
         $this->entityType[] = $entityType;
         return $this;
@@ -305,7 +305,7 @@ class TSchemaType
     /**
      * Gets as entityType
      *
-     * @return \MetadataV1\edm\TEntityTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TEntityTypeType[]
      */
     public function getEntityType()
     {
@@ -315,7 +315,7 @@ class TSchemaType
     /**
      * Sets a new entityType
      *
-     * @param \MetadataV1\edm\TEntityTypeType[] $entityType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TEntityTypeType[] $entityType
      * @return self
      */
     public function setEntityType(array $entityType)
@@ -328,9 +328,9 @@ class TSchemaType
      * Adds as entityContainer
      *
      * @return self
-     * @param \MetadataV1\edm\EntityContainer $entityContainer
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer $entityContainer
      */
-    public function addToEntityContainer(\MetadataV1\edm\EntityContainer $entityContainer)
+    public function addToEntityContainer(EntityContainer $entityContainer)
     {
         $this->entityContainer[] = $entityContainer;
         return $this;
@@ -361,7 +361,7 @@ class TSchemaType
     /**
      * Gets as entityContainer
      *
-     * @return \MetadataV1\edm\EntityContainer[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer[]
      */
     public function getEntityContainer()
     {
@@ -371,7 +371,7 @@ class TSchemaType
     /**
      * Sets a new entityContainer
      *
-     * @param \MetadataV1\edm\EntityContainer[] $entityContainer
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer[] $entityContainer
      * @return self
      */
     public function setEntityContainer(array $entityContainer)

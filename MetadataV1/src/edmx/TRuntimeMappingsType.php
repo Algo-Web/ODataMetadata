@@ -2,6 +2,8 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edmx;
 
+use AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\Mapping;
+
 /**
  * Class representing TRuntimeMappingsType
  *
@@ -12,14 +14,14 @@ class TRuntimeMappingsType
 {
 
     /**
-     * @property \MetadataV1\mapping\cs\Mapping $mapping
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\Mapping $mapping
      */
     private $mapping = null;
 
     /**
      * Gets as mapping
      *
-     * @return \MetadataV1\mapping\cs\Mapping
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\Mapping
      */
     public function getMapping()
     {
@@ -29,10 +31,10 @@ class TRuntimeMappingsType
     /**
      * Sets a new mapping
      *
-     * @param \MetadataV1\mapping\cs\Mapping $mapping
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\Mapping $mapping
      * @return self
      */
-    public function setMapping(\MetadataV1\mapping\cs\Mapping $mapping)
+    public function setMapping(Mapping $mapping)
     {
         $this->mapping = $mapping;
         return $this;

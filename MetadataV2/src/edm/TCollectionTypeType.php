@@ -57,22 +57,22 @@ class TCollectionTypeType
     private $collation = null;
 
     /**
-     * @property \MetadataV2\edm\TCollectionTypeType $collectionType
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TCollectionTypeType $collectionType
      */
     private $collectionType = null;
 
     /**
-     * @property \MetadataV2\edm\TReferenceTypeType $referenceType
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TReferenceTypeType $referenceType
      */
     private $referenceType = null;
 
     /**
-     * @property \MetadataV2\edm\TPropertyType[] $rowType
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType[] $rowType
      */
     private $rowType = null;
 
     /**
-     * @property \MetadataV2\edm\TTypeRefType $typeRef
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TTypeRefType $typeRef
      */
     private $typeRef = null;
 
@@ -277,7 +277,7 @@ class TCollectionTypeType
     /**
      * Gets as collectionType
      *
-     * @return \MetadataV2\edm\TCollectionTypeType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TCollectionTypeType
      */
     public function getCollectionType()
     {
@@ -287,10 +287,10 @@ class TCollectionTypeType
     /**
      * Sets a new collectionType
      *
-     * @param \MetadataV2\edm\TCollectionTypeType $collectionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TCollectionTypeType $collectionType
      * @return self
      */
-    public function setCollectionType(\MetadataV2\edm\TCollectionTypeType $collectionType)
+    public function setCollectionType(TCollectionTypeType $collectionType)
     {
         $this->collectionType = $collectionType;
         return $this;
@@ -299,7 +299,7 @@ class TCollectionTypeType
     /**
      * Gets as referenceType
      *
-     * @return \MetadataV2\edm\TReferenceTypeType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TReferenceTypeType
      */
     public function getReferenceType()
     {
@@ -309,10 +309,10 @@ class TCollectionTypeType
     /**
      * Sets a new referenceType
      *
-     * @param \MetadataV2\edm\TReferenceTypeType $referenceType
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TReferenceTypeType $referenceType
      * @return self
      */
-    public function setReferenceType(\MetadataV2\edm\TReferenceTypeType $referenceType)
+    public function setReferenceType(TReferenceTypeType $referenceType)
     {
         $this->referenceType = $referenceType;
         return $this;
@@ -322,9 +322,9 @@ class TCollectionTypeType
      * Adds as property
      *
      * @return self
-     * @param \MetadataV2\edm\TPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType $property
      */
-    public function addToRowType(\MetadataV2\edm\TPropertyType $property)
+    public function addToRowType(TPropertyType $property)
     {
         $this->rowType[] = $property;
         return $this;
@@ -355,7 +355,7 @@ class TCollectionTypeType
     /**
      * Gets as rowType
      *
-     * @return \MetadataV2\edm\TPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType[]
      */
     public function getRowType()
     {
@@ -365,7 +365,7 @@ class TCollectionTypeType
     /**
      * Sets a new rowType
      *
-     * @param \MetadataV2\edm\TPropertyType[] $rowType
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)
@@ -377,7 +377,7 @@ class TCollectionTypeType
     /**
      * Gets as typeRef
      *
-     * @return \MetadataV2\edm\TTypeRefType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TTypeRefType
      */
     public function getTypeRef()
     {
@@ -387,10 +387,10 @@ class TCollectionTypeType
     /**
      * Sets a new typeRef
      *
-     * @param \MetadataV2\edm\TTypeRefType $typeRef
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TTypeRefType $typeRef
      * @return self
      */
-    public function setTypeRef(\MetadataV2\edm\TTypeRefType $typeRef)
+    public function setTypeRef(TTypeRefType $typeRef)
     {
         $this->typeRef = $typeRef;
         return $this;

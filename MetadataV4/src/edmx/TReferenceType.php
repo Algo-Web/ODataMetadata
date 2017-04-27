@@ -2,6 +2,8 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edmx;
 
+use AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation;
+
 /**
  * Class representing TReferenceType
  *
@@ -17,21 +19,21 @@ class TReferenceType
     private $uri = null;
 
     /**
-     * @property \MetadataV4\edmx\TIncludeType[] $include
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType[] $include
      */
     private $include = array(
         
     );
 
     /**
-     * @property \MetadataV4\edmx\TIncludeAnnotationsType[] $includeAnnotations
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType[] $includeAnnotations
      */
     private $includeAnnotations = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\Annotation[] $annotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
     private $annotation = array(
         
@@ -63,9 +65,9 @@ class TReferenceType
      * Adds as include
      *
      * @return self
-     * @param \MetadataV4\edmx\TIncludeType $include
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType $include
      */
-    public function addToInclude(\MetadataV4\edmx\TIncludeType $include)
+    public function addToInclude(TIncludeType $include)
     {
         $this->include[] = $include;
         return $this;
@@ -96,7 +98,7 @@ class TReferenceType
     /**
      * Gets as include
      *
-     * @return \MetadataV4\edmx\TIncludeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType[]
      */
     public function getInclude()
     {
@@ -106,7 +108,7 @@ class TReferenceType
     /**
      * Sets a new include
      *
-     * @param \MetadataV4\edmx\TIncludeType[] $include
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType[] $include
      * @return self
      */
     public function setInclude(array $include)
@@ -119,9 +121,9 @@ class TReferenceType
      * Adds as includeAnnotations
      *
      * @return self
-     * @param \MetadataV4\edmx\TIncludeAnnotationsType $includeAnnotations
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType $includeAnnotations
      */
-    public function addToIncludeAnnotations(\MetadataV4\edmx\TIncludeAnnotationsType $includeAnnotations)
+    public function addToIncludeAnnotations(TIncludeAnnotationsType $includeAnnotations)
     {
         $this->includeAnnotations[] = $includeAnnotations;
         return $this;
@@ -152,7 +154,7 @@ class TReferenceType
     /**
      * Gets as includeAnnotations
      *
-     * @return \MetadataV4\edmx\TIncludeAnnotationsType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType[]
      */
     public function getIncludeAnnotations()
     {
@@ -162,7 +164,7 @@ class TReferenceType
     /**
      * Sets a new includeAnnotations
      *
-     * @param \MetadataV4\edmx\TIncludeAnnotationsType[] $includeAnnotations
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType[] $includeAnnotations
      * @return self
      */
     public function setIncludeAnnotations(array $includeAnnotations)
@@ -175,9 +177,9 @@ class TReferenceType
      * Adds as annotation
      *
      * @return self
-     * @param \MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
-    public function addToAnnotation(\MetadataV4\edm\Annotation $annotation)
+    public function addToAnnotation(Annotation $annotation)
     {
         $this->annotation[] = $annotation;
         return $this;
@@ -208,7 +210,7 @@ class TReferenceType
     /**
      * Gets as annotation
      *
-     * @return \MetadataV4\edm\Annotation[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
     public function getAnnotation()
     {
@@ -218,7 +220,7 @@ class TReferenceType
     /**
      * Sets a new annotation
      *
-     * @param \MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

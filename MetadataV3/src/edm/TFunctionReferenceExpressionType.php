@@ -18,7 +18,7 @@ class TFunctionReferenceExpressionType
 
     /**
      * @property
-     * \MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
+     * \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
      * $parameter
      */
     private $parameter = array(
@@ -51,10 +51,10 @@ class TFunctionReferenceExpressionType
      * Adds as parameter
      *
      * @return self
-     * @param \MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType
      * $parameter
      */
-    public function addToParameter(\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType $parameter)
+    public function addToParameter(TFunctionReferenceExpressionType\ParameterAnonymousType $parameter)
     {
         $this->parameter[] = $parameter;
         return $this;
@@ -86,7 +86,7 @@ class TFunctionReferenceExpressionType
      * Gets as parameter
      *
      * @return
-     * \MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
+     * \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
      */
     public function getParameter()
     {
@@ -96,7 +96,7 @@ class TFunctionReferenceExpressionType
     /**
      * Sets a new parameter
      *
-     * @param \MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
      * $parameter
      * @return self
      */

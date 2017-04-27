@@ -17,7 +17,7 @@ class TFunctionImportEntityTypeMappingType
     private $typeName = null;
 
     /**
-     * @property \MetadataV1\mapping\cs\TFunctionImportConditionType[] $condition
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportConditionType[] $condition
      */
     private $condition = array(
         
@@ -49,9 +49,9 @@ class TFunctionImportEntityTypeMappingType
      * Adds as condition
      *
      * @return self
-     * @param \MetadataV1\mapping\cs\TFunctionImportConditionType $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportConditionType $condition
      */
-    public function addToCondition(\MetadataV1\mapping\cs\TFunctionImportConditionType $condition)
+    public function addToCondition(TFunctionImportConditionType $condition)
     {
         $this->condition[] = $condition;
         return $this;
@@ -82,7 +82,7 @@ class TFunctionImportEntityTypeMappingType
     /**
      * Gets as condition
      *
-     * @return \MetadataV1\mapping\cs\TFunctionImportConditionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportConditionType[]
      */
     public function getCondition()
     {
@@ -92,7 +92,7 @@ class TFunctionImportEntityTypeMappingType
     /**
      * Sets a new condition
      *
-     * @param \MetadataV1\mapping\cs\TFunctionImportConditionType[] $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportConditionType[] $condition
      * @return self
      */
     public function setCondition(array $condition)

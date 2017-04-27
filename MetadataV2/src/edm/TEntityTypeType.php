@@ -32,24 +32,24 @@ class TEntityTypeType
     private $typeAccess = null;
 
     /**
-     * @property \MetadataV2\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV2\edm\TPropertyRefType[] $key
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyRefType[] $key
      */
     private $key = null;
 
     /**
-     * @property \MetadataV2\edm\TEntityPropertyType[] $property
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityPropertyType[] $property
      */
     private $property = array(
         
     );
 
     /**
-     * @property \MetadataV2\edm\TNavigationPropertyType[] $navigationProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TNavigationPropertyType[] $navigationProperty
      */
     private $navigationProperty = array(
         
@@ -146,7 +146,7 @@ class TEntityTypeType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV2\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -156,10 +156,10 @@ class TEntityTypeType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV2\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV2\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -169,9 +169,9 @@ class TEntityTypeType
      * Adds as propertyRef
      *
      * @return self
-     * @param \MetadataV2\edm\TPropertyRefType $propertyRef
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyRefType $propertyRef
      */
-    public function addToKey(\MetadataV2\edm\TPropertyRefType $propertyRef)
+    public function addToKey(TPropertyRefType $propertyRef)
     {
         $this->key[] = $propertyRef;
         return $this;
@@ -202,7 +202,7 @@ class TEntityTypeType
     /**
      * Gets as key
      *
-     * @return \MetadataV2\edm\TPropertyRefType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyRefType[]
      */
     public function getKey()
     {
@@ -212,7 +212,7 @@ class TEntityTypeType
     /**
      * Sets a new key
      *
-     * @param \MetadataV2\edm\TPropertyRefType[] $key
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyRefType[] $key
      * @return self
      */
     public function setKey(array $key)
@@ -225,9 +225,9 @@ class TEntityTypeType
      * Adds as property
      *
      * @return self
-     * @param \MetadataV2\edm\TEntityPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityPropertyType $property
      */
-    public function addToProperty(\MetadataV2\edm\TEntityPropertyType $property)
+    public function addToProperty(TEntityPropertyType $property)
     {
         $this->property[] = $property;
         return $this;
@@ -258,7 +258,7 @@ class TEntityTypeType
     /**
      * Gets as property
      *
-     * @return \MetadataV2\edm\TEntityPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityPropertyType[]
      */
     public function getProperty()
     {
@@ -268,7 +268,7 @@ class TEntityTypeType
     /**
      * Sets a new property
      *
-     * @param \MetadataV2\edm\TEntityPropertyType[] $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityPropertyType[] $property
      * @return self
      */
     public function setProperty(array $property)
@@ -281,9 +281,9 @@ class TEntityTypeType
      * Adds as navigationProperty
      *
      * @return self
-     * @param \MetadataV2\edm\TNavigationPropertyType $navigationProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TNavigationPropertyType $navigationProperty
      */
-    public function addToNavigationProperty(\MetadataV2\edm\TNavigationPropertyType $navigationProperty)
+    public function addToNavigationProperty(TNavigationPropertyType $navigationProperty)
     {
         $this->navigationProperty[] = $navigationProperty;
         return $this;
@@ -314,7 +314,7 @@ class TEntityTypeType
     /**
      * Gets as navigationProperty
      *
-     * @return \MetadataV2\edm\TNavigationPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TNavigationPropertyType[]
      */
     public function getNavigationProperty()
     {
@@ -324,7 +324,7 @@ class TEntityTypeType
     /**
      * Sets a new navigationProperty
      *
-     * @param \MetadataV2\edm\TNavigationPropertyType[] $navigationProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TNavigationPropertyType[] $navigationProperty
      * @return self
      */
     public function setNavigationProperty(array $navigationProperty)

@@ -27,63 +27,63 @@ class TSchemaType
     private $alias = null;
 
     /**
-     * @property \MetadataV3\edm\TUsingType[] $using
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TUsingType[] $using
      */
     private $using = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TAssociationType[] $association
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType[] $association
      */
     private $association = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TComplexTypeType[] $complexType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType[] $complexType
      */
     private $complexType = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TEntityTypeType[] $entityType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType[] $entityType
      */
     private $entityType = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TEnumTypeType[] $enumType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeType[] $enumType
      */
     private $enumType = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TValueTermType[] $valueTerm
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermType[] $valueTerm
      */
     private $valueTerm = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TFunctionType[] $function
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType[] $function
      */
     private $function = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TAnnotationsType[] $annotations
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnnotationsType[] $annotations
      */
     private $annotations = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\EntityContainer[] $entityContainer
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer[] $entityContainer
      */
     private $entityContainer = array(
         
@@ -159,9 +159,9 @@ class TSchemaType
      * Adds as using
      *
      * @return self
-     * @param \MetadataV3\edm\TUsingType $using
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TUsingType $using
      */
-    public function addToUsing(\MetadataV3\edm\TUsingType $using)
+    public function addToUsing(TUsingType $using)
     {
         $this->using[] = $using;
         return $this;
@@ -192,7 +192,7 @@ class TSchemaType
     /**
      * Gets as using
      *
-     * @return \MetadataV3\edm\TUsingType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TUsingType[]
      */
     public function getUsing()
     {
@@ -202,7 +202,7 @@ class TSchemaType
     /**
      * Sets a new using
      *
-     * @param \MetadataV3\edm\TUsingType[] $using
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TUsingType[] $using
      * @return self
      */
     public function setUsing(array $using)
@@ -215,9 +215,9 @@ class TSchemaType
      * Adds as association
      *
      * @return self
-     * @param \MetadataV3\edm\TAssociationType $association
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType $association
      */
-    public function addToAssociation(\MetadataV3\edm\TAssociationType $association)
+    public function addToAssociation(TAssociationType $association)
     {
         $this->association[] = $association;
         return $this;
@@ -248,7 +248,7 @@ class TSchemaType
     /**
      * Gets as association
      *
-     * @return \MetadataV3\edm\TAssociationType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType[]
      */
     public function getAssociation()
     {
@@ -258,7 +258,7 @@ class TSchemaType
     /**
      * Sets a new association
      *
-     * @param \MetadataV3\edm\TAssociationType[] $association
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType[] $association
      * @return self
      */
     public function setAssociation(array $association)
@@ -271,9 +271,9 @@ class TSchemaType
      * Adds as complexType
      *
      * @return self
-     * @param \MetadataV3\edm\TComplexTypeType $complexType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType $complexType
      */
-    public function addToComplexType(\MetadataV3\edm\TComplexTypeType $complexType)
+    public function addToComplexType(TComplexTypeType $complexType)
     {
         $this->complexType[] = $complexType;
         return $this;
@@ -304,7 +304,7 @@ class TSchemaType
     /**
      * Gets as complexType
      *
-     * @return \MetadataV3\edm\TComplexTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType[]
      */
     public function getComplexType()
     {
@@ -314,7 +314,7 @@ class TSchemaType
     /**
      * Sets a new complexType
      *
-     * @param \MetadataV3\edm\TComplexTypeType[] $complexType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType[] $complexType
      * @return self
      */
     public function setComplexType(array $complexType)
@@ -327,9 +327,9 @@ class TSchemaType
      * Adds as entityType
      *
      * @return self
-     * @param \MetadataV3\edm\TEntityTypeType $entityType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType $entityType
      */
-    public function addToEntityType(\MetadataV3\edm\TEntityTypeType $entityType)
+    public function addToEntityType(TEntityTypeType $entityType)
     {
         $this->entityType[] = $entityType;
         return $this;
@@ -360,7 +360,7 @@ class TSchemaType
     /**
      * Gets as entityType
      *
-     * @return \MetadataV3\edm\TEntityTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType[]
      */
     public function getEntityType()
     {
@@ -370,7 +370,7 @@ class TSchemaType
     /**
      * Sets a new entityType
      *
-     * @param \MetadataV3\edm\TEntityTypeType[] $entityType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType[] $entityType
      * @return self
      */
     public function setEntityType(array $entityType)
@@ -383,9 +383,9 @@ class TSchemaType
      * Adds as enumType
      *
      * @return self
-     * @param \MetadataV3\edm\TEnumTypeType $enumType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeType $enumType
      */
-    public function addToEnumType(\MetadataV3\edm\TEnumTypeType $enumType)
+    public function addToEnumType(TEnumTypeType $enumType)
     {
         $this->enumType[] = $enumType;
         return $this;
@@ -416,7 +416,7 @@ class TSchemaType
     /**
      * Gets as enumType
      *
-     * @return \MetadataV3\edm\TEnumTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeType[]
      */
     public function getEnumType()
     {
@@ -426,7 +426,7 @@ class TSchemaType
     /**
      * Sets a new enumType
      *
-     * @param \MetadataV3\edm\TEnumTypeType[] $enumType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeType[] $enumType
      * @return self
      */
     public function setEnumType(array $enumType)
@@ -439,9 +439,9 @@ class TSchemaType
      * Adds as valueTerm
      *
      * @return self
-     * @param \MetadataV3\edm\TValueTermType $valueTerm
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermType $valueTerm
      */
-    public function addToValueTerm(\MetadataV3\edm\TValueTermType $valueTerm)
+    public function addToValueTerm(TValueTermType $valueTerm)
     {
         $this->valueTerm[] = $valueTerm;
         return $this;
@@ -472,7 +472,7 @@ class TSchemaType
     /**
      * Gets as valueTerm
      *
-     * @return \MetadataV3\edm\TValueTermType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermType[]
      */
     public function getValueTerm()
     {
@@ -482,7 +482,7 @@ class TSchemaType
     /**
      * Sets a new valueTerm
      *
-     * @param \MetadataV3\edm\TValueTermType[] $valueTerm
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermType[] $valueTerm
      * @return self
      */
     public function setValueTerm(array $valueTerm)
@@ -495,9 +495,9 @@ class TSchemaType
      * Adds as function
      *
      * @return self
-     * @param \MetadataV3\edm\TFunctionType $function
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType $function
      */
-    public function addToFunction(\MetadataV3\edm\TFunctionType $function)
+    public function addToFunction(TFunctionType $function)
     {
         $this->function[] = $function;
         return $this;
@@ -528,7 +528,7 @@ class TSchemaType
     /**
      * Gets as function
      *
-     * @return \MetadataV3\edm\TFunctionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType[]
      */
     public function getFunction()
     {
@@ -538,7 +538,7 @@ class TSchemaType
     /**
      * Sets a new function
      *
-     * @param \MetadataV3\edm\TFunctionType[] $function
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType[] $function
      * @return self
      */
     public function setFunction(array $function)
@@ -551,9 +551,9 @@ class TSchemaType
      * Adds as annotations
      *
      * @return self
-     * @param \MetadataV3\edm\TAnnotationsType $annotations
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnnotationsType $annotations
      */
-    public function addToAnnotations(\MetadataV3\edm\TAnnotationsType $annotations)
+    public function addToAnnotations(TAnnotationsType $annotations)
     {
         $this->annotations[] = $annotations;
         return $this;
@@ -584,7 +584,7 @@ class TSchemaType
     /**
      * Gets as annotations
      *
-     * @return \MetadataV3\edm\TAnnotationsType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnnotationsType[]
      */
     public function getAnnotations()
     {
@@ -594,7 +594,7 @@ class TSchemaType
     /**
      * Sets a new annotations
      *
-     * @param \MetadataV3\edm\TAnnotationsType[] $annotations
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnnotationsType[] $annotations
      * @return self
      */
     public function setAnnotations(array $annotations)
@@ -607,9 +607,9 @@ class TSchemaType
      * Adds as entityContainer
      *
      * @return self
-     * @param \MetadataV3\edm\EntityContainer $entityContainer
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer $entityContainer
      */
-    public function addToEntityContainer(\MetadataV3\edm\EntityContainer $entityContainer)
+    public function addToEntityContainer(EntityContainer $entityContainer)
     {
         $this->entityContainer[] = $entityContainer;
         return $this;
@@ -640,7 +640,7 @@ class TSchemaType
     /**
      * Gets as entityContainer
      *
-     * @return \MetadataV3\edm\EntityContainer[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer[]
      */
     public function getEntityContainer()
     {
@@ -650,7 +650,7 @@ class TSchemaType
     /**
      * Sets a new entityContainer
      *
-     * @param \MetadataV3\edm\EntityContainer[] $entityContainer
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer[] $entityContainer
      * @return self
      */
     public function setEntityContainer(array $entityContainer)

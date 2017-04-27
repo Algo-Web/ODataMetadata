@@ -22,26 +22,26 @@ class TComplexTypeType
     private $typeAccess = null;
 
     /**
-     * @property \MetadataV3\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV3\edm\TComplexTypePropertyType[] $property
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType[] $property
      */
     private $property = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      */
     private $valueAnnotation = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      */
     private $typeAnnotation = array(
         
@@ -94,7 +94,7 @@ class TComplexTypeType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV3\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -104,10 +104,10 @@ class TComplexTypeType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV3\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV3\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -117,9 +117,9 @@ class TComplexTypeType
      * Adds as property
      *
      * @return self
-     * @param \MetadataV3\edm\TComplexTypePropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType $property
      */
-    public function addToProperty(\MetadataV3\edm\TComplexTypePropertyType $property)
+    public function addToProperty(TComplexTypePropertyType $property)
     {
         $this->property[] = $property;
         return $this;
@@ -150,7 +150,7 @@ class TComplexTypeType
     /**
      * Gets as property
      *
-     * @return \MetadataV3\edm\TComplexTypePropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType[]
      */
     public function getProperty()
     {
@@ -160,7 +160,7 @@ class TComplexTypeType
     /**
      * Sets a new property
      *
-     * @param \MetadataV3\edm\TComplexTypePropertyType[] $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType[] $property
      * @return self
      */
     public function setProperty(array $property)
@@ -173,9 +173,9 @@ class TComplexTypeType
      * Adds as valueAnnotation
      *
      * @return self
-     * @param \MetadataV3\edm\TValueAnnotationType $valueAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType $valueAnnotation
      */
-    public function addToValueAnnotation(\MetadataV3\edm\TValueAnnotationType $valueAnnotation)
+    public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
         $this->valueAnnotation[] = $valueAnnotation;
         return $this;
@@ -206,7 +206,7 @@ class TComplexTypeType
     /**
      * Gets as valueAnnotation
      *
-     * @return \MetadataV3\edm\TValueAnnotationType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[]
      */
     public function getValueAnnotation()
     {
@@ -216,7 +216,7 @@ class TComplexTypeType
     /**
      * Sets a new valueAnnotation
      *
-     * @param \MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      * @return self
      */
     public function setValueAnnotation(array $valueAnnotation)
@@ -229,9 +229,9 @@ class TComplexTypeType
      * Adds as typeAnnotation
      *
      * @return self
-     * @param \MetadataV3\edm\TTypeAnnotationType $typeAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType $typeAnnotation
      */
-    public function addToTypeAnnotation(\MetadataV3\edm\TTypeAnnotationType $typeAnnotation)
+    public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
         $this->typeAnnotation[] = $typeAnnotation;
         return $this;
@@ -262,7 +262,7 @@ class TComplexTypeType
     /**
      * Gets as typeAnnotation
      *
-     * @return \MetadataV3\edm\TTypeAnnotationType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[]
      */
     public function getTypeAnnotation()
     {
@@ -272,7 +272,7 @@ class TComplexTypeType
     /**
      * Sets a new typeAnnotation
      *
-     * @param \MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      * @return self
      */
     public function setTypeAnnotation(array $typeAnnotation)

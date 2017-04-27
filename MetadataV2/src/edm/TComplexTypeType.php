@@ -22,12 +22,12 @@ class TComplexTypeType
     private $typeAccess = null;
 
     /**
-     * @property \MetadataV2\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV2\edm\TComplexTypePropertyType[] $property
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TComplexTypePropertyType[] $property
      */
     private $property = array(
         
@@ -80,7 +80,7 @@ class TComplexTypeType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV2\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -90,10 +90,10 @@ class TComplexTypeType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV2\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV2\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -103,9 +103,9 @@ class TComplexTypeType
      * Adds as property
      *
      * @return self
-     * @param \MetadataV2\edm\TComplexTypePropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TComplexTypePropertyType $property
      */
-    public function addToProperty(\MetadataV2\edm\TComplexTypePropertyType $property)
+    public function addToProperty(TComplexTypePropertyType $property)
     {
         $this->property[] = $property;
         return $this;
@@ -136,7 +136,7 @@ class TComplexTypeType
     /**
      * Gets as property
      *
-     * @return \MetadataV2\edm\TComplexTypePropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TComplexTypePropertyType[]
      */
     public function getProperty()
     {
@@ -146,7 +146,7 @@ class TComplexTypeType
     /**
      * Sets a new property
      *
-     * @param \MetadataV2\edm\TComplexTypePropertyType[] $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TComplexTypePropertyType[] $property
      * @return self
      */
     public function setProperty(array $property)

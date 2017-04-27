@@ -12,13 +12,13 @@ class TAssociationSetModificationFunctionMappingType
 {
 
     /**
-     * @property \MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
      * $deleteFunction
      */
     private $deleteFunction = null;
 
     /**
-     * @property \MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
      * $insertFunction
      */
     private $insertFunction = null;
@@ -26,7 +26,7 @@ class TAssociationSetModificationFunctionMappingType
     /**
      * Gets as deleteFunction
      *
-     * @return \MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
      */
     public function getDeleteFunction()
     {
@@ -36,11 +36,11 @@ class TAssociationSetModificationFunctionMappingType
     /**
      * Sets a new deleteFunction
      *
-     * @param \MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
      * $deleteFunction
      * @return self
      */
-    public function setDeleteFunction(\MetadataV1\mapping\cs\TAssociationSetModificationFunctionType $deleteFunction)
+    public function setDeleteFunction(TAssociationSetModificationFunctionType $deleteFunction)
     {
         $this->deleteFunction = $deleteFunction;
         return $this;
@@ -49,7 +49,7 @@ class TAssociationSetModificationFunctionMappingType
     /**
      * Gets as insertFunction
      *
-     * @return \MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
      */
     public function getInsertFunction()
     {
@@ -59,11 +59,11 @@ class TAssociationSetModificationFunctionMappingType
     /**
      * Sets a new insertFunction
      *
-     * @param \MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
      * $insertFunction
      * @return self
      */
-    public function setInsertFunction(\MetadataV1\mapping\cs\TAssociationSetModificationFunctionType $insertFunction)
+    public function setInsertFunction(TAssociationSetModificationFunctionType $insertFunction)
     {
         $this->insertFunction = $insertFunction;
         return $this;

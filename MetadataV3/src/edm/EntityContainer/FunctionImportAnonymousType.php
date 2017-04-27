@@ -14,14 +14,14 @@ class FunctionImportAnonymousType
     private $name = null;
 
     /**
-     * @property \MetadataV3\edm\TFunctionImportReturnTypeType[] $returnType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType[] $returnType
      */
     private $returnType = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TOperandType $entitySet
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
      */
     private $entitySet = null;
 
@@ -46,12 +46,12 @@ class FunctionImportAnonymousType
     private $methodAccess = null;
 
     /**
-     * @property \MetadataV3\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV3\edm\TFunctionImportParameterType[] $parameter
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType[] $parameter
      */
     private $parameter = array(
         
@@ -83,9 +83,9 @@ class FunctionImportAnonymousType
      * Adds as returnType
      *
      * @return self
-     * @param \MetadataV3\edm\TFunctionImportReturnTypeType $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType $returnType
      */
-    public function addToReturnType(\MetadataV3\edm\TFunctionImportReturnTypeType $returnType)
+    public function addToReturnType(TFunctionImportReturnTypeType $returnType)
     {
         $this->returnType[] = $returnType;
         return $this;
@@ -116,7 +116,7 @@ class FunctionImportAnonymousType
     /**
      * Gets as returnType
      *
-     * @return \MetadataV3\edm\TFunctionImportReturnTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType[]
      */
     public function getReturnType()
     {
@@ -126,7 +126,7 @@ class FunctionImportAnonymousType
     /**
      * Sets a new returnType
      *
-     * @param \MetadataV3\edm\TFunctionImportReturnTypeType[] $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType[] $returnType
      * @return self
      */
     public function setReturnType(array $returnType)
@@ -138,7 +138,7 @@ class FunctionImportAnonymousType
     /**
      * Gets as entitySet
      *
-     * @return \MetadataV3\edm\TOperandType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType
      */
     public function getEntitySet()
     {
@@ -148,10 +148,10 @@ class FunctionImportAnonymousType
     /**
      * Sets a new entitySet
      *
-     * @param \MetadataV3\edm\TOperandType $entitySet
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
      * @return self
      */
-    public function setEntitySet(\MetadataV3\edm\TOperandType $entitySet)
+    public function setEntitySet(TOperandType $entitySet)
     {
         $this->entitySet = $entitySet;
         return $this;
@@ -248,7 +248,7 @@ class FunctionImportAnonymousType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV3\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -258,10 +258,10 @@ class FunctionImportAnonymousType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV3\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV3\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -271,9 +271,9 @@ class FunctionImportAnonymousType
      * Adds as parameter
      *
      * @return self
-     * @param \MetadataV3\edm\TFunctionImportParameterType $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType $parameter
      */
-    public function addToParameter(\MetadataV3\edm\TFunctionImportParameterType $parameter)
+    public function addToParameter(TFunctionImportParameterType $parameter)
     {
         $this->parameter[] = $parameter;
         return $this;
@@ -304,7 +304,7 @@ class FunctionImportAnonymousType
     /**
      * Gets as parameter
      *
-     * @return \MetadataV3\edm\TFunctionImportParameterType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType[]
      */
     public function getParameter()
     {
@@ -314,7 +314,7 @@ class FunctionImportAnonymousType
     /**
      * Sets a new parameter
      *
-     * @param \MetadataV3\edm\TFunctionImportParameterType[] $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)

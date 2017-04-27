@@ -47,7 +47,7 @@ class TFunctionImportParameterType
     private $sRID = null;
 
     /**
-     * @property \MetadataV3\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
@@ -208,7 +208,7 @@ class TFunctionImportParameterType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV3\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -218,10 +218,10 @@ class TFunctionImportParameterType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV3\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV3\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;

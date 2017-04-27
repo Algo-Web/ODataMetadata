@@ -17,17 +17,17 @@ class TEntityTypeType
     private $name = null;
 
     /**
-     * @property \MetadataV2\edm\ssdl\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV2\edm\ssdl\TPropertyRefType[] $key
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TPropertyRefType[] $key
      */
     private $key = null;
 
     /**
-     * @property \MetadataV2\edm\ssdl\TEntityPropertyType[] $property
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TEntityPropertyType[] $property
      */
     private $property = array(
         
@@ -58,7 +58,7 @@ class TEntityTypeType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV2\edm\ssdl\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -68,10 +68,10 @@ class TEntityTypeType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV2\edm\ssdl\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV2\edm\ssdl\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -81,9 +81,9 @@ class TEntityTypeType
      * Adds as propertyRef
      *
      * @return self
-     * @param \MetadataV2\edm\ssdl\TPropertyRefType $propertyRef
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TPropertyRefType $propertyRef
      */
-    public function addToKey(\MetadataV2\edm\ssdl\TPropertyRefType $propertyRef)
+    public function addToKey(TPropertyRefType $propertyRef)
     {
         $this->key[] = $propertyRef;
         return $this;
@@ -114,7 +114,7 @@ class TEntityTypeType
     /**
      * Gets as key
      *
-     * @return \MetadataV2\edm\ssdl\TPropertyRefType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TPropertyRefType[]
      */
     public function getKey()
     {
@@ -124,7 +124,7 @@ class TEntityTypeType
     /**
      * Sets a new key
      *
-     * @param \MetadataV2\edm\ssdl\TPropertyRefType[] $key
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TPropertyRefType[] $key
      * @return self
      */
     public function setKey(array $key)
@@ -137,9 +137,9 @@ class TEntityTypeType
      * Adds as property
      *
      * @return self
-     * @param \MetadataV2\edm\ssdl\TEntityPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TEntityPropertyType $property
      */
-    public function addToProperty(\MetadataV2\edm\ssdl\TEntityPropertyType $property)
+    public function addToProperty(TEntityPropertyType $property)
     {
         $this->property[] = $property;
         return $this;
@@ -170,7 +170,7 @@ class TEntityTypeType
     /**
      * Gets as property
      *
-     * @return \MetadataV2\edm\ssdl\TEntityPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TEntityPropertyType[]
      */
     public function getProperty()
     {
@@ -180,7 +180,7 @@ class TEntityTypeType
     /**
      * Sets a new property
      *
-     * @param \MetadataV2\edm\ssdl\TEntityPropertyType[] $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TEntityPropertyType[] $property
      * @return self
      */
     public function setProperty(array $property)

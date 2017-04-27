@@ -10,7 +10,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits;
 trait TypeAssertTrait
 {
     /**
-     * @property \MetadataV3\edm\TTypeAssertExpressionType[] $typeAssert
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType[] $typeAssert
      */
     private $typeAssert = array(
         
@@ -22,9 +22,9 @@ trait TypeAssertTrait
      * Adds as typeAssert
      *
      * @return self
-     * @param \MetadataV3\edm\TTypeAssertExpressionType $typeAssert
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType $typeAssert
      */
-    public function addToTypeAssert(\MetadataV3\edm\TTypeAssertExpressionType $typeAssert)
+    public function addToTypeAssert(TTypeAssertExpressionType $typeAssert)
     {
         $this->typeAssert[] = $typeAssert;
         return $this;
@@ -55,7 +55,7 @@ trait TypeAssertTrait
     /**
      * Gets as typeAssert
      *
-     * @return \MetadataV3\edm\TTypeAssertExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType[]
      */
     public function getTypeAssert()
     {
@@ -65,7 +65,7 @@ trait TypeAssertTrait
     /**
      * Sets a new typeAssert
      *
-     * @param \MetadataV3\edm\TTypeAssertExpressionType[] $typeAssert
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType[] $typeAssert
      * @return self
      */
     public function setTypeAssert(array $typeAssert)

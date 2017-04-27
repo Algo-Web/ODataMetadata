@@ -22,21 +22,21 @@ class TComplexTypeMappingType
     private $isPartial = null;
 
     /**
-     * @property \MetadataV2\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
     private $scalarProperty = array(
         
     );
 
     /**
-     * @property \MetadataV2\mapping\cs\TComplexPropertyType[] $complexProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TComplexPropertyType[] $complexProperty
      */
     private $complexProperty = array(
         
     );
 
     /**
-     * @property \MetadataV2\mapping\cs\TConditionType[] $condition
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TConditionType[] $condition
      */
     private $condition = array(
         
@@ -90,9 +90,9 @@ class TComplexTypeMappingType
      * Adds as scalarProperty
      *
      * @return self
-     * @param \MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty
      */
-    public function addToScalarProperty(\MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty)
+    public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
         $this->scalarProperty[] = $scalarProperty;
         return $this;
@@ -123,7 +123,7 @@ class TComplexTypeMappingType
     /**
      * Gets as scalarProperty
      *
-     * @return \MetadataV2\mapping\cs\TScalarPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType[]
      */
     public function getScalarProperty()
     {
@@ -133,7 +133,7 @@ class TComplexTypeMappingType
     /**
      * Sets a new scalarProperty
      *
-     * @param \MetadataV2\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
      */
     public function setScalarProperty(array $scalarProperty)
@@ -146,9 +146,9 @@ class TComplexTypeMappingType
      * Adds as complexProperty
      *
      * @return self
-     * @param \MetadataV2\mapping\cs\TComplexPropertyType $complexProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TComplexPropertyType $complexProperty
      */
-    public function addToComplexProperty(\MetadataV2\mapping\cs\TComplexPropertyType $complexProperty)
+    public function addToComplexProperty(TComplexPropertyType $complexProperty)
     {
         $this->complexProperty[] = $complexProperty;
         return $this;
@@ -179,7 +179,7 @@ class TComplexTypeMappingType
     /**
      * Gets as complexProperty
      *
-     * @return \MetadataV2\mapping\cs\TComplexPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TComplexPropertyType[]
      */
     public function getComplexProperty()
     {
@@ -189,7 +189,7 @@ class TComplexTypeMappingType
     /**
      * Sets a new complexProperty
      *
-     * @param \MetadataV2\mapping\cs\TComplexPropertyType[] $complexProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TComplexPropertyType[] $complexProperty
      * @return self
      */
     public function setComplexProperty(array $complexProperty)
@@ -202,9 +202,9 @@ class TComplexTypeMappingType
      * Adds as condition
      *
      * @return self
-     * @param \MetadataV2\mapping\cs\TConditionType $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TConditionType $condition
      */
-    public function addToCondition(\MetadataV2\mapping\cs\TConditionType $condition)
+    public function addToCondition(TConditionType $condition)
     {
         $this->condition[] = $condition;
         return $this;
@@ -235,7 +235,7 @@ class TComplexTypeMappingType
     /**
      * Gets as condition
      *
-     * @return \MetadataV2\mapping\cs\TConditionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TConditionType[]
      */
     public function getCondition()
     {
@@ -245,7 +245,7 @@ class TComplexTypeMappingType
     /**
      * Sets a new condition
      *
-     * @param \MetadataV2\mapping\cs\TConditionType[] $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TConditionType[] $condition
      * @return self
      */
     public function setCondition(array $condition)

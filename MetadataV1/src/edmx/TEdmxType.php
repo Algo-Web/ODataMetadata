@@ -2,6 +2,8 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edmx;
 
+use AlgoWeb\ODataMetadata\MetadataV1\edm\Schema;
+
 /**
  * Class representing TEdmxType
  *
@@ -17,17 +19,17 @@ class TEdmxType
     private $version = null;
 
     /**
-     * @property \MetadataV1\edmx\TDesignerType $designer
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDesignerType $designer
      */
     private $designer = null;
 
     /**
-     * @property \MetadataV1\edmx\TRuntimeType $runtime
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edmx\TRuntimeType $runtime
      */
     private $runtime = null;
 
     /**
-     * @property \MetadataV1\edm\Schema[] $dataServices
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\Schema[] $dataServices
      */
     private $dataServices = null;
 
@@ -56,7 +58,7 @@ class TEdmxType
     /**
      * Gets as designer
      *
-     * @return \MetadataV1\edmx\TDesignerType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDesignerType
      */
     public function getDesigner()
     {
@@ -66,10 +68,10 @@ class TEdmxType
     /**
      * Sets a new designer
      *
-     * @param \MetadataV1\edmx\TDesignerType $designer
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDesignerType $designer
      * @return self
      */
-    public function setDesigner(\MetadataV1\edmx\TDesignerType $designer)
+    public function setDesigner(TDesignerType $designer)
     {
         $this->designer = $designer;
         return $this;
@@ -78,7 +80,7 @@ class TEdmxType
     /**
      * Gets as runtime
      *
-     * @return \MetadataV1\edmx\TRuntimeType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edmx\TRuntimeType
      */
     public function getRuntime()
     {
@@ -88,10 +90,10 @@ class TEdmxType
     /**
      * Sets a new runtime
      *
-     * @param \MetadataV1\edmx\TRuntimeType $runtime
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TRuntimeType $runtime
      * @return self
      */
-    public function setRuntime(\MetadataV1\edmx\TRuntimeType $runtime)
+    public function setRuntime(TRuntimeType $runtime)
     {
         $this->runtime = $runtime;
         return $this;
@@ -101,9 +103,9 @@ class TEdmxType
      * Adds as schema
      *
      * @return self
-     * @param \MetadataV1\edm\Schema $schema
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\Schema $schema
      */
-    public function addToDataServices(\MetadataV1\edm\Schema $schema)
+    public function addToDataServices(Schema $schema)
     {
         $this->dataServices[] = $schema;
         return $this;
@@ -134,7 +136,7 @@ class TEdmxType
     /**
      * Gets as dataServices
      *
-     * @return \MetadataV1\edm\Schema[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\Schema[]
      */
     public function getDataServices()
     {
@@ -144,7 +146,7 @@ class TEdmxType
     /**
      * Sets a new dataServices
      *
-     * @param \MetadataV1\edm\Schema[] $dataServices
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\Schema[] $dataServices
      * @return self
      */
     public function setDataServices(array $dataServices)

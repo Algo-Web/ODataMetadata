@@ -17,7 +17,7 @@ class TFunctionType
     private $name = null;
 
     /**
-     * @property \MetadataV2\edm\TFunctionReturnTypeType[] $returnType
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType[] $returnType
      */
     private $returnType = array(
         
@@ -64,12 +64,12 @@ class TFunctionType
     private $collation = null;
 
     /**
-     * @property \MetadataV2\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV2\edm\TFunctionParameterType[] $parameter
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType[] $parameter
      */
     private $parameter = array(
         
@@ -108,9 +108,9 @@ class TFunctionType
      * Adds as returnType
      *
      * @return self
-     * @param \MetadataV2\edm\TFunctionReturnTypeType $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType $returnType
      */
-    public function addToReturnType(\MetadataV2\edm\TFunctionReturnTypeType $returnType)
+    public function addToReturnType(TFunctionReturnTypeType $returnType)
     {
         $this->returnType[] = $returnType;
         return $this;
@@ -141,7 +141,7 @@ class TFunctionType
     /**
      * Gets as returnType
      *
-     * @return \MetadataV2\edm\TFunctionReturnTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType[]
      */
     public function getReturnType()
     {
@@ -151,7 +151,7 @@ class TFunctionType
     /**
      * Sets a new returnType
      *
-     * @param \MetadataV2\edm\TFunctionReturnTypeType[] $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType[] $returnType
      * @return self
      */
     public function setReturnType(array $returnType)
@@ -339,7 +339,7 @@ class TFunctionType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV2\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -349,10 +349,10 @@ class TFunctionType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV2\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV2\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -362,9 +362,9 @@ class TFunctionType
      * Adds as parameter
      *
      * @return self
-     * @param \MetadataV2\edm\TFunctionParameterType $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType $parameter
      */
-    public function addToParameter(\MetadataV2\edm\TFunctionParameterType $parameter)
+    public function addToParameter(TFunctionParameterType $parameter)
     {
         $this->parameter[] = $parameter;
         return $this;
@@ -395,7 +395,7 @@ class TFunctionType
     /**
      * Gets as parameter
      *
-     * @return \MetadataV2\edm\TFunctionParameterType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType[]
      */
     public function getParameter()
     {
@@ -405,7 +405,7 @@ class TFunctionType
     /**
      * Sets a new parameter
      *
-     * @param \MetadataV2\edm\TFunctionParameterType[] $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)

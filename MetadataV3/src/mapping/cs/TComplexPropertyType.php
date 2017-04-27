@@ -27,28 +27,28 @@ class TComplexPropertyType
     private $isPartial = null;
 
     /**
-     * @property \MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
     private $scalarProperty = array(
         
     );
 
     /**
-     * @property \MetadataV3\mapping\cs\TComplexPropertyType[] $complexProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType[] $complexProperty
      */
     private $complexProperty = array(
         
     );
 
     /**
-     * @property \MetadataV3\mapping\cs\TComplexTypeMappingType[] $complexTypeMapping
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType[] $complexTypeMapping
      */
     private $complexTypeMapping = array(
         
     );
 
     /**
-     * @property \MetadataV3\mapping\cs\TConditionType[] $condition
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType[] $condition
      */
     private $condition = array(
         
@@ -124,9 +124,9 @@ class TComplexPropertyType
      * Adds as scalarProperty
      *
      * @return self
-     * @param \MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
      */
-    public function addToScalarProperty(\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty)
+    public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
         $this->scalarProperty[] = $scalarProperty;
         return $this;
@@ -157,7 +157,7 @@ class TComplexPropertyType
     /**
      * Gets as scalarProperty
      *
-     * @return \MetadataV3\mapping\cs\TScalarPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[]
      */
     public function getScalarProperty()
     {
@@ -167,7 +167,7 @@ class TComplexPropertyType
     /**
      * Sets a new scalarProperty
      *
-     * @param \MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
      */
     public function setScalarProperty(array $scalarProperty)
@@ -180,9 +180,9 @@ class TComplexPropertyType
      * Adds as complexProperty
      *
      * @return self
-     * @param \MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
      */
-    public function addToComplexProperty(\MetadataV3\mapping\cs\TComplexPropertyType $complexProperty)
+    public function addToComplexProperty(TComplexPropertyType $complexProperty)
     {
         $this->complexProperty[] = $complexProperty;
         return $this;
@@ -213,7 +213,7 @@ class TComplexPropertyType
     /**
      * Gets as complexProperty
      *
-     * @return \MetadataV3\mapping\cs\TComplexPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType[]
      */
     public function getComplexProperty()
     {
@@ -223,7 +223,7 @@ class TComplexPropertyType
     /**
      * Sets a new complexProperty
      *
-     * @param \MetadataV3\mapping\cs\TComplexPropertyType[] $complexProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType[] $complexProperty
      * @return self
      */
     public function setComplexProperty(array $complexProperty)
@@ -236,9 +236,9 @@ class TComplexPropertyType
      * Adds as complexTypeMapping
      *
      * @return self
-     * @param \MetadataV3\mapping\cs\TComplexTypeMappingType $complexTypeMapping
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType $complexTypeMapping
      */
-    public function addToComplexTypeMapping(\MetadataV3\mapping\cs\TComplexTypeMappingType $complexTypeMapping)
+    public function addToComplexTypeMapping(TComplexTypeMappingType $complexTypeMapping)
     {
         $this->complexTypeMapping[] = $complexTypeMapping;
         return $this;
@@ -269,7 +269,7 @@ class TComplexPropertyType
     /**
      * Gets as complexTypeMapping
      *
-     * @return \MetadataV3\mapping\cs\TComplexTypeMappingType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType[]
      */
     public function getComplexTypeMapping()
     {
@@ -279,7 +279,7 @@ class TComplexPropertyType
     /**
      * Sets a new complexTypeMapping
      *
-     * @param \MetadataV3\mapping\cs\TComplexTypeMappingType[] $complexTypeMapping
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType[] $complexTypeMapping
      * @return self
      */
     public function setComplexTypeMapping(array $complexTypeMapping)
@@ -292,9 +292,9 @@ class TComplexPropertyType
      * Adds as condition
      *
      * @return self
-     * @param \MetadataV3\mapping\cs\TConditionType $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType $condition
      */
-    public function addToCondition(\MetadataV3\mapping\cs\TConditionType $condition)
+    public function addToCondition(TConditionType $condition)
     {
         $this->condition[] = $condition;
         return $this;
@@ -325,7 +325,7 @@ class TComplexPropertyType
     /**
      * Gets as condition
      *
-     * @return \MetadataV3\mapping\cs\TConditionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType[]
      */
     public function getCondition()
     {
@@ -335,7 +335,7 @@ class TComplexPropertyType
     /**
      * Sets a new condition
      *
-     * @param \MetadataV3\mapping\cs\TConditionType[] $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType[] $condition
      * @return self
      */
     public function setCondition(array $condition)

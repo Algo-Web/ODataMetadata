@@ -37,38 +37,38 @@ class TEntityTypeType
     private $typeAccess = null;
 
     /**
-     * @property \MetadataV3\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV3\edm\TPropertyRefType[] $key
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType[] $key
      */
     private $key = null;
 
     /**
-     * @property \MetadataV3\edm\TEntityPropertyType[] $property
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType[] $property
      */
     private $property = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TNavigationPropertyType[] $navigationProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType[] $navigationProperty
      */
     private $navigationProperty = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      */
     private $valueAnnotation = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      */
     private $typeAnnotation = array(
         
@@ -187,7 +187,7 @@ class TEntityTypeType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV3\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -197,10 +197,10 @@ class TEntityTypeType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV3\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV3\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -210,9 +210,9 @@ class TEntityTypeType
      * Adds as propertyRef
      *
      * @return self
-     * @param \MetadataV3\edm\TPropertyRefType $propertyRef
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType $propertyRef
      */
-    public function addToKey(\MetadataV3\edm\TPropertyRefType $propertyRef)
+    public function addToKey(TPropertyRefType $propertyRef)
     {
         $this->key[] = $propertyRef;
         return $this;
@@ -243,7 +243,7 @@ class TEntityTypeType
     /**
      * Gets as key
      *
-     * @return \MetadataV3\edm\TPropertyRefType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType[]
      */
     public function getKey()
     {
@@ -253,7 +253,7 @@ class TEntityTypeType
     /**
      * Sets a new key
      *
-     * @param \MetadataV3\edm\TPropertyRefType[] $key
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType[] $key
      * @return self
      */
     public function setKey(array $key)
@@ -266,9 +266,9 @@ class TEntityTypeType
      * Adds as property
      *
      * @return self
-     * @param \MetadataV3\edm\TEntityPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType $property
      */
-    public function addToProperty(\MetadataV3\edm\TEntityPropertyType $property)
+    public function addToProperty(TEntityPropertyType $property)
     {
         $this->property[] = $property;
         return $this;
@@ -299,7 +299,7 @@ class TEntityTypeType
     /**
      * Gets as property
      *
-     * @return \MetadataV3\edm\TEntityPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType[]
      */
     public function getProperty()
     {
@@ -309,7 +309,7 @@ class TEntityTypeType
     /**
      * Sets a new property
      *
-     * @param \MetadataV3\edm\TEntityPropertyType[] $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType[] $property
      * @return self
      */
     public function setProperty(array $property)
@@ -322,9 +322,9 @@ class TEntityTypeType
      * Adds as navigationProperty
      *
      * @return self
-     * @param \MetadataV3\edm\TNavigationPropertyType $navigationProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType $navigationProperty
      */
-    public function addToNavigationProperty(\MetadataV3\edm\TNavigationPropertyType $navigationProperty)
+    public function addToNavigationProperty(TNavigationPropertyType $navigationProperty)
     {
         $this->navigationProperty[] = $navigationProperty;
         return $this;
@@ -355,7 +355,7 @@ class TEntityTypeType
     /**
      * Gets as navigationProperty
      *
-     * @return \MetadataV3\edm\TNavigationPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType[]
      */
     public function getNavigationProperty()
     {
@@ -365,7 +365,7 @@ class TEntityTypeType
     /**
      * Sets a new navigationProperty
      *
-     * @param \MetadataV3\edm\TNavigationPropertyType[] $navigationProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType[] $navigationProperty
      * @return self
      */
     public function setNavigationProperty(array $navigationProperty)
@@ -378,9 +378,9 @@ class TEntityTypeType
      * Adds as valueAnnotation
      *
      * @return self
-     * @param \MetadataV3\edm\TValueAnnotationType $valueAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType $valueAnnotation
      */
-    public function addToValueAnnotation(\MetadataV3\edm\TValueAnnotationType $valueAnnotation)
+    public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
         $this->valueAnnotation[] = $valueAnnotation;
         return $this;
@@ -411,7 +411,7 @@ class TEntityTypeType
     /**
      * Gets as valueAnnotation
      *
-     * @return \MetadataV3\edm\TValueAnnotationType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[]
      */
     public function getValueAnnotation()
     {
@@ -421,7 +421,7 @@ class TEntityTypeType
     /**
      * Sets a new valueAnnotation
      *
-     * @param \MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      * @return self
      */
     public function setValueAnnotation(array $valueAnnotation)
@@ -434,9 +434,9 @@ class TEntityTypeType
      * Adds as typeAnnotation
      *
      * @return self
-     * @param \MetadataV3\edm\TTypeAnnotationType $typeAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType $typeAnnotation
      */
-    public function addToTypeAnnotation(\MetadataV3\edm\TTypeAnnotationType $typeAnnotation)
+    public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
         $this->typeAnnotation[] = $typeAnnotation;
         return $this;
@@ -467,7 +467,7 @@ class TEntityTypeType
     /**
      * Gets as typeAnnotation
      *
-     * @return \MetadataV3\edm\TTypeAnnotationType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[]
      */
     public function getTypeAnnotation()
     {
@@ -477,7 +477,7 @@ class TEntityTypeType
     /**
      * Sets a new typeAnnotation
      *
-     * @param \MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      * @return self
      */
     public function setTypeAnnotation(array $typeAnnotation)

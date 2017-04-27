@@ -17,7 +17,7 @@ class TFunctionMappingEndPropertyType
     private $name = null;
 
     /**
-     * @property \MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType
      * $scalarProperty
      */
     private $scalarProperty = null;
@@ -47,7 +47,7 @@ class TFunctionMappingEndPropertyType
     /**
      * Gets as scalarProperty
      *
-     * @return \MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType
      */
     public function getScalarProperty()
     {
@@ -57,10 +57,10 @@ class TFunctionMappingEndPropertyType
     /**
      * Sets a new scalarProperty
      *
-     * @param \MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType $scalarProperty
      * @return self
      */
-    public function setScalarProperty(\MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType $scalarProperty)
+    public function setScalarProperty(TFunctionMappingScalarPropertyType $scalarProperty)
     {
         $this->scalarProperty = $scalarProperty;
         return $this;

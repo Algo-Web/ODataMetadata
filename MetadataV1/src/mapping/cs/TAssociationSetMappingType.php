@@ -32,21 +32,21 @@ class TAssociationSetMappingType
     private $queryView = null;
 
     /**
-     * @property \MetadataV1\mapping\cs\TEndPropertyType[] $endProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEndPropertyType[] $endProperty
      */
     private $endProperty = array(
         
     );
 
     /**
-     * @property \MetadataV1\mapping\cs\TConditionType[] $condition
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType[] $condition
      */
     private $condition = array(
         
     );
 
     /**
-     * @property \MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType
      * $modificationFunctionMapping
      */
     private $modificationFunctionMapping = null;
@@ -143,9 +143,9 @@ class TAssociationSetMappingType
      * Adds as endProperty
      *
      * @return self
-     * @param \MetadataV1\mapping\cs\TEndPropertyType $endProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEndPropertyType $endProperty
      */
-    public function addToEndProperty(\MetadataV1\mapping\cs\TEndPropertyType $endProperty)
+    public function addToEndProperty(TEndPropertyType $endProperty)
     {
         $this->endProperty[] = $endProperty;
         return $this;
@@ -176,7 +176,7 @@ class TAssociationSetMappingType
     /**
      * Gets as endProperty
      *
-     * @return \MetadataV1\mapping\cs\TEndPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEndPropertyType[]
      */
     public function getEndProperty()
     {
@@ -186,7 +186,7 @@ class TAssociationSetMappingType
     /**
      * Sets a new endProperty
      *
-     * @param \MetadataV1\mapping\cs\TEndPropertyType[] $endProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEndPropertyType[] $endProperty
      * @return self
      */
     public function setEndProperty(array $endProperty)
@@ -199,9 +199,9 @@ class TAssociationSetMappingType
      * Adds as condition
      *
      * @return self
-     * @param \MetadataV1\mapping\cs\TConditionType $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType $condition
      */
-    public function addToCondition(\MetadataV1\mapping\cs\TConditionType $condition)
+    public function addToCondition(TConditionType $condition)
     {
         $this->condition[] = $condition;
         return $this;
@@ -232,7 +232,7 @@ class TAssociationSetMappingType
     /**
      * Gets as condition
      *
-     * @return \MetadataV1\mapping\cs\TConditionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType[]
      */
     public function getCondition()
     {
@@ -242,7 +242,7 @@ class TAssociationSetMappingType
     /**
      * Sets a new condition
      *
-     * @param \MetadataV1\mapping\cs\TConditionType[] $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType[] $condition
      * @return self
      */
     public function setCondition(array $condition)
@@ -254,7 +254,7 @@ class TAssociationSetMappingType
     /**
      * Gets as modificationFunctionMapping
      *
-     * @return \MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType
      */
     public function getModificationFunctionMapping()
     {
@@ -264,11 +264,11 @@ class TAssociationSetMappingType
     /**
      * Sets a new modificationFunctionMapping
      *
-     * @param \MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType
      * $modificationFunctionMapping
      * @return self
      */
-    public function setModificationFunctionMapping(\MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType $modificationFunctionMapping)
+    public function setModificationFunctionMapping(TAssociationSetModificationFunctionMappingType $modificationFunctionMapping)
     {
         $this->modificationFunctionMapping = $modificationFunctionMapping;
         return $this;

@@ -17,7 +17,7 @@ class TRecordExpressionType
     private $type = null;
 
     /**
-     * @property \MetadataV3\edm\TPropertyValueType[] $propertyValue
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[] $propertyValue
      */
     private $propertyValue = array(
         
@@ -49,9 +49,9 @@ class TRecordExpressionType
      * Adds as propertyValue
      *
      * @return self
-     * @param \MetadataV3\edm\TPropertyValueType $propertyValue
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType $propertyValue
      */
-    public function addToPropertyValue(\MetadataV3\edm\TPropertyValueType $propertyValue)
+    public function addToPropertyValue(TPropertyValueType $propertyValue)
     {
         $this->propertyValue[] = $propertyValue;
         return $this;
@@ -82,7 +82,7 @@ class TRecordExpressionType
     /**
      * Gets as propertyValue
      *
-     * @return \MetadataV3\edm\TPropertyValueType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[]
      */
     public function getPropertyValue()
     {
@@ -92,7 +92,7 @@ class TRecordExpressionType
     /**
      * Sets a new propertyValue
      *
-     * @param \MetadataV3\edm\TPropertyValueType[] $propertyValue
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[] $propertyValue
      * @return self
      */
     public function setPropertyValue(array $propertyValue)

@@ -12,7 +12,7 @@ class TFunctionImportMappingResultMappingType
 {
 
     /**
-     * @property \MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType[]
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType[]
      * $entityTypeMapping
      */
     private $entityTypeMapping = array(
@@ -20,7 +20,7 @@ class TFunctionImportMappingResultMappingType
     );
 
     /**
-     * @property \MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
      * $complexTypeMapping
      */
     private $complexTypeMapping = null;
@@ -29,10 +29,10 @@ class TFunctionImportMappingResultMappingType
      * Adds as entityTypeMapping
      *
      * @return self
-     * @param \MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType
      * $entityTypeMapping
      */
-    public function addToEntityTypeMapping(\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType $entityTypeMapping)
+    public function addToEntityTypeMapping(TFunctionImportEntityTypeMappingType $entityTypeMapping)
     {
         $this->entityTypeMapping[] = $entityTypeMapping;
         return $this;
@@ -63,7 +63,7 @@ class TFunctionImportMappingResultMappingType
     /**
      * Gets as entityTypeMapping
      *
-     * @return \MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType[]
      */
     public function getEntityTypeMapping()
     {
@@ -73,7 +73,7 @@ class TFunctionImportMappingResultMappingType
     /**
      * Sets a new entityTypeMapping
      *
-     * @param \MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType[]
      * $entityTypeMapping
      * @return self
      */
@@ -86,7 +86,7 @@ class TFunctionImportMappingResultMappingType
     /**
      * Gets as complexTypeMapping
      *
-     * @return \MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
      */
     public function getComplexTypeMapping()
     {
@@ -96,11 +96,11 @@ class TFunctionImportMappingResultMappingType
     /**
      * Sets a new complexTypeMapping
      *
-     * @param \MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
      * $complexTypeMapping
      * @return self
      */
-    public function setComplexTypeMapping(\MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType $complexTypeMapping)
+    public function setComplexTypeMapping(TFunctionImportComplexTypeMappingType $complexTypeMapping)
     {
         $this->complexTypeMapping = $complexTypeMapping;
         return $this;

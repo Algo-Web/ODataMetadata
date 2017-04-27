@@ -2,6 +2,8 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\AssociationSetAnonymousType;
 
+use AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType;
+
 /**
  * Class representing EndAnonymousType
  */
@@ -19,7 +21,7 @@ class EndAnonymousType
     private $entitySet = null;
 
     /**
-     * @property \MetadataV1\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
@@ -70,7 +72,7 @@ class EndAnonymousType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV1\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -80,10 +82,10 @@ class EndAnonymousType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV1\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV1\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;

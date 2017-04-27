@@ -37,21 +37,21 @@ class TNavigationPropertyType
     private $containsTarget = null;
 
     /**
-     * @property \MetadataV4\edm\TReferentialConstraintType[] $referentialConstraint
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType[] $referentialConstraint
      */
     private $referentialConstraint = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TOnDeleteType[] $onDelete
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType[] $onDelete
      */
     private $onDelete = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\Annotation[] $annotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
     private $annotation = array(
         
@@ -171,9 +171,9 @@ class TNavigationPropertyType
      * Adds as referentialConstraint
      *
      * @return self
-     * @param \MetadataV4\edm\TReferentialConstraintType $referentialConstraint
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType $referentialConstraint
      */
-    public function addToReferentialConstraint(\MetadataV4\edm\TReferentialConstraintType $referentialConstraint)
+    public function addToReferentialConstraint(TReferentialConstraintType $referentialConstraint)
     {
         $this->referentialConstraint[] = $referentialConstraint;
         return $this;
@@ -204,7 +204,7 @@ class TNavigationPropertyType
     /**
      * Gets as referentialConstraint
      *
-     * @return \MetadataV4\edm\TReferentialConstraintType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType[]
      */
     public function getReferentialConstraint()
     {
@@ -214,7 +214,7 @@ class TNavigationPropertyType
     /**
      * Sets a new referentialConstraint
      *
-     * @param \MetadataV4\edm\TReferentialConstraintType[] $referentialConstraint
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType[] $referentialConstraint
      * @return self
      */
     public function setReferentialConstraint(array $referentialConstraint)
@@ -227,9 +227,9 @@ class TNavigationPropertyType
      * Adds as onDelete
      *
      * @return self
-     * @param \MetadataV4\edm\TOnDeleteType $onDelete
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType $onDelete
      */
-    public function addToOnDelete(\MetadataV4\edm\TOnDeleteType $onDelete)
+    public function addToOnDelete(TOnDeleteType $onDelete)
     {
         $this->onDelete[] = $onDelete;
         return $this;
@@ -260,7 +260,7 @@ class TNavigationPropertyType
     /**
      * Gets as onDelete
      *
-     * @return \MetadataV4\edm\TOnDeleteType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType[]
      */
     public function getOnDelete()
     {
@@ -270,7 +270,7 @@ class TNavigationPropertyType
     /**
      * Sets a new onDelete
      *
-     * @param \MetadataV4\edm\TOnDeleteType[] $onDelete
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType[] $onDelete
      * @return self
      */
     public function setOnDelete(array $onDelete)
@@ -283,9 +283,9 @@ class TNavigationPropertyType
      * Adds as annotation
      *
      * @return self
-     * @param \MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
-    public function addToAnnotation(\MetadataV4\edm\Annotation $annotation)
+    public function addToAnnotation(Annotation $annotation)
     {
         $this->annotation[] = $annotation;
         return $this;
@@ -316,7 +316,7 @@ class TNavigationPropertyType
     /**
      * Gets as annotation
      *
-     * @return \MetadataV4\edm\Annotation[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
     public function getAnnotation()
     {
@@ -326,7 +326,7 @@ class TNavigationPropertyType
     /**
      * Sets a new annotation
      *
-     * @param \MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

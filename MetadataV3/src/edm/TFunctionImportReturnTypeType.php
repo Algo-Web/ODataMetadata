@@ -17,7 +17,7 @@ class TFunctionImportReturnTypeType
     private $type = null;
 
     /**
-     * @property \MetadataV3\edm\TOperandType $entitySet
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
      */
     private $entitySet = null;
 
@@ -46,7 +46,7 @@ class TFunctionImportReturnTypeType
     /**
      * Gets as entitySet
      *
-     * @return \MetadataV3\edm\TOperandType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType
      */
     public function getEntitySet()
     {
@@ -56,10 +56,10 @@ class TFunctionImportReturnTypeType
     /**
      * Sets a new entitySet
      *
-     * @param \MetadataV3\edm\TOperandType $entitySet
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
      * @return self
      */
-    public function setEntitySet(\MetadataV3\edm\TOperandType $entitySet)
+    public function setEntitySet(TOperandType $entitySet)
     {
         $this->entitySet = $entitySet;
         return $this;

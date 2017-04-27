@@ -12,14 +12,14 @@ class TRuntimeStorageModelsType
 {
 
     /**
-     * @property \MetadataV3\edm\ssdl\Schema $schema
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\Schema $schema
      */
     private $schema = null;
 
     /**
      * Gets as schema
      *
-     * @return \MetadataV3\edm\ssdl\Schema
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\Schema
      */
     public function getSchema()
     {
@@ -29,10 +29,10 @@ class TRuntimeStorageModelsType
     /**
      * Sets a new schema
      *
-     * @param \MetadataV3\edm\ssdl\Schema $schema
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\Schema $schema
      * @return self
      */
-    public function setSchema(\MetadataV3\edm\ssdl\Schema $schema)
+    public function setSchema(Ssdl\Schema $schema)
     {
         $this->schema = $schema;
         return $this;

@@ -10,7 +10,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits;
 trait IfTrait
 {
     /**
-     * @property \MetadataV3\edm\TIfExpressionType[] $if
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType[] $if
      */
     private $if = array(
         
@@ -20,9 +20,9 @@ trait IfTrait
      * Adds as if
      *
      * @return self
-     * @param \MetadataV3\edm\TIfExpressionType $if
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType $if
      */
-    public function addToIf(\MetadataV3\edm\TIfExpressionType $if)
+    public function addToIf(TIfExpressionType $if)
     {
         $this->if[] = $if;
         return $this;
@@ -53,7 +53,7 @@ trait IfTrait
     /**
      * Gets as if
      *
-     * @return \MetadataV3\edm\TIfExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType[]
      */
     public function getIf()
     {
@@ -63,7 +63,7 @@ trait IfTrait
     /**
      * Sets a new if
      *
-     * @param \MetadataV3\edm\TIfExpressionType[] $if
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType[] $if
      * @return self
      */
     public function setIf(array $if)

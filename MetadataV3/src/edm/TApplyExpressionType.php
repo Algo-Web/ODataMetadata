@@ -17,7 +17,7 @@ class TApplyExpressionType
     private $function = null;
 
     /**
-     * @property \MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
      * $appliedFunction
      */
     private $appliedFunction = array(
@@ -25,7 +25,7 @@ class TApplyExpressionType
     );
 
     /**
-     * @property \MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[]
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[]
      * $arguments
      */
     private $arguments = array(
@@ -58,10 +58,10 @@ class TApplyExpressionType
      * Adds as appliedFunction
      *
      * @return self
-     * @param \MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType
      * $appliedFunction
      */
-    public function addToAppliedFunction(\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType $appliedFunction)
+    public function addToAppliedFunction(TApplyExpressionType\AppliedFunctionAnonymousType $appliedFunction)
     {
         $this->appliedFunction[] = $appliedFunction;
         return $this;
@@ -92,7 +92,7 @@ class TApplyExpressionType
     /**
      * Gets as appliedFunction
      *
-     * @return \MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
      */
     public function getAppliedFunction()
     {
@@ -102,7 +102,7 @@ class TApplyExpressionType
     /**
      * Sets a new appliedFunction
      *
-     * @param \MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
      * $appliedFunction
      * @return self
      */
@@ -116,9 +116,9 @@ class TApplyExpressionType
      * Adds as arguments
      *
      * @return self
-     * @param \MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType $arguments
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType $arguments
      */
-    public function addToArguments(\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType $arguments)
+    public function addToArguments(TApplyExpressionType\ArgumentsAnonymousType $arguments)
     {
         $this->arguments[] = $arguments;
         return $this;
@@ -149,7 +149,7 @@ class TApplyExpressionType
     /**
      * Gets as arguments
      *
-     * @return \MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[]
      */
     public function getArguments()
     {
@@ -159,7 +159,7 @@ class TApplyExpressionType
     /**
      * Sets a new arguments
      *
-     * @param \MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[] $arguments
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[] $arguments
      * @return self
      */
     public function setArguments(array $arguments)

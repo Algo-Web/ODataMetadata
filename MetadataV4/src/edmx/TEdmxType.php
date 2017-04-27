@@ -2,6 +2,8 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edmx;
 
+use AlgoWeb\ODataMetadata\MetadataV4\edm\Schema;
+
 /**
  * Class representing TEdmxType
  *
@@ -17,14 +19,14 @@ class TEdmxType
     private $version = null;
 
     /**
-     * @property \MetadataV4\edmx\TReferenceType[] $reference
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType[] $reference
      */
     private $reference = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\Schema[] $dataServices
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema[] $dataServices
      */
     private $dataServices = null;
 
@@ -54,9 +56,9 @@ class TEdmxType
      * Adds as reference
      *
      * @return self
-     * @param \MetadataV4\edmx\TReferenceType $reference
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType $reference
      */
-    public function addToReference(\MetadataV4\edmx\TReferenceType $reference)
+    public function addToReference(TReferenceType $reference)
     {
         $this->reference[] = $reference;
         return $this;
@@ -87,7 +89,7 @@ class TEdmxType
     /**
      * Gets as reference
      *
-     * @return \MetadataV4\edmx\TReferenceType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType[]
      */
     public function getReference()
     {
@@ -97,7 +99,7 @@ class TEdmxType
     /**
      * Sets a new reference
      *
-     * @param \MetadataV4\edmx\TReferenceType[] $reference
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType[] $reference
      * @return self
      */
     public function setReference(array $reference)
@@ -110,9 +112,9 @@ class TEdmxType
      * Adds as schema
      *
      * @return self
-     * @param \MetadataV4\edm\Schema $schema
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema $schema
      */
-    public function addToDataServices(\MetadataV4\edm\Schema $schema)
+    public function addToDataServices(Schema $schema)
     {
         $this->dataServices[] = $schema;
         return $this;
@@ -143,7 +145,7 @@ class TEdmxType
     /**
      * Gets as dataServices
      *
-     * @return \MetadataV4\edm\Schema[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema[]
      */
     public function getDataServices()
     {
@@ -153,7 +155,7 @@ class TEdmxType
     /**
      * Sets a new dataServices
      *
-     * @param \MetadataV4\edm\Schema[] $dataServices
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema[] $dataServices
      * @return self
      */
     public function setDataServices(array $dataServices)

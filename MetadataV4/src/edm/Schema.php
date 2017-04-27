@@ -19,70 +19,70 @@ class Schema
     private $alias = null;
 
     /**
-     * @property \MetadataV4\edm\TComplexTypeType[] $complexType
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TComplexTypeType[] $complexType
      */
     private $complexType = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TEntityTypeType[] $entityType
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityTypeType[] $entityType
      */
     private $entityType = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TTypeDefinitionType[] $typeDefinition
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTypeDefinitionType[] $typeDefinition
      */
     private $typeDefinition = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TEnumTypeType[] $enumType
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeType[] $enumType
      */
     private $enumType = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TActionType[] $action
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionType[] $action
      */
     private $action = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TFunctionType[] $function
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TFunctionType[] $function
      */
     private $function = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TTermType[] $term
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTermType[] $term
      */
     private $term = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TAnnotationsType[] $annotations
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TAnnotationsType[] $annotations
      */
     private $annotations = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TEntityContainerType[] $entityContainer
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityContainerType[] $entityContainer
      */
     private $entityContainer = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\Annotation[] $annotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
     private $annotation = array(
         
@@ -136,9 +136,9 @@ class Schema
      * Adds as complexType
      *
      * @return self
-     * @param \MetadataV4\edm\TComplexTypeType $complexType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TComplexTypeType $complexType
      */
-    public function addToComplexType(\MetadataV4\edm\TComplexTypeType $complexType)
+    public function addToComplexType(TComplexTypeType $complexType)
     {
         $this->complexType[] = $complexType;
         return $this;
@@ -169,7 +169,7 @@ class Schema
     /**
      * Gets as complexType
      *
-     * @return \MetadataV4\edm\TComplexTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TComplexTypeType[]
      */
     public function getComplexType()
     {
@@ -179,7 +179,7 @@ class Schema
     /**
      * Sets a new complexType
      *
-     * @param \MetadataV4\edm\TComplexTypeType[] $complexType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TComplexTypeType[] $complexType
      * @return self
      */
     public function setComplexType(array $complexType)
@@ -192,9 +192,9 @@ class Schema
      * Adds as entityType
      *
      * @return self
-     * @param \MetadataV4\edm\TEntityTypeType $entityType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityTypeType $entityType
      */
-    public function addToEntityType(\MetadataV4\edm\TEntityTypeType $entityType)
+    public function addToEntityType(TEntityTypeType $entityType)
     {
         $this->entityType[] = $entityType;
         return $this;
@@ -225,7 +225,7 @@ class Schema
     /**
      * Gets as entityType
      *
-     * @return \MetadataV4\edm\TEntityTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityTypeType[]
      */
     public function getEntityType()
     {
@@ -235,7 +235,7 @@ class Schema
     /**
      * Sets a new entityType
      *
-     * @param \MetadataV4\edm\TEntityTypeType[] $entityType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityTypeType[] $entityType
      * @return self
      */
     public function setEntityType(array $entityType)
@@ -248,9 +248,9 @@ class Schema
      * Adds as typeDefinition
      *
      * @return self
-     * @param \MetadataV4\edm\TTypeDefinitionType $typeDefinition
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTypeDefinitionType $typeDefinition
      */
-    public function addToTypeDefinition(\MetadataV4\edm\TTypeDefinitionType $typeDefinition)
+    public function addToTypeDefinition(TTypeDefinitionType $typeDefinition)
     {
         $this->typeDefinition[] = $typeDefinition;
         return $this;
@@ -281,7 +281,7 @@ class Schema
     /**
      * Gets as typeDefinition
      *
-     * @return \MetadataV4\edm\TTypeDefinitionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTypeDefinitionType[]
      */
     public function getTypeDefinition()
     {
@@ -291,7 +291,7 @@ class Schema
     /**
      * Sets a new typeDefinition
      *
-     * @param \MetadataV4\edm\TTypeDefinitionType[] $typeDefinition
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTypeDefinitionType[] $typeDefinition
      * @return self
      */
     public function setTypeDefinition(array $typeDefinition)
@@ -304,9 +304,9 @@ class Schema
      * Adds as enumType
      *
      * @return self
-     * @param \MetadataV4\edm\TEnumTypeType $enumType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeType $enumType
      */
-    public function addToEnumType(\MetadataV4\edm\TEnumTypeType $enumType)
+    public function addToEnumType(TEnumTypeType $enumType)
     {
         $this->enumType[] = $enumType;
         return $this;
@@ -337,7 +337,7 @@ class Schema
     /**
      * Gets as enumType
      *
-     * @return \MetadataV4\edm\TEnumTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeType[]
      */
     public function getEnumType()
     {
@@ -347,7 +347,7 @@ class Schema
     /**
      * Sets a new enumType
      *
-     * @param \MetadataV4\edm\TEnumTypeType[] $enumType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeType[] $enumType
      * @return self
      */
     public function setEnumType(array $enumType)
@@ -360,9 +360,9 @@ class Schema
      * Adds as action
      *
      * @return self
-     * @param \MetadataV4\edm\TActionType $action
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionType $action
      */
-    public function addToAction(\MetadataV4\edm\TActionType $action)
+    public function addToAction(TActionType $action)
     {
         $this->action[] = $action;
         return $this;
@@ -393,7 +393,7 @@ class Schema
     /**
      * Gets as action
      *
-     * @return \MetadataV4\edm\TActionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionType[]
      */
     public function getAction()
     {
@@ -403,7 +403,7 @@ class Schema
     /**
      * Sets a new action
      *
-     * @param \MetadataV4\edm\TActionType[] $action
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionType[] $action
      * @return self
      */
     public function setAction(array $action)
@@ -416,9 +416,9 @@ class Schema
      * Adds as function
      *
      * @return self
-     * @param \MetadataV4\edm\TFunctionType $function
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TFunctionType $function
      */
-    public function addToFunction(\MetadataV4\edm\TFunctionType $function)
+    public function addToFunction(TFunctionType $function)
     {
         $this->function[] = $function;
         return $this;
@@ -449,7 +449,7 @@ class Schema
     /**
      * Gets as function
      *
-     * @return \MetadataV4\edm\TFunctionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TFunctionType[]
      */
     public function getFunction()
     {
@@ -459,7 +459,7 @@ class Schema
     /**
      * Sets a new function
      *
-     * @param \MetadataV4\edm\TFunctionType[] $function
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TFunctionType[] $function
      * @return self
      */
     public function setFunction(array $function)
@@ -472,9 +472,9 @@ class Schema
      * Adds as term
      *
      * @return self
-     * @param \MetadataV4\edm\TTermType $term
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTermType $term
      */
-    public function addToTerm(\MetadataV4\edm\TTermType $term)
+    public function addToTerm(TTermType $term)
     {
         $this->term[] = $term;
         return $this;
@@ -505,7 +505,7 @@ class Schema
     /**
      * Gets as term
      *
-     * @return \MetadataV4\edm\TTermType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTermType[]
      */
     public function getTerm()
     {
@@ -515,7 +515,7 @@ class Schema
     /**
      * Sets a new term
      *
-     * @param \MetadataV4\edm\TTermType[] $term
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTermType[] $term
      * @return self
      */
     public function setTerm(array $term)
@@ -528,9 +528,9 @@ class Schema
      * Adds as annotations
      *
      * @return self
-     * @param \MetadataV4\edm\TAnnotationsType $annotations
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TAnnotationsType $annotations
      */
-    public function addToAnnotations(\MetadataV4\edm\TAnnotationsType $annotations)
+    public function addToAnnotations(TAnnotationsType $annotations)
     {
         $this->annotations[] = $annotations;
         return $this;
@@ -561,7 +561,7 @@ class Schema
     /**
      * Gets as annotations
      *
-     * @return \MetadataV4\edm\TAnnotationsType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TAnnotationsType[]
      */
     public function getAnnotations()
     {
@@ -571,7 +571,7 @@ class Schema
     /**
      * Sets a new annotations
      *
-     * @param \MetadataV4\edm\TAnnotationsType[] $annotations
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TAnnotationsType[] $annotations
      * @return self
      */
     public function setAnnotations(array $annotations)
@@ -584,9 +584,9 @@ class Schema
      * Adds as entityContainer
      *
      * @return self
-     * @param \MetadataV4\edm\TEntityContainerType $entityContainer
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityContainerType $entityContainer
      */
-    public function addToEntityContainer(\MetadataV4\edm\TEntityContainerType $entityContainer)
+    public function addToEntityContainer(TEntityContainerType $entityContainer)
     {
         $this->entityContainer[] = $entityContainer;
         return $this;
@@ -617,7 +617,7 @@ class Schema
     /**
      * Gets as entityContainer
      *
-     * @return \MetadataV4\edm\TEntityContainerType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityContainerType[]
      */
     public function getEntityContainer()
     {
@@ -627,7 +627,7 @@ class Schema
     /**
      * Sets a new entityContainer
      *
-     * @param \MetadataV4\edm\TEntityContainerType[] $entityContainer
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityContainerType[] $entityContainer
      * @return self
      */
     public function setEntityContainer(array $entityContainer)
@@ -640,9 +640,9 @@ class Schema
      * Adds as annotation
      *
      * @return self
-     * @param \MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
-    public function addToAnnotation(\MetadataV4\edm\Annotation $annotation)
+    public function addToAnnotation(Annotation $annotation)
     {
         $this->annotation[] = $annotation;
         return $this;
@@ -673,7 +673,7 @@ class Schema
     /**
      * Gets as annotation
      *
-     * @return \MetadataV4\edm\Annotation[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
     public function getAnnotation()
     {
@@ -683,7 +683,7 @@ class Schema
     /**
      * Sets a new annotation
      *
-     * @param \MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

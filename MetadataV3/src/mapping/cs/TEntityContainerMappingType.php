@@ -27,14 +27,14 @@ class TEntityContainerMappingType
     private $generateUpdateViews = null;
 
     /**
-     * @property \MetadataV3\mapping\cs\TEntitySetMappingType[] $entitySetMapping
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType[] $entitySetMapping
      */
     private $entitySetMapping = array(
         
     );
 
     /**
-     * @property \MetadataV3\mapping\cs\TAssociationSetMappingType[]
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType[]
      * $associationSetMapping
      */
     private $associationSetMapping = array(
@@ -42,7 +42,7 @@ class TEntityContainerMappingType
     );
 
     /**
-     * @property \MetadataV3\mapping\cs\TFunctionImportMappingType[]
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType[]
      * $functionImportMapping
      */
     private $functionImportMapping = array(
@@ -119,9 +119,9 @@ class TEntityContainerMappingType
      * Adds as entitySetMapping
      *
      * @return self
-     * @param \MetadataV3\mapping\cs\TEntitySetMappingType $entitySetMapping
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType $entitySetMapping
      */
-    public function addToEntitySetMapping(\MetadataV3\mapping\cs\TEntitySetMappingType $entitySetMapping)
+    public function addToEntitySetMapping(TEntitySetMappingType $entitySetMapping)
     {
         $this->entitySetMapping[] = $entitySetMapping;
         return $this;
@@ -152,7 +152,7 @@ class TEntityContainerMappingType
     /**
      * Gets as entitySetMapping
      *
-     * @return \MetadataV3\mapping\cs\TEntitySetMappingType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType[]
      */
     public function getEntitySetMapping()
     {
@@ -162,7 +162,7 @@ class TEntityContainerMappingType
     /**
      * Sets a new entitySetMapping
      *
-     * @param \MetadataV3\mapping\cs\TEntitySetMappingType[] $entitySetMapping
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType[] $entitySetMapping
      * @return self
      */
     public function setEntitySetMapping(array $entitySetMapping)
@@ -175,9 +175,9 @@ class TEntityContainerMappingType
      * Adds as associationSetMapping
      *
      * @return self
-     * @param \MetadataV3\mapping\cs\TAssociationSetMappingType $associationSetMapping
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType $associationSetMapping
      */
-    public function addToAssociationSetMapping(\MetadataV3\mapping\cs\TAssociationSetMappingType $associationSetMapping)
+    public function addToAssociationSetMapping(TAssociationSetMappingType $associationSetMapping)
     {
         $this->associationSetMapping[] = $associationSetMapping;
         return $this;
@@ -208,7 +208,7 @@ class TEntityContainerMappingType
     /**
      * Gets as associationSetMapping
      *
-     * @return \MetadataV3\mapping\cs\TAssociationSetMappingType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType[]
      */
     public function getAssociationSetMapping()
     {
@@ -218,7 +218,7 @@ class TEntityContainerMappingType
     /**
      * Sets a new associationSetMapping
      *
-     * @param \MetadataV3\mapping\cs\TAssociationSetMappingType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType[]
      * $associationSetMapping
      * @return self
      */
@@ -232,9 +232,9 @@ class TEntityContainerMappingType
      * Adds as functionImportMapping
      *
      * @return self
-     * @param \MetadataV3\mapping\cs\TFunctionImportMappingType $functionImportMapping
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType $functionImportMapping
      */
-    public function addToFunctionImportMapping(\MetadataV3\mapping\cs\TFunctionImportMappingType $functionImportMapping)
+    public function addToFunctionImportMapping(TFunctionImportMappingType $functionImportMapping)
     {
         $this->functionImportMapping[] = $functionImportMapping;
         return $this;
@@ -265,7 +265,7 @@ class TEntityContainerMappingType
     /**
      * Gets as functionImportMapping
      *
-     * @return \MetadataV3\mapping\cs\TFunctionImportMappingType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType[]
      */
     public function getFunctionImportMapping()
     {
@@ -275,7 +275,7 @@ class TEntityContainerMappingType
     /**
      * Sets a new functionImportMapping
      *
-     * @param \MetadataV3\mapping\cs\TFunctionImportMappingType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType[]
      * $functionImportMapping
      * @return self
      */

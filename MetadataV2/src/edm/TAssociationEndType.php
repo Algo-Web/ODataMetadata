@@ -27,12 +27,12 @@ class TAssociationEndType
     private $multiplicity = null;
 
     /**
-     * @property \MetadataV2\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV2\edm\TOnActionType[] $onDelete
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TOnActionType[] $onDelete
      */
     private $onDelete = array(
         
@@ -107,7 +107,7 @@ class TAssociationEndType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV2\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -117,10 +117,10 @@ class TAssociationEndType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV2\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV2\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -130,9 +130,9 @@ class TAssociationEndType
      * Adds as onDelete
      *
      * @return self
-     * @param \MetadataV2\edm\TOnActionType $onDelete
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TOnActionType $onDelete
      */
-    public function addToOnDelete(\MetadataV2\edm\TOnActionType $onDelete)
+    public function addToOnDelete(TOnActionType $onDelete)
     {
         $this->onDelete[] = $onDelete;
         return $this;
@@ -163,7 +163,7 @@ class TAssociationEndType
     /**
      * Gets as onDelete
      *
-     * @return \MetadataV2\edm\TOnActionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TOnActionType[]
      */
     public function getOnDelete()
     {
@@ -173,7 +173,7 @@ class TAssociationEndType
     /**
      * Sets a new onDelete
      *
-     * @param \MetadataV2\edm\TOnActionType[] $onDelete
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TOnActionType[] $onDelete
      * @return self
      */
     public function setOnDelete(array $onDelete)

@@ -11,7 +11,7 @@ trait RecordTrait
 {
 
     /**
-     * @property \MetadataV3\edm\TRecordExpressionType[] $record
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType[] $record
      */
     private $record = array(
         
@@ -22,9 +22,9 @@ trait RecordTrait
      * Adds as record
      *
      * @return self
-     * @param \MetadataV3\edm\TRecordExpressionType $record
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType $record
      */
-    public function addToRecord(\MetadataV3\edm\TRecordExpressionType $record)
+    public function addToRecord(TRecordExpressionType $record)
     {
         $this->record[] = $record;
         return $this;
@@ -55,7 +55,7 @@ trait RecordTrait
     /**
      * Gets as record
      *
-     * @return \MetadataV3\edm\TRecordExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType[]
      */
     public function getRecord()
     {
@@ -65,7 +65,7 @@ trait RecordTrait
     /**
      * Sets a new record
      *
-     * @param \MetadataV3\edm\TRecordExpressionType[] $record
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType[] $record
      * @return self
      */
     public function setRecord(array $record)

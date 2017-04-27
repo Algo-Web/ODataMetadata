@@ -34,7 +34,7 @@ class EntitySetAnonymousType
     private $type = null;
 
     /**
-     * @property \MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      */
     private $documentation = null;
 
@@ -156,7 +156,7 @@ class EntitySetAnonymousType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV3\edm\ssdl\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -166,10 +166,10 @@ class EntitySetAnonymousType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV3\edm\ssdl\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;

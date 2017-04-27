@@ -10,7 +10,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits;
 trait EntitySetReferenceTrait
 {
     /**
-     * @property \MetadataV3\edm\TEntitySetReferenceExpressionType[]
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType[]
      * $entitySetReference
      */
     private $entitySetReference = array(
@@ -22,9 +22,9 @@ trait EntitySetReferenceTrait
      * Adds as entitySetReference
      *
      * @return self
-     * @param \MetadataV3\edm\TEntitySetReferenceExpressionType $entitySetReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType $entitySetReference
      */
-    public function addToEntitySetReference(\MetadataV3\edm\TEntitySetReferenceExpressionType $entitySetReference)
+    public function addToEntitySetReference(TEntitySetReferenceExpressionType $entitySetReference)
     {
         $this->entitySetReference[] = $entitySetReference;
         return $this;
@@ -55,7 +55,7 @@ trait EntitySetReferenceTrait
     /**
      * Gets as entitySetReference
      *
-     * @return \MetadataV3\edm\TEntitySetReferenceExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType[]
      */
     public function getEntitySetReference()
     {
@@ -65,7 +65,7 @@ trait EntitySetReferenceTrait
     /**
      * Sets a new entitySetReference
      *
-     * @param \MetadataV3\edm\TEntitySetReferenceExpressionType[] $entitySetReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType[] $entitySetReference
      * @return self
      */
     public function setEntitySetReference(array $entitySetReference)

@@ -17,12 +17,12 @@ class TReferentialConstraintRoleElementType
     private $role = null;
 
     /**
-     * @property \MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV3\edm\ssdl\TPropertyRefType[] $propertyRef
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType[] $propertyRef
      */
     private $propertyRef = array(
         
@@ -53,7 +53,7 @@ class TReferentialConstraintRoleElementType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV3\edm\ssdl\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -63,10 +63,10 @@ class TReferentialConstraintRoleElementType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV3\edm\ssdl\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -76,9 +76,9 @@ class TReferentialConstraintRoleElementType
      * Adds as propertyRef
      *
      * @return self
-     * @param \MetadataV3\edm\ssdl\TPropertyRefType $propertyRef
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType $propertyRef
      */
-    public function addToPropertyRef(\MetadataV3\edm\ssdl\TPropertyRefType $propertyRef)
+    public function addToPropertyRef(TPropertyRefType $propertyRef)
     {
         $this->propertyRef[] = $propertyRef;
         return $this;
@@ -109,7 +109,7 @@ class TReferentialConstraintRoleElementType
     /**
      * Gets as propertyRef
      *
-     * @return \MetadataV3\edm\ssdl\TPropertyRefType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType[]
      */
     public function getPropertyRef()
     {
@@ -119,7 +119,7 @@ class TReferentialConstraintRoleElementType
     /**
      * Sets a new propertyRef
      *
-     * @param \MetadataV3\edm\ssdl\TPropertyRefType[] $propertyRef
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType[] $propertyRef
      * @return self
      */
     public function setPropertyRef(array $propertyRef)

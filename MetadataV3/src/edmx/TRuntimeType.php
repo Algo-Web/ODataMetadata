@@ -12,24 +12,24 @@ class TRuntimeType
 {
 
     /**
-     * @property \MetadataV3\edmx\TRuntimeStorageModelsType $storageModels
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeStorageModelsType $storageModels
      */
     private $storageModels = null;
 
     /**
-     * @property \MetadataV3\edmx\TRuntimeConceptualModelsType $conceptualModels
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeConceptualModelsType $conceptualModels
      */
     private $conceptualModels = null;
 
     /**
-     * @property \MetadataV3\edmx\TRuntimeMappingsType $mappings
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeMappingsType $mappings
      */
     private $mappings = null;
 
     /**
      * Gets as storageModels
      *
-     * @return \MetadataV3\edmx\TRuntimeStorageModelsType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeStorageModelsType
      */
     public function getStorageModels()
     {
@@ -39,10 +39,10 @@ class TRuntimeType
     /**
      * Sets a new storageModels
      *
-     * @param \MetadataV3\edmx\TRuntimeStorageModelsType $storageModels
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeStorageModelsType $storageModels
      * @return self
      */
-    public function setStorageModels(\MetadataV3\edmx\TRuntimeStorageModelsType $storageModels)
+    public function setStorageModels(TRuntimeStorageModelsType $storageModels)
     {
         $this->storageModels = $storageModels;
         return $this;
@@ -51,7 +51,7 @@ class TRuntimeType
     /**
      * Gets as conceptualModels
      *
-     * @return \MetadataV3\edmx\TRuntimeConceptualModelsType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeConceptualModelsType
      */
     public function getConceptualModels()
     {
@@ -61,10 +61,10 @@ class TRuntimeType
     /**
      * Sets a new conceptualModels
      *
-     * @param \MetadataV3\edmx\TRuntimeConceptualModelsType $conceptualModels
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeConceptualModelsType $conceptualModels
      * @return self
      */
-    public function setConceptualModels(\MetadataV3\edmx\TRuntimeConceptualModelsType $conceptualModels)
+    public function setConceptualModels(TRuntimeConceptualModelsType $conceptualModels)
     {
         $this->conceptualModels = $conceptualModels;
         return $this;
@@ -73,7 +73,7 @@ class TRuntimeType
     /**
      * Gets as mappings
      *
-     * @return \MetadataV3\edmx\TRuntimeMappingsType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeMappingsType
      */
     public function getMappings()
     {
@@ -83,10 +83,10 @@ class TRuntimeType
     /**
      * Sets a new mappings
      *
-     * @param \MetadataV3\edmx\TRuntimeMappingsType $mappings
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeMappingsType $mappings
      * @return self
      */
-    public function setMappings(\MetadataV3\edmx\TRuntimeMappingsType $mappings)
+    public function setMappings(TRuntimeMappingsType $mappings)
     {
         $this->mappings = $mappings;
         return $this;

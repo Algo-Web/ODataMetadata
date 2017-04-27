@@ -10,7 +10,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits;
 trait FunctionReferenceTrait
 {
     /**
-     * @property \MetadataV3\edm\TFunctionReferenceExpressionType[] $functionReference
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType[] $functionReference
      */
     private $functionReference = array(
         
@@ -20,9 +20,9 @@ trait FunctionReferenceTrait
      * Adds as functionReference
      *
      * @return self
-     * @param \MetadataV3\edm\TFunctionReferenceExpressionType $functionReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType $functionReference
      */
-    public function addToFunctionReference(\MetadataV3\edm\TFunctionReferenceExpressionType $functionReference)
+    public function addToFunctionReference(TFunctionReferenceExpressionType $functionReference)
     {
         $this->functionReference[] = $functionReference;
         return $this;
@@ -53,7 +53,7 @@ trait FunctionReferenceTrait
     /**
      * Gets as functionReference
      *
-     * @return \MetadataV3\edm\TFunctionReferenceExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType[]
      */
     public function getFunctionReference()
     {
@@ -63,7 +63,7 @@ trait FunctionReferenceTrait
     /**
      * Sets a new functionReference
      *
-     * @param \MetadataV3\edm\TFunctionReferenceExpressionType[] $functionReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType[] $functionReference
      * @return self
      */
     public function setFunctionReference(array $functionReference)

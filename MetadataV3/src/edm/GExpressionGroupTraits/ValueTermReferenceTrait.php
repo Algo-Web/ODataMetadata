@@ -10,7 +10,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits;
 trait ValueTermReferenceTrait
 {
     /**
-     * @property \MetadataV3\edm\TValueTermReferenceExpressionType[]
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType[]
      * $valueTermReference
      */
     private $valueTermReference = array(
@@ -22,9 +22,9 @@ trait ValueTermReferenceTrait
      * Adds as valueTermReference
      *
      * @return self
-     * @param \MetadataV3\edm\TValueTermReferenceExpressionType $valueTermReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType $valueTermReference
      */
-    public function addToValueTermReference(\MetadataV3\edm\TValueTermReferenceExpressionType $valueTermReference)
+    public function addToValueTermReference(TValueTermReferenceExpressionType $valueTermReference)
     {
         $this->valueTermReference[] = $valueTermReference;
         return $this;
@@ -55,7 +55,7 @@ trait ValueTermReferenceTrait
     /**
      * Gets as valueTermReference
      *
-     * @return \MetadataV3\edm\TValueTermReferenceExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType[]
      */
     public function getValueTermReference()
     {
@@ -65,7 +65,7 @@ trait ValueTermReferenceTrait
     /**
      * Sets a new valueTermReference
      *
-     * @param \MetadataV3\edm\TValueTermReferenceExpressionType[] $valueTermReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType[] $valueTermReference
      * @return self
      */
     public function setValueTermReference(array $valueTermReference)

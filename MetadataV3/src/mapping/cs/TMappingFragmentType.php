@@ -22,17 +22,17 @@ class TMappingFragmentType
     private $makeColumnsDistinct = null;
 
     /**
-     * @property \MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
      */
     private $complexProperty = null;
 
     /**
-     * @property \MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
      */
     private $scalarProperty = null;
 
     /**
-     * @property \MetadataV3\mapping\cs\TConditionType $condition
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType $condition
      */
     private $condition = null;
 
@@ -83,7 +83,7 @@ class TMappingFragmentType
     /**
      * Gets as complexProperty
      *
-     * @return \MetadataV3\mapping\cs\TComplexPropertyType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType
      */
     public function getComplexProperty()
     {
@@ -93,10 +93,10 @@ class TMappingFragmentType
     /**
      * Sets a new complexProperty
      *
-     * @param \MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
      * @return self
      */
-    public function setComplexProperty(\MetadataV3\mapping\cs\TComplexPropertyType $complexProperty)
+    public function setComplexProperty(TComplexPropertyType $complexProperty)
     {
         $this->complexProperty = $complexProperty;
         return $this;
@@ -105,7 +105,7 @@ class TMappingFragmentType
     /**
      * Gets as scalarProperty
      *
-     * @return \MetadataV3\mapping\cs\TScalarPropertyType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType
      */
     public function getScalarProperty()
     {
@@ -115,10 +115,10 @@ class TMappingFragmentType
     /**
      * Sets a new scalarProperty
      *
-     * @param \MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
      * @return self
      */
-    public function setScalarProperty(\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty)
+    public function setScalarProperty(TScalarPropertyType $scalarProperty)
     {
         $this->scalarProperty = $scalarProperty;
         return $this;
@@ -127,7 +127,7 @@ class TMappingFragmentType
     /**
      * Gets as condition
      *
-     * @return \MetadataV3\mapping\cs\TConditionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType
      */
     public function getCondition()
     {
@@ -137,10 +137,10 @@ class TMappingFragmentType
     /**
      * Sets a new condition
      *
-     * @param \MetadataV3\mapping\cs\TConditionType $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType $condition
      * @return self
      */
-    public function setCondition(\MetadataV3\mapping\cs\TConditionType $condition)
+    public function setCondition(TConditionType $condition)
     {
         $this->condition = $condition;
         return $this;

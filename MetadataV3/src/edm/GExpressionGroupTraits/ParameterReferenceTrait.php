@@ -12,7 +12,7 @@ trait ParameterReferenceTrait
 
 
     /**
-     * @property \MetadataV3\edm\TParameterReferenceExpressionType[]
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType[]
      * $parameterReference
      */
     private $parameterReference = array(
@@ -24,9 +24,9 @@ trait ParameterReferenceTrait
      * Adds as parameterReference
      *
      * @return self
-     * @param \MetadataV3\edm\TParameterReferenceExpressionType $parameterReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType $parameterReference
      */
-    public function addToParameterReference(\MetadataV3\edm\TParameterReferenceExpressionType $parameterReference)
+    public function addToParameterReference(TParameterReferenceExpressionType $parameterReference)
     {
         $this->parameterReference[] = $parameterReference;
         return $this;
@@ -57,7 +57,7 @@ trait ParameterReferenceTrait
     /**
      * Gets as parameterReference
      *
-     * @return \MetadataV3\edm\TParameterReferenceExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType[]
      */
     public function getParameterReference()
     {
@@ -67,7 +67,7 @@ trait ParameterReferenceTrait
     /**
      * Sets a new parameterReference
      *
-     * @param \MetadataV3\edm\TParameterReferenceExpressionType[] $parameterReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType[] $parameterReference
      * @return self
      */
     public function setParameterReference(array $parameterReference)

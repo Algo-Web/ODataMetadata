@@ -17,7 +17,7 @@ class TEndPropertyType
     private $name = null;
 
     /**
-     * @property \MetadataV1\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
     private $scalarProperty = array(
         
@@ -49,9 +49,9 @@ class TEndPropertyType
      * Adds as scalarProperty
      *
      * @return self
-     * @param \MetadataV1\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType $scalarProperty
      */
-    public function addToScalarProperty(\MetadataV1\mapping\cs\TScalarPropertyType $scalarProperty)
+    public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
         $this->scalarProperty[] = $scalarProperty;
         return $this;
@@ -82,7 +82,7 @@ class TEndPropertyType
     /**
      * Gets as scalarProperty
      *
-     * @return \MetadataV1\mapping\cs\TScalarPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType[]
      */
     public function getScalarProperty()
     {
@@ -92,7 +92,7 @@ class TEndPropertyType
     /**
      * Sets a new scalarProperty
      *
-     * @param \MetadataV1\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
      */
     public function setScalarProperty(array $scalarProperty)

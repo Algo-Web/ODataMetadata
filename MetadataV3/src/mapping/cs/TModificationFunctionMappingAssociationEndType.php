@@ -27,7 +27,7 @@ class TModificationFunctionMappingAssociationEndType
     private $to = null;
 
     /**
-     * @property \MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      * $scalarProperty
      */
     private $scalarProperty = null;
@@ -101,7 +101,7 @@ class TModificationFunctionMappingAssociationEndType
     /**
      * Gets as scalarProperty
      *
-     * @return \MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      */
     public function getScalarProperty()
     {
@@ -111,11 +111,11 @@ class TModificationFunctionMappingAssociationEndType
     /**
      * Sets a new scalarProperty
      *
-     * @param \MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      * $scalarProperty
      * @return self
      */
-    public function setScalarProperty(\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType $scalarProperty)
+    public function setScalarProperty(TModificationFunctionMappingScalarPropertyType $scalarProperty)
     {
         $this->scalarProperty = $scalarProperty;
         return $this;

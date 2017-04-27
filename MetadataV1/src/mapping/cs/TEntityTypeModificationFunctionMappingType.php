@@ -12,19 +12,19 @@ class TEntityTypeModificationFunctionMappingType
 {
 
     /**
-     * @property \MetadataV1\mapping\cs\TEntityTypeModificationFunctionType
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionType
      * $deleteFunction
      */
     private $deleteFunction = null;
 
     /**
-     * @property \MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
      * $insertFunction
      */
     private $insertFunction = null;
 
     /**
-     * @property \MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
      * $updateFunction
      */
     private $updateFunction = null;
@@ -32,7 +32,7 @@ class TEntityTypeModificationFunctionMappingType
     /**
      * Gets as deleteFunction
      *
-     * @return \MetadataV1\mapping\cs\TEntityTypeModificationFunctionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionType
      */
     public function getDeleteFunction()
     {
@@ -42,11 +42,11 @@ class TEntityTypeModificationFunctionMappingType
     /**
      * Sets a new deleteFunction
      *
-     * @param \MetadataV1\mapping\cs\TEntityTypeModificationFunctionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionType
      * $deleteFunction
      * @return self
      */
-    public function setDeleteFunction(\MetadataV1\mapping\cs\TEntityTypeModificationFunctionType $deleteFunction)
+    public function setDeleteFunction(TEntityTypeModificationFunctionType $deleteFunction)
     {
         $this->deleteFunction = $deleteFunction;
         return $this;
@@ -55,7 +55,7 @@ class TEntityTypeModificationFunctionMappingType
     /**
      * Gets as insertFunction
      *
-     * @return \MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
      */
     public function getInsertFunction()
     {
@@ -65,11 +65,11 @@ class TEntityTypeModificationFunctionMappingType
     /**
      * Sets a new insertFunction
      *
-     * @param \MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
      * $insertFunction
      * @return self
      */
-    public function setInsertFunction(\MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType $insertFunction)
+    public function setInsertFunction(TEntityTypeModificationFunctionWithResultType $insertFunction)
     {
         $this->insertFunction = $insertFunction;
         return $this;
@@ -78,7 +78,7 @@ class TEntityTypeModificationFunctionMappingType
     /**
      * Gets as updateFunction
      *
-     * @return \MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
      */
     public function getUpdateFunction()
     {
@@ -88,11 +88,11 @@ class TEntityTypeModificationFunctionMappingType
     /**
      * Sets a new updateFunction
      *
-     * @param \MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
      * $updateFunction
      * @return self
      */
-    public function setUpdateFunction(\MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType $updateFunction)
+    public function setUpdateFunction(TEntityTypeModificationFunctionWithResultType $updateFunction)
     {
         $this->updateFunction = $updateFunction;
         return $this;

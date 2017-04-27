@@ -27,12 +27,12 @@ class TAssociationEndType
     private $multiplicity = null;
 
     /**
-     * @property \MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV3\edm\ssdl\TOnActionType[] $onDelete
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType[] $onDelete
      */
     private $onDelete = array(
         
@@ -107,7 +107,7 @@ class TAssociationEndType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV3\edm\ssdl\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -117,10 +117,10 @@ class TAssociationEndType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV3\edm\ssdl\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -130,9 +130,9 @@ class TAssociationEndType
      * Adds as onDelete
      *
      * @return self
-     * @param \MetadataV3\edm\ssdl\TOnActionType $onDelete
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType $onDelete
      */
-    public function addToOnDelete(\MetadataV3\edm\ssdl\TOnActionType $onDelete)
+    public function addToOnDelete(TOnActionType $onDelete)
     {
         $this->onDelete[] = $onDelete;
         return $this;
@@ -163,7 +163,7 @@ class TAssociationEndType
     /**
      * Gets as onDelete
      *
-     * @return \MetadataV3\edm\ssdl\TOnActionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType[]
      */
     public function getOnDelete()
     {
@@ -173,7 +173,7 @@ class TAssociationEndType
     /**
      * Sets a new onDelete
      *
-     * @param \MetadataV3\edm\ssdl\TOnActionType[] $onDelete
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType[] $onDelete
      * @return self
      */
     public function setOnDelete(array $onDelete)

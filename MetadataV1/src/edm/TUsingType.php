@@ -22,7 +22,7 @@ class TUsingType
     private $alias = null;
 
     /**
-     * @property \MetadataV1\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
@@ -73,7 +73,7 @@ class TUsingType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV1\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -83,10 +83,10 @@ class TUsingType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV1\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV1\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;

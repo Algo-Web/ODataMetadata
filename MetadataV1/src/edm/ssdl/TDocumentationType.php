@@ -14,19 +14,19 @@ class TDocumentationType
 {
 
     /**
-     * @property \MetadataV1\edm\ssdl\TTextType $summary
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TTextType $summary
      */
     private $summary = null;
 
     /**
-     * @property \MetadataV1\edm\ssdl\TTextType $longDescription
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TTextType $longDescription
      */
     private $longDescription = null;
 
     /**
      * Gets as summary
      *
-     * @return \MetadataV1\edm\ssdl\TTextType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TTextType
      */
     public function getSummary()
     {
@@ -36,10 +36,10 @@ class TDocumentationType
     /**
      * Sets a new summary
      *
-     * @param \MetadataV1\edm\ssdl\TTextType $summary
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TTextType $summary
      * @return self
      */
-    public function setSummary(\MetadataV1\edm\ssdl\TTextType $summary)
+    public function setSummary(TTextType $summary)
     {
         $this->summary = $summary;
         return $this;
@@ -48,7 +48,7 @@ class TDocumentationType
     /**
      * Gets as longDescription
      *
-     * @return \MetadataV1\edm\ssdl\TTextType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TTextType
      */
     public function getLongDescription()
     {
@@ -58,10 +58,10 @@ class TDocumentationType
     /**
      * Sets a new longDescription
      *
-     * @param \MetadataV1\edm\ssdl\TTextType $longDescription
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TTextType $longDescription
      * @return self
      */
-    public function setLongDescription(\MetadataV1\edm\ssdl\TTextType $longDescription)
+    public function setLongDescription(TTextType $longDescription)
     {
         $this->longDescription = $longDescription;
         return $this;

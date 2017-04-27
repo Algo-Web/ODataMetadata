@@ -32,21 +32,21 @@ class TComplexTypeType
     private $openType = null;
 
     /**
-     * @property \MetadataV4\edm\TPropertyType[] $property
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType[] $property
      */
     private $property = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\TNavigationPropertyType[] $navigationProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType[] $navigationProperty
      */
     private $navigationProperty = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\Annotation[] $annotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
     private $annotation = array(
         
@@ -144,9 +144,9 @@ class TComplexTypeType
      * Adds as property
      *
      * @return self
-     * @param \MetadataV4\edm\TPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType $property
      */
-    public function addToProperty(\MetadataV4\edm\TPropertyType $property)
+    public function addToProperty(TPropertyType $property)
     {
         $this->property[] = $property;
         return $this;
@@ -177,7 +177,7 @@ class TComplexTypeType
     /**
      * Gets as property
      *
-     * @return \MetadataV4\edm\TPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType[]
      */
     public function getProperty()
     {
@@ -187,7 +187,7 @@ class TComplexTypeType
     /**
      * Sets a new property
      *
-     * @param \MetadataV4\edm\TPropertyType[] $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType[] $property
      * @return self
      */
     public function setProperty(array $property)
@@ -200,9 +200,9 @@ class TComplexTypeType
      * Adds as navigationProperty
      *
      * @return self
-     * @param \MetadataV4\edm\TNavigationPropertyType $navigationProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType $navigationProperty
      */
-    public function addToNavigationProperty(\MetadataV4\edm\TNavigationPropertyType $navigationProperty)
+    public function addToNavigationProperty(TNavigationPropertyType $navigationProperty)
     {
         $this->navigationProperty[] = $navigationProperty;
         return $this;
@@ -233,7 +233,7 @@ class TComplexTypeType
     /**
      * Gets as navigationProperty
      *
-     * @return \MetadataV4\edm\TNavigationPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType[]
      */
     public function getNavigationProperty()
     {
@@ -243,7 +243,7 @@ class TComplexTypeType
     /**
      * Sets a new navigationProperty
      *
-     * @param \MetadataV4\edm\TNavigationPropertyType[] $navigationProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType[] $navigationProperty
      * @return self
      */
     public function setNavigationProperty(array $navigationProperty)
@@ -256,9 +256,9 @@ class TComplexTypeType
      * Adds as annotation
      *
      * @return self
-     * @param \MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
-    public function addToAnnotation(\MetadataV4\edm\Annotation $annotation)
+    public function addToAnnotation(Annotation $annotation)
     {
         $this->annotation[] = $annotation;
         return $this;
@@ -289,7 +289,7 @@ class TComplexTypeType
     /**
      * Gets as annotation
      *
-     * @return \MetadataV4\edm\Annotation[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
     public function getAnnotation()
     {
@@ -299,7 +299,7 @@ class TComplexTypeType
     /**
      * Sets a new annotation
      *
-     * @param \MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

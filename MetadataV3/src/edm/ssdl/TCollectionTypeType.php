@@ -12,7 +12,7 @@ class TCollectionTypeType
 {
 
     /**
-     * @property \MetadataV3\edm\ssdl\TPropertyType[] $rowType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType[] $rowType
      */
     private $rowType = null;
 
@@ -20,9 +20,9 @@ class TCollectionTypeType
      * Adds as property
      *
      * @return self
-     * @param \MetadataV3\edm\ssdl\TPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType $property
      */
-    public function addToRowType(\MetadataV3\edm\ssdl\TPropertyType $property)
+    public function addToRowType(TPropertyType $property)
     {
         $this->rowType[] = $property;
         return $this;
@@ -53,7 +53,7 @@ class TCollectionTypeType
     /**
      * Gets as rowType
      *
-     * @return \MetadataV3\edm\ssdl\TPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType[]
      */
     public function getRowType()
     {
@@ -63,7 +63,7 @@ class TCollectionTypeType
     /**
      * Sets a new rowType
      *
-     * @param \MetadataV3\edm\ssdl\TPropertyType[] $rowType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)

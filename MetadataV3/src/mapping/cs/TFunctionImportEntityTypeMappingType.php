@@ -17,14 +17,14 @@ class TFunctionImportEntityTypeMappingType
     private $typeName = null;
 
     /**
-     * @property \MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
     private $scalarProperty = array(
         
     );
 
     /**
-     * @property \MetadataV3\mapping\cs\TFunctionImportConditionType[] $condition
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType[] $condition
      */
     private $condition = array(
         
@@ -56,9 +56,9 @@ class TFunctionImportEntityTypeMappingType
      * Adds as scalarProperty
      *
      * @return self
-     * @param \MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
      */
-    public function addToScalarProperty(\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty)
+    public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
         $this->scalarProperty[] = $scalarProperty;
         return $this;
@@ -89,7 +89,7 @@ class TFunctionImportEntityTypeMappingType
     /**
      * Gets as scalarProperty
      *
-     * @return \MetadataV3\mapping\cs\TScalarPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[]
      */
     public function getScalarProperty()
     {
@@ -99,7 +99,7 @@ class TFunctionImportEntityTypeMappingType
     /**
      * Sets a new scalarProperty
      *
-     * @param \MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
      */
     public function setScalarProperty(array $scalarProperty)
@@ -112,9 +112,9 @@ class TFunctionImportEntityTypeMappingType
      * Adds as condition
      *
      * @return self
-     * @param \MetadataV3\mapping\cs\TFunctionImportConditionType $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType $condition
      */
-    public function addToCondition(\MetadataV3\mapping\cs\TFunctionImportConditionType $condition)
+    public function addToCondition(TFunctionImportConditionType $condition)
     {
         $this->condition[] = $condition;
         return $this;
@@ -145,7 +145,7 @@ class TFunctionImportEntityTypeMappingType
     /**
      * Gets as condition
      *
-     * @return \MetadataV3\mapping\cs\TFunctionImportConditionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType[]
      */
     public function getCondition()
     {
@@ -155,7 +155,7 @@ class TFunctionImportEntityTypeMappingType
     /**
      * Sets a new condition
      *
-     * @param \MetadataV3\mapping\cs\TFunctionImportConditionType[] $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType[] $condition
      * @return self
      */
     public function setCondition(array $condition)

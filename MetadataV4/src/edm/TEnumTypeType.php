@@ -27,14 +27,14 @@ class TEnumTypeType
     private $underlyingType = null;
 
     /**
-     * @property \MetadataV4\edm\TEnumTypeMemberType[] $member
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeMemberType[] $member
      */
     private $member = array(
         
     );
 
     /**
-     * @property \MetadataV4\edm\Annotation[] $annotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
     private $annotation = array(
         
@@ -110,9 +110,9 @@ class TEnumTypeType
      * Adds as member
      *
      * @return self
-     * @param \MetadataV4\edm\TEnumTypeMemberType $member
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeMemberType $member
      */
-    public function addToMember(\MetadataV4\edm\TEnumTypeMemberType $member)
+    public function addToMember(TEnumTypeMemberType $member)
     {
         $this->member[] = $member;
         return $this;
@@ -143,7 +143,7 @@ class TEnumTypeType
     /**
      * Gets as member
      *
-     * @return \MetadataV4\edm\TEnumTypeMemberType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeMemberType[]
      */
     public function getMember()
     {
@@ -153,7 +153,7 @@ class TEnumTypeType
     /**
      * Sets a new member
      *
-     * @param \MetadataV4\edm\TEnumTypeMemberType[] $member
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeMemberType[] $member
      * @return self
      */
     public function setMember(array $member)
@@ -166,9 +166,9 @@ class TEnumTypeType
      * Adds as annotation
      *
      * @return self
-     * @param \MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
-    public function addToAnnotation(\MetadataV4\edm\Annotation $annotation)
+    public function addToAnnotation(Annotation $annotation)
     {
         $this->annotation[] = $annotation;
         return $this;
@@ -199,7 +199,7 @@ class TEnumTypeType
     /**
      * Gets as annotation
      *
-     * @return \MetadataV4\edm\Annotation[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
     public function getAnnotation()
     {
@@ -209,7 +209,7 @@ class TEnumTypeType
     /**
      * Sets a new annotation
      *
-     * @param \MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

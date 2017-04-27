@@ -11,7 +11,7 @@ trait PropertyReferenceTrait
 {
 
     /**
-     * @property \MetadataV3\edm\TPropertyReferenceExpressionType[] $propertyReference
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType[] $propertyReference
      */
     private $propertyReference = array(
         
@@ -23,9 +23,9 @@ trait PropertyReferenceTrait
      * Adds as propertyReference
      *
      * @return self
-     * @param \MetadataV3\edm\TPropertyReferenceExpressionType $propertyReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType $propertyReference
      */
-    public function addToPropertyReference(\MetadataV3\edm\TPropertyReferenceExpressionType $propertyReference)
+    public function addToPropertyReference(TPropertyReferenceExpressionType $propertyReference)
     {
         $this->propertyReference[] = $propertyReference;
         return $this;
@@ -56,7 +56,7 @@ trait PropertyReferenceTrait
     /**
      * Gets as propertyReference
      *
-     * @return \MetadataV3\edm\TPropertyReferenceExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType[]
      */
     public function getPropertyReference()
     {
@@ -66,7 +66,7 @@ trait PropertyReferenceTrait
     /**
      * Sets a new propertyReference
      *
-     * @param \MetadataV3\edm\TPropertyReferenceExpressionType[] $propertyReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType[] $propertyReference
      * @return self
      */
     public function setPropertyReference(array $propertyReference)

@@ -2,6 +2,10 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edm;
 
+use AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\AssociationSetAnonymousType;
+use AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\EntitySetAnonymousType;
+use AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\FunctionImportAnonymousType;
+
 /**
  * Class representing EntityContainer
  */
@@ -19,12 +23,12 @@ class EntityContainer
     private $extends = null;
 
     /**
-     * @property \MetadataV1\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV1\edm\EntityContainer\FunctionImportAnonymousType[]
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\FunctionImportAnonymousType[]
      * $functionImport
      */
     private $functionImport = array(
@@ -32,14 +36,14 @@ class EntityContainer
     );
 
     /**
-     * @property \MetadataV1\edm\EntityContainer\EntitySetAnonymousType[] $entitySet
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\EntitySetAnonymousType[] $entitySet
      */
     private $entitySet = array(
         
     );
 
     /**
-     * @property \MetadataV1\edm\EntityContainer\AssociationSetAnonymousType[]
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\AssociationSetAnonymousType[]
      * $associationSet
      */
     private $associationSet = array(
@@ -93,7 +97,7 @@ class EntityContainer
     /**
      * Gets as documentation
      *
-     * @return \MetadataV1\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -103,10 +107,10 @@ class EntityContainer
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV1\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV1\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -116,10 +120,10 @@ class EntityContainer
      * Adds as functionImport
      *
      * @return self
-     * @param \MetadataV1\edm\EntityContainer\FunctionImportAnonymousType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\FunctionImportAnonymousType
      * $functionImport
      */
-    public function addToFunctionImport(\MetadataV1\edm\EntityContainer\FunctionImportAnonymousType $functionImport)
+    public function addToFunctionImport(FunctionImportAnonymousType $functionImport)
     {
         $this->functionImport[] = $functionImport;
         return $this;
@@ -150,7 +154,7 @@ class EntityContainer
     /**
      * Gets as functionImport
      *
-     * @return \MetadataV1\edm\EntityContainer\FunctionImportAnonymousType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\FunctionImportAnonymousType[]
      */
     public function getFunctionImport()
     {
@@ -160,7 +164,7 @@ class EntityContainer
     /**
      * Sets a new functionImport
      *
-     * @param \MetadataV1\edm\EntityContainer\FunctionImportAnonymousType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\FunctionImportAnonymousType[]
      * $functionImport
      * @return self
      */
@@ -174,9 +178,9 @@ class EntityContainer
      * Adds as entitySet
      *
      * @return self
-     * @param \MetadataV1\edm\EntityContainer\EntitySetAnonymousType $entitySet
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\EntitySetAnonymousType $entitySet
      */
-    public function addToEntitySet(\MetadataV1\edm\EntityContainer\EntitySetAnonymousType $entitySet)
+    public function addToEntitySet(EntitySetAnonymousType $entitySet)
     {
         $this->entitySet[] = $entitySet;
         return $this;
@@ -207,7 +211,7 @@ class EntityContainer
     /**
      * Gets as entitySet
      *
-     * @return \MetadataV1\edm\EntityContainer\EntitySetAnonymousType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\EntitySetAnonymousType[]
      */
     public function getEntitySet()
     {
@@ -217,7 +221,7 @@ class EntityContainer
     /**
      * Sets a new entitySet
      *
-     * @param \MetadataV1\edm\EntityContainer\EntitySetAnonymousType[] $entitySet
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\EntitySetAnonymousType[] $entitySet
      * @return self
      */
     public function setEntitySet(array $entitySet)
@@ -230,10 +234,10 @@ class EntityContainer
      * Adds as associationSet
      *
      * @return self
-     * @param \MetadataV1\edm\EntityContainer\AssociationSetAnonymousType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\AssociationSetAnonymousType
      * $associationSet
      */
-    public function addToAssociationSet(\MetadataV1\edm\EntityContainer\AssociationSetAnonymousType $associationSet)
+    public function addToAssociationSet(AssociationSetAnonymousType $associationSet)
     {
         $this->associationSet[] = $associationSet;
         return $this;
@@ -264,7 +268,7 @@ class EntityContainer
     /**
      * Gets as associationSet
      *
-     * @return \MetadataV1\edm\EntityContainer\AssociationSetAnonymousType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\AssociationSetAnonymousType[]
      */
     public function getAssociationSet()
     {
@@ -274,7 +278,7 @@ class EntityContainer
     /**
      * Sets a new associationSet
      *
-     * @param \MetadataV1\edm\EntityContainer\AssociationSetAnonymousType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\AssociationSetAnonymousType[]
      * $associationSet
      * @return self
      */

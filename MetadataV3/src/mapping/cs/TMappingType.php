@@ -17,14 +17,14 @@ class TMappingType
     private $space = null;
 
     /**
-     * @property \MetadataV3\mapping\cs\TAliasType[] $alias
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType[] $alias
      */
     private $alias = array(
         
     );
 
     /**
-     * @property \MetadataV3\mapping\cs\TEntityContainerMappingType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityContainerMappingType
      * $entityContainerMapping
      */
     private $entityContainerMapping = null;
@@ -55,9 +55,9 @@ class TMappingType
      * Adds as alias
      *
      * @return self
-     * @param \MetadataV3\mapping\cs\TAliasType $alias
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType $alias
      */
-    public function addToAlias(\MetadataV3\mapping\cs\TAliasType $alias)
+    public function addToAlias(TAliasType $alias)
     {
         $this->alias[] = $alias;
         return $this;
@@ -88,7 +88,7 @@ class TMappingType
     /**
      * Gets as alias
      *
-     * @return \MetadataV3\mapping\cs\TAliasType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType[]
      */
     public function getAlias()
     {
@@ -98,7 +98,7 @@ class TMappingType
     /**
      * Sets a new alias
      *
-     * @param \MetadataV3\mapping\cs\TAliasType[] $alias
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType[] $alias
      * @return self
      */
     public function setAlias(array $alias)
@@ -110,7 +110,7 @@ class TMappingType
     /**
      * Gets as entityContainerMapping
      *
-     * @return \MetadataV3\mapping\cs\TEntityContainerMappingType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityContainerMappingType
      */
     public function getEntityContainerMapping()
     {
@@ -120,11 +120,11 @@ class TMappingType
     /**
      * Sets a new entityContainerMapping
      *
-     * @param \MetadataV3\mapping\cs\TEntityContainerMappingType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityContainerMappingType
      * $entityContainerMapping
      * @return self
      */
-    public function setEntityContainerMapping(\MetadataV3\mapping\cs\TEntityContainerMappingType $entityContainerMapping)
+    public function setEntityContainerMapping(TEntityContainerMappingType $entityContainerMapping)
     {
         $this->entityContainerMapping = $entityContainerMapping;
         return $this;

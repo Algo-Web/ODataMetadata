@@ -17,14 +17,14 @@ class TEntityTypeMappingType
     private $typeName = null;
 
     /**
-     * @property \MetadataV2\mapping\cs\TMappingFragmentType[] $mappingFragment
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingFragmentType[] $mappingFragment
      */
     private $mappingFragment = array(
         
     );
 
     /**
-     * @property \MetadataV2\mapping\cs\TEntityTypeModificationFunctionMappingType
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeModificationFunctionMappingType
      * $modificationFunctionMapping
      */
     private $modificationFunctionMapping = null;
@@ -55,9 +55,9 @@ class TEntityTypeMappingType
      * Adds as mappingFragment
      *
      * @return self
-     * @param \MetadataV2\mapping\cs\TMappingFragmentType $mappingFragment
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingFragmentType $mappingFragment
      */
-    public function addToMappingFragment(\MetadataV2\mapping\cs\TMappingFragmentType $mappingFragment)
+    public function addToMappingFragment(TMappingFragmentType $mappingFragment)
     {
         $this->mappingFragment[] = $mappingFragment;
         return $this;
@@ -88,7 +88,7 @@ class TEntityTypeMappingType
     /**
      * Gets as mappingFragment
      *
-     * @return \MetadataV2\mapping\cs\TMappingFragmentType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingFragmentType[]
      */
     public function getMappingFragment()
     {
@@ -98,7 +98,7 @@ class TEntityTypeMappingType
     /**
      * Sets a new mappingFragment
      *
-     * @param \MetadataV2\mapping\cs\TMappingFragmentType[] $mappingFragment
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingFragmentType[] $mappingFragment
      * @return self
      */
     public function setMappingFragment(array $mappingFragment)
@@ -110,7 +110,7 @@ class TEntityTypeMappingType
     /**
      * Gets as modificationFunctionMapping
      *
-     * @return \MetadataV2\mapping\cs\TEntityTypeModificationFunctionMappingType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeModificationFunctionMappingType
      */
     public function getModificationFunctionMapping()
     {
@@ -120,11 +120,11 @@ class TEntityTypeMappingType
     /**
      * Sets a new modificationFunctionMapping
      *
-     * @param \MetadataV2\mapping\cs\TEntityTypeModificationFunctionMappingType
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeModificationFunctionMappingType
      * $modificationFunctionMapping
      * @return self
      */
-    public function setModificationFunctionMapping(\MetadataV2\mapping\cs\TEntityTypeModificationFunctionMappingType $modificationFunctionMapping)
+    public function setModificationFunctionMapping(TEntityTypeModificationFunctionMappingType $modificationFunctionMapping)
     {
         $this->modificationFunctionMapping = $modificationFunctionMapping;
         return $this;

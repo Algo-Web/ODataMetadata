@@ -12,7 +12,7 @@ trait AnonymousFunctionTrait
 
 
     /**
-     * @property \MetadataV3\edm\TAnonymousFunctionExpressionType[] $anonymousFunction
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType[] $anonymousFunction
      */
     private $anonymousFunction = array(
         
@@ -23,9 +23,9 @@ trait AnonymousFunctionTrait
      * Adds as anonymousFunction
      *
      * @return self
-     * @param \MetadataV3\edm\TAnonymousFunctionExpressionType $anonymousFunction
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType $anonymousFunction
      */
-    public function addToAnonymousFunction(\MetadataV3\edm\TAnonymousFunctionExpressionType $anonymousFunction)
+    public function addToAnonymousFunction(TAnonymousFunctionExpressionType $anonymousFunction)
     {
         $this->anonymousFunction[] = $anonymousFunction;
         return $this;
@@ -56,7 +56,7 @@ trait AnonymousFunctionTrait
     /**
      * Gets as anonymousFunction
      *
-     * @return \MetadataV3\edm\TAnonymousFunctionExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType[]
      */
     public function getAnonymousFunction()
     {
@@ -66,7 +66,7 @@ trait AnonymousFunctionTrait
     /**
      * Sets a new anonymousFunction
      *
-     * @param \MetadataV3\edm\TAnonymousFunctionExpressionType[] $anonymousFunction
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType[] $anonymousFunction
      * @return self
      */
     public function setAnonymousFunction(array $anonymousFunction)

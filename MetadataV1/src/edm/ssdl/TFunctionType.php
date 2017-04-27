@@ -57,7 +57,7 @@ class TFunctionType
     private $schema = null;
 
     /**
-     * @property \MetadataV1\edm\ssdl\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType $documentation
      */
     private $documentation = null;
 
@@ -67,7 +67,7 @@ class TFunctionType
     private $commandText = null;
 
     /**
-     * @property \MetadataV1\edm\ssdl\TParameterType[] $parameter
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TParameterType[] $parameter
      */
     private $parameter = array(
         
@@ -274,7 +274,7 @@ class TFunctionType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV1\edm\ssdl\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -284,10 +284,10 @@ class TFunctionType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV1\edm\ssdl\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV1\edm\ssdl\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -319,9 +319,9 @@ class TFunctionType
      * Adds as parameter
      *
      * @return self
-     * @param \MetadataV1\edm\ssdl\TParameterType $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TParameterType $parameter
      */
-    public function addToParameter(\MetadataV1\edm\ssdl\TParameterType $parameter)
+    public function addToParameter(TParameterType $parameter)
     {
         $this->parameter[] = $parameter;
         return $this;
@@ -352,7 +352,7 @@ class TFunctionType
     /**
      * Gets as parameter
      *
-     * @return \MetadataV1\edm\ssdl\TParameterType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TParameterType[]
      */
     public function getParameter()
     {
@@ -362,7 +362,7 @@ class TFunctionType
     /**
      * Sets a new parameter
      *
-     * @param \MetadataV1\edm\ssdl\TParameterType[] $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)

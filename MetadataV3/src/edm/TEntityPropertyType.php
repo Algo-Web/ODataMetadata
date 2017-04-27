@@ -87,21 +87,21 @@ class TEntityPropertyType
     private $storeGeneratedPattern = null;
 
     /**
-     * @property \MetadataV3\edm\TDocumentationType[] $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[] $documentation
      */
     private $documentation = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      */
     private $valueAnnotation = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      */
     private $typeAnnotation = array(
         
@@ -441,9 +441,9 @@ class TEntityPropertyType
      * Adds as documentation
      *
      * @return self
-     * @param \MetadataV3\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      */
-    public function addToDocumentation(\MetadataV3\edm\TDocumentationType $documentation)
+    public function addToDocumentation(TDocumentationType $documentation)
     {
         $this->documentation[] = $documentation;
         return $this;
@@ -474,7 +474,7 @@ class TEntityPropertyType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV3\edm\TDocumentationType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[]
      */
     public function getDocumentation()
     {
@@ -484,7 +484,7 @@ class TEntityPropertyType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV3\edm\TDocumentationType[] $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[] $documentation
      * @return self
      */
     public function setDocumentation(array $documentation)
@@ -497,9 +497,9 @@ class TEntityPropertyType
      * Adds as valueAnnotation
      *
      * @return self
-     * @param \MetadataV3\edm\TValueAnnotationType $valueAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType $valueAnnotation
      */
-    public function addToValueAnnotation(\MetadataV3\edm\TValueAnnotationType $valueAnnotation)
+    public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
         $this->valueAnnotation[] = $valueAnnotation;
         return $this;
@@ -530,7 +530,7 @@ class TEntityPropertyType
     /**
      * Gets as valueAnnotation
      *
-     * @return \MetadataV3\edm\TValueAnnotationType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[]
      */
     public function getValueAnnotation()
     {
@@ -540,7 +540,7 @@ class TEntityPropertyType
     /**
      * Sets a new valueAnnotation
      *
-     * @param \MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      * @return self
      */
     public function setValueAnnotation(array $valueAnnotation)
@@ -553,9 +553,9 @@ class TEntityPropertyType
      * Adds as typeAnnotation
      *
      * @return self
-     * @param \MetadataV3\edm\TTypeAnnotationType $typeAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType $typeAnnotation
      */
-    public function addToTypeAnnotation(\MetadataV3\edm\TTypeAnnotationType $typeAnnotation)
+    public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
         $this->typeAnnotation[] = $typeAnnotation;
         return $this;
@@ -586,7 +586,7 @@ class TEntityPropertyType
     /**
      * Gets as typeAnnotation
      *
-     * @return \MetadataV3\edm\TTypeAnnotationType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[]
      */
     public function getTypeAnnotation()
     {
@@ -596,7 +596,7 @@ class TEntityPropertyType
     /**
      * Sets a new typeAnnotation
      *
-     * @param \MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      * @return self
      */
     public function setTypeAnnotation(array $typeAnnotation)

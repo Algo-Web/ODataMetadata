@@ -67,62 +67,62 @@ class TOperandType
     private $path = null;
 
     /**
-     * @property \MetadataV3\edm\TIfExpressionType $if
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType $if
      */
     private $if = null;
 
     /**
-     * @property \MetadataV3\edm\TRecordExpressionType $record
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType $record
      */
     private $record = null;
 
     /**
-     * @property \MetadataV3\edm\TCollectionExpressionType $collection
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType $collection
      */
     private $collection = null;
 
     /**
-     * @property \MetadataV3\edm\TTypeAssertExpressionType $typeAssert
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType $typeAssert
      */
     private $typeAssert = null;
 
     /**
-     * @property \MetadataV3\edm\TTypeTestExpressionType $typeTest
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType $typeTest
      */
     private $typeTest = null;
 
     /**
-     * @property \MetadataV3\edm\TFunctionReferenceExpressionType $functionReference
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType $functionReference
      */
     private $functionReference = null;
 
     /**
-     * @property \MetadataV3\edm\TEntitySetReferenceExpressionType $entitySetReference
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType $entitySetReference
      */
     private $entitySetReference = null;
 
     /**
-     * @property \MetadataV3\edm\TAnonymousFunctionExpressionType $anonymousFunction
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType $anonymousFunction
      */
     private $anonymousFunction = null;
 
     /**
-     * @property \MetadataV3\edm\TParameterReferenceExpressionType $parameterReference
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType $parameterReference
      */
     private $parameterReference = null;
 
     /**
-     * @property \MetadataV3\edm\TApplyExpressionType $apply
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType $apply
      */
     private $apply = null;
 
     /**
-     * @property \MetadataV3\edm\TPropertyReferenceExpressionType $propertyReference
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType $propertyReference
      */
     private $propertyReference = null;
 
     /**
-     * @property \MetadataV3\edm\TValueTermReferenceExpressionType $valueTermReference
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType $valueTermReference
      */
     private $valueTermReference = null;
 
@@ -371,7 +371,7 @@ class TOperandType
     /**
      * Gets as if
      *
-     * @return \MetadataV3\edm\TIfExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType
      */
     public function getIf()
     {
@@ -381,10 +381,10 @@ class TOperandType
     /**
      * Sets a new if
      *
-     * @param \MetadataV3\edm\TIfExpressionType $if
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType $if
      * @return self
      */
-    public function setIf(\MetadataV3\edm\TIfExpressionType $if)
+    public function setIf(TIfExpressionType $if)
     {
         $this->if = $if;
         return $this;
@@ -393,7 +393,7 @@ class TOperandType
     /**
      * Gets as record
      *
-     * @return \MetadataV3\edm\TRecordExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType
      */
     public function getRecord()
     {
@@ -403,10 +403,10 @@ class TOperandType
     /**
      * Sets a new record
      *
-     * @param \MetadataV3\edm\TRecordExpressionType $record
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType $record
      * @return self
      */
-    public function setRecord(\MetadataV3\edm\TRecordExpressionType $record)
+    public function setRecord(TRecordExpressionType $record)
     {
         $this->record = $record;
         return $this;
@@ -415,7 +415,7 @@ class TOperandType
     /**
      * Gets as collection
      *
-     * @return \MetadataV3\edm\TCollectionExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType
      */
     public function getCollection()
     {
@@ -425,10 +425,10 @@ class TOperandType
     /**
      * Sets a new collection
      *
-     * @param \MetadataV3\edm\TCollectionExpressionType $collection
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType $collection
      * @return self
      */
-    public function setCollection(\MetadataV3\edm\TCollectionExpressionType $collection)
+    public function setCollection(TCollectionExpressionType $collection)
     {
         $this->collection = $collection;
         return $this;
@@ -437,7 +437,7 @@ class TOperandType
     /**
      * Gets as typeAssert
      *
-     * @return \MetadataV3\edm\TTypeAssertExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType
      */
     public function getTypeAssert()
     {
@@ -447,10 +447,10 @@ class TOperandType
     /**
      * Sets a new typeAssert
      *
-     * @param \MetadataV3\edm\TTypeAssertExpressionType $typeAssert
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType $typeAssert
      * @return self
      */
-    public function setTypeAssert(\MetadataV3\edm\TTypeAssertExpressionType $typeAssert)
+    public function setTypeAssert(TTypeAssertExpressionType $typeAssert)
     {
         $this->typeAssert = $typeAssert;
         return $this;
@@ -459,7 +459,7 @@ class TOperandType
     /**
      * Gets as typeTest
      *
-     * @return \MetadataV3\edm\TTypeTestExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType
      */
     public function getTypeTest()
     {
@@ -469,10 +469,10 @@ class TOperandType
     /**
      * Sets a new typeTest
      *
-     * @param \MetadataV3\edm\TTypeTestExpressionType $typeTest
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType $typeTest
      * @return self
      */
-    public function setTypeTest(\MetadataV3\edm\TTypeTestExpressionType $typeTest)
+    public function setTypeTest(TTypeTestExpressionType $typeTest)
     {
         $this->typeTest = $typeTest;
         return $this;
@@ -481,7 +481,7 @@ class TOperandType
     /**
      * Gets as functionReference
      *
-     * @return \MetadataV3\edm\TFunctionReferenceExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType
      */
     public function getFunctionReference()
     {
@@ -491,10 +491,10 @@ class TOperandType
     /**
      * Sets a new functionReference
      *
-     * @param \MetadataV3\edm\TFunctionReferenceExpressionType $functionReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType $functionReference
      * @return self
      */
-    public function setFunctionReference(\MetadataV3\edm\TFunctionReferenceExpressionType $functionReference)
+    public function setFunctionReference(TFunctionReferenceExpressionType $functionReference)
     {
         $this->functionReference = $functionReference;
         return $this;
@@ -503,7 +503,7 @@ class TOperandType
     /**
      * Gets as entitySetReference
      *
-     * @return \MetadataV3\edm\TEntitySetReferenceExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType
      */
     public function getEntitySetReference()
     {
@@ -513,10 +513,10 @@ class TOperandType
     /**
      * Sets a new entitySetReference
      *
-     * @param \MetadataV3\edm\TEntitySetReferenceExpressionType $entitySetReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType $entitySetReference
      * @return self
      */
-    public function setEntitySetReference(\MetadataV3\edm\TEntitySetReferenceExpressionType $entitySetReference)
+    public function setEntitySetReference(TEntitySetReferenceExpressionType $entitySetReference)
     {
         $this->entitySetReference = $entitySetReference;
         return $this;
@@ -525,7 +525,7 @@ class TOperandType
     /**
      * Gets as anonymousFunction
      *
-     * @return \MetadataV3\edm\TAnonymousFunctionExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType
      */
     public function getAnonymousFunction()
     {
@@ -535,10 +535,10 @@ class TOperandType
     /**
      * Sets a new anonymousFunction
      *
-     * @param \MetadataV3\edm\TAnonymousFunctionExpressionType $anonymousFunction
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType $anonymousFunction
      * @return self
      */
-    public function setAnonymousFunction(\MetadataV3\edm\TAnonymousFunctionExpressionType $anonymousFunction)
+    public function setAnonymousFunction(TAnonymousFunctionExpressionType $anonymousFunction)
     {
         $this->anonymousFunction = $anonymousFunction;
         return $this;
@@ -547,7 +547,7 @@ class TOperandType
     /**
      * Gets as parameterReference
      *
-     * @return \MetadataV3\edm\TParameterReferenceExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType
      */
     public function getParameterReference()
     {
@@ -557,10 +557,10 @@ class TOperandType
     /**
      * Sets a new parameterReference
      *
-     * @param \MetadataV3\edm\TParameterReferenceExpressionType $parameterReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType $parameterReference
      * @return self
      */
-    public function setParameterReference(\MetadataV3\edm\TParameterReferenceExpressionType $parameterReference)
+    public function setParameterReference(TParameterReferenceExpressionType $parameterReference)
     {
         $this->parameterReference = $parameterReference;
         return $this;
@@ -569,7 +569,7 @@ class TOperandType
     /**
      * Gets as apply
      *
-     * @return \MetadataV3\edm\TApplyExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType
      */
     public function getApply()
     {
@@ -579,10 +579,10 @@ class TOperandType
     /**
      * Sets a new apply
      *
-     * @param \MetadataV3\edm\TApplyExpressionType $apply
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType $apply
      * @return self
      */
-    public function setApply(\MetadataV3\edm\TApplyExpressionType $apply)
+    public function setApply(TApplyExpressionType $apply)
     {
         $this->apply = $apply;
         return $this;
@@ -591,7 +591,7 @@ class TOperandType
     /**
      * Gets as propertyReference
      *
-     * @return \MetadataV3\edm\TPropertyReferenceExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType
      */
     public function getPropertyReference()
     {
@@ -601,10 +601,10 @@ class TOperandType
     /**
      * Sets a new propertyReference
      *
-     * @param \MetadataV3\edm\TPropertyReferenceExpressionType $propertyReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType $propertyReference
      * @return self
      */
-    public function setPropertyReference(\MetadataV3\edm\TPropertyReferenceExpressionType $propertyReference)
+    public function setPropertyReference(TPropertyReferenceExpressionType $propertyReference)
     {
         $this->propertyReference = $propertyReference;
         return $this;
@@ -613,7 +613,7 @@ class TOperandType
     /**
      * Gets as valueTermReference
      *
-     * @return \MetadataV3\edm\TValueTermReferenceExpressionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType
      */
     public function getValueTermReference()
     {
@@ -623,10 +623,10 @@ class TOperandType
     /**
      * Sets a new valueTermReference
      *
-     * @param \MetadataV3\edm\TValueTermReferenceExpressionType $valueTermReference
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType $valueTermReference
      * @return self
      */
-    public function setValueTermReference(\MetadataV3\edm\TValueTermReferenceExpressionType $valueTermReference)
+    public function setValueTermReference(TValueTermReferenceExpressionType $valueTermReference)
     {
         $this->valueTermReference = $valueTermReference;
         return $this;

@@ -57,17 +57,17 @@ class TFunctionReturnTypeType
     private $collation = null;
 
     /**
-     * @property \MetadataV2\edm\TCollectionTypeType $collectionType
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TCollectionTypeType $collectionType
      */
     private $collectionType = null;
 
     /**
-     * @property \MetadataV2\edm\TReferenceTypeType $referenceType
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TReferenceTypeType $referenceType
      */
     private $referenceType = null;
 
     /**
-     * @property \MetadataV2\edm\TPropertyType[] $rowType
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType[] $rowType
      */
     private $rowType = null;
 
@@ -272,7 +272,7 @@ class TFunctionReturnTypeType
     /**
      * Gets as collectionType
      *
-     * @return \MetadataV2\edm\TCollectionTypeType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TCollectionTypeType
      */
     public function getCollectionType()
     {
@@ -282,10 +282,10 @@ class TFunctionReturnTypeType
     /**
      * Sets a new collectionType
      *
-     * @param \MetadataV2\edm\TCollectionTypeType $collectionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TCollectionTypeType $collectionType
      * @return self
      */
-    public function setCollectionType(\MetadataV2\edm\TCollectionTypeType $collectionType)
+    public function setCollectionType(TCollectionTypeType $collectionType)
     {
         $this->collectionType = $collectionType;
         return $this;
@@ -294,7 +294,7 @@ class TFunctionReturnTypeType
     /**
      * Gets as referenceType
      *
-     * @return \MetadataV2\edm\TReferenceTypeType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TReferenceTypeType
      */
     public function getReferenceType()
     {
@@ -304,10 +304,10 @@ class TFunctionReturnTypeType
     /**
      * Sets a new referenceType
      *
-     * @param \MetadataV2\edm\TReferenceTypeType $referenceType
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TReferenceTypeType $referenceType
      * @return self
      */
-    public function setReferenceType(\MetadataV2\edm\TReferenceTypeType $referenceType)
+    public function setReferenceType(TReferenceTypeType $referenceType)
     {
         $this->referenceType = $referenceType;
         return $this;
@@ -317,9 +317,9 @@ class TFunctionReturnTypeType
      * Adds as property
      *
      * @return self
-     * @param \MetadataV2\edm\TPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType $property
      */
-    public function addToRowType(\MetadataV2\edm\TPropertyType $property)
+    public function addToRowType(TPropertyType $property)
     {
         $this->rowType[] = $property;
         return $this;
@@ -350,7 +350,7 @@ class TFunctionReturnTypeType
     /**
      * Gets as rowType
      *
-     * @return \MetadataV2\edm\TPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType[]
      */
     public function getRowType()
     {
@@ -360,7 +360,7 @@ class TFunctionReturnTypeType
     /**
      * Sets a new rowType
      *
-     * @param \MetadataV2\edm\TPropertyType[] $rowType
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)

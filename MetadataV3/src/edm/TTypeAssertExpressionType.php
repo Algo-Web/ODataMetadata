@@ -62,28 +62,28 @@ class TTypeAssertExpressionType
     private $sRID = null;
 
     /**
-     * @property \MetadataV3\edm\TOperandType[] $operand
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType[] $operand
      */
     private $operand = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TCollectionTypeType[] $collectionType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType[] $collectionType
      */
     private $collectionType = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TReferenceTypeType[] $referenceType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType[] $referenceType
      */
     private $referenceType = array(
         
     );
 
     /**
-     * @property \MetadataV3\edm\TPropertyType[] $rowType
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      */
     private $rowType = null;
 
@@ -311,9 +311,9 @@ class TTypeAssertExpressionType
      * Adds as operand
      *
      * @return self
-     * @param \MetadataV3\edm\TOperandType $operand
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $operand
      */
-    public function addToOperand(\MetadataV3\edm\TOperandType $operand)
+    public function addToOperand(TOperandType $operand)
     {
         $this->operand[] = $operand;
         return $this;
@@ -344,7 +344,7 @@ class TTypeAssertExpressionType
     /**
      * Gets as operand
      *
-     * @return \MetadataV3\edm\TOperandType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType[]
      */
     public function getOperand()
     {
@@ -354,7 +354,7 @@ class TTypeAssertExpressionType
     /**
      * Sets a new operand
      *
-     * @param \MetadataV3\edm\TOperandType[] $operand
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType[] $operand
      * @return self
      */
     public function setOperand(array $operand)
@@ -367,9 +367,9 @@ class TTypeAssertExpressionType
      * Adds as collectionType
      *
      * @return self
-     * @param \MetadataV3\edm\TCollectionTypeType $collectionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
      */
-    public function addToCollectionType(\MetadataV3\edm\TCollectionTypeType $collectionType)
+    public function addToCollectionType(TCollectionTypeType $collectionType)
     {
         $this->collectionType[] = $collectionType;
         return $this;
@@ -400,7 +400,7 @@ class TTypeAssertExpressionType
     /**
      * Gets as collectionType
      *
-     * @return \MetadataV3\edm\TCollectionTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType[]
      */
     public function getCollectionType()
     {
@@ -410,7 +410,7 @@ class TTypeAssertExpressionType
     /**
      * Sets a new collectionType
      *
-     * @param \MetadataV3\edm\TCollectionTypeType[] $collectionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType[] $collectionType
      * @return self
      */
     public function setCollectionType(array $collectionType)
@@ -423,9 +423,9 @@ class TTypeAssertExpressionType
      * Adds as referenceType
      *
      * @return self
-     * @param \MetadataV3\edm\TReferenceTypeType $referenceType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
      */
-    public function addToReferenceType(\MetadataV3\edm\TReferenceTypeType $referenceType)
+    public function addToReferenceType(TReferenceTypeType $referenceType)
     {
         $this->referenceType[] = $referenceType;
         return $this;
@@ -456,7 +456,7 @@ class TTypeAssertExpressionType
     /**
      * Gets as referenceType
      *
-     * @return \MetadataV3\edm\TReferenceTypeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType[]
      */
     public function getReferenceType()
     {
@@ -466,7 +466,7 @@ class TTypeAssertExpressionType
     /**
      * Sets a new referenceType
      *
-     * @param \MetadataV3\edm\TReferenceTypeType[] $referenceType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType[] $referenceType
      * @return self
      */
     public function setReferenceType(array $referenceType)
@@ -479,9 +479,9 @@ class TTypeAssertExpressionType
      * Adds as property
      *
      * @return self
-     * @param \MetadataV3\edm\TPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
      */
-    public function addToRowType(\MetadataV3\edm\TPropertyType $property)
+    public function addToRowType(TPropertyType $property)
     {
         $this->rowType[] = $property;
         return $this;
@@ -512,7 +512,7 @@ class TTypeAssertExpressionType
     /**
      * Gets as rowType
      *
-     * @return \MetadataV3\edm\TPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[]
      */
     public function getRowType()
     {
@@ -522,7 +522,7 @@ class TTypeAssertExpressionType
     /**
      * Sets a new rowType
      *
-     * @param \MetadataV3\edm\TPropertyType[] $rowType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)

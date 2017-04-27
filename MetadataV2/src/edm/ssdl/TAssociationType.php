@@ -17,19 +17,19 @@ class TAssociationType
     private $name = null;
 
     /**
-     * @property \MetadataV2\edm\ssdl\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV2\edm\ssdl\TAssociationEndType[] $end
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TAssociationEndType[] $end
      */
     private $end = array(
         
     );
 
     /**
-     * @property \MetadataV2\edm\ssdl\TConstraintType $referentialConstraint
+     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TConstraintType $referentialConstraint
      */
     private $referentialConstraint = null;
 
@@ -58,7 +58,7 @@ class TAssociationType
     /**
      * Gets as documentation
      *
-     * @return \MetadataV2\edm\ssdl\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -68,10 +68,10 @@ class TAssociationType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV2\edm\ssdl\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV2\edm\ssdl\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -81,9 +81,9 @@ class TAssociationType
      * Adds as end
      *
      * @return self
-     * @param \MetadataV2\edm\ssdl\TAssociationEndType $end
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TAssociationEndType $end
      */
-    public function addToEnd(\MetadataV2\edm\ssdl\TAssociationEndType $end)
+    public function addToEnd(TAssociationEndType $end)
     {
         $this->end[] = $end;
         return $this;
@@ -114,7 +114,7 @@ class TAssociationType
     /**
      * Gets as end
      *
-     * @return \MetadataV2\edm\ssdl\TAssociationEndType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TAssociationEndType[]
      */
     public function getEnd()
     {
@@ -124,7 +124,7 @@ class TAssociationType
     /**
      * Sets a new end
      *
-     * @param \MetadataV2\edm\ssdl\TAssociationEndType[] $end
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TAssociationEndType[] $end
      * @return self
      */
     public function setEnd(array $end)
@@ -136,7 +136,7 @@ class TAssociationType
     /**
      * Gets as referentialConstraint
      *
-     * @return \MetadataV2\edm\ssdl\TConstraintType
+     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TConstraintType
      */
     public function getReferentialConstraint()
     {
@@ -146,10 +146,10 @@ class TAssociationType
     /**
      * Sets a new referentialConstraint
      *
-     * @param \MetadataV2\edm\ssdl\TConstraintType $referentialConstraint
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TConstraintType $referentialConstraint
      * @return self
      */
-    public function setReferentialConstraint(\MetadataV2\edm\ssdl\TConstraintType $referentialConstraint)
+    public function setReferentialConstraint(TConstraintType $referentialConstraint)
     {
         $this->referentialConstraint = $referentialConstraint;
         return $this;

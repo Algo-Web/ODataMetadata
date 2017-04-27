@@ -10,7 +10,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits;
 trait TypeTestTrait
 {
     /**
-     * @property \MetadataV3\edm\TTypeTestExpressionType[] $typeTest
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType[] $typeTest
      */
     private $typeTest = array(
         
@@ -21,9 +21,9 @@ trait TypeTestTrait
      * Adds as typeTest
      *
      * @return self
-     * @param \MetadataV3\edm\TTypeTestExpressionType $typeTest
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType $typeTest
      */
-    public function addToTypeTest(\MetadataV3\edm\TTypeTestExpressionType $typeTest)
+    public function addToTypeTest(TTypeTestExpressionType $typeTest)
     {
         $this->typeTest[] = $typeTest;
         return $this;
@@ -54,7 +54,7 @@ trait TypeTestTrait
     /**
      * Gets as typeTest
      *
-     * @return \MetadataV3\edm\TTypeTestExpressionType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType[]
      */
     public function getTypeTest()
     {
@@ -64,7 +64,7 @@ trait TypeTestTrait
     /**
      * Sets a new typeTest
      *
-     * @param \MetadataV3\edm\TTypeTestExpressionType[] $typeTest
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType[] $typeTest
      * @return self
      */
     public function setTypeTest(array $typeTest)

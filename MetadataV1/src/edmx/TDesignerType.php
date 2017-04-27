@@ -12,24 +12,24 @@ class TDesignerType
 {
 
     /**
-     * @property \MetadataV1\edmx\TConnectionType $connection
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edmx\TConnectionType $connection
      */
     private $connection = null;
 
     /**
-     * @property \MetadataV1\edmx\TOptionsType $options
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edmx\TOptionsType $options
      */
     private $options = null;
 
     /**
-     * @property \MetadataV1\edmx\TDiagramType[] $diagrams
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDiagramType[] $diagrams
      */
     private $diagrams = null;
 
     /**
      * Gets as connection
      *
-     * @return \MetadataV1\edmx\TConnectionType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edmx\TConnectionType
      */
     public function getConnection()
     {
@@ -39,10 +39,10 @@ class TDesignerType
     /**
      * Sets a new connection
      *
-     * @param \MetadataV1\edmx\TConnectionType $connection
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TConnectionType $connection
      * @return self
      */
-    public function setConnection(\MetadataV1\edmx\TConnectionType $connection)
+    public function setConnection(TConnectionType $connection)
     {
         $this->connection = $connection;
         return $this;
@@ -51,7 +51,7 @@ class TDesignerType
     /**
      * Gets as options
      *
-     * @return \MetadataV1\edmx\TOptionsType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edmx\TOptionsType
      */
     public function getOptions()
     {
@@ -61,10 +61,10 @@ class TDesignerType
     /**
      * Sets a new options
      *
-     * @param \MetadataV1\edmx\TOptionsType $options
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TOptionsType $options
      * @return self
      */
-    public function setOptions(\MetadataV1\edmx\TOptionsType $options)
+    public function setOptions(TOptionsType $options)
     {
         $this->options = $options;
         return $this;
@@ -74,9 +74,9 @@ class TDesignerType
      * Adds as diagram
      *
      * @return self
-     * @param \MetadataV1\edmx\TDiagramType $diagram
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDiagramType $diagram
      */
-    public function addToDiagrams(\MetadataV1\edmx\TDiagramType $diagram)
+    public function addToDiagrams(TDiagramType $diagram)
     {
         $this->diagrams[] = $diagram;
         return $this;
@@ -107,7 +107,7 @@ class TDesignerType
     /**
      * Gets as diagrams
      *
-     * @return \MetadataV1\edmx\TDiagramType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDiagramType[]
      */
     public function getDiagrams()
     {
@@ -117,7 +117,7 @@ class TDesignerType
     /**
      * Sets a new diagrams
      *
-     * @param \MetadataV1\edmx\TDiagramType[] $diagrams
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDiagramType[] $diagrams
      * @return self
      */
     public function setDiagrams(array $diagrams)

@@ -42,21 +42,21 @@ class TDiagramType
     private $displayType = null;
 
     /**
-     * @property \MetadataV3\edmx\TEntityTypeShapeType[] $entityTypeShape
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType[] $entityTypeShape
      */
     private $entityTypeShape = array(
         
     );
 
     /**
-     * @property \MetadataV3\edmx\TAssociationConnectorType[] $associationConnector
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType[] $associationConnector
      */
     private $associationConnector = array(
         
     );
 
     /**
-     * @property \MetadataV3\edmx\TInheritanceConnectorType[] $inheritanceConnector
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType[] $inheritanceConnector
      */
     private $inheritanceConnector = array(
         
@@ -198,9 +198,9 @@ class TDiagramType
      * Adds as entityTypeShape
      *
      * @return self
-     * @param \MetadataV3\edmx\TEntityTypeShapeType $entityTypeShape
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType $entityTypeShape
      */
-    public function addToEntityTypeShape(\MetadataV3\edmx\TEntityTypeShapeType $entityTypeShape)
+    public function addToEntityTypeShape(TEntityTypeShapeType $entityTypeShape)
     {
         $this->entityTypeShape[] = $entityTypeShape;
         return $this;
@@ -231,7 +231,7 @@ class TDiagramType
     /**
      * Gets as entityTypeShape
      *
-     * @return \MetadataV3\edmx\TEntityTypeShapeType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType[]
      */
     public function getEntityTypeShape()
     {
@@ -241,7 +241,7 @@ class TDiagramType
     /**
      * Sets a new entityTypeShape
      *
-     * @param \MetadataV3\edmx\TEntityTypeShapeType[] $entityTypeShape
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType[] $entityTypeShape
      * @return self
      */
     public function setEntityTypeShape(array $entityTypeShape)
@@ -254,9 +254,9 @@ class TDiagramType
      * Adds as associationConnector
      *
      * @return self
-     * @param \MetadataV3\edmx\TAssociationConnectorType $associationConnector
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType $associationConnector
      */
-    public function addToAssociationConnector(\MetadataV3\edmx\TAssociationConnectorType $associationConnector)
+    public function addToAssociationConnector(TAssociationConnectorType $associationConnector)
     {
         $this->associationConnector[] = $associationConnector;
         return $this;
@@ -287,7 +287,7 @@ class TDiagramType
     /**
      * Gets as associationConnector
      *
-     * @return \MetadataV3\edmx\TAssociationConnectorType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType[]
      */
     public function getAssociationConnector()
     {
@@ -297,7 +297,7 @@ class TDiagramType
     /**
      * Sets a new associationConnector
      *
-     * @param \MetadataV3\edmx\TAssociationConnectorType[] $associationConnector
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType[] $associationConnector
      * @return self
      */
     public function setAssociationConnector(array $associationConnector)
@@ -310,9 +310,9 @@ class TDiagramType
      * Adds as inheritanceConnector
      *
      * @return self
-     * @param \MetadataV3\edmx\TInheritanceConnectorType $inheritanceConnector
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType $inheritanceConnector
      */
-    public function addToInheritanceConnector(\MetadataV3\edmx\TInheritanceConnectorType $inheritanceConnector)
+    public function addToInheritanceConnector(TInheritanceConnectorType $inheritanceConnector)
     {
         $this->inheritanceConnector[] = $inheritanceConnector;
         return $this;
@@ -343,7 +343,7 @@ class TDiagramType
     /**
      * Gets as inheritanceConnector
      *
-     * @return \MetadataV3\edmx\TInheritanceConnectorType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType[]
      */
     public function getInheritanceConnector()
     {
@@ -353,7 +353,7 @@ class TDiagramType
     /**
      * Sets a new inheritanceConnector
      *
-     * @param \MetadataV3\edmx\TInheritanceConnectorType[] $inheritanceConnector
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType[] $inheritanceConnector
      * @return self
      */
     public function setInheritanceConnector(array $inheritanceConnector)

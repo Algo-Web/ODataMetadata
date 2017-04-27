@@ -12,7 +12,7 @@ class TOptionsType
 {
 
     /**
-     * @property \MetadataV1\edmx\TDesignerPropertyType[] $designerInfoPropertySet
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDesignerPropertyType[] $designerInfoPropertySet
      */
     private $designerInfoPropertySet = null;
 
@@ -20,9 +20,9 @@ class TOptionsType
      * Adds as designerProperty
      *
      * @return self
-     * @param \MetadataV1\edmx\TDesignerPropertyType $designerProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDesignerPropertyType $designerProperty
      */
-    public function addToDesignerInfoPropertySet(\MetadataV1\edmx\TDesignerPropertyType $designerProperty)
+    public function addToDesignerInfoPropertySet(TDesignerPropertyType $designerProperty)
     {
         $this->designerInfoPropertySet[] = $designerProperty;
         return $this;
@@ -53,7 +53,7 @@ class TOptionsType
     /**
      * Gets as designerInfoPropertySet
      *
-     * @return \MetadataV1\edmx\TDesignerPropertyType[]
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDesignerPropertyType[]
      */
     public function getDesignerInfoPropertySet()
     {
@@ -63,7 +63,7 @@ class TOptionsType
     /**
      * Sets a new designerInfoPropertySet
      *
-     * @param \MetadataV1\edmx\TDesignerPropertyType[] $designerInfoPropertySet
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDesignerPropertyType[] $designerInfoPropertySet
      * @return self
      */
     public function setDesignerInfoPropertySet(array $designerInfoPropertySet)

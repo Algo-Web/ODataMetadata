@@ -12,24 +12,24 @@ class TConstraintType
 {
 
     /**
-     * @property \MetadataV1\edm\TDocumentationType $documentation
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType $documentation
      */
     private $documentation = null;
 
     /**
-     * @property \MetadataV1\edm\TReferentialConstraintRoleElementType $principal
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\TReferentialConstraintRoleElementType $principal
      */
     private $principal = null;
 
     /**
-     * @property \MetadataV1\edm\TReferentialConstraintRoleElementType $dependent
+     * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\TReferentialConstraintRoleElementType $dependent
      */
     private $dependent = null;
 
     /**
      * Gets as documentation
      *
-     * @return \MetadataV1\edm\TDocumentationType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType
      */
     public function getDocumentation()
     {
@@ -39,10 +39,10 @@ class TConstraintType
     /**
      * Sets a new documentation
      *
-     * @param \MetadataV1\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType $documentation
      * @return self
      */
-    public function setDocumentation(\MetadataV1\edm\TDocumentationType $documentation)
+    public function setDocumentation(TDocumentationType $documentation)
     {
         $this->documentation = $documentation;
         return $this;
@@ -51,7 +51,7 @@ class TConstraintType
     /**
      * Gets as principal
      *
-     * @return \MetadataV1\edm\TReferentialConstraintRoleElementType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TReferentialConstraintRoleElementType
      */
     public function getPrincipal()
     {
@@ -61,10 +61,10 @@ class TConstraintType
     /**
      * Sets a new principal
      *
-     * @param \MetadataV1\edm\TReferentialConstraintRoleElementType $principal
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TReferentialConstraintRoleElementType $principal
      * @return self
      */
-    public function setPrincipal(\MetadataV1\edm\TReferentialConstraintRoleElementType $principal)
+    public function setPrincipal(TReferentialConstraintRoleElementType $principal)
     {
         $this->principal = $principal;
         return $this;
@@ -73,7 +73,7 @@ class TConstraintType
     /**
      * Gets as dependent
      *
-     * @return \MetadataV1\edm\TReferentialConstraintRoleElementType
+     * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TReferentialConstraintRoleElementType
      */
     public function getDependent()
     {
@@ -83,10 +83,10 @@ class TConstraintType
     /**
      * Sets a new dependent
      *
-     * @param \MetadataV1\edm\TReferentialConstraintRoleElementType $dependent
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TReferentialConstraintRoleElementType $dependent
      * @return self
      */
-    public function setDependent(\MetadataV1\edm\TReferentialConstraintRoleElementType $dependent)
+    public function setDependent(TReferentialConstraintRoleElementType $dependent)
     {
         $this->dependent = $dependent;
         return $this;
