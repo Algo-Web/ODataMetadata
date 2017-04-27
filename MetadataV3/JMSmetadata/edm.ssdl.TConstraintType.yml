@@ -1,4 +1,4 @@
-MetadataV3\edm\ssdl\TConstraintType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TConstraintType:
     properties:
         documentation:
             expose: true
@@ -9,7 +9,7 @@ MetadataV3\edm\ssdl\TConstraintType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
         principal:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ MetadataV3\edm\ssdl\TConstraintType:
             accessor:
                 getter: getPrincipal
                 setter: setPrincipal
-            type: MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType
         dependent:
             expose: true
             access_type: public_method
@@ -29,4 +29,4 @@ MetadataV3\edm\ssdl\TConstraintType:
             accessor:
                 getter: getDependent
                 setter: setDependent
-            type: MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType

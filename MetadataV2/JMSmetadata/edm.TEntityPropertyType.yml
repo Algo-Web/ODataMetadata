@@ -1,4 +1,4 @@
-MetadataV2\edm\TEntityPropertyType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityPropertyType:
     properties:
         name:
             expose: true
@@ -135,4 +135,4 @@ MetadataV2\edm\TEntityPropertyType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType

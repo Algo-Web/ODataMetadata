@@ -1,4 +1,4 @@
-MetadataV2\edm\TFunctionImportParameterType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType:
     properties:
         name:
             expose: true
@@ -63,4 +63,4 @@ MetadataV2\edm\TFunctionImportParameterType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType

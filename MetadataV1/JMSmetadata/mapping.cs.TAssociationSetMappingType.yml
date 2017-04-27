@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TAssociationSetMappingType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetMappingType:
     properties:
         name:
             expose: true
@@ -50,7 +50,7 @@ MetadataV1\mapping\cs\TAssociationSetMappingType:
                 inline: true
                 entry_name: EndProperty
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TEndPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEndPropertyType>
         condition:
             expose: true
             access_type: public_method
@@ -64,7 +64,7 @@ MetadataV1\mapping\cs\TAssociationSetMappingType:
                 inline: true
                 entry_name: Condition
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TConditionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType>
         modificationFunctionMapping:
             expose: true
             access_type: public_method
@@ -74,4 +74,4 @@ MetadataV1\mapping\cs\TAssociationSetMappingType:
             accessor:
                 getter: getModificationFunctionMapping
                 setter: setModificationFunctionMapping
-            type: MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType

@@ -1,4 +1,4 @@
-MetadataV3\edm\TPropertyRefType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType:
     properties:
         name:
             expose: true

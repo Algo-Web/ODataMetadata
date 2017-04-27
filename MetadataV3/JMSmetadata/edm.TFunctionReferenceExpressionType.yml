@@ -1,4 +1,4 @@
-MetadataV3\edm\TFunctionReferenceExpressionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType:
     properties:
         function:
             expose: true
@@ -22,4 +22,4 @@ MetadataV3\edm\TFunctionReferenceExpressionType:
                 inline: true
                 entry_name: Parameter
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType>

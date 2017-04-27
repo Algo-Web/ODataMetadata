@@ -1,4 +1,4 @@
-MetadataV1\edm\ssdl\EntityContainer\EntitySetAnonymousType:
+AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\EntityContainer\EntitySetAnonymousType:
     properties:
         name:
             expose: true
@@ -54,7 +54,7 @@ MetadataV1\edm\ssdl\EntityContainer\EntitySetAnonymousType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV1\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType
         definingQuery:
             expose: true
             access_type: public_method

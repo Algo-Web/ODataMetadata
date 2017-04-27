@@ -1,4 +1,4 @@
-MetadataV4\edm\TTimeOfDayConstantExpressionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TTimeOfDayConstantExpressionType:
     properties:
         __value:
             expose: true

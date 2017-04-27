@@ -1,4 +1,4 @@
-MetadataV3\edmx\TInheritanceConnectorType:
+AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType:
     properties:
         entityType:
             expose: true
@@ -31,4 +31,4 @@ MetadataV3\edmx\TInheritanceConnectorType:
                 inline: true
                 entry_name: ConnectorPoint
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
-            type: array<MetadataV3\edmx\TConnectorPointType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType>

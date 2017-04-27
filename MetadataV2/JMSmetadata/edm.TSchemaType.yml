@@ -1,4 +1,4 @@
-MetadataV2\edm\TSchemaType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\TSchemaType:
     properties:
         namespace:
             expose: true
@@ -31,7 +31,7 @@ MetadataV2\edm\TSchemaType:
                 inline: true
                 entry_name: Using
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/edm'
-            type: array<MetadataV2\edm\TUsingType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\TUsingType>
         association:
             expose: true
             access_type: public_method
@@ -45,7 +45,7 @@ MetadataV2\edm\TSchemaType:
                 inline: true
                 entry_name: Association
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/edm'
-            type: array<MetadataV2\edm\TAssociationType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\TAssociationType>
         complexType:
             expose: true
             access_type: public_method
@@ -59,7 +59,7 @@ MetadataV2\edm\TSchemaType:
                 inline: true
                 entry_name: ComplexType
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/edm'
-            type: array<MetadataV2\edm\TComplexTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\TComplexTypeType>
         entityType:
             expose: true
             access_type: public_method
@@ -73,7 +73,7 @@ MetadataV2\edm\TSchemaType:
                 inline: true
                 entry_name: EntityType
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/edm'
-            type: array<MetadataV2\edm\TEntityTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityTypeType>
         function:
             expose: true
             access_type: public_method
@@ -87,7 +87,7 @@ MetadataV2\edm\TSchemaType:
                 inline: true
                 entry_name: Function
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/edm'
-            type: array<MetadataV2\edm\TFunctionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionType>
         entityContainer:
             expose: true
             access_type: public_method
@@ -101,4 +101,4 @@ MetadataV2\edm\TSchemaType:
                 inline: true
                 entry_name: EntityContainer
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/edm'
-            type: array<MetadataV2\edm\EntityContainer>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\EntityContainer>

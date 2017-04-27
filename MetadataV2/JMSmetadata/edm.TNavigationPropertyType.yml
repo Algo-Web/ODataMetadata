@@ -1,4 +1,4 @@
-MetadataV2\edm\TNavigationPropertyType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\TNavigationPropertyType:
     properties:
         name:
             expose: true
@@ -63,4 +63,4 @@ MetadataV2\edm\TNavigationPropertyType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType

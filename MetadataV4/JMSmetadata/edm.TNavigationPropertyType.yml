@@ -1,4 +1,4 @@
-MetadataV4\edm\TNavigationPropertyType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType:
     properties:
         name:
             expose: true
@@ -58,7 +58,7 @@ MetadataV4\edm\TNavigationPropertyType:
                 inline: true
                 entry_name: ReferentialConstraint
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TReferentialConstraintType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType>
         onDelete:
             expose: true
             access_type: public_method
@@ -72,7 +72,7 @@ MetadataV4\edm\TNavigationPropertyType:
                 inline: true
                 entry_name: OnDelete
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TOnDeleteType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType>
         annotation:
             expose: true
             access_type: public_method
@@ -86,4 +86,4 @@ MetadataV4\edm\TNavigationPropertyType:
                 inline: true
                 entry_name: Annotation
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>

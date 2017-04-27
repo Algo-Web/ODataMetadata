@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TAliasType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAliasType:
     properties:
         key:
             expose: true

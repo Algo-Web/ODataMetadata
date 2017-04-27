@@ -1,4 +1,4 @@
-MetadataV2\edm\ssdl\TPropertyRefType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TPropertyRefType:
     properties:
         name:
             expose: true
@@ -18,4 +18,4 @@ MetadataV2\edm\ssdl\TPropertyRefType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType

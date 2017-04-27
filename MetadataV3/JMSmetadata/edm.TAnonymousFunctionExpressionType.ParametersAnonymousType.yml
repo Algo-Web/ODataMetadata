@@ -1,4 +1,4 @@
-MetadataV3\edm\TAnonymousFunctionExpressionType\ParametersAnonymousType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType\ParametersAnonymousType:
     properties:
         parameter:
             expose: true
@@ -13,4 +13,4 @@ MetadataV3\edm\TAnonymousFunctionExpressionType\ParametersAnonymousType:
                 inline: true
                 entry_name: Parameter
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TFunctionParameterType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType>

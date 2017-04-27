@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TEntityTypeMappingType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeMappingType:
     properties:
         typeName:
             expose: true
@@ -22,7 +22,7 @@ MetadataV1\mapping\cs\TEntityTypeMappingType:
                 inline: true
                 entry_name: MappingFragment
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TMappingFragmentType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TMappingFragmentType>
         modificationFunctionMapping:
             expose: true
             access_type: public_method
@@ -32,4 +32,4 @@ MetadataV1\mapping\cs\TEntityTypeMappingType:
             accessor:
                 getter: getModificationFunctionMapping
                 setter: setModificationFunctionMapping
-            type: MetadataV1\mapping\cs\TEntityTypeModificationFunctionMappingType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionMappingType

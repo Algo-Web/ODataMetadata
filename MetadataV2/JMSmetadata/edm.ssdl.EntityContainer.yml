@@ -1,4 +1,4 @@
-MetadataV2\edm\ssdl\EntityContainer:
+AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer:
     xml_root_name: EntityContainer
     xml_root_namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
     properties:
@@ -20,7 +20,7 @@ MetadataV2\edm\ssdl\EntityContainer:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType
         entitySet:
             expose: true
             access_type: public_method
@@ -34,7 +34,7 @@ MetadataV2\edm\ssdl\EntityContainer:
                 inline: true
                 entry_name: EntitySet
                 namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
-            type: array<MetadataV2\edm\ssdl\EntityContainer\EntitySetAnonymousType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\EntitySetAnonymousType>
         associationSet:
             expose: true
             access_type: public_method
@@ -48,4 +48,4 @@ MetadataV2\edm\ssdl\EntityContainer:
                 inline: true
                 entry_name: AssociationSet
                 namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/ssdl'
-            type: array<MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType>

@@ -1,4 +1,4 @@
-MetadataV3\edm\TEnumConstantExpressionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumConstantExpressionType:
     properties:
         __value:
             expose: true

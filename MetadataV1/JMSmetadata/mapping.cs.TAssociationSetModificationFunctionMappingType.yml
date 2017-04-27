@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType:
     properties:
         deleteFunction:
             expose: true
@@ -9,7 +9,7 @@ MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType:
             accessor:
                 getter: getDeleteFunction
                 setter: setDeleteFunction
-            type: MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
         insertFunction:
             expose: true
             access_type: public_method
@@ -19,4 +19,4 @@ MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType:
             accessor:
                 getter: getInsertFunction
                 setter: setInsertFunction
-            type: MetadataV1\mapping\cs\TAssociationSetModificationFunctionType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionType

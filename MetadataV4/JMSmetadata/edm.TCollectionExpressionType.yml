@@ -1,4 +1,4 @@
-MetadataV4\edm\TCollectionExpressionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType:
     properties:
         binary:
             expose: true
@@ -9,7 +9,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getBinary
                 setter: setBinary
-            type: MetadataV4\edm\TBinaryConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TBinaryConstantExpressionType
         bool:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getBool
                 setter: setBool
-            type: MetadataV4\edm\TBoolConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TBoolConstantExpressionType
         date:
             expose: true
             access_type: public_method
@@ -29,7 +29,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getDate
                 setter: setDate
-            type: MetadataV4\edm\TDateConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TDateConstantExpressionType
         dateTimeOffset:
             expose: true
             access_type: public_method
@@ -39,7 +39,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getDateTimeOffset
                 setter: setDateTimeOffset
-            type: MetadataV4\edm\TDateTimeOffsetConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TDateTimeOffsetConstantExpressionType
         decimal:
             expose: true
             access_type: public_method
@@ -49,7 +49,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getDecimal
                 setter: setDecimal
-            type: MetadataV4\edm\TDecimalConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TDecimalConstantExpressionType
         duration:
             expose: true
             access_type: public_method
@@ -59,7 +59,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getDuration
                 setter: setDuration
-            type: MetadataV4\edm\TDurationConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TDurationConstantExpressionType
         enumMember:
             expose: true
             access_type: public_method
@@ -69,7 +69,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getEnumMember
                 setter: setEnumMember
-            type: array<MetadataV4\edm\TPathType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TPathType>
             xml_list:
                 inline: false
                 entry_name: TPath
@@ -84,7 +84,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getFloat
                 setter: setFloat
-            type: MetadataV4\edm\TFloatConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TFloatConstantExpressionType
         guid:
             expose: true
             access_type: public_method
@@ -94,7 +94,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getGuid
                 setter: setGuid
-            type: MetadataV4\edm\TGuidConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TGuidConstantExpressionType
         int:
             expose: true
             access_type: public_method
@@ -104,7 +104,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getInt
                 setter: setInt
-            type: MetadataV4\edm\TIntConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TIntConstantExpressionType
         string:
             expose: true
             access_type: public_method
@@ -114,7 +114,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getString
                 setter: setString
-            type: MetadataV4\edm\TStringConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TStringConstantExpressionType
         timeOfDay:
             expose: true
             access_type: public_method
@@ -124,7 +124,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getTimeOfDay
                 setter: setTimeOfDay
-            type: MetadataV4\edm\TTimeOfDayConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TTimeOfDayConstantExpressionType
         annotationPath:
             expose: true
             access_type: public_method
@@ -134,7 +134,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getAnnotationPath
                 setter: setAnnotationPath
-            type: MetadataV4\edm\TPathExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TPathExpressionType
         apply:
             expose: true
             access_type: public_method
@@ -144,7 +144,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getApply
                 setter: setApply
-            type: MetadataV4\edm\TApplyExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType
         cast:
             expose: true
             access_type: public_method
@@ -154,7 +154,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getCast
                 setter: setCast
-            type: MetadataV4\edm\TCastOrIsOfExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType
         collection:
             expose: true
             access_type: public_method
@@ -164,7 +164,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getCollection
                 setter: setCollection
-            type: MetadataV4\edm\TCollectionExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType
         if:
             expose: true
             access_type: public_method
@@ -174,7 +174,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getIf
                 setter: setIf
-            type: MetadataV4\edm\TIfExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType
         eq:
             expose: true
             access_type: public_method
@@ -184,7 +184,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getEq
                 setter: setEq
-            type: MetadataV4\edm\TTwoChildrenExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
         ne:
             expose: true
             access_type: public_method
@@ -194,7 +194,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getNe
                 setter: setNe
-            type: MetadataV4\edm\TTwoChildrenExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
         ge:
             expose: true
             access_type: public_method
@@ -204,7 +204,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getGe
                 setter: setGe
-            type: MetadataV4\edm\TTwoChildrenExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
         gt:
             expose: true
             access_type: public_method
@@ -214,7 +214,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getGt
                 setter: setGt
-            type: MetadataV4\edm\TTwoChildrenExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
         le:
             expose: true
             access_type: public_method
@@ -224,7 +224,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getLe
                 setter: setLe
-            type: MetadataV4\edm\TTwoChildrenExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
         lt:
             expose: true
             access_type: public_method
@@ -234,7 +234,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getLt
                 setter: setLt
-            type: MetadataV4\edm\TTwoChildrenExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
         and:
             expose: true
             access_type: public_method
@@ -244,7 +244,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getAnd
                 setter: setAnd
-            type: MetadataV4\edm\TTwoChildrenExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
         or:
             expose: true
             access_type: public_method
@@ -254,7 +254,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getOr
                 setter: setOr
-            type: MetadataV4\edm\TTwoChildrenExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
         not:
             expose: true
             access_type: public_method
@@ -264,7 +264,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getNot
                 setter: setNot
-            type: MetadataV4\edm\TOneChildExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType
         isOf:
             expose: true
             access_type: public_method
@@ -274,7 +274,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getIsOf
                 setter: setIsOf
-            type: MetadataV4\edm\TCastOrIsOfExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType
         labeledElement:
             expose: true
             access_type: public_method
@@ -284,7 +284,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getLabeledElement
                 setter: setLabeledElement
-            type: MetadataV4\edm\TLabeledElementExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType
         labeledElementReference:
             expose: true
             access_type: public_method
@@ -294,7 +294,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getLabeledElementReference
                 setter: setLabeledElementReference
-            type: MetadataV4\edm\TLabeledElementReferenceExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementReferenceExpressionType
         'null':
             expose: true
             access_type: public_method
@@ -304,7 +304,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getNull
                 setter: setNull
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>
             xml_list:
                 inline: false
                 entry_name: Annotation
@@ -319,7 +319,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getNavigationPropertyPath
                 setter: setNavigationPropertyPath
-            type: MetadataV4\edm\TPathExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TPathExpressionType
         path:
             expose: true
             access_type: public_method
@@ -329,7 +329,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getPath
                 setter: setPath
-            type: MetadataV4\edm\TPathExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TPathExpressionType
         propertyPath:
             expose: true
             access_type: public_method
@@ -339,7 +339,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getPropertyPath
                 setter: setPropertyPath
-            type: MetadataV4\edm\TPathExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TPathExpressionType
         record:
             expose: true
             access_type: public_method
@@ -349,7 +349,7 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getRecord
                 setter: setRecord
-            type: MetadataV4\edm\TRecordExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType
         urlRef:
             expose: true
             access_type: public_method
@@ -359,4 +359,4 @@ MetadataV4\edm\TCollectionExpressionType:
             accessor:
                 getter: getUrlRef
                 setter: setUrlRef
-            type: MetadataV4\edm\TOneChildExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType

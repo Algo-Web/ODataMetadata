@@ -1,4 +1,4 @@
-MetadataV3\edmx\TRuntimeMappingsType:
+AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeMappingsType:
     properties:
         mapping:
             expose: true
@@ -9,4 +9,4 @@ MetadataV3\edmx\TRuntimeMappingsType:
             accessor:
                 getter: getMapping
                 setter: setMapping
-            type: MetadataV3\mapping\cs\Mapping
+            type: AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Mapping

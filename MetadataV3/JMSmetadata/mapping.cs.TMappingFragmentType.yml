@@ -1,4 +1,4 @@
-MetadataV3\mapping\cs\TMappingFragmentType:
+AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType:
     properties:
         storeEntitySet:
             expose: true
@@ -27,7 +27,7 @@ MetadataV3\mapping\cs\TMappingFragmentType:
             accessor:
                 getter: getComplexProperty
                 setter: setComplexProperty
-            type: MetadataV3\mapping\cs\TComplexPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType
         scalarProperty:
             expose: true
             access_type: public_method
@@ -37,7 +37,7 @@ MetadataV3\mapping\cs\TMappingFragmentType:
             accessor:
                 getter: getScalarProperty
                 setter: setScalarProperty
-            type: MetadataV3\mapping\cs\TScalarPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType
         condition:
             expose: true
             access_type: public_method
@@ -47,4 +47,4 @@ MetadataV3\mapping\cs\TMappingFragmentType:
             accessor:
                 getter: getCondition
                 setter: setCondition
-            type: MetadataV3\mapping\cs\TConditionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType

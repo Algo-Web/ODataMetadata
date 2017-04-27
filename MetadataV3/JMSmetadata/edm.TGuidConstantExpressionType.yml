@@ -1,4 +1,4 @@
-MetadataV3\edm\TGuidConstantExpressionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TGuidConstantExpressionType:
     properties:
         __value:
             expose: true

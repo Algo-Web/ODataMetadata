@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TEntitySetMappingType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntitySetMappingType:
     properties:
         name:
             expose: true
@@ -40,7 +40,7 @@ MetadataV1\mapping\cs\TEntitySetMappingType:
                 inline: true
                 entry_name: QueryView
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TQueryViewType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TQueryViewType>
         entityTypeMapping:
             expose: true
             access_type: public_method
@@ -54,7 +54,7 @@ MetadataV1\mapping\cs\TEntitySetMappingType:
                 inline: true
                 entry_name: EntityTypeMapping
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TEntityTypeMappingType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeMappingType>
         mappingFragment:
             expose: true
             access_type: public_method
@@ -68,7 +68,7 @@ MetadataV1\mapping\cs\TEntitySetMappingType:
                 inline: true
                 entry_name: MappingFragment
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TMappingFragmentType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TMappingFragmentType>
         complexProperty:
             expose: true
             access_type: public_method
@@ -78,7 +78,7 @@ MetadataV1\mapping\cs\TEntitySetMappingType:
             accessor:
                 getter: getComplexProperty
                 setter: setComplexProperty
-            type: MetadataV1\mapping\cs\TComplexPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TComplexPropertyType
         scalarProperty:
             expose: true
             access_type: public_method
@@ -88,7 +88,7 @@ MetadataV1\mapping\cs\TEntitySetMappingType:
             accessor:
                 getter: getScalarProperty
                 setter: setScalarProperty
-            type: MetadataV1\mapping\cs\TScalarPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType
         condition:
             expose: true
             access_type: public_method
@@ -98,4 +98,4 @@ MetadataV1\mapping\cs\TEntitySetMappingType:
             accessor:
                 getter: getCondition
                 setter: setCondition
-            type: MetadataV1\mapping\cs\TConditionType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType

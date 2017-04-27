@@ -1,4 +1,4 @@
-MetadataV1\edm\ssdl\TEntityTypeType:
+AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TEntityTypeType:
     properties:
         name:
             expose: true
@@ -18,7 +18,7 @@ MetadataV1\edm\ssdl\TEntityTypeType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV1\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType
         key:
             expose: true
             access_type: public_method
@@ -28,7 +28,7 @@ MetadataV1\edm\ssdl\TEntityTypeType:
             accessor:
                 getter: getKey
                 setter: setKey
-            type: array<MetadataV1\edm\ssdl\TPropertyRefType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TPropertyRefType>
             xml_list:
                 inline: false
                 entry_name: PropertyRef
@@ -47,4 +47,4 @@ MetadataV1\edm\ssdl\TEntityTypeType:
                 inline: true
                 entry_name: Property
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm/ssdl'
-            type: array<MetadataV1\edm\ssdl\TEntityPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TEntityPropertyType>

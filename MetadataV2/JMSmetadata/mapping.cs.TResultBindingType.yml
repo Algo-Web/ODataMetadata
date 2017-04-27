@@ -1,4 +1,4 @@
-MetadataV2\mapping\cs\TResultBindingType:
+AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TResultBindingType:
     properties:
         columnName:
             expose: true

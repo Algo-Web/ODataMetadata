@@ -1,4 +1,4 @@
-MetadataV1\edmx\TOptionsType:
+AlgoWeb\ODataMetadata\MetadataV1\edmx\TOptionsType:
     properties:
         designerInfoPropertySet:
             expose: true
@@ -9,7 +9,7 @@ MetadataV1\edmx\TOptionsType:
             accessor:
                 getter: getDesignerInfoPropertySet
                 setter: setDesignerInfoPropertySet
-            type: array<MetadataV1\edmx\TDesignerPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edmx\TDesignerPropertyType>
             xml_list:
                 inline: false
                 entry_name: DesignerProperty

@@ -1,4 +1,4 @@
-MetadataV3\edm\TFunctionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType:
     properties:
         name:
             expose: true
@@ -22,7 +22,7 @@ MetadataV3\edm\TFunctionType:
                 inline: true
                 entry_name: ReturnType
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TFunctionReturnTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType>
         nullable:
             expose: true
             access_type: public_method
@@ -113,7 +113,7 @@ MetadataV3\edm\TFunctionType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
         parameter:
             expose: true
             access_type: public_method
@@ -127,7 +127,7 @@ MetadataV3\edm\TFunctionType:
                 inline: true
                 entry_name: Parameter
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TFunctionParameterType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType>
         definingExpression:
             expose: true
             access_type: public_method

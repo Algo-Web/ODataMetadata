@@ -1,4 +1,4 @@
-MetadataV2\mapping\cs\TConditionType:
+AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TConditionType:
     properties:
         value:
             expose: true

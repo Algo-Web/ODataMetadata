@@ -1,4 +1,4 @@
-MetadataV3\edmx\TRuntimeStorageModelsType:
+AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeStorageModelsType:
     properties:
         schema:
             expose: true
@@ -9,4 +9,4 @@ MetadataV3\edmx\TRuntimeStorageModelsType:
             accessor:
                 getter: getSchema
                 setter: setSchema
-            type: MetadataV3\edm\ssdl\Schema
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\Schema

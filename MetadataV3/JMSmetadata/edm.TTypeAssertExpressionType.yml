@@ -1,4 +1,4 @@
-MetadataV3\edm\TTypeAssertExpressionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType:
     properties:
         type:
             expose: true
@@ -103,7 +103,7 @@ MetadataV3\edm\TTypeAssertExpressionType:
                 inline: true
                 entry_name: Operand
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TOperandType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType>
         collectionType:
             expose: true
             access_type: public_method
@@ -117,7 +117,7 @@ MetadataV3\edm\TTypeAssertExpressionType:
                 inline: true
                 entry_name: CollectionType
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TCollectionTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType>
         referenceType:
             expose: true
             access_type: public_method
@@ -131,7 +131,7 @@ MetadataV3\edm\TTypeAssertExpressionType:
                 inline: true
                 entry_name: ReferenceType
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TReferenceTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType>
         rowType:
             expose: true
             access_type: public_method
@@ -141,7 +141,7 @@ MetadataV3\edm\TTypeAssertExpressionType:
             accessor:
                 getter: getRowType
                 setter: setRowType
-            type: array<MetadataV3\edm\TPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType>
             xml_list:
                 inline: false
                 entry_name: Property

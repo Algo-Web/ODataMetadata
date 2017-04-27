@@ -1,4 +1,4 @@
-MetadataV2\edm\TEntityTypeType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityTypeType:
     properties:
         name:
             expose: true
@@ -45,7 +45,7 @@ MetadataV2\edm\TEntityTypeType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
         key:
             expose: true
             access_type: public_method
@@ -55,7 +55,7 @@ MetadataV2\edm\TEntityTypeType:
             accessor:
                 getter: getKey
                 setter: setKey
-            type: array<MetadataV2\edm\TPropertyRefType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyRefType>
             xml_list:
                 inline: false
                 entry_name: PropertyRef
@@ -74,7 +74,7 @@ MetadataV2\edm\TEntityTypeType:
                 inline: true
                 entry_name: Property
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/edm'
-            type: array<MetadataV2\edm\TEntityPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityPropertyType>
         navigationProperty:
             expose: true
             access_type: public_method
@@ -88,4 +88,4 @@ MetadataV2\edm\TEntityTypeType:
                 inline: true
                 entry_name: NavigationProperty
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/edm'
-            type: array<MetadataV2\edm\TNavigationPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\TNavigationPropertyType>

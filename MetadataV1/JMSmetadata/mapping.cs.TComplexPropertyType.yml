@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TComplexPropertyType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TComplexPropertyType:
     properties:
         name:
             expose: true
@@ -40,7 +40,7 @@ MetadataV1\mapping\cs\TComplexPropertyType:
                 inline: true
                 entry_name: ScalarProperty
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TScalarPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType>
         complexProperty:
             expose: true
             access_type: public_method
@@ -54,7 +54,7 @@ MetadataV1\mapping\cs\TComplexPropertyType:
                 inline: true
                 entry_name: ComplexProperty
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TComplexPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TComplexPropertyType>
         complexTypeMapping:
             expose: true
             access_type: public_method
@@ -68,7 +68,7 @@ MetadataV1\mapping\cs\TComplexPropertyType:
                 inline: true
                 entry_name: ComplexTypeMapping
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TComplexTypeMappingType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TComplexTypeMappingType>
         condition:
             expose: true
             access_type: public_method
@@ -82,4 +82,4 @@ MetadataV1\mapping\cs\TComplexPropertyType:
                 inline: true
                 entry_name: Condition
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TConditionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType>

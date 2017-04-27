@@ -1,4 +1,4 @@
-MetadataV4\edm\TBoolConstantExpressionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TBoolConstantExpressionType:
     properties:
         __value:
             expose: true

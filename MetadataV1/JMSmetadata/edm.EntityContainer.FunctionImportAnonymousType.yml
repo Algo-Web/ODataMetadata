@@ -1,4 +1,4 @@
-MetadataV1\edm\EntityContainer\FunctionImportAnonymousType:
+AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\FunctionImportAnonymousType:
     properties:
         name:
             expose: true
@@ -45,7 +45,7 @@ MetadataV1\edm\EntityContainer\FunctionImportAnonymousType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV1\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType
         parameter:
             expose: true
             access_type: public_method
@@ -59,4 +59,4 @@ MetadataV1\edm\EntityContainer\FunctionImportAnonymousType:
                 inline: true
                 entry_name: Parameter
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
-            type: array<MetadataV1\edm\TFunctionImportParameterType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\TFunctionImportParameterType>

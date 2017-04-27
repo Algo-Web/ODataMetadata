@@ -1,4 +1,4 @@
-MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType:
+AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType:
     properties:
         entityTypeMapping:
             expose: true
@@ -13,7 +13,7 @@ MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType:
                 inline: true
                 entry_name: EntityTypeMapping
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
-            type: array<MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType>
         complexTypeMapping:
             expose: true
             access_type: public_method
@@ -23,4 +23,4 @@ MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType:
             accessor:
                 getter: getComplexTypeMapping
                 setter: setComplexTypeMapping
-            type: MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
+            type: AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType

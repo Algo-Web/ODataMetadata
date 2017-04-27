@@ -1,4 +1,4 @@
-MetadataV4\edmx\TReferenceType:
+AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType:
     properties:
         uri:
             expose: true
@@ -22,7 +22,7 @@ MetadataV4\edmx\TReferenceType:
                 inline: true
                 entry_name: Include
                 namespace: 'http://docs.oasis-open.org/odata/ns/edmx'
-            type: array<MetadataV4\edmx\TIncludeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType>
         includeAnnotations:
             expose: true
             access_type: public_method
@@ -36,7 +36,7 @@ MetadataV4\edmx\TReferenceType:
                 inline: true
                 entry_name: IncludeAnnotations
                 namespace: 'http://docs.oasis-open.org/odata/ns/edmx'
-            type: array<MetadataV4\edmx\TIncludeAnnotationsType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType>
         annotation:
             expose: true
             access_type: public_method
@@ -50,4 +50,4 @@ MetadataV4\edmx\TReferenceType:
                 inline: true
                 entry_name: Annotation
                 namespace: 'http://docs.oasis-open.org/odata/ns/edmx'
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>

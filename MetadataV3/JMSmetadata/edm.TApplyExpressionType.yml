@@ -1,4 +1,4 @@
-MetadataV3\edm\TApplyExpressionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType:
     properties:
         function:
             expose: true
@@ -22,7 +22,7 @@ MetadataV3\edm\TApplyExpressionType:
                 inline: true
                 entry_name: AppliedFunction
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType>
         arguments:
             expose: true
             access_type: public_method
@@ -36,4 +36,4 @@ MetadataV3\edm\TApplyExpressionType:
                 inline: true
                 entry_name: Arguments
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType>

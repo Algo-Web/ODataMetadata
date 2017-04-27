@@ -1,4 +1,4 @@
-MetadataV3\edm\ssdl\TFunctionReturnTypeType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType:
     properties:
         collectionType:
             expose: true
@@ -9,4 +9,4 @@ MetadataV3\edm\ssdl\TFunctionReturnTypeType:
             accessor:
                 getter: getCollectionType
                 setter: setCollectionType
-            type: MetadataV3\edm\ssdl\TCollectionTypeType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TCollectionTypeType

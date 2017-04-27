@@ -1,4 +1,4 @@
-MetadataV3\mapping\cs\TAssociationSetModificationFunctionType:
+AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetModificationFunctionType:
     properties:
         functionName:
             expose: true
@@ -27,4 +27,4 @@ MetadataV3\mapping\cs\TAssociationSetModificationFunctionType:
             accessor:
                 getter: getEndProperty
                 setter: setEndProperty
-            type: MetadataV3\mapping\cs\TModificationFunctionMappingEndPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingEndPropertyType

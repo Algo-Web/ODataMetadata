@@ -1,4 +1,4 @@
-MetadataV2\edm\TOnActionType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\TOnActionType:
     properties:
         action:
             expose: true
@@ -18,4 +18,4 @@ MetadataV2\edm\TOnActionType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType

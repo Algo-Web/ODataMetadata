@@ -1,4 +1,4 @@
-MetadataV1\edm\TDocumentationType:
+AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType:
     properties:
         summary:
             expose: true
@@ -9,7 +9,7 @@ MetadataV1\edm\TDocumentationType:
             accessor:
                 getter: getSummary
                 setter: setSummary
-            type: MetadataV1\edm\TTextType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edm\TTextType
         longDescription:
             expose: true
             access_type: public_method
@@ -19,4 +19,4 @@ MetadataV1\edm\TDocumentationType:
             accessor:
                 getter: getLongDescription
                 setter: setLongDescription
-            type: MetadataV1\edm\TTextType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edm\TTextType

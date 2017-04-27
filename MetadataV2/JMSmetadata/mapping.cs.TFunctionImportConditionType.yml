@@ -1,4 +1,4 @@
-MetadataV2\mapping\cs\TFunctionImportConditionType:
+AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionImportConditionType:
     properties:
         value:
             expose: true

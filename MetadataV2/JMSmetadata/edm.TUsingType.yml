@@ -1,4 +1,4 @@
-MetadataV2\edm\TUsingType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\TUsingType:
     properties:
         namespace:
             expose: true
@@ -27,4 +27,4 @@ MetadataV2\edm\TUsingType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType

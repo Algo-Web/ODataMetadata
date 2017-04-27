@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TEntityTypeModificationFunctionMappingType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionMappingType:
     properties:
         deleteFunction:
             expose: true
@@ -9,7 +9,7 @@ MetadataV1\mapping\cs\TEntityTypeModificationFunctionMappingType:
             accessor:
                 getter: getDeleteFunction
                 setter: setDeleteFunction
-            type: MetadataV1\mapping\cs\TEntityTypeModificationFunctionType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionType
         insertFunction:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ MetadataV1\mapping\cs\TEntityTypeModificationFunctionMappingType:
             accessor:
                 getter: getInsertFunction
                 setter: setInsertFunction
-            type: MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
         updateFunction:
             expose: true
             access_type: public_method
@@ -29,4 +29,4 @@ MetadataV1\mapping\cs\TEntityTypeModificationFunctionMappingType:
             accessor:
                 getter: getUpdateFunction
                 setter: setUpdateFunction
-            type: MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionWithResultType

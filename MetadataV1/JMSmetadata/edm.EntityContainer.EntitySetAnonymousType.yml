@@ -1,4 +1,4 @@
-MetadataV1\edm\EntityContainer\EntitySetAnonymousType:
+AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\EntitySetAnonymousType:
     properties:
         name:
             expose: true
@@ -36,4 +36,4 @@ MetadataV1\edm\EntityContainer\EntitySetAnonymousType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV1\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType

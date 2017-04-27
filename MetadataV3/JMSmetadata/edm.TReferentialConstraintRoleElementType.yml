@@ -1,4 +1,4 @@
-MetadataV3\edm\TReferentialConstraintRoleElementType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType:
     properties:
         role:
             expose: true
@@ -22,4 +22,4 @@ MetadataV3\edm\TReferentialConstraintRoleElementType:
                 inline: true
                 entry_name: PropertyRef
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TPropertyRefType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType>

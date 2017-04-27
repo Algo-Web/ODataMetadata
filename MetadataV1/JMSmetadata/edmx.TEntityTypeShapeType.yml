@@ -1,4 +1,4 @@
-MetadataV1\edmx\TEntityTypeShapeType:
+AlgoWeb\ODataMetadata\MetadataV1\edmx\TEntityTypeShapeType:
     properties:
         entityType:
             expose: true

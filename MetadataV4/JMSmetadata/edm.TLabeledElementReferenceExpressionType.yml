@@ -1,4 +1,4 @@
-MetadataV4\edm\TLabeledElementReferenceExpressionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementReferenceExpressionType:
     properties:
         __value:
             expose: true

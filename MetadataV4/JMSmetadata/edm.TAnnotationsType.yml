@@ -1,4 +1,4 @@
-MetadataV4\edm\TAnnotationsType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TAnnotationsType:
     properties:
         target:
             expose: true
@@ -31,4 +31,4 @@ MetadataV4\edm\TAnnotationsType:
                 inline: true
                 entry_name: Annotation
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>

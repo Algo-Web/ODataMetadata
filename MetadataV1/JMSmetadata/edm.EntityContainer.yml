@@ -1,4 +1,4 @@
-MetadataV1\edm\EntityContainer:
+AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer:
     xml_root_name: EntityContainer
     xml_root_namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
     properties:
@@ -29,7 +29,7 @@ MetadataV1\edm\EntityContainer:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV1\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType
         functionImport:
             expose: true
             access_type: public_method
@@ -43,7 +43,7 @@ MetadataV1\edm\EntityContainer:
                 inline: true
                 entry_name: FunctionImport
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
-            type: array<MetadataV1\edm\EntityContainer\FunctionImportAnonymousType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\FunctionImportAnonymousType>
         entitySet:
             expose: true
             access_type: public_method
@@ -57,7 +57,7 @@ MetadataV1\edm\EntityContainer:
                 inline: true
                 entry_name: EntitySet
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
-            type: array<MetadataV1\edm\EntityContainer\EntitySetAnonymousType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\EntitySetAnonymousType>
         associationSet:
             expose: true
             access_type: public_method
@@ -71,4 +71,4 @@ MetadataV1\edm\EntityContainer:
                 inline: true
                 entry_name: AssociationSet
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
-            type: array<MetadataV1\edm\EntityContainer\AssociationSetAnonymousType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer\AssociationSetAnonymousType>

@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType:
     properties:
         parameterName:
             expose: true

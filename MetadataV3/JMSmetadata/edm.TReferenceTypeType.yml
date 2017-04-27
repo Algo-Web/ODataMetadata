@@ -1,4 +1,4 @@
-MetadataV3\edm\TReferenceTypeType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType:
     properties:
         type:
             expose: true
@@ -18,4 +18,4 @@ MetadataV3\edm\TReferenceTypeType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType

@@ -1,4 +1,4 @@
-MetadataV3\edm\EntityContainer\AssociationSetAnonymousType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType:
     properties:
         name:
             expose: true
@@ -27,7 +27,7 @@ MetadataV3\edm\EntityContainer\AssociationSetAnonymousType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
         end:
             expose: true
             access_type: public_method
@@ -41,4 +41,4 @@ MetadataV3\edm\EntityContainer\AssociationSetAnonymousType:
                 inline: true
                 entry_name: End
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType>

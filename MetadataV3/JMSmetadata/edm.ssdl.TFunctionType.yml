@@ -1,4 +1,4 @@
-MetadataV3\edm\ssdl\TFunctionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionType:
     properties:
         name:
             expose: true
@@ -22,7 +22,7 @@ MetadataV3\edm\ssdl\TFunctionType:
                 inline: true
                 entry_name: ReturnType
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
-            type: array<MetadataV3\edm\ssdl\TFunctionReturnTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType>
         aggregate:
             expose: true
             access_type: public_method
@@ -95,7 +95,7 @@ MetadataV3\edm\ssdl\TFunctionType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
         parameter:
             expose: true
             access_type: public_method
@@ -109,7 +109,7 @@ MetadataV3\edm\ssdl\TFunctionType:
                 inline: true
                 entry_name: Parameter
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
-            type: array<MetadataV3\edm\ssdl\TParameterType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType>
         commandText:
             expose: true
             access_type: public_method

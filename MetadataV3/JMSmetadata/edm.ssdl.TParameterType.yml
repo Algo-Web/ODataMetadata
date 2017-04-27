@@ -1,4 +1,4 @@
-MetadataV3\edm\ssdl\TParameterType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType:
     properties:
         name:
             expose: true
@@ -72,4 +72,4 @@ MetadataV3\edm\ssdl\TParameterType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType

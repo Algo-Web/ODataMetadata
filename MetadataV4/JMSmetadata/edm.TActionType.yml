@@ -1,4 +1,4 @@
-MetadataV4\edm\TActionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TActionType:
     properties:
         name:
             expose: true
@@ -40,7 +40,7 @@ MetadataV4\edm\TActionType:
                 inline: true
                 entry_name: Parameter
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TActionFunctionParameterType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType>
         annotation:
             expose: true
             access_type: public_method
@@ -54,7 +54,7 @@ MetadataV4\edm\TActionType:
                 inline: true
                 entry_name: Annotation
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>
         returnType:
             expose: true
             access_type: public_method
@@ -64,4 +64,4 @@ MetadataV4\edm\TActionType:
             accessor:
                 getter: getReturnType
                 setter: setReturnType
-            type: MetadataV4\edm\TActionFunctionReturnTypeType
+            type: AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionReturnTypeType

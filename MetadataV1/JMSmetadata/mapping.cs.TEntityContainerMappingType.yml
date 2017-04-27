@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TEntityContainerMappingType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityContainerMappingType:
     properties:
         cdmEntityContainer:
             expose: true
@@ -31,7 +31,7 @@ MetadataV1\mapping\cs\TEntityContainerMappingType:
                 inline: true
                 entry_name: EntitySetMapping
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TEntitySetMappingType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntitySetMappingType>
         associationSetMapping:
             expose: true
             access_type: public_method
@@ -45,7 +45,7 @@ MetadataV1\mapping\cs\TEntityContainerMappingType:
                 inline: true
                 entry_name: AssociationSetMapping
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TAssociationSetMappingType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetMappingType>
         functionImportMapping:
             expose: true
             access_type: public_method
@@ -59,4 +59,4 @@ MetadataV1\mapping\cs\TEntityContainerMappingType:
                 inline: true
                 entry_name: FunctionImportMapping
                 namespace: 'urn:schemas-microsoft-com:windows:storage:mapping:CS'
-            type: array<MetadataV1\mapping\cs\TFunctionImportMappingType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportMappingType>

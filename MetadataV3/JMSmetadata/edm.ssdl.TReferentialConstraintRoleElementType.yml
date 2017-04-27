@@ -1,4 +1,4 @@
-MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType:
     properties:
         role:
             expose: true
@@ -18,7 +18,7 @@ MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
         propertyRef:
             expose: true
             access_type: public_method
@@ -32,4 +32,4 @@ MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType:
                 inline: true
                 entry_name: PropertyRef
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
-            type: array<MetadataV3\edm\ssdl\TPropertyRefType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType>

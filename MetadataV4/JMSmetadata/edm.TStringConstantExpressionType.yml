@@ -1,4 +1,4 @@
-MetadataV4\edm\TStringConstantExpressionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TStringConstantExpressionType:
     properties:
         __value:
             expose: true

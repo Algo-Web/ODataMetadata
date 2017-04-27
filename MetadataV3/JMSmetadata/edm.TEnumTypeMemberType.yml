@@ -1,4 +1,4 @@
-MetadataV3\edm\TEnumTypeMemberType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType:
     properties:
         name:
             expose: true
@@ -27,4 +27,4 @@ MetadataV3\edm\TEnumTypeMemberType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType

@@ -1,4 +1,4 @@
-MetadataV2\edm\TComplexTypePropertyType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\TComplexTypePropertyType:
     properties:
         name:
             expose: true
@@ -126,4 +126,4 @@ MetadataV2\edm\TComplexTypePropertyType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType

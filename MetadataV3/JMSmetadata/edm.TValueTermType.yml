@@ -1,4 +1,4 @@
-MetadataV3\edm\TValueTermType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermType:
     properties:
         name:
             expose: true
@@ -108,7 +108,7 @@ MetadataV3\edm\TValueTermType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
         collectionType:
             expose: true
             access_type: public_method
@@ -118,7 +118,7 @@ MetadataV3\edm\TValueTermType:
             accessor:
                 getter: getCollectionType
                 setter: setCollectionType
-            type: MetadataV3\edm\TCollectionTypeType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType
         referenceType:
             expose: true
             access_type: public_method
@@ -128,7 +128,7 @@ MetadataV3\edm\TValueTermType:
             accessor:
                 getter: getReferenceType
                 setter: setReferenceType
-            type: MetadataV3\edm\TReferenceTypeType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType
         rowType:
             expose: true
             access_type: public_method
@@ -138,7 +138,7 @@ MetadataV3\edm\TValueTermType:
             accessor:
                 getter: getRowType
                 setter: setRowType
-            type: array<MetadataV3\edm\TPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType>
             xml_list:
                 inline: false
                 entry_name: Property

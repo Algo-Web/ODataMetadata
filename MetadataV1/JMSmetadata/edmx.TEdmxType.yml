@@ -1,4 +1,4 @@
-MetadataV1\edmx\TEdmxType:
+AlgoWeb\ODataMetadata\MetadataV1\edmx\TEdmxType:
     properties:
         version:
             expose: true
@@ -18,7 +18,7 @@ MetadataV1\edmx\TEdmxType:
             accessor:
                 getter: getDesigner
                 setter: setDesigner
-            type: MetadataV1\edmx\TDesignerType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edmx\TDesignerType
         runtime:
             expose: true
             access_type: public_method
@@ -28,7 +28,7 @@ MetadataV1\edmx\TEdmxType:
             accessor:
                 getter: getRuntime
                 setter: setRuntime
-            type: MetadataV1\edmx\TRuntimeType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edmx\TRuntimeType
         dataServices:
             expose: true
             access_type: public_method
@@ -38,7 +38,7 @@ MetadataV1\edmx\TEdmxType:
             accessor:
                 getter: getDataServices
                 setter: setDataServices
-            type: array<MetadataV1\edm\Schema>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\Schema>
             xml_list:
                 inline: false
                 entry_name: Schema

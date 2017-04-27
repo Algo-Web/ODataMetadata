@@ -1,4 +1,4 @@
-MetadataV3\edmx\TRuntimeType:
+AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeType:
     properties:
         storageModels:
             expose: true
@@ -9,7 +9,7 @@ MetadataV3\edmx\TRuntimeType:
             accessor:
                 getter: getStorageModels
                 setter: setStorageModels
-            type: MetadataV3\edmx\TRuntimeStorageModelsType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeStorageModelsType
         conceptualModels:
             expose: true
             access_type: public_method
@@ -19,7 +19,7 @@ MetadataV3\edmx\TRuntimeType:
             accessor:
                 getter: getConceptualModels
                 setter: setConceptualModels
-            type: MetadataV3\edmx\TRuntimeConceptualModelsType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeConceptualModelsType
         mappings:
             expose: true
             access_type: public_method
@@ -29,4 +29,4 @@ MetadataV3\edmx\TRuntimeType:
             accessor:
                 getter: getMappings
                 setter: setMappings
-            type: MetadataV3\edmx\TRuntimeMappingsType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeMappingsType

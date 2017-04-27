@@ -1,4 +1,4 @@
-MetadataV2\edm\TPropertyType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType:
     properties:
         name:
             expose: true
@@ -99,7 +99,7 @@ MetadataV2\edm\TPropertyType:
             accessor:
                 getter: getCollectionType
                 setter: setCollectionType
-            type: MetadataV2\edm\TCollectionTypeType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\TCollectionTypeType
         referenceType:
             expose: true
             access_type: public_method
@@ -109,7 +109,7 @@ MetadataV2\edm\TPropertyType:
             accessor:
                 getter: getReferenceType
                 setter: setReferenceType
-            type: MetadataV2\edm\TReferenceTypeType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\TReferenceTypeType
         rowType:
             expose: true
             access_type: public_method
@@ -119,7 +119,7 @@ MetadataV2\edm\TPropertyType:
             accessor:
                 getter: getRowType
                 setter: setRowType
-            type: array<MetadataV2\edm\TPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType>
             xml_list:
                 inline: false
                 entry_name: Property

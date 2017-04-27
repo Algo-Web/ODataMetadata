@@ -1,4 +1,4 @@
-MetadataV1\edm\TAssociationType:
+AlgoWeb\ODataMetadata\MetadataV1\edm\TAssociationType:
     properties:
         name:
             expose: true
@@ -18,7 +18,7 @@ MetadataV1\edm\TAssociationType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV1\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType
         end:
             expose: true
             access_type: public_method
@@ -32,7 +32,7 @@ MetadataV1\edm\TAssociationType:
                 inline: true
                 entry_name: End
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
-            type: array<MetadataV1\edm\TAssociationEndType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\TAssociationEndType>
         referentialConstraint:
             expose: true
             access_type: public_method
@@ -42,4 +42,4 @@ MetadataV1\edm\TAssociationType:
             accessor:
                 getter: getReferentialConstraint
                 setter: setReferentialConstraint
-            type: MetadataV1\edm\TConstraintType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edm\TConstraintType

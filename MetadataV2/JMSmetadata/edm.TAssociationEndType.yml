@@ -1,4 +1,4 @@
-MetadataV2\edm\TAssociationEndType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\TAssociationEndType:
     properties:
         type:
             expose: true
@@ -36,7 +36,7 @@ MetadataV2\edm\TAssociationEndType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
         onDelete:
             expose: true
             access_type: public_method
@@ -50,4 +50,4 @@ MetadataV2\edm\TAssociationEndType:
                 inline: true
                 entry_name: OnDelete
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/edm'
-            type: array<MetadataV2\edm\TOnActionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\edm\TOnActionType>

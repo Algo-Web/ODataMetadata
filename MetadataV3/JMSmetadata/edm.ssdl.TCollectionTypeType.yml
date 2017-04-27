@@ -1,4 +1,4 @@
-MetadataV3\edm\ssdl\TCollectionTypeType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TCollectionTypeType:
     properties:
         rowType:
             expose: true
@@ -9,7 +9,7 @@ MetadataV3\edm\ssdl\TCollectionTypeType:
             accessor:
                 getter: getRowType
                 setter: setRowType
-            type: array<MetadataV3\edm\ssdl\TPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType>
             xml_list:
                 inline: false
                 entry_name: Property

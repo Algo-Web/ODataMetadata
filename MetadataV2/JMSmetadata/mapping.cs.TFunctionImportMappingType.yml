@@ -1,4 +1,4 @@
-MetadataV2\mapping\cs\TFunctionImportMappingType:
+AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionImportMappingType:
     properties:
         functionName:
             expose: true
@@ -27,4 +27,4 @@ MetadataV2\mapping\cs\TFunctionImportMappingType:
             accessor:
                 getter: getResultMapping
                 setter: setResultMapping
-            type: MetadataV2\mapping\cs\TFunctionImportMappingResultMappingType
+            type: AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionImportMappingResultMappingType

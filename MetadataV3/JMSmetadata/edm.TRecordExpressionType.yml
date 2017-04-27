@@ -1,4 +1,4 @@
-MetadataV3\edm\TRecordExpressionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType:
     properties:
         type:
             expose: true
@@ -22,4 +22,4 @@ MetadataV3\edm\TRecordExpressionType:
                 inline: true
                 entry_name: PropertyValue
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TPropertyValueType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType>

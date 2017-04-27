@@ -1,4 +1,4 @@
-MetadataV3\edm\TComplexTypePropertyType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType:
     properties:
         name:
             expose: true
@@ -139,7 +139,7 @@ MetadataV3\edm\TComplexTypePropertyType:
                 inline: true
                 entry_name: Documentation
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TDocumentationType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType>
         valueAnnotation:
             expose: true
             access_type: public_method
@@ -153,7 +153,7 @@ MetadataV3\edm\TComplexTypePropertyType:
                 inline: true
                 entry_name: ValueAnnotation
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TValueAnnotationType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType>
         typeAnnotation:
             expose: true
             access_type: public_method
@@ -167,4 +167,4 @@ MetadataV3\edm\TComplexTypePropertyType:
                 inline: true
                 entry_name: TypeAnnotation
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TTypeAnnotationType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType>

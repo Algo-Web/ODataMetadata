@@ -1,4 +1,4 @@
-MetadataV4\edmx\TIncludeAnnotationsType:
+AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType:
     properties:
         termNamespace:
             expose: true

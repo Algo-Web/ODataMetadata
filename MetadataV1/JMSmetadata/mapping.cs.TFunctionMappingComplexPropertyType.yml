@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TFunctionMappingComplexPropertyType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingComplexPropertyType:
     properties:
         name:
             expose: true
@@ -27,7 +27,7 @@ MetadataV1\mapping\cs\TFunctionMappingComplexPropertyType:
             accessor:
                 getter: getScalarProperty
                 setter: setScalarProperty
-            type: MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType
         complexProperty:
             expose: true
             access_type: public_method
@@ -37,4 +37,4 @@ MetadataV1\mapping\cs\TFunctionMappingComplexPropertyType:
             accessor:
                 getter: getComplexProperty
                 setter: setComplexProperty
-            type: MetadataV1\mapping\cs\TFunctionMappingComplexPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingComplexPropertyType

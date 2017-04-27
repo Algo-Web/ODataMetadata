@@ -1,4 +1,4 @@
-MetadataV4\edm\Schema:
+AlgoWeb\ODataMetadata\MetadataV4\edm\Schema:
     xml_root_name: Schema
     xml_root_namespace: 'http://docs.oasis-open.org/odata/ns/edm'
     properties:
@@ -33,7 +33,7 @@ MetadataV4\edm\Schema:
                 inline: true
                 entry_name: ComplexType
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TComplexTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TComplexTypeType>
         entityType:
             expose: true
             access_type: public_method
@@ -47,7 +47,7 @@ MetadataV4\edm\Schema:
                 inline: true
                 entry_name: EntityType
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TEntityTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityTypeType>
         typeDefinition:
             expose: true
             access_type: public_method
@@ -61,7 +61,7 @@ MetadataV4\edm\Schema:
                 inline: true
                 entry_name: TypeDefinition
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TTypeDefinitionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TTypeDefinitionType>
         enumType:
             expose: true
             access_type: public_method
@@ -75,7 +75,7 @@ MetadataV4\edm\Schema:
                 inline: true
                 entry_name: EnumType
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TEnumTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeType>
         action:
             expose: true
             access_type: public_method
@@ -89,7 +89,7 @@ MetadataV4\edm\Schema:
                 inline: true
                 entry_name: Action
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TActionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TActionType>
         function:
             expose: true
             access_type: public_method
@@ -103,7 +103,7 @@ MetadataV4\edm\Schema:
                 inline: true
                 entry_name: Function
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TFunctionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TFunctionType>
         term:
             expose: true
             access_type: public_method
@@ -117,7 +117,7 @@ MetadataV4\edm\Schema:
                 inline: true
                 entry_name: Term
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TTermType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TTermType>
         annotations:
             expose: true
             access_type: public_method
@@ -131,7 +131,7 @@ MetadataV4\edm\Schema:
                 inline: true
                 entry_name: Annotations
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TAnnotationsType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TAnnotationsType>
         entityContainer:
             expose: true
             access_type: public_method
@@ -145,7 +145,7 @@ MetadataV4\edm\Schema:
                 inline: true
                 entry_name: EntityContainer
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TEntityContainerType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityContainerType>
         annotation:
             expose: true
             access_type: public_method
@@ -159,4 +159,4 @@ MetadataV4\edm\Schema:
                 inline: true
                 entry_name: Annotation
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>

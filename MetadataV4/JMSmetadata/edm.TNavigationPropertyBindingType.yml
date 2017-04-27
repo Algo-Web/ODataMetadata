@@ -1,4 +1,4 @@
-MetadataV4\edm\TNavigationPropertyBindingType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType:
     properties:
         path:
             expose: true

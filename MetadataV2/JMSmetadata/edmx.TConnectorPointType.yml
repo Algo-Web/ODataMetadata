@@ -1,4 +1,4 @@
-MetadataV2\edmx\TConnectorPointType:
+AlgoWeb\ODataMetadata\MetadataV2\edmx\TConnectorPointType:
     properties:
         pointX:
             expose: true

@@ -1,4 +1,4 @@
-MetadataV2\mapping\cs\TScalarPropertyType:
+AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType:
     properties:
         name:
             expose: true

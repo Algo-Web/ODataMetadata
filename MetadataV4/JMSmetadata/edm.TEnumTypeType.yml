@@ -1,4 +1,4 @@
-MetadataV4\edm\TEnumTypeType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeType:
     properties:
         name:
             expose: true
@@ -40,7 +40,7 @@ MetadataV4\edm\TEnumTypeType:
                 inline: true
                 entry_name: Member
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TEnumTypeMemberType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeMemberType>
         annotation:
             expose: true
             access_type: public_method
@@ -54,4 +54,4 @@ MetadataV4\edm\TEnumTypeType:
                 inline: true
                 entry_name: Annotation
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>

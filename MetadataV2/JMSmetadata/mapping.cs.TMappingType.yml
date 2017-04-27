@@ -1,4 +1,4 @@
-MetadataV2\mapping\cs\TMappingType:
+AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingType:
     properties:
         space:
             expose: true
@@ -22,7 +22,7 @@ MetadataV2\mapping\cs\TMappingType:
                 inline: true
                 entry_name: Alias
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/mapping/cs'
-            type: array<MetadataV2\mapping\cs\TAliasType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TAliasType>
         entityContainerMapping:
             expose: true
             access_type: public_method
@@ -32,4 +32,4 @@ MetadataV2\mapping\cs\TMappingType:
             accessor:
                 getter: getEntityContainerMapping
                 setter: setEntityContainerMapping
-            type: MetadataV2\mapping\cs\TEntityContainerMappingType
+            type: AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityContainerMappingType

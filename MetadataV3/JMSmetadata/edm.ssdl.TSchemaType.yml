@@ -1,4 +1,4 @@
-MetadataV3\edm\ssdl\TSchemaType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TSchemaType:
     properties:
         namespace:
             expose: true
@@ -49,7 +49,7 @@ MetadataV3\edm\ssdl\TSchemaType:
                 inline: true
                 entry_name: Association
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
-            type: array<MetadataV3\edm\ssdl\TAssociationType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationType>
         entityType:
             expose: true
             access_type: public_method
@@ -63,7 +63,7 @@ MetadataV3\edm\ssdl\TSchemaType:
                 inline: true
                 entry_name: EntityType
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
-            type: array<MetadataV3\edm\ssdl\TEntityTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityTypeType>
         entityContainer:
             expose: true
             access_type: public_method
@@ -77,7 +77,7 @@ MetadataV3\edm\ssdl\TSchemaType:
                 inline: true
                 entry_name: EntityContainer
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
-            type: array<MetadataV3\edm\ssdl\EntityContainer>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer>
         function:
             expose: true
             access_type: public_method
@@ -91,4 +91,4 @@ MetadataV3\edm\ssdl\TSchemaType:
                 inline: true
                 entry_name: Function
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
-            type: array<MetadataV3\edm\ssdl\TFunctionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionType>

@@ -1,4 +1,4 @@
-MetadataV3\edm\TPathExpressionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TPathExpressionType:
     properties:
         __value:
             expose: true

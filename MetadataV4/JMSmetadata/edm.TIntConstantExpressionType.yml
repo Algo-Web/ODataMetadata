@@ -1,4 +1,4 @@
-MetadataV4\edm\TIntConstantExpressionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TIntConstantExpressionType:
     properties:
         __value:
             expose: true

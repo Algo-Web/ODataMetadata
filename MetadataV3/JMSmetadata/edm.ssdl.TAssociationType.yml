@@ -1,4 +1,4 @@
-MetadataV3\edm\ssdl\TAssociationType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationType:
     properties:
         name:
             expose: true
@@ -18,7 +18,7 @@ MetadataV3\edm\ssdl\TAssociationType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
         end:
             expose: true
             access_type: public_method
@@ -32,7 +32,7 @@ MetadataV3\edm\ssdl\TAssociationType:
                 inline: true
                 entry_name: End
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
-            type: array<MetadataV3\edm\ssdl\TAssociationEndType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType>
         referentialConstraint:
             expose: true
             access_type: public_method
@@ -42,4 +42,4 @@ MetadataV3\edm\ssdl\TAssociationType:
             accessor:
                 getter: getReferentialConstraint
                 setter: setReferentialConstraint
-            type: MetadataV3\edm\ssdl\TConstraintType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TConstraintType

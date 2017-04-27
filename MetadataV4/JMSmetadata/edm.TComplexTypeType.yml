@@ -1,4 +1,4 @@
-MetadataV4\edm\TComplexTypeType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TComplexTypeType:
     properties:
         name:
             expose: true
@@ -49,7 +49,7 @@ MetadataV4\edm\TComplexTypeType:
                 inline: true
                 entry_name: Property
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType>
         navigationProperty:
             expose: true
             access_type: public_method
@@ -63,7 +63,7 @@ MetadataV4\edm\TComplexTypeType:
                 inline: true
                 entry_name: NavigationProperty
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TNavigationPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType>
         annotation:
             expose: true
             access_type: public_method
@@ -77,4 +77,4 @@ MetadataV4\edm\TComplexTypeType:
                 inline: true
                 entry_name: Annotation
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>

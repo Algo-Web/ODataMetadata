@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TEntityTypeModificationFunctionType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeModificationFunctionType:
     properties:
         functionName:
             expose: true
@@ -27,7 +27,7 @@ MetadataV1\mapping\cs\TEntityTypeModificationFunctionType:
             accessor:
                 getter: getScalarProperty
                 setter: setScalarProperty
-            type: MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType
         associationEnd:
             expose: true
             access_type: public_method
@@ -37,7 +37,7 @@ MetadataV1\mapping\cs\TEntityTypeModificationFunctionType:
             accessor:
                 getter: getAssociationEnd
                 setter: setAssociationEnd
-            type: MetadataV1\mapping\cs\TFunctionMappingAssociationEndType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingAssociationEndType
         complexProperty:
             expose: true
             access_type: public_method
@@ -47,4 +47,4 @@ MetadataV1\mapping\cs\TEntityTypeModificationFunctionType:
             accessor:
                 getter: getComplexProperty
                 setter: setComplexProperty
-            type: MetadataV1\mapping\cs\TFunctionMappingComplexPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingComplexPropertyType

@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TFunctionMappingEndPropertyType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingEndPropertyType:
     properties:
         name:
             expose: true
@@ -18,4 +18,4 @@ MetadataV1\mapping\cs\TFunctionMappingEndPropertyType:
             accessor:
                 getter: getScalarProperty
                 setter: setScalarProperty
-            type: MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType

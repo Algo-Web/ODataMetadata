@@ -1,4 +1,4 @@
-MetadataV3\mapping\cs\TModificationFunctionMappingAssociationEndType:
+AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingAssociationEndType:
     properties:
         associationSet:
             expose: true
@@ -36,4 +36,4 @@ MetadataV3\mapping\cs\TModificationFunctionMappingAssociationEndType:
             accessor:
                 getter: getScalarProperty
                 setter: setScalarProperty
-            type: MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType

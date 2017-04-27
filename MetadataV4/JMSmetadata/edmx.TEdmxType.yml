@@ -1,4 +1,4 @@
-MetadataV4\edmx\TEdmxType:
+AlgoWeb\ODataMetadata\MetadataV4\edmx\TEdmxType:
     properties:
         version:
             expose: true
@@ -22,7 +22,7 @@ MetadataV4\edmx\TEdmxType:
                 inline: true
                 entry_name: Reference
                 namespace: 'http://docs.oasis-open.org/odata/ns/edmx'
-            type: array<MetadataV4\edmx\TReferenceType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType>
         dataServices:
             expose: true
             access_type: public_method
@@ -32,7 +32,7 @@ MetadataV4\edmx\TEdmxType:
             accessor:
                 getter: getDataServices
                 setter: setDataServices
-            type: array<MetadataV4\edm\Schema>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Schema>
             xml_list:
                 inline: false
                 entry_name: Schema

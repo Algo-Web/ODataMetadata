@@ -1,4 +1,4 @@
-MetadataV3\edm\TEnumTypeType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeType:
     properties:
         name:
             expose: true
@@ -45,7 +45,7 @@ MetadataV3\edm\TEnumTypeType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
         member:
             expose: true
             access_type: public_method
@@ -59,4 +59,4 @@ MetadataV3\edm\TEnumTypeType:
                 inline: true
                 entry_name: Member
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TEnumTypeMemberType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType>

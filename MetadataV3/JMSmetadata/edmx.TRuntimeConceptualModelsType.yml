@@ -1,4 +1,4 @@
-MetadataV3\edmx\TRuntimeConceptualModelsType:
+AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeConceptualModelsType:
     properties:
         schema:
             expose: true
@@ -9,4 +9,4 @@ MetadataV3\edmx\TRuntimeConceptualModelsType:
             accessor:
                 getter: getSchema
                 setter: setSchema
-            type: MetadataV3\edm\Schema
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\Schema

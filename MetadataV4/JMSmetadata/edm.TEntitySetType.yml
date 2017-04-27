@@ -1,4 +1,4 @@
-MetadataV4\edm\TEntitySetType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TEntitySetType:
     properties:
         name:
             expose: true
@@ -40,7 +40,7 @@ MetadataV4\edm\TEntitySetType:
                 inline: true
                 entry_name: NavigationPropertyBinding
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TNavigationPropertyBindingType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType>
         annotation:
             expose: true
             access_type: public_method
@@ -54,4 +54,4 @@ MetadataV4\edm\TEntitySetType:
                 inline: true
                 entry_name: Annotation
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>

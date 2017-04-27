@@ -1,4 +1,4 @@
-MetadataV3\edm\TFloatConstantExpressionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TFloatConstantExpressionType:
     properties:
         __value:
             expose: true

@@ -1,4 +1,4 @@
-MetadataV3\edm\TValueAnnotationType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType:
     properties:
         term:
             expose: true
@@ -27,7 +27,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getString
                 setter: setString
-            type: MetadataV3\edm\TStringConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TStringConstantExpressionType
         binary:
             expose: true
             access_type: public_method
@@ -37,7 +37,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getBinary
                 setter: setBinary
-            type: MetadataV3\edm\TBinaryConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TBinaryConstantExpressionType
         int:
             expose: true
             access_type: public_method
@@ -47,7 +47,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getInt
                 setter: setInt
-            type: MetadataV3\edm\TIntConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TIntConstantExpressionType
         float:
             expose: true
             access_type: public_method
@@ -57,7 +57,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getFloat
                 setter: setFloat
-            type: MetadataV3\edm\TFloatConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TFloatConstantExpressionType
         guid:
             expose: true
             access_type: public_method
@@ -67,7 +67,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getGuid
                 setter: setGuid
-            type: MetadataV3\edm\TGuidConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TGuidConstantExpressionType
         decimal:
             expose: true
             access_type: public_method
@@ -77,7 +77,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getDecimal
                 setter: setDecimal
-            type: MetadataV3\edm\TDecimalConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDecimalConstantExpressionType
         bool:
             expose: true
             access_type: public_method
@@ -87,7 +87,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getBool
                 setter: setBool
-            type: MetadataV3\edm\TBoolConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TBoolConstantExpressionType
         dateTime:
             expose: true
             access_type: public_method
@@ -97,7 +97,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getDateTime
                 setter: setDateTime
-            type: MetadataV3\edm\TDateTimeConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDateTimeConstantExpressionType
         dateTimeOffset:
             expose: true
             access_type: public_method
@@ -107,7 +107,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getDateTimeOffset
                 setter: setDateTimeOffset
-            type: MetadataV3\edm\TDateTimeOffsetConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDateTimeOffsetConstantExpressionType
         enum:
             expose: true
             access_type: public_method
@@ -117,7 +117,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getEnum
                 setter: setEnum
-            type: MetadataV3\edm\TEnumConstantExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumConstantExpressionType
         path:
             expose: true
             access_type: public_method
@@ -127,7 +127,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getPath
                 setter: setPath
-            type: MetadataV3\edm\TPathExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TPathExpressionType
         if:
             expose: true
             access_type: public_method
@@ -137,7 +137,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getIf
                 setter: setIf
-            type: MetadataV3\edm\TIfExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType
         record:
             expose: true
             access_type: public_method
@@ -147,7 +147,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getRecord
                 setter: setRecord
-            type: MetadataV3\edm\TRecordExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType
         collection:
             expose: true
             access_type: public_method
@@ -157,7 +157,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getCollection
                 setter: setCollection
-            type: MetadataV3\edm\TCollectionExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType
         typeAssert:
             expose: true
             access_type: public_method
@@ -167,7 +167,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getTypeAssert
                 setter: setTypeAssert
-            type: MetadataV3\edm\TTypeAssertExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType
         typeTest:
             expose: true
             access_type: public_method
@@ -177,7 +177,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getTypeTest
                 setter: setTypeTest
-            type: MetadataV3\edm\TTypeTestExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType
         functionReference:
             expose: true
             access_type: public_method
@@ -187,7 +187,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getFunctionReference
                 setter: setFunctionReference
-            type: MetadataV3\edm\TFunctionReferenceExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType
         entitySetReference:
             expose: true
             access_type: public_method
@@ -197,7 +197,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getEntitySetReference
                 setter: setEntitySetReference
-            type: MetadataV3\edm\TEntitySetReferenceExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType
         anonymousFunction:
             expose: true
             access_type: public_method
@@ -207,7 +207,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getAnonymousFunction
                 setter: setAnonymousFunction
-            type: MetadataV3\edm\TAnonymousFunctionExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType
         parameterReference:
             expose: true
             access_type: public_method
@@ -217,7 +217,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getParameterReference
                 setter: setParameterReference
-            type: MetadataV3\edm\TParameterReferenceExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType
         apply:
             expose: true
             access_type: public_method
@@ -227,7 +227,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getApply
                 setter: setApply
-            type: MetadataV3\edm\TApplyExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType
         propertyReference:
             expose: true
             access_type: public_method
@@ -237,7 +237,7 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getPropertyReference
                 setter: setPropertyReference
-            type: MetadataV3\edm\TPropertyReferenceExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType
         valueTermReference:
             expose: true
             access_type: public_method
@@ -247,4 +247,4 @@ MetadataV3\edm\TValueAnnotationType:
             accessor:
                 getter: getValueTermReference
                 setter: setValueTermReference
-            type: MetadataV3\edm\TValueTermReferenceExpressionType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType

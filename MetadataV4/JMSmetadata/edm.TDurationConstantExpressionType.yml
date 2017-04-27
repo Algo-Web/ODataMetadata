@@ -1,4 +1,4 @@
-MetadataV4\edm\TDurationConstantExpressionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TDurationConstantExpressionType:
     properties:
         __value:
             expose: true

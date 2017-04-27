@@ -1,4 +1,4 @@
-MetadataV4\edm\TIfExpressionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType:
     properties:
         annotation:
             expose: true
@@ -13,7 +13,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Annotation
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>
         binary:
             expose: true
             access_type: public_method
@@ -27,7 +27,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Binary
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TBinaryConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TBinaryConstantExpressionType>
         bool:
             expose: true
             access_type: public_method
@@ -41,7 +41,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Bool
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TBoolConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TBoolConstantExpressionType>
         date:
             expose: true
             access_type: public_method
@@ -55,7 +55,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Date
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TDateConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TDateConstantExpressionType>
         dateTimeOffset:
             expose: true
             access_type: public_method
@@ -69,7 +69,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: DateTimeOffset
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TDateTimeOffsetConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TDateTimeOffsetConstantExpressionType>
         decimal:
             expose: true
             access_type: public_method
@@ -83,7 +83,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Decimal
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TDecimalConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TDecimalConstantExpressionType>
         duration:
             expose: true
             access_type: public_method
@@ -97,7 +97,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Duration
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TDurationConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TDurationConstantExpressionType>
         enumMember:
             expose: true
             access_type: public_method
@@ -107,7 +107,7 @@ MetadataV4\edm\TIfExpressionType:
             accessor:
                 getter: getEnumMember
                 setter: setEnumMember
-            type: array<MetadataV4\edm\TPathType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TPathType>
             xml_list:
                 inline: false
                 entry_name: TPath
@@ -126,7 +126,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Float
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TFloatConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TFloatConstantExpressionType>
         guid:
             expose: true
             access_type: public_method
@@ -140,7 +140,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Guid
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TGuidConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TGuidConstantExpressionType>
         int:
             expose: true
             access_type: public_method
@@ -154,7 +154,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Int
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TIntConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TIntConstantExpressionType>
         string:
             expose: true
             access_type: public_method
@@ -168,7 +168,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: String
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TStringConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TStringConstantExpressionType>
         timeOfDay:
             expose: true
             access_type: public_method
@@ -182,7 +182,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: TimeOfDay
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TTimeOfDayConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TTimeOfDayConstantExpressionType>
         annotationPath:
             expose: true
             access_type: public_method
@@ -196,7 +196,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: AnnotationPath
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TPathExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TPathExpressionType>
         apply:
             expose: true
             access_type: public_method
@@ -210,7 +210,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Apply
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TApplyExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType>
         cast:
             expose: true
             access_type: public_method
@@ -224,7 +224,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Cast
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TCastOrIsOfExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType>
         collection:
             expose: true
             access_type: public_method
@@ -238,7 +238,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Collection
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TCollectionExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType>
         if:
             expose: true
             access_type: public_method
@@ -252,7 +252,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: If
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TIfExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType>
         eq:
             expose: true
             access_type: public_method
@@ -266,7 +266,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Eq
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TTwoChildrenExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType>
         ne:
             expose: true
             access_type: public_method
@@ -280,7 +280,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Ne
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TTwoChildrenExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType>
         ge:
             expose: true
             access_type: public_method
@@ -294,7 +294,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Ge
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TTwoChildrenExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType>
         gt:
             expose: true
             access_type: public_method
@@ -308,7 +308,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Gt
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TTwoChildrenExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType>
         le:
             expose: true
             access_type: public_method
@@ -322,7 +322,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Le
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TTwoChildrenExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType>
         lt:
             expose: true
             access_type: public_method
@@ -336,7 +336,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Lt
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TTwoChildrenExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType>
         and:
             expose: true
             access_type: public_method
@@ -350,7 +350,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: And
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TTwoChildrenExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType>
         or:
             expose: true
             access_type: public_method
@@ -364,7 +364,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Or
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TTwoChildrenExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType>
         not:
             expose: true
             access_type: public_method
@@ -378,7 +378,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Not
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TOneChildExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType>
         isOf:
             expose: true
             access_type: public_method
@@ -392,7 +392,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: IsOf
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TCastOrIsOfExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType>
         labeledElement:
             expose: true
             access_type: public_method
@@ -406,7 +406,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: LabeledElement
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TLabeledElementExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType>
         labeledElementReference:
             expose: true
             access_type: public_method
@@ -420,7 +420,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: LabeledElementReference
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TLabeledElementReferenceExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementReferenceExpressionType>
         'null':
             expose: true
             access_type: public_method
@@ -430,7 +430,7 @@ MetadataV4\edm\TIfExpressionType:
             accessor:
                 getter: getNull
                 setter: setNull
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>
             xml_list:
                 inline: false
                 entry_name: Annotation
@@ -449,7 +449,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: NavigationPropertyPath
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TPathExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TPathExpressionType>
         path:
             expose: true
             access_type: public_method
@@ -463,7 +463,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Path
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TPathExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TPathExpressionType>
         propertyPath:
             expose: true
             access_type: public_method
@@ -477,7 +477,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: PropertyPath
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TPathExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TPathExpressionType>
         record:
             expose: true
             access_type: public_method
@@ -491,7 +491,7 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: Record
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TRecordExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType>
         urlRef:
             expose: true
             access_type: public_method
@@ -505,4 +505,4 @@ MetadataV4\edm\TIfExpressionType:
                 inline: true
                 entry_name: UrlRef
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\TOneChildExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType>

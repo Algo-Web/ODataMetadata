@@ -1,4 +1,4 @@
-MetadataV2\mapping\cs\TFunctionImportEntityTypeMappingType:
+AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionImportEntityTypeMappingType:
     properties:
         typeName:
             expose: true
@@ -22,7 +22,7 @@ MetadataV2\mapping\cs\TFunctionImportEntityTypeMappingType:
                 inline: true
                 entry_name: ScalarProperty
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/mapping/cs'
-            type: array<MetadataV2\mapping\cs\TScalarPropertyType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType>
         condition:
             expose: true
             access_type: public_method
@@ -36,4 +36,4 @@ MetadataV2\mapping\cs\TFunctionImportEntityTypeMappingType:
                 inline: true
                 entry_name: Condition
                 namespace: 'http://schemas.microsoft.com/ado/2008/09/mapping/cs'
-            type: array<MetadataV2\mapping\cs\TFunctionImportConditionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionImportConditionType>

@@ -1,4 +1,4 @@
-MetadataV2\edm\TTypeRefType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\TTypeRefType:
     properties:
         type:
             expose: true
@@ -90,4 +90,4 @@ MetadataV2\edm\TTypeRefType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType

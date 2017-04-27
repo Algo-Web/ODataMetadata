@@ -1,4 +1,4 @@
-MetadataV3\edm\TEntitySetReferenceExpressionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType:
     properties:
         entitySet:
             expose: true

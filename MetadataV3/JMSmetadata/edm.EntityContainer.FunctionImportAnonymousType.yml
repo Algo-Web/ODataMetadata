@@ -1,4 +1,4 @@
-MetadataV3\edm\EntityContainer\FunctionImportAnonymousType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType:
     properties:
         name:
             expose: true
@@ -22,7 +22,7 @@ MetadataV3\edm\EntityContainer\FunctionImportAnonymousType:
                 inline: true
                 entry_name: ReturnType
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TFunctionImportReturnTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType>
         entitySet:
             expose: true
             access_type: public_method
@@ -32,7 +32,7 @@ MetadataV3\edm\EntityContainer\FunctionImportAnonymousType:
             accessor:
                 getter: getEntitySet
                 setter: setEntitySet
-            type: MetadataV3\edm\TOperandType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType
         isComposable:
             expose: true
             access_type: public_method
@@ -78,7 +78,7 @@ MetadataV3\edm\EntityContainer\FunctionImportAnonymousType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
         parameter:
             expose: true
             access_type: public_method
@@ -92,4 +92,4 @@ MetadataV3\edm\EntityContainer\FunctionImportAnonymousType:
                 inline: true
                 entry_name: Parameter
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TFunctionImportParameterType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType>

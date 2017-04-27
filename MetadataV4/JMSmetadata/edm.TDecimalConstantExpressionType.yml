@@ -1,4 +1,4 @@
-MetadataV4\edm\TDecimalConstantExpressionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TDecimalConstantExpressionType:
     properties:
         __value:
             expose: true

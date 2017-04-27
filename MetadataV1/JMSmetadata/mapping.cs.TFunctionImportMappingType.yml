@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TFunctionImportMappingType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportMappingType:
     properties:
         functionName:
             expose: true
@@ -27,7 +27,7 @@ MetadataV1\mapping\cs\TFunctionImportMappingType:
             accessor:
                 getter: getResultMapping
                 setter: setResultMapping
-            type: array<MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType>
             xml_list:
                 inline: false
                 entry_name: EntityTypeMapping

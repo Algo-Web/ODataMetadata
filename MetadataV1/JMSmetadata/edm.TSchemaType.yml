@@ -1,4 +1,4 @@
-MetadataV1\edm\TSchemaType:
+AlgoWeb\ODataMetadata\MetadataV1\edm\TSchemaType:
     properties:
         namespace:
             expose: true
@@ -31,7 +31,7 @@ MetadataV1\edm\TSchemaType:
                 inline: true
                 entry_name: Using
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
-            type: array<MetadataV1\edm\TUsingType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\TUsingType>
         association:
             expose: true
             access_type: public_method
@@ -45,7 +45,7 @@ MetadataV1\edm\TSchemaType:
                 inline: true
                 entry_name: Association
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
-            type: array<MetadataV1\edm\TAssociationType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\TAssociationType>
         complexType:
             expose: true
             access_type: public_method
@@ -59,7 +59,7 @@ MetadataV1\edm\TSchemaType:
                 inline: true
                 entry_name: ComplexType
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
-            type: array<MetadataV1\edm\TComplexTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypeType>
         entityType:
             expose: true
             access_type: public_method
@@ -73,7 +73,7 @@ MetadataV1\edm\TSchemaType:
                 inline: true
                 entry_name: EntityType
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
-            type: array<MetadataV1\edm\TEntityTypeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\TEntityTypeType>
         entityContainer:
             expose: true
             access_type: public_method
@@ -87,4 +87,4 @@ MetadataV1\edm\TSchemaType:
                 inline: true
                 entry_name: EntityContainer
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm'
-            type: array<MetadataV1\edm\EntityContainer>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer>

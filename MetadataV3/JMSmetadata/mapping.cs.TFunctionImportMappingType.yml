@@ -1,4 +1,4 @@
-MetadataV3\mapping\cs\TFunctionImportMappingType:
+AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType:
     properties:
         functionName:
             expose: true
@@ -31,4 +31,4 @@ MetadataV3\mapping\cs\TFunctionImportMappingType:
                 inline: true
                 entry_name: ResultMapping
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
-            type: array<MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType>

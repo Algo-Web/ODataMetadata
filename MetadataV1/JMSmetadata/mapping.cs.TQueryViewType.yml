@@ -1,4 +1,4 @@
-MetadataV1\mapping\cs\TQueryViewType:
+AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TQueryViewType:
     properties:
         __value:
             expose: true

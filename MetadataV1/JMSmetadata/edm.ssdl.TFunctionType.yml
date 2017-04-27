@@ -1,4 +1,4 @@
-MetadataV1\edm\ssdl\TFunctionType:
+AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TFunctionType:
     properties:
         name:
             expose: true
@@ -90,7 +90,7 @@ MetadataV1\edm\ssdl\TFunctionType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV1\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType
         commandText:
             expose: true
             access_type: public_method
@@ -114,4 +114,4 @@ MetadataV1\edm\ssdl\TFunctionType:
                 inline: true
                 entry_name: Parameter
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm/ssdl'
-            type: array<MetadataV1\edm\ssdl\TParameterType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TParameterType>

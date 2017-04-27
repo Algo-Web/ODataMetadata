@@ -1,4 +1,4 @@
-MetadataV4\edm\TDateTimeOffsetConstantExpressionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TDateTimeOffsetConstantExpressionType:
     properties:
         __value:
             expose: true

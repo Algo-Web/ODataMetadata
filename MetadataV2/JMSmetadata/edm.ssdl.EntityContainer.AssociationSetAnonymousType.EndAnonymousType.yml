@@ -1,4 +1,4 @@
-MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType:
+AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType:
     properties:
         role:
             expose: true
@@ -27,4 +27,4 @@ MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV2\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType

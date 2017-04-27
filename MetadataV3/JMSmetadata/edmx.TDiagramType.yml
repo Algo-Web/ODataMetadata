@@ -1,4 +1,4 @@
-MetadataV3\edmx\TDiagramType:
+AlgoWeb\ODataMetadata\MetadataV3\edmx\TDiagramType:
     properties:
         name:
             expose: true
@@ -67,7 +67,7 @@ MetadataV3\edmx\TDiagramType:
                 inline: true
                 entry_name: EntityTypeShape
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
-            type: array<MetadataV3\edmx\TEntityTypeShapeType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType>
         associationConnector:
             expose: true
             access_type: public_method
@@ -81,7 +81,7 @@ MetadataV3\edmx\TDiagramType:
                 inline: true
                 entry_name: AssociationConnector
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
-            type: array<MetadataV3\edmx\TAssociationConnectorType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType>
         inheritanceConnector:
             expose: true
             access_type: public_method
@@ -95,4 +95,4 @@ MetadataV3\edmx\TDiagramType:
                 inline: true
                 entry_name: InheritanceConnector
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
-            type: array<MetadataV3\edmx\TInheritanceConnectorType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType>

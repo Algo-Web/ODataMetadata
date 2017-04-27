@@ -1,4 +1,4 @@
-MetadataV3\edm\TCollectionExpressionType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType:
     properties:
         string:
             expose: true
@@ -13,7 +13,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: String
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TStringConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TStringConstantExpressionType>
         binary:
             expose: true
             access_type: public_method
@@ -27,7 +27,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: Binary
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TBinaryConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TBinaryConstantExpressionType>
         int:
             expose: true
             access_type: public_method
@@ -41,7 +41,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: Int
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TIntConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TIntConstantExpressionType>
         float:
             expose: true
             access_type: public_method
@@ -55,7 +55,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: Float
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TFloatConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TFloatConstantExpressionType>
         guid:
             expose: true
             access_type: public_method
@@ -69,7 +69,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: Guid
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TGuidConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TGuidConstantExpressionType>
         decimal:
             expose: true
             access_type: public_method
@@ -83,7 +83,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: Decimal
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TDecimalConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TDecimalConstantExpressionType>
         bool:
             expose: true
             access_type: public_method
@@ -97,7 +97,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: Bool
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TBoolConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TBoolConstantExpressionType>
         dateTime:
             expose: true
             access_type: public_method
@@ -111,7 +111,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: DateTime
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TDateTimeConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TDateTimeConstantExpressionType>
         dateTimeOffset:
             expose: true
             access_type: public_method
@@ -125,7 +125,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: DateTimeOffset
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TDateTimeOffsetConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TDateTimeOffsetConstantExpressionType>
         enum:
             expose: true
             access_type: public_method
@@ -139,7 +139,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: Enum
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TEnumConstantExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumConstantExpressionType>
         path:
             expose: true
             access_type: public_method
@@ -153,7 +153,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: Path
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TPathExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TPathExpressionType>
         if:
             expose: true
             access_type: public_method
@@ -167,7 +167,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: If
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TIfExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType>
         record:
             expose: true
             access_type: public_method
@@ -181,7 +181,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: Record
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TRecordExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType>
         collection:
             expose: true
             access_type: public_method
@@ -195,7 +195,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: Collection
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TCollectionExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType>
         typeAssert:
             expose: true
             access_type: public_method
@@ -209,7 +209,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: TypeAssert
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TTypeAssertExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType>
         typeTest:
             expose: true
             access_type: public_method
@@ -223,7 +223,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: TypeTest
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TTypeTestExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType>
         functionReference:
             expose: true
             access_type: public_method
@@ -237,7 +237,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: FunctionReference
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TFunctionReferenceExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType>
         entitySetReference:
             expose: true
             access_type: public_method
@@ -251,7 +251,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: EntitySetReference
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TEntitySetReferenceExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType>
         anonymousFunction:
             expose: true
             access_type: public_method
@@ -265,7 +265,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: AnonymousFunction
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TAnonymousFunctionExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType>
         parameterReference:
             expose: true
             access_type: public_method
@@ -279,7 +279,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: ParameterReference
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TParameterReferenceExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType>
         apply:
             expose: true
             access_type: public_method
@@ -293,7 +293,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: Apply
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TApplyExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType>
         propertyReference:
             expose: true
             access_type: public_method
@@ -307,7 +307,7 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: PropertyReference
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TPropertyReferenceExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType>
         valueTermReference:
             expose: true
             access_type: public_method
@@ -321,4 +321,4 @@ MetadataV3\edm\TCollectionExpressionType:
                 inline: true
                 entry_name: ValueTermReference
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
-            type: array<MetadataV3\edm\TValueTermReferenceExpressionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType>

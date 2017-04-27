@@ -1,4 +1,4 @@
-MetadataV4\edm\TActionImportType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TActionImportType:
     properties:
         action:
             expose: true
@@ -49,4 +49,4 @@ MetadataV4\edm\TActionImportType:
                 inline: true
                 entry_name: Annotation
                 namespace: 'http://docs.oasis-open.org/odata/ns/edm'
-            type: array<MetadataV4\edm\Annotation>
+            type: array<AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation>

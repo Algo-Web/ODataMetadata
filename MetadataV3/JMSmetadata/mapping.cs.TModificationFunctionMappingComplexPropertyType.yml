@@ -1,4 +1,4 @@
-MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType:
+AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType:
     properties:
         name:
             expose: true
@@ -27,7 +27,7 @@ MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType:
             accessor:
                 getter: getScalarProperty
                 setter: setScalarProperty
-            type: MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
         complexProperty:
             expose: true
             access_type: public_method
@@ -37,4 +37,4 @@ MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType:
             accessor:
                 getter: getComplexProperty
                 setter: setComplexProperty
-            type: MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
+            type: AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType

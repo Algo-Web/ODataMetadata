@@ -1,4 +1,4 @@
-MetadataV1\edm\ssdl\TAssociationEndType:
+AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TAssociationEndType:
     properties:
         type:
             expose: true
@@ -36,7 +36,7 @@ MetadataV1\edm\ssdl\TAssociationEndType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV1\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType
         onDelete:
             expose: true
             access_type: public_method
@@ -50,4 +50,4 @@ MetadataV1\edm\ssdl\TAssociationEndType:
                 inline: true
                 entry_name: OnDelete
                 namespace: 'http://schemas.microsoft.com/ado/2006/04/edm/ssdl'
-            type: array<MetadataV1\edm\ssdl\TOnActionType>
+            type: array<AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TOnActionType>

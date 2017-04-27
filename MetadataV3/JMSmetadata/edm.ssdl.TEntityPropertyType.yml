@@ -1,4 +1,4 @@
-MetadataV3\edm\ssdl\TEntityPropertyType:
+AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityPropertyType:
     properties:
         name:
             expose: true
@@ -117,4 +117,4 @@ MetadataV3\edm\ssdl\TEntityPropertyType:
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
-            type: MetadataV3\edm\ssdl\TDocumentationType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType

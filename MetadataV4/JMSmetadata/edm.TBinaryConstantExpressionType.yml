@@ -1,4 +1,4 @@
-MetadataV4\edm\TBinaryConstantExpressionType:
+AlgoWeb\ODataMetadata\MetadataV4\edm\TBinaryConstantExpressionType:
     properties:
         __value:
             expose: true
