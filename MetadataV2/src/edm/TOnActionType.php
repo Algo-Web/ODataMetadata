@@ -1,6 +1,7 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
+
 /**
  * Class representing TOnActionType
  *

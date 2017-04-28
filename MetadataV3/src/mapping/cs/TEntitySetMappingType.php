@@ -1,6 +1,7 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
+
 /**
  * Class representing TEntitySetMappingType
  *
