@@ -48,6 +48,11 @@ abstract class IsOK
         if($maxCount != -1 && count($arr) > $maxCount){
             return false;
         }
+        foreach($arr as $item){
+            if(!($item instanceof $insanceOf)){
+                return false;
+            }
+        }
         return true;
     }
 }
