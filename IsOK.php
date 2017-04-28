@@ -5,7 +5,7 @@ abstract class IsOK
 {
     abstract protected function IsOK(&$msg);
 
-    public protected function isStringNotNullOrEmpty($str){
+    protected function isStringNotNullOrEmpty($str){
         if($this->isStringNull($str)){
             return false;
         }
@@ -15,7 +15,7 @@ abstract class IsOK
         return true;
     }
 
-    public protected function isStringNotNull($str)
+    protected function isStringNotNull($str)
     {
         if(null == $str){
            return false;
@@ -25,7 +25,7 @@ abstract class IsOK
         return true;
     }
 
-    public protected  function isNotNullIstanceOf($var, $insanceOf){
+    protected  function isNotNullIstanceOf($var, $insanceOf){
         if(null == $var){
             return false;
         }
@@ -35,7 +35,7 @@ abstract class IsOK
         return true;
     }
 
-    public protected function isValidArray($arr, $insanceOf, $minCount = -1, $maxCount = -1){
+    protected function isValidArray($arr, $insanceOf, $minCount = -1, $maxCount = -1){
         if(null == $arr){
             return false;
         }
