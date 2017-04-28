@@ -29,13 +29,13 @@ class TDurationConstantExpressionType
     /**
      * Gets or sets the inner value
      *
-     * @param \DateInterval $value
+     * @param \DateInterval ...$value
      * @return \DateInterval
      */
-    public function value()
+    public function value(...$value)
     {
-        if ($args = func_get_args()) {
-            $this->__value = $args[0];
+        if (0 < count($value)) {
+            $this->__value = $value[0];
         }
         return $this->__value;
     }

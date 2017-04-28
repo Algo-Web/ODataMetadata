@@ -34,13 +34,13 @@ class TQueryViewType
     /**
      * Gets or sets the inner value
      *
-     * @param string $value
+     * @param string ...$value
      * @return string
      */
-    public function value()
+    public function value(...$value)
     {
-        if ($args = func_get_args()) {
-            $this->__value = $args[0];
+        if (0 < count($value)) {
+            $this->__value = $value[0];
         }
         return $this->__value;
     }
