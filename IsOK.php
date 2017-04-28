@@ -19,6 +19,7 @@ abstract class IsOK
     {
         if(null == $str){
            return false;
+        }
         if(!is_string($str)){
            return false;
         }
