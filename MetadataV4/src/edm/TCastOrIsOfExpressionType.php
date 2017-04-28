@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TCastOrIsOfExpressionType
  *
  *
  * XSD Type: TCastOrIsOfExpression
  */
-class TCastOrIsOfExpressionType
+class TCastOrIsOfExpressionType extends IsOK
 {
 
     /**
@@ -38,9 +41,7 @@ class TCastOrIsOfExpressionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * @property string $binary

@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TActionImportType
  *
  *
  * XSD Type: TActionImport
  */
-class TActionImportType
+class TActionImportType extends IsOK
 {
 
     /**
@@ -33,9 +36,7 @@ class TActionImportType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * Gets as action

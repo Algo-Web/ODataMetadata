@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edmx;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TIncludeType
  *
  *
  * XSD Type: TInclude
  */
-class TIncludeType
+class TIncludeType extends IsOK
 {
 
     /**

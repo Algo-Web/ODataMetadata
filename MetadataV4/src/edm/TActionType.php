@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TActionType
  *
  *
  * XSD Type: TAction
  */
-class TActionType
+class TActionType extends IsOK
 {
 
     /**
@@ -28,16 +31,12 @@ class TActionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType[] $parameter
      */
-    private $parameter = array(
-        
-    );
+    private $parameter = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionReturnTypeType $returnType

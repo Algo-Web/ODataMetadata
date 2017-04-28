@@ -2,6 +2,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edmx;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV4\edm\Schema;
 
 /**
@@ -10,7 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\Schema;
  *
  * XSD Type: TEdmx
  */
-class TEdmxType
+class TEdmxType extends IsOK
 {
 
     /**
@@ -21,9 +22,7 @@ class TEdmxType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType[] $reference
      */
-    private $reference = array(
-        
-    );
+    private $reference = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema[] $dataServices

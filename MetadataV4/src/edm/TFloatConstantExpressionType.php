@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFloatConstantExpressionType
  *
  *
  * XSD Type: TFloatConstantExpression
  */
-class TFloatConstantExpressionType
+class TFloatConstantExpressionType extends IsOK
 {
 
     /**

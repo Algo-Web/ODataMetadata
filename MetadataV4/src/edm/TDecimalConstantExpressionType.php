@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TDecimalConstantExpressionType
  *
  *
  * XSD Type: TDecimalConstantExpression
  */
-class TDecimalConstantExpressionType
+class TDecimalConstantExpressionType extends IsOK
 {
 
     /**

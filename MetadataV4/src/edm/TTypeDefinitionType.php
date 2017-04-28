@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TTypeDefinitionType
  *
  *
  * XSD Type: TTypeDefinition
  */
-class TTypeDefinitionType
+class TTypeDefinitionType extends IsOK
 {
 
     /**
@@ -48,9 +51,7 @@ class TTypeDefinitionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * Gets as name

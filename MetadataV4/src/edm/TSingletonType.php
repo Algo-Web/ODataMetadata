@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TSingletonType
  *
  *
  * XSD Type: TSingleton
  */
-class TSingletonType
+class TSingletonType extends IsOK
 {
 
     /**
@@ -24,16 +27,12 @@ class TSingletonType
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType[]
      * $navigationPropertyBinding
      */
-    private $navigationPropertyBinding = array(
-        
-    );
+    private $navigationPropertyBinding = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * Gets as name

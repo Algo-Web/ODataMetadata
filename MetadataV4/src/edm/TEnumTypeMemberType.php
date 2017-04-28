@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEnumTypeMemberType
  *
  *
  * XSD Type: TEnumTypeMember
  */
-class TEnumTypeMemberType
+class TEnumTypeMemberType extends IsOK
 {
 
     /**
@@ -23,9 +26,7 @@ class TEnumTypeMemberType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * Gets as name

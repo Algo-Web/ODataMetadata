@@ -1,10 +1,13 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing Schema
  */
-class Schema
+class Schema extends IsOK
 {
 
     /**
@@ -20,72 +23,52 @@ class Schema
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TComplexTypeType[] $complexType
      */
-    private $complexType = array(
-        
-    );
+    private $complexType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityTypeType[] $entityType
      */
-    private $entityType = array(
-        
-    );
+    private $entityType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTypeDefinitionType[] $typeDefinition
      */
-    private $typeDefinition = array(
-        
-    );
+    private $typeDefinition = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeType[] $enumType
      */
-    private $enumType = array(
-        
-    );
+    private $enumType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionType[] $action
      */
-    private $action = array(
-        
-    );
+    private $action = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TFunctionType[] $function
      */
-    private $function = array(
-        
-    );
+    private $function = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTermType[] $term
      */
-    private $term = array(
-        
-    );
+    private $term = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TAnnotationsType[] $annotations
      */
-    private $annotations = array(
-        
-    );
+    private $annotations = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityContainerType[] $entityContainer
      */
-    private $entityContainer = array(
-        
-    );
+    private $entityContainer = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * Gets as namespace

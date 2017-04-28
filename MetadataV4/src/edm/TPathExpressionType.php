@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TPathExpressionType
  *
  *
  * XSD Type: TPathExpression
  */
-class TPathExpressionType
+class TPathExpressionType extends IsOK
 {
 
     /**

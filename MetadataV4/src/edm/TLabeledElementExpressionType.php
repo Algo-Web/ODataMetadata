@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TLabeledElementExpressionType
  *
  *
  * XSD Type: TLabeledElementExpression
  */
-class TLabeledElementExpressionType
+class TLabeledElementExpressionType extends IsOK
 {
 
     /**
@@ -103,9 +106,7 @@ class TLabeledElementExpressionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType $apply

@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TApplyExpressionType
  *
  *
  * XSD Type: TApplyExpression
  */
-class TApplyExpressionType
+class TApplyExpressionType extends IsOK
 {
 
     /**
@@ -18,51 +21,37 @@ class TApplyExpressionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * @property string[] $binary
      */
-    private $binary = array(
-        
-    );
+    private $binary = array();
 
     /**
      * @property boolean[] $bool
      */
-    private $bool = array(
-        
-    );
+    private $bool = array();
 
     /**
      * @property \DateTime[] $date
      */
-    private $date = array(
-        
-    );
+    private $date = array();
 
     /**
      * @property \DateTime[] $dateTimeOffset
      */
-    private $dateTimeOffset = array(
-        
-    );
+    private $dateTimeOffset = array();
 
     /**
      * @property float[] $decimal
      */
-    private $decimal = array(
-        
-    );
+    private $decimal = array();
 
     /**
      * @property \DateInterval[] $duration
      */
-    private $duration = array(
-        
-    );
+    private $duration = array();
 
     /**
      * @property string[] $enumMember
@@ -72,156 +61,112 @@ class TApplyExpressionType
     /**
      * @property float[] $float
      */
-    private $float = array(
-        
-    );
+    private $float = array();
 
     /**
      * @property string[] $guid
      */
-    private $guid = array(
-        
-    );
+    private $guid = array();
 
     /**
      * @property integer[] $int
      */
-    private $int = array(
-        
-    );
+    private $int = array();
 
     /**
      * @property string[] $string
      */
-    private $string = array(
-        
-    );
+    private $string = array();
 
     /**
      * @property \DateTime[] $timeOfDay
      */
-    private $timeOfDay = array(
-        
-    );
+    private $timeOfDay = array();
 
     /**
      * @property string[] $annotationPath
      */
-    private $annotationPath = array(
-        
-    );
+    private $annotationPath = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType[] $apply
      */
-    private $apply = array(
-        
-    );
+    private $apply = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[] $cast
      */
-    private $cast = array(
-        
-    );
+    private $cast = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType[] $collection
      */
-    private $collection = array(
-        
-    );
+    private $collection = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType[] $if
      */
-    private $if = array(
-        
-    );
+    private $if = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $eq
      */
-    private $eq = array(
-        
-    );
+    private $eq = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $ne
      */
-    private $ne = array(
-        
-    );
+    private $ne = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $ge
      */
-    private $ge = array(
-        
-    );
+    private $ge = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $gt
      */
-    private $gt = array(
-        
-    );
+    private $gt = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $le
      */
-    private $le = array(
-        
-    );
+    private $le = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $lt
      */
-    private $lt = array(
-        
-    );
+    private $lt = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $and
      */
-    private $and = array(
-        
-    );
+    private $and = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $or
      */
-    private $or = array(
-        
-    );
+    private $or = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[] $not
      */
-    private $not = array(
-        
-    );
+    private $not = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[] $isOf
      */
-    private $isOf = array(
-        
-    );
+    private $isOf = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType[] $labeledElement
      */
-    private $labeledElement = array(
-        
-    );
+    private $labeledElement = array();
 
     /**
      * @property string[] $labeledElementReference
      */
-    private $labeledElementReference = array(
-        
-    );
+    private $labeledElementReference = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $null
@@ -231,37 +176,27 @@ class TApplyExpressionType
     /**
      * @property string[] $navigationPropertyPath
      */
-    private $navigationPropertyPath = array(
-        
-    );
+    private $navigationPropertyPath = array();
 
     /**
      * @property string[] $path
      */
-    private $path = array(
-        
-    );
+    private $path = array();
 
     /**
      * @property string[] $propertyPath
      */
-    private $propertyPath = array(
-        
-    );
+    private $propertyPath = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType[] $record
      */
-    private $record = array(
-        
-    );
+    private $record = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[] $urlRef
      */
-    private $urlRef = array(
-        
-    );
+    private $urlRef = array();
 
     /**
      * Gets as function

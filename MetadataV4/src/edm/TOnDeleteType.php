@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TOnDeleteType
  *
  *
  * XSD Type: TOnDelete
  */
-class TOnDeleteType
+class TOnDeleteType extends IsOK
 {
 
     /**
@@ -18,9 +21,7 @@ class TOnDeleteType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * Gets as action

@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TReferentialConstraintType
  *
  *
  * XSD Type: TReferentialConstraint
  */
-class TReferentialConstraintType
+class TReferentialConstraintType extends IsOK
 {
 
     /**
@@ -23,9 +26,7 @@ class TReferentialConstraintType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * Gets as property

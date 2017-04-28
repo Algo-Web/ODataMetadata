@@ -2,6 +2,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edmx;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation;
 
 /**
@@ -10,7 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation;
  *
  * XSD Type: TReference
  */
-class TReferenceType
+class TReferenceType extends IsOK
 {
 
     /**
@@ -21,23 +22,17 @@ class TReferenceType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType[] $include
      */
-    private $include = array(
-        
-    );
+    private $include = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType[] $includeAnnotations
      */
-    private $includeAnnotations = array(
-        
-    );
+    private $includeAnnotations = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * Gets as uri

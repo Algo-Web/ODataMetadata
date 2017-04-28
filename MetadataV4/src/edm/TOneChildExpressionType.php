@@ -1,21 +1,22 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TOneChildExpressionType
  *
  *
  * XSD Type: TOneChildExpression
  */
-class TOneChildExpressionType
+class TOneChildExpressionType extends IsOK
 {
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * @property string $binary

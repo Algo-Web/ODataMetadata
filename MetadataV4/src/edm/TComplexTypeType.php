@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TComplexTypeType
  *
  *
  * XSD Type: TComplexType
  */
-class TComplexTypeType
+class TComplexTypeType extends IsOK
 {
 
     /**
@@ -33,23 +36,17 @@ class TComplexTypeType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType[] $property
      */
-    private $property = array(
-        
-    );
+    private $property = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType[] $navigationProperty
      */
-    private $navigationProperty = array(
-        
-    );
+    private $navigationProperty = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * Gets as name

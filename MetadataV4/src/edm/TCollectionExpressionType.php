@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TCollectionExpressionType
  *
  *
  * XSD Type: TCollectionExpression
  */
-class TCollectionExpressionType
+class TCollectionExpressionType extends IsOK
 {
 
     /**

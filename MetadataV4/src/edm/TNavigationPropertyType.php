@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TNavigationPropertyType
  *
  *
  * XSD Type: TNavigationProperty
  */
-class TNavigationPropertyType
+class TNavigationPropertyType extends IsOK
 {
 
     /**
@@ -38,23 +41,17 @@ class TNavigationPropertyType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType[] $referentialConstraint
      */
-    private $referentialConstraint = array(
-        
-    );
+    private $referentialConstraint = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType[] $onDelete
      */
-    private $onDelete = array(
-        
-    );
+    private $onDelete = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * Gets as name

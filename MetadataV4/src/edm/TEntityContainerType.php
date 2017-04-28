@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEntityContainerType
  *
  *
  * XSD Type: TEntityContainer
  */
-class TEntityContainerType
+class TEntityContainerType extends IsOK
 {
 
     /**
@@ -23,37 +26,27 @@ class TEntityContainerType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntitySetType[] $entitySet
      */
-    private $entitySet = array(
-        
-    );
+    private $entitySet = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionImportType[] $actionImport
      */
-    private $actionImport = array(
-        
-    );
+    private $actionImport = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TFunctionImportType[] $functionImport
      */
-    private $functionImport = array(
-        
-    );
+    private $functionImport = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TSingletonType[] $singleton
      */
-    private $singleton = array(
-        
-    );
+    private $singleton = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array(
-        
-    );
+    private $annotation = array();
 
     /**
      * Gets as name

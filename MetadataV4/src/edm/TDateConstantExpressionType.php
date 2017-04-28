@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TDateConstantExpressionType
  *
  *
  * XSD Type: TDateConstantExpression
  */
-class TDateConstantExpressionType
+class TDateConstantExpressionType extends IsOK
 {
 
     /**

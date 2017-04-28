@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TNavigationPropertyBindingType
  *
  *
  * XSD Type: TNavigationPropertyBinding
  */
-class TNavigationPropertyBindingType
+class TNavigationPropertyBindingType extends IsOK
 {
 
     /**
