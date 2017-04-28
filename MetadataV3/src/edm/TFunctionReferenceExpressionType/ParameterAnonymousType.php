@@ -1,6 +1,7 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType;
+
 /**
  * Class representing ParameterAnonymousType
  */
