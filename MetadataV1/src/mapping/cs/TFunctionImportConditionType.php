@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionImportConditionType
  *
  *
  * XSD Type: TFunctionImportCondition
  */
-class TFunctionImportConditionType
+class TFunctionImportConditionType extends IsOK
 {
 
     /**

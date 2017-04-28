@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionType
  *
  *
  * XSD Type: TFunction
  */
-class TFunctionType
+class TFunctionType extends IsOK
 {
 
     /**
@@ -69,9 +71,7 @@ class TFunctionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TParameterType[] $parameter
      */
-    private $parameter = array(
-        
-    );
+    private $parameter = array();
 
     /**
      * Gets as name

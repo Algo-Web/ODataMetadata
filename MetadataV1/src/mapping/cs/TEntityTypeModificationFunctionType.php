@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEntityTypeModificationFunctionType
  *
  *
  * XSD Type: TEntityTypeModificationFunction
  */
-class TEntityTypeModificationFunctionType
+class TEntityTypeModificationFunctionType extends IsOK
 {
 
     /**

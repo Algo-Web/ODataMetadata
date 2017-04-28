@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TAssociationType
  *
  *
  * XSD Type: TAssociation
  */
-class TAssociationType
+class TAssociationType extends IsOK
 {
 
     /**
@@ -24,9 +26,7 @@ class TAssociationType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TAssociationEndType[] $end
      */
-    private $end = array(
-        
-    );
+    private $end = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TConstraintType $referentialConstraint

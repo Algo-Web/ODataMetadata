@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEndPropertyType
  *
  *
  * XSD Type: TEndProperty
  */
-class TEndPropertyType
+class TEndPropertyType extends IsOK
 {
 
     /**
@@ -19,9 +21,7 @@ class TEndPropertyType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
-    private $scalarProperty = array(
-        
-    );
+    private $scalarProperty = array();
 
     /**
      * Gets as name

@@ -1,6 +1,7 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
+use AlgoWeb\ODataMetadata\IsOK;
 
 /**
  * Class representing TFunctionImportEntityTypeMappingType
@@ -8,7 +9,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
  *
  * XSD Type: TFunctionImportEntityTypeMapping
  */
-class TFunctionImportEntityTypeMappingType
+class TFunctionImportEntityTypeMappingType extends IsOK
 {
 
     /**

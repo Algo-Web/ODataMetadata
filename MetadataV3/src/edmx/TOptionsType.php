@@ -1,7 +1,6 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
-
 /**
  * Class representing TOptionsType
  *

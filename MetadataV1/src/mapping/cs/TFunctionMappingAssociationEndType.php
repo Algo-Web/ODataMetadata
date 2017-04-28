@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionMappingAssociationEndType
  *
  *
  * XSD Type: TFunctionMappingAssociationEnd
  */
-class TFunctionMappingAssociationEndType
+class TFunctionMappingAssociationEndType extends IsOK
 {
 
     /**

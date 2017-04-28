@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TParameterType
  *
  *
  * XSD Type: TParameter
  */
-class TParameterType
+class TParameterType extends IsOK
 {
 
     /**

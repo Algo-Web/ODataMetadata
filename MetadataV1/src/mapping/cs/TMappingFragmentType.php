@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TMappingFragmentType
  *
  *
  * XSD Type: TMappingFragment
  */
-class TMappingFragmentType
+class TMappingFragmentType extends IsOK
 {
 
     /**

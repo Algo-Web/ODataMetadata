@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TResultBindingType
  *
  *
  * XSD Type: TResultBinding
  */
-class TResultBindingType
+class TResultBindingType extends IsOK
 {
 
     /**

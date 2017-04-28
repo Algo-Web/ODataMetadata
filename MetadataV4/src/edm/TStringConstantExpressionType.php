@@ -1,7 +1,6 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
-
 /**
  * Class representing TStringConstantExpressionType
  *

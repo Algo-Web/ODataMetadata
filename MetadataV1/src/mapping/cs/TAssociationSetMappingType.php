@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TAssociationSetMappingType
  *
  *
  * XSD Type: TAssociationSetMapping
  */
-class TAssociationSetMappingType
+class TAssociationSetMappingType extends IsOK
 {
 
     /**
@@ -34,16 +36,12 @@ class TAssociationSetMappingType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEndPropertyType[] $endProperty
      */
-    private $endProperty = array(
-        
-    );
+    private $endProperty = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType[] $condition
      */
-    private $condition = array(
-        
-    );
+    private $condition = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType

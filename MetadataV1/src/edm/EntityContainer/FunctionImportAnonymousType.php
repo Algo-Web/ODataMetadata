@@ -2,13 +2,14 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType;
 use AlgoWeb\ODataMetadata\MetadataV1\edm\TFunctionImportParameterType;
 
 /**
  * Class representing FunctionImportAnonymousType
  */
-class FunctionImportAnonymousType
+class FunctionImportAnonymousType extends IsOK
 {
 
     /**
@@ -39,9 +40,7 @@ class FunctionImportAnonymousType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\TFunctionImportParameterType[] $parameter
      */
-    private $parameter = array(
-        
-    );
+    private $parameter = array();
 
     /**
      * Gets as name

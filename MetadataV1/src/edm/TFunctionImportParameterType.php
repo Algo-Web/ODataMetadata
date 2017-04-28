@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edm;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionImportParameterType
  *
  *
  * XSD Type: TFunctionImportParameter
  */
-class TFunctionImportParameterType
+class TFunctionImportParameterType extends IsOK
 {
 
     /**

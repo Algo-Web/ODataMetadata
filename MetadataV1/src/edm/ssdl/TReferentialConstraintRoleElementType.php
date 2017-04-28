@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TReferentialConstraintRoleElementType
  *
  *
  * XSD Type: TReferentialConstraintRoleElement
  */
-class TReferentialConstraintRoleElementType
+class TReferentialConstraintRoleElementType extends IsOK
 {
 
     /**
@@ -24,9 +26,7 @@ class TReferentialConstraintRoleElementType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TPropertyRefType[] $propertyRef
      */
-    private $propertyRef = array(
-        
-    );
+    private $propertyRef = array();
 
     /**
      * Gets as role

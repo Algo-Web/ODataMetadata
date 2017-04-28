@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TConditionType
  *
  *
  * XSD Type: TCondition
  */
-class TConditionType
+class TConditionType extends IsOK
 {
 
     /**

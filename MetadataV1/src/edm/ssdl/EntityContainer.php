@@ -2,13 +2,14 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\EntityContainer\AssociationSetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\EntityContainer\EntitySetAnonymousType;
 
 /**
  * Class representing EntityContainer
  */
-class EntityContainer
+class EntityContainer extends IsOK
 {
 
     /**
@@ -25,17 +26,13 @@ class EntityContainer
      * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\EntityContainer\EntitySetAnonymousType[]
      * $entitySet
      */
-    private $entitySet = array(
-        
-    );
+    private $entitySet = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\EntityContainer\AssociationSetAnonymousType[]
      * $associationSet
      */
-    private $associationSet = array(
-        
-    );
+    private $associationSet = array();
 
     /**
      * Gets as name

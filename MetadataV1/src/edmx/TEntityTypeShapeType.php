@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edmx;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEntityTypeShapeType
  *
  *
  * XSD Type: TEntityTypeShape
  */
-class TEntityTypeShapeType
+class TEntityTypeShapeType extends IsOK
 {
 
     /**

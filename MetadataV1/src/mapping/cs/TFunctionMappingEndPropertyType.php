@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionMappingEndPropertyType
  *
  *
  * XSD Type: TFunctionMappingEndProperty
  */
-class TFunctionMappingEndPropertyType
+class TFunctionMappingEndPropertyType extends IsOK
 {
 
     /**

@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEntityContainerMappingType
  *
  *
  * XSD Type: TEntityContainerMapping
  */
-class TEntityContainerMappingType
+class TEntityContainerMappingType extends IsOK
 {
 
     /**
@@ -24,25 +26,19 @@ class TEntityContainerMappingType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntitySetMappingType[] $entitySetMapping
      */
-    private $entitySetMapping = array(
-        
-    );
+    private $entitySetMapping = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetMappingType[]
      * $associationSetMapping
      */
-    private $associationSetMapping = array(
-        
-    );
+    private $associationSetMapping = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportMappingType[]
      * $functionImportMapping
      */
-    private $functionImportMapping = array(
-        
-    );
+    private $functionImportMapping = array();
 
     /**
      * Gets as cdmEntityContainer

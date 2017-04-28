@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edmx;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TOptionsType
  *
  *
  * XSD Type: TOptions
  */
-class TOptionsType
+class TOptionsType extends IsOK
 {
 
     /**

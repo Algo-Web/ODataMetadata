@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEntityPropertyType
  *
  *
  * XSD Type: TEntityProperty
  */
-class TEntityPropertyType
+class TEntityPropertyType extends IsOK
 {
 
     /**

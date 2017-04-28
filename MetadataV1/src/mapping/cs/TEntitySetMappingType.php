@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEntitySetMappingType
  *
  *
  * XSD Type: TEntitySetMapping
  */
-class TEntitySetMappingType
+class TEntitySetMappingType extends IsOK
 {
 
     /**
@@ -29,23 +31,17 @@ class TEntitySetMappingType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TQueryViewType[] $queryView
      */
-    private $queryView = array(
-        
-    );
+    private $queryView = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityTypeMappingType[] $entityTypeMapping
      */
-    private $entityTypeMapping = array(
-        
-    );
+    private $entityTypeMapping = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TMappingFragmentType[] $mappingFragment
      */
-    private $mappingFragment = array(
-        
-    );
+    private $mappingFragment = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TComplexPropertyType $complexProperty
