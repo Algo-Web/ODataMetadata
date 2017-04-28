@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEntityPropertyType
  *
  *
  * XSD Type: TEntityProperty
  */
-class TEntityPropertyType
+class TEntityPropertyType extends IsOK
 {
 
     /**

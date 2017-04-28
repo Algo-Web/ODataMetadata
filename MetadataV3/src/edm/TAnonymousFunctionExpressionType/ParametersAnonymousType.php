@@ -2,20 +2,19 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType;
 
 /**
  * Class representing ParametersAnonymousType
  */
-class ParametersAnonymousType
+class ParametersAnonymousType extends IsOK
 {
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameter
      */
-    private $parameter = array(
-        
-    );
+    private $parameter = array();
 
     /**
      * Adds as parameter

@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionImportEntityTypeMappingType
  *
  *
  * XSD Type: TFunctionImportEntityTypeMapping
  */
-class TFunctionImportEntityTypeMappingType
+class TFunctionImportEntityTypeMappingType extends IsOK
 {
 
     /**
@@ -18,16 +21,12 @@ class TFunctionImportEntityTypeMappingType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
-    private $scalarProperty = array(
-        
-    );
+    private $scalarProperty = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType[] $condition
      */
-    private $condition = array(
-        
-    );
+    private $condition = array();
 
     /**
      * Gets as typeName

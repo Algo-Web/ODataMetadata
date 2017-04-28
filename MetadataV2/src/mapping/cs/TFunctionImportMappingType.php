@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
  *
  * XSD Type: TFunctionImportMapping
  */
-class TFunctionImportMappingType
+class TFunctionImportMappingType extends IsOK
 {
 
     /**

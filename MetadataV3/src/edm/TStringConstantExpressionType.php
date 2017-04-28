@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TStringConstantExpressionType
  *
  *
  * XSD Type: TStringConstantExpression
  */
-class TStringConstantExpressionType
+class TStringConstantExpressionType extends IsOK
 {
 
     /**

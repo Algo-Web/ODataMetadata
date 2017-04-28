@@ -1,10 +1,13 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing AppliedFunctionAnonymousType
  */
-class AppliedFunctionAnonymousType
+class AppliedFunctionAnonymousType extends IsOK
 {
 
     /**

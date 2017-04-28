@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TUsingType
  *
  *
  * XSD Type: TUsing
  */
-class TUsingType
+class TUsingType extends IsOK
 {
 
     /**

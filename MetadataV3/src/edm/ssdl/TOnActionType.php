@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TOnActionType
  *
  *
  * XSD Type: TOnAction
  */
-class TOnActionType
+class TOnActionType extends IsOK
 {
 
     /**

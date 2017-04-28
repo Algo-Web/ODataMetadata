@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TBinaryConstantExpressionType
  *
  *
  * XSD Type: TBinaryConstantExpression
  */
-class TBinaryConstantExpressionType
+class TBinaryConstantExpressionType extends IsOK
 {
 
     /**

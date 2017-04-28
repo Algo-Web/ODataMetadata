@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TAnnotationsType
  *
  *
  * XSD Type: TAnnotations
  */
-class TAnnotationsType
+class TAnnotationsType extends IsOK
 {
 
     /**
@@ -23,16 +26,12 @@ class TAnnotationsType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      */
-    private $valueAnnotation = array(
-        
-    );
+    private $valueAnnotation = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      */
-    private $typeAnnotation = array(
-        
-    );
+    private $typeAnnotation = array();
 
     /**
      * Gets as target

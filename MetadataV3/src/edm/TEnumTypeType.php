@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEnumTypeType
  *
  *
  * XSD Type: TEnumType
  */
-class TEnumTypeType
+class TEnumTypeType extends IsOK
 {
 
     /**
@@ -38,9 +41,7 @@ class TEnumTypeType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType[] $member
      */
-    private $member = array(
-        
-    );
+    private $member = array();
 
     /**
      * Gets as name

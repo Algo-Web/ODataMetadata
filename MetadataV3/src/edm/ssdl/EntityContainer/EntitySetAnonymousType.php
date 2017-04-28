@@ -1,10 +1,13 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing EntitySetAnonymousType
  */
-class EntitySetAnonymousType
+class EntitySetAnonymousType extends IsOK
 {
 
     /**

@@ -2,6 +2,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edmx;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV2\edm\Schema;
 
 /**
@@ -10,7 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV2\edm\Schema;
  *
  * XSD Type: TEdmx
  */
-class TEdmxType
+class TEdmxType extends IsOK
 {
 
     /**

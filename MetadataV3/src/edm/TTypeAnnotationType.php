@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TTypeAnnotationType
  *
  *
  * XSD Type: TTypeAnnotation
  */
-class TTypeAnnotationType
+class TTypeAnnotationType extends IsOK
 {
 
     /**
@@ -78,9 +81,7 @@ class TTypeAnnotationType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[] $propertyValue
      */
-    private $propertyValue = array(
-        
-    );
+    private $propertyValue = array();
 
     /**
      * Gets as term

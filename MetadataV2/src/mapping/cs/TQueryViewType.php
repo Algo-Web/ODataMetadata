@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
  *
  * XSD Type: TQueryView
  */
-class TQueryViewType
+class TQueryViewType extends IsOK
 {
 
     /**

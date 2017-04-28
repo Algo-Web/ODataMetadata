@@ -1,6 +1,9 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TDocumentationType
  *
@@ -9,7 +12,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
  * elements.
  * XSD Type: TDocumentation
  */
-class TDocumentationType
+class TDocumentationType extends IsOK
 {
 
     /**

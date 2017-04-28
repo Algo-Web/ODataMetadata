@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TReferenceTypeType
  *
  *
  * XSD Type: TReferenceType
  */
-class TReferenceTypeType
+class TReferenceTypeType extends IsOK
 {
 
     /**

@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionType
  *
  *
  * XSD Type: TFunction
  */
-class TFunctionType
+class TFunctionType extends IsOK
 {
 
     /**
@@ -18,9 +21,7 @@ class TFunctionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType[] $returnType
      */
-    private $returnType = array(
-        
-    );
+    private $returnType = array();
 
     /**
      * @property boolean $aggregate
@@ -65,16 +66,12 @@ class TFunctionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType[] $parameter
      */
-    private $parameter = array(
-        
-    );
+    private $parameter = array();
 
     /**
      * @property string[] $commandText
      */
-    private $commandText = array(
-        
-    );
+    private $commandText = array();
 
     /**
      * Gets as name

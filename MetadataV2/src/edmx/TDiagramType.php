@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edmx;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TDiagramType
  *
  *
  * XSD Type: TDiagram
  */
-class TDiagramType
+class TDiagramType extends IsOK
 {
 
     /**
@@ -43,23 +46,17 @@ class TDiagramType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edmx\TEntityTypeShapeType[] $entityTypeShape
      */
-    private $entityTypeShape = array(
-        
-    );
+    private $entityTypeShape = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edmx\TAssociationConnectorType[] $associationConnector
      */
-    private $associationConnector = array(
-        
-    );
+    private $associationConnector = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edmx\TInheritanceConnectorType[] $inheritanceConnector
      */
-    private $inheritanceConnector = array(
-        
-    );
+    private $inheritanceConnector = array();
 
     /**
      * Gets as name

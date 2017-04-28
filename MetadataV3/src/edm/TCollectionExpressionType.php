@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TCollectionExpressionType
  *
  *
  * XSD Type: TCollectionExpression
  */
-class TCollectionExpressionType
+class TCollectionExpressionType extends IsOK
 {
     use \MetadataV3\edm\GExpressionGroupTraits\ValueTermReferenceTrait,
         \MetadataV3\edm\GExpressionGroupTraits\TypeTrait,

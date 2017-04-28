@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TValueTermReferenceExpressionType
  *
  *
  * XSD Type: TValueTermReferenceExpression
  */
-class TValueTermReferenceExpressionType
+class TValueTermReferenceExpressionType extends IsOK
 {
 
     /**

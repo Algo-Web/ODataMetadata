@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TComplexTypePropertyType
  *
  *
  * XSD Type: TComplexTypeProperty
  */
-class TComplexTypePropertyType
+class TComplexTypePropertyType extends IsOK
 {
 
     /**
@@ -83,23 +86,17 @@ class TComplexTypePropertyType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[] $documentation
      */
-    private $documentation = array(
-        
-    );
+    private $documentation = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      */
-    private $valueAnnotation = array(
-        
-    );
+    private $valueAnnotation = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      */
-    private $typeAnnotation = array(
-        
-    );
+    private $typeAnnotation = array();
 
     /**
      * Gets as name

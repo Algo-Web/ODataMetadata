@@ -2,13 +2,14 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edm\EntityContainer;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV2\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType;
 
 /**
  * Class representing AssociationSetAnonymousType
  */
-class AssociationSetAnonymousType
+class AssociationSetAnonymousType extends IsOK
 {
 
     /**
@@ -31,9 +32,7 @@ class AssociationSetAnonymousType
      * \AlgoWeb\ODataMetadata\MetadataV2\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType[]
      * $end
      */
-    private $end = array(
-        
-    );
+    private $end = array();
 
     /**
      * Gets as name

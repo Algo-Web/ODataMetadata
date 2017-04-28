@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
  *
  * XSD Type: TMapping
  */
-class TMappingType
+class TMappingType extends IsOK
 {
 
     /**

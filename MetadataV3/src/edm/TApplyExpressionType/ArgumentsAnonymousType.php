@@ -1,10 +1,13 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing ArgumentsAnonymousType
  */
-class ArgumentsAnonymousType
+class ArgumentsAnonymousType extends IsOK
 {
     use \MetadataV3\edm\GExpressionGroupTraits\ValueTermReferenceTrait,
         \MetadataV3\edm\GExpressionGroupTraits\TypeTrait,

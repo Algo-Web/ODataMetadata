@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TTypeTestExpressionType
  *
  *
  * XSD Type: TTypeTestExpression
  */
-class TTypeTestExpressionType
+class TTypeTestExpressionType extends IsOK
 {
 
     /**
@@ -63,23 +66,17 @@ class TTypeTestExpressionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType[] $operand
      */
-    private $operand = array(
-        
-    );
+    private $operand = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType[] $collectionType
      */
-    private $collectionType = array(
-        
-    );
+    private $collectionType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType[] $referenceType
      */
-    private $referenceType = array(
-        
-    );
+    private $referenceType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType

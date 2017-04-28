@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TTypeRefType
  *
  *
  * XSD Type: TTypeRef
  */
-class TTypeRefType
+class TTypeRefType extends IsOK
 {
 
     /**

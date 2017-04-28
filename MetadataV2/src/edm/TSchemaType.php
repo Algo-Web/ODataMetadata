@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TSchemaType
  *
  *
  * XSD Type: TSchema
  */
-class TSchemaType
+class TSchemaType extends IsOK
 {
 
     /**
@@ -23,44 +26,32 @@ class TSchemaType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TUsingType[] $using
      */
-    private $using = array(
-        
-    );
+    private $using = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TAssociationType[] $association
      */
-    private $association = array(
-        
-    );
+    private $association = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TComplexTypeType[] $complexType
      */
-    private $complexType = array(
-        
-    );
+    private $complexType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityTypeType[] $entityType
      */
-    private $entityType = array(
-        
-    );
+    private $entityType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionType[] $function
      */
-    private $function = array(
-        
-    );
+    private $function = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\EntityContainer[] $entityContainer
      */
-    private $entityContainer = array(
-        
-    );
+    private $entityContainer = array();
 
     /**
      * Gets as namespace

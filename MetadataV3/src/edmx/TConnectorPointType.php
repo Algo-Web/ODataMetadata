@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TConnectorPointType
  *
  *
  * XSD Type: TConnectorPoint
  */
-class TConnectorPointType
+class TConnectorPointType extends IsOK
 {
 
     /**

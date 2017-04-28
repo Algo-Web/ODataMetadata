@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TConstraintType
  *
  *
  * XSD Type: TConstraint
  */
-class TConstraintType
+class TConstraintType extends IsOK
 {
 
     /**

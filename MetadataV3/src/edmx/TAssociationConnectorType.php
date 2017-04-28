@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TAssociationConnectorType
  *
  *
  * XSD Type: TAssociationConnector
  */
-class TAssociationConnectorType
+class TAssociationConnectorType extends IsOK
 {
 
     /**
@@ -23,9 +26,7 @@ class TAssociationConnectorType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType[] $connectorPoint
      */
-    private $connectorPoint = array(
-        
-    );
+    private $connectorPoint = array();
 
     /**
      * Gets as association

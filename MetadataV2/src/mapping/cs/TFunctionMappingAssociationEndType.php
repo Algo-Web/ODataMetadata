@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
  *
  * XSD Type: TFunctionMappingAssociationEnd
  */
-class TFunctionMappingAssociationEndType
+class TFunctionMappingAssociationEndType extends IsOK
 {
 
     /**

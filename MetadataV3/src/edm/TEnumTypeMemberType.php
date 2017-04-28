@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEnumTypeMemberType
  *
  *
  * XSD Type: TEnumTypeMember
  */
-class TEnumTypeMemberType
+class TEnumTypeMemberType extends IsOK
 {
 
     /**

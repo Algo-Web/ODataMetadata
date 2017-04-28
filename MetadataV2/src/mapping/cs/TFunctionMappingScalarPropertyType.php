@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
  *
  * XSD Type: TFunctionMappingScalarProperty
  */
-class TFunctionMappingScalarPropertyType
+class TFunctionMappingScalarPropertyType extends IsOK
 {
 
     /**

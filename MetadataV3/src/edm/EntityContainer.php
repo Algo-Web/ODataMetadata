@@ -2,6 +2,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType;
@@ -9,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymous
 /**
  * Class representing EntityContainer
  */
-class EntityContainer
+class EntityContainer extends IsOK
 {
 
     /**
@@ -41,24 +42,18 @@ class EntityContainer
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType[]
      * $functionImport
      */
-    private $functionImport = array(
-        
-    );
+    private $functionImport = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType[] $entitySet
      */
-    private $entitySet = array(
-        
-    );
+    private $entitySet = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType[]
      * $associationSet
      */
-    private $associationSet = array(
-        
-    );
+    private $associationSet = array();
 
     /**
      * Gets as name

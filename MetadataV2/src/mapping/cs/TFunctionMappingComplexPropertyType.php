@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
  *
  * XSD Type: TFunctionMappingComplexProperty
  */
-class TFunctionMappingComplexPropertyType
+class TFunctionMappingComplexPropertyType extends IsOK
 {
 
     /**

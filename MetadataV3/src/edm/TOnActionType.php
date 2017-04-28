@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
  *
  * XSD Type: TOnAction
  */
-class TOnActionType
+class TOnActionType extends IsOK
 {
 
     /**

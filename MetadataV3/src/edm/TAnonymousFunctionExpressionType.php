@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TAnonymousFunctionExpressionType
  *
  *
  * XSD Type: TAnonymousFunctionExpression
  */
-class TAnonymousFunctionExpressionType
+class TAnonymousFunctionExpressionType extends IsOK
 {
 
     /**

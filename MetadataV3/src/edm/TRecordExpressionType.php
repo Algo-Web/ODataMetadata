@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TRecordExpressionType
  *
  *
  * XSD Type: TRecordExpression
  */
-class TRecordExpressionType
+class TRecordExpressionType extends IsOK
 {
 
     /**
@@ -18,9 +21,7 @@ class TRecordExpressionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[] $propertyValue
      */
-    private $propertyValue = array(
-        
-    );
+    private $propertyValue = array();
 
     /**
      * Gets as type

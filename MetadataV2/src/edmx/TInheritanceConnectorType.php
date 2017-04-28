@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edmx;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TInheritanceConnectorType
  *
  *
  * XSD Type: TInheritanceConnector
  */
-class TInheritanceConnectorType
+class TInheritanceConnectorType extends IsOK
 {
 
     /**
@@ -23,9 +26,7 @@ class TInheritanceConnectorType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edmx\TConnectorPointType[] $connectorPoint
      */
-    private $connectorPoint = array(
-        
-    );
+    private $connectorPoint = array();
 
     /**
      * Gets as entityType

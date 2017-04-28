@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionType
  *
  *
  * XSD Type: TFunction
  */
-class TFunctionType
+class TFunctionType extends IsOK
 {
 
     /**
@@ -18,9 +21,7 @@ class TFunctionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType[] $returnType
      */
-    private $returnType = array(
-        
-    );
+    private $returnType = array();
 
     /**
      * @property boolean $nullable
@@ -70,16 +71,12 @@ class TFunctionType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType[] $parameter
      */
-    private $parameter = array(
-        
-    );
+    private $parameter = array();
 
     /**
      * @property string[] $definingExpression
      */
-    private $definingExpression = array(
-        
-    );
+    private $definingExpression = array();
 
     /**
      * Gets as name

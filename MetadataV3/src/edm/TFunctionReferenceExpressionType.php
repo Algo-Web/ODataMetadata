@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionReferenceExpressionType
  *
  *
  * XSD Type: TFunctionReferenceExpression
  */
-class TFunctionReferenceExpressionType
+class TFunctionReferenceExpressionType extends IsOK
 {
 
     /**
@@ -20,9 +23,7 @@ class TFunctionReferenceExpressionType
      * \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
      * $parameter
      */
-    private $parameter = array(
-        
-    );
+    private $parameter = array();
 
     /**
      * Gets as function

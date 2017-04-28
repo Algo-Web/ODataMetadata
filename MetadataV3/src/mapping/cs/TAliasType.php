@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TAliasType
  *
  *
  * XSD Type: TAlias
  */
-class TAliasType
+class TAliasType extends IsOK
 {
 
     /**

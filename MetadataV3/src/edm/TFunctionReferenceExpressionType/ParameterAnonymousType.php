@@ -1,10 +1,13 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing ParameterAnonymousType
  */
-class ParameterAnonymousType
+class ParameterAnonymousType extends IsOK
 {
 
     /**
@@ -15,16 +18,12 @@ class ParameterAnonymousType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType[] $collectionType
      */
-    private $collectionType = array(
-        
-    );
+    private $collectionType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType[] $referenceType
      */
-    private $referenceType = array(
-        
-    );
+    private $referenceType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType

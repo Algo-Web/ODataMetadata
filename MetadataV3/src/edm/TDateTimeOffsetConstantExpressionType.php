@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TDateTimeOffsetConstantExpressionType
  *
  *
  * XSD Type: TDateTimeOffsetConstantExpression
  */
-class TDateTimeOffsetConstantExpressionType
+class TDateTimeOffsetConstantExpressionType extends IsOK
 {
 
     /**

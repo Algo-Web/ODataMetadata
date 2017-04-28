@@ -2,12 +2,13 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edm\EntityContainer;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType;
 
 /**
  * Class representing EntitySetAnonymousType
  */
-class EntitySetAnonymousType
+class EntitySetAnonymousType extends IsOK
 {
 
     /**

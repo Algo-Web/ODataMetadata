@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TIntConstantExpressionType
  *
  *
  * XSD Type: TIntConstantExpression
  */
-class TIntConstantExpressionType
+class TIntConstantExpressionType extends IsOK
 {
 
     /**

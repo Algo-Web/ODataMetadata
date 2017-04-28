@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionImportMappingType
  *
  *
  * XSD Type: TFunctionImportMapping
  */
-class TFunctionImportMappingType
+class TFunctionImportMappingType extends IsOK
 {
 
     /**
@@ -24,9 +27,7 @@ class TFunctionImportMappingType
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType[]
      * $resultMapping
      */
-    private $resultMapping = array(
-        
-    );
+    private $resultMapping = array();
 
     /**
      * Gets as functionName

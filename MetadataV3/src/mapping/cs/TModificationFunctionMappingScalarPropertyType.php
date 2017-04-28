@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TModificationFunctionMappingScalarPropertyType
  *
  *
  * XSD Type: TModificationFunctionMappingScalarProperty
  */
-class TModificationFunctionMappingScalarPropertyType
+class TModificationFunctionMappingScalarPropertyType extends IsOK
 {
 
     /**

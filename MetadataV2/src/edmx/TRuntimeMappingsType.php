@@ -2,6 +2,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edmx;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\Mapping;
 
 /**
@@ -10,7 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\Mapping;
  *
  * XSD Type: TRuntimeMappings
  */
-class TRuntimeMappingsType
+class TRuntimeMappingsType extends IsOK
 {
 
     /**

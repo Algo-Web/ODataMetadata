@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TComplexPropertyType
  *
  *
  * XSD Type: TComplexProperty
  */
-class TComplexPropertyType
+class TComplexPropertyType extends IsOK
 {
 
     /**
@@ -28,30 +31,22 @@ class TComplexPropertyType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
-    private $scalarProperty = array(
-        
-    );
+    private $scalarProperty = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType[] $complexProperty
      */
-    private $complexProperty = array(
-        
-    );
+    private $complexProperty = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType[] $complexTypeMapping
      */
-    private $complexTypeMapping = array(
-        
-    );
+    private $complexTypeMapping = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType[] $condition
      */
-    private $condition = array(
-        
-    );
+    private $condition = array();
 
     /**
      * Gets as name

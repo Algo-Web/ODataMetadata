@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TMappingType
  *
  *
  * XSD Type: TMapping
  */
-class TMappingType
+class TMappingType extends IsOK
 {
 
     /**
@@ -18,9 +21,7 @@ class TMappingType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType[] $alias
      */
-    private $alias = array(
-        
-    );
+    private $alias = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityContainerMappingType

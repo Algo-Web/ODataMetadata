@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
  *
  * XSD Type: TFunctionImportCondition
  */
-class TFunctionImportConditionType
+class TFunctionImportConditionType extends IsOK
 {
 
     /**

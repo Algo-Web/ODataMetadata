@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEntityTypeMappingType
  *
  *
  * XSD Type: TEntityTypeMapping
  */
-class TEntityTypeMappingType
+class TEntityTypeMappingType extends IsOK
 {
 
     /**
@@ -18,9 +21,7 @@ class TEntityTypeMappingType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType[] $mappingFragment
      */
-    private $mappingFragment = array(
-        
-    );
+    private $mappingFragment = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeModificationFunctionMappingType

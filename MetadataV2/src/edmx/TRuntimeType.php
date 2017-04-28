@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edmx;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TRuntimeType
  *
  *
  * XSD Type: TRuntime
  */
-class TRuntimeType
+class TRuntimeType extends IsOK
 {
 
     /**

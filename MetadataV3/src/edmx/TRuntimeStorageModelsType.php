@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TRuntimeStorageModelsType
  *
  *
  * XSD Type: TRuntimeStorageModels
  */
-class TRuntimeStorageModelsType
+class TRuntimeStorageModelsType extends IsOK
 {
 
     /**

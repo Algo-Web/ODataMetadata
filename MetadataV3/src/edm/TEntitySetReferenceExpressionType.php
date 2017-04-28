@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEntitySetReferenceExpressionType
  *
  *
  * XSD Type: TEntitySetReferenceExpression
  */
-class TEntitySetReferenceExpressionType
+class TEntitySetReferenceExpressionType extends IsOK
 {
 
     /**

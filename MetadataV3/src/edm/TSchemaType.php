@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TSchemaType
  *
  *
  * XSD Type: TSchema
  */
-class TSchemaType
+class TSchemaType extends IsOK
 {
 
     /**
@@ -28,65 +31,47 @@ class TSchemaType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TUsingType[] $using
      */
-    private $using = array(
-        
-    );
+    private $using = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType[] $association
      */
-    private $association = array(
-        
-    );
+    private $association = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType[] $complexType
      */
-    private $complexType = array(
-        
-    );
+    private $complexType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType[] $entityType
      */
-    private $entityType = array(
-        
-    );
+    private $entityType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeType[] $enumType
      */
-    private $enumType = array(
-        
-    );
+    private $enumType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermType[] $valueTerm
      */
-    private $valueTerm = array(
-        
-    );
+    private $valueTerm = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType[] $function
      */
-    private $function = array(
-        
-    );
+    private $function = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnnotationsType[] $annotations
      */
-    private $annotations = array(
-        
-    );
+    private $annotations = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer[] $entityContainer
      */
-    private $entityContainer = array(
-        
-    );
+    private $entityContainer = array();
 
     /**
      * Gets as namespace

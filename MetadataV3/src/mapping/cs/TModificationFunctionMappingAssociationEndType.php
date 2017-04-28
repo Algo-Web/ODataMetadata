@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TModificationFunctionMappingAssociationEndType
  *
  *
  * XSD Type: TModificationFunctionMappingAssociationEnd
  */
-class TModificationFunctionMappingAssociationEndType
+class TModificationFunctionMappingAssociationEndType extends IsOK
 {
 
     /**

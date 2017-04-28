@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TCollectionTypeType
  *
  *
  * XSD Type: TCollectionType
  */
-class TCollectionTypeType
+class TCollectionTypeType extends IsOK
 {
 
     /**

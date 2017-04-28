@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TValueAnnotationType
  *
  *
  * XSD Type: TValueAnnotation
  */
-class TValueAnnotationType
+class TValueAnnotationType extends IsOK
 {
 
     /**

@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TAssociationEndType
  *
  *
  * XSD Type: TAssociationEnd
  */
-class TAssociationEndType
+class TAssociationEndType extends IsOK
 {
 
     /**
@@ -33,9 +36,7 @@ class TAssociationEndType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType[] $onDelete
      */
-    private $onDelete = array(
-        
-    );
+    private $onDelete = array();
 
     /**
      * Gets as type

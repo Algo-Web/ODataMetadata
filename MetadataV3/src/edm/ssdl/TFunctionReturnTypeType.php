@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionReturnTypeType
  *
  *
  * XSD Type: TFunctionReturnType
  */
-class TFunctionReturnTypeType
+class TFunctionReturnTypeType extends IsOK
 {
 
     /**

@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TEntityTypeType
  *
  *
  * XSD Type: TEntityType
  */
-class TEntityTypeType
+class TEntityTypeType extends IsOK
 {
 
     /**
@@ -48,30 +51,22 @@ class TEntityTypeType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType[] $property
      */
-    private $property = array(
-        
-    );
+    private $property = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType[] $navigationProperty
      */
-    private $navigationProperty = array(
-        
-    );
+    private $navigationProperty = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      */
-    private $valueAnnotation = array(
-        
-    );
+    private $valueAnnotation = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      */
-    private $typeAnnotation = array(
-        
-    );
+    private $typeAnnotation = array();
 
     /**
      * Gets as name

@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TApplyExpressionType
  *
  *
  * XSD Type: TApplyExpression
  */
-class TApplyExpressionType
+class TApplyExpressionType extends IsOK
 {
 
     /**
@@ -19,17 +22,13 @@ class TApplyExpressionType
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
      * $appliedFunction
      */
-    private $appliedFunction = array(
-        
-    );
+    private $appliedFunction = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[]
      * $arguments
      */
-    private $arguments = array(
-        
-    );
+    private $arguments = array();
 
     /**
      * Gets as function

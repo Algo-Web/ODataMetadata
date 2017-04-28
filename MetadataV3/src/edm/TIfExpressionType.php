@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TIfExpressionType
  *
  *
  * XSD Type: TIfExpression
  */
-class TIfExpressionType
+class TIfExpressionType extends IsOK
 {
     use \MetadataV3\edm\GExpressionGroupTraits\ValueTermReferenceTrait,
         \MetadataV3\edm\GExpressionGroupTraits\TypeTrait,

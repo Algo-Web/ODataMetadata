@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TPropertyType
  *
  *
  * XSD Type: TProperty
  */
-class TPropertyType
+class TPropertyType extends IsOK
 {
 
     /**

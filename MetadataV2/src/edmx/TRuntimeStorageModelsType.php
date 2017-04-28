@@ -2,6 +2,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edmx;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\Schema;
 
 /**
@@ -10,7 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\Schema;
  *
  * XSD Type: TRuntimeStorageModels
  */
-class TRuntimeStorageModelsType
+class TRuntimeStorageModelsType extends IsOK
 {
 
     /**

@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TFunctionParameterType
  *
  *
  * XSD Type: TFunctionParameter
  */
-class TFunctionParameterType
+class TFunctionParameterType extends IsOK
 {
 
     /**

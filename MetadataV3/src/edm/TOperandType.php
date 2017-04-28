@@ -1,13 +1,16 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing TOperandType
  *
  *
  * XSD Type: TOperand
  */
-class TOperandType
+class TOperandType extends IsOK
 {
 
     /**

@@ -1,10 +1,13 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer;
+
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing FunctionImportAnonymousType
  */
-class FunctionImportAnonymousType
+class FunctionImportAnonymousType extends IsOK
 {
 
     /**
@@ -15,9 +18,7 @@ class FunctionImportAnonymousType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType[] $returnType
      */
-    private $returnType = array(
-        
-    );
+    private $returnType = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
@@ -52,9 +53,7 @@ class FunctionImportAnonymousType
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType[] $parameter
      */
-    private $parameter = array(
-        
-    );
+    private $parameter = array();
 
     /**
      * Gets as name
