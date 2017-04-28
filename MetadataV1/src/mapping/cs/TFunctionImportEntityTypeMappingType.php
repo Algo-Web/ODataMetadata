@@ -1,6 +1,7 @@
 <?php
 
 namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
+
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
