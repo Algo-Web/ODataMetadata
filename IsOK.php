@@ -7,7 +7,7 @@ abstract class IsOK
 
     protected function isStringNotNullOrEmpty($str)
     {
-        if(!$this->isStringNotNull($str)){
+        if (!$this->isStringNotNull($str)) {
             return false;
         }
         if (empty(trim($str))) {
