@@ -1,5 +1,5 @@
 <?php
-namespace AlgoWeb\ODataMetadata
+namespace AlgoWeb\ODataMetadata;
 
 abstract class IsOK
 {
