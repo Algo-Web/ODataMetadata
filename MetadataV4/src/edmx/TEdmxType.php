@@ -162,4 +162,30 @@ class TEdmxType extends IsOK
         $this->dataServices = $dataServices;
         return $this;
     }
+
+    public function IsOK(&$msg)
+    {
+        if (is_null($this->version)) {
+            $msg = "edmx version can not be null";
+            return false;
+        }
+        if (is_float($this->version))
+
+            if (!$this->isValidArray($this->dataServices, \AlgoWeb\ODataMetadata\MetadataV4\edm\Schem, 1)) {
+                $msg = "edmx the dataservice definition contains invalid enteries.";
+                return false;
+            }
+        if (!$this->isValidArray($this->reference, \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType)) {
+            $msg = "edmx references contains invalid elements";
+            return false;
+        }
+        if (!$this->IsChildArrayOK($this->dataServices, $msg)) {
+            return false;
+        }
+        if (!$this->IsChildArrayOK($this->reference, $msg)) {
+            return false;
+        }
+        return true;
+
+    }
 }
