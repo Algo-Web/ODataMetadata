@@ -72,7 +72,6 @@ abstract class IsOK
 
     protected function IsChildArrayOK(array $arr, &$msg)
     {
-
         foreach ($arr as $item) {
             if (!($item instanceof IsOK)) {
                 $msg = "Child Item is not an instance of IsOK";
