@@ -28,7 +28,7 @@ trait xsdRestrictions
      */
     protected function isNCName($string)
     {
-        return $this->MatchesRegexPattern("[\i-[:]][\c-[:]]*", $string) && $this->isName($string);
+        return $this->matchesRegexPattern("[\i-[:]][\c-[:]]*", $string) && $this->isName($string);
     }
 
     /**
@@ -37,7 +37,7 @@ trait xsdRestrictions
      * @param string $string the string to check
      * @return bool true if string matches pattern
      */
-    protected function MatchesRegexPattern($pattern, $string)
+    protected function matchesRegexPattern($pattern, $string)
     {
         return (preg_match("\i\c*", $string) == 1);
     }
@@ -57,6 +57,6 @@ trait xsdRestrictions
      */
     protected function isName($string)
     {
-        return $this->MatchesRegexPattern("\i\c*", $string);
+        return $this->matchesRegexPattern("\i\c*", $string);
     }
 }

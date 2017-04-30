@@ -26,7 +26,7 @@ class TAssociationConnectorType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType[] $connectorPoint
      */
-    private $connectorPoint = array();
+    private $connectorPoint = [];
 
     /**
      * Gets as association
@@ -128,7 +128,7 @@ class TAssociationConnectorType extends IsOK
         return $this;
     }
 
-    public function isOK()
+    public function isOK(&$msg = null)
     {
         if (null == $this->association) {
             return false;

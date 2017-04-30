@@ -25,23 +25,23 @@ abstract class IsOK
         return true;
     }
 
-    protected function isNotNullInstanceOf($var, $insanceOf)
+    protected function isNotNullInstanceOf($var, $instanceOf)
     {
         if (null == $var) {
             return false;
         }
-        if (!($var instanceof $insanceOf)) {
+        if (!($var instanceof $instanceOf)) {
             return false;
         }
         return true;
     }
 
-    protected function isNullInstanceOf($var, $insanceOf)
+    protected function isNullInstanceOf($var, $instanceOf)
     {
         if (null == $var) {
             return true;
         }
-        if (!($var instanceof $insanceOf)) {
+        if (!($var instanceof $instanceOf)) {
             return false;
         }
         return false;
@@ -56,10 +56,10 @@ abstract class IsOK
             return false;
         }
         $numberOfItem = count($arr);
-        if ($minCount != -1 && $numberOfItem < $minCount) {
+        if (-1 != $minCount && $numberOfItem < $minCount) {
             return false;
         }
-        if ($maxCount != -1 && $numberOfItem > $maxCount) {
+        if (-1 != $maxCount && $numberOfItem > $maxCount) {
             return false;
         }
         foreach ($arr as $item) {
@@ -70,27 +70,27 @@ abstract class IsOK
         return true;
     }
 
-    protected function IsChildArrayOK(array $arr, &$msg)
+    protected function isChildArrayOK(array $arr, &$msg)
     {
         foreach ($arr as $item) {
             if (!($item instanceof IsOK)) {
-                $msg = "Child Item is not an instance of IsOK";
+                $msg = "Child item is not an instance of IsOK";
                 return false;
             }
-            if (!$item->IsOK($msg)) {
+            if (!$item->isOK($msg)) {
                 return false;
             }
         }
     }
 
-    abstract protected function IsOK(&$msg);
+    abstract protected function isOK(&$msg = null);
 
     protected function isURLValid($url)
     {
         if (!isStringNotNull($url)) {
             return false;
         }
-        if (filter_var($url, FILTER_VALIDATE_URL) === false) {
+        if (false === filter_var($url, FILTER_VALIDATE_URL)) {
             return false;
         }
         return true;

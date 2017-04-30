@@ -67,7 +67,7 @@ class TConnectorPointType extends IsOK
         return $this;
     }
 
-    public function isOK()
+    public function isOK(&$msg = null)
     {
         if (null == $this->pointX) {
             return false;

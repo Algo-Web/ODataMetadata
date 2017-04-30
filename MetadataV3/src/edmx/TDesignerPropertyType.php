@@ -67,7 +67,7 @@ class TDesignerPropertyType extends IsOK
         return $this;
     }
 
-    public function isOK()
+    public function isOK(&$msg = null)
     {
         if (null == $this->name) {
             return false;

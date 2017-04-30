@@ -97,35 +97,35 @@ class TIncludeAnnotationsType extends IsOK
         return $this;
     }
 
-    protected function IsOK(&$msg)
+    protected function isOK(&$msg)
     {
         if (!$this->isStringNotNullOrEmpty($this->termNamespace)) {
-            $msg = "Term Namespace Must be defined";
+            $msg = "Term namespace must be defined";
             return false;
         }
-        if (!$this->IsTNamespaceNameValid($this->termNamespace)) {
-            $msg = "Term Namespace Must be a valid NameSpace";
+        if (!$this->isTNamespaceNameValid($this->termNamespace)) {
+            $msg = "Term namespace must be a valid NameSpace";
             return false;
         }
 
 
         if (null != $this->qualifier) {
             if (!is_string($this->qualifier)) {
-                $msg = "qualifier must be either a string or null";
+                $msg = "Qualifier must be either a string or null";
                 return false;
             }
-            if (!$this->IsTSimpleIdentifierValid($this->qualifier)) {
-                $msg = "qualifier Must be a valid TSimpleIdentifyer";
+            if (!$this->isTSimpleIdentifierValid($this->qualifier)) {
+                $msg = "Qualifier must be a valid TSimpleIdentifier";
                 return false;
             }
         }
         if (null != $this->targetNamespace) {
             if (!is_string($this->targetNamespace)) {
-                $msg = "targetNamespace must be either a string or null";
+                $msg = "TargetNamespace must be either a string or null";
                 return false;
             }
             if (!$this->$this->IsTNamespaceNameValid($this->targetNamespace)) {
-                $msg = "targetNamespace Must be a valid TNAmespace";
+                $msg = "TargetNamespace must be a valid TNamespace";
                 return false;
             }
         }

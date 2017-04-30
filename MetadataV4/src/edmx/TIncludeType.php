@@ -67,13 +67,13 @@ class TIncludeType extends IsOK
         return $this;
     }
 
-    protected function IsOK(&$msg)
+    protected function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->namespace)) {
             $msg = "Namespace Must be defined";
             return false;
         }
-        if (!$this->IsTNamespaceNameValid($this->namespace)) {
+        if (!$this->isTNamespaceNameValid($this->namespace)) {
             $msg = "Namespace Must be a valid NameSpace";
             return false;
         }
@@ -81,11 +81,11 @@ class TIncludeType extends IsOK
 
         if (null != $this->alias) {
             if (!is_string($this->alias)) {
-                $msg = "alias  must be either a string or null";
+                $msg = "Alias must be either a string or null";
                 return false;
             }
-            if (!$this->IsTSimpleIdentifierValid($this->alias)) {
-                $msg = "alias  Must be a valid TSimpleIdentifyer";
+            if (!$this->isTSimpleIdentifierValid($this->alias)) {
+                $msg = "Alias must be a valid TSimpleIdentifier";
                 return false;
             }
         }

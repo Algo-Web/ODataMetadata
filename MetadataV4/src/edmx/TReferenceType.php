@@ -224,33 +224,36 @@ class TReferenceType extends IsOK
         return $this;
     }
 
-    protected function IsOK(&$msg)
+    protected function isOK(&$msg = null)
     {
         if (!$this->isURLValid($this->uri)) {
-            $msg = "uri must be valid";
+            $msg = "Uri must be valid";
             return false;
         }
-        return true;
 
         if (!$this->isValidArray($this->include, \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType, 1)) {
-            $msg = "include is not a valid array";
+            $msg = "Include is not a valid array";
             return false;
         }
-        if (!$this->isValidArray($this->includeAnnotations, \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType, 1)) {
-            $msg = "includeAnnotations is not a valid array";
+        if (!$this->isValidArray(
+            $this->includeAnnotations,
+            \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType,
+            1
+        )) {
+            $msg = "IncludeAnnotations is not a valid array";
             return false;
         }
         if (!$this->isValidArray($this->annotation, \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation, 1)) {
-            $msg = "annotation is not a valid array";
+            $msg = "Annotation is not a valid array";
             return false;
         }
-        if (!$this->IsChildArrayOK($this->include, $msg)) {
+        if (!$this->isChildArrayOK($this->include, $msg)) {
             return false;
         }
-        if (!$this->IsChildArrayOK($this->includeAnnotations, $msg)) {
+        if (!$this->isChildArrayOK($this->includeAnnotations, $msg)) {
             return false;
         }
-        if (!$this->IsChildArrayOK($this->annotation, $msg)) {
+        if (!$this->isChildArrayOK($this->annotation, $msg)) {
             return false;
         }
         return true;

@@ -205,7 +205,7 @@ class TEntityTypeShapeType extends IsOK
     /**
      * @return bool
      */
-    public function isOK()
+    public function isOK(&$msg = null)
     {
         if (null == $this->entityType || "" == $this->entityType) {
             return false;

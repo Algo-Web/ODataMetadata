@@ -22,7 +22,7 @@ class TEdmxType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType[] $reference
      */
-    private $reference = array();
+    private $reference = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema[] $dataServices
@@ -163,26 +163,26 @@ class TEdmxType extends IsOK
         return $this;
     }
 
-    public function IsOK(&$msg)
+    public function isOK(&$msg = null)
     {
         if (is_null($this->version)) {
-            $msg = "edmx version can not be null";
+            $msg = "Edmx version can not be null";
             return false;
         }
         if (is_float($this->version)) {
-            if (!$this->isValidArray($this->dataServices, \AlgoWeb\ODataMetadata\MetadataV4\edm\Schem, 1)) {
-                $msg = "edmx the dataservice definition contains invalid enteries.";
+            if (!$this->isValidArray($this->dataServices, \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema, 1)) {
+                $msg = "Edmx dataservice definition contains invalid enteries.";
                 return false;
             }
         }
         if (!$this->isValidArray($this->reference, \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType)) {
-            $msg = "edmx references contains invalid elements";
+            $msg = "Edmx references contains invalid elements";
             return false;
         }
-        if (!$this->IsChildArrayOK($this->dataServices, $msg)) {
+        if (!$this->isChildArrayOK($this->dataServices, $msg)) {
             return false;
         }
-        if (!$this->IsChildArrayOK($this->reference, $msg)) {
+        if (!$this->isChildArrayOK($this->reference, $msg)) {
             return false;
         }
         return true;
