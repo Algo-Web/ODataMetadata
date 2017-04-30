@@ -4,7 +4,7 @@ namespace AlgoWeb\ODataMetadata\Tests;
 
 use AlgoWeb\ODataMetadata\IsOK;
 
-class TestType extends IsOK
+class testType extends IsOK
 {
     public function isStringNotNullOrEmpty($str)
     {
