@@ -1,0 +1,48 @@
+{
+  "name": "algo-web/ODataMetadata",
+  "type": "library",
+  "keywords": [
+    "OData",
+    "metadata",
+    "POData"
+  ],
+  "homepage": "https://github.com/Algo-Web/ODataMetadata",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Alex Goodwin",
+      "email": "cyberia.resurrection@gmail.com",
+      "homepage": "http://www.example.org",
+      "role": "Developer"
+    },
+    {
+      "name": "Chris Harris",
+      "email": "c.harris@communicationinnovations.com.au",
+      "homepage": "http://www.example.org",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": "~5.6|~7.0|~7.1"
+  },
+  "requre-dev": {
+    "brianium/paratest": "dev-master",
+    "mockery/mockery": "0.9.*",
+    "phpspec/phpspec": "^3.0",
+    "phpunit/phpunit": "~5.7",
+    "squizlabs/php_codesniffer": "~2.3"
+  },
+  "scripts": {
+    "test": "phpunit",
+    "format": "phpcbf --standard=psr2 src/"
+  },
+  "autoload": {
+
+  },
+  "autoload-dev": {
+
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
