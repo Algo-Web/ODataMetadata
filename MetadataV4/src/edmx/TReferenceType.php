@@ -244,6 +244,15 @@ class TReferenceType extends IsOK
             $msg = "annotation is not a valid array";
             return false;
         }
+        if (!$this->IsChildArrayOK($this->include, $msg)) {
+            return false;
+        }
+        if (!$this->IsChildArrayOK($this->includeAnnotations, $msg)) {
+            return false;
+        }
+        if (!$this->IsChildArrayOK($this->annotation, $msg)) {
+            return false;
+        }
         return true;
     }
 }
