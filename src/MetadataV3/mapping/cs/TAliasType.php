@@ -78,7 +78,7 @@ class TAliasType extends IsOK
             $msg = 'Value cannot be null or empty';
             return false;
         }
-        if (!$this->isTSimpleIdentifierValid($this->name)) {
+        if (!$this->isTSimpleIdentifierValid($this->key)) {
             $msg = 'Name must be a valid TSimpleIdentifier';
             return false;
         }

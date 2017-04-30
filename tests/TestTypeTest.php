@@ -10,49 +10,49 @@ class TestTypeTest extends TestCase
     public function testIsStringNotNullOrEmptyWithNull()
     {
         $string = null;
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isStringNotNullOrEmpty($string));
     }
 
     public function testIsStringNotNullOrEmptyWithEmpty()
     {
         $string = '';
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isStringNotNullOrEmpty($string));
     }
 
     public function testIsStringNotNullOrEmptyWithNonString()
     {
         $string = new \stdClass();
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isStringNotNullOrEmpty($string));
     }
 
     public function testIsStringNotNullOrEmptyWithObject()
     {
         $string = new \stdClass();
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isStringNotNullOrEmpty($string));
     }
 
     public function testIsStringNotNullOrEmptyWithNumber()
     {
         $string = 2134;
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isStringNotNullOrEmpty($string));
     }
 
     public function testIsStringNotNullOrEmptyWithString()
     {
         $string = 'An actual string';
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertTrue($foo->isStringNotNullOrEmpty($string));
     }
 
     public function testIsStringNotNullOrEmptyWithNumberAsString()
     {
         $string = '1234';
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertTrue($foo->isStringNotNullOrEmpty($string));
     }
 
@@ -61,7 +61,7 @@ class TestTypeTest extends TestCase
         $var = new \stdClass();
         $instanceof = new \stdClass();
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertTrue($foo->isNotNullInstanceOf($var, $instanceof));
     }
 
@@ -70,7 +70,7 @@ class TestTypeTest extends TestCase
         $var = new \stdClass();
         $instanceof = get_class($var);
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertTrue($foo->isNotNullInstanceOf($var, $instanceof));
     }
 
@@ -79,7 +79,7 @@ class TestTypeTest extends TestCase
         $var = 'Another string.  How amazing.';
         $instanceof = new \stdClass();
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isNotNullInstanceOf($var, $instanceof));
     }
 
@@ -88,7 +88,7 @@ class TestTypeTest extends TestCase
         $var = null;
         $instanceof = new \stdClass();
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isNotNullInstanceOf($var, $instanceof));
     }
 
@@ -97,7 +97,7 @@ class TestTypeTest extends TestCase
         $var = new \stdClass();
         $instanceof = new \stdClass();
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isNullInstanceOf($var, $instanceof));
     }
 
@@ -106,7 +106,7 @@ class TestTypeTest extends TestCase
         $var = new \stdClass();
         $instanceof = get_class($var);
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isNullInstanceOf($var, $instanceof));
     }
 
@@ -115,7 +115,7 @@ class TestTypeTest extends TestCase
         $var = 'Another string.  How amazing.';
         $instanceof = new \stdClass();
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isNullInstanceOf($var, $instanceof));
     }
 
@@ -124,7 +124,7 @@ class TestTypeTest extends TestCase
         $var = null;
         $instanceof = new \stdClass();
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertTrue($foo->isNullInstanceOf($var, $instanceof));
     }
 
@@ -133,7 +133,7 @@ class TestTypeTest extends TestCase
         $arr = [];
         $instanceof = get_class(new \stdClass());
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isValidArray($arr, $instanceof, 1, -1));
     }
 
@@ -142,7 +142,7 @@ class TestTypeTest extends TestCase
         $arr = ['abc'];
         $instanceof = get_class(new \stdClass());
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isValidArray($arr, $instanceof, 0, 0));
     }
 
@@ -151,7 +151,7 @@ class TestTypeTest extends TestCase
         $arr = ['abc'];
         $instanceof = get_class(new \stdClass());
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isValidArray($arr, $instanceof));
     }
 
@@ -160,7 +160,7 @@ class TestTypeTest extends TestCase
         $arr = [new \stdClass()];
         $instanceof = get_class(new \stdClass());
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertTrue($foo->isValidArray($arr, $instanceof));
     }
 
@@ -169,7 +169,7 @@ class TestTypeTest extends TestCase
         $msg = null;
         $arr = [];
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertTrue($foo->isChildArrayOK($arr, $msg), $msg);
     }
 
@@ -179,7 +179,7 @@ class TestTypeTest extends TestCase
         $expected = "Child item is not an instance of IsOK";
         $arr = ['abc'];
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isChildArrayOK($arr, $msg), $msg);
         $this->assertEquals($expected, $msg);
     }
@@ -197,7 +197,7 @@ class TestTypeTest extends TestCase
         $expected = "OH NOES!";
         $arr = [ $bar ];
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isChildArrayOK($arr, $msg), $msg);
         $this->assertEquals($expected, $msg);
     }
@@ -206,7 +206,7 @@ class TestTypeTest extends TestCase
     {
         $url = null;
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isURLValid($url));
     }
 
@@ -214,7 +214,7 @@ class TestTypeTest extends TestCase
     {
         $url = 'abc';
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertFalse($foo->isURLValid($url));
     }
 
@@ -222,7 +222,7 @@ class TestTypeTest extends TestCase
     {
         $url = 'https://google.com';
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertTrue($foo->isURLValid($url));
     }
 
@@ -230,7 +230,7 @@ class TestTypeTest extends TestCase
     {
         $url = 'http://www.google.com';
 
-        $foo = new TestType();
+        $foo = new testType();
         $this->assertTrue($foo->isURLValid($url));
     }
 }

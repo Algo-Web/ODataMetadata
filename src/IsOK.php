@@ -78,7 +78,7 @@ abstract class IsOK
         return true;
     }
 
-    abstract protected function isOK(&$msg = null);
+    abstract public function isOK(&$msg = null);
 
     protected function isURLValid($url)
     {

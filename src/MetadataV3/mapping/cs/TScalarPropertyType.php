@@ -68,7 +68,7 @@ class TScalarPropertyType extends IsOK
         return $this;
     }
 
-    protected function isOK(&$msg = null)
+    public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->name)) {
             $msg = 'Name cannot be null or empty';
