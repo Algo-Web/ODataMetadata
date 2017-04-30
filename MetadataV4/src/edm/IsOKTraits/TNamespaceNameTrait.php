@@ -4,7 +4,6 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits;
 
 use AlgoWeb\ODataMetadata\xsdRestrictions;
 
-
 trait TNamespaceNameTrait
 {
     use xsdRestrictions;
