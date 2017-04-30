@@ -9,10 +9,10 @@
 namespace AlgoWeb\ODataMetadata;
 
 /**
- * Class xsdRestrictions
+ * trait xsdRestrictions
  * @package AlgoWeb\ODataMetadata
  */
-class xsdRestrictions
+trait xsdRestrictions
 {
     /**
      * Checks if it is a valid NCName
@@ -26,9 +26,20 @@ class xsdRestrictions
      * @param $string string the string to check
      * @return bool if it is valid
      */
-    public function isNCName($string)
+    protected function isNCName($string)
     {
-        return (preg_match("[\i-[:]][\c-[:]]*", $string) == 1) && $this->isName($string);
+        return $this->MatchesRegexPattern("[\i-[:]][\c-[:]]*", $string) && $this->isName($string);
+    }
+
+    /**
+     * Checks a pattern against a string
+     * @param $pattern string the regex pattern
+     * @param $string string the string to check
+     * @return bool true if string matches pattern
+     */
+    protected function MatchesRegexPattern($pattern, $string)
+    {
+        return (preg_match("\i\c*", $string) == 1);
     }
 
     /**
@@ -44,8 +55,8 @@ class xsdRestrictions
      * @param $string string the string to check
      * @return bool  if it is valid
      */
-    public function isName($string)
+    protected function isName($string)
     {
-        return (preg_match("\i\c*", $string) == 1);
+        return $this->MatchesRegexPattern("\i\c*", $string);
     }
 }

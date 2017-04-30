@@ -84,5 +84,6 @@ abstract class IsOK
         }
     }
 
+
     abstract protected function IsOK(&$msg);
 }
