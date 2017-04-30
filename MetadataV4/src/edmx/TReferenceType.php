@@ -223,4 +223,27 @@ class TReferenceType extends IsOK
         $this->annotation = $annotation;
         return $this;
     }
+
+    protected function IsOK(&$msg)
+    {
+        if (!$this->isURLValid($this->uri)) {
+            $msg = "uri must be valid";
+            return false;
+        }
+        return true;
+
+        if (!$this->isValidArray($this->include, \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType, 1)) {
+            $msg = "include is not a valid array";
+            return false;
+        }
+        if (!$this->isValidArray($this->includeAnnotations, \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType, 1)) {
+            $msg = "includeAnnotations is not a valid array";
+            return false;
+        }
+        if (!$this->isValidArray($this->annotation, \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation, 1)) {
+            $msg = "annotation is not a valid array";
+            return false;
+        }
+        return true;
+    }
 }

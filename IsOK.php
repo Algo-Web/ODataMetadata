@@ -84,6 +84,16 @@ abstract class IsOK
         }
     }
 
-
     abstract protected function IsOK(&$msg);
+
+    protected function isURLValid($url)
+    {
+        if (!isStringNotNull($url)) {
+            return false;
+        }
+        if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
+            return false;
+        }
+        return true;
+    }
 }
