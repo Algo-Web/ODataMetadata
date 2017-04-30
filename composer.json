@@ -37,7 +37,12 @@
     "format": "phpcbf --standard=psr2 src/"
   },
   "autoload": {
-
+    "psr-4": {
+      "AlgoWeb\\PODataLaravel\\": "src/"
+    },
+    "classmap": [
+      "tests/"
+    ]
   },
   "autoload-dev": {
 
