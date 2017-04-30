@@ -23,7 +23,7 @@ trait xsdRestrictions
      *     </xsd:restriction>
      * </xsd:simpleType>
      *
-     * @param $string string the string to check
+     * @param string $string the string to check
      * @return bool if it is valid
      */
     protected function isNCName($string)
@@ -33,8 +33,8 @@ trait xsdRestrictions
 
     /**
      * Checks a pattern against a string
-     * @param $pattern string the regex pattern
-     * @param $string string the string to check
+     * @param string $pattern the regex pattern
+     * @param string $string the string to check
      * @return bool true if string matches pattern
      */
     protected function MatchesRegexPattern($pattern, $string)
@@ -52,7 +52,7 @@ trait xsdRestrictions
      *     </xsd:restriction>
      * </xsd:simpleType>
      *
-     * @param $string string the string to check
+     * @param string $string the string to check
      * @return bool  if it is valid
      */
     protected function isName($string)
