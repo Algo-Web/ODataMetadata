@@ -23,13 +23,13 @@
     }
   ],
   "require": {
-    "php": "~5.6|~7.0|~7.1"
+    "php": "~5.6|~7.0|~7.1",
+    "phpunit/phpunit": "^5.6"
   },
   "requre-dev": {
     "brianium/paratest": "dev-master",
     "mockery/mockery": "0.9.*",
     "phpspec/phpspec": "^3.0",
-    "phpunit/phpunit": "~5.7",
     "squizlabs/php_codesniffer": "~2.3"
   },
   "scripts": {
@@ -49,5 +49,6 @@
   },
   "config": {
     "sort-packages": true
-  }
+  },
+  "minimum-stability": "dev"
 }
