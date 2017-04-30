@@ -47,14 +47,8 @@ abstract class IsOK
         return false;
     }
 
-    protected function isValidArray($arr, $instanceOf, $minCount = -1, $maxCount = -1)
+    protected function isValidArray(array $arr, $instanceOf, $minCount = -1, $maxCount = -1)
     {
-        if (null == $arr) {
-            return false;
-        }
-        if (!is_array($arr)) {
-            return false;
-        }
         $numberOfItem = count($arr);
         if (-1 != $minCount && $numberOfItem < $minCount) {
             return false;
@@ -81,13 +75,14 @@ abstract class IsOK
                 return false;
             }
         }
+        return true;
     }
 
     abstract protected function isOK(&$msg = null);
 
     protected function isURLValid($url)
     {
-        if (!isStringNotNull($url)) {
+        if (!$this->isStringNotNull($url)) {
             return false;
         }
         if (false === filter_var($url, FILTER_VALIDATE_URL)) {

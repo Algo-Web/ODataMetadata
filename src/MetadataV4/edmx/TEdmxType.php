@@ -170,12 +170,12 @@ class TEdmxType extends IsOK
             return false;
         }
         if (is_float($this->version)) {
-            if (!$this->isValidArray($this->dataServices, \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema, 1)) {
+            if (!$this->isValidArray($this->dataServices, '\AlgoWeb\ODataMetadata\MetadataV4\edm\Schema', 1)) {
                 $msg = "Edmx dataservice definition contains invalid enteries.";
                 return false;
             }
         }
-        if (!$this->isValidArray($this->reference, \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType)) {
+        if (!$this->isValidArray($this->reference, '\AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType')) {
             $msg = "Edmx references contains invalid elements";
             return false;
         }
