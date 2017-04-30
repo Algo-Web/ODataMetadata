@@ -169,12 +169,12 @@ class TEdmxType extends IsOK
             $msg = "edmx version can not be null";
             return false;
         }
-        if (is_float($this->version))
-
+        if (is_float($this->version)) {
             if (!$this->isValidArray($this->dataServices, \AlgoWeb\ODataMetadata\MetadataV4\edm\Schem, 1)) {
                 $msg = "edmx the dataservice definition contains invalid enteries.";
                 return false;
             }
+        }
         if (!$this->isValidArray($this->reference, \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType)) {
             $msg = "edmx references contains invalid elements";
             return false;
@@ -186,6 +186,5 @@ class TEdmxType extends IsOK
             return false;
         }
         return true;
-
     }
 }

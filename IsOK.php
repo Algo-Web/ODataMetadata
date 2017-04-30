@@ -72,7 +72,6 @@ abstract class IsOK
 
     protected function IsChildArrayOK(array $arr, &$msg)
     {
-
         foreach ($arr as $item) {
             if (!($item instanceof IsOK)) {
                 $msg = "Child Item is not an instance of IsOK";
@@ -91,7 +90,7 @@ abstract class IsOK
         if (!isStringNotNull($url)) {
             return false;
         }
-        if (filter_var($url, FILTER_VALIDATE_URL) === FALSE) {
+        if (filter_var($url, FILTER_VALIDATE_URL) === false) {
             return false;
         }
         return true;

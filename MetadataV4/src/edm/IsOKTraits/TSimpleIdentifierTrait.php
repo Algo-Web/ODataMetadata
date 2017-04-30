@@ -2,7 +2,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits;
 
-
 trait TSimpleIdentifierTrait
 {
     use xsdRestrictions;
