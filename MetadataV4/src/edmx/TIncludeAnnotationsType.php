@@ -3,7 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV4\edmx;
 
 use AlgoWeb\ODataMetadata\IsOK;
-use AlgoWeb\ODataMetadata\xsdRestrictions;
+use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TNamespaceNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TIncludeAnnotationsType
@@ -13,7 +14,7 @@ use AlgoWeb\ODataMetadata\xsdRestrictions;
  */
 class TIncludeAnnotationsType extends IsOK
 {
-    use xsdRestrictions;
+    use TNamespaceNameTrait, TSimpleIdentifierTrait;
 
     /**
      * @property string $termNamespace
@@ -102,32 +103,19 @@ class TIncludeAnnotationsType extends IsOK
             $msg = "Term Namespace Must be defined";
             return false;
         }
-        if (!$this->isNCName($this->termNamespace)) {
-            $msg = "Term Namespace Must be a valid NCName";
+        if (!$this->IsTNamespaceNameValid($this->termNamespace)) {
+            $msg = "Term Namespace Must be a valid NameSpace";
             return false;
         }
-        //<!-- one or more SimpleIdentifiers separated by dots -->
-        if (!$this->MatchesRegexPattern("[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}", $this->termNamespace)) {
-            $msg = "the term namespace dose not match the regex in the xsd.";
-            return false;
-        }
+
 
         if (null != $this->qualifier) {
             if (!is_string($this->qualifier)) {
                 $msg = "qualifier must be either a string or null";
                 return false;
             }
-            if (!$this->isNCName($this->qualifier)) {
-                $msg = "qualifier Must be a valid NCName";
-                return false;
-            }
-            if (strlen($this->qualifier > 128)) {
-                $msg = "the maximum length permitted for qualifier is 128";
-                return false;
-            }
-            //      <!-- ECMAScript identifiers not starting with a '$' -->
-            if (!$this->MatchesRegexPattern("[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}", $this->qualifier)) {
-                $msg = "the qualifier dose not match the regex in the xsd.";
+            if (!$this->IsTSimpleIdentifierValid($this->qualifier)) {
+                $msg = "qualifier Must be a valid TSimpleIdentifyer";
                 return false;
             }
         }
@@ -136,13 +124,8 @@ class TIncludeAnnotationsType extends IsOK
                 $msg = "targetNamespace must be either a string or null";
                 return false;
             }
-            if (!$this->isNCName($this->targetNamespace)) {
-                $msg = "targetNamespace Must be a valid NCName";
-                return false;
-            }
-            //<!-- one or more SimpleIdentifiers separated by dots -->
-            if (!$this->MatchesRegexPattern("[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}", $this->targetNamespace)) {
-                $msg = "the targetNamespace dose not match the regex in the xsd.";
+            if (!$this->$this->IsTNamespaceNameValid($this->targetNamespace)) {
+                $msg = "targetNamespace Must be a valid TNAmespace";
                 return false;
             }
         }
