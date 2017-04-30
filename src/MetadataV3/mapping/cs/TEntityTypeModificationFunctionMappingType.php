@@ -99,4 +99,18 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
         $this->updateFunction = $updateFunction;
         return $this;
     }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->deleteFunction && !$this->deleteFunction->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->insertFunction && !$this->insertFunction->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->updateFunction && !$this->updateFunction->isOK($msg)) {
+            return false;
+        }
+        return true;
+    }
 }

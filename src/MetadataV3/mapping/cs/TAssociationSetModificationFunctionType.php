@@ -95,4 +95,22 @@ class TAssociationSetModificationFunctionType extends IsOK
         $this->endProperty = $endProperty;
         return $this;
     }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->functionName)) {
+            $msg = 'Function name cannot be null or empty';
+            return false;
+        }
+        if (null != $this->rowsAffectedParameter) {
+            if (!$this->isStringNotNullOrEmpty($this->rowsAffectedParameter)) {
+                $msg = 'Rows affected parameter cannot be empty';
+                return false;
+            }
+        }
+        if (null != $this->endProperty && !$this->endProperty->isOK($msg)) {
+            return false;
+        }
+        return true;
+    }
 }

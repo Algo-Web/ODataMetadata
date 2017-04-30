@@ -93,4 +93,13 @@ class TFunctionImportConditionType extends IsOK
         $this->isNull = $isNull;
         return $this;
     }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->columnName)) {
+            $msg = 'Column name cannot be null or empty';
+            return false;
+        }
+        return true;
+    }
 }

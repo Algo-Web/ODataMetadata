@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TEntityContainerMappingType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TEntityContainerMappingType extends IsOK
 {
-
+    use TSimpleIdentifierTrait;
     /**
      * @property string $cdmEntityContainer
      */
@@ -31,19 +32,19 @@ class TEntityContainerMappingType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType[] $entitySetMapping
      */
-    private $entitySetMapping = array();
+    private $entitySetMapping = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType[]
      * $associationSetMapping
      */
-    private $associationSetMapping = array();
+    private $associationSetMapping = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType[]
      * $functionImportMapping
      */
-    private $functionImportMapping = array();
+    private $functionImportMapping = [];
 
     /**
      * Gets as cdmEntityContainer
@@ -279,5 +280,52 @@ class TEntityContainerMappingType extends IsOK
     {
         $this->functionImportMapping = $functionImportMapping;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->cdmEntityContainer)) {
+            $msg = 'CDM entity container cannot be null or empty';
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->storageEntityContainer)) {
+            $msg = 'Storage entity container cannot be null or empty';
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->cdmEntityContainer)) {
+            $msg = 'CDM entity container must be a valid TSimpleIdentifier';
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->entitySetMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType'
+        )) {
+            $msg = "Entity set mapping array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->entitySetMapping, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->associationSetMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType'
+        )) {
+            $msg = "Association set mapping array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->associationSetMapping, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->functionImportMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType'
+        )) {
+            $msg = "Function import mapping array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->functionImportMapping, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

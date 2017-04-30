@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TConditionType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TConditionType extends IsOK
 {
-
+    use TSimpleIdentifierTrait;
     /**
      * @property string $value
      */
@@ -119,5 +120,32 @@ class TConditionType extends IsOK
     {
         $this->isNull = $isNull;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->name) {
+            if (!$this->isStringNotNullOrEmpty($this->name)) {
+                $msg = 'Name cannot be empty';
+                return false;
+            }
+            if (!$this->isTSimpleIdentifierValid($this->name)) {
+                $msg = 'Name must be a valid TSimpleIdentifier';
+                return false;
+            }
+        }
+        if (null != $this->columnName) {
+            if (!$this->isStringNotNullOrEmpty($this->columnName)) {
+                $msg = 'Column name cannot be empty';
+                return false;
+            }
+        }
+        if (null != $this->value) {
+            if (!$this->isStringNotNullOrEmpty($this->value)) {
+                $msg = 'Value cannot be empty';
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TModificationFunctionMappingEndPropertyType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TModificationFunctionMappingEndPropertyType extends IsOK
 {
-
+    use TSimpleIdentifierTrait;
     /**
      * @property string $name
      */
@@ -67,5 +68,21 @@ class TModificationFunctionMappingEndPropertyType extends IsOK
     {
         $this->scalarProperty = $scalarProperty;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = 'Name cannot be null or empty';
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            return false;
+        }
+        if (null != $this->scalarProperty && !$this->scalarProperty->isOK($msg)) {
+            return false;
+        }
+        return true;
     }
 }

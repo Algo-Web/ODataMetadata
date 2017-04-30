@@ -26,17 +26,17 @@ class TComplexTypeMappingType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
-    private $scalarProperty = array();
+    private $scalarProperty = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType[] $complexProperty
      */
-    private $complexProperty = array();
+    private $complexProperty = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType[] $condition
      */
-    private $condition = array();
+    private $condition = [];
 
     /**
      * Gets as typeName
@@ -248,5 +248,52 @@ class TComplexTypeMappingType extends IsOK
     {
         $this->condition = $condition;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->typeName) {
+            if (!$this->isStringNotNullOrEmpty($this->typeName)) {
+                $msg = 'Type name cannot be empty';
+                return false;
+            }
+        }
+        $count = count($this->scalarProperty) + count($this->complexProperty) + count($this->condition);
+        if (1 > $count) {
+            $msg = "Cannot have all arrays empty";
+            return false;
+        }
+
+        if (!$this->isValidArray(
+            $this->scalarProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType'
+        )) {
+            $msg = "Scalar property array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->scalarProperty, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->complexProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType'
+        )) {
+            $msg = "Complex property array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->complexProperty, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->condition,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType'
+        )) {
+            $msg = "Condition array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->condition, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

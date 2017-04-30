@@ -17,7 +17,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType[]
      * $entityTypeMapping
      */
-    private $entityTypeMapping = array();
+    private $entityTypeMapping = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
@@ -104,5 +104,27 @@ class TFunctionImportMappingResultMappingType extends IsOK
     {
         $this->complexTypeMapping = $complexTypeMapping;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null == $this->complexTypeMapping) {
+            $msg = "Complex type mapping cannot be null";
+            return false;
+        }
+        if (!$this->complexTypeMapping->isOK($msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->entityTypeMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType'
+        )) {
+            $msg = "Entity type mapping not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->entityTypeMapping, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

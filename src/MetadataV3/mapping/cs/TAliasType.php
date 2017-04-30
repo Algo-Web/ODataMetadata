@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TAliasType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TAliasType extends IsOK
 {
-
+    use TSimpleIdentifierTrait;
     /**
      * @property string $key
      */
@@ -65,5 +66,22 @@ class TAliasType extends IsOK
     {
         $this->value = $value;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->key)) {
+            $msg = 'Key cannot be null or empty';
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->value)) {
+            $msg = 'Value cannot be null or empty';
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            return false;
+        }
+        return true;
     }
 }

@@ -78,4 +78,13 @@ class TQueryViewType extends IsOK
         $this->typeName = $typeName;
         return $this;
     }
+
+    public function isOK(&$msg = null)
+    {
+        if (null == $this->__value && null == $this->typeName) {
+            $msg = "Cannot have both value and type null";
+            return false;
+        }
+        return true;
+    }
 }

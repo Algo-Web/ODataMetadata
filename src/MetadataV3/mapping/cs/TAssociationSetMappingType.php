@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TAssociationSetMappingType
@@ -12,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TAssociationSetMappingType extends IsOK
 {
-
+    use TSimpleIdentifierTrait, TQualifiedNameTrait;
     /**
      * @property string $name
      */
@@ -36,12 +38,12 @@ class TAssociationSetMappingType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEndPropertyType[] $endProperty
      */
-    private $endProperty = array();
+    private $endProperty = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType[] $condition
      */
-    private $condition = array();
+    private $condition = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetModificationFunctionMappingType
@@ -270,5 +272,61 @@ class TAssociationSetMappingType extends IsOK
     {
         $this->modificationFunctionMapping = $modificationFunctionMapping;
         return $this;
+    }
+    
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = 'Name cannot be null or empty';
+            return false;
+        }
+        if (null != $this->typeName && !$this->isStringNotNullOrEmpty($this->typeName)) {
+            $msg = 'Type name cannot be empty';
+            return false;
+        }
+        if (null != $this->storeEntitySet && !$this->isStringNotNullOrEmpty($this->storeEntitySet)) {
+            $msg = 'Store entity set cannot be empty';
+            return false;
+        }
+        if (null != $this->queryView && !$this->isStringNotNullOrEmpty($this->queryView)) {
+            $msg = 'Query view cannot be empty';
+            return false;
+        }
+
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            return false;
+        }
+        if (null != $this->typeName && !$this->isTQualifiedNameValid($this->typeName)) {
+            $msg = 'Type name must be a valid TQualifiedName';
+            return false;
+        }
+        if (null != $this->modificationFunctionMapping && !$this->modificationFunctionMapping->isOK($msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->endProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEndPropertyType',
+            0,
+            2
+        )) {
+            $msg = "End property array not a valid array, or has more than 2 elements";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->endProperty, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->endProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType'
+        )) {
+            $msg = "Condition array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->condition, $msg)) {
+            return false;
+        }
+
+        return true;
     }
 }

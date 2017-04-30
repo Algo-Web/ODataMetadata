@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TModificationFunctionMappingAssociationEndType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TModificationFunctionMappingAssociationEndType extends IsOK
 {
-
+    use TSimpleIdentifierTrait;
     /**
      * @property string $associationSet
      */
@@ -121,5 +122,25 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
     {
         $this->scalarProperty = $scalarProperty;
         return $this;
+    }
+    
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->associationSet)) {
+            $msg = 'Association set cannot be null or empty';
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->from)) {
+            $msg = 'From cannot be null or empty';
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->to)) {
+            $msg = 'To cannot be null or empty';
+            return false;
+        }
+        if (null != $this->scalarProperty && !$this->scalarProperty->isOK($msg)) {
+            return false;
+        }
+        return true;
     }
 }

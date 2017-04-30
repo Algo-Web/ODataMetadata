@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TScalarPropertyType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TScalarPropertyType extends IsOK
 {
-
+    use TSimpleIdentifierTrait;
     /**
      * @property string $name
      */
@@ -65,5 +66,22 @@ class TScalarPropertyType extends IsOK
     {
         $this->columnName = $columnName;
         return $this;
+    }
+
+    protected function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = 'Name cannot be null or empty';
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->columnName)) {
+            $msg = 'Column name cannot be null or empty';
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            return false;
+        }
+        return true;
     }
 }

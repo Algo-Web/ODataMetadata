@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TEndPropertyType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TEndPropertyType extends IsOK
 {
-
+    use TSimpleIdentifierTrait;
     /**
      * @property string $name
      */
@@ -21,7 +22,7 @@ class TEndPropertyType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
-    private $scalarProperty = array();
+    private $scalarProperty = [];
 
     /**
      * Gets as name
@@ -99,5 +100,28 @@ class TEndPropertyType extends IsOK
     {
         $this->scalarProperty = $scalarProperty;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = 'Name cannot be null or empty';
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->scalarProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType'
+        )) {
+            $msg = "Scalar property array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->scalarProperty, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

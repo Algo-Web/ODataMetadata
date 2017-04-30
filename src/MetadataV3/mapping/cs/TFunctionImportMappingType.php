@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TFunctionImportMappingType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TFunctionImportMappingType extends IsOK
 {
-
+    use TSimpleIdentifierTrait;
     /**
      * @property string $functionName
      */
@@ -27,7 +28,7 @@ class TFunctionImportMappingType extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType[]
      * $resultMapping
      */
-    private $resultMapping = array();
+    private $resultMapping = [];
 
     /**
      * Gets as functionName
@@ -129,5 +130,32 @@ class TFunctionImportMappingType extends IsOK
     {
         $this->resultMapping = $resultMapping;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->functionName)) {
+            $msg = 'Function name cannot be null or empty';
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->functionImportName)) {
+            $msg = 'Function import name cannot be null or empty';
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->functionImportName)) {
+            $msg = 'Function import name must be a valid TSimpleIdentifier';
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->resultMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType'
+        )) {
+            $msg = "Result mapping not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->resultMapping, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

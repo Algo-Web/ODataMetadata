@@ -70,4 +70,15 @@ class TAssociationSetModificationFunctionMappingType extends IsOK
         $this->insertFunction = $insertFunction;
         return $this;
     }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->deleteFunction && !$this->deleteFunction->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->insertFunction && !$this->insertFunction->isOK($msg)) {
+            return false;
+        }
+        return true;
+    }
 }

@@ -21,7 +21,7 @@ class TEntityTypeMappingType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType[] $mappingFragment
      */
-    private $mappingFragment = array();
+    private $mappingFragment = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeModificationFunctionMappingType
@@ -128,5 +128,27 @@ class TEntityTypeMappingType extends IsOK
     {
         $this->modificationFunctionMapping = $modificationFunctionMapping;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->typeName)) {
+            $msg = 'Type name cannot be null or empty';
+            return false;
+        }
+        if (null != $this->modificationFunctionMapping && !$this->modificationFunctionMapping>isOK($msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->mappingFragment,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType'
+        )) {
+            $msg = "Mapping fragment array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->mappingFragment, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

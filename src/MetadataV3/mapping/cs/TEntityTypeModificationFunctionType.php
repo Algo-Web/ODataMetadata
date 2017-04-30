@@ -153,4 +153,23 @@ class TEntityTypeModificationFunctionType extends IsOK
         $this->complexProperty = $complexProperty;
         return $this;
     }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->functionName)) {
+            $msg = 'Function name cannot be null or empty';
+            return false;
+        }
+        if (null != $this->scalarProperty && !$this->scalarProperty->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->complexProperty && !$this->complexProperty->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->associationEnd && !$this->associationEnd->isOK($msg)) {
+            return false;
+        }
+
+        return true;
+    }
 }

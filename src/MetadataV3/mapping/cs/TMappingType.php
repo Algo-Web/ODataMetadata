@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSpaceTrait;
 
 /**
  * Class representing TMappingType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TMappingType extends IsOK
 {
-
+    use TSpaceTrait;
     /**
      * @property string $space
      */
@@ -21,7 +22,7 @@ class TMappingType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType[] $alias
      */
-    private $alias = array();
+    private $alias = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityContainerMappingType
@@ -128,5 +129,24 @@ class TMappingType extends IsOK
     {
         $this->entityContainerMapping = $entityContainerMapping;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTSpaceValid($this->space)) {
+            $msg = "Space not a valid TSpace";
+            return false;
+        }
+        if (!$this->isValidArray($this->alias, '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType')) {
+            $msg = "Alias not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->alias, $msg)) {
+            return false;
+        }
+        if (!$this->entityContainerMapping->isOK($msg)) {
+            return false;
+        }
+        return true;
     }
 }

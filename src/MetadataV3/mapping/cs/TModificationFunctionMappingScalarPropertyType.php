@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TVersionTrait;
 
 /**
  * Class representing TModificationFunctionMappingScalarPropertyType
@@ -12,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TModificationFunctionMappingScalarPropertyType extends IsOK
 {
-
+    use TSimpleIdentifierTrait, TVersionTrait;
     /**
      * @property string $parameterName
      */
@@ -92,5 +94,26 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     {
         $this->version = $version;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->parameterName)) {
+            $msg = "Parameter name cannot be null or empty";
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = "Name cannot be null or empty";
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            return false;
+        }
+        if (null != $this->version && !$this->isTVersionValid($this->version)) {
+            $msg = "If set, version must be a valid TVersion";
+            return false;
+        }
+        return true;
     }
 }

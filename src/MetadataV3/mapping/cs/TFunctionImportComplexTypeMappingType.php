@@ -21,7 +21,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
-    private $scalarProperty = array();
+    private $scalarProperty = [];
 
     /**
      * Gets as typeName
@@ -99,5 +99,24 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     {
         $this->scalarProperty = $scalarProperty;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->typeName)) {
+            $msg = 'Type name cannot be null or empty';
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->scalarProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType'
+        )) {
+            $msg = "Scalar property array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->scalarProperty, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

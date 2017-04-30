@@ -147,4 +147,22 @@ class TMappingFragmentType extends IsOK
         $this->condition = $condition;
         return $this;
     }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->storeEntitySet)) {
+            $msg = 'Name cannot be null or empty';
+            return false;
+        }
+        if (null != $this->scalarProperty && !$this->scalarProperty->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->complexProperty && !$this->complexProperty->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->condition && !$this->condition->isOK($msg)) {
+            return false;
+        }
+        return true;
+    }
 }

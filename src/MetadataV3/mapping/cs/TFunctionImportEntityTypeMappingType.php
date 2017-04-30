@@ -21,12 +21,12 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
-    private $scalarProperty = array();
+    private $scalarProperty = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType[] $condition
      */
-    private $condition = array();
+    private $condition = [];
 
     /**
      * Gets as typeName
@@ -160,5 +160,40 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     {
         $this->condition = $condition;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->typeName)) {
+            $msg = 'Type name cannot be null or empty';
+            return false;
+        }
+        $count = count($this->scalarProperty) + count($this->condition);
+        if (1 > $count) {
+            $msg = "Scalar property array and condition array must not both be empty";
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->scalarProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType'
+        )) {
+            $msg = "Scalar property array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->scalarProperty, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->condition,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType'
+        )) {
+            $msg = "Condition array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->condition, $msg)) {
+            return false;
+        }
+
+        return true;
     }
 }

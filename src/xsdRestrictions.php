@@ -39,7 +39,7 @@ trait xsdRestrictions
      */
     protected function matchesRegexPattern($pattern, $string)
     {
-        return (preg_match("\i\c*", $string) == 1);
+        return (1 == preg_match($pattern, $string));
     }
 
     /**

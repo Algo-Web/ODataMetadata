@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TEntitySetMappingType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TEntitySetMappingType extends IsOK
 {
-
+    use TSimpleIdentifierTrait;
     /**
      * @property string $name
      */
@@ -36,17 +37,17 @@ class TEntitySetMappingType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TQueryViewType[] $queryView
      */
-    private $queryView = array();
+    private $queryView = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType[] $entityTypeMapping
      */
-    private $entityTypeMapping = array();
+    private $entityTypeMapping = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType[] $mappingFragment
      */
-    private $mappingFragment = array();
+    private $mappingFragment = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
@@ -383,5 +384,62 @@ class TEntitySetMappingType extends IsOK
     {
         $this->condition = $condition;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = 'Name cannot be null or empty';
+            return false;
+        }
+        if (null != $this->typeName && !$this->isStringNotNullOrEmpty($this->typeName)) {
+            $msg = 'Type name cannot be empty';
+            return false;
+        }
+        if (null != $this->storeEntitySet && !$this->isStringNotNullOrEmpty($this->storeEntitySet)) {
+            $msg = 'Store entity set cannot be empty';
+            return false;
+        }
+        if (null != $this->complexProperty && !$this->complexProperty->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->condition && !$this->condition->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->scalarProperty && !$this->scalarProperty->isOK($msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->entityTypeMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType'
+        )) {
+            $msg = "Mapping fragment array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->entityTypeMapping, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->queryView,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType'
+        )) {
+            $msg = "Query view array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->queryView, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->mappingFragment,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType'
+        )) {
+            $msg = "Mapping fragment array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->mappingFragment, $msg)) {
+            return false;
+        }
+
+        return true;
     }
 }

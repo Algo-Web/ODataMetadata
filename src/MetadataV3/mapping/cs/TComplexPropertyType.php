@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TComplexPropertyType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TComplexPropertyType extends IsOK
 {
-
+    use TSimpleIdentifierTrait;
     /**
      * @property string $name
      */
@@ -31,22 +32,22 @@ class TComplexPropertyType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      */
-    private $scalarProperty = array();
+    private $scalarProperty = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType[] $complexProperty
      */
-    private $complexProperty = array();
+    private $complexProperty = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType[] $complexTypeMapping
      */
-    private $complexTypeMapping = array();
+    private $complexTypeMapping = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType[] $condition
      */
-    private $condition = array();
+    private $condition = [];
 
     /**
      * Gets as name
@@ -336,5 +337,69 @@ class TComplexPropertyType extends IsOK
     {
         $this->condition = $condition;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = 'Name cannot be null or empty';
+            return false;
+        }
+        if (null != $this->typeName && !$this->isStringNotNullOrEmpty($this->typeName)) {
+            $msg = 'Type name cannot be empty';
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            return false;
+        }
+        $count = count($this->scalarProperty) + count($this->complexProperty) + count($this->condition)
+                 + count($this->complexTypeMapping);
+        if (1 > $count) {
+            $msg = "Cannot have all arrays empty";
+            return false;
+        }
+
+        if (!$this->isValidArray(
+            $this->scalarProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType'
+        )) {
+            $msg = "Scalar property array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->scalarProperty, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->complexProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType'
+        )) {
+            $msg = "Complex property array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->complexProperty, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->condition,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType'
+        )) {
+            $msg = "Condition array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->condition, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->complexTypeMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType'
+        )) {
+            $msg = "Complex type mapping array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->complexTypeMapping, $msg)) {
+            return false;
+        }
+        return true;
     }
 }
