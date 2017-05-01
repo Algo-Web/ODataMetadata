@@ -10,7 +10,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
 use AlgoWeb\ODataMetadata\xsdRestrictions;
 
-class TUndottedIdentifierTrait
+trait TUndottedIdentifierTrait
 {
     use xsdRestrictions;
 

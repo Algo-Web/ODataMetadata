@@ -8,7 +8,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
-class TStoreGeneratedPatternTrait
+trait TStoreGeneratedPatternTrait
 {
     public function isTStoreGeneratedPatternValid($string)
     {

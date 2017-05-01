@@ -10,7 +10,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
 use AlgoWeb\ODataMetadata\xsdRestrictions;
 
-class TPropertyTypeTrait
+trait TPropertyTypeTrait
 {
     use TQualifiedNameTrait, xsdRestrictions;
     public function isTUndottedIdentifierValid($string)
