@@ -39,4 +39,12 @@ class TFunctionReturnTypeType extends IsOK
         $this->collectionType = $collectionType;
         return $this;
     }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isObjectNullOrOK($this->collectionType, $msg)) {
+            return false;
+        }
+        return true;
+    }
 }

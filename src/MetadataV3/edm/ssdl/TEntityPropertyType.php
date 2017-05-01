@@ -3,6 +3,9 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TPropertyTypeTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TStoreGeneratedPatternTrait;
 
 /**
  * Class representing TEntityPropertyType
@@ -12,7 +15,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TEntityPropertyType extends IsOK
 {
-
+    use TSimpleIdentifierTrait, TPropertyTypeTrait, TStoreGeneratedPatternTrait;
     /**
      * @property string $name
      */
@@ -26,7 +29,7 @@ class TEntityPropertyType extends IsOK
     /**
      * @property boolean $nullable
      */
-    private $nullable = null;
+    private $nullable = true;
 
     /**
      * @property string $defaultValue
@@ -362,5 +365,64 @@ class TEntityPropertyType extends IsOK
     {
         $this->documentation = $documentation;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = "Name cannot be null or empty";
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->type)) {
+            $msg = "Type cannot be null or empty";
+            return false;
+        }
+        if (null != $this->defaultValue && !$this->isStringNotNullOrEmpty($this->defaultValue)) {
+            $msg = "Default value cannot be empty";
+            return false;
+        }
+        if (null != $this->maxLength && !(is_numeric($this->maxLength) && 0 < $this->maxLength)) {
+            $msg = "Max length must be positive and numeric";
+            return false;
+        }
+        if (null != $this->precision && !(is_numeric($this->precision) && 0 < $this->precision)) {
+            $msg = "Precision must be positive and numeric";
+            return false;
+        }
+        if (null != $this->scale && !(is_numeric($this->scale) && 0 < $this->scale)) {
+            $msg = "Scale must be positive and numeric";
+            return false;
+        }
+        if (null != $this->collation && !$this->isStringNotNullOrEmpty($this->collation)) {
+            $msg = "Collation cannot be empty";
+            return false;
+        }
+        if (null != $this->sRID && !$this->isStringNotNullOrEmpty($this->sRID)) {
+            $msg = "SRID cannot be empty";
+            return false;
+        }
+        if (null != $this->storeGeneratedPattern && !$this->isStringNotNullOrEmpty($this->storeGeneratedPattern)) {
+            $msg = "Store generated pattern cannot be empty";
+            return false;
+        }
+
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = "Name must be valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isTPropertyTypeValid($this->type)) {
+            $msg = "Type must be valid TPropertyType";
+            return false;
+        }
+        if (null != $this->storeGeneratedPattern
+            && !$this->isTStoreGeneratedPatternValid($this->storeGeneratedPattern)) {
+            $msg = "Store generated pattern must be valid TStoreGeneratedPattern";
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
+
+        return true;
     }
 }

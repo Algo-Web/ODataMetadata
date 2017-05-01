@@ -3,6 +3,9 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TParameterTypeSemanticsTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TUndottedIdentifierTrait;
 
 /**
  * Class representing TFunctionType
@@ -12,7 +15,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TFunctionType extends IsOK
 {
-
+    use TUndottedIdentifierTrait, TSimpleIdentifierTrait, TParameterTypeSemanticsTrait;
     /**
      * @property string $name
      */
@@ -21,7 +24,7 @@ class TFunctionType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType[] $returnType
      */
-    private $returnType = array();
+    private $returnType = [];
 
     /**
      * @property boolean $aggregate
@@ -51,7 +54,7 @@ class TFunctionType extends IsOK
     /**
      * @property string $parameterTypeSemantics
      */
-    private $parameterTypeSemantics = null;
+    private $parameterTypeSemantics = "AllowImplicitConversion";
 
     /**
      * @property string $schema
@@ -66,12 +69,12 @@ class TFunctionType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType[] $parameter
      */
-    private $parameter = array();
+    private $parameter = [];
 
     /**
      * @property string[] $commandText
      */
-    private $commandText = array();
+    private $commandText = [];
 
     /**
      * Gets as name
@@ -437,5 +440,61 @@ class TFunctionType extends IsOK
     {
         $this->commandText = $commandText;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = "Name cannot be null or empty";
+            return false;
+        }
+        if (null != $this->storeFunctionName && !$this->isStringNotNullOrEmpty($this->storeFunctionName)) {
+            $msg = "Store function name cannot be empty";
+            return false;
+        }
+        if (null != $this->parameterTypeSemantics && !$this->isStringNotNullOrEmpty($this->parameterTypeSemantics)) {
+            $msg = "Parameter type semantics cannot be empty";
+            return false;
+        }
+        if (null != $this->schema && !$this->isStringNotNullOrEmpty($this->schema)) {
+            $msg = "Schema cannot be empty";
+            return false;
+        }
+        if (null != $this->commandText && !$this->isStringNotNullOrEmpty($this->commandText)) {
+            $msg = "Command text cannot be empty";
+            return false;
+        }
+        if (null != $this->name && !$this->isTUndottedIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TUndottedIdentifier";
+            return false;
+        }
+        if (null != $this->schema && !$this->isTSimpleIdentifierValid($this->schema)) {
+            $msg = "Schema must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->parameterTypeSemantics
+            && !$this->isTParameterTypeSemanticsValid($this->parameterTypeSemantics)) {
+            $msg = "Parameter type semantics must be a valid TParameterTypeSemantics";
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->parameter,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->returnType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType',
+            $msg
+        )) {
+            return false;
+        }
+
+        return true;
     }
 }

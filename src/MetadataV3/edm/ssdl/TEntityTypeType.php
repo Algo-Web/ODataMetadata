@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TUndottedIdentifierTrait;
 
 /**
  * Class representing TEntityTypeType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TEntityTypeType extends IsOK
 {
-
+    use TUndottedIdentifierTrait;
     /**
      * @property string $name
      */
@@ -26,12 +27,12 @@ class TEntityTypeType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType[] $key
      */
-    private $key = null;
+    private $key = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityPropertyType[] $property
      */
-    private $property = array();
+    private $property = [];
 
     /**
      * Gets as name
@@ -187,5 +188,33 @@ class TEntityTypeType extends IsOK
     {
         $this->property = $property;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = "Name cannot be null or empty";
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->key,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType',
+            $msg,
+            1
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->property,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityPropertyType',
+            $msg
+        )) {
+            return false;
+        }
+
+        return true;
     }
 }

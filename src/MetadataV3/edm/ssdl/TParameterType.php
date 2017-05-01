@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TParameterModeTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TFunctionTypeTrait;
 
 /**
  * Class representing TParameterType
@@ -12,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TParameterType extends IsOK
 {
-
+    use TParameterModeTrait, TFunctionTypeTrait;
     /**
      * @property string $name
      */
@@ -227,5 +229,35 @@ class TParameterType extends IsOK
     {
         $this->documentation = $documentation;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = "Name cannot be null or empty";
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->type)) {
+            $msg = "Type cannot be null or empty";
+            return false;
+        }
+        if (null != $this->mode && !$this->isStringNotNullOrEmpty($this->mode)) {
+            $msg = "Mode cannot be empty";
+            return false;
+        }
+        if (null != $this->sRID && !$this->isStringNotNullOrEmpty($this->sRID)) {
+            $msg = "SRID cannot be empty";
+            return false;
+        }
+        if (null != $this->type && !$this->isTFunctionTypeValid($this->type)) {
+            $msg = "Type must be a valid TFunctionType";
+            return false;
+        }
+        if (null != $this->mode && !$this->isTParameterModeValid($this->mode)) {
+            $msg = "Mode must be a valid TParameterMode";
+            return false;
+        }
+
+        return true;
     }
 }

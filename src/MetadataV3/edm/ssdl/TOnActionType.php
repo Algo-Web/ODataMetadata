@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TActionTrait;
 
 /**
  * Class representing TOnActionType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TOnActionType extends IsOK
 {
-
+    use TActionTrait;
     /**
      * @property string $action
      */
@@ -65,5 +66,25 @@ class TOnActionType extends IsOK
     {
         $this->documentation = $documentation;
         return $this;
+    }
+
+    /**
+     * @param null $msg
+     * @return bool
+     */
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->action)) {
+            $msg = "Action cannot be null or empty";
+            return false;
+        }
+        if (!$this->isTActionValid($this->action)) {
+            $msg = "Action must be valid TAction";
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->documentaiton, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

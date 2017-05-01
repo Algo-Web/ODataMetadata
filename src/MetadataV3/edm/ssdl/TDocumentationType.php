@@ -68,4 +68,15 @@ class TDocumentationType extends IsOK
         $this->longDescription = $longDescription;
         return $this;
     }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isObjectNullOrOK($this->summary, $msg)) {
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->longDescription, $msg)) {
+            return false;
+        }
+        return true;
+    }
 }

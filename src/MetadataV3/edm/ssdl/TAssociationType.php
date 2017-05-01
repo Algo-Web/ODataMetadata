@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TUndottedIdentifierTrait;
 
 /**
  * Class representing TAssociationType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TAssociationType extends IsOK
 {
-
+    use TUndottedIdentifierTrait;
     /**
      * @property string $name
      */
@@ -26,7 +27,7 @@ class TAssociationType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType[] $end
      */
-    private $end = array();
+    private $end = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TConstraintType $referentialConstraint
@@ -153,5 +154,38 @@ class TAssociationType extends IsOK
     {
         $this->referentialConstraint = $referentialConstraint;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = "Name cannot be null or empty";
+            return false;
+        }
+        if (!$this->isTUndottedIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TUndottedIdentifier";
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->referentialConstraint, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->documentation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->end,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType',
+            $msg,
+            2,
+            2
+        )) {
+            return false;
+        }
+
+        return true;
     }
 }

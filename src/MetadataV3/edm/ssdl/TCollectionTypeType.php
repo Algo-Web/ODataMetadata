@@ -16,7 +16,7 @@ class TCollectionTypeType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType[] $rowType
      */
-    private $rowType = null;
+    private $rowType = [];
 
     /**
      * Adds as property
@@ -72,5 +72,18 @@ class TCollectionTypeType extends IsOK
     {
         $this->rowType = $rowType;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isValidArrayOK(
+            $this->rowType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType',
+            $msg,
+            1
+        )) {
+            return false;
+        }
+        return true;
     }
 }

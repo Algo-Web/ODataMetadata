@@ -3,6 +3,9 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TMultiplicityTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TAssociationEndType
@@ -12,7 +15,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TAssociationEndType extends IsOK
 {
-
+    use TSimpleIdentifierTrait, TQualifiedNameTrait, TMultiplicityTrait;
     /**
      * @property string $type
      */
@@ -36,7 +39,7 @@ class TAssociationEndType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType[] $onDelete
      */
-    private $onDelete = array();
+    private $onDelete = [];
 
     /**
      * Gets as type
@@ -180,5 +183,34 @@ class TAssociationEndType extends IsOK
     {
         $this->onDelete = $onDelete;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->type)) {
+            $msg = "Type cannot be null or empty";
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->multiplicity)) {
+            $msg = "Multiplicity cannot be null or empty";
+            return false;
+        }
+        if (null != $this->role && !$this->isStringNotNullOrEmpty($this->role)) {
+            $msg = "Role cannot be empty";
+            return false;
+        }
+        if (null != $this->role && !$this->isTSimpleIdentifierValid($this->role)) {
+            $msg = "Role must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isTMultiplicityValid($this->multiplicity)) {
+            $msg = "Multiplicity must be a valid TMultiplicity";
+            return false;
+        }
+        if (!$this->isValidArrayOK($this->onDelete, '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType', $msg)) {
+            return false;
+        }
+
+        return true;
     }
 }

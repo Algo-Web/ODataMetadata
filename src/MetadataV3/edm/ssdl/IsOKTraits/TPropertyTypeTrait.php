@@ -13,12 +13,12 @@ use AlgoWeb\ODataMetadata\xsdRestrictions;
 trait TPropertyTypeTrait
 {
     use TQualifiedNameTrait, xsdRestrictions;
-    public function isTUndottedIdentifierValid($string)
+    public function isTPropertyTypeValid($string)
     {
         if (!$this->isTQualifiedNameValid($string)) {
             return false;
         }
-        // The below pattern represents the allowed identifiers in ECMA specification plus the '.' for namespace qualification
+        // The below pattern represents the allowed identifiers in ECMA specification plus the '.' for namespace qualificatio
         $regex = '[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}';
         return $this->matchesRegexPattern($regex, $string);
     }

@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TSchemaType
@@ -12,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TSchemaType extends IsOK
 {
-
+    use TQualifiedNameTrait, TSimpleIdentifierTrait;
     /**
      * @property string $namespace
      */
@@ -36,22 +38,22 @@ class TSchemaType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationType[] $association
      */
-    private $association = array();
+    private $association = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityTypeType[] $entityType
      */
-    private $entityType = array();
+    private $entityType = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer[] $entityContainer
      */
-    private $entityContainer = array();
+    private $entityContainer = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionType[] $function
      */
-    private $function = array();
+    private $function = [];
 
     /**
      * Gets as namespace
@@ -363,5 +365,72 @@ class TSchemaType extends IsOK
     {
         $this->function = $function;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->namespace)) {
+            $msg = "Namespace cannot be null or empty";
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->provider)) {
+            $msg = "Provider cannot be null or empty";
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->providerManifestToken)) {
+            $msg = "Provider manifest token cannot be null or empty";
+            return false;
+        }
+        if (!$this->isStringNotNullOrEmpty($this->alias)) {
+            $msg = "Alias cannot be empty";
+            return false;
+        }
+        if (!$this->isTQualifiedNameValid($this->namespace)) {
+            $msg = "Namespace must be valid TQualifiedName";
+            return false;
+        }
+        if (null != $this->alias && !$this->isTSimpleIdentifierValid($this->alias)) {
+            $msg = "Alias must be valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->providerManifestToken && !$this->isTSimpleIdentifierValid($this->providerManifestToken)) {
+            $msg = "Provider manifest token must be valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->provider)) {
+            $msg = "Provider must be valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->association,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->entityType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityTypeType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->entityContainer,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer',
+            $msg,
+            1
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->function,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionType',
+            $msg
+        )) {
+            return false;
+        }
+
+        return true;
     }
 }
