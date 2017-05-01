@@ -32,7 +32,7 @@ class TEdmxType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema[] $dataServices
      */
-    private $dataServices = null;
+    private $dataServices = [];
 
     /**
      * Gets as version
@@ -154,5 +154,31 @@ class TEdmxType extends IsOK
     {
         $this->dataServices = $dataServices;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->version)) {
+            $msg = "Version cannot be null or empty";
+            return false;
+        }
+        if (null != $this->designer && !$this->designer->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->runtime && !$this->runtime->isOK($msg)) {
+            return false;
+        }
+
+        if (!$this->isValidArray(
+            $this->dataServices,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\Schema'
+        )) {
+            $msg = "Data services array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->dataServices, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

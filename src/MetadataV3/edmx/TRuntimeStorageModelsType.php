@@ -34,9 +34,18 @@ class TRuntimeStorageModelsType extends IsOK
      * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\Schema $schema
      * @return self
      */
-    public function setSchema(Ssdl\Schema $schema)
+    public function setSchema(\AlgoWeb\ODataMetadata\MetadataV3\edm\Ssdl\Schema $schema)
     {
         $this->schema = $schema;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->schema && !$this->schema->isOK($msg)) {
+            return false;
+        }
+
+        return true;
     }
 }

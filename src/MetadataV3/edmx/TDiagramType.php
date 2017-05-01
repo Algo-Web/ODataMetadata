@@ -46,17 +46,17 @@ class TDiagramType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType[] $entityTypeShape
      */
-    private $entityTypeShape = array();
+    private $entityTypeShape = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType[] $associationConnector
      */
-    private $associationConnector = array();
+    private $associationConnector = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType[] $inheritanceConnector
      */
-    private $inheritanceConnector = array();
+    private $inheritanceConnector = [];
 
     /**
      * Gets as name
@@ -356,5 +356,54 @@ class TDiagramType extends IsOK
     {
         $this->inheritanceConnector = $inheritanceConnector;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = "Name cannot be null or empty";
+            return false;
+        }
+
+        if (null != $this->diagramId && !$this->isStringNotNullOrEmpty($this->diagramId)) {
+            $msg = "Diagram ID cannot be empty";
+            return false;
+        }
+        if (null != $this->zoomLevel && !is_integer($this->zoomLevel)) {
+            $msg = "Zoom level must be integral";
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->entityTypeShape,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType'
+        )) {
+            $msg = "Entity type shape array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->entityTypeShape, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->associationConnector,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType'
+        )) {
+            $msg = "Association connector array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->associationConnector, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->inheritanceConnector,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType'
+        )) {
+            $msg = "Inheritance connector array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->inheritanceConnector, $msg)) {
+            return false;
+        }
+
+        return true;
     }
 }

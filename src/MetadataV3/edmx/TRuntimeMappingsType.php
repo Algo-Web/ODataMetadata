@@ -40,4 +40,13 @@ class TRuntimeMappingsType extends IsOK
         $this->mapping = $mapping;
         return $this;
     }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->mapping && !$this->mapping->isOK($msg)) {
+            return false;
+        }
+
+        return true;
+    }
 }

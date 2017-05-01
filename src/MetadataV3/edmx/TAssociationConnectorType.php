@@ -130,7 +130,18 @@ class TAssociationConnectorType extends IsOK
 
     public function isOK(&$msg = null)
     {
-        if (null == $this->association) {
+        if (!$this->isStringNotNullOrEmpty($this->association)) {
+            $msg = "Association cannot be null or empty";
+            return false;
+        }
+        if (!$this->isValidArray(
+            $this->connectorPoint,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType'
+        )) {
+            $msg = "Connector point array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->connectorPoint, $msg)) {
             return false;
         }
         return true;

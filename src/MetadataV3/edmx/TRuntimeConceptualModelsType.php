@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 
 /**
  * Class representing TRuntimeConceptualModelsType
@@ -38,5 +39,14 @@ class TRuntimeConceptualModelsType extends IsOK
     {
         $this->schema = $schema;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->schema && !$this->schema->isOK($msg)) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -69,10 +69,12 @@ class TConnectorPointType extends IsOK
 
     public function isOK(&$msg = null)
     {
-        if (null == $this->pointX) {
+        if (null == $this->pointX || !is_numeric($this->pointX)) {
+            $msg = "Point X value must be present and numeric";
             return false;
         }
-        if (null == $this->pointY) {
+        if (null == $this->pointY || !is_numeric($this->pointY)) {
+            $msg = "Point X value must be present and numeric";
             return false;
         }
         return true;

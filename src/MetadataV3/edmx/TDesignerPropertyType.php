@@ -69,10 +69,12 @@ class TDesignerPropertyType extends IsOK
 
     public function isOK(&$msg = null)
     {
-        if (null == $this->name) {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = "Name cannot be null or empty";
             return false;
         }
-        if (null == $this->value) {
+        if (!$this->isStringNotNullOrEmpty($this->value)) {
+            $msg = "Value cannot be null or empty";
             return false;
         }
         return true;

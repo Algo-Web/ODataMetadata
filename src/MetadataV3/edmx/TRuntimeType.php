@@ -93,4 +93,19 @@ class TRuntimeType extends IsOK
         $this->mappings = $mappings;
         return $this;
     }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->storageModels && !$this->storageModels->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->conceptualModels && !$this->conceptualModels->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->mappings && !$this->mappings->isOK($msg)) {
+            return false;
+        }
+
+        return true;
+    }
 }

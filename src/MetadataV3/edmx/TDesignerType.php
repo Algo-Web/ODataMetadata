@@ -26,7 +26,7 @@ class TDesignerType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TDiagramType[] $diagrams
      */
-    private $diagrams = null;
+    private $diagrams = [];
 
     /**
      * Gets as connection
@@ -126,5 +126,27 @@ class TDesignerType extends IsOK
     {
         $this->diagrams = $diagrams;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->connection && !$this->connection->isOK($msg)) {
+            return false;
+        }
+        if (null != $this->options && !$this->options->isOK($msg)) {
+            return false;
+        }
+
+        if (!$this->isValidArray(
+            $this->diagrams,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TDiagramType'
+        )) {
+            $msg = "Diagrams array not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->diagrams, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

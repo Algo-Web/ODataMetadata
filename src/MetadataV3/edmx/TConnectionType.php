@@ -16,7 +16,7 @@ class TConnectionType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TDesignerPropertyType[] $designerInfoPropertySet
      */
-    private $designerInfoPropertySet = null;
+    private $designerInfoPropertySet = [];
 
     /**
      * Adds as designerProperty
@@ -72,5 +72,20 @@ class TConnectionType extends IsOK
     {
         $this->designerInfoPropertySet = $designerInfoPropertySet;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isValidArray(
+            $this->designerInfoPropertySet,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TDesignerPropertyType'
+        )) {
+            $msg = "Designer info property set not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->designerInfoPropertySet, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

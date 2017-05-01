@@ -207,9 +207,33 @@ class TEntityTypeShapeType extends IsOK
      */
     public function isOK(&$msg = null)
     {
-        if (null == $this->entityType || "" == $this->entityType) {
+        if (!$this->isStringNotNullOrEmpty($this->entityType)) {
+            $msg = "Entity type cannot be null or empty";
             return false;
         }
+
+        if (null != $this->fillColor && !$this->isStringNotNullOrEmpty($this->fillColor)) {
+            $msg = "Entity type cannot be null or empty";
+            return false;
+        }
+
+        if (null != $this->pointX && !is_numeric($this->pointX)) {
+            $msg = "Point X value must be numeric";
+            return false;
+        }
+        if (null != $this->pointY && !is_numeric($this->pointY)) {
+            $msg = "Point Y value must be numeric";
+            return false;
+        }
+        if (null != $this->width && (!is_numeric($this->width) || 0 >= $this->width)) {
+            $msg = "Width value must be numeric and positive";
+            return false;
+        }
+        if (null != $this->height && (!is_numeric($this->height) || 0 >= $this->height)) {
+            $msg = "Height value must be numeric and positive";
+            return false;
+        }
+
         return true;
     }
 }

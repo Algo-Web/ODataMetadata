@@ -26,7 +26,7 @@ class TInheritanceConnectorType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType[] $connectorPoint
      */
-    private $connectorPoint = array();
+    private $connectorPoint = [];
 
     /**
      * Gets as entityType
@@ -126,5 +126,25 @@ class TInheritanceConnectorType extends IsOK
     {
         $this->connectorPoint = $connectorPoint;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->entityType)) {
+            $msg = "Entity type cannot be null or empty";
+            return false;
+        }
+
+        if (!$this->isValidArray(
+            $this->connectorPoint,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType'
+        )) {
+            $msg = "Designer info property set not a valid array";
+            return false;
+        }
+        if (!$this->isChildArrayOK($this->connectorPoint, $msg)) {
+            return false;
+        }
+        return true;
     }
 }
