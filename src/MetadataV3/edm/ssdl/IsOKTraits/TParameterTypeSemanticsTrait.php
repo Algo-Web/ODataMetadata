@@ -8,7 +8,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
-
 trait TParameterTypeSemanticsTrait
 {
     public function isTParameterTypeSemanticsValid($string)
