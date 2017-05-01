@@ -90,4 +90,23 @@ abstract class IsOK
         }
         return true;
     }
+
+    protected function isObjectNullOrOK(IsOK $object = null, &$msg = null)
+    {
+        if (null == $object) {
+            return true;
+        }
+        return $object->isOK($msg);
+    }
+
+    protected function isValidArrayOK(array $arr, $instanceOf, &$msg = null, $minCount = -1, $maxCount = -1)
+    {
+        $result = $this->isValidArray($arr, $instanceOf, $minCount, $maxCount);
+        if (!$result) {
+            $msg = "Supplied array not a valid array";
+            return false;
+        }
+
+        return $this->isChildArrayOK($arr, $msg);
+    }
 }

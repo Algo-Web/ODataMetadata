@@ -186,7 +186,7 @@ class TestTypeTest extends TestCase
 
     public function testIsChildArrayOkForNonEmptyArrayWithGoodGubbinsNotOk()
     {
-        $bar = m::mock(TestType::class);
+        $bar = m::mock(testType::class);
         // closure needs to return true to match the matcher and thus trip the andReturn(false) bit
         $bar->shouldReceive('isOK')->with(m::on(function (&$msg) {
             $msg = 'OH NOES!';
@@ -232,5 +232,80 @@ class TestTypeTest extends TestCase
 
         $foo = new testType();
         $this->assertTrue($foo->isURLValid($url));
+    }
+
+    public function testObjectNullOrOkWithNullObject()
+    {
+        $msg = null;
+        $obj = null;
+        $foo = new testType();
+        $this->assertTrue($foo->isObjectNullOrOk($obj, $msg));
+    }
+
+    public function testObjectNullOrOkWithIsOkObjectActuallyOk()
+    {
+        $msg = null;
+        $obj = m::mock(testType::class);
+        // closure needs to return true to match the matcher and thus trip the andReturn(false) bit
+        $obj->shouldReceive('isOK')->with(m::on(function (&$msg) {
+            $msg = null;
+            return true;
+        }))->andReturn(true);
+        $foo = new testType();
+        $this->assertTrue($foo->isObjectNullOrOk($obj, $msg));
+    }
+
+    public function testObjectNullOrOkWithIsOkObjectNotOk()
+    {
+        $msg = null;
+        $obj = m::mock(testType::class);
+        // closure needs to return true to match the matcher and thus trip the andReturn(false) bit
+        $obj->shouldReceive('isOK')->with(m::on(function (&$msg) {
+            $msg = 'OH NOES!';
+            return true;
+        }))->andReturn(false);
+        $expected = 'OH NOES!';
+        $foo = new testType();
+        $this->assertFalse($foo->isObjectNullOrOk($obj, $msg));
+        $this->assertEquals($expected, $msg);
+    }
+
+    public function testIsValidArrayOkWhenNotValidArray()
+    {
+        $foo = m::mock(testType::class)->makePartial();
+        $foo->shouldReceive('isValidArray')->withAnyArgs()->andReturn(false);
+
+        $expected = "Supplied array not a valid array";
+        $msg = null;
+        $this->assertFalse($foo->isValidArrayOk([], '', $msg));
+        $this->assertEquals($expected, $msg);
+    }
+
+    public function testIsValidArrayOkWhenChildArrayNotOK()
+    {
+        $foo = m::mock(testType::class)->makePartial();
+        $foo->shouldReceive('isValidArray')->withAnyArgs()->andReturn(true);
+        $foo->shouldReceive('isChildArrayOK')->with(m::any(), m::on(function (&$msg) {
+            $msg = 'OH NOES!';
+            return true;
+        }))->andReturn(false);
+        $expected = 'OH NOES!';
+        $msg = null;
+        $this->assertFalse($foo->isValidArrayOK([], '', $msg));
+        $this->assertEquals($expected, $msg);
+    }
+
+    public function testIsValidArrayOkWhenChildArrayIsOk()
+    {
+        $foo = m::mock(testType::class)->makePartial();
+        $foo->shouldReceive('isValidArray')->withAnyArgs()->andReturn(true);
+        $foo->shouldReceive('isChildArrayOK')->with(m::any(), m::on(function (&$msg) {
+            $msg = null;
+            return true;
+        }))->andReturn(true);
+        $expected = null;
+        $msg = null;
+        $this->assertTrue($foo->isValidArrayOK([], '', $msg));
+        $this->assertEquals($expected, $msg);
     }
 }
