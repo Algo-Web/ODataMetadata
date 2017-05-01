@@ -8,12 +8,11 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
-
 trait TCommandTextTrait
 {
     public function isTCommandTextValid($string)
     {
-        if(null == $string || empty($string)){
+        if (null == $string || empty($string)) {
             return false;
         }
         return true;

@@ -8,7 +8,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
-
 class TUndottedIdentifierTrait
 {
     public function isTUndottedIdentifierValid($string)

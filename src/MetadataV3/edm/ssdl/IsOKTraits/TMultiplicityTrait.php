@@ -8,18 +8,17 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
-
 class TMultiplicityTrait
 {
     public function isTMultiplicityValid($string)
     {
-        if("0..1" == $string ){
+        if ("0..1" == $string) {
             return true;
         }
-        if("1" == $string ){
+        if ("1" == $string) {
             return true;
         }
-        if("*" == $string ){
+        if ("*" == $string) {
             return true;
         }
         return false;

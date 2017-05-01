@@ -19,7 +19,8 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TTextType extends IsOK
 {
-    public function IsOK(&$msg = null){
+    public function IsOK(&$msg = null)
+    {
         return true;
     }
 }
