@@ -8,11 +8,15 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
+use AlgoWeb\ODataMetadata\xsdRestrictions;
+
 class TUndottedIdentifierTrait
 {
+    use xsdRestrictions;
+
     public function isTUndottedIdentifierValid($string)
     {
-        //      <!-- no periods -->
+        // no periods
         $regex = '[^.]{1,}';
         return $this->matchesRegexPattern($regex, $string);
     }

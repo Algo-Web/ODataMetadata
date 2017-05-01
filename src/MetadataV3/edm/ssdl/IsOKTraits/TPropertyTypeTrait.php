@@ -8,15 +8,17 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
+use AlgoWeb\ODataMetadata\xsdRestrictions;
+
 class TPropertyTypeTrait
 {
-    use TQualifiedNameTrait;
+    use TQualifiedNameTrait, xsdRestrictions;
     public function isTUndottedIdentifierValid($string)
     {
         if (!$this->isTQualifiedNameValid($string)) {
             return false;
         }
-//          <!-- The below pattern represents the allowed identifiers in ECMA specification plus the '.' for namespace qualification -->
+        // The below pattern represents the allowed identifiers in ECMA specification plus the '.' for namespace qualification
         $regex = '[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}';
         return $this->matchesRegexPattern($regex, $string);
     }
