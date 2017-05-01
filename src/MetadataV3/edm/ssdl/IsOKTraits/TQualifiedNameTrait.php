@@ -8,7 +8,7 @@ trait TQualifiedNameTrait
 {
     public function isTQualifiedNameValid($string)
     {
-        if(null == $string || empty($string)){
+        if (null == $string || empty($string)) {
             return false;
         }
         return true;

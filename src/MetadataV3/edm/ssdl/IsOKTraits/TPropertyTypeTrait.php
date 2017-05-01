@@ -8,13 +8,12 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
-
 class TPropertyTypeTrait
 {
     use TQualifiedNameTrait;
     public function isTUndottedIdentifierValid($string)
     {
-        if(!$this->isTQualifiedNameValid($string)){
+        if (!$this->isTQualifiedNameValid($string)) {
             return false;
         }
 //          <!-- The below pattern represents the allowed identifiers in ECMA specification plus the '.' for namespace qualification -->
