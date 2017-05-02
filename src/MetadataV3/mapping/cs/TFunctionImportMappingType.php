@@ -8,6 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrai
 /**
  * Class representing TFunctionImportMappingType
  *
+ * Type for FunctionImportMapping element
  *
  * XSD Type: TFunctionImportMapping
  */

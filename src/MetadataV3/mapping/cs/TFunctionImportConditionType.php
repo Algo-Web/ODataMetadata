@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TFunctionImportConditionType
  *
+ * Type for FunctionImportMapping/Condition element
  *
  * XSD Type: TFunctionImportCondition
  */

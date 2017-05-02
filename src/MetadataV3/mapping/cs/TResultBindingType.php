@@ -8,6 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrai
 /**
  * Class representing TResultBindingType
  *
+ * Type for function mapping result binding
  *
  * XSD Type: TResultBinding
  */

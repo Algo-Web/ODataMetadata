@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TEntityTypeModificationFunctionMappingType
  *
+ * Type for EntityTypeMapping/ModificationFunctionMapping element
  *
  * XSD Type: TEntityTypeModificationFunctionMapping
  */

@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TQueryViewType
  *
+ * Type for QueryView element
  *
  * XSD Type: TQueryView
  */

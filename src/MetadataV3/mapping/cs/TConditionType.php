@@ -8,6 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TConditionType
  *
+ * Type for Condition Element
  *
  * XSD Type: TCondition
  */

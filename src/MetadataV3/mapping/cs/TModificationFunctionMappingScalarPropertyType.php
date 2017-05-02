@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TVersionTrait;
 /**
  * Class representing TModificationFunctionMappingScalarPropertyType
  *
+ * Type for function mapping scalar property
  *
  * XSD Type: TModificationFunctionMappingScalarProperty
  */

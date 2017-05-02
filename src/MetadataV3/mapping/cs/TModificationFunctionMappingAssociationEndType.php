@@ -8,6 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrai
 /**
  * Class representing TModificationFunctionMappingAssociationEndType
  *
+ * Type for function mapping association end
  *
  * XSD Type: TModificationFunctionMappingAssociationEnd
  */

@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TMappingFragmentType
  *
+ * Type for MappingFragment element
  *
  * XSD Type: TMappingFragment
  */

@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrai
 
 /**
  * Class representing TAliasType
- *
+ * Type for Alias element
  *
  * XSD Type: TAlias
  */

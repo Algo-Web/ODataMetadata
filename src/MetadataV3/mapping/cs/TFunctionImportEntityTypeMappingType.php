@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TFunctionImportEntityTypeMappingType
  *
+ * Type for (FunctionMapping|FunctionImportMapping)/EntityTypeMapping element
  *
  * XSD Type: TFunctionImportEntityTypeMapping
  */

@@ -8,6 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TComplexPropertyType
  *
+ * Type for Complex Property Map elements
  *
  * XSD Type: TComplexProperty
  */

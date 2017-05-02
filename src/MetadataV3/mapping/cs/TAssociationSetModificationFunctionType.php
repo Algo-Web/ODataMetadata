@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TAssociationSetModificationFunctionType
  *
+ * Type for association set DeleteFunction and InsertFunction
  *
  * XSD Type: TAssociationSetModificationFunction
  */

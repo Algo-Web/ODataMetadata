@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TAssociationSetMappingType
  *
+ * Type for AssociationSetMapping element
  *
  * XSD Type: TAssociationSetMapping
  */

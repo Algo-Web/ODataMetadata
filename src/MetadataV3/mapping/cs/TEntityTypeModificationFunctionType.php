@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TEntityTypeModificationFunctionType
  *
+ * Type for entity type DeleteFunction
  *
  * XSD Type: TEntityTypeModificationFunction
  */

@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TAssociationSetModificationFunctionMappingType
  *
+ * Type for AssociationSetMapping/ModificationFunctionMapping element
  *
  * XSD Type: TAssociationSetModificationFunctionMapping
  */

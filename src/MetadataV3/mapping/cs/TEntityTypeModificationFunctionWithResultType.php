@@ -5,6 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 /**
  * Class representing TEntityTypeModificationFunctionWithResultType
  *
+ * Extensions to modification function for entity type InsertFunction and UpdateFunction
  *
  * XSD Type: TEntityTypeModificationFunctionWithResult
  */

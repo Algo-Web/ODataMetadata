@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSpaceTrait;
 
 /**
- * Class representing TMappingType
+ * Type of root level mapping elements
  *
  *
  * XSD Type: TMapping
@@ -16,9 +16,10 @@ class TMappingType extends IsOK
     use TSpaceTrait;
     /**
      * @property string $space
+     * Space represents the space that the mapping occurs. For CS mapping it always has to be "C-S"
      */
     private $space = null;
-
+    // Top level mapping element can have Alias elements followed by one EntityContainerMapping element.
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType[] $alias
      */

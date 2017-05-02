@@ -8,6 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrai
 /**
  * Class representing TEndPropertyType
  *
+ *  Type for End Property Elements in Association Maps
  *
  * XSD Type: TEndProperty
  */

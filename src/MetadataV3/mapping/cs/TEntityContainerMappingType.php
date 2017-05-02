@@ -8,6 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TEntityContainerMappingType
  *
+ * Type for EntityContainerMapping element
  *
  * XSD Type: TEntityContainerMapping
  */

@@ -8,6 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TEntitySetMappingType
  *
+ * Type for EntitySet mapping element
  *
  * XSD Type: TEntitySetMapping
  */

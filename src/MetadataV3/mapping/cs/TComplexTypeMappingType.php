@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TComplexTypeMappingType
  *
+ * Type for Complex Type mapping element
  *
  * XSD Type: TComplexTypeMapping
  */

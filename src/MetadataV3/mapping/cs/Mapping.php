@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 /**
- * Class representing Mapping
+ * Root Level element for CS mapping
  */
 class Mapping extends TMappingType
 {

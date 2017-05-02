@@ -8,6 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrai
 /**
  * Class representing TScalarPropertyType
  *
+ * Type for ScalarProperty Element
  *
  * XSD Type: TScalarProperty
  */
