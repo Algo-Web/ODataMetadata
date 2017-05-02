@@ -308,4 +308,49 @@ class TestTypeTest extends TestCase
         $this->assertTrue($foo->isValidArrayOK([], '', $msg));
         $this->assertEquals($expected, $msg);
     }
+
+    public function testReplaceStringStartingWithSpaces()
+    {
+        $string = "This is a string";
+        $expected = "This is a string";
+        $foo = new testType();
+        $result = $foo->replaceString($string);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testReplaceStringStartingWithTabs()
+    {
+        $string = "This\tis\ta\tstring";
+        $expected = "This is a string";
+        $foo = new testType();
+        $result = $foo->replaceString($string);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testReplaceStringStartingWithNuLines()
+    {
+        $string = "This\nis\na\nstring";
+        $expected = "This is a string";
+        $foo = new testType();
+        $result = $foo->replaceString($string);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testReplaceStringWithPadding()
+    {
+        $string = " This is a string ";
+        $expected = " This is a string ";
+        $foo = new testType();
+        $result = $foo->replaceString($string);
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testCollapseStringWithSpacesAndPadding()
+    {
+        $string = "  This  is  a  string  ";
+        $expected = "This is a string";
+        $foo = new testType();
+        $result = $foo->collapseString($string);
+        $this->assertEquals($expected, $result);
+    }
 }

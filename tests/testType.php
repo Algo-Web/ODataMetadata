@@ -3,9 +3,12 @@
 namespace AlgoWeb\ODataMetadata\Tests;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\StringTraits\XMLStringTrait;
 
 class testType extends IsOK
 {
+    use XMLStringTrait;
+
     public function isStringNotNullOrEmpty($str)
     {
         return parent::isStringNotNullOrEmpty($str);
