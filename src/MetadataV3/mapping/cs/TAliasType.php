@@ -9,18 +9,21 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrai
  * Class representing TAliasType
  * Type for Alias element
  *
+ * The Alias element in mapping specification language (MSL) is a child of the Mapping element that is used to define aliases for conceptual model and storage model namespaces. Names of all conceptual or storage model types that are referenced in MSL must be qualified by their respective namespace names. For information about the conceptual model namespace name, see Schema Element (CSDL). For information about the storage model namespace name, see Schema Element (SSDL).
+ * The Alias element cannot have child elements.
+ *
  * XSD Type: TAlias
  */
 class TAliasType extends IsOK
 {
     use TSimpleIdentifierTrait;
     /**
-     * @property string $key
+     * @property string $key Required, The alias for the namespace that is specified by the Value attribute.
      */
     private $key = null;
 
     /**
-     * @property string $value
+     * @property string $value Required, The namespace for which the value of the Key element is an alias.
      */
     private $value = null;
 
