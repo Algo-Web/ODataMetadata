@@ -1,0 +1,80 @@
+
+# TMax
+Must Be: string
+Must Be: "Max"
+
+# TVariable
+Must Be: string
+Must Be: "Variable"
+
+# TMaxLengthFacet
+Must Be: TMax || xs:nonNegativeInteger
+
+# TSridFacet
+Must Be: TVariable || xs:nonNegativeInteger
+
+# TIsFixedLengthFacet
+Must Be: boolean
+
+# TKindFacet
+Must Be: string
+Must Be: "Utc" || "Local" || "Unspecified"
+
+# TPrecisionFacet
+Must Be: xs:nonNegativeInteger
+
+# TScaleFacet
+Must Be: xs:nonNegativeInteger
+
+# TIsUnicodeFacet
+Must Be: boolean
+
+# TCollationFacet
+Must Be: String
+
+# TCommandText
+Must Be: String
+whiteSpace: preserve
+
+# TQualifiedName
+Must Be: string
+
+# TUndottedIdentifier
+Must Be: string
+Pattern Comment:  no periods
+Pattern: [^.]{1,}
+
+# TSimpleIdentifier
+Must Be: string
+
+# TPropertyType
+Must Be: TQualifiedName || xs:token
+if xs:token{
+Pattern Comment:  The below pattern represents the allowed identifiers in ECMA specification plus the '.' for namespace qualification
+Pattern: [\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}
+
+# TAction
+Must Be: xs:token
+Must Be: "Cascade" || "Restrict" || "None"
+
+# TMultiplicity
+Must Be: xs:token
+Must Be: "0..1" || "1" || ""*"
+
+# TStoreGeneratedPattern
+Must Be: xs:token
+Must Be: "None" || "Identity" || "Computed"
+
+# TParameterMode
+Must Be: xs:token
+Must Be: "In" || "Out" || "InOut"
+
+# TFunctionType
+Must Be: TQualifiedName || xs:token
+if xs:token {
+Pattern: Collection\([^ \t]{1,}(\.[^ \t]{1,}){0,}\)
+}
+
+# TParameterTypeSemantics
+Must Be: xs:token
+Must Be: "ExactMatchOnly" || "AllowImplicitPromotion" || "AllowImplicitConversion"

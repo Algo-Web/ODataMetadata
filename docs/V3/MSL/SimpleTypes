@@ -1,0 +1,21 @@
+ ## TSimpleIdentifier
+ Comment: Definition for SimpleIdentifier. This is the same definition that is being used in the CSDL XSD
+ Must Be: xs:token
+ Pattern Comment: The below pattern represents the allowed identifiers in ECMA specification
+ Pattern: [\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}
+
+ ## TQualifiedName
+ Comment: Definition for QualifiedName. QualifiedName is SimpleIdentifiers with '.' allowed. This is the same definition that is being used in the CSDL XSD
+ Must Be: xs:token
+ Pattern Comment: The below pattern represents the allowed identifiers in ECMA specification plus the '.' for namespace qualification
+ Pattern: [\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}
+
+## TVersion
+Comment: Definition for Version, which can 'original' or 'current' as its value
+Must Be: xs:token
+Must Be  "Original" || "Current"
+
+## TSpace
+Comment: Type for Space or Type Attribute
+Must Be: xs:token
+Must Be: "C-S"

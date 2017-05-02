@@ -1,0 +1,36 @@
+## GSchemaBodyElements
+Element: Association, Optional, Type:TAssociation
+Element: EntityType, Optional, Type: TEntityType
+Element: EntityContainer, Required, Type: EntityContainer
+Element: Function, Optioinal, Type: TFunction
+Used By: TSchema
+
+
+## GEmptyElementExtensibility
+Element: Documentation, Optional, Type: TDocumentation
+Used By: TPropertyRef
+Used By: TOnAction
+Used By: TEntityProperty
+Used By: TProperty
+Used By:EntityContainer\AssociationSet
+
+
+## TOperations
+Element: OnDelete, Optional, Type: TOnAction
+Used By: TAssociationEnd
+
+
+## TCommonPropertyAttributes
+Element: Name, Required, Type: TSimpleIdentifier
+Element: Type, Required, Type: TPropertyType
+Element: Nullable, Optional, Type: xs:boolean
+Element: DefaultValue, Optional, Type: xs:string
+Element: MaxLength, Optional, Type: TMaxLengthFacet
+Element: FixedLength, Optional, Type: TIsFixedLengthFacet
+Element: Precision, Optional, Type: TPrecisionFacet
+Element: Scale, Optional, Type: TScaleFacet
+Element: Unicode, Optional, Type: TIsUnicodeFacet
+Element: Collation, Optional, Type: TCollationFacet
+Element: SRID, Optional, Type: TSridFacet
+Used By: TEntityProperty
+Used By: TProperty

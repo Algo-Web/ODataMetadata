@@ -1,0 +1,38 @@
+## TEntityTypeModificationFunctionMappingPropertyGroup
+Comment: Grouping for entity type function mapping
+Element: ScalarProperty, Optional, Type: TModificationFunctionMappingScalarProperty
+Element: AssociationEnd, Optional, Type: TModificationFunctionMappingAssociationEnd
+Element: ComplexProperty, Optional, Type: TModificationFunctionMappingComplexProperty
+Must: Have at least one element with value.
+Used By: TEntityTypeModificationFunction
+
+## TAssociationSetModificationFunctionMappingPropertyGroup
+Comment: Grouping for entity type function mappings
+Element: EndProperty, Required, Type: TModificationFunctionMappingEndProperty
+Used By: TAssociationSetModificationFunction
+
+## TModificationFunctionMappingAssociationEndPropertyGroup
+Comment: Grouping for property bindings in function mapping end property
+Element: ScalarProperty, Optional, Type: TModificationFunctionMappingScalarProperty
+Used By: TModificationFunctionMappingEndProperty
+Used By: TModificationFunctionMappingAssociationEnd
+
+## TModificationFunctionMappingAssociationEndPropertyGroup
+Comment: Grouping for result bindings in function mappings
+Element: ResultBinding, Optional, Type: TResultBinding
+Used By: TEntityTypeModificationFunctionWithResult
+
+## TModificationFunctionMappingComplexPropertyPropertyGroup
+Comment: Grouping for property bindings in function mapping association end
+Element: ScalarProperty, Optional, Type: TModificationFunctionMappingScalarProperty
+Element: ComplexProperty, Optional, Type: TModificationFunctionMappingComplexProperty
+Must: Have at least one element with value.
+Used By: TModificationFunctionMappingComplexProperty
+
+## TPropertyGroup
+Comment: Grouping these elements so that they can be reused These elements represent the property group that can either directly reside unser EntitySet, EntityType or MappingFragment
+Element: ComplexProperty, Optional, Type: TComplexProperty
+Element: ScalarProperty, Optional, Type: TScalarProperty
+Element: Condition, Optional, Type: TCondition
+Used By: TEntitySetMapping
+Used By: TMappingFragment

@@ -1,0 +1,159 @@
+## GSchemaBodyElements
+Element: Using, optional, Type: TUsing
+Element: Association, optional, Type: TAssociation
+Element: ComplexType, optional, Type: TComplexType
+Element: EntityType, optional, Type: TEntityType
+Element: EnumType, optional, Type:TEnumType
+Element: ValueTerm, optional, Type: TValueTerm
+Element: Function, optional, Type: TFunction
+Element: Annotations, optional, Type: TAnnotations
+Element: EntityContainer, Required, Type EntityContainer
+Used By: TSchema
+
+## GEmptyElementExtensibility
+Element: Documentation, optional, Type:TDocumentation
+Used By: TUsing
+Used By: TNavigationProperty
+Used By: TEnumTypeMember
+Used By: TTypeRef
+Used By: TReferenceType
+Used By: TOnAction
+Used By: TFunctionImportParameter
+Used By: EntityContainer\AssociationSet
+
+
+## GExpression
+Element: String, optional, Type: TStringConstantExpression
+Element: Binary, optional, Type: TBinaryConstantExpression
+Element: Int, optional, Type: TIntConstantExpression
+Element: Float, optional, Type: TFloatConstantExpression
+Element: Guid, optional, Type: TGuidConstantExpression
+Element: Decimal, optional, Type: TDecimalConstantExpression
+Element: Bool, optional, Type: TBoolConstantExpression
+Element: DateTime, optional, Type: TDateTimeOffsetConstantExpression
+Element: Enum, optional, Type: TEnumConstantExpression
+Element: Path, optional, Type: TPathExpression
+Element: If, optional, Type: TIfExpression
+Element: Record, optional, Type: TRecordExpression
+Element: Collection, optional, Type: TCollectionExpression
+Element: TypeAssert, optional, Type: TTypeAssertExpression
+Element: TypeTest, optional, Type: TTypeTestExpression
+Element: FunctionReference, optional, Type: TFunctionReferenceExpression
+Element: EntitySetReference, optional, Type: TEntitySetReferenceExpression
+Element: AnonymousFunction, optional, Type: TAnonymousFunctionExpression
+Element: ParameterReference, optional, Type: TParameterReferenceExpression
+Element: Apply, optional, Type: TApplyExpression
+Element: PropertyReference, optional, Type: TPropertyReferenceExpression
+Element: ValueTermReference, optional, Type: TValueTermReferenceExpression
+Used By: TValueAnnotation, Must have at most ONE Element with value.
+Used By: TIfExpression, Must have exactly THREE Elements with value.
+Used By: TPropertyValue, Must have exactly ONE Elements with value.
+Used By: TCollectionExpression
+Used By: TOperand, Must have at most ONE Element with value.
+Used By: TAnonymousFunctionExpression, Must have at most ONE Element with value.
+Used By: TApplyExpression\AppliedFunction
+Used By: TApplyExpression\Arguments
+Used By: TPropertyReferenceExpression
+Used By: TValueTermReferenceExpression
+
+
+## GInlineExpressions
+Element: String, optional, Type: xs:string
+Element: Binary, optional, Type: xs:hexBinary
+Element: Int, optional, Type: xs:integer
+Element: Float, optional, Type: xs:double
+Element: Guid, optional, Type: xs:TGuidLiteral
+Element: Decimal, optional, Type: xs:decimal
+Element: Bool, optional, Type: xs:boolean
+Element: DateTime, optional, Type: xs:dateTime
+Element: DateTimeOffset, optional, Type: xs:dateTime
+Element: Enum, optional, Type: xs:TQualifiedName
+Element: Path, optional, Type: xs:TQualifiedName
+Used By: TValueAnnotation
+Used By: TTypeAnnotation
+Used By: TPropertyValue
+Used By: TOperand
+
+## TOperations
+Element: OnDelete, optional, Type: TOnAction
+
+Used By: TAssociationEnd
+
+## TFacetAttributes
+Element: Nullable, optional, Type: xs:boolean
+Element: DefaultValue, optional, Type: xs:string
+Element: MaxLength, optional, Type: TMaxLengthFacet
+Element: FixedLength, optional, Type: TIsFixedLengthFacet
+Element: Precision, optional, Type: TPrecisionFacet
+Element: Scale, optional, Type: TScaleFacet
+Element: Unicode, optional, Type: TIsUnicodeFacet
+Element: Collation, optional, Type: TOnAction
+Element: SRID, optional, Type: TSridFacet
+Used By: TFunction
+Used By: TFunctionParameter
+Used By: TCollectionType
+Used By: TTypeRef
+Used By: TProperty
+Used By: TFunctionReturnType
+Used By: TTypeAssertExpression
+Used By: TTypeTestExpression
+Used By: TValueTerm
+
+
+
+## TCommonPropertyAttributes
+Element: Name, Required, Type: TSimpleIdentifier
+Element: Type, Required, Type: TPropertyType
+Element: Nullable, Optional, Type: boolean, Default True
+Element: DefaultValue, Optional, Type: string
+Element: MaxLength, Optional, Type: TMaxLengthFacet
+Element: FixedLength, Optional, Type: TIsFixedLengthFacet
+Element: Precision, Optional, Type: TPrecisionFacet
+Element: Scale, Optional, Type: TScaleFacet
+Element: Unicode, Optional, Type: TIsUnicodeFacet
+Element: Collation, Optional, Type: TCollationFacet
+Element: SRID, Optional, Type: TSridFacet
+Element: ConcurrencyMode, Optional, Type: TConcurrencyMode
+Element: SetterAccess, Optional, Type: cg:TAccess
+Element: GetterAccess, Optional, Type: cg:TAccess
+Used By: TEntityProperty
+Used By: TComplexTypeProperty
+
+## TFunctionImportParameterAttributes
+Element: Name, Required, Type: TSimpleIdentifier
+Element: Type, Required, Type: TFunctionImportParameterAndReturnType
+Element: Mode, Optional, Type: TParameterMode
+Element: MaxLength, Optional, Type: TMaxLengthFacet
+Element: Precision, Optional, Type: TPrecisionFacet
+Element: Scale, Optional, Type: TScaleFacet
+Element: SRID, Optional, Type: TSridFacet
+Used By: TFunctionImportParameter
+
+
+## TFunctionImportAttributes
+Element: Name, Required, Type: TSimpleIdentifier
+Element: ReturnType, Optional, Type: TFunctionImportParameterAndReturnType
+Element: EntitySet, Optional, Type: TSimpleIdentifier
+Element: IsComposable, Optional, Type: boolean
+Element: IsSideEffecting, Optional, Type: boolean
+Element: IsBindable, Optional, Type: boolean
+Element: MethodAccess, Optional, Type: cg:TAccess
+Used By: EntityContainer\FunctionImport
+
+
+## TTypeAttributes
+Element: Name, Required, Type: TSimpleIdentifier
+Used By: TEnumType
+Used By: TDerivableTypeAttributes
+Used By: TComplexType
+
+## TDerivableTypeAttributes
+Element: BaseType, Optional, Type: TQualifiedName
+Element: Abstract, Optional, Type: boolean, Default: false
+Used By: TEntityType
+
+## TEntitySetAttributes
+Element: Name, Required, Type: TSimpleIdentifier
+Element: EntityType, Required, Type:TQualifiedName
+Element: GetterAccess, Optional, Type: cg:TAccess
+Used By: EntityContainer\EntitySet
