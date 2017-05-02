@@ -82,7 +82,7 @@ class TOnActionType extends IsOK
             $msg = "Action must be valid TAction";
             return false;
         }
-        if (!$this->isObjectNullOrOK($this->documentaiton, $msg)) {
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
             return false;
         }
         return true;

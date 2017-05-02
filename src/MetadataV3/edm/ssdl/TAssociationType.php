@@ -169,11 +169,7 @@ class TAssociationType extends IsOK
         if (!$this->isObjectNullOrOK($this->referentialConstraint, $msg)) {
             return false;
         }
-        if (!$this->isValidArrayOK(
-            $this->documentation,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType',
-            $msg
-        )) {
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
             return false;
         }
         if (!$this->isValidArrayOK(
