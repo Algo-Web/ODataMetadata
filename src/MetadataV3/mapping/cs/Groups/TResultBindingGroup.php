@@ -1,24 +1,19 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
+namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups;
 
-use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups\TResultBindingGroup;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TResultBindingType;
 
-/**
- * Class representing TEntityTypeModificationFunctionWithResultType
- *
- * Extensions to modification function for entity type InsertFunction and UpdateFunction
- *
- * XSD Type: TEntityTypeModificationFunctionWithResult
- */
-class TEntityTypeModificationFunctionWithResultType extends TEntityTypeModificationFunctionType
+trait TResultBindingGroup
 {
-    use TResultBindingGroup;
+    //Grouping for result bindings in function mappings
+    use IsOKToolboxTrait;
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TResultBindingType[] $resultBinding
      */
-    private $resultBinding = null;
+    private $resultBinding = [];
 
     /*
      * Adds as resultBinding
@@ -76,14 +71,20 @@ class TEntityTypeModificationFunctionWithResultType extends TEntityTypeModificat
         return $this;
     }
 
-    public function isOK(&$msg = null)
+    public function isResultBindingGroupOK(&$msg = null)
     {
-        $result = parent::isOK($msg);
-        if ($result) {
-            if (!$this->isResultBindingGroupOK($msg)) {
-                return false;
-            }
+        if (!$this->isValidArray(
+            $this->resultBinding,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType'
+        )) {
+            $msg = "Scalar property array not a valid array";
+            return false;
         }
-        return $result;
+        if (!$this->isChildArrayOK($this->resultBinding, $msg)) {
+            return false;
+        }
+
+        return true;
     }
+
 }

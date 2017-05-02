@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups\TEntityTypeModificationFunctionMappingPropertyGroup;
 
 /**
  * Class representing TEntityTypeModificationFunctionType
@@ -13,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TEntityTypeModificationFunctionType extends IsOK
 {
-
+    use TEntityTypeModificationFunctionMappingPropertyGroup;
     /**
      * @property string $functionName
      */
@@ -23,24 +24,6 @@ class TEntityTypeModificationFunctionType extends IsOK
      * @property string $rowsAffectedParameter
      */
     private $rowsAffectedParameter = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
-     * $scalarProperty
-     */
-    private $scalarProperty = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingAssociationEndType
-     * $associationEnd
-     */
-    private $associationEnd = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
-     * $complexProperty
-     */
-    private $complexProperty = null;
 
     /**
      * Gets as functionName
@@ -86,88 +69,13 @@ class TEntityTypeModificationFunctionType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as scalarProperty
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
-     */
-    public function getScalarProperty()
-    {
-        return $this->scalarProperty;
-    }
-
-    /**
-     * Sets a new scalarProperty
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
-     * $scalarProperty
-     * @return self
-     */
-    public function setScalarProperty(TModificationFunctionMappingScalarPropertyType $scalarProperty)
-    {
-        $this->scalarProperty = $scalarProperty;
-        return $this;
-    }
-
-    /**
-     * Gets as associationEnd
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingAssociationEndType
-     */
-    public function getAssociationEnd()
-    {
-        return $this->associationEnd;
-    }
-
-    /**
-     * Sets a new associationEnd
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingAssociationEndType
-     * $associationEnd
-     * @return self
-     */
-    public function setAssociationEnd(TModificationFunctionMappingAssociationEndType $associationEnd)
-    {
-        $this->associationEnd = $associationEnd;
-        return $this;
-    }
-
-    /**
-     * Gets as complexProperty
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
-     */
-    public function getComplexProperty()
-    {
-        return $this->complexProperty;
-    }
-
-    /**
-     * Sets a new complexProperty
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
-     * $complexProperty
-     * @return self
-     */
-    public function setComplexProperty(TModificationFunctionMappingComplexPropertyType $complexProperty)
-    {
-        $this->complexProperty = $complexProperty;
-        return $this;
-    }
-
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->functionName)) {
             $msg = 'Function name cannot be null or empty';
             return false;
         }
-        if (null != $this->scalarProperty && !$this->scalarProperty->isOK($msg)) {
-            return false;
-        }
-        if (null != $this->complexProperty && !$this->complexProperty->isOK($msg)) {
-            return false;
-        }
-        if (null != $this->associationEnd && !$this->associationEnd->isOK($msg)) {
+        if (!$this->isMappingPropertyGroupOK($msg)) {
             return false;
         }
 

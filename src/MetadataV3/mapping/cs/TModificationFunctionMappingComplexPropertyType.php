@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups\TModificationFunctionMappingComplexPropertyPropertyGroup;
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
@@ -14,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrai
  */
 class TModificationFunctionMappingComplexPropertyType extends IsOK
 {
-    use TSimpleIdentifierTrait;
+    use TSimpleIdentifierTrait, TModificationFunctionMappingComplexPropertyPropertyGroup;
     /**
      * @property string $name
      */
@@ -141,10 +142,7 @@ class TModificationFunctionMappingComplexPropertyType extends IsOK
             $msg = 'Name must be a valid TSimpleIdentifier';
             return false;
         }
-        if (null != $this->scalarProperty && !$this->scalarProperty->isOK($msg)) {
-            return false;
-        }
-        if (null != $this->complexProperty && !$this->complexProperty->isOK($msg)) {
+        if (!$this->isComplexPropertyPropertyGroupOK($msg)) {
             return false;
         }
         return true;

@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups\TPropertyGroup;
 use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
@@ -14,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TEntitySetMappingType extends IsOK
 {
-    use TSimpleIdentifierTrait;
+    use TSimpleIdentifierTrait, TPropertyGroup;
     /**
      * @property string $name
      */
@@ -49,21 +50,6 @@ class TEntitySetMappingType extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType[] $mappingFragment
      */
     private $mappingFragment = [];
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
-     */
-    private $complexProperty = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
-     */
-    private $scalarProperty = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType $condition
-     */
-    private $condition = null;
 
     /**
      * Gets as name
@@ -321,72 +307,6 @@ class TEntitySetMappingType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as complexProperty
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType
-     */
-    public function getComplexProperty()
-    {
-        return $this->complexProperty;
-    }
-
-    /**
-     * Sets a new complexProperty
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
-     * @return self
-     */
-    public function setComplexProperty(TComplexPropertyType $complexProperty)
-    {
-        $this->complexProperty = $complexProperty;
-        return $this;
-    }
-
-    /**
-     * Gets as scalarProperty
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType
-     */
-    public function getScalarProperty()
-    {
-        return $this->scalarProperty;
-    }
-
-    /**
-     * Sets a new scalarProperty
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
-     * @return self
-     */
-    public function setScalarProperty(TScalarPropertyType $scalarProperty)
-    {
-        $this->scalarProperty = $scalarProperty;
-        return $this;
-    }
-
-    /**
-     * Gets as condition
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType
-     */
-    public function getCondition()
-    {
-        return $this->condition;
-    }
-
-    /**
-     * Sets a new condition
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType $condition
-     * @return self
-     */
-    public function setCondition(TConditionType $condition)
-    {
-        $this->condition = $condition;
-        return $this;
-    }
-
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->name)) {
@@ -401,13 +321,7 @@ class TEntitySetMappingType extends IsOK
             $msg = 'Store entity set cannot be empty';
             return false;
         }
-        if (null != $this->complexProperty && !$this->complexProperty->isOK($msg)) {
-            return false;
-        }
-        if (null != $this->condition && !$this->condition->isOK($msg)) {
-            return false;
-        }
-        if (null != $this->scalarProperty && !$this->scalarProperty->isOK($msg)) {
+        if (!$this->isPropertyGroupOK($msg)) {
             return false;
         }
         if (!$this->isValidArray(

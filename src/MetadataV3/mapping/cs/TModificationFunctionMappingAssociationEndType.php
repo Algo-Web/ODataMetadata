@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups\TModificationFunctionMappingAssociationEndPropertyGroup;
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
@@ -14,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrai
  */
 class TModificationFunctionMappingAssociationEndType extends IsOK
 {
-    use TSimpleIdentifierTrait;
+    use TSimpleIdentifierTrait, TModificationFunctionMappingAssociationEndPropertyGroup;
     /**
      * @property string $associationSet
      */
@@ -29,12 +30,6 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
      * @property string $to
      */
     private $to = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
-     * $scalarProperty
-     */
-    private $scalarProperty = null;
 
     /**
      * Gets as associationSet
@@ -102,29 +97,6 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as scalarProperty
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
-     */
-    public function getScalarProperty()
-    {
-        return $this->scalarProperty;
-    }
-
-    /**
-     * Sets a new scalarProperty
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
-     * $scalarProperty
-     * @return self
-     */
-    public function setScalarProperty(TModificationFunctionMappingScalarPropertyType $scalarProperty)
-    {
-        $this->scalarProperty = $scalarProperty;
-        return $this;
-    }
-    
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->associationSet)) {
@@ -139,7 +111,7 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
             $msg = 'To cannot be null or empty';
             return false;
         }
-        if (null != $this->scalarProperty && !$this->scalarProperty->isOK($msg)) {
+        if (!$this->isModificationFunctionMappingAssociationOK($msg)) {
             return false;
         }
         return true;
