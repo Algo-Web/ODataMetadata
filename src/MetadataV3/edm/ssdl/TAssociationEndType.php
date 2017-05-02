@@ -15,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TAssociationEndType extends IsOK
 {
-    use TSimpleIdentifierTrait, TQualifiedNameTrait, TMultiplicityTrait;
+    use TSimpleIdentifierTrait, TQualifiedNameTrait, TMultiplicityTrait, TOperations;
     /**
      * @property string $type
      */
@@ -35,11 +35,6 @@ class TAssociationEndType extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      */
     private $documentation = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType[] $onDelete
-     */
-    private $onDelete = [];
 
     /**
      * Gets as type
@@ -128,63 +123,7 @@ class TAssociationEndType extends IsOK
         $this->documentation = $documentation;
         return $this;
     }
-
-    /**
-     * Adds as onDelete
-     *
-     * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType $onDelete
-     */
-    public function addToOnDelete(TOnActionType $onDelete)
-    {
-        $this->onDelete[] = $onDelete;
-        return $this;
-    }
-
-    /**
-     * isset onDelete
-     *
-     * @param scalar $index
-     * @return boolean
-     */
-    public function issetOnDelete($index)
-    {
-        return isset($this->onDelete[$index]);
-    }
-
-    /**
-     * unset onDelete
-     *
-     * @param scalar $index
-     * @return void
-     */
-    public function unsetOnDelete($index)
-    {
-        unset($this->onDelete[$index]);
-    }
-
-    /**
-     * Gets as onDelete
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType[]
-     */
-    public function getOnDelete()
-    {
-        return $this->onDelete;
-    }
-
-    /**
-     * Sets a new onDelete
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType[] $onDelete
-     * @return self
-     */
-    public function setOnDelete(array $onDelete)
-    {
-        $this->onDelete = $onDelete;
-        return $this;
-    }
-
+    
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->type)) {
@@ -207,7 +146,7 @@ class TAssociationEndType extends IsOK
             $msg = "Multiplicity must be a valid TMultiplicity";
             return false;
         }
-        if (!$this->isValidArrayOK($this->onDelete, '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType', $msg)) {
+        if (!$this->isOperationsGroupOK($msg)) {
             return false;
         }
 

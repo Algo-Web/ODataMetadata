@@ -14,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TPropertyType extends IsOK
 {
-    use TSimpleIdentifierTrait, TPropertyTypeTrait;
+    use TSimpleIdentifierTrait, TPropertyTypeTrait, GEmptyElementExtensibilityTrait;
     /**
      * @property string $name
      */
@@ -69,11 +69,6 @@ class TPropertyType extends IsOK
      * @property string $sRID
      */
     private $sRID = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
-     */
-    private $documentation = null;
 
     /**
      * Gets as name
@@ -317,28 +312,6 @@ class TPropertyType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as documentation
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
-     */
-    public function getDocumentation()
-    {
-        return $this->documentation;
-    }
-
-    /**
-     * Sets a new documentation
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
-     * @return self
-     */
-    public function setDocumentation(TDocumentationType $documentation)
-    {
-        $this->documentation = $documentation;
-        return $this;
-    }
-
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->name)) {
@@ -381,8 +354,7 @@ class TPropertyType extends IsOK
             $msg = "Type must be valid TPropertyType";
             return false;
         }
-
-        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
+        if (!$this->isExtensibilityElementOK($msg)) {
             return false;
         }
         return true;

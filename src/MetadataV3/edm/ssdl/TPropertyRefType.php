@@ -13,16 +13,11 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TPropertyRefType extends IsOK
 {
-    use TSimpleIdentifierTrait;
+    use TSimpleIdentifierTrait, GEmptyElementExtensibilityTrait;
     /**
      * @property string $name
      */
     private $name = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
-     */
-    private $documentation = null;
 
     /**
      * Gets as name
@@ -46,28 +41,6 @@ class TPropertyRefType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as documentation
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
-     */
-    public function getDocumentation()
-    {
-        return $this->documentation;
-    }
-
-    /**
-     * Sets a new documentation
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
-     * @return self
-     */
-    public function setDocumentation(TDocumentationType $documentation)
-    {
-        $this->documentation = $documentation;
-        return $this;
-    }
-
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->name)) {
@@ -78,7 +51,7 @@ class TPropertyRefType extends IsOK
             $msg = "Name must be valid TSimpleIdentifier";
             return false;
         }
-        if ($this->isObjectNullOrOK($this->documentation, $msg)) {
+        if (!$this->isExtensibilityElementOK($msg)) {
             return false;
         }
         return true;
