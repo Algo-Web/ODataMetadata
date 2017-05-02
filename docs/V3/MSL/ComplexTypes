@@ -137,5 +137,57 @@ Element:ParameterName, Required, Type: string
 Element:Name, Required, Type: TSimpleIdentifier
 Element:Version, Optional, Type: TVersion
 
+# TResultBinding
+Comment: Type for function mapping result binding
+Element: ColumnName, Required, Type: string
+Element: Name, Required, Type: TSimpleIdentifier
 
-...... TO Be Continued;
+# TModificationFunctionMappingAssociationEnd
+Comment: Type for function mapping association end
+Uses Group: TModificationFunctionMappingAssociationEndPropertyGroup
+Element: AssociationSet, Required, Type: TSimpleIdentifier
+Element: From, Required, Type: TSimpleIdentifier
+Element: To, Required, Type: TSimpleIdentifier
+
+# TModificationFunctionMappingComplexProperty
+Comment: Type for function mapping complex property
+Uses Group: TModificationFunctionMappingComplexPropertyPropertyGroup
+Element: Name, Required, Type: TSimpleIdentifier
+Element: TypeName, Required, Type: string
+
+# TCondition
+Comment: Type for Condition Element
+Element: Value, Optional, Type: string
+Element: Name, Optional, Type: TSimpleIdentifier
+Element: ColumnName, Optional, Type: string
+Element: IsNull, Optional, Type: boolean
+
+#TEndProperty
+Comment: Type for End Property Elements in Association Maps
+Element: ScalarProperty, 1-Unlimited, Type: TScalarProperty
+Element: Name, Required, Type: TSimpleIdentifier
+
+# TComplexProperty
+Comment: Type for Complex Property Map elements
+Element: ScalarProperty, Optional, Type: TScalarProperty
+Element: ComplexProperty,Optional, Type: TComplexProperty
+Element: ComplexTypeMapping, Optional, Type: TComplexTypeMapping
+Element: Condition, Optional, Type: TCondition
+Element: Name, Required, Type: TSimpleIdentifier
+Element: TypeName, Optional, Type: string
+Element: IsPartial, Optional, Type: boolean
+Condition: ScalarProperty, ComplexProperty, ComplexTypeMapping, and Condition Must have at least 1 none null entery between them
+
+# TComplexTypeMapping
+Comment: Type for Complex Type mapping element
+Element: ScalarProperty, Optional, Type: TScalarProperty
+Element: ComplexProperty,Optional, Type: TComplexProperty
+Element: Condition, Optional, Type: TCondition
+Element: TypeName, Optional, Type: string
+Element: IsPartial, Optional, Type: boolean
+Condition: ScalarProperty, ComplexProperty, and Condition Must have at least 1 none null entery between them
+
+# TScalarProperty
+Comment: Type for ScalarProperty Element
+Element: Name, Required, Type: TSimpleIdentifier
+Element: ColumnName, Required, Type: string
