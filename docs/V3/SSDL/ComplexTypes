@@ -1,0 +1,139 @@
+ #Schema
+  Must be: TSchema
+  Class Should be empty.
+
+# TSchema
+Uses Group: GSchemaBodyElements
+Element: NameSpace, Required, Type: TQualifiedName
+Element: Alias, Optional, Type: TSimpleIdentifier
+Element: Provider, Required,  Type: TSimpleIdentifier
+Element: TSimpleIdentifier, Required,  Type: TSimpleIdentifier
+
+# TDocumentation
+Comment: The Documentation element is used to provide documentation of comments on the contents of the XML file. It is valid under Schema, Type, Index and Relationship elements.
+Element: Summery, Optional, Type: TText
+Element: LongDescription, optional, Type: TText
+
+# TText
+Got no idea how to deal with this one.
+Should always be OK.
+
+# TAssociation
+Element: Documentation, Optional, Type: TDocumentation
+Element: End, Must Be 2,  Type: TAssociationEnd
+Element: ReferentialConstraint, Optional, TConstraint
+Element: Name, Required, Type: TUndottedIdentifier
+Commented Out Element: Identifying, Optional, type: boolean, default: false
+
+# TConstraint
+Element: Documentation, Optional, Type: TDocumentation
+Element: Principal, Required, Type: TReferentialConstraintRoleElement
+Element: Dependent, Required, Type: TReferentialConstraintRoleElement
+
+# TReferentialConstraintRoleElement
+Element: Documentation, Optional, Type: TDocumentation
+Element: PropertyRef, 1-Unlimited, Type: TPropertyRef
+Element: Role, Required, Type: TSimpleIdentifier
+
+# TEntityType
+Element: Documentation, Optional, Type: TDocumentation
+Element: Key, Optional, Type: TEntityKeyElement
+Element: Property, 0-Unlimited, Type: TEntityProperty
+Element: Name, Required, Type: TUndottedIdentifier
+
+# TEntityKeyElement
+Element: PropertyRef, 1-Unlimited, Type: TPropertyRef
+
+# TPropertyRef
+Uses Group: GEmptyElementExtensibility
+Element: Name, Required, Type: TSimpleIdentifier
+
+# TCollectionType
+Element: RowType, Required, Type: TRowType
+
+# TRowType
+Element: Property, 1-Unlimited, Type: TProperty
+
+# TAssociationEnd
+Element: Documentation, Optional, Type: TDocumentation
+Uses Group: TOperations
+Element: Type, Required, Type: TQualifiedName
+Element: Role, Optional, Type: TSimpleIdentifier
+Element: Multiplicity, Required, Type: TMultiplicity
+
+# TOnAction
+Uses Group: GEmptyElementExtensibility
+Element: Action, Required, Type: TAction
+
+# TEntityProperty
+Uses Group: GEmptyElementExtensibility
+Uses Group: TCommonPropertyAttributes
+Element: StoreGeneratedPattern, Optional, Type: TStoreGeneratedPattern
+
+# TProperty
+Uses Group: GEmptyElementExtensibility
+Uses Group: TCommonPropertyAttributes
+
+# TConstraint
+Element: Documentation, Optional, Type: TDocumentation
+Element: Parameter, 0-Unlimited, Type: TParameter
+Element: CommandText, Optional, Type: TCommandText
+Element: ReturnType, Optional, Type: TFunctionReturnType
+
+Element: Name, Required, Type: TUndottedIdentifier
+Element: ReturnType, Optional, Type: TFunctionType
+Element: Aggregate, Optional, Type: boolean
+Element: BuiltIn, Optional, Type: boolean
+Element: StoreFunctionName, Optional, Type: string
+Element: NiladicFunction, Optional, Type: boolean
+Element: IsComposable, Optional, Type: boolean, Default: True
+Element: ParameterTypeSemantics, Optional, Type: TParameterTypeSemantics, Default: AllowImplicitConversion
+Element: Schema, Optional, Type: TSimpleIdentifier
+Element: gen:Schema, Optional, Type: string
+Element: gen:Name, Optional, Type: string
+
+# TParameter
+Element: Documentation, Optional, Type: TDocumentation
+Element: Name, Required, Type: string
+Element: Type, Required, Type: TFunctionType
+Element: Mode, Optional, Type: TParameterMode
+Element: MaxLength, Optional, Type: TMaxLengthFacet
+Element: Precision, Optional, Type: TPrecisionFacet
+Element: Scale, Optional, Type: TScaleFacet
+Element: SRID, Optional, Type: TSridFacet
+
+# TFunctionReturnType
+Element: CollectionType, Required, Type: CollectionType
+
+
+#EntityContainer{
+Element: Documentation, Optional, Type:TDocumentation
+Element: EntitySet, Optional, Type: EntityContainer\EntitySetAnonymousType
+Element: AssociationSet, Optional, Type: EntityContainer\AssociationSetAnonymousType
+Element: Name, Required, Type: TUndottedIdentifier
+
+## EntityContainer\EntitySetAnonymousType
+Element: Documentation, Optional, Type:TDocumentation
+Element: DefiningQuery, Optional, Type:TCommandText
+Element: Name, Required, Type:TQualifiedName
+Element: EntityType, Required, Type: TQualifiedName
+Element: Schema, Optional, Type: TSimpleIdentifier
+Element: Table, Optional, Type: TSimpleIdentifier
+Element: gen:Type, Optional, gen: TSourceType
+Element: gen:Schema, Optional, Type: string
+Element: gen:Name, Optional, Type: string
+
+## EntityContainer\AssociationSetAnonymousType{
+Element: Documentation, Optional, Type:TDocumentation
+Element: End, 0-2, Type: EntityContainer\AssociationSetAnonymousType\EndAnonymousType
+Element: Name, Required, Type: TUndottedIdentifier
+Element: Association, Required, Type: TQualifiedName
+
+### EntityContainer\AssociationSetAnonymousType\EndAnonymousType
+Comment: 1. The number of Ends has to match with ones defined in AssociationType
+         2. Value for attribute Name should match the defined ones and EntitySet should be of the defined Entity Type in AssociationType
+Uses Group: GEmptyElementExtensibility
+Element: Role, Optional, Type: TSimpleIdentifier
+Element: EntitySet, Required, Type: TSimpleIdentifier
+}
+}
