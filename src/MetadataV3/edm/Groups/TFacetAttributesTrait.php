@@ -1,24 +1,19 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Groups;
 
-use AlgoWeb\ODataMetadata\IsOK;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TIsFixedLengthFacetTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TIsUnicodeFacetTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TMaxLengthFacetTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TPrecisionFacetTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TScaleFacetTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSridFacetTrait;
 
-/**
- * Class representing TFunctionReturnTypeType
- *
- *
- * XSD Type: TFunctionReturnType
- */
-class TFunctionReturnTypeType extends IsOK
+trait TFacetAttributesTrait
 {
-    use TFacetAttributesTrait;
-    /**
-     * @property string $type
-     */
-    private $type = null;
-
+    use IsOKToolboxTrait, TMaxLengthFacetTrait, TIsFixedLengthFacetTrait, TPrecisionFacetTrait, TScaleFacetTrait,
+        TIsUnicodeFacetTrait, TSridFacetTrait;
     /**
      * @property boolean $nullable
      */
@@ -63,43 +58,6 @@ class TFunctionReturnTypeType extends IsOK
      * @property string $sRID
      */
     private $sRID = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
-     */
-    private $collectionType = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
-     */
-    private $referenceType = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
-     */
-    private $rowType = null;
-
-    /**
-     * Gets as type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * Sets a new type
-     *
-     * @param string $type
-     * @return self
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
-        return $this;
-    }
 
     /**
      * Gets as nullable
@@ -299,111 +257,41 @@ class TFunctionReturnTypeType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as collectionType
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType
-     */
-    public function getCollectionType()
+    public function isTFacetAttributesTraitValid(&$msg = null)
     {
-        return $this->collectionType;
-    }
-
-    /**
-     * Sets a new collectionType
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
-     * @return self
-     */
-    public function setCollectionType(TCollectionTypeType $collectionType)
-    {
-        $this->collectionType = $collectionType;
-        return $this;
-    }
-
-    /**
-     * Gets as referenceType
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType
-     */
-    public function getReferenceType()
-    {
-        return $this->referenceType;
-    }
-
-    /**
-     * Sets a new referenceType
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
-     * @return self
-     */
-    public function setReferenceType(TReferenceTypeType $referenceType)
-    {
-        $this->referenceType = $referenceType;
-        return $this;
-    }
-
-    /**
-     * Adds as property
-     *
-     * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
-     */
-    public function addToRowType(TPropertyType $property)
-    {
-        $this->rowType[] = $property;
-        return $this;
-    }
-
-    /**
-     * isset rowType
-     *
-     * @param scalar $index
-     * @return boolean
-     */
-    public function issetRowType($index)
-    {
-        return isset($this->rowType[$index]);
-    }
-
-    /**
-     * unset rowType
-     *
-     * @param scalar $index
-     * @return void
-     */
-    public function unsetRowType($index)
-    {
-        unset($this->rowType[$index]);
-    }
-
-    /**
-     * Gets as rowType
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[]
-     */
-    public function getRowType()
-    {
-        return $this->rowType;
-    }
-
-    /**
-     * Sets a new rowType
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
-     * @return self
-     */
-    public function setRowType(array $rowType)
-    {
-        $this->rowType = $rowType;
-        return $this;
-    }
-
-    public function isOK(&$msg = null)
-    {
-        if (!$this->isTFacetAttributesTraitValid($msg)) {
+        if ($this->nullable !== boolval($this->nullable)) {
+            $msg = "Nullable must be boolean";
             return false;
         }
+        if (null != $this->defaultValue && !is_string($this->defaultValue)) {
+            $msg = "Default value must be a string";
+            return false;
+        }
+        if (null != $this->maxLength && !$this->isTMaxLengthFacetValid($this->maxLength)) {
+            $msg = "Max length must be a valid TMaxLengthFacet";
+            return false;
+        }
+        if (null != $this->fixedLength && !$this->isTIsFixedLengthFacetTraitValid($this->maxLength)) {
+            $msg = "Fixed length must be a valid TFixedLengthFacet";
+            return false;
+        }
+        if (null != $this->precision && !$this->isTPrecisionFacetValid($this->precision)) {
+            $msg = "Precision must be a valid TPrecisionFacet";
+            return false;
+        }
+        if (null != $this->scale && !$this->isTScaleFacetValid($this->scale)) {
+            $msg = "Scale must be a valid TScaleFacet";
+            return false;
+        }
+        if (null != $this->sRID && !$this->isTSridFacetValid($this->sRID)) {
+            $msg = "SRID must be a valid TSridFacet";
+            return false;
+        }
+        if (null != $this->unicode && !$this->isTIsUnicodeFacetTraitValid($this->unicode)) {
+            $msg = "Unicode must be a valid TUnicodeFacet";
+            return false;
+        }
+
         return true;
     }
 }

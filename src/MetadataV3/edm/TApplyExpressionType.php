@@ -22,13 +22,13 @@ class TApplyExpressionType extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
      * $appliedFunction
      */
-    private $appliedFunction = array();
+    private $appliedFunction = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[]
      * $arguments
      */
-    private $arguments = array();
+    private $arguments = [];
 
     /**
      * Gets as function

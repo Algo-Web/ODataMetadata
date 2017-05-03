@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TTypeAttributesTrait;
 
 /**
  * Class representing TComplexTypeType
@@ -12,11 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TComplexTypeType extends IsOK
 {
-
-    /**
-     * @property string $name
-     */
-    private $name = null;
+    use TTypeAttributesTrait;
 
     /**
      * @property string $typeAccess
@@ -31,39 +28,17 @@ class TComplexTypeType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType[] $property
      */
-    private $property = array();
+    private $property = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      */
-    private $valueAnnotation = array();
+    private $valueAnnotation = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      */
-    private $typeAnnotation = array();
-
-    /**
-     * Gets as name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Sets a new name
-     *
-     * @param string $name
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
+    private $typeAnnotation = [];
 
     /**
      * Gets as typeAccess
@@ -275,5 +250,13 @@ class TComplexTypeType extends IsOK
     {
         $this->typeAnnotation = $typeAnnotation;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTTypeAttributesValid($msg)) {
+            return false;
+        }
+        return true;
     }
 }

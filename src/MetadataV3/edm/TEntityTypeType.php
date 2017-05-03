@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TDerivableTypeAttributesTrait;
 
 /**
  * Class representing TEntityTypeType
@@ -12,21 +13,11 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TEntityTypeType extends IsOK
 {
-
+    use TDerivableTypeAttributesTrait;
     /**
      * @property string $name
      */
     private $name = null;
-
-    /**
-     * @property string $baseType
-     */
-    private $baseType = null;
-
-    /**
-     * @property boolean $abstract
-     */
-    private $abstract = null;
 
     /**
      * @property boolean $openType
@@ -51,22 +42,22 @@ class TEntityTypeType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType[] $property
      */
-    private $property = array();
+    private $property = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType[] $navigationProperty
      */
-    private $navigationProperty = array();
+    private $navigationProperty = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      */
-    private $valueAnnotation = array();
+    private $valueAnnotation = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      */
-    private $typeAnnotation = array();
+    private $typeAnnotation = [];
 
     /**
      * Gets as name
@@ -87,50 +78,6 @@ class TEntityTypeType extends IsOK
     public function setName($name)
     {
         $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * Gets as baseType
-     *
-     * @return string
-     */
-    public function getBaseType()
-    {
-        return $this->baseType;
-    }
-
-    /**
-     * Sets a new baseType
-     *
-     * @param string $baseType
-     * @return self
-     */
-    public function setBaseType($baseType)
-    {
-        $this->baseType = $baseType;
-        return $this;
-    }
-
-    /**
-     * Gets as abstract
-     *
-     * @return boolean
-     */
-    public function getAbstract()
-    {
-        return $this->abstract;
-    }
-
-    /**
-     * Sets a new abstract
-     *
-     * @param boolean $abstract
-     * @return self
-     */
-    public function setAbstract($abstract)
-    {
-        $this->abstract = $abstract;
         return $this;
     }
 
@@ -478,5 +425,13 @@ class TEntityTypeType extends IsOK
     {
         $this->typeAnnotation = $typeAnnotation;
         return $this;
+    }
+    
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTDerivableTypeAttributesValid($msg)) {
+            return false;
+        }
+        return true;
     }
 }

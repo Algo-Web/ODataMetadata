@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TTypeAttributesTrait;
 
 /**
  * Class representing TEnumTypeType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TEnumTypeType extends IsOK
 {
-
+    use TTypeAttributesTrait;
     /**
      * @property string $name
      */
@@ -41,7 +42,7 @@ class TEnumTypeType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType[] $member
      */
-    private $member = array();
+    private $member = [];
 
     /**
      * Gets as name
@@ -207,5 +208,13 @@ class TEnumTypeType extends IsOK
     {
         $this->member = $member;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTTypeAttributesValid($msg)) {
+            return false;
+        }
+        return true;
     }
 }

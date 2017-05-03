@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 
 /**
  * Class representing TIfExpressionType
@@ -35,4 +36,20 @@ class TIfExpressionType extends IsOK
         \MetadataV3\edm\GExpressionGroupTraits\BinaryTrait,
         \MetadataV3\edm\GExpressionGroupTraits\ApplyTrait,
         \MetadataV3\edm\GExpressionGroupTraits\AnonymousFunctionTrait;
+    
+    use GExpressionTrait;
+    
+    public function __construct()
+    {
+        $this->gExpressionMaximum = 3;
+        $this->gExpressionMinimum = 3;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isGExpressionValid($msg)) {
+            return false;
+        }
+        return true;
+    }
 }

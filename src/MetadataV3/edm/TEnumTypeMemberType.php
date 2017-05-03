@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
 
 /**
  * Class representing TEnumTypeMemberType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TEnumTypeMemberType extends IsOK
 {
-
+    use GEmptyElementExtensibilityTrait;
     /**
      * @property string $name
      */
@@ -22,11 +23,6 @@ class TEnumTypeMemberType extends IsOK
      * @property integer $value
      */
     private $value = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
-     */
-    private $documentation = null;
 
     /**
      * Gets as name
@@ -72,25 +68,11 @@ class TEnumTypeMemberType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as documentation
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
-     */
-    public function getDocumentation()
+    public function isOK(&$msg = null)
     {
-        return $this->documentation;
-    }
-
-    /**
-     * Sets a new documentation
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
-     * @return self
-     */
-    public function setDocumentation(TDocumentationType $documentation)
-    {
-        $this->documentation = $documentation;
-        return $this;
+        if (!$this->isExtensibilityElementOK($msg)) {
+            return false;
+        }
+        return true;
     }
 }

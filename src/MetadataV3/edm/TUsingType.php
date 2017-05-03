@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
 
 /**
  * Class representing TUsingType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TUsingType extends IsOK
 {
-
+    use GEmptyElementExtensibilityTrait;
     /**
      * @property string $namespace
      */
@@ -27,11 +28,6 @@ class TUsingType extends IsOK
      * @property string $alias
      */
     private $alias = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
-     */
-    private $documentation = null;
 
     /**
      * Gets as namespace
@@ -99,25 +95,11 @@ class TUsingType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as documentation
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
-     */
-    public function getDocumentation()
+    public function isOK(&$msg = null)
     {
-        return $this->documentation;
-    }
-
-    /**
-     * Sets a new documentation
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
-     * @return self
-     */
-    public function setDocumentation(TDocumentationType $documentation)
-    {
-        $this->documentation = $documentation;
-        return $this;
+        if (!$this->isExtensibilityElementOK($msg)) {
+            return false;
+        }
+        return true;
     }
 }

@@ -2,6 +2,9 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
+use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
+
 /**
  * Class representing TOnActionType
  *
@@ -10,16 +13,11 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
  */
 class TOnActionType extends IsOK
 {
-
+    use GEmptyElementExtensibilityTrait;
     /**
      * @property string $action
      */
     private $action = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
-     */
-    private $documentation = null;
 
     /**
      * Gets as action
@@ -43,25 +41,11 @@ class TOnActionType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as documentation
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
-     */
-    public function getDocumentation()
+    public function isOK(&$msg = null)
     {
-        return $this->documentation;
-    }
-
-    /**
-     * Sets a new documentation
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
-     * @return self
-     */
-    public function setDocumentation(TDocumentationType $documentation)
-    {
-        $this->documentation = $documentation;
-        return $this;
+        if (!$this->isExtensibilityElementOK($msg)) {
+            return false;
+        }
+        return true;
     }
 }

@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 
 /**
  * Class representing TCollectionExpressionType
@@ -35,4 +36,14 @@ class TCollectionExpressionType extends IsOK
         \AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits\BinaryTrait,
         \AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits\ApplyTrait,
         \AlgoWeb\ODataMetadata\MetadataV3\edm\GExpressionGroupTraits\AnonymousFunctionTrait;
+    
+    use GExpressionTrait;
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isGExpressionValid($msg)) {
+            return false;
+        }
+        return true;
+    }
 }

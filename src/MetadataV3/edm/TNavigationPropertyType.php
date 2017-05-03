@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
 
 /**
  * Class representing TNavigationPropertyType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TNavigationPropertyType extends IsOK
 {
-
+    use GEmptyElementExtensibilityTrait;
     /**
      * @property string $name
      */
@@ -42,11 +43,6 @@ class TNavigationPropertyType extends IsOK
      * @property string $setterAccess
      */
     private $setterAccess = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
-     */
-    private $documentation = null;
 
     /**
      * Gets as name
@@ -180,25 +176,11 @@ class TNavigationPropertyType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as documentation
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
-     */
-    public function getDocumentation()
+    public function isOK(&$msg = null)
     {
-        return $this->documentation;
-    }
-
-    /**
-     * Sets a new documentation
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
-     * @return self
-     */
-    public function setDocumentation(TDocumentationType $documentation)
-    {
-        $this->documentation = $documentation;
-        return $this;
+        if (!$this->isExtensibilityElementOK($msg)) {
+            return false;
+        }
+        return true;
     }
 }

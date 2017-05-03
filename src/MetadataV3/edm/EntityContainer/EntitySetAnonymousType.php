@@ -3,109 +3,33 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TEntitySetAttributesTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType;
 
 /**
  * Class representing EntitySetAnonymousType
  */
 class EntitySetAnonymousType extends IsOK
 {
-
-    /**
-     * @property string $name
-     */
-    private $name = null;
-
-    /**
-     * @property string $entityType
-     */
-    private $entityType = null;
-
-    /**
-     * @property string $getterAccess
-     */
-    private $getterAccess = null;
+    use TEntitySetAttributesTrait;
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[] $documentation
      */
-    private $documentation = array();
+    private $documentation = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      */
-    private $valueAnnotation = array();
+    private $valueAnnotation = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      */
-    private $typeAnnotation = array();
-
-    /**
-     * Gets as name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Sets a new name
-     *
-     * @param string $name
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * Gets as entityType
-     *
-     * @return string
-     */
-    public function getEntityType()
-    {
-        return $this->entityType;
-    }
-
-    /**
-     * Sets a new entityType
-     *
-     * @param string $entityType
-     * @return self
-     */
-    public function setEntityType($entityType)
-    {
-        $this->entityType = $entityType;
-        return $this;
-    }
-
-    /**
-     * Gets as getterAccess
-     *
-     * @return string
-     */
-    public function getGetterAccess()
-    {
-        return $this->getterAccess;
-    }
-
-    /**
-     * Sets a new getterAccess
-     *
-     * @param string $getterAccess
-     * @return self
-     */
-    public function setGetterAccess($getterAccess)
-    {
-        $this->getterAccess = $getterAccess;
-        return $this;
-    }
-
+    private $typeAnnotation = [];
+    
     /**
      * Adds as documentation
      *
@@ -272,5 +196,13 @@ class EntitySetAnonymousType extends IsOK
     {
         $this->typeAnnotation = $typeAnnotation;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTEntitySetAttributesOK($msg)) {
+            return false;
+        }
+        return true;
     }
 }

@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TOperationsTrait;
 
 /**
  * Class representing TAssociationEndType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TAssociationEndType extends IsOK
 {
-
+    use TOperationsTrait;
     /**
      * @property string $type
      */
@@ -32,11 +33,6 @@ class TAssociationEndType extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      */
     private $documentation = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TOnActionType[] $onDelete
-     */
-    private $onDelete = array();
 
     /**
      * Gets as type
@@ -126,59 +122,11 @@ class TAssociationEndType extends IsOK
         return $this;
     }
 
-    /**
-     * Adds as onDelete
-     *
-     * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TOnActionType $onDelete
-     */
-    public function addToOnDelete(TOnActionType $onDelete)
+    public function isOK(&$msg = null)
     {
-        $this->onDelete[] = $onDelete;
-        return $this;
-    }
-
-    /**
-     * isset onDelete
-     *
-     * @param scalar $index
-     * @return boolean
-     */
-    public function issetOnDelete($index)
-    {
-        return isset($this->onDelete[$index]);
-    }
-
-    /**
-     * unset onDelete
-     *
-     * @param scalar $index
-     * @return void
-     */
-    public function unsetOnDelete($index)
-    {
-        unset($this->onDelete[$index]);
-    }
-
-    /**
-     * Gets as onDelete
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TOnActionType[]
-     */
-    public function getOnDelete()
-    {
-        return $this->onDelete;
-    }
-
-    /**
-     * Sets a new onDelete
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TOnActionType[] $onDelete
-     * @return self
-     */
-    public function setOnDelete(array $onDelete)
-    {
-        $this->onDelete = $onDelete;
-        return $this;
+        if (!$this->isTOperationsOK($msg)) {
+            return false;
+        }
+        return true;
     }
 }
