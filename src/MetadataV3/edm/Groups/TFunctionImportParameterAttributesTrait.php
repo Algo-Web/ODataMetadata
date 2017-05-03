@@ -226,11 +226,11 @@ trait TFunctionImportParameterAttributesTrait
             $msg = "Precision must be a valid TPrecisionFacet";
             return false;
         }
-        if (null != $this->scale && !$this->isTPrecisionFacetValid($this->scale)) {
+        if (null != $this->scale && !$this->isTScaleFacetValid($this->scale)) {
             $msg = "Scale must be a valid TScaleFacet";
             return false;
         }
-        if (null != $this->sRID && !$this->isTPrecisionFacetValid($this->sRID)) {
+        if (null != $this->sRID && !$this->isTSridFacetValid($this->sRID)) {
             $msg = "SRID must be a valid TSRIDFacet";
             return false;
         }

@@ -13,6 +13,7 @@ trait TSridFacetTrait
         if (!$this->isTVariableValid($string)) {
             return false;
         }
-        return $this->nonNegativeInteger($string);
+        $this->nonNegativeInteger($string);
+        return true;
     }
 }
