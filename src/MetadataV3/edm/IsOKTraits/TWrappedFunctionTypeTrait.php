@@ -4,7 +4,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits;
 
 use AlgoWeb\ODataMetadata\xsdRestrictions;
 
-trait TWrappedFunctionReturnTypeTrait
+trait TWrappedFunctionTypeTrait
 {
     use TQualifiedNameTrait, xsdRestrictions;
 
