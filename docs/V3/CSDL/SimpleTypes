@@ -1,65 +1,64 @@
-## EDMSimpleType
+## EDMSimpleType - x
 Must Be: xs:string
 Must Be: "Binary" || "Boolean" || "Byte" || "DateTime" || "DateTimeOffset" || "Time" || "Decimal" || "Double" || "Single" || "Geography" || "Point" || "LineString" || "Polygon" || "MultiPoint" || "MultiLineString" || "MultiPolygon" || "GeographyCollection" || "Geometry" || "GeometricPoint" || "GeometricLineString" || "GeometricPolygon" || "GeometricMultiPoint" || "GeometricMultiLineString" || "GeometricMultiPolygon" || "GeometryCollection" || "Guid" || "Int16" || "Int32" || "Int64" || "String" || "SByte"
 Comment: EDM SimpleType instances for use by EDM Instance documents
 
-## TMax
+## TMax - x
 Must Be: xs:string
 Must Be: "Max"
 
-## TVariable
+## TVariable - x
 Must Be: xs:string
 Must Be: "Variable"
 
-## TMaxLengthFacet
-Must Be:TMax
-Must Be: xs:nonNegativeInteger
+## TMaxLengthFacet - x
+Must Be:TMax || xs:nonNegativeInteger
 
-## TIsFixedLengthFacet
+## TIsFixedLengthFacet - x
 Must Be: xs:boolean
 
-## TPrecisionFacet
+## TPrecisionFacet - x
 Must Be: xs:nonNegativeInteger
 
-## TScaleFacet
+## TScaleFacet - x
 Must Be: xs:nonNegativeInteger
 
-## TIsUnicodeFacet
+## TIsUnicodeFacet - x
 Must Be: xs:boolean
 
-## TCollationFacet
+## TCollationFacet - x
 Must Be: xs:string
 
-## TSridFacet
+## TSridFacet - x
 Must Be: TVariable ||  xs:nonNegativeInteger
 
-## TGuidLiteral
+## TGuidLiteral - x
 Must Be: xs:string
 Pattern: "[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}"
 
-## TParameterMode
+## TParameterMode - x
 Must Be: xs:token
 Must Be: "In" || "Out" || "InOut"
 
 
-## TNamespaceName
+## TNamespaceName - x
 Must Be: TQualifiedName
 Max Length: 512
 
-## TQualifiedName
+## TQualifiedName - x
 Must Be: xs:string
 Pattern Comment: The below pattern represents the allowed identifiers in ECMA specification plus the '.' for namespace qualification
 Pattern: "[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}"
 
 
-## TSimpleIdentifier
+## TSimpleIdentifier - x
 Must Be: xs:string
 Max Length: 480
 Pattern Comment: The below pattern represents the allowed identifiers in ECMA specification
 Pattern: "[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}"
 
 
-## TPropertyType
+## TPropertyType - x
 
 Must Be: EDMSimpleType || TQualifiedName || xs:token
 If xs:token {
@@ -67,36 +66,36 @@ If xs:token {
     Pattern: "[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}"
 }
 
-## TCommandText
+## TCommandText - x
 Must Be: xs:string
 White Space: preserve
 
-## TFunctionImportParameterAndReturnType
+## TFunctionImportParameterAndReturnType - x
 Must Be: EDMSimpleType || TQualifiedName || xs:token
 If xs:token {
     Pattern: "Collection\([^ \t]{1,}(\.[^ \t]{1,}){0,}\)"
 }
 
-## TWrappedFunctionType
+## TWrappedFunctionType - x
 Must Be: TQualifiedName || xs:token
 If xs:token {
     Pattern: "(Collection|Ref)\([^ \t]{1,}(\.[^ \t]{1,}){0,}\)"
 }
 
-## TUnwrappedFunctionType
+## TUnwrappedFunctionType - x
 Must Be: TQualifiedName || xs:token
 If xs:token {
     Pattern: "[^ \t]{1,}(\.[^ \t]{1,}){0,}"
 }
 
-## TAction
+## TAction - x
 Must Be: xs:token
 Must Be: "Cascade" || "None"
 
-## TMultiplicity
+## TMultiplicity - x
 Must Be: xs:token
 Must Be: "0..1"" || "1" || "*"
 
-## TConcurrencyMode
+## TConcurrencyMode - x
 Must Be: xs:token
 Must Be: "None" || "Fixed"
