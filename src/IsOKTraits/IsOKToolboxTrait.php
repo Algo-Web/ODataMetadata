@@ -100,6 +100,14 @@ trait IsOKToolboxTrait
         return $object->isOK($msg);
     }
 
+    protected function isObjectNullOrType($instanceOf, IsOK $object = null)
+    {
+        if (null == $object) {
+            return true;
+        }
+        return $object instanceof $instanceOf;
+    }
+
     protected function isValidArrayOK(array $arr, $instanceOf, &$msg = null, $minCount = -1, $maxCount = -1)
     {
         $result = $this->isValidArray($arr, $instanceOf, $minCount, $maxCount);
