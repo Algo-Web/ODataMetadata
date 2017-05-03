@@ -2,7 +2,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits;
 
-trait TParameterModeTrait
+trait TActionTrait
 {
     public function isTActionValid($string)
     {
