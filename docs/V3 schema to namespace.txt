@@ -1,5 +1,9 @@
 Schema Name                                    Namespace                                     XSD
 Conceptual schema definition language (CSDL)   AlgoWeb\ODataMetadata\MetadataV3\edm          System.Data.Resources.CSDLSchema_3.xsd
+https://algo-web.github.io/ODataMetadata/V3/HtmlDocs/System.Data.Resources.CSDLSchema_3.html
 Store schema definition language (SSDL)        AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl     System.Data.Resources.SSDLSchema_3.xsd
+https://algo-web.github.io/ODataMetadata/V3/HtmlDocs/System.Data.Resources.SSDLSchema_3.html
 Mapping specification language (MSL)           AlgoWeb\ODataMetadata\MetadataV3\mapping\cs   System.Data.Resources.CSMSL_3.xsd
+https://algo-web.github.io/ODataMetadata/V3/HtmlDocs/System.Data.Resources.CSMSL_3.html
 Entity Data Model XML (EDMX)                   AlgoWeb\ODataMetadata\MetadataV3\edmx         Microsoft.Data.Entity.Design.Edmx_3.xsd
+https://algo-web.github.io/ODataMetadata/V3/HtmlDocs/Microsoft.Data.Entity.Design.Edmx_3.html
