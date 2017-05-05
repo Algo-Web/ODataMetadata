@@ -23,16 +23,16 @@ Used By: EntityContainer\AssociationSet - x
 
 
 ## GExpression
-Element: String, optional, Type: TStringConstantExpression
-Element: Binary, optional, Type: TBinaryConstantExpression
-Element: Int, optional, Type: TIntConstantExpression
-Element: Float, optional, Type: TFloatConstantExpression
-Element: Guid, optional, Type: TGuidConstantExpression
-Element: Decimal, optional, Type: TDecimalConstantExpression
-Element: Bool, optional, Type: TBoolConstantExpression
-Element: DateTime, optional, Type: TDateTimeOffsetConstantExpression
-Element: Enum, optional, Type: TEnumConstantExpression
-Element: Path, optional, Type: TPathExpression (down to here wtf? - they're listed as primitive types in code, not objects)
+Element: String, optional, Type: TStringConstantExpression \ Resolved: should be type xs:string
+Element: Binary, optional, Type: TBinaryConstantExpression \ Resolved: should be type xs:hexBinary
+Element: Int, optional, Type: TIntConstantExpression \ Resolved: should be type  xs:integer
+Element: Float, optional, Type: TFloatConstantExpression \ Resolved: should be type xs:double
+Element: Guid, optional, Type: TGuidConstantExpression \ Resolved: should be type TGuidLiteral
+Element: Decimal, optional, Type: TDecimalConstantExpression \ Resolved: should be type xs:decimal
+Element: Bool, optional, Type: TBoolConstantExpression \ Resolved: should be type xs:boolean
+Element: DateTime, optional, Type: TDateTimeOffsetConstantExpression \ Resolved: should be type xs:dateTime
+Element: Enum, optional, Type: TEnumConstantExpression \ Resolved: should be type TQualifiedName
+Element: Path, optional, Type: TPathExpression (down to here wtf? - they're listed as primitive types in code, not objects)  \ Resolved: should be type TQualifiedName
 Element: If, optional, Type: TIfExpression - x
 Element: Record, optional, Type: TRecordExpression - x
 Element: Collection, optional, Type: TCollectionExpression - x
