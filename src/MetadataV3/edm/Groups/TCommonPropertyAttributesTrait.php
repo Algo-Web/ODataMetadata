@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TIsFixedLengthFacetTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TIsUnicodeFacetTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TMaxLengthFacetTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TPrecisionFacetTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TPropertyTypeTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TScaleFacetTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSridFacetTrait;
@@ -18,7 +19,7 @@ trait TCommonPropertyAttributesTrait
 {
     use TSimpleIdentifierTrait, TMaxLengthFacetTrait, TIsFixedLengthFacetTrait, TPrecisionFacetTrait, TScaleFacetTrait,
         TIsUnicodeFacetTrait, TCollationFacetTrait, TSridFacetTrait, TConcurrencyModeTrait, AccessTypeTraits,
-        IsOKToolboxTrait;
+        IsOKToolboxTrait, TPropertyTypeTrait;
 
     /**
      * @property string $name
@@ -402,6 +403,10 @@ trait TCommonPropertyAttributesTrait
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
             $msg = "Name must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isTPropertyTypeValid($this->type)) {
+            $msg = "Type must be a valid TPropertyType";
             return false;
         }
         if (null != $this->nullable && $this->nullable !== boolval($this->nullable)) {

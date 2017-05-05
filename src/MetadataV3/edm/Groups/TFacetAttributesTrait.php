@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Groups;
 
 use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TCollationFacetTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TIsFixedLengthFacetTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TIsUnicodeFacetTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TMaxLengthFacetTrait;
@@ -13,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSridFacetTrait;
 trait TFacetAttributesTrait
 {
     use IsOKToolboxTrait, TMaxLengthFacetTrait, TIsFixedLengthFacetTrait, TPrecisionFacetTrait, TScaleFacetTrait,
-        TIsUnicodeFacetTrait, TSridFacetTrait;
+        TIsUnicodeFacetTrait, TSridFacetTrait, TCollationFacetTrait;
     /**
      * @property boolean $nullable
      */
@@ -50,7 +51,7 @@ trait TFacetAttributesTrait
     private $unicode = null;
 
     /**
-     * @property string $collation
+     * @property TCollationFacet $collation
      */
     private $collation = null;
 
@@ -265,6 +266,10 @@ trait TFacetAttributesTrait
         }
         if (null != $this->defaultValue && !is_string($this->defaultValue)) {
             $msg = "Default value must be a string";
+            return false;
+        }
+        if (null != $this->collation && !$this->isTCollationFacetValid($this->collation)) {
+            $msg = "Collation must be a valid TCollationFacet";
             return false;
         }
         if (null != $this->maxLength && !$this->isTMaxLengthFacetValid($this->maxLength)) {

@@ -24,8 +24,9 @@ trait GExpressionTrait
     private $gExpressionMinimum = -1;
     private $gExpressionMaximum = -1;
 
-    private $gExpressionSimpleFieldNames = ['string', 'binary', 'int', 'float', 'guid', 'decimal', 'bool', 'dateTime',
-        'dateTimeOffset', 'enum', 'path'];
+    private $gExpressionSimpleFieldNames = ['string' => 'string', 'binary' => 'hexBinary', 'int' => 'integer',
+        'float' => 'double', 'guid' => null, 'decimal' => 'decimal', 'bool' => null, 'dateTime' => 'dateTime',
+        'dateTimeOffset' => 'dateTime', 'enum' => null, 'path' => null];
     private $gExpressionObjectFieldTypes = [
         'if' => '\AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType',
         'record' => '\AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType',
@@ -666,7 +667,7 @@ trait GExpressionTrait
     {
         if (-1 < $this->gExpressionMinimum || -1 < $this->gExpressionMaximum) {
             $counter = 0;
-            foreach ($this->gExpressionSimpleFieldNames as $name) {
+            foreach ($this->gExpressionSimpleFieldNames as $name => $type) {
                 $counter += isset($this->$name) ? 1 : 0;
             }
             foreach ($this->gExpressionObjectFieldTypes as $name => $type) {
@@ -679,6 +680,28 @@ trait GExpressionTrait
             if (-1 < $this->gExpressionMaximum && $counter > $this->gExpressionMaximum) {
                 $msg = $counter . " fields not null.  Need maximum of ".$this->gExpressionMaximum;
                 return false;
+            }
+        }
+
+        if (null != $this->guid && !$this->isTGuidLiteralValid($this->guid)) {
+            $msg = "Guid must be a valid TGuidLiteral";
+            return false;
+        }
+
+        if (null != $this->enum && !$this->isTQualifiedNameValid($this->enum)) {
+            $msg = "Enum must be a valid TQualifiedName";
+            return false;
+        }
+
+        if (null != $this->path && !$this->isTQualifiedNameValid($this->path)) {
+            $msg = "Path must be a valid TQualifiedName";
+            return false;
+        }
+
+        foreach ($this->gExpressionSimpleFieldNames as $key => $type) {
+            if (null != $type) {
+                // this bit passes if nothing throws an exception
+                $result = $this->$type($this->$key);
             }
         }
 

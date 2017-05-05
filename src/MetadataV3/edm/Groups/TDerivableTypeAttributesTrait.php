@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 
 trait TDerivableTypeAttributesTrait
 {
-    use TQualifiedNameTrait;
+    use TQualifiedNameTrait, TTypeAttributesTrait;
     /**
      * @property string $baseType
      */
@@ -63,6 +63,9 @@ trait TDerivableTypeAttributesTrait
 
     public function isTDerivableTypeAttributesValid(&$msg)
     {
+        if (!$this->isTTypeAttributesValid($msg)) {
+            return false;
+        }
         if (null != $this->baseType && !$this->isTQualifiedNameValid($this->baseType)) {
             $msg = "Base type must be a valid TQualifiedName";
             return false;

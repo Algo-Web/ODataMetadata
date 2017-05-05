@@ -22,17 +22,17 @@ Used By: TUsing - x
 Used By: EntityContainer\AssociationSet - x
 
 
-## GExpression
-Element: String, optional, Type: TStringConstantExpression \ Resolved: should be type xs:string
-Element: Binary, optional, Type: TBinaryConstantExpression \ Resolved: should be type xs:hexBinary
-Element: Int, optional, Type: TIntConstantExpression \ Resolved: should be type  xs:integer
-Element: Float, optional, Type: TFloatConstantExpression \ Resolved: should be type xs:double
-Element: Guid, optional, Type: TGuidConstantExpression \ Resolved: should be type TGuidLiteral
-Element: Decimal, optional, Type: TDecimalConstantExpression \ Resolved: should be type xs:decimal
-Element: Bool, optional, Type: TBoolConstantExpression \ Resolved: should be type xs:boolean
-Element: DateTime, optional, Type: TDateTimeOffsetConstantExpression \ Resolved: should be type xs:dateTime
-Element: Enum, optional, Type: TEnumConstantExpression \ Resolved: should be type TQualifiedName
-Element: Path, optional, Type: TPathExpression (down to here wtf? - they're listed as primitive types in code, not objects)  \ Resolved: should be type TQualifiedName
+## GExpression - x
+Element: String, optional, Type: TStringConstantExpression - x \ Resolved: should be type xs:string
+Element: Binary, optional, Type: TBinaryConstantExpression - x \ Resolved: should be type xs:hexBinary
+Element: Int, optional, Type: TIntConstantExpression - x \ Resolved: should be type  xs:integer
+Element: Float, optional, Type: TFloatConstantExpression - x \ Resolved: should be type xs:double
+Element: Guid, optional, Type: TGuidConstantExpression - x \ Resolved: should be type TGuidLiteral
+Element: Decimal, optional, Type: TDecimalConstantExpression - x \ Resolved: should be type xs:decimal
+Element: Bool, optional, Type: TBoolConstantExpression - x \ Resolved: should be type xs:boolean
+Element: DateTime, optional, Type: TDateTimeOffsetConstantExpression - x \ Resolved: should be type xs:dateTime
+Element: Enum, optional, Type: TEnumConstantExpression - x \ Resolved: should be type TQualifiedName
+Element: Path, optional, Type: TPathExpression - x (down to here wtf? - they're listed as primitive types in code, not objects)  \ Resolved: should be type TQualifiedName
 Element: If, optional, Type: TIfExpression - x
 Element: Record, optional, Type: TRecordExpression - x
 Element: Collection, optional, Type: TCollectionExpression - x
@@ -88,7 +88,7 @@ Element: FixedLength, optional, Type: TIsFixedLengthFacet - x
 Element: Precision, optional, Type: TPrecisionFacet - x
 Element: Scale, optional, Type: TScaleFacet - x
 Element: Unicode, optional, Type: TIsUnicodeFacet - x
-Element: Collation, optional, Type: TOnAction (wtf?) / Resolved: note issue, Type should be TCollationFacet
+Element: Collation, optional, Type: TOnAction - x (wtf?) / Resolved: note issue, Type should be TCollationFacet
 Element: SRID, optional, Type: TSridFacet - x
 Used By: TCollectionType - x
 Used By: TFunction - x
@@ -104,7 +104,7 @@ Used By: TValueTerm - x
 
 ## TCommonPropertyAttributes - x
 Element: Name, Required, Type: TSimpleIdentifier - x
-Element: Type, Required, Type: TPropertyType (wtf?) / Resolved: TPropertyType is a SimpleType defiend as IsOKTrait the type string should match TPropertyType
+Element: Type, Required, Type: TPropertyType (wtf?) - x / Resolved: TPropertyType is a SimpleType defiend as IsOKTrait the type string should match TPropertyType
 Element: Nullable, Optional, Type: boolean, Default True - x
 Element: DefaultValue, Optional, Type: string - x
 Element: MaxLength, Optional, Type: TMaxLengthFacet - x
@@ -145,7 +145,7 @@ Used By: EntityContainer\FunctionImport - x
 ## TTypeAttributes - x
 Element: Name, Required, Type: TSimpleIdentifier
 Used By: TEnumType - x
-Used By: TDerivableTypeAttributes (wtf?) /  Resolved: TDerivableTypeAttributes must use TTypeAttributes because any derivable type is still a Type
+Used By: TDerivableTypeAttributes - x (wtf?) /  Resolved: TDerivableTypeAttributes must use TTypeAttributes because any derivable type is still a Type
 Used By: TComplexType - x
 
 ## TDerivableTypeAttributes - x
