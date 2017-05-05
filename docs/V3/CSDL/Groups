@@ -88,7 +88,7 @@ Element: FixedLength, optional, Type: TIsFixedLengthFacet - x
 Element: Precision, optional, Type: TPrecisionFacet - x
 Element: Scale, optional, Type: TScaleFacet - x
 Element: Unicode, optional, Type: TIsUnicodeFacet - x
-Element: Collation, optional, Type: TOnAction (wtf?)
+Element: Collation, optional, Type: TOnAction (wtf?) / Resolved: note issue, Type should be TCollationFacet
 Element: SRID, optional, Type: TSridFacet - x
 Used By: TCollectionType - x
 Used By: TFunction - x
@@ -104,7 +104,7 @@ Used By: TValueTerm - x
 
 ## TCommonPropertyAttributes - x
 Element: Name, Required, Type: TSimpleIdentifier - x
-Element: Type, Required, Type: TPropertyType (wtf?)
+Element: Type, Required, Type: TPropertyType (wtf?) / Resolved: TPropertyType is a SimpleType defiend as IsOKTrait the type string should match TPropertyType
 Element: Nullable, Optional, Type: boolean, Default True - x
 Element: DefaultValue, Optional, Type: string - x
 Element: MaxLength, Optional, Type: TMaxLengthFacet - x
@@ -145,7 +145,7 @@ Used By: EntityContainer\FunctionImport - x
 ## TTypeAttributes - x
 Element: Name, Required, Type: TSimpleIdentifier
 Used By: TEnumType - x
-Used By: TDerivableTypeAttributes (wtf?)
+Used By: TDerivableTypeAttributes (wtf?) /  Resolved: TDerivableTypeAttributes must use TTypeAttributes because any derivable type is still a Type
 Used By: TComplexType - x
 
 ## TDerivableTypeAttributes - x
