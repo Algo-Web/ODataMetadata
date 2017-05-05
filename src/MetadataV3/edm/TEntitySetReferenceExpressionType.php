@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 
 /**
  * Class representing TEntitySetReferenceExpressionType
@@ -12,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TEntitySetReferenceExpressionType extends IsOK
 {
-
+    use IsOKToolboxTrait, TQualifiedNameTrait;
     /**
      * @property string $entitySet
      */
@@ -38,5 +40,14 @@ class TEntitySetReferenceExpressionType extends IsOK
     {
         $this->entitySet = $entitySet;
         return $this;
+    }
+    
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTQualifiedNameValid($this->entitySet)) {
+            $msg = "Entity set must be a valid TQualifiedName";
+            return false;
+        }
+        return true;
     }
 }

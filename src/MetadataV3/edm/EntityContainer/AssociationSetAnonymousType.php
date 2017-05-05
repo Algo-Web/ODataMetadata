@@ -3,15 +3,18 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing AssociationSetAnonymousType
  */
 class AssociationSetAnonymousType extends IsOK
 {
-    use GEmptyElementExtensibilityTrait;
+    use IsOKToolboxTrait, GEmptyElementExtensibilityTrait, TSimpleIdentifierTrait, TQualifiedNameTrait;
     /**
      * @property string $name
      */
@@ -136,6 +139,23 @@ class AssociationSetAnonymousType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isTQualifiedNameValid($this->association)) {
+            $msg = "Association must be a valid TQualifiedName";
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->end,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType',
+            $msg,
+            0,
+            2
+        )) {
+            return false;
+        }
         if (!$this->isExtensibilityElementOK($msg)) {
             return false;
         }

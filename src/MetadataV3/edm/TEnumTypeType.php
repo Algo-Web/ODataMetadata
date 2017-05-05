@@ -2,8 +2,11 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
+use AlgoWeb\ODataMetadata\CodeGeneration\AccessTypeTraits;
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TTypeAttributesTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TPropertyTypeTrait;
 
 /**
  * Class representing TEnumTypeType
@@ -13,11 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TTypeAttributesTrait;
  */
 class TEnumTypeType extends IsOK
 {
-    use TTypeAttributesTrait;
-    /**
-     * @property string $name
-     */
-    private $name = null;
+    use IsOKToolboxTrait, TTypeAttributesTrait, TPropertyTypeTrait, AccessTypeTraits;
 
     /**
      * @property boolean $isFlags
@@ -43,28 +42,6 @@ class TEnumTypeType extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType[] $member
      */
     private $member = [];
-
-    /**
-     * Gets as name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Sets a new name
-     *
-     * @param string $name
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
 
     /**
      * Gets as isFlags
@@ -212,6 +189,25 @@ class TEnumTypeType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTPropertyTypeValid($this->underlyingType)) {
+            $msg = "Underlying type must be a valid TPropertyType";
+            return false;
+        }
+        if (!$this->isTPublicOrInternalAccessOK($this->typeAccess)) {
+            $msg = "Type access must be Public or Internal";
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->member,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType',
+            $msg
+        )) {
+            return false;
+        }
+
         if (!$this->isTTypeAttributesValid($msg)) {
             return false;
         }

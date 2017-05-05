@@ -2,7 +2,9 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
+use AlgoWeb\ODataMetadata\Annotations\TGenerationPatternTrait;
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TCommonPropertyAttributesTrait;
 
 /**
@@ -13,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TCommonPropertyAttributesTrait;
  */
 class TEntityPropertyType extends IsOK
 {
-    use TCommonPropertyAttributesTrait;
+    use IsOKToolboxTrait, TCommonPropertyAttributesTrait, TGenerationPatternTrait;
  
     /**
      * @property string $storeGeneratedPattern
@@ -227,6 +229,34 @@ class TEntityPropertyType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTGenerationPatternValid($this->storeGeneratedPattern)) {
+            $msg = "Store generation pattern must be a valid TGenerationPattern";
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->documentation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType',
+            $msg,
+            0,
+            1
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->valueAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->typeAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
+
         if (!$this->isTCommonPropertyAttributesValid($msg)) {
             return false;
         }

@@ -4,6 +4,8 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
+use AlgoWeb\ODataMetadata\StringTraits\XSDTopLevelTrait;
 
 /**
  * Class representing TEnumTypeMemberType
@@ -13,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
  */
 class TEnumTypeMemberType extends IsOK
 {
-    use GEmptyElementExtensibilityTrait;
+    use GEmptyElementExtensibilityTrait, TSimpleIdentifierTrait, XSDTopLevelTrait;
     /**
      * @property string $name
      */
@@ -70,6 +72,12 @@ class TEnumTypeMemberType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            return false;
+        }
+        // this blows up, then we aren't ok
+        $this->integer($this->value);
         if (!$this->isExtensibilityElementOK($msg)) {
             return false;
         }

@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 
 /**
  * Class representing TApplyExpressionType
@@ -12,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TApplyExpressionType extends IsOK
 {
-
+    use IsOKToolboxTrait, TQualifiedNameTrait;
     /**
      * @property string $function
      */
@@ -164,5 +166,35 @@ class TApplyExpressionType extends IsOK
     {
         $this->arguments = $arguments;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->function && !$this->isTQualifiedNameValid($this->function)) {
+            $msg = "Function must be a valid TQualifiedName";
+            return false;
+        }
+
+        if (!$this->isValidArrayOK(
+            $this->appliedFunction,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->arguments,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType',
+            $msg
+        )) {
+            return false;
+        }
+        $count = (0 < count($this->appliedFunction) ? 1 : 0) + (0 < count($this->arguments) ? 1 : 0);
+        if (1 != $count) {
+            $msg = "Exactly one of applied function array and arguments array must be non-empty";
+            return false;
+        }
+
+        return true;
     }
 }

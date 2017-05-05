@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFunctionImportAttributesTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType;
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType;
  */
 class FunctionImportAnonymousType extends IsOK
 {
-    use TFunctionImportAttributesTrait;
+    use IsOKToolboxTrait, TFunctionImportAttributesTrait;
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
@@ -104,7 +105,17 @@ class FunctionImportAnonymousType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
         if (!$this->isTFunctionImportAttributesValid($msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->parameter,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType',
+            $msg
+        )) {
             return false;
         }
         return true;

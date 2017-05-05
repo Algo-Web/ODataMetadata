@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 
 /**
  * Class representing TDocumentationType
@@ -14,7 +15,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TDocumentationType extends IsOK
 {
-
+    use IsOKToolboxTrait;
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType $summary
      */
@@ -67,5 +68,16 @@ class TDocumentationType extends IsOK
     {
         $this->longDescription = $longDescription;
         return $this;
+    }
+    
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isObjectNullOrOK($this->summary, $msg)) {
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->longDescription, $msg)) {
+            return false;
+        }
+        return true;
     }
 }

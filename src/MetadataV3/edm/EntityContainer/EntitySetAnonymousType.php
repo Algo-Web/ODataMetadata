@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TEntitySetAttributesTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType;
@@ -13,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType;
  */
 class EntitySetAnonymousType extends IsOK
 {
-    use TEntitySetAttributesTrait;
+    use IsOKToolboxTrait, TEntitySetAttributesTrait;
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[] $documentation
@@ -200,6 +201,29 @@ class EntitySetAnonymousType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isValidArrayOK(
+            $this->documentation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType',
+            $msg,
+            0,
+            1
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->valueAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->typeAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
         if (!$this->isTEntitySetAttributesOK($msg)) {
             return false;
         }

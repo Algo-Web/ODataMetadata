@@ -3,12 +3,19 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionReturnTypeTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType;
 
 /**
  * Class representing ParameterAnonymousType
  */
 class ParameterAnonymousType extends IsOK
 {
+    use IsOKToolboxTrait, TWrappedFunctionReturnTypeTrait;
+    //Parameter is used to complete function signature: type only.
 
     /**
      * @property string $type
@@ -18,17 +25,17 @@ class ParameterAnonymousType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType[] $collectionType
      */
-    private $collectionType = array();
+    private $collectionType = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType[] $referenceType
      */
-    private $referenceType = array();
+    private $referenceType = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      */
-    private $rowType = null;
+    private $rowType = [];
 
     /**
      * Gets as type
@@ -218,5 +225,51 @@ class ParameterAnonymousType extends IsOK
     {
         $this->rowType = $rowType;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->type && !$this->isTWrappedFunctionTypeValid($this->type)) {
+            $msg = "Type must be a valid TWrappedFunctionType";
+            return false;
+        }
+
+        if (!$this->isValidArrayOK(
+            $this->collectionType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType',
+            $msg,
+            0,
+            1
+        )) {
+            return false;
+        }
+
+        if (!$this->isValidArrayOK(
+            $this->referenceType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType',
+            $msg,
+            0,
+            1
+        )) {
+            return false;
+        }
+
+        if (!$this->isValidArrayOK(
+            $this->rowType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
+            $msg,
+            0,
+            1
+        )) {
+            return false;
+        }
+
+        $count = count($this->rowType) + count($this->referenceType) + count($this->collectionType);
+        if (1 > $count) {
+            $msg = "Only one component array can be non-empty, and that array must have no more than 1 element";
+            return false;
+        }
+
+        return true;
     }
 }

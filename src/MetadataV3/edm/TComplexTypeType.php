@@ -2,6 +2,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
+use AlgoWeb\ODataMetadata\CodeGeneration\AccessTypeTraits;
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TTypeAttributesTrait;
 
@@ -13,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TTypeAttributesTrait;
  */
 class TComplexTypeType extends IsOK
 {
-    use TTypeAttributesTrait;
+    use TTypeAttributesTrait, AccessTypeTraits;
 
     /**
      * @property string $typeAccess
@@ -254,6 +255,35 @@ class TComplexTypeType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if ($this->isTPublicOrInternalAccessOK($this->typeAccess)) {
+            $msg = "Type access must be Public or Internal";
+            return false;
+        }
+        if (null != $this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->property,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->valueAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->typeAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
+
         if (!$this->isTTypeAttributesValid($msg)) {
             return false;
         }

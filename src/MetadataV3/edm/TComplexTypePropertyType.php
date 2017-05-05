@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TCommonPropertyAttributesTrait;
 
 /**
@@ -13,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TCommonPropertyAttributesTrait;
  */
 class TComplexTypePropertyType extends IsOK
 {
-    use TCommonPropertyAttributesTrait;
+    use IsOKToolboxTrait, TCommonPropertyAttributesTrait;
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[] $documentation
@@ -200,6 +201,34 @@ class TComplexTypePropertyType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isValidArrayOK(
+            $this->documentation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->valueAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->typeAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
+        $count = count($this->documentation) + count($this->valueAnnotation) + count($this->typeAnnotation);
+        if (0 == $count) {
+            $msg = "At least one of documentation array, value annotation array and type annotation array must"
+                   ."have at least one element";
+            return false;
+        }
+        
         if (!$this->isTCommonPropertyAttributesValid($msg)) {
             return false;
         }

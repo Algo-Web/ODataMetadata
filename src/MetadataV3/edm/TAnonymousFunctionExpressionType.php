@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 
 /**
@@ -13,17 +14,17 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
  */
 class TAnonymousFunctionExpressionType extends IsOK
 {
-    use GExpressionTrait;
+    use IsOKToolboxTrait, GExpressionTrait;
     
     public function __construct()
     {
-        $this->gExpressionMaximum = 1;
+        $this->gExpressionMaximum = (0 == count($this->parameters)) ? 1 : 0 ;
     }
     
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameters
      */
-    private $parameters = null;
+    private $parameters = [];
 
     /**
      * Adds as parameter
@@ -83,6 +84,13 @@ class TAnonymousFunctionExpressionType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isValidArrayOK(
+            $this->parameters,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType',
+            $msg
+        )) {
+            return false;
+        }
         if (!$this->isGExpressionValid($msg)) {
             return false;
         }

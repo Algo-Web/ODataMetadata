@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 
 /**
  * Class representing TConstraintType
@@ -12,7 +13,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TConstraintType extends IsOK
 {
-
+    use IsOKToolboxTrait;
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      */
@@ -92,5 +93,20 @@ class TConstraintType extends IsOK
     {
         $this->dependent = $dependent;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null == $this->documentation || !$this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
+        if (null == $this->principal || !$this->isObjectNullOrOK($this->principal, $msg)) {
+            return false;
+        }
+        if (null == $this->dependent || !$this->isObjectNullOrOK($this->dependent, $msg)) {
+            return false;
+        }
+
+        return true;
     }
 }

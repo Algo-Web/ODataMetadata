@@ -2,6 +2,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
+use AlgoWeb\ODataMetadata\CodeGeneration\AccessTypeTraits;
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TDerivableTypeAttributesTrait;
 
@@ -13,16 +14,11 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TDerivableTypeAttributesTrait;
  */
 class TEntityTypeType extends IsOK
 {
-    use TDerivableTypeAttributesTrait;
-    /**
-     * @property string $name
-     */
-    private $name = null;
-
+    use TDerivableTypeAttributesTrait, AccessTypeTraits;
     /**
      * @property boolean $openType
      */
-    private $openType = null;
+    private $openType = false;
 
     /**
      * @property string $typeAccess
@@ -58,28 +54,6 @@ class TEntityTypeType extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      */
     private $typeAnnotation = [];
-
-    /**
-     * Gets as name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Sets a new name
-     *
-     * @param string $name
-     * @return self
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
 
     /**
      * Gets as openType
@@ -429,6 +403,49 @@ class TEntityTypeType extends IsOK
     
     public function isOK(&$msg = null)
     {
+        if (!$this->isTPublicOrInternalAccessOK($this->typeAccess)) {
+            $msg = "Type access must be Public or Internal";
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->key,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType',
+            $msg
+        )) {
+            return false;
+        }
+
+        if (!$this->isValidArrayOK(
+            $this->property,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->navigationProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->valueAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->typeAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
         if (!$this->isTDerivableTypeAttributesValid($msg)) {
             return false;
         }

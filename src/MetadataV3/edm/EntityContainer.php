@@ -2,17 +2,20 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
+use AlgoWeb\ODataMetadata\CodeGeneration\AccessTypeTraits;
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing EntityContainer
  */
 class EntityContainer extends IsOK
 {
-
+    use IsOKToolboxTrait, TSimpleIdentifierTrait, AccessTypeTraits;
     /**
      * @property string $name
      */
@@ -42,18 +45,18 @@ class EntityContainer extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType[]
      * $functionImport
      */
-    private $functionImport = array();
+    private $functionImport = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType[] $entitySet
      */
-    private $entitySet = array();
+    private $entitySet = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType[]
      * $associationSet
      */
-    private $associationSet = array();
+    private $associationSet = [];
 
     /**
      * Gets as name
@@ -335,5 +338,50 @@ class EntityContainer extends IsOK
     {
         $this->associationSet = $associationSet;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->extends && !$this->isTSimpleIdentifierValid($this->extends)) {
+            $msg = "Extends must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->typeAccess && !($this->isTPublicOrInternalAccessOK($this->typeAccess))) {
+            $msg = "Type access must be Public or Internal";
+            return false;
+        }
+        if (null != $this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
+
+        if (!$this->isValidArrayOK(
+            $this->functionImport,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType',
+            $msg
+        )) {
+            return false;
+        }
+
+        if (!$this->isValidArrayOK(
+            $this->entitySet,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType',
+            $msg
+        )) {
+            return false;
+        }
+
+        if (!$this->isValidArrayOK(
+            $this->associationSet,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType',
+            $msg
+        )) {
+            return false;
+        }
+
+        return true;
     }
 }

@@ -4,6 +4,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
 
 /**
  * Class representing TCollectionTypeType
@@ -13,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
  */
 class TCollectionTypeType extends IsOK
 {
-    use TFacetAttributesTrait;
+    use TFacetAttributesTrait, TUnwrappedFunctionTypeTrait;
     /**
      * @property string $elementType
      */
@@ -32,7 +33,7 @@ class TCollectionTypeType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      */
-    private $rowType = null;
+    private $rowType = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeRefType $typeRef
@@ -185,9 +186,33 @@ class TCollectionTypeType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (null != $this->elementType && !$this->isTUnwrappedFunctionTypeValid($this->elementType)) {
+            $msg = "Element type must be a valid TUnwrappedFunction";
+            return false;
+        }
         if (!$this->isTFacetAttributesTraitValid($msg)) {
             return false;
         }
+        if (!$this->isObjectNullOrOK($this->collectionType, $msg)) {
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->referenceType, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArray($this->rowType, '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType', $msg)) {
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->typeRef, $msg)) {
+            return false;
+        }
+
+        $count = (isset($this->collectionType) ? 1 : 0) + (isset($this->referenceType) ? 1 : 0)
+                 + (0 < count($this->rowType) ? 1 : 0) + (isset($this->typeRef) ? 1 : 0);
+        if (1 != $count) {
+            $msg = "Exactly one of collection type and reference type must not be null";
+            return false;
+        }
+
         return true;
     }
 }

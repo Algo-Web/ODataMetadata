@@ -3,7 +3,11 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TOperationsTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TMultiplicityTrait;
 
 /**
  * Class representing TAssociationEndType
@@ -13,7 +17,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TOperationsTrait;
  */
 class TAssociationEndType extends IsOK
 {
-    use TOperationsTrait;
+    use IsOKToolboxTrait, TOperationsTrait, TQualifiedNameTrait, TSimpleIdentifierTrait, TMultiplicityTrait;
     /**
      * @property string $type
      */
@@ -124,6 +128,22 @@ class TAssociationEndType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTQualifiedNameValid($this->type)) {
+            $msg = "Type must be a valid TQualifiedName";
+            return false;
+        }
+        if (null != $this->role && !$this->isTSimpleIdentifierValid($this->role)) {
+            $msg = "Role must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->multiplicity && !$this->isTMultiplicityValid($this->multiplicity)) {
+            $msg = "Multiplicity must be a valid TMultiplicity";
+            return false;
+        }
+        if (null != $this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
+
         if (!$this->isTOperationsOK($msg)) {
             return false;
         }

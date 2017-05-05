@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType;
 
 /**
@@ -10,11 +11,11 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType;
  */
 class ParametersAnonymousType extends IsOK
 {
-
+    use IsOKToolboxTrait;
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameter
      */
-    private $parameter = array();
+    private $parameter = [];
 
     /**
      * Adds as parameter
@@ -70,5 +71,14 @@ class ParametersAnonymousType extends IsOK
     {
         $this->parameter = $parameter;
         return $this;
+    }
+    
+    public function isOK(&$msg = null)
+    {
+        return !$this->isValidArrayOK(
+            $this->parameter,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType',
+            $msg
+        );
     }
 }

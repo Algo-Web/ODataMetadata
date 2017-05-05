@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TAssociationType
@@ -12,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TAssociationType extends IsOK
 {
-
+    use IsOKToolboxTrait, TSimpleIdentifierTrait;
     /**
      * @property string $name
      */
@@ -26,7 +28,7 @@ class TAssociationType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType[] $end
      */
-    private $end = array();
+    private $end = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType $referentialConstraint
@@ -153,5 +155,30 @@ class TAssociationType extends IsOK
     {
         $this->referentialConstraint = $referentialConstraint;
         return $this;
+    }
+    
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
+        if (null != $this->isObjectNullOrOK($this->referentialConstraint, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->end,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType',
+            $msg,
+            2,
+            2
+        )) {
+            return false;
+        }
+        
+        return true;
     }
 }

@@ -3,6 +3,9 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TAnnotationsType
@@ -12,7 +15,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TAnnotationsType extends IsOK
 {
-
+    use IsOKToolboxTrait, TQualifiedNameTrait, TSimpleIdentifierTrait;
     /**
      * @property string $target
      */
@@ -26,12 +29,12 @@ class TAnnotationsType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      */
-    private $valueAnnotation = array();
+    private $valueAnnotation = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      */
-    private $typeAnnotation = array();
+    private $typeAnnotation = [];
 
     /**
      * Gets as target
@@ -187,5 +190,33 @@ class TAnnotationsType extends IsOK
     {
         $this->typeAnnotation = $typeAnnotation;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTQualifiedNameValid($this->target)) {
+            $msg = "Target must be a valid TQualifiedName";
+            return false;
+        }
+        if (null != $this->qualifier && !$this->isTSimpleIdentifierValid($this->qualifier)) {
+            $msg = "Qualifier must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isValidArrayOk(
+            $this->valueAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOk(
+            $this->typeAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
+            $msg
+        )) {
+            return false;
+        }
+
+        return true;
     }
 }

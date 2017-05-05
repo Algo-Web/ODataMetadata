@@ -3,6 +3,9 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
 
 /**
@@ -10,7 +13,11 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
  */
 class EndAnonymousType extends IsOK
 {
-
+    //1. The number of Ends has to match with ones defined in AssociationType
+    //2. Value for attribute Name should match the defined ones and EntitySet should be of the
+    //   defined Entity Type in AssociationType
+    
+    use IsOKToolboxTrait, TSimpleIdentifierTrait, GEmptyElementExtensibilityTrait;
     /**
      * @property string $role
      */
@@ -20,11 +27,6 @@ class EndAnonymousType extends IsOK
      * @property string $entitySet
      */
     private $entitySet = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
-     */
-    private $documentation = null;
 
     /**
      * Gets as role
@@ -70,25 +72,20 @@ class EndAnonymousType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as documentation
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
-     */
-    public function getDocumentation()
+    public function isOK(&$msg = null)
     {
-        return $this->documentation;
-    }
+        if (!$this->isTSimpleIdentifierValid($this->entitySet)) {
+            $msg = "Entity set must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->role && !$this->isTSimpleIdentifierValid($this->role)) {
+            $msg = "Role must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isExtensibilityElementOK($msg)) {
+            return false;
+        }
 
-    /**
-     * Sets a new documentation
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
-     * @return self
-     */
-    public function setDocumentation(TDocumentationType $documentation)
-    {
-        $this->documentation = $documentation;
-        return $this;
+        return true;
     }
 }
