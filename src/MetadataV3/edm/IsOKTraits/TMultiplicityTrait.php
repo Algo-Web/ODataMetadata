@@ -2,7 +2,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits;
 
-trait TMultiplicityModeTrait
+trait TMultiplicityTrait
 {
     public function isTMultiplicityValid($string)
     {

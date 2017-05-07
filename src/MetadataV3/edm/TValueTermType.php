@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionReturnTypeTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionTypeTrait;
 
 /**
  * Class representing TValueTermType
@@ -21,7 +21,7 @@ class TValueTermType extends IsOK
         GExpressionTrait,
         TQualifiedNameTrait,
         TSimpleIdentifierTrait,
-        TWrappedFunctionReturnTypeTrait;
+        TWrappedFunctionReturnTrait;
 
     public function __construct()
     {

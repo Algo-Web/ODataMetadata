@@ -4,7 +4,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionReturnTypeTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionTypeTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType;
@@ -14,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType;
  */
 class ParameterAnonymousType extends IsOK
 {
-    use IsOKToolboxTrait, TWrappedFunctionReturnTypeTrait;
+    use IsOKToolboxTrait, TWrappedFunctionTypeTrait;
     //Parameter is used to complete function signature: type only.
 
     /**

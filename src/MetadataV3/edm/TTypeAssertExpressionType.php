@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionReturnTypeTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionTypeTrait;
 
 /**
  * Class representing TTypeAssertExpressionType
@@ -15,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionReturnTypeTr
  */
 class TTypeAssertExpressionType extends IsOK
 {
-    use IsOKToolboxTrait, TFacetAttributesTrait, TWrappedFunctionReturnTypeTrait;
+    use IsOKToolboxTrait, TFacetAttributesTrait, TWrappedFunctionTypeTrait;
     /**
      * @property string $type
      */

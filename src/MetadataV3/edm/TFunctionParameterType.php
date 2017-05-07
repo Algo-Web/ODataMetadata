@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionReturnTypeTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionTypeTrait;
 
 /**
  * Class representing TFunctionParameterType
@@ -16,7 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionReturnTypeTr
  */
 class TFunctionParameterType extends IsOK
 {
-    use IsOKToolboxTrait, TFacetAttributesTrait, TSimpleIdentifierTrait, TWrappedFunctionReturnTypeTrait;
+    use IsOKToolboxTrait, TFacetAttributesTrait, TSimpleIdentifierTrait, TWrappedFunctionTypeTrait;
     /**
      * @property string $name
      */
