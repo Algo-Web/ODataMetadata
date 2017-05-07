@@ -5,6 +5,8 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TValueAnnotationType
@@ -14,7 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
  */
 class TValueAnnotationType extends IsOK
 {
-    use GInlineExpressionsTrait, GExpressionTrait;
+    use GInlineExpressionsTrait, GExpressionTrait, TSimpleIdentifierTrait, TQualifiedNameTrait;
     /**
      * @property string $term
      */
@@ -28,6 +30,7 @@ class TValueAnnotationType extends IsOK
     public function __construct()
     {
         $this->gExpressionMaximum = 1;
+        $this->gExpressionMinimum = 1;
     }
     
     /**
@@ -76,6 +79,14 @@ class TValueAnnotationType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTQualifiedNameValid($this->term)) {
+            $msg = "Term must be a valid TQualifiedName";
+            return false;
+        }
+        if (null != $this->qualifier && !$this->isTSimpleIdentifierValid($this->qualifier)) {
+            $msg = "Qualifier must be a valid TSimpleIdentifier";
+            return false;
+        }
         if (!$this->isGInlineExpressionsValid($msg)) {
             return false;
         }

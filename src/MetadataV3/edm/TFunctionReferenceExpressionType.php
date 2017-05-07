@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 
 /**
  * Class representing TFunctionReferenceExpressionType
@@ -12,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TFunctionReferenceExpressionType extends IsOK
 {
-
+    use IsOKToolboxTrait, TQualifiedNameTrait;
     /**
      * @property string $function
      */
@@ -23,7 +25,7 @@ class TFunctionReferenceExpressionType extends IsOK
      * \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
      * $parameter
      */
-    private $parameter = array();
+    private $parameter = [];
 
     /**
      * Gets as function
@@ -104,5 +106,22 @@ class TFunctionReferenceExpressionType extends IsOK
     {
         $this->parameter = $parameter;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTQualifiedNameValid($this->function)) {
+            $msg = "Function must be a valid TQualifiedName";
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->function,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType',
+            $msg,
+            1
+        )) {
+            return false;
+        }
+        return true;
     }
 }

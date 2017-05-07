@@ -3,7 +3,9 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TActionTrait;
 
 /**
  * Class representing TOnActionType
@@ -13,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
  */
 class TOnActionType extends IsOK
 {
-    use GEmptyElementExtensibilityTrait;
+    use IsOKToolboxTrait, GEmptyElementExtensibilityTrait, TActionTrait;
     /**
      * @property string $action
      */
@@ -43,6 +45,10 @@ class TOnActionType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTActionValid($this->action)) {
+            $msg = "Action must be a valid TAction";
+            return false;
+        }
         if (!$this->isExtensibilityElementOK($msg)) {
             return false;
         }

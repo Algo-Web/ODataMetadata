@@ -3,8 +3,10 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TPropertyValueType
@@ -14,7 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
  */
 class TPropertyValueType extends IsOK
 {
-    use GInlineExpressionsTrait, GExpressionTrait;
+    use IsOKToolboxTrait, GInlineExpressionsTrait, GExpressionTrait, TSimpleIdentifierTrait;
     /**
      * @property string $property
      */
@@ -50,6 +52,10 @@ class TPropertyValueType extends IsOK
     
     public function isOK(&$msg = null)
     {
+        if (!$this->isTSimpleIdentifierValid($this->property)) {
+            $msg = "Property must be a valid TSimpleIdentifier";
+            return false;
+        }
         if (!$this->isGInlineExpressionsValid($msg)) {
             return false;
         }

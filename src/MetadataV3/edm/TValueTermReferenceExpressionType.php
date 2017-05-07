@@ -4,6 +4,8 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TValueTermReferenceExpressionType
@@ -13,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
  */
 class TValueTermReferenceExpressionType extends IsOK
 {
-    use GExpressionTrait;
+    use GExpressionTrait, TQualifiedNameTrait, TSimpleIdentifierTrait;
     /**
      * @property string $term
      */
@@ -32,6 +34,12 @@ class TValueTermReferenceExpressionType extends IsOK
     public function getTerm()
     {
         return $this->term;
+    }
+
+    public function __construct()
+    {
+        $this->gExpressionMaximum = 1;
+        $this->gExpressionMinimum = 1;
     }
 
     /**
@@ -70,6 +78,14 @@ class TValueTermReferenceExpressionType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTQualifiedNameValid($this->term)) {
+            $msg = "Term must be a valid TQualifiedName";
+            return false;
+        }
+        if (null != $this->qualifier && !$this->isTSimpleIdentifierValid($this->qualifier)) {
+            $msg = "Qualifier must be a valid TSimpleIdentifier";
+            return false;
+        }
         if (!$this->isGExpressionValid($msg)) {
             return false;
         }

@@ -5,6 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
 
 /**
  * Class representing TTypeRefType
@@ -15,7 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
 class TTypeRefType extends IsOK
 {
     use GEmptyElementExtensibilityTrait;
-    use TFacetAttributesTrait;
+    use TFacetAttributesTrait, TUnwrappedFunctionTypeTrait;
     /**
      * @property string $type
      */
@@ -45,6 +46,10 @@ class TTypeRefType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTUnwrappedFunctionTypeValid($this->type)) {
+            $msg = "Type must be a valid TUnwrappedFunctionType";
+            return false;
+        }
         if (!$this->isExtensibilityElementOK($msg)) {
             return false;
         }

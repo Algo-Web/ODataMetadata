@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TPropertyRefType
@@ -12,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TPropertyRefType extends IsOK
 {
-
+    use IsOKToolboxTrait, TSimpleIdentifierTrait;
     /**
      * @property string $name
      */
@@ -38,5 +40,14 @@ class TPropertyRefType extends IsOK
     {
         $this->name = $name;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TSimpleIdentifierValid";
+            return false;
+        }
+        return true;
     }
 }

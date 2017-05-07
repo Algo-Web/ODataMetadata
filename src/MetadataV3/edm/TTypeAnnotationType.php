@@ -3,7 +3,10 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TTypeAnnotationType
@@ -13,7 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
  */
 class TTypeAnnotationType extends IsOK
 {
-    use GInlineExpressionsTrait;
+    use IsOKToolboxTrait, GInlineExpressionsTrait, TQualifiedNameTrait, TSimpleIdentifierTrait;
     /**
      * @property string $term
      */
@@ -131,7 +134,22 @@ class TTypeAnnotationType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTQualifiedNameValid($this->term)) {
+            $msg = "Term must be a valid TQualifiedName";
+            return false;
+        }
+        if (null != $this->qualifier && !$this->isTSimpleIdentifierValid($this->qualifier)) {
+            $msg = "Qualifier must be a valid TSimpleIdentifier";
+            return false;
+        }
         if (!$this->isGInlineExpressionsValid($msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->propertyValue,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType',
+            $msg
+        )) {
             return false;
         }
 

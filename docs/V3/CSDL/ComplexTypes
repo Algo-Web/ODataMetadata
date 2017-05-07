@@ -1,182 +1,182 @@
 
 
-##TEnumConstantExpression
+##TEnumConstantExpression - superseded by GExpressionTrait
 Must Be TQualifiedName
 
-#TEnumTypeMember
-Uses Group GEmptyElementExtensibility, Max 1
-Element: Name, Required, Type: TSimpleIdentifier
-Element:Value, Optional, Type: xs:long
+#TEnumTypeMember - x
+Uses Group GEmptyElementExtensibility, Max 1 - x
+Element: Name, Required, Type: TSimpleIdentifier - x
+Element:Value, Optional, Type: xs:long - x
 
-## TFunction
-Element: Documentation, Optional, Type: TDocumentation
-Leement: Parameter, Optional, Type: TFunctionParameter
-Element: DefiningExpression, Optional, Type: TCommandText
-Element: ReturnType, Optional, Type: TFunctionReturnType
+## TFunction - x
+Element: Name, Required, Type: TSimpleIdentifier - x
+Element: Documentation, Optional, Type: TDocumentation - x
+Leement: Parameter, Optional, Type: TFunctionParameter - x
+Element: DefiningExpression, Optional, Type: TCommandText - x
+Element: ReturnType, Optional, Type: TFunctionReturnType - x
 
-## TFunctionImportParameter
-Uses Group GEmptyElementExtensibility Max 1
-Uses Group TFunctionImportParameterAttributes
+## TFunctionImportParameter - x
+Uses Group GEmptyElementExtensibility Max 1 - x
+Uses Group TFunctionImportParameterAttributes - x
 
-## TFunctionImportReturnType
-Element: EntitySet, Optional, Type: TOperand
-Element: Type, Optional, Type: TFunctionImportParameterAndReturnType
-Element: EntitySet, Optional, Type: TSimpleIdentifier
+## TFunctionImportReturnType - x
+Element: EntitySet, Optional, Type: TOperand - x
+Element: EntitySetAttribute, Optional, Type: TSimpleIdentifier - x
+Element: Type, Optional, Type: TFunctionImportParameterAndReturnType - x
 
-## TFunctionParameter
-element: CollectionType, Optional, Type: TCollectionType
-Element: ReferenceType, Optioanl, Type: TReferenceType
-Element: RowType, Optional, Type: TRowType
-Condition:: only 1 of the last 3 elements may have a value at any given
-time.
-Element: Name, Required, Type: TSimpleIdentifier
-Elenent: Type, Optional, Type: TWrappedFunctionType
-USes Group: TFacetAttributes
+## TFunctionParameter - x
+element: CollectionType, Optional, Type: TCollectionType - x
+Element: ReferenceType, Optional, Type: TReferenceType - x
+Element: RowType, Optional, Type: TRowType - x
+Condition:: at most 1 of the last 3 elements may have a value at any given time.
+Element: Name, Required, Type: TSimpleIdentifier - x
+Elenent: Type, Optional, Type: TWrappedFunctionType - x
+Uses Group: TFacetAttributes - x
 
-## TFunctionReferenceExpression
-Element: Parameter, optional, Min 1,
+## TFunctionReferenceExpression - x
+Element: Parameter, optional, Min 1, - x
 Type:TFunctionReferenceExpression\Parameter
-Element: Function, Required, Type: TQualifiedName
+Element: Function, Required, Type: TQualifiedName - x
 
-###TFunctionReferenceExpression\Parameter
+###TFunctionReferenceExpression\Parameter - x
 Comment: <-- Parameter is used to complete function signature: type only.
 -->
+Element: CollectionType, optional, Type: TCollectionType - x
+Element: ReferenceType, Optional, Type: TReferenceType - x
+Element: RowType, Optional, Type: TRowType - x
+Condition: at most one of the last 3 elements may have value at any given time. - x
+Element: Type, Optional, Type: TWrappedFunctionType - x
+
+## TFunctionReturnType (wtf?)
 Element: CollectionType, optional, Type: TCollectionType
 Element: ReferenceType, Optional, Type: TReferenceType
 Element: RowType, Optional, Type: TRowType
-Condition: only one of the last 3 elements may have value at any given time.
+Condition: at most one of the last 3 elements may have value at any given time.
 Element: Type, Optional, Type: TWrappedFunctionType
 
-## TFunctionReturnType
-Element: CollectionType, optional, Type: TCollectionType
-Element: ReferenceType, Optional, Type: TReferenceType
-Element: RowType, Optional, Type: TRowType
-Condition: only one of the last 3 elements may have value at any given time.
-Element: Type, Optional, Type: TWrappedFunctionType
-
-## TIfExpression
+## TIfExpression - x
 Comment: <-- Test, IfTrue, IfFalse -->
-Uses Group: GExpression, Min:3, Max 3.
+Uses Group: GExpression, Min:3, Max 3. - x
 
-## TNavigationProperty
-uses group: GEmptyElementExtensibility
-Element:Name, Required, Type: TSimpleIdentifier
-Element: Relationship, Required, Type: TQualifiedName
-element: ToRole, Required, TSimpleIdentifier
-element: FromRole, Required, TSimpleIdentifier
-element: GetterAccess, Optional, Type: TAccess
-element: SetterAccess, Optional, Type: TAccess
+## TNavigationProperty - x
+uses group: GEmptyElementExtensibility - x
+Element:Name, Required, Type: TSimpleIdentifier - x
+Element: Relationship, Required, Type: TQualifiedName - x
+element: ToRole, Required, TSimpleIdentifier - x
+element: FromRole, Required, TSimpleIdentifier - x
+element: GetterAccess, Optional, Type: TAccess - x
+element: SetterAccess, Optional, Type: TAccess - x
 
-## TOnAction
-Uses Group: GEmptyElementExtensibility
-Element: Action, Required, Type: TAction
+## TOnAction - x
+Uses Group: GEmptyElementExtensibility - x
+Element: Action, Required, Type: TAction - x
 
-## TOperand
-uses group: GExpression, Max:1
-Uses Group: GInlineExpressions
+## TOperand - x
+uses group: GExpression, Max:1 - x
+Uses Group: GInlineExpressions - x
 
-## TParameterReferenceExpression
-Element: Name, Required, Type: TSimpleIdentifier
+## TParameterReferenceExpression - x
+Element: Name, Required, Type: TSimpleIdentifier - x
 
-## TProperty
-Element: CollectionType, optional, Type: TCollectionType
-Element: ReferenceType, optional, Type: TReferenceType
-Element: RowType, optional, Type: TRowType
-Condition: only 1 of the last 3 may have value at any given time
-Element:Name, Required, Type: TSimpleIdentifier
-Element:Type, Optional, Type: TWrappedFunctionType
-Uses Group: TFacetAttributes
+## TProperty - x
+Element: CollectionType, optional, Type: TCollectionType - x
+Element: ReferenceType, optional, Type: TReferenceType - x
+Element: RowType, optional, Type: TRowType - x
+Condition: at most 1 of the last 3 may have value at any given time - x
+Element:Name, Required, Type: TSimpleIdentifier - x
+Element:Type, Optional, Type: TWrappedFunctionType - x
+Uses Group: TFacetAttributes - x
 
-## TPropertyRef
-Element: Name, Required, Type: TSimpleIdentifier
+## TPropertyRef - x
+Element: Name, Required, Type: TSimpleIdentifier - x
 
-#TPropertyReferenceExpression
-Uses Group: GExpression, Min: 1, Max: 1
-Element: Property, Required, Type: TSimpleIdentifier
+#TPropertyReferenceExpression - x
+Uses Group: GExpression, Min: 1, Max: 1 - x
+Element: Property, Required, Type: TSimpleIdentifier - x
 
-## TPropertyValue
-Uses Group: GExpression, Min: 1, Max: 1
-Uses Group: GInlineExpressions
-Element: Property, Required, Type: TSimpleIdentifier
+## TPropertyValue - x
+Uses Group: GExpression, Min: 1, Max: 1 - x
+Uses Group: GInlineExpressions - x
+Element: Property, Required, Type: TSimpleIdentifier - x
 
-## TRecordExpression
-Element: PropertyValue, Optional, Type: TPropertyValue
-Element: Type, Optional, Type: TUnwrappedFunctionType
+## TRecordExpression - x
+Element: PropertyValue, Optional, Type: TPropertyValue - x
+Element: Type, Optional, Type: TUnwrappedFunctionType - x
 
-## TReferenceType
-Uses Group: GEmptyElementExtensibility, Min:0, Max: 1
-Element: Type, Required, Type: TUnwrappedFunctionType
+## TReferenceType - x
+Uses Group: GEmptyElementExtensibility, Min:0, Max: 1 - x
+Element: Type, Required, Type: TUnwrappedFunctionType - x
 
-## TReferentialConstraintRoleElement
-element: PropertyRef, Min: 1, Type: TPropertyRef
-Element: Role, Required, Type: TSimpleIdentifier
+## TReferentialConstraintRoleElement - x
+element: PropertyRef, Min: 1, Type: TPropertyRef - x
+Element: Role, Required, Type: TSimpleIdentifier - x
 
-## TRowType
+## TRowType - superseded?
 Element: Property, Optional, Type: TProperty
 
-## TSchema
-Uses Group: GSchemaBodyElements
-Element: Namespace, Required, Type: TNamespaceName
-Element: NamespaceUri, Optional, Type: xs:anyURL
-element: Alias, Optional, Type: TSimpleIdentifier
+## TSchema - x
+Uses Group: GSchemaBodyElements - x
+Element: Namespace, Required, Type: TNamespaceName - x
+Element: NamespaceUri, Optional, Type: xs:anyURL - x
+element: Alias, Optional, Type: TSimpleIdentifier - x
 
-## TTypeAnnotation
-Element: PropertyValue, Optional, Type: TPropertyValue
-element: Term, Required, Type: TQualifiedName
-Element: Qualifier, Optional, Type: TSimpleIdentifier
-Uses Group: GInlineExpressions
+## TTypeAnnotation - x
+Element: PropertyValue, Optional, Type: TPropertyValue - x
+element: Term, Required, Type: TQualifiedName - x
+Element: Qualifier, Optional, Type: TSimpleIdentifier - x
+Uses Group: GInlineExpressions - x
 
-## TTypeAssertExpression
-Element: CollectionType, optional, Type: TCollectionType
-Element: ReferenceType, optional, Type: TReferenceType
-Element: RowType, optional, Type: TRowType
-Condition: only 1 of the last 3 may have value at any given time
-Element: Operand, Required, Type: TOperand
-element: Type, Optional, Type: TWrappedFunctionType
-Uses Group: TFacetAttributes
+## TTypeAssertExpression - x
+Element: CollectionType, optional, Type: TCollectionType - x
+Element: ReferenceType, optional, Type: TReferenceType - x
+Element: RowType, optional, Type: TRowType - x
+Condition: at most 1 of the last 3 may have value at any given time - x
+Element: Operand, Required, Type: TOperand - x
+element: Type, Optional, Type: TWrappedFunctionType - x
+Uses Group: TFacetAttributes - x
 
-## TTypeRef
-Uses Group: GEmptyElementExtensibility
-Uses Group: TFacetAttributes
-Element: Type, Required, Type: TUnwrappedFunctionType
+## TTypeRef - x
+Uses Group: GEmptyElementExtensibility - x
+Uses Group: TFacetAttributes - x
+Element: Type, Required, Type: TUnwrappedFunctionType - x
 
-## TTypeTestExpression
-Element: CollectionType, optional, Type: TCollectionType
-Element: ReferenceType, optional, Type: TReferenceType
-Element: RowType, optional, Type: TRowType
-Condition: only 1 of the last 3 may have value at any given time
-Element: Operand, Optional, Type: TOperand
-Condition: if none of the first 3 are set, Operand must be set.
-Element: Type, optional, Type:TWrappedFunctionType
-Uses Group: TWrappedFunctionType
+## TTypeTestExpression - x
+Element: CollectionType, optional, Type: TCollectionType - x
+Element: ReferenceType, optional, Type: TReferenceType - x
+Element: RowType, optional, Type: TRowType - x
+Condition: only 1 of the last 3 may have value at any given time - x
+Element: Operand, Optional, Type: TOperand - x
+Condition: if none of the first 3 are set, Operand must be set. - x
+Element: Type, optional, Type:TWrappedFunctionType - x
+Uses Group: TWrappedFunctionType - x
 
-## TUsing
-Uses Group: GEmptyElementExtensibility
-Element Namespace, Optional, Type: TNamespaceName
-Element: NamespaceUri, Optional, Type: cs:anyURI
-Comment: Namespace and NamespaceUri cannot be specified at the same time.
-Element: Alias, Required, Type: TSimpleIdentifier
+## TUsing - x
+Uses Group: GEmptyElementExtensibility - x
+Element Namespace, Optional, Type: TNamespaceName - x
+Element: NamespaceUri, Optional, Type: cs:anyURI - x
+Comment: Namespace and NamespaceUri cannot be specified at the same time. - x
+Element: Alias, Required, Type: TSimpleIdentifier - x
 
-##TValueAnnotation
-Uses Group: GExpression, Min:1,Max:1
-USes Group: GInlineExpressions
-Element: Term, Required, Type: TQualifiedName
-Element: Qualifier, optional, Type: TSimpleIdentifier
+##TValueAnnotation - x
+Uses Group: GExpression, Min:1,Max:1 - x
+USes Group: GInlineExpressions - x
+Element: Term, Required, Type: TQualifiedName - x
+Element: Qualifier, optional, Type: TSimpleIdentifier - x
 
-## TValueTerm
-Element: Documentation, Optiponal, Type: TDocumentation
-Element: CollectionType, optional, Type: TCollectionType
-Element: ReferenceType, optional, Type: TReferenceType
-Element: RowType, optional, Type: TRowType
-Condition: only 1 of the last 4 may have value at any given time
-Element: Name, Required, Type: TSimpleIdentifier
-Element, Type, Optional, Type: TWrappedFunctionType
-Uses Group: TFacetAttributes
+## TValueTerm - x
+Element: Documentation, Optional, Type: TDocumentation - x
+Element: CollectionType, Optional, Type: TCollectionType - x
+Element: ReferenceType, Optional, Type: TReferenceType - x
+Element: RowType, Optional, Type: TRowType - x
+Condition: at most 1 of the last 4 may have value at any given time - x
+Element: Name, Required, Type: TSimpleIdentifier - x
+Element, Type, Optional, Type: TWrappedFunctionType - x
+Uses Group: TFacetAttributes - x
 
-## TValueTermReferenceExpression
-Uses Group: GExpression, Min:1,Max:1
-Element Term, Required, Type: TQualifiedName
-element: Qualifier, Optional, TSimpleIdentifier
+## TValueTermReferenceExpression - x
+Uses Group: GExpression, Min:1,Max:1 - x
+Element Term, Required, Type: TQualifiedName - x
+element: Qualifier, Optional, TSimpleIdentifier - x
 
-##
+##TXMLORTextType is deliberately empty
 

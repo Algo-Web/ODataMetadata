@@ -4,6 +4,8 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TCommandTextTrait;
 
 /**
  * Class representing TFunctionType
@@ -13,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
  */
 class TFunctionType extends IsOK
 {
-    use TFacetAttributesTrait;
+    use TFacetAttributesTrait, TCommandTextTrait, TSimpleIdentifierTrait;
     /**
      * @property string $name
      */
@@ -253,6 +255,33 @@ class TFunctionType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->parameter,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->returnType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType',
+            $msg
+        )) {
+            return false;
+        }
+        foreach ($this->returnType as $type) {
+            if (!is_string($type) || !$this->isTCommandTextValid($type)) {
+                $msg = $type . " must be a valid TCommandText";
+                return false;
+            }
+        }
         if (!$this->isTFacetAttributesTraitValid($msg)) {
             return false;
         }

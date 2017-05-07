@@ -3,7 +3,10 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TNamespaceNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TUsingType
@@ -13,7 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
  */
 class TUsingType extends IsOK
 {
-    use GEmptyElementExtensibilityTrait;
+    use IsOKToolboxTrait, GEmptyElementExtensibilityTrait, TSimpleIdentifierTrait, TNamespaceNameTrait;
     /**
      * @property string $namespace
      */
@@ -97,6 +100,26 @@ class TUsingType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTSimpleIdentifierValid($this->alias)) {
+            $msg = "Alias must be a valid TSimpleIdentifier";
+            return false;
+        }
+        $setName = null != $this->namespace;
+        $setUri = null != $this->namespaceUri;
+        if ($setName && $setUri) {
+            $msg = 'Namespace and NamespaceUri cannot both be specified at the same time.';
+            return false;
+        }
+
+        if ($setName && !$this->isTNamespaceNameValid($this->namespace)) {
+            $msg = "Namespace must be a valid TNamespaceName";
+            return false;
+        }
+        if ($setUri && !$this->isURLValid($this->namespaceUri)) {
+            $msg = "Namespace url must be a valid url";
+            return false;
+        }
+
         if (!$this->isExtensibilityElementOK($msg)) {
             return false;
         }

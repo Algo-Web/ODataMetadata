@@ -3,7 +3,11 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GSchemaBodyElementsTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TNamespaceNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
+use AlgoWeb\ODataMetadata\StringTraits\XSDTopLevelTrait;
 
 /**
  * Class representing TSchemaType
@@ -13,7 +17,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GSchemaBodyElementsTrait;
  */
 class TSchemaType extends IsOK
 {
-    use GSchemaBodyElementsTrait;
+    use IsOKToolboxTrait, GSchemaBodyElementsTrait, TSimpleIdentifierTrait, XSDTopLevelTrait, TNamespaceNameTrait;
     /**
      * @property string $namespace
      */
@@ -97,6 +101,18 @@ class TSchemaType extends IsOK
     
     public function isOK(&$msg = null)
     {
+        if (!$this->isTNamespaceNameValid($this->namespace)) {
+            $msg = "Namespace must be a valid TNamespaceName";
+            return false;
+        }
+        if (null != $this->alias && !$this->isTSimpleIdentifierValid($this->alias)) {
+            $msg = "Alias must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->namespaceUri && !$this->isURLValid($this->namespaceUri)) {
+            $msg = "Namespace url must be a valid url";
+            return false;
+        }
         if ($this->isGSchemaBodyElementsValid($msg)) {
             return false;
         }

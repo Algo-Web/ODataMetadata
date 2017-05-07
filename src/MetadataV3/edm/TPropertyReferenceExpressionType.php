@@ -3,7 +3,9 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TPropertyReferenceExpressionType
@@ -13,11 +15,17 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
  */
 class TPropertyReferenceExpressionType extends IsOK
 {
-    use GExpressionTrait;
+    use IsOKToolboxTrait, GExpressionTrait, TSimpleIdentifierTrait;
     /**
      * @property string $property
      */
     private $property = null;
+
+    public function __construct()
+    {
+        $this->gExpressionMaximum = 1;
+        $this->gExpressionMinimum = 1;
+    }
 
     /**
      * Gets as property
@@ -43,6 +51,10 @@ class TPropertyReferenceExpressionType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTSimpleIdentifierValid($this->property)) {
+            $msg = "Property must be a valid TSimpleIdentifier";
+            return false;
+        }
         if (!$this->isGExpressionValid($msg)) {
             return false;
         }

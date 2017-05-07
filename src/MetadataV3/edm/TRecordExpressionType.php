@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
 
 /**
  * Class representing TRecordExpressionType
@@ -12,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TRecordExpressionType extends IsOK
 {
-
+    use IsOKToolboxTrait, TUnwrappedFunctionTypeTrait;
     /**
      * @property string $type
      */
@@ -21,7 +23,7 @@ class TRecordExpressionType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[] $propertyValue
      */
-    private $propertyValue = array();
+    private $propertyValue = [];
 
     /**
      * Gets as type
@@ -99,5 +101,22 @@ class TRecordExpressionType extends IsOK
     {
         $this->propertyValue = $propertyValue;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->type && !$this->isTUnwrappedFunctionTypeValid($this->type)) {
+            $msg = "Type must be a valid TUnwrappedFunctionType";
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->propertyValue,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType',
+            $msg
+        )) {
+            return false;
+        }
+
+        return true;
     }
 }

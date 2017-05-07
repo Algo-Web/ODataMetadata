@@ -9,6 +9,15 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType:
                 setter: setType
             xml_attribute: true
             type: string
+        entitySetAttribute:
+            expose: true
+            access_type: public_method
+            serialized_name: EntitySet
+            accessor:
+                getter: getEntitySetAttribute
+                setter: setEntitySetAttribute
+            xml_attribute: true
+            type: string
         entitySet:
             expose: true
             access_type: public_method

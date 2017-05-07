@@ -2,8 +2,12 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
+use AlgoWeb\ODataMetadata\CodeGeneration\AccessTypeTraits;
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TNavigationPropertyType
@@ -13,7 +17,12 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
  */
 class TNavigationPropertyType extends IsOK
 {
-    use GEmptyElementExtensibilityTrait;
+    use IsOKToolboxTrait,
+        GEmptyElementExtensibilityTrait,
+        TQualifiedNameTrait,
+        TSimpleIdentifierTrait,
+        AccessTypeTraits;
+
     /**
      * @property string $name
      */
@@ -178,6 +187,30 @@ class TNavigationPropertyType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isTQualifiedNameValid($this->relationship)) {
+            $msg = "Relationship must be a valid TQualifiedName";
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->toRole)) {
+            $msg = "To role must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->fromRole)) {
+            $msg = "From role must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->getterAccess && !$this->isTAccessOk($this->getterAccess)) {
+            $msg = "Getter access must be a valid TAccess";
+            return false;
+        }
+        if (null != $this->setterAccess && !$this->isTAccessOk($this->setterAccess)) {
+            $msg = "Setter access must be a valid TAccess";
+            return false;
+        }
         if (!$this->isExtensibilityElementOK($msg)) {
             return false;
         }

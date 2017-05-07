@@ -3,7 +3,11 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionReturnTypeTrait;
 
 /**
  * Class representing TValueTermType
@@ -13,7 +17,17 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
  */
 class TValueTermType extends IsOK
 {
-    use TFacetAttributesTrait;
+    use TFacetAttributesTrait,
+        GExpressionTrait,
+        TQualifiedNameTrait,
+        TSimpleIdentifierTrait,
+        TWrappedFunctionReturnTypeTrait;
+
+    public function __construct()
+    {
+        $this->gExpressionMaximum = 1;
+        $this->gExpressionMinimum = 1;
+    }
     /**
      * @property string $name
      */
@@ -212,6 +226,53 @@ class TValueTermType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (!$this->isTSimpleIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->type && !$this->isTWrappedFunctionTypeValid($this->type)) {
+            $msg = "Type must be a valid TWrappedFunctionType";
+            return false;
+        }
+
+        if (!$this->isObjectNullOrType(
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType',
+            $this->documentation,
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isObjectNullOrType(
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType',
+            $this->collectionType,
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isObjectNullOrType(
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType',
+            $this->referenceType,
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->rowType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
+            $msg
+        )) {
+            return false;
+        }
+
+        $count = (isset($this->collectionType) ? 1 : 0)
+                 + (isset($this->referenceType) ? 1 : 0)
+                 + (isset($this->documentation) ? 1 : 0)
+                 + (0 < count($this->rowType) ? 1 : 0);
+        if (1 < $count) {
+            $msg = "At most one of documentation, collection type, reference type and row type can be set/nonempty";
+            return false;
+        }
+
         if (!$this->isTFacetAttributesTraitValid($msg)) {
             return false;
         }

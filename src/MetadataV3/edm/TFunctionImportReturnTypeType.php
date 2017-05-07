@@ -3,6 +3,9 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TFunctionImportParameterAndReturnTypeTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TFunctionImportReturnTypeType
@@ -12,7 +15,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TFunctionImportReturnTypeType extends IsOK
 {
-
+    use IsOKToolboxTrait, TSimpleIdentifierTrait, TFunctionImportParameterAndReturnTypeTrait;
     /**
      * @property string $type
      */
@@ -22,6 +25,11 @@ class TFunctionImportReturnTypeType extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
      */
     private $entitySet = null;
+
+    /**
+     * @property string $entitySetAttribute
+     */
+    private $entitySetAttribute = null;
 
     /**
      * Gets as type
@@ -65,5 +73,46 @@ class TFunctionImportReturnTypeType extends IsOK
     {
         $this->entitySet = $entitySet;
         return $this;
+    }
+
+    /**
+     * Gets as entitySetAttribute
+     *
+     * @return $string
+     */
+    public function getEntitySetAttribute()
+    {
+        return $this->entitySetAttribute;
+    }
+
+    /**
+     * Sets a new entitySet
+     *
+     * @param string $entitySetAttribute
+     * @return self
+     */
+    public function setEntitySetAttribute($entitySetAttribute)
+    {
+        if (!is_string($entitySetAttribute)) {
+            throw new \InvalidArgumentException("EntitySet attribute must be a string");
+        }
+        $this->entitySetAttribute = $entitySetAttribute;
+        return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTSimpleIdentifierValid($this->entitySetAttribute)) {
+            $msg = "Entity set attribute must be a valid TSimpleIdentifier";
+            return false;
+        };
+        if (!$this->isObjectNullOrType('\AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType', $this->entitySet)) {
+            return false;
+        };
+        if (null != $this->type && !$this->isTFunctionImportParameterAndReturnTypeValid($this->type)) {
+            $msg = "Type must be a valid TFunctionImportParameterAndReturnType";
+            return false;
+        }
+        return true;
     }
 }

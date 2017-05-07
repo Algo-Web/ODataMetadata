@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
  * Class representing TReferentialConstraintRoleElementType
@@ -12,7 +14,7 @@ use AlgoWeb\ODataMetadata\IsOK;
  */
 class TReferentialConstraintRoleElementType extends IsOK
 {
-
+    use IsOKToolboxTrait, TSimpleIdentifierTrait;
     /**
      * @property string $role
      */
@@ -21,7 +23,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType[] $propertyRef
      */
-    private $propertyRef = array();
+    private $propertyRef = [];
 
     /**
      * Gets as role
@@ -99,5 +101,23 @@ class TReferentialConstraintRoleElementType extends IsOK
     {
         $this->propertyRef = $propertyRef;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTSimpleIdentifierValid($this->role)) {
+            $msg = "Role must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->propertyRef,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType',
+            $msg,
+            1
+        )) {
+            return false;
+        }
+
+        return true;
     }
 }

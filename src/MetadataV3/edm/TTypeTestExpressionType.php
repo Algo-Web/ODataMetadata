@@ -4,6 +4,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionReturnTypeTrait;
 
 /**
  * Class representing TTypeTestExpressionType
@@ -13,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
  */
 class TTypeTestExpressionType extends IsOK
 {
-    use TFacetAttributesTrait;
+    use TFacetAttributesTrait, TWrappedFunctionReturnTypeTrait;
     /**
      * @property string $type
      */
@@ -37,7 +38,7 @@ class TTypeTestExpressionType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      */
-    private $rowType = null;
+    private $rowType = [];
 
     /**
      * Gets as type
@@ -287,9 +288,55 @@ class TTypeTestExpressionType extends IsOK
 
     public function isOK(&$msg = null)
     {
+        if (null != $this->type && !$this->isTWrappedFunctionTypeValid($this->type)) {
+            $msg = "Type must be a valid TWrappedFunctionType";
+            return false;
+        }
         if (!$this->isTFacetAttributesTraitValid($msg)) {
             return false;
         }
+        if (!$this->isValidArrayOK(
+            $this->collectionType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->referenceType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->rowType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
+            $msg
+        )) {
+            return false;
+        }
+
+        if (!$this->isValidArrayOK(
+            $this->operand,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType',
+            $msg
+        )) {
+            return false;
+        }
+
+        $count = 0 < count($this->collectionType) ? 1 : 0
+                 + 0 < count($this->referenceType) ? 1 : 0
+                 + 0 < count($this->rowType) ? 1 : 0;
+        if (1 < $count) {
+            $msg = "At most one of collection type, reference type and row type can be set";
+            return false;
+        }
+        if (0 == $count && 0 == count($this->operand)) {
+            $msg = "If all of collection type, reference type and row type are empty, operand must not be empty";
+            return false;
+        }
+
         return true;
     }
 }
