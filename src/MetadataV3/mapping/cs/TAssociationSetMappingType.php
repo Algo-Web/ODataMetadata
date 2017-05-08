@@ -148,6 +148,10 @@ class TAssociationSetMappingType extends IsOK
      */
     public function addToEndProperty(TEndPropertyType $endProperty)
     {
+        $msg = null;
+        if (!$endProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->endProperty[] = $endProperty;
         return $this;
     }
@@ -204,6 +208,10 @@ class TAssociationSetMappingType extends IsOK
      */
     public function addToCondition(TConditionType $condition)
     {
+        $msg = null;
+        if (!$condition->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->condition[] = $condition;
         return $this;
     }
@@ -271,6 +279,10 @@ class TAssociationSetMappingType extends IsOK
      */
     public function setModificationFunctionMapping(TAssociationSetModificationFunctionMappingType $modificationFunctionMapping)
     {
+        $msg = null;
+        if (!$modificationFunctionMapping->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->modificationFunctionMapping = $modificationFunctionMapping;
         return $this;
     }

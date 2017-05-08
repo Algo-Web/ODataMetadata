@@ -41,6 +41,10 @@ trait TPropertyGroup
      */
     public function setComplexProperty(TComplexPropertyType $complexProperty)
     {
+        $msg = null;
+        if (!$complexProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->complexProperty = $complexProperty;
         return $this;
     }
@@ -63,6 +67,10 @@ trait TPropertyGroup
      */
     public function setScalarProperty(TScalarPropertyType $scalarProperty)
     {
+        $msg = null;
+        if (!$scalarProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->scalarProperty = $scalarProperty;
         return $this;
     }
@@ -85,6 +93,10 @@ trait TPropertyGroup
      */
     public function setCondition(TConditionType $condition)
     {
+        $msg = null;
+        if (!$condition->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->condition = $condition;
         return $this;
     }

@@ -101,6 +101,10 @@ class TModificationFunctionMappingComplexPropertyType extends IsOK
      */
     public function setScalarProperty(TModificationFunctionMappingScalarPropertyType $scalarProperty)
     {
+        $msg = null;
+        if (!$scalarProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->scalarProperty = $scalarProperty;
         return $this;
     }
@@ -124,6 +128,10 @@ class TModificationFunctionMappingComplexPropertyType extends IsOK
      */
     public function setComplexProperty(TModificationFunctionMappingComplexPropertyType $complexProperty)
     {
+        $msg = null;
+        if (!$complexProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->complexProperty = $complexProperty;
         return $this;
     }

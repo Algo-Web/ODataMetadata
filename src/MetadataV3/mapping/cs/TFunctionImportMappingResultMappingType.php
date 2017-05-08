@@ -103,6 +103,10 @@ class TFunctionImportMappingResultMappingType extends IsOK
      */
     public function setComplexTypeMapping(TFunctionImportComplexTypeMappingType $complexTypeMapping)
     {
+        $msg = null;
+        if (!$complexTypeMapping->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->complexTypeMapping = $complexTypeMapping;
         return $this;
     }

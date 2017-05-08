@@ -51,6 +51,10 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
      */
     public function setDeleteFunction(TEntityTypeModificationFunctionType $deleteFunction)
     {
+        $msg = null;
+        if (!$deleteFunction->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->deleteFunction = $deleteFunction;
         return $this;
     }
@@ -74,6 +78,10 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
      */
     public function setInsertFunction(TEntityTypeModificationFunctionWithResultType $insertFunction)
     {
+        $msg = null;
+        if (!$insertFunction->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->insertFunction = $insertFunction;
         return $this;
     }
@@ -97,6 +105,10 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
      */
     public function setUpdateFunction(TEntityTypeModificationFunctionWithResultType $updateFunction)
     {
+        $msg = null;
+        if (!$updateFunction->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->updateFunction = $updateFunction;
         return $this;
     }

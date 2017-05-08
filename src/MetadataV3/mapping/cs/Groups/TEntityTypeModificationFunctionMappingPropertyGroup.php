@@ -45,6 +45,10 @@ trait TEntityTypeModificationFunctionMappingPropertyGroup
      */
     public function setScalarProperty(TModificationFunctionMappingScalarPropertyType $scalarProperty)
     {
+        $msg = null;
+        if (!$scalarProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->scalarProperty = $scalarProperty;
         return $this;
     }
@@ -68,6 +72,10 @@ trait TEntityTypeModificationFunctionMappingPropertyGroup
      */
     public function setAssociationEnd(TModificationFunctionMappingAssociationEndType $associationEnd)
     {
+        $msg = null;
+        if (!$associationEnd->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->associationEnd = $associationEnd;
         return $this;
     }
@@ -91,6 +99,10 @@ trait TEntityTypeModificationFunctionMappingPropertyGroup
      */
     public function setComplexProperty(TModificationFunctionMappingComplexPropertyType $complexProperty)
     {
+        $msg = null;
+        if (!$complexProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->complexProperty = $complexProperty;
         return $this;
     }

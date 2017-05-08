@@ -124,6 +124,10 @@ class TComplexPropertyType extends IsOK
      */
     public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
+        $msg = null;
+        if (!$scalarProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->scalarProperty[] = $scalarProperty;
         return $this;
     }
@@ -180,6 +184,10 @@ class TComplexPropertyType extends IsOK
      */
     public function addToComplexProperty(TComplexPropertyType $complexProperty)
     {
+        $msg = null;
+        if (!$complexProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->complexProperty[] = $complexProperty;
         return $this;
     }
@@ -236,6 +244,10 @@ class TComplexPropertyType extends IsOK
      */
     public function addToComplexTypeMapping(TComplexTypeMappingType $complexTypeMapping)
     {
+        $msg = null;
+        if (!$complexTypeMapping->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->complexTypeMapping[] = $complexTypeMapping;
         return $this;
     }
@@ -292,6 +304,10 @@ class TComplexPropertyType extends IsOK
      */
     public function addToCondition(TConditionType $condition)
     {
+        $msg = null;
+        if (!$condition->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->condition[] = $condition;
         return $this;
     }

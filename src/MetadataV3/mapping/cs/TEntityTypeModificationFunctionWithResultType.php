@@ -28,6 +28,10 @@ class TEntityTypeModificationFunctionWithResultType extends TEntityTypeModificat
      */
     public function addToResultBinding(TResultBindingType $resultBinding)
     {
+        $msg = null;
+        if (!$resultBinding->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->resultBinding[] = $resultBinding;
         return $this;
     }

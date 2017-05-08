@@ -147,6 +147,10 @@ class TEntitySetMappingType extends IsOK
      */
     public function addToQueryView(TQueryViewType $queryView)
     {
+        $msg = null;
+        if (!$queryView->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->queryView[] = $queryView;
         return $this;
     }
@@ -203,6 +207,10 @@ class TEntitySetMappingType extends IsOK
      */
     public function addToEntityTypeMapping(TEntityTypeMappingType $entityTypeMapping)
     {
+        $msg = null;
+        if (!$entityTypeMapping->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityTypeMapping[] = $entityTypeMapping;
         return $this;
     }
@@ -259,6 +267,10 @@ class TEntitySetMappingType extends IsOK
      */
     public function addToMappingFragment(TMappingFragmentType $mappingFragment)
     {
+        $msg = null;
+        if (!$mappingFragment->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->mappingFragment[] = $mappingFragment;
         return $this;
     }

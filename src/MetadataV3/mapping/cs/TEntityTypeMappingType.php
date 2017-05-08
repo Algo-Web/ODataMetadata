@@ -60,6 +60,10 @@ class TEntityTypeMappingType extends IsOK
      */
     public function addToMappingFragment(TMappingFragmentType $mappingFragment)
     {
+        $msg = null;
+        if (!$mappingFragment->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->mappingFragment[] = $mappingFragment;
         return $this;
     }
@@ -127,6 +131,10 @@ class TEntityTypeMappingType extends IsOK
      */
     public function setModificationFunctionMapping(TEntityTypeModificationFunctionMappingType $modificationFunctionMapping)
     {
+        $msg = null;
+        if (!$modificationFunctionMapping->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->modificationFunctionMapping = $modificationFunctionMapping;
         return $this;
     }

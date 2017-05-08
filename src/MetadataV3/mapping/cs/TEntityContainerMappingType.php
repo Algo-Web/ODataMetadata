@@ -121,6 +121,10 @@ class TEntityContainerMappingType extends IsOK
      */
     public function addToEntitySetMapping(TEntitySetMappingType $entitySetMapping)
     {
+        $msg = null;
+        if (!$entitySetMapping->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entitySetMapping[] = $entitySetMapping;
         return $this;
     }
@@ -177,6 +181,10 @@ class TEntityContainerMappingType extends IsOK
      */
     public function addToAssociationSetMapping(TAssociationSetMappingType $associationSetMapping)
     {
+        $msg = null;
+        if (!$associationSetMapping->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->associationSetMapping[] = $associationSetMapping;
         return $this;
     }
@@ -234,6 +242,10 @@ class TEntityContainerMappingType extends IsOK
      */
     public function addToFunctionImportMapping(TFunctionImportMappingType $functionImportMapping)
     {
+        $msg = null;
+        if (!$functionImportMapping->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->functionImportMapping[] = $functionImportMapping;
         return $this;
     }

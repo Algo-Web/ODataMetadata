@@ -84,6 +84,10 @@ class TFunctionImportMappingType extends IsOK
      */
     public function addToResultMapping(TFunctionImportMappingResultMappingType $resultMapping)
     {
+        $msg = null;
+        if (!$resultMapping->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->resultMapping[] = $resultMapping;
         return $this;
     }

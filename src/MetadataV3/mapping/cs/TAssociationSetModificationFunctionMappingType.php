@@ -45,6 +45,10 @@ class TAssociationSetModificationFunctionMappingType extends IsOK
      */
     public function setDeleteFunction(TAssociationSetModificationFunctionType $deleteFunction)
     {
+        $msg = null;
+        if (!$deleteFunction->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->deleteFunction = $deleteFunction;
         return $this;
     }
@@ -68,6 +72,10 @@ class TAssociationSetModificationFunctionMappingType extends IsOK
      */
     public function setInsertFunction(TAssociationSetModificationFunctionType $insertFunction)
     {
+        $msg = null;
+        if (!$insertFunction->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->insertFunction = $insertFunction;
         return $this;
     }

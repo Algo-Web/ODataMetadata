@@ -61,6 +61,10 @@ class TMappingType extends IsOK
      */
     public function addToAlias(TAliasType $alias)
     {
+        $msg = null;
+        if (!$alias->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->alias[] = $alias;
         return $this;
     }
@@ -128,6 +132,10 @@ class TMappingType extends IsOK
      */
     public function setEntityContainerMapping(TEntityContainerMappingType $entityContainerMapping)
     {
+        $msg = null;
+        if (!$entityContainerMapping->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityContainerMapping = $entityContainerMapping;
         return $this;
     }

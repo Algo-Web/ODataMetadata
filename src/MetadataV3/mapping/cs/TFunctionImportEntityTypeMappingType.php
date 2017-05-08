@@ -59,6 +59,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
      */
     public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
+        $msg = null;
+        if (!$scalarProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->scalarProperty[] = $scalarProperty;
         return $this;
     }
@@ -115,6 +119,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
      */
     public function addToCondition(TFunctionImportConditionType $condition)
     {
+        $msg = null;
+        if (!$condition->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->condition[] = $condition;
         return $this;
     }

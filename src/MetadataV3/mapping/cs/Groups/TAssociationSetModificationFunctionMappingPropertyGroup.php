@@ -33,6 +33,10 @@ trait TAssociationSetModificationFunctionMappingPropertyGroup
      */
     public function setEndProperty(TModificationFunctionMappingEndPropertyType $endProperty)
     {
+        $msg = null;
+        if (!$endProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->endProperty = $endProperty;
         return $this;
     }

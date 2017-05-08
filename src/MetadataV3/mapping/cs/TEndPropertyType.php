@@ -55,6 +55,10 @@ class TEndPropertyType extends IsOK
      */
     public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
+        $msg = null;
+        if (!$scalarProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->scalarProperty[] = $scalarProperty;
         return $this;
     }
