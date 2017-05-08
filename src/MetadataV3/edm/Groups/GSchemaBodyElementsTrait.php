@@ -624,7 +624,9 @@ trait GSchemaBodyElementsTrait
         if (!$this->isValidArrayOK(
             $this->entityContainer,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer',
-            $msg
+            $msg,
+            1,
+            1
         )) {
             return false;
         }

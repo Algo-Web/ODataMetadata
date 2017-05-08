@@ -37,7 +37,7 @@ trait GEmptyElementExtensibilityTrait
 
     public function isExtensibilityElementOK(&$msg = null)
     {
-        if ($this->isObjectNullOrOK($this->documentation, $msg)) {
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
             return false;
         }
         return true;

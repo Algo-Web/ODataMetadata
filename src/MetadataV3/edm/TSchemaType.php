@@ -118,7 +118,7 @@ class TSchemaType extends IsOK
             $msg = "Namespace url must be a valid url";
             return false;
         }
-        if ($this->isGSchemaBodyElementsValid($msg)) {
+        if (!$this->isGSchemaBodyElementsValid($msg)) {
             return false;
         }
         return true;
