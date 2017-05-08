@@ -3,7 +3,6 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
-use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GSchemaBodyElementsTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TNamespaceNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
@@ -17,7 +16,13 @@ use AlgoWeb\ODataMetadata\StringTraits\XSDTopLevelTrait;
  */
 class TSchemaType extends IsOK
 {
-    use IsOKToolboxTrait, GSchemaBodyElementsTrait, TSimpleIdentifierTrait, XSDTopLevelTrait, TNamespaceNameTrait;
+    use GSchemaBodyElementsTrait, TSimpleIdentifierTrait, XSDTopLevelTrait, TNamespaceNameTrait {
+        TSimpleIdentifierTrait::isNCName insteadof TNamespaceNameTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TNamespaceNameTrait;
+        TSimpleIdentifierTrait::isName insteadof TNamespaceNameTrait;
+
+
+    }
     /**
      * @property string $namespace
      */
