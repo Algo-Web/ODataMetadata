@@ -259,7 +259,7 @@ class TComplexTypeType extends IsOK
             $msg = "Type access must be Public or Internal";
             return false;
         }
-        if (null != $this->isObjectNullOrOK($this->documentation, $msg)) {
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
             return false;
         }
         if (!$this->isValidArrayOK(

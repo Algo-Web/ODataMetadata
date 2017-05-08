@@ -163,10 +163,10 @@ class TAssociationType extends IsOK
             $msg = "Name must be a valid TSimpleIdentifier";
             return false;
         }
-        if (null != $this->isObjectNullOrOK($this->documentation, $msg)) {
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
             return false;
         }
-        if (null != $this->isObjectNullOrOK($this->referentialConstraint, $msg)) {
+        if (!$this->isObjectNullOrOK($this->referentialConstraint, $msg)) {
             return false;
         }
         if (!$this->isValidArrayOK(

@@ -140,7 +140,7 @@ class TAssociationEndType extends IsOK
             $msg = "Multiplicity must be a valid TMultiplicity";
             return false;
         }
-        if (null != $this->isObjectNullOrOK($this->documentation, $msg)) {
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
             return false;
         }
 

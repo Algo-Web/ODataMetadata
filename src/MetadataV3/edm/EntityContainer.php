@@ -361,7 +361,7 @@ class EntityContainer extends IsOK
             $msg = "Type access must be Public or Internal";
             return false;
         }
-
+        
         if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
             return false;
         }
