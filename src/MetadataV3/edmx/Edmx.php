@@ -7,4 +7,9 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
  */
 class Edmx extends TEdmxType
 {
+    public function __construct($version = "1.0")
+    {
+        $this->setVersion($version);
+        $this->addToDataServices(new \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema());
+    }
 }

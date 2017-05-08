@@ -176,6 +176,11 @@ class TEdmxType extends IsOK
             $msg = "Data services array not a valid array";
             return false;
         }
+        if (null == $this->runtime && 0 == count($this->dataServices)) {
+            $msg = "Either a runtime or a dataservice must be defined for Tedmx";
+            return false;
+        }
+
         if (!$this->isChildArrayOK($this->dataServices, $msg)) {
             return false;
         }
