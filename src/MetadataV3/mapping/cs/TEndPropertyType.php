@@ -103,6 +103,14 @@ class TEndPropertyType extends IsOK
      */
     public function setScalarProperty(array $scalarProperty)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $scalarProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->scalarProperty = $scalarProperty;
         return $this;
     }

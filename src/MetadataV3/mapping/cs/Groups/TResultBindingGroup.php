@@ -71,6 +71,14 @@ trait TResultBindingGroup
      */
     public function setResultBinding(array $resultBinding)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $resultBinding,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TResultBindingType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->resultBinding = $resultBinding;
         return $this;
     }

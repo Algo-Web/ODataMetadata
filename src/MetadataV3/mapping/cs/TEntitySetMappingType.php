@@ -195,6 +195,14 @@ class TEntitySetMappingType extends IsOK
      */
     public function setQueryView(array $queryView)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $queryView,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TQueryViewType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->queryView = $queryView;
         return $this;
     }
@@ -255,6 +263,14 @@ class TEntitySetMappingType extends IsOK
      */
     public function setEntityTypeMapping(array $entityTypeMapping)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $entityTypeMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityTypeMapping = $entityTypeMapping;
         return $this;
     }
@@ -315,6 +331,14 @@ class TEntitySetMappingType extends IsOK
      */
     public function setMappingFragment(array $mappingFragment)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $mappingFragment,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->mappingFragment = $mappingFragment;
         return $this;
     }

@@ -196,6 +196,16 @@ class TAssociationSetMappingType extends IsOK
      */
     public function setEndProperty(array $endProperty)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $endProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEndPropertyType',
+            $msg,
+            0,
+            2
+        )) {
+            throw new \InvalidArgumentException("End property array not a valid array, or has more than 2 elements");
+        }
         $this->endProperty = $endProperty;
         return $this;
     }
@@ -256,6 +266,14 @@ class TAssociationSetMappingType extends IsOK
      */
     public function setCondition(array $condition)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $condition,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->condition = $condition;
         return $this;
     }

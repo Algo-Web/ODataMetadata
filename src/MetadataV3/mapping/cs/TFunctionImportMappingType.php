@@ -133,6 +133,14 @@ class TFunctionImportMappingType extends IsOK
      */
     public function setResultMapping(array $resultMapping)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $resultMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->resultMapping = $resultMapping;
         return $this;
     }

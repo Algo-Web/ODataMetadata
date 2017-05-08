@@ -169,6 +169,14 @@ class TEntityContainerMappingType extends IsOK
      */
     public function setEntitySetMapping(array $entitySetMapping)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $entitySetMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entitySetMapping = $entitySetMapping;
         return $this;
     }
@@ -230,6 +238,14 @@ class TEntityContainerMappingType extends IsOK
      */
     public function setAssociationSetMapping(array $associationSetMapping)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $associationSetMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->associationSetMapping = $associationSetMapping;
         return $this;
     }
@@ -291,6 +307,14 @@ class TEntityContainerMappingType extends IsOK
      */
     public function setFunctionImportMapping(array $functionImportMapping)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $functionImportMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->functionImportMapping = $functionImportMapping;
         return $this;
     }

@@ -108,6 +108,14 @@ class TEntityTypeMappingType extends IsOK
      */
     public function setMappingFragment(array $mappingFragment)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $mappingFragment,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->mappingFragment = $mappingFragment;
         return $this;
     }

@@ -80,6 +80,14 @@ class TFunctionImportMappingResultMappingType extends IsOK
      */
     public function setEntityTypeMapping(array $entityTypeMapping)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $entityTypeMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityTypeMapping = $entityTypeMapping;
         return $this;
     }

@@ -109,6 +109,14 @@ class TMappingType extends IsOK
      */
     public function setAlias(array $alias)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $alias,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->alias = $alias;
         return $this;
     }

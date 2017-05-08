@@ -172,6 +172,14 @@ class TComplexPropertyType extends IsOK
      */
     public function setScalarProperty(array $scalarProperty)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $scalarProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->scalarProperty = $scalarProperty;
         return $this;
     }
@@ -232,6 +240,14 @@ class TComplexPropertyType extends IsOK
      */
     public function setComplexProperty(array $complexProperty)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $complexProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->complexProperty = $complexProperty;
         return $this;
     }
@@ -352,6 +368,14 @@ class TComplexPropertyType extends IsOK
      */
     public function setCondition(array $condition)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $condition,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->condition = $condition;
         return $this;
     }
