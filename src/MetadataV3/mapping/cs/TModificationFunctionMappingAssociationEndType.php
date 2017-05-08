@@ -49,6 +49,10 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
      */
     public function setAssociationSet($associationSet)
     {
+        if (!$this->isStringNotNullOrEmpty($associationSet)) {
+            $msg = 'Association set cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->associationSet = $associationSet;
         return $this;
     }
@@ -71,6 +75,10 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
      */
     public function setFrom($from)
     {
+        if (!$this->isStringNotNullOrEmpty($this->from)) {
+            $msg = 'From cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->from = $from;
         return $this;
     }
@@ -93,6 +101,10 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
      */
     public function setTo($to)
     {
+        if (!$this->isStringNotNullOrEmpty($this->to)) {
+            $msg = 'To cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->to = $to;
         return $this;
     }

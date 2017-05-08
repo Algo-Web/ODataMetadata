@@ -56,6 +56,14 @@ class TModificationFunctionMappingComplexPropertyType extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isStringNotNullOrEmpty($name)) {
+            $msg = 'Name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -78,6 +86,10 @@ class TModificationFunctionMappingComplexPropertyType extends IsOK
      */
     public function setTypeName($typeName)
     {
+        if (!$this->isStringNotNullOrEmpty($typeName)) {
+            $msg = 'Type name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeName = $typeName;
         return $this;
     }

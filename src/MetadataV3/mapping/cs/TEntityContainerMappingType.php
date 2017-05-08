@@ -65,6 +65,14 @@ class TEntityContainerMappingType extends IsOK
      */
     public function setCdmEntityContainer($cdmEntityContainer)
     {
+        if (!$this->isStringNotNullOrEmpty($cdmEntityContainer)) {
+            $msg = 'CDM entity container cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($cdmEntityContainer)) {
+            $msg = 'CDM entity container must be a valid TSimpleIdentifier';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->cdmEntityContainer = $cdmEntityContainer;
         return $this;
     }
@@ -87,6 +95,10 @@ class TEntityContainerMappingType extends IsOK
      */
     public function setStorageEntityContainer($storageEntityContainer)
     {
+        if (!$this->isStringNotNullOrEmpty($storageEntityContainer)) {
+            $msg = 'Storage entity container cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->storageEntityContainer = $storageEntityContainer;
         return $this;
     }

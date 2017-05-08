@@ -43,6 +43,10 @@ class TEntityTypeModificationFunctionType extends IsOK
      */
     public function setFunctionName($functionName)
     {
+        if (!$this->isStringNotNullOrEmpty($functionName)) {
+            $msg = 'Function name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->functionName = $functionName;
         return $this;
     }

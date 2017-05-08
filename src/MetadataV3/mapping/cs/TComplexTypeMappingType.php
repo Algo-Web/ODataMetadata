@@ -57,6 +57,12 @@ class TComplexTypeMappingType extends IsOK
      */
     public function setTypeName($typeName)
     {
+        if (null != $typeName) {
+            if (!$this->isStringNotNullOrEmpty($typeName)) {
+                $msg = 'Type name cannot be empty';
+                throw new \InvalidArgumentException($msg);
+            }
+        }
         $this->typeName = $typeName;
         return $this;
     }

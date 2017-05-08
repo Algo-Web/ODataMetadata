@@ -49,6 +49,10 @@ class TMappingType extends IsOK
      */
     public function setSpace($space)
     {
+        if (!$this->isTSpaceValid($space)) {
+            $msg = "Space not a valid TSpace";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->space = $space;
         return $this;
     }

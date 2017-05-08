@@ -43,6 +43,10 @@ class TMappingFragmentType extends IsOK
      */
     public function setStoreEntitySet($storeEntitySet)
     {
+        if (!$this->isStringNotNullOrEmpty($storeEntitySet)) {
+            $msg = 'Name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->storeEntitySet = $storeEntitySet;
         return $this;
     }

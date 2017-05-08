@@ -43,6 +43,14 @@ class TEndPropertyType extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isStringNotNullOrEmpty($name)) {
+            $msg = 'Name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }

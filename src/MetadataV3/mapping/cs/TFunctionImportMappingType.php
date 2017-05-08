@@ -49,6 +49,10 @@ class TFunctionImportMappingType extends IsOK
      */
     public function setFunctionName($functionName)
     {
+        if (!$this->isStringNotNullOrEmpty($functionName)) {
+            $msg = 'Function name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->functionName = $functionName;
         return $this;
     }
@@ -71,6 +75,14 @@ class TFunctionImportMappingType extends IsOK
      */
     public function setFunctionImportName($functionImportName)
     {
+        if (!$this->isStringNotNullOrEmpty($functionImportName)) {
+            $msg = 'Function import name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($functionImportName)) {
+            $msg = 'Function import name must be a valid TSimpleIdentifier';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->functionImportName = $functionImportName;
         return $this;
     }

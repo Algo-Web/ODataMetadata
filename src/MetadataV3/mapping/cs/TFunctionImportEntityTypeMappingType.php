@@ -47,6 +47,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
      */
     public function setTypeName($typeName)
     {
+        if (!$this->isStringNotNullOrEmpty($typeName)) {
+            $msg = 'Type name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeName = $typeName;
         return $this;
     }

@@ -76,6 +76,10 @@ class TQueryViewType extends IsOK
      */
     public function setTypeName($typeName)
     {
+        if (null == $this->__value && null == $this->typeName) {
+            $msg = "Cannot have both value and type null";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeName = $typeName;
         return $this;
     }

@@ -45,6 +45,14 @@ class TAliasType extends IsOK
      */
     public function setKey($key)
     {
+        if (!$this->isStringNotNullOrEmpty($key)) {
+            $msg = 'Key cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($key)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->key = $key;
         return $this;
     }
@@ -67,6 +75,10 @@ class TAliasType extends IsOK
      */
     public function setValue($value)
     {
+        if (!$this->isStringNotNullOrEmpty($value)) {
+            $msg = 'Value cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->value = $value;
         return $this;
     }

@@ -43,6 +43,14 @@ class TScalarPropertyType extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isStringNotNullOrEmpty($name)) {
+            $msg = 'Name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -65,6 +73,10 @@ class TScalarPropertyType extends IsOK
      */
     public function setColumnName($columnName)
     {
+        if (!$this->isStringNotNullOrEmpty($columnName)) {
+            $msg = 'Column name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->columnName = $columnName;
         return $this;
     }

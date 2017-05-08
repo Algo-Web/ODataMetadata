@@ -69,6 +69,10 @@ class TFunctionImportConditionType extends IsOK
      */
     public function setColumnName($columnName)
     {
+        if (!$this->isStringNotNullOrEmpty($columnName)) {
+            $msg = 'Column name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->columnName = $columnName;
         return $this;
     }

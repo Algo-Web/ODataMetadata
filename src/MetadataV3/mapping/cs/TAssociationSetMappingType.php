@@ -70,6 +70,14 @@ class TAssociationSetMappingType extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isStringNotNullOrEmpty($name)) {
+            $msg = 'Name cannot be null or empty';
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = 'Name must be a valid TSimpleIdentifier';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -92,6 +100,14 @@ class TAssociationSetMappingType extends IsOK
      */
     public function setTypeName($typeName)
     {
+        if (null != $typeName && !$this->isStringNotNullOrEmpty($typeName)) {
+            $msg = 'Type name cannot be empty';
+            throw new \InvalidArgumentException($msg);
+        }
+        if (null != $typeName && !$this->isTQualifiedNameValid($typeName)) {
+            $msg = 'Type name must be a valid TQualifiedName';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeName = $typeName;
         return $this;
     }
@@ -114,6 +130,10 @@ class TAssociationSetMappingType extends IsOK
      */
     public function setStoreEntitySet($storeEntitySet)
     {
+        if (null != $storeEntitySet && !$this->isStringNotNullOrEmpty($storeEntitySet)) {
+            $msg = 'Store entity set cannot be empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->storeEntitySet = $storeEntitySet;
         return $this;
     }
@@ -136,6 +156,10 @@ class TAssociationSetMappingType extends IsOK
      */
     public function setQueryView($queryView)
     {
+        if (null != $queryView && !$this->isStringNotNullOrEmpty($queryView)) {
+            $msg = 'Query view cannot be empty';
+            throw new \InvalidArgumentException($msg);
+        }
         $this->queryView = $queryView;
         return $this;
     }
