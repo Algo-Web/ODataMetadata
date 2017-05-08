@@ -58,6 +58,11 @@ class EntityContainer extends IsOK
      */
     private $associationSet = [];
 
+    public function __construct($name = "DefaultContainer")
+    {
+        $this->setName($name);
+    }
+
     /**
      * Gets as name
      *
@@ -343,18 +348,21 @@ class EntityContainer extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = "Name(" . $this->name . ") must be a valid TSimpleIdentifier " . __FILE__ . ":" . __LINE__;
             return false;
         }
+
         if (null != $this->extends && !$this->isTSimpleIdentifierValid($this->extends)) {
             $msg = "Extends must be a valid TSimpleIdentifier";
             return false;
         }
+
         if (null != $this->typeAccess && !($this->isTPublicOrInternalAccessOK($this->typeAccess))) {
             $msg = "Type access must be Public or Internal";
             return false;
         }
-        if (null != $this->isObjectNullOrOK($this->documentation, $msg)) {
+
+        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
             return false;
         }
 

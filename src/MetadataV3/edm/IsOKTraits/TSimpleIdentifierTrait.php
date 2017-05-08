@@ -11,7 +11,7 @@ trait TSimpleIdentifierTrait
     public function isTSimpleIdentifierValid($string)
     {
         //The below pattern represents the allowed identifiers in ECMA specification
-        $regex = '[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}';
+        $regex = '/[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}/';
         return is_string($string) && 480 >= strlen($string) && $this->matchesRegexPattern($regex, $string);
     }
 }

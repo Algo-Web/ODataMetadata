@@ -7,8 +7,9 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
  */
 class Schema extends TSchemaType
 {
-    public function __construct($namespace = "Data")
+    public function __construct($namespace, $EntityContainerName)
     {
         $this->setNamespace($namespace);
+        $this->addToEntityContainer(new EntityContainer($EntityContainerName));
     }
 }
