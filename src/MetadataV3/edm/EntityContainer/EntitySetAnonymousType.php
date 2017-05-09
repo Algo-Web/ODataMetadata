@@ -39,6 +39,10 @@ class EntitySetAnonymousType extends IsOK
      */
     public function addToDocumentation(TDocumentationType $documentation)
     {
+        $msg = null;
+        if (!$documentation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->documentation[] = $documentation;
         return $this;
     }
@@ -83,6 +87,16 @@ class EntitySetAnonymousType extends IsOK
      */
     public function setDocumentation(array $documentation)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $documentation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType',
+            $msg,
+            0,
+            1
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->documentation = $documentation;
         return $this;
     }
@@ -95,6 +109,10 @@ class EntitySetAnonymousType extends IsOK
      */
     public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
+        $msg = null;
+        if (!$valueAnnotation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->valueAnnotation[] = $valueAnnotation;
         return $this;
     }
@@ -139,6 +157,14 @@ class EntitySetAnonymousType extends IsOK
      */
     public function setValueAnnotation(array $valueAnnotation)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $valueAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->valueAnnotation = $valueAnnotation;
         return $this;
     }
@@ -151,6 +177,10 @@ class EntitySetAnonymousType extends IsOK
      */
     public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
+        $msg = null;
+        if (!$typeAnnotation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeAnnotation[] = $typeAnnotation;
         return $this;
     }
@@ -195,6 +225,14 @@ class EntitySetAnonymousType extends IsOK
      */
     public function setTypeAnnotation(array $typeAnnotation)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $typeAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeAnnotation = $typeAnnotation;
         return $this;
     }

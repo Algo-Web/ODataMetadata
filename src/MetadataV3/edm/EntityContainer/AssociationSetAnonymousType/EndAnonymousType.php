@@ -46,6 +46,10 @@ class EndAnonymousType extends IsOK
      */
     public function setRole($role)
     {
+        if (null != $role && !$this->isTSimpleIdentifierValid($role)) {
+            $msg = "Role must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->role = $role;
         return $this;
     }
@@ -68,6 +72,11 @@ class EndAnonymousType extends IsOK
      */
     public function setEntitySet($entitySet)
     {
+        $msg = null;
+        if (!$this->isTSimpleIdentifierValid($entitySet)) {
+            $msg = "Entity set must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entitySet = $entitySet;
         return $this;
     }

@@ -50,6 +50,11 @@ class AssociationSetAnonymousType extends IsOK
      */
     public function setName($name)
     {
+        $msg = null;
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -72,6 +77,11 @@ class AssociationSetAnonymousType extends IsOK
      */
     public function setAssociation($association)
     {
+        $msg = null;
+        if (!$this->isTQualifiedNameValid($association)) {
+            $msg = "Association must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->association = $association;
         return $this;
     }
@@ -86,6 +96,10 @@ class AssociationSetAnonymousType extends IsOK
      */
     public function addToEnd(EndAnonymousType $end)
     {
+        $msg = null;
+        if (!$end->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->end[] = $end;
         return $this;
     }
@@ -133,6 +147,17 @@ class AssociationSetAnonymousType extends IsOK
      */
     public function setEnd(array $end)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $end,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType',
+            $msg,
+            0,
+            2
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
+
         $this->end = $end;
         return $this;
     }
