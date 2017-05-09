@@ -18,6 +18,7 @@ class EdmxTest extends TestCase
         $msg = null;
         $edmx = new Edmx();
         $this->assertTrue($edmx->isOK($msg), $msg);
+        $this->assertNull($msg);
         $ymlDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
