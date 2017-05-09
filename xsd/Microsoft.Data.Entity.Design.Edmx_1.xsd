@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema elementFormDefault="qualified"
-           attributeFormDefault="unqualified"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:csdl="http://schemas.microsoft.com/ado/2006/04/edm"
            xmlns:ssdl="http://schemas.microsoft.com/ado/2006/04/edm/ssdl"
            xmlns:msl="urn:schemas-microsoft-com:windows:storage:mapping:CS"
            xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
            targetNamespace="http://schemas.microsoft.com/ado/2007/06/edmx">
 
   <xs:annotation>

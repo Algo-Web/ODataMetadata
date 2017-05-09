@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration"
-           xmlns:gen="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
-           xmlns:csdl="http://schemas.microsoft.com/ado/2009/11/edm"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:csdl="http://schemas.microsoft.com/ado/2009/11/edm"
            xmlns:ssdl="http://schemas.microsoft.com/ado/2009/11/edm/ssdl"
            xmlns:msl="http://schemas.microsoft.com/ado/2009/11/mapping/cs"
            xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
            targetNamespace="http://schemas.microsoft.com/ado/2009/11/edmx">
   <xs:annotation>
     <xs:documentation xml:lang="en">

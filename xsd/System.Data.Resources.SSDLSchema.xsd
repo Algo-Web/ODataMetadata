@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:edm="http://schemas.microsoft.com/ado/2006/04/edm/ssdl"
-           xmlns:gen="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" 
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edm="http://schemas.microsoft.com/ado/2006/04/edm/ssdl"
+           xmlns:gen="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
            targetNamespace="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
     <xs:annotation>
         <xs:documentation xml:lang="en">

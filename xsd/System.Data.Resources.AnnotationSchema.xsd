@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<xs:schema id="AnnotationSchema"
-                  targetNamespace="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
-                  elementFormDefault="unqualified"
-                  xmlns="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
-                  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           id="AnnotationSchema"
+           targetNamespace="http://schemas.microsoft.com/ado/2009/02/edm/annotation"
+           elementFormDefault="unqualified"
+           xmlns="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
 
   <xs:attribute name="StoreGeneratedPattern" type="TStoreGeneratedPattern" />
   <xs:simpleType name="TStoreGeneratedPattern">

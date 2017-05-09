@@ -6,9 +6,10 @@
      Copyright (c) OASIS Open 2013. All Rights Reserved.
      Source: http://docs.oasis-open.org/odata/odata/v4.0/cos01/schemas/
      -->
-<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"
-  xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" xmlns:edm="http://docs.oasis-open.org/odata/ns/edm"
-  targetNamespace="http://docs.oasis-open.org/odata/ns/edmx"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx"
+           xmlns:edm="http://docs.oasis-open.org/odata/ns/edm"
+           elementFormDefault="qualified" attributeFormDefault="unqualified"
+           targetNamespace="http://docs.oasis-open.org/odata/ns/edmx"
 >
   <xs:annotation>
     <xs:documentation xml:lang="en">
@@ -16,7 +17,7 @@
     </xs:documentation>
   </xs:annotation>
 
-  <xs:import namespace="http://docs.oasis-open.org/odata/ns/edm" schemaLocation="edm.xsd" />
+    <xs:import namespace="http://docs.oasis-open.org/odata/ns/edm"/>
 
   <xs:element name="Edmx" type="edmx:TEdmx" />
   <xs:complexType name="TEdmx">

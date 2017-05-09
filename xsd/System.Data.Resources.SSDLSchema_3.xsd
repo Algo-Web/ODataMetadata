@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:edm="http://schemas.microsoft.com/ado/2009/11/edm/ssdl"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edm="http://schemas.microsoft.com/ado/2009/11/edm/ssdl"
            xmlns:gen="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
            targetNamespace="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <xs:annotation>
     <xs:documentation xml:lang="en">
@@ -263,7 +263,7 @@
               <xs:attribute name="EntityType" type="edm:TQualifiedName" use="required" />
               <xs:attribute name="Schema" type="edm:TSimpleIdentifier" use="optional" />
               <xs:attribute name="Table" type="edm:TSimpleIdentifier" use="optional" />
-              <xs:attribute ref="gen:Type" use="optional"/>-
+              <xs:attribute ref="gen:Type" use="optional"/>
               <xs:attribute ref="gen:Schema" use="optional"/>
               <xs:attribute ref="gen:Name" use="optional"/>
               <xs:anyAttribute processContents="lax" namespace="##other" />

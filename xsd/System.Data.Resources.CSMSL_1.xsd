@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <!-- XSD for CS( CDM <-> Storage ) space mapping. -->
-<xs:schema xmlns:tns="urn:schemas-microsoft-com:windows:storage:mapping:CS" 
-           attributeFormDefault="unqualified" 
-           elementFormDefault="qualified" 
-           targetNamespace="urn:schemas-microsoft-com:windows:storage:mapping:CS" 
-           xmlns:csmsl="urn:schemas-microsoft-com:windows:storage:mapping:CS" 
-           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema
+        xmlns:csmsl="urn:schemas-microsoft-com:windows:storage:mapping:CS"
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        attributeFormDefault="unqualified"
+        elementFormDefault="qualified"
+        targetNamespace="urn:schemas-microsoft-com:windows:storage:mapping:CS">
 
   <xs:annotation>
     <xs:documentation xml:lang="en">

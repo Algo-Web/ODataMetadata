@@ -6,8 +6,9 @@
      Copyright (c) OASIS Open 2013. All Rights Reserved.
      Source: http://docs.oasis-open.org/odata/odata/v4.0/cos01/schemas/
      -->
-<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edm="http://docs.oasis-open.org/odata/ns/edm"
-  targetNamespace="http://docs.oasis-open.org/odata/ns/edm">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:edm="http://docs.oasis-open.org/odata/ns/edm"
+           elementFormDefault="qualified" attributeFormDefault="unqualified"
+           targetNamespace="http://docs.oasis-open.org/odata/ns/edm">
   <xs:annotation>
     <xs:documentation xml:lang="en">
       Entity Data Model part of the Common Schema Definition Language

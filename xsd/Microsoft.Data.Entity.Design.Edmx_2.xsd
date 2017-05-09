@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema elementFormDefault="qualified"
-           attributeFormDefault="unqualified"
-           xmlns:xs="http://www.w3.org/2001/XMLSchema"
-           xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:csdl="http://schemas.microsoft.com/ado/2008/09/edm"
            xmlns:ssdl="http://schemas.microsoft.com/ado/2009/02/edm/ssdl"
-           xmlns:gen="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator"
            xmlns:msl="http://schemas.microsoft.com/ado/2008/09/mapping/cs"
            xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
            targetNamespace="http://schemas.microsoft.com/ado/2008/10/edmx">
 
   <xs:annotation>
