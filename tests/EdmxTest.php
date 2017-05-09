@@ -29,7 +29,6 @@ class EdmxTest extends TestCase
 
     public function V3MetadataAgainstXSD($data)
     {
-
         $xml = new \DOMDocument();
         $xml->loadXML($data);
         $xml->schemaValidate(dirname(__DIR__) . DIRECTORY_SEPARATOR . "xsd" . DIRECTORY_SEPARATOR . "/Microsoft.Data.Entity.Design.Edmx_3.xsd");
