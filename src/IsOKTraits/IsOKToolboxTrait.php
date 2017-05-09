@@ -50,37 +50,6 @@ trait IsOKToolboxTrait
         return false;
     }
 
-    protected function isValidArray(array $arr, $instanceOf, $minCount = -1, $maxCount = -1)
-    {
-        $numberOfItem = count($arr);
-        if (-1 != $minCount && $numberOfItem < $minCount) {
-            return false;
-        }
-        if (-1 != $maxCount && $numberOfItem > $maxCount) {
-            return false;
-        }
-        foreach ($arr as $item) {
-            if (!($item instanceof $instanceOf)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    protected function isChildArrayOK(array $arr, &$msg)
-    {
-        foreach ($arr as $item) {
-            if (!($item instanceof IsOK)) {
-                $msg = "Child item is not an instance of IsOK";
-                return false;
-            }
-            if (!$item->isOK($msg)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     protected function isURLValid($url)
     {
         if (!$this->isStringNotNull($url)) {
@@ -112,7 +81,7 @@ trait IsOKToolboxTrait
         return $object->isOK($msg);
     }
 
-    protected function isValidArrayOK(array $arr, $instanceOf, &$msg = null, $minCount = -1, $maxCount = -1)
+    protected function isValidArrayOK(array $arr = null, $instanceOf, &$msg = null, $minCount = -1, $maxCount = -1)
     {
         $result = $this->isValidArray($arr, $instanceOf, $minCount, $maxCount);
         if (!$result) {
@@ -121,5 +90,43 @@ trait IsOKToolboxTrait
         }
 
         return $this->isChildArrayOK($arr, $msg);
+    }
+
+    protected function isValidArray(array $arr = null, $instanceOf, $minCount = -1, $maxCount = -1)
+    {
+        if (null == $arr && 0 >= $minCount) {
+            return true;
+        }
+        $numberOfItem = count($arr);
+        if (-1 != $minCount && $numberOfItem < $minCount) {
+            return false;
+        }
+        if (-1 != $maxCount && $numberOfItem > $maxCount) {
+            return false;
+        }
+
+        foreach ($arr as $item) {
+            if (!($item instanceof $instanceOf)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    protected function isChildArrayOK(array $arr = null, &$msg)
+    {
+        if ($arr == null || empty($arr)) {
+            return true;
+        }
+        foreach ($arr as $item) {
+            if (!($item instanceof IsOK)) {
+                $msg = "Child item is not an instance of IsOK";
+                return false;
+            }
+            if (!$item->isOK($msg)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
