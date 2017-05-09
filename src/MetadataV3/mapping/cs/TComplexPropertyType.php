@@ -185,10 +185,13 @@ class TComplexPropertyType extends IsOK
     public function setScalarProperty(array $scalarProperty)
     {
         $msg = null;
+        // if other arrays are empty, then the array we're assigning must not be empty
+        $count = count($this->complexProperty) + count($this->condition) + count($this->complexTypeMapping);
         if (!$this->isValidArrayOK(
             $scalarProperty,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType',
-            $msg
+            $msg,
+            0 < $count ? 0 : 1
         )) {
             throw new \InvalidArgumentException($msg);
         }
@@ -253,10 +256,13 @@ class TComplexPropertyType extends IsOK
     public function setComplexProperty(array $complexProperty)
     {
         $msg = null;
+        // if other arrays are empty, then the array we're assigning must not be empty
+        $count = count($this->scalarProperty) + count($this->condition) + count($this->complexTypeMapping);
         if (!$this->isValidArrayOK(
             $complexProperty,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType',
-            $msg
+            $msg,
+            0 < $count ? 0 : 1
         )) {
             throw new \InvalidArgumentException($msg);
         }
@@ -320,6 +326,17 @@ class TComplexPropertyType extends IsOK
      */
     public function setComplexTypeMapping(array $complexTypeMapping)
     {
+        $msg = null;
+        // if other arrays are empty, then the array we're assigning must not be empty
+        $count = count($this->scalarProperty) + count($this->complexProperty) + count($this->condition);
+        if (!$this->isValidArrayOK(
+            $complexTypeMapping,
+            '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType',
+            $msg,
+            0 < $count ? 0 : 1
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->complexTypeMapping = $complexTypeMapping;
         return $this;
     }
@@ -381,10 +398,13 @@ class TComplexPropertyType extends IsOK
     public function setCondition(array $condition)
     {
         $msg = null;
+        // if other arrays are empty, then the array we're assigning must not be empty
+        $count = count($this->scalarProperty) + count($this->complexProperty) + count($this->complexTypeMapping);
         if (!$this->isValidArrayOK(
             $condition,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType',
-            $msg
+            $msg,
+            0 < $count ? 0 : 1
         )) {
             throw new \InvalidArgumentException($msg);
         }

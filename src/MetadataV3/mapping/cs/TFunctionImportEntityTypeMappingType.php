@@ -112,10 +112,13 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     public function setScalarProperty(array $scalarProperty)
     {
         $msg = null;
+        // if other arrays are empty, then the array we're assigning must not be empty
+        $count = count($this->condition);
         if (!$this->isValidArrayOK(
             $scalarProperty,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType',
-            $msg
+            $msg,
+            0 < $count ? 0 : 1
         )) {
             throw new \InvalidArgumentException($msg);
         }
@@ -180,10 +183,13 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     public function setCondition(array $condition)
     {
         $msg = null;
+        // if other arrays are empty, then the array we're assigning must not be empty
+        $count = count($this->scalarProperty);
         if (!$this->isValidArrayOK(
             $condition,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType',
-            $msg
+            $msg,
+            0 < $count ? 0 : 1
         )) {
             throw new \InvalidArgumentException($msg);
         }
