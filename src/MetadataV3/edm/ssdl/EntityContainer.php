@@ -5,13 +5,14 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\EntitySetAnonymousType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TUndottedIdentifierTrait;
 
 /**
  * Class representing EntityContainer
  */
 class EntityContainer extends IsOK
 {
-
+    use TUndottedIdentifierTrait;
     /**
      * @property string $name
      */
@@ -26,13 +27,13 @@ class EntityContainer extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\EntitySetAnonymousType[]
      * $entitySet
      */
-    private $entitySet = array();
+    private $entitySet = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType[]
      * $associationSet
      */
-    private $associationSet = array();
+    private $associationSet = [];
 
     /**
      * Gets as name
@@ -74,6 +75,10 @@ class EntityContainer extends IsOK
      */
     public function setDocumentation(TDocumentationType $documentation)
     {
+        $msg = null;
+        if (!$documentation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->documentation = $documentation;
         return $this;
     }
@@ -143,6 +148,10 @@ class EntityContainer extends IsOK
      */
     public function addToAssociationSet(AssociationSetAnonymousType $associationSet)
     {
+        $msg = null;
+        if (!$associationSet->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->associationSet[] = $associationSet;
         return $this;
     }
@@ -190,5 +199,40 @@ class EntityContainer extends IsOK
     {
         $this->associationSet = $associationSet;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isStringNotNullOrEmpty($this->name)) {
+            $msg = "Name cannot be null or empty";
+            return false;
+        }
+        if (!$this->isTUndottedIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TUndottedIdentifier";
+            return false;
+        }
+        if (!$this->isObjectNullOrType(
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType',
+            $this->documentation,
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->entitySet,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\EntitySetAnonymousType',
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isValidArrayOK(
+            $this->associationSet,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType',
+            $msg
+        )) {
+            return false;
+        }
+
+        return true;
     }
 }

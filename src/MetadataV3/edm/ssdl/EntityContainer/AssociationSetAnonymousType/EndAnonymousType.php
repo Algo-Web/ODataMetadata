@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\GEmptyElementExtensibilityTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType;
 
 /**
@@ -10,6 +12,13 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType;
  */
 class EndAnonymousType extends IsOK
 {
+    /**
+     * 1. The number of Ends has to match with ones defined in AssociationType
+     * 2. Value for attribute Name should match the defined ones and EntitySet should be of the
+     * defined Entity Type in AssociationType
+     */
+
+    use GEmptyElementExtensibilityTrait, TSimpleIdentifierTrait;
 
     /**
      * @property string $role
@@ -90,5 +99,29 @@ class EndAnonymousType extends IsOK
     {
         $this->documentation = $documentation;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null != $this->role && !$this->isTSimpleIdentifierValid($this->role)) {
+            $msg = "Role must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isTSimpleIdentifierValid($this->entitySet)) {
+            $msg = "Entity set must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (!$this->isObjectNullOrType(
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType',
+            $this->documentation,
+            $msg
+        )) {
+            return false;
+        }
+        if (!$this->isExtensibilityElementOK($msg)) {
+            return false;
+        }
+
+        return true;
     }
 }

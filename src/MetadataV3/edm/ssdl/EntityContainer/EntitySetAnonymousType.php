@@ -2,14 +2,20 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer;
 
+use AlgoWeb\ODataMetadata\EntityStoreSchemaGenerator\TSourceTypeTrait;
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TCommandTextTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TQualifiedNameTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TUndottedIdentifierTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType;
 
 /**
  * Class representing EntitySetAnonymousType
  */
 class EntitySetAnonymousType extends IsOK
 {
-
+    use TSimpleIdentifierTrait, TUndottedIdentifierTrait, TQualifiedNameTrait, TSourceTypeTrait, TCommandTextTrait;
     /**
      * @property string $name
      */
@@ -197,5 +203,42 @@ class EntitySetAnonymousType extends IsOK
     {
         $this->definingQuery = $definingQuery;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isTUndottedIdentifierValid($this->name)) {
+            $msg = "Name must be a valid TUndottedIdentifier";
+            return false;
+        }
+        if (!$this->isTQualifiedNameValid($this->entityType)) {
+            $msg = "Entity type must be a valid TQualifiedName";
+            return false;
+        }
+        if (null != $this->schema && !$this->isTSimpleIdentifierValid($this->schema)) {
+            $msg = "Schema must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->table && !$this->isTSimpleIdentifierValid($this->table)) {
+            $msg = "Table must be a valid TSimpleIdentifier";
+            return false;
+        }
+        if (null != $this->type && !$this->isTSourceTypeValid($this->type)) {
+            $msg = "Type must be a valid TSourceType";
+            return false;
+        }
+        if (null != $this->definingQuery && !$this->isTCommandTextValid($this->definingQuery)) {
+            $msg = "Defining query must be a valid TCommandText";
+            return false;
+        }
+        if (!$this->isObjectNullOrType(
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType',
+            $this->documentation,
+            $msg
+        )) {
+            return false;
+        }
+
+        return true;
     }
 }
