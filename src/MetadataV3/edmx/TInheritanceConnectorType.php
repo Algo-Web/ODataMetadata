@@ -46,6 +46,10 @@ class TInheritanceConnectorType extends IsOK
      */
     public function setEntityType($entityType)
     {
+        if (!$this->isStringNotNullOrEmpty($entityType)) {
+            $msg = "Entity type cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityType = $entityType;
         return $this;
     }

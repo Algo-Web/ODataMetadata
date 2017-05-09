@@ -41,6 +41,10 @@ class TDesignerPropertyType extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isStringNotNullOrEmpty($name)) {
+            $msg = "Name cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -63,6 +67,10 @@ class TDesignerPropertyType extends IsOK
      */
     public function setValue($value)
     {
+        if (!$this->isStringNotNullOrEmpty($value)) {
+            $msg = "Value cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->value = $value;
         return $this;
     }

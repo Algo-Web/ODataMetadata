@@ -52,6 +52,10 @@ class TEdmxType extends IsOK
      */
     public function setVersion($version)
     {
+        if (!$this->isStringNotNullOrEmpty($version)) {
+            $msg = "Version cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->version = $version;
         return $this;
     }

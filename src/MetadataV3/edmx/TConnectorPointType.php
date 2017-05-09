@@ -41,6 +41,10 @@ class TConnectorPointType extends IsOK
      */
     public function setPointX($pointX)
     {
+        if (null == $pointX || !is_numeric($pointX)) {
+            $msg = "Point X value must be present and numeric";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->pointX = $pointX;
         return $this;
     }
@@ -63,6 +67,10 @@ class TConnectorPointType extends IsOK
      */
     public function setPointY($pointY)
     {
+        if (null == $pointY || !is_numeric($pointY)) {
+            $msg = "Point Y value must be present and numeric";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->pointY = $pointY;
         return $this;
     }

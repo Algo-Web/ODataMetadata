@@ -46,6 +46,10 @@ class TAssociationConnectorType extends IsOK
      */
     public function setAssociation($association)
     {
+        if (!$this->isStringNotNullOrEmpty($association)) {
+            $msg = "Association cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->association = $association;
         return $this;
     }
@@ -68,7 +72,7 @@ class TAssociationConnectorType extends IsOK
      */
     public function setManuallyRouted($manuallyRouted)
     {
-        $this->manuallyRouted = $manuallyRouted;
+        $this->manuallyRouted = boolval($manuallyRouted);
         return $this;
     }
 

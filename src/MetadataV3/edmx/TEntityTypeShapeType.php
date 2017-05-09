@@ -66,6 +66,10 @@ class TEntityTypeShapeType extends IsOK
      */
     public function setEntityType($entityType)
     {
+        if (!$this->isStringNotNullOrEmpty($this->entityType)) {
+            $msg = "Entity type cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityType = $entityType;
         return $this;
     }
@@ -88,6 +92,10 @@ class TEntityTypeShapeType extends IsOK
      */
     public function setPointX($pointX)
     {
+        if (null != $pointX && !is_numeric($pointX)) {
+            $msg = "Point X value must be numeric";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->pointX = $pointX;
         return $this;
     }
@@ -110,6 +118,10 @@ class TEntityTypeShapeType extends IsOK
      */
     public function setPointY($pointY)
     {
+        if (null != $pointY && !is_numeric($pointY)) {
+            $msg = "Point Y value must be numeric";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->pointY = $pointY;
         return $this;
     }
@@ -132,6 +144,10 @@ class TEntityTypeShapeType extends IsOK
      */
     public function setWidth($width)
     {
+        if (null != $width && (!is_numeric($width) || 0 >= $width)) {
+            $msg = "Width value must be numeric and positive";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->width = $width;
         return $this;
     }
@@ -154,6 +170,10 @@ class TEntityTypeShapeType extends IsOK
      */
     public function setHeight($height)
     {
+        if (null != $height && (!is_numeric($height) || 0 >= $height)) {
+            $msg = "Height value must be numeric and positive";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->height = $height;
         return $this;
     }
@@ -198,6 +218,10 @@ class TEntityTypeShapeType extends IsOK
      */
     public function setFillColor($fillColor)
     {
+        if (null != $fillColor && !$this->isStringNotNullOrEmpty($fillColor)) {
+            $msg = "Fill color cannot be null or empty";
+            return false;
+        }
         $this->fillColor = $fillColor;
         return $this;
     }
@@ -213,7 +237,7 @@ class TEntityTypeShapeType extends IsOK
         }
 
         if (null != $this->fillColor && !$this->isStringNotNullOrEmpty($this->fillColor)) {
-            $msg = "Entity type cannot be null or empty";
+            $msg = "Fill color cannot be empty";
             return false;
         }
 

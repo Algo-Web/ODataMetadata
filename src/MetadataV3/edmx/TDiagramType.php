@@ -76,6 +76,10 @@ class TDiagramType extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isStringNotNullOrEmpty($name)) {
+            $msg = "Name cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -98,6 +102,10 @@ class TDiagramType extends IsOK
      */
     public function setDiagramId($diagramId)
     {
+        if (null != $diagramId && !$this->isStringNotNullOrEmpty($diagramId)) {
+            $msg = "Diagram ID cannot be empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->diagramId = $diagramId;
         return $this;
     }
@@ -120,6 +128,10 @@ class TDiagramType extends IsOK
      */
     public function setZoomLevel($zoomLevel)
     {
+        if (null != $zoomLevel && !is_integer($zoomLevel)) {
+            $msg = "Zoom level must be integral";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->zoomLevel = $zoomLevel;
         return $this;
     }
