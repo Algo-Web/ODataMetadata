@@ -52,6 +52,14 @@ class TAssociationType extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isStringNotNullOrEmpty($name)) {
+            $msg = "Name cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTUndottedIdentifierValid($name)) {
+            $msg = "Name must be a valid TUndottedIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }

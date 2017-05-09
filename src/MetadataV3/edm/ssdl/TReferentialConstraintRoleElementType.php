@@ -47,6 +47,14 @@ class TReferentialConstraintRoleElementType extends IsOK
      */
     public function setRole($role)
     {
+        if (!$this->isStringNotNullOrEmpty($role)) {
+            $msg = "Role cannot be empty or null";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($role)) {
+            $msg = "Role must be valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->role = $role;
         return $this;
     }

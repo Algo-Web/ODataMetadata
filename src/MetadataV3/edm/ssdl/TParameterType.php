@@ -73,6 +73,11 @@ class TParameterType extends IsOK
      */
     public function setName($name)
     {
+        $msg = null;
+        if (!$this->isStringNotNullOrEmpty($name)) {
+            $msg = "Name cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -95,6 +100,15 @@ class TParameterType extends IsOK
      */
     public function setType($type)
     {
+        $msg = null;
+        if (!$this->isStringNotNullOrEmpty($type)) {
+            $msg = "Type cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (null != $type && !$this->isTFunctionTypeValid($type)) {
+            $msg = "Type must be a valid TFunctionType";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->type = $type;
         return $this;
     }
@@ -117,6 +131,15 @@ class TParameterType extends IsOK
      */
     public function setMode($mode)
     {
+        $msg = null;
+        if (null != $mode && !$this->isStringNotNullOrEmpty($mode)) {
+            $msg = "Mode cannot be empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (null != $mode && !$this->isTParameterModeValid($mode)) {
+            $msg = "Mode must be a valid TParameterMode";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->mode = $mode;
         return $this;
     }
@@ -205,6 +228,11 @@ class TParameterType extends IsOK
      */
     public function setSRID($sRID)
     {
+        $msg = null;
+        if (null != $sRID && !$this->isStringNotNullOrEmpty($sRID)) {
+            $msg = "SRID cannot be empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->sRID = $sRID;
         return $this;
     }

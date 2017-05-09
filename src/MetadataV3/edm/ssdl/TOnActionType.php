@@ -37,6 +37,14 @@ class TOnActionType extends IsOK
      */
     public function setAction($action)
     {
+        if (!$this->isStringNotNullOrEmpty($action)) {
+            $msg = "Action cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTActionValid($action)) {
+            $msg = "Action must be valid TAction";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->action = $action;
         return $this;
     }

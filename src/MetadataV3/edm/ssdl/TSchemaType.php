@@ -53,6 +53,15 @@ class TSchemaType extends IsOK
      */
     public function setNamespace($namespace)
     {
+        $msg = null;
+        if (!$this->isStringNotNullOrEmpty($namespace)) {
+            $msg = "Namespace cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTQualifiedNameValid($namespace)) {
+            $msg = "Namespace must be valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->namespace = $namespace;
         return $this;
     }
@@ -75,6 +84,15 @@ class TSchemaType extends IsOK
      */
     public function setAlias($alias)
     {
+        $msg = null;
+        if (!$this->isStringNotNullOrEmpty($alias)) {
+            $msg = "Alias cannot be empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (null != $alias && !$this->isTSimpleIdentifierValid($alias)) {
+            $msg = "Alias must be valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->alias = $alias;
         return $this;
     }
@@ -97,6 +115,15 @@ class TSchemaType extends IsOK
      */
     public function setProvider($provider)
     {
+        $msg = null;
+        if (!$this->isStringNotNullOrEmpty($provider)) {
+            $msg = "Provider cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($provider)) {
+            $msg = "Provider must be valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->provider = $provider;
         return $this;
     }
@@ -119,6 +146,15 @@ class TSchemaType extends IsOK
      */
     public function setProviderManifestToken($providerManifestToken)
     {
+        $msg = null;
+        if (!$this->isStringNotNullOrEmpty($providerManifestToken)) {
+            $msg = "Provider manifest token cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($providerManifestToken)) {
+            $msg = "Provider manifest token must be valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->providerManifestToken = $providerManifestToken;
         return $this;
     }
@@ -149,7 +185,7 @@ class TSchemaType extends IsOK
             $msg = "Alias must be valid TSimpleIdentifier";
             return false;
         }
-        if (null != $this->providerManifestToken && !$this->isTSimpleIdentifierValid($this->providerManifestToken)) {
+        if (!$this->isTSimpleIdentifierValid($this->providerManifestToken)) {
             $msg = "Provider manifest token must be valid TSimpleIdentifier";
             return false;
         }

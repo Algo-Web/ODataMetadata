@@ -94,6 +94,15 @@ class TEntityPropertyType extends IsOK
      */
     public function setName($name)
     {
+        $msg = null;
+        if (!$this->isStringNotNullOrEmpty($name)) {
+            $msg = "Name cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = "Name must be valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -116,6 +125,15 @@ class TEntityPropertyType extends IsOK
      */
     public function setType($type)
     {
+        $msg = null;
+        if (!$this->isStringNotNullOrEmpty($type)) {
+            $msg = "Type cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTPropertyTypeValid($type)) {
+            $msg = "Type must be valid TPropertyType";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->type = $type;
         return $this;
     }
@@ -138,7 +156,7 @@ class TEntityPropertyType extends IsOK
      */
     public function setNullable($nullable)
     {
-        $this->nullable = $nullable;
+        $this->nullable = boolval($nullable);
         return $this;
     }
 
@@ -160,6 +178,10 @@ class TEntityPropertyType extends IsOK
      */
     public function setDefaultValue($defaultValue)
     {
+        if (null != $defaultValue && !$this->isStringNotNullOrEmpty($defaultValue)) {
+            $msg = "Default value cannot be empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->defaultValue = $defaultValue;
         return $this;
     }
@@ -182,6 +204,10 @@ class TEntityPropertyType extends IsOK
      */
     public function setMaxLength($maxLength)
     {
+        if (null != $maxLength && !(is_numeric($maxLength) && 0 < $maxLength)) {
+            $msg = "Max length must be positive and numeric";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->maxLength = $maxLength;
         return $this;
     }
@@ -204,7 +230,7 @@ class TEntityPropertyType extends IsOK
      */
     public function setFixedLength($fixedLength)
     {
-        $this->fixedLength = $fixedLength;
+        $this->fixedLength = boolval($fixedLength);
         return $this;
     }
 
@@ -226,6 +252,10 @@ class TEntityPropertyType extends IsOK
      */
     public function setPrecision($precision)
     {
+        if (null != $precision && !(is_numeric($precision) && 0 < $precision)) {
+            $msg = "Precision must be positive and numeric";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->precision = $precision;
         return $this;
     }
@@ -248,6 +278,10 @@ class TEntityPropertyType extends IsOK
      */
     public function setScale($scale)
     {
+        if (null != $scale && !(is_numeric($scale) && 0 < $scale)) {
+            $msg = "Scale must be positive and numeric";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->scale = $scale;
         return $this;
     }
@@ -270,7 +304,7 @@ class TEntityPropertyType extends IsOK
      */
     public function setUnicode($unicode)
     {
-        $this->unicode = $unicode;
+        $this->unicode = boolval($unicode);
         return $this;
     }
 
@@ -292,6 +326,10 @@ class TEntityPropertyType extends IsOK
      */
     public function setCollation($collation)
     {
+        if (null != $collation && !$this->isStringNotNullOrEmpty($collation)) {
+            $msg = "Collation cannot be empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->collation = $collation;
         return $this;
     }
@@ -314,6 +352,10 @@ class TEntityPropertyType extends IsOK
      */
     public function setSRID($sRID)
     {
+        if (null != $sRID && !$this->isStringNotNullOrEmpty($sRID)) {
+            $msg = "SRID cannot be empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->sRID = $sRID;
         return $this;
     }
@@ -336,6 +378,10 @@ class TEntityPropertyType extends IsOK
      */
     public function setStoreGeneratedPattern($storeGeneratedPattern)
     {
+        if (null != $storeGeneratedPattern && !$this->isStringNotNullOrEmpty($storeGeneratedPattern)) {
+            $msg = "Store generated pattern cannot be empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->storeGeneratedPattern = $storeGeneratedPattern;
         return $this;
     }

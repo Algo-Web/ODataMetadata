@@ -54,6 +54,10 @@ class TAssociationEndType extends IsOK
      */
     public function setType($type)
     {
+        if (!$this->isStringNotNullOrEmpty($type)) {
+            $msg = "Type cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->type = $type;
         return $this;
     }
@@ -76,6 +80,14 @@ class TAssociationEndType extends IsOK
      */
     public function setRole($role)
     {
+        if (null != $role && !$this->isStringNotNullOrEmpty($role)) {
+            $msg = "Role cannot be empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (null != $role && !$this->isTSimpleIdentifierValid($role)) {
+            $msg = "Role must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->role = $role;
         return $this;
     }
@@ -98,6 +110,15 @@ class TAssociationEndType extends IsOK
      */
     public function setMultiplicity($multiplicity)
     {
+        $msg = null;
+        if (!$this->isStringNotNullOrEmpty($multiplicity)) {
+            $msg = "Multiplicity cannot be null or empty";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTMultiplicityValid($multiplicity)) {
+            $msg = "Multiplicity must be a valid TMultiplicity";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->multiplicity = $multiplicity;
         return $this;
     }
