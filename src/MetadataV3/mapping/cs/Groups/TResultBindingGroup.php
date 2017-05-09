@@ -98,5 +98,4 @@ trait TResultBindingGroup
 
         return true;
     }
-
 }
