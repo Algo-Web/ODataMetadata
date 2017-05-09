@@ -34,6 +34,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToAssociation(TAssociationType $association)
     {
+        $msg = null;
+        if (!$association->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->association[] = $association;
         return $this;
     }
@@ -78,6 +82,13 @@ trait GSchemaBodyElementsTrait
      */
     public function setAssociation(array $association)
     {
+        if (!$this->isValidArrayOK(
+            $association,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->association = $association;
         return $this;
     }
@@ -90,6 +101,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToEntityType(TEntityTypeType $entityType)
     {
+        $msg = null;
+        if (!$entityType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityType[] = $entityType;
         return $this;
     }
@@ -146,6 +161,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToEntityContainer(EntityContainer $entityContainer)
     {
+        $msg = null;
+        if (!$entityContainer->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityContainer[] = $entityContainer;
         return $this;
     }
@@ -190,6 +209,14 @@ trait GSchemaBodyElementsTrait
      */
     public function setEntityContainer(array $entityContainer)
     {
+        if (!$this->isValidArrayOK(
+            $entityContainer,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer',
+            $msg,
+            1
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityContainer = $entityContainer;
         return $this;
     }
@@ -202,6 +229,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToFunction(TFunctionType $function)
     {
+        $msg = null;
+        if (!$function->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->function[] = $function;
         return $this;
     }
@@ -246,6 +277,13 @@ trait GSchemaBodyElementsTrait
      */
     public function setFunction(array $function)
     {
+        if (!$this->isValidArrayOK(
+            $function,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->function = $function;
         return $this;
     }
