@@ -246,6 +246,13 @@ class TDiagramType extends IsOK
      */
     public function setEntityTypeShape(array $entityTypeShape)
     {
+        if (!$this->isValidArrayOK(
+            $entityTypeShape,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType'
+        )) {
+            $msg = "Entity type shape array not a valid array";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityTypeShape = $entityTypeShape;
         return $this;
     }
@@ -306,6 +313,13 @@ class TDiagramType extends IsOK
      */
     public function setAssociationConnector(array $associationConnector)
     {
+        if (!$this->isValidArrayOK(
+            $associationConnector,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType'
+        )) {
+            $msg = "Association connector array not a valid array";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->associationConnector = $associationConnector;
         return $this;
     }
@@ -366,6 +380,13 @@ class TDiagramType extends IsOK
      */
     public function setInheritanceConnector(array $inheritanceConnector)
     {
+        if (!$this->isValidArrayOK(
+            $inheritanceConnector,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType'
+        )) {
+            $msg = "Inheritance connector array not a valid array";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->inheritanceConnector = $inheritanceConnector;
         return $this;
     }

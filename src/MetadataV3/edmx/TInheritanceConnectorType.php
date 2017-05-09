@@ -128,6 +128,13 @@ class TInheritanceConnectorType extends IsOK
      */
     public function setConnectorPoint(array $connectorPoint)
     {
+        if (!$this->isValidArrayOK(
+            $connectorPoint,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType'
+        )) {
+            $msg = "Designer info property set not a valid array";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->connectorPoint = $connectorPoint;
         return $this;
     }

@@ -74,8 +74,11 @@ class TOptionsType extends IsOK
      */
     public function setDesignerInfoPropertySet(array $designerInfoPropertySet)
     {
-        $msg = null;
-        if (!$designerInfoPropertySet->isOK($msg)) {
+        if (!$this->isValidArrayOK(
+            $designerInfoPropertySet,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TDesignerPropertyType'
+        )) {
+            $msg = "Designer info property set not a valid array";
             throw new \InvalidArgumentException($msg);
         }
         $this->designerInfoPropertySet = $designerInfoPropertySet;

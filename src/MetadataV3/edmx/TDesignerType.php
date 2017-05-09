@@ -136,6 +136,13 @@ class TDesignerType extends IsOK
      */
     public function setDiagrams(array $diagrams)
     {
+        if (!$this->isValidArrayOK(
+            $diagrams,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TDiagramType'
+        )) {
+            $msg = "Diagrams array not a valid array";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->diagrams = $diagrams;
         return $this;
     }

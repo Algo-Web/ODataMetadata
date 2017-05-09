@@ -164,6 +164,13 @@ class TEdmxType extends IsOK
      */
     public function setDataServices(array $dataServices)
     {
+        if (!$this->isValidArrayOK(
+            $dataServices,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\Schema'
+        )) {
+            $msg = "Data services array not a valid array";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->dataServices = $dataServices;
         return $this;
     }

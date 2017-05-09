@@ -74,6 +74,13 @@ class TConnectionType extends IsOK
      */
     public function setDesignerInfoPropertySet(array $designerInfoPropertySet)
     {
+        if (!$this->isValidArrayOK(
+            $designerInfoPropertySet,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TDesignerPropertyType'
+        )) {
+            $msg = "Designer info property set not a valid array";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->designerInfoPropertySet = $designerInfoPropertySet;
         return $this;
     }
