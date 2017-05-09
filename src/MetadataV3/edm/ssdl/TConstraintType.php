@@ -46,6 +46,10 @@ class TConstraintType extends IsOK
      */
     public function setDocumentation(TDocumentationType $documentation)
     {
+        $msg = null;
+        if (!$documentation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->documentation = $documentation;
         return $this;
     }
@@ -68,6 +72,10 @@ class TConstraintType extends IsOK
      */
     public function setPrincipal(TReferentialConstraintRoleElementType $principal)
     {
+        $msg = null;
+        if (!$principal->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->principal = $principal;
         return $this;
     }
@@ -90,6 +98,10 @@ class TConstraintType extends IsOK
      */
     public function setDependent(TReferentialConstraintRoleElementType $dependent)
     {
+        $msg = null;
+        if (!$dependent->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->dependent = $dependent;
         return $this;
     }

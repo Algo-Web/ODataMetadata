@@ -36,6 +36,10 @@ class TFunctionReturnTypeType extends IsOK
      */
     public function setCollectionType(TCollectionTypeType $collectionType)
     {
+        $msg = null;
+        if (!$collectionType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->collectionType = $collectionType;
         return $this;
     }

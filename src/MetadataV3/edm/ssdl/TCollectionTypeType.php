@@ -26,6 +26,10 @@ class TCollectionTypeType extends IsOK
      */
     public function addToRowType(TPropertyType $property)
     {
+        $msg = null;
+        if (!$property->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->rowType[] = $property;
         return $this;
     }
