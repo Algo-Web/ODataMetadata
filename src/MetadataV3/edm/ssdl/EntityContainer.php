@@ -135,6 +135,14 @@ class EntityContainer extends IsOK
      */
     public function setEntitySet(array $entitySet)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $entitySet,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\EntitySetAnonymousType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entitySet = $entitySet;
         return $this;
     }
@@ -197,6 +205,14 @@ class EntityContainer extends IsOK
      */
     public function setAssociationSet(array $associationSet)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $associationSet,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->associationSet = $associationSet;
         return $this;
     }

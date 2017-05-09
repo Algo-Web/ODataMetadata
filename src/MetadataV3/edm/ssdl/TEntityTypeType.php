@@ -4,6 +4,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TUndottedIdentifierTrait;
+use Symfony\Component\Console\Exception\InvalidArgumentException;
 
 /**
  * Class representing TEntityTypeType
@@ -138,6 +139,15 @@ class TEntityTypeType extends IsOK
      */
     public function setKey(array $key)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $key,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType',
+            $msg,
+            1
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->key = $key;
         return $this;
     }
@@ -198,6 +208,14 @@ class TEntityTypeType extends IsOK
      */
     public function setProperty(array $property)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $property,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityPropertyType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->property = $property;
         return $this;
     }

@@ -133,6 +133,15 @@ class TReferentialConstraintRoleElementType extends IsOK
      */
     public function setPropertyRef(array $propertyRef)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $propertyRef,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType',
+            $msg,
+            1
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->propertyRef = $propertyRef;
         return $this;
     }

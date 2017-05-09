@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\GEmptyElementExtensibilityTrait;
 
 /**
@@ -80,7 +81,7 @@ class AssociationSetAnonymousType extends IsOK
      * \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType
      * $end
      */
-    public function addToEnd(EntityContainer\AssociationSetAnonymousType\EndAnonymousType $end)
+    public function addToEnd(EndAnonymousType $end)
     {
         $this->end[] = $end;
         return $this;
@@ -129,6 +130,14 @@ class AssociationSetAnonymousType extends IsOK
      */
     public function setEnd(array $end)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $end,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->end = $end;
         return $this;
     }

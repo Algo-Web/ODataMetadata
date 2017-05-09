@@ -154,6 +154,14 @@ class TFunctionType extends IsOK
      */
     public function setReturnType(array $returnType)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $returnType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->returnType = $returnType;
         return $this;
     }
@@ -394,6 +402,14 @@ class TFunctionType extends IsOK
      */
     public function setParameter(array $parameter)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $parameter,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->parameter = $parameter;
         return $this;
     }
