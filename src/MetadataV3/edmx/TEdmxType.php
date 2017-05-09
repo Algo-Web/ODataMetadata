@@ -74,6 +74,10 @@ class TEdmxType extends IsOK
      */
     public function setDesigner(TDesignerType $designer)
     {
+        $msg = null;
+        if (!$designer->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->designer = $designer;
         return $this;
     }
@@ -96,6 +100,10 @@ class TEdmxType extends IsOK
      */
     public function setRuntime(TRuntimeType $runtime)
     {
+        $msg = null;
+        if (!$runtime->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->runtime = $runtime;
         return $this;
     }
@@ -108,6 +116,10 @@ class TEdmxType extends IsOK
      */
     public function addToDataServices(Schema $schema)
     {
+        $msg = null;
+        if (!$schema->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->dataServices[] = $schema;
         return $this;
     }

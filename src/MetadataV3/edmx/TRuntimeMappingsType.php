@@ -37,6 +37,10 @@ class TRuntimeMappingsType extends IsOK
      */
     public function setMapping(Mapping $mapping)
     {
+        $msg = null;
+        if (!$mapping->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->mapping = $mapping;
         return $this;
     }

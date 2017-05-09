@@ -26,6 +26,10 @@ class TConnectionType extends IsOK
      */
     public function addToDesignerInfoPropertySet(TDesignerPropertyType $designerProperty)
     {
+        $msg = null;
+        if (!$designerProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->designerInfoPropertySet[] = $designerProperty;
         return $this;
     }

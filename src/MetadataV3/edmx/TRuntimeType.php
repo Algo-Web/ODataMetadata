@@ -46,6 +46,10 @@ class TRuntimeType extends IsOK
      */
     public function setStorageModels(TRuntimeStorageModelsType $storageModels)
     {
+        $msg = null;
+        if (!$storageModels->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->storageModels = $storageModels;
         return $this;
     }
@@ -68,6 +72,10 @@ class TRuntimeType extends IsOK
      */
     public function setConceptualModels(TRuntimeConceptualModelsType $conceptualModels)
     {
+        $msg = null;
+        if (!$conceptualModels->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->conceptualModels = $conceptualModels;
         return $this;
     }
@@ -90,6 +98,10 @@ class TRuntimeType extends IsOK
      */
     public function setMappings(TRuntimeMappingsType $mappings)
     {
+        $msg = null;
+        if (!$mappings->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->mappings = $mappings;
         return $this;
     }

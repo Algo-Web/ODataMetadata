@@ -26,6 +26,10 @@ class TOptionsType extends IsOK
      */
     public function addToDesignerInfoPropertySet(TDesignerPropertyType $designerProperty)
     {
+        $msg = null;
+        if (!$designerProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->designerInfoPropertySet[] = $designerProperty;
         return $this;
     }
@@ -70,6 +74,10 @@ class TOptionsType extends IsOK
      */
     public function setDesignerInfoPropertySet(array $designerInfoPropertySet)
     {
+        $msg = null;
+        if (!$designerInfoPropertySet->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->designerInfoPropertySet = $designerInfoPropertySet;
         return $this;
     }

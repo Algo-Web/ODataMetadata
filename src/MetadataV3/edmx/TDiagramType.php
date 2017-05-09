@@ -198,6 +198,10 @@ class TDiagramType extends IsOK
      */
     public function addToEntityTypeShape(TEntityTypeShapeType $entityTypeShape)
     {
+        $msg = null;
+        if (!$entityTypeShape->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityTypeShape[] = $entityTypeShape;
         return $this;
     }
@@ -254,6 +258,10 @@ class TDiagramType extends IsOK
      */
     public function addToAssociationConnector(TAssociationConnectorType $associationConnector)
     {
+        $msg = null;
+        if (!$associationConnector->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->associationConnector[] = $associationConnector;
         return $this;
     }
@@ -310,6 +318,10 @@ class TDiagramType extends IsOK
      */
     public function addToInheritanceConnector(TInheritanceConnectorType $inheritanceConnector)
     {
+        $msg = null;
+        if (!$inheritanceConnector->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->inheritanceConnector[] = $inheritanceConnector;
         return $this;
     }

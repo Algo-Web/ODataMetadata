@@ -46,6 +46,10 @@ class TDesignerType extends IsOK
      */
     public function setConnection(TConnectionType $connection)
     {
+        $msg = null;
+        if (!$connection->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->connection = $connection;
         return $this;
     }
@@ -68,6 +72,10 @@ class TDesignerType extends IsOK
      */
     public function setOptions(TOptionsType $options)
     {
+        $msg = null;
+        if (!$options->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->options = $options;
         return $this;
     }
@@ -80,6 +88,10 @@ class TDesignerType extends IsOK
      */
     public function addToDiagrams(TDiagramType $diagram)
     {
+        $msg = null;
+        if (!$diagram->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->diagrams[] = $diagram;
         return $this;
     }

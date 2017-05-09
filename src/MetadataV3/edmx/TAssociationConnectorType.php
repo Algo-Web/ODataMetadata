@@ -80,6 +80,10 @@ class TAssociationConnectorType extends IsOK
      */
     public function addToConnectorPoint(TConnectorPointType $connectorPoint)
     {
+        $msg = null;
+        if (!$connectorPoint->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->connectorPoint[] = $connectorPoint;
         return $this;
     }
