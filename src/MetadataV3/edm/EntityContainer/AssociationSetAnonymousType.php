@@ -14,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class AssociationSetAnonymousType extends IsOK
 {
-    use IsOKToolboxTrait, GEmptyElementExtensibilityTrait, TSimpleIdentifierTrait, TQualifiedNameTrait;
+    use GEmptyElementExtensibilityTrait, TSimpleIdentifierTrait, TQualifiedNameTrait;
     /**
      * @property string $name
      */

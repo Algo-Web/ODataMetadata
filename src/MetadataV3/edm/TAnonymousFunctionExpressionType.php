@@ -14,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
  */
 class TAnonymousFunctionExpressionType extends IsOK
 {
-    use IsOKToolboxTrait, GExpressionTrait;
+    use GExpressionTrait;
     
     public function __construct()
     {

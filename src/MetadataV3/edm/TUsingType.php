@@ -16,7 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TUsingType extends IsOK
 {
-    use IsOKToolboxTrait, GEmptyElementExtensibilityTrait, TSimpleIdentifierTrait, TNamespaceNameTrait;
+    use GEmptyElementExtensibilityTrait, TSimpleIdentifierTrait, TNamespaceNameTrait;
     /**
      * @property string $namespace
      */

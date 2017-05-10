@@ -15,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionTypeTrait;
  */
 class TTypeAssertExpressionType extends IsOK
 {
-    use IsOKToolboxTrait, TFacetAttributesTrait, TWrappedFunctionTypeTrait;
+    use TFacetAttributesTrait, TWrappedFunctionTypeTrait;
     /**
      * @property string $type
      */

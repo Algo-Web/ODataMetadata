@@ -15,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TActionTrait;
  */
 class TOnActionType extends IsOK
 {
-    use IsOKToolboxTrait, GEmptyElementExtensibilityTrait, TActionTrait;
+    use GEmptyElementExtensibilityTrait, TActionTrait;
     /**
      * @property string $action
      */

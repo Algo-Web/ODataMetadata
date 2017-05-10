@@ -13,7 +13,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType;
  */
 class FunctionImportAnonymousType extends IsOK
 {
-    use IsOKToolboxTrait, TFunctionImportAttributesTrait;
+    use TFunctionImportAttributesTrait;
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation

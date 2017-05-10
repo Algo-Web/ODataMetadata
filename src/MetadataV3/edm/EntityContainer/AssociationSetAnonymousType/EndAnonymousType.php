@@ -17,7 +17,7 @@ class EndAnonymousType extends IsOK
     //2. Value for attribute Name should match the defined ones and EntitySet should be of the
     //   defined Entity Type in AssociationType
     
-    use IsOKToolboxTrait, TSimpleIdentifierTrait, GEmptyElementExtensibilityTrait;
+    use TSimpleIdentifierTrait, GEmptyElementExtensibilityTrait;
     /**
      * @property string $role
      */

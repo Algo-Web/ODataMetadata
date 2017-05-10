@@ -14,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TCommonPropertyAttributesTrait;
  */
 class TComplexTypePropertyType extends IsOK
 {
-    use IsOKToolboxTrait, TCommonPropertyAttributesTrait;
+    use TCommonPropertyAttributesTrait;
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[] $documentation

@@ -17,8 +17,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TNavigationPropertyType extends IsOK
 {
-    use IsOKToolboxTrait,
-        GEmptyElementExtensibilityTrait,
+    use GEmptyElementExtensibilityTrait,
         TQualifiedNameTrait,
         TSimpleIdentifierTrait,
         AccessTypeTraits;

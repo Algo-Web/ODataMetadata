@@ -16,7 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TPropertyValueType extends IsOK
 {
-    use IsOKToolboxTrait, GInlineExpressionsTrait, GExpressionTrait, TSimpleIdentifierTrait;
+    use GInlineExpressionsTrait, GExpressionTrait, TSimpleIdentifierTrait;
     /**
      * @property string $property
      */

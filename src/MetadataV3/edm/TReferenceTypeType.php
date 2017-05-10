@@ -15,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
  */
 class TReferenceTypeType extends IsOK
 {
-    use IsOKToolboxTrait, GEmptyElementExtensibilityTrait, TUnwrappedFunctionTypeTrait;
+    use GEmptyElementExtensibilityTrait, TUnwrappedFunctionTypeTrait;
     /**
      * @property string $type
      */
