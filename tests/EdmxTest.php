@@ -39,6 +39,7 @@ class EdmxTest extends TestCase
 
     public function testWithSingleEntitySerializeOk()
     {
+        $ds = DIRECTORY_SEPARATOR;
         $msg = null;
         $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
         $NewEntity->setName("simpleEntityType");
@@ -50,17 +51,18 @@ class EdmxTest extends TestCase
         $this->assertNull($msg);
 
 
-        $ymlDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
+        $ymlDir = dirname(__DIR__) . $ds . "src" . $ds . "MetadataV3" . $ds . "JMSmetadata";
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
                 ->addMetadataDir($ymlDir)
                 ->build();
         $d = $serializer->serialize($edmx, "xml");
-        $this->V3MetadataAgainstXSD($d);
+        $this->v3MetadataAgainstXSD($d);
     }
 
     public function testWithSingleEntityWithPropertiesSerializeOk()
     {
+        $ds = DIRECTORY_SEPARATOR;
         $msg = null;
         $NewProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
         $this->assertTrue($NewProperty->isOK($msg), $msg);
@@ -76,12 +78,12 @@ class EdmxTest extends TestCase
         $this->assertNull($msg);
 
 
-        $ymlDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
+        $ymlDir = dirname(__DIR__) . $ds . "src" . $ds . "MetadataV3" . $ds . "JMSmetadata";
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
                 ->addMetadataDir($ymlDir)
                 ->build();
         $d = $serializer->serialize($edmx, "xml");
-        $this->V3MetadataAgainstXSD($d);
+        $this->v3MetadataAgainstXSD($d);
     }
 }
