@@ -109,15 +109,15 @@ trait TEntitySetAttributesTrait
     public function isTEntitySetAttributesOK(&$msg = null)
     {
         if (null != $this->name && !$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = "Name must be a valid TSimpleIdentifier: " . get_class($this);
             return false;
         }
         if (null != $this->entityType && !$this->isTQualifiedNameValid($this->entityType)) {
-            $msg = "Entity type must be a valid TQualifiedName";
+            $msg = "Entity type must be a valid TQualifiedName: " . get_class($this);
             return false;
         }
         if (null != $this->getterAccess && !$this->isTAccessOk($this->getterAccess)) {
-            $msg = "Getter access must be a valid TAccess";
+            $msg = "Getter access must be a valid TAccess: " . get_class($this);
             return false;
         }
 

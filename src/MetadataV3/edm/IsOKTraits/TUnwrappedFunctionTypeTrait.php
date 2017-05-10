@@ -13,7 +13,8 @@ trait TUnwrappedFunctionTypeTrait
         $regex = '[^ \t]{1,}(\.[^ \t]{1,}){0,}';
 
         if (!is_string($string)) {
-            throw new \InvalidArgumentException("Input must be a string");
+            $msg = "Input must be a string: ". get_class($this);
+            throw new \InvalidArgumentException($msg);
         }
         if ($this->isTQualifiedNameValid($string)) {
             return true;

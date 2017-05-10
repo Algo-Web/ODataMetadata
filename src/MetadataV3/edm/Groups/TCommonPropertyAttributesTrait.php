@@ -476,59 +476,59 @@ trait TCommonPropertyAttributesTrait
     public function isTCommonPropertyAttributesValid(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = "Name must be a valid TSimpleIdentifier: " . get_class($this);
             return false;
         }
         if (!$this->isTPropertyTypeValid($this->type)) {
-            $msg = "Type must be a valid TPropertyType";
+            $msg = "Type must be a valid TPropertyType: " . get_class($this);
             return false;
         }
         if (null != $this->nullable && $this->nullable !== boolval($this->nullable)) {
-            $msg = "Nullable must be boolean";
+            $msg = "Nullable must be boolean: " . get_class($this);
             return false;
         }
         if (null != $this->defaultValue && !is_string($this->defaultValue)) {
-            $msg = "Default value must be a string";
+            $msg = "Default value must be a string: " . get_class($this);
             return false;
         }
         if (null != $this->maxLength && !$this->isTMaxLengthFacetValid($this->maxLength)) {
-            $msg = "Max length must be a valid TMaxLengthFacet";
+            $msg = "Max length must be a valid TMaxLengthFacet: " . get_class($this);
             return false;
         }
         if (null != $this->fixedLength && !$this->isTIsFixedLengthFacetTraitValid($this->fixedLength)) {
-            $msg = "Max length must be a valid TFixedLengthFacet";
+            $msg = "Max length must be a valid TFixedLengthFacet: " . get_class($this);
             return false;
         }
         if (null != $this->precision && !$this->isTPrecisionFacetValid($this->precision)) {
-            $msg = "Precision must be a valid TPrecisionFacet";
+            $msg = "Precision must be a valid TPrecisionFacet: " . get_class($this);
             return false;
         }
         if (null != $this->scale && !$this->isTScaleFacetValid($this->scale)) {
-            $msg = "Scale must be a valid TScaleFacet";
+            $msg = "Scale must be a valid TScaleFacet: " . get_class($this);
             return false;
         }
         if (null != $this->unicode && !$this->isTIsUnicodeFacetTraitValid($this->unicode)) {
-            $msg = "Unicode must be a valid TUnicodeFacet";
+            $msg = "Unicode must be a valid TUnicodeFacet: " . get_class($this);
             return false;
         }
         if (null != $this->collation && !$this->isTCollationFacetValid($this->collation)) {
-            $msg = "Collation must be a valid TCollationFacet";
+            $msg = "Collation must be a valid TCollationFacet: " . get_class($this);
             return false;
         }
         if (null != $this->sRID && !$this->isTSridFacetValid($this->sRID)) {
-            $msg = "SRID must be a valid TSridFacet";
+            $msg = "SRID must be a valid TSridFacet: " . get_class($this);
             return false;
         }
         if (null != $this->concurrencyMode && !$this->isTConcurrencyModeValid($this->concurrencyMode)) {
-            $msg = "ConcurrencyMode must be a valid TConcurrencyMode";
+            $msg = "ConcurrencyMode must be a valid TConcurrencyMode: " . get_class($this);
             return false;
         }
         if (null != $this->setterAccess && !$this->isTAccessOk($this->setterAccess)) {
-            $msg = "Setter access must be a valid TAccess";
+            $msg = "Setter access must be a valid TAccess: " . get_class($this);
             return false;
         }
         if (null != $this->getterAccess && !$this->isTAccessOk($this->getterAccess)) {
-            $msg = "Getter access must be a valid TAccess";
+            $msg = "Getter access must be a valid TAccess: " . get_class($this);
             return false;
         }
 

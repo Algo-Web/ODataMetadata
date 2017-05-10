@@ -243,7 +243,7 @@ class TEntityPropertyType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTGenerationPatternValid($this->storeGeneratedPattern)) {
-            $msg = "Store generation pattern must be a valid TGenerationPattern";
+            $msg = "Store generation pattern must be a valid TGenerationPattern: " . get_class($this);
             return false;
         }
         if (!$this->isValidArrayOK(

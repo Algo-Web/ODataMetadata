@@ -76,7 +76,7 @@ trait TDerivableTypeAttributesTrait
             return false;
         }
         if (null != $this->baseType && !$this->isTQualifiedNameValid($this->baseType)) {
-            $msg = "Base type must be a valid TQualifiedName";
+            $msg = "Base type must be a valid TQualifiedName: " . get_class($this);
             return false;
         }
         return true;

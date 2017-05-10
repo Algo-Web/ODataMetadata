@@ -265,7 +265,7 @@ trait TFunctionImportAttributesTrait
     public function isTFunctionImportAttributesValid(&$msg)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = "Name must be a valid TSimpleIdentifier: " . get_class($this);
             return false;
         }
         /*
@@ -274,11 +274,11 @@ trait TFunctionImportAttributesTrait
             return false;
         }*/
         if (!$this->isObjectNullOrType('\AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType', $this->entitySet)) {
-            $msg = "Entity set must be either null or an instance of TOperandType";
+            $msg = "Entity set must be either null or an instance of TOperandType: " . get_class($this);
             return false;
         }
         if (null != $this->methodAccess && $this->isTAccessOk($this->methodAccess)) {
-            $msg = "Method access must be a valid TAccess";
+            $msg = "Method access must be a valid TAccess: " . get_class($this);
             return false;
         }
         if (!$this->isValidArrayOK(

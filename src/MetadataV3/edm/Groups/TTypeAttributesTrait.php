@@ -46,11 +46,11 @@ trait TTypeAttributesTrait
     public function isTTypeAttributesValid(&$msg = null)
     {
         if (null == $this->name) {
-            $msg = "Name cannot be null " . __FILE__ . " Class: " . __Class__;
+            $msg = "Name cannot be null: " . get_class($this);
             return false;
         }
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier " . __FILE__ . " Class: " . __Class__;
+            $msg = "Name must be a valid TSimpleIdentifier: " . get_class($this);
             return false;
         }
         

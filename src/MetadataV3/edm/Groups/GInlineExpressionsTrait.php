@@ -365,47 +365,47 @@ trait GInlineExpressionsTrait
     public function isGInlineExpressionsValid(&$msg = null)
     {
         if (null != $this->string && !is_string($this->string)) {
-            $msg = "String must be a string";
+            $msg = "String must be a string: " . get_class($this);
             return false;
         }
         if (null != $this->binary && !$this->hexBinary($this->binary)) {
-            $msg = "Binary must be hexadecimal";
+            $msg = "Binary must be hexadecimal: " . get_class($this);
             return false;
         }
         if (null != $this->int && $this->int !== intval($this->int)) {
-            $msg = "Integer must be integral";
+            $msg = "Integer must be integral: " . get_class($this);
             return false;
         }
         if (null != $this->float && $this->float !== floatval($this->float)) {
-            $msg = "Float must be floating-point";
+            $msg = "Float must be floating-point: " . get_class($this);
             return false;
         }
         if (null != $this->guid && !$this->isTGuidLiteralValid($this->guid)) {
-            $msg = "Guid must be valid GUID";
+            $msg = "Guid must be valid GUID: " . get_class($this);
             return false;
         }
         if (null != $this->bool && $this->bool !== boolval($this->bool)) {
-            $msg = "Bool must be boolean";
+            $msg = "Bool must be boolean: " . get_class($this);
             return false;
         }
         if (null != $this->decimal && $this->decimal !== floatval($this->decimal)) {
-            $msg = "Decimal must be decimal";
+            $msg = "Decimal must be decimal: " . get_class($this);
             return false;
         }
         if (null != $this->enum && !$this->isTQualifiedNameValid($this->enum)) {
-            $msg = "Enum must be a valid TQualifiedName";
+            $msg = "Enum must be a valid TQualifiedName: " . get_class($this);
             return false;
         }
         if (null != $this->path && !$this->isTQualifiedNameValid($this->path)) {
-            $msg = "Path must be a valid TQualifiedName";
+            $msg = "Path must be a valid TQualifiedName: " . get_class($this);
             return false;
         }
         if (null != $this->dateTime && $this->dateTime !== $this->dateTime($this->dateTime)) {
-            $msg = "DateTime must be a valid date/time";
+            $msg = "DateTime must be a valid date/time: " . get_class($this);
             return false;
         }
         if (null != $this->dateTimeOffset && $this->dateTimeOffset !== $this->dateTime($this->dateTimeOffset)) {
-            $msg = "DateTimeOffset must be a valid date/time";
+            $msg = "DateTimeOffset must be a valid date/time: " . get_class($this);
             return false;
         }
 

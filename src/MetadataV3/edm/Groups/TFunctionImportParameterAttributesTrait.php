@@ -242,31 +242,31 @@ trait TFunctionImportParameterAttributesTrait
     public function isTFunctionImportParameterAttributesValid(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = "Name must be a valid TSimpleIdentifier: " . get_class($this);
             return false;
         }
         if (!$this->isTFunctionImportParameterAndReturnTypeValid($this->type)) {
-            $msg = "Type must be a valid TFunctionImportParameterAndReturnType";
+            $msg = "Type must be a valid TFunctionImportParameterAndReturnType: " . get_class($this);
             return false;
         }
         if (null != $this->mode && !$this->isTParameterModeValid($this->mode)) {
-            $msg = "Mode must be a valid TParameterMode";
+            $msg = "Mode must be a valid TParameterMode: " . get_class($this);
             return false;
         }
         if (null != $this->maxLength && !$this->isTMaxLengthFacetValid($this->maxLength)) {
-            $msg = "Max length must be a valid TMaxLengthFacet";
+            $msg = "Max length must be a valid TMaxLengthFacet: " . get_class($this);
             return false;
         }
         if (null != $this->precision && !$this->isTPrecisionFacetValid($this->precision)) {
-            $msg = "Precision must be a valid TPrecisionFacet";
+            $msg = "Precision must be a valid TPrecisionFacet: " . get_class($this);
             return false;
         }
         if (null != $this->scale && !$this->isTScaleFacetValid($this->scale)) {
-            $msg = "Scale must be a valid TScaleFacet";
+            $msg = "Scale must be a valid TScaleFacet: " . get_class($this);
             return false;
         }
         if (null != $this->sRID && !$this->isTSridFacetValid($this->sRID)) {
-            $msg = "SRID must be a valid TSRIDFacet";
+            $msg = "SRID must be a valid TSRIDFacet: " . get_class($this);
             return false;
         }
 

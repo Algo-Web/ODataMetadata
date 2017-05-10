@@ -71,7 +71,7 @@ trait TOperationsTrait
     {
         $msg = null;
         if (!$this->isValidArrayOK($onDelete, '\AlgoWeb\ODataMetadata\MetadataV3\edm\TOnActionType', $msg)) {
-            return false;
+            throw new \InvalidArgumentException($msg);
         }
         $this->onDelete = $onDelete;
         return $this;

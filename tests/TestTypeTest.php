@@ -176,7 +176,7 @@ class TestTypeTest extends TestCase
     public function testIsChildArrayOkForNonEmptyArrayWithBadGubbins()
     {
         $msg = null;
-        $expected = "Child item is not an instance of IsOK";
+        $expected = "Child item is not an instance of IsOK: AlgoWeb\\ODataMetadata\\Tests\\testType";
         $arr = ['abc'];
 
         $foo = new testType();
@@ -275,7 +275,7 @@ class TestTypeTest extends TestCase
         $foo = m::mock(testType::class)->makePartial();
         $foo->shouldReceive('isValidArray')->withAnyArgs()->andReturn(false);
 
-        $expected = "Supplied array not a valid array";
+        $expected = "Supplied array not a valid array: Mockery_0_AlgoWeb_ODataMetadata_Tests_testType";
         $msg = null;
         $this->assertFalse($foo->isValidArrayOk([], '', $msg));
         $this->assertEquals($expected, $msg);
