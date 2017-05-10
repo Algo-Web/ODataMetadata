@@ -65,11 +65,14 @@ class EdmxTest extends TestCase
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
         $NewProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
+        $NewProperty->setName("TheFirstProperty");
+        $NewProperty->setType("String");
         $this->assertTrue($NewProperty->isOK($msg), $msg);
         $this->assertNull($msg);
 
         $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
         $NewEntity->setName("simpleEntityType");
+        $NewEntity->addToProperty($NewProperty);
         $this->assertTrue($NewEntity->isOK($msg), $msg);
         $this->assertNull($msg);
         $edmx = new Edmx();
@@ -84,6 +87,7 @@ class EdmxTest extends TestCase
                 ->addMetadataDir($ymlDir)
                 ->build();
         $d = $serializer->serialize($edmx, "xml");
+        die($d);
         $this->v3MetadataAgainstXSD($d);
     }
 }

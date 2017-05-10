@@ -4,7 +4,6 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\Annotations\TGenerationPatternTrait;
 use AlgoWeb\ODataMetadata\IsOK;
-use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TCommonPropertyAttributesTrait;
 
 /**
@@ -242,7 +241,7 @@ class TEntityPropertyType extends IsOK
 
     public function isOK(&$msg = null)
     {
-        if (!$this->isTGenerationPatternValid($this->storeGeneratedPattern)) {
+        if (null != $this->storeGeneratedPattern && !$this->isTGenerationPatternValid($this->storeGeneratedPattern)) {
             $msg = "Store generation pattern must be a valid TGenerationPattern: " . get_class($this);
             return false;
         }
