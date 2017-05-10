@@ -21,6 +21,10 @@ trait TOperationsTrait
      */
     public function addToOnDelete(TOnActionType $onDelete)
     {
+        $msg = null;
+        if (!$onDelete->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->onDelete[] = $onDelete;
         return $this;
     }
@@ -65,6 +69,10 @@ trait TOperationsTrait
      */
     public function setOnDelete(array $onDelete)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK($onDelete, '\AlgoWeb\ODataMetadata\MetadataV3\edm\TOnActionType', $msg)) {
+            return false;
+        }
         $this->onDelete = $onDelete;
         return $this;
     }

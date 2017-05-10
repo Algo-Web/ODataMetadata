@@ -65,6 +65,11 @@ trait TFunctionImportAttributesTrait
      */
     public function setName($name)
     {
+        $msg = null;
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -77,6 +82,10 @@ trait TFunctionImportAttributesTrait
      */
     public function addToReturnType(TFunctionImportReturnTypeType $returnType)
     {
+        $msg = null;
+        if (!$returnType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->returnType[] = $returnType;
         return $this;
     }
@@ -121,6 +130,14 @@ trait TFunctionImportAttributesTrait
      */
     public function setReturnType(array $returnType)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $returnType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->returnType = $returnType;
         return $this;
     }
@@ -143,6 +160,10 @@ trait TFunctionImportAttributesTrait
      */
     public function setEntitySet(TOperandType $entitySet)
     {
+        $msg = null;
+        if (!$entitySet->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entitySet = $entitySet;
         return $this;
     }
@@ -231,6 +252,11 @@ trait TFunctionImportAttributesTrait
      */
     public function setMethodAccess($methodAccess)
     {
+        $msg = null;
+        if (null != $methodAccess && $this->isTAccessOk($methodAccess)) {
+            $msg = "Method access must be a valid TAccess";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->methodAccess = $methodAccess;
         return $this;
     }

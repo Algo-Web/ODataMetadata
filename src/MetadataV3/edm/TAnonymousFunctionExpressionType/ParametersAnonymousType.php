@@ -25,6 +25,10 @@ class ParametersAnonymousType extends IsOK
      */
     public function addToParameter(TFunctionParameterType $parameter)
     {
+        $msg = null;
+        if (!$parameter->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->parameter[] = $parameter;
         return $this;
     }
@@ -69,6 +73,14 @@ class ParametersAnonymousType extends IsOK
      */
     public function setParameter(array $parameter)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $parameter,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        };
         $this->parameter = $parameter;
         return $this;
     }

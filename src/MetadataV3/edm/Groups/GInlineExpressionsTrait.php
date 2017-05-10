@@ -83,6 +83,11 @@ trait GInlineExpressionsTrait
      */
     public function setString($string)
     {
+        $msg = null;
+        if (null != $string && !is_string($string)) {
+            $msg = "String must be a string";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->string = $string;
         return $this;
     }
@@ -105,6 +110,11 @@ trait GInlineExpressionsTrait
      */
     public function setBinary($binary)
     {
+        $msg = null;
+        if (null != $binary && !$this->hexBinary($binary)) {
+            $msg = "Binary must be hexadecimal";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->binary = $binary;
         return $this;
     }
@@ -127,6 +137,11 @@ trait GInlineExpressionsTrait
      */
     public function setInt($int)
     {
+        $msg = null;
+        if (null != $int && $int !== intval($int)) {
+            $msg = "Integer must be integral";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->int = $int;
         return $this;
     }
@@ -149,6 +164,11 @@ trait GInlineExpressionsTrait
      */
     public function setFloat($float)
     {
+        $msg = null;
+        if (null != $float && $float !== floatval($float)) {
+            $msg = "Float must be floating-point";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->float = $float;
         return $this;
     }
@@ -171,6 +191,11 @@ trait GInlineExpressionsTrait
      */
     public function setGuid($guid)
     {
+        $msg = null;
+        if (null != $guid && !$this->isTGuidLiteralValid($guid)) {
+            $msg = "Guid must be valid GUID";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->guid = $guid;
         return $this;
     }
@@ -193,6 +218,11 @@ trait GInlineExpressionsTrait
      */
     public function setDecimal($decimal)
     {
+        $msg = null;
+        if (null != $decimal && $decimal !== floatval($decimal)) {
+            $msg = "Decimal must be decimal";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->decimal = $decimal;
         return $this;
     }
@@ -215,6 +245,11 @@ trait GInlineExpressionsTrait
      */
     public function setBool($bool)
     {
+        $msg = null;
+        if (null != $bool && $bool !== boolval($bool)) {
+            $msg = "Bool must be boolean";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->bool = $bool;
         return $this;
     }
@@ -237,6 +272,11 @@ trait GInlineExpressionsTrait
      */
     public function setDateTime(\DateTime $dateTime)
     {
+        $msg = null;
+        if (null != $dateTime && $dateTime !== $this->dateTime($dateTime)) {
+            $msg = "DateTime must be a valid date/time";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->dateTime = $dateTime;
         return $this;
     }
@@ -259,6 +299,11 @@ trait GInlineExpressionsTrait
      */
     public function setDateTimeOffset(\DateTime $dateTimeOffset)
     {
+        $msg = null;
+        if (null != $dateTimeOffset && $dateTimeOffset !== $this->dateTime($dateTimeOffset)) {
+            $msg = "DateTimeOffset must be a valid date/time";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->dateTimeOffset = $dateTimeOffset;
         return $this;
     }
@@ -281,6 +326,11 @@ trait GInlineExpressionsTrait
      */
     public function setEnum($enum)
     {
+        $msg = null;
+        if (null != $enum && !$this->isTQualifiedNameValid($enum)) {
+            $msg = "Enum must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->enum = $enum;
         return $this;
     }
@@ -303,6 +353,11 @@ trait GInlineExpressionsTrait
      */
     public function setPath($path)
     {
+        $msg = null;
+        if (null != $path && !$this->isTQualifiedNameValid($path)) {
+            $msg = "Path must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->path = $path;
         return $this;
     }

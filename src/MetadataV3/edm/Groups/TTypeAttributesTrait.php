@@ -30,6 +30,15 @@ trait TTypeAttributesTrait
      */
     public function setName($name)
     {
+        $msg = null;
+        if (null == $name) {
+            $msg = "Name cannot be null";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }

@@ -100,6 +100,11 @@ trait TFacetAttributesTrait
      */
     public function setDefaultValue($defaultValue)
     {
+        $msg = null;
+        if (null != $defaultValue && !is_string($defaultValue)) {
+            $msg = "Default value must be a string";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->defaultValue = $defaultValue;
         return $this;
     }
@@ -122,6 +127,11 @@ trait TFacetAttributesTrait
      */
     public function setMaxLength($maxLength)
     {
+        $msg = null;
+        if (null != $maxLength && !$this->isTMaxLengthFacetValid($maxLength)) {
+            $msg = "Max length must be a valid TMaxLengthFacet";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->maxLength = $maxLength;
         return $this;
     }
@@ -144,6 +154,11 @@ trait TFacetAttributesTrait
      */
     public function setFixedLength($fixedLength)
     {
+        $msg = null;
+        if (null != $fixedLength && !$this->isTIsFixedLengthFacetTraitValid($fixedLength)) {
+            $msg = "Fixed length must be a valid TFixedLengthFacet";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->fixedLength = $fixedLength;
         return $this;
     }
@@ -166,6 +181,11 @@ trait TFacetAttributesTrait
      */
     public function setPrecision($precision)
     {
+        $msg = null;
+        if (null != $precision && !$this->isTPrecisionFacetValid($precision)) {
+            $msg = "Precision must be a valid TPrecisionFacet";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->precision = $precision;
         return $this;
     }
@@ -188,6 +208,11 @@ trait TFacetAttributesTrait
      */
     public function setScale($scale)
     {
+        $msg = null;
+        if (null != $scale && !$this->isTScaleFacetValid($scale)) {
+            $msg = "Scale must be a valid TScaleFacet";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->scale = $scale;
         return $this;
     }
@@ -210,6 +235,11 @@ trait TFacetAttributesTrait
      */
     public function setUnicode($unicode)
     {
+        $msg = null;
+        if (null != $unicode && !$this->isTIsUnicodeFacetTraitValid($unicode)) {
+            $msg = "Unicode must be a valid TUnicodeFacet";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->unicode = $unicode;
         return $this;
     }
@@ -232,6 +262,11 @@ trait TFacetAttributesTrait
      */
     public function setCollation($collation)
     {
+        $msg = null;
+        if (null != $collation && !$this->isTCollationFacetValid($collation)) {
+            $msg = "Collation must be a valid TCollationFacet";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->collation = $collation;
         return $this;
     }
@@ -254,6 +289,11 @@ trait TFacetAttributesTrait
      */
     public function setSRID($sRID)
     {
+        $msg = null;
+        if (null != $sRID && !$this->isTSridFacetValid($sRID)) {
+            $msg = "SRID must be a valid TSridFacet";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->sRID = $sRID;
         return $this;
     }
@@ -276,7 +316,7 @@ trait TFacetAttributesTrait
             $msg = "Max length must be a valid TMaxLengthFacet";
             return false;
         }
-        if (null != $this->fixedLength && !$this->isTIsFixedLengthFacetTraitValid($this->maxLength)) {
+        if (null != $this->fixedLength && !$this->isTIsFixedLengthFacetTraitValid($this->fixedLength)) {
             $msg = "Fixed length must be a valid TFixedLengthFacet";
             return false;
         }

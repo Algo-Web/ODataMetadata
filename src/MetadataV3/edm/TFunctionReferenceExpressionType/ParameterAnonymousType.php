@@ -55,6 +55,11 @@ class ParameterAnonymousType extends IsOK
      */
     public function setType($type)
     {
+        $msg = null;
+        if (null != $type && !$this->isTWrappedFunctionTypeValid($type)) {
+            $msg = "Type must be a valid TWrappedFunctionType";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->type = $type;
         return $this;
     }
@@ -67,6 +72,10 @@ class ParameterAnonymousType extends IsOK
      */
     public function addToCollectionType(TCollectionTypeType $collectionType)
     {
+        $msg = null;
+        if (!$collectionType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->collectionType[] = $collectionType;
         return $this;
     }
@@ -111,6 +120,16 @@ class ParameterAnonymousType extends IsOK
      */
     public function setCollectionType(array $collectionType)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $collectionType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType',
+            $msg,
+            0,
+            1
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->collectionType = $collectionType;
         return $this;
     }
@@ -123,6 +142,10 @@ class ParameterAnonymousType extends IsOK
      */
     public function addToReferenceType(TReferenceTypeType $referenceType)
     {
+        $msg = null;
+        if (!$referenceType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->referenceType[] = $referenceType;
         return $this;
     }
@@ -167,6 +190,16 @@ class ParameterAnonymousType extends IsOK
      */
     public function setReferenceType(array $referenceType)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $referenceType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType',
+            $msg,
+            0,
+            1
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->referenceType = $referenceType;
         return $this;
     }
@@ -179,6 +212,10 @@ class ParameterAnonymousType extends IsOK
      */
     public function addToRowType(TPropertyType $property)
     {
+        $msg = null;
+        if (!$property->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->rowType[] = $property;
         return $this;
     }
@@ -223,6 +260,16 @@ class ParameterAnonymousType extends IsOK
      */
     public function setRowType(array $rowType)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $rowType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
+            $msg,
+            0,
+            1
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->rowType = $rowType;
         return $this;
     }

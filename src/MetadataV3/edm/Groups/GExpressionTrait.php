@@ -263,6 +263,11 @@ trait GExpressionTrait
      */
     public function setGuid($guid)
     {
+        $msg = null;
+        if (null != $guid && !$this->isTGuidLiteralValid($guid)) {
+            $msg = "Guid must be a valid TGuidLiteral";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->guid = $guid;
         return $this;
     }
@@ -307,7 +312,7 @@ trait GExpressionTrait
      */
     public function setBool($bool)
     {
-        $this->bool = $bool;
+        $this->bool = boolval($bool);
         return $this;
     }
 
@@ -373,6 +378,11 @@ trait GExpressionTrait
      */
     public function setEnum($enum)
     {
+        $msg = null;
+        if (null != $enum && !$this->isTQualifiedNameValid($enum)) {
+            $msg = "Enum must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->enum = $enum;
         return $this;
     }
@@ -395,6 +405,11 @@ trait GExpressionTrait
      */
     public function setPath($path)
     {
+        $msg = null;
+        if (null != $path && !$this->isTQualifiedNameValid($path)) {
+            $msg = "Path must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->path = $path;
         return $this;
     }
@@ -417,6 +432,10 @@ trait GExpressionTrait
      */
     public function setIf(TIfExpressionType $if)
     {
+        $msg = null;
+        if (!$if->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->if = $if;
         return $this;
     }
@@ -439,6 +458,10 @@ trait GExpressionTrait
      */
     public function setRecord(TRecordExpressionType $record)
     {
+        $msg = null;
+        if (!$record->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->record = $record;
         return $this;
     }
@@ -461,6 +484,10 @@ trait GExpressionTrait
      */
     public function setCollection(TCollectionExpressionType $collection)
     {
+        $msg = null;
+        if (!$collection->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->collection = $collection;
         return $this;
     }
@@ -483,6 +510,10 @@ trait GExpressionTrait
      */
     public function setTypeAssert(TTypeAssertExpressionType $typeAssert)
     {
+        $msg = null;
+        if (!$typeAssert->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeAssert = $typeAssert;
         return $this;
     }
@@ -505,6 +536,10 @@ trait GExpressionTrait
      */
     public function setTypeTest(TTypeTestExpressionType $typeTest)
     {
+        $msg = null;
+        if (!$typeTest->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeTest = $typeTest;
         return $this;
     }
@@ -527,6 +562,10 @@ trait GExpressionTrait
      */
     public function setFunctionReference(TFunctionReferenceExpressionType $functionReference)
     {
+        $msg = null;
+        if (!$functionReference->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->functionReference = $functionReference;
         return $this;
     }
@@ -549,6 +588,10 @@ trait GExpressionTrait
      */
     public function setEntitySetReference(TEntitySetReferenceExpressionType $entitySetReference)
     {
+        $msg = null;
+        if (!$entitySetReference->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entitySetReference = $entitySetReference;
         return $this;
     }
@@ -571,6 +614,10 @@ trait GExpressionTrait
      */
     public function setAnonymousFunction(TAnonymousFunctionExpressionType $anonymousFunction)
     {
+        $msg = null;
+        if (!$anonymousFunction->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->anonymousFunction = $anonymousFunction;
         return $this;
     }
@@ -593,6 +640,10 @@ trait GExpressionTrait
      */
     public function setParameterReference(TParameterReferenceExpressionType $parameterReference)
     {
+        $msg = null;
+        if (!$parameterReference->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->parameterReference = $parameterReference;
         return $this;
     }
@@ -615,6 +666,10 @@ trait GExpressionTrait
      */
     public function setApply(TApplyExpressionType $apply)
     {
+        $msg = null;
+        if (!$apply->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->apply = $apply;
         return $this;
     }
@@ -637,6 +692,10 @@ trait GExpressionTrait
      */
     public function setPropertyReference(TPropertyReferenceExpressionType $propertyReference)
     {
+        $msg = null;
+        if (!$propertyReference->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->propertyReference = $propertyReference;
         return $this;
     }
@@ -659,6 +718,10 @@ trait GExpressionTrait
      */
     public function setValueTermReference(TValueTermReferenceExpressionType $valueTermReference)
     {
+        $msg = null;
+        if (!$valueTermReference->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->valueTermReference = $valueTermReference;
         return $this;
     }

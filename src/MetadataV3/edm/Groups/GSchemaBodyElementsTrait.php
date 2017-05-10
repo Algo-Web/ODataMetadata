@@ -70,6 +70,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToUsing(TUsingType $using)
     {
+        $msg = null;
+        if (!$using->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->using[] = $using;
         return $this;
     }
@@ -114,6 +118,10 @@ trait GSchemaBodyElementsTrait
      */
     public function setUsing(array $using)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK($using, '\AlgoWeb\ODataMetadata\MetadataV3\edm\TUsingType', $msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->using = $using;
         return $this;
     }
@@ -126,6 +134,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToAssociation(TAssociationType $association)
     {
+        $msg = null;
+        if (!$association->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->association[] = $association;
         return $this;
     }
@@ -170,6 +182,14 @@ trait GSchemaBodyElementsTrait
      */
     public function setAssociation(array $association)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $association,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->association = $association;
         return $this;
     }
@@ -182,6 +202,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToComplexType(TComplexTypeType $complexType)
     {
+        $msg = null;
+        if (!$complexType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->complexType[] = $complexType;
         return $this;
     }
@@ -226,6 +250,14 @@ trait GSchemaBodyElementsTrait
      */
     public function setComplexType(array $complexType)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $complexType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->complexType = $complexType;
         return $this;
     }
@@ -238,6 +270,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToEntityType(TEntityTypeType $entityType)
     {
+        $msg = null;
+        if (!$entityType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityType[] = $entityType;
         return $this;
     }
@@ -282,6 +318,14 @@ trait GSchemaBodyElementsTrait
      */
     public function setEntityType(array $entityType)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $entityType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityType = $entityType;
         return $this;
     }
@@ -294,6 +338,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToEnumType(TEnumTypeType $enumType)
     {
+        $msg = null;
+        if (!$enumType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->enumType[] = $enumType;
         return $this;
     }
@@ -338,6 +386,14 @@ trait GSchemaBodyElementsTrait
      */
     public function setEnumType(array $enumType)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $enumType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->enumType = $enumType;
         return $this;
     }
@@ -350,6 +406,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToValueTerm(TValueTermType $valueTerm)
     {
+        $msg = null;
+        if (!$valueTerm->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->valueTerm[] = $valueTerm;
         return $this;
     }
@@ -394,6 +454,14 @@ trait GSchemaBodyElementsTrait
      */
     public function setValueTerm(array $valueTerm)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $valueTerm,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->valueTerm = $valueTerm;
         return $this;
     }
@@ -406,6 +474,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToFunction(TFunctionType $function)
     {
+        $msg = null;
+        if (!$function->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->function[] = $function;
         return $this;
     }
@@ -450,6 +522,14 @@ trait GSchemaBodyElementsTrait
      */
     public function setFunction(array $function)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $function,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->function = $function;
         return $this;
     }
@@ -462,6 +542,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToAnnotations(TAnnotationsType $annotations)
     {
+        $msg = null;
+        if (!$annotations->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->annotations[] = $annotations;
         return $this;
     }
@@ -506,6 +590,14 @@ trait GSchemaBodyElementsTrait
      */
     public function setAnnotations(array $annotations)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $annotations,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TAnnotationsType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->annotations = $annotations;
         return $this;
     }
@@ -518,6 +610,10 @@ trait GSchemaBodyElementsTrait
      */
     public function addToEntityContainer(EntityContainer $entityContainer)
     {
+        $msg = null;
+        if (!$entityContainer->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityContainer[] = $entityContainer;
         return $this;
     }
@@ -562,6 +658,16 @@ trait GSchemaBodyElementsTrait
      */
     public function setEntityContainer(array $entityContainer)
     {
+        $msg = null;
+        if (!$this->isValidArrayOK(
+            $entityContainer,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer',
+            $msg,
+            1,
+            1
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entityContainer = $entityContainer;
         return $this;
     }
