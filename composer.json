@@ -31,7 +31,9 @@
   "requre-dev": {
     "brianium/paratest": "dev-master",
     "phpspec/phpspec": "^3.0",
-    "squizlabs/php_codesniffer": "~2.3"
+    "squizlabs/php_codesniffer": "~2.3",
+    "satooshi/php-coveralls": "dev-master",
+    "fiunchinho/phpunit-randomizer": "2.0.*"
   },
   "scripts": {
     "test": "phpunit",

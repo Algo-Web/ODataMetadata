@@ -1,0 +1,35 @@
+language: php
+
+php:
+  - 5.6
+  - 7.0
+  - 7.1
+  - nightly
+
+
+before_script:
+  - composer install
+#  - wget http://getcomposer.org/composer.phar
+#  - php composer.phar require satooshi/php-coveralls:dev-master --dev --no-progress --prefer-source
+
+script:
+  - mkdir -p build/logs
+  # run tests in random order to expose hidden inter-test dependencies (by breakages)
+  - php vendor/bin/phpunit-randomizer --coverage-clover build/logs/clover.xml --order rand
+
+after_script:
+  - php vendor/bin/coveralls --exclude-no-stmt
+
+after_success:
+  - coveralls
+env: # important!
+matrix:
+  allow_failures:
+  - php: nightly
+
+#notifications:
+#  webhooks:
+#    urls:
+#      # Send Hall Dev Loung a Message
+#      - secure: "XgvziuMTeNM3DKo5VY6VQeIZyhuoNxtHBezXWpsy5eEqcEyciAOodTeW4La5kckEyu2MYC2r7Vek9jv9rshyyhP74NNugVJPt7OZeBtmjILvwjsUk+VJP6xzK+zxC3Xo57PxlSo4O8OMNJ3Is8Sc+6AJ9tbgx4KFkE2u3f3j/n8="
+#    on_start: true
