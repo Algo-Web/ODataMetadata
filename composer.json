@@ -25,7 +25,8 @@
   "require": {
     "php": "~5.6|~7.0|~7.1",
     "mockery/mockery": "0.9.*|^1.0@dev",
-    "phpunit/phpunit": "^5.6"
+    "phpunit/phpunit": "^5.6",
+    "jms/serializer": "^1.7"
   },
   "requre-dev": {
     "brianium/paratest": "dev-master",

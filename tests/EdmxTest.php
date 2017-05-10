@@ -15,25 +15,26 @@ class EdmxTest extends TestCase
 
     public function testDefaultSerializeOk()
     {
+        $ds = DIRECTORY_SEPARATOR;
         $msg = null;
         $edmx = new Edmx();
         $this->assertTrue($edmx->isOK($msg), $msg);
         $this->assertNull($msg);
-        $ymlDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . "src" . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
+        $ymlDir = dirname(__DIR__) . $ds . "src" . $ds . "MetadataV3" . $ds . "JMSmetadata";
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
                 ->addMetadataDir($ymlDir)
                 ->build();
         $d = $serializer->serialize($edmx, "xml");
-        $this->V3MetadataAgainstXSD($d);
+        $this->v3MetadataAgainstXSD($d);
     }
 
-    public function V3MetadataAgainstXSD($data)
+    public function v3MetadataAgainstXSD($data)
     {
-
+        $ds = DIRECTORY_SEPARATOR;
         $xml = new \DOMDocument();
         $xml->loadXML($data);
-        $xml->schemaValidate(dirname(__DIR__) . DIRECTORY_SEPARATOR . "xsd" . DIRECTORY_SEPARATOR . "/Microsoft.Data.Entity.Design.Edmx_3.xsd");
+        $xml->schemaValidate(dirname(__DIR__) . $ds . "xsd" . $ds . "/Microsoft.Data.Entity.Design.Edmx_3.xsd");
     }
 
     public function testWithSingleEntitySerializeOk()
