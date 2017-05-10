@@ -15,7 +15,20 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TCommonPropertyAttributesTrait;
  */
 class TEntityPropertyType extends IsOK
 {
-    use IsOKToolboxTrait, TCommonPropertyAttributesTrait, TGenerationPatternTrait;
+    use TCommonPropertyAttributesTrait, TGenerationPatternTrait {
+        TCommonPropertyAttributesTrait::normaliseString insteadof TGenerationPatternTrait;
+        TCommonPropertyAttributesTrait::preserveString insteadof TGenerationPatternTrait;
+        TCommonPropertyAttributesTrait::replaceString insteadof TGenerationPatternTrait;
+        TCommonPropertyAttributesTrait::collapseString insteadof TGenerationPatternTrait;
+        TCommonPropertyAttributesTrait::token insteadof TGenerationPatternTrait;
+        TCommonPropertyAttributesTrait::string insteadof TGenerationPatternTrait;
+        TCommonPropertyAttributesTrait::integer insteadof TGenerationPatternTrait;
+        TCommonPropertyAttributesTrait::nonNegativeInteger insteadof TGenerationPatternTrait;
+        TCommonPropertyAttributesTrait::decimal insteadof TGenerationPatternTrait;
+        TCommonPropertyAttributesTrait::double insteadof TGenerationPatternTrait;
+        TCommonPropertyAttributesTrait::dateTime insteadof TGenerationPatternTrait;
+        TCommonPropertyAttributesTrait::hexBinary insteadof TGenerationPatternTrait;
+    }
  
     /**
      * @property string $storeGeneratedPattern

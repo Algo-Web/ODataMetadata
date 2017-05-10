@@ -19,7 +19,26 @@ trait TCommonPropertyAttributesTrait
 {
     use TSimpleIdentifierTrait, TMaxLengthFacetTrait, TIsFixedLengthFacetTrait, TPrecisionFacetTrait, TScaleFacetTrait,
         TIsUnicodeFacetTrait, TCollationFacetTrait, TSridFacetTrait, TConcurrencyModeTrait, AccessTypeTraits,
-        IsOKToolboxTrait, TPropertyTypeTrait;
+        IsOKToolboxTrait, TPropertyTypeTrait {
+            TMaxLengthFacetTrait::normaliseString insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TMaxLengthFacetTrait::preserveString insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TMaxLengthFacetTrait::replaceString insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TMaxLengthFacetTrait::collapseString insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TMaxLengthFacetTrait::token insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TMaxLengthFacetTrait::string insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TMaxLengthFacetTrait::integer insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TMaxLengthFacetTrait::nonNegativeInteger insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TMaxLengthFacetTrait::decimal insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TMaxLengthFacetTrait::double insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TMaxLengthFacetTrait::dateTime insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TMaxLengthFacetTrait::hexBinary insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+            TSimpleIdentifierTrait::isNCName insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait,
+                TMaxLengthFacetTrait, TPropertyTypeTrait;
+            TSimpleIdentifierTrait::matchesRegexPattern insteadof TPrecisionFacetTrait, TScaleFacetTrait,
+                TSridFacetTrait, TMaxLengthFacetTrait, TPropertyTypeTrait;
+            TSimpleIdentifierTrait::isName insteadof TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait,
+                TMaxLengthFacetTrait, TPropertyTypeTrait;
+    }
 
     /**
      * @property string $name
