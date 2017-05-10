@@ -108,6 +108,14 @@ class TFunctionReferenceExpressionType extends IsOK
      */
     public function setParameter(array $parameter)
     {
+        if (!$this->isValidArrayOK(
+            $parameter,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType',
+            $msg,
+            1
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->parameter = $parameter;
         return $this;
     }

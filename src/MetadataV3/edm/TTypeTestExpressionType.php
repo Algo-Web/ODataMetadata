@@ -118,6 +118,13 @@ class TTypeTestExpressionType extends IsOK
      */
     public function setOperand(array $operand)
     {
+        if (!$this->isValidArrayOK(
+            $operand,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->operand = $operand;
         return $this;
     }
@@ -178,6 +185,13 @@ class TTypeTestExpressionType extends IsOK
      */
     public function setCollectionType(array $collectionType)
     {
+        if (!$this->isValidArrayOK(
+            $collectionType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->collectionType = $collectionType;
         return $this;
     }
@@ -238,6 +252,13 @@ class TTypeTestExpressionType extends IsOK
      */
     public function setReferenceType(array $referenceType)
     {
+        if (!$this->isValidArrayOK(
+            $referenceType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->referenceType = $referenceType;
         return $this;
     }
@@ -298,6 +319,13 @@ class TTypeTestExpressionType extends IsOK
      */
     public function setRowType(array $rowType)
     {
+        if (!$this->isValidArrayOK(
+            $rowType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->rowType = $rowType;
         return $this;
     }

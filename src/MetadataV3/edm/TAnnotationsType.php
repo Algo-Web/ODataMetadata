@@ -136,6 +136,13 @@ class TAnnotationsType extends IsOK
      */
     public function setValueAnnotation(array $valueAnnotation)
     {
+        if (!$this->isValidArrayOK(
+            $valueAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->valueAnnotation = $valueAnnotation;
         return $this;
     }
@@ -196,6 +203,13 @@ class TAnnotationsType extends IsOK
      */
     public function setTypeAnnotation(array $typeAnnotation)
     {
+        if (!$this->isValidArrayOK(
+            $typeAnnotation,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeAnnotation = $typeAnnotation;
         return $this;
     }

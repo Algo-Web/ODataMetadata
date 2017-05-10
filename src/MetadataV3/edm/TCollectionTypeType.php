@@ -170,6 +170,9 @@ class TCollectionTypeType extends IsOK
      */
     public function setRowType(array $rowType)
     {
+        if (!$this->isValidArray($rowType, '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType', $msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->rowType = $rowType;
         return $this;
     }

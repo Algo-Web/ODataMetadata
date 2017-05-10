@@ -235,6 +235,13 @@ class EntityContainer extends IsOK
      */
     public function setFunctionImport(array $functionImport)
     {
+        if (!$this->isValidArrayOK(
+            $functionImport,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->functionImport = $functionImport;
         return $this;
     }
@@ -295,6 +302,13 @@ class EntityContainer extends IsOK
      */
     public function setEntitySet(array $entitySet)
     {
+        if (!$this->isValidArrayOK(
+            $entitySet,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entitySet = $entitySet;
         return $this;
     }
@@ -357,6 +371,13 @@ class EntityContainer extends IsOK
      */
     public function setAssociationSet(array $associationSet)
     {
+        if (!$this->isValidArrayOK(
+            $associationSet,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->associationSet = $associationSet;
         return $this;
     }

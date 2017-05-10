@@ -82,6 +82,13 @@ class TAnonymousFunctionExpressionType extends IsOK
      */
     public function setParameters(array $parameters)
     {
+        if (!$this->isValidArrayOK(
+            $parameters,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->parameters = $parameters;
         return $this;
     }

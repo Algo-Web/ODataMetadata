@@ -187,6 +187,13 @@ class TEnumTypeType extends IsOK
      */
     public function setMember(array $member)
     {
+        if (!$this->isValidArrayOK(
+            $member,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->member = $member;
         return $this;
     }

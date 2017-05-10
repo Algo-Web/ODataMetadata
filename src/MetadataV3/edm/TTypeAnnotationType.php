@@ -132,6 +132,13 @@ class TTypeAnnotationType extends IsOK
      */
     public function setPropertyValue(array $propertyValue)
     {
+        if (!$this->isValidArrayOK(
+            $propertyValue,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->propertyValue = $propertyValue;
         return $this;
     }

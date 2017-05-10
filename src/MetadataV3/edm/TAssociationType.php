@@ -139,6 +139,15 @@ class TAssociationType extends IsOK
      */
     public function setEnd(array $end)
     {
+        if (!$this->isValidArrayOK(
+            $end,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType',
+            $msg,
+            2,
+            2
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->end = $end;
         return $this;
     }

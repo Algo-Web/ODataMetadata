@@ -407,6 +407,13 @@ class TFunctionReturnTypeType extends IsOK
      */
     public function setRowType(array $rowType)
     {
+        if (!$this->isValidArrayOK(
+            $rowType,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->rowType = $rowType;
         return $this;
     }

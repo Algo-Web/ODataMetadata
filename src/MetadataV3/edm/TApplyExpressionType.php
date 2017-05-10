@@ -112,6 +112,13 @@ class TApplyExpressionType extends IsOK
      */
     public function setAppliedFunction(array $appliedFunction)
     {
+        if (!$this->isValidArrayOK(
+            $appliedFunction,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->appliedFunction = $appliedFunction;
         return $this;
     }
@@ -172,6 +179,13 @@ class TApplyExpressionType extends IsOK
      */
     public function setArguments(array $arguments)
     {
+        if (!$this->isValidArrayOK(
+            $arguments,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType',
+            $msg
+        )) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->arguments = $arguments;
         return $this;
     }
