@@ -40,6 +40,10 @@ class TTypeRefType extends IsOK
      */
     public function setType($type)
     {
+        if (!$this->isTUnwrappedFunctionTypeValid($type)) {
+            $msg = "Type must be a valid TUnwrappedFunctionType";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->type = $type;
         return $this;
     }

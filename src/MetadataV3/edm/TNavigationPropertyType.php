@@ -70,6 +70,10 @@ class TNavigationPropertyType extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -92,6 +96,10 @@ class TNavigationPropertyType extends IsOK
      */
     public function setRelationship($relationship)
     {
+        if (!$this->isTQualifiedNameValid($relationship)) {
+            $msg = "Relationship must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->relationship = $relationship;
         return $this;
     }
@@ -114,6 +122,10 @@ class TNavigationPropertyType extends IsOK
      */
     public function setToRole($toRole)
     {
+        if (!$this->isTSimpleIdentifierValid($toRole)) {
+            $msg = "To role must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->toRole = $toRole;
         return $this;
     }
@@ -136,6 +148,10 @@ class TNavigationPropertyType extends IsOK
      */
     public function setFromRole($fromRole)
     {
+        if (!$this->isTSimpleIdentifierValid($fromRole)) {
+            $msg = "From role must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->fromRole = $fromRole;
         return $this;
     }
@@ -158,6 +174,10 @@ class TNavigationPropertyType extends IsOK
      */
     public function setGetterAccess($getterAccess)
     {
+        if (null != $getterAccess && !$this->isTAccessOk($getterAccess)) {
+            $msg = "Getter access must be a valid TAccess";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->getterAccess = $getterAccess;
         return $this;
     }
@@ -180,6 +200,10 @@ class TNavigationPropertyType extends IsOK
      */
     public function setSetterAccess($setterAccess)
     {
+        if (null != $setterAccess && !$this->isTAccessOk($setterAccess)) {
+            $msg = "Setter access must be a valid TAccess";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->setterAccess = $setterAccess;
         return $this;
     }

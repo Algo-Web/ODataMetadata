@@ -60,6 +60,10 @@ class TPropertyType extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -82,6 +86,10 @@ class TPropertyType extends IsOK
      */
     public function setType($type)
     {
+        if (null != $type && !$this->isTWrappedFunctionTypeValid($type)) {
+            $msg = "Type must be a valid TWrappedFunctionType";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->type = $type;
         return $this;
     }

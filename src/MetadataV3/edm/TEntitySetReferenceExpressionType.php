@@ -38,6 +38,10 @@ class TEntitySetReferenceExpressionType extends IsOK
      */
     public function setEntitySet($entitySet)
     {
+        if (!$this->isTQualifiedNameValid($entitySet)) {
+            $msg = "Entity set must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entitySet = $entitySet;
         return $this;
     }

@@ -56,6 +56,10 @@ class TSchemaType extends IsOK
      */
     public function setNamespace($namespace)
     {
+        if (!$this->isTNamespaceNameValid($namespace)) {
+            $msg = "Namespace must be a valid TNamespaceName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->namespace = $namespace;
         return $this;
     }
@@ -78,6 +82,10 @@ class TSchemaType extends IsOK
      */
     public function setNamespaceUri($namespaceUri)
     {
+        if (null != $namespaceUri && !$this->isURLValid($namespaceUri)) {
+            $msg = "Namespace url must be a valid url";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->namespaceUri = $namespaceUri;
         return $this;
     }
@@ -100,6 +108,10 @@ class TSchemaType extends IsOK
      */
     public function setAlias($alias)
     {
+        if (null != $alias && !$this->isTSimpleIdentifierValid($alias)) {
+            $msg = "Alias must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->alias = $alias;
         return $this;
     }
@@ -110,12 +122,12 @@ class TSchemaType extends IsOK
             $msg = "Namespace must be a valid TNamespaceName";
             return false;
         }
-        if (null != $this->alias && !$this->isTSimpleIdentifierValid($this->alias)) {
-            $msg = "Alias must be a valid TSimpleIdentifier";
-            return false;
-        }
         if (null != $this->namespaceUri && !$this->isURLValid($this->namespaceUri)) {
             $msg = "Namespace url must be a valid url";
+            return false;
+        }
+        if (null != $this->alias && !$this->isTSimpleIdentifierValid($this->alias)) {
+            $msg = "Alias must be a valid TSimpleIdentifier";
             return false;
         }
         if (!$this->isGSchemaBodyElementsValid($msg)) {

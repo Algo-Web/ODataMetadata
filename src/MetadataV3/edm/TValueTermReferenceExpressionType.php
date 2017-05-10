@@ -50,6 +50,10 @@ class TValueTermReferenceExpressionType extends IsOK
      */
     public function setTerm($term)
     {
+        if (!$this->isTQualifiedNameValid($term)) {
+            $msg = "Term must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->term = $term;
         return $this;
     }
@@ -72,6 +76,10 @@ class TValueTermReferenceExpressionType extends IsOK
      */
     public function setQualifier($qualifier)
     {
+        if (null != $qualifier && !$this->isTSimpleIdentifierValid($qualifier)) {
+            $msg = "Qualifier must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->qualifier = $qualifier;
         return $this;
     }

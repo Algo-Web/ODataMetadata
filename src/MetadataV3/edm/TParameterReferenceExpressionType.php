@@ -38,6 +38,10 @@ class TParameterReferenceExpressionType extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = "Name must be a valid TSimpleIdentifierValid";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }

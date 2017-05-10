@@ -43,6 +43,10 @@ class TRecordExpressionType extends IsOK
      */
     public function setType($type)
     {
+        if (null != $type && !$this->isTUnwrappedFunctionTypeValid($type)) {
+            $msg = "Type must be a valid TUnwrappedFunctionType";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->type = $type;
         return $this;
     }

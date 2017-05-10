@@ -58,6 +58,10 @@ class TCollectionTypeType extends IsOK
      */
     public function setElementType($elementType)
     {
+        if (null != $elementType && !$this->isTUnwrappedFunctionTypeValid($elementType)) {
+            $msg = "Element type must be a valid TUnwrappedFunction";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->elementType = $elementType;
         return $this;
     }

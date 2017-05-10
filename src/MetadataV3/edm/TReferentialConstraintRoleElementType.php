@@ -43,6 +43,10 @@ class TReferentialConstraintRoleElementType extends IsOK
      */
     public function setRole($role)
     {
+        if (!$this->isTSimpleIdentifierValid($role)) {
+            $msg = "Role must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->role = $role;
         return $this;
     }

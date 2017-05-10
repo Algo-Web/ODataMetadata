@@ -45,6 +45,10 @@ class TFunctionReferenceExpressionType extends IsOK
      */
     public function setFunction($function)
     {
+        if (!$this->isTQualifiedNameValid($function)) {
+            $msg = "Function must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->function = $function;
         return $this;
     }

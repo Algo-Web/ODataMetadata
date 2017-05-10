@@ -81,6 +81,10 @@ class EntityContainer extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = "Name(" . $name . ") must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }
@@ -103,6 +107,10 @@ class EntityContainer extends IsOK
      */
     public function setExtends($extends)
     {
+        if (null != $extends && !$this->isTSimpleIdentifierValid($extends)) {
+            $msg = "Extends must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->extends = $extends;
         return $this;
     }
@@ -125,6 +133,10 @@ class EntityContainer extends IsOK
      */
     public function setTypeAccess($typeAccess)
     {
+        if (null != $typeAccess && !($this->isTPublicOrInternalAccessOK($typeAccess))) {
+            $msg = "Type access must be Public or Internal";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeAccess = $typeAccess;
         return $this;
     }
@@ -147,7 +159,7 @@ class EntityContainer extends IsOK
      */
     public function setLazyLoadingEnabled($lazyLoadingEnabled)
     {
-        $this->lazyLoadingEnabled = $lazyLoadingEnabled;
+        $this->lazyLoadingEnabled = boolval($lazyLoadingEnabled);
         return $this;
     }
 

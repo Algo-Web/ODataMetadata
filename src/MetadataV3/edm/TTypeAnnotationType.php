@@ -50,6 +50,10 @@ class TTypeAnnotationType extends IsOK
      */
     public function setTerm($term)
     {
+        if (!$this->isTQualifiedNameValid($term)) {
+            $msg = "Term must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->term = $term;
         return $this;
     }

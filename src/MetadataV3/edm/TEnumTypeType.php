@@ -83,6 +83,10 @@ class TEnumTypeType extends IsOK
      */
     public function setUnderlyingType($underlyingType)
     {
+        if (!$this->isTPropertyTypeValid($underlyingType)) {
+            $msg = "Underlying type must be a valid TPropertyType";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->underlyingType = $underlyingType;
         return $this;
     }
@@ -105,6 +109,10 @@ class TEnumTypeType extends IsOK
      */
     public function setTypeAccess($typeAccess)
     {
+        if (!$this->isTPublicOrInternalAccessOK($typeAccess)) {
+            $msg = "Type access must be Public or Internal";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeAccess = $typeAccess;
         return $this;
     }

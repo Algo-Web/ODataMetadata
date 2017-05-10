@@ -59,6 +59,10 @@ class TComplexTypeType extends IsOK
      */
     public function setTypeAccess($typeAccess)
     {
+        if (!$this->isTPublicOrInternalAccessOK($typeAccess)) {
+            $msg = "Type access must be Public or Internal";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeAccess = $typeAccess;
         return $this;
     }

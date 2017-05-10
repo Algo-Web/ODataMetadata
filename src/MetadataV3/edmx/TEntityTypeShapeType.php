@@ -220,7 +220,7 @@ class TEntityTypeShapeType extends IsOK
     {
         if (null != $fillColor && !$this->isStringNotNullOrEmpty($fillColor)) {
             $msg = "Fill color cannot be null or empty";
-            return false;
+            throw new \InvalidArgumentException($msg);
         }
         $this->fillColor = $fillColor;
         return $this;

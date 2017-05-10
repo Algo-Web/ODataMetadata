@@ -56,6 +56,10 @@ class TAssociationEndType extends IsOK
      */
     public function setType($type)
     {
+        if (!$this->isTQualifiedNameValid($type)) {
+            $msg = "Type must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->type = $type;
         return $this;
     }
@@ -78,6 +82,10 @@ class TAssociationEndType extends IsOK
      */
     public function setRole($role)
     {
+        if (null != $role && !$this->isTSimpleIdentifierValid($role)) {
+            $msg = "Role must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->role = $role;
         return $this;
     }
@@ -100,6 +108,10 @@ class TAssociationEndType extends IsOK
      */
     public function setMultiplicity($multiplicity)
     {
+        if (null != $multiplicity && !$this->isTMultiplicityValid($multiplicity)) {
+            $msg = "Multiplicity must be a valid TMultiplicity";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->multiplicity = $multiplicity;
         return $this;
     }

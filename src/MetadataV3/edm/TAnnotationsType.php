@@ -54,6 +54,10 @@ class TAnnotationsType extends IsOK
      */
     public function setTarget($target)
     {
+        if (!$this->isTQualifiedNameValid($target)) {
+            $msg = "Target must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->target = $target;
         return $this;
     }
@@ -76,6 +80,10 @@ class TAnnotationsType extends IsOK
      */
     public function setQualifier($qualifier)
     {
+        if (null != $qualifier && !$this->isTSimpleIdentifierValid($qualifier)) {
+            $msg = "Qualifier must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->qualifier = $qualifier;
         return $this;
     }

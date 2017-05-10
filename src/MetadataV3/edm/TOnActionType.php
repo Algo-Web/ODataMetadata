@@ -39,6 +39,10 @@ class TOnActionType extends IsOK
      */
     public function setAction($action)
     {
+        if (!$this->isTActionValid($action)) {
+            $msg = "Action must be a valid TAction";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->action = $action;
         return $this;
     }

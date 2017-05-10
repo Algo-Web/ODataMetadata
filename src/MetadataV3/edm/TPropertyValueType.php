@@ -46,6 +46,10 @@ class TPropertyValueType extends IsOK
      */
     public function setProperty($property)
     {
+        if (!$this->isTSimpleIdentifierValid($property)) {
+            $msg = "Property must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->property = $property;
         return $this;
     }

@@ -49,6 +49,10 @@ class TFunctionImportReturnTypeType extends IsOK
      */
     public function setType($type)
     {
+        if (null != $type && !$this->isTFunctionImportParameterAndReturnTypeValid($type)) {
+            $msg = "Type must be a valid TFunctionImportParameterAndReturnType";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->type = $type;
         return $this;
     }
@@ -98,7 +102,12 @@ class TFunctionImportReturnTypeType extends IsOK
     public function setEntitySetAttribute($entitySetAttribute)
     {
         if (!is_string($entitySetAttribute)) {
-            throw new \InvalidArgumentException("EntitySet attribute must be a string");
+            $msg = "EntitySet attribute must be a string";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!$this->isTSimpleIdentifierValid($entitySetAttribute)) {
+            $msg = "Entity set attribute must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
         }
         $this->entitySetAttribute = $entitySetAttribute;
         return $this;

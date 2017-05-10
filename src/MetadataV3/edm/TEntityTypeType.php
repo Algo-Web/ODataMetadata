@@ -95,6 +95,10 @@ class TEntityTypeType extends IsOK
      */
     public function setTypeAccess($typeAccess)
     {
+        if (null != $typeAccess && !$this->isTPublicOrInternalAccessOK($typeAccess)) {
+            $msg = "Type access must be Public or Internal";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeAccess = $typeAccess;
         return $this;
     }

@@ -94,6 +94,10 @@ class TUsingType extends IsOK
      */
     public function setAlias($alias)
     {
+        if (!$this->isTSimpleIdentifierValid($alias)) {
+            $msg = "Alias must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->alias = $alias;
         return $this;
     }

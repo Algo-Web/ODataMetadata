@@ -59,6 +59,10 @@ class TTypeAssertExpressionType extends IsOK
      */
     public function setType($type)
     {
+        if (null != $type && !$this->isTWrappedFunctionTypeValid($type)) {
+            $msg = "Type must be a valid TWrappedFunctionType";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->type = $type;
         return $this;
     }

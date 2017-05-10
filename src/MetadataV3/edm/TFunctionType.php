@@ -59,6 +59,10 @@ class TFunctionType extends IsOK
      */
     public function setName($name)
     {
+        if (!$this->isTSimpleIdentifierValid($name)) {
+            $msg = "Name must be a valid TSimpleIdentifier";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->name = $name;
         return $this;
     }

@@ -50,6 +50,10 @@ class TApplyExpressionType extends IsOK
      */
     public function setFunction($function)
     {
+        if (null != $function && !$this->isTQualifiedNameValid($function)) {
+            $msg = "Function must be a valid TQualifiedName";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->function = $function;
         return $this;
     }
