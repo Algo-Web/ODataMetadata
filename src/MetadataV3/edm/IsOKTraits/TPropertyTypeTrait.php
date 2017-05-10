@@ -2,11 +2,9 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits;
 
-use AlgoWeb\ODataMetadata\xsdRestrictions;
-
 trait TPropertyTypeTrait
 {
-    use EDMSimpleTypeTrait, TQualifiedNameTrait, xsdRestrictions;
+    use EDMSimpleTypeTrait, TQualifiedNameTrait;
 
     public function isTPropertyTypeValid($string)
     {

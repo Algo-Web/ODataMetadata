@@ -400,10 +400,10 @@ class TEntityTypeType extends IsOK
         $this->typeAnnotation = $typeAnnotation;
         return $this;
     }
-    
+
     public function isOK(&$msg = null)
     {
-        if (!$this->isTPublicOrInternalAccessOK($this->typeAccess)) {
+        if (null != $this->typeAccess && !$this->isTPublicOrInternalAccessOK($this->typeAccess)) {
             $msg = "Type access must be Public or Internal";
             return false;
         }
@@ -414,7 +414,8 @@ class TEntityTypeType extends IsOK
             $this->key,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
 
@@ -422,28 +423,32 @@ class TEntityTypeType extends IsOK
             $this->property,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->navigationProperty,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->valueAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->typeAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
         if (!$this->isTDerivableTypeAttributesValid($msg)) {

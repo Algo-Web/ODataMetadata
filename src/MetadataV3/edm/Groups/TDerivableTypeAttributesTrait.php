@@ -6,7 +6,11 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 
 trait TDerivableTypeAttributesTrait
 {
-    use TQualifiedNameTrait, TTypeAttributesTrait;
+    use TQualifiedNameTrait, TTypeAttributesTrait {
+        TQualifiedNameTrait::isNCName insteadof TTypeAttributesTrait;
+        TQualifiedNameTrait::matchesRegexPattern insteadof TTypeAttributesTrait;
+        TQualifiedNameTrait::isName insteadof TTypeAttributesTrait;
+    }
     /**
      * @property string $baseType
      */
