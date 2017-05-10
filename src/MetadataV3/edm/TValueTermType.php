@@ -120,6 +120,10 @@ class TValueTermType extends IsOK
      */
     public function setDocumentation(TDocumentationType $documentation)
     {
+        $msg = null;
+        if (!$documentation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->documentation = $documentation;
         return $this;
     }
@@ -142,6 +146,10 @@ class TValueTermType extends IsOK
      */
     public function setCollectionType(TCollectionTypeType $collectionType)
     {
+        $msg = null;
+        if (!$collectionType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->collectionType = $collectionType;
         return $this;
     }
@@ -164,6 +172,10 @@ class TValueTermType extends IsOK
      */
     public function setReferenceType(TReferenceTypeType $referenceType)
     {
+        $msg = null;
+        if (!$referenceType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->referenceType = $referenceType;
         return $this;
     }
@@ -176,6 +188,10 @@ class TValueTermType extends IsOK
      */
     public function addToRowType(TPropertyType $property)
     {
+        $msg = null;
+        if (!$property->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->rowType[] = $property;
         return $this;
     }

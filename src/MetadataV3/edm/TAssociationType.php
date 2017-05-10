@@ -75,6 +75,10 @@ class TAssociationType extends IsOK
      */
     public function setDocumentation(TDocumentationType $documentation)
     {
+        $msg = null;
+        if (!$documentation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->documentation = $documentation;
         return $this;
     }
@@ -87,6 +91,10 @@ class TAssociationType extends IsOK
      */
     public function addToEnd(TAssociationEndType $end)
     {
+        $msg = null;
+        if (!$end->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->end[] = $end;
         return $this;
     }
@@ -153,6 +161,10 @@ class TAssociationType extends IsOK
      */
     public function setReferentialConstraint(TConstraintType $referentialConstraint)
     {
+        $msg = null;
+        if (!$referentialConstraint->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->referentialConstraint = $referentialConstraint;
         return $this;
     }

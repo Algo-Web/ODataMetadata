@@ -117,6 +117,10 @@ class TEntityTypeType extends IsOK
      */
     public function setDocumentation(TDocumentationType $documentation)
     {
+        $msg = null;
+        if (!$documentation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->documentation = $documentation;
         return $this;
     }
@@ -129,6 +133,10 @@ class TEntityTypeType extends IsOK
      */
     public function addToKey(TPropertyRefType $propertyRef)
     {
+        $msg = null;
+        if (!$propertyRef->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->key[] = $propertyRef;
         return $this;
     }
@@ -185,6 +193,10 @@ class TEntityTypeType extends IsOK
      */
     public function addToProperty(TEntityPropertyType $property)
     {
+        $msg = null;
+        if (!$property->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->property[] = $property;
         return $this;
     }
@@ -241,6 +253,10 @@ class TEntityTypeType extends IsOK
      */
     public function addToNavigationProperty(TNavigationPropertyType $navigationProperty)
     {
+        $msg = null;
+        if (!$navigationProperty->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->navigationProperty[] = $navigationProperty;
         return $this;
     }
@@ -297,6 +313,10 @@ class TEntityTypeType extends IsOK
      */
     public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
+        $msg = null;
+        if (!$valueAnnotation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->valueAnnotation[] = $valueAnnotation;
         return $this;
     }
@@ -353,6 +373,10 @@ class TEntityTypeType extends IsOK
      */
     public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
+        $msg = null;
+        if (!$typeAnnotation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeAnnotation[] = $typeAnnotation;
         return $this;
     }

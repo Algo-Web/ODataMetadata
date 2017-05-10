@@ -58,6 +58,10 @@ class TFunctionReferenceExpressionType extends IsOK
      */
     public function addToParameter(TFunctionReferenceExpressionType\ParameterAnonymousType $parameter)
     {
+        $msg = null;
+        if (!$parameter->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->parameter[] = $parameter;
         return $this;
     }

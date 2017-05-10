@@ -88,6 +88,10 @@ class TAnnotationsType extends IsOK
      */
     public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
+        $msg = null;
+        if (!$valueAnnotation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->valueAnnotation[] = $valueAnnotation;
         return $this;
     }
@@ -144,6 +148,10 @@ class TAnnotationsType extends IsOK
      */
     public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
+        $msg = null;
+        if (!$typeAnnotation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeAnnotation[] = $typeAnnotation;
         return $this;
     }
@@ -202,14 +210,14 @@ class TAnnotationsType extends IsOK
             $msg = "Qualifier must be a valid TSimpleIdentifier";
             return false;
         }
-        if (!$this->isValidArrayOk(
+        if (!$this->isValidArrayOK(
             $this->valueAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
             $msg
         )) {
             return false;
         }
-        if (!$this->isValidArrayOk(
+        if (!$this->isValidArrayOK(
             $this->typeAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
             $msg

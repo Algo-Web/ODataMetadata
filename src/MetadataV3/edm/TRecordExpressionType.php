@@ -55,6 +55,10 @@ class TRecordExpressionType extends IsOK
      */
     public function addToPropertyValue(TPropertyValueType $propertyValue)
     {
+        $msg = null;
+        if (!$propertyValue->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->propertyValue[] = $propertyValue;
         return $this;
     }

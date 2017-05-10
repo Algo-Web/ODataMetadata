@@ -71,6 +71,10 @@ class TFunctionType extends IsOK
      */
     public function addToReturnType(TFunctionReturnTypeType $returnType)
     {
+        $msg = null;
+        if (!$returnType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->returnType[] = $returnType;
         return $this;
     }
@@ -137,6 +141,10 @@ class TFunctionType extends IsOK
      */
     public function setDocumentation(TDocumentationType $documentation)
     {
+        $msg = null;
+        if (!$documentation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->documentation = $documentation;
         return $this;
     }
@@ -149,6 +157,10 @@ class TFunctionType extends IsOK
      */
     public function addToParameter(TFunctionParameterType $parameter)
     {
+        $msg = null;
+        if (!$parameter->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->parameter[] = $parameter;
         return $this;
     }

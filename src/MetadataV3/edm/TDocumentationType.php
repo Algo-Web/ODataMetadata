@@ -44,6 +44,10 @@ class TDocumentationType extends IsOK
      */
     public function setSummary(TTextType $summary)
     {
+        $msg = null;
+        if (!$summary->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->summary = $summary;
         return $this;
     }
@@ -66,6 +70,10 @@ class TDocumentationType extends IsOK
      */
     public function setLongDescription(TTextType $longDescription)
     {
+        $msg = null;
+        if (!$longDescription->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->longDescription = $longDescription;
         return $this;
     }

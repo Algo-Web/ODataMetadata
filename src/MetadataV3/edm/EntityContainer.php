@@ -169,6 +169,10 @@ class EntityContainer extends IsOK
      */
     public function setDocumentation(TDocumentationType $documentation)
     {
+        $msg = null;
+        if (!$documentation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->documentation = $documentation;
         return $this;
     }
@@ -182,6 +186,10 @@ class EntityContainer extends IsOK
      */
     public function addToFunctionImport(FunctionImportAnonymousType $functionImport)
     {
+        $msg = null;
+        if (!$functionImport->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->functionImport[] = $functionImport;
         return $this;
     }
@@ -239,6 +247,10 @@ class EntityContainer extends IsOK
      */
     public function addToEntitySet(EntitySetAnonymousType $entitySet)
     {
+        $msg = null;
+        if (!$entitySet->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entitySet[] = $entitySet;
         return $this;
     }
@@ -296,6 +308,10 @@ class EntityContainer extends IsOK
      */
     public function addToAssociationSet(AssociationSetAnonymousType $associationSet)
     {
+        $msg = null;
+        if (!$associationSet->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->associationSet[] = $associationSet;
         return $this;
     }

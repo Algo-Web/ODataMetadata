@@ -55,6 +55,10 @@ class TReferentialConstraintRoleElementType extends IsOK
      */
     public function addToPropertyRef(TPropertyRefType $propertyRef)
     {
+        $msg = null;
+        if (!$propertyRef->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->propertyRef[] = $propertyRef;
         return $this;
     }

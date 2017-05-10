@@ -71,6 +71,10 @@ class TFunctionImportReturnTypeType extends IsOK
      */
     public function setEntitySet(TOperandType $entitySet)
     {
+        $msg = null;
+        if (!$entitySet->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->entitySet = $entitySet;
         return $this;
     }

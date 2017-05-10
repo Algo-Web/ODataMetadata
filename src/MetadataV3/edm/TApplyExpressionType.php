@@ -63,6 +63,10 @@ class TApplyExpressionType extends IsOK
      */
     public function addToAppliedFunction(TApplyExpressionType\AppliedFunctionAnonymousType $appliedFunction)
     {
+        $msg = null;
+        if (!$appliedFunction->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->appliedFunction[] = $appliedFunction;
         return $this;
     }
@@ -120,6 +124,10 @@ class TApplyExpressionType extends IsOK
      */
     public function addToArguments(TApplyExpressionType\ArgumentsAnonymousType $arguments)
     {
+        $msg = null;
+        if (!$arguments->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->arguments[] = $arguments;
         return $this;
     }

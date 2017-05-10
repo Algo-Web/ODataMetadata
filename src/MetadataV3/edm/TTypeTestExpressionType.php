@@ -70,6 +70,10 @@ class TTypeTestExpressionType extends IsOK
      */
     public function addToOperand(TOperandType $operand)
     {
+        $msg = null;
+        if (!$operand->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->operand[] = $operand;
         return $this;
     }
@@ -126,6 +130,10 @@ class TTypeTestExpressionType extends IsOK
      */
     public function addToCollectionType(TCollectionTypeType $collectionType)
     {
+        $msg = null;
+        if (!$collectionType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->collectionType[] = $collectionType;
         return $this;
     }
@@ -182,6 +190,10 @@ class TTypeTestExpressionType extends IsOK
      */
     public function addToReferenceType(TReferenceTypeType $referenceType)
     {
+        $msg = null;
+        if (!$referenceType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->referenceType[] = $referenceType;
         return $this;
     }
@@ -238,6 +250,10 @@ class TTypeTestExpressionType extends IsOK
      */
     public function addToRowType(TPropertyType $property)
     {
+        $msg = null;
+        if (!$property->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->rowType[] = $property;
         return $this;
     }

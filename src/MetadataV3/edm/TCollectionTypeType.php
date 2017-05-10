@@ -80,6 +80,10 @@ class TCollectionTypeType extends IsOK
      */
     public function setCollectionType(TCollectionTypeType $collectionType)
     {
+        $msg = null;
+        if (!$collectionType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->collectionType = $collectionType;
         return $this;
     }
@@ -102,6 +106,10 @@ class TCollectionTypeType extends IsOK
      */
     public function setReferenceType(TReferenceTypeType $referenceType)
     {
+        $msg = null;
+        if (!$referenceType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->referenceType = $referenceType;
         return $this;
     }
@@ -114,6 +122,10 @@ class TCollectionTypeType extends IsOK
      */
     public function addToRowType(TPropertyType $property)
     {
+        $msg = null;
+        if (!$property->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->rowType[] = $property;
         return $this;
     }
@@ -180,6 +192,10 @@ class TCollectionTypeType extends IsOK
      */
     public function setTypeRef(TTypeRefType $typeRef)
     {
+        $msg = null;
+        if (!$typeRef->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeRef = $typeRef;
         return $this;
     }

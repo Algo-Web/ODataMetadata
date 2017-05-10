@@ -34,6 +34,10 @@ class TAnonymousFunctionExpressionType extends IsOK
      */
     public function addToParameters(TFunctionParameterType $parameter)
     {
+        $msg = null;
+        if (!$parameter->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->parameters[] = $parameter;
         return $this;
     }

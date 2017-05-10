@@ -39,6 +39,10 @@ class TComplexTypePropertyType extends IsOK
      */
     public function addToDocumentation(TDocumentationType $documentation)
     {
+        $msg = null;
+        if (!$documentation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->documentation[] = $documentation;
         return $this;
     }
@@ -95,6 +99,10 @@ class TComplexTypePropertyType extends IsOK
      */
     public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
+        $msg = null;
+        if (!$valueAnnotation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->valueAnnotation[] = $valueAnnotation;
         return $this;
     }
@@ -151,6 +159,10 @@ class TComplexTypePropertyType extends IsOK
      */
     public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
+        $msg = null;
+        if (!$typeAnnotation->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
         $this->typeAnnotation[] = $typeAnnotation;
         return $this;
     }
