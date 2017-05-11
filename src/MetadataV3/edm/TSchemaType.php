@@ -132,7 +132,6 @@ class TSchemaType extends IsOK
             }
             return true;
         }
-
     }
 
     /**
