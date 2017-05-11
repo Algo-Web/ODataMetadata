@@ -128,6 +128,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType:
             type: string
         storeGeneratedPattern:
             expose: true
+            skip_when_empty: true
             access_type: public_method
             serialized_name: StoreGeneratedPattern
             accessor:
@@ -135,6 +136,8 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType:
                 setter: setStoreGeneratedPattern
             xml_attribute: true
             type: string
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/annotation'
         documentation:
             expose: true
             access_type: public_method

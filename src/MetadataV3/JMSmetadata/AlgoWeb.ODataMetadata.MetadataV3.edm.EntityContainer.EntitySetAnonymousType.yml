@@ -27,6 +27,9 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType:
                 setter: setGetterAccess
             xml_attribute: true
             type: string
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2006/04/codegeneration'
+
         documentation:
             expose: true
             access_type: public_method
