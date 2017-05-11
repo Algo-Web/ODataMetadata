@@ -102,13 +102,28 @@ class MetadataManager
         $this->oldEdmx == null;
     }
 
-    public function addPropertyToEntityType($entityType, $name, $type, $isKey = false)
+    public function addPropertyToEntityType($entityType, $name, $type, $defaultValue = null, $isKey = false, $storeGeneratedPattern = false, $summary = null, $longDescription = null)
     {
         $this->startEdmxTransaction();
         $NewProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
-        $NewProperty->setName("$name");
-        $NewProperty->setType("$type");
+        $NewProperty->setName($name);
+        $NewProperty->setType($type);
+        $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
+        if (null != $summary || null != $longDescription) {
+            $documentation = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType();
+            $documentation->setSummary($summary);
+            $documentation->setLongDescription($longDescription);
+            $NewProperty->setDocumentation($documentation);
+        }
+        if (null != $defaultValue) {
+            $NewProperty->setDefaultValue($defaultValue);
+        }
         $entityType->addToProperty($NewProperty);
+        if ($isKey) {
+            $Key = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType();
+            $Key->setName($name);
+            $entityType->addToKey($Key);
+        }
         if (!$this->V3Edmx->isok($this->lastError)) {
             $this->revertEdmxTransaction();
             return false;
