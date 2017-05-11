@@ -459,7 +459,7 @@ class TEntityTypeType extends IsOK
         if (!$this->isTDerivableTypeAttributesValid($msg)) {
             return false;
         }
-        return true;
+        return $this->isStructureOK($msg);
     }
 
     public function isStructureOK(&$msg = null)
