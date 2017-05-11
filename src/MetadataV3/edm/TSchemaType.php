@@ -39,32 +39,6 @@ class TSchemaType extends IsOK
     private $alias = null;
 
     /**
-     * Gets as namespace
-     *
-     * @return string
-     */
-    public function getNamespace()
-    {
-        return $this->namespace;
-    }
-
-    /**
-     * Sets a new namespace
-     *
-     * @param string $namespace
-     * @return self
-     */
-    public function setNamespace($namespace)
-    {
-        if (!$this->isTNamespaceNameValid($namespace)) {
-            $msg = "Namespace must be a valid TNamespaceName";
-            throw new \InvalidArgumentException($msg);
-        }
-        $this->namespace = $namespace;
-        return $this;
-    }
-
-    /**
      * Gets as namespaceUri
      *
      * @return string
@@ -115,7 +89,7 @@ class TSchemaType extends IsOK
         $this->alias = $alias;
         return $this;
     }
-    
+
     public function isOK(&$msg = null)
     {
         if (!$this->isTNamespaceNameValid($this->namespace)) {
@@ -133,6 +107,57 @@ class TSchemaType extends IsOK
         if (!$this->isGSchemaBodyElementsValid($msg)) {
             return false;
         }
-        return true;
+        return $this->isStructureOK($msg);
+    }
+
+    public function isStructureOK(&$msg = null)
+    {
+        $entityTypeNames = [];
+        $this->getEntityType();
+        foreach ($this->getEntityType() as $entityType) {
+            $entityTypeNames[] = $entityType->getName();
+        }
+
+        $entitySets = $this->getEntityContainer()[0]->getEntitySet();
+        foreach ($entitySets as $eset) {
+            $eSetType = $eset->getEntityType();
+            if (substr($eSetType, 0, strlen($this->getNamespace())) != $this->getNamespace()) {
+                $msg = "Types for Entity Sets should have the namespace at the begnining " . __CLASS__;
+                return false;
+            }
+            $eSetType = str_replace($this->getNamespace() . ".", "", $eSetType);
+            if (!in_array($eSetType, $entityTypeNames)) {
+                $msg = "entitySet Types should have a matching type name in entity Types";
+                return false;
+            }
+            return true;
+        }
+
+    }
+
+    /**
+     * Gets as namespace
+     *
+     * @return string
+     */
+    public function getNamespace()
+    {
+        return $this->namespace;
+    }
+
+    /**
+     * Sets a new namespace
+     *
+     * @param string $namespace
+     * @return self
+     */
+    public function setNamespace($namespace)
+    {
+        if (!$this->isTNamespaceNameValid($namespace)) {
+            $msg = "Namespace must be a valid TNamespaceName";
+            throw new \InvalidArgumentException($msg);
+        }
+        $this->namespace = $namespace;
+        return $this;
     }
 }
