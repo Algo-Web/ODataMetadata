@@ -470,20 +470,20 @@ class TEntityTypeType extends IsOK
         }
         foreach ($this->getProperty() as $prop) {
             if (in_array($prop->getName(), $pArray)) {
-                $msg = "Property Names, Key Names, and Navigation Property Must Be Unique " . _CLASS__;
+                $msg = "Property Names, Key Names, and Navigation Property Must Be Unique " . __CLASS__;
                 return false;
             }
             $pArray[] = $prop->getName();
         }
         foreach ($this->getNavigationProperty() as $prop) {
             if (in_array($prop->getName(), $pArray)) {
-                $msg = "Property Names, Key Names, and Navigation Property Must Be Unique " . _CLASS__;
+                $msg = "Property Names, Key Names, and Navigation Property Must Be Unique " . __CLASS__;
                 return false;
             }
             $pArray[] = $prop->getName();
         }
         if (in_array($this->getName(), $prop)) {
-            $msg = "entity types can not contain a property with the same name " . _CLASS__;
+            $msg = "entity types can not contain a property with the same name " . __CLASS__;
             return false;
         }
         return true;

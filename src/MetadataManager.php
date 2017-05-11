@@ -102,6 +102,11 @@ class MetadataManager
         $this->oldEdmx == null;
     }
 
+    public function addPropertyToEntityType()
+    {
+
+    }
+
     public function addComplexType(\ReflectionClass $refClass, $name, $namespace = null, $baseResourceType = null)
     {
         return $this->createResourceType($refClass, $name, $namespace, ResourceTypeKind::COMPLEX, $baseResourceType);
