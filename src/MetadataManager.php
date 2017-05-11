@@ -133,8 +133,7 @@ class MetadataManager
         $storeGeneratedPattern = null,
         $summary = null,
         $longDescription = null
-    )
-    {
+    ) {
         $this->startEdmxTransaction();
         $NewProperty = new TEntityPropertyType();
         $NewProperty->setName($name);
@@ -166,7 +165,6 @@ class MetadataManager
 
     public function addNavigationPropertyToEntityType($entityType)
     {
-
     }
 
     public function getLastError()
@@ -180,8 +178,7 @@ class MetadataManager
         $principalProperty,
         $dependentType,
         $dependentProperty
-    )
-    {
+    ) {
         $as = new AssociationSetAnonymousType();
         $name = $principalType . "_" . $principalProperty . "_" . $dependentType . "_" . $dependentProperty;
         $as->setName($name);
@@ -212,8 +209,7 @@ class MetadataManager
         $dependentMultiplicity,
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null
-    )
-    {
+    ) {
         $association = new TAssociationType();
         $name = $principalType . "_" . $principalProperty . "_" . $dependentType . "_" . $dependentProperty;
         $name = trim($name, "_");

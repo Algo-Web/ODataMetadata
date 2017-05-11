@@ -58,6 +58,4 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         die($d);
         $this->v3MetadataAgainstXSD($d);
     }
-
-
 }
