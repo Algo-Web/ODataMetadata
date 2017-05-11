@@ -35,12 +35,17 @@ class MetadataManager
         return $this->serializer->serialize($this->V3Edmx, "xml");
     }
 
-    public function addEntityType($name, $accessType = "Public")
+    public function addEntityType($name, $accessType = "Public", $summary = null, $longDescription = null)
     {
         $this->startEdmxTransaction();
         $NewEntity = new TEntityTypeType();
         $NewEntity->setName($name);
-
+        if (null != $summary || null != $longDescription) {
+            $documentation = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType();
+            $documentation->setSummary($summary);
+            $documentation->setLongDescription($longDescription);
+            $NewEntity->addToDocumentation($documentation);
+        }
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
         $entitySet->setName($this->pluralize(2, $NewEntity->getName()));
@@ -102,18 +107,19 @@ class MetadataManager
         $this->oldEdmx == null;
     }
 
-    public function addPropertyToEntityType($entityType, $name, $type, $defaultValue = null, $isKey = false, $storeGeneratedPattern = false, $summary = null, $longDescription = null)
+    public function addPropertyToEntityType($entityType, $name, $type, $defaultValue = null, $nullable = false, $isKey = false, $storeGeneratedPattern = false, $summary = null, $longDescription = null)
     {
         $this->startEdmxTransaction();
         $NewProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
         $NewProperty->setName($name);
         $NewProperty->setType($type);
         $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
+        $NewProperty->setNullable($nullable);
         if (null != $summary || null != $longDescription) {
             $documentation = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType();
             $documentation->setSummary($summary);
             $documentation->setLongDescription($longDescription);
-            $NewProperty->setDocumentation($documentation);
+            $NewProperty->addToDocumentation($documentation);
         }
         if (null != $defaultValue) {
             $NewProperty->setDefaultValue($defaultValue);
