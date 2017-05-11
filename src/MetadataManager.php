@@ -31,7 +31,7 @@ class MetadataManager
 
     public function getEdmxXML()
     {
-        return $this->serializer->serialize($this->edmx, "xml");
+        return $this->serializer->serialize($this->V3Edmx, "xml");
     }
 
     public function addEntityType($refClass, $name, $namespace = null)
@@ -44,6 +44,4 @@ class MetadataManager
     {
         return $this->createResourceType($refClass, $name, $namespace, ResourceTypeKind::COMPLEX, $baseResourceType);
     }
-
-
 }
