@@ -54,7 +54,7 @@ class testType extends IsOK
         return parent::isObjectNullOrOK($object, $msg);
     }
 
-    public function isValidArrayOK(array $arr, $instanceOf, &$msg = null, $minCount = -1, $maxCount = -1)
+    public function isValidArrayOK(array $arr = null, $instanceOf, &$msg = null, $minCount = -1, $maxCount = -1)
     {
         return parent::isValidArrayOK($arr, $instanceOf, $msg, $minCount, $maxCount);
     }
