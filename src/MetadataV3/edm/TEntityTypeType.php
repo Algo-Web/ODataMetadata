@@ -465,19 +465,16 @@ class TEntityTypeType extends IsOK
     public function isStructureOK(&$msg = null)
     {
         $pArray = [];
-        if (null != $this->key) {
-            $pArray[] = $this->key->getName();
-        }
         foreach ($this->getProperty() as $prop) {
             if (in_array($prop->getName(), $pArray)) {
-                $msg = "Property Names, Key Names, and Navigation Property Must Be Unique " . __CLASS__;
+                $msg = "Property Names, and Navigation Property Must Be Unique " . __CLASS__;
                 return false;
             }
             $pArray[] = $prop->getName();
         }
         foreach ($this->getNavigationProperty() as $prop) {
             if (in_array($prop->getName(), $pArray)) {
-                $msg = "Property Names, Key Names, and Navigation Property Must Be Unique " . __CLASS__;
+                $msg = "Property Names, and Navigation Property Must Be Unique " . __CLASS__;
                 return false;
             }
             $pArray[] = $prop->getName();

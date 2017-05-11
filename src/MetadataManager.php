@@ -102,9 +102,19 @@ class MetadataManager
         $this->oldEdmx == null;
     }
 
-    public function addPropertyToEntityType()
+    public function addPropertyToEntityType($entityType, $name, $type, $isKey = false)
     {
-
+        $this->startEdmxTransaction();
+        $NewProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
+        $NewProperty->setName("$name");
+        $NewProperty->setType("$type");
+        $entityType->addToProperty($NewProperty);
+        if (!$this->V3Edmx->isok($this->lastError)) {
+            $this->revertEdmxTransaction();
+            return false;
+        }
+        $this->commitEdmxTransaction();
+        return $NewProperty;
     }
 
     public function addComplexType(\ReflectionClass $refClass, $name, $namespace = null, $baseResourceType = null)
