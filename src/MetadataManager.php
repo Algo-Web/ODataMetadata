@@ -131,8 +131,7 @@ class MetadataManager
         $storeGeneratedPattern = null,
         $summary = null,
         $longDescription = null
-    )
-    {
+    ) {
         $this->startEdmxTransaction();
         $NewProperty = new TEntityPropertyType();
         $NewProperty->setName($name);
@@ -164,7 +163,6 @@ class MetadataManager
 
     public function addNavigationPropertyToEntityType($entityType)
     {
-
     }
 
     public function addComplexType(\ReflectionClass $refClass, $name, $namespace = null, $baseResourceType = null)
@@ -186,8 +184,7 @@ class MetadataManager
         $dependentMultiplicity,
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null
-    )
-    {
+    ) {
         $association = new TAssociationType();
         $name = $principalType . "_" . $principalProperty . "_" . $dependentType . "_" . $dependentProperty;
         $name = trim($name, "_");
