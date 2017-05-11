@@ -104,7 +104,7 @@ class MetadataManager
 
     private function commitEdmxTransaction()
     {
-        $this->oldEdmx == null;
+        $this->oldEdmx = null;
     }
 
     public function addPropertyToEntityType($entityType, $name, $type, $defaultValue = null, $nullable = false, $isKey = false, $storeGeneratedPattern = false, $summary = null, $longDescription = null)

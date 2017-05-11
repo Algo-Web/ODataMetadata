@@ -479,7 +479,7 @@ class TEntityTypeType extends IsOK
             }
             $pArray[] = $prop->getName();
         }
-        if (in_array($this->getName(), $prop)) {
+        if (in_array($this->getName(), $pArray)) {
             $msg = "entity types can not contain a property with the same name " . __CLASS__;
             return false;
         }

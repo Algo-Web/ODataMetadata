@@ -122,7 +122,7 @@ class TSchemaType extends IsOK
         foreach ($entitySets as $eset) {
             $eSetType = $eset->getEntityType();
             if (substr($eSetType, 0, strlen($this->getNamespace())) != $this->getNamespace()) {
-                $msg = "Types for Entity Sets should have the namespace at the begnining " . __CLASS__;
+                $msg = "Types for Entity Sets should have the namespace at the beginning " . __CLASS__;
                 return false;
             }
             $eSetType = str_replace($this->getNamespace() . ".", "", $eSetType);
