@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 class MetadataManager
 {
     private $V3Edmx = null;
-
+    private $oldEdmx = null;
     private $serializer = null;
 
     public function __construct($namespaceName = "Data", $containerName = "DefaultContainer")
@@ -36,6 +36,7 @@ class MetadataManager
 
     public function addEntityType($name, $accessType = "Public")
     {
+        $this->startEdmxTransaction();
         $NewEntity = new TEntityTypeType();
         $NewEntity->setName($name);
 
@@ -53,7 +54,17 @@ class MetadataManager
 
         $this->V3Edmx->getDataServices()[0]->addToEntityType($NewEntity);
         $this->V3Edmx->getDataServices()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
+        if (!$this->V3Edmx->isok()) {
+            $this->revertEdmxTransaction();
+            return false;
+        }
+        $this->commitEdmxTransaction();
         return $NewEntity;
+    }
+
+    private function startEdmxTransaction()
+    {
+        $this->oldEdmx = serialize($this->V3Edmx);
     }
 
     /**
@@ -78,6 +89,16 @@ class MetadataManager
             default:
                 return $singular . 's';
         }
+    }
+
+    private function revertEdmxTransaction()
+    {
+        $this->V3Edmx = unserialize($this->oldEdmx);
+    }
+
+    private function commitEdmxTransaction()
+    {
+        $this->oldEdmx == null;
     }
 
     public function addComplexType(\ReflectionClass $refClass, $name, $namespace = null, $baseResourceType = null)
