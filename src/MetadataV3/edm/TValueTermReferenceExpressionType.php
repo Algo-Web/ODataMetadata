@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GBaseExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
@@ -15,7 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TValueTermReferenceExpressionType extends IsOK
 {
-    use GExpressionTrait, TQualifiedNameTrait, TSimpleIdentifierTrait {
+    use GBaseExpressionTrait, GExpressionTrait, TQualifiedNameTrait, TSimpleIdentifierTrait {
         TSimpleIdentifierTrait::isNCName insteadof TQualifiedNameTrait, GExpressionTrait;
         TSimpleIdentifierTrait::matchesRegexPattern insteadof TQualifiedNameTrait, GExpressionTrait;
         TSimpleIdentifierTrait::isName insteadof TQualifiedNameTrait, GExpressionTrait;

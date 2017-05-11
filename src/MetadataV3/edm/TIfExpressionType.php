@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GBaseExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 
 /**
@@ -15,7 +16,7 @@ class TIfExpressionType extends IsOK
 {
     //Test, IfTrue, IfFalse
     
-    use GExpressionTrait;
+    use GBaseExpressionTrait, GExpressionTrait;
     
     public function __construct()
     {

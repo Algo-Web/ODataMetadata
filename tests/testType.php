@@ -29,12 +29,12 @@ class testType extends IsOK
         return parent::isNullInstanceOf($var, $instanceOf);
     }
 
-    public function isValidArray(array $arr, $instanceOf, $minCount = -1, $maxCount = -1)
+    public function isValidArray(array $arr = null, $instanceOf, $minCount = -1, $maxCount = -1)
     {
         return parent::isValidArray($arr, $instanceOf, $minCount, $maxCount);
     }
 
-    public function isChildArrayOK(array $arr, &$msg)
+    public function isChildArrayOK(array $arr = null, &$msg)
     {
         return parent::isChildArrayOK($arr, $msg);
     }
@@ -54,7 +54,7 @@ class testType extends IsOK
         return parent::isObjectNullOrOK($object, $msg);
     }
 
-    public function isValidArrayOK(array $arr, $instanceOf, &$msg = null, $minCount = -1, $maxCount = -1)
+    public function isValidArrayOK(array $arr = null, $instanceOf, &$msg = null, $minCount = -1, $maxCount = -1)
     {
         return parent::isValidArrayOK($arr, $instanceOf, $msg, $minCount, $maxCount);
     }

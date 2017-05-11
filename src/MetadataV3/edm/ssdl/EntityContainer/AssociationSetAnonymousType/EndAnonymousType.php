@@ -31,11 +31,6 @@ class EndAnonymousType extends IsOK
     private $entitySet = null;
 
     /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
-     */
-    private $documentation = null;
-
-    /**
      * Gets as role
      *
      * @return string
@@ -79,28 +74,6 @@ class EndAnonymousType extends IsOK
         return $this;
     }
 
-    /**
-     * Gets as documentation
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
-     */
-    public function getDocumentation()
-    {
-        return $this->documentation;
-    }
-
-    /**
-     * Sets a new documentation
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
-     * @return self
-     */
-    public function setDocumentation(TDocumentationType $documentation)
-    {
-        $this->documentation = $documentation;
-        return $this;
-    }
-
     public function isOK(&$msg = null)
     {
         if (null != $this->role && !$this->isTSimpleIdentifierValid($this->role)) {
@@ -109,13 +82,6 @@ class EndAnonymousType extends IsOK
         }
         if (!$this->isTSimpleIdentifierValid($this->entitySet)) {
             $msg = "Entity set must be a valid TSimpleIdentifier";
-            return false;
-        }
-        if (!$this->isObjectNullOrType(
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType',
-            $this->documentation,
-            $msg
-        )) {
             return false;
         }
         if (!$this->isExtensibilityElementOK($msg)) {
