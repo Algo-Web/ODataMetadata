@@ -9,6 +9,7 @@ class MetadataManager
 {
     private $V3Edmx = null;
     private $oldEdmx = null;
+    private $lastError = null;
     private $serializer = null;
 
     public function __construct($namespaceName = "Data", $containerName = "DefaultContainer")
@@ -54,7 +55,7 @@ class MetadataManager
 
         $this->V3Edmx->getDataServices()[0]->addToEntityType($NewEntity);
         $this->V3Edmx->getDataServices()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
-        if (!$this->V3Edmx->isok()) {
+        if (!$this->V3Edmx->isok($this->lastError)) {
             $this->revertEdmxTransaction();
             return false;
         }
@@ -104,5 +105,10 @@ class MetadataManager
     public function addComplexType(\ReflectionClass $refClass, $name, $namespace = null, $baseResourceType = null)
     {
         return $this->createResourceType($refClass, $name, $namespace, ResourceTypeKind::COMPLEX, $baseResourceType);
+    }
+
+    private function getLastError()
+    {
+        return $this->lastError();
     }
 }
