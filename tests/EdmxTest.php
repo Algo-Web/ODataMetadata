@@ -75,8 +75,15 @@ class EdmxTest extends TestCase
         $NewEntity->addToProperty($NewProperty);
         $this->assertTrue($NewEntity->isOK($msg), $msg);
         $this->assertNull($msg);
+
+        $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
+        $entitySet->setName($this->pluralize(2, $NewEntity->getName()));
+        $entitySet->setEntityType($NewEntity->getname());
+        $this->assertTrue($entitySet->isOK($msg), $msg);
+        $this->assertNull($msg);
         $edmx = new Edmx();
         $edmx->getDataServices()[0]->addToEntityType($NewEntity);
+        $edmx->getDataServices()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         $this->assertTrue($edmx->isOK($msg), $msg);
         $this->assertNull($msg);
 
@@ -87,6 +94,31 @@ class EdmxTest extends TestCase
                 ->addMetadataDir($ymlDir)
                 ->build();
         $d = $serializer->serialize($edmx, "xml");
+        die($d);
         $this->v3MetadataAgainstXSD($d);
+    }
+
+    /**
+     * Pluralizes a word if quantity is not one.
+     *
+     * @param int $quantity Number of items
+     * @param string $singular Singular form of word
+     * @param string $plural Plural form of word; function will attempt to deduce plural form from singular if not provided
+     * @return string Pluralized word if quantity is not one, otherwise singular
+     */
+    public static function pluralize($quantity, $singular, $plural = null)
+    {
+        if ($quantity == 1 || !strlen($singular)) return $singular;
+        if ($plural !== null) return $plural;
+
+        $last_letter = strtolower($singular[strlen($singular) - 1]);
+        switch ($last_letter) {
+            case 'y':
+                return substr($singular, 0, -1) . 'ies';
+            case 's':
+                return $singular . 'es';
+            default:
+                return $singular . 's';
+        }
     }
 }

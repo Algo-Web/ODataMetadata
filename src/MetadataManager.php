@@ -34,10 +34,50 @@ class MetadataManager
         return $this->serializer->serialize($this->V3Edmx, "xml");
     }
 
-    public function addEntityType($refClass, $name, $namespace = null)
+    public function addEntityType($name, $accessType = "Public")
     {
         $NewEntity = new TEntityTypeType();
-        return $this->createResourceType($refClass, $name, $namespace, ResourceTypeKind::ENTITY, null);
+        $NewEntity->setName($name);
+
+
+        $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
+        $entitySet->setName($this->pluralize(2, $NewEntity->getName()));
+        $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
+        if (0 == strlen(trim($namespace))) {
+            $entityTypeName = $NewEntity->getName();
+        } else {
+            $entityTypeName = $namespace . "." . $NewEntity->getName();
+        }
+        $entitySet->setEntityType($entityTypeName);
+        $entitySet->setGetterAccess($accessType);
+
+        $this->V3Edmx->getDataServices()[0]->addToEntityType($NewEntity);
+        $this->V3Edmx->getDataServices()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
+        return $NewEntity;
+    }
+
+    /**
+     * Pluralizes a word if quantity is not one.
+     *
+     * @param int $quantity Number of items
+     * @param string $singular Singular form of word
+     * @param string $plural Plural form of word; function will attempt to deduce plural form from singular if not provided
+     * @return string Pluralized word if quantity is not one, otherwise singular
+     */
+    public static function pluralize($quantity, $singular, $plural = null)
+    {
+        if ($quantity == 1 || !strlen($singular)) return $singular;
+        if ($plural !== null) return $plural;
+
+        $last_letter = strtolower($singular[strlen($singular) - 1]);
+        switch ($last_letter) {
+            case 'y':
+                return substr($singular, 0, -1) . 'ies';
+            case 's':
+                return $singular . 'es';
+            default:
+                return $singular . 's';
+        }
     }
 
     public function addComplexType(\ReflectionClass $refClass, $name, $namespace = null, $baseResourceType = null)
