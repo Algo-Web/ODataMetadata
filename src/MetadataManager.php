@@ -44,6 +44,4 @@ class MetadataManager
     {
         return $this->createResourceType($refClass, $name, $namespace, ResourceTypeKind::COMPLEX, $baseResourceType);
     }
-
-
 }
