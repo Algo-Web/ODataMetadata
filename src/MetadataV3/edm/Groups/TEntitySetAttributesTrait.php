@@ -8,7 +8,12 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 trait TEntitySetAttributesTrait
 {
-    use TSimpleIdentifierTrait, TQualifiedNameTrait, AccessTypeTraits;
+    use TSimpleIdentifierTrait, TQualifiedNameTrait, AccessTypeTraits{
+        TSimpleIdentifierTrait::isNCName insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::isName insteadof TQualifiedNameTrait;
+    }
+
     /**
      * @property string $name
      */

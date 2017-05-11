@@ -14,7 +14,12 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class AssociationSetAnonymousType extends IsOK
 {
-    use GEmptyElementExtensibilityTrait, TSimpleIdentifierTrait, TQualifiedNameTrait;
+    use GEmptyElementExtensibilityTrait, TSimpleIdentifierTrait, TQualifiedNameTrait {
+        TSimpleIdentifierTrait::isNCName insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::isName insteadof TQualifiedNameTrait;
+    }
+
     /**
      * @property string $name
      */
