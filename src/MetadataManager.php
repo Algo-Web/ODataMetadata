@@ -2,6 +2,8 @@
 
 namespace AlgoWeb\ODataMetadata;
 
+use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
@@ -167,17 +169,41 @@ class MetadataManager
 
     }
 
-    public function addComplexType(\ReflectionClass $refClass, $name, $namespace = null, $baseResourceType = null)
-    {
-        return $this->createResourceType($refClass, $name, $namespace, ResourceTypeKind::COMPLEX, $baseResourceType);
-    }
-
     public function getLastError()
     {
         return $this->lastError;
     }
 
-    private function addAssocation(
+    protected function createAssocationSetForAssocation(
+        TAssociationType $association,
+        $principalType,
+        $principalProperty,
+        $dependentType,
+        $dependentProperty
+    )
+    {
+        $as = new AssociationSetAnonymousType();
+        $name = $principalType . "_" . $principalProperty . "_" . $dependentType . "_" . $dependentProperty;
+        $as->setName($name);
+        $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
+        if (0 == strlen(trim($namespace))) {
+            $associationSetName = $association->getName();
+        } else {
+            $associationSetName = $namespace . "." . $association->getName();
+        }
+        $as->setAssociation($associationSetName);
+        $end1 = new EndAnonymousType();
+        $end1->setRole($association->getEnd()[0]->getRole());
+        $end1->setEntitySet($this->pluralize(2, $principalType));
+        $end2 = new EndAnonymousType();
+        $end2->setRole($association->getEnd()[1]->getRole());
+        $end2->setEntitySet($this->pluralize(2, $dependentProperty));
+        $as->addToEnd($end1);
+        $as->addToEnd($end2);
+        return $as;
+    }
+
+    protected function createAssocation(
         $principalType,
         $principalProperty,
         $principalMultiplicity,
