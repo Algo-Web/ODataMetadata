@@ -34,9 +34,9 @@ class testType extends IsOK
         return parent::isValidArray($arr, $instanceOf, $minCount, $maxCount);
     }
 
-    public function isChildArrayOK(array $arr, &$msg)
+    public function isChildArrayOK(array $arr = null, &$msg)
     {
-        return parent::isChildArrayOK($arr = null, $msg);
+        return parent::isChildArrayOK($arr, $msg);
     }
 
     public function isURLValid($url)
