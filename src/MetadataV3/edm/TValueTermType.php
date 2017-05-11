@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GBaseExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
@@ -18,6 +19,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionTypeTrait;
 class TValueTermType extends IsOK
 {
     use TFacetAttributesTrait,
+        GBaseExpressionTrait,
         GExpressionTrait,
         TQualifiedNameTrait,
         TSimpleIdentifierTrait,

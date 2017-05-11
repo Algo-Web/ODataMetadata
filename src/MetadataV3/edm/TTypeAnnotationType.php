@@ -4,6 +4,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GBaseExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
@@ -16,7 +17,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TTypeAnnotationType extends IsOK
 {
-    use IsOKToolboxTrait, GInlineExpressionsTrait, TQualifiedNameTrait, TSimpleIdentifierTrait{
+    use IsOKToolboxTrait, GBaseExpressionTrait, GInlineExpressionsTrait, TQualifiedNameTrait, TSimpleIdentifierTrait{
         TQualifiedNameTrait::isTQualifiedNameValid insteadof GInlineExpressionsTrait;
         TSimpleIdentifierTrait::isNCName insteadof TQualifiedNameTrait, GInlineExpressionsTrait;
         TSimpleIdentifierTrait::matchesRegexPattern insteadof TQualifiedNameTrait, GInlineExpressionsTrait;

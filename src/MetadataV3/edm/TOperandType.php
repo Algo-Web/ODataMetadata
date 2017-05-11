@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GBaseExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
 
@@ -14,7 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
  */
 class TOperandType extends IsOK
 {
-    use GInlineExpressionsTrait, GExpressionTrait {
+    use GBaseExpressionTrait, GInlineExpressionsTrait, GExpressionTrait {
         GExpressionTrait::getString insteadof GInlineExpressionsTrait;
         GExpressionTrait::setString insteadof GInlineExpressionsTrait;
         GExpressionTrait::getBinary insteadof GInlineExpressionsTrait;

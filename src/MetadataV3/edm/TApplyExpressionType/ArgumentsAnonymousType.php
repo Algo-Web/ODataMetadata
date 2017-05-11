@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GBaseExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 
 /**
@@ -10,7 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
  */
 class ArgumentsAnonymousType extends IsOK
 {
-    use GExpressionTrait;
+    use GBaseExpressionTrait, GExpressionTrait;
 
     public function isOK(&$msg = null)
     {

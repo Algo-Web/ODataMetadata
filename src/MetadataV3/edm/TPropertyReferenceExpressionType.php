@@ -4,6 +4,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GBaseExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
@@ -15,7 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TPropertyReferenceExpressionType extends IsOK
 {
-    use GExpressionTrait, TSimpleIdentifierTrait;
+    use GBaseExpressionTrait, GExpressionTrait, TSimpleIdentifierTrait;
     /**
      * @property string $property
      */
