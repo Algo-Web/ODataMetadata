@@ -235,35 +235,6 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Gets as property
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType[]
-     */
-    public function getProperty()
-    {
-        return $this->property;
-    }
-
-    /**
-     * Sets a new property
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType[] $property
-     * @return self
-     */
-    public function setProperty(array $property)
-    {
-        if (!$this->isValidArrayOK(
-            $property,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType',
-            $msg
-        )) {
-            throw new \InvalidArgumentException($msg);
-        }
-        $this->property = $property;
-        return $this;
-    }
-
-    /**
      * Adds as navigationProperty
      *
      * @return self
@@ -299,35 +270,6 @@ class TEntityTypeType extends IsOK
     public function unsetNavigationProperty($index)
     {
         unset($this->navigationProperty[$index]);
-    }
-
-    /**
-     * Gets as navigationProperty
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType[]
-     */
-    public function getNavigationProperty()
-    {
-        return $this->navigationProperty;
-    }
-
-    /**
-     * Sets a new navigationProperty
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType[] $navigationProperty
-     * @return self
-     */
-    public function setNavigationProperty(array $navigationProperty)
-    {
-        if (!$this->isValidArrayOK(
-            $navigationProperty,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType',
-            $msg
-        )) {
-            throw new \InvalidArgumentException($msg);
-        }
-        $this->navigationProperty = $navigationProperty;
-        return $this;
     }
 
     /**
@@ -518,5 +460,92 @@ class TEntityTypeType extends IsOK
             return false;
         }
         return true;
+    }
+
+    public function isStructureOK(&$msg = null)
+    {
+        $pArray = [];
+        if (null != $this->key) {
+            $pArray[] = $this->key->getName();
+        }
+        foreach ($this->getProperty() as $prop) {
+            if (in_array($prop->getName(), $pArray)) {
+                $msg = "Property Names, Key Names, and Navigation Property Must Be Unique " . _CLASS__;
+                return false;
+            }
+            $pArray[] = $prop->getName();
+        }
+        foreach ($this->getNavigationProperty() as $prop) {
+            if (in_array($prop->getName(), $pArray)) {
+                $msg = "Property Names, Key Names, and Navigation Property Must Be Unique " . _CLASS__;
+                return false;
+            }
+            $pArray[] = $prop->getName();
+        }
+        if (in_array($this->getName(), $prop)) {
+            $msg = "entity types can not contain a property with the same name " . _CLASS__;
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Gets as property
+     *
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType[]
+     */
+    public function getProperty()
+    {
+        return $this->property;
+    }
+
+    /**
+     * Sets a new property
+     *
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType[] $property
+     * @return self
+     */
+    public function setProperty(array $property)
+    {
+        if (!$this->isValidArrayOK(
+            $property,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType',
+            $msg
+        )
+        ) {
+            throw new \InvalidArgumentException($msg);
+        }
+        $this->property = $property;
+        return $this;
+    }
+
+    /**
+     * Gets as navigationProperty
+     *
+     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType[]
+     */
+    public function getNavigationProperty()
+    {
+        return $this->navigationProperty;
+    }
+
+    /**
+     * Sets a new navigationProperty
+     *
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType[] $navigationProperty
+     * @return self
+     */
+    public function setNavigationProperty(array $navigationProperty)
+    {
+        if (!$this->isValidArrayOK(
+            $navigationProperty,
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType',
+            $msg
+        )
+        ) {
+            throw new \InvalidArgumentException($msg);
+        }
+        $this->navigationProperty = $navigationProperty;
+        return $this;
     }
 }

@@ -107,7 +107,7 @@ class MetadataManager
         return $this->createResourceType($refClass, $name, $namespace, ResourceTypeKind::COMPLEX, $baseResourceType);
     }
 
-    private function getLastError()
+    public function getLastError()
     {
         return $this->lastError();
     }
