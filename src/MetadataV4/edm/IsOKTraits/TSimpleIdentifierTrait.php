@@ -2,9 +2,11 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits;
 
+use AlgoWeb\ODataMetadata\xsdRestrictions;
+
 trait TSimpleIdentifierTrait
 {
-    use AlgoWeb\ODataMetadata\xsdRestrictions;
+    use xsdRestrictions;
 
     protected function isTSimpleIdentifierValid($TSimpleIdentifier)
     {

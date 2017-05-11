@@ -26,3 +26,6 @@ bootstrap/cache/
 
 # PHPstorm specific
 .idea/
+
+# Travis specific
+build/
