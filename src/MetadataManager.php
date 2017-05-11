@@ -3,10 +3,14 @@
 namespace AlgoWeb\ODataMetadata;
 
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use JMS\Serializer\SerializerBuilder;
 
@@ -158,6 +162,11 @@ class MetadataManager
         return $NewProperty;
     }
 
+    public function addNavigationPropertyToEntityType($entityType)
+    {
+
+    }
+
     public function addComplexType(\ReflectionClass $refClass, $name, $namespace = null, $baseResourceType = null)
     {
         return $this->createResourceType($refClass, $name, $namespace, ResourceTypeKind::COMPLEX, $baseResourceType);
@@ -166,5 +175,57 @@ class MetadataManager
     public function getLastError()
     {
         return $this->lastError;
+    }
+
+    private function addAssocation(
+        $principalType,
+        $principalProperty,
+        $principalMultiplicity,
+        $dependentType,
+        $dependentProperty,
+        $dependentMultiplicity,
+        array $principalConstraintProperty = null,
+        array $dependentConstraintProperty = null
+    )
+    {
+        $association = new TAssociationType();
+        $name = $principalType . "_" . $principalProperty . "_" . $dependentType . "_" . $dependentProperty;
+        $name = trim($name, "_");
+        $association->setName($name);
+
+        $principalEnd = new TAssociationEndType();
+        $principalEnd->setType($principalType);
+        $principalEnd->setRole($principalType . "_" . $principalProperty . "_" . $dependentType);
+        $principalEnd->setMultiplicity($principalMultiplicity);
+        $dependentEnd = new TAssociationEndType();
+        $dependentEnd->setType($dependentType);
+        $dependentEnd->setRole($dependentType . "_" . $dependentProperty . "_" . $principalType);
+        $dependentEnd->setMultiplicity($dependentMultiplicity);
+        $association->addToEnd($principalEnd);
+        $association->addToEnd($dependentEnd);
+        $principalReferralConstraint = null;
+        $dependentReferralConstraint = null;
+        if (null != $principalConstraintProperty && 0 < count($principalConstraintProperty)) {
+            $principalReferralConstraint = new TReferentialConstraintRoleElementType();
+            $principalReferralConstraint->setRole($principalType . "_" . $principalProperty . "_" . $dependentType);
+            foreach ($principalConstraintProperty as $pripertyRef) {
+                $principalReferralConstraint->addToPropertyRef($pripertyRef);
+            }
+        }
+        if (null != $dependentConstraintProperty && 0 < count($dependentConstraintProperty)) {
+            $dependentReferralConstraint = new TReferentialConstraintRoleElementType();
+            $dependentReferralConstraint->setRole($dependentType . "_" . $dependentProperty . "_" . $principalType);
+            foreach ($dependentConstraintProperty as $pripertyRef) {
+                $dependentReferralConstraint->addToPropertyRef($pripertyRef);
+            }
+        }
+
+        if (null != $dependentReferralConstraint || null != $principalReferralConstraint) {
+            $constraint = new TConstraintType();
+            $constraint->setPrincipal($principalReferralConstraint);
+            $constraint->setDependent($dependentReferralConstraint);
+            $association->setReferentialConstraint($constraint);
+        }
+        return $association;
     }
 }
