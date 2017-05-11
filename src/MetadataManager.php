@@ -2,8 +2,13 @@
 
 namespace AlgoWeb\ODataMetadata;
 
+use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
+use JMS\Serializer\SerializerBuilder;
 
 class MetadataManager
 {
@@ -20,7 +25,7 @@ class MetadataManager
         }
         $ymlDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
         $this->serializer =
-            \JMS\Serializer\SerializerBuilder::create()
+            SerializerBuilder::create()
                 ->addMetadataDir($ymlDir)
                 ->build();
     }
@@ -41,13 +46,13 @@ class MetadataManager
         $NewEntity = new TEntityTypeType();
         $NewEntity->setName($name);
         if (null != $summary || null != $longDescription) {
-            $documentation = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType();
+            $documentation = new TDocumentationType();
             $documentation->setSummary($summary);
             $documentation->setLongDescription($longDescription);
-            $NewEntity->addToDocumentation($documentation);
+            $NewEntity->setDocumentation($documentation);
         }
 
-        $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
+        $entitySet = new EntitySetAnonymousType();
         $entitySet->setName($this->pluralize(2, $NewEntity->getName()));
         $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
         if (0 == strlen(trim($namespace))) {
@@ -78,7 +83,8 @@ class MetadataManager
      *
      * @param int $quantity Number of items
      * @param string $singular Singular form of word
-     * @param string $plural Plural form of word; function will attempt to deduce plural form from singular if not provided
+     * @param string $plural Plural form of word; function will attempt to deduce plural
+     * form from singular if not provided
      * @return string Pluralized word if quantity is not one, otherwise singular
      */
     public static function pluralize($quantity, $singular, $plural = null)
@@ -111,16 +117,26 @@ class MetadataManager
         $this->oldEdmx = null;
     }
 
-    public function addPropertyToEntityType($entityType, $name, $type, $defaultValue = null, $nullable = false, $isKey = false, $storeGeneratedPattern = false, $summary = null, $longDescription = null)
+    public function addPropertyToEntityType(
+        $entityType,
+        $name,
+        $type,
+        $defaultValue = null,
+        $nullable = false,
+        $isKey = false,
+        $storeGeneratedPattern = false,
+        $summary = null,
+        $longDescription = null
+    )
     {
         $this->startEdmxTransaction();
-        $NewProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
+        $NewProperty = new TEntityPropertyType();
         $NewProperty->setName($name);
         $NewProperty->setType($type);
         $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
         $NewProperty->setNullable($nullable);
         if (null != $summary || null != $longDescription) {
-            $documentation = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType();
+            $documentation = new TDocumentationType();
             $documentation->setSummary($summary);
             $documentation->setLongDescription($longDescription);
             $NewProperty->addToDocumentation($documentation);
@@ -130,7 +146,7 @@ class MetadataManager
         }
         $entityType->addToProperty($NewProperty);
         if ($isKey) {
-            $Key = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType();
+            $Key = new TPropertyRefType();
             $Key->setName($name);
             $entityType->addToKey($Key);
         }
@@ -149,6 +165,6 @@ class MetadataManager
 
     public function getLastError()
     {
-        return $this->lastError();
+        return $this->lastError;
     }
 }
