@@ -27,7 +27,7 @@ class MetadataManager
         if (!$this->V3Edmx->isOK($msg)) {
             throw new \Exception($msg);
         }
-        $ymlDir = dirname(__DIR__) . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
+        $ymlDir = __DIR__ . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
         $this->serializer =
             SerializerBuilder::create()
                 ->addMetadataDir($ymlDir)
@@ -128,7 +128,7 @@ class MetadataManager
         $defaultValue = null,
         $nullable = false,
         $isKey = false,
-        $storeGeneratedPattern = false,
+        $storeGeneratedPattern = null,
         $summary = null,
         $longDescription = null
     )

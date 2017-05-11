@@ -94,7 +94,6 @@ class EdmxTest extends TestCase
                 ->addMetadataDir($ymlDir)
                 ->build();
         $d = $serializer->serialize($edmx, "xml");
-        die($d);
         $this->v3MetadataAgainstXSD($d);
     }
 

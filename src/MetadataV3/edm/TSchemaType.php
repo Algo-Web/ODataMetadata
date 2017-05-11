@@ -121,17 +121,19 @@ class TSchemaType extends IsOK
         $entitySets = $this->getEntityContainer()[0]->getEntitySet();
         foreach ($entitySets as $eset) {
             $eSetType = $eset->getEntityType();
-            if (substr($eSetType, 0, strlen($this->getNamespace())) != $this->getNamespace()) {
+            /*if (substr($eSetType, 0, strlen($this->getNamespace())) != $this->getNamespace()) {
                 $msg = "Types for Entity Sets should have the namespace at the beginning " . __CLASS__;
+                die($this->getNamespace());
                 return false;
-            }
+            }*/
             $eSetType = str_replace($this->getNamespace() . ".", "", $eSetType);
             if (!in_array($eSetType, $entityTypeNames)) {
                 $msg = "entitySet Types should have a matching type name in entity Types";
                 return false;
             }
-            return true;
         }
+        return true;
+
     }
 
     /**
