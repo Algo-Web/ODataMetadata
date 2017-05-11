@@ -20,7 +20,11 @@ class TNavigationPropertyType extends IsOK
     use GEmptyElementExtensibilityTrait,
         TQualifiedNameTrait,
         TSimpleIdentifierTrait,
-        AccessTypeTraits;
+        AccessTypeTraits {
+        TSimpleIdentifierTrait::isNCName insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::isName insteadof TQualifiedNameTrait;
+    }
 
     /**
      * @property string $name

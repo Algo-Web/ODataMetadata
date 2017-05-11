@@ -1,8 +1,9 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
+namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\Groups;
 
 use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType;
 
 trait GEmptyElementExtensibilityTrait
 {

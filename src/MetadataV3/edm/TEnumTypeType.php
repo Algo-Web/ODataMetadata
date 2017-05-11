@@ -16,7 +16,11 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TPropertyTypeTrait;
  */
 class TEnumTypeType extends IsOK
 {
-    use IsOKToolboxTrait, TTypeAttributesTrait, TPropertyTypeTrait, AccessTypeTraits;
+    use IsOKToolboxTrait, TTypeAttributesTrait, TPropertyTypeTrait, AccessTypeTraits {
+        TTypeAttributesTrait::isNCName insteadof TPropertyTypeTrait;
+        TTypeAttributesTrait::matchesRegexPattern insteadof TPropertyTypeTrait;
+        TTypeAttributesTrait::isName insteadof TPropertyTypeTrait;
+    }
 
     /**
      * @property boolean $isFlags

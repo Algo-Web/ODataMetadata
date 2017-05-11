@@ -16,7 +16,12 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionTypeTrait;
  */
 class TFunctionParameterType extends IsOK
 {
-    use TFacetAttributesTrait, TSimpleIdentifierTrait, TWrappedFunctionTypeTrait;
+    use TFacetAttributesTrait, TSimpleIdentifierTrait, TWrappedFunctionTypeTrait {
+        TSimpleIdentifierTrait::isNCName insteadof TWrappedFunctionTypeTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TWrappedFunctionTypeTrait;
+        TSimpleIdentifierTrait::isName insteadof TWrappedFunctionTypeTrait;
+    }
+
     /**
      * @property string $name
      */

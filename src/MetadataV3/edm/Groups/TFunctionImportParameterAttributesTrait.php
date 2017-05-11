@@ -13,7 +13,26 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSridFacetTrait;
 trait TFunctionImportParameterAttributesTrait
 {
     use TSimpleIdentifierTrait, TParameterModeTrait, TFunctionImportParameterAndReturnTypeTrait, TMaxLengthFacetTrait,
-        TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+        TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait {
+        TSimpleIdentifierTrait::isNCName insteadof TFunctionImportParameterAndReturnTypeTrait, TPrecisionFacetTrait,
+            TScaleFacetTrait, TSridFacetTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TFunctionImportParameterAndReturnTypeTrait,
+            TPrecisionFacetTrait, TScaleFacetTrait, TSridFacetTrait;
+        TSimpleIdentifierTrait::isName insteadof TFunctionImportParameterAndReturnTypeTrait, TPrecisionFacetTrait,
+            TScaleFacetTrait, TSridFacetTrait;
+        TPrecisionFacetTrait::normaliseString insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::preserveString insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::replaceString insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::collapseString insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::token insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::string insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::integer insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::nonNegativeInteger insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::decimal insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::double insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::dateTime insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::hexBinary insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+    }
 
     /*
      * @property string $name

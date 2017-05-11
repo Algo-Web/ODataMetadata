@@ -15,7 +15,11 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TAnnotationsType extends IsOK
 {
-    use IsOKToolboxTrait, TQualifiedNameTrait, TSimpleIdentifierTrait;
+    use IsOKToolboxTrait, TQualifiedNameTrait, TSimpleIdentifierTrait {
+        TSimpleIdentifierTrait::isNCName insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::isName insteadof TQualifiedNameTrait;
+    }
     /**
      * @property string $target
      */

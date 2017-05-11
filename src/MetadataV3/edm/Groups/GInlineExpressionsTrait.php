@@ -8,7 +8,11 @@ use AlgoWeb\ODataMetadata\StringTraits\XSDTopLevelTrait;
 
 trait GInlineExpressionsTrait
 {
-    use TQualifiedNameTrait, XSDTopLevelTrait, TGuidLiteralTrait;
+    use TQualifiedNameTrait, XSDTopLevelTrait, TGuidLiteralTrait {
+        TQualifiedNameTrait::isNCName insteadof TGuidLiteralTrait;
+        TQualifiedNameTrait::matchesRegexPattern insteadof TGuidLiteralTrait;
+        TQualifiedNameTrait::isName insteadof TGuidLiteralTrait;
+    }
 
     /**
      * @property string $string

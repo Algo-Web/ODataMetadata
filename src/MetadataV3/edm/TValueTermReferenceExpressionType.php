@@ -15,7 +15,12 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TValueTermReferenceExpressionType extends IsOK
 {
-    use GExpressionTrait, TQualifiedNameTrait, TSimpleIdentifierTrait;
+    use GExpressionTrait, TQualifiedNameTrait, TSimpleIdentifierTrait {
+        TSimpleIdentifierTrait::isNCName insteadof TQualifiedNameTrait, GExpressionTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TQualifiedNameTrait, GExpressionTrait;
+        TSimpleIdentifierTrait::isName insteadof TQualifiedNameTrait, GExpressionTrait;
+    }
+
     /**
      * @property string $term
      */

@@ -21,7 +21,34 @@ class TValueTermType extends IsOK
         GExpressionTrait,
         TQualifiedNameTrait,
         TSimpleIdentifierTrait,
-        TWrappedFunctionReturnTrait;
+        TWrappedFunctionTypeTrait {
+        TSimpleIdentifierTrait::isNCName insteadof TQualifiedNameTrait, TWrappedFunctionTypeTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TQualifiedNameTrait, TWrappedFunctionTypeTrait;
+        TSimpleIdentifierTrait::isName insteadof TQualifiedNameTrait, TWrappedFunctionTypeTrait;
+        TFacetAttributesTrait::normaliseString insteadof GExpressionTrait;
+        TFacetAttributesTrait::preserveString insteadof GExpressionTrait;
+        TFacetAttributesTrait::replaceString insteadof GExpressionTrait;
+        TFacetAttributesTrait::collapseString insteadof GExpressionTrait;
+        TFacetAttributesTrait::token insteadof GExpressionTrait;
+        TFacetAttributesTrait::string insteadof GExpressionTrait;
+        TFacetAttributesTrait::integer insteadof GExpressionTrait;
+        TFacetAttributesTrait::nonNegativeInteger insteadof GExpressionTrait;
+        TFacetAttributesTrait::decimal insteadof GExpressionTrait;
+        TFacetAttributesTrait::double insteadof GExpressionTrait;
+        TFacetAttributesTrait::dateTime insteadof GExpressionTrait;
+        TFacetAttributesTrait::hexBinary insteadof GExpressionTrait;
+        TFacetAttributesTrait::isStringNotNullOrEmpty insteadof GExpressionTrait;
+        TFacetAttributesTrait::isStringNotNull insteadof GExpressionTrait;
+        TFacetAttributesTrait::isNotNullInstanceOf insteadof GExpressionTrait;
+        TFacetAttributesTrait::isNullInstanceOf insteadof GExpressionTrait;
+        TFacetAttributesTrait::isURLValid insteadof GExpressionTrait;
+        TFacetAttributesTrait::isObjectNullOrOK insteadof GExpressionTrait;
+        TFacetAttributesTrait::isObjectNullOrType insteadof GExpressionTrait;
+        TFacetAttributesTrait::isValidArrayOK insteadof GExpressionTrait;
+        TFacetAttributesTrait::isValidArray insteadof GExpressionTrait;
+        TFacetAttributesTrait::isChildArrayOK insteadof GExpressionTrait;
+        TQualifiedNameTrait::isTQualifiedNameValid insteadof GExpressionTrait, TWrappedFunctionTypeTrait;
+    }
 
     public function __construct()
     {

@@ -15,7 +15,11 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TFunctionImportReturnTypeType extends IsOK
 {
-    use IsOKToolboxTrait, TSimpleIdentifierTrait, TFunctionImportParameterAndReturnTypeTrait;
+    use IsOKToolboxTrait, TSimpleIdentifierTrait, TFunctionImportParameterAndReturnTypeTrait {
+        TSimpleIdentifierTrait::isNCName insteadof TFunctionImportParameterAndReturnTypeTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TFunctionImportParameterAndReturnTypeTrait;
+        TSimpleIdentifierTrait::isName insteadof TFunctionImportParameterAndReturnTypeTrait;
+    }
     /**
      * @property string $type
      */

@@ -6,7 +6,11 @@ use AlgoWeb\ODataMetadata\xsdRestrictions;
 
 trait TWrappedFunctionTypeTrait
 {
-    use TQualifiedNameTrait, xsdRestrictions;
+    use TQualifiedNameTrait, xsdRestrictions {
+        xsdRestrictions::isNCName insteadof TQualifiedNameTrait;
+        xsdRestrictions::matchesRegexPattern insteadof TQualifiedNameTrait;
+        xsdRestrictions::isName insteadof TQualifiedNameTrait;
+    }
 
     public function isTWrappedFunctionTypeValid($string)
     {

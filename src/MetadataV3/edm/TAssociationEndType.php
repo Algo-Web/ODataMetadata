@@ -17,7 +17,11 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TMultiplicityTrait;
  */
 class TAssociationEndType extends IsOK
 {
-    use TOperationsTrait, TQualifiedNameTrait, TSimpleIdentifierTrait, TMultiplicityTrait;
+    use TOperationsTrait, TQualifiedNameTrait, TSimpleIdentifierTrait, TMultiplicityTrait {
+        TSimpleIdentifierTrait::isNCName insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::isName insteadof TQualifiedNameTrait;
+    }
     /**
      * @property string $type
      */

@@ -15,7 +15,12 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TAssociationSetMappingType extends IsOK
 {
-    use TSimpleIdentifierTrait, TQualifiedNameTrait;
+    use TSimpleIdentifierTrait, TQualifiedNameTrait {
+        TSimpleIdentifierTrait::isNCName insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TQualifiedNameTrait;
+        TSimpleIdentifierTrait::isName insteadof TQualifiedNameTrait;
+    }
+
     /**
      * @property string $name
      */

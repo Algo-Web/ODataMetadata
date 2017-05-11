@@ -15,8 +15,19 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
  */
 class TTypeRefType extends IsOK
 {
-    use GEmptyElementExtensibilityTrait;
-    use TFacetAttributesTrait, TUnwrappedFunctionTypeTrait;
+    use GEmptyElementExtensibilityTrait, TFacetAttributesTrait, TUnwrappedFunctionTypeTrait {
+        TFacetAttributesTrait::isStringNotNullOrEmpty insteadof GEmptyElementExtensibilityTrait;
+        TFacetAttributesTrait::isStringNotNull insteadof GEmptyElementExtensibilityTrait;
+        TFacetAttributesTrait::isNotNullInstanceOf insteadof GEmptyElementExtensibilityTrait;
+        TFacetAttributesTrait::isNullInstanceOf insteadof GEmptyElementExtensibilityTrait;
+        TFacetAttributesTrait::isURLValid insteadof GEmptyElementExtensibilityTrait;
+        TFacetAttributesTrait::isObjectNullOrOK insteadof GEmptyElementExtensibilityTrait;
+        TFacetAttributesTrait::isObjectNullOrType insteadof GEmptyElementExtensibilityTrait;
+        TFacetAttributesTrait::isValidArrayOK insteadof GEmptyElementExtensibilityTrait;
+        TFacetAttributesTrait::isValidArray insteadof GEmptyElementExtensibilityTrait;
+        TFacetAttributesTrait::isChildArrayOK insteadof GEmptyElementExtensibilityTrait;
+    }
+    
     /**
      * @property string $type
      */

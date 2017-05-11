@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType;
 
 use AlgoWeb\ODataMetadata\IsOK;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\GEmptyElementExtensibilityTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\Groups\GEmptyElementExtensibilityTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType;
 

@@ -4,7 +4,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\GEmptyElementExtensibilityTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\Groups\GEmptyElementExtensibilityTrait;
 
 /**
  * Class representing AssociationSetAnonymousType

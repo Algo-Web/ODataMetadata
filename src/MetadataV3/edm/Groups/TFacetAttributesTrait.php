@@ -14,7 +14,21 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSridFacetTrait;
 trait TFacetAttributesTrait
 {
     use IsOKToolboxTrait, TMaxLengthFacetTrait, TIsFixedLengthFacetTrait, TPrecisionFacetTrait, TScaleFacetTrait,
-        TIsUnicodeFacetTrait, TSridFacetTrait, TCollationFacetTrait;
+        TIsUnicodeFacetTrait, TSridFacetTrait, TCollationFacetTrait {
+        TPrecisionFacetTrait::normaliseString insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::preserveString insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::replaceString insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::collapseString insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::token insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::string insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::integer insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::nonNegativeInteger insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::decimal insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::double insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::dateTime insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+        TPrecisionFacetTrait::hexBinary insteadof TScaleFacetTrait, TSridFacetTrait, TMaxLengthFacetTrait;
+    }
+
     /**
      * @property boolean $nullable
      */

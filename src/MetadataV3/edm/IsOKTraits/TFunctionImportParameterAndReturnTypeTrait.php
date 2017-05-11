@@ -6,7 +6,11 @@ use AlgoWeb\ODataMetadata\xsdRestrictions;
 
 trait TFunctionImportParameterAndReturnTypeTrait
 {
-    use EDMSimpleTypeTrait, TQualifiedNameTrait, xsdRestrictions;
+    use EDMSimpleTypeTrait, TQualifiedNameTrait, xsdRestrictions {
+        xsdRestrictions::isNCName insteadof TQualifiedNameTrait;
+        xsdRestrictions::matchesRegexPattern insteadof TQualifiedNameTrait;
+        xsdRestrictions::isName insteadof TQualifiedNameTrait;
+    }
 
     public function isTFunctionImportParameterAndReturnTypeValid($string)
     {
