@@ -29,14 +29,14 @@ class testType extends IsOK
         return parent::isNullInstanceOf($var, $instanceOf);
     }
 
-    public function isValidArray(array $arr, $instanceOf, $minCount = -1, $maxCount = -1)
+    public function isValidArray(array $arr = null, $instanceOf, $minCount = -1, $maxCount = -1)
     {
         return parent::isValidArray($arr, $instanceOf, $minCount, $maxCount);
     }
 
     public function isChildArrayOK(array $arr, &$msg)
     {
-        return parent::isChildArrayOK($arr, $msg);
+        return parent::isChildArrayOK($arr = null, $msg);
     }
 
     public function isURLValid($url)

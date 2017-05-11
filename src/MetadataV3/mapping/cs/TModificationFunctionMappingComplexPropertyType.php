@@ -27,18 +27,6 @@ class TModificationFunctionMappingComplexPropertyType extends IsOK
     private $typeName = null;
 
     /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
-     * $scalarProperty
-     */
-    private $scalarProperty = null;
-
-    /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
-     * $complexProperty
-     */
-    private $complexProperty = null;
-
-    /**
      * Gets as name
      *
      * @return string
@@ -91,60 +79,6 @@ class TModificationFunctionMappingComplexPropertyType extends IsOK
             throw new \InvalidArgumentException($msg);
         }
         $this->typeName = $typeName;
-        return $this;
-    }
-
-    /**
-     * Gets as scalarProperty
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
-     */
-    public function getScalarProperty()
-    {
-        return $this->scalarProperty;
-    }
-
-    /**
-     * Sets a new scalarProperty
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
-     * $scalarProperty
-     * @return self
-     */
-    public function setScalarProperty(TModificationFunctionMappingScalarPropertyType $scalarProperty)
-    {
-        $msg = null;
-        if (!$scalarProperty->isOK($msg)) {
-            throw new \InvalidArgumentException($msg);
-        }
-        $this->scalarProperty = $scalarProperty;
-        return $this;
-    }
-
-    /**
-     * Gets as complexProperty
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
-     */
-    public function getComplexProperty()
-    {
-        return $this->complexProperty;
-    }
-
-    /**
-     * Sets a new complexProperty
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
-     * $complexProperty
-     * @return self
-     */
-    public function setComplexProperty(TModificationFunctionMappingComplexPropertyType $complexProperty)
-    {
-        $msg = null;
-        if (!$complexProperty->isOK($msg)) {
-            throw new \InvalidArgumentException($msg);
-        }
-        $this->complexProperty = $complexProperty;
         return $this;
     }
 
