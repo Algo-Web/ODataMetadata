@@ -83,8 +83,12 @@ class MetadataManager
      */
     public static function pluralize($quantity, $singular, $plural = null)
     {
-        if ($quantity == 1 || !strlen($singular)) return $singular;
-        if ($plural !== null) return $plural;
+        if ($quantity == 1 || !strlen($singular)) {
+            return $singular;
+        }
+        if ($plural !== null) {
+            return $plural;
+        }
 
         $last_letter = strtolower($singular[strlen($singular) - 1]);
         switch ($last_letter) {
