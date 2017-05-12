@@ -134,8 +134,7 @@ class MetadataManager
         $storeGeneratedPattern = null,
         $summary = null,
         $longDescription = null
-    )
-    {
+    ) {
         $this->startEdmxTransaction();
         $NewProperty = new TEntityPropertyType();
         $NewProperty->setName($name);
@@ -182,8 +181,7 @@ class MetadataManager
         $principalSetterAccess = "Public",
         $dependentGetterAccess = "Public",
         $dependentSetterAccess = "Public"
-    )
-    {
+    ) {
         $this->startEdmxTransaction();
         $principalEntitySetName = $this->pluralize(2, $principalType->getName());
         $dependentEntitySetName = $this->pluralize(2, $dependentType->getName());
@@ -271,8 +269,7 @@ class MetadataManager
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null
 
-    )
-    {
+    ) {
         if (null != $dependentNavigationProperty) {
             if ($dependentNavigationProperty->getRelationship() != $principalNavigationProperty->getRelationship()) {
                 throw new \Exception("if you have both a dependant property and a principal property they should both have the same relationship");
@@ -334,8 +331,7 @@ class MetadataManager
         TAssociationType $association,
         $principalEntitySetName,
         $dependentEntitySetName
-    )
-    {
+    ) {
         $as = new AssociationSetAnonymousType();
         $name = $association->getName();
         $as->setName($name);
@@ -356,5 +352,4 @@ class MetadataManager
         $as->addToEnd($end2);
         return $as;
     }
-
 }
