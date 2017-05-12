@@ -11,6 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
@@ -164,9 +165,66 @@ class MetadataManager
         return $NewProperty;
     }
 
-    public function addNavigationPropertyToEntityType($entityType)
+    public function addNavigationPropertyToEntityType(
+        TEntityTypeType $principalType,
+        $principalProperty,
+        $principalMultiplicity,
+        $principalSummery,
+        $principalLongDescription,
+        TEntityTypeType $dependentType,
+        $dependentProperty = "",
+        $dependentMultiplicity,
+        $dependentSummery,
+        $dependentLongDescription,
+        array $principalConstraintProperty = null,
+        array $dependentConstraintProperty = null,
+        $principalGetterAccess = "Public",
+        $principalSetterAccess = "Public",
+        $dependentGetterAccess = "Public",
+        $dependentSetterAccess = "Public"
+    )
     {
+        $this->startEdmxTransaction();
+        $dependentNavigationProperty = new TNavigationPropertyType();
+        $principalEntitySetName = $this->pluralize(2, $principalType->getName());
+        $dependentEntitySetName = $this->pluralize(2, $dependentType->getName());
+        $relationName = $principalType->getName() . "_" . $principalProperty . "_" . $dependentType->getName() . "_" . $dependentProperty;
+        $relationName = trim($relationName, "_");
 
+        $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
+        if (0 == strlen(trim($namespace))) {
+            $relationFQName = $relationName;
+        } else {
+            $relationFQName = $namespace . "." . $relationName;
+        }
+
+        $principalNavigationProperty = new TNavigationPropertyType();
+        $principalNavigationProperty->setName($principalProperty);
+        $principalNavigationProperty->setToRole($dependentEntitySetName);
+        $principalNavigationProperty->setFromRole($principalEntitySetName);
+        $principalNavigationProperty->setRelationship($relationFQName);
+        $principalNavigationProperty->setGetterAccess($principalGetterAccess);
+        $principalNavigationProperty->setSetterAccess($principalSetterAccess);
+        $principalType->addToNavigationProperty($principalNavigationProperty);
+
+        if (!empty($dependentProperty)) {
+            $dependentNavigationProperty = new TNavigationPropertyType();
+            $dependentNavigationProperty->setName($dependentProperty);
+            $dependentNavigationProperty->setToRole($principalEntitySetName);
+            $dependentNavigationProperty->setFromRole($dependentEntitySetName);
+            $dependentNavigationProperty->setRelationship($relationFQName);
+            $dependentNavigationProperty->setGetterAccess($dependentGetterAccess);
+            $dependentNavigationProperty->setSetterAccess($dependentSetterAccess);
+            $dependentType->addToNavigationProperty($dependentNavigationProperty);
+        }
+
+
+        if (!$this->V3Edmx->isok($this->lastError)) {
+            $this->revertEdmxTransaction();
+            return false;
+        }
+        $this->commitEdmxTransaction();
+        return [$principalNavigationProperty, $dependentNavigationProperty];
     }
 
     public function getLastError()
@@ -174,58 +232,46 @@ class MetadataManager
         return $this->lastError;
     }
 
-    protected function createAssocationSetForAssocation(
-        TAssociationType $association,
-        $principalType,
-        $principalProperty,
-        $dependentType,
-        $dependentProperty
-    )
-    {
-        $as = new AssociationSetAnonymousType();
-        $name = $principalType . "_" . $principalProperty . "_" . $dependentType . "_" . $dependentProperty;
-        $as->setName($name);
-        $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
-        if (0 == strlen(trim($namespace))) {
-            $associationSetName = $association->getName();
-        } else {
-            $associationSetName = $namespace . "." . $association->getName();
-        }
-        $as->setAssociation($associationSetName);
-        $end1 = new EndAnonymousType();
-        $end1->setRole($association->getEnd()[0]->getRole());
-        $end1->setEntitySet($this->pluralize(2, $principalType));
-        $end2 = new EndAnonymousType();
-        $end2->setRole($association->getEnd()[1]->getRole());
-        $end2->setEntitySet($this->pluralize(2, $dependentProperty));
-        $as->addToEnd($end1);
-        $as->addToEnd($end2);
-        return $as;
-    }
-
-    protected function createAssocation(
-        $principalType,
-        $principalProperty,
+    protected function createAssocationFromNavigationProperty(
+        TEntityTypeType $principalType,
+        TEntityTypeType $dependentType,
+        TNavigationPropertyType $principalNavigationProperty,
+        TNavigationPropertyType $dependentNavigationProperty = null,
         $principalMultiplicity,
-        $dependentType,
-        $dependentProperty,
         $dependentMultiplicity,
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null
+
     )
     {
-        $association = new TAssociationType();
-        $name = $principalType . "_" . $principalProperty . "_" . $dependentType . "_" . $dependentProperty;
-        $name = trim($name, "_");
-        $association->setName($name);
+        if (null != $dependentNavigationProperty) {
+            if ($dependentNavigationProperty->getRelationship() != $principalNavigationProperty->getRelationship()) {
+                throw new \Exception("if you have both a dependant property and a principal property they should both have the same relationship");
+            }
+            if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole() ||
+                $dependentNavigationProperty->getToRole() != $principalNavigationProperty->getFromRole()
+            ) {
+                throw new \Exception("The from roles and two roles from matching properties should match");
+            }
+        }
+        $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
 
+        if (0 == strlen(trim($namespace))) {
+            $principalTypeFQName = $principalType->getName();
+            $dependentTypeFQName = $dependentType->getName();
+        } else {
+            $principalTypeFQName = $namespace . "." . $principalType->getName();
+            $dependentTypeFQName = $namespace . "." . $dependentType->getName();
+        }
+        $association = new TAssociationType();
+        $association->setName($principalNavigationProperty->getRelationship());
         $principalEnd = new TAssociationEndType();
-        $principalEnd->setType($principalType);
-        $principalEnd->setRole($principalType . "_" . $principalProperty . "_" . $dependentType);
+        $principalEnd->setType($principalTypeFQName);
+        $principalEnd->setRole($principalNavigationProperty->getFromRole());
         $principalEnd->setMultiplicity($principalMultiplicity);
         $dependentEnd = new TAssociationEndType();
-        $dependentEnd->setType($dependentType);
-        $dependentEnd->setRole($dependentType . "_" . $dependentProperty . "_" . $principalType);
+        $dependentEnd->setType($dependentTypeFQName);
+        $dependentEnd->setRole($dependentNavigationProperty->getFromRole());
         $dependentEnd->setMultiplicity($dependentMultiplicity);
         $association->addToEnd($principalEnd);
         $association->addToEnd($dependentEnd);
@@ -233,16 +279,16 @@ class MetadataManager
         $dependentReferralConstraint = null;
         if (null != $principalConstraintProperty && 0 < count($principalConstraintProperty)) {
             $principalReferralConstraint = new TReferentialConstraintRoleElementType();
-            $principalReferralConstraint->setRole($principalType . "_" . $principalProperty . "_" . $dependentType);
-            foreach ($principalConstraintProperty as $pripertyRef) {
-                $principalReferralConstraint->addToPropertyRef($pripertyRef);
+            $principalReferralConstraint->setRole($principalNavigationProperty->getFromRole());
+            foreach ($principalConstraintProperty as $propertyRef) {
+                $principalReferralConstraint->addToPropertyRef($propertyRef);
             }
         }
         if (null != $dependentConstraintProperty && 0 < count($dependentConstraintProperty)) {
             $dependentReferralConstraint = new TReferentialConstraintRoleElementType();
-            $dependentReferralConstraint->setRole($dependentType . "_" . $dependentProperty . "_" . $principalType);
-            foreach ($dependentConstraintProperty as $pripertyRef) {
-                $dependentReferralConstraint->addToPropertyRef($pripertyRef);
+            $dependentReferralConstraint->setRole($dependentNavigationProperty->getFromRole());
+            foreach ($dependentConstraintProperty as $propertyRef) {
+                $dependentReferralConstraint->addToPropertyRef($propertyRef);
             }
         }
 
@@ -253,5 +299,35 @@ class MetadataManager
             $association->setReferentialConstraint($constraint);
         }
         return $association;
+
+        return true;
     }
+
+    protected function createAssocationSetForAssocation(
+        TAssociationType $association,
+        $principalEntitySetName,
+        $dependentEntitySetName
+    )
+    {
+        $as = new AssociationSetAnonymousType();
+        $name = $association->getName();
+        $as->setName($name);
+        $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
+        if (0 == strlen(trim($namespace))) {
+            $associationSetName = $association->getName();
+        } else {
+            $associationSetName = $namespace . "." . $association->getName();
+        }
+        $as->setAssociation($associationSetName);
+        $end1 = new EndAnonymousType();
+        $end1->setRole($association->getEnd()[0]->getRole());
+        $end1->setEntitySet($principalEntitySetName);
+        $end2 = new EndAnonymousType();
+        $end2->setRole($association->getEnd()[1]->getRole());
+        $end2->setEntitySet($dependentEntitySetName);
+        $as->addToEnd($end1);
+        $as->addToEnd($end2);
+        return $as;
+    }
+
 }
