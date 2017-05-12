@@ -185,7 +185,6 @@ class MetadataManager
     )
     {
         $this->startEdmxTransaction();
-        $dependentNavigationProperty = new TNavigationPropertyType();
         $principalEntitySetName = $this->pluralize(2, $principalType->getName());
         $dependentEntitySetName = $this->pluralize(2, $dependentType->getName());
         $relationName = $principalType->getName() . "_" . $principalProperty . "_" . $dependentType->getName() . "_" . $dependentProperty;
