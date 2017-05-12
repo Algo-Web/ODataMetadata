@@ -197,8 +197,8 @@ class MetadataManager
 
         $principalNavigationProperty = new TNavigationPropertyType();
         $principalNavigationProperty->setName($principalProperty);
-        $principalNavigationProperty->setToRole($dependentEntitySetName);
-        $principalNavigationProperty->setFromRole($principalEntitySetName);
+        $principalNavigationProperty->setToRole($dependentEntitySetName . "_" . $dependentProperty);
+        $principalNavigationProperty->setFromRole($principalEntitySetName . "_" . $principalProperty);
         $principalNavigationProperty->setRelationship($relationFQName);
         $principalNavigationProperty->setGetterAccess($principalGetterAccess);
         $principalNavigationProperty->setSetterAccess($principalSetterAccess);
@@ -214,8 +214,8 @@ class MetadataManager
         if (!empty($dependentProperty)) {
             $dependentNavigationProperty = new TNavigationPropertyType();
             $dependentNavigationProperty->setName($dependentProperty);
-            $dependentNavigationProperty->setToRole($principalEntitySetName);
-            $dependentNavigationProperty->setFromRole($dependentEntitySetName);
+            $dependentNavigationProperty->setToRole($principalEntitySetName . "_" . $principalProperty);
+            $dependentNavigationProperty->setFromRole($dependentEntitySetName . "_" . $dependentProperty);
             $dependentNavigationProperty->setRelationship($relationFQName);
             $dependentNavigationProperty->setGetterAccess($dependentGetterAccess);
             $dependentNavigationProperty->setSetterAccess($dependentSetterAccess);
