@@ -205,7 +205,14 @@ class MetadataManager
         $principalNavigationProperty->setRelationship($relationFQName);
         $principalNavigationProperty->setGetterAccess($principalGetterAccess);
         $principalNavigationProperty->setSetterAccess($principalSetterAccess);
+        if (null != $principalSummery || null != $principalLongDescription) {
+            $principalDocumentation = new TDocumentationType();
+            $principalDocumentation->setSummary($principalSummery);
+            $principalDocumentation->setLongDescription($principalLongDescription);
+            $principalNavigationProperty->setDocumentation($principalDocumentation);
+        }
         $principalType->addToNavigationProperty($principalNavigationProperty);
+
 
         if (!empty($dependentProperty)) {
             $dependentNavigationProperty = new TNavigationPropertyType();
@@ -215,8 +222,31 @@ class MetadataManager
             $dependentNavigationProperty->setRelationship($relationFQName);
             $dependentNavigationProperty->setGetterAccess($dependentGetterAccess);
             $dependentNavigationProperty->setSetterAccess($dependentSetterAccess);
+            if (null != $dependentSummery || null != $dependentLongDescription) {
+                $dependentDocumentation = new TDocumentationType();
+                $dependentDocumentation->setSummary($dependentSummery);
+                $dependentDocumentation->setLongDescription($dependentLongDescription);
+                $dependentNavigationProperty->setDocumentation($dependentDocumentation);
+            }
             $dependentType->addToNavigationProperty($dependentNavigationProperty);
         }
+
+        $assocation = createAssocationFromNavigationProperty(
+            $principalType,
+            $dependentType,
+            $principalNavigationProperty,
+            $dependentNavigationProperty,
+            $principalMultiplicity,
+            $dependentMultiplicity,
+            $principalConstraintProperty,
+            $dependentConstraintProperty
+        );
+
+        $this->V3Edmx->getDataServices()[0]->addToAssociation($assocation);
+
+        $associationSet = createAssocationSetForAssocation($assocation, $principalEntitySetName, $dependentEntitySetName);
+
+        $this->V3Edmx->getDataServices()[0]->getEntityContainer()[0]->addToAssociationSet($associationSet);
 
 
         if (!$this->V3Edmx->isok($this->lastError)) {
@@ -299,8 +329,6 @@ class MetadataManager
             $association->setReferentialConstraint($constraint);
         }
         return $association;
-
-        return true;
     }
 
     protected function createAssocationSetForAssocation(
