@@ -2,7 +2,6 @@
 
 namespace AlgoWeb\ODataMetadata\Tests;
 
-use phpDocumentor\Reflection\Types\This;
 use \Mockery as m;
 
 class TestTypeTest extends TestCase
@@ -352,5 +351,21 @@ class TestTypeTest extends TestCase
         $foo = new testType();
         $result = $foo->collapseString($string);
         $this->assertEquals($expected, $result);
+    }
+
+    public function testSimpleIdentifierValidWithTrailingSpace()
+    {
+        $string = "UnitPrice ";
+
+        $foo = new testType();
+        $this->assertFalse($foo->isTSimpleIdentifierValid($string));
+    }
+
+    public function testSimpleIdentifierValidWithoutTrailingSpace()
+    {
+        $string = "UnitPrice";
+
+        $foo = new testType();
+        $this->assertTrue($foo->isTSimpleIdentifierValid($string));
     }
 }

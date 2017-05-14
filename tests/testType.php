@@ -3,11 +3,12 @@
 namespace AlgoWeb\ODataMetadata\Tests;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\StringTraits\XMLStringTrait;
 
 class testType extends IsOK
 {
-    use XMLStringTrait;
+    use XMLStringTrait, TSimpleIdentifierTrait;
 
     public function isStringNotNullOrEmpty($str)
     {
