@@ -151,6 +151,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
 
         $metadataManager->addNavigationPropertyToEntityType($CategoryType, "*", "Products", $ProductType, "0..1", "Category", ["CategoryID"], ["CategoryID"]);
+        $metadataManager->addNavigationPropertyToEntityType($Order_DetailType, "1", "Order", $ProductType, "*", "Order_Details", ["OrderID"], ["CategoryID"]);
+//        <NavigationProperty Name="Order_Details" Relationship="NorthwindModel.FK_Order_Details_Products" ToRole="Order_Details" FromRole="Products"/>
 
 
         $msg = null;
@@ -159,7 +161,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($msg);
 
         $d = $metadataManager->getEdmxXML();
-        //die($d);
+        die($d);
         $this->v3MetadataAgainstXSD($d);
     }
 }
