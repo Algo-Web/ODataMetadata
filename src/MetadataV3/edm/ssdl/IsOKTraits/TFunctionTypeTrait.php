@@ -13,7 +13,7 @@ trait TFunctionTypeTrait
         if (!$this->isTQualifiedNameValid($string)) {
             return false;
         }
-        $regex = 'Collection\([^ \t]{1,}(\.[^ \t]{1,}){0,}\)';
+        $regex = '/Collection\([^ \t]{1,}(\.[^ \t]{1,}){0,}\)/';
         return $this->matchesRegexPattern($regex, $string);
     }
 }

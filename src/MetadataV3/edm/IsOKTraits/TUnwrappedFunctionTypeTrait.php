@@ -14,7 +14,7 @@ trait TUnwrappedFunctionTypeTrait
 
     public function isTUnwrappedFunctionTypeValid($string)
     {
-        $regex = '[^ \t]{1,}(\.[^ \t]{1,}){0,}';
+        $regex = '/[^ \t]{1,}(\.[^ \t]{1,}){0,}/';
 
         if (!is_string($string)) {
             $msg = "Input must be a string: ". get_class($this);

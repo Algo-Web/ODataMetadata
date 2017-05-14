@@ -17,7 +17,7 @@ trait TUndottedIdentifierTrait
     public function isTUndottedIdentifierValid($string)
     {
         // no periods
-        $regex = '[^.]{1,}';
+        $regex = '/[^.]{1,}/';
         return $this->matchesRegexPattern($regex, $string);
     }
 }

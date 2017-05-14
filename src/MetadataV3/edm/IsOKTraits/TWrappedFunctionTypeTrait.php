@@ -14,7 +14,7 @@ trait TWrappedFunctionTypeTrait
 
     public function isTWrappedFunctionTypeValid($string)
     {
-        $regex = '(Collection|Ref)\([^ \t]{1,}(\.[^ \t]{1,}){0,}\)';
+        $regex = '/(Collection|Ref)\([^ \t]{1,}(\.[^ \t]{1,}){0,}\/)';
 
         if (!is_string($string)) {
             $msg = "Input must be a string: ". get_class($this);

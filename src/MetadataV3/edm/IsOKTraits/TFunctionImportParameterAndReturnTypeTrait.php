@@ -14,7 +14,7 @@ trait TFunctionImportParameterAndReturnTypeTrait
 
     public function isTFunctionImportParameterAndReturnTypeValid($string)
     {
-        $regex = "Collection\([^ \t]{1,}(\.[^ \t]{1,}){0,}\)";
+        $regex = "/Collection\([^ \t]{1,}(\.[^ \t]{1,}){0,}\)/";
 
         if (!is_string($string)) {
             $msg = "Input must be a string: ". get_class($this);
