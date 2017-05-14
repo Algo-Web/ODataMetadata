@@ -60,6 +60,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testEntitysAndPropertiesAndNavigationProperties()
     {
+        $msg = null;
         $metadataManager = new MetadataManager();
 
         $CategoryType = $metadataManager->addEntityType("Category");
@@ -68,10 +69,12 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($CategoryType, "CategoryName", "String");
         $metadataManager->addPropertyToEntityType($CategoryType, "Description", "String");
         $metadataManager->addPropertyToEntityType($CategoryType, "Picture", "Binary");
+        $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         $CustomerDemographicType = $metadataManager->addEntityType("CustomerDemographic");
         $metadataManager->addPropertyToEntityType($CustomerDemographicType, "CustomerTypeID", "String", null, false, true);
         $metadataManager->addPropertyToEntityType($CustomerDemographicType, "CustomerDesc", "String");
+        $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         $CustomerType = $metadataManager->addEntityType("Customer");
         $metadataManager->addPropertyToEntityType($CustomerType, "CustomerID", "String", null, false, true);
@@ -85,6 +88,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($CustomerType, "Country", "String");
         $metadataManager->addPropertyToEntityType($CustomerType, "Phone", "String");
         $metadataManager->addPropertyToEntityType($CustomerType, "Fax", "String");
+        $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         $EmployeeType = $metadataManager->addEntityType("Employee");
         $metadataManager->addPropertyToEntityType($EmployeeType, "EmployeeID", "Int32", null, false, true, "Identity");
@@ -105,13 +109,15 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($EmployeeType, "Notes", "String");
         $metadataManager->addPropertyToEntityType($EmployeeType, "ReportsTo", "Int32");
         $metadataManager->addPropertyToEntityType($EmployeeType, "PhotoPath", "String");
+        $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         $Order_DetailType = $metadataManager->addEntityType("Order_Detail");
         $metadataManager->addPropertyToEntityType($Order_DetailType, "OrderID", "Int32", null, false, true);
         $metadataManager->addPropertyToEntityType($Order_DetailType, "ProductID", "Int32", null, false, true);
-        $metadataManager->addPropertyToEntityType($Order_DetailType, "UnitPrice ", "Decimal");
+        $metadataManager->addPropertyToEntityType($Order_DetailType, "UnitPrice", "Decimal");
         $metadataManager->addPropertyToEntityType($Order_DetailType, "Quantity", "Int16");
         $metadataManager->addPropertyToEntityType($Order_DetailType, "Discount", "Single");
+        $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         $OrderType = $metadataManager->addEntityType("Order");
         $metadataManager->addPropertyToEntityType($OrderType, "OrderID", "Int32", null, false, true, "Identity");
@@ -128,6 +134,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($OrderType, "ShipRegion", "String");
         $metadataManager->addPropertyToEntityType($OrderType, "ShipPostalCode", "String");
         $metadataManager->addPropertyToEntityType($OrderType, "ShipCountry", "String");
+        $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         $ProductType = $metadataManager->addEntityType("Product");
         $metadataManager->addPropertyToEntityType($ProductType, "ProductID", "Int32", null, false, true, "Identity");
@@ -140,6 +147,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($ProductType, "UnitsOnOrder", "Int16");
         $metadataManager->addPropertyToEntityType($ProductType, "ReorderLevel", "Int16");
         $metadataManager->addPropertyToEntityType($ProductType, "Discontinued", "Boolean");
+        $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
+
         $msg = null;
         $edmx = $metadataManager->getEdmx();
         $this->assertTrue($edmx->isOK($msg), $msg);
