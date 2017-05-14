@@ -39,7 +39,8 @@ trait xsdRestrictions
      */
     protected function matchesRegexPattern($pattern, $string)
     {
-        return (1 == preg_match($pattern, $string));
+        $matches = null;
+        return (1 == preg_match($pattern, $string, $matches) && $string == $matches[0]);
     }
 
     /**

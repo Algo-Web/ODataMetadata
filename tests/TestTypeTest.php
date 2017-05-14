@@ -368,4 +368,12 @@ class TestTypeTest extends TestCase
         $foo = new testType();
         $this->assertTrue($foo->isTSimpleIdentifierValid($string));
     }
+
+    public function testRegexPatternMatchAllOfString()
+    {
+        $string = "This! IS! UNITPRICE";
+
+        $foo = new testType();
+        $this->assertFalse($foo->isTSimpleIdentifierValid($string));
+    }
 }
