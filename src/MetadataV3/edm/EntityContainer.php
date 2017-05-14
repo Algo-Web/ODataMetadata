@@ -439,7 +439,7 @@ class EntityContainer extends IsOK
             return false;
         }
 
-        return true;
+        return $this->isStructureOK($msg);
     }
 
     public function isStructureOK(&$msg = null)
@@ -449,7 +449,7 @@ class EntityContainer extends IsOK
             $entityNames[] = $entitySet->getName();
         }
         foreach ($this->associationSet as $assocationSet) {
-            if (!in_array($assocationSet->getEnd()[0]->entitySet, $entityNames)) {
+            if (!in_array($assocationSet->getEnd()[0]->getEntitySet(), $entityNames)) {
                 $msg = "The entitysets for assocations must have a valid entity set. " . $assocationSet->getName() . " Does not";
                 return false;
             }
