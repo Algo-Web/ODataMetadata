@@ -161,7 +161,6 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($msg);
 
         $d = $metadataManager->getEdmxXML();
-        die($d);
         $this->v3MetadataAgainstXSD($d);
     }
 }

@@ -446,7 +446,7 @@ class EntityContainer extends IsOK
     {
         $entityNames = [];
         foreach ($this->entitySet as $entitySet) {
-            $entityNames = $entitySet->getName();
+            $entityNames[] = $entitySet->getName();
         }
         foreach ($this->associationSet as $assocationSet) {
             if (!in_array($assocationSet->getEnd()[0]->entitySet, $entityNames)) {
