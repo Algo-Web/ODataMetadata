@@ -166,21 +166,21 @@ class MetadataManager
 
     public function addNavigationPropertyToEntityType(
         TEntityTypeType $principalType,
-        $principalProperty,
         $principalMultiplicity,
+        $principalProperty,
         TEntityTypeType $dependentType,
         $dependentMultiplicity,
-        $principalSummery = null,
-        $principalLongDescription = null,
-        $dependentSummery = null,
-        $dependentLongDescription = null,
         $dependentProperty = "",
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null,
         $principalGetterAccess = "Public",
         $principalSetterAccess = "Public",
         $dependentGetterAccess = "Public",
-        $dependentSetterAccess = "Public"
+        $dependentSetterAccess = "Public",
+        $principalSummery = null,
+        $principalLongDescription = null,
+        $dependentSummery = null,
+        $dependentLongDescription = null
     ) {
         $this->startEdmxTransaction();
         $principalEntitySetName = $this->pluralize(2, $principalType->getName());
@@ -228,7 +228,7 @@ class MetadataManager
             $dependentType->addToNavigationProperty($dependentNavigationProperty);
         }
 
-        $assocation = createAssocationFromNavigationProperty(
+        $assocation = $this->createAssocationFromNavigationProperty(
             $principalType,
             $dependentType,
             $principalNavigationProperty,
@@ -241,7 +241,7 @@ class MetadataManager
 
         $this->V3Edmx->getDataServices()[0]->addToAssociation($assocation);
 
-        $associationSet = createAssocationSetForAssocation($assocation, $principalEntitySetName, $dependentEntitySetName);
+        $associationSet = $this->createAssocationSetForAssocation($assocation, $principalEntitySetName, $dependentEntitySetName);
 
         $this->V3Edmx->getDataServices()[0]->getEntityContainer()[0]->addToAssociationSet($associationSet);
 
@@ -252,11 +252,6 @@ class MetadataManager
         }
         $this->commitEdmxTransaction();
         return [$principalNavigationProperty, $dependentNavigationProperty];
-    }
-
-    public function getLastError()
-    {
-        return $this->lastError;
     }
 
     protected function createAssocationFromNavigationProperty(
@@ -290,7 +285,12 @@ class MetadataManager
             $dependentTypeFQName = $namespace . "." . $dependentType->getName();
         }
         $association = new TAssociationType();
-        $association->setName($principalNavigationProperty->getRelationship());
+        $relationship = $principalNavigationProperty->getRelationship();
+        if (strpos($relationship, '.') !== false) {
+            $relationship = substr($relationship, strpos($relationship, '.') + 1);
+        }
+
+        $association->setName($relationship);
         $principalEnd = new TAssociationEndType();
         $principalEnd->setType($principalTypeFQName);
         $principalEnd->setRole($principalNavigationProperty->getFromRole());
@@ -307,14 +307,18 @@ class MetadataManager
             $principalReferralConstraint = new TReferentialConstraintRoleElementType();
             $principalReferralConstraint->setRole($principalNavigationProperty->getFromRole());
             foreach ($principalConstraintProperty as $propertyRef) {
-                $principalReferralConstraint->addToPropertyRef($propertyRef);
+                $TpropertyRef = new TPropertyRefType();
+                $TpropertyRef->setName($propertyRef);
+                $principalReferralConstraint->addToPropertyRef($TpropertyRef);
             }
         }
         if (null != $dependentConstraintProperty && 0 < count($dependentConstraintProperty)) {
             $dependentReferralConstraint = new TReferentialConstraintRoleElementType();
             $dependentReferralConstraint->setRole($dependentNavigationProperty->getFromRole());
             foreach ($dependentConstraintProperty as $propertyRef) {
-                $dependentReferralConstraint->addToPropertyRef($propertyRef);
+                $TpropertyRef = new TPropertyRefType();
+                $TpropertyRef->setName($propertyRef);
+                $dependentReferralConstraint->addToPropertyRef($TpropertyRef);
             }
         }
 
@@ -351,5 +355,10 @@ class MetadataManager
         $as->addToEnd($end1);
         $as->addToEnd($end2);
         return $as;
+    }
+
+    public function getLastError()
+    {
+        return $this->lastError;
     }
 }

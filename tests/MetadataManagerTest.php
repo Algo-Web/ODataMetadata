@@ -149,6 +149,10 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($ProductType, "Discontinued", "Boolean");
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
+
+        $metadataManager->addNavigationPropertyToEntityType($CategoryType, "*", "Products", $ProductType, "0..1", "Category", ["CategoryID"], ["CategoryID"]);
+
+
         $msg = null;
         $edmx = $metadataManager->getEdmx();
         $this->assertTrue($edmx->isOK($msg), $msg);
