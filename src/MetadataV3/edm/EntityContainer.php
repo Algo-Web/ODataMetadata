@@ -441,4 +441,19 @@ class EntityContainer extends IsOK
 
         return true;
     }
+
+    public function isStructureOK(&$msg = null)
+    {
+        $entityNames = [];
+        foreach ($this->entitySet as $entitySet) {
+            $entityNames = $entitySet->getName();
+        }
+        foreach ($this->associationSet as $assocationSet) {
+            if (!in_array($assocationSet->getEnd()[0]->entitySet, $entityNames)) {
+                $msg = "The entitysets for assocations must have a valid entity set. " . $assocationSet->getName() . " Does not";
+                return false;
+            }
+        }
+        return true;
+    }
 }
