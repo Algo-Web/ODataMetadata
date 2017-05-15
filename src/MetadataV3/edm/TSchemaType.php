@@ -113,9 +113,13 @@ class TSchemaType extends IsOK
     public function isStructureOK(&$msg = null)
     {
         $entityTypeNames = [];
+        $associationNames = [];
         $this->getEntityType();
         foreach ($this->getEntityType() as $entityType) {
             $entityTypeNames[] = $entityType->getName();
+        }
+        foreach ($this->association as $association) {
+            $associationNames[] = $association->getName();
         }
 
         $entitySets = $this->getEntityContainer()[0]->getEntitySet();
@@ -131,6 +135,33 @@ class TSchemaType extends IsOK
                 $msg = "entitySet Types should have a matching type name in entity Types";
                 return false;
             }
+        }
+
+        // Check Associations to assocationSets
+        $found = false;
+        $namespaceLen = strlen($this->namespace);
+        if (0 != $namespaceLen) {
+            $namespaceLen++;
+        }
+        foreach ($this->association as $assocation) {
+            foreach ($this->entityContainer->associationSet as $assocationSet) {
+                if ($assocation->getName() == substr($assocationSet->association, $namespaceLen)) {
+                    $aEnd1 = $assocationSet->getEnd()[0];
+                    $aEnd2 = $assocationSet->getEnd()[1];
+                    $asEnd1 = $assocationSet->getEnd()[0];
+                    $asEnd2 = $assocationSet->getEnd()[1];
+                    //== TRUE if $a and $b have the same key/value pairs.
+                    //===TRUE if $a and $b have the same key/value pairs in the same order and of the same types.
+                    if ([$aEnd1->getRole(), $aEnd2->getRole()] == [$asEnd1->getRole(), $asEnd2->getRole()]) {
+                        $found = true;
+                    }
+                }
+            }
+            if (!$found) {
+                $msg = "can not find assocationset with matching roles for assocation";
+                return false;
+            }
+            $found = false;
         }
         return true;
     }
