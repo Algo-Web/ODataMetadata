@@ -131,7 +131,7 @@ class TSchemaType extends IsOK
         foreach ($this->association as $association) {
             $associationNames[$association->getName()] = $association->getEnd();
         }
-        foreach ($this->getEntityContainer()[0]->getAssociationSet as $assocationSet) {
+        foreach ($this->getEntityContainer()[0]->getAssociationSet() as $assocationSet) {
             $assocationSets[substr($assocationSet->getAssociation(), $namespaceLen)] = $assocationSet->getEnd();
         }
 
