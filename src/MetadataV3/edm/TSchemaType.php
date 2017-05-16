@@ -108,6 +108,7 @@ class TSchemaType extends IsOK
             return false;
         }
         return $this->isStructureOK($msg);
+
     }
 
     public function isStructureOK(&$msg = null)
@@ -155,7 +156,7 @@ class TSchemaType extends IsOK
         if (count($assocationSets) != count($associationNames)) {
             $msg = "we have " . count($assocationSets) . "assocation sets and " . count($associationNames) . " Assocations, they should be the same";
         }
-        if (count($associationNames) * 2 < $navigationProperties) {
+        if (count($associationNames) * 2 < count($navigationProperties)) {
             $msg = "we have two many navigation propertys. should have no more then double the number of assocations.";
         }
 
@@ -169,12 +170,12 @@ class TSchemaType extends IsOK
                 $msg = "assocation " . $assocationName . " exists without matching Natvigation Property";
                 return false;
             }
-            if (!in_array($assocationSets[$assocationName][0]->getName, [$assocationEnds[0]->getName, $assocationEnds[1]->getName])) {
-                $msg = "assocation Set role " . $assocationSets[$assocationName][0]->getName . "lacks a matching property in the attached assocation";
+            if (!in_array($assocationSets[$assocationName][0]->getRole(), [$assocationEnds[0]->getRole(), $assocationEnds[1]->getRole()])) {
+                $msg = "assocation Set role " . $assocationSets[$assocationName][0]->getRole() . "lacks a matching property in the attached assocation";
                 return false;
             }
-            if (!in_array($assocationSets[$assocationName][1]->getName, [$assocationEnds[0]->getName, $assocationEnds[1]->getName])) {
-                $msg = "assocation Set role " . $assocationSets[$assocationName][0]->getName . "lacks a matching property in the attached assocation";
+            if (!in_array($assocationSets[$assocationName][1]->getRole(), [$assocationEnds[0]->getRole(), $assocationEnds[1]->getRole()])) {
+                $msg = "assocation Set role " . $assocationSets[$assocationName][0]->getRole() . "lacks a matching property in the attached assocation";
                 return false;
             }
         }
