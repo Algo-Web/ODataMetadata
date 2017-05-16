@@ -108,7 +108,6 @@ class TSchemaType extends IsOK
             return false;
         }
         return $this->isStructureOK($msg);
-
     }
 
     public function isStructureOK(&$msg = null)
