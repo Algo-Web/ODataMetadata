@@ -144,16 +144,18 @@ class TSchemaType extends IsOK
             $namespaceLen++;
         }
         foreach ($this->association as $assocation) {
-            foreach ($this->entityContainer->associationSet as $assocationSet) {
-                if ($assocation->getName() == substr($assocationSet->association, $namespaceLen)) {
-                    $aEnd1 = $assocationSet->getEnd()[0];
-                    $aEnd2 = $assocationSet->getEnd()[1];
-                    $asEnd1 = $assocationSet->getEnd()[0];
-                    $asEnd2 = $assocationSet->getEnd()[1];
-                    //== TRUE if $a and $b have the same key/value pairs.
-                    //===TRUE if $a and $b have the same key/value pairs in the same order and of the same types.
-                    if ([$aEnd1->getRole(), $aEnd2->getRole()] == [$asEnd1->getRole(), $asEnd2->getRole()]) {
-                        $found = true;
+            foreach ($this->entityContainer as $container) {
+                foreach ($container->getAssociationSet() as $assocationSet) {
+                    if ($assocation->getName() == substr($assocationSet->getAssociation(), $namespaceLen)) {
+                        $aEnd1 = $assocationSet->getEnd()[0];
+                        $aEnd2 = $assocationSet->getEnd()[1];
+                        $asEnd1 = $assocationSet->getEnd()[0];
+                        $asEnd2 = $assocationSet->getEnd()[1];
+                        //== TRUE if $a and $b have the same key/value pairs.
+                        //===TRUE if $a and $b have the same key/value pairs in the same order and of the same types.
+                        if ([$aEnd1->getRole(), $aEnd2->getRole()] == [$asEnd1->getRole(), $asEnd2->getRole()]) {
+                            $found = true;
+                        }
                     }
                 }
             }
