@@ -114,13 +114,27 @@ class TSchemaType extends IsOK
     {
         $entityTypeNames = [];
         $associationNames = [];
-        $this->getEntityType();
+        $navigationProperties = [];
+        $assocationSets = [];
+        $namespaceLen = strlen($this->namespace);
+        if (0 != $namespaceLen) {
+            $namespaceLen++;
+        }
+
         foreach ($this->getEntityType() as $entityType) {
             $entityTypeNames[] = $entityType->getName();
+            foreach ($entityType->getNavigationProperty() as $navigationProperty) {
+                $navigationProperties[substr($navigationProperty->getRelationship(), $namespaceLen)][] = $navigationProperty;
+            }
         }
+
         foreach ($this->association as $association) {
-            $associationNames[] = $association->getName();
+            $associationNames[$association->getName()] = $association->getEnd();
         }
+        foreach ($this->getEntityContainer()[0]->getAssociationSet as $assocationSet) {
+            $assocationSets[substr($assocationSet->getAssociation(), $namespaceLen)] = $assocationSet->getEnd();
+        }
+
 
         $entitySets = $this->getEntityContainer()[0]->getEntitySet();
         foreach ($entitySets as $eset) {
@@ -138,32 +152,31 @@ class TSchemaType extends IsOK
         }
 
         // Check Associations to assocationSets
-        $found = false;
-        $namespaceLen = strlen($this->namespace);
-        if (0 != $namespaceLen) {
-            $namespaceLen++;
+        if (count($assocationSets) != count($associationNames)) {
+            $msg = "we have " . count($assocationSets) . "assocation sets and " . count($associationNames) . " Assocations, they should be the same";
         }
-        foreach ($this->association as $assocation) {
-            foreach ($this->entityContainer as $container) {
-                foreach ($container->getAssociationSet() as $assocationSet) {
-                    if ($assocation->getName() == substr($assocationSet->getAssociation(), $namespaceLen)) {
-                        $aEnd1 = $assocationSet->getEnd()[0];
-                        $aEnd2 = $assocationSet->getEnd()[1];
-                        $asEnd1 = $assocationSet->getEnd()[0];
-                        $asEnd2 = $assocationSet->getEnd()[1];
-                        //== TRUE if $a and $b have the same key/value pairs.
-                        //===TRUE if $a and $b have the same key/value pairs in the same order and of the same types.
-                        if ([$aEnd1->getRole(), $aEnd2->getRole()] == [$asEnd1->getRole(), $asEnd2->getRole()]) {
-                            $found = true;
-                        }
-                    }
-                }
-            }
-            if (!$found) {
-                $msg = "can not find assocationset with matching roles for assocation";
+        if (count($associationNames) * 2 < $navigationProperties) {
+            $msg = "we have two many navigation propertys. should have no more then double the number of assocations.";
+        }
+
+        foreach ($associationNames as $assocationName => $assocationEnds) {
+            if (!array_key_exists($assocationName, $assocationSets)) {
+                $msg = "assocation " . $assocationName . " exists without matching assocationSet";
                 return false;
             }
-            $found = false;
+
+            if (!array_key_exists($assocationName, $navigationProperties)) {
+                $msg = "assocation " . $assocationName . " exists without matching Natvigation Property";
+                return false;
+            }
+            if (!in_array($assocationSets[$assocationName][0]->getName, [$assocationEnds[0]->getName, $assocationEnds[1]->getName])) {
+                $msg = "assocation Set role " . $assocationSets[$assocationName][0]->getName . "lacks a matching property in the attached assocation";
+                return false;
+            }
+            if (!in_array($assocationSets[$assocationName][1]->getName, [$assocationEnds[0]->getName, $assocationEnds[1]->getName])) {
+                $msg = "assocation Set role " . $assocationSets[$assocationName][0]->getName . "lacks a matching property in the attached assocation";
+                return false;
+            }
         }
         return true;
     }
