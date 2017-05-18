@@ -185,7 +185,8 @@ class MetadataManager
         $this->startEdmxTransaction();
         $principalEntitySetName = $this->pluralize(2, $principalType->getName());
         $dependentEntitySetName = $this->pluralize(2, $dependentType->getName());
-        $relationName = $principalType->getName() . "_" . $principalProperty . "_" . $dependentType->getName() . "_" . $dependentProperty;
+        $relationName = $principalType->getName() . "_" . $principalProperty . "_"
+                        . $dependentType->getName() . "_" . $dependentProperty;
         $relationName = trim($relationName, "_");
 
         $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
@@ -241,7 +242,11 @@ class MetadataManager
 
         $this->V3Edmx->getDataServices()[0]->addToAssociation($assocation);
 
-        $associationSet = $this->createAssocationSetForAssocation($assocation, $principalEntitySetName, $dependentEntitySetName);
+        $associationSet = $this->createAssocationSetForAssocation(
+            $assocation,
+            $principalEntitySetName,
+            $dependentEntitySetName
+        );
 
         $this->V3Edmx->getDataServices()[0]->getEntityContainer()[0]->addToAssociationSet($associationSet);
 
@@ -263,11 +268,12 @@ class MetadataManager
         $dependentMultiplicity,
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null
-
     ) {
         if (null != $dependentNavigationProperty) {
             if ($dependentNavigationProperty->getRelationship() != $principalNavigationProperty->getRelationship()) {
-                throw new \Exception("if you have both a dependant property and a principal property they should both have the same relationship");
+                $msg = "if you have both a dependent property and a principal property,"
+                       ." they should both have the same relationship";
+                throw new \Exception($msg);
             }
             if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole() ||
                 $dependentNavigationProperty->getToRole() != $principalNavigationProperty->getFromRole()
@@ -295,14 +301,19 @@ class MetadataManager
         $principalEnd->setType($principalTypeFQName);
         $principalEnd->setRole($principalNavigationProperty->getFromRole());
         $principalEnd->setMultiplicity($principalMultiplicity);
+        $association->addToEnd($principalEnd);
         $dependentEnd = new TAssociationEndType();
         $dependentEnd->setType($dependentTypeFQName);
-        $dependentEnd->setRole($dependentNavigationProperty->getFromRole());
         $dependentEnd->setMultiplicity($dependentMultiplicity);
-        $association->addToEnd($principalEnd);
         $association->addToEnd($dependentEnd);
+
+        if (null != $dependentNavigationProperty) {
+            $dependentEnd->setRole($dependentNavigationProperty->getFromRole());
+        }
+
         $principalReferralConstraint = null;
         $dependentReferralConstraint = null;
+
         if (null != $principalConstraintProperty && 0 < count($principalConstraintProperty)) {
             $principalReferralConstraint = new TReferentialConstraintRoleElementType();
             $principalReferralConstraint->setRole($principalNavigationProperty->getFromRole());
