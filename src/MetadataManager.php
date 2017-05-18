@@ -210,7 +210,7 @@ class MetadataManager
         }
         $principalType->addToNavigationProperty($principalNavigationProperty);
 
-
+        $dependentNavigationProperty = null;
         if (!empty($dependentProperty)) {
             $dependentNavigationProperty = new TNavigationPropertyType();
             $dependentNavigationProperty->setName($dependentProperty);
