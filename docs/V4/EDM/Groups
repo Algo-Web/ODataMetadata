@@ -1,0 +1,101 @@
+#GExpression
+#NoteForSandi: Types here may have been simplified, after it has been diked out to own trait, consult with me
+#Block Comment for next 13 Elements: "Constant Expressions"
+Element:Binary, Optional, Type: edm:binary
+Element:Bool, Optional, Type: edm:boolean
+Element:Date, Optional, Type: edm:date
+Element:DateTimeOffset, Optional, Type: edm:dateTimeStamp
+Element:Decimal, Optional, Type: xs:decimal
+Element:Duration, Optional, Type: dayTimeDuration
+Element:EnumMember, Optional, Type: TPath
+Element:Float, Optional, Type: xs:double
+Element:Guid, Optional, Type: TGuidLiteral
+Element:Int, Optional, Type: xs:integer
+Element:String, Optional, Type: xs:string
+Element:TimeOfDay, Optional, Type: time
+#Block Comment for rest of Elements: "Dynamic Expressions"
+Element:AnnotationPath, Optional, Type: TPathWithTermSegments
+Element:Apply, Optional, Type: TApplyExpression
+Element:Cast, Optional, Type: TCastOrIsOfExpression
+Element:Collection, Optional, Type: TCollectionExpression
+Element:If, Optional, Type: TIfExpression
+Element:Eq, Optional, Type: TTwoChildrenExpression
+Element:Ne, Optional, Type: TTwoChildrenExpression
+Element:Ge, Optional, Type: TTwoChildrenExpression
+Element:Gt, Optional, Type: TTwoChildrenExpression
+Element:Le, Optional, Type: TTwoChildrenExpression
+Element:Lt, Optional, Type: TTwoChildrenExpression
+Element:And, Optional, Type: TTwoChildrenExpression
+Element:Or, Optional, Type: TTwoChildrenExpression
+Element:Not, Optional, Type: TOneChildExpression
+Element:IsOf, Optional, Type: TCastOrIsOfExpression
+Element:LabeledElement, Optional, Type: TLabeledElementExpression
+Element:LabeledElementReference, Optional, Type: TQualifiedName
+Element:Null, Optional, Type: TNullExpression
+Element:NavigationPropertyPath, Optional, Type: TPathExpression
+Element:Path, Optional, Type: TPathExpression
+Element:PropertyPath, Optional, Type: TPathExpression
+Element:Record, Optional, Type: TRecordExpression
+Element:UrlRef, Optional, Type: TOneChildExpression
+Uses By: Annotation, only 0-1 Elements to be set
+Used By: TApplyExpression, Minium 1 max unbounded elements to be set
+Used By: TCastOrIsOfExpression: Exactly 1 element to be set
+Used By: TCollectionExpression, 0-* Elements to be set
+Used By: TIfExpression, 2-3 elements to be set
+Used By: TOneChildExpression, Exactly 1 element to be set
+Used By: TTwoChildrenExpression, Exactly 2 elements to be set
+Used By: TLabeledElementExpression, 0-1 Elements to be set
+Used By: TPropertyValue, 0-1 elements to be set
+
+#TFacetAttributes
+Element:MaxLength, Optional, Type: TMaxLengthFacet
+Element:Precision, Optional, Type: TPrecisionFacet
+Element:Scale, Optional, Type: TScaleFacet
+Element:SRID, Optional, Type: TSridFacet
+
+#TPropertyFacetAttributes
+Element:Unicode, Optional, Type: TUnicodeFacet
+
+#TCommonPropertyAttributes
+Element:Name, Required, Type: TSimpleIdentifier
+Element:Type, Required, Type: TTypeName
+Element:Nullable, Optional, Type: xs:boolean
+Element:DefaultValue, Optional, Type: xs:string
+Uses Group: TFacetAttributes
+Uses Group: TPropertyFacetAttributes
+
+#TActionFunctionParameterAttributes
+Element:Name, Required, Type: TSimpleIdentifier
+Element:Type, Required, Type: TTypeName
+Element:Nullable, Optional, Type: xs:boolean
+Uses Group: TFacetAttributes
+
+#TActionAttributes
+Element:Name, Required, Type: TSimpleIdentifier
+Element:EntitySetPath, Optional, Type: TPath
+Element:IsBound, Optional, Type: xs:boolean
+
+#TFunctionAttributes
+Element:Name, Required, Type: TSimpleIdentifier
+Element:EntitySetPath, Optional, Type: TPath
+Element:IsBound, Optional, Type: xs:boolean, Default: false
+Element:IsComposable, Optional, Type: xs:boolean, Default: false
+
+#TTypeAttributes
+Element:Name, Required, Type: TSimpleIdentifier
+
+#TDerivableTypeAttributes
+Element:BaseType, Optional, Type: TQualifiedName
+Element:Abstract, Optional, Type: xs:boolean, Default: false
+Uses Group: TTypeAttributes
+
+#TActionFunctionImportAttributes
+Element:Name, Required, Type: TSimpleIdentifier
+Element:EntitySet, Optional, Type: TPath
+Element:IncludeInServiceDocument, Optional, Type: xs:boolean, Default: false
+
+#TEntitySetAttributes
+Element:Name, Required, Type: TSimpleIdentifier
+Element:EntityType, Required, Type: TQualifiedName
+Element:IncludeInServiceDocument, Optional, Type: xs:boolean, Default: true
+

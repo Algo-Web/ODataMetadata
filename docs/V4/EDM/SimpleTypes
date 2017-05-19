@@ -1,0 +1,105 @@
+#TGuidLiteral
+Must be: xs:string
+Must Match: [0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}
+
+#TSimpleIdentifier
+Must Be: xs:NCName
+Max Len: 128
+Pattern Comment: "ECMAScript identifiers not starting with a '$'"
+Pattern: "[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}"
+
+#TNamespaceName
+Must Be: xs:NCName
+Max Len: 511
+Pattern Comment: "one or more SimpleIdentifiers separated by dots"
+Pattern: "[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}"
+
+#TQualifiedName
+Must Be: xs:NCName
+Pattern Comment: "a NamespaceName followed by a dot and a SimpleIdentifier"
+Pattern: "[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){1,}"
+
+#TEnumMemberList
+Must Be List of TPath
+
+#TTypeName
+MustBe: TPrimitiveType || TAbstractType || TQualifiedName || Match Pattern
+Pattern Comment: "The below pattern represents the allowed identifiers in the ECMAScript specification plus the '.' for namespace qualification and the Collection() wrapper"
+Pattern: "Collection\([\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){1,}\)"
+
+#TPath
+MustBe: xs:string
+Pattern Comment: "The below pattern represents the allowed identifiers in the ECMAScript specification plus the '.' for namespace qualification and the '/' for path segment separation"
+Pattern: "[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}([\./][\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}"
+
+#TPathWithTermSegments
+Comment: "Note: this pattern is overly generous, for the strict definition see http://docs.oasis-open.org/odata/odata/v4.0/odata-v4.0-part3-csdl.html "
+MustBe: xs:string
+Pattern Comment: "The below pattern represents the allowed identifiers in the ECMAScript specification plus the '/' for path segment separation and
+           the '.' for namespace qualification inside the segments"
+Pattern: "@?[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(([\./#@]|/@)[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}(/$count)?"
+
+#TClientFunction
+Must be: TQualifiedName || "odata.concat" || "odata.fillUriTemplate" || "odata.uriEncode"
+
+#TPrimitiveType
+Must Be: "Edm.Binary" || "Edm.Boolean" || "Edm.Byte" || "Edm.Date" || "Edm.DateTimeOffset" || "Edm.Duration" || "Edm.TimeOfDay" || "Edm.Decimal" || "Edm.Double" || "Edm.Single" || "Edm.GeographyPoint" || "Edm.GeographyLineString" || "Edm.GeographyPolygon" || "Edm.GeographyMultiPoint" || "Edm.GeographyMultiLineString" || "Edm.GeographyMultiPolygon" || "Edm.GeographyCollection" || "Edm.GeometryPoint" || "Edm.GeometryLineString" || "Edm.GeometryPolygon" || "Edm.GeometryMultiPoint" || "Edm.GeometryMultiLineString" || "Edm.GeometryMultiPolygon" || "Edm.GeometryCollection" || "Edm.Guid" || "Edm.Int16" || "Edm.Int32" || "Edm.Int64" || "Edm.String" || "Edm.SByte" || "Collection(Edm.Binary)" || "Collection(Edm.Boolean)" || "Collection(Edm.Byte)" || "Collection(Edm.Date)" || "Collection(Edm.DateTimeOffset)" || "Collection(Edm.Duration)" || "Collection(Edm.TimeOfDay)" || "Collection(Edm.Decimal)" || "Collection(Edm.Double)" || "Collection(Edm.Single)" || "Collection(Edm.GeographyPoint)" || "Collection(Edm.GeographyLineString)" || "Collection(Edm.GeographyPolygon)" || "Collection(Edm.GeographyMultiPoint)" || "Collection(Edm.GeographyMultiLineString)" || "Collection(Edm.GeographyMultiPolygon)" || "Collection(Edm.GeographyCollection)" || "Collection(Edm.GeometryPoint)" || "Collection(Edm.GeometryLineString)" || "Collection(Edm.GeometryPolygon)" || "Collection(Edm.GeometryMultiPoint)" || "Collection(Edm.GeometryMultiLineString)" || "Collection(Edm.GeometryMultiPolygon)" || "Collection(Edm.GeometryCollection)" || "Collection(Edm.Guid)" || "Collection(Edm.Int16)" || "Collection(Edm.Int32)" || "Collection(Edm.Int64)" || "Collection(Edm.String)" || "Collection(Edm.SByte)" || Match pattern
+Pattern: "Edm\..+"
+
+#TAbstractType
+Must Be: "Edm.ComplexType" || "Edm.EntityType" || "Edm.PrimitiveType" || "Edm.Geography" || "Edm.Geometry" || "Edm.AnnotationPath" || "Edm.NavigationPropertyPath" || "Edm.PropertyPath" || "Collection(Edm.ComplexType)" || "Collection(Edm.EntityType)" || "Collection(Edm.PrimitiveType)" || "Collection(Edm.Geography)" || "Collection(Edm.Geometry)" || "Collection(Edm.AnnotationPath)" || "Collection(Edm.NavigationPropertyPath)" || "Collection(Edm.PropertyPath)"
+
+#TAppliesTo
+Must Be: List
+List Values Must Be: "Action" || "ActionImport" || "Annotation" || "Apply" || "Cast" || "ComplexType" || "EntityContainer" || "EntitySet" || "EntityType" || "EnumType" || "Function" || "FunctionImport" || "If" || "IsOf" || "LabeledElement" || "Member" || "NavigationProperty" || "Null" || "OnDelete" || "Parameter" || "Property" || "PropertyValue" || "Record" || "Reference" || "ReferentialConstraint" || "Schema" || "Singleton" || "Term" || "TypeDefinition" || "UrlRef"
+
+#TMax
+Must Be: "max"
+
+#TVariable
+Must Be: "variable"
+
+#TMaxLengthFacet
+Must be: TMax || xs:nonNegativeInteger
+
+#TPrecisionFacet
+Must be: xs:nonNegativeInteger
+
+#TScaleFacet
+Must be: TVariable || xs:nonNegativeInteger
+
+#TSridFacet
+Must be: TVariable || xs:nonNegativeInteger
+
+
+#TUnicodeFacet
+Must Be: xs:boolean
+
+#TOnDeleteAction
+Must Be: "Cascade" || "None" || "SetDefault" || "SetNull"
+
+#binary
+Comment: binary data in base64url encodin
+Pattern: "([A-Za-z0-9_\-]{4})*([A-Za-z0-9_\-]{3}[A-Za-z0-9_\-]|[A-Za-z0-9_\-]{2}[AEIMQUYcgkosw048]=?|[A-Za-z0-9_\-][AQgw](==)?)?"
+
+#boolean
+Comment: boolean without 0 and 1
+Pattern: "true|false"
+
+#date
+Comment:  date and time without offset
+Pattern: "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]"
+
+#time
+Comment:  date and time without offset
+Pattern: "([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]{1,12})?"
+
+#dateTimeStamp
+Comment: Copy of xs:dateTimeStamp from XML Schema 1.1, see http://www.w3.org/TR/xmlschema11-2/#dateTimeStamp
+Must Be: xs:dateTime
+Pattern: ".*([01][0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9](\.[0-9]{1,12})?(Z|(\+|-)[0-9][0-9]:[0-9][0-9])"
+
+#dateTimeStamp
+Comment: Copy of xs:dayTimeDuration from XML Schema 1.1, see http://www.w3.org/TR/xmlschema11-2/#dayTimeDuration
+Must Be: xs:duration
+Pattern: "[^YM]*[DT].*"

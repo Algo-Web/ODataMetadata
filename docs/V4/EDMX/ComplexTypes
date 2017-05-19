@@ -1,0 +1,23 @@
+# Edmx
+Must Be: TEdmx
+Should Be: Empty class
+
+#TEdmx
+Element: Reference, 0-*, Type: TReference
+Element: DataServices, 1-*, Type: edm:Schema
+Element: Version, Required, Type: TVersion
+
+# TReference
+Element: Include, 1-*, Type: TInclude
+Element: IncludeAnnotations, 1-*, Type: TIncludeAnnotations
+Element: Annotation, Optional, Type: edm:Annotation
+Element: Uri, Required, Type: xs:anyURI
+
+#TInclude
+Element: Namespace, Required, Type: edm:TNamespaceName
+Element: Alias, Optional, Type: edm:TSimpleIdentifier
+
+#TIncludeAnnotations
+Element: TermNamespace, Required, Type: edm:TNamespaceName
+Element: Qualifier, Optional, Type: edm:TSimpleIdentifier
+Element: TargetNamespace, Optional, Type: edm:TNamespaceName

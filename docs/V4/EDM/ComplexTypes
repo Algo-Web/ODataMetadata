@@ -1,0 +1,203 @@
+#Schema
+Element: ComplexType, Optional, Type: TComplexType
+Element: EntityType, Optional, Type: TEntityType
+Element: TypeDefinition, Optional, Type: TTypeDefinition
+Element: EnumType, Optional, Type: TEnumType
+Element: Action, Optional, Type: TAction
+Element: Function, Optional, Type: TFunction
+Element: Term, Optional, Type: TTerm
+Element: Annotations, Optional, Type: TAnnotations
+Conditional: the combined total of the above items must be >= 1
+Element: EntityContainer, Optional, Type: TEntityContainer
+Element: Annotation, Optional, Type: Annotation
+Element: Namespace, Required, Type: TNamespaceName
+Element: Alias, Optional, Type: TSimpleIdentifier
+
+#TEntityType
+Element: Key, 0-*, Type: TPropertyRefType
+Element: Property, Optional, Type: TProperty
+Element: NavigationProperty, Optional, Type: TNavigationProperty
+Element: Annotation, Optional, Type: Annotation
+Element: OpenType, Optional, Type: xs:boolean, Default: false
+Element: HasStream, Optional, Type: xs:boolean, Default: false
+Uses Group: TDerivableTypeAttributes
+
+#TPropertyRef
+Element: Name, Required, Type: TPath
+Element: Alias, Optional, Type: TSimpleIdentifier
+
+#TComplexType
+Element: Property, Optional, Type: TProperty
+Element: NavigationProperty, Optional, Type: TNavigationProperty
+Element: Annotation, Optional, Type: Annotation
+Element: OpenType, Optional, Type: xs:boolean, Default: false
+Uses Group: TDerivableTypeAttributes
+
+#TProperty
+Element: NavigationProperty, Optional, Type: TNavigationProperty
+Uses Group: TCommonPropertyAttributes
+
+#TTypeDefinition
+Element: Annotation, Optional, Type: Annotation
+Element: Name, Required, Type: TSimpleIdentifier
+Element: UnderlyingType, Required, Type: TPrimitiveType
+Uses Group: TFacetAttributes
+Uses Group: TPropertyFacetAttributes
+
+#TNavigationProperty
+Element: ReferentialConstraint, Optional, Type: TReferentialConstraint
+Element: OnDelete, Optional, Type: TOnDelete
+Element: Annotation, Optional, Type: Annotation
+Element: Name, Required, Type: TSimpleIdentifier
+Element: Type, Required, Type: TTypeName
+Element: Nullable, Optional, Type: xs:boolean
+Element: Partner, Optional, Type: TPath
+Element: ContainsTarget, Optional, Type: xs:boolean
+
+#TReferentialCo
+Element: Annotation, Optional, Type: Annotation
+Element: Property, Required, Type: TPath
+Element: ReferencedProperty, Required, Type: TPath
+
+#TReferentialCo
+Element: Annotation, Optional, Type: Annotation
+Element: Action, Required, Type: TOnDeleteAction
+
+#TEnumType
+Element: Member, 1-*, TEnumTypeMember
+Element: Annotation, Optional, Type: Annotation
+Element: IsFlags, Optional, Type: xs:boolean
+Element: UnderlyingType, Optional, Type: TTypeName
+Uses Group: TTypeAttributes
+
+#TEnumTypeMember
+Element: Annotation, Optional, Type: Annotation
+Element: Name, Required, Type: TSimpleIdentifier
+Element: Value, Optional, Type: xs:long
+
+#TActionFunctionReturnType
+Element: Type, Required, Type: TTypeName
+Element: Nullable, Optional, Type: xs:boolean
+Uses Group: TFacetAttributes
+
+#TAction
+Element: Parameter, Optional, Type: TActionFunctionParameter
+Element: Annotation, Optional, Type: Annotation
+Element: ReturnType, Optional, Type: TActionFunctionReturnType
+Uses Group: TActionAttributes
+
+#TFunction
+Element: Parameter, Optional, Type: TActionFunctionParameter
+Element: Annotation, Optional, Type: Annotation
+Element: ReturnType, Required, Type: TActionFunctionReturnType
+Uses Group: TFunctionAttributes
+
+#TActionFunctionParameter
+Element: Annotation, Optional, Type: Annotation
+Uses Group: TActionFunctionParameterAttributes
+
+#TActionFunctionParameter
+Element: Annotation, Optional, Type: Annotation
+Element: Name, Required, Type: TSimpleIdentifier
+Element: Type, Required, Type: TTypeName
+Element: BaseTerm, Optional, Type: TQualifiedName
+Element: Nullable, Optional, Type: xs:boolean
+Element: DefaultValue, Optional, Type: xs:string
+Element: AppliesTo, Optional, Type: TAppliesTo
+Uses Group: TFacetAttributes
+
+#TAnnotations
+Element: Annotation, 1-*, Type: Annotation
+Element: Target, Required, Type: TPath
+Element: Qualifier, Optional, Type: TSimpleIdentifier
+
+#Annotation
+Element: Annotation, Optional, Type: Annotation
+Element: Term, Required, Type: TQualifiedName
+Element: Qualifier, Optional, Type: TSimpleIdentifier
+Uses Group: GExpression
+Uses Group: GInlineExpressions
+
+#TApplyExpression
+Element: Annotation, Optional, Type: Annotation
+Element: Function, Optional, Type: TClientFunction
+Uses Group: GExpressionm, Min: 1, Max: *
+
+#TCastOrIsOfExpression
+Element: Annotation, Optional, Type: Annotation
+Element: Type, Optional, Type: TTypeName
+Uses Group: GExpressionm, Min: 1, Max: *
+Uses Group: TFacetAttributes
+
+#TCollectionExpression
+Uses Group: GExpressionm, Min: 0, Max: *
+
+#TIfExpression
+Element: Annotation, Optional, Type: Annotation
+Comment:  "Condition, Then, optional Else "
+Uses Group: GExpressionm, Min: 2, Max: 3
+
+#TOneChildExpression
+Element: Annotation, Optional, Type: Annotation
+Uses Group: GExpressionm, Min: 1, Max: 1
+
+#TTwoChildrenExpression
+Element: Annotation, Optional, Type: Annotation
+Uses Group: GExpressionm, Min: 2, Max: 2
+
+#TLabeledElementExpression
+Element: Annotation, Optional, Type: Annotation
+Element: Name, Required, Type: TSimpleIdentifier
+Uses Group: GExpressionm, Min: 0, Max: 1
+Uses Group: GInlineExpressions
+
+#TNullExpression
+Element: Annotation, Optional, Type: Annotation
+
+#TRecordExpression
+Element: Annotation, Optional, Type: Annotation
+Element: PropertyValue, Optional, Type: TPropertyValue
+Element: Type, Optional, Type: TQualifiedName
+
+#TPropertyValue
+
+Element: Annotation, Optional, Type: Annotation
+Element: Property, Required, Type: TSimpleIdentifier
+Uses Group: GExpressionm, Min: 0, Max: 1
+Uses Group: GInlineExpressions
+
+#TEntityContainer
+Element: Annotation, Optional, Type: Annotation
+Element: EntitySet, Optional, Type: TEntitySet
+Element: ActionImport, Optional, Type: TActionImport
+Element: FunctionImport, Optional, Type: TFunctionImport
+Element: Singleton, Optional, Type: TSingleton
+Condition: A Minimum of 1 out of the last 4 must contain a value.
+Element: Name, Required, Type: TSimpleIdentifier
+Element: Extends, Optional, Type: TSimpleIdentifier
+
+#TEntitySet
+Element: Annotation, Optional, Type: Annotation
+Element: NavigationPropertyBinding, Optional, Type: TNavigationPropertyBinding
+Uses Group: TEntitySetAttributes
+
+#TEntitySet
+Element: Path, Required, Type: TPath
+Element: Target, Required, Type: TPath
+
+#TEntitySet
+Element: Annotation, Optional, Type: Annotation
+Element: NavigationPropertyBinding, Optional, Type: TNavigationPropertyBinding
+Element: Name, Required, Type: TSimpleIdentifier
+Element: Type, Required, Type: TQualifiedName
+
+#TEntitySet
+Element: Annotation, Optional, Type: Annotation
+Element: Action, Optional, Type: TQualifiedName
+Uses Group: TActionFunctionImportAttributes
+
+
+#TEntitySet
+Element: Function, Optional, Type: Annotation
+Element: Action, Optional, Type: TQualifiedName
+Uses Group: TActionFunctionImportAttributes
