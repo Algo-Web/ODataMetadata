@@ -1,0 +1,654 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Edmx xmlns="http://schemas.microsoft.com/ado/2009/11/edmx" xmlns:edm="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:metadata="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="1.0">
+  <DataServices>
+    <edm:Schema Namespace="Data">
+      <edm:Association Name="Customer_orders_Order">
+        <edm:End Type="Data.Customer" Role="Customers_orders" Multiplicity="*"/>
+        <edm:End Type="Data.Order" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="Employee_orders_Order">
+        <edm:End Type="Data.Employee" Role="Employees_orders" Multiplicity="*"/>
+        <edm:End Type="Data.Order" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="Employee_purchaseOrders_PurchaseOrder">
+        <edm:End Type="Data.Employee" Role="Employees_purchaseOrders" Multiplicity="*"/>
+        <edm:End Type="Data.PurchaseOrder" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="Employee_privileges_Privilege">
+        <edm:End Type="Data.Employee" Role="Employees_privileges" Multiplicity="*"/>
+        <edm:End Type="Data.Privilege" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="InventoryTransaction_inventoryTransactionType_InventoryTransactionType">
+        <edm:End Type="Data.InventoryTransaction" Role="InventoryTransactions_inventoryTransactionType" Multiplicity="0..1"/>
+        <edm:End Type="Data.InventoryTransactionType" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="InventoryTransaction_product_Product">
+        <edm:End Type="Data.InventoryTransaction" Role="InventoryTransactions_product" Multiplicity="0..1"/>
+        <edm:End Type="Data.Product" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="InventoryTransaction_purchaseOrder_PurchaseOrder">
+        <edm:End Type="Data.InventoryTransaction" Role="InventoryTransactions_purchaseOrder" Multiplicity="0..1"/>
+        <edm:End Type="Data.PurchaseOrder" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="InventoryTransaction_purchaseOrderDetails_PurchaseOrderDetail">
+        <edm:End Type="Data.InventoryTransaction" Role="InventoryTransactions_purchaseOrderDetails" Multiplicity="0..1"/>
+        <edm:End Type="Data.PurchaseOrderDetail" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="InventoryTransaction_order_Order">
+        <edm:End Type="Data.InventoryTransaction" Role="InventoryTransactions_order" Multiplicity="0..1"/>
+        <edm:End Type="Data.Order" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="InventoryTransactionType_inventoryTransactions_InventoryTransaction">
+        <edm:End Type="Data.InventoryTransactionType" Role="InventoryTransactionTypes_inventoryTransactions" Multiplicity="*"/>
+        <edm:End Type="Data.InventoryTransaction" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="Invoice_order_Order">
+        <edm:End Type="Data.Invoice" Role="Invoices_order" Multiplicity="0..1"/>
+        <edm:End Type="Data.Order" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="Order_orderStatus_OrdersStatus">
+        <edm:End Type="Data.Order" Role="Orders_orderStatus" Multiplicity="0..1"/>
+        <edm:End Type="Data.OrdersStatus" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="Order_orderTaxStatus_OrdersTaxStatus">
+        <edm:End Type="Data.Order" Role="Orders_orderTaxStatus" Multiplicity="0..1"/>
+        <edm:End Type="Data.OrdersTaxStatus" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="Order_shipper_Shipper">
+        <edm:End Type="Data.Order" Role="Orders_shipper" Multiplicity="0..1"/>
+        <edm:End Type="Data.Shipper" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="Order_employee_Employee">
+        <edm:End Type="Data.Order" Role="Orders_employee" Multiplicity="0..1"/>
+        <edm:End Type="Data.Employee" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="Order_customer_Customer">
+        <edm:End Type="Data.Order" Role="Orders_customer" Multiplicity="0..1"/>
+        <edm:End Type="Data.Customer" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="Order_invoice_Invoice">
+        <edm:End Type="Data.Order" Role="Orders_invoice" Multiplicity="0..1"/>
+        <edm:End Type="Data.Invoice" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="Order_orderDetails_OrderDetail">
+        <edm:End Type="Data.Order" Role="Orders_orderDetails" Multiplicity="*"/>
+        <edm:End Type="Data.OrderDetail" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="Order_inventoryTransactions_InventoryTransaction">
+        <edm:End Type="Data.Order" Role="Orders_inventoryTransactions" Multiplicity="*"/>
+        <edm:End Type="Data.InventoryTransaction" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="OrderDetail_order_Order">
+        <edm:End Type="Data.OrderDetail" Role="OrderDetails_order" Multiplicity="0..1"/>
+        <edm:End Type="Data.Order" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="OrderDetail_orderDetailsStatus_OrderDetailsStatus">
+        <edm:End Type="Data.OrderDetail" Role="OrderDetails_orderDetailsStatus" Multiplicity="0..1"/>
+        <edm:End Type="Data.OrderDetailsStatus" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="OrderDetail_product_Product">
+        <edm:End Type="Data.OrderDetail" Role="OrderDetails_product" Multiplicity="0..1"/>
+        <edm:End Type="Data.Product" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="OrderDetailsStatus_orderDetail_OrderDetail">
+        <edm:End Type="Data.OrderDetailsStatus" Role="OrderDetailsStatuses_orderDetail" Multiplicity="0..1"/>
+        <edm:End Type="Data.OrderDetail" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="OrdersStatus_orders_Order">
+        <edm:End Type="Data.OrdersStatus" Role="OrdersStatuses_orders" Multiplicity="*"/>
+        <edm:End Type="Data.Order" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="OrdersTaxStatus_orders_Order">
+        <edm:End Type="Data.OrdersTaxStatus" Role="OrdersTaxStatuses_orders" Multiplicity="*"/>
+        <edm:End Type="Data.Order" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="Privilege_employees_Employee">
+        <edm:End Type="Data.Privilege" Role="Privileges_employees" Multiplicity="*"/>
+        <edm:End Type="Data.Employee" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="Product_orderDetails_OrderDetail">
+        <edm:End Type="Data.Product" Role="Products_orderDetails" Multiplicity="*"/>
+        <edm:End Type="Data.OrderDetail" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="Product_purchaseOrderDetails_PurchaseOrderDetail">
+        <edm:End Type="Data.Product" Role="Products_purchaseOrderDetails" Multiplicity="*"/>
+        <edm:End Type="Data.PurchaseOrderDetail" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="Product_inventoryTransactions_InventoryTransaction">
+        <edm:End Type="Data.Product" Role="Products_inventoryTransactions" Multiplicity="*"/>
+        <edm:End Type="Data.InventoryTransaction" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="PurchaseOrder_supplier_Supplier">
+        <edm:End Type="Data.PurchaseOrder" Role="PurchaseOrders_supplier" Multiplicity="0..1"/>
+        <edm:End Type="Data.Supplier" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="PurchaseOrder_purchaseOrderStatus_PurchaseOrderStatus">
+        <edm:End Type="Data.PurchaseOrder" Role="PurchaseOrders_purchaseOrderStatus" Multiplicity="0..1"/>
+        <edm:End Type="Data.PurchaseOrderStatus" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="PurchaseOrder_employee_Employee">
+        <edm:End Type="Data.PurchaseOrder" Role="PurchaseOrders_employee" Multiplicity="0..1"/>
+        <edm:End Type="Data.Employee" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="PurchaseOrder_purchaseOrderDetails_PurchaseOrderDetail">
+        <edm:End Type="Data.PurchaseOrder" Role="PurchaseOrders_purchaseOrderDetails" Multiplicity="*"/>
+        <edm:End Type="Data.PurchaseOrderDetail" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="PurchaseOrder_inventoryTransactions_InventoryTransaction">
+        <edm:End Type="Data.PurchaseOrder" Role="PurchaseOrders_inventoryTransactions" Multiplicity="*"/>
+        <edm:End Type="Data.InventoryTransaction" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="PurchaseOrderDetail_purchaseOrder_PurchaseOrder">
+        <edm:End Type="Data.PurchaseOrderDetail" Role="PurchaseOrderDetails_purchaseOrder" Multiplicity="0..1"/>
+        <edm:End Type="Data.PurchaseOrder" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="PurchaseOrderDetail_product_Product">
+        <edm:End Type="Data.PurchaseOrderDetail" Role="PurchaseOrderDetails_product" Multiplicity="0..1"/>
+        <edm:End Type="Data.Product" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="PurchaseOrderDetail_inventoryTransaction_InventoryTransaction">
+        <edm:End Type="Data.PurchaseOrderDetail" Role="PurchaseOrderDetails_inventoryTransaction" Multiplicity="0..1"/>
+        <edm:End Type="Data.InventoryTransaction" Multiplicity="0..1"/>
+      </edm:Association>
+      <edm:Association Name="PurchaseOrderStatus_purchaseOrders_PurchaseOrder">
+        <edm:End Type="Data.PurchaseOrderStatus" Role="PurchaseOrderStatuses_purchaseOrders" Multiplicity="*"/>
+        <edm:End Type="Data.PurchaseOrder" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="Shipper_orders_Order">
+        <edm:End Type="Data.Shipper" Role="Shippers_orders" Multiplicity="*"/>
+        <edm:End Type="Data.Order" Multiplicity="*"/>
+      </edm:Association>
+      <edm:Association Name="Supplier_purchaseOrders_PurchaseOrder">
+        <edm:End Type="Data.Supplier" Role="Suppliers_purchaseOrders" Multiplicity="*"/>
+        <edm:End Type="Data.PurchaseOrder" Multiplicity="*"/>
+      </edm:Association>
+      <edm:EntityType OpenType="false" Abstract="false" Name="Customer">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="company" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="last_name" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="first_name" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="email_address" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="job_title" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="business_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="home_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="mobile_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="fax_number" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="address" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="city" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="state_province" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="zip_postal_code" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="country_region" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="web_page" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="notes" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="orders" Relationship="Data.Customer_orders_Order" ToRole="Orders_" FromRole="Customers_orders" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="Employee">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="company" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="last_name" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="first_name" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="email_address" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="job_title" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="business_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="home_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="mobile_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="fax_number" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="address" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="city" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="state_province" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="zip_postal_code" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="country_region" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="web_page" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="notes" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="orders" Relationship="Data.Employee_orders_Order" ToRole="Orders_" FromRole="Employees_orders" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="purchaseOrders" Relationship="Data.Employee_purchaseOrders_PurchaseOrder" ToRole="PurchaseOrders_" FromRole="Employees_purchaseOrders" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="privileges" Relationship="Data.Employee_privileges_Privilege" ToRole="Privileges_" FromRole="Employees_privileges" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="InventoryTransaction">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="transaction_type" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="transaction_created_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="transaction_modified_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="product_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="quantity" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="purchase_order_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="customer_order_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="comments" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="inventoryTransactionType" Relationship="Data.InventoryTransaction_inventoryTransactionType_InventoryTransactionType" ToRole="InventoryTransactionTypes_" FromRole="InventoryTransactions_inventoryTransactionType" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="product" Relationship="Data.InventoryTransaction_product_Product" ToRole="Products_" FromRole="InventoryTransactions_product" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="purchaseOrder" Relationship="Data.InventoryTransaction_purchaseOrder_PurchaseOrder" ToRole="PurchaseOrders_" FromRole="InventoryTransactions_purchaseOrder" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="purchaseOrderDetails" Relationship="Data.InventoryTransaction_purchaseOrderDetails_PurchaseOrderDetail" ToRole="PurchaseOrderDetails_" FromRole="InventoryTransactions_purchaseOrderDetails" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="order" Relationship="Data.InventoryTransaction_order_Order" ToRole="Orders_" FromRole="InventoryTransactions_order" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="InventoryTransactionType">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="type_name" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="inventoryTransactions" Relationship="Data.InventoryTransactionType_inventoryTransactions_InventoryTransaction" ToRole="InventoryTransactions_" FromRole="InventoryTransactionTypes_inventoryTransactions" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="Invoice">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="order_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="invoice_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="due_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="tax" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="shipping" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="amount_due" Type="Edm.Decimal" Nullable="false"/>
+        <edm:NavigationProperty Name="order" Relationship="Data.Invoice_order_Order" ToRole="Orders_" FromRole="Invoices_order" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="Order">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="employee_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="customer_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="order_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="shipped_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="shipper_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="ship_name" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="ship_address" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="ship_city" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="ship_state_province" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="ship_zip_postal_code" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="ship_country_region" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="shipping_fee" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="taxes" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="payment_type" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="paid_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="notes" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="tax_rate" Type="Edm.Single" Nullable="false"/>
+        <edm:Property Name="tax_status_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="status_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:NavigationProperty Name="orderStatus" Relationship="Data.Order_orderStatus_OrdersStatus" ToRole="OrdersStatuses_" FromRole="Orders_orderStatus" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="orderTaxStatus" Relationship="Data.Order_orderTaxStatus_OrdersTaxStatus" ToRole="OrdersTaxStatuses_" FromRole="Orders_orderTaxStatus" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="shipper" Relationship="Data.Order_shipper_Shipper" ToRole="Shippers_" FromRole="Orders_shipper" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="employee" Relationship="Data.Order_employee_Employee" ToRole="Employees_" FromRole="Orders_employee" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="customer" Relationship="Data.Order_customer_Customer" ToRole="Customers_" FromRole="Orders_customer" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="invoice" Relationship="Data.Order_invoice_Invoice" ToRole="Invoices_" FromRole="Orders_invoice" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="orderDetails" Relationship="Data.Order_orderDetails_OrderDetail" ToRole="OrderDetails_" FromRole="Orders_orderDetails" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="inventoryTransactions" Relationship="Data.Order_inventoryTransactions_InventoryTransaction" ToRole="InventoryTransactions_" FromRole="Orders_inventoryTransactions" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="OrderDetail">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="order_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="product_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="quantity" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="unit_price" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="discount" Type="Edm.Single" Nullable="false"/>
+        <edm:Property Name="status_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="date_allocated" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="purchase_order_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="inventory_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:NavigationProperty Name="order" Relationship="Data.OrderDetail_order_Order" ToRole="Orders_" FromRole="OrderDetails_order" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="orderDetailsStatus" Relationship="Data.OrderDetail_orderDetailsStatus_OrderDetailsStatus" ToRole="OrderDetailsStatuses_" FromRole="OrderDetails_orderDetailsStatus" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="product" Relationship="Data.OrderDetail_product_Product" ToRole="Products_" FromRole="OrderDetails_product" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="OrderDetailsStatus">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="status_name" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="orderDetail" Relationship="Data.OrderDetailsStatus_orderDetail_OrderDetail" ToRole="OrderDetails_" FromRole="OrderDetailsStatuses_orderDetail" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="OrdersStatus">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="status_name" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="orders" Relationship="Data.OrdersStatus_orders_Order" ToRole="Orders_" FromRole="OrdersStatuses_orders" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="OrdersTaxStatus">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="tax_status_name" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="orders" Relationship="Data.OrdersTaxStatus_orders_Order" ToRole="Orders_" FromRole="OrdersTaxStatuses_orders" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="Privilege">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="privilege_name" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="employees" Relationship="Data.Privilege_employees_Employee" ToRole="Employees_" FromRole="Privileges_employees" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="Product">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="supplier_ids" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="product_code" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="product_name" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="description" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="standard_cost" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="list_price" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="reorder_level" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="target_level" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="quantity_per_unit" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="discontinued" Type="Edm.Boolean" Nullable="false"/>
+        <edm:Property Name="minimum_reorder_quantity" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="category" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="orderDetails" Relationship="Data.Product_orderDetails_OrderDetail" ToRole="OrderDetails_" FromRole="Products_orderDetails" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="purchaseOrderDetails" Relationship="Data.Product_purchaseOrderDetails_PurchaseOrderDetail" ToRole="PurchaseOrderDetails_" FromRole="Products_purchaseOrderDetails" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="inventoryTransactions" Relationship="Data.Product_inventoryTransactions_InventoryTransaction" ToRole="InventoryTransactions_" FromRole="Products_inventoryTransactions" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="PurchaseOrder">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="supplier_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="created_by" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="submitted_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="creation_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="status_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="expected_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="shipping_fee" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="taxes" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="payment_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="payment_amount" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="payment_method" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="notes" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="approved_by" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="approved_date" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="submitted_by" Type="Edm.Int32" Nullable="false"/>
+        <edm:NavigationProperty Name="supplier" Relationship="Data.PurchaseOrder_supplier_Supplier" ToRole="Suppliers_" FromRole="PurchaseOrders_supplier" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="purchaseOrderStatus" Relationship="Data.PurchaseOrder_purchaseOrderStatus_PurchaseOrderStatus" ToRole="PurchaseOrderStatuses_" FromRole="PurchaseOrders_purchaseOrderStatus" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="employee" Relationship="Data.PurchaseOrder_employee_Employee" ToRole="Employees_" FromRole="PurchaseOrders_employee" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="purchaseOrderDetails" Relationship="Data.PurchaseOrder_purchaseOrderDetails_PurchaseOrderDetail" ToRole="PurchaseOrderDetails_" FromRole="PurchaseOrders_purchaseOrderDetails" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="inventoryTransactions" Relationship="Data.PurchaseOrder_inventoryTransactions_InventoryTransaction" ToRole="InventoryTransactions_" FromRole="PurchaseOrders_inventoryTransactions" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="PurchaseOrderDetail">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="purchase_order_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="product_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="quantity" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="unit_cost" Type="Edm.Decimal" Nullable="false"/>
+        <edm:Property Name="date_received" Type="Edm.DateTime" Nullable="false"/>
+        <edm:Property Name="posted_to_inventory" Type="Edm.Boolean" Nullable="false"/>
+        <edm:Property Name="inventory_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:NavigationProperty Name="purchaseOrder" Relationship="Data.PurchaseOrderDetail_purchaseOrder_PurchaseOrder" ToRole="PurchaseOrders_" FromRole="PurchaseOrderDetails_purchaseOrder" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="product" Relationship="Data.PurchaseOrderDetail_product_Product" ToRole="Products_" FromRole="PurchaseOrderDetails_product" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+        <edm:NavigationProperty Name="inventoryTransaction" Relationship="Data.PurchaseOrderDetail_inventoryTransaction_InventoryTransaction" ToRole="InventoryTransactions_" FromRole="PurchaseOrderDetails_inventoryTransaction" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="PurchaseOrderStatus">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="status" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="purchaseOrders" Relationship="Data.PurchaseOrderStatus_purchaseOrders_PurchaseOrder" ToRole="PurchaseOrders_" FromRole="PurchaseOrderStatuses_purchaseOrders" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="SalesReport">
+        <edm:Key>
+          <edm:PropertyRef Name="group_by"/>
+        </edm:Key>
+        <edm:Property Name="group_by" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="display" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="title" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="filter_row_source" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="default" Type="Edm.Boolean" Nullable="false"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="Shipper">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="company" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="last_name" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="first_name" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="email_address" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="job_title" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="business_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="home_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="mobile_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="fax_number" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="address" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="city" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="state_province" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="zip_postal_code" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="country_region" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="web_page" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="notes" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="orders" Relationship="Data.Shipper_orders_Order" ToRole="Orders_" FromRole="Shippers_orders" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="StringModel">
+        <edm:Key>
+          <edm:PropertyRef Name="string_id"/>
+        </edm:Key>
+        <edm:Property Name="string_id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="string_data" Type="Edm.String" Nullable="false"/>
+      </edm:EntityType>
+      <edm:EntityType OpenType="false" Abstract="false" Name="Supplier">
+        <edm:Key>
+          <edm:PropertyRef Name="id"/>
+        </edm:Key>
+        <edm:Property Name="id" Type="Edm.Int32" Nullable="false"/>
+        <edm:Property Name="company" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="last_name" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="first_name" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="email_address" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="job_title" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="business_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="home_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="mobile_phone" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="fax_number" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="address" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="city" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="state_province" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="zip_postal_code" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="country_region" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="web_page" Type="Edm.String" Nullable="false"/>
+        <edm:Property Name="notes" Type="Edm.String" Nullable="false"/>
+        <edm:NavigationProperty Name="purchaseOrders" Relationship="Data.Supplier_purchaseOrders_PurchaseOrder" ToRole="PurchaseOrders_" FromRole="Suppliers_purchaseOrders" cg:GetterAccess="Public" cg:SetterAccess="Public"/>
+      </edm:EntityType>
+      <edm:EntityContainer Name="Data">
+        <edm:EntitySet Name="Customers" EntityType="Data.Customer" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="Employees" EntityType="Data.Employee" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="InventoryTransactions" EntityType="Data.InventoryTransaction" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="InventoryTransactionTypes" EntityType="Data.InventoryTransactionType" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="Invoices" EntityType="Data.Invoice" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="Orders" EntityType="Data.Order" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="OrderDetails" EntityType="Data.OrderDetail" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="OrderDetailsStatuses" EntityType="Data.OrderDetailsStatus" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="OrdersStatuses" EntityType="Data.OrdersStatus" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="OrdersTaxStatuses" EntityType="Data.OrdersTaxStatus" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="Privileges" EntityType="Data.Privilege" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="Products" EntityType="Data.Product" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="PurchaseOrders" EntityType="Data.PurchaseOrder" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="PurchaseOrderDetails" EntityType="Data.PurchaseOrderDetail" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="PurchaseOrderStatuses" EntityType="Data.PurchaseOrderStatus" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="SalesReports" EntityType="Data.SalesReport" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="Shippers" EntityType="Data.Shipper" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="StringModels" EntityType="Data.StringModel" cg:GetterAccess="Public"/>
+        <edm:EntitySet Name="Suppliers" EntityType="Data.Supplier" cg:GetterAccess="Public"/>
+        <edm:AssociationSet Name="Customer_orders_Order" Association="Data.Customer_orders_Order">
+          <edm:End Role="Customers_orders" EntitySet="Customers"/>
+          <edm:End EntitySet="Orders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Employee_orders_Order" Association="Data.Employee_orders_Order">
+          <edm:End Role="Employees_orders" EntitySet="Employees"/>
+          <edm:End EntitySet="Orders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Employee_purchaseOrders_PurchaseOrder" Association="Data.Employee_purchaseOrders_PurchaseOrder">
+          <edm:End Role="Employees_purchaseOrders" EntitySet="Employees"/>
+          <edm:End EntitySet="PurchaseOrders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Employee_privileges_Privilege" Association="Data.Employee_privileges_Privilege">
+          <edm:End Role="Employees_privileges" EntitySet="Employees"/>
+          <edm:End EntitySet="Privileges"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="InventoryTransaction_inventoryTransactionType_InventoryTransactionType" Association="Data.InventoryTransaction_inventoryTransactionType_InventoryTransactionType">
+          <edm:End Role="InventoryTransactions_inventoryTransactionType" EntitySet="InventoryTransactions"/>
+          <edm:End EntitySet="InventoryTransactionTypes"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="InventoryTransaction_product_Product" Association="Data.InventoryTransaction_product_Product">
+          <edm:End Role="InventoryTransactions_product" EntitySet="InventoryTransactions"/>
+          <edm:End EntitySet="Products"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="InventoryTransaction_purchaseOrder_PurchaseOrder" Association="Data.InventoryTransaction_purchaseOrder_PurchaseOrder">
+          <edm:End Role="InventoryTransactions_purchaseOrder" EntitySet="InventoryTransactions"/>
+          <edm:End EntitySet="PurchaseOrders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="InventoryTransaction_purchaseOrderDetails_PurchaseOrderDetail" Association="Data.InventoryTransaction_purchaseOrderDetails_PurchaseOrderDetail">
+          <edm:End Role="InventoryTransactions_purchaseOrderDetails" EntitySet="InventoryTransactions"/>
+          <edm:End EntitySet="PurchaseOrderDetails"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="InventoryTransaction_order_Order" Association="Data.InventoryTransaction_order_Order">
+          <edm:End Role="InventoryTransactions_order" EntitySet="InventoryTransactions"/>
+          <edm:End EntitySet="Orders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="InventoryTransactionType_inventoryTransactions_InventoryTransaction" Association="Data.InventoryTransactionType_inventoryTransactions_InventoryTransaction">
+          <edm:End Role="InventoryTransactionTypes_inventoryTransactions" EntitySet="InventoryTransactionTypes"/>
+          <edm:End EntitySet="InventoryTransactions"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Invoice_order_Order" Association="Data.Invoice_order_Order">
+          <edm:End Role="Invoices_order" EntitySet="Invoices"/>
+          <edm:End EntitySet="Orders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Order_orderStatus_OrdersStatus" Association="Data.Order_orderStatus_OrdersStatus">
+          <edm:End Role="Orders_orderStatus" EntitySet="Orders"/>
+          <edm:End EntitySet="OrdersStatuses"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Order_orderTaxStatus_OrdersTaxStatus" Association="Data.Order_orderTaxStatus_OrdersTaxStatus">
+          <edm:End Role="Orders_orderTaxStatus" EntitySet="Orders"/>
+          <edm:End EntitySet="OrdersTaxStatuses"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Order_shipper_Shipper" Association="Data.Order_shipper_Shipper">
+          <edm:End Role="Orders_shipper" EntitySet="Orders"/>
+          <edm:End EntitySet="Shippers"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Order_employee_Employee" Association="Data.Order_employee_Employee">
+          <edm:End Role="Orders_employee" EntitySet="Orders"/>
+          <edm:End EntitySet="Employees"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Order_customer_Customer" Association="Data.Order_customer_Customer">
+          <edm:End Role="Orders_customer" EntitySet="Orders"/>
+          <edm:End EntitySet="Customers"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Order_invoice_Invoice" Association="Data.Order_invoice_Invoice">
+          <edm:End Role="Orders_invoice" EntitySet="Orders"/>
+          <edm:End EntitySet="Invoices"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Order_orderDetails_OrderDetail" Association="Data.Order_orderDetails_OrderDetail">
+          <edm:End Role="Orders_orderDetails" EntitySet="Orders"/>
+          <edm:End EntitySet="OrderDetails"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Order_inventoryTransactions_InventoryTransaction" Association="Data.Order_inventoryTransactions_InventoryTransaction">
+          <edm:End Role="Orders_inventoryTransactions" EntitySet="Orders"/>
+          <edm:End EntitySet="InventoryTransactions"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="OrderDetail_order_Order" Association="Data.OrderDetail_order_Order">
+          <edm:End Role="OrderDetails_order" EntitySet="OrderDetails"/>
+          <edm:End EntitySet="Orders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="OrderDetail_orderDetailsStatus_OrderDetailsStatus" Association="Data.OrderDetail_orderDetailsStatus_OrderDetailsStatus">
+          <edm:End Role="OrderDetails_orderDetailsStatus" EntitySet="OrderDetails"/>
+          <edm:End EntitySet="OrderDetailsStatuses"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="OrderDetail_product_Product" Association="Data.OrderDetail_product_Product">
+          <edm:End Role="OrderDetails_product" EntitySet="OrderDetails"/>
+          <edm:End EntitySet="Products"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="OrderDetailsStatus_orderDetail_OrderDetail" Association="Data.OrderDetailsStatus_orderDetail_OrderDetail">
+          <edm:End Role="OrderDetailsStatuses_orderDetail" EntitySet="OrderDetailsStatuses"/>
+          <edm:End EntitySet="OrderDetails"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="OrdersStatus_orders_Order" Association="Data.OrdersStatus_orders_Order">
+          <edm:End Role="OrdersStatuses_orders" EntitySet="OrdersStatuses"/>
+          <edm:End EntitySet="Orders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="OrdersTaxStatus_orders_Order" Association="Data.OrdersTaxStatus_orders_Order">
+          <edm:End Role="OrdersTaxStatuses_orders" EntitySet="OrdersTaxStatuses"/>
+          <edm:End EntitySet="Orders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Privilege_employees_Employee" Association="Data.Privilege_employees_Employee">
+          <edm:End Role="Privileges_employees" EntitySet="Privileges"/>
+          <edm:End EntitySet="Employees"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Product_orderDetails_OrderDetail" Association="Data.Product_orderDetails_OrderDetail">
+          <edm:End Role="Products_orderDetails" EntitySet="Products"/>
+          <edm:End EntitySet="OrderDetails"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Product_purchaseOrderDetails_PurchaseOrderDetail" Association="Data.Product_purchaseOrderDetails_PurchaseOrderDetail">
+          <edm:End Role="Products_purchaseOrderDetails" EntitySet="Products"/>
+          <edm:End EntitySet="PurchaseOrderDetails"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Product_inventoryTransactions_InventoryTransaction" Association="Data.Product_inventoryTransactions_InventoryTransaction">
+          <edm:End Role="Products_inventoryTransactions" EntitySet="Products"/>
+          <edm:End EntitySet="InventoryTransactions"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="PurchaseOrder_supplier_Supplier" Association="Data.PurchaseOrder_supplier_Supplier">
+          <edm:End Role="PurchaseOrders_supplier" EntitySet="PurchaseOrders"/>
+          <edm:End EntitySet="Suppliers"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="PurchaseOrder_purchaseOrderStatus_PurchaseOrderStatus" Association="Data.PurchaseOrder_purchaseOrderStatus_PurchaseOrderStatus">
+          <edm:End Role="PurchaseOrders_purchaseOrderStatus" EntitySet="PurchaseOrders"/>
+          <edm:End EntitySet="PurchaseOrderStatuses"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="PurchaseOrder_employee_Employee" Association="Data.PurchaseOrder_employee_Employee">
+          <edm:End Role="PurchaseOrders_employee" EntitySet="PurchaseOrders"/>
+          <edm:End EntitySet="Employees"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="PurchaseOrder_purchaseOrderDetails_PurchaseOrderDetail" Association="Data.PurchaseOrder_purchaseOrderDetails_PurchaseOrderDetail">
+          <edm:End Role="PurchaseOrders_purchaseOrderDetails" EntitySet="PurchaseOrders"/>
+          <edm:End EntitySet="PurchaseOrderDetails"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="PurchaseOrder_inventoryTransactions_InventoryTransaction" Association="Data.PurchaseOrder_inventoryTransactions_InventoryTransaction">
+          <edm:End Role="PurchaseOrders_inventoryTransactions" EntitySet="PurchaseOrders"/>
+          <edm:End EntitySet="InventoryTransactions"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="PurchaseOrderDetail_purchaseOrder_PurchaseOrder" Association="Data.PurchaseOrderDetail_purchaseOrder_PurchaseOrder">
+          <edm:End Role="PurchaseOrderDetails_purchaseOrder" EntitySet="PurchaseOrderDetails"/>
+          <edm:End EntitySet="PurchaseOrders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="PurchaseOrderDetail_product_Product" Association="Data.PurchaseOrderDetail_product_Product">
+          <edm:End Role="PurchaseOrderDetails_product" EntitySet="PurchaseOrderDetails"/>
+          <edm:End EntitySet="Products"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="PurchaseOrderDetail_inventoryTransaction_InventoryTransaction" Association="Data.PurchaseOrderDetail_inventoryTransaction_InventoryTransaction">
+          <edm:End Role="PurchaseOrderDetails_inventoryTransaction" EntitySet="PurchaseOrderDetails"/>
+          <edm:End EntitySet="InventoryTransactions"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="PurchaseOrderStatus_purchaseOrders_PurchaseOrder" Association="Data.PurchaseOrderStatus_purchaseOrders_PurchaseOrder">
+          <edm:End Role="PurchaseOrderStatuses_purchaseOrders" EntitySet="PurchaseOrderStatuses"/>
+          <edm:End EntitySet="PurchaseOrders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Shipper_orders_Order" Association="Data.Shipper_orders_Order">
+          <edm:End Role="Shippers_orders" EntitySet="Shippers"/>
+          <edm:End EntitySet="Orders"/>
+        </edm:AssociationSet>
+        <edm:AssociationSet Name="Supplier_purchaseOrders_PurchaseOrder" Association="Data.Supplier_purchaseOrders_PurchaseOrder">
+          <edm:End Role="Suppliers_purchaseOrders" EntitySet="Suppliers"/>
+          <edm:End EntitySet="PurchaseOrders"/>
+        </edm:AssociationSet>
+      </edm:EntityContainer>
+    </edm:Schema>
+  </DataServices>
+</Edmx>
