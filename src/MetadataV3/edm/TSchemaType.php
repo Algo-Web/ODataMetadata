@@ -20,8 +20,6 @@ class TSchemaType extends IsOK
         TSimpleIdentifierTrait::isNCName insteadof TNamespaceNameTrait;
         TSimpleIdentifierTrait::matchesRegexPattern insteadof TNamespaceNameTrait;
         TSimpleIdentifierTrait::isName insteadof TNamespaceNameTrait;
-
-
     }
     /**
      * @property string $namespace
@@ -115,7 +113,7 @@ class TSchemaType extends IsOK
         $entityTypeNames = [];
         $associationNames = [];
         $navigationProperties = [];
-        $assocationSets = [];
+        $associationSets = [];
         $namespaceLen = strlen($this->namespace);
         if (0 != $namespaceLen) {
             $namespaceLen++;
@@ -124,15 +122,17 @@ class TSchemaType extends IsOK
         foreach ($this->getEntityType() as $entityType) {
             $entityTypeNames[] = $entityType->getName();
             foreach ($entityType->getNavigationProperty() as $navigationProperty) {
-                $navigationProperties[substr($navigationProperty->getRelationship(), $namespaceLen)][] = $navigationProperty;
+                $navigationProperties[
+                substr($navigationProperty->getRelationship(), $namespaceLen)
+                ][] = $navigationProperty;
             }
         }
 
         foreach ($this->association as $association) {
             $associationNames[$association->getName()] = $association->getEnd();
         }
-        foreach ($this->getEntityContainer()[0]->getAssociationSet() as $assocationSet) {
-            $assocationSets[substr($assocationSet->getAssociation(), $namespaceLen)] = $assocationSet->getEnd();
+        foreach ($this->getEntityContainer()[0]->getAssociationSet() as $associationSet) {
+            $associationSets[substr($associationSet->getAssociation(), $namespaceLen)] = $associationSet->getEnd();
         }
 
 
@@ -151,30 +151,41 @@ class TSchemaType extends IsOK
             }
         }
 
-        // Check Associations to assocationSets
-        if (count($assocationSets) != count($associationNames)) {
-            $msg = "we have " . count($assocationSets) . "assocation sets and " . count($associationNames) . " Assocations, they should be the same";
+        // Check Associations to associationSets
+        if (count($associationSets) != count($associationNames)) {
+            $msg = "we have " . count($associationSets) . "association sets and " . count($associationNames)
+                   . " associations, they should be the same";
         }
         if (count($associationNames) * 2 < count($navigationProperties)) {
-            $msg = "we have two many navigation propertys. should have no more then double the number of assocations.";
+            $msg = "we have too many navigation properties. should have no more then double the"
+                   ." number of associations.";
         }
 
-        foreach ($associationNames as $assocationName => $assocationEnds) {
-            if (!array_key_exists($assocationName, $assocationSets)) {
-                $msg = "assocation " . $assocationName . " exists without matching assocationSet";
+        foreach ($associationNames as $associationName => $associationEnds) {
+            if (!array_key_exists($associationName, $associationSets)) {
+                $msg = "association " . $associationName . " exists without matching associationSet";
                 return false;
             }
 
-            if (!array_key_exists($assocationName, $navigationProperties)) {
-                $msg = "assocation " . $assocationName . " exists without matching Natvigation Property";
+            if (!array_key_exists($associationName, $navigationProperties)) {
+                $msg = "association " . $associationName . " exists without matching Natvigation Property";
                 return false;
             }
-            if (!in_array($assocationSets[$assocationName][0]->getRole(), [$assocationEnds[0]->getRole(), $assocationEnds[1]->getRole()])) {
-                $msg = "assocation Set role " . $assocationSets[$assocationName][0]->getRole() . "lacks a matching property in the attached assocation";
+            if (!in_array(
+                $associationSets[$associationName][0]->getRole(),
+                [$associationEnds[0]->getRole(), $associationEnds[1]->getRole()]
+            )
+            ) {
+                $msg = "association Set role " . $associationSets[$associationName][0]->getRole()
+                       . "lacks a matching property in the attached association";
                 return false;
             }
-            if (!in_array($assocationSets[$assocationName][1]->getRole(), [$assocationEnds[0]->getRole(), $assocationEnds[1]->getRole()])) {
-                $msg = "assocation Set role " . $assocationSets[$assocationName][0]->getRole() . "lacks a matching property in the attached assocation";
+            if (!in_array(
+                $associationSets[$associationName][1]->getRole(),
+                [$associationEnds[0]->getRole(), $associationEnds[1]->getRole()]
+            )) {
+                $msg = "association Set role " . $associationSets[$associationName][0]->getRole()
+                       . "lacks a matching property in the attached association";
                 return false;
             }
         }
