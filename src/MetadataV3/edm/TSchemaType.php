@@ -176,20 +176,14 @@ class TSchemaType extends IsOK
                 $msg = "association " . $associationName . " exists without matching Natvigation Property";
                 return false;
             }
-            if (!in_array(
-                $associationSets[$associationName][0]->getRole(),
-                [$associationEnds[0]->getRole(), $associationEnds[1]->getRole()]
-            )
-            ) {
+            $roles = [$associationEnds[0]->getRole(), $associationEnds[1]->getRole()];
+            if (!in_array($associationSets[$associationName][0]->getRole(), $roles)) {
                 $msg = "association Set role " . $associationSets[$associationName][0]->getRole()
                        . "lacks a matching property in the attached association";
                 return false;
             }
-            if (!in_array(
-                $associationSets[$associationName][1]->getRole(),
-                [$associationEnds[0]->getRole(), $associationEnds[1]->getRole()]
-            )) {
-                $msg = "association Set role " . $associationSets[$associationName][0]->getRole()
+            if (!in_array($associationSets[$associationName][1]->getRole(), $roles)) {
+                $msg = "association Set role " . $associationSets[$associationName][1]->getRole()
                        . "lacks a matching property in the attached association";
                 return false;
             }
