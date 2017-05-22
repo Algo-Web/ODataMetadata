@@ -274,9 +274,10 @@ class TestTypeTest extends TestCase
         $foo = m::mock(testType::class)->makePartial();
         $foo->shouldReceive('isValidArray')->withAnyArgs()->andReturn(false);
 
-        $expected = "Supplied array not a valid array: Mockery_0_AlgoWeb_ODataMetadata_Tests_testType";
+        $expected = "Supplied array not a valid array: Mockery";
         $msg = null;
         $this->assertFalse($foo->isValidArrayOk([], '', $msg));
+        $msg = substr($msg, 0, strlen($expected));
         $this->assertEquals($expected, $msg);
     }
 
