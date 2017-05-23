@@ -39,12 +39,14 @@ class MetadataManager
 
     public function getEdmx()
     {
+        $msg = null;
+        assert($this->V3Edmx->isOk($msg), $msg);
         return $this->V3Edmx;
     }
 
     public function getEdmxXML()
     {
-        return $this->serializer->serialize($this->V3Edmx, "xml");
+        return $this->serializer->serialize($this->getEdmx(), "xml");
     }
 
     public function addEntityType($name, $accessType = "Public", $summary = null, $longDescription = null)
@@ -82,7 +84,7 @@ class MetadataManager
 
     private function startEdmxTransaction()
     {
-        $this->oldEdmx = serialize($this->V3Edmx);
+        //$this->oldEdmx = serialize($this->V3Edmx);
     }
 
     /**
@@ -116,12 +118,12 @@ class MetadataManager
 
     private function revertEdmxTransaction()
     {
-        $this->V3Edmx = unserialize($this->oldEdmx);
+        //$this->V3Edmx = unserialize($this->oldEdmx);
     }
 
     private function commitEdmxTransaction()
     {
-        $this->oldEdmx = null;
+        //$this->oldEdmx = null;
     }
 
     public function addPropertyToEntityType(
