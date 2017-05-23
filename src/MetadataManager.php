@@ -200,7 +200,7 @@ class MetadataManager
 
         $principalNavigationProperty = new TNavigationPropertyType();
         $principalNavigationProperty->setName($principalProperty);
-        $principalNavigationProperty->setToRole(trim($dependentEntitySetName . "_" . $dependentProperty,"_"));
+        $principalNavigationProperty->setToRole(trim($dependentEntitySetName . "_" . $dependentProperty, "_"));
         $principalNavigationProperty->setFromRole($principalEntitySetName . "_" . $principalProperty);
         $principalNavigationProperty->setRelationship($relationFQName);
         $principalNavigationProperty->setGetterAccess($principalGetterAccess);
