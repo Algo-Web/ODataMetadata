@@ -189,12 +189,12 @@ class TSchemaType extends IsOK
             foreach($navigationProperties[$associationName] as $navProp){
                 if (!in_array($navProp->getToRole(),$roles)) {
                     $msg = "Navigation Property Role " . $navProp->getToRole()
-                         . " lacks a matching peroperty in the assocation";
+                         . " lacks a matching Property in the assocation";
                     return false;
                 }
                 if (!in_array($navProp->getFromRole(),$roles)) {
                     $msg = "Navigation Property Role " .$navProp->getToRole()
-                         . " lacks a matching peroperty in the assocation";
+                         . " lacks a matching Property in the assocation";
                     return false;
                 }
             }
