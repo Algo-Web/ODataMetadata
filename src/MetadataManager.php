@@ -200,7 +200,7 @@ class MetadataManager
 
         $principalNavigationProperty = new TNavigationPropertyType();
         $principalNavigationProperty->setName($principalProperty);
-        $principalNavigationProperty->setToRole($dependentEntitySetName . "_" . $dependentProperty);
+        $principalNavigationProperty->setToRole(trim($dependentEntitySetName . "_" . $dependentProperty,"_"));
         $principalNavigationProperty->setFromRole($principalEntitySetName . "_" . $principalProperty);
         $principalNavigationProperty->setRelationship($relationFQName);
         $principalNavigationProperty->setGetterAccess($principalGetterAccess);
@@ -212,7 +212,6 @@ class MetadataManager
             $principalNavigationProperty->setDocumentation($principalDocumentation);
         }
         $principalType->addToNavigationProperty($principalNavigationProperty);
-
         $dependentNavigationProperty = null;
         if (!empty($dependentProperty)) {
             $dependentNavigationProperty = new TNavigationPropertyType();
@@ -251,7 +250,6 @@ class MetadataManager
         );
 
         $this->V3Edmx->getDataServices()[0]->getEntityContainer()[0]->addToAssociationSet($associationSet);
-
 
         if (!$this->V3Edmx->isok($this->lastError)) {
             $this->revertEdmxTransaction();
@@ -311,6 +309,8 @@ class MetadataManager
 
         if (null != $dependentNavigationProperty) {
             $dependentEnd->setRole($dependentNavigationProperty->getFromRole());
+        } else {
+            $dependentEnd->setRole($principalNavigationProperty->getToRole());
         }
 
         $principalReferralConstraint = null;
