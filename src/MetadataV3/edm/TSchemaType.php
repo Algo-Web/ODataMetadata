@@ -93,7 +93,7 @@ class TSchemaType extends IsOK
         $entityCount = max(1, count($this->entityType));
         // done this way to enable die-roll to be mocked - don't know how to mock rand() directly
         if (1 < $entityCount * $this->getRand()) {
-        //    return true;
+            return true;
         }
         if (!$this->isTNamespaceNameValid($this->namespace)) {
             $msg = "Namespace must be a valid TNamespaceName";
