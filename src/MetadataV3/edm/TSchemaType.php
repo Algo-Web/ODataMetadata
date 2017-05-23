@@ -93,7 +93,7 @@ class TSchemaType extends IsOK
         $entityCount = max(1, count($this->entityType));
         // done this way to enable die-roll to be mocked - don't know how to mock rand() directly
         if (1 < $entityCount * $this->getRand()) {
-            return true;
+        //    return true;
         }
         if (!$this->isTNamespaceNameValid($this->namespace)) {
             $msg = "Namespace must be a valid TNamespaceName";
@@ -165,7 +165,6 @@ class TSchemaType extends IsOK
             $msg = "we have too many navigation properties. should have no more then double the"
                    ." number of associations.";
         }
-
         foreach ($associationNames as $associationName => $associationEnds) {
             if (!array_key_exists($associationName, $associationSets)) {
                 $msg = "association " . $associationName . " exists without matching associationSet";
@@ -186,6 +185,18 @@ class TSchemaType extends IsOK
                 $msg = "association Set role " . $associationSets[$associationName][1]->getRole()
                        . "lacks a matching property in the attached association";
                 return false;
+            }
+            foreach($navigationProperties[$associationName] as $navProp){
+                if (!in_array($navProp->getToRole(),$roles)) {
+                    $msg = "Navigation Property Role " . $navProp->getToRole()
+                         . " lacks a matching peroperty in the assocation";
+                    return false;
+                }
+                if (!in_array($navProp->getFromRole(),$roles)) {
+                    $msg = "Navigation Property Role " .$navProp->getToRole()
+                         . " lacks a matching peroperty in the assocation";
+                    return false;
+                }
             }
         }
         return true;
