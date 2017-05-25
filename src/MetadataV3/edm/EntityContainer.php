@@ -189,9 +189,9 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * Sets a new lazyLoadingEnabled
+     * Sets a new isDefaultEntityContainer
      *
-     * @param boolean $lazyLoadingEnabled
+     * @param boolean $isDefaultEntityContainer
      * @return self
      */
     public function setIsDefaultEntityContainer($isDefaultEntityContainer)
