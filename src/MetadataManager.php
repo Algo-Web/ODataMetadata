@@ -63,7 +63,7 @@ class MetadataManager
 
         $entitySet = new EntitySetAnonymousType();
         $entitySet->setName($this->pluralize(2, $NewEntity->getName()));
-        $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
+        $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
         if (0 == strlen(trim($namespace))) {
             $entityTypeName = $NewEntity->getName();
         } else {
@@ -72,8 +72,8 @@ class MetadataManager
         $entitySet->setEntityType($entityTypeName);
         $entitySet->setGetterAccess($accessType);
 
-        $this->V3Edmx->getDataServices()[0]->addToEntityType($NewEntity);
-        $this->V3Edmx->getDataServices()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
+        $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
+        $this->V3Edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         if (!$this->V3Edmx->isok($this->lastError)) {
             $this->revertEdmxTransaction();
             return false;
@@ -191,7 +191,7 @@ class MetadataManager
                         . $dependentType->getName() . "_" . $dependentProperty;
         $relationName = trim($relationName, "_");
 
-        $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
+        $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
         if (0 == strlen(trim($namespace))) {
             $relationFQName = $relationName;
         } else {
@@ -241,7 +241,7 @@ class MetadataManager
             $dependentConstraintProperty
         );
 
-        $this->V3Edmx->getDataServices()[0]->addToAssociation($assocation);
+        $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToAssociation($assocation);
 
         $associationSet = $this->createAssocationSetForAssocation(
             $assocation,
@@ -249,7 +249,8 @@ class MetadataManager
             $dependentEntitySetName
         );
 
-        $this->V3Edmx->getDataServices()[0]->getEntityContainer()[0]->addToAssociationSet($associationSet);
+        $this->V3Edmx->getDataServiceType()->getSchema()[0]
+            ->getEntityContainer()[0]->addToAssociationSet($associationSet);
 
         if (!$this->V3Edmx->isok($this->lastError)) {
             $this->revertEdmxTransaction();
@@ -281,7 +282,7 @@ class MetadataManager
                 throw new \Exception("The from roles and two roles from matching properties should match");
             }
         }
-        $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
+        $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
 
         if (0 == strlen(trim($namespace))) {
             $principalTypeFQName = $principalType->getName();
@@ -352,7 +353,7 @@ class MetadataManager
         $as = new AssociationSetAnonymousType();
         $name = $association->getName();
         $as->setName($name);
-        $namespace = $this->V3Edmx->getDataServices()[0]->getNamespace();
+        $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
         if (0 == strlen(trim($namespace))) {
             $associationSetName = $association->getName();
         } else {

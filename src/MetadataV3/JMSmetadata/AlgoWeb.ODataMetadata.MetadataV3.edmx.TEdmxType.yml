@@ -29,18 +29,13 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TEdmxType:
                 getter: getRuntime
                 setter: setRuntime
             type: AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeType
-        dataServices:
+        dataServiceType:
             expose: true
             access_type: public_method
             serialized_name: DataServices
             xml_element:
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
             accessor:
-                getter: getDataServices
-                setter: setDataServices
-            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\Schema>
-            xml_list:
-                inline: false
-                entry_name: Schema
-                skip_when_empty: true
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                getter: getDataServiceType
+                setter: setDataServiceType
+            type: AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType
