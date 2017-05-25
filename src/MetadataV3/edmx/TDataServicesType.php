@@ -1,22 +1,40 @@
 <?php
 namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
 
-class TDataServicesType
+use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
+
+class TDataServicesType extends IsOK
 {
+    use IsOKToolboxTrait;
+    private $maxDataValid = ['3.0', '4.0'];
+    private $dataValid = ['1.0', '2.0', '3.0', '4.0'];
+
     /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema[] $dataServices
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema[] $schema
      */
     private $schema = [];
 
     /**
-     * @property string $designer
+     * @property string $maxDataServiceVersion
      */
     private $maxDataServiceVersion;
 
     /**
-     * @property string $designer
+     * @property string $dataServiceVersion
      */
     private $dataServiceVersion;
+
+    public function __construct($maxDataServiceVersion = '3.0', $dataServiceVersion = '3.0')
+    {
+        if ('3.0' == $this->maxDataServiceVersion && '4.0' == $this->dataServiceVersion) {
+            $msg = "Data service version cannot be greater than maximum service version";
+            throw new \InvalidArgumentException($msg);
+        }
+        $this->setDataServiceVersion($dataServiceVersion);
+        $this->setMaxDataServiceVersion($maxDataServiceVersion);
+    }
 
     /**
      * Gets as MaxDataServiceVersion
@@ -31,12 +49,16 @@ class TDataServicesType
     /**
      * Sets a new DataServiceVersion
      *
-     * @param string maxDataServiceVersion
+     * @param string $maxDataServiceVersion
      * @return self
      */
     public function setMaxDataServiceVersion($maxDataServiceVersion)
     {
-        $this->designer = $maxDataServiceVersion;
+        if (!in_array($maxDataServiceVersion, $this->maxDataValid)) {
+            $msg = "Maximum data service version must be 3.0 or 4.0";
+            throw new \InvalidArgumentException($msg);
+        }
+        $this->maxDataServiceVersion = $maxDataServiceVersion;
         return $this;
     }
 
@@ -53,12 +75,16 @@ class TDataServicesType
     /**
      * Sets a new DataServiceVersion
      *
-     * @param string DataServiceVersion
+     * @param string $dataServiceVersion
      * @return self
      */
     public function setDataServiceVersion($dataServiceVersion)
     {
-        $this->designer = $dataServiceVersion;
+        if (!in_array($dataServiceVersion, $this->dataValid)) {
+            $msg = "Data service version must be 1.0, 2.0, 3.0 or 4.0";
+            throw new \InvalidArgumentException($msg);
+        }
+        $this->dataServiceVersion = $dataServiceVersion;
         return $this;
     }
     /**
@@ -126,5 +152,27 @@ class TDataServicesType
         }
         $this->dataServices = $dataServices;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!in_array($this->maxDataServiceVersion, $this->maxDataValid)) {
+            $msg = "Maximum data service version must be 3.0 or 4.0";
+            return false;
+        }
+        if (!in_array($this->dataServiceVersion, $this->dataValid)) {
+            $msg = "Data service version must be 1.0, 2.0, 3.0 or 4.0";
+            return false;
+        }
+        if ('3.0' == $this->maxDataServiceVersion && '4.0' == $this->dataServiceVersion) {
+            $msg = "Data service version cannot be greater than maximum service version";
+            return false;
+        }
+
+        if (!$this->isValidArrayOK($this->schema, '\AlgoWeb\ODataMetadata\MetadataV3\edm\Schema', $msg, 1)) {
+            return false;
+        }
+
+        return true;
     }
 }
