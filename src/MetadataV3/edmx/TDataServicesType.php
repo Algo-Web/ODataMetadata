@@ -8,9 +8,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 class TDataServicesType extends IsOK
 {
     use IsOKToolboxTrait;
-    private $maxDataValid = ['3.0', '4.0'];
-    private $dataValid = ['1.0', '2.0', '3.0', '4.0'];
-
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema[] $schema
      */
@@ -54,7 +51,8 @@ class TDataServicesType extends IsOK
      */
     public function setMaxDataServiceVersion($maxDataServiceVersion)
     {
-        if (!in_array($maxDataServiceVersion, $this->maxDataValid)) {
+        $maxDataValid = ['3.0', '4.0'];
+        if (!in_array($maxDataServiceVersion, $maxDataValid)) {
             $msg = "Maximum data service version must be 3.0 or 4.0";
             throw new \InvalidArgumentException($msg);
         }
@@ -80,7 +78,8 @@ class TDataServicesType extends IsOK
      */
     public function setDataServiceVersion($dataServiceVersion)
     {
-        if (!in_array($dataServiceVersion, $this->dataValid)) {
+        $dataValid = ['1.0', '2.0', '3.0', '4.0'];
+        if (!in_array($dataServiceVersion, $dataValid)) {
             $msg = "Data service version must be 1.0, 2.0, 3.0 or 4.0";
             throw new \InvalidArgumentException($msg);
         }
@@ -156,11 +155,13 @@ class TDataServicesType extends IsOK
 
     public function isOK(&$msg = null)
     {
-        if (!in_array($this->maxDataServiceVersion, $this->maxDataValid)) {
+        $dataValid = ['1.0', '2.0', '3.0', '4.0'];
+        $maxDataValid = ['3.0', '4.0'];
+        if (!in_array($this->maxDataServiceVersion, $maxDataValid)) {
             $msg = "Maximum data service version must be 3.0 or 4.0";
             return false;
         }
-        if (!in_array($this->dataServiceVersion, $this->dataValid)) {
+        if (!in_array($this->dataServiceVersion, $dataValid)) {
             $msg = "Data service version must be 1.0, 2.0, 3.0 or 4.0";
             return false;
         }
