@@ -1,0 +1,28 @@
+AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType:
+    properties:
+        schema:
+            expose: true
+            access_type: public_method
+            serialized_name: schema
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+            accessor:
+                getter: getSchema
+                setter: setSchema
+            type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\Schema>
+            xml_list:
+                inline: true
+                entry_name: Schema
+                skip_when_empty: true
+                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+        maxDataServiceVersion:
+            expose: true
+            access_type: public_method
+            serialized_name: maxDataServiceVersion
+            accessor:
+                getter: getMaxDataServiceVersion
+                setter: set<axDataServiceVersion
+            xml_attribute: true
+            type: string
+            xml_element:
+                namespace: 'http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'
