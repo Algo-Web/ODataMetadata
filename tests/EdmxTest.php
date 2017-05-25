@@ -46,7 +46,7 @@ class EdmxTest extends TestCase
         $this->assertTrue($NewEntity->isOK($msg), $msg);
         $this->assertNull($msg);
         $edmx = new Edmx();
-        $edmx->getDataServices()[0]->addToEntityType($NewEntity);
+        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
         $this->assertTrue($edmx->isOK($msg), $msg);
         $this->assertNull($msg);
 
@@ -57,6 +57,7 @@ class EdmxTest extends TestCase
                 ->addMetadataDir($ymlDir)
                 ->build();
         $d = $serializer->serialize($edmx, "xml");
+
         $this->v3MetadataAgainstXSD($d);
     }
 
@@ -82,8 +83,8 @@ class EdmxTest extends TestCase
         $this->assertTrue($entitySet->isOK($msg), $msg);
         $this->assertNull($msg);
         $edmx = new Edmx();
-        $edmx->getDataServices()[0]->addToEntityType($NewEntity);
-        $edmx->getDataServices()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
+        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
+        $edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         $this->assertTrue($edmx->isOK($msg), $msg);
         $this->assertNull($msg);
 

@@ -30,9 +30,9 @@ class TEdmxType extends IsOK
     private $runtime = null;
 
     /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema[] $dataServices
+     * @property \AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType $dataServiceType
      */
-    private $dataServices = [];
+    private $dataServiceType = null;
 
     /**
      * Gets as version
@@ -57,6 +57,32 @@ class TEdmxType extends IsOK
             throw new \InvalidArgumentException($msg);
         }
         $this->version = $version;
+        return $this;
+    }
+
+    /**
+     * Gets data service type
+     *
+     * @return TDataServicesType
+     */
+    public function getDataServiceType()
+    {
+        return $this->dataServiceType;
+    }
+
+    /**
+     * Sets a new data service type
+     *
+     * @param TDataServicesType $dataServiceType
+     * @return self
+     */
+    public function setDataServiceType(TDataServicesType $dataServiceType)
+    {
+        $msg = null;
+        if (!$dataServiceType->isOK($msg)) {
+            throw new \InvalidArgumentException($msg);
+        }
+        $this->dataServiceType = $dataServiceType;
         return $this;
     }
 
@@ -112,73 +138,6 @@ class TEdmxType extends IsOK
         return $this;
     }
 
-    /**
-     * Adds as schema
-     *
-     * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema $schema
-     */
-    public function addToDataServices(Schema $schema)
-    {
-        $msg = null;
-        if (!$schema->isOK($msg)) {
-            throw new \InvalidArgumentException($msg);
-        }
-        $this->dataServices[] = $schema;
-        return $this;
-    }
-
-    /**
-     * isset dataServices
-     *
-     * @param scalar $index
-     * @return boolean
-     */
-    public function issetDataServices($index)
-    {
-        return isset($this->dataServices[$index]);
-    }
-
-    /**
-     * unset dataServices
-     *
-     * @param scalar $index
-     * @return void
-     */
-    public function unsetDataServices($index)
-    {
-        unset($this->dataServices[$index]);
-    }
-
-    /**
-     * Gets as dataServices
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema[]
-     */
-    public function getDataServices()
-    {
-        return $this->dataServices;
-    }
-
-    /**
-     * Sets a new dataServices
-     *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema[] $dataServices
-     * @return self
-     */
-    public function setDataServices(array $dataServices)
-    {
-        if (!$this->isValidArrayOK(
-            $dataServices,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\Schema'
-        )) {
-            $msg = "Data services array not a valid array";
-            throw new \InvalidArgumentException($msg);
-        }
-        $this->dataServices = $dataServices;
-        return $this;
-    }
-
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->version)) {
@@ -191,22 +150,15 @@ class TEdmxType extends IsOK
         if (null != $this->runtime && !$this->runtime->isOK($msg)) {
             return false;
         }
-
-        if (!$this->isValidArray(
-            $this->dataServices,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\Schema'
-        )) {
-            $msg = "Data services array not a valid array";
+        if (!$this->dataServiceType->isOK($msg)) {
             return false;
         }
-        if (null == $this->runtime && 0 == count($this->dataServices)) {
+
+        if (null == $this->runtime && null == $this->dataServiceType) {
             $msg = "Either a runtime or a dataservice must be defined for Tedmx";
             return false;
         }
 
-        if (!$this->isChildArrayOK($this->dataServices, $msg)) {
-            return false;
-        }
         return true;
     }
 }

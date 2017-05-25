@@ -10,6 +10,9 @@ class Edmx extends TEdmxType
     public function __construct($namespace = "Data", $EntityContainerName = "DefaultContainer", $version = "1.0")
     {
         $this->setVersion($version);
-        $this->addToDataServices(new \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema($namespace, $EntityContainerName));
+        $schema = new \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema($namespace, $EntityContainerName);
+        $dataService = new TDataServicesType('4.0' == $version ? '4.0' : '3.0', $version);
+        $dataService->addToSchema($schema);
+        $this->setDataServiceType($dataService);
     }
 }
