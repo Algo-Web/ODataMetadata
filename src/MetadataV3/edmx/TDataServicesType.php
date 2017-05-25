@@ -1,7 +1,6 @@
 <?php
 namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
 
-
 class TDataServicesType
 {
     /**
@@ -128,5 +127,4 @@ class TDataServicesType
         $this->dataServices = $dataServices;
         return $this;
     }
-
 }
