@@ -153,12 +153,3 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TSchemaType:
                 entry_name: EntityContainer
                 namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer>
-        IsDefaultEntityContainer:
-            expose: true
-            access_type: public_method
-            serialized_name: IsDefaultEntityContainer
-            accessor:
-                getter: getIsDefaultEntityContainer
-                setter: setIsDefaultEntityContainer
-            xml_attribute: true
-            type: bool
