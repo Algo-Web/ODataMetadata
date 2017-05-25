@@ -140,6 +140,15 @@ class TSchemaType extends IsOK
             $associationSets[substr($associationSet->getAssociation(), $namespaceLen)] = $associationSet->getEnd();
         }
 
+        $numDefaults = 0;
+        foreach ($this->getEntityContainer() as $entity) {
+            $isDefault = $entity->getIsDefaultEntityContainer();
+            $numDefaults += $isDefault ? 1 : 0;
+        }
+        if (1 != $numDefaults) {
+            $msg = "Exactly one entityContainer must be set as default container, actually have ".$numDefaults;
+            return false;
+        }
 
         $entitySets = $this->getEntityContainer()[0]->getEntitySet();
         foreach ($entitySets as $eset) {

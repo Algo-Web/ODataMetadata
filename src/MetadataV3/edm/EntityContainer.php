@@ -37,6 +37,11 @@ class EntityContainer extends IsOK
     private $lazyLoadingEnabled = null;
 
     /**
+     * @property boolean $isDefaultEntityContainer
+     */
+    private $isDefaultEntityContainer = false;
+
+    /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      */
     private $documentation = null;
@@ -171,6 +176,28 @@ class EntityContainer extends IsOK
     public function getDocumentation()
     {
         return $this->documentation;
+    }
+
+    /**
+     * Gets as lazyLoadingEnabled
+     *
+     * @return boolean
+     */
+    public function getIsDefaultEntityContainer()
+    {
+        return boolval($this->isDefaultEntityContainer);
+    }
+
+    /**
+     * Sets a new isDefaultEntityContainer
+     *
+     * @param boolean $isDefaultEntityContainer
+     * @return self
+     */
+    public function setIsDefaultEntityContainer($isDefaultEntityContainer)
+    {
+        $this->isDefaultEntityContainer = boolval($isDefaultEntityContainer);
+        return $this;
     }
 
     /**
