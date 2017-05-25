@@ -6,4 +6,4 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx:
         edm: http://schemas.microsoft.com/ado/2009/11/edm
         cg: http://schemas.microsoft.com/ado/2006/04/codegeneration
         annotation: http://schemas.microsoft.com/ado/2009/02/edm/annotation
-        metadata: http://schemas.microsoft.com/ado/2007/08/dataservices/metadata
+        m: http://schemas.microsoft.com/ado/2007/08/dataservices/metadata
