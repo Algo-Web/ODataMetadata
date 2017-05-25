@@ -1,8 +1,8 @@
 AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx:
-    xml_root_name: Edmx
+    xml_root_name: edmx:Edmx
     xml_root_namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
     xml_namespaces:
-        "": http://schemas.microsoft.com/ado/2009/11/edmx
+        edmx: http://schemas.microsoft.com/ado/2009/11/edmx
         edm: http://schemas.microsoft.com/ado/2009/11/edm
         cg: http://schemas.microsoft.com/ado/2006/04/codegeneration
         annotation: http://schemas.microsoft.com/ado/2009/02/edm/annotation
