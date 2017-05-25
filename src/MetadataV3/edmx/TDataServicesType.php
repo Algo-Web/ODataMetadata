@@ -149,7 +149,7 @@ class TDataServicesType extends IsOK
             $msg = "Data services array not a valid array";
             throw new \InvalidArgumentException($msg);
         }
-        $this->dataServices = $dataServices;
+        $this->schema = $dataServices;
         return $this;
     }
 
