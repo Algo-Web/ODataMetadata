@@ -32,7 +32,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType:
             access_type: public_method
             serialized_name: Documentation
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
@@ -42,12 +42,12 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType:
             access_type: public_method
             serialized_name: OnDelete
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getOnDelete
                 setter: setOnDelete
             xml_list:
                 inline: true
                 entry_name: OnDelete
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType>

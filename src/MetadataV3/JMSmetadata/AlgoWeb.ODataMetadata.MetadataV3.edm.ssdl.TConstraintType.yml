@@ -5,7 +5,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TConstraintType:
             access_type: public_method
             serialized_name: Documentation
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
@@ -15,7 +15,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TConstraintType:
             access_type: public_method
             serialized_name: Principal
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getPrincipal
                 setter: setPrincipal
@@ -25,7 +25,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TConstraintType:
             access_type: public_method
             serialized_name: Dependent
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getDependent
                 setter: setDependent

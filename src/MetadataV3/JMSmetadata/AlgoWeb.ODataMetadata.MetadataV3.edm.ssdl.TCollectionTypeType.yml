@@ -5,7 +5,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TCollectionTypeType:
             access_type: public_method
             serialized_name: RowType
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getRowType
                 setter: setRowType
@@ -14,4 +14,4 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TCollectionTypeType:
                 inline: false
                 entry_name: Property
                 skip_when_empty: true
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl

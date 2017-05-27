@@ -5,7 +5,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TDesignerType:
             access_type: public_method
             serialized_name: Connection
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getConnection
                 setter: setConnection
@@ -15,7 +15,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TDesignerType:
             access_type: public_method
             serialized_name: Options
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getOptions
                 setter: setOptions
@@ -25,7 +25,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TDesignerType:
             access_type: public_method
             serialized_name: Diagrams
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getDiagrams
                 setter: setDiagrams
@@ -34,4 +34,4 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TDesignerType:
                 inline: false
                 entry_name: Diagram
                 skip_when_empty: true
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx

@@ -41,54 +41,54 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TSchemaType:
             access_type: public_method
             serialized_name: Association
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getAssociation
                 setter: setAssociation
             xml_list:
                 inline: true
                 entry_name: Association
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationType>
         entityType:
             expose: true
             access_type: public_method
             serialized_name: EntityType
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getEntityType
                 setter: setEntityType
             xml_list:
                 inline: true
                 entry_name: EntityType
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityTypeType>
         entityContainer:
             expose: true
             access_type: public_method
             serialized_name: EntityContainer
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getEntityContainer
                 setter: setEntityContainer
             xml_list:
                 inline: true
                 entry_name: EntityContainer
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer>
         function:
             expose: true
             access_type: public_method
             serialized_name: Function
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getFunction
                 setter: setFunction
             xml_list:
                 inline: true
                 entry_name: Function
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionType>

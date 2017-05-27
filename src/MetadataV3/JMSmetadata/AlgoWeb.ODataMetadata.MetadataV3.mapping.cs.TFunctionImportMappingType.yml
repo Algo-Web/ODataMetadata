@@ -23,12 +23,12 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType:
             access_type: public_method
             serialized_name: ResultMapping
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getResultMapping
                 setter: setResultMapping
             xml_list:
                 inline: true
                 entry_name: ResultMapping
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             type: array<AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType>

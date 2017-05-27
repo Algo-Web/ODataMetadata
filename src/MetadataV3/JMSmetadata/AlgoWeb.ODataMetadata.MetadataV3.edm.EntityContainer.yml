@@ -1,6 +1,6 @@
 AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer:
     xml_root_name: EntityContainer
-    xml_root_namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+    xml_root_namespace: http://schemas.microsoft.com/ado/2009/11/edm
     properties:
         name:
             expose: true
@@ -43,7 +43,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer:
             access_type: public_method
             serialized_name: Documentation
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
@@ -53,42 +53,42 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer:
             access_type: public_method
             serialized_name: FunctionImport
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getFunctionImport
                 setter: setFunctionImport
             xml_list:
                 inline: true
                 entry_name: FunctionImport
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType>
         entitySet:
             expose: true
             access_type: public_method
             serialized_name: EntitySet
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getEntitySet
                 setter: setEntitySet
             xml_list:
                 inline: true
                 entry_name: EntitySet
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType>
         associationSet:
             expose: true
             access_type: public_method
             serialized_name: AssociationSet
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getAssociationSet
                 setter: setAssociationSet
             xml_list:
                 inline: true
                 entry_name: AssociationSet
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType>
         isDefaultEntityContainer:
             expose: true
@@ -99,5 +99,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer:
                 setter: setIsDefaultEntityContainer
             xml_attribute: true
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'
+                namespace: http://schemas.microsoft.com/ado/2007/08/dataservices/metadata
             type: boolean

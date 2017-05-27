@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <edmx:DataServices m:DataServiceVersion="3.0" m:MaxDataServiceVersion="3.0" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">
+    <Schema Namespace="ODataDemo" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

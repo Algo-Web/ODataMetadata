@@ -1,3 +1,3 @@
 AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\Schema:
     xml_root_name: Schema
-    xml_root_namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+    xml_root_namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl

@@ -1,6 +1,6 @@
 AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer:
     xml_root_name: EntityContainer
-    xml_root_namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+    xml_root_namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
     properties:
         name:
             expose: true
@@ -16,7 +16,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer:
             access_type: public_method
             serialized_name: Documentation
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
@@ -26,26 +26,26 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer:
             access_type: public_method
             serialized_name: EntitySet
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getEntitySet
                 setter: setEntitySet
             xml_list:
                 inline: true
                 entry_name: EntitySet
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\EntitySetAnonymousType>
         associationSet:
             expose: true
             access_type: public_method
             serialized_name: AssociationSet
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getAssociationSet
                 setter: setAssociationSet
             xml_list:
                 inline: true
                 entry_name: AssociationSet
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType>

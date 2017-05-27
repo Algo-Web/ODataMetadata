@@ -23,7 +23,7 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexP
             access_type: public_method
             serialized_name: ScalarProperty
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getScalarProperty
                 setter: setScalarProperty
@@ -33,7 +33,7 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexP
             access_type: public_method
             serialized_name: ComplexProperty
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getComplexProperty
                 setter: setComplexProperty

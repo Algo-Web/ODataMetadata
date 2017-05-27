@@ -5,7 +5,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeConceptualModelsType:
             access_type: public_method
             serialized_name: Schema
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getSchema
                 setter: setSchema

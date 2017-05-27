@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
  */
 class Edmx extends TEdmxType
 {
-    public function __construct($namespace = "Data", $EntityContainerName = "DefaultContainer", $version = "1.0")
+    public function __construct($namespace = "Data", $EntityContainerName = "DefaultContainer", $version = "3.0")
     {
         $this->setVersion($version);
         $schema = new \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema($namespace, $EntityContainerName);

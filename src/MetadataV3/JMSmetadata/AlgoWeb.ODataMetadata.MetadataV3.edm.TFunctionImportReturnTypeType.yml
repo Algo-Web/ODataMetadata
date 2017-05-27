@@ -23,7 +23,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType:
             access_type: public_method
             serialized_name: EntitySet
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getEntitySet
                 setter: setEntitySet

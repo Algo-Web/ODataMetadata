@@ -33,7 +33,7 @@ class TEntityTypeType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType[] $key
      */
-    private $key = null;
+    private $key = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType[] $property
