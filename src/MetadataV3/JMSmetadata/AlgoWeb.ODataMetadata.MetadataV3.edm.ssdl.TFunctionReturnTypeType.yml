@@ -5,7 +5,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType:
             access_type: public_method
             serialized_name: CollectionType
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getCollectionType
                 setter: setCollectionType

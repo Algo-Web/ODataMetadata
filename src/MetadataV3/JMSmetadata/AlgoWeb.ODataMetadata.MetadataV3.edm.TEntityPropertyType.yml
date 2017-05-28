@@ -137,46 +137,46 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType:
             xml_attribute: true
             type: string
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/02/edm/annotation'
+                namespace: http://schemas.microsoft.com/ado/2009/02/edm/annotation
         documentation:
             expose: true
             access_type: public_method
             serialized_name: Documentation
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
             xml_list:
                 inline: true
                 entry_name: Documentation
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType>
         valueAnnotation:
             expose: true
             access_type: public_method
             serialized_name: ValueAnnotation
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getValueAnnotation
                 setter: setValueAnnotation
             xml_list:
                 inline: true
                 entry_name: ValueAnnotation
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType>
         typeAnnotation:
             expose: true
             access_type: public_method
             serialized_name: TypeAnnotation
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getTypeAnnotation
                 setter: setTypeAnnotation
             xml_list:
                 inline: true
                 entry_name: TypeAnnotation
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType>

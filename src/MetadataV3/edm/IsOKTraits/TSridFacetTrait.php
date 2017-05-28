@@ -10,8 +10,8 @@ trait TSridFacetTrait
 
     public function isTSridFacetValid($string)
     {
-        if (!$this->isTVariableValid($string)) {
-            return false;
+        if ($this->isTVariableValid($string)) {
+            return true;
         }
         $this->nonNegativeInteger($string);
         return true;

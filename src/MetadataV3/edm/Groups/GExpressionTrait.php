@@ -709,7 +709,7 @@ trait GExpressionTrait
         }
 
         foreach ($this->gExpressionSimpleFieldNames as $key => $type) {
-            if (null != $type) {
+            if (null != $type && null != $key && null != $this->$key) {
                 // this bit passes if nothing throws an exception
                 $result = $this->$type($this->$key);
             }

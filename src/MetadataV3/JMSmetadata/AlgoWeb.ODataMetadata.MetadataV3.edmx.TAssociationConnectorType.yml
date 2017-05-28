@@ -23,12 +23,12 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType:
             access_type: public_method
             serialized_name: ConnectorPoint
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getConnectorPoint
                 setter: setConnectorPoint
             xml_list:
                 inline: true
                 entry_name: ConnectorPoint
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType>

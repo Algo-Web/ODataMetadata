@@ -255,12 +255,6 @@ class TComplexTypePropertyType extends IsOK
         )) {
             return false;
         }
-        $count = count($this->documentation) + count($this->valueAnnotation) + count($this->typeAnnotation);
-        if (0 == $count) {
-            $msg = "At least one of documentation array, value annotation array and type annotation array must"
-                   ."have at least one element";
-            return false;
-        }
         
         if (!$this->isTCommonPropertyAttributesValid($msg)) {
             return false;

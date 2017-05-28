@@ -5,7 +5,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeStorageModelsType:
             access_type: public_method
             serialized_name: Schema
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getSchema
                 setter: setSchema

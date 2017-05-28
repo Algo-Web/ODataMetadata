@@ -14,7 +14,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationType:
             access_type: public_method
             serialized_name: Documentation
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
@@ -24,21 +24,21 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationType:
             access_type: public_method
             serialized_name: End
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getEnd
                 setter: setEnd
             xml_list:
                 inline: true
                 entry_name: End
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType>
         referentialConstraint:
             expose: true
             access_type: public_method
             serialized_name: ReferentialConstraint
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm/ssdl'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             accessor:
                 getter: getReferentialConstraint
                 setter: setReferentialConstraint

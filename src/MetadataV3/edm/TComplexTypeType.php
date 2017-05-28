@@ -19,7 +19,7 @@ class TComplexTypeType extends IsOK
     /**
      * @property string $typeAccess
      */
-    private $typeAccess = null;
+    private $typeAccess = 'Public';
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation

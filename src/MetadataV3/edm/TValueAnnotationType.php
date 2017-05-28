@@ -91,6 +91,7 @@ class TValueAnnotationType extends IsOK
      */
     public function setTerm($term)
     {
+        $term = trim($term);
         if (!$this->isTQualifiedNameValid($term)) {
             $msg = "Term must be a valid TQualifiedName";
             throw new \InvalidArgumentException($msg);

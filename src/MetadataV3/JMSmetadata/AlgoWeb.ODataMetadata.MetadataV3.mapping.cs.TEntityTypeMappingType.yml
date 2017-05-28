@@ -14,21 +14,21 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType:
             access_type: public_method
             serialized_name: MappingFragment
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getMappingFragment
                 setter: setMappingFragment
             xml_list:
                 inline: true
                 entry_name: MappingFragment
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             type: array<AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType>
         modificationFunctionMapping:
             expose: true
             access_type: public_method
             serialized_name: ModificationFunctionMapping
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getModificationFunctionMapping
                 setter: setModificationFunctionMapping

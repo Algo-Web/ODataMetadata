@@ -5,7 +5,7 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetModificationFunctionM
             access_type: public_method
             serialized_name: DeleteFunction
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getDeleteFunction
                 setter: setDeleteFunction
@@ -15,7 +15,7 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetModificationFunctionM
             access_type: public_method
             serialized_name: InsertFunction
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getInsertFunction
                 setter: setInsertFunction

@@ -5,7 +5,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TOptionsType:
             access_type: public_method
             serialized_name: DesignerInfoPropertySet
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getDesignerInfoPropertySet
                 setter: setDesignerInfoPropertySet
@@ -14,4 +14,4 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TOptionsType:
                 inline: false
                 entry_name: DesignerProperty
                 skip_when_empty: true
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx

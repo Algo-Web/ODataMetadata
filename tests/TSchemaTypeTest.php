@@ -22,4 +22,26 @@ class TSchemaTypeTest extends TestCase
 
         $this->assertFalse($foo->isOK());
     }
+
+    public function testGetRandMaximum()
+    {
+        $type = new TSchemaType();
+        $expectedMax = 1;
+        $actualMax = -2;
+        for ($i = 0; $i < 100; $i++) {
+            $actualMax = max($type->getRand(), $actualMax);
+        }
+        $this->assertTrue($expectedMax >= $actualMax, $actualMax . " must be less than ".$expectedMax);
+    }
+
+    public function testGetRandMinimum()
+    {
+        $type = new TSchemaType();
+        $expectedMin = 0;
+        $actualMin = 2;
+        for ($i = 0; $i < 100; $i++) {
+            $actualMin = min($type->getRand(), $actualMin);
+        }
+        $this->assertTrue($expectedMin <= $actualMin, $actualMin . " must be less than ".$expectedMin);
+    }
 }

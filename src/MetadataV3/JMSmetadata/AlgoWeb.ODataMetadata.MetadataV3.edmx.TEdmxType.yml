@@ -14,7 +14,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TEdmxType:
             access_type: public_method
             serialized_name: Designer
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getDesigner
                 setter: setDesigner
@@ -24,7 +24,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TEdmxType:
             access_type: public_method
             serialized_name: Runtime
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getRuntime
                 setter: setRuntime
@@ -34,7 +34,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TEdmxType:
             access_type: public_method
             serialized_name: DataServices
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getDataServiceType
                 setter: setDataServiceType

@@ -41,49 +41,49 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType:
             access_type: public_method
             serialized_name: QueryView
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getQueryView
                 setter: setQueryView
             xml_list:
                 inline: true
                 entry_name: QueryView
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             type: array<AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TQueryViewType>
         entityTypeMapping:
             expose: true
             access_type: public_method
             serialized_name: EntityTypeMapping
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getEntityTypeMapping
                 setter: setEntityTypeMapping
             xml_list:
                 inline: true
                 entry_name: EntityTypeMapping
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             type: array<AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType>
         mappingFragment:
             expose: true
             access_type: public_method
             serialized_name: MappingFragment
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getMappingFragment
                 setter: setMappingFragment
             xml_list:
                 inline: true
                 entry_name: MappingFragment
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             type: array<AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType>
         complexProperty:
             expose: true
             access_type: public_method
             serialized_name: ComplexProperty
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getComplexProperty
                 setter: setComplexProperty
@@ -93,7 +93,7 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType:
             access_type: public_method
             serialized_name: ScalarProperty
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getScalarProperty
                 setter: setScalarProperty
@@ -103,7 +103,7 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType:
             access_type: public_method
             serialized_name: Condition
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getCondition
                 setter: setCondition

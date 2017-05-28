@@ -144,6 +144,10 @@ class TEdmxType extends IsOK
             $msg = "Version cannot be null or empty";
             return false;
         }
+        if (!$this->dataServiceType instanceof TDataServicesType) {
+            $msg = "Data service type cannot be null";
+            return false;
+        }
         if (null != $this->designer && !$this->designer->isOK($msg)) {
             return false;
         }
@@ -151,11 +155,6 @@ class TEdmxType extends IsOK
             return false;
         }
         if (!$this->dataServiceType->isOK($msg)) {
-            return false;
-        }
-
-        if (null == $this->runtime && null == $this->dataServiceType) {
-            $msg = "Either a runtime or a dataservice must be defined for Tedmx";
             return false;
         }
 

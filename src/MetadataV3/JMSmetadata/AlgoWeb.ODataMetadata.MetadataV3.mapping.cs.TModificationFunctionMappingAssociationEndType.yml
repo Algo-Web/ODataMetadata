@@ -32,7 +32,7 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingAssociat
             access_type: public_method
             serialized_name: ScalarProperty
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getScalarProperty
                 setter: setScalarProperty
