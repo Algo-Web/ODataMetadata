@@ -30,7 +30,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $ds = DIRECTORY_SEPARATOR;
 
         $goodxsd = dirname(__DIR__) . $ds . "xsd" . $ds . "Microsoft.Data.Entity.Design.Edmx_3.Fixed.xsd";
-        if(!file_exists($goodxsd)){
+        if (!file_exists($goodxsd)) {
             return true;
         }
         $xml = new \DOMDocument();
