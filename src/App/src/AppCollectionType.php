@@ -202,7 +202,5 @@ class AppCollectionType extends IsOK
         if (!$this->isValidArrayOK($this->categories, '\AlgoWeb\ODataMetadata\App\AppCategoriesType', $msg)) {
             return false;
         }
-
-
     }
 }
