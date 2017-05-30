@@ -1,0 +1,26 @@
+AlgoWeb\ODataMetadata\App\AppWorkspaceType:
+    properties:
+        title:
+            expose: true
+            access_type: public_method
+            serialized_name: title
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getTitle
+                setter: setTitle
+            type: AlgoWeb\ODataMetadata\Atom\Title
+        collection:
+            expose: true
+            access_type: public_method
+            serialized_name: collection
+            xml_element:
+                namespace: 'http://www.w3.org/2007/app'
+            accessor:
+                getter: getCollection
+                setter: setCollection
+            xml_list:
+                inline: true
+                entry_name: collection
+                namespace: 'http://www.w3.org/2007/app'
+            type: array<AlgoWeb\ODataMetadata\App\Collection>

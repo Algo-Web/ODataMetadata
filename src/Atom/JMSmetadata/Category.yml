@@ -1,0 +1,49 @@
+AlgoWeb\ODataMetadata\Atom\Category:
+    xml_root_name: category
+    xml_root_namespace: 'http://www.w3.org/2005/Atom'
+    properties:
+        base:
+            expose: true
+            access_type: public_method
+            serialized_name: base
+            accessor:
+                getter: getBase
+                setter: setBase
+            xml_attribute: true
+            type: string
+        lang:
+            expose: true
+            access_type: public_method
+            serialized_name: lang
+            accessor:
+                getter: getLang
+                setter: setLang
+            xml_attribute: true
+            type: string
+        term:
+            expose: true
+            access_type: public_method
+            serialized_name: term
+            accessor:
+                getter: getTerm
+                setter: setTerm
+            xml_attribute: true
+            type: \AnyType
+        scheme:
+            expose: true
+            access_type: public_method
+            serialized_name: scheme
+            accessor:
+                getter: getScheme
+                setter: setScheme
+            xml_attribute: true
+            type: \AnyType
+        label:
+            expose: true
+            access_type: public_method
+            serialized_name: label
+            accessor:
+                getter: getLabel
+                setter: setLabel
+            xml_attribute: true
+            type: \AnyType

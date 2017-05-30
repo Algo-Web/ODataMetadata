@@ -1,0 +1,76 @@
+AlgoWeb\ODataMetadata\Atom\Link:
+    xml_root_name: link
+    xml_root_namespace: 'http://www.w3.org/2005/Atom'
+    properties:
+        base:
+            expose: true
+            access_type: public_method
+            serialized_name: base
+            accessor:
+                getter: getBase
+                setter: setBase
+            xml_attribute: true
+            type: string
+        lang:
+            expose: true
+            access_type: public_method
+            serialized_name: lang
+            accessor:
+                getter: getLang
+                setter: setLang
+            xml_attribute: true
+            type: string
+        href:
+            expose: true
+            access_type: public_method
+            serialized_name: href
+            accessor:
+                getter: getHref
+                setter: setHref
+            xml_attribute: true
+            type: \AnyType
+        rel:
+            expose: true
+            access_type: public_method
+            serialized_name: rel
+            accessor:
+                getter: getRel
+                setter: setRel
+            xml_attribute: true
+            type: \AnyType
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: type
+            accessor:
+                getter: getType
+                setter: setType
+            xml_attribute: true
+            type: string
+        hreflang:
+            expose: true
+            access_type: public_method
+            serialized_name: hreflang
+            accessor:
+                getter: getHreflang
+                setter: setHreflang
+            xml_attribute: true
+            type: string
+        title:
+            expose: true
+            access_type: public_method
+            serialized_name: title
+            accessor:
+                getter: getTitle
+                setter: setTitle
+            xml_attribute: true
+            type: \AnyType
+        length:
+            expose: true
+            access_type: public_method
+            serialized_name: length
+            accessor:
+                getter: getLength
+                setter: setLength
+            xml_attribute: true
+            type: \AnyType

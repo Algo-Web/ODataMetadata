@@ -1,0 +1,188 @@
+AlgoWeb\ODataMetadata\Atom\EntryType:
+    properties:
+        base:
+            expose: true
+            access_type: public_method
+            serialized_name: base
+            accessor:
+                getter: getBase
+                setter: setBase
+            xml_attribute: true
+            type: string
+        lang:
+            expose: true
+            access_type: public_method
+            serialized_name: lang
+            accessor:
+                getter: getLang
+                setter: setLang
+            xml_attribute: true
+            type: string
+        author:
+            expose: true
+            access_type: public_method
+            serialized_name: author
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getAuthor
+                setter: setAuthor
+            xml_list:
+                inline: true
+                entry_name: author
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Author>
+        category:
+            expose: true
+            access_type: public_method
+            serialized_name: category
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getCategory
+                setter: setCategory
+            xml_list:
+                inline: true
+                entry_name: category
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Category>
+        content:
+            expose: true
+            access_type: public_method
+            serialized_name: content
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getContent
+                setter: setContent
+            xml_list:
+                inline: true
+                entry_name: content
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Content>
+        contributor:
+            expose: true
+            access_type: public_method
+            serialized_name: contributor
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getContributor
+                setter: setContributor
+            xml_list:
+                inline: true
+                entry_name: contributor
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Contributor>
+        id:
+            expose: true
+            access_type: public_method
+            serialized_name: id
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getId
+                setter: setId
+            xml_list:
+                inline: true
+                entry_name: id
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Id>
+        link:
+            expose: true
+            access_type: public_method
+            serialized_name: link
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getLink
+                setter: setLink
+            xml_list:
+                inline: true
+                entry_name: link
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Link>
+        published:
+            expose: true
+            access_type: public_method
+            serialized_name: published
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getPublished
+                setter: setPublished
+            xml_list:
+                inline: true
+                entry_name: published
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Published>
+        rights:
+            expose: true
+            access_type: public_method
+            serialized_name: rights
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getRights
+                setter: setRights
+            xml_list:
+                inline: true
+                entry_name: rights
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Rights>
+        source:
+            expose: true
+            access_type: public_method
+            serialized_name: source
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getSource
+                setter: setSource
+            xml_list:
+                inline: true
+                entry_name: source
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Source>
+        summary:
+            expose: true
+            access_type: public_method
+            serialized_name: summary
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getSummary
+                setter: setSummary
+            xml_list:
+                inline: true
+                entry_name: summary
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Summary>
+        title:
+            expose: true
+            access_type: public_method
+            serialized_name: title
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getTitle
+                setter: setTitle
+            xml_list:
+                inline: true
+                entry_name: title
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Title>
+        updated:
+            expose: true
+            access_type: public_method
+            serialized_name: updated
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getUpdated
+                setter: setUpdated
+            xml_list:
+                inline: true
+                entry_name: updated
+                namespace: 'http://www.w3.org/2005/Atom'
+            type: array<AlgoWeb\ODataMetadata\Atom\Updated>

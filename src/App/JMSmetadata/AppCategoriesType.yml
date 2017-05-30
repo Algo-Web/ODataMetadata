@@ -1,0 +1,25 @@
+AlgoWeb\ODataMetadata\App\AppCategoriesType:
+    properties:
+        fixed:
+            expose: true
+            access_type: public_method
+            serialized_name: fixed
+            accessor:
+                getter: getFixed
+                setter: setFixed
+            xml_attribute: true
+            type: boolean
+        category:
+            expose: true
+            access_type: public_method
+            serialized_name: category
+            xml_element:
+                namespace: 'http://www.w3.org/2007/app'
+            accessor:
+                getter: getCategory
+                setter: setCategory
+            xml_list:
+                inline: true
+                entry_name: category
+                namespace: 'http://www.w3.org/2007/app'
+            type: array<AlgoWeb\ODataMetadata\App\AppCategoryType>

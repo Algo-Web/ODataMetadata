@@ -1,0 +1,3 @@
+AlgoWeb\ODataMetadata\App\Workspace:
+    xml_root_name: workspace
+    xml_root_namespace: 'http://www.w3.org/2007/app'

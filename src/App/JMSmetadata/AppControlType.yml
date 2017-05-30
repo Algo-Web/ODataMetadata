@@ -1,0 +1,12 @@
+AlgoWeb\ODataMetadata\App\AppControlType:
+    properties:
+        draft:
+            expose: true
+            access_type: public_method
+            serialized_name: draft
+            xml_element:
+                namespace: 'http://www.w3.org/2007/app'
+            accessor:
+                getter: getDraft
+                setter: setDraft
+            type: string

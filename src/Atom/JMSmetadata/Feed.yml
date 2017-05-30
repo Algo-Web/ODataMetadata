@@ -1,0 +1,3 @@
+AlgoWeb\ODataMetadata\Atom\Feed:
+    xml_root_name: feed
+    xml_root_namespace: 'http://www.w3.org/2005/Atom'

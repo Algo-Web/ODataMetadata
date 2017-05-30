@@ -1,0 +1,49 @@
+AlgoWeb\ODataMetadata\App\AppCollectionType:
+    properties:
+        href:
+            expose: true
+            access_type: public_method
+            serialized_name: href
+            accessor:
+                getter: getHref
+                setter: setHref
+            xml_attribute: true
+            type: string
+        title:
+            expose: true
+            access_type: public_method
+            serialized_name: title
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getTitle
+                setter: setTitle
+            type: AlgoWeb\ODataMetadata\Atom\Title
+        accept:
+            expose: true
+            access_type: public_method
+            serialized_name: accept
+            xml_element:
+                namespace: 'http://www.w3.org/2007/app'
+            accessor:
+                getter: getAccept
+                setter: setAccept
+            xml_list:
+                inline: true
+                entry_name: accept
+                namespace: 'http://www.w3.org/2007/app'
+            type: array<string>
+        categories:
+            expose: true
+            access_type: public_method
+            serialized_name: categories
+            xml_element:
+                namespace: 'http://www.w3.org/2007/app'
+            accessor:
+                getter: getCategories
+                setter: setCategories
+            xml_list:
+                inline: true
+                entry_name: categories
+                namespace: 'http://www.w3.org/2007/app'
+            type: array<AlgoWeb\ODataMetadata\App\AppCategoriesType>

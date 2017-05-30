@@ -1,0 +1,50 @@
+AlgoWeb\ODataMetadata\Atom\AtomPersonConstructType:
+    properties:
+        base:
+            expose: true
+            access_type: public_method
+            serialized_name: base
+            accessor:
+                getter: getBase
+                setter: setBase
+            xml_attribute: true
+            type: string
+        lang:
+            expose: true
+            access_type: public_method
+            serialized_name: lang
+            accessor:
+                getter: getLang
+                setter: setLang
+            xml_attribute: true
+            type: string
+        name:
+            expose: true
+            access_type: public_method
+            serialized_name: name
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getName
+                setter: setName
+            type: string
+        uri:
+            expose: true
+            access_type: public_method
+            serialized_name: uri
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getUri
+                setter: setUri
+            type: string
+        email:
+            expose: true
+            access_type: public_method
+            serialized_name: email
+            xml_element:
+                namespace: 'http://www.w3.org/2005/Atom'
+            accessor:
+                getter: getEmail
+                setter: setEmail
+            type: AlgoWeb\ODataMetadata\Atom\Email

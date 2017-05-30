@@ -1,0 +1,3 @@
+AlgoWeb\ODataMetadata\Atom\Published:
+    xml_root_name: published
+    xml_root_namespace: 'http://www.w3.org/2005/Atom'

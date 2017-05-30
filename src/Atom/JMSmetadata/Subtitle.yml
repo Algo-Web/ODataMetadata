@@ -1,0 +1,3 @@
+AlgoWeb\ODataMetadata\Atom\Subtitle:
+    xml_root_name: subtitle
+    xml_root_namespace: 'http://www.w3.org/2005/Atom'

@@ -1,0 +1,40 @@
+AlgoWeb\ODataMetadata\Atom\Content:
+    xml_root_name: content
+    xml_root_namespace: 'http://www.w3.org/2005/Atom'
+    properties:
+        type:
+            expose: true
+            access_type: public_method
+            serialized_name: type
+            accessor:
+                getter: getType
+                setter: setType
+            xml_attribute: true
+            type: string
+        base:
+            expose: true
+            access_type: public_method
+            serialized_name: base
+            accessor:
+                getter: getBase
+                setter: setBase
+            xml_attribute: true
+            type: string
+        lang:
+            expose: true
+            access_type: public_method
+            serialized_name: lang
+            accessor:
+                getter: getLang
+                setter: setLang
+            xml_attribute: true
+            type: string
+        src:
+            expose: true
+            access_type: public_method
+            serialized_name: src
+            accessor:
+                getter: getSrc
+                setter: setSrc
+            xml_attribute: true
+            type: \AnyType

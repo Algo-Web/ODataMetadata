@@ -1,0 +1,40 @@
+AlgoWeb\ODataMetadata\Atom\Generator:
+    xml_root_name: generator
+    xml_root_namespace: 'http://www.w3.org/2005/Atom'
+    properties:
+        base:
+            expose: true
+            access_type: public_method
+            serialized_name: base
+            accessor:
+                getter: getBase
+                setter: setBase
+            xml_attribute: true
+            type: string
+        lang:
+            expose: true
+            access_type: public_method
+            serialized_name: lang
+            accessor:
+                getter: getLang
+                setter: setLang
+            xml_attribute: true
+            type: string
+        uri:
+            expose: true
+            access_type: public_method
+            serialized_name: uri
+            accessor:
+                getter: getUri
+                setter: setUri
+            xml_attribute: true
+            type: \AnyType
+        version:
+            expose: true
+            access_type: public_method
+            serialized_name: version
+            accessor:
+                getter: getVersion
+                setter: setVersion
+            xml_attribute: true
+            type: \AnyType

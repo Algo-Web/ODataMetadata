@@ -1,0 +1,3 @@
+AlgoWeb\ODataMetadata\App\Collection:
+    xml_root_name: collection
+    xml_root_namespace: 'http://www.w3.org/2007/app'
