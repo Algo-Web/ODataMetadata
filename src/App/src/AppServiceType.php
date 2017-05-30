@@ -100,7 +100,4 @@ class AppServiceType
         $this->workspace = $workspace;
         return $this;
     }
-
-
 }
-

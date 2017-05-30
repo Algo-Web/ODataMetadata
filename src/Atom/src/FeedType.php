@@ -883,7 +883,4 @@ class FeedType
         $this->entry = $entry;
         return $this;
     }
-
-
 }
-

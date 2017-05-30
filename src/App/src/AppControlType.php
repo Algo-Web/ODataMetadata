@@ -37,7 +37,4 @@ class AppControlType
         $this->draft = $draft;
         return $this;
     }
-
-
 }
-

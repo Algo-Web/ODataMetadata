@@ -46,7 +46,4 @@ class Uri
     {
         return strval($this->__value);
     }
-
-
 }
-

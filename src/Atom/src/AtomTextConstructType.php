@@ -91,7 +91,4 @@ class AtomTextConstructType
         $this->lang = $lang;
         return $this;
     }
-
-
 }
-

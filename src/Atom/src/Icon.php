@@ -61,7 +61,4 @@ class Icon
         $this->lang = $lang;
         return $this;
     }
-
-
 }
-

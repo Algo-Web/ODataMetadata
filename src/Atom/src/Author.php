@@ -7,7 +7,4 @@ namespace AlgoWeb\ODataMetadata\Atom;
  */
 class Author extends AtomPersonConstructType
 {
-
-
 }
-

@@ -142,7 +142,4 @@ class Category extends UndefinedContentType
         $this->label = $label;
         return $this;
     }
-
-
 }
-

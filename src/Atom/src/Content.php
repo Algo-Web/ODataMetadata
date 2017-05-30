@@ -115,7 +115,4 @@ class Content
         $this->src = $src;
         return $this;
     }
-
-
 }
-

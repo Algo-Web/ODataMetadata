@@ -9,7 +9,4 @@ use AlgoWeb\ODataMetadata\Atom\AtomDateConstructType;
  */
 class Edited extends AtomDateConstructType
 {
-
-
 }
-

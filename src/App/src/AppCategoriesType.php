@@ -100,7 +100,4 @@ class AppCategoriesType
         $this->category = $category;
         return $this;
     }
-
-
 }
-

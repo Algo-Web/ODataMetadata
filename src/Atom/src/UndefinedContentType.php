@@ -10,7 +10,4 @@ namespace AlgoWeb\ODataMetadata\Atom;
  */
 class UndefinedContentType
 {
-
-
 }
-

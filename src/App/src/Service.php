@@ -7,7 +7,4 @@ namespace AlgoWeb\ODataMetadata\App;
  */
 class Service extends AppServiceType
 {
-
-
 }
-

@@ -190,7 +190,4 @@ class AppCollectionType
         $this->categories = $categories;
         return $this;
     }
-
-
 }
-

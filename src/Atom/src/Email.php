@@ -46,7 +46,4 @@ class Email
     {
         return strval($this->__value);
     }
-
-
 }
-

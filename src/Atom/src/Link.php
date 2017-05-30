@@ -223,7 +223,4 @@ class Link extends UndefinedContentType
         $this->length = $length;
         return $this;
     }
-
-
 }
-

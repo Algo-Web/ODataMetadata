@@ -145,7 +145,4 @@ class AtomPersonConstructType
         $this->email = $email;
         return $this;
     }
-
-
 }
-

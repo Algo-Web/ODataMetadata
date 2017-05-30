@@ -61,7 +61,4 @@ class Id
         $this->lang = $lang;
         return $this;
     }
-
-
 }
-

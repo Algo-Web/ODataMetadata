@@ -91,7 +91,4 @@ class AppCategoryType
         $this->label = $label;
         return $this;
     }
-
-
 }
-

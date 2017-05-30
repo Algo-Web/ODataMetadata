@@ -115,7 +115,4 @@ class Generator
         $this->version = $version;
         return $this;
     }
-
-
 }
-

@@ -103,7 +103,4 @@ class AtomDateConstructType
         $this->lang = $lang;
         return $this;
     }
-
-
 }
-

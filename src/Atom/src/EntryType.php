@@ -820,7 +820,4 @@ class EntryType
         $this->updated = $updated;
         return $this;
     }
-
-
 }
-

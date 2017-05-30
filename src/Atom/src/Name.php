@@ -46,7 +46,4 @@ class Name
     {
         return strval($this->__value);
     }
-
-
 }
-

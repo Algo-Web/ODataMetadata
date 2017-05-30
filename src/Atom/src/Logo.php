@@ -61,7 +61,4 @@ class Logo
         $this->lang = $lang;
         return $this;
     }
-
-
 }
-

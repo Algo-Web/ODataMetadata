@@ -100,7 +100,4 @@ class AppWorkspaceType
         $this->collection = $collection;
         return $this;
     }
-
-
 }
-

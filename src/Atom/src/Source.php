@@ -817,7 +817,4 @@ class Source
         $this->updated = $updated;
         return $this;
     }
-
-
 }
-
