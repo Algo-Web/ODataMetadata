@@ -15,6 +15,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
+use Illuminate\Support\Str;
 use JMS\Serializer\SerializerBuilder;
 
 class MetadataManager
@@ -62,7 +63,7 @@ class MetadataManager
         }
 
         $entitySet = new EntitySetAnonymousType();
-        $entitySet->setName($this->pluralize(2, $NewEntity->getName()));
+        $entitySet->setName(Str::plural($NewEntity->getName(), 2));
         $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
         if (0 == strlen(trim($namespace))) {
             $entityTypeName = $NewEntity->getName();
@@ -185,8 +186,8 @@ class MetadataManager
         $dependentLongDescription = null
     ) {
         $this->startEdmxTransaction();
-        $principalEntitySetName = $this->pluralize(2, $principalType->getName());
-        $dependentEntitySetName = $this->pluralize(2, $dependentType->getName());
+        $principalEntitySetName = Str::plural($principalType->getName(), 2);
+        $dependentEntitySetName = Str::plural($dependentType->getName(), 2);
         $relationName = $principalType->getName() . "_" . $principalProperty . "_"
                         . $dependentType->getName() . "_" . $dependentProperty;
         $relationName = trim($relationName, "_");

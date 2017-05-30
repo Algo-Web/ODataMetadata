@@ -28,7 +28,8 @@
     "phpunit/phpunit": "^5.6",
     "jms/serializer": "^1.7",
     "satooshi/php-coveralls": "dev-master",
-    "fiunchinho/phpunit-randomizer": "2.0.*"
+    "fiunchinho/phpunit-randomizer": "2.0.*",
+    "illuminate/support" : "^4.0|^5.1"
   },
   "requre-dev": {
     "brianium/paratest": "dev-master",
