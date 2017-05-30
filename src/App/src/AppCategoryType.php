@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\App;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing AppCategoryType
  *
  *
  * XSD Type: appCategoryType
  */
-class AppCategoryType
+class AppCategoryType extends IsOK
 {
 
     /**
@@ -90,5 +92,14 @@ class AppCategoryType
     {
         $this->label = $label;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (null == $this->scheme && null == $this->term && null == $this->label) {
+            $msg = "AppCategoryType At least one value from scheme term or label should be defined";
+            return false;
+        }
+        return true;
     }
 }

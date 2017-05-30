@@ -2,26 +2,27 @@
 
 namespace AlgoWeb\ODataMetadata\App;
 
+use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+
 /**
  * Class representing AppCategoriesType
  *
  *
  * XSD Type: appCategoriesType
  */
-class AppCategoriesType
+class AppCategoriesType extends IsOK
 {
-
+    use IsOKToolboxTrait;
     /**
      * @property boolean $fixed
      */
-    private $fixed = null;
+    private $fixed = false;
 
     /**
      * @property \AlgoWeb\ODataMetadata\App\AppCategoryType[] $category
      */
-    private $category = array(
-        
-    );
+    private $category = array();
 
     /**
      * Gets as fixed
@@ -99,5 +100,13 @@ class AppCategoriesType
     {
         $this->category = $category;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isValidArrayOK($this->category, '\AlgoWeb\ODataMetadata\App\AppCategoryType', $msg)) {
+            return false;
+        }
+        return true;
     }
 }

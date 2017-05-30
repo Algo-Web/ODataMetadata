@@ -2,14 +2,18 @@
 
 namespace AlgoWeb\ODataMetadata\App;
 
+use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+
 /**
  * Class representing AppServiceType
  *
  *
  * XSD Type: appServiceType
  */
-class AppServiceType
+class AppServiceType extends IsOK
 {
+    use IsOKToolboxTrait;
 
     /**
      * @property \AlgoWeb\ODataMetadata\Atom\Author $author
@@ -19,9 +23,7 @@ class AppServiceType
     /**
      * @property \AlgoWeb\ODataMetadata\App\Workspace[] $workspace
      */
-    private $workspace = array(
-        
-    );
+    private $workspace = array();
 
     /**
      * Gets as author
@@ -99,5 +101,19 @@ class AppServiceType
     {
         $this->workspace = $workspace;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isObjectNullOrType('\AlgoWeb\ODataMetadata\Atom\Author', $this->author, $msg)) {
+            return false;
+        }
+        if ($this->isObjectNullOrOK($this->author, $msg)) {
+            return false;
+        }
+        if ($this->isValidArrayOK($this->workspace, '\AlgoWeb\ODataMetadata\App\Workspace', $msg, 1)) {
+            return false;
+        }
+        return true;
     }
 }

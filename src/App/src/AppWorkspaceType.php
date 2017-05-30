@@ -2,14 +2,18 @@
 
 namespace AlgoWeb\ODataMetadata\App;
 
+use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+
 /**
  * Class representing AppWorkspaceType
  *
  *
  * XSD Type: appWorkspaceType
  */
-class AppWorkspaceType
+class AppWorkspaceType extends IsOK
 {
+    use IsOKToolboxTrait;
 
     /**
      * @property \AlgoWeb\ODataMetadata\Atom\Title $title
@@ -19,9 +23,7 @@ class AppWorkspaceType
     /**
      * @property \AlgoWeb\ODataMetadata\App\Collection[] $collection
      */
-    private $collection = array(
-        
-    );
+    private $collection = array();
 
     /**
      * Gets as title
@@ -99,5 +101,21 @@ class AppWorkspaceType
     {
         $this->collection = $collection;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if ($this->isNotNullInstanceOf($this->title, '\AlgoWeb\ODataMetadata\Atom\Title')) {
+            $msg = "AppWorkspace Type Must not be null and it must be set to an instance of Atom Title.";
+            return false;
+        }
+
+        if (!$this->title->IsOk($msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK($this->collection, '\AlgoWeb\ODataMetadata\App\Collection', $msg)) {
+            return false;
+        }
+        return true;
     }
 }

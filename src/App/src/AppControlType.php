@@ -2,13 +2,15 @@
 
 namespace AlgoWeb\ODataMetadata\App;
 
+use AlgoWeb\ODataMetadata\IsOK;
+
 /**
  * Class representing AppControlType
  *
  *
  * XSD Type: appControlType
  */
-class AppControlType
+class AppControlType extends IsOK
 {
 
     /**
@@ -36,5 +38,14 @@ class AppControlType
     {
         $this->draft = $draft;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if ("yes" != $this->draft && "no" != $this->draft) {
+            $msg = "AppControlType only two valid values for draft are yes and no.";
+            return false;
+        }
+        return true;
     }
 }

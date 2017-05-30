@@ -2,14 +2,18 @@
 
 namespace AlgoWeb\ODataMetadata\App;
 
+use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+
 /**
  * Class representing AppCollectionType
  *
  *
  * XSD Type: appCollectionType
  */
-class AppCollectionType
+class AppCollectionType extends IsOK
 {
+    use IsOKToolboxTrait, XSDTopLevelTrait;
 
     /**
      * @property string $href
@@ -24,16 +28,12 @@ class AppCollectionType
     /**
      * @property string[] $accept
      */
-    private $accept = array(
-        
-    );
+    private $accept = array();
 
     /**
      * @property \AlgoWeb\ODataMetadata\App\AppCategoriesType[] $categories
      */
-    private $categories = array(
-        
-    );
+    private $categories = array();
 
     /**
      * Gets as href
@@ -189,5 +189,20 @@ class AppCollectionType
     {
         $this->categories = $categories;
         return $this;
+    }
+
+    public function isOK(&$msg = null)
+    {
+        if (!$this->isNotNullInstanceOf($this->title, '\AlgoWeb\ODataMetadata\Atom\Title')) {
+            $msg = "AppCollectionType Title Must be set to an instance of \AlgoWeb\ODataMetadata\Atom\Title";
+        }
+        if (!$this->title->isOK($msg)) {
+            return false;
+        }
+        if (!$this->isValidArrayOK($this->categories, '\AlgoWeb\ODataMetadata\App\AppCategoriesType', $msg)) {
+            return false;
+        }
+
+
     }
 }
