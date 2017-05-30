@@ -23,7 +23,7 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetModificationFunctionT
             access_type: public_method
             serialized_name: EndProperty
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getEndProperty
                 setter: setEndProperty

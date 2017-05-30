@@ -5,12 +5,12 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType\Parameters
             access_type: public_method
             serialized_name: Parameter
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getParameter
                 setter: setParameter
             xml_list:
                 inline: true
                 entry_name: Parameter
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType>

@@ -104,7 +104,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType:
             access_type: public_method
             serialized_name: CollectionType
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getCollectionType
                 setter: setCollectionType
@@ -114,7 +114,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType:
             access_type: public_method
             serialized_name: ReferenceType
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getReferenceType
                 setter: setReferenceType
@@ -124,7 +124,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType:
             access_type: public_method
             serialized_name: RowType
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getRowType
                 setter: setRowType
@@ -133,4 +133,4 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType:
                 inline: false
                 entry_name: Property
                 skip_when_empty: true
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm

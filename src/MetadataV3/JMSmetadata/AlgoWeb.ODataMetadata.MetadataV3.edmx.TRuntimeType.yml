@@ -5,7 +5,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeType:
             access_type: public_method
             serialized_name: StorageModels
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getStorageModels
                 setter: setStorageModels
@@ -15,7 +15,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeType:
             access_type: public_method
             serialized_name: ConceptualModels
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getConceptualModels
                 setter: setConceptualModels
@@ -25,7 +25,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeType:
             access_type: public_method
             serialized_name: Mappings
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getMappings
                 setter: setMappings

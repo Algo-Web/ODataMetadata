@@ -14,7 +14,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: String
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getString
                 setter: setString
@@ -24,7 +24,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: Binary
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getBinary
                 setter: setBinary
@@ -34,7 +34,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: Int
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getInt
                 setter: setInt
@@ -44,7 +44,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: Float
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getFloat
                 setter: setFloat
@@ -54,7 +54,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: Guid
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getGuid
                 setter: setGuid
@@ -64,7 +64,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: Decimal
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getDecimal
                 setter: setDecimal
@@ -74,7 +74,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: Bool
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getBool
                 setter: setBool
@@ -84,7 +84,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: DateTime
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getDateTime
                 setter: setDateTime
@@ -94,7 +94,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: DateTimeOffset
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getDateTimeOffset
                 setter: setDateTimeOffset
@@ -104,7 +104,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: Enum
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getEnum
                 setter: setEnum
@@ -114,7 +114,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: Path
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getPath
                 setter: setPath
@@ -124,7 +124,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: If
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getIf
                 setter: setIf
@@ -134,7 +134,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: Record
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getRecord
                 setter: setRecord
@@ -144,7 +144,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: Collection
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getCollection
                 setter: setCollection
@@ -154,7 +154,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: TypeAssert
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getTypeAssert
                 setter: setTypeAssert
@@ -164,7 +164,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: TypeTest
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getTypeTest
                 setter: setTypeTest
@@ -174,7 +174,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: FunctionReference
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getFunctionReference
                 setter: setFunctionReference
@@ -184,7 +184,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: EntitySetReference
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getEntitySetReference
                 setter: setEntitySetReference
@@ -194,7 +194,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: AnonymousFunction
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getAnonymousFunction
                 setter: setAnonymousFunction
@@ -204,7 +204,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: ParameterReference
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getParameterReference
                 setter: setParameterReference
@@ -214,7 +214,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: Apply
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getApply
                 setter: setApply
@@ -224,7 +224,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: PropertyReference
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getPropertyReference
                 setter: setPropertyReference
@@ -234,7 +234,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType:
             access_type: public_method
             serialized_name: ValueTermReference
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getValueTermReference
                 setter: setValueTermReference

@@ -59,40 +59,40 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TDiagramType:
             access_type: public_method
             serialized_name: EntityTypeShape
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getEntityTypeShape
                 setter: setEntityTypeShape
             xml_list:
                 inline: true
                 entry_name: EntityTypeShape
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType>
         associationConnector:
             expose: true
             access_type: public_method
             serialized_name: AssociationConnector
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getAssociationConnector
                 setter: setAssociationConnector
             xml_list:
                 inline: true
                 entry_name: AssociationConnector
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType>
         inheritanceConnector:
             expose: true
             access_type: public_method
             serialized_name: InheritanceConnector
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             accessor:
                 getter: getInheritanceConnector
                 setter: setInheritanceConnector
             xml_list:
                 inline: true
                 entry_name: InheritanceConnector
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edmx'
+                namespace: http://schemas.microsoft.com/ado/2007/06/edmx
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType>

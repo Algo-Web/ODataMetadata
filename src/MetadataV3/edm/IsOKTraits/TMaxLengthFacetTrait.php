@@ -10,7 +10,7 @@ trait TMaxLengthFacetTrait
 
     public function isTMaxLengthFacetValid($string)
     {
-        if (!$this->isTMaxValid($string)) {
+        if ($this->isTMaxValid($string)) {
             return true;
         }
         return $this->nonNegativeInteger($string);

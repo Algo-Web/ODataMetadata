@@ -4,6 +4,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TPathTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
@@ -15,10 +16,10 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
  */
 class TAnnotationsType extends IsOK
 {
-    use IsOKToolboxTrait, TQualifiedNameTrait, TSimpleIdentifierTrait {
-        TSimpleIdentifierTrait::isNCName insteadof TQualifiedNameTrait;
-        TSimpleIdentifierTrait::matchesRegexPattern insteadof TQualifiedNameTrait;
-        TSimpleIdentifierTrait::isName insteadof TQualifiedNameTrait;
+    use IsOKToolboxTrait, TPathTrait, TSimpleIdentifierTrait {
+        TSimpleIdentifierTrait::isNCName insteadof TPathTrait;
+        TSimpleIdentifierTrait::matchesRegexPattern insteadof TPathTrait;
+        TSimpleIdentifierTrait::isName insteadof TPathTrait;
     }
     /**
      * @property string $target
@@ -58,8 +59,8 @@ class TAnnotationsType extends IsOK
      */
     public function setTarget($target)
     {
-        if (!$this->isTQualifiedNameValid($target)) {
-            $msg = "Target must be a valid TQualifiedName";
+        if (!$this->isTPathValid($target)) {
+            $msg = "Target must be a valid TPath";
             throw new \InvalidArgumentException($msg);
         }
         $this->target = $target;
@@ -228,8 +229,8 @@ class TAnnotationsType extends IsOK
 
     public function isOK(&$msg = null)
     {
-        if (!$this->isTQualifiedNameValid($this->target)) {
-            $msg = "Target must be a valid TQualifiedName";
+        if (!$this->isTPathValid($this->target)) {
+            $msg = "Target must be a valid TPath";
             return false;
         }
         if (null != $this->qualifier && !$this->isTSimpleIdentifierValid($this->qualifier)) {

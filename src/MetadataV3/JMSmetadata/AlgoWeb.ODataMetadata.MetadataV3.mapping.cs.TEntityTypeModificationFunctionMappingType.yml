@@ -5,7 +5,7 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeModificationFunctionMappi
             access_type: public_method
             serialized_name: DeleteFunction
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getDeleteFunction
                 setter: setDeleteFunction
@@ -15,7 +15,7 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeModificationFunctionMappi
             access_type: public_method
             serialized_name: InsertFunction
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getInsertFunction
                 setter: setInsertFunction
@@ -25,7 +25,7 @@ AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeModificationFunctionMappi
             access_type: public_method
             serialized_name: UpdateFunction
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/mapping/cs'
+                namespace: http://schemas.microsoft.com/ado/2009/11/mapping/cs
             accessor:
                 getter: getUpdateFunction
                 setter: setUpdateFunction

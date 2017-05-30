@@ -14,35 +14,35 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterA
             access_type: public_method
             serialized_name: CollectionType
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getCollectionType
                 setter: setCollectionType
             xml_list:
                 inline: true
                 entry_name: CollectionType
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType>
         referenceType:
             expose: true
             access_type: public_method
             serialized_name: ReferenceType
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getReferenceType
                 setter: setReferenceType
             xml_list:
                 inline: true
                 entry_name: ReferenceType
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType>
         rowType:
             expose: true
             access_type: public_method
             serialized_name: RowType
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getRowType
                 setter: setRowType
@@ -51,4 +51,4 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterA
                 inline: false
                 entry_name: Property
                 skip_when_empty: true
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm

@@ -50,7 +50,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType:
             access_type: public_method
             serialized_name: Documentation
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getDocumentation
                 setter: setDocumentation
@@ -60,7 +60,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType:
             access_type: public_method
             serialized_name: Key
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getKey
                 setter: setKey
@@ -69,60 +69,60 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType:
                 inline: false
                 entry_name: PropertyRef
                 skip_when_empty: true
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
         property:
             expose: true
             access_type: public_method
             serialized_name: Property
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getProperty
                 setter: setProperty
             xml_list:
                 inline: true
                 entry_name: Property
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType>
         navigationProperty:
             expose: true
             access_type: public_method
             serialized_name: NavigationProperty
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getNavigationProperty
                 setter: setNavigationProperty
             xml_list:
                 inline: true
                 entry_name: NavigationProperty
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType>
         valueAnnotation:
             expose: true
             access_type: public_method
             serialized_name: ValueAnnotation
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getValueAnnotation
                 setter: setValueAnnotation
             xml_list:
                 inline: true
                 entry_name: ValueAnnotation
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType>
         typeAnnotation:
             expose: true
             access_type: public_method
             serialized_name: TypeAnnotation
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getTypeAnnotation
                 setter: setTypeAnnotation
             xml_list:
                 inline: true
                 entry_name: TypeAnnotation
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType>

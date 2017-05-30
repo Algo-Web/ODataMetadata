@@ -1,10 +1,11 @@
 AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType:
+    xml_root_namespace: http://schemas.microsoft.com/ado/2007/06/edmx
     properties:
         schema:
             expose: true
             access_type: public_method
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
             accessor:
                 getter: getSchema
                 setter: setSchema
@@ -13,7 +14,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType:
                 inline: true
                 entry_name: Schema
                 skip_when_empty: true
-                namespace: 'http://schemas.microsoft.com/ado/2009/11/edm'
+                namespace: http://schemas.microsoft.com/ado/2009/11/edm
         dataServiceVersion:
             expose: true
             access_type: public_method
@@ -24,7 +25,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType:
             xml_attribute: true
             type: string
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'
+                namespace: http://schemas.microsoft.com/ado/2007/08/dataservices/metadata
         maxDataServiceVersion:
             expose: true
             access_type: public_method
@@ -35,4 +36,4 @@ AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType:
             xml_attribute: true
             type: string
             xml_element:
-                namespace: 'http://schemas.microsoft.com/ado/2007/08/dataservices/metadata'
+                namespace: http://schemas.microsoft.com/ado/2007/08/dataservices/metadata
