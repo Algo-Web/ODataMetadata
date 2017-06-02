@@ -35,7 +35,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         }
         $xml = new \DOMDocument();
         $xml->loadXML($data);
-        $xml->schemaValidate($goodxsd);
+        return $xml->schemaValidate($goodxsd);
     }
 
     public function testEntitysAndProperties()
@@ -155,8 +155,12 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
 
-        $metadataManager->addNavigationPropertyToEntityType($CategoryType, "*", "Products", $ProductType, "0..1", "Category", ["CategoryID"], ["CategoryID"]);
-        $metadataManager->addNavigationPropertyToEntityType($Order_DetailType, "1", "Order", $ProductType, "*", "Order_Details", ["OrderID"], ["CategoryID"]);
+        $metadataManager->addNavigationPropertyToEntityType(
+            $CategoryType, "*", "Products", $ProductType, "0..1", "Category", ["CategoryID"], ["CategoryID"]
+        );
+        $metadataManager->addNavigationPropertyToEntityType(
+            $Order_DetailType, "1", "Order", $ProductType, "*", "Order_Details", ["OrderID"], ["CategoryID"]
+        );
 //        <NavigationProperty Name="Order_Details" Relationship="NorthwindModel.FK_Order_Details_Products" ToRole="Order_Details" FromRole="Products"/>
 
 
@@ -167,5 +171,17 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         $d = $metadataManager->getEdmxXML();
         $this->v3MetadataAgainstXSD($d);
+    }
+
+    public function testMetadataSerialiseRoundTrip()
+    {
+        $bar = new MetadataManager();
+        $foo = new MetadataManager();
+
+        $cereal = serialize($foo);
+
+        $foo = unserialize($cereal);
+        $this->assertTrue(null != $foo->getSerialiser());
+        $this->assertEquals($bar, $foo);
     }
 }

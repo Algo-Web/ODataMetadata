@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymous
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
@@ -22,7 +23,6 @@ use JMS\Serializer\SerializerBuilder;
 class MetadataManager
 {
     private $V3Edmx = null;
-    private $oldEdmx = null;
     private $lastError = null;
     private $serializer = null;
 
@@ -32,11 +32,8 @@ class MetadataManager
         if (!$this->V3Edmx->isOK($msg)) {
             throw new \Exception($msg);
         }
-        $ymlDir = __DIR__ . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
-        $this->serializer =
-            SerializerBuilder::create()
-                ->addMetadataDir($ymlDir)
-                ->build();
+        $this->initSerialiser();
+        assert(null != $this->serializer, "Serializer must not be null at end of constructor");
     }
 
     public function getEdmx()
@@ -48,18 +45,16 @@ class MetadataManager
 
     public function getEdmxXML()
     {
+        assert(null != $this->serializer, "Serializer must not be null when trying to get edmx xml");
         return $this->serializer->serialize($this->getEdmx(), "xml");
     }
 
     public function addEntityType($name, $accessType = "Public", $summary = null, $longDescription = null)
     {
-        $this->startEdmxTransaction();
         $NewEntity = new TEntityTypeType();
         $NewEntity->setName($name);
         if (null != $summary || null != $longDescription) {
-            $documentation = new TDocumentationType();
-            $documentation->setSummary($summary);
-            $documentation->setLongDescription($longDescription);
+            $documentation = $this->generateDocumentation($summary, $longDescription);
             $NewEntity->setDocumentation($documentation);
         }
 
@@ -77,10 +72,8 @@ class MetadataManager
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         if (!$this->V3Edmx->isok($this->lastError)) {
-            $this->revertEdmxTransaction();
             return false;
         }
-        $this->commitEdmxTransaction();
         return $NewEntity;
     }
 
@@ -100,48 +93,9 @@ class MetadataManager
         return $NewEntity;
     }
 
-    private function startEdmxTransaction()
+    public function getSerialiser()
     {
-        //$this->oldEdmx = serialize($this->V3Edmx);
-    }
-
-    /**
-     * Pluralizes a word if quantity is not one.
-     *
-     * @param int $quantity Number of items
-     * @param string $singular Singular form of word
-     * @param string $plural Plural form of word; function will attempt to deduce plural
-     * form from singular if not provided
-     * @return string Pluralized word if quantity is not one, otherwise singular
-     */
-    public static function pluralize($quantity, $singular, $plural = null)
-    {
-        if ($quantity == 1 || !strlen($singular)) {
-            return $singular;
-        }
-        if ($plural !== null) {
-            return $plural;
-        }
-
-        $last_letter = strtolower($singular[strlen($singular) - 1]);
-        switch ($last_letter) {
-            case 'y':
-                return substr($singular, 0, -1) . 'ies';
-            case 's':
-                return $singular . 'es';
-            default:
-                return $singular . 's';
-        }
-    }
-
-    private function revertEdmxTransaction()
-    {
-        //$this->V3Edmx = unserialize($this->oldEdmx);
-    }
-
-    private function commitEdmxTransaction()
-    {
-        //$this->oldEdmx = null;
+        return $this->serializer;
     }
 
     public function addPropertyToComplexType(
@@ -150,19 +104,15 @@ class MetadataManager
         $type,
         $defaultValue = null,
         $nullable = false,
-        $storeGeneratedPattern = null,
         $summary = null,
         $longDescription = null
     ) {
         $NewProperty = new TComplexTypePropertyType();
         $NewProperty->setName($name);
         $NewProperty->setType($type);
-        $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
         $NewProperty->setNullable($nullable);
         if (null != $summary || null != $longDescription) {
-            $documentation = new TDocumentationType();
-            $documentation->setSummary($summary);
-            $documentation->setLongDescription($longDescription);
+            $documentation = $this->generateDocumentation($summary, $longDescription);
             $NewProperty->addToDocumentation($documentation);
         }
         if (null != $defaultValue) {
@@ -171,7 +121,6 @@ class MetadataManager
         $complexType->addToProperty($NewProperty);
         return $NewProperty;
     }
-
 
     public function addPropertyToEntityType(
         $entityType,
@@ -184,7 +133,6 @@ class MetadataManager
         $summary = null,
         $longDescription = null
     ) {
-        $this->startEdmxTransaction();
         $NewProperty = new TEntityPropertyType();
         $NewProperty->setName($name);
         $NewProperty->setType($type);
@@ -206,10 +154,8 @@ class MetadataManager
             $entityType->addToKey($Key);
         }
         if (!$this->V3Edmx->isok($this->lastError)) {
-            $this->revertEdmxTransaction();
             return false;
         }
-        $this->commitEdmxTransaction();
         return $NewProperty;
     }
 
@@ -231,7 +177,6 @@ class MetadataManager
         $dependentSummery = null,
         $dependentLongDescription = null
     ) {
-        $this->startEdmxTransaction();
         $principalEntitySetName = Str::plural($principalType->getName(), 2);
         $dependentEntitySetName = Str::plural($dependentType->getName(), 2);
         $relationName = $principalType->getName() . "_" . $principalProperty . "_"
@@ -300,10 +245,8 @@ class MetadataManager
             ->getEntityContainer()[0]->addToAssociationSet($associationSet);
 
         if (!$this->V3Edmx->isok($this->lastError)) {
-            $this->revertEdmxTransaction();
             return false;
         }
-        $this->commitEdmxTransaction();
         return [$principalNavigationProperty, $dependentNavigationProperty];
     }
 
@@ -421,5 +364,39 @@ class MetadataManager
     public function getLastError()
     {
         return $this->lastError;
+    }
+
+    private function initSerialiser()
+    {
+        $ymlDir = __DIR__ . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
+        $this->serializer =
+            SerializerBuilder::create()
+                ->addMetadataDir($ymlDir)
+                ->build();
+    }
+
+    public function __sleep()
+    {
+        $this->serializer = null;
+        $result = array_keys(get_object_vars($this));
+        return $result;
+    }
+
+    public function __wakeup()
+    {
+        $this->initSerialiser();
+    }
+
+    /**
+     * @param $summary
+     * @param $longDescription
+     * @return TDocumentationType
+     */
+    private function generateDocumentation($summary, $longDescription)
+    {
+        $documentation = new TDocumentationType();
+        $documentation->setSummary($summary);
+        $documentation->setLongDescription($longDescription);
+        return $documentation;
     }
 }
