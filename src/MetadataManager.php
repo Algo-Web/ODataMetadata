@@ -32,11 +32,7 @@ class MetadataManager
         if (!$this->V3Edmx->isOK($msg)) {
             throw new \Exception($msg);
         }
-        $ymlDir = __DIR__ . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
-        $this->serializer =
-            SerializerBuilder::create()
-                ->addMetadataDir($ymlDir)
-                ->build();
+        $this->initSerialiser();
     }
 
     public function getEdmx()
@@ -421,5 +417,26 @@ class MetadataManager
     public function getLastError()
     {
         return $this->lastError;
+    }
+
+    private function initSerialiser()
+    {
+        $ymlDir = __DIR__ . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
+        $this->serializer =
+            SerializerBuilder::create()
+                ->addMetadataDir($ymlDir)
+                ->build();
+    }
+
+    public function __sleep()
+    {
+        $this->serializer = null;
+        $result = array_keys(get_object_vars($this));
+        return $result;
+    }
+
+    public function __wakeup()
+    {
+        $this->initSerialiser();
     }
 }
