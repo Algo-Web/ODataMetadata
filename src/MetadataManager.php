@@ -104,14 +104,12 @@ class MetadataManager
         $type,
         $defaultValue = null,
         $nullable = false,
-        $storeGeneratedPattern = null,
         $summary = null,
         $longDescription = null
     ) {
         $NewProperty = new TComplexTypePropertyType();
         $NewProperty->setName($name);
         $NewProperty->setType($type);
-        $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
         $NewProperty->setNullable($nullable);
         if (null != $summary || null != $longDescription) {
             $documentation = $this->generateDocumentation($summary, $longDescription);
