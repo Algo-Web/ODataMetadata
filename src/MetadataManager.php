@@ -54,9 +54,7 @@ class MetadataManager
         $NewEntity = new TEntityTypeType();
         $NewEntity->setName($name);
         if (null != $summary || null != $longDescription) {
-            $documentation = new TDocumentationType();
-            $documentation->setSummary($summary);
-            $documentation->setLongDescription($longDescription);
+            $documentation = $this->generateDocumentation($summary, $longDescription);
             $NewEntity->setDocumentation($documentation);
         }
 
@@ -116,9 +114,7 @@ class MetadataManager
         $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
         $NewProperty->setNullable($nullable);
         if (null != $summary || null != $longDescription) {
-            $documentation = new TDocumentationType();
-            $documentation->setSummary($summary);
-            $documentation->setLongDescription($longDescription);
+            $documentation = $this->generateDocumentation($summary, $longDescription);
             $NewProperty->addToDocumentation($documentation);
         }
         if (null != $defaultValue) {
@@ -391,5 +387,18 @@ class MetadataManager
     public function __wakeup()
     {
         $this->initSerialiser();
+    }
+
+    /**
+     * @param $summary
+     * @param $longDescription
+     * @return TDocumentationType
+     */
+    private function generateDocumentation($summary, $longDescription)
+    {
+        $documentation = new TDocumentationType();
+        $documentation->setSummary($summary);
+        $documentation->setLongDescription($longDescription);
+        return $documentation;
     }
 }
