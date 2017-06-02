@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymous
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
@@ -22,7 +23,6 @@ use JMS\Serializer\SerializerBuilder;
 class MetadataManager
 {
     private $V3Edmx = null;
-    private $oldEdmx = null;
     private $lastError = null;
     private $serializer = null;
 
@@ -51,7 +51,6 @@ class MetadataManager
 
     public function addEntityType($name, $accessType = "Public", $summary = null, $longDescription = null)
     {
-        $this->startEdmxTransaction();
         $NewEntity = new TEntityTypeType();
         $NewEntity->setName($name);
         if (null != $summary || null != $longDescription) {
@@ -75,10 +74,8 @@ class MetadataManager
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         if (!$this->V3Edmx->isok($this->lastError)) {
-            $this->revertEdmxTransaction();
             return false;
         }
-        $this->commitEdmxTransaction();
         return $NewEntity;
     }
 
@@ -98,53 +95,9 @@ class MetadataManager
         return $NewEntity;
     }
 
-    private function startEdmxTransaction()
-    {
-        //$this->oldEdmx = serialize($this->V3Edmx);
-    }
-    
     public function getSerialiser()
     {
         return $this->serializer;
-    }
-
-    /**
-     * Pluralizes a word if quantity is not one.
-     *
-     * @param int $quantity Number of items
-     * @param string $singular Singular form of word
-     * @param string $plural Plural form of word; function will attempt to deduce plural
-     * form from singular if not provided
-     * @return string Pluralized word if quantity is not one, otherwise singular
-     */
-    public static function pluralize($quantity, $singular, $plural = null)
-    {
-        if ($quantity == 1 || !strlen($singular)) {
-            return $singular;
-        }
-        if ($plural !== null) {
-            return $plural;
-        }
-
-        $last_letter = strtolower($singular[strlen($singular) - 1]);
-        switch ($last_letter) {
-            case 'y':
-                return substr($singular, 0, -1) . 'ies';
-            case 's':
-                return $singular . 'es';
-            default:
-                return $singular . 's';
-        }
-    }
-
-    private function revertEdmxTransaction()
-    {
-        //$this->V3Edmx = unserialize($this->oldEdmx);
-    }
-
-    private function commitEdmxTransaction()
-    {
-        //$this->oldEdmx = null;
     }
 
     public function addPropertyToComplexType(
@@ -175,7 +128,6 @@ class MetadataManager
         return $NewProperty;
     }
 
-
     public function addPropertyToEntityType(
         $entityType,
         $name,
@@ -187,7 +139,6 @@ class MetadataManager
         $summary = null,
         $longDescription = null
     ) {
-        $this->startEdmxTransaction();
         $NewProperty = new TEntityPropertyType();
         $NewProperty->setName($name);
         $NewProperty->setType($type);
@@ -209,10 +160,8 @@ class MetadataManager
             $entityType->addToKey($Key);
         }
         if (!$this->V3Edmx->isok($this->lastError)) {
-            $this->revertEdmxTransaction();
             return false;
         }
-        $this->commitEdmxTransaction();
         return $NewProperty;
     }
 
@@ -234,7 +183,6 @@ class MetadataManager
         $dependentSummery = null,
         $dependentLongDescription = null
     ) {
-        $this->startEdmxTransaction();
         $principalEntitySetName = Str::plural($principalType->getName(), 2);
         $dependentEntitySetName = Str::plural($dependentType->getName(), 2);
         $relationName = $principalType->getName() . "_" . $principalProperty . "_"
@@ -303,10 +251,8 @@ class MetadataManager
             ->getEntityContainer()[0]->addToAssociationSet($associationSet);
 
         if (!$this->V3Edmx->isok($this->lastError)) {
-            $this->revertEdmxTransaction();
             return false;
         }
-        $this->commitEdmxTransaction();
         return [$principalNavigationProperty, $dependentNavigationProperty];
     }
 
