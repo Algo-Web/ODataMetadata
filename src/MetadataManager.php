@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymous
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType;
@@ -83,6 +84,22 @@ class MetadataManager
         return $NewEntity;
     }
 
+    public function addComplexType($name, $accessType = "Public", $summary = null, $longDescription = null)
+    {
+        $NewEntity = new TComplexTypeType();
+        $NewEntity->setName($name);
+        $NewEntity->setTypeAccess($accessType);
+        if (null != $summary || null != $longDescription) {
+            $documentation = new TDocumentationType();
+            $documentation->setSummary($summary);
+            $documentation->setLongDescription($longDescription);
+            $NewEntity->setDocumentation($documentation);
+        }
+        $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToComplexType($NewEntity);
+
+        return $NewEntity;
+    }
+
     private function startEdmxTransaction()
     {
         //$this->oldEdmx = serialize($this->V3Edmx);
@@ -126,6 +143,35 @@ class MetadataManager
     {
         //$this->oldEdmx = null;
     }
+
+    public function addPropertyToComplexType(
+        \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType $complexType,
+        $name,
+        $type,
+        $defaultValue = null,
+        $nullable = false,
+        $storeGeneratedPattern = null,
+        $summary = null,
+        $longDescription = null
+    ) {
+        $NewProperty = new TComplexTypePropertyType();
+        $NewProperty->setName($name);
+        $NewProperty->setType($type);
+        $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
+        $NewProperty->setNullable($nullable);
+        if (null != $summary || null != $longDescription) {
+            $documentation = new TDocumentationType();
+            $documentation->setSummary($summary);
+            $documentation->setLongDescription($longDescription);
+            $NewProperty->addToDocumentation($documentation);
+        }
+        if (null != $defaultValue) {
+            $NewProperty->setDefaultValue($defaultValue);
+        }
+        $complexType->addToProperty($NewProperty);
+        return $NewProperty;
+    }
+
 
     public function addPropertyToEntityType(
         $entityType,
