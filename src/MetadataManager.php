@@ -33,6 +33,7 @@ class MetadataManager
             throw new \Exception($msg);
         }
         $this->initSerialiser();
+        assert(null != $this->serializer, "Serializer must not be null at end of constructor");
     }
 
     public function getEdmx()
@@ -44,6 +45,7 @@ class MetadataManager
 
     public function getEdmxXML()
     {
+        assert(null != $this->serializer, "Serializer must not be null when trying to get edmx xml");
         return $this->serializer->serialize($this->getEdmx(), "xml");
     }
 
@@ -99,6 +101,11 @@ class MetadataManager
     private function startEdmxTransaction()
     {
         //$this->oldEdmx = serialize($this->V3Edmx);
+    }
+    
+    public function getSerialiser()
+    {
+        return $this->serializer;
     }
 
     /**
