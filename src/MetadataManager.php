@@ -154,8 +154,7 @@ class MetadataManager
         $summary = null,
         $longDescription = null
     ) {
-        $this->startEdmxTransaction();
-        $NewProperty = new TEntityPropertyType();
+        $NewProperty = new TComplexTypePropertyType();
         $NewProperty->setName($name);
         $NewProperty->setType($type);
         $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
