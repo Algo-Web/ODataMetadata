@@ -1,14 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Doc
- * Date: 5/11/2017
- * Time: 11:01 PM
- */
 
 namespace AlgoWeb\ODataMetadata\Tests;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataManager;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType;
+use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
+use Mockery as m;
 
 class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 {
@@ -183,5 +184,56 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $foo = unserialize($cereal);
         $this->assertTrue(null != $foo->getSerialiser());
         $this->assertEquals($bar, $foo);
+    }
+
+    public function testCreateSingletonBadReturnType()
+    {
+        $returnType = m::mock(IsOK::class);
+        $foo = new MetadataManager();
+
+        $expected = "Expected return type must be either TEntityType or TComplexType";
+        $actual = null;
+
+        try {
+            $foo->createSingleton(null, $returnType);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testCreateSingletonEmptyName()
+    {
+        $returnType = m::mock(TEntityTypeType::class);
+        $this->assertTrue($returnType instanceof TEntityTypeType, get_class($returnType));
+        $foo = new MetadataManager();
+
+        $expected = "Name must be a non-empty string";
+        $actual = null;
+
+        try {
+            $foo->createSingleton(null, $returnType);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testCreateSingletonSuccessful()
+    {
+        $msg = null;
+        $name = "singleton";
+        $returnType = m::mock(TEntityTypeType::class)->makePartial();
+        $schema = m::mock(Schema::class)->makePartial();
+        $schema->shouldReceive('addToFunction')->andReturn(null)->once();
+        $edmx = m::mock(Edmx::class)->makePartial();
+        $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
+
+        $foo = m::mock(MetadataManager::class)->makePartial();
+        $foo->shouldReceive('getEdmx')->andReturn($edmx);
+
+        $result = $foo->createSingleton($name, $returnType);
+        $this->assertTrue($result instanceof TFunctionType, get_class($result));
+        $this->assertTrue($result->isOK($msg));
     }
 }
