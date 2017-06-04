@@ -406,6 +406,7 @@ class MetadataManager
         $returnType->setType($typeName);
         $returnType->setEntitySetAttribute($typeName);
         assert($returnType->isOK($msg), $msg);
+
         $funcType->addToReturnType($returnType);
         if (null != $documentation) {
             $funcType->setDocumentation($documentation);
