@@ -5,6 +5,7 @@ namespace AlgoWeb\ODataMetadata;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType;
@@ -13,6 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType;
@@ -374,7 +376,7 @@ class MetadataManager
      * @param IsOK $expectedReturnType
      * @param TTextType $shortDesc
      * @param TTextType $longDesc
-     * @return TFunctionType
+     * @return FunctionImportAnonymousType
      */
     public function createSingleton(
         $name,
@@ -394,14 +396,13 @@ class MetadataManager
 
         $documentation = null;
         if (null != $shortDesc || null != $longDesc) {
-            $this->generateDocumentation($shortDesc, $longDesc);
+            $documentation = $this->generateDocumentation($shortDesc, $longDesc);
         }
-        $funcType = new TFunctionType();
+        $funcType = new FunctionImportAnonymousType();
         $funcType->setName($name);
 
-        $returnType = new TFunctionReturnTypeType();
+        $returnType = new TFunctionImportReturnTypeType();
         $returnType->setType($expectedReturnType->getName());
-        $returnType->setNullable(true);
         $funcType->addToReturnType($returnType);
         if (null != $documentation) {
             $funcType->setDocumentation($documentation);
