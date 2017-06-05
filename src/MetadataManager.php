@@ -79,7 +79,7 @@ class MetadataManager
         if (!$this->V3Edmx->isok($this->lastError)) {
             return false;
         }
-        return $NewEntity;
+        return [$NewEntity, $entitySet];
     }
 
     public function addComplexType($name, $accessType = "Public", $summary = null, $longDescription = null)
