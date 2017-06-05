@@ -401,14 +401,17 @@ class MetadataManager
         $funcType = new FunctionImportAnonymousType();
         $funcType->setName($name);
 
+        $typeName = $expectedReturnType->getName();
         $returnType = new TFunctionImportReturnTypeType();
-        $returnType->setType($expectedReturnType->getName());
+        $returnType->setType($typeName);
+        $returnType->setEntitySetAttribute($typeName);
+        assert($returnType->isOK($msg), $msg);
         $funcType->addToReturnType($returnType);
         if (null != $documentation) {
             $funcType->setDocumentation($documentation);
         }
 
-        $this->getEdmx()->getDataServiceType()->getSchema()[0]->addToFunction($funcType);
+        $this->getEdmx()->getDataServiceType()->getEntityContainer()[0]->addToFunctionImport($funcType);
 
         return $funcType;
     }

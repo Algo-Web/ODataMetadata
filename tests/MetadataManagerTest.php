@@ -4,6 +4,7 @@ namespace AlgoWeb\ODataMetadata\Tests;
 
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataManager;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType;
@@ -224,16 +225,18 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $msg = null;
         $name = "singleton";
         $returnType = m::mock(TEntityTypeType::class)->makePartial();
-        $schema = m::mock(Schema::class)->makePartial();
-        $schema->shouldReceive('addToFunction')->andReturn(null)->once();
+        $returnType->shouldReceive('getName')->andReturn('doubleton');
+        $entityContainer = m::mock(EntityContainer::class)->makePartial();
+        $entityContainer->shouldReceive('addToFunctionImport')->andReturn(null)->once();
+
         $edmx = m::mock(Edmx::class)->makePartial();
-        $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
+        $edmx->shouldReceive('getDataServiceType->getEntityContainer')->andReturn([$entityContainer])->once();
 
         $foo = m::mock(MetadataManager::class)->makePartial();
         $foo->shouldReceive('getEdmx')->andReturn($edmx);
 
         $result = $foo->createSingleton($name, $returnType);
-        $this->assertTrue($result instanceof TFunctionType, get_class($result));
+        $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
         $this->assertTrue($result->isOK($msg));
     }
 }
