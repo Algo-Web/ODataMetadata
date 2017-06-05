@@ -43,15 +43,16 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     public function testEntitysAndProperties()
     {
         $metadataManager = new MetadataManager();
+        $result = null;
 
-        $eType = $metadataManager->addEntityType("Category");
+        list($eType, $result) = $metadataManager->addEntityType("Category");
         $this->assertNotFalse($eType, "Etype is false not type " . $metadataManager->getLastError());
         $metadataManager->addPropertyToEntityType($eType, "CategoryID", "Int32", null, false, true, "Identity");
         $metadataManager->addPropertyToEntityType($eType, "CategoryName", "String");
         $metadataManager->addPropertyToEntityType($eType, "Description", "String");
         $metadataManager->addPropertyToEntityType($eType, "Picture", "Binary");
 
-        $eType = $metadataManager->addEntityType("CustomerDemographic");
+        list($eType, $result) = $metadataManager->addEntityType("CustomerDemographic");
         $metadataManager->addPropertyToEntityType($eType, "CustomerTypeID", "String", null, false, true);
         $metadataManager->addPropertyToEntityType($eType, "CustomerDesc", "String");
 
@@ -69,8 +70,9 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         $msg = null;
         $metadataManager = new MetadataManager();
+        $result = null;
 
-        $CategoryType = $metadataManager->addEntityType("Category");
+        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
         $this->assertNotFalse($CategoryType, "Etype is false not type " . $metadataManager->getLastError());
         $metadataManager->addPropertyToEntityType($CategoryType, "CategoryID", "Int32", null, false, true, "Identity");
         $metadataManager->addPropertyToEntityType($CategoryType, "CategoryName", "String");
@@ -78,12 +80,12 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($CategoryType, "Picture", "Binary");
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        $CustomerDemographicType = $metadataManager->addEntityType("CustomerDemographic");
+        list($CustomerDemographicType, $result) = $metadataManager->addEntityType("CustomerDemographic");
         $metadataManager->addPropertyToEntityType($CustomerDemographicType, "CustomerTypeID", "String", null, false, true);
         $metadataManager->addPropertyToEntityType($CustomerDemographicType, "CustomerDesc", "String");
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        $CustomerType = $metadataManager->addEntityType("Customer");
+        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
         $metadataManager->addPropertyToEntityType($CustomerType, "CustomerID", "String", null, false, true);
         $metadataManager->addPropertyToEntityType($CustomerType, "CompanyName", "String");
         $metadataManager->addPropertyToEntityType($CustomerType, "ContactName", "String");
@@ -97,7 +99,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($CustomerType, "Fax", "String");
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        $EmployeeType = $metadataManager->addEntityType("Employee");
+        list($EmployeeType, $result) = $metadataManager->addEntityType("Employee");
         $metadataManager->addPropertyToEntityType($EmployeeType, "EmployeeID", "Int32", null, false, true, "Identity");
         $metadataManager->addPropertyToEntityType($EmployeeType, "LastName", "String");
         $metadataManager->addPropertyToEntityType($EmployeeType, "FirstName", "String");
@@ -118,7 +120,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($EmployeeType, "PhotoPath", "String");
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        $Order_DetailType = $metadataManager->addEntityType("Order_Detail");
+        list($Order_DetailType, $result) = $metadataManager->addEntityType("Order_Detail");
         $metadataManager->addPropertyToEntityType($Order_DetailType, "OrderID", "Int32", null, false, true);
         $metadataManager->addPropertyToEntityType($Order_DetailType, "ProductID", "Int32", null, false, true);
         $metadataManager->addPropertyToEntityType($Order_DetailType, "UnitPrice", "Decimal");
@@ -126,7 +128,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($Order_DetailType, "Discount", "Single");
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        $OrderType = $metadataManager->addEntityType("Order");
+        list($OrderType, $result) = $metadataManager->addEntityType("Order");
         $metadataManager->addPropertyToEntityType($OrderType, "OrderID", "Int32", null, false, true, "Identity");
         $metadataManager->addPropertyToEntityType($OrderType, "CustomerID", "String");
         $metadataManager->addPropertyToEntityType($OrderType, "EmployeeID", "Int32");
@@ -143,7 +145,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($OrderType, "ShipCountry", "String");
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        $ProductType = $metadataManager->addEntityType("Product");
+        list($ProductType, $result) = $metadataManager->addEntityType("Product");
         $metadataManager->addPropertyToEntityType($ProductType, "ProductID", "Int32", null, false, true, "Identity");
         $metadataManager->addPropertyToEntityType($ProductType, "ProductName", "String");
         $metadataManager->addPropertyToEntityType($ProductType, "SupplierID", "Int32");
@@ -232,7 +234,6 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         $schema = m::mock(Schema::class)->makePartial();
         $schema->shouldReceive('getEntityContainer')->andReturn([$entityContainer])->once();
-
         $edmx = m::mock(Edmx::class)->makePartial();
         $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
 
