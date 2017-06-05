@@ -226,11 +226,15 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $name = "singleton";
         $returnType = m::mock(TEntityTypeType::class)->makePartial();
         $returnType->shouldReceive('getName')->andReturn('doubleton');
+
         $entityContainer = m::mock(EntityContainer::class)->makePartial();
         $entityContainer->shouldReceive('addToFunctionImport')->andReturn(null)->once();
 
+        $schema = m::mock(Schema::class)->makePartial();
+        $schema->shouldReceive('getEntityContainer')->andReturn([$entityContainer])->once();
+
         $edmx = m::mock(Edmx::class)->makePartial();
-        $edmx->shouldReceive('getDataServiceType->getEntityContainer')->andReturn([$entityContainer])->once();
+        $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
 
         $foo = m::mock(MetadataManager::class)->makePartial();
         $foo->shouldReceive('getEdmx')->andReturn($edmx);

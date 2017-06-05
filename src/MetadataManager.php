@@ -411,7 +411,7 @@ class MetadataManager
             $funcType->setDocumentation($documentation);
         }
 
-        $this->getEdmx()->getDataServiceType()->getEntityContainer()[0]->addToFunctionImport($funcType);
+        $this->getEdmx()->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToFunctionImport($funcType);
 
         return $funcType;
     }

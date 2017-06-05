@@ -308,7 +308,7 @@ class TFunctionType extends IsOK
         }
         foreach ($this->returnType as $type) {
             if (!is_string($type) || !$this->isTCommandTextValid($type)) {
-                $msg = var_dump($type) . " must be a valid TCommandText";
+                $msg = implode($type) . " must be a valid TCommandText";
                 return false;
             }
         }
