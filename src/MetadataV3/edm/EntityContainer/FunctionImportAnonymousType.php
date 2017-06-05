@@ -127,12 +127,26 @@ class FunctionImportAnonymousType extends IsOK
         if (!$this->isTFunctionImportAttributesValid($msg)) {
             return false;
         }
+        $minParms = $this->isBindable ? 1 : 0;
         if (!$this->isValidArrayOK(
             $this->parameter,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType',
-            $msg
+            $msg,
+            $minParms
         )) {
             return false;
+        }
+
+        $numParms = count($this->parameter);
+        for ($i = 0; $i < $numParms -2; $i++) {
+            $outName = $this->parameter[$i]->getName();
+            for ($j = $i + 1; $j < $numParms - 1; $j++) {
+                $inName = $this->parameter[$j]->getName();
+                if ($outName == $inName) {
+                    $msg = "Name collision in parameters array";
+                    return false;
+                }
+            }
         }
         return true;
     }

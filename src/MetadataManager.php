@@ -5,6 +5,7 @@ namespace AlgoWeb\ODataMetadata;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType;
@@ -13,9 +14,13 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use Illuminate\Support\Str;
 use JMS\Serializer\SerializerBuilder;
@@ -364,6 +369,51 @@ class MetadataManager
     public function getLastError()
     {
         return $this->lastError;
+    }
+
+    /**
+     * @param string $name
+     * @param IsOK $expectedReturnType
+     * @param TTextType $shortDesc
+     * @param TTextType $longDesc
+     * @return FunctionImportAnonymousType
+     */
+    public function createSingleton(
+        $name,
+        IsOK $expectedReturnType,
+        TTextType $shortDesc = null,
+        TTextType $longDesc = null
+    ) {
+        if (!($expectedReturnType instanceof TEntityTypeType) && !($expectedReturnType instanceof TComplexTypeType)) {
+            $msg = "Expected return type must be either TEntityType or TComplexType";
+            throw new \InvalidArgumentException($msg);
+        }
+
+        if (!is_string($name) || empty($name)) {
+            $msg = "Name must be a non-empty string";
+            throw new \InvalidArgumentException($msg);
+        }
+
+        $documentation = null;
+        if (null != $shortDesc || null != $longDesc) {
+            $documentation = $this->generateDocumentation($shortDesc, $longDesc);
+        }
+        $funcType = new FunctionImportAnonymousType();
+        $funcType->setName($name);
+
+        $typeName = $expectedReturnType->getName();
+        $returnType = new TFunctionImportReturnTypeType();
+        $returnType->setType($typeName);
+        $returnType->setEntitySetAttribute($typeName);
+        assert($returnType->isOK($msg), $msg);
+        $funcType->addToReturnType($returnType);
+        if (null != $documentation) {
+            $funcType->setDocumentation($documentation);
+        }
+
+        $this->getEdmx()->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToFunctionImport($funcType);
+
+        return $funcType;
     }
 
     private function initSerialiser()
