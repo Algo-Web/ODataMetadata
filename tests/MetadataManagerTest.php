@@ -225,7 +225,6 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $msg = null;
         $name = "singleton";
         $returnType = m::mock(TEntityTypeType::class)->makePartial();
-
         $returnType->shouldReceive('getName')->andReturn('doubleton');
 
         $entityContainer = m::mock(EntityContainer::class)->makePartial();
