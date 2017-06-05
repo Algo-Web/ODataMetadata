@@ -35,7 +35,7 @@ trait TFunctionImportAttributesTrait
     /**
      * @property boolean $isSideEffecting
      */
-    private $isSideEffecting = false;
+    private $isSideEffecting = true;
 
     /**
      * @property boolean $isBindable
@@ -266,6 +266,10 @@ trait TFunctionImportAttributesTrait
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
             $msg = "Name must be a valid TSimpleIdentifier: " . get_class($this);
+            return false;
+        }
+        if ($this->isComposable && $this->isSideEffecting) {
+            $msg = "Cannot both be composable and side-effecting";
             return false;
         }
         /*
