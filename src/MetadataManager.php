@@ -112,6 +112,12 @@ class MetadataManager
         $summary = null,
         $longDescription = null
     ) {
+        if (is_array($defaultValue) || is_object($defaultValue)) {
+            throw new \InvalidArgumentException("Default value cannot be object or array");
+        }
+        if (null != $defaultValue) {
+            $defaultValue = var_export($defaultValue, true);
+        }
         $NewProperty = new TComplexTypePropertyType();
         $NewProperty->setName($name);
         $NewProperty->setType($type);
