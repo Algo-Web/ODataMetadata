@@ -6,6 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataManager;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType;
@@ -160,7 +161,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
 
         $metadataManager->addNavigationPropertyToEntityType(
-            $CategoryType, "*", "Products", $ProductType, "0..1", "Category", ["CategoryID"], ["CategoryID"]
+            $CategoryType, "*", "Products", $ProductType, "1", "Category", ["CategoryID"], ["CategoryID"]
         );
         $metadataManager->addNavigationPropertyToEntityType(
             $Order_DetailType, "1", "Order", $ProductType, "*", "Order_Details", ["OrderID"], ["CategoryID"]
@@ -175,6 +176,271 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         $d = $metadataManager->getEdmxXML();
         $this->v3MetadataAgainstXSD($d);
+    }
+
+    public function testAddManyToManyNavProperty()
+    {
+        $msg = null;
+        $metadataManager = new MetadataManager("Data", "Container");
+        $result = null;
+
+        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
+        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
+        $this->assertTrue($CategoryType->isOK($msg), $msg);
+        $this->assertTrue($CustomerType->isOK($msg), $msg);
+
+        list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
+            $CategoryType,
+            "*",
+            "Customers",
+            $CustomerType,
+            "*",
+            "Categories"
+        );
+        $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
+        $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
+        $this->assertEquals("Customers", $principal->getName());
+        $this->assertEquals("Categories", $dependent->getName());
+
+        $navProps = [$principal, $dependent];
+        $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
+        $this->assertEquals(1, count($assoc));
+        $assoc = $assoc[0];
+        $this->assertTrue($assoc instanceof TAssociationType);
+        $this->assertTrue($assoc->isOK($msg), $msg);
+
+        $this->assertEquals('Data.'.$assoc->getName(), $principal->getRelationship());
+        $ends = $assoc->getEnd();
+
+        $this->assertEquals(2, count($ends));
+        foreach ($navProps as $prop) {
+            $fromMatch = $ends[0]->getRole() == $prop->getToRole()
+                         || $ends[1]->getRole() == $prop->getToRole();
+            $this->assertTrue($fromMatch, "toRole must match at least one end role");
+            if ($ends[0]->getRole() == $prop->getToRole()) {
+                $this->assertEquals($ends[1]->getRole(), $prop->getFromRole());
+                $this->assertNotEquals($ends[0]->getRole(), $prop->getFromRole());
+            } else {
+                $this->assertEquals($ends[0]->getRole(), $prop->getFromRole());
+                $this->assertNotEquals($ends[1]->getRole(), $prop->getFromRole());
+            }
+        }
+        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
+        $this->assertEquals('*', $principalEnd->getMultiplicity());
+        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
+        $this->assertEquals('*', $dependentEnd->getMultiplicity());
+    }
+
+    public function testAddOneToManyNavProperty()
+    {
+        $msg = null;
+        $metadataManager = new MetadataManager("Data", "Container");
+        $result = null;
+
+        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
+        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
+        $this->assertTrue($CategoryType->isOK($msg), $msg);
+        $this->assertTrue($CustomerType->isOK($msg), $msg);
+
+        list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
+            $CategoryType,
+            "*",
+            "Customers",
+            $CustomerType,
+            "1",
+            "Categories"
+        );
+        $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
+        $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
+        $this->assertEquals("Customers", $principal->getName());
+        $this->assertEquals("Categories", $dependent->getName());
+
+        $navProps = [$principal, $dependent];
+        $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
+        $this->assertEquals(1, count($assoc));
+        $assoc = $assoc[0];
+        $this->assertTrue($assoc instanceof TAssociationType);
+        $this->assertTrue($assoc->isOK($msg), $msg);
+
+        $this->assertEquals('Data.'.$assoc->getName(), $principal->getRelationship());
+        $ends = $assoc->getEnd();
+
+        $this->assertEquals(2, count($ends));
+        foreach ($navProps as $prop) {
+            $fromMatch = $ends[0]->getRole() == $prop->getToRole()
+                         || $ends[1]->getRole() == $prop->getToRole();
+            $this->assertTrue($fromMatch, "toRole must match at least one end role");
+            if ($ends[0]->getRole() == $prop->getToRole()) {
+                $this->assertEquals($ends[1]->getRole(), $prop->getFromRole());
+                $this->assertNotEquals($ends[0]->getRole(), $prop->getFromRole());
+            } else {
+                $this->assertEquals($ends[0]->getRole(), $prop->getFromRole());
+                $this->assertNotEquals($ends[1]->getRole(), $prop->getFromRole());
+            }
+        }
+        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
+        $this->assertEquals('*', $principalEnd->getMultiplicity());
+        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
+        $this->assertEquals('1', $dependentEnd->getMultiplicity());
+    }
+
+    public function testAddManyToOneNavProperty()
+    {
+        $msg = null;
+        $metadataManager = new MetadataManager("Data", "Container");
+        $result = null;
+
+        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
+        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
+        $this->assertTrue($CategoryType->isOK($msg), $msg);
+        $this->assertTrue($CustomerType->isOK($msg), $msg);
+
+        list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
+            $CategoryType,
+            "1",
+            "Customers",
+            $CustomerType,
+            "*",
+            "Categories"
+        );
+        $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
+        $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
+        $this->assertEquals("Customers", $principal->getName());
+        $this->assertEquals("Categories", $dependent->getName());
+
+        $navProps = [$principal, $dependent];
+        $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
+        $this->assertEquals(1, count($assoc));
+        $assoc = $assoc[0];
+        $this->assertTrue($assoc instanceof TAssociationType);
+        $this->assertTrue($assoc->isOK($msg), $msg);
+
+        $this->assertEquals('Data.'.$assoc->getName(), $principal->getRelationship());
+        $ends = $assoc->getEnd();
+
+        $this->assertEquals(2, count($ends));
+        foreach ($navProps as $prop) {
+            $fromMatch = $ends[0]->getRole() == $prop->getToRole()
+                         || $ends[1]->getRole() == $prop->getToRole();
+            $this->assertTrue($fromMatch, "toRole must match at least one end role");
+            if ($ends[0]->getRole() == $prop->getToRole()) {
+                $this->assertEquals($ends[1]->getRole(), $prop->getFromRole());
+                $this->assertNotEquals($ends[0]->getRole(), $prop->getFromRole());
+            } else {
+                $this->assertEquals($ends[0]->getRole(), $prop->getFromRole());
+                $this->assertNotEquals($ends[1]->getRole(), $prop->getFromRole());
+            }
+        }
+        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
+        $this->assertEquals('1', $principalEnd->getMultiplicity());
+        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
+        $this->assertEquals('*', $dependentEnd->getMultiplicity());
+    }
+
+    public function testAddOneToOneForwardNavProperty()
+    {
+        $msg = null;
+        $metadataManager = new MetadataManager("Data", "Container");
+        $result = null;
+
+        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
+        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
+        $this->assertTrue($CategoryType->isOK($msg), $msg);
+        $this->assertTrue($CustomerType->isOK($msg), $msg);
+
+        list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
+            $CategoryType,
+            "0..1",
+            "Customers",
+            $CustomerType,
+            "1",
+            "Categories"
+        );
+        $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
+        $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
+        $this->assertEquals("Customers", $principal->getName());
+        $this->assertEquals("Categories", $dependent->getName());
+
+        $navProps = [$principal, $dependent];
+        $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
+        $this->assertEquals(1, count($assoc));
+        $assoc = $assoc[0];
+        $this->assertTrue($assoc instanceof TAssociationType);
+        $this->assertTrue($assoc->isOK($msg), $msg);
+
+        $this->assertEquals('Data.'.$assoc->getName(), $principal->getRelationship());
+        $ends = $assoc->getEnd();
+
+        $this->assertEquals(2, count($ends));
+        foreach ($navProps as $prop) {
+            $fromMatch = $ends[0]->getRole() == $prop->getToRole()
+                         || $ends[1]->getRole() == $prop->getToRole();
+            $this->assertTrue($fromMatch, "toRole must match at least one end role");
+            if ($ends[0]->getRole() == $prop->getToRole()) {
+                $this->assertEquals($ends[1]->getRole(), $prop->getFromRole());
+                $this->assertNotEquals($ends[0]->getRole(), $prop->getFromRole());
+            } else {
+                $this->assertEquals($ends[0]->getRole(), $prop->getFromRole());
+                $this->assertNotEquals($ends[1]->getRole(), $prop->getFromRole());
+            }
+        }
+        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
+        $this->assertEquals('0..1', $principalEnd->getMultiplicity());
+        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
+        $this->assertEquals('1', $dependentEnd->getMultiplicity());
+    }
+
+    public function testAddOneToOneReverseNavProperty()
+    {
+        $msg = null;
+        $metadataManager = new MetadataManager("Data", "Container");
+        $result = null;
+
+        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
+        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
+        $this->assertTrue($CategoryType->isOK($msg), $msg);
+        $this->assertTrue($CustomerType->isOK($msg), $msg);
+
+        list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
+            $CategoryType,
+            "1",
+            "Customers",
+            $CustomerType,
+            "0..1",
+            "Categories"
+        );
+        $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
+        $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
+        $this->assertEquals("Customers", $principal->getName());
+        $this->assertEquals("Categories", $dependent->getName());
+
+        $navProps = [$principal, $dependent];
+        $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
+        $this->assertEquals(1, count($assoc));
+        $assoc = $assoc[0];
+        $this->assertTrue($assoc instanceof TAssociationType);
+        $this->assertTrue($assoc->isOK($msg), $msg);
+
+        $this->assertEquals('Data.'.$assoc->getName(), $principal->getRelationship());
+        $ends = $assoc->getEnd();
+
+        $this->assertEquals(2, count($ends));
+        foreach ($navProps as $prop) {
+            $fromMatch = $ends[0]->getRole() == $prop->getToRole()
+                         || $ends[1]->getRole() == $prop->getToRole();
+            $this->assertTrue($fromMatch, "toRole must match at least one end role");
+            if ($ends[0]->getRole() == $prop->getToRole()) {
+                $this->assertEquals($ends[1]->getRole(), $prop->getFromRole());
+                $this->assertNotEquals($ends[0]->getRole(), $prop->getFromRole());
+            } else {
+                $this->assertEquals($ends[0]->getRole(), $prop->getFromRole());
+                $this->assertNotEquals($ends[1]->getRole(), $prop->getFromRole());
+            }
+        }
+        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
+        $this->assertEquals('1', $principalEnd->getMultiplicity());
+        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
+        $this->assertEquals('0..1', $dependentEnd->getMultiplicity());
     }
 
     public function testMetadataSerialiseRoundTrip()
