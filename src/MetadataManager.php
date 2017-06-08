@@ -271,6 +271,8 @@ class MetadataManager
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null
     ) {
+        $multCombo = [ '*' => ['*', '1'], '0..1' => ['1'], '1' => ['*', '0..1']];
+        $multKeys = array_keys($multCombo);
         if (null != $dependentNavigationProperty) {
             if ($dependentNavigationProperty->getRelationship() != $principalNavigationProperty->getRelationship()) {
                 $msg = "if you have both a dependent property and a principal property,"
@@ -283,6 +285,15 @@ class MetadataManager
                 throw new \Exception("The from roles and two roles from matching properties should match");
             }
         }
+        if (!in_array($principalMultiplicity, $multKeys) || !in_array($dependentMultiplicity, $multKeys)) {
+            throw new \InvalidArgumentException("Malformed multiplicity - valid values are *, 0..1 and 1");
+        }
+        if (!in_array($dependentMultiplicity, $multCombo[$principalMultiplicity])) {
+            throw new \InvalidArgumentException(
+                    "Invalid multiplicity combination - ". $principalMultiplicity . ' ' . $dependentMultiplicity
+            );
+        }
+
         $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
 
         if (0 == strlen(trim($namespace))) {

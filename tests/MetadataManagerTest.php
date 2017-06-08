@@ -510,4 +510,91 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
         $this->assertTrue($result->isOK($msg));
     }
+
+    public function testMalformedMultiplicity()
+    {
+        $msg = null;
+        $metadataManager = new MetadataManager("Data", "Container");
+        $result = null;
+
+        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
+        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
+        $this->assertTrue($CategoryType->isOK($msg), $msg);
+        $this->assertTrue($CustomerType->isOK($msg), $msg);
+
+        $expected = "Malformed multiplicity - valid values are *, 0..1 and 1";
+        $actual = null;
+
+        try {
+            list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
+                $CategoryType,
+                "1",
+                "Customers",
+                $CustomerType,
+                "ABC",
+                "Categories"
+            );
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testInvalidMultiplicityBelongsOnBothEnds()
+    {
+        $msg = null;
+        $metadataManager = new MetadataManager("Data", "Container");
+        $result = null;
+
+        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
+        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
+        $this->assertTrue($CategoryType->isOK($msg), $msg);
+        $this->assertTrue($CustomerType->isOK($msg), $msg);
+
+        $expected =  "Invalid multiplicity combination - 1 1";
+        $actual = null;
+
+        try {
+            list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
+                $CategoryType,
+                "1",
+                "Customers",
+                $CustomerType,
+                "1",
+                "Categories"
+            );
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testInvalidMultiplicityManyToHasMany()
+    {
+        $msg = null;
+        $metadataManager = new MetadataManager("Data", "Container");
+        $result = null;
+
+        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
+        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
+        $this->assertTrue($CategoryType->isOK($msg), $msg);
+        $this->assertTrue($CustomerType->isOK($msg), $msg);
+
+        $expected =  "Invalid multiplicity combination - * 0..1";
+        $actual = null;
+
+        try {
+            list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
+                $CategoryType,
+                "*",
+                "Customers",
+                $CustomerType,
+                "0..1",
+                "Categories"
+            );
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
 }
