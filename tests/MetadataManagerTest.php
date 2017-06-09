@@ -551,8 +551,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager = new MetadataManager("Data", "Container");
         $result = null;
 
-        list($CategoryType,) = $metadataManager->addEntityType("Category");
-        list($CustomerType,) = $metadataManager->addEntityType("Customer");
+        list($CategoryType, ) = $metadataManager->addEntityType("Category");
+        list($CustomerType, ) = $metadataManager->addEntityType("Customer");
         $this->assertTrue($CategoryType->isOK($msg), $msg);
         $this->assertTrue($CustomerType->isOK($msg), $msg);
         return array($msg, $metadataManager, $CategoryType, $CustomerType);
