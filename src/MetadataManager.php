@@ -271,6 +271,8 @@ class MetadataManager
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null
     ) {
+        $multCombo = [ '*' => ['*', '1'], '0..1' => ['1'], '1' => ['*', '0..1']];
+        $multKeys = array_keys($multCombo);
         if (null != $dependentNavigationProperty) {
             if ($dependentNavigationProperty->getRelationship() != $principalNavigationProperty->getRelationship()) {
                 $msg = "if you have both a dependent property and a principal property,"
@@ -283,6 +285,15 @@ class MetadataManager
                 throw new \Exception("The from roles and two roles from matching properties should match");
             }
         }
+        if (!in_array($principalMultiplicity, $multKeys) || !in_array($dependentMultiplicity, $multKeys)) {
+            throw new \InvalidArgumentException("Malformed multiplicity - valid values are *, 0..1 and 1");
+        }
+        if (!in_array($dependentMultiplicity, $multCombo[$principalMultiplicity])) {
+            throw new \InvalidArgumentException(
+                "Invalid multiplicity combination - ". $principalMultiplicity . ' ' . $dependentMultiplicity
+            );
+        }
+
         $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
 
         if (0 == strlen(trim($namespace))) {
@@ -298,10 +309,14 @@ class MetadataManager
             $relationship = substr($relationship, strpos($relationship, '.') + 1);
         }
 
+        $principalTargRole = $principalNavigationProperty->getToRole();
+        $principalSrcRole = $principalNavigationProperty->getFromRole();
+        $dependentTargRole = null != $dependentNavigationProperty ? $dependentNavigationProperty->getToRole() : null;
+
         $association->setName($relationship);
         $principalEnd = new TAssociationEndType();
         $principalEnd->setType($principalTypeFQName);
-        $principalEnd->setRole($principalNavigationProperty->getFromRole());
+        $principalEnd->setRole($principalTargRole);
         $principalEnd->setMultiplicity($principalMultiplicity);
         $association->addToEnd($principalEnd);
         $dependentEnd = new TAssociationEndType();
@@ -309,18 +324,14 @@ class MetadataManager
         $dependentEnd->setMultiplicity($dependentMultiplicity);
         $association->addToEnd($dependentEnd);
 
-        if (null != $dependentNavigationProperty) {
-            $dependentEnd->setRole($dependentNavigationProperty->getFromRole());
-        } else {
-            $dependentEnd->setRole($principalNavigationProperty->getToRole());
-        }
+        $dependentEnd->setRole(null != $dependentNavigationProperty ? $dependentTargRole : $principalSrcRole);
 
         $principalReferralConstraint = null;
         $dependentReferralConstraint = null;
 
         if (null != $principalConstraintProperty && 0 < count($principalConstraintProperty)) {
             $principalReferralConstraint = new TReferentialConstraintRoleElementType();
-            $principalReferralConstraint->setRole($principalNavigationProperty->getFromRole());
+            $principalReferralConstraint->setRole($principalTargRole);
             foreach ($principalConstraintProperty as $propertyRef) {
                 $TpropertyRef = new TPropertyRefType();
                 $TpropertyRef->setName($propertyRef);
@@ -329,7 +340,7 @@ class MetadataManager
         }
         if (null != $dependentConstraintProperty && 0 < count($dependentConstraintProperty)) {
             $dependentReferralConstraint = new TReferentialConstraintRoleElementType();
-            $dependentReferralConstraint->setRole($dependentNavigationProperty->getFromRole());
+            $dependentReferralConstraint->setRole($dependentTargRole);
             foreach ($dependentConstraintProperty as $propertyRef) {
                 $TpropertyRef = new TPropertyRefType();
                 $TpropertyRef->setName($propertyRef);

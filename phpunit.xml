@@ -16,6 +16,9 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./src/MetadataV3</directory>
+            <directory suffix=".php">./src/StringTraits</directory>
+            <file>./src/MetadataManager.php</file>
+            <file>./src/xsdRestrictions.php</file>
         </whitelist>
     </filter>
 </phpunit>
