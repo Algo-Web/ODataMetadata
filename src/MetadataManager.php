@@ -309,10 +309,10 @@ class MetadataManager
             $relationship = substr($relationship, strpos($relationship, '.') + 1);
         }
 
-        $principalTargRole = $principalNavigationProperty->getFromRole();
-        $principalSrcRole = $principalNavigationProperty->getToRole();
-        $dependentTargRole = null != $dependentNavigationProperty ? $dependentNavigationProperty->getFromRole() : null;
-        $dependentSrcRole = null != $dependentNavigationProperty ? $dependentNavigationProperty->getToRole() : null;
+        $principalTargRole = $principalNavigationProperty->getToRole();
+        $principalSrcRole = $principalNavigationProperty->getFromRole();
+        $dependentTargRole = null != $dependentNavigationProperty ? $dependentNavigationProperty->getToRole() : null;
+        $dependentSrcRole = null != $dependentNavigationProperty ? $dependentNavigationProperty->getFromRole() : null;
         $association->setName($relationship);
         $principalEnd = new TAssociationEndType();
         $principalEnd->setType($principalTypeFQName);
