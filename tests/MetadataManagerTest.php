@@ -180,14 +180,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testAddManyToManyNavProperty()
     {
-        $msg = null;
-        $metadataManager = new MetadataManager("Data", "Container");
-        $result = null;
-
-        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
-        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
-        $this->assertTrue($CategoryType->isOK($msg), $msg);
-        $this->assertTrue($CustomerType->isOK($msg), $msg);
+        list($msg, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
@@ -233,14 +226,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testAddOneToManyNavProperty()
     {
-        $msg = null;
-        $metadataManager = new MetadataManager("Data", "Container");
-        $result = null;
-
-        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
-        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
-        $this->assertTrue($CategoryType->isOK($msg), $msg);
-        $this->assertTrue($CustomerType->isOK($msg), $msg);
+        list($msg, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
@@ -286,14 +272,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testAddManyToOneNavProperty()
     {
-        $msg = null;
-        $metadataManager = new MetadataManager("Data", "Container");
-        $result = null;
-
-        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
-        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
-        $this->assertTrue($CategoryType->isOK($msg), $msg);
-        $this->assertTrue($CustomerType->isOK($msg), $msg);
+        list($msg, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
@@ -339,14 +318,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testAddOneToOneForwardNavProperty()
     {
-        $msg = null;
-        $metadataManager = new MetadataManager("Data", "Container");
-        $result = null;
-
-        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
-        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
-        $this->assertTrue($CategoryType->isOK($msg), $msg);
-        $this->assertTrue($CustomerType->isOK($msg), $msg);
+        list($msg, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
@@ -392,14 +364,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testAddOneToOneReverseNavProperty()
     {
-        $msg = null;
-        $metadataManager = new MetadataManager("Data", "Container");
-        $result = null;
-
-        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
-        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
-        $this->assertTrue($CategoryType->isOK($msg), $msg);
-        $this->assertTrue($CustomerType->isOK($msg), $msg);
+        list($msg, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
@@ -513,20 +478,13 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testMalformedMultiplicity()
     {
-        $msg = null;
-        $metadataManager = new MetadataManager("Data", "Container");
-        $result = null;
-
-        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
-        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
-        $this->assertTrue($CategoryType->isOK($msg), $msg);
-        $this->assertTrue($CustomerType->isOK($msg), $msg);
+        list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
         $expected = "Malformed multiplicity - valid values are *, 0..1 and 1";
         $actual = null;
 
         try {
-            list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
+            $metadataManager->addNavigationPropertyToEntityType(
                 $CategoryType,
                 "1",
                 "Customers",
@@ -542,20 +500,13 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidMultiplicityBelongsOnBothEnds()
     {
-        $msg = null;
-        $metadataManager = new MetadataManager("Data", "Container");
-        $result = null;
-
-        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
-        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
-        $this->assertTrue($CategoryType->isOK($msg), $msg);
-        $this->assertTrue($CustomerType->isOK($msg), $msg);
+        list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
         $expected =  "Invalid multiplicity combination - 1 1";
         $actual = null;
 
         try {
-            list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
+            $metadataManager->addNavigationPropertyToEntityType(
                 $CategoryType,
                 "1",
                 "Customers",
@@ -571,20 +522,13 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testInvalidMultiplicityManyToHasMany()
     {
-        $msg = null;
-        $metadataManager = new MetadataManager("Data", "Container");
-        $result = null;
-
-        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
-        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
-        $this->assertTrue($CategoryType->isOK($msg), $msg);
-        $this->assertTrue($CustomerType->isOK($msg), $msg);
+        list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
         $expected =  "Invalid multiplicity combination - * 0..1";
         $actual = null;
 
         try {
-            list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
+            $metadataManager->addNavigationPropertyToEntityType(
                 $CategoryType,
                 "*",
                 "Customers",
@@ -596,5 +540,21 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
             $actual = $e->getMessage();
         }
         $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @return array
+     */
+    private function setUpMetadataForNavTests()
+    {
+        $msg = null;
+        $metadataManager = new MetadataManager("Data", "Container");
+        $result = null;
+
+        list($CategoryType,) = $metadataManager->addEntityType("Category");
+        list($CustomerType,) = $metadataManager->addEntityType("Customer");
+        $this->assertTrue($CategoryType->isOK($msg), $msg);
+        $this->assertTrue($CustomerType->isOK($msg), $msg);
+        return array($msg, $metadataManager, $CategoryType, $CustomerType);
     }
 }

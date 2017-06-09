@@ -312,7 +312,7 @@ class MetadataManager
         $principalTargRole = $principalNavigationProperty->getToRole();
         $principalSrcRole = $principalNavigationProperty->getFromRole();
         $dependentTargRole = null != $dependentNavigationProperty ? $dependentNavigationProperty->getToRole() : null;
-        $dependentSrcRole = null != $dependentNavigationProperty ? $dependentNavigationProperty->getFromRole() : null;
+
         $association->setName($relationship);
         $principalEnd = new TAssociationEndType();
         $principalEnd->setType($principalTypeFQName);
