@@ -33,10 +33,9 @@ class MetadataManager
 
     public function __construct($namespaceName = "Data", $containerName = "DefaultContainer", Edmx $edmx = null)
     {
+        $msg = null;
         $this->V3Edmx = (null == $edmx) ? new Edmx($namespaceName, $containerName) : $edmx;
-        if (!$this->V3Edmx->isOK($msg)) {
-            throw new \Exception($msg);
-        }
+        assert($this->V3Edmx->isOK($msg), $msg);
         $this->initSerialiser();
         assert(null != $this->serializer, "Serializer must not be null at end of constructor");
     }
@@ -72,9 +71,7 @@ class MetadataManager
 
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
-        if (!$this->V3Edmx->isOK($this->lastError)) {
-            return false;
-        }
+        assert($this->V3Edmx->isOK($this->lastError, $this->lastError));
         return [$NewEntity, $entitySet];
     }
 
@@ -157,9 +154,7 @@ class MetadataManager
             $Key->setName($name);
             $entityType->addToKey($Key);
         }
-        if (!$this->V3Edmx->isOK($this->lastError)) {
-            return false;
-        }
+        assert($this->V3Edmx->isOK($this->lastError, $this->lastError));
         return $NewProperty;
     }
 
@@ -240,9 +235,7 @@ class MetadataManager
         $this->V3Edmx->getDataServiceType()->getSchema()[0]
             ->getEntityContainer()[0]->addToAssociationSet($associationSet);
 
-        if (!$this->V3Edmx->isOK($this->lastError)) {
-            return false;
-        }
+        assert($this->V3Edmx->isOK($this->lastError, $this->lastError));
         return [$principalNavigationProperty, $dependentNavigationProperty];
     }
 
