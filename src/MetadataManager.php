@@ -31,9 +31,9 @@ class MetadataManager
     private $lastError = null;
     private $serializer = null;
 
-    public function __construct($namespaceName = "Data", $containerName = "DefaultContainer")
+    public function __construct($namespaceName = "Data", $containerName = "DefaultContainer", Edmx $edmx = null)
     {
-        $this->V3Edmx = new Edmx($namespaceName, $containerName);
+        $this->V3Edmx = (null == $edmx) ? new Edmx($namespaceName, $containerName) : $edmx;
         if (!$this->V3Edmx->isOK($msg)) {
             throw new \Exception($msg);
         }
