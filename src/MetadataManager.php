@@ -88,9 +88,7 @@ class MetadataManager
         $NewEntity->setName($name);
         $NewEntity->setTypeAccess($accessType);
         if (null != $summary || null != $longDescription) {
-            $documentation = new TDocumentationType();
-            $documentation->setSummary($summary);
-            $documentation->setLongDescription($longDescription);
+            $documentation = $this->generateDocumentation($summary, $longDescription);
             $NewEntity->setDocumentation($documentation);
         }
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToComplexType($NewEntity);
@@ -150,9 +148,7 @@ class MetadataManager
         $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
         $NewProperty->setNullable($nullable);
         if (null != $summary || null != $longDescription) {
-            $documentation = new TDocumentationType();
-            $documentation->setSummary($summary);
-            $documentation->setLongDescription($longDescription);
+            $documentation = $this->generateDocumentation($summary, $longDescription);
             $NewProperty->addToDocumentation($documentation);
         }
         if (null != $defaultValue) {
@@ -209,9 +205,7 @@ class MetadataManager
         $principalNavigationProperty->setGetterAccess($principalGetterAccess);
         $principalNavigationProperty->setSetterAccess($principalSetterAccess);
         if (null != $principalSummery || null != $principalLongDescription) {
-            $principalDocumentation = new TDocumentationType();
-            $principalDocumentation->setSummary($principalSummery);
-            $principalDocumentation->setLongDescription($principalLongDescription);
+            $principalDocumentation = $this->generateDocumentation($principalSummery, $principalLongDescription);
             $principalNavigationProperty->setDocumentation($principalDocumentation);
         }
         $principalType->addToNavigationProperty($principalNavigationProperty);
@@ -225,9 +219,7 @@ class MetadataManager
             $dependentNavigationProperty->setGetterAccess($dependentGetterAccess);
             $dependentNavigationProperty->setSetterAccess($dependentSetterAccess);
             if (null != $dependentSummery || null != $dependentLongDescription) {
-                $dependentDocumentation = new TDocumentationType();
-                $dependentDocumentation->setSummary($dependentSummery);
-                $dependentDocumentation->setLongDescription($dependentLongDescription);
+                $dependentDocumentation = $this->generateDocumentation($dependentSummery, $dependentLongDescription);
                 $dependentNavigationProperty->setDocumentation($dependentDocumentation);
             }
             $dependentType->addToNavigationProperty($dependentNavigationProperty);
