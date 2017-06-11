@@ -159,10 +159,11 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($ProductType, "Discontinued", "Boolean");
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-
-        $metadataManager->addNavigationPropertyToEntityType(
+        $expectedRelation = "Data.Category_Products_Product_Category";
+        list($principalNav, ) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType, "*", "Products", $ProductType, "1", "Category", ["CategoryID"], ["CategoryID"]
         );
+        $this->assertEquals($expectedRelation, $principalNav->getRelationship());
         $metadataManager->addNavigationPropertyToEntityType(
             $Order_DetailType, "1", "Order", $ProductType, "*", "Order_Details", ["OrderID"], ["CategoryID"]
         );
@@ -182,6 +183,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         list($msg, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
+        $expectedRelation = "Data.Category_Customers_Customer_Categories";
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
             "*",
@@ -194,6 +196,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
         $this->assertEquals("Customers", $principal->getName());
         $this->assertEquals("Categories", $dependent->getName());
+        $this->assertEquals($expectedRelation, $principal->getRelationship());
+        $this->assertEquals($expectedRelation, $dependent->getRelationship());
 
         $navProps = [$principal, $dependent];
         $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
@@ -550,11 +554,15 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $msg = null;
         $metadataManager = new MetadataManager("Data", "Container");
         $result = null;
+        $expectedCategorySetName = 'Categories';
+        $expectedCustomerSetName = 'Customers';
 
-        list($CategoryType, ) = $metadataManager->addEntityType("Category");
-        list($CustomerType, ) = $metadataManager->addEntityType("Customer");
+        list($CategoryType, $CategorySet) = $metadataManager->addEntityType("Category");
+        list($CustomerType, $CustomerSet) = $metadataManager->addEntityType("Customer");
         $this->assertTrue($CategoryType->isOK($msg), $msg);
         $this->assertTrue($CustomerType->isOK($msg), $msg);
-        return array($msg, $metadataManager, $CategoryType, $CustomerType);
+        $this->assertEquals($expectedCategorySetName, $CategorySet->getName());
+        $this->assertEquals($expectedCustomerSetName, $CustomerSet->getName());
+        return [$msg, $metadataManager, $CategoryType, $CustomerType];
     }
 }

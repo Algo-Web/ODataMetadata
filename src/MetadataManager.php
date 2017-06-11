@@ -65,12 +65,8 @@ class MetadataManager
 
         $entitySet = new EntitySetAnonymousType();
         $entitySet->setName(Str::plural($NewEntity->getName(), 2));
-        $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
-        if (0 == strlen(trim($namespace))) {
-            $entityTypeName = $NewEntity->getName();
-        } else {
-            $entityTypeName = $namespace . "." . $NewEntity->getName();
-        }
+        $namespace = $this->getNamespace();
+        $entityTypeName = $namespace . $NewEntity->getName();
         $entitySet->setEntityType($entityTypeName);
         $entitySet->setGetterAccess($accessType);
 
@@ -190,12 +186,8 @@ class MetadataManager
                         . $dependentType->getName() . "_" . $dependentProperty;
         $relationName = trim($relationName, "_");
 
-        $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
-        if (0 == strlen(trim($namespace))) {
-            $relationFQName = $relationName;
-        } else {
-            $relationFQName = $namespace . "." . $relationName;
-        }
+        $namespace = $this->getNamespace();
+        $relationFQName = $namespace . $relationName;
 
         $principalNavigationProperty = new TNavigationPropertyType();
         $principalNavigationProperty->setName($principalProperty);
@@ -286,15 +278,9 @@ class MetadataManager
             );
         }
 
-        $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
-
-        if (0 == strlen(trim($namespace))) {
-            $principalTypeFQName = $principalType->getName();
-            $dependentTypeFQName = $dependentType->getName();
-        } else {
-            $principalTypeFQName = $namespace . "." . $principalType->getName();
-            $dependentTypeFQName = $namespace . "." . $dependentType->getName();
-        }
+        $namespace = $this->getNamespace();
+        $principalTypeFQName = $namespace . $principalType->getName();
+        $dependentTypeFQName = $namespace . $dependentType->getName();
         $association = new TAssociationType();
         $relationship = $principalNavigationProperty->getRelationship();
         if (strpos($relationship, '.') !== false) {
@@ -357,12 +343,8 @@ class MetadataManager
         $as = new AssociationSetAnonymousType();
         $name = $association->getName();
         $as->setName($name);
-        $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
-        if (0 == strlen(trim($namespace))) {
-            $associationSetName = $association->getName();
-        } else {
-            $associationSetName = $namespace . "." . $association->getName();
-        }
+        $namespace = $this->getNamespace();
+        $associationSetName = $namespace . $association->getName();
         $as->setAssociation($associationSetName);
         $end1 = new EndAnonymousType();
         $end1->setRole($association->getEnd()[0]->getRole());
@@ -457,5 +439,19 @@ class MetadataManager
         $documentation->setSummary($summary);
         $documentation->setLongDescription($longDescription);
         return $documentation;
+    }
+
+    /**
+     * @return string
+     */
+    private function getNamespace()
+    {
+        $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
+        if (0 == strlen(trim($namespace))) {
+            $namespace = "";
+        } else {
+            $namespace .= ".";
+        }
+        return $namespace;
     }
 }
