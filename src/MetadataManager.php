@@ -44,14 +44,14 @@ class MetadataManager
     public function getEdmx()
     {
         $msg = null;
-        assert($this->V3Edmx->isOk($msg), $msg);
+        assert($this->V3Edmx->isOK($msg), $msg);
         return $this->V3Edmx;
     }
 
     public function getEdmxXML()
     {
-        assert(null != $this->serializer, "Serializer must not be null when trying to get edmx xml");
-        return $this->serializer->serialize($this->getEdmx(), "xml");
+        assert(null != $this->getSerialiser(), "Serializer must not be null when trying to get edmx xml");
+        return $this->getSerialiser()->serialize($this->getEdmx(), "xml");
     }
 
     public function addEntityType($name, $accessType = "Public", $summary = null, $longDescription = null)
@@ -76,7 +76,7 @@ class MetadataManager
 
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
-        if (!$this->V3Edmx->isok($this->lastError)) {
+        if (!$this->V3Edmx->isOK($this->lastError)) {
             return false;
         }
         return [$NewEntity, $entitySet];
@@ -160,7 +160,7 @@ class MetadataManager
             $Key->setName($name);
             $entityType->addToKey($Key);
         }
-        if (!$this->V3Edmx->isok($this->lastError)) {
+        if (!$this->V3Edmx->isOK($this->lastError)) {
             return false;
         }
         return $NewProperty;
@@ -247,7 +247,7 @@ class MetadataManager
         $this->V3Edmx->getDataServiceType()->getSchema()[0]
             ->getEntityContainer()[0]->addToAssociationSet($associationSet);
 
-        if (!$this->V3Edmx->isok($this->lastError)) {
+        if (!$this->V3Edmx->isOK($this->lastError)) {
             return false;
         }
         return [$principalNavigationProperty, $dependentNavigationProperty];
