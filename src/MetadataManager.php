@@ -127,7 +127,7 @@ class MetadataManager
     }
 
     public function addPropertyToEntityType(
-        $entityType,
+        TEntityTypeType $entityType,
         $name,
         $type,
         $defaultValue = null,
@@ -155,7 +155,6 @@ class MetadataManager
             $Key->setName($name);
             $entityType->addToKey($Key);
         }
-        assert($this->V3Edmx->isOK($this->lastError, $this->lastError));
         return $NewProperty;
     }
 

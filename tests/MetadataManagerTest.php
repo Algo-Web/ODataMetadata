@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType;
@@ -631,6 +632,33 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         );
         $this->assertNotNull($result->getDocumentation());
         $this->assertEquals($expectedDefault, $result->getDefaultValue());
+    }
+
+    public function testAddPropertyToEntityType()
+    {
+        $metadataManager = new MetadataManager();
+        $entity = m::mock(TEntityTypeType::class);
+        $entity->shouldReceive('addToProperty')
+            ->with(m::type(TEntityPropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $summary = new TTextType();
+        $defaultValue = "true";
+        $longDescription = new TTextType();
+
+        $result = $metadataManager->addPropertyToEntityType(
+            $entity,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            false,
+            null,
+            $summary,
+            $longDescription
+        );
+        $this->assertNotNull($result->getDocumentation());
+        $this->assertEquals("true", $result->getDefaultValue());
     }
 
     /**
