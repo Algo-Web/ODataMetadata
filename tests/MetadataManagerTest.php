@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataManager;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType;
@@ -550,7 +551,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testAddComplexType()
     {
-        list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
 
         $name = "Name";
         $accessType = "Public";
@@ -566,6 +567,70 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertNotNull($result);
         $this->assertTrue($result instanceof TComplexTypeType, get_class($result));
         $this->assertNotNull($result->getDocumentation());
+    }
+
+    public function testAddPropertyToComplexTypeDefaultValueArray()
+    {
+        $expected = "Default value cannot be object or array";
+        $actual = null;
+
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+        $complex = m::mock(TComplexTypeType::class);
+        $name = "name";
+        $type = "type";
+        $defaultValue = [];
+
+        try {
+            $metadataManager->addPropertyToComplexType($complex, $name, $type, $defaultValue);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddPropertyToComplexTypeDefaultValueObject()
+    {
+        $expected = "Default value cannot be object or array";
+        $actual = null;
+
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+        $complex = m::mock(TComplexTypeType::class);
+        $name = "name";
+        $type = "type";
+        $defaultValue = new \stdClass();
+
+        try {
+            $metadataManager->addPropertyToComplexType($complex, $name, $type, $defaultValue);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddPropertyToComplexTypeDefaultValueBoolean()
+    {
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+        $complex = m::mock(TComplexTypeType::class);
+        $complex->shouldReceive('addToProperty')
+            ->with(m::type(TComplexTypePropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $defaultValue = true;
+        $summary = new TTextType();
+        $longDescription = new TTextType();
+        $expectedDefault = 'true';
+
+        $result = $metadataManager->addPropertyToComplexType(
+            $complex,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            $summary,
+            $longDescription
+        );
+        $this->assertNotNull($result->getDocumentation());
+        $this->assertEquals($expectedDefault, $result->getDefaultValue());
     }
 
     /**

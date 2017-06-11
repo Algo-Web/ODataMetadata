@@ -121,6 +121,7 @@ class MetadataManager
         if (null != $defaultValue) {
             $NewProperty->setDefaultValue($defaultValue);
         }
+        assert($NewProperty->isOK($this->lastError), $this->lastError);
         $complexType->addToProperty($NewProperty);
         return $NewProperty;
     }
