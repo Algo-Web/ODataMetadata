@@ -57,13 +57,13 @@ class MetadataManager
     {
         $NewEntity = new TEntityTypeType();
         $NewEntity->setName($name);
-        if (null != $summary || null != $longDescription) {
+        if (null != $summary && null != $longDescription) {
             $documentation = $this->generateDocumentation($summary, $longDescription);
             $NewEntity->setDocumentation($documentation);
         }
 
         $entitySet = new EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($NewEntity->getName(), 2));
+        $entitySet->setName(Str::plural($NewEntity->getName()));
         $namespace = $this->getNamespace();
         $entityTypeName = $namespace . $NewEntity->getName();
         $entitySet->setEntityType($entityTypeName);
@@ -80,7 +80,7 @@ class MetadataManager
         $NewEntity = new TComplexTypeType();
         $NewEntity->setName($name);
         $NewEntity->setTypeAccess($accessType);
-        if (null != $summary || null != $longDescription) {
+        if (null != $summary && null != $longDescription) {
             $documentation = $this->generateDocumentation($summary, $longDescription);
             $NewEntity->setDocumentation($documentation);
         }
@@ -114,7 +114,7 @@ class MetadataManager
         $NewProperty->setName($name);
         $NewProperty->setType($type);
         $NewProperty->setNullable($nullable);
-        if (null != $summary || null != $longDescription) {
+        if (null != $summary && null != $longDescription) {
             $documentation = $this->generateDocumentation($summary, $longDescription);
             $NewProperty->addToDocumentation($documentation);
         }
@@ -142,7 +142,7 @@ class MetadataManager
         $NewProperty->setType($type);
         $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
         $NewProperty->setNullable($nullable);
-        if (null != $summary || null != $longDescription) {
+        if (null != $summary && null != $longDescription) {
             $documentation = $this->generateDocumentation($summary, $longDescription);
             $NewProperty->addToDocumentation($documentation);
         }
@@ -176,8 +176,8 @@ class MetadataManager
         $dependentSummery = null,
         $dependentLongDescription = null
     ) {
-        $principalEntitySetName = Str::plural($principalType->getName(), 2);
-        $dependentEntitySetName = Str::plural($dependentType->getName(), 2);
+        $principalEntitySetName = Str::plural($principalType->getName());
+        $dependentEntitySetName = Str::plural($dependentType->getName());
         $relationName = $principalType->getName() . "_" . $principalProperty . "_"
                         . $dependentType->getName() . "_" . $dependentProperty;
         $relationName = trim($relationName, "_");
@@ -192,7 +192,7 @@ class MetadataManager
         $principalNavigationProperty->setRelationship($relationFQName);
         $principalNavigationProperty->setGetterAccess($principalGetterAccess);
         $principalNavigationProperty->setSetterAccess($principalSetterAccess);
-        if (null != $principalSummery || null != $principalLongDescription) {
+        if (null != $principalSummery && null != $principalLongDescription) {
             $principalDocumentation = $this->generateDocumentation($principalSummery, $principalLongDescription);
             $principalNavigationProperty->setDocumentation($principalDocumentation);
         }
@@ -206,7 +206,7 @@ class MetadataManager
             $dependentNavigationProperty->setRelationship($relationFQName);
             $dependentNavigationProperty->setGetterAccess($dependentGetterAccess);
             $dependentNavigationProperty->setSetterAccess($dependentSetterAccess);
-            if (null != $dependentSummery || null != $dependentLongDescription) {
+            if (null != $dependentSummery && null != $dependentLongDescription) {
                 $dependentDocumentation = $this->generateDocumentation($dependentSummery, $dependentLongDescription);
                 $dependentNavigationProperty->setDocumentation($dependentDocumentation);
             }
@@ -235,7 +235,7 @@ class MetadataManager
         $this->V3Edmx->getDataServiceType()->getSchema()[0]
             ->getEntityContainer()[0]->addToAssociationSet($associationSet);
 
-        assert($this->V3Edmx->isOK($this->lastError, $this->lastError));
+        assert($this->V3Edmx->isOK($this->lastError), $this->lastError);
         return [$principalNavigationProperty, $dependentNavigationProperty];
     }
 
@@ -346,6 +346,7 @@ class MetadataManager
         $end2 = new EndAnonymousType();
         $end2->setRole($association->getEnd()[1]->getRole());
         $end2->setEntitySet($dependentEntitySetName);
+        assert($end1->getRole() != $end2->getRole());
         $as->addToEnd($end1);
         $as->addToEnd($end2);
         return $as;
@@ -380,7 +381,7 @@ class MetadataManager
         }
 
         $documentation = null;
-        if (null != $shortDesc || null != $longDesc) {
+        if (null != $shortDesc && null != $longDesc) {
             $documentation = $this->generateDocumentation($shortDesc, $longDesc);
         }
         $funcType = new FunctionImportAnonymousType();
@@ -427,7 +428,7 @@ class MetadataManager
      * @param $longDescription
      * @return TDocumentationType
      */
-    private function generateDocumentation(TTextType $summary, TTextType $longDescription)
+    private function generateDocumentation(TTextType $summary = null, TTextType $longDescription = null)
     {
         $documentation = new TDocumentationType();
         $documentation->setSummary($summary);

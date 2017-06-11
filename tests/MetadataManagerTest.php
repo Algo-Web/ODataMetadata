@@ -570,6 +570,46 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertNotNull($result->getDocumentation());
     }
 
+    public function testAddComplexTypeWithOnlySummary()
+    {
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+
+        $name = "Name";
+        $accessType = "Public";
+        $summary = new TTextType();
+        $longDescription = null;
+
+        $oldCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+
+        $result = $metadataManager->addComplexType($name, $accessType, $summary, $longDescription);
+
+        $newCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+        $this->assertEquals($oldCount+1, $newCount);
+        $this->assertNotNull($result);
+        $this->assertTrue($result instanceof TComplexTypeType, get_class($result));
+        $this->assertNull($result->getDocumentation());
+    }
+
+    public function testAddComplexTypeWithOnlyDescription()
+    {
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+
+        $name = "Name";
+        $accessType = "Public";
+        $summary = null;
+        $longDescription = new TTextType();
+
+        $oldCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+
+        $result = $metadataManager->addComplexType($name, $accessType, $summary, $longDescription);
+
+        $newCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+        $this->assertEquals($oldCount+1, $newCount);
+        $this->assertNotNull($result);
+        $this->assertTrue($result instanceof TComplexTypeType, get_class($result));
+        $this->assertNull($result->getDocumentation());
+    }
+
     public function testAddPropertyToComplexTypeDefaultValueArray()
     {
         $expected = "Default value cannot be object or array";
@@ -630,7 +670,60 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
             $summary,
             $longDescription
         );
-        $this->assertNotNull($result->getDocumentation());
+        $this->assertEquals(1, count($result->getDocumentation()));
+        $this->assertEquals($expectedDefault, $result->getDefaultValue());
+    }
+
+    public function testAddPropertyToComplexTypeDefaultValueBooleanOnlySummary()
+    {
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+        $complex = m::mock(TComplexTypeType::class);
+        $complex->shouldReceive('addToProperty')
+            ->with(m::type(TComplexTypePropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $defaultValue = true;
+        $summary = new TTextType();
+        $longDescription = null;
+        $expectedDefault = 'true';
+
+        $result = $metadataManager->addPropertyToComplexType(
+            $complex,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            $summary,
+            $longDescription
+        );
+        $this->assertNotNull($result);
+        $this->assertEquals(0, count($result->getDocumentation()));
+        $this->assertEquals($expectedDefault, $result->getDefaultValue());
+    }
+
+    public function testAddPropertyToComplexTypeDefaultValueBooleanOnlyDescription()
+    {
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+        $complex = m::mock(TComplexTypeType::class);
+        $complex->shouldReceive('addToProperty')
+            ->with(m::type(TComplexTypePropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $defaultValue = true;
+        $summary = null;
+        $longDescription = new TTextType();
+        $expectedDefault = 'true';
+
+        $result = $metadataManager->addPropertyToComplexType(
+            $complex,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            $summary,
+            $longDescription
+        );
+        $this->assertEquals(0, count($result->getDocumentation()));
         $this->assertEquals($expectedDefault, $result->getDefaultValue());
     }
 
@@ -657,7 +750,67 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
             $summary,
             $longDescription
         );
-        $this->assertNotNull($result->getDocumentation());
+        $this->assertNotNull($result);
+        $this->assertTrue(is_array($result->getDocumentation()));
+        $this->assertEquals(1, count($result->getDocumentation()));
+        $this->assertEquals("true", $result->getDefaultValue());
+    }
+
+    public function testAddPropertyToEntityTypeOnlySummary()
+    {
+        $metadataManager = new MetadataManager();
+        $entity = m::mock(TEntityTypeType::class);
+        $entity->shouldReceive('addToProperty')
+            ->with(m::type(TEntityPropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $summary = new TTextType();
+        $defaultValue = "true";
+        $longDescription = null;
+
+        $result = $metadataManager->addPropertyToEntityType(
+            $entity,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            false,
+            null,
+            $summary,
+            $longDescription
+        );
+        $this->assertNotNull($result);
+        $this->assertTrue(is_array($result->getDocumentation()));
+        $this->assertEquals(0, count($result->getDocumentation()));
+        $this->assertEquals("true", $result->getDefaultValue());
+    }
+
+    public function testAddPropertyToEntityTypeOnlyDescription()
+    {
+        $metadataManager = new MetadataManager();
+        $entity = m::mock(TEntityTypeType::class);
+        $entity->shouldReceive('addToProperty')
+            ->with(m::type(TEntityPropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $summary = null;
+        $defaultValue = "true";
+        $longDescription = new TTextType();
+
+        $result = $metadataManager->addPropertyToEntityType(
+            $entity,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            false,
+            null,
+            $summary,
+            $longDescription
+        );
+        $this->assertNotNull($result);
+        $this->assertTrue(is_array($result->getDocumentation()));
+        $this->assertEquals(0, count($result->getDocumentation()));
         $this->assertEquals("true", $result->getDefaultValue());
     }
 
@@ -671,7 +824,132 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager = new MetadataManager();
         list($result, ) = $metadataManager->addEntityType($name, $accessType, $summary, $longDescription);
         $this->assertNotNull($result->getDocumentation());
+    }
 
+    public function testAddEntityTypeWithDocumentationFromOnlySummary()
+    {
+        $name = "name";
+        $accessType = "Public";
+        $summary = new TTextType();
+        $longDescription = null;
+
+        $metadataManager = new MetadataManager();
+        list($result, ) = $metadataManager->addEntityType($name, $accessType, $summary, $longDescription);
+        $this->assertNull($result->getDocumentation());
+    }
+
+    public function testAddEntityTypeWithDocumentationFromOnlyDocumentation()
+    {
+        $name = "name";
+        $accessType = "Public";
+        $summary = null;
+        $longDescription = new TTextType();
+
+        $metadataManager = new MetadataManager();
+        list($result, ) = $metadataManager->addEntityType($name, $accessType, $summary, $longDescription);
+        $this->assertNull($result->getDocumentation());
+    }
+
+    public function testAddNavigationPropertyToEntityTypeWithDocumentation()
+    {
+        list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
+
+        $summary = new TTextType();
+        $longDescription = new TTextType();
+        $mult = '*';
+        $principalProperty = 'Categories';
+        $dependentProperty = 'Customers';
+
+        list($principal, $dependent) = $metadataManager
+            ->addNavigationPropertyToEntityType(
+                $CategoryType,
+                $mult,
+                $principalProperty,
+                $CustomerType,
+                $mult,
+                $dependentProperty,
+                null,
+                null,
+                "Public",
+                "Public",
+                "Public",
+                "Public",
+                $summary,
+                $longDescription,
+                $summary,
+                $longDescription
+            );
+
+        $this->assertNotNull($principal->getDocumentation());
+        $this->assertNotNull($dependent->getDocumentation());
+    }
+
+    public function testAddNavigationPropertyToEntityTypeWithDocumentationWithOnlySummary()
+    {
+        list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
+
+        $summary = null;
+        $longDescription = new TTextType();
+        $mult = '*';
+        $principalProperty = 'Categories';
+        $dependentProperty = 'Customers';
+
+        list($principal, $dependent) = $metadataManager
+            ->addNavigationPropertyToEntityType(
+                $CategoryType,
+                $mult,
+                $principalProperty,
+                $CustomerType,
+                $mult,
+                $dependentProperty,
+                null,
+                null,
+                "Public",
+                "Public",
+                "Public",
+                "Public",
+                $summary,
+                $longDescription,
+                $summary,
+                $longDescription
+            );
+
+        $this->assertNull($principal->getDocumentation());
+        $this->assertNull($dependent->getDocumentation());
+    }
+
+    public function testAddNavigationPropertyToEntityTypeWithDocumentationWithOnlyDescription()
+    {
+        list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
+
+        $summary = new TTextType();
+        $longDescription = null;
+        $mult = '*';
+        $principalProperty = 'Categories';
+        $dependentProperty = 'Customers';
+
+        list($principal, $dependent) = $metadataManager
+            ->addNavigationPropertyToEntityType(
+                $CategoryType,
+                $mult,
+                $principalProperty,
+                $CustomerType,
+                $mult,
+                $dependentProperty,
+                null,
+                null,
+                "Public",
+                "Public",
+                "Public",
+                "Public",
+                $summary,
+                $longDescription,
+                $summary,
+                $longDescription
+            );
+
+        $this->assertNull($principal->getDocumentation());
+        $this->assertNull($dependent->getDocumentation());
     }
 
     /**
