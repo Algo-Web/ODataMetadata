@@ -661,6 +661,19 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals("true", $result->getDefaultValue());
     }
 
+    public function testAddEntityTypeWithDocumentation()
+    {
+        $name = "name";
+        $accessType = "Public";
+        $summary = new TTextType();
+        $longDescription = new TTextType();
+
+        $metadataManager = new MetadataManager();
+        list($result, ) = $metadataManager->addEntityType($name, $accessType, $summary, $longDescription);
+        $this->assertNotNull($result->getDocumentation());
+
+    }
+
     /**
      * @return array
      */
