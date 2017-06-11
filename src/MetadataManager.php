@@ -87,6 +87,7 @@ class MetadataManager
             $documentation = $this->generateDocumentation($summary, $longDescription);
             $NewEntity->setDocumentation($documentation);
         }
+        assert($NewEntity->isOK($this->lastError), $this->lastError);
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToComplexType($NewEntity);
 
         return $NewEntity;
@@ -433,7 +434,7 @@ class MetadataManager
      * @param $longDescription
      * @return TDocumentationType
      */
-    private function generateDocumentation($summary, $longDescription)
+    private function generateDocumentation(TTextType $summary, TTextType $longDescription)
     {
         $documentation = new TDocumentationType();
         $documentation->setSummary($summary);

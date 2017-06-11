@@ -7,9 +7,11 @@ use AlgoWeb\ODataMetadata\MetadataManager;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use Mockery as m;
 
@@ -544,6 +546,26 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
             $actual = $e->getMessage();
         }
         $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddComplexType()
+    {
+        list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
+
+        $name = "Name";
+        $accessType = "Public";
+        $summary = new TTextType();
+        $longDescription = new TTextType();
+
+        $oldCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+
+        $result = $metadataManager->addComplexType($name, $accessType, $summary, $longDescription);
+
+        $newCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+        $this->assertEquals($oldCount+1, $newCount);
+        $this->assertNotNull($result);
+        $this->assertTrue($result instanceof TComplexTypeType, get_class($result));
+        $this->assertNotNull($result->getDocumentation());
     }
 
     /**
