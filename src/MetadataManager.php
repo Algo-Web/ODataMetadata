@@ -253,14 +253,16 @@ class MetadataManager
         $multKeys = array_keys($multCombo);
         if (null != $dependentNavigationProperty) {
             if ($dependentNavigationProperty->getRelationship() != $principalNavigationProperty->getRelationship()) {
-                $msg = "if you have both a dependent property and a principal property,"
-                       ." they should both have the same relationship";
-                throw new \Exception($msg);
+                $msg = "If you have both a dependent property and a principal property,"
+                       ." relationship should match";
+                throw new \InvalidArgumentException($msg);
             }
             if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole() ||
                 $dependentNavigationProperty->getToRole() != $principalNavigationProperty->getFromRole()
             ) {
-                throw new \Exception("The from roles and two roles from matching properties should match");
+                throw new \InvalidArgumentException(
+                    "Principal to role should match dependent from role, and vice versa"
+                );
             }
         }
         if (!in_array($principalMultiplicity, $multKeys) || !in_array($dependentMultiplicity, $multKeys)) {
@@ -277,7 +279,7 @@ class MetadataManager
         $dependentTypeFQName = $namespace . $dependentType->getName();
         $association = new TAssociationType();
         $relationship = $principalNavigationProperty->getRelationship();
-        if (strpos($relationship, '.') !== false) {
+        if (false !== strpos($relationship, '.')) {
             $relationship = substr($relationship, strpos($relationship, '.') + 1);
         }
 
@@ -300,27 +302,16 @@ class MetadataManager
 
         $principalReferralConstraint = null;
         $dependentReferralConstraint = null;
+        $hasPrincipalReferral = null != $principalConstraintProperty && 0 < count($principalConstraintProperty);
+        $hasDependentReferral = null != $dependentConstraintProperty && 0 < count($dependentConstraintProperty);
 
-        if (null != $principalConstraintProperty && 0 < count($principalConstraintProperty)) {
-            $principalReferralConstraint = new TReferentialConstraintRoleElementType();
-            $principalReferralConstraint->setRole($principalTargRole);
-            foreach ($principalConstraintProperty as $propertyRef) {
-                $TpropertyRef = new TPropertyRefType();
-                $TpropertyRef->setName($propertyRef);
-                $principalReferralConstraint->addToPropertyRef($TpropertyRef);
-            }
-        }
-        if (null != $dependentConstraintProperty && 0 < count($dependentConstraintProperty)) {
-            $dependentReferralConstraint = new TReferentialConstraintRoleElementType();
-            $dependentReferralConstraint->setRole($dependentTargRole);
-            foreach ($dependentConstraintProperty as $propertyRef) {
-                $TpropertyRef = new TPropertyRefType();
-                $TpropertyRef->setName($propertyRef);
-                $dependentReferralConstraint->addToPropertyRef($TpropertyRef);
-            }
-        }
-
-        if (null != $dependentReferralConstraint || null != $principalReferralConstraint) {
+        if ($hasPrincipalReferral && $hasDependentReferral) {
+            $principalReferralConstraint = $this->makeReferentialConstraint(
+                $principalConstraintProperty, $principalTargRole
+            );
+            $dependentReferralConstraint = $this->makeReferentialConstraint(
+                $dependentConstraintProperty, $dependentTargRole
+            );
             $constraint = new TConstraintType();
             $constraint->setPrincipal($principalReferralConstraint);
             $constraint->setDependent($dependentReferralConstraint);
@@ -380,10 +371,6 @@ class MetadataManager
             throw new \InvalidArgumentException($msg);
         }
 
-        $documentation = null;
-        if (null != $shortDesc && null != $longDesc) {
-            $documentation = $this->generateDocumentation($shortDesc, $longDesc);
-        }
         $funcType = new FunctionImportAnonymousType();
         $funcType->setName($name);
 
@@ -393,7 +380,8 @@ class MetadataManager
         $returnType->setEntitySetAttribute($typeName);
         assert($returnType->isOK($msg), $msg);
         $funcType->addToReturnType($returnType);
-        if (null != $documentation) {
+        if (null != $shortDesc && null != $longDesc) {
+            $documentation = $this->generateDocumentation($shortDesc, $longDesc);
             $funcType->setDocumentation($documentation);
         }
 
@@ -448,5 +436,24 @@ class MetadataManager
             $namespace .= ".";
         }
         return $namespace;
+    }
+
+    /**
+     * @param array $constraintProperty
+     * @param string $targRole
+     * @return TReferentialConstraintRoleElementType
+     */
+    protected function makeReferentialConstraint(array $constraintProperty, $targRole)
+    {
+        assert(!empty($constraintProperty));
+        assert(is_string($targRole));
+        $referralConstraint = new TReferentialConstraintRoleElementType();
+        $referralConstraint->setRole($targRole);
+        foreach ($constraintProperty as $propertyRef) {
+            $TpropertyRef = new TPropertyRefType();
+            $TpropertyRef->setName($propertyRef);
+            $referralConstraint->addToPropertyRef($TpropertyRef);
+        }
+        return $referralConstraint;
     }
 }

@@ -13,6 +13,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use Mockery as m;
@@ -461,6 +462,23 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testCreateSingletonNonStringName()
+    {
+        $returnType = m::mock(TEntityTypeType::class);
+        $this->assertTrue($returnType instanceof TEntityTypeType, get_class($returnType));
+        $foo = new MetadataManager();
+
+        $expected = "Name must be a non-empty string";
+        $actual = null;
+
+        try {
+            $foo->createSingleton($returnType, $returnType);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testCreateSingletonSuccessful()
     {
         $msg = null;
@@ -482,6 +500,88 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $result = $foo->createSingleton($name, $returnType);
         $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
         $this->assertTrue($result->isOK($msg));
+        $this->assertNull($result->getDocumentation());
+    }
+
+    public function testCreateSingletonWithDocumentation()
+    {
+        $msg = null;
+        $name = "singleton";
+        $shortDesc = new TTextType();
+        $longDesc = new TTextType();
+
+        $returnType = m::mock(TEntityTypeType::class)->makePartial();
+        $returnType->shouldReceive('getName')->andReturn('doubleton');
+
+        $entityContainer = m::mock(EntityContainer::class)->makePartial();
+        $entityContainer->shouldReceive('addToFunctionImport')->andReturn(null)->once();
+
+        $schema = m::mock(Schema::class)->makePartial();
+        $schema->shouldReceive('getEntityContainer')->andReturn([$entityContainer])->once();
+        $edmx = m::mock(Edmx::class)->makePartial();
+        $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
+
+        $foo = m::mock(MetadataManager::class)->makePartial();
+        $foo->shouldReceive('getEdmx')->andReturn($edmx);
+
+        $result = $foo->createSingleton($name, $returnType, $shortDesc, $longDesc);
+        $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
+        $this->assertTrue($result->isOK($msg));
+        $this->assertNotNull($result->getDocumentation());
+    }
+
+    public function testCreateSingletonWithDocumentationOnlyShortDesc()
+    {
+        $msg = null;
+        $name = "singleton";
+        $shortDesc = new TTextType();
+        $longDesc = null;
+
+        $returnType = m::mock(TEntityTypeType::class)->makePartial();
+        $returnType->shouldReceive('getName')->andReturn('doubleton');
+
+        $entityContainer = m::mock(EntityContainer::class)->makePartial();
+        $entityContainer->shouldReceive('addToFunctionImport')->andReturn(null)->once();
+
+        $schema = m::mock(Schema::class)->makePartial();
+        $schema->shouldReceive('getEntityContainer')->andReturn([$entityContainer])->once();
+        $edmx = m::mock(Edmx::class)->makePartial();
+        $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
+
+        $foo = m::mock(MetadataManager::class)->makePartial();
+        $foo->shouldReceive('getEdmx')->andReturn($edmx);
+
+        $result = $foo->createSingleton($name, $returnType, $shortDesc, $longDesc);
+        $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
+        $this->assertTrue($result->isOK($msg));
+        $this->assertNull($result->getDocumentation());
+    }
+
+    public function testCreateSingletonWithDocumentationOnlyLongDesc()
+    {
+        $msg = null;
+        $name = "singleton";
+        $shortDesc = null;
+        $longDesc = new TTextType();
+
+        $returnType = m::mock(TEntityTypeType::class)->makePartial();
+        $returnType->shouldReceive('getName')->andReturn('doubleton');
+
+        $entityContainer = m::mock(EntityContainer::class)->makePartial();
+        $entityContainer->shouldReceive('addToFunctionImport')->andReturn(null)->once();
+
+        $schema = m::mock(Schema::class)->makePartial();
+        $schema->shouldReceive('getEntityContainer')->andReturn([$entityContainer])->once();
+        $edmx = m::mock(Edmx::class)->makePartial();
+        $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
+
+        $foo = m::mock(MetadataManager::class)->makePartial();
+        $foo->shouldReceive('getEdmx')->andReturn($edmx);
+
+        $result = $foo->createSingleton($name, $returnType, $shortDesc, $longDesc);
+        $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
+        $this->assertTrue($result->isOK($msg));
+        $this->assertNull($result->getDocumentation());
     }
 
     public function testMalformedMultiplicity()
@@ -950,6 +1050,101 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         $this->assertNull($principal->getDocumentation());
         $this->assertNull($dependent->getDocumentation());
+    }
+
+    public function testCreateAssociationFromNavigationPropertyRelationMismatch()
+    {
+        $principalType = m::mock(TEntityTypeType::class);
+        $dependentType = m::mock(TEntityTypeType::class);
+        $principalNav = m::mock(TNavigationPropertyType::class);
+        $principalNav->shouldReceive('getRelationship')->andReturn('foo')->once();
+        $dependentNav = m::mock(TNavigationPropertyType::class);
+        $dependentNav->shouldReceive('getRelationship')->andReturn('bar')->once();
+
+        $metadataManager = new MetadataManagerDummy();
+
+        $expected = "If you have both a dependent property and a principal property, relationship should match";
+        $actual = null;
+
+        try {
+            $metadataManager->createAssocationFromNavigationProperty(
+                $principalType,
+                $dependentType,
+                $principalNav,
+                $dependentNav,
+                "*",
+                "*"
+            );
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testCreateAssociationFromNavigationPropertyForwardRoleMismatch()
+    {
+        $principalType = m::mock(TEntityTypeType::class);
+        $dependentType = m::mock(TEntityTypeType::class);
+        $principalNav = m::mock(TNavigationPropertyType::class);
+        $principalNav->shouldReceive('getRelationship')->andReturn('foo')->once();
+        $principalNav->shouldReceive('getToRole')->andReturn('Forwards');
+        $principalNav->shouldReceive('getFromRole')->andReturn('Reverse');
+        $dependentNav = m::mock(TNavigationPropertyType::class);
+        $dependentNav->shouldReceive('getRelationship')->andReturn('foo')->once();
+        $dependentNav->shouldReceive('getToRole')->andReturn('Reverse');
+        $dependentNav->shouldReceive('getFromRole')->andReturn('Sideways');
+
+        $metadataManager = new MetadataManagerDummy();
+
+        $expected = "Principal to role should match dependent from role, and vice versa";
+        $actual = null;
+
+        try {
+            $metadataManager->createAssocationFromNavigationProperty(
+                $principalType,
+                $dependentType,
+                $principalNav,
+                $dependentNav,
+                "*",
+                "*"
+            );
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testCreateAssociationFromNavigationPropertyReverseRoleMismatch()
+    {
+        $principalType = m::mock(TEntityTypeType::class);
+        $dependentType = m::mock(TEntityTypeType::class);
+        $principalNav = m::mock(TNavigationPropertyType::class);
+        $principalNav->shouldReceive('getRelationship')->andReturn('foo')->once();
+        $principalNav->shouldReceive('getToRole')->andReturn('Forwards');
+        $principalNav->shouldReceive('getFromRole')->andReturn('Reverse');
+        $dependentNav = m::mock(TNavigationPropertyType::class);
+        $dependentNav->shouldReceive('getRelationship')->andReturn('foo')->once();
+        $dependentNav->shouldReceive('getToRole')->andReturn('Sideways');
+        $dependentNav->shouldReceive('getFromRole')->andReturn('Forwards');
+
+        $metadataManager = new MetadataManagerDummy();
+
+        $expected = "Principal to role should match dependent from role, and vice versa";
+        $actual = null;
+
+        try {
+            $metadataManager->createAssocationFromNavigationProperty(
+                $principalType,
+                $dependentType,
+                $principalNav,
+                $dependentNav,
+                "*",
+                "*"
+            );
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
     }
 
     /**
