@@ -39,10 +39,11 @@ trait XSDTopLevelTrait
         if (!is_numeric($input)) {
             throw new \InvalidArgumentException("Input must be numeric");
         }
-        if (!is_integer($input)) {
+        $integral = intval($input);
+        if ($input != $integral) {
             throw new \InvalidArgumentException("Input must be integer");
         }
-        return intval($input);
+        return $integral;
     }
 
     public function nonNegativeInteger($input)

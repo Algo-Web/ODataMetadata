@@ -22,4 +22,27 @@ class TEnumTypeTypeTest extends TestCase
         }
         $this->assertEquals($expected, $actual);
     }
+
+    public function testIsTPropertyTypeValidNonString()
+    {
+        $expected = "Input must be a string: AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\TEnumTypeType";
+        $actual = null;
+
+        $type = new \DateTime();
+        $foo = new TEnumTypeType();
+
+        try {
+            $foo->isTPropertyTypeValid($type);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testIsTPropertyTypeValidBlankString()
+    {
+        $type = " _ ";
+        $foo = new TEnumTypeType();
+        $this->assertFalse($foo->isTPropertyTypeValid($type));
+    }
 }
