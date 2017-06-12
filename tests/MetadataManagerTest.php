@@ -1154,7 +1154,6 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         $msg = null;
         $metadataManager = new MetadataManager("Data", "Container");
-        $result = null;
         $expectedCategorySetName = 'Categories';
         $expectedCustomerSetName = 'Customers';
 

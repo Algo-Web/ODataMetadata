@@ -49,18 +49,16 @@ class MetadataManager
 
     public function getEdmxXML()
     {
-        assert(null != $this->getSerialiser(), "Serializer must not be null when trying to get edmx xml");
-        return $this->getSerialiser()->serialize($this->getEdmx(), "xml");
+        $cereal = $this->getSerialiser();
+        assert(null != $cereal, "Serializer must not be null when trying to get edmx xml");
+        return $cereal->serialize($this->getEdmx(), "xml");
     }
 
     public function addEntityType($name, $accessType = "Public", $summary = null, $longDescription = null)
     {
         $NewEntity = new TEntityTypeType();
         $NewEntity->setName($name);
-        if (null != $summary && null != $longDescription) {
-            $documentation = $this->generateDocumentation($summary, $longDescription);
-            $NewEntity->setDocumentation($documentation);
-        }
+        $this->addDocumentation($summary, $longDescription, $NewEntity);
 
         $entitySet = new EntitySetAnonymousType();
         $entitySet->setName(Str::plural($NewEntity->getName()));
@@ -71,7 +69,7 @@ class MetadataManager
 
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
-        assert($this->V3Edmx->isOK($this->lastError, $this->lastError));
+        assert($this->V3Edmx->isOK($this->lastError), $this->lastError);
         return [$NewEntity, $entitySet];
     }
 
@@ -80,10 +78,7 @@ class MetadataManager
         $NewEntity = new TComplexTypeType();
         $NewEntity->setName($name);
         $NewEntity->setTypeAccess($accessType);
-        if (null != $summary && null != $longDescription) {
-            $documentation = $this->generateDocumentation($summary, $longDescription);
-            $NewEntity->setDocumentation($documentation);
-        }
+        $this->addDocumentation($summary, $longDescription, $NewEntity);
         assert($NewEntity->isOK($this->lastError), $this->lastError);
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToComplexType($NewEntity);
 
@@ -114,10 +109,7 @@ class MetadataManager
         $NewProperty->setName($name);
         $NewProperty->setType($type);
         $NewProperty->setNullable($nullable);
-        if (null != $summary && null != $longDescription) {
-            $documentation = $this->generateDocumentation($summary, $longDescription);
-            $NewProperty->addToDocumentation($documentation);
-        }
+        $this->addDocumentation($summary, $longDescription, $NewProperty);
         if (null != $defaultValue) {
             $NewProperty->setDefaultValue($defaultValue);
         }
@@ -142,10 +134,7 @@ class MetadataManager
         $NewProperty->setType($type);
         $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
         $NewProperty->setNullable($nullable);
-        if (null != $summary && null != $longDescription) {
-            $documentation = $this->generateDocumentation($summary, $longDescription);
-            $NewProperty->addToDocumentation($documentation);
-        }
+        $this->addDocumentation($summary, $longDescription, $NewProperty);
         if (null != $defaultValue) {
             $NewProperty->setDefaultValue($defaultValue);
         }
@@ -192,10 +181,7 @@ class MetadataManager
         $principalNavigationProperty->setRelationship($relationFQName);
         $principalNavigationProperty->setGetterAccess($principalGetterAccess);
         $principalNavigationProperty->setSetterAccess($principalSetterAccess);
-        if (null != $principalSummery && null != $principalLongDescription) {
-            $principalDocumentation = $this->generateDocumentation($principalSummery, $principalLongDescription);
-            $principalNavigationProperty->setDocumentation($principalDocumentation);
-        }
+        $this->addDocumentation($principalSummery, $principalLongDescription, $principalNavigationProperty);
         $principalType->addToNavigationProperty($principalNavigationProperty);
         $dependentNavigationProperty = null;
         if (!empty($dependentProperty)) {
@@ -206,10 +192,7 @@ class MetadataManager
             $dependentNavigationProperty->setRelationship($relationFQName);
             $dependentNavigationProperty->setGetterAccess($dependentGetterAccess);
             $dependentNavigationProperty->setSetterAccess($dependentSetterAccess);
-            if (null != $dependentSummery && null != $dependentLongDescription) {
-                $dependentDocumentation = $this->generateDocumentation($dependentSummery, $dependentLongDescription);
-                $dependentNavigationProperty->setDocumentation($dependentDocumentation);
-            }
+            $this->addDocumentation($dependentSummery, $dependentLongDescription, $dependentNavigationProperty);
             $dependentType->addToNavigationProperty($dependentNavigationProperty);
         }
 
@@ -300,8 +283,6 @@ class MetadataManager
 
         $dependentEnd->setRole(null != $dependentNavigationProperty ? $dependentTargRole : $principalSrcRole);
 
-        $principalReferralConstraint = null;
-        $dependentReferralConstraint = null;
         $hasPrincipalReferral = null != $principalConstraintProperty && 0 < count($principalConstraintProperty);
         $hasDependentReferral = null != $dependentConstraintProperty && 0 < count($dependentConstraintProperty);
 
@@ -380,10 +361,7 @@ class MetadataManager
         $returnType->setEntitySetAttribute($typeName);
         assert($returnType->isOK($msg), $msg);
         $funcType->addToReturnType($returnType);
-        if (null != $shortDesc && null != $longDesc) {
-            $documentation = $this->generateDocumentation($shortDesc, $longDesc);
-            $funcType->setDocumentation($documentation);
-        }
+        $this->addDocumentation($shortDesc, $longDesc, $funcType);
 
         $this->getEdmx()->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToFunctionImport($funcType);
 
@@ -416,7 +394,7 @@ class MetadataManager
      * @param $longDescription
      * @return TDocumentationType
      */
-    private function generateDocumentation(TTextType $summary = null, TTextType $longDescription = null)
+    private function generateDocumentation(TTextType $summary, TTextType $longDescription)
     {
         $documentation = new TDocumentationType();
         $documentation->setSummary($summary);
@@ -455,5 +433,22 @@ class MetadataManager
             $referralConstraint->addToPropertyRef($TpropertyRef);
         }
         return $referralConstraint;
+    }
+
+    /**
+     * @param $summary
+     * @param $longDescription
+     * @param $NewEntity
+     */
+    private function addDocumentation($summary, $longDescription, IsOK &$NewEntity)
+    {
+        if (null != $summary && null != $longDescription) {
+            $documentation = $this->generateDocumentation($summary, $longDescription);
+            if (method_exists($NewEntity, 'addToDocumentation')) {
+                $NewEntity->addToDocumentation($documentation);
+            } else {
+                $NewEntity->setDocumentation($documentation);
+            }
+        }
     }
 }
