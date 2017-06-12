@@ -7,9 +7,14 @@ use AlgoWeb\ODataMetadata\MetadataManager;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use Mockery as m;
 
@@ -159,10 +164,11 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addPropertyToEntityType($ProductType, "Discontinued", "Boolean");
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-
-        $metadataManager->addNavigationPropertyToEntityType(
+        $expectedRelation = "Data.Category_Products_Product_Category";
+        list($principalNav, ) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType, "*", "Products", $ProductType, "1", "Category", ["CategoryID"], ["CategoryID"]
         );
+        $this->assertEquals($expectedRelation, $principalNav->getRelationship());
         $metadataManager->addNavigationPropertyToEntityType(
             $Order_DetailType, "1", "Order", $ProductType, "*", "Order_Details", ["OrderID"], ["CategoryID"]
         );
@@ -182,6 +188,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         list($msg, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
+        $expectedRelation = "Data.Category_Customers_Customer_Categories";
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
             "*",
@@ -194,6 +201,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
         $this->assertEquals("Customers", $principal->getName());
         $this->assertEquals("Categories", $dependent->getName());
+        $this->assertEquals($expectedRelation, $principal->getRelationship());
+        $this->assertEquals($expectedRelation, $dependent->getRelationship());
 
         $navProps = [$principal, $dependent];
         $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
@@ -453,6 +462,23 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testCreateSingletonNonStringName()
+    {
+        $returnType = m::mock(TEntityTypeType::class);
+        $this->assertTrue($returnType instanceof TEntityTypeType, get_class($returnType));
+        $foo = new MetadataManager();
+
+        $expected = "Name must be a non-empty string";
+        $actual = null;
+
+        try {
+            $foo->createSingleton($returnType, $returnType);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testCreateSingletonSuccessful()
     {
         $msg = null;
@@ -474,6 +500,88 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $result = $foo->createSingleton($name, $returnType);
         $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
         $this->assertTrue($result->isOK($msg));
+        $this->assertNull($result->getDocumentation());
+    }
+
+    public function testCreateSingletonWithDocumentation()
+    {
+        $msg = null;
+        $name = "singleton";
+        $shortDesc = new TTextType();
+        $longDesc = new TTextType();
+
+        $returnType = m::mock(TEntityTypeType::class)->makePartial();
+        $returnType->shouldReceive('getName')->andReturn('doubleton');
+
+        $entityContainer = m::mock(EntityContainer::class)->makePartial();
+        $entityContainer->shouldReceive('addToFunctionImport')->andReturn(null)->once();
+
+        $schema = m::mock(Schema::class)->makePartial();
+        $schema->shouldReceive('getEntityContainer')->andReturn([$entityContainer])->once();
+        $edmx = m::mock(Edmx::class)->makePartial();
+        $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
+
+        $foo = m::mock(MetadataManager::class)->makePartial();
+        $foo->shouldReceive('getEdmx')->andReturn($edmx);
+
+        $result = $foo->createSingleton($name, $returnType, $shortDesc, $longDesc);
+        $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
+        $this->assertTrue($result->isOK($msg));
+        $this->assertNotNull($result->getDocumentation());
+    }
+
+    public function testCreateSingletonWithDocumentationOnlyShortDesc()
+    {
+        $msg = null;
+        $name = "singleton";
+        $shortDesc = new TTextType();
+        $longDesc = null;
+
+        $returnType = m::mock(TEntityTypeType::class)->makePartial();
+        $returnType->shouldReceive('getName')->andReturn('doubleton');
+
+        $entityContainer = m::mock(EntityContainer::class)->makePartial();
+        $entityContainer->shouldReceive('addToFunctionImport')->andReturn(null)->once();
+
+        $schema = m::mock(Schema::class)->makePartial();
+        $schema->shouldReceive('getEntityContainer')->andReturn([$entityContainer])->once();
+        $edmx = m::mock(Edmx::class)->makePartial();
+        $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
+
+        $foo = m::mock(MetadataManager::class)->makePartial();
+        $foo->shouldReceive('getEdmx')->andReturn($edmx);
+
+        $result = $foo->createSingleton($name, $returnType, $shortDesc, $longDesc);
+        $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
+        $this->assertTrue($result->isOK($msg));
+        $this->assertNull($result->getDocumentation());
+    }
+
+    public function testCreateSingletonWithDocumentationOnlyLongDesc()
+    {
+        $msg = null;
+        $name = "singleton";
+        $shortDesc = null;
+        $longDesc = new TTextType();
+
+        $returnType = m::mock(TEntityTypeType::class)->makePartial();
+        $returnType->shouldReceive('getName')->andReturn('doubleton');
+
+        $entityContainer = m::mock(EntityContainer::class)->makePartial();
+        $entityContainer->shouldReceive('addToFunctionImport')->andReturn(null)->once();
+
+        $schema = m::mock(Schema::class)->makePartial();
+        $schema->shouldReceive('getEntityContainer')->andReturn([$entityContainer])->once();
+        $edmx = m::mock(Edmx::class)->makePartial();
+        $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
+
+        $foo = m::mock(MetadataManager::class)->makePartial();
+        $foo->shouldReceive('getEdmx')->andReturn($edmx);
+
+        $result = $foo->createSingleton($name, $returnType, $shortDesc, $longDesc);
+        $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
+        $this->assertTrue($result->isOK($msg));
+        $this->assertNull($result->getDocumentation());
     }
 
     public function testMalformedMultiplicity()
@@ -542,6 +650,503 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testAddComplexType()
+    {
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+
+        $name = "Name";
+        $accessType = "Public";
+        $summary = new TTextType();
+        $longDescription = new TTextType();
+
+        $oldCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+
+        $result = $metadataManager->addComplexType($name, $accessType, $summary, $longDescription);
+
+        $newCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+        $this->assertEquals($oldCount+1, $newCount);
+        $this->assertNotNull($result);
+        $this->assertTrue($result instanceof TComplexTypeType, get_class($result));
+        $this->assertNotNull($result->getDocumentation());
+    }
+
+    public function testAddComplexTypeWithOnlySummary()
+    {
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+
+        $name = "Name";
+        $accessType = "Public";
+        $summary = new TTextType();
+        $longDescription = null;
+
+        $oldCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+
+        $result = $metadataManager->addComplexType($name, $accessType, $summary, $longDescription);
+
+        $newCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+        $this->assertEquals($oldCount+1, $newCount);
+        $this->assertNotNull($result);
+        $this->assertTrue($result instanceof TComplexTypeType, get_class($result));
+        $this->assertNull($result->getDocumentation());
+    }
+
+    public function testAddComplexTypeWithOnlyDescription()
+    {
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+
+        $name = "Name";
+        $accessType = "Public";
+        $summary = null;
+        $longDescription = new TTextType();
+
+        $oldCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+
+        $result = $metadataManager->addComplexType($name, $accessType, $summary, $longDescription);
+
+        $newCount = count($metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getComplexType());
+        $this->assertEquals($oldCount+1, $newCount);
+        $this->assertNotNull($result);
+        $this->assertTrue($result instanceof TComplexTypeType, get_class($result));
+        $this->assertNull($result->getDocumentation());
+    }
+
+    public function testAddPropertyToComplexTypeDefaultValueArray()
+    {
+        $expected = "Default value cannot be object or array";
+        $actual = null;
+
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+        $complex = m::mock(TComplexTypeType::class);
+        $name = "name";
+        $type = "type";
+        $defaultValue = [];
+
+        try {
+            $metadataManager->addPropertyToComplexType($complex, $name, $type, $defaultValue);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddPropertyToComplexTypeDefaultValueObject()
+    {
+        $expected = "Default value cannot be object or array";
+        $actual = null;
+
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+        $complex = m::mock(TComplexTypeType::class);
+        $name = "name";
+        $type = "type";
+        $defaultValue = new \stdClass();
+
+        try {
+            $metadataManager->addPropertyToComplexType($complex, $name, $type, $defaultValue);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddPropertyToComplexTypeDefaultValueBoolean()
+    {
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+        $complex = m::mock(TComplexTypeType::class);
+        $complex->shouldReceive('addToProperty')
+            ->with(m::type(TComplexTypePropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $defaultValue = true;
+        $summary = new TTextType();
+        $longDescription = new TTextType();
+        $expectedDefault = 'true';
+
+        $result = $metadataManager->addPropertyToComplexType(
+            $complex,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            $summary,
+            $longDescription
+        );
+        $this->assertEquals(1, count($result->getDocumentation()));
+        $this->assertEquals($expectedDefault, $result->getDefaultValue());
+    }
+
+    public function testAddPropertyToComplexTypeDefaultValueBooleanOnlySummary()
+    {
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+        $complex = m::mock(TComplexTypeType::class);
+        $complex->shouldReceive('addToProperty')
+            ->with(m::type(TComplexTypePropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $defaultValue = true;
+        $summary = new TTextType();
+        $longDescription = null;
+        $expectedDefault = 'true';
+
+        $result = $metadataManager->addPropertyToComplexType(
+            $complex,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            $summary,
+            $longDescription
+        );
+        $this->assertNotNull($result);
+        $this->assertEquals(0, count($result->getDocumentation()));
+        $this->assertEquals($expectedDefault, $result->getDefaultValue());
+    }
+
+    public function testAddPropertyToComplexTypeDefaultValueBooleanOnlyDescription()
+    {
+        list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
+        $complex = m::mock(TComplexTypeType::class);
+        $complex->shouldReceive('addToProperty')
+            ->with(m::type(TComplexTypePropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $defaultValue = true;
+        $summary = null;
+        $longDescription = new TTextType();
+        $expectedDefault = 'true';
+
+        $result = $metadataManager->addPropertyToComplexType(
+            $complex,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            $summary,
+            $longDescription
+        );
+        $this->assertEquals(0, count($result->getDocumentation()));
+        $this->assertEquals($expectedDefault, $result->getDefaultValue());
+    }
+
+    public function testAddPropertyToEntityType()
+    {
+        $metadataManager = new MetadataManager();
+        $entity = m::mock(TEntityTypeType::class);
+        $entity->shouldReceive('addToProperty')
+            ->with(m::type(TEntityPropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $summary = new TTextType();
+        $defaultValue = "true";
+        $longDescription = new TTextType();
+
+        $result = $metadataManager->addPropertyToEntityType(
+            $entity,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            false,
+            null,
+            $summary,
+            $longDescription
+        );
+        $this->assertNotNull($result);
+        $this->assertTrue(is_array($result->getDocumentation()));
+        $this->assertEquals(1, count($result->getDocumentation()));
+        $this->assertEquals("true", $result->getDefaultValue());
+    }
+
+    public function testAddPropertyToEntityTypeOnlySummary()
+    {
+        $metadataManager = new MetadataManager();
+        $entity = m::mock(TEntityTypeType::class);
+        $entity->shouldReceive('addToProperty')
+            ->with(m::type(TEntityPropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $summary = new TTextType();
+        $defaultValue = "true";
+        $longDescription = null;
+
+        $result = $metadataManager->addPropertyToEntityType(
+            $entity,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            false,
+            null,
+            $summary,
+            $longDescription
+        );
+        $this->assertNotNull($result);
+        $this->assertTrue(is_array($result->getDocumentation()));
+        $this->assertEquals(0, count($result->getDocumentation()));
+        $this->assertEquals("true", $result->getDefaultValue());
+    }
+
+    public function testAddPropertyToEntityTypeOnlyDescription()
+    {
+        $metadataManager = new MetadataManager();
+        $entity = m::mock(TEntityTypeType::class);
+        $entity->shouldReceive('addToProperty')
+            ->with(m::type(TEntityPropertyType::class))->andReturnNull()->once();
+        $name = "name";
+        $type = "type";
+        $summary = null;
+        $defaultValue = "true";
+        $longDescription = new TTextType();
+
+        $result = $metadataManager->addPropertyToEntityType(
+            $entity,
+            $name,
+            $type,
+            $defaultValue,
+            false,
+            false,
+            null,
+            $summary,
+            $longDescription
+        );
+        $this->assertNotNull($result);
+        $this->assertTrue(is_array($result->getDocumentation()));
+        $this->assertEquals(0, count($result->getDocumentation()));
+        $this->assertEquals("true", $result->getDefaultValue());
+    }
+
+    public function testAddEntityTypeWithDocumentation()
+    {
+        $name = "name";
+        $accessType = "Public";
+        $summary = new TTextType();
+        $longDescription = new TTextType();
+
+        $metadataManager = new MetadataManager();
+        list($result, ) = $metadataManager->addEntityType($name, $accessType, $summary, $longDescription);
+        $this->assertNotNull($result->getDocumentation());
+    }
+
+    public function testAddEntityTypeWithDocumentationFromOnlySummary()
+    {
+        $name = "name";
+        $accessType = "Public";
+        $summary = new TTextType();
+        $longDescription = null;
+
+        $metadataManager = new MetadataManager();
+        list($result, ) = $metadataManager->addEntityType($name, $accessType, $summary, $longDescription);
+        $this->assertNull($result->getDocumentation());
+    }
+
+    public function testAddEntityTypeWithDocumentationFromOnlyDocumentation()
+    {
+        $name = "name";
+        $accessType = "Public";
+        $summary = null;
+        $longDescription = new TTextType();
+
+        $metadataManager = new MetadataManager();
+        list($result, ) = $metadataManager->addEntityType($name, $accessType, $summary, $longDescription);
+        $this->assertNull($result->getDocumentation());
+    }
+
+    public function testAddNavigationPropertyToEntityTypeWithDocumentation()
+    {
+        list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
+
+        $summary = new TTextType();
+        $longDescription = new TTextType();
+        $mult = '*';
+        $principalProperty = 'Categories';
+        $dependentProperty = 'Customers';
+
+        list($principal, $dependent) = $metadataManager
+            ->addNavigationPropertyToEntityType(
+                $CategoryType,
+                $mult,
+                $principalProperty,
+                $CustomerType,
+                $mult,
+                $dependentProperty,
+                null,
+                null,
+                "Public",
+                "Public",
+                "Public",
+                "Public",
+                $summary,
+                $longDescription,
+                $summary,
+                $longDescription
+            );
+
+        $this->assertNotNull($principal->getDocumentation());
+        $this->assertNotNull($dependent->getDocumentation());
+    }
+
+    public function testAddNavigationPropertyToEntityTypeWithDocumentationWithOnlySummary()
+    {
+        list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
+
+        $summary = null;
+        $longDescription = new TTextType();
+        $mult = '*';
+        $principalProperty = 'Categories';
+        $dependentProperty = 'Customers';
+
+        list($principal, $dependent) = $metadataManager
+            ->addNavigationPropertyToEntityType(
+                $CategoryType,
+                $mult,
+                $principalProperty,
+                $CustomerType,
+                $mult,
+                $dependentProperty,
+                null,
+                null,
+                "Public",
+                "Public",
+                "Public",
+                "Public",
+                $summary,
+                $longDescription,
+                $summary,
+                $longDescription
+            );
+
+        $this->assertNull($principal->getDocumentation());
+        $this->assertNull($dependent->getDocumentation());
+    }
+
+    public function testAddNavigationPropertyToEntityTypeWithDocumentationWithOnlyDescription()
+    {
+        list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
+
+        $summary = new TTextType();
+        $longDescription = null;
+        $mult = '*';
+        $principalProperty = 'Categories';
+        $dependentProperty = 'Customers';
+
+        list($principal, $dependent) = $metadataManager
+            ->addNavigationPropertyToEntityType(
+                $CategoryType,
+                $mult,
+                $principalProperty,
+                $CustomerType,
+                $mult,
+                $dependentProperty,
+                null,
+                null,
+                "Public",
+                "Public",
+                "Public",
+                "Public",
+                $summary,
+                $longDescription,
+                $summary,
+                $longDescription
+            );
+
+        $this->assertNull($principal->getDocumentation());
+        $this->assertNull($dependent->getDocumentation());
+    }
+
+    public function testCreateAssociationFromNavigationPropertyRelationMismatch()
+    {
+        $principalType = m::mock(TEntityTypeType::class);
+        $dependentType = m::mock(TEntityTypeType::class);
+        $principalNav = m::mock(TNavigationPropertyType::class);
+        $principalNav->shouldReceive('getRelationship')->andReturn('foo')->once();
+        $dependentNav = m::mock(TNavigationPropertyType::class);
+        $dependentNav->shouldReceive('getRelationship')->andReturn('bar')->once();
+
+        $metadataManager = new MetadataManagerDummy();
+
+        $expected = "If you have both a dependent property and a principal property, relationship should match";
+        $actual = null;
+
+        try {
+            $metadataManager->createAssocationFromNavigationProperty(
+                $principalType,
+                $dependentType,
+                $principalNav,
+                $dependentNav,
+                "*",
+                "*"
+            );
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testCreateAssociationFromNavigationPropertyForwardRoleMismatch()
+    {
+        $principalType = m::mock(TEntityTypeType::class);
+        $dependentType = m::mock(TEntityTypeType::class);
+        $principalNav = m::mock(TNavigationPropertyType::class);
+        $principalNav->shouldReceive('getRelationship')->andReturn('foo')->once();
+        $principalNav->shouldReceive('getToRole')->andReturn('Forwards');
+        $principalNav->shouldReceive('getFromRole')->andReturn('Reverse');
+        $dependentNav = m::mock(TNavigationPropertyType::class);
+        $dependentNav->shouldReceive('getRelationship')->andReturn('foo')->once();
+        $dependentNav->shouldReceive('getToRole')->andReturn('Reverse');
+        $dependentNav->shouldReceive('getFromRole')->andReturn('Sideways');
+
+        $metadataManager = new MetadataManagerDummy();
+
+        $expected = "Principal to role should match dependent from role, and vice versa";
+        $actual = null;
+
+        try {
+            $metadataManager->createAssocationFromNavigationProperty(
+                $principalType,
+                $dependentType,
+                $principalNav,
+                $dependentNav,
+                "*",
+                "*"
+            );
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testCreateAssociationFromNavigationPropertyReverseRoleMismatch()
+    {
+        $principalType = m::mock(TEntityTypeType::class);
+        $dependentType = m::mock(TEntityTypeType::class);
+        $principalNav = m::mock(TNavigationPropertyType::class);
+        $principalNav->shouldReceive('getRelationship')->andReturn('foo')->once();
+        $principalNav->shouldReceive('getToRole')->andReturn('Forwards');
+        $principalNav->shouldReceive('getFromRole')->andReturn('Reverse');
+        $dependentNav = m::mock(TNavigationPropertyType::class);
+        $dependentNav->shouldReceive('getRelationship')->andReturn('foo')->once();
+        $dependentNav->shouldReceive('getToRole')->andReturn('Sideways');
+        $dependentNav->shouldReceive('getFromRole')->andReturn('Forwards');
+
+        $metadataManager = new MetadataManagerDummy();
+
+        $expected = "Principal to role should match dependent from role, and vice versa";
+        $actual = null;
+
+        try {
+            $metadataManager->createAssocationFromNavigationProperty(
+                $principalType,
+                $dependentType,
+                $principalNav,
+                $dependentNav,
+                "*",
+                "*"
+            );
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
     /**
      * @return array
      */
@@ -549,12 +1154,15 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         $msg = null;
         $metadataManager = new MetadataManager("Data", "Container");
-        $result = null;
+        $expectedCategorySetName = 'Categories';
+        $expectedCustomerSetName = 'Customers';
 
-        list($CategoryType, ) = $metadataManager->addEntityType("Category");
-        list($CustomerType, ) = $metadataManager->addEntityType("Customer");
+        list($CategoryType, $CategorySet) = $metadataManager->addEntityType("Category");
+        list($CustomerType, $CustomerSet) = $metadataManager->addEntityType("Customer");
         $this->assertTrue($CategoryType->isOK($msg), $msg);
         $this->assertTrue($CustomerType->isOK($msg), $msg);
-        return array($msg, $metadataManager, $CategoryType, $CustomerType);
+        $this->assertEquals($expectedCategorySetName, $CategorySet->getName());
+        $this->assertEquals($expectedCustomerSetName, $CustomerSet->getName());
+        return [$msg, $metadataManager, $CategoryType, $CustomerType];
     }
 }
