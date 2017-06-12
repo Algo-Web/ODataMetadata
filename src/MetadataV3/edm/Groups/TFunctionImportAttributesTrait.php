@@ -253,7 +253,7 @@ trait TFunctionImportAttributesTrait
     public function setMethodAccess($methodAccess)
     {
         $msg = null;
-        if (null != $methodAccess && $this->isTAccessOk($methodAccess)) {
+        if (null != $methodAccess && !$this->isTAccessOk($methodAccess)) {
             $msg = "Method access must be a valid TAccess";
             throw new \InvalidArgumentException($msg);
         }
@@ -281,7 +281,7 @@ trait TFunctionImportAttributesTrait
             $msg = "Entity set must be either null or an instance of TOperandType: " . get_class($this);
             return false;
         }
-        if (null != $this->methodAccess && $this->isTAccessOk($this->methodAccess)) {
+        if (null != $this->methodAccess && !$this->isTAccessOk($this->methodAccess)) {
             $msg = "Method access must be a valid TAccess: " . get_class($this);
             return false;
         }
