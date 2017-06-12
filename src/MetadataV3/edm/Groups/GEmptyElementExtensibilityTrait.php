@@ -42,12 +42,6 @@ trait GEmptyElementExtensibilityTrait
 
     public function isExtensibilityElementOK(&$msg = null)
     {
-        if (!$this->isObjectNullOrType(
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType',
-            $this->documentation
-        )) {
-            return false;
-        }
         if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
             return false;
         }
