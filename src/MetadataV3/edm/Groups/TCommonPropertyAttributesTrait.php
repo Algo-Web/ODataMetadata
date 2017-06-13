@@ -204,7 +204,6 @@ trait TCommonPropertyAttributesTrait
      */
     public function setDefaultValue($defaultValue)
     {
-        $msg = null;
         if (is_numeric($defaultValue)) {
             $defaultValue = strval($defaultValue);
         }
