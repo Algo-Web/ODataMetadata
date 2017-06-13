@@ -205,8 +205,11 @@ trait TCommonPropertyAttributesTrait
     public function setDefaultValue($defaultValue)
     {
         $msg = null;
-        if (null != $defaultValue && !is_string($defaultValue)) {
-            $msg = "Default value must be a string";
+        if (is_numeric($defaultValue)) {
+            $defaultValue = strval($defaultValue);
+        }
+        if (null !== $defaultValue && !is_string($defaultValue)) {
+            $msg = "Default value must be resolvable to a string";
             throw new \InvalidArgumentException($msg);
         }
         $this->defaultValue = $defaultValue;
