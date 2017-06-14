@@ -179,7 +179,10 @@ class TEntityPropertyType extends IsOK
      */
     public function setDefaultValue($defaultValue)
     {
-        if (null != $defaultValue && !$this->isStringNotNullOrEmpty($defaultValue)) {
+        if (is_numeric($defaultValue)) {
+            $defaultValue = strval($defaultValue);
+        }
+        if (null !== $defaultValue && !$this->isStringNotNullOrEmpty($defaultValue)) {
             $msg = "Default value cannot be empty";
             throw new \InvalidArgumentException($msg);
         }

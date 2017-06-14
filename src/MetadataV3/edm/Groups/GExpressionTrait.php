@@ -120,6 +120,11 @@ trait GExpressionTrait
      */
     public function setString($string)
     {
+        $msg = null;
+        if (null !== $string && !is_string($string)) {
+            $msg = "String must be a string";
+            throw new \InvalidArgumentException($msg);
+        }
         $this->string = $string;
         return $this;
     }
