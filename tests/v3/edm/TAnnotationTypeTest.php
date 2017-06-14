@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\Tests\v3\edm;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 
-class TTypeAnnotationTypeTest extends TestCase
+class TAnnotationTypeTest extends TestCase
 {
     public function testSetStringNullString()
     {
