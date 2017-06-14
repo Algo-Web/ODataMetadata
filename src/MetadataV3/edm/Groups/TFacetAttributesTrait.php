@@ -115,7 +115,7 @@ trait TFacetAttributesTrait
     public function setDefaultValue($defaultValue)
     {
         $msg = null;
-        if (null != $defaultValue && !is_string($defaultValue)) {
+        if (null !== $defaultValue && !is_string($defaultValue)) {
             $msg = "Default value must be a string";
             throw new \InvalidArgumentException($msg);
         }
