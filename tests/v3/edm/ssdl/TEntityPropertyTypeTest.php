@@ -1,8 +1,6 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\Tests\v3\edm\ssd;
-
-;
+namespace AlgoWeb\ODataMetadata\Tests\v3\edm\ssdl;
 
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityPropertyType;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
