@@ -188,19 +188,19 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         list($msg, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
-        $expectedRelation = "Data.Category_Customers_Customer_Categories";
+        $expectedRelation = "Data.Category_custom_Customer_categor";
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
             "*",
-            "Customers",
+            "custom",
             $CustomerType,
             "*",
-            "Categories"
+            "categor"
         );
         $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
-        $this->assertEquals("Customers", $principal->getName());
-        $this->assertEquals("Categories", $dependent->getName());
+        $this->assertEquals("custom", $principal->getName());
+        $this->assertEquals("categor", $dependent->getName());
         $this->assertEquals($expectedRelation, $principal->getRelationship());
         $this->assertEquals($expectedRelation, $dependent->getRelationship());
 
@@ -228,15 +228,15 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
             "*",
-            "Customers",
+            "custom",
             $CustomerType,
             "1",
-            "Categories"
+            "categor"
         );
         $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
-        $this->assertEquals("Customers", $principal->getName());
-        $this->assertEquals("Categories", $dependent->getName());
+        $this->assertEquals("custom", $principal->getName());
+        $this->assertEquals("categor", $dependent->getName());
 
         $navProps = [$principal, $dependent];
         $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
@@ -262,15 +262,15 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
             "1",
-            "Customers",
+            "custom",
             $CustomerType,
             "*",
-            "Categories"
+            "categor"
         );
         $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
-        $this->assertEquals("Customers", $principal->getName());
-        $this->assertEquals("Categories", $dependent->getName());
+        $this->assertEquals("custom", $principal->getName());
+        $this->assertEquals("categor", $dependent->getName());
 
         $navProps = [$principal, $dependent];
         $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
@@ -296,15 +296,15 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
             "0..1",
-            "Customers",
+            "custom",
             $CustomerType,
             "1",
-            "Categories"
+            "categor"
         );
         $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
-        $this->assertEquals("Customers", $principal->getName());
-        $this->assertEquals("Categories", $dependent->getName());
+        $this->assertEquals("custom", $principal->getName());
+        $this->assertEquals("categor", $dependent->getName());
 
         $navProps = [$principal, $dependent];
         $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
@@ -330,15 +330,15 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
             "1",
-            "Customers",
+            "custom",
             $CustomerType,
             "0..1",
-            "Categories"
+            "categor"
         );
         $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
-        $this->assertEquals("Customers", $principal->getName());
-        $this->assertEquals("Categories", $dependent->getName());
+        $this->assertEquals("custom", $principal->getName());
+        $this->assertEquals("categor", $dependent->getName());
 
         $navProps = [$principal, $dependent];
         $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
@@ -1136,8 +1136,9 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
      */
     private function figureOutEnds($ends, $principal, $dependent)
     {
-        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
-        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
+        // if role is from Products, then type must be from Products - ie, use getFromRole
+        $principalEnd = ($ends[0]->getRole() == $principal->getFromRole()) ? $ends[0] : $ends[1];
+        $dependentEnd = ($ends[0]->getRole() == $dependent->getFromRole()) ? $ends[0] : $ends[1];
         return [$principalEnd, $dependentEnd];
     }
 }
