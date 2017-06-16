@@ -215,21 +215,9 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $ends = $assoc->getEnd();
 
         $this->assertEquals(2, count($ends));
-        foreach ($navProps as $prop) {
-            $fromMatch = $ends[0]->getRole() == $prop->getToRole()
-                         || $ends[1]->getRole() == $prop->getToRole();
-            $this->assertTrue($fromMatch, "toRole must match at least one end role");
-            if ($ends[0]->getRole() == $prop->getToRole()) {
-                $this->assertEquals($ends[1]->getRole(), $prop->getFromRole());
-                $this->assertNotEquals($ends[0]->getRole(), $prop->getFromRole());
-            } else {
-                $this->assertEquals($ends[0]->getRole(), $prop->getFromRole());
-                $this->assertNotEquals($ends[1]->getRole(), $prop->getFromRole());
-            }
-        }
-        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
+        $this->checkNavProps($navProps, $ends);
+        list($principalEnd, $dependentEnd) = $this->figureOutEnds($ends, $principal, $dependent);
         $this->assertEquals('*', $principalEnd->getMultiplicity());
-        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
         $this->assertEquals('*', $dependentEnd->getMultiplicity());
     }
 
@@ -261,21 +249,9 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $ends = $assoc->getEnd();
 
         $this->assertEquals(2, count($ends));
-        foreach ($navProps as $prop) {
-            $fromMatch = $ends[0]->getRole() == $prop->getToRole()
-                         || $ends[1]->getRole() == $prop->getToRole();
-            $this->assertTrue($fromMatch, "toRole must match at least one end role");
-            if ($ends[0]->getRole() == $prop->getToRole()) {
-                $this->assertEquals($ends[1]->getRole(), $prop->getFromRole());
-                $this->assertNotEquals($ends[0]->getRole(), $prop->getFromRole());
-            } else {
-                $this->assertEquals($ends[0]->getRole(), $prop->getFromRole());
-                $this->assertNotEquals($ends[1]->getRole(), $prop->getFromRole());
-            }
-        }
-        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
+        $this->checkNavProps($navProps, $ends);
+        list($principalEnd, $dependentEnd) = $this->figureOutEnds($ends, $principal, $dependent);
         $this->assertEquals('*', $principalEnd->getMultiplicity());
-        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
         $this->assertEquals('1', $dependentEnd->getMultiplicity());
     }
 
@@ -307,21 +283,9 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $ends = $assoc->getEnd();
 
         $this->assertEquals(2, count($ends));
-        foreach ($navProps as $prop) {
-            $fromMatch = $ends[0]->getRole() == $prop->getToRole()
-                         || $ends[1]->getRole() == $prop->getToRole();
-            $this->assertTrue($fromMatch, "toRole must match at least one end role");
-            if ($ends[0]->getRole() == $prop->getToRole()) {
-                $this->assertEquals($ends[1]->getRole(), $prop->getFromRole());
-                $this->assertNotEquals($ends[0]->getRole(), $prop->getFromRole());
-            } else {
-                $this->assertEquals($ends[0]->getRole(), $prop->getFromRole());
-                $this->assertNotEquals($ends[1]->getRole(), $prop->getFromRole());
-            }
-        }
-        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
+        $this->checkNavProps($navProps, $ends);
+        list($principalEnd, $dependentEnd) = $this->figureOutEnds($ends, $principal, $dependent);
         $this->assertEquals('1', $principalEnd->getMultiplicity());
-        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
         $this->assertEquals('*', $dependentEnd->getMultiplicity());
     }
 
@@ -353,21 +317,9 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $ends = $assoc->getEnd();
 
         $this->assertEquals(2, count($ends));
-        foreach ($navProps as $prop) {
-            $fromMatch = $ends[0]->getRole() == $prop->getToRole()
-                         || $ends[1]->getRole() == $prop->getToRole();
-            $this->assertTrue($fromMatch, "toRole must match at least one end role");
-            if ($ends[0]->getRole() == $prop->getToRole()) {
-                $this->assertEquals($ends[1]->getRole(), $prop->getFromRole());
-                $this->assertNotEquals($ends[0]->getRole(), $prop->getFromRole());
-            } else {
-                $this->assertEquals($ends[0]->getRole(), $prop->getFromRole());
-                $this->assertNotEquals($ends[1]->getRole(), $prop->getFromRole());
-            }
-        }
-        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
+        $this->checkNavProps($navProps, $ends);
+        list($principalEnd, $dependentEnd) = $this->figureOutEnds($ends, $principal, $dependent);
         $this->assertEquals('0..1', $principalEnd->getMultiplicity());
-        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
         $this->assertEquals('1', $dependentEnd->getMultiplicity());
     }
 
@@ -399,21 +351,9 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $ends = $assoc->getEnd();
 
         $this->assertEquals(2, count($ends));
-        foreach ($navProps as $prop) {
-            $fromMatch = $ends[0]->getRole() == $prop->getToRole()
-                         || $ends[1]->getRole() == $prop->getToRole();
-            $this->assertTrue($fromMatch, "toRole must match at least one end role");
-            if ($ends[0]->getRole() == $prop->getToRole()) {
-                $this->assertEquals($ends[1]->getRole(), $prop->getFromRole());
-                $this->assertNotEquals($ends[0]->getRole(), $prop->getFromRole());
-            } else {
-                $this->assertEquals($ends[0]->getRole(), $prop->getFromRole());
-                $this->assertNotEquals($ends[1]->getRole(), $prop->getFromRole());
-            }
-        }
-        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
+        $this->checkNavProps($navProps, $ends);
+        list($principalEnd, $dependentEnd) = $this->figureOutEnds($ends, $principal, $dependent);
         $this->assertEquals('1', $principalEnd->getMultiplicity());
-        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
         $this->assertEquals('0..1', $dependentEnd->getMultiplicity());
     }
 
@@ -1164,5 +1104,40 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expectedCategorySetName, $CategorySet->getName());
         $this->assertEquals($expectedCustomerSetName, $CustomerSet->getName());
         return [$msg, $metadataManager, $CategoryType, $CustomerType];
+    }
+
+    /**
+     * @param $navProps
+     * @param $ends
+     */
+    private function checkNavProps($navProps, $ends)
+    {
+        foreach ($navProps as $prop) {
+            $propToRole = $prop->getToRole();
+            $propFromRole = $prop->getFromRole();
+            $fromMatch = $ends[0]->getRole() == $propToRole
+                         || $ends[1]->getRole() == $propToRole;
+            $this->assertTrue($fromMatch, "toRole must match at least one end role");
+            if ($ends[0]->getRole() == $propToRole) {
+                $this->assertEquals($ends[1]->getRole(), $propFromRole);
+                $this->assertNotEquals($ends[0]->getRole(), $propFromRole);
+            } else {
+                $this->assertEquals($ends[0]->getRole(), $propFromRole);
+                $this->assertNotEquals($ends[1]->getRole(), $propFromRole);
+            }
+        }
+    }
+
+    /**
+     * @param $ends
+     * @param $principal
+     * @param $dependent
+     * @return array
+     */
+    private function figureOutEnds($ends, $principal, $dependent)
+    {
+        $principalEnd = ($ends[0]->getRole() == $principal->getToRole()) ? $ends[0] : $ends[1];
+        $dependentEnd = ($ends[0]->getRole() == $dependent->getToRole()) ? $ends[0] : $ends[1];
+        return [$principalEnd, $dependentEnd];
     }
 }
