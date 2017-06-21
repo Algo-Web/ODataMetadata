@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TNavigationPropertyType
  *
+ *
  * XSD Type: TNavigationProperty
  */
 class TNavigationPropertyType extends IsOK
@@ -65,7 +66,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -87,7 +88,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new type
      *
-     * @param  string $type
+     * @param string $type
      * @return self
      */
     public function setType($type)
@@ -109,7 +110,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new nullable
      *
-     * @param  boolean $nullable
+     * @param boolean $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -131,7 +132,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new partner
      *
-     * @param  string $partner
+     * @param string $partner
      * @return self
      */
     public function setPartner($partner)
@@ -153,7 +154,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new containsTarget
      *
-     * @param  boolean $containsTarget
+     * @param boolean $containsTarget
      * @return self
      */
     public function setContainsTarget($containsTarget)
@@ -166,7 +167,7 @@ class TNavigationPropertyType extends IsOK
      * Adds as referentialConstraint
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType $referentialConstraint
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType $referentialConstraint
      */
     public function addToReferentialConstraint(TReferentialConstraintType $referentialConstraint)
     {
@@ -177,7 +178,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * isset referentialConstraint
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetReferentialConstraint($index)
@@ -188,7 +189,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * unset referentialConstraint
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetReferentialConstraint($index)
@@ -209,7 +210,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new referentialConstraint
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType[] $referentialConstraint
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType[] $referentialConstraint
      * @return self
      */
     public function setReferentialConstraint(array $referentialConstraint)
@@ -222,7 +223,7 @@ class TNavigationPropertyType extends IsOK
      * Adds as onDelete
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType $onDelete
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType $onDelete
      */
     public function addToOnDelete(TOnDeleteType $onDelete)
     {
@@ -233,7 +234,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * isset onDelete
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetOnDelete($index)
@@ -244,7 +245,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * unset onDelete
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetOnDelete($index)
@@ -265,7 +266,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new onDelete
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType[] $onDelete
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType[] $onDelete
      * @return self
      */
     public function setOnDelete(array $onDelete)
@@ -278,7 +279,7 @@ class TNavigationPropertyType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -289,7 +290,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * isset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -300,7 +301,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * unset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -321,7 +322,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

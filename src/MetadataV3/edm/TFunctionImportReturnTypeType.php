@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TFunctionImportReturnTypeType
  *
+ *
  * XSD Type: TFunctionImportReturnType
  */
 class TFunctionImportReturnTypeType extends IsOK
@@ -47,7 +48,7 @@ class TFunctionImportReturnTypeType extends IsOK
     /**
      * Sets a new type
      *
-     * @param  string $type
+     * @param string $type
      * @return self
      */
     public function setType($type)
@@ -73,7 +74,7 @@ class TFunctionImportReturnTypeType extends IsOK
     /**
      * Sets a new entitySet
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
      * @return self
      */
     public function setEntitySet(TOperandType $entitySet)
@@ -99,7 +100,7 @@ class TFunctionImportReturnTypeType extends IsOK
     /**
      * Sets a new entitySet
      *
-     * @param  string $entitySetAttribute
+     * @param string $entitySetAttribute
      * @return self
      */
     public function setEntitySetAttribute($entitySetAttribute)

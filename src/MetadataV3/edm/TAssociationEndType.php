@@ -12,6 +12,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TMultiplicityTrait;
 /**
  * Class representing TAssociationEndType
  *
+ *
  * XSD Type: TAssociationEnd
  */
 class TAssociationEndType extends IsOK
@@ -54,7 +55,7 @@ class TAssociationEndType extends IsOK
     /**
      * Sets a new type
      *
-     * @param  string $type
+     * @param string $type
      * @return self
      */
     public function setType($type)
@@ -80,7 +81,7 @@ class TAssociationEndType extends IsOK
     /**
      * Sets a new role
      *
-     * @param  string $role
+     * @param string $role
      * @return self
      */
     public function setRole($role)
@@ -106,7 +107,7 @@ class TAssociationEndType extends IsOK
     /**
      * Sets a new multiplicity
      *
-     * @param  string $multiplicity
+     * @param string $multiplicity
      * @return self
      */
     public function setMultiplicity($multiplicity)
@@ -132,7 +133,7 @@ class TAssociationEndType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)

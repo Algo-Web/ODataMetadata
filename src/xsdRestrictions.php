@@ -10,7 +10,6 @@ namespace AlgoWeb\ODataMetadata;
 
 /**
  * trait xsdRestrictions
- *
  * @package AlgoWeb\ODataMetadata
  */
 trait xsdRestrictions
@@ -24,7 +23,7 @@ trait xsdRestrictions
      *     </xsd:restriction>
      * </xsd:simpleType>
      *
-     * @param  string $string the string to check
+     * @param string $string the string to check
      * @return bool if it is valid
      */
     protected function isNCName($string)
@@ -34,9 +33,8 @@ trait xsdRestrictions
 
     /**
      * Checks a pattern against a string
-     *
-     * @param  string $pattern the regex pattern
-     * @param  string $string  the string to check
+     * @param string $pattern the regex pattern
+     * @param string $string the string to check
      * @return bool true if string matches pattern
      */
     protected function matchesRegexPattern($pattern, $string)
@@ -48,13 +46,14 @@ trait xsdRestrictions
     /**
      * Checks if is ivalid Name
      *
+     *
      * <xsd:simpleType name="Name" id="Name">
      *     <xsd:restriction base="xsd:token">
      *         <xsd:pattern value="\i\c*"/>
      *     </xsd:restriction>
      * </xsd:simpleType>
      *
-     * @param  string $string the string to check
+     * @param string $string the string to check
      * @return bool  if it is valid
      */
     protected function isName($string)

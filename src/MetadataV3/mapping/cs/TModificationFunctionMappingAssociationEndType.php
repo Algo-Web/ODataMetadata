@@ -44,7 +44,7 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
     /**
      * Sets a new associationSet
      *
-     * @param  string $associationSet
+     * @param string $associationSet
      * @return self
      */
     public function setAssociationSet($associationSet)
@@ -70,7 +70,7 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
     /**
      * Sets a new from
      *
-     * @param  string $from
+     * @param string $from
      * @return self
      */
     public function setFrom($from)
@@ -96,7 +96,7 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
     /**
      * Sets a new to
      *
-     * @param  string $to
+     * @param string $to
      * @return self
      */
     public function setTo($to)

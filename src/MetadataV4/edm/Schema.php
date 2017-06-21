@@ -83,7 +83,7 @@ class Schema extends IsOK
     /**
      * Sets a new namespace
      *
-     * @param  string $namespace
+     * @param string $namespace
      * @return self
      */
     public function setNamespace($namespace)
@@ -105,7 +105,7 @@ class Schema extends IsOK
     /**
      * Sets a new alias
      *
-     * @param  string $alias
+     * @param string $alias
      * @return self
      */
     public function setAlias($alias)
@@ -118,7 +118,7 @@ class Schema extends IsOK
      * Adds as complexType
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TComplexTypeType $complexType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TComplexTypeType $complexType
      */
     public function addToComplexType(TComplexTypeType $complexType)
     {
@@ -129,7 +129,7 @@ class Schema extends IsOK
     /**
      * isset complexType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetComplexType($index)
@@ -140,7 +140,7 @@ class Schema extends IsOK
     /**
      * unset complexType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetComplexType($index)
@@ -161,7 +161,7 @@ class Schema extends IsOK
     /**
      * Sets a new complexType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TComplexTypeType[] $complexType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TComplexTypeType[] $complexType
      * @return self
      */
     public function setComplexType(array $complexType)
@@ -174,7 +174,7 @@ class Schema extends IsOK
      * Adds as entityType
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityTypeType $entityType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityTypeType $entityType
      */
     public function addToEntityType(TEntityTypeType $entityType)
     {
@@ -185,7 +185,7 @@ class Schema extends IsOK
     /**
      * isset entityType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetEntityType($index)
@@ -196,7 +196,7 @@ class Schema extends IsOK
     /**
      * unset entityType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetEntityType($index)
@@ -217,7 +217,7 @@ class Schema extends IsOK
     /**
      * Sets a new entityType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityTypeType[] $entityType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityTypeType[] $entityType
      * @return self
      */
     public function setEntityType(array $entityType)
@@ -230,7 +230,7 @@ class Schema extends IsOK
      * Adds as typeDefinition
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTypeDefinitionType $typeDefinition
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTypeDefinitionType $typeDefinition
      */
     public function addToTypeDefinition(TTypeDefinitionType $typeDefinition)
     {
@@ -241,7 +241,7 @@ class Schema extends IsOK
     /**
      * isset typeDefinition
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetTypeDefinition($index)
@@ -252,7 +252,7 @@ class Schema extends IsOK
     /**
      * unset typeDefinition
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetTypeDefinition($index)
@@ -273,7 +273,7 @@ class Schema extends IsOK
     /**
      * Sets a new typeDefinition
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTypeDefinitionType[] $typeDefinition
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTypeDefinitionType[] $typeDefinition
      * @return self
      */
     public function setTypeDefinition(array $typeDefinition)
@@ -286,7 +286,7 @@ class Schema extends IsOK
      * Adds as enumType
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeType $enumType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeType $enumType
      */
     public function addToEnumType(TEnumTypeType $enumType)
     {
@@ -297,7 +297,7 @@ class Schema extends IsOK
     /**
      * isset enumType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetEnumType($index)
@@ -308,7 +308,7 @@ class Schema extends IsOK
     /**
      * unset enumType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetEnumType($index)
@@ -329,7 +329,7 @@ class Schema extends IsOK
     /**
      * Sets a new enumType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeType[] $enumType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeType[] $enumType
      * @return self
      */
     public function setEnumType(array $enumType)
@@ -342,7 +342,7 @@ class Schema extends IsOK
      * Adds as action
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionType $action
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionType $action
      */
     public function addToAction(TActionType $action)
     {
@@ -353,7 +353,7 @@ class Schema extends IsOK
     /**
      * isset action
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAction($index)
@@ -364,7 +364,7 @@ class Schema extends IsOK
     /**
      * unset action
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAction($index)
@@ -385,7 +385,7 @@ class Schema extends IsOK
     /**
      * Sets a new action
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionType[] $action
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionType[] $action
      * @return self
      */
     public function setAction(array $action)
@@ -398,7 +398,7 @@ class Schema extends IsOK
      * Adds as function
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TFunctionType $function
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TFunctionType $function
      */
     public function addToFunction(TFunctionType $function)
     {
@@ -409,7 +409,7 @@ class Schema extends IsOK
     /**
      * isset function
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetFunction($index)
@@ -420,7 +420,7 @@ class Schema extends IsOK
     /**
      * unset function
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetFunction($index)
@@ -441,7 +441,7 @@ class Schema extends IsOK
     /**
      * Sets a new function
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TFunctionType[] $function
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TFunctionType[] $function
      * @return self
      */
     public function setFunction(array $function)
@@ -454,7 +454,7 @@ class Schema extends IsOK
      * Adds as term
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTermType $term
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTermType $term
      */
     public function addToTerm(TTermType $term)
     {
@@ -465,7 +465,7 @@ class Schema extends IsOK
     /**
      * isset term
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetTerm($index)
@@ -476,7 +476,7 @@ class Schema extends IsOK
     /**
      * unset term
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetTerm($index)
@@ -497,7 +497,7 @@ class Schema extends IsOK
     /**
      * Sets a new term
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTermType[] $term
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTermType[] $term
      * @return self
      */
     public function setTerm(array $term)
@@ -510,7 +510,7 @@ class Schema extends IsOK
      * Adds as annotations
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TAnnotationsType $annotations
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TAnnotationsType $annotations
      */
     public function addToAnnotations(TAnnotationsType $annotations)
     {
@@ -521,7 +521,7 @@ class Schema extends IsOK
     /**
      * isset annotations
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAnnotations($index)
@@ -532,7 +532,7 @@ class Schema extends IsOK
     /**
      * unset annotations
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAnnotations($index)
@@ -553,7 +553,7 @@ class Schema extends IsOK
     /**
      * Sets a new annotations
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TAnnotationsType[] $annotations
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TAnnotationsType[] $annotations
      * @return self
      */
     public function setAnnotations(array $annotations)
@@ -566,7 +566,7 @@ class Schema extends IsOK
      * Adds as entityContainer
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityContainerType $entityContainer
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityContainerType $entityContainer
      */
     public function addToEntityContainer(TEntityContainerType $entityContainer)
     {
@@ -577,7 +577,7 @@ class Schema extends IsOK
     /**
      * isset entityContainer
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetEntityContainer($index)
@@ -588,7 +588,7 @@ class Schema extends IsOK
     /**
      * unset entityContainer
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetEntityContainer($index)
@@ -609,7 +609,7 @@ class Schema extends IsOK
     /**
      * Sets a new entityContainer
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityContainerType[] $entityContainer
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEntityContainerType[] $entityContainer
      * @return self
      */
     public function setEntityContainer(array $entityContainer)
@@ -622,7 +622,7 @@ class Schema extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -633,7 +633,7 @@ class Schema extends IsOK
     /**
      * isset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -644,7 +644,7 @@ class Schema extends IsOK
     /**
      * unset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -665,7 +665,7 @@ class Schema extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

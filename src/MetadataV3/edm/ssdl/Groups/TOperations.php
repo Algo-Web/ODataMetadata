@@ -17,7 +17,7 @@ trait TOperations
      * Adds as onDelete
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType $onDelete
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType $onDelete
      */
     public function addToOnDelete(TOnActionType $onDelete)
     {
@@ -32,7 +32,7 @@ trait TOperations
     /**
      * isset onDelete
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetOnDelete($index)
@@ -43,7 +43,7 @@ trait TOperations
     /**
      * unset onDelete
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetOnDelete($index)
@@ -64,7 +64,7 @@ trait TOperations
     /**
      * Sets a new onDelete
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType[] $onDelete
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType[] $onDelete
      * @return self
      */
     public function setOnDelete(array $onDelete)

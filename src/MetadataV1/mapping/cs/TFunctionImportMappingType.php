@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TFunctionImportMappingType
  *
+ *
  * XSD Type: TFunctionImportMapping
  */
 class TFunctionImportMappingType extends IsOK
@@ -41,7 +42,7 @@ class TFunctionImportMappingType extends IsOK
     /**
      * Sets a new functionName
      *
-     * @param  string $functionName
+     * @param string $functionName
      * @return self
      */
     public function setFunctionName($functionName)
@@ -63,7 +64,7 @@ class TFunctionImportMappingType extends IsOK
     /**
      * Sets a new functionImportName
      *
-     * @param  string $functionImportName
+     * @param string $functionImportName
      * @return self
      */
     public function setFunctionImportName($functionImportName)
@@ -76,7 +77,7 @@ class TFunctionImportMappingType extends IsOK
      * Adds as entityTypeMapping
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType
      * $entityTypeMapping
      */
     public function addToResultMapping(TFunctionImportEntityTypeMappingType $entityTypeMapping)
@@ -88,7 +89,7 @@ class TFunctionImportMappingType extends IsOK
     /**
      * isset resultMapping
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetResultMapping($index)
@@ -99,7 +100,7 @@ class TFunctionImportMappingType extends IsOK
     /**
      * unset resultMapping
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetResultMapping($index)
@@ -120,7 +121,7 @@ class TFunctionImportMappingType extends IsOK
     /**
      * Sets a new resultMapping
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType[]
      * $resultMapping
      * @return self
      */

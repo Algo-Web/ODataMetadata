@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TFunctionImportEntityTypeMappingType
  *
+ *
  * XSD Type: TFunctionImportEntityTypeMapping
  */
 class TFunctionImportEntityTypeMappingType extends IsOK
@@ -37,7 +38,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     /**
      * Sets a new typeName
      *
-     * @param  string $typeName
+     * @param string $typeName
      * @return self
      */
     public function setTypeName($typeName)
@@ -50,7 +51,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
      * Adds as condition
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportConditionType $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportConditionType $condition
      */
     public function addToCondition(TFunctionImportConditionType $condition)
     {
@@ -61,7 +62,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     /**
      * isset condition
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetCondition($index)
@@ -72,7 +73,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     /**
      * unset condition
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetCondition($index)
@@ -93,7 +94,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     /**
      * Sets a new condition
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportConditionType[] $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportConditionType[] $condition
      * @return self
      */
     public function setCondition(array $condition)

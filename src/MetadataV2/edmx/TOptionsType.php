@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TOptionsType
  *
+ *
  * XSD Type: TOptions
  */
 class TOptionsType extends IsOK
@@ -21,7 +22,7 @@ class TOptionsType extends IsOK
      * Adds as designerProperty
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edmx\TDesignerPropertyType $designerProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edmx\TDesignerPropertyType $designerProperty
      */
     public function addToDesignerInfoPropertySet(TDesignerPropertyType $designerProperty)
     {
@@ -32,7 +33,7 @@ class TOptionsType extends IsOK
     /**
      * isset designerInfoPropertySet
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetDesignerInfoPropertySet($index)
@@ -43,7 +44,7 @@ class TOptionsType extends IsOK
     /**
      * unset designerInfoPropertySet
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetDesignerInfoPropertySet($index)
@@ -64,7 +65,7 @@ class TOptionsType extends IsOK
     /**
      * Sets a new designerInfoPropertySet
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edmx\TDesignerPropertyType[] $designerInfoPropertySet
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edmx\TDesignerPropertyType[] $designerInfoPropertySet
      * @return self
      */
     public function setDesignerInfoPropertySet(array $designerInfoPropertySet)

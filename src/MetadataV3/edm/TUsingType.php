@@ -11,6 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TUsingType
  *
+ *
  * XSD Type: TUsing
  */
 class TUsingType extends IsOK
@@ -49,7 +50,7 @@ class TUsingType extends IsOK
     /**
      * Sets a new namespace
      *
-     * @param  string $namespace
+     * @param string $namespace
      * @return self
      */
     public function setNamespace($namespace)
@@ -71,7 +72,7 @@ class TUsingType extends IsOK
     /**
      * Sets a new namespaceUri
      *
-     * @param  string $namespaceUri
+     * @param string $namespaceUri
      * @return self
      */
     public function setNamespaceUri($namespaceUri)
@@ -93,7 +94,7 @@ class TUsingType extends IsOK
     /**
      * Sets a new alias
      *
-     * @param  string $alias
+     * @param string $alias
      * @return self
      */
     public function setAlias($alias)

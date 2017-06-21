@@ -38,7 +38,7 @@ class TDocumentationType extends IsOK
     /**
      * Sets a new summary
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TTextType $summary
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TTextType $summary
      * @return self
      */
     public function setSummary(TTextType $summary)
@@ -60,7 +60,7 @@ class TDocumentationType extends IsOK
     /**
      * Sets a new longDescription
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TTextType $longDescription
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TTextType $longDescription
      * @return self
      */
     public function setLongDescription(TTextType $longDescription)

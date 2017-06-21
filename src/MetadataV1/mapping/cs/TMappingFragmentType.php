@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TMappingFragmentType
  *
+ *
  * XSD Type: TMappingFragment
  */
 class TMappingFragmentType extends IsOK
@@ -45,7 +46,7 @@ class TMappingFragmentType extends IsOK
     /**
      * Sets a new storeEntitySet
      *
-     * @param  string $storeEntitySet
+     * @param string $storeEntitySet
      * @return self
      */
     public function setStoreEntitySet($storeEntitySet)
@@ -67,7 +68,7 @@ class TMappingFragmentType extends IsOK
     /**
      * Sets a new complexProperty
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TComplexPropertyType $complexProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TComplexPropertyType $complexProperty
      * @return self
      */
     public function setComplexProperty(TComplexPropertyType $complexProperty)
@@ -89,7 +90,7 @@ class TMappingFragmentType extends IsOK
     /**
      * Sets a new scalarProperty
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType $scalarProperty
      * @return self
      */
     public function setScalarProperty(TScalarPropertyType $scalarProperty)
@@ -111,7 +112,7 @@ class TMappingFragmentType extends IsOK
     /**
      * Sets a new condition
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType $condition
      * @return self
      */
     public function setCondition(TConditionType $condition)

@@ -43,7 +43,7 @@ class EndAnonymousType extends IsOK
     /**
      * Sets a new role
      *
-     * @param  string $role
+     * @param string $role
      * @return self
      */
     public function setRole($role)
@@ -65,7 +65,7 @@ class EndAnonymousType extends IsOK
     /**
      * Sets a new entitySet
      *
-     * @param  string $entitySet
+     * @param string $entitySet
      * @return self
      */
     public function setEntitySet($entitySet)

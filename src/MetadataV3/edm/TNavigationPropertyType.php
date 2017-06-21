@@ -12,6 +12,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TNavigationPropertyType
  *
+ *
  * XSD Type: TNavigationProperty
  */
 class TNavigationPropertyType extends IsOK
@@ -68,7 +69,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -94,7 +95,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new relationship
      *
-     * @param  string $relationship
+     * @param string $relationship
      * @return self
      */
     public function setRelationship($relationship)
@@ -120,7 +121,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new toRole
      *
-     * @param  string $toRole
+     * @param string $toRole
      * @return self
      */
     public function setToRole($toRole)
@@ -146,7 +147,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new fromRole
      *
-     * @param  string $fromRole
+     * @param string $fromRole
      * @return self
      */
     public function setFromRole($fromRole)
@@ -172,7 +173,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new getterAccess
      *
-     * @param  string $getterAccess
+     * @param string $getterAccess
      * @return self
      */
     public function setGetterAccess($getterAccess)
@@ -198,7 +199,7 @@ class TNavigationPropertyType extends IsOK
     /**
      * Sets a new setterAccess
      *
-     * @param  string $setterAccess
+     * @param string $setterAccess
      * @return self
      */
     public function setSetterAccess($setterAccess)

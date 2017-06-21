@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TSingletonType
  *
+ *
  * XSD Type: TSingleton
  */
 class TSingletonType extends IsOK
@@ -46,7 +47,7 @@ class TSingletonType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -68,7 +69,7 @@ class TSingletonType extends IsOK
     /**
      * Sets a new type
      *
-     * @param  string $type
+     * @param string $type
      * @return self
      */
     public function setType($type)
@@ -81,7 +82,7 @@ class TSingletonType extends IsOK
      * Adds as navigationPropertyBinding
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType $navigationPropertyBinding
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType $navigationPropertyBinding
      */
     public function addToNavigationPropertyBinding(TNavigationPropertyBindingType $navigationPropertyBinding)
     {
@@ -92,7 +93,7 @@ class TSingletonType extends IsOK
     /**
      * isset navigationPropertyBinding
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetNavigationPropertyBinding($index)
@@ -103,7 +104,7 @@ class TSingletonType extends IsOK
     /**
      * unset navigationPropertyBinding
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetNavigationPropertyBinding($index)
@@ -124,7 +125,7 @@ class TSingletonType extends IsOK
     /**
      * Sets a new navigationPropertyBinding
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType[]
      * $navigationPropertyBinding
      * @return self
      */
@@ -138,7 +139,7 @@ class TSingletonType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -149,7 +150,7 @@ class TSingletonType extends IsOK
     /**
      * isset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -160,7 +161,7 @@ class TSingletonType extends IsOK
     /**
      * unset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -181,7 +182,7 @@ class TSingletonType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

@@ -11,6 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionTypeTrait;
 /**
  * Class representing TPropertyType
  *
+ *
  * XSD Type: TProperty
  */
 class TPropertyType extends IsOK
@@ -59,7 +60,7 @@ class TPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -85,7 +86,7 @@ class TPropertyType extends IsOK
     /**
      * Sets a new type
      *
-     * @param  string $type
+     * @param string $type
      * @return self
      */
     public function setType($type)
@@ -111,7 +112,7 @@ class TPropertyType extends IsOK
     /**
      * Sets a new collectionType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
      * @return self
      */
     public function setCollectionType(TCollectionTypeType $collectionType)
@@ -137,7 +138,7 @@ class TPropertyType extends IsOK
     /**
      * Sets a new referenceType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
      * @return self
      */
     public function setReferenceType(TReferenceTypeType $referenceType)
@@ -154,7 +155,7 @@ class TPropertyType extends IsOK
      * Adds as property
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
      */
     public function addToRowType(TPropertyType $property)
     {
@@ -169,7 +170,7 @@ class TPropertyType extends IsOK
     /**
      * isset rowType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetRowType($index)
@@ -180,7 +181,7 @@ class TPropertyType extends IsOK
     /**
      * unset rowType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetRowType($index)
@@ -201,7 +202,7 @@ class TPropertyType extends IsOK
     /**
      * Sets a new rowType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)
@@ -210,8 +211,7 @@ class TPropertyType extends IsOK
             $rowType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->rowType = $rowType;
@@ -235,24 +235,21 @@ class TPropertyType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType',
             $this->collectionType,
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isObjectNullOrType(
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType',
             $this->referenceType,
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->rowType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
 

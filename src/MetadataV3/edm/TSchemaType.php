@@ -11,6 +11,7 @@ use AlgoWeb\ODataMetadata\StringTraits\XSDTopLevelTrait;
 /**
  * Class representing TSchemaType
  *
+ *
  * XSD Type: TSchema
  */
 class TSchemaType extends IsOK
@@ -48,7 +49,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new namespaceUri
      *
-     * @param  string $namespaceUri
+     * @param string $namespaceUri
      * @return self
      */
     public function setNamespaceUri($namespaceUri)
@@ -74,7 +75,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new alias
      *
-     * @param  string $alias
+     * @param string $alias
      * @return self
      */
     public function setAlias($alias)
@@ -225,7 +226,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new namespace
      *
-     * @param  string $namespace
+     * @param string $namespace
      * @return self
      */
     public function setNamespace($namespace)

@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 /**
  * Class representing TIfExpressionType
  *
+ *
  * XSD Type: TIfExpression
  */
 class TIfExpressionType extends IsOK

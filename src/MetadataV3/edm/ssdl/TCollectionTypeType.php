@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TCollectionTypeType
  *
+ *
  * XSD Type: TCollectionType
  */
 class TCollectionTypeType extends IsOK
@@ -21,7 +22,7 @@ class TCollectionTypeType extends IsOK
      * Adds as property
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType $property
      */
     public function addToRowType(TPropertyType $property)
     {
@@ -36,7 +37,7 @@ class TCollectionTypeType extends IsOK
     /**
      * isset rowType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetRowType($index)
@@ -47,7 +48,7 @@ class TCollectionTypeType extends IsOK
     /**
      * unset rowType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetRowType($index)
@@ -68,7 +69,7 @@ class TCollectionTypeType extends IsOK
     /**
      * Sets a new rowType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType[] $rowType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)
@@ -79,8 +80,7 @@ class TCollectionTypeType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType',
             $msg,
             1
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->rowType = $rowType;
@@ -94,8 +94,7 @@ class TCollectionTypeType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyType',
             $msg,
             1
-        )
-        ) {
+        )) {
             return false;
         }
         return true;

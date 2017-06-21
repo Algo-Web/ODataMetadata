@@ -46,7 +46,7 @@ class TDataServicesType extends IsOK
     /**
      * Sets a new DataServiceVersion
      *
-     * @param  string $maxDataServiceVersion
+     * @param string $maxDataServiceVersion
      * @return self
      */
     public function setMaxDataServiceVersion($maxDataServiceVersion)
@@ -73,7 +73,7 @@ class TDataServicesType extends IsOK
     /**
      * Sets a new DataServiceVersion
      *
-     * @param  string $dataServiceVersion
+     * @param string $dataServiceVersion
      * @return self
      */
     public function setDataServiceVersion($dataServiceVersion)
@@ -90,7 +90,7 @@ class TDataServicesType extends IsOK
      * Adds as schema
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema $schema
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema $schema
      */
     public function addToSchema(Schema $schema)
     {
@@ -105,7 +105,7 @@ class TDataServicesType extends IsOK
     /**
      * isset schema
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetSchema($index)
@@ -116,7 +116,7 @@ class TDataServicesType extends IsOK
     /**
      * unset schema
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetSchema($index)
@@ -137,7 +137,7 @@ class TDataServicesType extends IsOK
     /**
      * Sets a new schema
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema[] $dataServices
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema[] $dataServices
      * @return self
      */
     public function setSchema(array $dataServices)
@@ -145,8 +145,7 @@ class TDataServicesType extends IsOK
         if (!$this->isValidArrayOK(
             $dataServices,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\Schema'
-        )
-        ) {
+        )) {
             $msg = "Data services array not a valid array";
             throw new \InvalidArgumentException($msg);
         }

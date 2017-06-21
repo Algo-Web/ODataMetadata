@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFunctionImportParameterAttribut
 /**
  * Class representing TFunctionImportParameterType
  *
+ *
  * XSD Type: TFunctionImportParameter
  */
 class TFunctionImportParameterType extends IsOK

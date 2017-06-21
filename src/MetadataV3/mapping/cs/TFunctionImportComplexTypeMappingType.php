@@ -37,7 +37,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     /**
      * Sets a new typeName
      *
-     * @param  string $typeName
+     * @param string $typeName
      * @return self
      */
     public function setTypeName($typeName)
@@ -54,7 +54,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
      * Adds as scalarProperty
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
      */
     public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
@@ -69,7 +69,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     /**
      * isset scalarProperty
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetScalarProperty($index)
@@ -80,7 +80,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     /**
      * unset scalarProperty
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetScalarProperty($index)
@@ -101,7 +101,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     /**
      * Sets a new scalarProperty
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
      */
     public function setScalarProperty(array $scalarProperty)
@@ -111,8 +111,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
             $scalarProperty,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->scalarProperty = $scalarProperty;
@@ -128,8 +127,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
         if (!$this->isValidArray(
             $this->scalarProperty,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType'
-        )
-        ) {
+        )) {
             $msg = "Scalar property array not a valid array";
             return false;
         }

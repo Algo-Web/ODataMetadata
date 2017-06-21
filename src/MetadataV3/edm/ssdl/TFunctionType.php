@@ -11,6 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TUndottedIdentifierTrai
 /**
  * Class representing TFunctionType
  *
+ *
  * XSD Type: TFunction
  */
 class TFunctionType extends IsOK
@@ -89,7 +90,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -111,7 +112,7 @@ class TFunctionType extends IsOK
      * Adds as returnType
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType $returnType
      */
     public function addToReturnType(TFunctionReturnTypeType $returnType)
     {
@@ -126,7 +127,7 @@ class TFunctionType extends IsOK
     /**
      * isset returnType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetReturnType($index)
@@ -137,7 +138,7 @@ class TFunctionType extends IsOK
     /**
      * unset returnType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetReturnType($index)
@@ -158,7 +159,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new returnType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType[] $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType[] $returnType
      * @return self
      */
     public function setReturnType(array $returnType)
@@ -168,8 +169,7 @@ class TFunctionType extends IsOK
             $returnType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->returnType = $returnType;
@@ -189,7 +189,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new aggregate
      *
-     * @param  boolean $aggregate
+     * @param boolean $aggregate
      * @return self
      */
     public function setAggregate($aggregate)
@@ -211,7 +211,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new builtIn
      *
-     * @param  boolean $builtIn
+     * @param boolean $builtIn
      * @return self
      */
     public function setBuiltIn($builtIn)
@@ -233,7 +233,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new storeFunctionName
      *
-     * @param  string $storeFunctionName
+     * @param string $storeFunctionName
      * @return self
      */
     public function setStoreFunctionName($storeFunctionName)
@@ -255,7 +255,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new niladicFunction
      *
-     * @param  boolean $niladicFunction
+     * @param boolean $niladicFunction
      * @return self
      */
     public function setNiladicFunction($niladicFunction)
@@ -277,7 +277,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new isComposable
      *
-     * @param  boolean $isComposable
+     * @param boolean $isComposable
      * @return self
      */
     public function setIsComposable($isComposable)
@@ -299,7 +299,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new parameterTypeSemantics
      *
-     * @param  string $parameterTypeSemantics
+     * @param string $parameterTypeSemantics
      * @return self
      */
     public function setParameterTypeSemantics($parameterTypeSemantics)
@@ -310,8 +310,7 @@ class TFunctionType extends IsOK
             throw new \InvalidArgumentException($msg);
         }
         if (null != $parameterTypeSemantics
-            && !$this->isTParameterTypeSemanticsValid($parameterTypeSemantics)
-        ) {
+            && !$this->isTParameterTypeSemanticsValid($parameterTypeSemantics)) {
             $msg = "Parameter type semantics must be a valid TParameterTypeSemantics";
             throw new \InvalidArgumentException($msg);
         }
@@ -332,7 +331,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new schema
      *
-     * @param  string $schema
+     * @param string $schema
      * @return self
      */
     public function setSchema($schema)
@@ -363,7 +362,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -380,7 +379,7 @@ class TFunctionType extends IsOK
      * Adds as parameter
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType $parameter
      */
     public function addToParameter(TParameterType $parameter)
     {
@@ -395,7 +394,7 @@ class TFunctionType extends IsOK
     /**
      * isset parameter
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetParameter($index)
@@ -406,7 +405,7 @@ class TFunctionType extends IsOK
     /**
      * unset parameter
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetParameter($index)
@@ -427,7 +426,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new parameter
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType[] $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)
@@ -437,8 +436,7 @@ class TFunctionType extends IsOK
             $parameter,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->parameter = $parameter;
@@ -449,7 +447,7 @@ class TFunctionType extends IsOK
      * Adds as commandText
      *
      * @return self
-     * @param  string $commandText
+     * @param string $commandText
      */
     public function addToCommandText($commandText)
     {
@@ -465,7 +463,7 @@ class TFunctionType extends IsOK
     /**
      * isset commandText
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetCommandText($index)
@@ -476,7 +474,7 @@ class TFunctionType extends IsOK
     /**
      * unset commandText
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetCommandText($index)
@@ -497,7 +495,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new commandText
      *
-     * @param  string $commandText
+     * @param string $commandText
      * @return self
      */
     public function setCommandText(array $commandText)
@@ -545,8 +543,7 @@ class TFunctionType extends IsOK
             return false;
         }
         if (null != $this->parameterTypeSemantics
-            && !$this->isTParameterTypeSemanticsValid($this->parameterTypeSemantics)
-        ) {
+            && !$this->isTParameterTypeSemanticsValid($this->parameterTypeSemantics)) {
             $msg = "Parameter type semantics must be a valid TParameterTypeSemantics";
             return false;
         }
@@ -557,16 +554,14 @@ class TFunctionType extends IsOK
             $this->parameter,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->returnType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
 

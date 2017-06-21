@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TLabeledElementExpressionType
  *
+ *
  * XSD Type: TLabeledElementExpression
  */
 class TLabeledElementExpressionType extends IsOK
@@ -210,7 +211,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -232,7 +233,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new binary
      *
-     * @param  string $binary
+     * @param string $binary
      * @return self
      */
     public function setBinary($binary)
@@ -254,7 +255,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new bool
      *
-     * @param  boolean $bool
+     * @param boolean $bool
      * @return self
      */
     public function setBool($bool)
@@ -276,7 +277,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new date
      *
-     * @param  \DateTime $date
+     * @param \DateTime $date
      * @return self
      */
     public function setDate(\DateTime $date)
@@ -298,7 +299,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new dateTimeOffset
      *
-     * @param  \DateTime $dateTimeOffset
+     * @param \DateTime $dateTimeOffset
      * @return self
      */
     public function setDateTimeOffset(\DateTime $dateTimeOffset)
@@ -320,7 +321,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new decimal
      *
-     * @param  float $decimal
+     * @param float $decimal
      * @return self
      */
     public function setDecimal($decimal)
@@ -342,7 +343,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new duration
      *
-     * @param  \DateInterval $duration
+     * @param \DateInterval $duration
      * @return self
      */
     public function setDuration(\DateInterval $duration)
@@ -355,7 +356,7 @@ class TLabeledElementExpressionType extends IsOK
      * Adds as enumMember
      *
      * @return self
-     * @param  string $enumMember
+     * @param string $enumMember
      */
     public function addToEnumMember($enumMember)
     {
@@ -366,7 +367,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * isset enumMember
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetEnumMember($index)
@@ -377,7 +378,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * unset enumMember
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetEnumMember($index)
@@ -398,7 +399,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new enumMember
      *
-     * @param  string $enumMember
+     * @param string $enumMember
      * @return self
      */
     public function setEnumMember(array $enumMember)
@@ -420,7 +421,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new float
      *
-     * @param  float $float
+     * @param float $float
      * @return self
      */
     public function setFloat($float)
@@ -442,7 +443,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new guid
      *
-     * @param  string $guid
+     * @param string $guid
      * @return self
      */
     public function setGuid($guid)
@@ -464,7 +465,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new int
      *
-     * @param  integer $int
+     * @param integer $int
      * @return self
      */
     public function setInt($int)
@@ -486,7 +487,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new string
      *
-     * @param  string $string
+     * @param string $string
      * @return self
      */
     public function setString($string)
@@ -508,7 +509,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new timeOfDay
      *
-     * @param  \DateTime $timeOfDay
+     * @param \DateTime $timeOfDay
      * @return self
      */
     public function setTimeOfDay(\DateTime $timeOfDay)
@@ -530,7 +531,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new annotationPath
      *
-     * @param  string $annotationPath
+     * @param string $annotationPath
      * @return self
      */
     public function setAnnotationPath($annotationPath)
@@ -552,7 +553,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new navigationPropertyPath
      *
-     * @param  string $navigationPropertyPath
+     * @param string $navigationPropertyPath
      * @return self
      */
     public function setNavigationPropertyPath($navigationPropertyPath)
@@ -574,7 +575,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new path
      *
-     * @param  string $path
+     * @param string $path
      * @return self
      */
     public function setPath($path)
@@ -596,7 +597,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new propertyPath
      *
-     * @param  string $propertyPath
+     * @param string $propertyPath
      * @return self
      */
     public function setPropertyPath($propertyPath)
@@ -618,7 +619,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new urlRef
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $urlRef
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $urlRef
      * @return self
      */
     public function setUrlRef(TOneChildExpressionType $urlRef)
@@ -631,7 +632,7 @@ class TLabeledElementExpressionType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -642,7 +643,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * isset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -653,7 +654,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * unset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -674,7 +675,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)
@@ -696,7 +697,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new apply
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType $apply
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType $apply
      * @return self
      */
     public function setApply(TApplyExpressionType $apply)
@@ -718,7 +719,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new cast
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $cast
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $cast
      * @return self
      */
     public function setCast(TCastOrIsOfExpressionType $cast)
@@ -740,7 +741,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new collection
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType $collection
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType $collection
      * @return self
      */
     public function setCollection(TCollectionExpressionType $collection)
@@ -762,7 +763,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new if
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType $if
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType $if
      * @return self
      */
     public function setIf(TIfExpressionType $if)
@@ -784,7 +785,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new eq
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $eq
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $eq
      * @return self
      */
     public function setEq(TTwoChildrenExpressionType $eq)
@@ -806,7 +807,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new ne
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ne
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ne
      * @return self
      */
     public function setNe(TTwoChildrenExpressionType $ne)
@@ -828,7 +829,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new ge
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ge
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ge
      * @return self
      */
     public function setGe(TTwoChildrenExpressionType $ge)
@@ -850,7 +851,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new gt
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $gt
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $gt
      * @return self
      */
     public function setGt(TTwoChildrenExpressionType $gt)
@@ -872,7 +873,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new le
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $le
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $le
      * @return self
      */
     public function setLe(TTwoChildrenExpressionType $le)
@@ -894,7 +895,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new lt
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $lt
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $lt
      * @return self
      */
     public function setLt(TTwoChildrenExpressionType $lt)
@@ -916,7 +917,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new and
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $and
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $and
      * @return self
      */
     public function setAnd(TTwoChildrenExpressionType $and)
@@ -938,7 +939,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new or
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $or
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $or
      * @return self
      */
     public function setOr(TTwoChildrenExpressionType $or)
@@ -960,7 +961,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new not
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $not
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $not
      * @return self
      */
     public function setNot(TOneChildExpressionType $not)
@@ -982,7 +983,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new isOf
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $isOf
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $isOf
      * @return self
      */
     public function setIsOf(TCastOrIsOfExpressionType $isOf)
@@ -1004,7 +1005,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new labeledElement
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType $labeledElement
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType $labeledElement
      * @return self
      */
     public function setLabeledElement(TLabeledElementExpressionType $labeledElement)
@@ -1026,7 +1027,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new labeledElementReference
      *
-     * @param  string $labeledElementReference
+     * @param string $labeledElementReference
      * @return self
      */
     public function setLabeledElementReference($labeledElementReference)
@@ -1039,7 +1040,7 @@ class TLabeledElementExpressionType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToNull(Annotation $annotation)
     {
@@ -1050,7 +1051,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * isset null
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetNull($index)
@@ -1061,7 +1062,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * unset null
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetNull($index)
@@ -1082,7 +1083,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new null
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $null
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $null
      * @return self
      */
     public function setNull(array $null)
@@ -1104,7 +1105,7 @@ class TLabeledElementExpressionType extends IsOK
     /**
      * Sets a new record
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType $record
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType $record
      * @return self
      */
     public function setRecord(TRecordExpressionType $record)

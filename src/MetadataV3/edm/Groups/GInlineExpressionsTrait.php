@@ -27,7 +27,7 @@ trait GInlineExpressionsTrait
     /**
      * Sets a new string
      *
-     * @param  string $string
+     * @param string $string
      * @return self
      */
     public function setString($string)
@@ -54,7 +54,7 @@ trait GInlineExpressionsTrait
     /**
      * Sets a new binary
      *
-     * @param  mixed $binary
+     * @param mixed $binary
      * @return self
      */
     public function setBinary($binary)
@@ -81,7 +81,7 @@ trait GInlineExpressionsTrait
     /**
      * Sets a new int
      *
-     * @param  integer $int
+     * @param integer $int
      * @return self
      */
     public function setInt($int)
@@ -108,7 +108,7 @@ trait GInlineExpressionsTrait
     /**
      * Sets a new float
      *
-     * @param  float $float
+     * @param float $float
      * @return self
      */
     public function setFloat($float)
@@ -135,7 +135,7 @@ trait GInlineExpressionsTrait
     /**
      * Sets a new guid
      *
-     * @param  string $guid
+     * @param string $guid
      * @return self
      */
     public function setGuid($guid)
@@ -162,7 +162,7 @@ trait GInlineExpressionsTrait
     /**
      * Sets a new decimal
      *
-     * @param  float $decimal
+     * @param float $decimal
      * @return self
      */
     public function setDecimal($decimal)
@@ -189,7 +189,7 @@ trait GInlineExpressionsTrait
     /**
      * Sets a new bool
      *
-     * @param  boolean $bool
+     * @param boolean $bool
      * @return self
      */
     public function setBool($bool)
@@ -216,7 +216,7 @@ trait GInlineExpressionsTrait
     /**
      * Sets a new dateTime
      *
-     * @param  \DateTime $dateTime
+     * @param \DateTime $dateTime
      * @return self
      */
     public function setDateTime(\DateTime $dateTime)
@@ -243,7 +243,7 @@ trait GInlineExpressionsTrait
     /**
      * Sets a new dateTimeOffset
      *
-     * @param  \DateTime $dateTimeOffset
+     * @param \DateTime $dateTimeOffset
      * @return self
      */
     public function setDateTimeOffset(\DateTime $dateTimeOffset)
@@ -270,7 +270,7 @@ trait GInlineExpressionsTrait
     /**
      * Sets a new enum
      *
-     * @param  string $enum
+     * @param string $enum
      * @return self
      */
     public function setEnum($enum)
@@ -297,7 +297,7 @@ trait GInlineExpressionsTrait
     /**
      * Sets a new path
      *
-     * @param  string $path
+     * @param string $path
      * @return self
      */
     public function setPath($path)

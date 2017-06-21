@@ -8,7 +8,6 @@ use AlgoWeb\ODataMetadata\xsdRestrictions;
  * Trait TQualifiedNameTrait
  * Definition for QualifiedName. QualifiedName is SimpleIdentifiers with '.'
  * allowed. This is the same definition that is being used in the CSDL XSD
- *
  * @package AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits
  */
 trait TQualifiedNameTrait

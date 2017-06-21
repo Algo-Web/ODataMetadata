@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TConnectorPointType
  *
+ *
  * XSD Type: TConnectorPoint
  */
 class TConnectorPointType extends IsOK
@@ -35,7 +36,7 @@ class TConnectorPointType extends IsOK
     /**
      * Sets a new pointX
      *
-     * @param  float $pointX
+     * @param float $pointX
      * @return self
      */
     public function setPointX($pointX)
@@ -61,7 +62,7 @@ class TConnectorPointType extends IsOK
     /**
      * Sets a new pointY
      *
-     * @param  float $pointY
+     * @param float $pointY
      * @return self
      */
     public function setPointY($pointY)

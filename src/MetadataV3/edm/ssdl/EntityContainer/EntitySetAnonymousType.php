@@ -64,7 +64,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -86,7 +86,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * Sets a new entityType
      *
-     * @param  string $entityType
+     * @param string $entityType
      * @return self
      */
     public function setEntityType($entityType)
@@ -108,7 +108,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * Sets a new schema
      *
-     * @param  string $schema
+     * @param string $schema
      * @return self
      */
     public function setSchema($schema)
@@ -130,7 +130,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * Sets a new table
      *
-     * @param  string $table
+     * @param string $table
      * @return self
      */
     public function setTable($table)
@@ -152,7 +152,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * Sets a new type
      *
-     * @param  string $type
+     * @param string $type
      * @return self
      */
     public function setType($type)
@@ -174,7 +174,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -196,7 +196,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * Sets a new definingQuery
      *
-     * @param  string $definingQuery
+     * @param string $definingQuery
      * @return self
      */
     public function setDefiningQuery($definingQuery)
@@ -235,8 +235,7 @@ class EntitySetAnonymousType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType',
             $this->documentation,
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
 

@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TAssociationSetModificationFunctionMappingType
  *
+ *
  * XSD Type: TAssociationSetModificationFunctionMapping
  */
 class TAssociationSetModificationFunctionMappingType extends IsOK
@@ -37,7 +38,7 @@ class TAssociationSetModificationFunctionMappingType extends IsOK
     /**
      * Sets a new deleteFunction
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TAssociationSetModificationFunctionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TAssociationSetModificationFunctionType
      * $deleteFunction
      * @return self
      */
@@ -60,7 +61,7 @@ class TAssociationSetModificationFunctionMappingType extends IsOK
     /**
      * Sets a new insertFunction
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TAssociationSetModificationFunctionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TAssociationSetModificationFunctionType
      * $insertFunction
      * @return self
      */

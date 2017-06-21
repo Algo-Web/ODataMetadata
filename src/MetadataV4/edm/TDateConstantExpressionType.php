@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TDateConstantExpressionType
  *
+ *
  * XSD Type: TDateConstantExpression
  */
 class TDateConstantExpressionType extends IsOK
@@ -30,7 +31,7 @@ class TDateConstantExpressionType extends IsOK
     /**
      * Gets or sets the inner value
      *
-     * @param  \DateTime ...$value
+     * @param \DateTime ...$value
      * @return \DateTime
      */
     public function value(...$value)

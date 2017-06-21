@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TFunctionType
  *
+ *
  * XSD Type: TFunction
  */
 class TFunctionType extends IsOK
@@ -60,7 +61,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -82,7 +83,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new entitySetPath
      *
-     * @param  string $entitySetPath
+     * @param string $entitySetPath
      * @return self
      */
     public function setEntitySetPath($entitySetPath)
@@ -104,7 +105,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new isBound
      *
-     * @param  boolean $isBound
+     * @param boolean $isBound
      * @return self
      */
     public function setIsBound($isBound)
@@ -126,7 +127,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new isComposable
      *
-     * @param  boolean $isComposable
+     * @param boolean $isComposable
      * @return self
      */
     public function setIsComposable($isComposable)
@@ -139,7 +140,7 @@ class TFunctionType extends IsOK
      * Adds as parameter
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType $parameter
      */
     public function addToParameter(TActionFunctionParameterType $parameter)
     {
@@ -150,7 +151,7 @@ class TFunctionType extends IsOK
     /**
      * isset parameter
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetParameter($index)
@@ -161,7 +162,7 @@ class TFunctionType extends IsOK
     /**
      * unset parameter
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetParameter($index)
@@ -182,7 +183,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new parameter
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType[] $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)
@@ -195,7 +196,7 @@ class TFunctionType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -206,7 +207,7 @@ class TFunctionType extends IsOK
     /**
      * isset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -217,7 +218,7 @@ class TFunctionType extends IsOK
     /**
      * unset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -238,7 +239,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)
@@ -260,7 +261,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new returnType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionReturnTypeType $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionReturnTypeType $returnType
      * @return self
      */
     public function setReturnType(TActionFunctionReturnTypeType $returnType)

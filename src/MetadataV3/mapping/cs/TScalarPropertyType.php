@@ -38,7 +38,7 @@ class TScalarPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -68,7 +68,7 @@ class TScalarPropertyType extends IsOK
     /**
      * Sets a new columnName
      *
-     * @param  string $columnName
+     * @param string $columnName
      * @return self
      */
     public function setColumnName($columnName)

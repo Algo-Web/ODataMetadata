@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TActionImportType
  *
+ *
  * XSD Type: TActionImport
  */
 class TActionImportType extends IsOK
@@ -50,7 +51,7 @@ class TActionImportType extends IsOK
     /**
      * Sets a new action
      *
-     * @param  string $action
+     * @param string $action
      * @return self
      */
     public function setAction($action)
@@ -72,7 +73,7 @@ class TActionImportType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -94,7 +95,7 @@ class TActionImportType extends IsOK
     /**
      * Sets a new entitySet
      *
-     * @param  string $entitySet
+     * @param string $entitySet
      * @return self
      */
     public function setEntitySet($entitySet)
@@ -116,7 +117,7 @@ class TActionImportType extends IsOK
     /**
      * Sets a new includeInServiceDocument
      *
-     * @param  boolean $includeInServiceDocument
+     * @param boolean $includeInServiceDocument
      * @return self
      */
     public function setIncludeInServiceDocument($includeInServiceDocument)
@@ -129,7 +130,7 @@ class TActionImportType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -140,7 +141,7 @@ class TActionImportType extends IsOK
     /**
      * isset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -151,7 +152,7 @@ class TActionImportType extends IsOK
     /**
      * unset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -172,7 +173,7 @@ class TActionImportType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

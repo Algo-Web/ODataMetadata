@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TFunctionMappingComplexPropertyType
  *
+ *
  * XSD Type: TFunctionMappingComplexProperty
  */
 class TFunctionMappingComplexPropertyType extends IsOK
@@ -47,7 +48,7 @@ class TFunctionMappingComplexPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -69,7 +70,7 @@ class TFunctionMappingComplexPropertyType extends IsOK
     /**
      * Sets a new typeName
      *
-     * @param  string $typeName
+     * @param string $typeName
      * @return self
      */
     public function setTypeName($typeName)
@@ -91,7 +92,7 @@ class TFunctionMappingComplexPropertyType extends IsOK
     /**
      * Sets a new scalarProperty
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType $scalarProperty
      * @return self
      */
     public function setScalarProperty(TFunctionMappingScalarPropertyType $scalarProperty)
@@ -113,7 +114,7 @@ class TFunctionMappingComplexPropertyType extends IsOK
     /**
      * Sets a new complexProperty
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingComplexPropertyType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingComplexPropertyType
      * $complexProperty
      * @return self
      */

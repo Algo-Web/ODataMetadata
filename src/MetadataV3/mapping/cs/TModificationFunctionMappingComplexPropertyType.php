@@ -39,7 +39,7 @@ class TModificationFunctionMappingComplexPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -69,7 +69,7 @@ class TModificationFunctionMappingComplexPropertyType extends IsOK
     /**
      * Sets a new typeName
      *
-     * @param  string $typeName
+     * @param string $typeName
      * @return self
      */
     public function setTypeName($typeName)

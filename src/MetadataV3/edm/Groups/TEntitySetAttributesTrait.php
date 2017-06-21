@@ -42,7 +42,7 @@ trait TEntitySetAttributesTrait
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -69,7 +69,7 @@ trait TEntitySetAttributesTrait
     /**
      * Sets a new entityType
      *
-     * @param  string $entityType
+     * @param string $entityType
      * @return self
      */
     public function setEntityType($entityType)
@@ -96,7 +96,7 @@ trait TEntitySetAttributesTrait
     /**
      * Sets a new getterAccess
      *
-     * @param  string $getterAccess
+     * @param string $getterAccess
      * @return self
      */
     public function setGetterAccess($getterAccess)

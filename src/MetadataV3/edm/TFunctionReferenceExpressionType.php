@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 /**
  * Class representing TFunctionReferenceExpressionType
  *
+ *
  * XSD Type: TFunctionReferenceExpression
  */
 class TFunctionReferenceExpressionType extends IsOK
@@ -39,7 +40,7 @@ class TFunctionReferenceExpressionType extends IsOK
     /**
      * Sets a new function
      *
-     * @param  string $function
+     * @param string $function
      * @return self
      */
     public function setFunction($function)
@@ -56,7 +57,7 @@ class TFunctionReferenceExpressionType extends IsOK
      * Adds as parameter
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType
      * $parameter
      */
     public function addToParameter(TFunctionReferenceExpressionType\ParameterAnonymousType $parameter)
@@ -72,7 +73,7 @@ class TFunctionReferenceExpressionType extends IsOK
     /**
      * isset parameter
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetParameter($index)
@@ -83,7 +84,7 @@ class TFunctionReferenceExpressionType extends IsOK
     /**
      * unset parameter
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetParameter($index)
@@ -105,7 +106,7 @@ class TFunctionReferenceExpressionType extends IsOK
     /**
      * Sets a new parameter
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
      * $parameter
      * @return self
      */
@@ -116,8 +117,7 @@ class TFunctionReferenceExpressionType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType',
             $msg,
             1
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->parameter = $parameter;
@@ -135,8 +135,7 @@ class TFunctionReferenceExpressionType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType',
             $msg,
             1
-        )
-        ) {
+        )) {
             return false;
         }
         return true;

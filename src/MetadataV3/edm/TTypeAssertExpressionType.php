@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionTypeTrait;
 /**
  * Class representing TTypeAssertExpressionType
  *
+ *
  * XSD Type: TTypeAssertExpression
  */
 class TTypeAssertExpressionType extends IsOK
@@ -53,7 +54,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * Sets a new type
      *
-     * @param  string $type
+     * @param string $type
      * @return self
      */
     public function setType($type)
@@ -70,7 +71,7 @@ class TTypeAssertExpressionType extends IsOK
      * Adds as operand
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $operand
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $operand
      */
     public function addToOperand(TOperandType $operand)
     {
@@ -85,7 +86,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * isset operand
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetOperand($index)
@@ -96,7 +97,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * unset operand
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetOperand($index)
@@ -117,7 +118,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * Sets a new operand
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType[] $operand
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType[] $operand
      * @return self
      */
     public function setOperand(array $operand)
@@ -133,7 +134,7 @@ class TTypeAssertExpressionType extends IsOK
      * Adds as collectionType
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
      */
     public function addToCollectionType(TCollectionTypeType $collectionType)
     {
@@ -148,7 +149,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * isset collectionType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetCollectionType($index)
@@ -159,7 +160,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * unset collectionType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetCollectionType($index)
@@ -180,7 +181,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * Sets a new collectionType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType[] $collectionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType[] $collectionType
      * @return self
      */
     public function setCollectionType(array $collectionType)
@@ -189,8 +190,7 @@ class TTypeAssertExpressionType extends IsOK
             $collectionType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->collectionType = $collectionType;
@@ -201,7 +201,7 @@ class TTypeAssertExpressionType extends IsOK
      * Adds as referenceType
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
      */
     public function addToReferenceType(TReferenceTypeType $referenceType)
     {
@@ -216,7 +216,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * isset referenceType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetReferenceType($index)
@@ -227,7 +227,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * unset referenceType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetReferenceType($index)
@@ -248,7 +248,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * Sets a new referenceType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType[] $referenceType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType[] $referenceType
      * @return self
      */
     public function setReferenceType(array $referenceType)
@@ -257,8 +257,7 @@ class TTypeAssertExpressionType extends IsOK
             $referenceType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->referenceType = $referenceType;
@@ -269,7 +268,7 @@ class TTypeAssertExpressionType extends IsOK
      * Adds as property
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
      */
     public function addToRowType(TPropertyType $property)
     {
@@ -284,7 +283,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * isset rowType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetRowType($index)
@@ -295,7 +294,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * unset rowType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetRowType($index)
@@ -316,7 +315,7 @@ class TTypeAssertExpressionType extends IsOK
     /**
      * Sets a new rowType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)
@@ -325,8 +324,7 @@ class TTypeAssertExpressionType extends IsOK
             $rowType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->rowType = $rowType;
@@ -349,24 +347,21 @@ class TTypeAssertExpressionType extends IsOK
             $this->collectionType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->referenceType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->rowType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
 

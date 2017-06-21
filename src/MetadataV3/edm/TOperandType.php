@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
 /**
  * Class representing TOperandType
  *
+ *
  * XSD Type: TOperand
  */
 class TOperandType extends IsOK

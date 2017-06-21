@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TAssociationSetMappingType
  *
+ *
  * XSD Type: TAssociationSetMapping
  */
 class TAssociationSetMappingType extends IsOK
@@ -61,7 +62,7 @@ class TAssociationSetMappingType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -83,7 +84,7 @@ class TAssociationSetMappingType extends IsOK
     /**
      * Sets a new typeName
      *
-     * @param  string $typeName
+     * @param string $typeName
      * @return self
      */
     public function setTypeName($typeName)
@@ -105,7 +106,7 @@ class TAssociationSetMappingType extends IsOK
     /**
      * Sets a new storeEntitySet
      *
-     * @param  string $storeEntitySet
+     * @param string $storeEntitySet
      * @return self
      */
     public function setStoreEntitySet($storeEntitySet)
@@ -127,7 +128,7 @@ class TAssociationSetMappingType extends IsOK
     /**
      * Sets a new queryView
      *
-     * @param  string $queryView
+     * @param string $queryView
      * @return self
      */
     public function setQueryView($queryView)
@@ -140,7 +141,7 @@ class TAssociationSetMappingType extends IsOK
      * Adds as endProperty
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEndPropertyType $endProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEndPropertyType $endProperty
      */
     public function addToEndProperty(TEndPropertyType $endProperty)
     {
@@ -151,7 +152,7 @@ class TAssociationSetMappingType extends IsOK
     /**
      * isset endProperty
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetEndProperty($index)
@@ -162,7 +163,7 @@ class TAssociationSetMappingType extends IsOK
     /**
      * unset endProperty
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetEndProperty($index)
@@ -183,7 +184,7 @@ class TAssociationSetMappingType extends IsOK
     /**
      * Sets a new endProperty
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEndPropertyType[] $endProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEndPropertyType[] $endProperty
      * @return self
      */
     public function setEndProperty(array $endProperty)
@@ -196,7 +197,7 @@ class TAssociationSetMappingType extends IsOK
      * Adds as condition
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType $condition
      */
     public function addToCondition(TConditionType $condition)
     {
@@ -207,7 +208,7 @@ class TAssociationSetMappingType extends IsOK
     /**
      * isset condition
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetCondition($index)
@@ -218,7 +219,7 @@ class TAssociationSetMappingType extends IsOK
     /**
      * unset condition
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetCondition($index)
@@ -239,7 +240,7 @@ class TAssociationSetMappingType extends IsOK
     /**
      * Sets a new condition
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType[] $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType[] $condition
      * @return self
      */
     public function setCondition(array $condition)
@@ -261,7 +262,7 @@ class TAssociationSetMappingType extends IsOK
     /**
      * Sets a new modificationFunctionMapping
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAssociationSetModificationFunctionMappingType
      * $modificationFunctionMapping
      * @return self
      */

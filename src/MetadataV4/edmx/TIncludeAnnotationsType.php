@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TIncludeAnnotationsType
  *
+ *
  * XSD Type: TIncludeAnnotations
  */
 class TIncludeAnnotationsType extends IsOK
@@ -43,7 +44,7 @@ class TIncludeAnnotationsType extends IsOK
     /**
      * Sets a new termNamespace
      *
-     * @param  string $termNamespace
+     * @param string $termNamespace
      * @return self
      */
     public function setTermNamespace($termNamespace)
@@ -65,7 +66,7 @@ class TIncludeAnnotationsType extends IsOK
     /**
      * Sets a new qualifier
      *
-     * @param  string $qualifier
+     * @param string $qualifier
      * @return self
      */
     public function setQualifier($qualifier)
@@ -87,7 +88,7 @@ class TIncludeAnnotationsType extends IsOK
     /**
      * Sets a new targetNamespace
      *
-     * @param  string $targetNamespace
+     * @param string $targetNamespace
      * @return self
      */
     public function setTargetNamespace($targetNamespace)

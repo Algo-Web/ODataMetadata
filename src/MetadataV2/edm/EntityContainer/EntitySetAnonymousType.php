@@ -44,7 +44,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -66,7 +66,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * Sets a new entityType
      *
-     * @param  string $entityType
+     * @param string $entityType
      * @return self
      */
     public function setEntityType($entityType)
@@ -88,7 +88,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * Sets a new getterAccess
      *
-     * @param  string $getterAccess
+     * @param string $getterAccess
      * @return self
      */
     public function setGetterAccess($getterAccess)
@@ -110,7 +110,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)

@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TUsingType
  *
+ *
  * XSD Type: TUsing
  */
 class TUsingType extends IsOK
@@ -40,7 +41,7 @@ class TUsingType extends IsOK
     /**
      * Sets a new namespace
      *
-     * @param  string $namespace
+     * @param string $namespace
      * @return self
      */
     public function setNamespace($namespace)
@@ -62,7 +63,7 @@ class TUsingType extends IsOK
     /**
      * Sets a new alias
      *
-     * @param  string $alias
+     * @param string $alias
      * @return self
      */
     public function setAlias($alias)
@@ -84,7 +85,7 @@ class TUsingType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)

@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TEntityTypeShapeType
  *
+ *
  * XSD Type: TEntityTypeShape
  */
 class TEntityTypeShapeType extends IsOK
@@ -60,7 +61,7 @@ class TEntityTypeShapeType extends IsOK
     /**
      * Sets a new entityType
      *
-     * @param  string $entityType
+     * @param string $entityType
      * @return self
      */
     public function setEntityType($entityType)
@@ -86,7 +87,7 @@ class TEntityTypeShapeType extends IsOK
     /**
      * Sets a new pointX
      *
-     * @param  float $pointX
+     * @param float $pointX
      * @return self
      */
     public function setPointX($pointX)
@@ -112,7 +113,7 @@ class TEntityTypeShapeType extends IsOK
     /**
      * Sets a new pointY
      *
-     * @param  float $pointY
+     * @param float $pointY
      * @return self
      */
     public function setPointY($pointY)
@@ -138,7 +139,7 @@ class TEntityTypeShapeType extends IsOK
     /**
      * Sets a new width
      *
-     * @param  float $width
+     * @param float $width
      * @return self
      */
     public function setWidth($width)
@@ -164,7 +165,7 @@ class TEntityTypeShapeType extends IsOK
     /**
      * Sets a new height
      *
-     * @param  float $height
+     * @param float $height
      * @return self
      */
     public function setHeight($height)
@@ -190,7 +191,7 @@ class TEntityTypeShapeType extends IsOK
     /**
      * Sets a new isExpanded
      *
-     * @param  boolean $isExpanded
+     * @param boolean $isExpanded
      * @return self
      */
     public function setIsExpanded($isExpanded)
@@ -212,7 +213,7 @@ class TEntityTypeShapeType extends IsOK
     /**
      * Sets a new fillColor
      *
-     * @param  string $fillColor
+     * @param string $fillColor
      * @return self
      */
     public function setFillColor($fillColor)

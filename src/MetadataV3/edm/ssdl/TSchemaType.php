@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TSchemaType
  *
+ *
  * XSD Type: TSchema
  */
 class TSchemaType extends IsOK
@@ -47,7 +48,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new namespace
      *
-     * @param  string $namespace
+     * @param string $namespace
      * @return self
      */
     public function setNamespace($namespace)
@@ -78,7 +79,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new alias
      *
-     * @param  string $alias
+     * @param string $alias
      * @return self
      */
     public function setAlias($alias)
@@ -109,7 +110,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new provider
      *
-     * @param  string $provider
+     * @param string $provider
      * @return self
      */
     public function setProvider($provider)
@@ -140,7 +141,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new providerManifestToken
      *
-     * @param  string $providerManifestToken
+     * @param string $providerManifestToken
      * @return self
      */
     public function setProviderManifestToken($providerManifestToken)

@@ -5,7 +5,6 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits;
 /**
  * Trait TVersionTrait
  * Definition for Version, which can 'original' or 'current' as its value
- *
  * @package AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits
  */
 trait TVersionTrait

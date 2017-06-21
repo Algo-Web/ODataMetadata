@@ -55,7 +55,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -77,7 +77,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * Sets a new returnType
      *
-     * @param  string $returnType
+     * @param string $returnType
      * @return self
      */
     public function setReturnType($returnType)
@@ -99,7 +99,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * Sets a new entitySet
      *
-     * @param  string $entitySet
+     * @param string $entitySet
      * @return self
      */
     public function setEntitySet($entitySet)
@@ -121,7 +121,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * Sets a new methodAccess
      *
-     * @param  string $methodAccess
+     * @param string $methodAccess
      * @return self
      */
     public function setMethodAccess($methodAccess)
@@ -143,7 +143,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -156,7 +156,7 @@ class FunctionImportAnonymousType extends IsOK
      * Adds as parameter
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType $parameter
      */
     public function addToParameter(TFunctionImportParameterType $parameter)
     {
@@ -167,7 +167,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * isset parameter
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetParameter($index)
@@ -178,7 +178,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * unset parameter
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetParameter($index)
@@ -199,7 +199,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * Sets a new parameter
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType[] $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)

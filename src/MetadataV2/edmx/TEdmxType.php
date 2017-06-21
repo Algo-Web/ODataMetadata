@@ -8,6 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV2\edm\Schema;
 /**
  * Class representing TEdmxType
  *
+ *
  * XSD Type: TEdmx
  */
 class TEdmxType extends IsOK
@@ -46,7 +47,7 @@ class TEdmxType extends IsOK
     /**
      * Sets a new version
      *
-     * @param  string $version
+     * @param string $version
      * @return self
      */
     public function setVersion($version)
@@ -68,7 +69,7 @@ class TEdmxType extends IsOK
     /**
      * Sets a new designer
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edmx\TDesignerType $designer
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edmx\TDesignerType $designer
      * @return self
      */
     public function setDesigner(TDesignerType $designer)
@@ -90,7 +91,7 @@ class TEdmxType extends IsOK
     /**
      * Sets a new runtime
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edmx\TRuntimeType $runtime
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edmx\TRuntimeType $runtime
      * @return self
      */
     public function setRuntime(TRuntimeType $runtime)
@@ -103,7 +104,7 @@ class TEdmxType extends IsOK
      * Adds as schema
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\Schema $schema
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\Schema $schema
      */
     public function addToDataServices(Schema $schema)
     {
@@ -114,7 +115,7 @@ class TEdmxType extends IsOK
     /**
      * isset dataServices
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetDataServices($index)
@@ -125,7 +126,7 @@ class TEdmxType extends IsOK
     /**
      * unset dataServices
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetDataServices($index)
@@ -146,7 +147,7 @@ class TEdmxType extends IsOK
     /**
      * Sets a new dataServices
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\Schema[] $dataServices
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\Schema[] $dataServices
      * @return self
      */
     public function setDataServices(array $dataServices)

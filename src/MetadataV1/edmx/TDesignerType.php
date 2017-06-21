@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TDesignerType
  *
+ *
  * XSD Type: TDesigner
  */
 class TDesignerType extends IsOK
@@ -40,7 +41,7 @@ class TDesignerType extends IsOK
     /**
      * Sets a new connection
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edmx\TConnectionType $connection
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TConnectionType $connection
      * @return self
      */
     public function setConnection(TConnectionType $connection)
@@ -62,7 +63,7 @@ class TDesignerType extends IsOK
     /**
      * Sets a new options
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edmx\TOptionsType $options
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TOptionsType $options
      * @return self
      */
     public function setOptions(TOptionsType $options)
@@ -75,7 +76,7 @@ class TDesignerType extends IsOK
      * Adds as diagram
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDiagramType $diagram
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDiagramType $diagram
      */
     public function addToDiagrams(TDiagramType $diagram)
     {
@@ -86,7 +87,7 @@ class TDesignerType extends IsOK
     /**
      * isset diagrams
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetDiagrams($index)
@@ -97,7 +98,7 @@ class TDesignerType extends IsOK
     /**
      * unset diagrams
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetDiagrams($index)
@@ -118,7 +119,7 @@ class TDesignerType extends IsOK
     /**
      * Sets a new diagrams
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDiagramType[] $diagrams
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TDiagramType[] $diagrams
      * @return self
      */
     public function setDiagrams(array $diagrams)

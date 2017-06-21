@@ -12,6 +12,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TTypeAnnotationType
  *
+ *
  * XSD Type: TTypeAnnotation
  */
 class TTypeAnnotationType extends IsOK
@@ -51,7 +52,7 @@ class TTypeAnnotationType extends IsOK
     /**
      * Sets a new term
      *
-     * @param  string $term
+     * @param string $term
      * @return self
      */
     public function setTerm($term)
@@ -77,7 +78,7 @@ class TTypeAnnotationType extends IsOK
     /**
      * Sets a new qualifier
      *
-     * @param  string $qualifier
+     * @param string $qualifier
      * @return self
      */
     public function setQualifier($qualifier)
@@ -90,7 +91,7 @@ class TTypeAnnotationType extends IsOK
      * Adds as propertyValue
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType $propertyValue
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType $propertyValue
      */
     public function addToPropertyValue(TPropertyValueType $propertyValue)
     {
@@ -105,7 +106,7 @@ class TTypeAnnotationType extends IsOK
     /**
      * isset propertyValue
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetPropertyValue($index)
@@ -116,7 +117,7 @@ class TTypeAnnotationType extends IsOK
     /**
      * unset propertyValue
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetPropertyValue($index)
@@ -137,7 +138,7 @@ class TTypeAnnotationType extends IsOK
     /**
      * Sets a new propertyValue
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[] $propertyValue
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[] $propertyValue
      * @return self
      */
     public function setPropertyValue(array $propertyValue)
@@ -146,8 +147,7 @@ class TTypeAnnotationType extends IsOK
             $propertyValue,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->propertyValue = $propertyValue;
@@ -171,8 +171,7 @@ class TTypeAnnotationType extends IsOK
             $this->propertyValue,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
 

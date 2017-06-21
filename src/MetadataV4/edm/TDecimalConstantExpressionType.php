@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TDecimalConstantExpressionType
  *
+ *
  * XSD Type: TDecimalConstantExpression
  */
 class TDecimalConstantExpressionType extends IsOK
@@ -30,7 +31,7 @@ class TDecimalConstantExpressionType extends IsOK
     /**
      * Gets or sets the inner value
      *
-     * @param  float ...$value
+     * @param float ...$value
      * @return float
      */
     public function value(...$value)

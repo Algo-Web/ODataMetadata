@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TReferenceTypeType
  *
+ *
  * XSD Type: TReferenceType
  */
 class TReferenceTypeType extends IsOK
@@ -35,7 +36,7 @@ class TReferenceTypeType extends IsOK
     /**
      * Sets a new type
      *
-     * @param  string $type
+     * @param string $type
      * @return self
      */
     public function setType($type)
@@ -57,7 +58,7 @@ class TReferenceTypeType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)

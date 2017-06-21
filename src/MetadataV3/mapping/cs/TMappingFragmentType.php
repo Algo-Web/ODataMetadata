@@ -38,7 +38,7 @@ class TMappingFragmentType extends IsOK
     /**
      * Sets a new storeEntitySet
      *
-     * @param  string $storeEntitySet
+     * @param string $storeEntitySet
      * @return self
      */
     public function setStoreEntitySet($storeEntitySet)
@@ -64,7 +64,7 @@ class TMappingFragmentType extends IsOK
     /**
      * Sets a new makeColumnsDistinct
      *
-     * @param  boolean $makeColumnsDistinct
+     * @param boolean $makeColumnsDistinct
      * @return self
      */
     public function setMakeColumnsDistinct($makeColumnsDistinct)

@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TTermType
  *
+ *
  * XSD Type: TTerm
  */
 class TTermType extends IsOK
@@ -80,7 +81,7 @@ class TTermType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -102,7 +103,7 @@ class TTermType extends IsOK
     /**
      * Sets a new type
      *
-     * @param  string $type
+     * @param string $type
      * @return self
      */
     public function setType($type)
@@ -124,7 +125,7 @@ class TTermType extends IsOK
     /**
      * Sets a new baseTerm
      *
-     * @param  string $baseTerm
+     * @param string $baseTerm
      * @return self
      */
     public function setBaseTerm($baseTerm)
@@ -146,7 +147,7 @@ class TTermType extends IsOK
     /**
      * Sets a new nullable
      *
-     * @param  boolean $nullable
+     * @param boolean $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -168,7 +169,7 @@ class TTermType extends IsOK
     /**
      * Sets a new defaultValue
      *
-     * @param  string $defaultValue
+     * @param string $defaultValue
      * @return self
      */
     public function setDefaultValue($defaultValue)
@@ -181,7 +182,7 @@ class TTermType extends IsOK
      * Adds as appliesTo
      *
      * @return self
-     * @param  string $appliesTo
+     * @param string $appliesTo
      */
     public function addToAppliesTo($appliesTo)
     {
@@ -192,7 +193,7 @@ class TTermType extends IsOK
     /**
      * isset appliesTo
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAppliesTo($index)
@@ -203,7 +204,7 @@ class TTermType extends IsOK
     /**
      * unset appliesTo
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAppliesTo($index)
@@ -224,7 +225,7 @@ class TTermType extends IsOK
     /**
      * Sets a new appliesTo
      *
-     * @param  string $appliesTo
+     * @param string $appliesTo
      * @return self
      */
     public function setAppliesTo(array $appliesTo)
@@ -246,7 +247,7 @@ class TTermType extends IsOK
     /**
      * Sets a new maxLength
      *
-     * @param  string $maxLength
+     * @param string $maxLength
      * @return self
      */
     public function setMaxLength($maxLength)
@@ -268,7 +269,7 @@ class TTermType extends IsOK
     /**
      * Sets a new precision
      *
-     * @param  integer $precision
+     * @param integer $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -290,7 +291,7 @@ class TTermType extends IsOK
     /**
      * Sets a new scale
      *
-     * @param  string $scale
+     * @param string $scale
      * @return self
      */
     public function setScale($scale)
@@ -312,7 +313,7 @@ class TTermType extends IsOK
     /**
      * Sets a new sRID
      *
-     * @param  string $sRID
+     * @param string $sRID
      * @return self
      */
     public function setSRID($sRID)
@@ -325,7 +326,7 @@ class TTermType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -336,7 +337,7 @@ class TTermType extends IsOK
     /**
      * isset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -347,7 +348,7 @@ class TTermType extends IsOK
     /**
      * unset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -368,7 +369,7 @@ class TTermType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

@@ -240,8 +240,8 @@ class MetadataManager
                        ." relationship should match";
                 throw new \InvalidArgumentException($msg);
             }
-            if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole() 
-                || $dependentNavigationProperty->getToRole() != $principalNavigationProperty->getFromRole()
+            if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole() ||
+                $dependentNavigationProperty->getToRole() != $principalNavigationProperty->getFromRole()
             ) {
                 throw new \InvalidArgumentException(
                     "Principal to role should match dependent from role, and vice versa"
@@ -330,8 +330,8 @@ class MetadataManager
     }
 
     /**
-     * @param string    $name
-     * @param IsOK      $expectedReturnType
+     * @param string $name
+     * @param IsOK $expectedReturnType
      * @param TTextType $shortDesc
      * @param TTextType $longDesc
      * @return FunctionImportAnonymousType
@@ -373,8 +373,8 @@ class MetadataManager
         $ymlDir = __DIR__ . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
         $this->serializer =
             SerializerBuilder::create()
-            ->addMetadataDir($ymlDir)
-            ->build();
+                ->addMetadataDir($ymlDir)
+                ->build();
     }
 
     public function __sleep()
@@ -417,7 +417,7 @@ class MetadataManager
     }
 
     /**
-     * @param array  $constraintProperty
+     * @param array $constraintProperty
      * @param string $targRole
      * @return TReferentialConstraintRoleElementType
      */

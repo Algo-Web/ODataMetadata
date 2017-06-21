@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TCommandTextTrait;
 /**
  * Class representing TFunctionType
  *
+ *
  * XSD Type: TFunction
  */
 class TFunctionType extends IsOK
@@ -53,7 +54,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -70,7 +71,7 @@ class TFunctionType extends IsOK
      * Adds as returnType
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType $returnType
      */
     public function addToReturnType(TFunctionReturnTypeType $returnType)
     {
@@ -85,7 +86,7 @@ class TFunctionType extends IsOK
     /**
      * isset returnType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetReturnType($index)
@@ -96,7 +97,7 @@ class TFunctionType extends IsOK
     /**
      * unset returnType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetReturnType($index)
@@ -117,7 +118,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new returnType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType[] $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType[] $returnType
      * @return self
      */
     public function setReturnType(array $returnType)
@@ -126,8 +127,7 @@ class TFunctionType extends IsOK
             $returnType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->returnType = $returnType;
@@ -147,7 +147,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -164,7 +164,7 @@ class TFunctionType extends IsOK
      * Adds as parameter
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType $parameter
      */
     public function addToParameter(TFunctionParameterType $parameter)
     {
@@ -179,7 +179,7 @@ class TFunctionType extends IsOK
     /**
      * isset parameter
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetParameter($index)
@@ -190,7 +190,7 @@ class TFunctionType extends IsOK
     /**
      * unset parameter
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetParameter($index)
@@ -211,7 +211,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new parameter
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameter
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)
@@ -220,8 +220,7 @@ class TFunctionType extends IsOK
             $parameter,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->parameter = $parameter;
@@ -232,7 +231,7 @@ class TFunctionType extends IsOK
      * Adds as definingExpression
      *
      * @return self
-     * @param  string $definingExpression
+     * @param string $definingExpression
      */
     public function addToDefiningExpression($definingExpression)
     {
@@ -243,7 +242,7 @@ class TFunctionType extends IsOK
     /**
      * isset definingExpression
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetDefiningExpression($index)
@@ -254,7 +253,7 @@ class TFunctionType extends IsOK
     /**
      * unset definingExpression
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetDefiningExpression($index)
@@ -275,7 +274,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new definingExpression
      *
-     * @param  string $definingExpression
+     * @param string $definingExpression
      * @return self
      */
     public function setDefiningExpression(array $definingExpression)
@@ -297,16 +296,14 @@ class TFunctionType extends IsOK
             $this->parameter,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->returnType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         foreach ($this->returnType as $type) {

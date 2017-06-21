@@ -48,7 +48,7 @@ class TConditionType extends IsOK
     /**
      * Sets a new value
      *
-     * @param  string $value
+     * @param string $value
      * @return self
      */
     public function setValue($value)
@@ -70,7 +70,7 @@ class TConditionType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -92,7 +92,7 @@ class TConditionType extends IsOK
     /**
      * Sets a new columnName
      *
-     * @param  string $columnName
+     * @param string $columnName
      * @return self
      */
     public function setColumnName($columnName)
@@ -114,7 +114,7 @@ class TConditionType extends IsOK
     /**
      * Sets a new isNull
      *
-     * @param  boolean $isNull
+     * @param boolean $isNull
      * @return self
      */
     public function setIsNull($isNull)

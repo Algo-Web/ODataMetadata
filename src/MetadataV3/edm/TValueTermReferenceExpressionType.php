@@ -11,6 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TValueTermReferenceExpressionType
  *
+ *
  * XSD Type: TValueTermReferenceExpression
  */
 class TValueTermReferenceExpressionType extends IsOK
@@ -50,7 +51,7 @@ class TValueTermReferenceExpressionType extends IsOK
     /**
      * Sets a new term
      *
-     * @param  string $term
+     * @param string $term
      * @return self
      */
     public function setTerm($term)
@@ -76,7 +77,7 @@ class TValueTermReferenceExpressionType extends IsOK
     /**
      * Sets a new qualifier
      *
-     * @param  string $qualifier
+     * @param string $qualifier
      * @return self
      */
     public function setQualifier($qualifier)

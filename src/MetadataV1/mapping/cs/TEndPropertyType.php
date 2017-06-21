@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TEndPropertyType
  *
+ *
  * XSD Type: TEndProperty
  */
 class TEndPropertyType extends IsOK
@@ -35,7 +36,7 @@ class TEndPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -48,7 +49,7 @@ class TEndPropertyType extends IsOK
      * Adds as scalarProperty
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType $scalarProperty
      */
     public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
@@ -59,7 +60,7 @@ class TEndPropertyType extends IsOK
     /**
      * isset scalarProperty
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetScalarProperty($index)
@@ -70,7 +71,7 @@ class TEndPropertyType extends IsOK
     /**
      * unset scalarProperty
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetScalarProperty($index)
@@ -91,7 +92,7 @@ class TEndPropertyType extends IsOK
     /**
      * Sets a new scalarProperty
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
      */
     public function setScalarProperty(array $scalarProperty)

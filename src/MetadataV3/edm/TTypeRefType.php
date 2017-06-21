@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
 /**
  * Class representing TTypeRefType
  *
+ *
  * XSD Type: TTypeRef
  */
 class TTypeRefType extends IsOK
@@ -33,10 +34,10 @@ class TTypeRefType extends IsOK
     private $type = null;
 
      /**
-      * Gets as type
-      *
-      * @return string
-      */
+     * Gets as type
+     *
+     * @return string
+     */
     public function getType()
     {
         return $this->type;
@@ -45,7 +46,7 @@ class TTypeRefType extends IsOK
     /**
      * Sets a new type
      *
-     * @param  string $type
+     * @param string $type
      * @return self
      */
     public function setType($type)

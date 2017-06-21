@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TComplexTypeMappingType
  *
+ *
  * XSD Type: TComplexTypeMapping
  */
 class TComplexTypeMappingType extends IsOK
@@ -50,7 +51,7 @@ class TComplexTypeMappingType extends IsOK
     /**
      * Sets a new typeName
      *
-     * @param  string $typeName
+     * @param string $typeName
      * @return self
      */
     public function setTypeName($typeName)
@@ -72,7 +73,7 @@ class TComplexTypeMappingType extends IsOK
     /**
      * Sets a new isPartial
      *
-     * @param  boolean $isPartial
+     * @param boolean $isPartial
      * @return self
      */
     public function setIsPartial($isPartial)
@@ -85,7 +86,7 @@ class TComplexTypeMappingType extends IsOK
      * Adds as scalarProperty
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType $scalarProperty
      */
     public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
@@ -96,7 +97,7 @@ class TComplexTypeMappingType extends IsOK
     /**
      * isset scalarProperty
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetScalarProperty($index)
@@ -107,7 +108,7 @@ class TComplexTypeMappingType extends IsOK
     /**
      * unset scalarProperty
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetScalarProperty($index)
@@ -128,7 +129,7 @@ class TComplexTypeMappingType extends IsOK
     /**
      * Sets a new scalarProperty
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
      */
     public function setScalarProperty(array $scalarProperty)
@@ -141,7 +142,7 @@ class TComplexTypeMappingType extends IsOK
      * Adds as complexProperty
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TComplexPropertyType $complexProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TComplexPropertyType $complexProperty
      */
     public function addToComplexProperty(TComplexPropertyType $complexProperty)
     {
@@ -152,7 +153,7 @@ class TComplexTypeMappingType extends IsOK
     /**
      * isset complexProperty
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetComplexProperty($index)
@@ -163,7 +164,7 @@ class TComplexTypeMappingType extends IsOK
     /**
      * unset complexProperty
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetComplexProperty($index)
@@ -184,7 +185,7 @@ class TComplexTypeMappingType extends IsOK
     /**
      * Sets a new complexProperty
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TComplexPropertyType[] $complexProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TComplexPropertyType[] $complexProperty
      * @return self
      */
     public function setComplexProperty(array $complexProperty)
@@ -197,7 +198,7 @@ class TComplexTypeMappingType extends IsOK
      * Adds as condition
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType $condition
      */
     public function addToCondition(TConditionType $condition)
     {
@@ -208,7 +209,7 @@ class TComplexTypeMappingType extends IsOK
     /**
      * isset condition
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetCondition($index)
@@ -219,7 +220,7 @@ class TComplexTypeMappingType extends IsOK
     /**
      * unset condition
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetCondition($index)
@@ -240,7 +241,7 @@ class TComplexTypeMappingType extends IsOK
     /**
      * Sets a new condition
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType[] $condition
+     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TConditionType[] $condition
      * @return self
      */
     public function setCondition(array $condition)

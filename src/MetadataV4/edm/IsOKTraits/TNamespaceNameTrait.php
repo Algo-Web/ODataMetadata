@@ -18,8 +18,7 @@ trait TNamespaceNameTrait
         if (!$this->matchesRegexPattern(
             "[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}",
             $TNamespaceName
-        )
-        ) {
+        )) {
             $msg = "The term namespace does not match the regex in the xsd.";
             return false;
         }

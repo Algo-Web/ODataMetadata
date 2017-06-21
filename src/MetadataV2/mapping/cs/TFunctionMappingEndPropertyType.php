@@ -5,6 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 /**
  * Class representing TFunctionMappingEndPropertyType
  *
+ *
  * XSD Type: TFunctionMappingEndProperty
  */
 class TFunctionMappingEndPropertyType extends IsOK
@@ -34,7 +35,7 @@ class TFunctionMappingEndPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -56,7 +57,7 @@ class TFunctionMappingEndPropertyType extends IsOK
     /**
      * Sets a new scalarProperty
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType $scalarProperty
+     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType $scalarProperty
      * @return self
      */
     public function setScalarProperty(TFunctionMappingScalarPropertyType $scalarProperty)

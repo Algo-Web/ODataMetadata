@@ -60,7 +60,7 @@ trait TFunctionImportAttributesTrait
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -78,7 +78,7 @@ trait TFunctionImportAttributesTrait
      * Adds as returnType
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType $returnType
      */
     public function addToReturnType(TFunctionImportReturnTypeType $returnType)
     {
@@ -93,7 +93,7 @@ trait TFunctionImportAttributesTrait
     /**
      * isset returnType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetReturnType($index)
@@ -104,7 +104,7 @@ trait TFunctionImportAttributesTrait
     /**
      * unset returnType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetReturnType($index)
@@ -125,7 +125,7 @@ trait TFunctionImportAttributesTrait
     /**
      * Sets a new returnType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType[] $returnType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType[] $returnType
      * @return self
      */
     public function setReturnType(array $returnType)
@@ -135,8 +135,7 @@ trait TFunctionImportAttributesTrait
             $returnType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->returnType = $returnType;
@@ -156,7 +155,7 @@ trait TFunctionImportAttributesTrait
     /**
      * Sets a new entitySet
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
      * @return self
      */
     public function setEntitySet(TOperandType $entitySet)
@@ -182,7 +181,7 @@ trait TFunctionImportAttributesTrait
     /**
      * Sets a new isComposable
      *
-     * @param  boolean $isComposable
+     * @param boolean $isComposable
      * @return self
      */
     public function setIsComposable($isComposable)
@@ -204,7 +203,7 @@ trait TFunctionImportAttributesTrait
     /**
      * Sets a new isSideEffecting
      *
-     * @param  boolean $isSideEffecting
+     * @param boolean $isSideEffecting
      * @return self
      */
     public function setIsSideEffecting($isSideEffecting)
@@ -226,7 +225,7 @@ trait TFunctionImportAttributesTrait
     /**
      * Sets a new isBindable
      *
-     * @param  boolean $isBindable
+     * @param boolean $isBindable
      * @return self
      */
     public function setIsBindable($isBindable)
@@ -248,7 +247,7 @@ trait TFunctionImportAttributesTrait
     /**
      * Sets a new methodAccess
      *
-     * @param  string $methodAccess
+     * @param string $methodAccess
      * @return self
      */
     public function setMethodAccess($methodAccess)
@@ -290,8 +289,7 @@ trait TFunctionImportAttributesTrait
             $this->returnType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         

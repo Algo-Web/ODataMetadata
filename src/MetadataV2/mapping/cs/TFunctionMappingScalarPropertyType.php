@@ -5,6 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 /**
  * Class representing TFunctionMappingScalarPropertyType
  *
+ *
  * XSD Type: TFunctionMappingScalarProperty
  */
 class TFunctionMappingScalarPropertyType extends IsOK
@@ -38,7 +39,7 @@ class TFunctionMappingScalarPropertyType extends IsOK
     /**
      * Sets a new parameterName
      *
-     * @param  string $parameterName
+     * @param string $parameterName
      * @return self
      */
     public function setParameterName($parameterName)
@@ -60,7 +61,7 @@ class TFunctionMappingScalarPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -82,7 +83,7 @@ class TFunctionMappingScalarPropertyType extends IsOK
     /**
      * Sets a new version
      *
-     * @param  string $version
+     * @param string $version
      * @return self
      */
     public function setVersion($version)

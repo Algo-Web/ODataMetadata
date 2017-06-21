@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TEntitySetType
  *
+ *
  * XSD Type: TEntitySet
  */
 class TEntitySetType extends IsOK
@@ -51,7 +52,7 @@ class TEntitySetType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -73,7 +74,7 @@ class TEntitySetType extends IsOK
     /**
      * Sets a new entityType
      *
-     * @param  string $entityType
+     * @param string $entityType
      * @return self
      */
     public function setEntityType($entityType)
@@ -95,7 +96,7 @@ class TEntitySetType extends IsOK
     /**
      * Sets a new includeInServiceDocument
      *
-     * @param  boolean $includeInServiceDocument
+     * @param boolean $includeInServiceDocument
      * @return self
      */
     public function setIncludeInServiceDocument($includeInServiceDocument)
@@ -108,7 +109,7 @@ class TEntitySetType extends IsOK
      * Adds as navigationPropertyBinding
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType $navigationPropertyBinding
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType $navigationPropertyBinding
      */
     public function addToNavigationPropertyBinding(TNavigationPropertyBindingType $navigationPropertyBinding)
     {
@@ -119,7 +120,7 @@ class TEntitySetType extends IsOK
     /**
      * isset navigationPropertyBinding
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetNavigationPropertyBinding($index)
@@ -130,7 +131,7 @@ class TEntitySetType extends IsOK
     /**
      * unset navigationPropertyBinding
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetNavigationPropertyBinding($index)
@@ -151,7 +152,7 @@ class TEntitySetType extends IsOK
     /**
      * Sets a new navigationPropertyBinding
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType[]
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType[]
      * $navigationPropertyBinding
      * @return self
      */
@@ -165,7 +166,7 @@ class TEntitySetType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -176,7 +177,7 @@ class TEntitySetType extends IsOK
     /**
      * isset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -187,7 +188,7 @@ class TEntitySetType extends IsOK
     /**
      * unset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -208,7 +209,7 @@ class TEntitySetType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

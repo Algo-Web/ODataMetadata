@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TReferentialConstraintType
  *
+ *
  * XSD Type: TReferentialConstraint
  */
 class TReferentialConstraintType extends IsOK
@@ -40,7 +41,7 @@ class TReferentialConstraintType extends IsOK
     /**
      * Sets a new property
      *
-     * @param  string $property
+     * @param string $property
      * @return self
      */
     public function setProperty($property)
@@ -62,7 +63,7 @@ class TReferentialConstraintType extends IsOK
     /**
      * Sets a new referencedProperty
      *
-     * @param  string $referencedProperty
+     * @param string $referencedProperty
      * @return self
      */
     public function setReferencedProperty($referencedProperty)
@@ -75,7 +76,7 @@ class TReferentialConstraintType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -86,7 +87,7 @@ class TReferentialConstraintType extends IsOK
     /**
      * isset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -97,7 +98,7 @@ class TReferentialConstraintType extends IsOK
     /**
      * unset annotation
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -118,7 +119,7 @@ class TReferentialConstraintType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

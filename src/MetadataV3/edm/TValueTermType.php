@@ -13,6 +13,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionTypeTrait;
 /**
  * Class representing TValueTermType
  *
+ *
  * XSD Type: TValueTerm
  */
 class TValueTermType extends IsOK
@@ -99,7 +100,7 @@ class TValueTermType extends IsOK
     /**
      * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
     public function setName($name)
@@ -125,7 +126,7 @@ class TValueTermType extends IsOK
     /**
      * Sets a new type
      *
-     * @param  string $type
+     * @param string $type
      * @return self
      */
     public function setType($type)
@@ -151,7 +152,7 @@ class TValueTermType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -177,7 +178,7 @@ class TValueTermType extends IsOK
     /**
      * Sets a new collectionType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
      * @return self
      */
     public function setCollectionType(TCollectionTypeType $collectionType)
@@ -203,7 +204,7 @@ class TValueTermType extends IsOK
     /**
      * Sets a new referenceType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
      * @return self
      */
     public function setReferenceType(TReferenceTypeType $referenceType)
@@ -220,7 +221,7 @@ class TValueTermType extends IsOK
      * Adds as property
      *
      * @return self
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
      */
     public function addToRowType(TPropertyType $property)
     {
@@ -235,7 +236,7 @@ class TValueTermType extends IsOK
     /**
      * isset rowType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return boolean
      */
     public function issetRowType($index)
@@ -246,7 +247,7 @@ class TValueTermType extends IsOK
     /**
      * unset rowType
      *
-     * @param  scalar $index
+     * @param scalar $index
      * @return void
      */
     public function unsetRowType($index)
@@ -267,7 +268,7 @@ class TValueTermType extends IsOK
     /**
      * Sets a new rowType
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
+     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)
@@ -276,8 +277,7 @@ class TValueTermType extends IsOK
             $rowType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->rowType = $rowType;
@@ -299,32 +299,28 @@ class TValueTermType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType',
             $this->documentation,
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isObjectNullOrType(
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType',
             $this->collectionType,
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isObjectNullOrType(
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType',
             $this->referenceType,
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->rowType,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
 
