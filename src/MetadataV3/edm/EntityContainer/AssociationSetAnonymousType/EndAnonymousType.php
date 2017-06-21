@@ -3,10 +3,8 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType;
 
 use AlgoWeb\ODataMetadata\IsOK;
-use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
 
 /**
  * Class representing EndAnonymousType
@@ -41,7 +39,7 @@ class EndAnonymousType extends IsOK
     /**
      * Sets a new role
      *
-     * @param string $role
+     * @param  string $role
      * @return self
      */
     public function setRole($role)
@@ -67,7 +65,7 @@ class EndAnonymousType extends IsOK
     /**
      * Sets a new entitySet
      *
-     * @param string $entitySet
+     * @param  string $entitySet
      * @return self
      */
     public function setEntitySet($entitySet)

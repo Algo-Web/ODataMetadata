@@ -37,7 +37,7 @@ class TQueryViewType extends IsOK
     /**
      * Gets or sets the inner value
      *
-     * @param string ...$value
+     * @param  string ...$value
      * @return string
      */
     public function value(...$value)
@@ -71,7 +71,7 @@ class TQueryViewType extends IsOK
     /**
      * Sets a new typeName
      *
-     * @param string $typeName
+     * @param  string $typeName
      * @return self
      */
     public function setTypeName($typeName)

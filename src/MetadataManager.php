@@ -15,8 +15,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType;
@@ -232,16 +230,16 @@ class MetadataManager
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null
     ) {
-        $multCombo = [ '*' => ['*', '1'], '0..1' => ['1'], '1' => ['*', '0..1']];
+        $multCombo = ['*' => ['*', '1'], '0..1' => ['1'], '1' => ['*', '0..1']];
         $multKeys = array_keys($multCombo);
         if (null != $dependentNavigationProperty) {
             if ($dependentNavigationProperty->getRelationship() != $principalNavigationProperty->getRelationship()) {
                 $msg = "If you have both a dependent property and a principal property,"
-                       ." relationship should match";
+                        ." relationship should match";
                 throw new \InvalidArgumentException($msg);
             }
-            if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole() ||
-                $dependentNavigationProperty->getToRole() != $principalNavigationProperty->getFromRole()
+            if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole()
+                || $dependentNavigationProperty->getToRole() != $principalNavigationProperty->getFromRole()
             ) {
                 throw new \InvalidArgumentException(
                     "Principal to role should match dependent from role, and vice versa"
@@ -253,7 +251,7 @@ class MetadataManager
         }
         if (!in_array($dependentMultiplicity, $multCombo[$principalMultiplicity])) {
             throw new \InvalidArgumentException(
-                "Invalid multiplicity combination - ". $principalMultiplicity . ' ' . $dependentMultiplicity
+                "Invalid multiplicity combination - " . $principalMultiplicity . ' ' . $dependentMultiplicity
             );
         }
 
@@ -301,6 +299,10 @@ class MetadataManager
         return $association;
     }
 
+    /**
+     * @param string $principalEntitySetName
+     * @param string $dependentEntitySetName
+     */
     protected function createAssocationSetForAssocation(
         TAssociationType $association,
         $principalEntitySetName,
@@ -330,8 +332,8 @@ class MetadataManager
     }
 
     /**
-     * @param string $name
-     * @param IsOK $expectedReturnType
+     * @param string    $name
+     * @param IsOK      $expectedReturnType
      * @param TTextType $shortDesc
      * @param TTextType $longDesc
      * @return FunctionImportAnonymousType
@@ -373,8 +375,8 @@ class MetadataManager
         $ymlDir = __DIR__ . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
         $this->serializer =
             SerializerBuilder::create()
-                ->addMetadataDir($ymlDir)
-                ->build();
+            ->addMetadataDir($ymlDir)
+            ->build();
     }
 
     public function __sleep()
@@ -417,7 +419,7 @@ class MetadataManager
     }
 
     /**
-     * @param array $constraintProperty
+     * @param array  $constraintProperty
      * @param string $targRole
      * @return TReferentialConstraintRoleElementType
      */
@@ -440,7 +442,7 @@ class MetadataManager
      * @param $longDescription
      * @param $NewEntity
      */
-    private function addDocumentation($summary, $longDescription, IsOK &$NewEntity)
+    private function addDocumentation($summary, $longDescription, IsOK & $NewEntity)
     {
         if (null != $summary && null != $longDescription) {
             $documentation = $this->generateDocumentation($summary, $longDescription);

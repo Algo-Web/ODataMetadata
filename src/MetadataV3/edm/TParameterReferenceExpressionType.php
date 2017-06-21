@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TParameterReferenceExpressionType
  *
- *
  * XSD Type: TParameterReferenceExpression
  */
 class TParameterReferenceExpressionType extends IsOK
@@ -33,7 +32,7 @@ class TParameterReferenceExpressionType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)

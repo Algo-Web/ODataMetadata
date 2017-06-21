@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TEntityTypeModificationFunctionMappingType
  *
- *
  * XSD Type: TEntityTypeModificationFunctionMapping
  */
 class TEntityTypeModificationFunctionMappingType extends IsOK
@@ -44,7 +43,7 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
     /**
      * Sets a new deleteFunction
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeModificationFunctionType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeModificationFunctionType
      * $deleteFunction
      * @return self
      */
@@ -67,7 +66,7 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
     /**
      * Sets a new insertFunction
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeModificationFunctionWithResultType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeModificationFunctionWithResultType
      * $insertFunction
      * @return self
      */
@@ -90,7 +89,7 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
     /**
      * Sets a new updateFunction
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeModificationFunctionWithResultType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeModificationFunctionWithResultType
      * $updateFunction
      * @return self
      */

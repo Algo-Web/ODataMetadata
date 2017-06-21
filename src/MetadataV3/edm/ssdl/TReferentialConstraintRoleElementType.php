@@ -8,7 +8,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TReferentialConstraintRoleElementType
  *
- *
  * XSD Type: TReferentialConstraintRoleElement
  */
 class TReferentialConstraintRoleElementType extends IsOK
@@ -42,7 +41,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     /**
      * Sets a new role
      *
-     * @param string $role
+     * @param  string $role
      * @return self
      */
     public function setRole($role)
@@ -72,7 +71,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -89,7 +88,7 @@ class TReferentialConstraintRoleElementType extends IsOK
      * Adds as propertyRef
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType $propertyRef
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType $propertyRef
      */
     public function addToPropertyRef(TPropertyRefType $propertyRef)
     {
@@ -104,7 +103,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     /**
      * isset propertyRef
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetPropertyRef($index)
@@ -115,7 +114,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     /**
      * unset propertyRef
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetPropertyRef($index)
@@ -136,7 +135,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     /**
      * Sets a new propertyRef
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType[] $propertyRef
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType[] $propertyRef
      * @return self
      */
     public function setPropertyRef(array $propertyRef)
@@ -147,7 +146,8 @@ class TReferentialConstraintRoleElementType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType',
             $msg,
             1
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->propertyRef = $propertyRef;
@@ -172,7 +172,8 @@ class TReferentialConstraintRoleElementType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TPropertyRefType',
             $msg,
             1
-        )) {
+        )
+        ) {
             return false;
         }
         return true;

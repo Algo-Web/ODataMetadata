@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
 /**
  * Class representing TRecordExpressionType
  *
- *
  * XSD Type: TRecordExpression
  */
 class TRecordExpressionType extends IsOK
@@ -38,7 +37,7 @@ class TRecordExpressionType extends IsOK
     /**
      * Sets a new type
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType($type)
@@ -55,7 +54,7 @@ class TRecordExpressionType extends IsOK
      * Adds as propertyValue
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType $propertyValue
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType $propertyValue
      */
     public function addToPropertyValue(TPropertyValueType $propertyValue)
     {
@@ -70,7 +69,7 @@ class TRecordExpressionType extends IsOK
     /**
      * isset propertyValue
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetPropertyValue($index)
@@ -81,7 +80,7 @@ class TRecordExpressionType extends IsOK
     /**
      * unset propertyValue
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetPropertyValue($index)
@@ -102,7 +101,7 @@ class TRecordExpressionType extends IsOK
     /**
      * Sets a new propertyValue
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[] $propertyValue
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[] $propertyValue
      * @return self
      */
     public function setPropertyValue(array $propertyValue)
@@ -111,7 +110,8 @@ class TRecordExpressionType extends IsOK
             $propertyValue,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->propertyValue = $propertyValue;
@@ -128,7 +128,8 @@ class TRecordExpressionType extends IsOK
             $this->propertyValue,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
 

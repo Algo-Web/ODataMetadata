@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TConstraintType
  *
- *
  * XSD Type: TConstraint
  */
 class TConstraintType extends IsOK
@@ -41,7 +40,7 @@ class TConstraintType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -67,7 +66,7 @@ class TConstraintType extends IsOK
     /**
      * Sets a new principal
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType $principal
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType $principal
      * @return self
      */
     public function setPrincipal(TReferentialConstraintRoleElementType $principal)
@@ -93,7 +92,7 @@ class TConstraintType extends IsOK
     /**
      * Sets a new dependent
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType $dependent
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TReferentialConstraintRoleElementType $dependent
      * @return self
      */
     public function setDependent(TReferentialConstraintRoleElementType $dependent)

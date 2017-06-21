@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TDesignerPropertyType
  *
- *
  * XSD Type: TDesignerProperty
  */
 class TDesignerPropertyType extends IsOK
@@ -36,7 +35,7 @@ class TDesignerPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -62,7 +61,7 @@ class TDesignerPropertyType extends IsOK
     /**
      * Sets a new value
      *
-     * @param string $value
+     * @param  string $value
      * @return self
      */
     public function setValue($value)

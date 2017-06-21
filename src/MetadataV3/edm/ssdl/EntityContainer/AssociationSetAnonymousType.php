@@ -42,7 +42,7 @@ class AssociationSetAnonymousType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -64,7 +64,7 @@ class AssociationSetAnonymousType extends IsOK
     /**
      * Sets a new association
      *
-     * @param string $association
+     * @param  string $association
      * @return self
      */
     public function setAssociation($association)
@@ -90,7 +90,7 @@ class AssociationSetAnonymousType extends IsOK
     /**
      * isset end
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetEnd($index)
@@ -101,7 +101,7 @@ class AssociationSetAnonymousType extends IsOK
     /**
      * unset end
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetEnd($index)
@@ -135,7 +135,8 @@ class AssociationSetAnonymousType extends IsOK
             $end,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->end = $end;

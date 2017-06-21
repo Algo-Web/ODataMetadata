@@ -75,7 +75,7 @@ trait IsOKToolboxTrait
             return true;
         }
         if (!$object instanceof $instanceOf) {
-            $msg = "Supplied object not an instance of ".$instanceOf. ": " . get_class($this);
+            $msg = "Supplied object not an instance of " . $instanceOf . ": " . get_class($this);
             return false;
         }
         return $object->isOK($msg);

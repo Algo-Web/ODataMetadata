@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TTypeDefinitionType
  *
- *
  * XSD Type: TTypeDefinition
  */
 class TTypeDefinitionType extends IsOK
@@ -66,7 +65,7 @@ class TTypeDefinitionType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -88,7 +87,7 @@ class TTypeDefinitionType extends IsOK
     /**
      * Sets a new underlyingType
      *
-     * @param string $underlyingType
+     * @param  string $underlyingType
      * @return self
      */
     public function setUnderlyingType($underlyingType)
@@ -110,7 +109,7 @@ class TTypeDefinitionType extends IsOK
     /**
      * Sets a new maxLength
      *
-     * @param string $maxLength
+     * @param  string $maxLength
      * @return self
      */
     public function setMaxLength($maxLength)
@@ -132,7 +131,7 @@ class TTypeDefinitionType extends IsOK
     /**
      * Sets a new precision
      *
-     * @param integer $precision
+     * @param  integer $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -154,7 +153,7 @@ class TTypeDefinitionType extends IsOK
     /**
      * Sets a new scale
      *
-     * @param string $scale
+     * @param  string $scale
      * @return self
      */
     public function setScale($scale)
@@ -176,7 +175,7 @@ class TTypeDefinitionType extends IsOK
     /**
      * Sets a new sRID
      *
-     * @param string $sRID
+     * @param  string $sRID
      * @return self
      */
     public function setSRID($sRID)
@@ -198,7 +197,7 @@ class TTypeDefinitionType extends IsOK
     /**
      * Sets a new unicode
      *
-     * @param boolean $unicode
+     * @param  boolean $unicode
      * @return self
      */
     public function setUnicode($unicode)
@@ -211,7 +210,7 @@ class TTypeDefinitionType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -222,7 +221,7 @@ class TTypeDefinitionType extends IsOK
     /**
      * isset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -233,7 +232,7 @@ class TTypeDefinitionType extends IsOK
     /**
      * unset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -254,7 +253,7 @@ class TTypeDefinitionType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

@@ -8,7 +8,6 @@ use AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\Mapping;
 /**
  * Class representing TRuntimeMappingsType
  *
- *
  * XSD Type: TRuntimeMappings
  */
 class TRuntimeMappingsType extends IsOK
@@ -32,7 +31,7 @@ class TRuntimeMappingsType extends IsOK
     /**
      * Sets a new mapping
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\Mapping $mapping
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\Mapping $mapping
      * @return self
      */
     public function setMapping(Mapping $mapping)

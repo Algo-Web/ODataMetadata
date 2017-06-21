@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TOnActionType
  *
- *
  * XSD Type: TOnAction
  */
 class TOnActionType extends IsOK
@@ -36,7 +35,7 @@ class TOnActionType extends IsOK
     /**
      * Sets a new action
      *
-     * @param string $action
+     * @param  string $action
      * @return self
      */
     public function setAction($action)
@@ -58,7 +57,7 @@ class TOnActionType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)

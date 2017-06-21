@@ -38,7 +38,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -55,7 +55,7 @@ class FunctionImportAnonymousType extends IsOK
      * Adds as parameter
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType $parameter
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType $parameter
      */
     public function addToParameter(TFunctionImportParameterType $parameter)
     {
@@ -70,7 +70,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * isset parameter
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetParameter($index)
@@ -81,7 +81,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * unset parameter
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetParameter($index)
@@ -102,7 +102,7 @@ class FunctionImportAnonymousType extends IsOK
     /**
      * Sets a new parameter
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType[] $parameter
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)
@@ -112,7 +112,8 @@ class FunctionImportAnonymousType extends IsOK
             $parameter,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->parameter = $parameter;
@@ -133,12 +134,13 @@ class FunctionImportAnonymousType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType',
             $msg,
             $minParms
-        )) {
+        )
+        ) {
             return false;
         }
 
         $numParms = count($this->parameter);
-        for ($i = 0; $i < $numParms -2; $i++) {
+        for ($i = 0; $i < $numParms - 2; $i++) {
             $outName = $this->parameter[$i]->getName();
             for ($j = $i + 1; $j < $numParms - 1; $j++) {
                 $inName = $this->parameter[$j]->getName();

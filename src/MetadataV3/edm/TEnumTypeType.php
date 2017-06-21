@@ -11,7 +11,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TPropertyTypeTrait;
 /**
  * Class representing TEnumTypeType
  *
- *
  * XSD Type: TEnumType
  */
 class TEnumTypeType extends IsOK
@@ -60,7 +59,7 @@ class TEnumTypeType extends IsOK
     /**
      * Sets a new isFlags
      *
-     * @param boolean $isFlags
+     * @param  boolean $isFlags
      * @return self
      */
     public function setIsFlags($isFlags)
@@ -82,7 +81,7 @@ class TEnumTypeType extends IsOK
     /**
      * Sets a new underlyingType
      *
-     * @param string $underlyingType
+     * @param  string $underlyingType
      * @return self
      */
     public function setUnderlyingType($underlyingType)
@@ -108,7 +107,7 @@ class TEnumTypeType extends IsOK
     /**
      * Sets a new typeAccess
      *
-     * @param string $typeAccess
+     * @param  string $typeAccess
      * @return self
      */
     public function setTypeAccess($typeAccess)
@@ -134,7 +133,7 @@ class TEnumTypeType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -151,7 +150,7 @@ class TEnumTypeType extends IsOK
      * Adds as member
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType $member
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType $member
      */
     public function addToMember(TEnumTypeMemberType $member)
     {
@@ -162,7 +161,7 @@ class TEnumTypeType extends IsOK
     /**
      * isset member
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetMember($index)
@@ -173,7 +172,7 @@ class TEnumTypeType extends IsOK
     /**
      * unset member
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetMember($index)
@@ -194,7 +193,7 @@ class TEnumTypeType extends IsOK
     /**
      * Sets a new member
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType[] $member
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType[] $member
      * @return self
      */
     public function setMember(array $member)
@@ -203,7 +202,8 @@ class TEnumTypeType extends IsOK
             $member,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->member = $member;
@@ -227,7 +227,8 @@ class TEnumTypeType extends IsOK
             $this->member,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
 

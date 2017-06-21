@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TDiagramType
  *
- *
  * XSD Type: TDiagram
  */
 class TDiagramType extends IsOK
@@ -71,7 +70,7 @@ class TDiagramType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -97,7 +96,7 @@ class TDiagramType extends IsOK
     /**
      * Sets a new diagramId
      *
-     * @param string $diagramId
+     * @param  string $diagramId
      * @return self
      */
     public function setDiagramId($diagramId)
@@ -123,7 +122,7 @@ class TDiagramType extends IsOK
     /**
      * Sets a new zoomLevel
      *
-     * @param integer $zoomLevel
+     * @param  integer $zoomLevel
      * @return self
      */
     public function setZoomLevel($zoomLevel)
@@ -149,7 +148,7 @@ class TDiagramType extends IsOK
     /**
      * Sets a new showGrid
      *
-     * @param boolean $showGrid
+     * @param  boolean $showGrid
      * @return self
      */
     public function setShowGrid($showGrid)
@@ -171,7 +170,7 @@ class TDiagramType extends IsOK
     /**
      * Sets a new snapToGrid
      *
-     * @param boolean $snapToGrid
+     * @param  boolean $snapToGrid
      * @return self
      */
     public function setSnapToGrid($snapToGrid)
@@ -193,7 +192,7 @@ class TDiagramType extends IsOK
     /**
      * Sets a new displayType
      *
-     * @param boolean $displayType
+     * @param  boolean $displayType
      * @return self
      */
     public function setDisplayType($displayType)
@@ -206,7 +205,7 @@ class TDiagramType extends IsOK
      * Adds as entityTypeShape
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType $entityTypeShape
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType $entityTypeShape
      */
     public function addToEntityTypeShape(TEntityTypeShapeType $entityTypeShape)
     {
@@ -221,7 +220,7 @@ class TDiagramType extends IsOK
     /**
      * isset entityTypeShape
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetEntityTypeShape($index)
@@ -232,7 +231,7 @@ class TDiagramType extends IsOK
     /**
      * unset entityTypeShape
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetEntityTypeShape($index)
@@ -253,7 +252,7 @@ class TDiagramType extends IsOK
     /**
      * Sets a new entityTypeShape
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType[] $entityTypeShape
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType[] $entityTypeShape
      * @return self
      */
     public function setEntityTypeShape(array $entityTypeShape)
@@ -261,7 +260,8 @@ class TDiagramType extends IsOK
         if (!$this->isValidArrayOK(
             $entityTypeShape,
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType'
-        )) {
+        )
+        ) {
             $msg = "Entity type shape array not a valid array";
             throw new \InvalidArgumentException($msg);
         }
@@ -273,7 +273,7 @@ class TDiagramType extends IsOK
      * Adds as associationConnector
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType $associationConnector
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType $associationConnector
      */
     public function addToAssociationConnector(TAssociationConnectorType $associationConnector)
     {
@@ -288,7 +288,7 @@ class TDiagramType extends IsOK
     /**
      * isset associationConnector
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAssociationConnector($index)
@@ -299,7 +299,7 @@ class TDiagramType extends IsOK
     /**
      * unset associationConnector
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAssociationConnector($index)
@@ -320,7 +320,7 @@ class TDiagramType extends IsOK
     /**
      * Sets a new associationConnector
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType[] $associationConnector
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType[] $associationConnector
      * @return self
      */
     public function setAssociationConnector(array $associationConnector)
@@ -328,7 +328,8 @@ class TDiagramType extends IsOK
         if (!$this->isValidArrayOK(
             $associationConnector,
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType'
-        )) {
+        )
+        ) {
             $msg = "Association connector array not a valid array";
             throw new \InvalidArgumentException($msg);
         }
@@ -340,7 +341,7 @@ class TDiagramType extends IsOK
      * Adds as inheritanceConnector
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType $inheritanceConnector
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType $inheritanceConnector
      */
     public function addToInheritanceConnector(TInheritanceConnectorType $inheritanceConnector)
     {
@@ -355,7 +356,7 @@ class TDiagramType extends IsOK
     /**
      * isset inheritanceConnector
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetInheritanceConnector($index)
@@ -366,7 +367,7 @@ class TDiagramType extends IsOK
     /**
      * unset inheritanceConnector
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetInheritanceConnector($index)
@@ -387,7 +388,7 @@ class TDiagramType extends IsOK
     /**
      * Sets a new inheritanceConnector
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType[] $inheritanceConnector
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType[] $inheritanceConnector
      * @return self
      */
     public function setInheritanceConnector(array $inheritanceConnector)
@@ -395,7 +396,8 @@ class TDiagramType extends IsOK
         if (!$this->isValidArrayOK(
             $inheritanceConnector,
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType'
-        )) {
+        )
+        ) {
             $msg = "Inheritance connector array not a valid array";
             throw new \InvalidArgumentException($msg);
         }
@@ -421,7 +423,8 @@ class TDiagramType extends IsOK
         if (!$this->isValidArray(
             $this->entityTypeShape,
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType'
-        )) {
+        )
+        ) {
             $msg = "Entity type shape array not a valid array";
             return false;
         }
@@ -431,7 +434,8 @@ class TDiagramType extends IsOK
         if (!$this->isValidArray(
             $this->associationConnector,
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType'
-        )) {
+        )
+        ) {
             $msg = "Association connector array not a valid array";
             return false;
         }
@@ -441,7 +445,8 @@ class TDiagramType extends IsOK
         if (!$this->isValidArray(
             $this->inheritanceConnector,
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType'
-        )) {
+        )
+        ) {
             $msg = "Inheritance connector array not a valid array";
             return false;
         }

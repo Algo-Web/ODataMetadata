@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TIntConstantExpressionType
  *
- *
  * XSD Type: TIntConstantExpression
  */
 class TIntConstantExpressionType extends IsOK
@@ -31,7 +30,8 @@ class TIntConstantExpressionType extends IsOK
     /**
      * Gets or sets the inner value
      *
-     * @param integer ...$value
+     * @param  integer ...$value
+     * @param integer[] $value
      * @return integer
      */
     public function value(...$value)

@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TPropertyRefType
  *
- *
  * XSD Type: TPropertyRef
  */
 class TPropertyRefType extends IsOK
@@ -36,7 +35,7 @@ class TPropertyRefType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -58,7 +57,7 @@ class TPropertyRefType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)

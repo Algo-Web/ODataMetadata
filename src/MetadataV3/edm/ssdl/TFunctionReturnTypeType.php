@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TFunctionReturnTypeType
  *
- *
  * XSD Type: TFunctionReturnType
  */
 class TFunctionReturnTypeType extends IsOK
@@ -31,7 +30,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new collectionType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TCollectionTypeType $collectionType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TCollectionTypeType $collectionType
      * @return self
      */
     public function setCollectionType(TCollectionTypeType $collectionType)

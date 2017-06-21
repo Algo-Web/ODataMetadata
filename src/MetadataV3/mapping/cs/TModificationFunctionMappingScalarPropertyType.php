@@ -44,7 +44,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     /**
      * Sets a new parameterName
      *
-     * @param string $parameterName
+     * @param  string $parameterName
      * @return self
      */
     public function setParameterName($parameterName)
@@ -70,7 +70,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -100,7 +100,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     /**
      * Sets a new version
      *
-     * @param string $version
+     * @param  string $version
      * @return self
      */
     public function setVersion($version)

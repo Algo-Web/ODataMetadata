@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TTypeAttributesTrait;
 /**
  * Class representing TComplexTypeType
  *
- *
  * XSD Type: TComplexType
  */
 class TComplexTypeType extends IsOK
@@ -54,7 +53,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new typeAccess
      *
-     * @param string $typeAccess
+     * @param  string $typeAccess
      * @return self
      */
     public function setTypeAccess($typeAccess)
@@ -80,7 +79,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -97,7 +96,7 @@ class TComplexTypeType extends IsOK
      * Adds as property
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType $property
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType $property
      */
     public function addToProperty(TComplexTypePropertyType $property)
     {
@@ -112,7 +111,7 @@ class TComplexTypeType extends IsOK
     /**
      * isset property
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetProperty($index)
@@ -123,7 +122,7 @@ class TComplexTypeType extends IsOK
     /**
      * unset property
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetProperty($index)
@@ -144,7 +143,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new property
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType[] $property
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType[] $property
      * @return self
      */
     public function setProperty(array $property)
@@ -153,7 +152,8 @@ class TComplexTypeType extends IsOK
             $property,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->property = $property;
@@ -164,7 +164,7 @@ class TComplexTypeType extends IsOK
      * Adds as valueAnnotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType $valueAnnotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType $valueAnnotation
      */
     public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
@@ -179,7 +179,7 @@ class TComplexTypeType extends IsOK
     /**
      * isset valueAnnotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetValueAnnotation($index)
@@ -190,7 +190,7 @@ class TComplexTypeType extends IsOK
     /**
      * unset valueAnnotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetValueAnnotation($index)
@@ -211,7 +211,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new valueAnnotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      * @return self
      */
     public function setValueAnnotation(array $valueAnnotation)
@@ -220,7 +220,8 @@ class TComplexTypeType extends IsOK
             $valueAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->valueAnnotation = $valueAnnotation;
@@ -231,7 +232,7 @@ class TComplexTypeType extends IsOK
      * Adds as typeAnnotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType $typeAnnotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType $typeAnnotation
      */
     public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
@@ -246,7 +247,7 @@ class TComplexTypeType extends IsOK
     /**
      * isset typeAnnotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetTypeAnnotation($index)
@@ -257,7 +258,7 @@ class TComplexTypeType extends IsOK
     /**
      * unset typeAnnotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetTypeAnnotation($index)
@@ -278,7 +279,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new typeAnnotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      * @return self
      */
     public function setTypeAnnotation(array $typeAnnotation)
@@ -287,7 +288,8 @@ class TComplexTypeType extends IsOK
             $typeAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->typeAnnotation = $typeAnnotation;
@@ -307,21 +309,24 @@ class TComplexTypeType extends IsOK
             $this->property,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->valueAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->typeAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
 

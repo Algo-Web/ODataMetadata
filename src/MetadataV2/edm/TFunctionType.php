@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TFunctionType
  *
- *
  * XSD Type: TFunction
  */
 class TFunctionType extends IsOK
@@ -91,7 +90,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -104,7 +103,7 @@ class TFunctionType extends IsOK
      * Adds as returnType
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType $returnType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType $returnType
      */
     public function addToReturnType(TFunctionReturnTypeType $returnType)
     {
@@ -115,7 +114,7 @@ class TFunctionType extends IsOK
     /**
      * isset returnType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetReturnType($index)
@@ -126,7 +125,7 @@ class TFunctionType extends IsOK
     /**
      * unset returnType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetReturnType($index)
@@ -147,7 +146,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new returnType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType[] $returnType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType[] $returnType
      * @return self
      */
     public function setReturnType(array $returnType)
@@ -169,7 +168,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new nullable
      *
-     * @param boolean $nullable
+     * @param  boolean $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -191,7 +190,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new defaultValue
      *
-     * @param string $defaultValue
+     * @param  string $defaultValue
      * @return self
      */
     public function setDefaultValue($defaultValue)
@@ -213,7 +212,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new maxLength
      *
-     * @param string $maxLength
+     * @param  string $maxLength
      * @return self
      */
     public function setMaxLength($maxLength)
@@ -235,7 +234,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new fixedLength
      *
-     * @param boolean $fixedLength
+     * @param  boolean $fixedLength
      * @return self
      */
     public function setFixedLength($fixedLength)
@@ -257,7 +256,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new precision
      *
-     * @param integer $precision
+     * @param  integer $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -279,7 +278,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new scale
      *
-     * @param integer $scale
+     * @param  integer $scale
      * @return self
      */
     public function setScale($scale)
@@ -301,7 +300,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new unicode
      *
-     * @param boolean $unicode
+     * @param  boolean $unicode
      * @return self
      */
     public function setUnicode($unicode)
@@ -323,7 +322,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new collation
      *
-     * @param string $collation
+     * @param  string $collation
      * @return self
      */
     public function setCollation($collation)
@@ -345,7 +344,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -358,7 +357,7 @@ class TFunctionType extends IsOK
      * Adds as parameter
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType $parameter
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType $parameter
      */
     public function addToParameter(TFunctionParameterType $parameter)
     {
@@ -369,7 +368,7 @@ class TFunctionType extends IsOK
     /**
      * isset parameter
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetParameter($index)
@@ -380,7 +379,7 @@ class TFunctionType extends IsOK
     /**
      * unset parameter
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetParameter($index)
@@ -401,7 +400,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new parameter
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType[] $parameter
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)
@@ -414,7 +413,7 @@ class TFunctionType extends IsOK
      * Adds as definingExpression
      *
      * @return self
-     * @param string $definingExpression
+     * @param  string $definingExpression
      */
     public function addToDefiningExpression($definingExpression)
     {
@@ -425,7 +424,7 @@ class TFunctionType extends IsOK
     /**
      * isset definingExpression
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetDefiningExpression($index)
@@ -436,7 +435,7 @@ class TFunctionType extends IsOK
     /**
      * unset definingExpression
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetDefiningExpression($index)
@@ -457,7 +456,7 @@ class TFunctionType extends IsOK
     /**
      * Sets a new definingExpression
      *
-     * @param string $definingExpression
+     * @param  string $definingExpression
      * @return self
      */
     public function setDefiningExpression(array $definingExpression)

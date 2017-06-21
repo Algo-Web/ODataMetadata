@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TActionTrait;
 /**
  * Class representing TOnActionType
  *
- *
  * XSD Type: TOnAction
  */
 class TOnActionType extends IsOK
@@ -33,7 +32,7 @@ class TOnActionType extends IsOK
     /**
      * Sets a new action
      *
-     * @param string $action
+     * @param  string $action
      * @return self
      */
     public function setAction($action)

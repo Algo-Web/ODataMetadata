@@ -12,7 +12,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TPropertyValueType
  *
- *
  * XSD Type: TPropertyValue
  */
 class TPropertyValueType extends IsOK
@@ -80,7 +79,7 @@ class TPropertyValueType extends IsOK
     /**
      * Sets a new property
      *
-     * @param string $property
+     * @param  string $property
      * @return self
      */
     public function setProperty($property)

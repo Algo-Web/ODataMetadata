@@ -30,7 +30,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
      * Adds as entityTypeMapping
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType
      * $entityTypeMapping
      */
     public function addToEntityTypeMapping(TFunctionImportEntityTypeMappingType $entityTypeMapping)
@@ -42,7 +42,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     /**
      * isset entityTypeMapping
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetEntityTypeMapping($index)
@@ -53,7 +53,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     /**
      * unset entityTypeMapping
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetEntityTypeMapping($index)
@@ -74,7 +74,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     /**
      * Sets a new entityTypeMapping
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType[]
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType[]
      * $entityTypeMapping
      * @return self
      */
@@ -85,7 +85,8 @@ class TFunctionImportMappingResultMappingType extends IsOK
             $entityTypeMapping,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->entityTypeMapping = $entityTypeMapping;
@@ -105,7 +106,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     /**
      * Sets a new complexTypeMapping
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
      * $complexTypeMapping
      * @return self
      */
@@ -131,7 +132,8 @@ class TFunctionImportMappingResultMappingType extends IsOK
         if (!$this->isValidArray(
             $this->entityTypeMapping,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType'
-        )) {
+        )
+        ) {
             $msg = "Entity type mapping not a valid array";
             return false;
         }

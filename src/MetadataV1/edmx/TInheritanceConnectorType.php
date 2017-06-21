@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TInheritanceConnectorType
  *
- *
  * XSD Type: TInheritanceConnector
  */
 class TInheritanceConnectorType extends IsOK
@@ -41,7 +40,7 @@ class TInheritanceConnectorType extends IsOK
     /**
      * Sets a new entityType
      *
-     * @param string $entityType
+     * @param  string $entityType
      * @return self
      */
     public function setEntityType($entityType)
@@ -63,7 +62,7 @@ class TInheritanceConnectorType extends IsOK
     /**
      * Sets a new manuallyRouted
      *
-     * @param boolean $manuallyRouted
+     * @param  boolean $manuallyRouted
      * @return self
      */
     public function setManuallyRouted($manuallyRouted)
@@ -76,7 +75,7 @@ class TInheritanceConnectorType extends IsOK
      * Adds as connectorPoint
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TConnectorPointType $connectorPoint
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edmx\TConnectorPointType $connectorPoint
      */
     public function addToConnectorPoint(TConnectorPointType $connectorPoint)
     {
@@ -87,7 +86,7 @@ class TInheritanceConnectorType extends IsOK
     /**
      * isset connectorPoint
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetConnectorPoint($index)
@@ -98,7 +97,7 @@ class TInheritanceConnectorType extends IsOK
     /**
      * unset connectorPoint
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetConnectorPoint($index)
@@ -119,7 +118,7 @@ class TInheritanceConnectorType extends IsOK
     /**
      * Sets a new connectorPoint
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edmx\TConnectorPointType[] $connectorPoint
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edmx\TConnectorPointType[] $connectorPoint
      * @return self
      */
     public function setConnectorPoint(array $connectorPoint)

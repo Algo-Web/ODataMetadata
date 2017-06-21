@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
 /**
  * Class representing TCollectionTypeType
  *
- *
  * XSD Type: TCollectionType
  */
 class TCollectionTypeType extends IsOK
@@ -53,7 +52,7 @@ class TCollectionTypeType extends IsOK
     /**
      * Sets a new elementType
      *
-     * @param string $elementType
+     * @param  string $elementType
      * @return self
      */
     public function setElementType($elementType)
@@ -79,7 +78,7 @@ class TCollectionTypeType extends IsOK
     /**
      * Sets a new collectionType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
      * @return self
      */
     public function setCollectionType(TCollectionTypeType $collectionType)
@@ -105,7 +104,7 @@ class TCollectionTypeType extends IsOK
     /**
      * Sets a new referenceType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
      * @return self
      */
     public function setReferenceType(TReferenceTypeType $referenceType)
@@ -122,7 +121,7 @@ class TCollectionTypeType extends IsOK
      * Adds as property
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
      */
     public function addToRowType(TPropertyType $property)
     {
@@ -137,7 +136,7 @@ class TCollectionTypeType extends IsOK
     /**
      * isset rowType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetRowType($index)
@@ -148,7 +147,7 @@ class TCollectionTypeType extends IsOK
     /**
      * unset rowType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetRowType($index)
@@ -169,7 +168,7 @@ class TCollectionTypeType extends IsOK
     /**
      * Sets a new rowType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)
@@ -194,7 +193,7 @@ class TCollectionTypeType extends IsOK
     /**
      * Sets a new typeRef
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeRefType $typeRef
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeRefType $typeRef
      * @return self
      */
     public function setTypeRef(TTypeRefType $typeRef)

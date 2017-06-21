@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TRuntimeType
  *
- *
  * XSD Type: TRuntime
  */
 class TRuntimeType extends IsOK
@@ -41,7 +40,7 @@ class TRuntimeType extends IsOK
     /**
      * Sets a new storageModels
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edmx\TRuntimeStorageModelsType $storageModels
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edmx\TRuntimeStorageModelsType $storageModels
      * @return self
      */
     public function setStorageModels(TRuntimeStorageModelsType $storageModels)
@@ -63,7 +62,7 @@ class TRuntimeType extends IsOK
     /**
      * Sets a new conceptualModels
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edmx\TRuntimeConceptualModelsType $conceptualModels
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edmx\TRuntimeConceptualModelsType $conceptualModels
      * @return self
      */
     public function setConceptualModels(TRuntimeConceptualModelsType $conceptualModels)
@@ -85,7 +84,7 @@ class TRuntimeType extends IsOK
     /**
      * Sets a new mappings
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edmx\TRuntimeMappingsType $mappings
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edmx\TRuntimeMappingsType $mappings
      * @return self
      */
     public function setMappings(TRuntimeMappingsType $mappings)

@@ -34,7 +34,7 @@ trait TResultBindingGroup
     /**
      * isset resultBinding
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetResultBinding($index)
@@ -45,7 +45,7 @@ trait TResultBindingGroup
     /**
      * unset resultBinding
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetResultBinding($index)
@@ -66,7 +66,7 @@ trait TResultBindingGroup
     /**
      * Sets a new resultBinding
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TResultBindingType[] $resultBinding
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TResultBindingType[] $resultBinding
      * @return self
      */
     public function setResultBinding(array $resultBinding)
@@ -76,7 +76,8 @@ trait TResultBindingGroup
             $resultBinding,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TResultBindingType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->resultBinding = $resultBinding;
@@ -88,7 +89,8 @@ trait TResultBindingGroup
         if (!$this->isValidArray(
             $this->resultBinding,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType'
-        )) {
+        )
+        ) {
             $msg = "Scalar property array not a valid array";
             return false;
         }

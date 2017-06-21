@@ -115,7 +115,7 @@ trait GExpressionTrait
     /**
      * Sets a new string
      *
-     * @param string $string
+     * @param  string $string
      * @return self
      */
     public function setString($string)
@@ -142,7 +142,7 @@ trait GExpressionTrait
     /**
      * Sets a new binary
      *
-     * @param mixed $binary
+     * @param  mixed $binary
      * @return self
      */
     public function setBinary($binary)
@@ -164,7 +164,7 @@ trait GExpressionTrait
     /**
      * Sets a new int
      *
-     * @param integer $int
+     * @param  integer $int
      * @return self
      */
     public function setInt($int)
@@ -186,7 +186,7 @@ trait GExpressionTrait
     /**
      * Sets a new float
      *
-     * @param float $float
+     * @param  float $float
      * @return self
      */
     public function setFloat($float)
@@ -208,7 +208,7 @@ trait GExpressionTrait
     /**
      * Sets a new guid
      *
-     * @param string $guid
+     * @param  string $guid
      * @return self
      */
     public function setGuid($guid)
@@ -235,7 +235,7 @@ trait GExpressionTrait
     /**
      * Sets a new decimal
      *
-     * @param float $decimal
+     * @param  float $decimal
      * @return self
      */
     public function setDecimal($decimal)
@@ -257,7 +257,7 @@ trait GExpressionTrait
     /**
      * Sets a new bool
      *
-     * @param boolean $bool
+     * @param  boolean $bool
      * @return self
      */
     public function setBool($bool)
@@ -279,7 +279,7 @@ trait GExpressionTrait
     /**
      * Sets a new dateTime
      *
-     * @param \DateTime $dateTime
+     * @param  \DateTime $dateTime
      * @return self
      */
     public function setDateTime(\DateTime $dateTime)
@@ -301,7 +301,7 @@ trait GExpressionTrait
     /**
      * Sets a new dateTimeOffset
      *
-     * @param \DateTime $dateTimeOffset
+     * @param  \DateTime $dateTimeOffset
      * @return self
      */
     public function setDateTimeOffset(\DateTime $dateTimeOffset)
@@ -323,7 +323,7 @@ trait GExpressionTrait
     /**
      * Sets a new enum
      *
-     * @param string $enum
+     * @param  string $enum
      * @return self
      */
     public function setEnum($enum)
@@ -350,7 +350,7 @@ trait GExpressionTrait
     /**
      * Sets a new path
      *
-     * @param string $path
+     * @param  string $path
      * @return self
      */
     public function setPath($path)
@@ -377,7 +377,7 @@ trait GExpressionTrait
     /**
      * Sets a new if
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType $if
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType $if
      * @return self
      */
     public function setIf(TIfExpressionType $if)
@@ -403,7 +403,7 @@ trait GExpressionTrait
     /**
      * Sets a new record
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType $record
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType $record
      * @return self
      */
     public function setRecord(TRecordExpressionType $record)
@@ -429,7 +429,7 @@ trait GExpressionTrait
     /**
      * Sets a new collection
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType $collection
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType $collection
      * @return self
      */
     public function setCollection(TCollectionExpressionType $collection)
@@ -455,7 +455,7 @@ trait GExpressionTrait
     /**
      * Sets a new typeAssert
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType $typeAssert
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType $typeAssert
      * @return self
      */
     public function setTypeAssert(TTypeAssertExpressionType $typeAssert)
@@ -481,7 +481,7 @@ trait GExpressionTrait
     /**
      * Sets a new typeTest
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType $typeTest
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType $typeTest
      * @return self
      */
     public function setTypeTest(TTypeTestExpressionType $typeTest)
@@ -507,7 +507,7 @@ trait GExpressionTrait
     /**
      * Sets a new functionReference
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType $functionReference
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType $functionReference
      * @return self
      */
     public function setFunctionReference(TFunctionReferenceExpressionType $functionReference)
@@ -533,7 +533,7 @@ trait GExpressionTrait
     /**
      * Sets a new entitySetReference
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType $entitySetReference
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType $entitySetReference
      * @return self
      */
     public function setEntitySetReference(TEntitySetReferenceExpressionType $entitySetReference)
@@ -559,7 +559,7 @@ trait GExpressionTrait
     /**
      * Sets a new anonymousFunction
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType $anonymousFunction
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType $anonymousFunction
      * @return self
      */
     public function setAnonymousFunction(TAnonymousFunctionExpressionType $anonymousFunction)
@@ -585,7 +585,7 @@ trait GExpressionTrait
     /**
      * Sets a new parameterReference
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType $parameterReference
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType $parameterReference
      * @return self
      */
     public function setParameterReference(TParameterReferenceExpressionType $parameterReference)
@@ -611,7 +611,7 @@ trait GExpressionTrait
     /**
      * Sets a new apply
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType $apply
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType $apply
      * @return self
      */
     public function setApply(TApplyExpressionType $apply)
@@ -637,7 +637,7 @@ trait GExpressionTrait
     /**
      * Sets a new propertyReference
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType $propertyReference
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType $propertyReference
      * @return self
      */
     public function setPropertyReference(TPropertyReferenceExpressionType $propertyReference)
@@ -663,7 +663,7 @@ trait GExpressionTrait
     /**
      * Sets a new valueTermReference
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType $valueTermReference
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType $valueTermReference
      * @return self
      */
     public function setValueTermReference(TValueTermReferenceExpressionType $valueTermReference)
@@ -688,12 +688,12 @@ trait GExpressionTrait
             }
             if (-1 < $this->gExpressionMinimum && $counter < $this->gExpressionMinimum) {
                 $msg = $counter . " fields not null.  Need minimum of ".$this->gExpressionMinimum. ": "
-                       . get_class($this);
+                        . get_class($this);
                 return false;
             }
             if (-1 < $this->gExpressionMaximum && $counter > $this->gExpressionMaximum) {
                 $msg = $counter . " fields not null.  Need maximum of ".$this->gExpressionMaximum. ": "
-                       . get_class($this);
+                        . get_class($this);
                 return false;
             }
         }
@@ -725,7 +725,7 @@ trait GExpressionTrait
                 return false;
             }
             if (!$this->isObjectNullOrType($type, $this->$key)) {
-                $msg = 'Type mismatch - should be ' .$type. ", is ".get_class($this->$key). ": " . get_class($this);
+                $msg = 'Type mismatch - should be ' . $type . ", is " . get_class($this->$key) . ": " . get_class($this);
                 return false;
             }
         }

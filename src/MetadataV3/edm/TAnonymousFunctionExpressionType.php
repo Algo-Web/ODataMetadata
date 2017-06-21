@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 /**
  * Class representing TAnonymousFunctionExpressionType
  *
- *
  * XSD Type: TAnonymousFunctionExpression
  */
 class TAnonymousFunctionExpressionType extends IsOK
@@ -18,7 +17,7 @@ class TAnonymousFunctionExpressionType extends IsOK
     
     public function __construct()
     {
-        $this->gExpressionMaximum = (0 == count($this->parameters)) ? 1 : 0 ;
+        $this->gExpressionMaximum = (0 == count($this->parameters)) ? 1 : 0;
     }
     
     /**
@@ -30,7 +29,7 @@ class TAnonymousFunctionExpressionType extends IsOK
      * Adds as parameter
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType $parameter
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType $parameter
      */
     public function addToParameters(TFunctionParameterType $parameter)
     {
@@ -45,7 +44,7 @@ class TAnonymousFunctionExpressionType extends IsOK
     /**
      * isset parameters
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetParameters($index)
@@ -56,7 +55,7 @@ class TAnonymousFunctionExpressionType extends IsOK
     /**
      * unset parameters
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetParameters($index)
@@ -77,7 +76,7 @@ class TAnonymousFunctionExpressionType extends IsOK
     /**
      * Sets a new parameters
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameters
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameters
      * @return self
      */
     public function setParameters(array $parameters)
@@ -86,7 +85,8 @@ class TAnonymousFunctionExpressionType extends IsOK
             $parameters,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->parameters = $parameters;
@@ -99,7 +99,8 @@ class TAnonymousFunctionExpressionType extends IsOK
             $this->parameters,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
         if (!$this->isGExpressionValid($msg)) {
