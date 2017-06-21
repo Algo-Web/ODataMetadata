@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TAssociationSetModificationFunctionType
  *
- *
  * XSD Type: TAssociationSetModificationFunction
  */
 class TAssociationSetModificationFunctionType extends IsOK
@@ -41,7 +40,7 @@ class TAssociationSetModificationFunctionType extends IsOK
     /**
      * Sets a new functionName
      *
-     * @param string $functionName
+     * @param  string $functionName
      * @return self
      */
     public function setFunctionName($functionName)
@@ -63,7 +62,7 @@ class TAssociationSetModificationFunctionType extends IsOK
     /**
      * Sets a new rowsAffectedParameter
      *
-     * @param string $rowsAffectedParameter
+     * @param  string $rowsAffectedParameter
      * @return self
      */
     public function setRowsAffectedParameter($rowsAffectedParameter)
@@ -85,7 +84,7 @@ class TAssociationSetModificationFunctionType extends IsOK
     /**
      * Sets a new endProperty
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingEndPropertyType $endProperty
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingEndPropertyType $endProperty
      * @return self
      */
     public function setEndProperty(TFunctionMappingEndPropertyType $endProperty)

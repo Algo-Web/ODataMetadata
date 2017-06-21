@@ -34,7 +34,7 @@ trait TDerivableTypeAttributesTrait
     /**
      * Sets a new baseType
      *
-     * @param string $baseType
+     * @param  string $baseType
      * @return self
      */
     public function setBaseType($baseType)
@@ -61,7 +61,7 @@ trait TDerivableTypeAttributesTrait
     /**
      * Sets a new abstract
      *
-     * @param boolean $abstract
+     * @param  boolean $abstract
      * @return self
      */
     public function setAbstract($abstract)

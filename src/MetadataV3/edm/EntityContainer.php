@@ -81,7 +81,7 @@ class EntityContainer extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -107,7 +107,7 @@ class EntityContainer extends IsOK
     /**
      * Sets a new extends
      *
-     * @param string $extends
+     * @param  string $extends
      * @return self
      */
     public function setExtends($extends)
@@ -133,7 +133,7 @@ class EntityContainer extends IsOK
     /**
      * Sets a new typeAccess
      *
-     * @param string $typeAccess
+     * @param  string $typeAccess
      * @return self
      */
     public function setTypeAccess($typeAccess)
@@ -159,7 +159,7 @@ class EntityContainer extends IsOK
     /**
      * Sets a new lazyLoadingEnabled
      *
-     * @param boolean $lazyLoadingEnabled
+     * @param  boolean $lazyLoadingEnabled
      * @return self
      */
     public function setLazyLoadingEnabled($lazyLoadingEnabled)
@@ -191,7 +191,7 @@ class EntityContainer extends IsOK
     /**
      * Sets a new isDefaultEntityContainer
      *
-     * @param boolean $isDefaultEntityContainer
+     * @param  boolean $isDefaultEntityContainer
      * @return self
      */
     public function setIsDefaultEntityContainer($isDefaultEntityContainer)
@@ -203,7 +203,7 @@ class EntityContainer extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -220,7 +220,7 @@ class EntityContainer extends IsOK
      * Adds as functionImport
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType
      * $functionImport
      */
     public function addToFunctionImport(FunctionImportAnonymousType $functionImport)
@@ -236,7 +236,7 @@ class EntityContainer extends IsOK
     /**
      * isset functionImport
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetFunctionImport($index)
@@ -247,7 +247,7 @@ class EntityContainer extends IsOK
     /**
      * unset functionImport
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetFunctionImport($index)
@@ -268,7 +268,7 @@ class EntityContainer extends IsOK
     /**
      * Sets a new functionImport
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType[]
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType[]
      * $functionImport
      * @return self
      */
@@ -278,7 +278,8 @@ class EntityContainer extends IsOK
             $functionImport,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->functionImport = $functionImport;
@@ -289,7 +290,7 @@ class EntityContainer extends IsOK
      * Adds as entitySet
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType $entitySet
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType $entitySet
      */
     public function addToEntitySet(EntitySetAnonymousType $entitySet)
     {
@@ -304,7 +305,7 @@ class EntityContainer extends IsOK
     /**
      * isset entitySet
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetEntitySet($index)
@@ -315,7 +316,7 @@ class EntityContainer extends IsOK
     /**
      * unset entitySet
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetEntitySet($index)
@@ -336,7 +337,7 @@ class EntityContainer extends IsOK
     /**
      * Sets a new entitySet
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType[] $entitySet
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType[] $entitySet
      * @return self
      */
     public function setEntitySet(array $entitySet)
@@ -345,7 +346,8 @@ class EntityContainer extends IsOK
             $entitySet,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->entitySet = $entitySet;
@@ -356,7 +358,7 @@ class EntityContainer extends IsOK
      * Adds as associationSet
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType
      * $associationSet
      */
     public function addToAssociationSet(AssociationSetAnonymousType $associationSet)
@@ -372,7 +374,7 @@ class EntityContainer extends IsOK
     /**
      * isset associationSet
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAssociationSet($index)
@@ -383,7 +385,7 @@ class EntityContainer extends IsOK
     /**
      * unset associationSet
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAssociationSet($index)
@@ -404,7 +406,7 @@ class EntityContainer extends IsOK
     /**
      * Sets a new associationSet
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType[]
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType[]
      * $associationSet
      * @return self
      */
@@ -414,7 +416,8 @@ class EntityContainer extends IsOK
             $associationSet,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->associationSet = $associationSet;
@@ -446,7 +449,8 @@ class EntityContainer extends IsOK
             $this->functionImport,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
 
@@ -454,7 +458,8 @@ class EntityContainer extends IsOK
             $this->entitySet,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
 
@@ -462,7 +467,8 @@ class EntityContainer extends IsOK
             $this->associationSet,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
 

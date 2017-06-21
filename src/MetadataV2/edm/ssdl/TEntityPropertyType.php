@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TEntityPropertyType
  *
- *
  * XSD Type: TEntityProperty
  */
 class TEntityPropertyType extends IsOK
@@ -86,7 +85,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -108,7 +107,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new type
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType($type)
@@ -130,7 +129,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new nullable
      *
-     * @param boolean $nullable
+     * @param  boolean $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -152,7 +151,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new defaultValue
      *
-     * @param string $defaultValue
+     * @param  string $defaultValue
      * @return self
      */
     public function setDefaultValue($defaultValue)
@@ -174,7 +173,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new maxLength
      *
-     * @param string $maxLength
+     * @param  string $maxLength
      * @return self
      */
     public function setMaxLength($maxLength)
@@ -196,7 +195,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new fixedLength
      *
-     * @param boolean $fixedLength
+     * @param  boolean $fixedLength
      * @return self
      */
     public function setFixedLength($fixedLength)
@@ -218,7 +217,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new precision
      *
-     * @param integer $precision
+     * @param  integer $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -240,7 +239,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new scale
      *
-     * @param integer $scale
+     * @param  integer $scale
      * @return self
      */
     public function setScale($scale)
@@ -262,7 +261,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new unicode
      *
-     * @param boolean $unicode
+     * @param  boolean $unicode
      * @return self
      */
     public function setUnicode($unicode)
@@ -284,7 +283,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new collation
      *
-     * @param string $collation
+     * @param  string $collation
      * @return self
      */
     public function setCollation($collation)
@@ -306,7 +305,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new storeGeneratedPattern
      *
-     * @param string $storeGeneratedPattern
+     * @param  string $storeGeneratedPattern
      * @return self
      */
     public function setStoreGeneratedPattern($storeGeneratedPattern)
@@ -328,7 +327,7 @@ class TEntityPropertyType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)

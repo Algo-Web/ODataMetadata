@@ -8,7 +8,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TUndottedIdentifierTrai
 /**
  * Class representing TAssociationType
  *
- *
  * XSD Type: TAssociation
  */
 class TAssociationType extends IsOK
@@ -47,7 +46,7 @@ class TAssociationType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -77,7 +76,7 @@ class TAssociationType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -94,7 +93,7 @@ class TAssociationType extends IsOK
      * Adds as end
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType $end
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType $end
      */
     public function addToEnd(TAssociationEndType $end)
     {
@@ -109,7 +108,7 @@ class TAssociationType extends IsOK
     /**
      * isset end
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetEnd($index)
@@ -120,7 +119,7 @@ class TAssociationType extends IsOK
     /**
      * unset end
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetEnd($index)
@@ -141,7 +140,7 @@ class TAssociationType extends IsOK
     /**
      * Sets a new end
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType[] $end
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType[] $end
      * @return self
      */
     public function setEnd(array $end)
@@ -153,7 +152,8 @@ class TAssociationType extends IsOK
             $msg,
             2,
             2
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->end = $end;
@@ -173,7 +173,7 @@ class TAssociationType extends IsOK
     /**
      * Sets a new referentialConstraint
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TConstraintType $referentialConstraint
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TConstraintType $referentialConstraint
      * @return self
      */
     public function setReferentialConstraint(TConstraintType $referentialConstraint)
@@ -208,7 +208,8 @@ class TAssociationType extends IsOK
             $msg,
             2,
             2
-        )) {
+        )
+        ) {
             return false;
         }
 

@@ -123,7 +123,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -150,7 +150,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new type
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType($type)
@@ -177,7 +177,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new nullable
      *
-     * @param boolean $nullable
+     * @param  boolean $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -199,7 +199,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new defaultValue
      *
-     * @param string $defaultValue
+     * @param  string $defaultValue
      * @return self
      */
     public function setDefaultValue($defaultValue)
@@ -228,7 +228,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new maxLength
      *
-     * @param string $maxLength
+     * @param  string $maxLength
      * @return self
      */
     public function setMaxLength($maxLength)
@@ -255,7 +255,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new fixedLength
      *
-     * @param boolean $fixedLength
+     * @param  boolean $fixedLength
      * @return self
      */
     public function setFixedLength($fixedLength)
@@ -277,7 +277,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new precision
      *
-     * @param integer $precision
+     * @param  integer $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -304,7 +304,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new scale
      *
-     * @param integer $scale
+     * @param  integer $scale
      * @return self
      */
     public function setScale($scale)
@@ -331,7 +331,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new unicode
      *
-     * @param boolean $unicode
+     * @param  boolean $unicode
      * @return self
      */
     public function setUnicode($unicode)
@@ -358,7 +358,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new collation
      *
-     * @param string $collation
+     * @param  string $collation
      * @return self
      */
     public function setCollation($collation)
@@ -380,7 +380,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new sRID
      *
-     * @param string $sRID
+     * @param  string $sRID
      * @return self
      */
     public function setSRID($sRID)
@@ -407,7 +407,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new concurrencyMode
      *
-     * @param string $concurrencyMode
+     * @param  string $concurrencyMode
      * @return self
      */
     public function setConcurrencyMode($concurrencyMode)
@@ -434,7 +434,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new setterAccess
      *
-     * @param string $setterAccess
+     * @param  string $setterAccess
      * @return self
      */
     public function setSetterAccess($setterAccess)
@@ -461,7 +461,7 @@ trait TCommonPropertyAttributesTrait
     /**
      * Sets a new getterAccess
      *
-     * @param string $getterAccess
+     * @param  string $getterAccess
      * @return self
      */
     public function setGetterAccess($getterAccess)

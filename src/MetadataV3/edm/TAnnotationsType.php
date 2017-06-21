@@ -11,7 +11,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TAnnotationsType
  *
- *
  * XSD Type: TAnnotations
  */
 class TAnnotationsType extends IsOK
@@ -54,7 +53,7 @@ class TAnnotationsType extends IsOK
     /**
      * Sets a new target
      *
-     * @param string $target
+     * @param  string $target
      * @return self
      */
     public function setTarget($target)
@@ -80,7 +79,7 @@ class TAnnotationsType extends IsOK
     /**
      * Sets a new qualifier
      *
-     * @param string $qualifier
+     * @param  string $qualifier
      * @return self
      */
     public function setQualifier($qualifier)
@@ -97,7 +96,7 @@ class TAnnotationsType extends IsOK
      * Adds as valueAnnotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType $valueAnnotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType $valueAnnotation
      */
     public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
@@ -112,7 +111,7 @@ class TAnnotationsType extends IsOK
     /**
      * isset valueAnnotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetValueAnnotation($index)
@@ -123,7 +122,7 @@ class TAnnotationsType extends IsOK
     /**
      * unset valueAnnotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetValueAnnotation($index)
@@ -144,7 +143,7 @@ class TAnnotationsType extends IsOK
     /**
      * Sets a new valueAnnotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      * @return self
      */
     public function setValueAnnotation(array $valueAnnotation)
@@ -153,7 +152,8 @@ class TAnnotationsType extends IsOK
             $valueAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->valueAnnotation = $valueAnnotation;
@@ -164,7 +164,7 @@ class TAnnotationsType extends IsOK
      * Adds as typeAnnotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType $typeAnnotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType $typeAnnotation
      */
     public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
@@ -179,7 +179,7 @@ class TAnnotationsType extends IsOK
     /**
      * isset typeAnnotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetTypeAnnotation($index)
@@ -190,7 +190,7 @@ class TAnnotationsType extends IsOK
     /**
      * unset typeAnnotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetTypeAnnotation($index)
@@ -211,7 +211,7 @@ class TAnnotationsType extends IsOK
     /**
      * Sets a new typeAnnotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      * @return self
      */
     public function setTypeAnnotation(array $typeAnnotation)
@@ -220,7 +220,8 @@ class TAnnotationsType extends IsOK
             $typeAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->typeAnnotation = $typeAnnotation;
@@ -241,14 +242,16 @@ class TAnnotationsType extends IsOK
             $this->valueAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->typeAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
 

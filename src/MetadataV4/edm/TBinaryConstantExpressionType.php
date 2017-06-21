@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TBinaryConstantExpressionType
  *
- *
  * XSD Type: TBinaryConstantExpression
  */
 class TBinaryConstantExpressionType extends IsOK
@@ -31,7 +30,7 @@ class TBinaryConstantExpressionType extends IsOK
     /**
      * Gets or sets the inner value
      *
-     * @param string ...$value
+     * @param  string ...$value
      * @return string
      */
     public function value(...$value)

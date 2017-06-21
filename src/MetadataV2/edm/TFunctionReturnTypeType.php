@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TFunctionReturnTypeType
  *
- *
  * XSD Type: TFunctionReturnType
  */
 class TFunctionReturnTypeType extends IsOK
@@ -86,7 +85,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new type
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType($type)
@@ -108,7 +107,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new nullable
      *
-     * @param boolean $nullable
+     * @param  boolean $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -130,7 +129,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new defaultValue
      *
-     * @param string $defaultValue
+     * @param  string $defaultValue
      * @return self
      */
     public function setDefaultValue($defaultValue)
@@ -152,7 +151,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new maxLength
      *
-     * @param string $maxLength
+     * @param  string $maxLength
      * @return self
      */
     public function setMaxLength($maxLength)
@@ -174,7 +173,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new fixedLength
      *
-     * @param boolean $fixedLength
+     * @param  boolean $fixedLength
      * @return self
      */
     public function setFixedLength($fixedLength)
@@ -196,7 +195,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new precision
      *
-     * @param integer $precision
+     * @param  integer $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -218,7 +217,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new scale
      *
-     * @param integer $scale
+     * @param  integer $scale
      * @return self
      */
     public function setScale($scale)
@@ -240,7 +239,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new unicode
      *
-     * @param boolean $unicode
+     * @param  boolean $unicode
      * @return self
      */
     public function setUnicode($unicode)
@@ -262,7 +261,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new collation
      *
-     * @param string $collation
+     * @param  string $collation
      * @return self
      */
     public function setCollation($collation)
@@ -284,7 +283,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new collectionType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TCollectionTypeType $collectionType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TCollectionTypeType $collectionType
      * @return self
      */
     public function setCollectionType(TCollectionTypeType $collectionType)
@@ -306,7 +305,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new referenceType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TReferenceTypeType $referenceType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TReferenceTypeType $referenceType
      * @return self
      */
     public function setReferenceType(TReferenceTypeType $referenceType)
@@ -319,7 +318,7 @@ class TFunctionReturnTypeType extends IsOK
      * Adds as property
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType $property
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType $property
      */
     public function addToRowType(TPropertyType $property)
     {
@@ -330,7 +329,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * isset rowType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetRowType($index)
@@ -341,7 +340,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * unset rowType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetRowType($index)
@@ -362,7 +361,7 @@ class TFunctionReturnTypeType extends IsOK
     /**
      * Sets a new rowType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType[] $rowType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)

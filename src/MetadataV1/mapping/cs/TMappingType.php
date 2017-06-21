@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TMappingType
  *
- *
  * XSD Type: TMapping
  */
 class TMappingType extends IsOK
@@ -42,7 +41,7 @@ class TMappingType extends IsOK
     /**
      * Sets a new space
      *
-     * @param string $space
+     * @param  string $space
      * @return self
      */
     public function setSpace($space)
@@ -55,7 +54,7 @@ class TMappingType extends IsOK
      * Adds as alias
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAliasType $alias
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAliasType $alias
      */
     public function addToAlias(TAliasType $alias)
     {
@@ -66,7 +65,7 @@ class TMappingType extends IsOK
     /**
      * isset alias
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAlias($index)
@@ -77,7 +76,7 @@ class TMappingType extends IsOK
     /**
      * unset alias
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAlias($index)
@@ -98,7 +97,7 @@ class TMappingType extends IsOK
     /**
      * Sets a new alias
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAliasType[] $alias
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TAliasType[] $alias
      * @return self
      */
     public function setAlias(array $alias)
@@ -120,7 +119,7 @@ class TMappingType extends IsOK
     /**
      * Sets a new entityContainerMapping
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityContainerMappingType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TEntityContainerMappingType
      * $entityContainerMapping
      * @return self
      */

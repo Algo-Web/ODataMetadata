@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 /**
  * Class representing TCollectionExpressionType
  *
- *
  * XSD Type: TCollectionExpression
  */
 class TCollectionExpressionType extends IsOK

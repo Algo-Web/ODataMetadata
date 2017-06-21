@@ -8,7 +8,6 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\Schema;
 /**
  * Class representing TEdmxType
  *
- *
  * XSD Type: TEdmx
  */
 class TEdmxType extends IsOK
@@ -42,7 +41,7 @@ class TEdmxType extends IsOK
     /**
      * Sets a new version
      *
-     * @param float $version
+     * @param  float $version
      * @return self
      */
     public function setVersion($version)
@@ -55,7 +54,7 @@ class TEdmxType extends IsOK
      * Adds as reference
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType $reference
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType $reference
      */
     public function addToReference(TReferenceType $reference)
     {
@@ -66,7 +65,7 @@ class TEdmxType extends IsOK
     /**
      * isset reference
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetReference($index)
@@ -77,7 +76,7 @@ class TEdmxType extends IsOK
     /**
      * unset reference
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetReference($index)
@@ -98,7 +97,7 @@ class TEdmxType extends IsOK
     /**
      * Sets a new reference
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType[] $reference
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType[] $reference
      * @return self
      */
     public function setReference(array $reference)
@@ -111,7 +110,7 @@ class TEdmxType extends IsOK
      * Adds as schema
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema $schema
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema $schema
      */
     public function addToDataServices(Schema $schema)
     {
@@ -122,7 +121,7 @@ class TEdmxType extends IsOK
     /**
      * isset dataServices
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetDataServices($index)
@@ -133,7 +132,7 @@ class TEdmxType extends IsOK
     /**
      * unset dataServices
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetDataServices($index)
@@ -154,7 +153,7 @@ class TEdmxType extends IsOK
     /**
      * Sets a new dataServices
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema[] $dataServices
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema[] $dataServices
      * @return self
      */
     public function setDataServices(array $dataServices)

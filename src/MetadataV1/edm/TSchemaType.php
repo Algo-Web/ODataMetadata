@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TSchemaType
  *
- *
  * XSD Type: TSchema
  */
 class TSchemaType extends IsOK
@@ -61,7 +60,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new namespace
      *
-     * @param string $namespace
+     * @param  string $namespace
      * @return self
      */
     public function setNamespace($namespace)
@@ -83,7 +82,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new alias
      *
-     * @param string $alias
+     * @param  string $alias
      * @return self
      */
     public function setAlias($alias)
@@ -96,7 +95,7 @@ class TSchemaType extends IsOK
      * Adds as using
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TUsingType $using
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TUsingType $using
      */
     public function addToUsing(TUsingType $using)
     {
@@ -107,7 +106,7 @@ class TSchemaType extends IsOK
     /**
      * isset using
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetUsing($index)
@@ -118,7 +117,7 @@ class TSchemaType extends IsOK
     /**
      * unset using
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetUsing($index)
@@ -139,7 +138,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new using
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TUsingType[] $using
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TUsingType[] $using
      * @return self
      */
     public function setUsing(array $using)
@@ -152,7 +151,7 @@ class TSchemaType extends IsOK
      * Adds as association
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TAssociationType $association
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TAssociationType $association
      */
     public function addToAssociation(TAssociationType $association)
     {
@@ -163,7 +162,7 @@ class TSchemaType extends IsOK
     /**
      * isset association
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAssociation($index)
@@ -174,7 +173,7 @@ class TSchemaType extends IsOK
     /**
      * unset association
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAssociation($index)
@@ -195,7 +194,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new association
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TAssociationType[] $association
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TAssociationType[] $association
      * @return self
      */
     public function setAssociation(array $association)
@@ -208,7 +207,7 @@ class TSchemaType extends IsOK
      * Adds as complexType
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypeType $complexType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypeType $complexType
      */
     public function addToComplexType(TComplexTypeType $complexType)
     {
@@ -219,7 +218,7 @@ class TSchemaType extends IsOK
     /**
      * isset complexType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetComplexType($index)
@@ -230,7 +229,7 @@ class TSchemaType extends IsOK
     /**
      * unset complexType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetComplexType($index)
@@ -251,7 +250,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new complexType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypeType[] $complexType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypeType[] $complexType
      * @return self
      */
     public function setComplexType(array $complexType)
@@ -264,7 +263,7 @@ class TSchemaType extends IsOK
      * Adds as entityType
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TEntityTypeType $entityType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TEntityTypeType $entityType
      */
     public function addToEntityType(TEntityTypeType $entityType)
     {
@@ -275,7 +274,7 @@ class TSchemaType extends IsOK
     /**
      * isset entityType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetEntityType($index)
@@ -286,7 +285,7 @@ class TSchemaType extends IsOK
     /**
      * unset entityType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetEntityType($index)
@@ -307,7 +306,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new entityType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\TEntityTypeType[] $entityType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TEntityTypeType[] $entityType
      * @return self
      */
     public function setEntityType(array $entityType)
@@ -320,7 +319,7 @@ class TSchemaType extends IsOK
      * Adds as entityContainer
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer $entityContainer
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer $entityContainer
      */
     public function addToEntityContainer(EntityContainer $entityContainer)
     {
@@ -331,7 +330,7 @@ class TSchemaType extends IsOK
     /**
      * isset entityContainer
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetEntityContainer($index)
@@ -342,7 +341,7 @@ class TSchemaType extends IsOK
     /**
      * unset entityContainer
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetEntityContainer($index)
@@ -363,7 +362,7 @@ class TSchemaType extends IsOK
     /**
      * Sets a new entityContainer
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer[] $entityContainer
+     * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\EntityContainer[] $entityContainer
      * @return self
      */
     public function setEntityContainer(array $entityContainer)

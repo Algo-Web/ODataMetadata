@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 /**
  * Class representing TApplyExpressionType
  *
- *
  * XSD Type: TApplyExpression
  */
 class TApplyExpressionType extends IsOK
@@ -45,7 +44,7 @@ class TApplyExpressionType extends IsOK
     /**
      * Sets a new function
      *
-     * @param string $function
+     * @param  string $function
      * @return self
      */
     public function setFunction($function)
@@ -62,7 +61,7 @@ class TApplyExpressionType extends IsOK
      * Adds as appliedFunction
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType
      * $appliedFunction
      */
     public function addToAppliedFunction(TApplyExpressionType\AppliedFunctionAnonymousType $appliedFunction)
@@ -78,7 +77,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset appliedFunction
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAppliedFunction($index)
@@ -89,7 +88,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset appliedFunction
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAppliedFunction($index)
@@ -110,7 +109,7 @@ class TApplyExpressionType extends IsOK
     /**
      * Sets a new appliedFunction
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
      * $appliedFunction
      * @return self
      */
@@ -120,7 +119,8 @@ class TApplyExpressionType extends IsOK
             $appliedFunction,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->appliedFunction = $appliedFunction;
@@ -131,7 +131,7 @@ class TApplyExpressionType extends IsOK
      * Adds as arguments
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType $arguments
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType $arguments
      */
     public function addToArguments(TApplyExpressionType\ArgumentsAnonymousType $arguments)
     {
@@ -146,7 +146,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset arguments
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetArguments($index)
@@ -157,7 +157,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset arguments
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetArguments($index)
@@ -178,7 +178,7 @@ class TApplyExpressionType extends IsOK
     /**
      * Sets a new arguments
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[] $arguments
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[] $arguments
      * @return self
      */
     public function setArguments(array $arguments)
@@ -187,7 +187,8 @@ class TApplyExpressionType extends IsOK
             $arguments,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->arguments = $arguments;
@@ -205,14 +206,16 @@ class TApplyExpressionType extends IsOK
             $this->appliedFunction,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->arguments,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType',
             $msg
-        )) {
+        )
+        ) {
             return false;
         }
         $count = (0 < count($this->appliedFunction) ? 1 : 0) + (0 < count($this->arguments) ? 1 : 0);

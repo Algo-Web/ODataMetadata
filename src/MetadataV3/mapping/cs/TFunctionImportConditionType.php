@@ -42,7 +42,7 @@ class TFunctionImportConditionType extends IsOK
     /**
      * Sets a new value
      *
-     * @param string $value
+     * @param  string $value
      * @return self
      */
     public function setValue($value)
@@ -64,7 +64,7 @@ class TFunctionImportConditionType extends IsOK
     /**
      * Sets a new columnName
      *
-     * @param string $columnName
+     * @param  string $columnName
      * @return self
      */
     public function setColumnName($columnName)
@@ -90,7 +90,7 @@ class TFunctionImportConditionType extends IsOK
     /**
      * Sets a new isNull
      *
-     * @param boolean $isNull
+     * @param  boolean $isNull
      * @return self
      */
     public function setIsNull($isNull)

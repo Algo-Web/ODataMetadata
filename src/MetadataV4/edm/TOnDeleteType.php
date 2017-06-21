@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TOnDeleteType
  *
- *
  * XSD Type: TOnDelete
  */
 class TOnDeleteType extends IsOK
@@ -36,7 +35,7 @@ class TOnDeleteType extends IsOK
     /**
      * Sets a new action
      *
-     * @param string $action
+     * @param  string $action
      * @return self
      */
     public function setAction($action)
@@ -49,7 +48,7 @@ class TOnDeleteType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -60,7 +59,7 @@ class TOnDeleteType extends IsOK
     /**
      * isset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -71,7 +70,7 @@ class TOnDeleteType extends IsOK
     /**
      * unset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -92,7 +91,7 @@ class TOnDeleteType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

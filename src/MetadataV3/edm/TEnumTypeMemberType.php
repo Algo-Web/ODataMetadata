@@ -10,7 +10,6 @@ use AlgoWeb\ODataMetadata\StringTraits\XSDTopLevelTrait;
 /**
  * Class representing TEnumTypeMemberType
  *
- *
  * XSD Type: TEnumTypeMember
  */
 class TEnumTypeMemberType extends IsOK
@@ -39,7 +38,7 @@ class TEnumTypeMemberType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -65,7 +64,7 @@ class TEnumTypeMemberType extends IsOK
     /**
      * Sets a new value
      *
-     * @param integer $value
+     * @param  integer $value
      * @return self
      */
     public function setValue($value)

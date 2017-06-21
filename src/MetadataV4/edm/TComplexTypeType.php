@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TComplexTypeType
  *
- *
  * XSD Type: TComplexType
  */
 class TComplexTypeType extends IsOK
@@ -61,7 +60,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -83,7 +82,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new baseType
      *
-     * @param string $baseType
+     * @param  string $baseType
      * @return self
      */
     public function setBaseType($baseType)
@@ -105,7 +104,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new abstract
      *
-     * @param boolean $abstract
+     * @param  boolean $abstract
      * @return self
      */
     public function setAbstract($abstract)
@@ -127,7 +126,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new openType
      *
-     * @param boolean $openType
+     * @param  boolean $openType
      * @return self
      */
     public function setOpenType($openType)
@@ -140,7 +139,7 @@ class TComplexTypeType extends IsOK
      * Adds as property
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType $property
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType $property
      */
     public function addToProperty(TPropertyType $property)
     {
@@ -151,7 +150,7 @@ class TComplexTypeType extends IsOK
     /**
      * isset property
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetProperty($index)
@@ -162,7 +161,7 @@ class TComplexTypeType extends IsOK
     /**
      * unset property
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetProperty($index)
@@ -183,7 +182,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new property
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType[] $property
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType[] $property
      * @return self
      */
     public function setProperty(array $property)
@@ -196,7 +195,7 @@ class TComplexTypeType extends IsOK
      * Adds as navigationProperty
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType $navigationProperty
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType $navigationProperty
      */
     public function addToNavigationProperty(TNavigationPropertyType $navigationProperty)
     {
@@ -207,7 +206,7 @@ class TComplexTypeType extends IsOK
     /**
      * isset navigationProperty
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetNavigationProperty($index)
@@ -218,7 +217,7 @@ class TComplexTypeType extends IsOK
     /**
      * unset navigationProperty
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetNavigationProperty($index)
@@ -239,7 +238,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new navigationProperty
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType[] $navigationProperty
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType[] $navigationProperty
      * @return self
      */
     public function setNavigationProperty(array $navigationProperty)
@@ -252,7 +251,7 @@ class TComplexTypeType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -263,7 +262,7 @@ class TComplexTypeType extends IsOK
     /**
      * isset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -274,7 +273,7 @@ class TComplexTypeType extends IsOK
     /**
      * unset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -295,7 +294,7 @@ class TComplexTypeType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

@@ -22,7 +22,8 @@ trait TSimpleIdentifierTrait
         if (!$this->matchesRegexPattern(
             "[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}",
             $TSimpleIdentifier
-        )) {
+        )
+        ) {
             $msg = "The qualifier does not match the regex in the xsd.";
             return false;
         }
