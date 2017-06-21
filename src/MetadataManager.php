@@ -240,7 +240,7 @@ class MetadataManager
                        ." relationship should match";
                 throw new \InvalidArgumentException($msg);
             }
-            if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole() 
+            if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole()
                 || $dependentNavigationProperty->getToRole() != $principalNavigationProperty->getFromRole()
             ) {
                 throw new \InvalidArgumentException(
