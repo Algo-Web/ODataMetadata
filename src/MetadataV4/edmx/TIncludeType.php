@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TIncludeType
  *
- *
  * XSD Type: TInclude
  */
 class TIncludeType extends IsOK
@@ -36,7 +35,7 @@ class TIncludeType extends IsOK
     /**
      * Sets a new namespace
      *
-     * @param string $namespace
+     * @param  string $namespace
      * @return self
      */
     public function setNamespace($namespace)
@@ -58,7 +57,7 @@ class TIncludeType extends IsOK
     /**
      * Sets a new alias
      *
-     * @param string $alias
+     * @param  string $alias
      * @return self
      */
     public function setAlias($alias)

@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TEntityTypeModificationFunctionType
  *
- *
  * XSD Type: TEntityTypeModificationFunction
  */
 class TEntityTypeModificationFunctionType extends IsOK
@@ -54,7 +53,7 @@ class TEntityTypeModificationFunctionType extends IsOK
     /**
      * Sets a new functionName
      *
-     * @param string $functionName
+     * @param  string $functionName
      * @return self
      */
     public function setFunctionName($functionName)
@@ -76,7 +75,7 @@ class TEntityTypeModificationFunctionType extends IsOK
     /**
      * Sets a new rowsAffectedParameter
      *
-     * @param string $rowsAffectedParameter
+     * @param  string $rowsAffectedParameter
      * @return self
      */
     public function setRowsAffectedParameter($rowsAffectedParameter)
@@ -98,7 +97,7 @@ class TEntityTypeModificationFunctionType extends IsOK
     /**
      * Sets a new scalarProperty
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType $scalarProperty
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType $scalarProperty
      * @return self
      */
     public function setScalarProperty(TFunctionMappingScalarPropertyType $scalarProperty)
@@ -120,7 +119,7 @@ class TEntityTypeModificationFunctionType extends IsOK
     /**
      * Sets a new associationEnd
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingAssociationEndType $associationEnd
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingAssociationEndType $associationEnd
      * @return self
      */
     public function setAssociationEnd(TFunctionMappingAssociationEndType $associationEnd)
@@ -142,7 +141,7 @@ class TEntityTypeModificationFunctionType extends IsOK
     /**
      * Sets a new complexProperty
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingComplexPropertyType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingComplexPropertyType
      * $complexProperty
      * @return self
      */

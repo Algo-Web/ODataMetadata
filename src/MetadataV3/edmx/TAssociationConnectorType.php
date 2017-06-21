@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TAssociationConnectorType
  *
- *
  * XSD Type: TAssociationConnector
  */
 class TAssociationConnectorType extends IsOK
@@ -41,7 +40,7 @@ class TAssociationConnectorType extends IsOK
     /**
      * Sets a new association
      *
-     * @param string $association
+     * @param  string $association
      * @return self
      */
     public function setAssociation($association)
@@ -67,7 +66,7 @@ class TAssociationConnectorType extends IsOK
     /**
      * Sets a new manuallyRouted
      *
-     * @param boolean $manuallyRouted
+     * @param  boolean $manuallyRouted
      * @return self
      */
     public function setManuallyRouted($manuallyRouted)
@@ -80,7 +79,7 @@ class TAssociationConnectorType extends IsOK
      * Adds as connectorPoint
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType $connectorPoint
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType $connectorPoint
      */
     public function addToConnectorPoint(TConnectorPointType $connectorPoint)
     {
@@ -95,7 +94,7 @@ class TAssociationConnectorType extends IsOK
     /**
      * isset connectorPoint
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetConnectorPoint($index)
@@ -106,7 +105,7 @@ class TAssociationConnectorType extends IsOK
     /**
      * unset connectorPoint
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetConnectorPoint($index)
@@ -127,7 +126,7 @@ class TAssociationConnectorType extends IsOK
     /**
      * Sets a new connectorPoint
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType[] $connectorPoint
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType[] $connectorPoint
      * @return self
      */
     public function setConnectorPoint(array $connectorPoint)
@@ -135,7 +134,8 @@ class TAssociationConnectorType extends IsOK
         if (!$this->isValidArrayOK(
             $connectorPoint,
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType'
-        )) {
+        )
+        ) {
             $msg = "Connector point array not a valid array";
             throw new \InvalidArgumentException($msg);
         }
@@ -152,7 +152,8 @@ class TAssociationConnectorType extends IsOK
         if (!$this->isValidArray(
             $this->connectorPoint,
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType'
-        )) {
+        )
+        ) {
             $msg = "Connector point array not a valid array";
             return false;
         }

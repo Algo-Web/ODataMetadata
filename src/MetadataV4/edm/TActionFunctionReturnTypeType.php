@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TActionFunctionReturnTypeType
  *
- *
  * XSD Type: TActionFunctionReturnType
  */
 class TActionFunctionReturnTypeType extends IsOK
@@ -56,7 +55,7 @@ class TActionFunctionReturnTypeType extends IsOK
     /**
      * Sets a new type
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType($type)
@@ -78,7 +77,7 @@ class TActionFunctionReturnTypeType extends IsOK
     /**
      * Sets a new nullable
      *
-     * @param boolean $nullable
+     * @param  boolean $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -100,7 +99,7 @@ class TActionFunctionReturnTypeType extends IsOK
     /**
      * Sets a new maxLength
      *
-     * @param string $maxLength
+     * @param  string $maxLength
      * @return self
      */
     public function setMaxLength($maxLength)
@@ -122,7 +121,7 @@ class TActionFunctionReturnTypeType extends IsOK
     /**
      * Sets a new precision
      *
-     * @param integer $precision
+     * @param  integer $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -144,7 +143,7 @@ class TActionFunctionReturnTypeType extends IsOK
     /**
      * Sets a new scale
      *
-     * @param string $scale
+     * @param  string $scale
      * @return self
      */
     public function setScale($scale)
@@ -166,7 +165,7 @@ class TActionFunctionReturnTypeType extends IsOK
     /**
      * Sets a new sRID
      *
-     * @param string $sRID
+     * @param  string $sRID
      * @return self
      */
     public function setSRID($sRID)

@@ -21,7 +21,7 @@ class ParametersAnonymousType extends IsOK
      * Adds as parameter
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType $parameter
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType $parameter
      */
     public function addToParameter(TFunctionParameterType $parameter)
     {
@@ -36,7 +36,7 @@ class ParametersAnonymousType extends IsOK
     /**
      * isset parameter
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetParameter($index)
@@ -47,7 +47,7 @@ class ParametersAnonymousType extends IsOK
     /**
      * unset parameter
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetParameter($index)
@@ -68,7 +68,7 @@ class ParametersAnonymousType extends IsOK
     /**
      * Sets a new parameter
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameter
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)
@@ -78,7 +78,8 @@ class ParametersAnonymousType extends IsOK
             $parameter,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         };
         $this->parameter = $parameter;

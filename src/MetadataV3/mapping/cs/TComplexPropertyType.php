@@ -63,7 +63,7 @@ class TComplexPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -93,7 +93,7 @@ class TComplexPropertyType extends IsOK
     /**
      * Sets a new typeName
      *
-     * @param string $typeName
+     * @param  string $typeName
      * @return self
      */
     public function setTypeName($typeName)
@@ -119,7 +119,7 @@ class TComplexPropertyType extends IsOK
     /**
      * Sets a new isPartial
      *
-     * @param boolean $isPartial
+     * @param  boolean $isPartial
      * @return self
      */
     public function setIsPartial($isPartial)
@@ -132,7 +132,7 @@ class TComplexPropertyType extends IsOK
      * Adds as scalarProperty
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
      */
     public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
@@ -147,7 +147,7 @@ class TComplexPropertyType extends IsOK
     /**
      * isset scalarProperty
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetScalarProperty($index)
@@ -158,7 +158,7 @@ class TComplexPropertyType extends IsOK
     /**
      * unset scalarProperty
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetScalarProperty($index)
@@ -179,7 +179,7 @@ class TComplexPropertyType extends IsOK
     /**
      * Sets a new scalarProperty
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
      */
     public function setScalarProperty(array $scalarProperty)
@@ -192,7 +192,8 @@ class TComplexPropertyType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType',
             $msg,
             0 < $count ? 0 : 1
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->scalarProperty = $scalarProperty;
@@ -203,7 +204,7 @@ class TComplexPropertyType extends IsOK
      * Adds as complexProperty
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
      */
     public function addToComplexProperty(TComplexPropertyType $complexProperty)
     {
@@ -218,7 +219,7 @@ class TComplexPropertyType extends IsOK
     /**
      * isset complexProperty
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetComplexProperty($index)
@@ -229,7 +230,7 @@ class TComplexPropertyType extends IsOK
     /**
      * unset complexProperty
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetComplexProperty($index)
@@ -250,7 +251,7 @@ class TComplexPropertyType extends IsOK
     /**
      * Sets a new complexProperty
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType[] $complexProperty
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType[] $complexProperty
      * @return self
      */
     public function setComplexProperty(array $complexProperty)
@@ -263,7 +264,8 @@ class TComplexPropertyType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType',
             $msg,
             0 < $count ? 0 : 1
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->complexProperty = $complexProperty;
@@ -274,7 +276,7 @@ class TComplexPropertyType extends IsOK
      * Adds as complexTypeMapping
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType $complexTypeMapping
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType $complexTypeMapping
      */
     public function addToComplexTypeMapping(TComplexTypeMappingType $complexTypeMapping)
     {
@@ -289,7 +291,7 @@ class TComplexPropertyType extends IsOK
     /**
      * isset complexTypeMapping
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetComplexTypeMapping($index)
@@ -300,7 +302,7 @@ class TComplexPropertyType extends IsOK
     /**
      * unset complexTypeMapping
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetComplexTypeMapping($index)
@@ -321,7 +323,7 @@ class TComplexPropertyType extends IsOK
     /**
      * Sets a new complexTypeMapping
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType[] $complexTypeMapping
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType[] $complexTypeMapping
      * @return self
      */
     public function setComplexTypeMapping(array $complexTypeMapping)
@@ -334,7 +336,8 @@ class TComplexPropertyType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType',
             $msg,
             0 < $count ? 0 : 1
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->complexTypeMapping = $complexTypeMapping;
@@ -345,7 +348,7 @@ class TComplexPropertyType extends IsOK
      * Adds as condition
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType $condition
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType $condition
      */
     public function addToCondition(TConditionType $condition)
     {
@@ -360,7 +363,7 @@ class TComplexPropertyType extends IsOK
     /**
      * isset condition
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetCondition($index)
@@ -371,7 +374,7 @@ class TComplexPropertyType extends IsOK
     /**
      * unset condition
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetCondition($index)
@@ -392,7 +395,7 @@ class TComplexPropertyType extends IsOK
     /**
      * Sets a new condition
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType[] $condition
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType[] $condition
      * @return self
      */
     public function setCondition(array $condition)
@@ -405,7 +408,8 @@ class TComplexPropertyType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType',
             $msg,
             0 < $count ? 0 : 1
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->condition = $condition;
@@ -436,7 +440,8 @@ class TComplexPropertyType extends IsOK
         if (!$this->isValidArray(
             $this->scalarProperty,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType'
-        )) {
+        )
+        ) {
             $msg = "Scalar property array not a valid array";
             return false;
         }
@@ -446,7 +451,8 @@ class TComplexPropertyType extends IsOK
         if (!$this->isValidArray(
             $this->complexProperty,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType'
-        )) {
+        )
+        ) {
             $msg = "Complex property array not a valid array";
             return false;
         }
@@ -456,7 +462,8 @@ class TComplexPropertyType extends IsOK
         if (!$this->isValidArray(
             $this->condition,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType'
-        )) {
+        )
+        ) {
             $msg = "Condition array not a valid array";
             return false;
         }
@@ -466,7 +473,8 @@ class TComplexPropertyType extends IsOK
         if (!$this->isValidArray(
             $this->complexTypeMapping,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexTypeMappingType'
-        )) {
+        )
+        ) {
             $msg = "Complex type mapping array not a valid array";
             return false;
         }

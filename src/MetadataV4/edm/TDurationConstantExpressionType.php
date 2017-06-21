@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TDurationConstantExpressionType
  *
- *
  * XSD Type: TDurationConstantExpression
  */
 class TDurationConstantExpressionType extends IsOK
@@ -31,7 +30,7 @@ class TDurationConstantExpressionType extends IsOK
     /**
      * Gets or sets the inner value
      *
-     * @param \DateInterval ...$value
+     * @param  \DateInterval ...$value
      * @return \DateInterval
      */
     public function value(...$value)

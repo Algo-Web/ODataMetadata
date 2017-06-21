@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TEnumTypeType
  *
- *
  * XSD Type: TEnumType
  */
 class TEnumTypeType extends IsOK
@@ -51,7 +50,7 @@ class TEnumTypeType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -73,7 +72,7 @@ class TEnumTypeType extends IsOK
     /**
      * Sets a new isFlags
      *
-     * @param boolean $isFlags
+     * @param  boolean $isFlags
      * @return self
      */
     public function setIsFlags($isFlags)
@@ -95,7 +94,7 @@ class TEnumTypeType extends IsOK
     /**
      * Sets a new underlyingType
      *
-     * @param string $underlyingType
+     * @param  string $underlyingType
      * @return self
      */
     public function setUnderlyingType($underlyingType)
@@ -108,7 +107,7 @@ class TEnumTypeType extends IsOK
      * Adds as member
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeMemberType $member
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeMemberType $member
      */
     public function addToMember(TEnumTypeMemberType $member)
     {
@@ -119,7 +118,7 @@ class TEnumTypeType extends IsOK
     /**
      * isset member
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetMember($index)
@@ -130,7 +129,7 @@ class TEnumTypeType extends IsOK
     /**
      * unset member
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetMember($index)
@@ -151,7 +150,7 @@ class TEnumTypeType extends IsOK
     /**
      * Sets a new member
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeMemberType[] $member
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TEnumTypeMemberType[] $member
      * @return self
      */
     public function setMember(array $member)
@@ -164,7 +163,7 @@ class TEnumTypeType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -175,7 +174,7 @@ class TEnumTypeType extends IsOK
     /**
      * isset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -186,7 +185,7 @@ class TEnumTypeType extends IsOK
     /**
      * unset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -207,7 +206,7 @@ class TEnumTypeType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

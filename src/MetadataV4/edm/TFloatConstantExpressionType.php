@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TFloatConstantExpressionType
  *
- *
  * XSD Type: TFloatConstantExpression
  */
 class TFloatConstantExpressionType extends IsOK
@@ -31,7 +30,7 @@ class TFloatConstantExpressionType extends IsOK
     /**
      * Gets or sets the inner value
      *
-     * @param float ...$value
+     * @param  float ...$value
      * @return float
      */
     public function value(...$value)

@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TPropertyRefType
  *
- *
  * XSD Type: TPropertyRef
  */
 class TPropertyRefType extends IsOK
@@ -31,7 +30,7 @@ class TPropertyRefType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)

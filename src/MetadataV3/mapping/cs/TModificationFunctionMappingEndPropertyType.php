@@ -34,7 +34,7 @@ class TModificationFunctionMappingEndPropertyType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)

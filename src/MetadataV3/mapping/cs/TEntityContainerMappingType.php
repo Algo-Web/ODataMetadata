@@ -60,7 +60,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * Sets a new cdmEntityContainer
      *
-     * @param string $cdmEntityContainer
+     * @param  string $cdmEntityContainer
      * @return self
      */
     public function setCdmEntityContainer($cdmEntityContainer)
@@ -90,7 +90,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * Sets a new storageEntityContainer
      *
-     * @param string $storageEntityContainer
+     * @param  string $storageEntityContainer
      * @return self
      */
     public function setStorageEntityContainer($storageEntityContainer)
@@ -116,7 +116,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * Sets a new generateUpdateViews
      *
-     * @param boolean $generateUpdateViews
+     * @param  boolean $generateUpdateViews
      * @return self
      */
     public function setGenerateUpdateViews($generateUpdateViews)
@@ -129,7 +129,7 @@ class TEntityContainerMappingType extends IsOK
      * Adds as entitySetMapping
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType $entitySetMapping
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType $entitySetMapping
      */
     public function addToEntitySetMapping(TEntitySetMappingType $entitySetMapping)
     {
@@ -144,7 +144,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * isset entitySetMapping
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetEntitySetMapping($index)
@@ -155,7 +155,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * unset entitySetMapping
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetEntitySetMapping($index)
@@ -176,7 +176,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * Sets a new entitySetMapping
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType[] $entitySetMapping
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType[] $entitySetMapping
      * @return self
      */
     public function setEntitySetMapping(array $entitySetMapping)
@@ -186,7 +186,8 @@ class TEntityContainerMappingType extends IsOK
             $entitySetMapping,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->entitySetMapping = $entitySetMapping;
@@ -197,7 +198,7 @@ class TEntityContainerMappingType extends IsOK
      * Adds as associationSetMapping
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType $associationSetMapping
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType $associationSetMapping
      */
     public function addToAssociationSetMapping(TAssociationSetMappingType $associationSetMapping)
     {
@@ -212,7 +213,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * isset associationSetMapping
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAssociationSetMapping($index)
@@ -223,7 +224,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * unset associationSetMapping
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAssociationSetMapping($index)
@@ -244,7 +245,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * Sets a new associationSetMapping
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType[]
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType[]
      * $associationSetMapping
      * @return self
      */
@@ -255,7 +256,8 @@ class TEntityContainerMappingType extends IsOK
             $associationSetMapping,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->associationSetMapping = $associationSetMapping;
@@ -266,7 +268,7 @@ class TEntityContainerMappingType extends IsOK
      * Adds as functionImportMapping
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType $functionImportMapping
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType $functionImportMapping
      */
     public function addToFunctionImportMapping(TFunctionImportMappingType $functionImportMapping)
     {
@@ -281,7 +283,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * isset functionImportMapping
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetFunctionImportMapping($index)
@@ -292,7 +294,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * unset functionImportMapping
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetFunctionImportMapping($index)
@@ -313,7 +315,7 @@ class TEntityContainerMappingType extends IsOK
     /**
      * Sets a new functionImportMapping
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType[]
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType[]
      * $functionImportMapping
      * @return self
      */
@@ -324,7 +326,8 @@ class TEntityContainerMappingType extends IsOK
             $functionImportMapping,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType',
             $msg
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->functionImportMapping = $functionImportMapping;
@@ -348,7 +351,8 @@ class TEntityContainerMappingType extends IsOK
         if (!$this->isValidArray(
             $this->entitySetMapping,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntitySetMappingType'
-        )) {
+        )
+        ) {
             $msg = "Entity set mapping array not a valid array";
             return false;
         }
@@ -358,7 +362,8 @@ class TEntityContainerMappingType extends IsOK
         if (!$this->isValidArray(
             $this->associationSetMapping,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetMappingType'
-        )) {
+        )
+        ) {
             $msg = "Association set mapping array not a valid array";
             return false;
         }
@@ -368,7 +373,8 @@ class TEntityContainerMappingType extends IsOK
         if (!$this->isValidArray(
             $this->functionImportMapping,
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingType'
-        )) {
+        )
+        ) {
             $msg = "Function import mapping array not a valid array";
             return false;
         }

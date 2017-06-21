@@ -8,7 +8,6 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation;
 /**
  * Class representing TReferenceType
  *
- *
  * XSD Type: TReference
  */
 class TReferenceType extends IsOK
@@ -47,7 +46,7 @@ class TReferenceType extends IsOK
     /**
      * Sets a new uri
      *
-     * @param string $uri
+     * @param  string $uri
      * @return self
      */
     public function setUri($uri)
@@ -60,7 +59,7 @@ class TReferenceType extends IsOK
      * Adds as include
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType $include
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType $include
      */
     public function addToInclude(TIncludeType $include)
     {
@@ -71,7 +70,7 @@ class TReferenceType extends IsOK
     /**
      * isset include
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetInclude($index)
@@ -82,7 +81,7 @@ class TReferenceType extends IsOK
     /**
      * unset include
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetInclude($index)
@@ -103,7 +102,7 @@ class TReferenceType extends IsOK
     /**
      * Sets a new include
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType[] $include
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType[] $include
      * @return self
      */
     public function setInclude(array $include)
@@ -116,7 +115,7 @@ class TReferenceType extends IsOK
      * Adds as includeAnnotations
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType $includeAnnotations
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType $includeAnnotations
      */
     public function addToIncludeAnnotations(TIncludeAnnotationsType $includeAnnotations)
     {
@@ -127,7 +126,7 @@ class TReferenceType extends IsOK
     /**
      * isset includeAnnotations
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetIncludeAnnotations($index)
@@ -138,7 +137,7 @@ class TReferenceType extends IsOK
     /**
      * unset includeAnnotations
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetIncludeAnnotations($index)
@@ -159,7 +158,7 @@ class TReferenceType extends IsOK
     /**
      * Sets a new includeAnnotations
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType[] $includeAnnotations
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType[] $includeAnnotations
      * @return self
      */
     public function setIncludeAnnotations(array $includeAnnotations)
@@ -172,7 +171,7 @@ class TReferenceType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -183,7 +182,7 @@ class TReferenceType extends IsOK
     /**
      * isset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -194,7 +193,7 @@ class TReferenceType extends IsOK
     /**
      * unset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -215,7 +214,7 @@ class TReferenceType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)
@@ -239,7 +238,8 @@ class TReferenceType extends IsOK
             $this->includeAnnotations,
             \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType,
             1
-        )) {
+        )
+        ) {
             $msg = "IncludeAnnotations is not a valid array";
             return false;
         }

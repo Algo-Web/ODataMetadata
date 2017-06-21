@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TAnnotationsType
  *
- *
  * XSD Type: TAnnotations
  */
 class TAnnotationsType extends IsOK
@@ -41,7 +40,7 @@ class TAnnotationsType extends IsOK
     /**
      * Sets a new target
      *
-     * @param string $target
+     * @param  string $target
      * @return self
      */
     public function setTarget($target)
@@ -63,7 +62,7 @@ class TAnnotationsType extends IsOK
     /**
      * Sets a new qualifier
      *
-     * @param string $qualifier
+     * @param  string $qualifier
      * @return self
      */
     public function setQualifier($qualifier)
@@ -76,7 +75,7 @@ class TAnnotationsType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -87,7 +86,7 @@ class TAnnotationsType extends IsOK
     /**
      * isset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -98,7 +97,7 @@ class TAnnotationsType extends IsOK
     /**
      * unset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -119,7 +118,7 @@ class TAnnotationsType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

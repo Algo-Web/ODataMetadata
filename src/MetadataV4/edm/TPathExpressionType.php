@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TPathExpressionType
  *
- *
  * XSD Type: TPathExpression
  */
 class TPathExpressionType extends IsOK
@@ -31,7 +30,7 @@ class TPathExpressionType extends IsOK
     /**
      * Gets or sets the inner value
      *
-     * @param string ...$value
+     * @param  string ...$value
      * @return string
      */
     public function value(...$value)

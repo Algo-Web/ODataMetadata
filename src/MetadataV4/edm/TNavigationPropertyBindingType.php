@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TNavigationPropertyBindingType
  *
- *
  * XSD Type: TNavigationPropertyBinding
  */
 class TNavigationPropertyBindingType extends IsOK
@@ -36,7 +35,7 @@ class TNavigationPropertyBindingType extends IsOK
     /**
      * Sets a new path
      *
-     * @param string $path
+     * @param  string $path
      * @return self
      */
     public function setPath($path)
@@ -58,7 +57,7 @@ class TNavigationPropertyBindingType extends IsOK
     /**
      * Sets a new target
      *
-     * @param string $target
+     * @param  string $target
      * @return self
      */
     public function setTarget($target)

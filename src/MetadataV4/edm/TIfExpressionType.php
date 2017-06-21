@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TIfExpressionType
  *
- *
  * XSD Type: TIfExpression
  */
 class TIfExpressionType extends IsOK
@@ -197,7 +196,7 @@ class TIfExpressionType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -208,7 +207,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -219,7 +218,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -240,7 +239,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)
@@ -253,7 +252,7 @@ class TIfExpressionType extends IsOK
      * Adds as binary
      *
      * @return self
-     * @param string $binary
+     * @param  string $binary
      */
     public function addToBinary($binary)
     {
@@ -264,7 +263,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset binary
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetBinary($index)
@@ -275,7 +274,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset binary
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetBinary($index)
@@ -296,7 +295,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new binary
      *
-     * @param string $binary
+     * @param  string $binary
      * @return self
      */
     public function setBinary(array $binary)
@@ -309,7 +308,7 @@ class TIfExpressionType extends IsOK
      * Adds as bool
      *
      * @return self
-     * @param boolean $bool
+     * @param  boolean $bool
      */
     public function addToBool($bool)
     {
@@ -320,7 +319,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset bool
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetBool($index)
@@ -331,7 +330,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset bool
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetBool($index)
@@ -352,7 +351,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new bool
      *
-     * @param boolean $bool
+     * @param  boolean $bool
      * @return self
      */
     public function setBool(array $bool)
@@ -365,7 +364,7 @@ class TIfExpressionType extends IsOK
      * Adds as date
      *
      * @return self
-     * @param \DateTime $date
+     * @param  \DateTime $date
      */
     public function addToDate(\DateTime $date)
     {
@@ -376,7 +375,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset date
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetDate($index)
@@ -387,7 +386,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset date
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetDate($index)
@@ -408,7 +407,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new date
      *
-     * @param \DateTime $date
+     * @param  \DateTime $date
      * @return self
      */
     public function setDate(array $date)
@@ -421,7 +420,7 @@ class TIfExpressionType extends IsOK
      * Adds as dateTimeOffset
      *
      * @return self
-     * @param \DateTime $dateTimeOffset
+     * @param  \DateTime $dateTimeOffset
      */
     public function addToDateTimeOffset(\DateTime $dateTimeOffset)
     {
@@ -432,7 +431,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset dateTimeOffset
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetDateTimeOffset($index)
@@ -443,7 +442,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset dateTimeOffset
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetDateTimeOffset($index)
@@ -464,7 +463,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new dateTimeOffset
      *
-     * @param \DateTime $dateTimeOffset
+     * @param  \DateTime $dateTimeOffset
      * @return self
      */
     public function setDateTimeOffset(array $dateTimeOffset)
@@ -477,7 +476,7 @@ class TIfExpressionType extends IsOK
      * Adds as decimal
      *
      * @return self
-     * @param float $decimal
+     * @param  float $decimal
      */
     public function addToDecimal($decimal)
     {
@@ -488,7 +487,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset decimal
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetDecimal($index)
@@ -499,7 +498,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset decimal
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetDecimal($index)
@@ -520,7 +519,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new decimal
      *
-     * @param float $decimal
+     * @param  float $decimal
      * @return self
      */
     public function setDecimal(array $decimal)
@@ -533,7 +532,7 @@ class TIfExpressionType extends IsOK
      * Adds as duration
      *
      * @return self
-     * @param \DateInterval $duration
+     * @param  \DateInterval $duration
      */
     public function addToDuration(\DateInterval $duration)
     {
@@ -544,7 +543,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset duration
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetDuration($index)
@@ -555,7 +554,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset duration
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetDuration($index)
@@ -576,7 +575,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new duration
      *
-     * @param \DateInterval $duration
+     * @param  \DateInterval $duration
      * @return self
      */
     public function setDuration(array $duration)
@@ -589,7 +588,7 @@ class TIfExpressionType extends IsOK
      * Adds as enumMember
      *
      * @return self
-     * @param string $enumMember
+     * @param  string $enumMember
      */
     public function addToEnumMember($enumMember)
     {
@@ -600,7 +599,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset enumMember
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetEnumMember($index)
@@ -611,7 +610,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset enumMember
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetEnumMember($index)
@@ -632,7 +631,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new enumMember
      *
-     * @param string $enumMember
+     * @param  string $enumMember
      * @return self
      */
     public function setEnumMember(array $enumMember)
@@ -645,7 +644,7 @@ class TIfExpressionType extends IsOK
      * Adds as float
      *
      * @return self
-     * @param float $float
+     * @param  float $float
      */
     public function addToFloat($float)
     {
@@ -656,7 +655,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset float
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetFloat($index)
@@ -667,7 +666,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset float
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetFloat($index)
@@ -688,7 +687,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new float
      *
-     * @param float $float
+     * @param  float $float
      * @return self
      */
     public function setFloat(array $float)
@@ -701,7 +700,7 @@ class TIfExpressionType extends IsOK
      * Adds as guid
      *
      * @return self
-     * @param string $guid
+     * @param  string $guid
      */
     public function addToGuid($guid)
     {
@@ -712,7 +711,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset guid
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetGuid($index)
@@ -723,7 +722,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset guid
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetGuid($index)
@@ -744,7 +743,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new guid
      *
-     * @param string $guid
+     * @param  string $guid
      * @return self
      */
     public function setGuid(array $guid)
@@ -757,7 +756,7 @@ class TIfExpressionType extends IsOK
      * Adds as int
      *
      * @return self
-     * @param integer $int
+     * @param  integer $int
      */
     public function addToInt($int)
     {
@@ -768,7 +767,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset int
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetInt($index)
@@ -779,7 +778,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset int
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetInt($index)
@@ -800,7 +799,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new int
      *
-     * @param integer $int
+     * @param  integer $int
      * @return self
      */
     public function setInt(array $int)
@@ -813,7 +812,7 @@ class TIfExpressionType extends IsOK
      * Adds as string
      *
      * @return self
-     * @param string $string
+     * @param  string $string
      */
     public function addToString($string)
     {
@@ -824,7 +823,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset string
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetString($index)
@@ -835,7 +834,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset string
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetString($index)
@@ -856,7 +855,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new string
      *
-     * @param string $string
+     * @param  string $string
      * @return self
      */
     public function setString(array $string)
@@ -869,7 +868,7 @@ class TIfExpressionType extends IsOK
      * Adds as timeOfDay
      *
      * @return self
-     * @param \DateTime $timeOfDay
+     * @param  \DateTime $timeOfDay
      */
     public function addToTimeOfDay(\DateTime $timeOfDay)
     {
@@ -880,7 +879,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset timeOfDay
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetTimeOfDay($index)
@@ -891,7 +890,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset timeOfDay
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetTimeOfDay($index)
@@ -912,7 +911,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new timeOfDay
      *
-     * @param \DateTime $timeOfDay
+     * @param  \DateTime $timeOfDay
      * @return self
      */
     public function setTimeOfDay(array $timeOfDay)
@@ -925,7 +924,7 @@ class TIfExpressionType extends IsOK
      * Adds as annotationPath
      *
      * @return self
-     * @param string $annotationPath
+     * @param  string $annotationPath
      */
     public function addToAnnotationPath($annotationPath)
     {
@@ -936,7 +935,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset annotationPath
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAnnotationPath($index)
@@ -947,7 +946,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset annotationPath
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAnnotationPath($index)
@@ -968,7 +967,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new annotationPath
      *
-     * @param string $annotationPath
+     * @param  string $annotationPath
      * @return self
      */
     public function setAnnotationPath(array $annotationPath)
@@ -981,7 +980,7 @@ class TIfExpressionType extends IsOK
      * Adds as apply
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType $apply
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType $apply
      */
     public function addToApply(TApplyExpressionType $apply)
     {
@@ -992,7 +991,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset apply
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetApply($index)
@@ -1003,7 +1002,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset apply
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetApply($index)
@@ -1024,7 +1023,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new apply
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType[] $apply
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType[] $apply
      * @return self
      */
     public function setApply(array $apply)
@@ -1037,7 +1036,7 @@ class TIfExpressionType extends IsOK
      * Adds as cast
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $cast
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $cast
      */
     public function addToCast(TCastOrIsOfExpressionType $cast)
     {
@@ -1048,7 +1047,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset cast
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetCast($index)
@@ -1059,7 +1058,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset cast
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetCast($index)
@@ -1080,7 +1079,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new cast
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[] $cast
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[] $cast
      * @return self
      */
     public function setCast(array $cast)
@@ -1093,7 +1092,7 @@ class TIfExpressionType extends IsOK
      * Adds as collection
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType $collection
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType $collection
      */
     public function addToCollection(TCollectionExpressionType $collection)
     {
@@ -1104,7 +1103,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset collection
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetCollection($index)
@@ -1115,7 +1114,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset collection
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetCollection($index)
@@ -1136,7 +1135,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new collection
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType[] $collection
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType[] $collection
      * @return self
      */
     public function setCollection(array $collection)
@@ -1149,7 +1148,7 @@ class TIfExpressionType extends IsOK
      * Adds as if
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType $if
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType $if
      */
     public function addToIf(TIfExpressionType $if)
     {
@@ -1160,7 +1159,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset if
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetIf($index)
@@ -1171,7 +1170,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset if
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetIf($index)
@@ -1192,7 +1191,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new if
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType[] $if
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType[] $if
      * @return self
      */
     public function setIf(array $if)
@@ -1205,7 +1204,7 @@ class TIfExpressionType extends IsOK
      * Adds as eq
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $eq
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $eq
      */
     public function addToEq(TTwoChildrenExpressionType $eq)
     {
@@ -1216,7 +1215,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset eq
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetEq($index)
@@ -1227,7 +1226,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset eq
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetEq($index)
@@ -1248,7 +1247,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new eq
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $eq
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $eq
      * @return self
      */
     public function setEq(array $eq)
@@ -1261,7 +1260,7 @@ class TIfExpressionType extends IsOK
      * Adds as ne
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ne
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ne
      */
     public function addToNe(TTwoChildrenExpressionType $ne)
     {
@@ -1272,7 +1271,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset ne
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetNe($index)
@@ -1283,7 +1282,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset ne
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetNe($index)
@@ -1304,7 +1303,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new ne
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $ne
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $ne
      * @return self
      */
     public function setNe(array $ne)
@@ -1317,7 +1316,7 @@ class TIfExpressionType extends IsOK
      * Adds as ge
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ge
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ge
      */
     public function addToGe(TTwoChildrenExpressionType $ge)
     {
@@ -1328,7 +1327,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset ge
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetGe($index)
@@ -1339,7 +1338,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset ge
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetGe($index)
@@ -1360,7 +1359,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new ge
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $ge
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $ge
      * @return self
      */
     public function setGe(array $ge)
@@ -1373,7 +1372,7 @@ class TIfExpressionType extends IsOK
      * Adds as gt
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $gt
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $gt
      */
     public function addToGt(TTwoChildrenExpressionType $gt)
     {
@@ -1384,7 +1383,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset gt
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetGt($index)
@@ -1395,7 +1394,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset gt
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetGt($index)
@@ -1416,7 +1415,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new gt
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $gt
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $gt
      * @return self
      */
     public function setGt(array $gt)
@@ -1429,7 +1428,7 @@ class TIfExpressionType extends IsOK
      * Adds as le
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $le
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $le
      */
     public function addToLe(TTwoChildrenExpressionType $le)
     {
@@ -1440,7 +1439,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset le
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetLe($index)
@@ -1451,7 +1450,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset le
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetLe($index)
@@ -1472,7 +1471,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new le
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $le
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $le
      * @return self
      */
     public function setLe(array $le)
@@ -1485,7 +1484,7 @@ class TIfExpressionType extends IsOK
      * Adds as lt
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $lt
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $lt
      */
     public function addToLt(TTwoChildrenExpressionType $lt)
     {
@@ -1496,7 +1495,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset lt
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetLt($index)
@@ -1507,7 +1506,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset lt
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetLt($index)
@@ -1528,7 +1527,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new lt
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $lt
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $lt
      * @return self
      */
     public function setLt(array $lt)
@@ -1541,7 +1540,7 @@ class TIfExpressionType extends IsOK
      * Adds as and
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $and
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $and
      */
     public function addToAnd(TTwoChildrenExpressionType $and)
     {
@@ -1552,7 +1551,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset and
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAnd($index)
@@ -1563,7 +1562,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset and
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAnd($index)
@@ -1584,7 +1583,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new and
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $and
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $and
      * @return self
      */
     public function setAnd(array $and)
@@ -1597,7 +1596,7 @@ class TIfExpressionType extends IsOK
      * Adds as or
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $or
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $or
      */
     public function addToOr(TTwoChildrenExpressionType $or)
     {
@@ -1608,7 +1607,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset or
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetOr($index)
@@ -1619,7 +1618,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset or
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetOr($index)
@@ -1640,7 +1639,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new or
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $or
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType[] $or
      * @return self
      */
     public function setOr(array $or)
@@ -1653,7 +1652,7 @@ class TIfExpressionType extends IsOK
      * Adds as not
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $not
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $not
      */
     public function addToNot(TOneChildExpressionType $not)
     {
@@ -1664,7 +1663,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset not
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetNot($index)
@@ -1675,7 +1674,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset not
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetNot($index)
@@ -1696,7 +1695,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new not
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[] $not
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[] $not
      * @return self
      */
     public function setNot(array $not)
@@ -1709,7 +1708,7 @@ class TIfExpressionType extends IsOK
      * Adds as isOf
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $isOf
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $isOf
      */
     public function addToIsOf(TCastOrIsOfExpressionType $isOf)
     {
@@ -1720,7 +1719,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset isOf
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetIsOf($index)
@@ -1731,7 +1730,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset isOf
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetIsOf($index)
@@ -1752,7 +1751,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new isOf
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[] $isOf
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType[] $isOf
      * @return self
      */
     public function setIsOf(array $isOf)
@@ -1765,7 +1764,7 @@ class TIfExpressionType extends IsOK
      * Adds as labeledElement
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType $labeledElement
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType $labeledElement
      */
     public function addToLabeledElement(TLabeledElementExpressionType $labeledElement)
     {
@@ -1776,7 +1775,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset labeledElement
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetLabeledElement($index)
@@ -1787,7 +1786,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset labeledElement
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetLabeledElement($index)
@@ -1808,7 +1807,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new labeledElement
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType[] $labeledElement
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType[] $labeledElement
      * @return self
      */
     public function setLabeledElement(array $labeledElement)
@@ -1821,7 +1820,7 @@ class TIfExpressionType extends IsOK
      * Adds as labeledElementReference
      *
      * @return self
-     * @param string $labeledElementReference
+     * @param  string $labeledElementReference
      */
     public function addToLabeledElementReference($labeledElementReference)
     {
@@ -1832,7 +1831,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset labeledElementReference
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetLabeledElementReference($index)
@@ -1843,7 +1842,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset labeledElementReference
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetLabeledElementReference($index)
@@ -1864,7 +1863,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new labeledElementReference
      *
-     * @param string $labeledElementReference
+     * @param  string $labeledElementReference
      * @return self
      */
     public function setLabeledElementReference(array $labeledElementReference)
@@ -1877,7 +1876,7 @@ class TIfExpressionType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToNull(Annotation $annotation)
     {
@@ -1888,7 +1887,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset null
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetNull($index)
@@ -1899,7 +1898,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset null
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetNull($index)
@@ -1920,7 +1919,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new null
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $null
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $null
      * @return self
      */
     public function setNull(array $null)
@@ -1933,7 +1932,7 @@ class TIfExpressionType extends IsOK
      * Adds as navigationPropertyPath
      *
      * @return self
-     * @param string $navigationPropertyPath
+     * @param  string $navigationPropertyPath
      */
     public function addToNavigationPropertyPath($navigationPropertyPath)
     {
@@ -1944,7 +1943,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset navigationPropertyPath
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetNavigationPropertyPath($index)
@@ -1955,7 +1954,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset navigationPropertyPath
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetNavigationPropertyPath($index)
@@ -1976,7 +1975,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new navigationPropertyPath
      *
-     * @param string $navigationPropertyPath
+     * @param  string $navigationPropertyPath
      * @return self
      */
     public function setNavigationPropertyPath(array $navigationPropertyPath)
@@ -1989,7 +1988,7 @@ class TIfExpressionType extends IsOK
      * Adds as path
      *
      * @return self
-     * @param string $path
+     * @param  string $path
      */
     public function addToPath($path)
     {
@@ -2000,7 +1999,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset path
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetPath($index)
@@ -2011,7 +2010,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset path
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetPath($index)
@@ -2032,7 +2031,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new path
      *
-     * @param string $path
+     * @param  string $path
      * @return self
      */
     public function setPath(array $path)
@@ -2045,7 +2044,7 @@ class TIfExpressionType extends IsOK
      * Adds as propertyPath
      *
      * @return self
-     * @param string $propertyPath
+     * @param  string $propertyPath
      */
     public function addToPropertyPath($propertyPath)
     {
@@ -2056,7 +2055,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset propertyPath
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetPropertyPath($index)
@@ -2067,7 +2066,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset propertyPath
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetPropertyPath($index)
@@ -2088,7 +2087,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new propertyPath
      *
-     * @param string $propertyPath
+     * @param  string $propertyPath
      * @return self
      */
     public function setPropertyPath(array $propertyPath)
@@ -2101,7 +2100,7 @@ class TIfExpressionType extends IsOK
      * Adds as record
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType $record
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType $record
      */
     public function addToRecord(TRecordExpressionType $record)
     {
@@ -2112,7 +2111,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset record
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetRecord($index)
@@ -2123,7 +2122,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset record
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetRecord($index)
@@ -2144,7 +2143,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new record
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType[] $record
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType[] $record
      * @return self
      */
     public function setRecord(array $record)
@@ -2157,7 +2156,7 @@ class TIfExpressionType extends IsOK
      * Adds as urlRef
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $urlRef
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $urlRef
      */
     public function addToUrlRef(TOneChildExpressionType $urlRef)
     {
@@ -2168,7 +2167,7 @@ class TIfExpressionType extends IsOK
     /**
      * isset urlRef
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetUrlRef($index)
@@ -2179,7 +2178,7 @@ class TIfExpressionType extends IsOK
     /**
      * unset urlRef
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetUrlRef($index)
@@ -2200,7 +2199,7 @@ class TIfExpressionType extends IsOK
     /**
      * Sets a new urlRef
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[] $urlRef
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType[] $urlRef
      * @return self
      */
     public function setUrlRef(array $urlRef)

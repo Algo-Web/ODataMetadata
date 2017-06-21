@@ -11,7 +11,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 /**
  * Class representing TPropertyReferenceExpressionType
  *
- *
  * XSD Type: TPropertyReferenceExpression
  */
 class TPropertyReferenceExpressionType extends IsOK
@@ -41,7 +40,7 @@ class TPropertyReferenceExpressionType extends IsOK
     /**
      * Sets a new property
      *
-     * @param string $property
+     * @param  string $property
      * @return self
      */
     public function setProperty($property)

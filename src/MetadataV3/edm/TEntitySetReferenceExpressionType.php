@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 /**
  * Class representing TEntitySetReferenceExpressionType
  *
- *
  * XSD Type: TEntitySetReferenceExpression
  */
 class TEntitySetReferenceExpressionType extends IsOK
@@ -33,7 +32,7 @@ class TEntitySetReferenceExpressionType extends IsOK
     /**
      * Sets a new entitySet
      *
-     * @param string $entitySet
+     * @param  string $entitySet
      * @return self
      */
     public function setEntitySet($entitySet)

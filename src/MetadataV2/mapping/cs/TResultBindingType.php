@@ -5,7 +5,6 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 /**
  * Class representing TResultBindingType
  *
- *
  * XSD Type: TResultBinding
  */
 class TResultBindingType extends IsOK
@@ -34,7 +33,7 @@ class TResultBindingType extends IsOK
     /**
      * Sets a new columnName
      *
-     * @param string $columnName
+     * @param  string $columnName
      * @return self
      */
     public function setColumnName($columnName)
@@ -56,7 +55,7 @@ class TResultBindingType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)

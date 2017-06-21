@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TFunctionImportType
  *
- *
  * XSD Type: TFunctionImport
  */
 class TFunctionImportType extends IsOK
@@ -51,7 +50,7 @@ class TFunctionImportType extends IsOK
     /**
      * Sets a new function
      *
-     * @param string $function
+     * @param  string $function
      * @return self
      */
     public function setFunction($function)
@@ -73,7 +72,7 @@ class TFunctionImportType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -95,7 +94,7 @@ class TFunctionImportType extends IsOK
     /**
      * Sets a new entitySet
      *
-     * @param string $entitySet
+     * @param  string $entitySet
      * @return self
      */
     public function setEntitySet($entitySet)
@@ -117,7 +116,7 @@ class TFunctionImportType extends IsOK
     /**
      * Sets a new includeInServiceDocument
      *
-     * @param boolean $includeInServiceDocument
+     * @param  boolean $includeInServiceDocument
      * @return self
      */
     public function setIncludeInServiceDocument($includeInServiceDocument)
@@ -130,7 +129,7 @@ class TFunctionImportType extends IsOK
      * Adds as annotation
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -141,7 +140,7 @@ class TFunctionImportType extends IsOK
     /**
      * isset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetAnnotation($index)
@@ -152,7 +151,7 @@ class TFunctionImportType extends IsOK
     /**
      * unset annotation
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -173,7 +172,7 @@ class TFunctionImportType extends IsOK
     /**
      * Sets a new annotation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
      */
     public function setAnnotation(array $annotation)

@@ -10,7 +10,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
 /**
  * Class representing TReferenceTypeType
  *
- *
  * XSD Type: TReferenceType
  */
 class TReferenceTypeType extends IsOK
@@ -34,7 +33,7 @@ class TReferenceTypeType extends IsOK
     /**
      * Sets a new type
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType($type)

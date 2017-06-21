@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TAssociationEndType
  *
- *
  * XSD Type: TAssociationEnd
  */
 class TAssociationEndType extends IsOK
@@ -51,7 +50,7 @@ class TAssociationEndType extends IsOK
     /**
      * Sets a new type
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType($type)
@@ -73,7 +72,7 @@ class TAssociationEndType extends IsOK
     /**
      * Sets a new role
      *
-     * @param string $role
+     * @param  string $role
      * @return self
      */
     public function setRole($role)
@@ -95,7 +94,7 @@ class TAssociationEndType extends IsOK
     /**
      * Sets a new multiplicity
      *
-     * @param string $multiplicity
+     * @param  string $multiplicity
      * @return self
      */
     public function setMultiplicity($multiplicity)
@@ -117,7 +116,7 @@ class TAssociationEndType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)
@@ -130,7 +129,7 @@ class TAssociationEndType extends IsOK
      * Adds as onDelete
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TOnActionType $onDelete
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TOnActionType $onDelete
      */
     public function addToOnDelete(TOnActionType $onDelete)
     {
@@ -141,7 +140,7 @@ class TAssociationEndType extends IsOK
     /**
      * isset onDelete
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetOnDelete($index)
@@ -152,7 +151,7 @@ class TAssociationEndType extends IsOK
     /**
      * unset onDelete
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetOnDelete($index)
@@ -173,7 +172,7 @@ class TAssociationEndType extends IsOK
     /**
      * Sets a new onDelete
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV2\edm\TOnActionType[] $onDelete
+     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TOnActionType[] $onDelete
      * @return self
      */
     public function setOnDelete(array $onDelete)

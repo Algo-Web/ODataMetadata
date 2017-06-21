@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TFunctionTypeTrait;
 /**
  * Class representing TParameterType
  *
- *
  * XSD Type: TParameter
  */
 class TParameterType extends IsOK
@@ -68,7 +67,7 @@ class TParameterType extends IsOK
     /**
      * Sets a new name
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -95,7 +94,7 @@ class TParameterType extends IsOK
     /**
      * Sets a new type
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType($type)
@@ -126,7 +125,7 @@ class TParameterType extends IsOK
     /**
      * Sets a new mode
      *
-     * @param string $mode
+     * @param  string $mode
      * @return self
      */
     public function setMode($mode)
@@ -157,7 +156,7 @@ class TParameterType extends IsOK
     /**
      * Sets a new maxLength
      *
-     * @param string $maxLength
+     * @param  string $maxLength
      * @return self
      */
     public function setMaxLength($maxLength)
@@ -179,7 +178,7 @@ class TParameterType extends IsOK
     /**
      * Sets a new precision
      *
-     * @param integer $precision
+     * @param  integer $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -201,7 +200,7 @@ class TParameterType extends IsOK
     /**
      * Sets a new scale
      *
-     * @param integer $scale
+     * @param  integer $scale
      * @return self
      */
     public function setScale($scale)
@@ -223,7 +222,7 @@ class TParameterType extends IsOK
     /**
      * Sets a new sRID
      *
-     * @param string $sRID
+     * @param  string $sRID
      * @return self
      */
     public function setSRID($sRID)
@@ -250,7 +249,7 @@ class TParameterType extends IsOK
     /**
      * Sets a new documentation
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
      */
     public function setDocumentation(TDocumentationType $documentation)

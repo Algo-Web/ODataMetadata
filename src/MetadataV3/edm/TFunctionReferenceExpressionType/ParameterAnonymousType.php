@@ -50,7 +50,7 @@ class ParameterAnonymousType extends IsOK
     /**
      * Sets a new type
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType($type)
@@ -68,7 +68,7 @@ class ParameterAnonymousType extends IsOK
      * Adds as collectionType
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
      */
     public function addToCollectionType(TCollectionTypeType $collectionType)
     {
@@ -83,7 +83,7 @@ class ParameterAnonymousType extends IsOK
     /**
      * isset collectionType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetCollectionType($index)
@@ -94,7 +94,7 @@ class ParameterAnonymousType extends IsOK
     /**
      * unset collectionType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetCollectionType($index)
@@ -115,7 +115,7 @@ class ParameterAnonymousType extends IsOK
     /**
      * Sets a new collectionType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType[] $collectionType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType[] $collectionType
      * @return self
      */
     public function setCollectionType(array $collectionType)
@@ -127,7 +127,8 @@ class ParameterAnonymousType extends IsOK
             $msg,
             0,
             1
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->collectionType = $collectionType;
@@ -138,7 +139,7 @@ class ParameterAnonymousType extends IsOK
      * Adds as referenceType
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
      */
     public function addToReferenceType(TReferenceTypeType $referenceType)
     {
@@ -153,7 +154,7 @@ class ParameterAnonymousType extends IsOK
     /**
      * isset referenceType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetReferenceType($index)
@@ -164,7 +165,7 @@ class ParameterAnonymousType extends IsOK
     /**
      * unset referenceType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetReferenceType($index)
@@ -185,7 +186,7 @@ class ParameterAnonymousType extends IsOK
     /**
      * Sets a new referenceType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType[] $referenceType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType[] $referenceType
      * @return self
      */
     public function setReferenceType(array $referenceType)
@@ -197,7 +198,8 @@ class ParameterAnonymousType extends IsOK
             $msg,
             0,
             1
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->referenceType = $referenceType;
@@ -208,7 +210,7 @@ class ParameterAnonymousType extends IsOK
      * Adds as property
      *
      * @return self
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
      */
     public function addToRowType(TPropertyType $property)
     {
@@ -223,7 +225,7 @@ class ParameterAnonymousType extends IsOK
     /**
      * isset rowType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return boolean
      */
     public function issetRowType($index)
@@ -234,7 +236,7 @@ class ParameterAnonymousType extends IsOK
     /**
      * unset rowType
      *
-     * @param scalar $index
+     * @param  scalar $index
      * @return void
      */
     public function unsetRowType($index)
@@ -255,7 +257,7 @@ class ParameterAnonymousType extends IsOK
     /**
      * Sets a new rowType
      *
-     * @param \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
+     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)
@@ -267,7 +269,8 @@ class ParameterAnonymousType extends IsOK
             $msg,
             0,
             1
-        )) {
+        )
+        ) {
             throw new \InvalidArgumentException($msg);
         }
         $this->rowType = $rowType;
@@ -287,7 +290,8 @@ class ParameterAnonymousType extends IsOK
             $msg,
             0,
             1
-        )) {
+        )
+        ) {
             return false;
         }
 
@@ -297,7 +301,8 @@ class ParameterAnonymousType extends IsOK
             $msg,
             0,
             1
-        )) {
+        )
+        ) {
             return false;
         }
 
@@ -307,7 +312,8 @@ class ParameterAnonymousType extends IsOK
             $msg,
             0,
             1
-        )) {
+        )
+        ) {
             return false;
         }
 

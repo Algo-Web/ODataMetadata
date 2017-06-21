@@ -7,7 +7,6 @@ use AlgoWeb\ODataMetadata\IsOK;
 /**
  * Class representing TAliasType
  *
- *
  * XSD Type: TAlias
  */
 class TAliasType extends IsOK
@@ -36,7 +35,7 @@ class TAliasType extends IsOK
     /**
      * Sets a new key
      *
-     * @param string $key
+     * @param  string $key
      * @return self
      */
     public function setKey($key)
@@ -58,7 +57,7 @@ class TAliasType extends IsOK
     /**
      * Sets a new value
      *
-     * @param string $value
+     * @param  string $value
      * @return self
      */
     public function setValue($value)
