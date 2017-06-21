@@ -31,6 +31,7 @@ class TBoolConstantExpressionType extends IsOK
      * Gets or sets the inner value
      *
      * @param  boolean ...$value
+     * @param boolean[] $value
      * @return boolean
      */
     public function value(...$value)

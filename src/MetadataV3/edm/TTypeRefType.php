@@ -32,11 +32,11 @@ class TTypeRefType extends IsOK
      */
     private $type = null;
 
-     /**
-      * Gets as type
-      *
-      * @return string
-      */
+        /**
+         * Gets as type
+         *
+         * @return string
+         */
     public function getType()
     {
         return $this->type;

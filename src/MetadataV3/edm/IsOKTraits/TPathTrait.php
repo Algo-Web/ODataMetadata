@@ -8,6 +8,9 @@ trait TPathTrait
 {
     use xsdRestrictions;
 
+    /**
+     * @param string $string
+     */
     public function isTPathValid($string)
     {
         // The below pattern represents the allowed identifiers in ECMA specification plus the '/' for path segment

@@ -688,12 +688,12 @@ trait GExpressionTrait
             }
             if (-1 < $this->gExpressionMinimum && $counter < $this->gExpressionMinimum) {
                 $msg = $counter . " fields not null.  Need minimum of ".$this->gExpressionMinimum. ": "
-                       . get_class($this);
+                        . get_class($this);
                 return false;
             }
             if (-1 < $this->gExpressionMaximum && $counter > $this->gExpressionMaximum) {
                 $msg = $counter . " fields not null.  Need maximum of ".$this->gExpressionMaximum. ": "
-                       . get_class($this);
+                        . get_class($this);
                 return false;
             }
         }
@@ -725,7 +725,7 @@ trait GExpressionTrait
                 return false;
             }
             if (!$this->isObjectNullOrType($type, $this->$key)) {
-                $msg = 'Type mismatch - should be ' .$type. ", is ".get_class($this->$key). ": " . get_class($this);
+                $msg = 'Type mismatch - should be ' . $type . ", is " . get_class($this->$key) . ": " . get_class($this);
                 return false;
             }
         }

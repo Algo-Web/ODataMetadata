@@ -31,6 +31,7 @@ class TDurationConstantExpressionType extends IsOK
      * Gets or sets the inner value
      *
      * @param  \DateInterval ...$value
+     * @param \DateInterval[] $value
      * @return \DateInterval
      */
     public function value(...$value)

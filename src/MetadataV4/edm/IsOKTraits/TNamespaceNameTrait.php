@@ -8,6 +8,9 @@ trait TNamespaceNameTrait
 {
     use xsdRestrictions;
 
+    /**
+     * @param string $TNamespaceName
+     */
     protected function isTNamespaceNameValid($TNamespaceName)
     {
         if (!$this->isNCName($TNamespaceName)) {

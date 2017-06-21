@@ -82,7 +82,7 @@ trait XSDTopLevelTrait
             $rawDate = $input;
         }
 
-        return $rawDate->format('Y-m-d').'T'.$rawDate->format('H:i:s');
+        return $rawDate->format('Y-m-d') . 'T' . $rawDate->format('H:i:s');
     }
 
     public function hexBinary($input)

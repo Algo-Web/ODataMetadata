@@ -147,7 +147,7 @@ class TSchemaType extends IsOK
             $numDefaults += $isDefault ? 1 : 0;
         }
         if (1 != $numDefaults) {
-            $msg = "Exactly one entityContainer must be set as default container, actually have ".$numDefaults;
+            $msg = "Exactly one entityContainer must be set as default container, actually have " . $numDefaults;
             return false;
         }
 
@@ -169,11 +169,11 @@ class TSchemaType extends IsOK
         // Check Associations to associationSets
         if (count($associationSets) != count($associationNames)) {
             $msg = "we have " . count($associationSets) . "association sets and " . count($associationNames)
-                   . " associations, they should be the same";
+                    . " associations, they should be the same";
         }
         if (count($associationNames) * 2 < count($navigationProperties)) {
             $msg = "we have too many navigation properties. should have no more then double the"
-                   ." number of associations.";
+                    ." number of associations.";
         }
         foreach ($associationNames as $associationName => $associationEnds) {
             if (!array_key_exists($associationName, $associationSets)) {
@@ -188,23 +188,23 @@ class TSchemaType extends IsOK
             $roles = [$associationEnds[0]->getRole(), $associationEnds[1]->getRole()];
             if (!in_array($associationSets[$associationName][0]->getRole(), $roles)) {
                 $msg = "association Set role " . $associationSets[$associationName][0]->getRole()
-                       . "lacks a matching property in the attached association";
+                        . "lacks a matching property in the attached association";
                 return false;
             }
             if (!in_array($associationSets[$associationName][1]->getRole(), $roles)) {
                 $msg = "association Set role " . $associationSets[$associationName][1]->getRole()
-                       . "lacks a matching property in the attached association";
+                        . "lacks a matching property in the attached association";
                 return false;
             }
             foreach ($navigationProperties[$associationName] as $navProp) {
                 if (!in_array($navProp->getToRole(), $roles)) {
                     $msg = "Navigation Property Role " . $navProp->getToRole()
-                         . " lacks a matching Property in the assocation";
+                            . " lacks a matching Property in the assocation";
                     return false;
                 }
                 if (!in_array($navProp->getFromRole(), $roles)) {
                     $msg = "Navigation Property Role " .$navProp->getToRole()
-                         . " lacks a matching Property in the assocation";
+                            . " lacks a matching Property in the assocation";
                     return false;
                 }
             }

@@ -31,6 +31,7 @@ class TTimeOfDayConstantExpressionType extends IsOK
      * Gets or sets the inner value
      *
      * @param  \DateTime ...$value
+     * @param \DateTime[] $value
      * @return \DateTime
      */
     public function value(...$value)

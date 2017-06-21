@@ -31,6 +31,7 @@ class TIntConstantExpressionType extends IsOK
      * Gets or sets the inner value
      *
      * @param  integer ...$value
+     * @param integer[] $value
      * @return integer
      */
     public function value(...$value)

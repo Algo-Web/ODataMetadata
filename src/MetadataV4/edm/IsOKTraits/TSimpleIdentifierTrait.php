@@ -8,6 +8,9 @@ trait TSimpleIdentifierTrait
 {
     use xsdRestrictions;
 
+    /**
+     * @param string $TSimpleIdentifier
+     */
     protected function isTSimpleIdentifierValid($TSimpleIdentifier)
     {
         if (!$this->isNCName($TSimpleIdentifier)) {

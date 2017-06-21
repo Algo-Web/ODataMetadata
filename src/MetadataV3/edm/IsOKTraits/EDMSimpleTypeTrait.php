@@ -13,7 +13,7 @@ trait EDMSimpleTypeTrait
             "GeometricMultiPoint", "GeometricMultiLineString", "GeometricMultiPolygon", "GeometryCollection",
             "Guid", "Int16", "Int32", "Int64", "String", "SByte"];
         if (!is_string($string)) {
-            $msg = "Input must be a string: ". get_class($this);
+            $msg = "Input must be a string: " . get_class($this);
             throw new \InvalidArgumentException($msg);
         }
         if (!in_array($string, $validType)) {

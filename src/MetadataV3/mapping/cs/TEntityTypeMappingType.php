@@ -158,7 +158,7 @@ class TEntityTypeMappingType extends IsOK
             $msg = 'Type name cannot be null or empty';
             return false;
         }
-        if (null != $this->modificationFunctionMapping && !$this->modificationFunctionMapping>isOK($msg)) {
+        if (null != $this->modificationFunctionMapping && !$this->modificationFunctionMapping > isOK($msg)) {
             return false;
         }
         if (!$this->isValidArray(

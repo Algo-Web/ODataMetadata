@@ -17,7 +17,7 @@ class TAnonymousFunctionExpressionType extends IsOK
     
     public function __construct()
     {
-        $this->gExpressionMaximum = (0 == count($this->parameters)) ? 1 : 0 ;
+        $this->gExpressionMaximum = (0 == count($this->parameters)) ? 1 : 0;
     }
     
     /**

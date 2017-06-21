@@ -140,7 +140,7 @@ class FunctionImportAnonymousType extends IsOK
         }
 
         $numParms = count($this->parameter);
-        for ($i = 0; $i < $numParms -2; $i++) {
+        for ($i = 0; $i < $numParms - 2; $i++) {
             $outName = $this->parameter[$i]->getName();
             for ($j = $i + 1; $j < $numParms - 1; $j++) {
                 $inName = $this->parameter[$j]->getName();
