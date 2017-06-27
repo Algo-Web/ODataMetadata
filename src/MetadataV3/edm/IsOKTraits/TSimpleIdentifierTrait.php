@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\xsdRestrictions;
 
 trait TSimpleIdentifierTrait
 {
-    static protected $v3SimpleIdentifierCache = [];
+    protected static $v3SimpleIdentifierCache = [];
 
     use xsdRestrictions;
 
