@@ -190,3 +190,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType:
             exclude: true
         v3QualifiedNameRegex:
             exclude: true
+        v3EDMSimpleType:
+            exclude: true

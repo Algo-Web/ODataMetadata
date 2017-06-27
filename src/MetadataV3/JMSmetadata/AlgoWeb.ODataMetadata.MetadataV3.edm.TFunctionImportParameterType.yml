@@ -79,3 +79,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType:
             exclude: true
         v3QualifiedNameRegex:
             exclude: true
+        v3EDMSimpleType:
+            exclude: true
