@@ -232,8 +232,7 @@ class EntitySetAnonymousType extends IsOK
             $typeAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
             $msg
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
         $this->typeAnnotation = $typeAnnotation;
@@ -248,24 +247,21 @@ class EntitySetAnonymousType extends IsOK
             $msg,
             0,
             1
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->valueAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isValidArrayOK(
             $this->typeAnnotation,
             '\AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType',
             $msg
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isTEntitySetAttributesOK($msg)) {

@@ -3,6 +3,9 @@
 namespace AlgoWeb\ODataMetadata\Tests\v3\edm\EntityContainer;
 
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 use Mockery as m;
 
@@ -102,5 +105,199 @@ class EntitySetAnonymousTypeTest extends TestCase
         $this->assertFalse($foo->isTEntitySetAttributesOK($actual));
         $this->assertStringStartsWith($expectedStarts, $actual);
         $this->assertStringEndsWith($expectedEnds, $actual);
+    }
+
+    public function testSetBadTypeAnnotation()
+    {
+        $expected = "";
+        $actual = null;
+
+        $type = m::mock(TTypeAnnotationType::class)->makePartial();
+        $type->shouldReceive('isOK')->andReturn(false);
+
+        $foo = new EntitySetAnonymousType();
+
+        try {
+            $foo->setTypeAnnotation([$type]);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddBadTypeAnnotation()
+    {
+        $expected = '';
+        $actual = null;
+
+        $type = m::mock(TTypeAnnotationType::class)->makePartial();
+        $type->shouldReceive('isOK')->andReturn(false);
+
+        $foo = new EntitySetAnonymousType();
+
+        try {
+            $foo->addToTypeAnnotation($type);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddGoodTypeAnnotation()
+    {
+        $type = m::mock(TTypeAnnotationType::class)->makePartial();
+        $type->shouldReceive('isOK')->andReturn(true);
+
+        $foo = new EntitySetAnonymousType();
+
+        $foo->addToTypeAnnotation($type);
+        $this->assertTrue($foo->issetTypeAnnotation(0));
+        $foo->unsetTypeAnnotation(0);
+        $this->assertFalse($foo->issetTypeAnnotation(0));
+    }
+
+    public function testAddBadDocumentation()
+    {
+        $expected = '';
+        $actual = null;
+
+        $doc = m::mock(TDocumentationType::class);
+        $doc->shouldReceive('isOK')->andReturn(false);
+
+        $foo = new EntitySetAnonymousType();
+
+        try {
+            $foo->addToDocumentation($doc);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddGoodDocumentation()
+    {
+        $doc = m::mock(TDocumentationType::class);
+        $doc->shouldReceive('isOK')->andReturn(true);
+
+        $foo = new EntitySetAnonymousType();
+
+        $foo->addToDocumentation($doc);
+        $this->assertTrue($foo->issetDocumentation(0));
+        $foo->unsetDocumentation(0);
+        $this->assertFalse($foo->issetDocumentation(0));
+    }
+
+    public function testSetBadDocumentation()
+    {
+        $expected = '';
+        $actual = null;
+
+        $doc = m::mock(TDocumentationType::class);
+        $doc->shouldReceive('isOK')->andReturn(false);
+
+        $foo = new EntitySetAnonymousType();
+
+        try {
+            $foo->setDocumentation([$doc]);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetBadValueAnnotation()
+    {
+        $expected = "";
+        $actual = null;
+
+        $type = m::mock(TValueAnnotationType::class)->makePartial();
+        $type->shouldReceive('isOK')->andReturn(false);
+
+        $foo = new EntitySetAnonymousType();
+
+        try {
+            $foo->setValueAnnotation([$type]);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddBadValueAnnotation()
+    {
+        $expected = '';
+        $actual = null;
+
+        $type = m::mock(TValueAnnotationType::class)->makePartial();
+        $type->shouldReceive('isOK')->andReturn(false);
+
+        $foo = new EntitySetAnonymousType();
+
+        try {
+            $foo->addToValueAnnotation($type);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddGoodValueAnnotation()
+    {
+        $type = m::mock(TValueAnnotationType::class)->makePartial();
+        $type->shouldReceive('isOK')->andReturn(true);
+
+        $foo = new EntitySetAnonymousType();
+
+        $foo->addToValueAnnotation($type);
+        $this->assertTrue($foo->issetValueAnnotation(0));
+        $foo->unsetValueAnnotation(0);
+        $this->assertFalse($foo->issetValueAnnotation(0));
+    }
+
+    public function testIsOkTooManyDocumentation()
+    {
+        $expected = 'Supplied array not a valid array: '
+                    .'AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType';
+        $actual = null;
+
+        $doc = m::mock(TDocumentationType::class);
+        $doc->shouldReceive('isOK')->andReturn(true);
+
+        $foo = new EntitySetAnonymousType();
+        $foo->addToDocumentation($doc);
+        $foo->addToDocumentation($doc);
+
+        $this->assertFalse($foo->isOK($actual));
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testIsOKBadTypeAnnotations()
+    {
+        $expected = '';
+        $actual = null;
+
+        $type = m::mock(TTypeAnnotationType::class)->makePartial();
+        $type->shouldReceive('isOK')->andReturn(true, false)->twice();
+
+        $foo = new EntitySetAnonymousType();
+        $foo->addToTypeAnnotation($type);
+
+        $this->assertFalse($foo->isOK($actual));
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testIsOKBadValueAnnotations()
+    {
+        $expected = '';
+        $actual = null;
+
+        $type = m::mock(TValueAnnotationType::class)->makePartial();
+        $type->shouldReceive('isOK')->andReturn(true, false)->twice();
+
+        $foo = new EntitySetAnonymousType();
+        $foo->addToValueAnnotation($type);
+
+        $this->assertFalse($foo->isOK($actual));
+        $this->assertEquals($expected, $actual);
     }
 }
