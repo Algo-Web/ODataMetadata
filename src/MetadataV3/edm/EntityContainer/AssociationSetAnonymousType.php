@@ -158,8 +158,7 @@ class AssociationSetAnonymousType extends IsOK
             $msg,
             0,
             2
-        )
-        ) {
+        )) {
             throw new \InvalidArgumentException($msg);
         }
 
@@ -183,8 +182,7 @@ class AssociationSetAnonymousType extends IsOK
             $msg,
             0,
             2
-        )
-        ) {
+        )) {
             return false;
         }
         if (!$this->isExtensibilityElementOK($msg)) {
