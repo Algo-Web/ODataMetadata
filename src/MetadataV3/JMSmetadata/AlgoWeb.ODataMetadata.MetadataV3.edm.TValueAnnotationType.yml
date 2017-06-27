@@ -256,3 +256,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType:
             exclude: true
         gExpressionObjectFieldTypes:
             exclude: true
+        v3SimpleIdentifierCache:
+            exclude: true

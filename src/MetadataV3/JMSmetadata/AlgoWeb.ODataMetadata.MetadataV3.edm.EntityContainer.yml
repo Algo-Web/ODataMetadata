@@ -101,3 +101,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer:
             xml_element:
                 namespace: http://schemas.microsoft.com/ado/2007/08/dataservices/metadata
             type: boolean
+        v3SimpleIdentifierCache:
+            exclude: true

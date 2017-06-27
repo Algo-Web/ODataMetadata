@@ -51,3 +51,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType:
                 entry_name: OnDelete
                 namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TOnActionType>
+        v3SimpleIdentifierCache:
+            exclude: true

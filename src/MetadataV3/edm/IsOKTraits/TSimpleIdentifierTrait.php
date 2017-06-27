@@ -6,10 +6,18 @@ use AlgoWeb\ODataMetadata\xsdRestrictions;
 
 trait TSimpleIdentifierTrait
 {
+    static protected $v3SimpleIdentifierCache = [];
+
     use xsdRestrictions;
 
     public function isTSimpleIdentifierValid($string)
     {
+        if (!(is_string($string) && (trim($string) == $string) && 480 >= strlen($string))) {
+            return false;
+        }
+        if (isset(static::$v3SimpleIdentifierCache[$string])) {
+            return static::$v3SimpleIdentifierCache[$string];
+        }
         //The below pattern represents the allowed identifiers in ECMA specification
         /*
          * Match a single character present in the list below [\p{L}\p{Nl}]
@@ -29,7 +37,8 @@ trait TSimpleIdentifierTrait
          * \p{Cf} matches invisible formatting indicator
          */
         $regex = '/[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}/';
-        return is_string($string) && (trim($string) == $string) && 480 >= strlen($string)
-               && $this->matchesRegexPattern($regex, $string);
+        $result = $this->matchesRegexPattern($regex, $string);
+        static::$v3SimpleIdentifierCache[$string] = $result;
+        return $result;
     }
 }
