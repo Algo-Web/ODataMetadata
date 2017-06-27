@@ -25,7 +25,16 @@ class TDataServicesType extends IsOK
 
     public function __construct($maxDataServiceVersion = '3.0', $dataServiceVersion = '3.0')
     {
-        if ('3.0' == $this->maxDataServiceVersion && '4.0' == $this->dataServiceVersion) {
+        if (!is_numeric($maxDataServiceVersion)) {
+            $msg = "Maximum service version must be numeric";
+            throw new \InvalidArgumentException($msg);
+        }
+        if (!is_numeric($dataServiceVersion)) {
+            $msg = "Data service version must be numeric";
+            throw new \InvalidArgumentException($msg);
+        }
+
+        if (floatval($maxDataServiceVersion) < floatval($dataServiceVersion)) {
             $msg = "Data service version cannot be greater than maximum service version";
             throw new \InvalidArgumentException($msg);
         }
@@ -144,7 +153,9 @@ class TDataServicesType extends IsOK
     {
         if (!$this->isValidArrayOK(
             $dataServices,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\Schema'
+            '\AlgoWeb\ODataMetadata\MetadataV3\edm\Schema',
+            $msg,
+            1
         )
         ) {
             $msg = "Data services array not a valid array";
@@ -156,16 +167,6 @@ class TDataServicesType extends IsOK
 
     public function isOK(&$msg = null)
     {
-        $dataValid = ['1.0', '2.0', '3.0', '4.0'];
-        $maxDataValid = ['3.0', '4.0'];
-        if (!in_array($this->maxDataServiceVersion, $maxDataValid)) {
-            $msg = "Maximum data service version must be 3.0 or 4.0";
-            return false;
-        }
-        if (!in_array($this->dataServiceVersion, $dataValid)) {
-            $msg = "Data service version must be 1.0, 2.0, 3.0 or 4.0";
-            return false;
-        }
         if ('3.0' == $this->maxDataServiceVersion && '4.0' == $this->dataServiceVersion) {
             $msg = "Data service version cannot be greater than maximum service version";
             return false;
