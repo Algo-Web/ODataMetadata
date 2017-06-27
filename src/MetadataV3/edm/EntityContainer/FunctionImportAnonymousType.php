@@ -140,9 +140,14 @@ class FunctionImportAnonymousType extends IsOK
         }
 
         $numParms = count($this->parameter);
-        for ($i = 0; $i < $numParms - 2; $i++) {
+        for ($i = 0; $i < $numParms - 1; $i++) {
+            assert($this->parameter[$i] instanceof TFunctionImportParameterType, get_class($this->parameter[$i]));
             $outName = $this->parameter[$i]->getName();
-            for ($j = $i + 1; $j < $numParms - 1; $j++) {
+            for ($j = $i + 1; $j < $numParms; $j++) {
+                assert(
+                    $this->parameter[$j] instanceof TFunctionImportParameterType,
+                    get_class($this->parameter[$j]). ' ' . $j
+                );
                 $inName = $this->parameter[$j]->getName();
                 if ($outName == $inName) {
                     $msg = "Name collision in parameters array";

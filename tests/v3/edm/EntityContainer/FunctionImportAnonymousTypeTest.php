@@ -3,6 +3,8 @@
 namespace AlgoWeb\ODataMetadata\Tests\v3\edm\EntityContainer;
 
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
@@ -246,6 +248,122 @@ class FunctionImportAnonymousTypeTest extends TestCase
         $foo->addToReturnType($entitySet);
 
         $this->assertFalse($foo->isTFunctionImportAttributesValid($actual));
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetBadDocumentation()
+    {
+        $expected = "";
+        $actual = null;
+
+        $documentation = m::mock(TDocumentationType::class);
+        $documentation->shouldReceive('isOK')->andReturn(false)->once();
+
+        $foo = new FunctionImportAnonymousType();
+
+        try {
+            $foo->setDocumentation($documentation);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddBadParameter()
+    {
+        $expected = "";
+        $actual = null;
+
+        $function = m::mock(TFunctionImportParameterType::class);
+        $function->shouldReceive('isOK')->andReturn(false)->once();
+
+        $foo = new FunctionImportAnonymousType();
+
+        try {
+            $foo->addToParameter($function);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testAddGoodParameter()
+    {
+        $function = m::mock(TFunctionImportParameterType::class);
+        $function->shouldReceive('isOK')->andReturn(true)->once();
+
+        $foo = new FunctionImportAnonymousType();
+        $foo->addToParameter($function);
+        $this->assertTrue($foo->issetParameter(0));
+        $this->assertFalse($foo->issetParameter(1));
+        $this->assertEquals(1, count($foo->getParameter()));
+        $foo->unsetParameter(0);
+        $this->assertEquals(0, count($foo->getParameter()));
+    }
+
+    public function testSetBadParameterArray()
+    {
+        $expected = "";
+        $actual = null;
+
+        $function = m::mock(TFunctionImportParameterType::class);
+        $function->shouldReceive('isOK')->andReturn(false)->once();
+
+        $foo = new FunctionImportAnonymousType();
+
+        try {
+            $foo->setParameter([$function]);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testIsOkUnderParameterNameCollision()
+    {
+        $expected = "Name collision in parameters array";
+        $actual = null;
+
+        $function = m::mock(TFunctionImportParameterType::class)->makePartial();
+        $function->shouldReceive('isOK')->andReturn(true)->once();
+        $function->shouldReceive('getName')->andReturn('noname');
+        $this->assertTrue($function instanceof TFunctionImportParameterType);
+
+        $func2 = m::mock(TFunctionImportParameterType::class)->makePartial();
+        $func2->shouldReceive('isOK')->andReturn(true)->once();
+        $func2->shouldReceive('getName')->andReturn('name');
+        $this->assertTrue($func2 instanceof TFunctionImportParameterType);
+
+        $func3 = m::mock(TFunctionImportParameterType::class)->makePartial();
+        $func3->shouldReceive('isOK')->andReturn(true)->once();
+        $func3->shouldReceive('getName')->andReturn('name');
+        $this->assertTrue($func3 instanceof TFunctionImportParameterType);
+
+        $foo = m::mock(FunctionImportAnonymousType::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $foo->shouldReceive('isObjectNullOrOK')->andReturn(true);
+        $foo->shouldReceive('isValidArrayOK')->andReturn(true);
+        $foo->shouldReceive('isTFunctionImportAttributesValid')->andReturn(true);
+        $foo->setParameter([]);
+        $foo->addToParameter($function);
+        $foo->addToParameter($func2);
+        $foo->addToParameter($func3);
+
+        $this->assertFalse($foo->isOK($actual));
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testIsNotOkFromBadDocumentation()
+    {
+        $expected = "";
+        $actual = null;
+
+        $documentation = m::mock(TDocumentationType::class);
+        $documentation->shouldReceive('isOK')->andReturn(true, false)->once();
+
+        $foo = new FunctionImportAnonymousType();
+        $foo->setDocumentation($documentation);
+
+        $this->assertFalse($foo->isOK($actual));
         $this->assertEquals($expected, $actual);
     }
 }
