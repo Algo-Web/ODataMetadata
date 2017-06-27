@@ -186,3 +186,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType:
             exclude: true
         v3PropertyTypeRegex:
             exclude: true
+        v3QualifiedNameCache:
+            exclude: true
+        v3QualifiedNameRegex:
+            exclude: true

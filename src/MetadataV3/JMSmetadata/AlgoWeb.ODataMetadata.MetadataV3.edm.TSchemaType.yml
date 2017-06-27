@@ -155,3 +155,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TSchemaType:
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer>
         v3SimpleIdentifierCache:
             exclude: true
+        v3QualifiedNameCache:
+            exclude: true
+        v3QualifiedNameRegex:
+            exclude: true

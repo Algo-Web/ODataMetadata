@@ -174,3 +174,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType:
             exclude: true
         v3PropertyTypeRegex:
             exclude: true
+        v3QualifiedNameCache:
+            exclude: true
+        v3QualifiedNameRegex:
+            exclude: true
