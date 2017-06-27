@@ -3,7 +3,9 @@
 namespace AlgoWeb\ODataMetadata\Tests\v3\edmx;
 
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
+use Mockery as m;
 
 class TDataServicesTypeTest extends TestCase
 {
@@ -82,6 +84,76 @@ class TDataServicesTypeTest extends TestCase
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testShouldNotBeAbleToSetEmptySchemaArray()
+    {
+        $expected = "Data services array not a valid array";
+        $actual = null;
+
+        $foo = new TDataServicesType();
+
+        try {
+            $foo->setSchema([]);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testTryToAddBadSchema()
+    {
+        $expected = "";
+        $actual = null;
+
+        $schema = m::mock(Schema::class);
+        $schema->shouldReceive('isOK')->andReturn(false)->once();
+
+        $foo = new TDataServicesType();
+        try {
+            $foo->addToSchema($schema);
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+
+    public function testCheckSchemaExists()
+    {
+        $foo = new TDataServicesType();
+        $this->assertFalse($foo->issetSchema(1));
+    }
+
+    public function testUnsetMissingSchema()
+    {
+        $foo = new TDataServicesType();
+        $foo->unsetSchema(1);
+        $this->assertTrue(true);
+    }
+
+    public function testSetHigherDataThanDefaultMaxServiceVersionNotOK()
+    {
+        $expected = "Data service version cannot be greater than maximum service version";
+        $actual = null;
+
+        $foo = new TDataServicesType();
+        $foo->setDataServiceVersion('4.0');
+        $this->assertFalse($foo->isOK($actual));
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testIsOKWhenSchemaNotOk()
+    {
+        $expected = "";
+        $actual = null;
+
+        $schema = m::mock(Schema::class);
+        $schema->shouldReceive('isOK')->andReturn(true, false)->twice();
+        $foo = new TDataServicesType();
+        $foo->addToSchema($schema);
+        $this->assertFalse($foo->isOK($actual));
         $this->assertEquals($expected, $actual);
     }
 }
