@@ -28,3 +28,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType
                 getter: getDocumentation
                 setter: setDocumentation
             type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
+        v3SimpleIdentifierCache:
+            exclude: true

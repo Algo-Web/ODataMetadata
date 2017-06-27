@@ -168,3 +168,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType:
                 entry_name: TypeAnnotation
                 namespace: http://schemas.microsoft.com/ado/2009/11/edm
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType>
+        v3SimpleIdentifierCache:
+            exclude: true

@@ -43,3 +43,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType:
                 getter: getReferentialConstraint
                 setter: setReferentialConstraint
             type: AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType
+        v3SimpleIdentifierCache:
+            exclude: true
