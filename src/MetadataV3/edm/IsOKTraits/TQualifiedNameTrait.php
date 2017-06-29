@@ -8,15 +8,15 @@ trait TQualifiedNameTrait
 {
     use xsdRestrictions;
 
-    protected static $v3QualifiedNameCache = [];
-    protected static $v3QualifiedNameRegex =
-        '/[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}/';
-
     public function isTQualifiedNameValid($string)
     {
+        if (!isset(self::$v3QualifiedNameRegex)) {
+            self::$v3QualifiedNameRegex =
+                '/[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}/';
+        }
         // The below pattern represents the allowed identifiers in ECMA
         // specification plus the '.' for namespace qualification
         //$regex = '/[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}/';
-        return $this->matchesRegexPattern(static::$v3QualifiedNameRegex, $string);
+        return $this->matchesRegexPattern(self::$v3QualifiedNameRegex, $string);
     }
 }
