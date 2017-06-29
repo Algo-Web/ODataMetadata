@@ -20,12 +20,20 @@ trait TPropertyTypeTrait
             $msg = "Input must be a string: " . get_class($this);
             throw new \InvalidArgumentException($msg);
         }
+        if (isset(static::$v3PropertyTypeCache[$string])) {
+            return static::$v3PropertyTypeCache[$string];
+        }
+
         if ($this->isEDMSimpleTypeValid($string)) {
+            static::$v3PropertyTypeCache[$string] = true;
             return true;
         }
         if ($this->isTQualifiedNameValid($string)) {
+            static::$v3PropertyTypeCache[$string] = true;
             return true;
         }
-        return $this->matchesRegexPattern(static::$v3PropertyTypeRegex, $string);
+        $result = $this->matchesRegexPattern(static::$v3PropertyTypeRegex, $string);
+        static::$v3PropertyTypeCache[$string] = $result;
+        return $result;
     }
 }
