@@ -81,7 +81,7 @@ trait TFacetAttributesTrait
      */
     public function getNullable()
     {
-        return $this->nullable;
+        return boolval($this->nullable);
     }
 
     /**
@@ -92,7 +92,7 @@ trait TFacetAttributesTrait
      */
     public function setNullable($nullable)
     {
-        $this->nullable = $nullable;
+        $this->nullable = boolval($nullable);
         return $this;
     }
 
@@ -141,11 +141,7 @@ trait TFacetAttributesTrait
      */
     public function setMaxLength($maxLength)
     {
-        $msg = null;
-        if (null != $maxLength && !$this->isTMaxLengthFacetValid($maxLength)) {
-            $msg = "Max length must be a valid TMaxLengthFacet";
-            throw new \InvalidArgumentException($msg);
-        }
+        null == $maxLength || $this->isTMaxLengthFacetValid($maxLength);
         $this->maxLength = $maxLength;
         return $this;
     }
@@ -157,7 +153,7 @@ trait TFacetAttributesTrait
      */
     public function getFixedLength()
     {
-        return $this->fixedLength;
+        return boolval($this->fixedLength);
     }
 
     /**
@@ -195,11 +191,7 @@ trait TFacetAttributesTrait
      */
     public function setPrecision($precision)
     {
-        $msg = null;
-        if (null != $precision && !$this->isTPrecisionFacetValid($precision)) {
-            $msg = "Precision must be a valid TPrecisionFacet";
-            throw new \InvalidArgumentException($msg);
-        }
+        null == $precision || !$this->isTPrecisionFacetValid($precision);
         $this->precision = $precision;
         return $this;
     }
@@ -222,11 +214,7 @@ trait TFacetAttributesTrait
      */
     public function setScale($scale)
     {
-        $msg = null;
-        if (null != $scale && !$this->isTScaleFacetValid($scale)) {
-            $msg = "Scale must be a valid TScaleFacet";
-            throw new \InvalidArgumentException($msg);
-        }
+        null == $scale || $this->isTScaleFacetValid($scale);
         $this->scale = $scale;
         return $this;
     }
@@ -303,11 +291,7 @@ trait TFacetAttributesTrait
      */
     public function setSRID($sRID)
     {
-        $msg = null;
-        if (null != $sRID && !$this->isTSridFacetValid($sRID)) {
-            $msg = "SRID must be a valid TSridFacet";
-            throw new \InvalidArgumentException($msg);
-        }
+        $this->isTSridFacetValid($sRID);
         $this->sRID = $sRID;
         return $this;
     }
