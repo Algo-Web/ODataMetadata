@@ -74,3 +74,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypeType:
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType>
         v3SimpleIdentifierCache:
             exclude: true
+        v3SimpleIdentifierRegex:
+            exclude: true

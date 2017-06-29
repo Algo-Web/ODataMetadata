@@ -2,6 +2,7 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits;
 
+use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\xsdRestrictions;
 
 trait TQualifiedNameTrait
@@ -10,13 +11,18 @@ trait TQualifiedNameTrait
 
     public function isTQualifiedNameValid($string)
     {
-        if (!isset(self::$v3QualifiedNameRegex)) {
-            self::$v3QualifiedNameRegex =
-                '/[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}/';
+        assert($this instanceof IsOK);
+        if (!is_string($string)) {
+            return false;
+        }
+        if (isset(self::$v3QualifiedNameCache[$string])) {
+            return self::$v3QualifiedNameCache[$string];
         }
         // The below pattern represents the allowed identifiers in ECMA
         // specification plus the '.' for namespace qualification
         //$regex = '/[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}/';
-        return $this->matchesRegexPattern(self::$v3QualifiedNameRegex, $string);
+        $result = $this->matchesRegexPattern(self::$v3QualifiedNameRegex, $string);
+        self::$v3QualifiedNameCache[$string] = $result;
+        return $result;
     }
 }

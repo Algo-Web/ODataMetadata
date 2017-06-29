@@ -103,3 +103,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer:
             type: boolean
         v3SimpleIdentifierCache:
             exclude: true
+        v3SimpleIdentifierRegex:
+            exclude: true

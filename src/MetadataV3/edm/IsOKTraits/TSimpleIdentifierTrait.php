@@ -7,6 +7,7 @@ use AlgoWeb\ODataMetadata\xsdRestrictions;
 trait TSimpleIdentifierTrait
 {
     protected static $v3SimpleIdentifierCache = [];
+    protected static $v3SimpleIdentifierRegex = '/[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}/';
 
     use xsdRestrictions;
 
@@ -36,8 +37,7 @@ trait TSimpleIdentifierTrait
          * \p{Pc} matches a punctuation character such as an underscore that connects words
          * \p{Cf} matches invisible formatting indicator
          */
-        $regex = '/[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}/';
-        $result = $this->matchesRegexPattern($regex, $string);
+        $result = $this->matchesRegexPattern(static::$v3SimpleIdentifierRegex, $string);
         static::$v3SimpleIdentifierCache[$string] = $result;
         return $result;
     }

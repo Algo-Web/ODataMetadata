@@ -45,3 +45,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType:
             type: AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType
         v3SimpleIdentifierCache:
             exclude: true
+        v3SimpleIdentifierRegex:
+            exclude: true

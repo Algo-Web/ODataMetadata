@@ -170,6 +170,8 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType:
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType>
         v3SimpleIdentifierCache:
             exclude: true
+        v3SimpleIdentifierRegex:
+            exclude: true
         v3PropertyTypeCache:
             exclude: true
         v3PropertyTypeRegex:

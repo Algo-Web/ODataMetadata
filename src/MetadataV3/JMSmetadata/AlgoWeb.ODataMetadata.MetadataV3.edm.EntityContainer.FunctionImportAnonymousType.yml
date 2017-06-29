@@ -95,3 +95,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType>
         v3SimpleIdentifierCache:
             exclude: true
+        v3SimpleIdentifierRegex:
+            exclude: true
