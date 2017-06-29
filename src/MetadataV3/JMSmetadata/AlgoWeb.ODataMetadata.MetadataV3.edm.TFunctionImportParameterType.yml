@@ -75,3 +75,9 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType:
             type: AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
         v3SimpleIdentifierCache:
             exclude: true
+        v3QualifiedNameCache:
+            exclude: true
+        v3QualifiedNameRegex:
+            exclude: true
+        v3EDMSimpleType:
+            exclude: true

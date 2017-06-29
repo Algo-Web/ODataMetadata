@@ -48,3 +48,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityTypeType:
                 entry_name: Property
                 namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityPropertyType>
+        v3QualifiedNameCache:
+            exclude: true

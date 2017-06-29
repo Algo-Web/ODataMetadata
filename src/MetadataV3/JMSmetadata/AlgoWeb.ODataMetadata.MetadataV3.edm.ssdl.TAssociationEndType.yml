@@ -51,3 +51,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType:
                 entry_name: OnDelete
                 namespace: http://schemas.microsoft.com/ado/2009/11/edm/ssdl
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TOnActionType>
+        v3QualifiedNameCache:
+            exclude: true
+        v3QualifiedNameRegex:
+            exclude: true

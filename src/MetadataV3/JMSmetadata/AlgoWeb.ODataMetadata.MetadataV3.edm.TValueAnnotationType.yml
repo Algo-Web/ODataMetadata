@@ -258,3 +258,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType:
             exclude: true
         v3SimpleIdentifierCache:
             exclude: true
+        v3QualifiedNameCache:
+            exclude: true
+        v3QualifiedNameRegex:
+            exclude: true

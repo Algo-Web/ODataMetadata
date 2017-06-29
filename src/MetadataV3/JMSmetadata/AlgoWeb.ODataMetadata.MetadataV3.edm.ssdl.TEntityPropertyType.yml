@@ -118,3 +118,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityPropertyType:
                 getter: getDocumentation
                 setter: setDocumentation
             type: AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
+        v3QualifiedNameCache:
+            exclude: true

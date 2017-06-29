@@ -74,3 +74,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType:
             type: array<AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType>
         v3SimpleIdentifierCache:
             exclude: true
+        v3QualifiedNameCache:
+            exclude: true
+        v3QualifiedNameRegex:
+            exclude: true
