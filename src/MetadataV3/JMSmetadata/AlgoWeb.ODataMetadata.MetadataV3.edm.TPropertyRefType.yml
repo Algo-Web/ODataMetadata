@@ -11,3 +11,5 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType:
             type: string
         v3SimpleIdentifierCache:
             exclude: true
+        v3SimpleIdentifierRegex:
+            exclude: true
