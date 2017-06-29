@@ -509,4 +509,79 @@ class TOperandTypeTest extends TestCase
         $this->assertFalse($foo->isGExpressionValid($actual));
         $this->assertEquals($expected, $actual);
     }
+
+    public function testSetBadEnum()
+    {
+        $expected = "Enum must be a valid TQualifiedName";
+        $actual = null;
+
+        $foo = new TOperandType();
+        try {
+            $foo->setEnum(' _ ');
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetGetEnumRoundTrip()
+    {
+        $expected = "Org.OData.Publication.V1.DocumentationUrl";
+
+        $foo = new TOperandType();
+        $foo->setEnum($expected);
+        $actual = $foo->getEnum();
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetBadPath()
+    {
+        $expected = "Path must be a valid TQualifiedName";
+        $actual = null;
+
+        $foo = new TOperandType();
+        try {
+            $foo->setPath(' _ ');
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetGetPathRoundTrip()
+    {
+        $expected = "Org.OData.Publication.V1.DocumentationUrl";
+
+        $foo = new TOperandType();
+        $foo->setPath($expected);
+        $actual = $foo->getPath();
+
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetBadGuid()
+    {
+        $expected = "Guid must be a valid TGuidLiteral";
+        $actual = null;
+
+        $foo = new TOperandType();
+        try {
+            $foo->setGuid(' _ ');
+        } catch (\InvalidArgumentException $e) {
+            $actual = $e->getMessage();
+        }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSetGetGuidRoundTrip()
+    {
+        $expected = "00000000-0000-0000-0000-000000000000";
+        $actual = null;
+
+        $foo = new TOperandType();
+        $foo->setGuid($expected);
+        $actual = $foo->getGuid();
+        $this->assertEquals($expected, $actual);
+    }
 }
