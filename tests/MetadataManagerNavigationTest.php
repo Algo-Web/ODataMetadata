@@ -18,9 +18,9 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use Mockery as m;
 
-class NavigationDirectionTest extends \PHPUnit_Framework_TestCase
+class MetadataManagerNavigationTest extends \PHPUnit_Framework_TestCase
 {
-	    public function testEntitysAndPropertiesAndNavigationPropertiesAndRoleDIRECTION()
+    public function testEntitysAndPropertiesAndNavigationPropertiesAndRoleDIRECTION()
     {
         $msg = null;
         $metadataManager = new MetadataManager();
@@ -132,41 +132,37 @@ class NavigationDirectionTest extends \PHPUnit_Framework_TestCase
         $CategoryEType = null;
         $dom = new \DOMDocument();
         $dom->loadXML($d);
-        foreach($dom->getElementsByTagName("EntityType") as $eType){
-        	foreach($eType->attributes as $aType){
-        		if($aType->name == "Name" && $aType->value == "Category"){
-        		    $CategoryEType = $eType;
-        		}
-        	}
+        foreach ($dom->getElementsByTagName("EntityType") as $eType) {
+            foreach ($eType->attributes as $aType) {
+                if ($aType->name == "Name" && $aType->value == "Category") {
+                    $CategoryEType = $eType;
+                }
+            }
         }
-        $this->assertNotNull($CategoryEType,"Count not find the category entity Type to get the navigation property");
+        $this->assertNotNull($CategoryEType, "Count not find the category entity Type to get the navigation property");
         $this->assertEquals("Products", $CategoryEType->getElementsByTagName("NavigationProperty")[0]->getAttribute("Name"), "the product relationship was not found");
         $ProductRelationship = $CategoryEType->getElementsByTagName("NavigationProperty")[0]->getAttribute("Relationship");
         $ProductToRole = $CategoryEType->getElementsByTagName("NavigationProperty")[0]->getAttribute("ToRole");
         $ProductFromRole = $CategoryEType->getElementsByTagName("NavigationProperty")[0]->getAttribute("FromRole");
         $associationType = null;
-        foreach($dom->getElementsByTagName("Association") as $eType){
-        	foreach($eType->attributes as $aType){
-        		if($aType->name == "Name" && 'Data.'.$aType->value == $ProductRelationship){
-        		    $associationType = $eType;
-        		}
-        	}
-        	
+        foreach ($dom->getElementsByTagName("Association") as $eType) {
+            foreach ($eType->attributes as $aType) {
+                if ($aType->name == "Name" && 'Data.'.$aType->value == $ProductRelationship) {
+                    $associationType = $eType;
+                }
+            }
         }
-        $this->assertNotNull($associationType,"count not find a matching assocation for the category");
-        foreach ($associationType->getElementsByTagName("End") as $childNode){
-        	if($childNode->getAttribute("Role") == $ProductToRole){
-        		$this->assertEquals("Data.Product", $childNode->getAttribute("Type"));
-        		$this->assertEquals("1", $childNode->getAttribute("Multiplicity"));
-        		
-        	}else if($childNode->getAttribute("Role") == $ProductFromRole){
-        		$this->assertEquals("Data.Category", $childNode->getAttribute("Type"));
-        		$this->assertEquals("*", $childNode->getAttribute("Multiplicity"));
-        	}else{
-        		throw new \Exception("Some how we ended up with an end role that was not in the NavigationProperty");
-        	}
+        $this->assertNotNull($associationType, "count not find a matching assocation for the category");
+        foreach ($associationType->getElementsByTagName("End") as $childNode) {
+            if ($childNode->getAttribute("Role") == $ProductToRole) {
+                $this->assertEquals("Data.Product", $childNode->getAttribute("Type"));
+                $this->assertEquals("1", $childNode->getAttribute("Multiplicity"));
+            } elseif ($childNode->getAttribute("Role") == $ProductFromRole) {
+                $this->assertEquals("Data.Category", $childNode->getAttribute("Type"));
+                $this->assertEquals("*", $childNode->getAttribute("Multiplicity"));
+            } else {
+                throw new \Exception("Some how we ended up with an end role that was not in the NavigationProperty");
+            }
         }
-
-        
     }
 }
