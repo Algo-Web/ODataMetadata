@@ -130,7 +130,9 @@ class NavigationDirectionTest extends \PHPUnit_Framework_TestCase
 
         $d = $metadataManager->getEdmxXML();
         $CategoryEType = null;
-        foreach(\DOMDocument::loadXML($d)->getElementsByTagName("EntityType") as $eType){
+        $dom = new \DOMDocument();
+        $dom->loadXML($d);
+        foreach($dom->getElementsByTagName("EntityType") as $eType){
         	foreach($eType->attributes as $aType){
         		if($aType->name == "Name" && $aType->value == "Category"){
         		    $CategoryEType = $eType;
@@ -143,7 +145,7 @@ class NavigationDirectionTest extends \PHPUnit_Framework_TestCase
         $ProductToRole = $CategoryEType->getElementsByTagName("NavigationProperty")[0]->getAttribute("ToRole");
         $ProductFromRole = $CategoryEType->getElementsByTagName("NavigationProperty")[0]->getAttribute("FromRole");
         $associationType = null;
-        foreach(\DOMDocument::loadXML($d)->getElementsByTagName("Association") as $eType){
+        foreach($dom->getElementsByTagName("Association") as $eType){
         	foreach($eType->attributes as $aType){
         		if($aType->name == "Name" && 'Data.'.$aType->value == $ProductRelationship){
         		    $associationType = $eType;
