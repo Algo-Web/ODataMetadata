@@ -2,9 +2,10 @@
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
-interface IComplexType{
-	    /**
-     * Gets as name
+interface IComplexType
+{
+    /**
+     * Gets as name.
      *
      * @return string
      */

@@ -3,5 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
-interface IFunctionImportParameterType{
+interface IFunctionImportParameterType
+{
 }

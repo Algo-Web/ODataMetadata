@@ -2,26 +2,27 @@
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
-interface IFunctionImportType{
+interface IFunctionImportType
+{
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
     public function getName();
     
-        /**
-     * Gets as returnType
+    /**
+     * Gets as returnType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType[]
      */
     public function getReturnType();
     
-        /**
-     * Adds as parameter
+    /**
+     * Adds as parameter.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType $parameter
+     * @return self
      */
     public function addToParameter(TFunctionImportParameterType $parameter);
 }

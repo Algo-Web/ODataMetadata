@@ -2,23 +2,24 @@
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
-interface IEntityType{
-	    /**
-     * Gets as name
+interface IEntityType
+{
+    /**
+     * Gets as name.
      *
      * @return string
      */
     public function getName();
-        /**
-     * Gets as baseType
+    /**
+     * Gets as baseType.
      *
      * @return string
      */
     public function getBaseType();
-        /**
-     * Gets as abstract
+    /**
+     * Gets as abstract.
      *
-     * @return boolean
+     * @return bool
      */
     public function getAbstract();
 }
