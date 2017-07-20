@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 
 /**
- * Class representing TApplyExpressionType
+ * Class representing TApplyExpressionType.
  *
  * XSD Type: TApplyExpression
  */
@@ -32,7 +32,7 @@ class TApplyExpressionType extends IsOK
     private $arguments = [];
 
     /**
-     * Gets as function
+     * Gets as function.
      *
      * @return string
      */
@@ -42,7 +42,7 @@ class TApplyExpressionType extends IsOK
     }
 
     /**
-     * Sets a new function
+     * Sets a new function.
      *
      * @param  string $function
      * @return self
@@ -50,7 +50,7 @@ class TApplyExpressionType extends IsOK
     public function setFunction($function)
     {
         if (null != $function && !$this->isTQualifiedNameValid($function)) {
-            $msg = "Function must be a valid TQualifiedName";
+            $msg = 'Function must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->function = $function;
@@ -58,11 +58,11 @@ class TApplyExpressionType extends IsOK
     }
 
     /**
-     * Adds as appliedFunction
+     * Adds as appliedFunction.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType
      * $appliedFunction
+     * @return self
      */
     public function addToAppliedFunction(TApplyExpressionType\AppliedFunctionAnonymousType $appliedFunction)
     {
@@ -75,10 +75,10 @@ class TApplyExpressionType extends IsOK
     }
 
     /**
-     * isset appliedFunction
+     * isset appliedFunction.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAppliedFunction($index)
     {
@@ -86,7 +86,7 @@ class TApplyExpressionType extends IsOK
     }
 
     /**
-     * unset appliedFunction
+     * unset appliedFunction.
      *
      * @param  scalar $index
      * @return void
@@ -97,7 +97,7 @@ class TApplyExpressionType extends IsOK
     }
 
     /**
-     * Gets as appliedFunction
+     * Gets as appliedFunction.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
      */
@@ -107,7 +107,7 @@ class TApplyExpressionType extends IsOK
     }
 
     /**
-     * Sets a new appliedFunction
+     * Sets a new appliedFunction.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\AppliedFunctionAnonymousType[]
      * $appliedFunction
@@ -128,10 +128,10 @@ class TApplyExpressionType extends IsOK
     }
 
     /**
-     * Adds as arguments
+     * Adds as arguments.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType $arguments
+     * @return self
      */
     public function addToArguments(TApplyExpressionType\ArgumentsAnonymousType $arguments)
     {
@@ -144,10 +144,10 @@ class TApplyExpressionType extends IsOK
     }
 
     /**
-     * isset arguments
+     * isset arguments.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetArguments($index)
     {
@@ -155,7 +155,7 @@ class TApplyExpressionType extends IsOK
     }
 
     /**
-     * unset arguments
+     * unset arguments.
      *
      * @param  scalar $index
      * @return void
@@ -166,7 +166,7 @@ class TApplyExpressionType extends IsOK
     }
 
     /**
-     * Gets as arguments
+     * Gets as arguments.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[]
      */
@@ -176,7 +176,7 @@ class TApplyExpressionType extends IsOK
     }
 
     /**
-     * Sets a new arguments
+     * Sets a new arguments.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType\ArgumentsAnonymousType[] $arguments
      * @return self
@@ -198,7 +198,7 @@ class TApplyExpressionType extends IsOK
     public function isOK(&$msg = null)
     {
         if (null != $this->function && !$this->isTQualifiedNameValid($this->function)) {
-            $msg = "Function must be a valid TQualifiedName";
+            $msg = 'Function must be a valid TQualifiedName';
             return false;
         }
 
@@ -220,7 +220,7 @@ class TApplyExpressionType extends IsOK
         }
         $count = (0 < count($this->appliedFunction) ? 1 : 0) + (0 < count($this->arguments) ? 1 : 0);
         if (1 != $count) {
-            $msg = "Exactly one of applied function array and arguments array must be non-empty";
+            $msg = 'Exactly one of applied function array and arguments array must be non-empty';
             return false;
         }
 

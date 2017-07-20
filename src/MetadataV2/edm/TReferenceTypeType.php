@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TReferenceTypeType
+ * Class representing TReferenceTypeType.
  *
  * XSD Type: TReferenceType
  */
@@ -23,7 +23,7 @@ class TReferenceTypeType extends IsOK
     private $documentation = null;
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TReferenceTypeType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -45,7 +45,7 @@ class TReferenceTypeType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
@@ -55,7 +55,7 @@ class TReferenceTypeType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self

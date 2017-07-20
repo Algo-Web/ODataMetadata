@@ -9,7 +9,7 @@ class TFunctionImportReturnTypeTypeTest extends TestCase
 {
     public function testFunctionImportParameterAndReturnTypeNonString()
     {
-        $expected = "Input must be a string: AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\TFunctionImportReturnTypeType";
+        $expected = 'Input must be a string: AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\TFunctionImportReturnTypeType';
         $actual = null;
 
         $type = new \DateTime();
@@ -25,14 +25,14 @@ class TFunctionImportReturnTypeTypeTest extends TestCase
 
     public function testIsTPropertyTypeValidBlankString()
     {
-        $type = " _ ";
+        $type = ' _ ';
         $foo = new TFunctionImportReturnTypeType();
         $this->assertFalse($foo->isTFunctionImportParameterAndReturnTypeValid($type));
     }
 
     public function testIsTPropertyTypeValidEDMSimpleType()
     {
-        $type = "String";
+        $type = 'String';
         $foo = new TFunctionImportReturnTypeType();
         $this->assertTrue($foo->isTFunctionImportParameterAndReturnTypeValid($type));
     }

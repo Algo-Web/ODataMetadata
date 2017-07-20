@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TMultiplicityTrait;
 
 /**
- * Class representing TAssociationEndType
+ * Class representing TAssociationEndType.
  *
  * XSD Type: TAssociationEnd
  */
@@ -42,7 +42,7 @@ class TAssociationEndType extends IsOK
     private $documentation = null;
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -52,7 +52,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -60,7 +60,7 @@ class TAssociationEndType extends IsOK
     public function setType($type)
     {
         if (!$this->isTQualifiedNameValid($type)) {
-            $msg = "Type must be a valid TQualifiedName";
+            $msg = 'Type must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->type = $type;
@@ -68,7 +68,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Gets as role
+     * Gets as role.
      *
      * @return string
      */
@@ -78,7 +78,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new role
+     * Sets a new role.
      *
      * @param  string $role
      * @return self
@@ -86,7 +86,7 @@ class TAssociationEndType extends IsOK
     public function setRole($role)
     {
         if (null != $role && !$this->isTSimpleIdentifierValid($role)) {
-            $msg = "Role must be a valid TSimpleIdentifier";
+            $msg = 'Role must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->role = $role;
@@ -94,7 +94,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Gets as multiplicity
+     * Gets as multiplicity.
      *
      * @return string
      */
@@ -104,7 +104,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new multiplicity
+     * Sets a new multiplicity.
      *
      * @param  string $multiplicity
      * @return self
@@ -112,7 +112,7 @@ class TAssociationEndType extends IsOK
     public function setMultiplicity($multiplicity)
     {
         if (null != $multiplicity && !$this->isTMultiplicityValid($multiplicity)) {
-            $msg = "Multiplicity must be a valid TMultiplicity";
+            $msg = 'Multiplicity must be a valid TMultiplicity';
             throw new \InvalidArgumentException($msg);
         }
         $this->multiplicity = $multiplicity;
@@ -120,7 +120,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
      */
@@ -130,7 +130,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
@@ -148,15 +148,15 @@ class TAssociationEndType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTQualifiedNameValid($this->type)) {
-            $msg = "Type must be a valid TQualifiedName";
+            $msg = 'Type must be a valid TQualifiedName';
             return false;
         }
         if (null != $this->role && !$this->isTSimpleIdentifierValid($this->role)) {
-            $msg = "Role must be a valid TSimpleIdentifier";
+            $msg = 'Role must be a valid TSimpleIdentifier';
             return false;
         }
         if (null != $this->multiplicity && !$this->isTMultiplicityValid($this->multiplicity)) {
-            $msg = "Multiplicity must be a valid TMultiplicity";
+            $msg = 'Multiplicity must be a valid TMultiplicity';
             return false;
         }
         if (!$this->isObjectNullOrOK($this->documentation, $msg)) {

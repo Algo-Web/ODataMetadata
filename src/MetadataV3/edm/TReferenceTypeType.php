@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
 
 /**
- * Class representing TReferenceTypeType
+ * Class representing TReferenceTypeType.
  *
  * XSD Type: TReferenceType
  */
@@ -21,7 +21,7 @@ class TReferenceTypeType extends IsOK
     private $type = null;
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -31,7 +31,7 @@ class TReferenceTypeType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -39,7 +39,7 @@ class TReferenceTypeType extends IsOK
     public function setType($type)
     {
         if (!$this->isTUnwrappedFunctionTypeValid($type)) {
-            $msg = "Type must be a valid TUnwrappedFunctionType";
+            $msg = 'Type must be a valid TUnwrappedFunctionType';
             throw new \InvalidArgumentException($msg);
         }
         $this->type = $type;
@@ -49,7 +49,7 @@ class TReferenceTypeType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTUnwrappedFunctionTypeValid($this->type)) {
-            $msg = "Type must be a valid TUnwrappedFunctionType";
+            $msg = 'Type must be a valid TUnwrappedFunctionType';
             return false;
         }
         if (!$this->isExtensibilityElementOK($msg)) {

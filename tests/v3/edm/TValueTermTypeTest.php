@@ -30,7 +30,7 @@ class TValueTermTypeTest extends TestCase
         $foo = new TValueTermType();
 
         try {
-            $foo->setMaxLength(" _ ");
+            $foo->setMaxLength(' _ ');
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -39,7 +39,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testSetGetMaxLengthRoundTrip()
     {
-        $expected = "11";
+        $expected = '11';
         $actual = null;
 
         $foo = new TValueTermType();
@@ -64,7 +64,7 @@ class TValueTermTypeTest extends TestCase
         $foo = new TValueTermType();
 
         try {
-            $foo->setFixedLength(" _ ");
+            $foo->setFixedLength(' _ ');
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -91,7 +91,7 @@ class TValueTermTypeTest extends TestCase
         $foo = new TValueTermType();
 
         try {
-            $foo->setPrecision(" _ ");
+            $foo->setPrecision(' _ ');
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -100,7 +100,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testSetGetPrecisionRoundTrip()
     {
-        $expected = "11";
+        $expected = '11';
         $actual = null;
 
         $foo = new TValueTermType();
@@ -125,7 +125,7 @@ class TValueTermTypeTest extends TestCase
         $foo = new TValueTermType();
 
         try {
-            $foo->setScale(" _ ");
+            $foo->setScale(' _ ');
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -134,7 +134,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testSetGetScaleRoundTrip()
     {
-        $expected = "11";
+        $expected = '11';
         $actual = null;
 
         $foo = new TValueTermType();
@@ -159,7 +159,7 @@ class TValueTermTypeTest extends TestCase
         $foo = new TValueTermType();
 
         try {
-            $foo->setUnicode(" _ ");
+            $foo->setUnicode(' _ ');
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -180,7 +180,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testSetBadCollation()
     {
-        $expected = "Collation must be a valid TCollationFacet";
+        $expected = 'Collation must be a valid TCollationFacet';
         $actual = null;
 
         $foo = new TValueTermType();
@@ -195,7 +195,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testSetGetCollationRoundTrip()
     {
-        $expected = "swedish";
+        $expected = 'swedish';
         $actual = null;
 
         $foo = new TValueTermType();
@@ -213,7 +213,7 @@ class TValueTermTypeTest extends TestCase
         $foo = new TValueTermType();
 
         try {
-            $foo->setSRID(" _ ");
+            $foo->setSRID(' _ ');
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -222,7 +222,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testSetGetSRIDRoundTrip()
     {
-        $expected = "11";
+        $expected = '11';
         $actual = null;
 
         $foo = new TValueTermType();
@@ -269,7 +269,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testIsTFacetAttributeValidBadCollation()
     {
-        $expected = "Collation must be a valid TCollationFacet:";
+        $expected = 'Collation must be a valid TCollationFacet:';
         $actual = null;
 
         $foo = m::mock(TValueTermType::class)->makePartial();
@@ -283,7 +283,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testIsTFacetAttributeValidBadMaxLength()
     {
-        $expected = "Max length must be a valid TMaxLengthFacet: ";
+        $expected = 'Max length must be a valid TMaxLengthFacet: ';
         $actual = null;
 
         $foo = m::mock(TValueTermType::class)->makePartial();
@@ -297,7 +297,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testIsTFacetAttributeValidBadFixedLength()
     {
-        $expected = "Fixed length must be a valid TFixedLengthFacet: ";
+        $expected = 'Fixed length must be a valid TFixedLengthFacet: ';
         $actual = null;
 
         $foo = m::mock(TValueTermType::class)->makePartial();
@@ -311,7 +311,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testIsTFacetAttributeValidBadPrecision()
     {
-        $expected = "Precision must be a valid TPrecisionFacet: ";
+        $expected = 'Precision must be a valid TPrecisionFacet: ';
         $actual = null;
 
         $foo = m::mock(TValueTermType::class)->makePartial();
@@ -325,7 +325,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testIsTFacetAttributeValidBadScale()
     {
-        $expected = "Scale must be a valid TScaleFacet: ";
+        $expected = 'Scale must be a valid TScaleFacet: ';
         $actual = null;
 
         $foo = m::mock(TValueTermType::class)->makePartial();
@@ -339,7 +339,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testIsTFacetAttributeValidBadSRID()
     {
-        $expected = "SRID must be a valid TSridFacet: ";
+        $expected = 'SRID must be a valid TSridFacet: ';
         $actual = null;
 
         $foo = m::mock(TValueTermType::class)->makePartial();
@@ -353,7 +353,7 @@ class TValueTermTypeTest extends TestCase
 
     public function testIsTFacetAttributeValidBadUnicode()
     {
-        $expected = "Unicode must be a valid TUnicodeFacet: ";
+        $expected = 'Unicode must be a valid TUnicodeFacet: ';
         $actual = null;
 
         $foo = m::mock(TValueTermType::class)->makePartial();

@@ -175,7 +175,7 @@ class TestTypeTest extends TestCase
     public function testIsChildArrayOkForNonEmptyArrayWithBadGubbins()
     {
         $msg = null;
-        $expected = "Child item is not an instance of IsOK: AlgoWeb\\ODataMetadata\\Tests\\testType";
+        $expected = 'Child item is not an instance of IsOK: AlgoWeb\\ODataMetadata\\Tests\\testType';
         $arr = ['abc'];
 
         $foo = new testType();
@@ -193,7 +193,7 @@ class TestTypeTest extends TestCase
         }))->andReturn(false);
 
         $msg = null;
-        $expected = "OH NOES!";
+        $expected = 'OH NOES!';
         $arr = [ $bar ];
 
         $foo = new testType();
@@ -274,7 +274,7 @@ class TestTypeTest extends TestCase
         $foo = m::mock(testType::class)->makePartial();
         $foo->shouldReceive('isValidArray')->withAnyArgs()->andReturn(false);
 
-        $expected = "Supplied array not a valid array: Mockery";
+        $expected = 'Supplied array not a valid array: Mockery';
         $msg = null;
         $this->assertFalse($foo->isValidArrayOk([], '', $msg));
         $msg = substr($msg, 0, strlen($expected));
@@ -311,8 +311,8 @@ class TestTypeTest extends TestCase
 
     public function testReplaceStringStartingWithSpaces()
     {
-        $string = "This is a string";
-        $expected = "This is a string";
+        $string = 'This is a string';
+        $expected = 'This is a string';
         $foo = new testType();
         $result = $foo->replaceString($string);
         $this->assertEquals($expected, $result);
@@ -321,7 +321,7 @@ class TestTypeTest extends TestCase
     public function testReplaceStringStartingWithTabs()
     {
         $string = "This\tis\ta\tstring";
-        $expected = "This is a string";
+        $expected = 'This is a string';
         $foo = new testType();
         $result = $foo->replaceString($string);
         $this->assertEquals($expected, $result);
@@ -330,7 +330,7 @@ class TestTypeTest extends TestCase
     public function testReplaceStringStartingWithNuLines()
     {
         $string = "This\nis\na\nstring";
-        $expected = "This is a string";
+        $expected = 'This is a string';
         $foo = new testType();
         $result = $foo->replaceString($string);
         $this->assertEquals($expected, $result);
@@ -338,8 +338,8 @@ class TestTypeTest extends TestCase
 
     public function testReplaceStringWithPadding()
     {
-        $string = " This is a string ";
-        $expected = " This is a string ";
+        $string = ' This is a string ';
+        $expected = ' This is a string ';
         $foo = new testType();
         $result = $foo->replaceString($string);
         $this->assertEquals($expected, $result);
@@ -347,8 +347,8 @@ class TestTypeTest extends TestCase
 
     public function testCollapseStringWithSpacesAndPadding()
     {
-        $string = "  This  is  a  string  ";
-        $expected = "This is a string";
+        $string = '  This  is  a  string  ';
+        $expected = 'This is a string';
         $foo = new testType();
         $result = $foo->collapseString($string);
         $this->assertEquals($expected, $result);
@@ -356,7 +356,7 @@ class TestTypeTest extends TestCase
 
     public function testSimpleIdentifierValidWithTrailingSpace()
     {
-        $string = "UnitPrice ";
+        $string = 'UnitPrice ';
 
         $foo = new testType();
         $this->assertFalse($foo->isTSimpleIdentifierValid($string));
@@ -364,7 +364,7 @@ class TestTypeTest extends TestCase
 
     public function testSimpleIdentifierValidWithoutTrailingSpace()
     {
-        $string = "UnitPrice";
+        $string = 'UnitPrice';
 
         $foo = new testType();
         $this->assertTrue($foo->isTSimpleIdentifierValid($string));
@@ -372,7 +372,7 @@ class TestTypeTest extends TestCase
 
     public function testRegexPatternMatchAllOfString()
     {
-        $string = "This! IS! UNITPRICE";
+        $string = 'This! IS! UNITPRICE';
 
         $foo = new testType();
         $this->assertFalse($foo->isTSimpleIdentifierValid($string));

@@ -15,7 +15,7 @@ trait TAssociationSetModificationFunctionMappingPropertyGroup
     private $endProperty = null;
 
     /**
-     * Gets as endProperty
+     * Gets as endProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingEndPropertyType
      */
@@ -25,7 +25,7 @@ trait TAssociationSetModificationFunctionMappingPropertyGroup
     }
 
     /**
-     * Sets a new endProperty
+     * Sets a new endProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingEndPropertyType
      * $endProperty

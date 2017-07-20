@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFunctionImportParameterAttributesTrait;
 
 /**
- * Class representing TFunctionImportParameterType
+ * Class representing TFunctionImportParameterType.
  *
  * XSD Type: TFunctionImportParameter
  */

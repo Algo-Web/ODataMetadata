@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 
 /**
- * Class representing TRuntimeConceptualModelsType
+ * Class representing TRuntimeConceptualModelsType.
  *
  * XSD Type: TRuntimeConceptualModels
  */
@@ -19,7 +19,7 @@ class TRuntimeConceptualModelsType extends IsOK
     private $schema = null;
 
     /**
-     * Gets as schema
+     * Gets as schema.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema
      */
@@ -29,7 +29,7 @@ class TRuntimeConceptualModelsType extends IsOK
     }
 
     /**
-     * Sets a new schema
+     * Sets a new schema.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema $schema
      * @return self

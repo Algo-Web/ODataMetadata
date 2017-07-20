@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TQualifiedNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TAssociationEndType
+ * Class representing TAssociationEndType.
  *
  * XSD Type: TAssociationEnd
  */
@@ -36,7 +36,7 @@ class TAssociationEndType extends IsOK
     private $documentation = null;
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -46,7 +46,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -54,7 +54,7 @@ class TAssociationEndType extends IsOK
     public function setType($type)
     {
         if (!$this->isStringNotNullOrEmpty($type)) {
-            $msg = "Type cannot be null or empty";
+            $msg = 'Type cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->type = $type;
@@ -62,7 +62,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Gets as role
+     * Gets as role.
      *
      * @return string
      */
@@ -72,7 +72,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new role
+     * Sets a new role.
      *
      * @param  string $role
      * @return self
@@ -80,11 +80,11 @@ class TAssociationEndType extends IsOK
     public function setRole($role)
     {
         if (null != $role && !$this->isStringNotNullOrEmpty($role)) {
-            $msg = "Role cannot be empty";
+            $msg = 'Role cannot be empty';
             throw new \InvalidArgumentException($msg);
         }
         if (null != $role && !$this->isTSimpleIdentifierValid($role)) {
-            $msg = "Role must be a valid TSimpleIdentifier";
+            $msg = 'Role must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->role = $role;
@@ -92,7 +92,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Gets as multiplicity
+     * Gets as multiplicity.
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new multiplicity
+     * Sets a new multiplicity.
      *
      * @param  string $multiplicity
      * @return self
@@ -111,11 +111,11 @@ class TAssociationEndType extends IsOK
     {
         $msg = null;
         if (!$this->isStringNotNullOrEmpty($multiplicity)) {
-            $msg = "Multiplicity cannot be null or empty";
+            $msg = 'Multiplicity cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         if (!$this->isTMultiplicityValid($multiplicity)) {
-            $msg = "Multiplicity must be a valid TMultiplicity";
+            $msg = 'Multiplicity must be a valid TMultiplicity';
             throw new \InvalidArgumentException($msg);
         }
         $this->multiplicity = $multiplicity;
@@ -123,7 +123,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
      */
@@ -133,7 +133,7 @@ class TAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
@@ -151,23 +151,23 @@ class TAssociationEndType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->type)) {
-            $msg = "Type cannot be null or empty";
+            $msg = 'Type cannot be null or empty';
             return false;
         }
         if (!$this->isStringNotNullOrEmpty($this->multiplicity)) {
-            $msg = "Multiplicity cannot be null or empty";
+            $msg = 'Multiplicity cannot be null or empty';
             return false;
         }
         if (null != $this->role && !$this->isStringNotNullOrEmpty($this->role)) {
-            $msg = "Role cannot be empty";
+            $msg = 'Role cannot be empty';
             return false;
         }
         if (null != $this->role && !$this->isTSimpleIdentifierValid($this->role)) {
-            $msg = "Role must be a valid TSimpleIdentifier";
+            $msg = 'Role must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isTMultiplicityValid($this->multiplicity)) {
-            $msg = "Multiplicity must be a valid TMultiplicity";
+            $msg = 'Multiplicity must be a valid TMultiplicity';
             return false;
         }
         if (!$this->isOperationsGroupOK($msg)) {

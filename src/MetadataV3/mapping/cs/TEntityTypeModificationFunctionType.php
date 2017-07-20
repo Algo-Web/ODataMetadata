@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups\TEntityTypeModificationFunctionMappingPropertyGroup;
 
 /**
- * Class representing TEntityTypeModificationFunctionType
+ * Class representing TEntityTypeModificationFunctionType.
  *
  * Type for entity type DeleteFunction
  *
@@ -26,7 +26,7 @@ class TEntityTypeModificationFunctionType extends IsOK
     private $rowsAffectedParameter = null;
 
     /**
-     * Gets as functionName
+     * Gets as functionName.
      *
      * @return string
      */
@@ -36,7 +36,7 @@ class TEntityTypeModificationFunctionType extends IsOK
     }
 
     /**
-     * Sets a new functionName
+     * Sets a new functionName.
      *
      * @param  string $functionName
      * @return self
@@ -52,7 +52,7 @@ class TEntityTypeModificationFunctionType extends IsOK
     }
 
     /**
-     * Gets as rowsAffectedParameter
+     * Gets as rowsAffectedParameter.
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class TEntityTypeModificationFunctionType extends IsOK
     }
 
     /**
-     * Sets a new rowsAffectedParameter
+     * Sets a new rowsAffectedParameter.
      *
      * @param  string $rowsAffectedParameter
      * @return self

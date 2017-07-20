@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TActionImportType
+ * Class representing TActionImportType.
  *
  * XSD Type: TActionImport
  */
@@ -28,7 +28,7 @@ class TActionImportType extends IsOK
     private $entitySet = null;
 
     /**
-     * @property boolean $includeInServiceDocument
+     * @property bool $includeInServiceDocument
      */
     private $includeInServiceDocument = null;
 
@@ -38,7 +38,7 @@ class TActionImportType extends IsOK
     private $annotation = array();
 
     /**
-     * Gets as action
+     * Gets as action.
      *
      * @return string
      */
@@ -48,7 +48,7 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * Sets a new action
+     * Sets a new action.
      *
      * @param  string $action
      * @return self
@@ -60,7 +60,7 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -70,7 +70,7 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -82,7 +82,7 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return string
      */
@@ -92,7 +92,7 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
      * @param  string $entitySet
      * @return self
@@ -104,9 +104,9 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * Gets as includeInServiceDocument
+     * Gets as includeInServiceDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIncludeInServiceDocument()
     {
@@ -114,9 +114,9 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * Sets a new includeInServiceDocument
+     * Sets a new includeInServiceDocument.
      *
-     * @param  boolean $includeInServiceDocument
+     * @param  bool $includeInServiceDocument
      * @return self
      */
     public function setIncludeInServiceDocument($includeInServiceDocument)
@@ -126,10 +126,10 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -138,10 +138,10 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -149,7 +149,7 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -160,7 +160,7 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -170,7 +170,7 @@ class TActionImportType extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self

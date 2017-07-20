@@ -9,13 +9,13 @@ trait TParameterModeTrait
         if (!is_string($string)) {
             return false;
         }
-        if ("In" == $string) {
+        if ('In' == $string) {
             return true;
         }
-        if ("Out" == $string) {
+        if ('Out' == $string) {
             return true;
         }
-        if ("InOut" == $string) {
+        if ('InOut' == $string) {
             return true;
         }
         return false;

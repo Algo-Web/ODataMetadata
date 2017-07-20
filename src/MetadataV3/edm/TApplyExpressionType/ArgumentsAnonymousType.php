@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GBaseExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 
 /**
- * Class representing ArgumentsAnonymousType
+ * Class representing ArgumentsAnonymousType.
  */
 class ArgumentsAnonymousType extends IsOK
 {

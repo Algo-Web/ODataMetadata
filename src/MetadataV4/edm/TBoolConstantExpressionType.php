@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TBoolConstantExpressionType
+ * Class representing TBoolConstantExpressionType.
  *
  * XSD Type: TBoolConstantExpression
  */
@@ -13,14 +13,14 @@ class TBoolConstantExpressionType extends IsOK
 {
 
     /**
-     * @property boolean $__value
+     * @property bool $__value
      */
     private $__value = null;
 
     /**
-     * Construct
+     * Construct.
      *
-     * @param boolean $value
+     * @param bool $value
      */
     public function __construct($value)
     {
@@ -28,11 +28,11 @@ class TBoolConstantExpressionType extends IsOK
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param  boolean ...$value
-     * @param boolean[] $value
-     * @return boolean
+     * @param  bool   ...$value
+     * @param  bool[] $value
+     * @return bool
      */
     public function value(...$value)
     {
@@ -43,7 +43,7 @@ class TBoolConstantExpressionType extends IsOK
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */

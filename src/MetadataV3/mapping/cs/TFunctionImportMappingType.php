@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TFunctionImportMappingType
+ * Class representing TFunctionImportMappingType.
  *
  * Type for FunctionImportMapping element
  *
@@ -32,7 +32,7 @@ class TFunctionImportMappingType extends IsOK
     private $resultMapping = [];
 
     /**
-     * Gets as functionName
+     * Gets as functionName.
      *
      * @return string
      */
@@ -42,7 +42,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Sets a new functionName
+     * Sets a new functionName.
      *
      * @param  string $functionName
      * @return self
@@ -58,7 +58,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Gets as functionImportName
+     * Gets as functionImportName.
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Sets a new functionImportName
+     * Sets a new functionImportName.
      *
      * @param  string $functionImportName
      * @return self
@@ -88,11 +88,11 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Adds as resultMapping
+     * Adds as resultMapping.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType
      * $resultMapping
+     * @return self
      */
     public function addToResultMapping(TFunctionImportMappingResultMappingType $resultMapping)
     {
@@ -105,10 +105,10 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * isset resultMapping
+     * isset resultMapping.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetResultMapping($index)
     {
@@ -116,7 +116,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * unset resultMapping
+     * unset resultMapping.
      *
      * @param  scalar $index
      * @return void
@@ -127,7 +127,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Gets as resultMapping
+     * Gets as resultMapping.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType[]
      */
@@ -137,7 +137,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Sets a new resultMapping
+     * Sets a new resultMapping.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType[]
      * $resultMapping
@@ -177,7 +177,7 @@ class TFunctionImportMappingType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportMappingResultMappingType'
         )
         ) {
-            $msg = "Result mapping not a valid array";
+            $msg = 'Result mapping not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->resultMapping, $msg)) {

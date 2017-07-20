@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
 
 /**
- * Class representing TRecordExpressionType
+ * Class representing TRecordExpressionType.
  *
  * XSD Type: TRecordExpression
  */
@@ -25,7 +25,7 @@ class TRecordExpressionType extends IsOK
     private $propertyValue = [];
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -35,7 +35,7 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -43,7 +43,7 @@ class TRecordExpressionType extends IsOK
     public function setType($type)
     {
         if (null != $type && !$this->isTUnwrappedFunctionTypeValid($type)) {
-            $msg = "Type must be a valid TUnwrappedFunctionType";
+            $msg = 'Type must be a valid TUnwrappedFunctionType';
             throw new \InvalidArgumentException($msg);
         }
         $this->type = $type;
@@ -51,10 +51,10 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * Adds as propertyValue
+     * Adds as propertyValue.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType $propertyValue
+     * @return self
      */
     public function addToPropertyValue(TPropertyValueType $propertyValue)
     {
@@ -67,10 +67,10 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * isset propertyValue
+     * isset propertyValue.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetPropertyValue($index)
     {
@@ -78,7 +78,7 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * unset propertyValue
+     * unset propertyValue.
      *
      * @param  scalar $index
      * @return void
@@ -89,7 +89,7 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * Gets as propertyValue
+     * Gets as propertyValue.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[]
      */
@@ -99,7 +99,7 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * Sets a new propertyValue
+     * Sets a new propertyValue.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[] $propertyValue
      * @return self
@@ -121,7 +121,7 @@ class TRecordExpressionType extends IsOK
     public function isOK(&$msg = null)
     {
         if (null != $this->type && !$this->isTUnwrappedFunctionTypeValid($this->type)) {
-            $msg = "Type must be a valid TUnwrappedFunctionType";
+            $msg = 'Type must be a valid TUnwrappedFunctionType';
             return false;
         }
         if (!$this->isValidArrayOK(

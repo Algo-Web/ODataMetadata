@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType;
 
 /**
- * Class representing EntitySetAnonymousType
+ * Class representing EntitySetAnonymousType.
  */
 class EntitySetAnonymousType extends IsOK
 {
@@ -32,7 +32,7 @@ class EntitySetAnonymousType extends IsOK
     private $documentation = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -42,7 +42,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -54,7 +54,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as entityType
+     * Gets as entityType.
      *
      * @return string
      */
@@ -64,7 +64,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new entityType
+     * Sets a new entityType.
      *
      * @param  string $entityType
      * @return self
@@ -76,7 +76,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as getterAccess
+     * Gets as getterAccess.
      *
      * @return string
      */
@@ -86,7 +86,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new getterAccess
+     * Sets a new getterAccess.
      *
      * @param  string $getterAccess
      * @return self
@@ -98,7 +98,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType
      */
@@ -108,7 +108,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType $documentation
      * @return self

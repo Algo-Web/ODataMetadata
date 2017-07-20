@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TOnActionType
+ * Class representing TOnActionType.
  *
  * XSD Type: TOnAction
  */
@@ -23,7 +23,7 @@ class TOnActionType extends IsOK
     private $documentation = null;
 
     /**
-     * Gets as action
+     * Gets as action.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TOnActionType extends IsOK
     }
 
     /**
-     * Sets a new action
+     * Sets a new action.
      *
      * @param  string $action
      * @return self
@@ -45,7 +45,7 @@ class TOnActionType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
@@ -55,7 +55,7 @@ class TOnActionType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self

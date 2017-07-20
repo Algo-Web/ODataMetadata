@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TFunctionImportMappingResultMappingType
+ * Class representing TFunctionImportMappingResultMappingType.
  *
  * Type for FunctionImportMapping/ResultMapping element
  *
@@ -27,11 +27,11 @@ class TFunctionImportMappingResultMappingType extends IsOK
     private $complexTypeMapping = null;
 
     /**
-     * Adds as entityTypeMapping
+     * Adds as entityTypeMapping.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType
      * $entityTypeMapping
+     * @return self
      */
     public function addToEntityTypeMapping(TFunctionImportEntityTypeMappingType $entityTypeMapping)
     {
@@ -40,10 +40,10 @@ class TFunctionImportMappingResultMappingType extends IsOK
     }
 
     /**
-     * isset entityTypeMapping
+     * isset entityTypeMapping.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEntityTypeMapping($index)
     {
@@ -51,7 +51,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     }
 
     /**
-     * unset entityTypeMapping
+     * unset entityTypeMapping.
      *
      * @param  scalar $index
      * @return void
@@ -62,7 +62,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     }
 
     /**
-     * Gets as entityTypeMapping
+     * Gets as entityTypeMapping.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType[]
      */
@@ -72,7 +72,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     }
 
     /**
-     * Sets a new entityTypeMapping
+     * Sets a new entityTypeMapping.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType[]
      * $entityTypeMapping
@@ -94,7 +94,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     }
 
     /**
-     * Gets as complexTypeMapping
+     * Gets as complexTypeMapping.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
      */
@@ -104,7 +104,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     }
 
     /**
-     * Sets a new complexTypeMapping
+     * Sets a new complexTypeMapping.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportComplexTypeMappingType
      * $complexTypeMapping
@@ -123,7 +123,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     public function isOK(&$msg = null)
     {
         if (null == $this->complexTypeMapping) {
-            $msg = "Complex type mapping cannot be null";
+            $msg = 'Complex type mapping cannot be null';
             return false;
         }
         if (!$this->complexTypeMapping->isOK($msg)) {
@@ -134,7 +134,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportEntityTypeMappingType'
         )
         ) {
-            $msg = "Entity type mapping not a valid array";
+            $msg = 'Entity type mapping not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->entityTypeMapping, $msg)) {

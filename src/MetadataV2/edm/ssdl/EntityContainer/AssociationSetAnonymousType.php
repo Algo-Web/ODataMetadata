@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnon
 use AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType;
 
 /**
- * Class representing AssociationSetAnonymousType
+ * Class representing AssociationSetAnonymousType.
  */
 class AssociationSetAnonymousType extends IsOK
 {
@@ -35,7 +35,7 @@ class AssociationSetAnonymousType extends IsOK
     private $end = array();
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -45,7 +45,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -57,7 +57,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as association
+     * Gets as association.
      *
      * @return string
      */
@@ -67,7 +67,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new association
+     * Sets a new association.
      *
      * @param  string $association
      * @return self
@@ -79,7 +79,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType
      */
@@ -89,7 +89,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      * @return self
@@ -101,12 +101,12 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Adds as end
+     * Adds as end.
      *
-     * @return self
      * @param
      * \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType
      * $end
+     * @return self
      */
     public function addToEnd(EndAnonymousType $end)
     {
@@ -115,10 +115,10 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * isset end
+     * isset end.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEnd($index)
     {
@@ -126,7 +126,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * unset end
+     * unset end.
      *
      * @param  scalar $index
      * @return void
@@ -137,7 +137,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as end
+     * Gets as end.
      *
      * @return
      * \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType[]
@@ -148,7 +148,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new end
+     * Sets a new end.
      *
      * @param
      * \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType\EndAnonymousType[]

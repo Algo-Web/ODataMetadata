@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing Annotation
+ * Class representing Annotation.
  */
 class Annotation extends IsOK
 {
@@ -26,7 +26,7 @@ class Annotation extends IsOK
     private $binary = null;
 
     /**
-     * @property boolean $bool
+     * @property bool $bool
      */
     private $bool = null;
 
@@ -66,7 +66,7 @@ class Annotation extends IsOK
     private $guid = null;
 
     /**
-     * @property integer $int
+     * @property int $int
      */
     private $int = null;
 
@@ -201,7 +201,7 @@ class Annotation extends IsOK
     private $record = null;
 
     /**
-     * Gets as term
+     * Gets as term.
      *
      * @return string
      */
@@ -211,7 +211,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new term
+     * Sets a new term.
      *
      * @param  string $term
      * @return self
@@ -223,7 +223,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as qualifier
+     * Gets as qualifier.
      *
      * @return string
      */
@@ -233,7 +233,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new qualifier
+     * Sets a new qualifier.
      *
      * @param  string $qualifier
      * @return self
@@ -245,7 +245,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as binary
+     * Gets as binary.
      *
      * @return string
      */
@@ -255,7 +255,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new binary
+     * Sets a new binary.
      *
      * @param  string $binary
      * @return self
@@ -267,9 +267,9 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as bool
+     * Gets as bool.
      *
-     * @return boolean
+     * @return bool
      */
     public function getBool()
     {
@@ -277,9 +277,9 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new bool
+     * Sets a new bool.
      *
-     * @param  boolean $bool
+     * @param  bool $bool
      * @return self
      */
     public function setBool($bool)
@@ -289,7 +289,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as date
+     * Gets as date.
      *
      * @return \DateTime
      */
@@ -299,7 +299,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new date
+     * Sets a new date.
      *
      * @param  \DateTime $date
      * @return self
@@ -311,7 +311,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as dateTimeOffset
+     * Gets as dateTimeOffset.
      *
      * @return \DateTime
      */
@@ -321,7 +321,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new dateTimeOffset
+     * Sets a new dateTimeOffset.
      *
      * @param  \DateTime $dateTimeOffset
      * @return self
@@ -333,7 +333,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as decimal
+     * Gets as decimal.
      *
      * @return float
      */
@@ -343,7 +343,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new decimal
+     * Sets a new decimal.
      *
      * @param  float $decimal
      * @return self
@@ -355,7 +355,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as duration
+     * Gets as duration.
      *
      * @return \DateInterval
      */
@@ -365,7 +365,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new duration
+     * Sets a new duration.
      *
      * @param  \DateInterval $duration
      * @return self
@@ -377,10 +377,10 @@ class Annotation extends IsOK
     }
 
     /**
-     * Adds as enumMember
+     * Adds as enumMember.
      *
-     * @return self
      * @param  string $enumMember
+     * @return self
      */
     public function addToEnumMember($enumMember)
     {
@@ -389,10 +389,10 @@ class Annotation extends IsOK
     }
 
     /**
-     * isset enumMember
+     * isset enumMember.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEnumMember($index)
     {
@@ -400,7 +400,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * unset enumMember
+     * unset enumMember.
      *
      * @param  scalar $index
      * @return void
@@ -411,7 +411,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as enumMember
+     * Gets as enumMember.
      *
      * @return string[]
      */
@@ -421,7 +421,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new enumMember
+     * Sets a new enumMember.
      *
      * @param  string $enumMember
      * @return self
@@ -433,7 +433,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as float
+     * Gets as float.
      *
      * @return float
      */
@@ -443,7 +443,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new float
+     * Sets a new float.
      *
      * @param  float $float
      * @return self
@@ -455,7 +455,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as guid
+     * Gets as guid.
      *
      * @return string
      */
@@ -465,7 +465,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new guid
+     * Sets a new guid.
      *
      * @param  string $guid
      * @return self
@@ -477,9 +477,9 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as int
+     * Gets as int.
      *
-     * @return integer
+     * @return int
      */
     public function getInt()
     {
@@ -487,9 +487,9 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new int
+     * Sets a new int.
      *
-     * @param  integer $int
+     * @param  int  $int
      * @return self
      */
     public function setInt($int)
@@ -499,7 +499,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as string
+     * Gets as string.
      *
      * @return string
      */
@@ -509,7 +509,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new string
+     * Sets a new string.
      *
      * @param  string $string
      * @return self
@@ -521,7 +521,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as timeOfDay
+     * Gets as timeOfDay.
      *
      * @return \DateTime
      */
@@ -531,7 +531,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new timeOfDay
+     * Sets a new timeOfDay.
      *
      * @param  \DateTime $timeOfDay
      * @return self
@@ -543,7 +543,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as annotationPath
+     * Gets as annotationPath.
      *
      * @return string
      */
@@ -553,7 +553,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new annotationPath
+     * Sets a new annotationPath.
      *
      * @param  string $annotationPath
      * @return self
@@ -565,7 +565,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as navigationPropertyPath
+     * Gets as navigationPropertyPath.
      *
      * @return string
      */
@@ -575,7 +575,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new navigationPropertyPath
+     * Sets a new navigationPropertyPath.
      *
      * @param  string $navigationPropertyPath
      * @return self
@@ -587,7 +587,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as path
+     * Gets as path.
      *
      * @return string
      */
@@ -597,7 +597,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new path
+     * Sets a new path.
      *
      * @param  string $path
      * @return self
@@ -609,7 +609,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as propertyPath
+     * Gets as propertyPath.
      *
      * @return string
      */
@@ -619,7 +619,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new propertyPath
+     * Sets a new propertyPath.
      *
      * @param  string $propertyPath
      * @return self
@@ -631,7 +631,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as urlRef
+     * Gets as urlRef.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType
      */
@@ -641,7 +641,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new urlRef
+     * Sets a new urlRef.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $urlRef
      * @return self
@@ -653,10 +653,10 @@ class Annotation extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -665,10 +665,10 @@ class Annotation extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -676,7 +676,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -687,7 +687,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -697,7 +697,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
@@ -709,7 +709,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as apply
+     * Gets as apply.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType
      */
@@ -719,7 +719,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new apply
+     * Sets a new apply.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType $apply
      * @return self
@@ -731,7 +731,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as cast
+     * Gets as cast.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType
      */
@@ -741,7 +741,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new cast
+     * Sets a new cast.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $cast
      * @return self
@@ -753,7 +753,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as collection
+     * Gets as collection.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType
      */
@@ -763,7 +763,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new collection
+     * Sets a new collection.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType $collection
      * @return self
@@ -775,7 +775,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as if
+     * Gets as if.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType
      */
@@ -785,7 +785,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new if
+     * Sets a new if.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType $if
      * @return self
@@ -797,7 +797,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as eq
+     * Gets as eq.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -807,7 +807,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new eq
+     * Sets a new eq.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $eq
      * @return self
@@ -819,7 +819,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as ne
+     * Gets as ne.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -829,7 +829,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new ne
+     * Sets a new ne.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ne
      * @return self
@@ -841,7 +841,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as ge
+     * Gets as ge.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -851,7 +851,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new ge
+     * Sets a new ge.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ge
      * @return self
@@ -863,7 +863,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as gt
+     * Gets as gt.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -873,7 +873,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new gt
+     * Sets a new gt.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $gt
      * @return self
@@ -885,7 +885,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as le
+     * Gets as le.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -895,7 +895,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new le
+     * Sets a new le.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $le
      * @return self
@@ -907,7 +907,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as lt
+     * Gets as lt.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -917,7 +917,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new lt
+     * Sets a new lt.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $lt
      * @return self
@@ -929,7 +929,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as and
+     * Gets as and.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -939,7 +939,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new and
+     * Sets a new and.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $and
      * @return self
@@ -951,7 +951,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as or
+     * Gets as or.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -961,7 +961,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new or
+     * Sets a new or.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $or
      * @return self
@@ -973,7 +973,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as not
+     * Gets as not.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType
      */
@@ -983,7 +983,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new not
+     * Sets a new not.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $not
      * @return self
@@ -995,7 +995,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as isOf
+     * Gets as isOf.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType
      */
@@ -1005,7 +1005,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new isOf
+     * Sets a new isOf.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $isOf
      * @return self
@@ -1017,7 +1017,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as labeledElement
+     * Gets as labeledElement.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType
      */
@@ -1027,7 +1027,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new labeledElement
+     * Sets a new labeledElement.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType $labeledElement
      * @return self
@@ -1039,7 +1039,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as labeledElementReference
+     * Gets as labeledElementReference.
      *
      * @return string
      */
@@ -1049,7 +1049,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new labeledElementReference
+     * Sets a new labeledElementReference.
      *
      * @param  string $labeledElementReference
      * @return self
@@ -1061,10 +1061,10 @@ class Annotation extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToNull(Annotation $annotation)
     {
@@ -1073,10 +1073,10 @@ class Annotation extends IsOK
     }
 
     /**
-     * isset null
+     * isset null.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetNull($index)
     {
@@ -1084,7 +1084,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * unset null
+     * unset null.
      *
      * @param  scalar $index
      * @return void
@@ -1095,7 +1095,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as null
+     * Gets as null.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -1105,7 +1105,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new null
+     * Sets a new null.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $null
      * @return self
@@ -1117,7 +1117,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Gets as record
+     * Gets as record.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType
      */
@@ -1127,7 +1127,7 @@ class Annotation extends IsOK
     }
 
     /**
-     * Sets a new record
+     * Sets a new record.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType $record
      * @return self

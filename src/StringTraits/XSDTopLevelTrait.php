@@ -9,7 +9,7 @@ trait XSDTopLevelTrait
     public function normaliseString($input)
     {
         if (!is_string($input) || !is_numeric($input)) {
-            throw new \InvalidArgumentException("Input must be a string");
+            throw new \InvalidArgumentException('Input must be a string');
         }
         $result = $this->replaceString($input);
         return $result;
@@ -18,7 +18,7 @@ trait XSDTopLevelTrait
     public function token($input)
     {
         if (!is_string($input) || !is_numeric($input)) {
-            throw new \InvalidArgumentException("Input must be a string");
+            throw new \InvalidArgumentException('Input must be a string');
         }
         $result = $this->collapseString($input);
         return $result;
@@ -27,7 +27,7 @@ trait XSDTopLevelTrait
     public function string($input)
     {
         if (!is_string($input) || !is_numeric($input)) {
-            throw new \InvalidArgumentException("Input must be a string");
+            throw new \InvalidArgumentException('Input must be a string');
         }
         $result = $this->preserveString($input);
         return $result;
@@ -37,11 +37,11 @@ trait XSDTopLevelTrait
     {
         $input = $this->collapseString($input);
         if (!is_numeric($input)) {
-            throw new \InvalidArgumentException("Input must be numeric");
+            throw new \InvalidArgumentException('Input must be numeric');
         }
         $integral = intval($input);
         if ($input != $integral) {
-            throw new \InvalidArgumentException("Input must be integer");
+            throw new \InvalidArgumentException('Input must be integer');
         }
         return $integral;
     }
@@ -50,7 +50,7 @@ trait XSDTopLevelTrait
     {
         $input = $this->integer($input);
         if (0 > $input) {
-            throw new \InvalidArgumentException("Input must be non-negative integer");
+            throw new \InvalidArgumentException('Input must be non-negative integer');
         }
         return $input;
     }
@@ -59,7 +59,7 @@ trait XSDTopLevelTrait
     {
         $input = $this->collapseString($input);
         if (!is_numeric($input)) {
-            throw new \InvalidArgumentException("Input must be numeric");
+            throw new \InvalidArgumentException('Input must be numeric');
         }
         return floatval($input);
     }
@@ -73,7 +73,7 @@ trait XSDTopLevelTrait
     {
         $isString = is_string($input);
         if (!$isString && !$input instanceof \DateTime) {
-            throw new \InvalidArgumentException("Input must be resolvable to a date/time");
+            throw new \InvalidArgumentException('Input must be resolvable to a date/time');
         }
         if ($isString) {
             $input = $this->collapseString($input);
@@ -88,13 +88,13 @@ trait XSDTopLevelTrait
     public function hexBinary($input)
     {
         if (!is_string($input) || !is_numeric($input)) {
-            throw new \InvalidArgumentException("Input must be a string");
+            throw new \InvalidArgumentException('Input must be a string');
         }
 
         $input = $this->collapseString(strtolower($input));
         $check = hexdec(dechex($input));
         if ($input != $check) {
-            throw new \InvalidArgumentException("Input must be valid hexadecimal");
+            throw new \InvalidArgumentException('Input must be valid hexadecimal');
         }
         return $check;
     }

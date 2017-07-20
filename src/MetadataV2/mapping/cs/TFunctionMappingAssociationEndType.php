@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 
 /**
- * Class representing TFunctionMappingAssociationEndType
+ * Class representing TFunctionMappingAssociationEndType.
  *
  * XSD Type: TFunctionMappingAssociationEnd
  */
@@ -32,7 +32,7 @@ class TFunctionMappingAssociationEndType extends IsOK
     private $scalarProperty = null;
 
     /**
-     * Gets as associationSet
+     * Gets as associationSet.
      *
      * @return string
      */
@@ -42,7 +42,7 @@ class TFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new associationSet
+     * Sets a new associationSet.
      *
      * @param  string $associationSet
      * @return self
@@ -54,7 +54,7 @@ class TFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Gets as from
+     * Gets as from.
      *
      * @return string
      */
@@ -64,7 +64,7 @@ class TFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new from
+     * Sets a new from.
      *
      * @param  string $from
      * @return self
@@ -76,7 +76,7 @@ class TFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Gets as to
+     * Gets as to.
      *
      * @return string
      */
@@ -86,7 +86,7 @@ class TFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new to
+     * Sets a new to.
      *
      * @param  string $to
      * @return self
@@ -98,7 +98,7 @@ class TFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Gets as scalarProperty
+     * Gets as scalarProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType
      */
@@ -108,7 +108,7 @@ class TFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new scalarProperty
+     * Sets a new scalarProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionMappingScalarPropertyType $scalarProperty
      * @return self

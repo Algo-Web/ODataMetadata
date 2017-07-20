@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TDurationConstantExpressionType
+ * Class representing TDurationConstantExpressionType.
  *
  * XSD Type: TDurationConstantExpression
  */
@@ -18,7 +18,7 @@ class TDurationConstantExpressionType extends IsOK
     private $__value = null;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param \DateInterval $value
      */
@@ -28,10 +28,10 @@ class TDurationConstantExpressionType extends IsOK
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param  \DateInterval ...$value
-     * @param \DateInterval[] $value
+     * @param  \DateInterval   ...$value
+     * @param  \DateInterval[] $value
      * @return \DateInterval
      */
     public function value(...$value)
@@ -43,7 +43,7 @@ class TDurationConstantExpressionType extends IsOK
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */

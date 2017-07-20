@@ -13,7 +13,7 @@ trait TTypeAttributesTrait
     private $name = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -23,7 +23,7 @@ trait TTypeAttributesTrait
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -32,11 +32,11 @@ trait TTypeAttributesTrait
     {
         $msg = null;
         if (null == $name) {
-            $msg = "Name cannot be null";
+            $msg = 'Name cannot be null';
             throw new \InvalidArgumentException($msg);
         }
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -46,11 +46,11 @@ trait TTypeAttributesTrait
     public function isTTypeAttributesValid(&$msg = null)
     {
         if (null == $this->name) {
-            $msg = "Name cannot be null: " . get_class($this);
+            $msg = 'Name cannot be null: ' . get_class($this);
             return false;
         }
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier: " . get_class($this);
+            $msg = 'Name must be a valid TSimpleIdentifier: ' . get_class($this);
             return false;
         }
         

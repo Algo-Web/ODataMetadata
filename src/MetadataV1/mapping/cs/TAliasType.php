@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TAliasType
+ * Class representing TAliasType.
  *
  * XSD Type: TAlias
  */
@@ -23,7 +23,7 @@ class TAliasType extends IsOK
     private $value = null;
 
     /**
-     * Gets as key
+     * Gets as key.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TAliasType extends IsOK
     }
 
     /**
-     * Sets a new key
+     * Sets a new key.
      *
      * @param  string $key
      * @return self
@@ -45,7 +45,7 @@ class TAliasType extends IsOK
     }
 
     /**
-     * Gets as value
+     * Gets as value.
      *
      * @return string
      */
@@ -55,7 +55,7 @@ class TAliasType extends IsOK
     }
 
     /**
-     * Sets a new value
+     * Sets a new value.
      *
      * @param  string $value
      * @return self

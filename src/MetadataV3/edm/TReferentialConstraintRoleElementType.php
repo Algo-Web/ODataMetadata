@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TReferentialConstraintRoleElementType
+ * Class representing TReferentialConstraintRoleElementType.
  *
  * XSD Type: TReferentialConstraintRoleElement
  */
@@ -25,7 +25,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     private $propertyRef = [];
 
     /**
-     * Gets as role
+     * Gets as role.
      *
      * @return string
      */
@@ -35,7 +35,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     }
 
     /**
-     * Sets a new role
+     * Sets a new role.
      *
      * @param  string $role
      * @return self
@@ -43,7 +43,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     public function setRole($role)
     {
         if (!$this->isTSimpleIdentifierValid($role)) {
-            $msg = "Role must be a valid TSimpleIdentifier";
+            $msg = 'Role must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->role = $role;
@@ -51,10 +51,10 @@ class TReferentialConstraintRoleElementType extends IsOK
     }
 
     /**
-     * Adds as propertyRef
+     * Adds as propertyRef.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType $propertyRef
+     * @return self
      */
     public function addToPropertyRef(TPropertyRefType $propertyRef)
     {
@@ -67,10 +67,10 @@ class TReferentialConstraintRoleElementType extends IsOK
     }
 
     /**
-     * isset propertyRef
+     * isset propertyRef.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetPropertyRef($index)
     {
@@ -78,7 +78,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     }
 
     /**
-     * unset propertyRef
+     * unset propertyRef.
      *
      * @param  scalar $index
      * @return void
@@ -89,7 +89,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     }
 
     /**
-     * Gets as propertyRef
+     * Gets as propertyRef.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType[]
      */
@@ -99,7 +99,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     }
 
     /**
-     * Sets a new propertyRef
+     * Sets a new propertyRef.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType[] $propertyRef
      * @return self
@@ -122,7 +122,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->role)) {
-            $msg = "Role must be a valid TSimpleIdentifier";
+            $msg = 'Role must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isValidArrayOK(

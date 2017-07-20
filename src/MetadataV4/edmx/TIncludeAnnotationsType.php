@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TNamespaceNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TIncludeAnnotationsType
+ * Class representing TIncludeAnnotationsType.
  *
  * XSD Type: TIncludeAnnotations
  */
@@ -31,7 +31,7 @@ class TIncludeAnnotationsType extends IsOK
     private $targetNamespace = null;
 
     /**
-     * Gets as termNamespace
+     * Gets as termNamespace.
      *
      * @return string
      */
@@ -41,7 +41,7 @@ class TIncludeAnnotationsType extends IsOK
     }
 
     /**
-     * Sets a new termNamespace
+     * Sets a new termNamespace.
      *
      * @param  string $termNamespace
      * @return self
@@ -53,7 +53,7 @@ class TIncludeAnnotationsType extends IsOK
     }
 
     /**
-     * Gets as qualifier
+     * Gets as qualifier.
      *
      * @return string
      */
@@ -63,7 +63,7 @@ class TIncludeAnnotationsType extends IsOK
     }
 
     /**
-     * Sets a new qualifier
+     * Sets a new qualifier.
      *
      * @param  string $qualifier
      * @return self
@@ -75,7 +75,7 @@ class TIncludeAnnotationsType extends IsOK
     }
 
     /**
-     * Gets as targetNamespace
+     * Gets as targetNamespace.
      *
      * @return string
      */
@@ -85,7 +85,7 @@ class TIncludeAnnotationsType extends IsOK
     }
 
     /**
-     * Sets a new targetNamespace
+     * Sets a new targetNamespace.
      *
      * @param  string $targetNamespace
      * @return self
@@ -99,32 +99,32 @@ class TIncludeAnnotationsType extends IsOK
     protected function isOK(&$msg)
     {
         if (!$this->isStringNotNullOrEmpty($this->termNamespace)) {
-            $msg = "Term namespace must be defined";
+            $msg = 'Term namespace must be defined';
             return false;
         }
         if (!$this->isTNamespaceNameValid($this->termNamespace)) {
-            $msg = "Term namespace must be a valid NameSpace";
+            $msg = 'Term namespace must be a valid NameSpace';
             return false;
         }
 
 
         if (null != $this->qualifier) {
             if (!is_string($this->qualifier)) {
-                $msg = "Qualifier must be either a string or null";
+                $msg = 'Qualifier must be either a string or null';
                 return false;
             }
             if (!$this->isTSimpleIdentifierValid($this->qualifier)) {
-                $msg = "Qualifier must be a valid TSimpleIdentifier";
+                $msg = 'Qualifier must be a valid TSimpleIdentifier';
                 return false;
             }
         }
         if (null != $this->targetNamespace) {
             if (!is_string($this->targetNamespace)) {
-                $msg = "TargetNamespace must be either a string or null";
+                $msg = 'TargetNamespace must be either a string or null';
                 return false;
             }
             if (!$this->$this->IsTNamespaceNameValid($this->targetNamespace)) {
-                $msg = "TargetNamespace must be a valid TNamespace";
+                $msg = 'TargetNamespace must be a valid TNamespace';
                 return false;
             }
         }

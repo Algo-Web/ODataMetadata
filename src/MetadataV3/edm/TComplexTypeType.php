@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TTypeAttributesTrait;
 
 /**
- * Class representing TComplexTypeType
+ * Class representing TComplexTypeType.
  *
  * XSD Type: TComplexType
  */
@@ -41,7 +41,7 @@ class TComplexTypeType extends IsOK
     private $typeAnnotation = [];
 
     /**
-     * Gets as typeAccess
+     * Gets as typeAccess.
      *
      * @return string
      */
@@ -51,7 +51,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new typeAccess
+     * Sets a new typeAccess.
      *
      * @param  string $typeAccess
      * @return self
@@ -59,7 +59,7 @@ class TComplexTypeType extends IsOK
     public function setTypeAccess($typeAccess)
     {
         if (!$this->isTPublicOrInternalAccessOK($typeAccess)) {
-            $msg = "Type access must be Public or Internal";
+            $msg = 'Type access must be Public or Internal';
             throw new \InvalidArgumentException($msg);
         }
         $this->typeAccess = $typeAccess;
@@ -67,7 +67,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
      */
@@ -77,7 +77,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
@@ -93,10 +93,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType $property
+     * @return self
      */
     public function addToProperty(TComplexTypePropertyType $property)
     {
@@ -109,10 +109,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * isset property
+     * isset property.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetProperty($index)
     {
@@ -120,7 +120,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * unset property
+     * unset property.
      *
      * @param  scalar $index
      * @return void
@@ -131,7 +131,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as property
+     * Gets as property.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType[]
      */
@@ -141,7 +141,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new property
+     * Sets a new property.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType[] $property
      * @return self
@@ -161,10 +161,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Adds as valueAnnotation
+     * Adds as valueAnnotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType $valueAnnotation
+     * @return self
      */
     public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
@@ -177,10 +177,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * isset valueAnnotation
+     * isset valueAnnotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetValueAnnotation($index)
     {
@@ -188,7 +188,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * unset valueAnnotation
+     * unset valueAnnotation.
      *
      * @param  scalar $index
      * @return void
@@ -199,7 +199,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as valueAnnotation
+     * Gets as valueAnnotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[]
      */
@@ -209,7 +209,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new valueAnnotation
+     * Sets a new valueAnnotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      * @return self
@@ -229,10 +229,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Adds as typeAnnotation
+     * Adds as typeAnnotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType $typeAnnotation
+     * @return self
      */
     public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
@@ -245,10 +245,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * isset typeAnnotation
+     * isset typeAnnotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetTypeAnnotation($index)
     {
@@ -256,7 +256,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * unset typeAnnotation
+     * unset typeAnnotation.
      *
      * @param  scalar $index
      * @return void
@@ -267,7 +267,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as typeAnnotation
+     * Gets as typeAnnotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[]
      */
@@ -277,7 +277,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new typeAnnotation
+     * Sets a new typeAnnotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      * @return self
@@ -299,7 +299,7 @@ class TComplexTypeType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTPublicOrInternalAccessOK($this->typeAccess)) {
-            $msg = "Type access must be Public or Internal";
+            $msg = 'Type access must be Public or Internal';
             return false;
         }
         if (!$this->isObjectNullOrOK($this->documentation, $msg)) {

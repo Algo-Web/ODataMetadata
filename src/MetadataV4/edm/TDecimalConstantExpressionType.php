@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TDecimalConstantExpressionType
+ * Class representing TDecimalConstantExpressionType.
  *
  * XSD Type: TDecimalConstantExpression
  */
@@ -18,7 +18,7 @@ class TDecimalConstantExpressionType extends IsOK
     private $__value = null;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param float $value
      */
@@ -28,10 +28,10 @@ class TDecimalConstantExpressionType extends IsOK
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param  float ...$value
-     * @param double[] $value
+     * @param  float   ...$value
+     * @param  float[] $value
      * @return float
      */
     public function value(...$value)
@@ -43,7 +43,7 @@ class TDecimalConstantExpressionType extends IsOK
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */

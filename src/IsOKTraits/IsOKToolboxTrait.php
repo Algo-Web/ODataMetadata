@@ -75,7 +75,7 @@ trait IsOKToolboxTrait
             return true;
         }
         if (!$object instanceof $instanceOf) {
-            $msg = "Supplied object not an instance of " . $instanceOf . ": " . get_class($this);
+            $msg = 'Supplied object not an instance of ' . $instanceOf . ': ' . get_class($this);
             return false;
         }
         return $object->isOK($msg);
@@ -85,7 +85,7 @@ trait IsOKToolboxTrait
     {
         $result = $this->isValidArray($arr, $instanceOf, $minCount, $maxCount);
         if (!$result) {
-            $msg = "Supplied array not a valid array: " . get_class($this);
+            $msg = 'Supplied array not a valid array: ' . get_class($this);
             return false;
         }
 
@@ -117,7 +117,7 @@ trait IsOKToolboxTrait
         }
         foreach ($arr as $item) {
             if (!($item instanceof IsOK)) {
-                $msg = "Child item is not an instance of IsOK: " . get_class($this);
+                $msg = 'Child item is not an instance of IsOK: ' . get_class($this);
                 return false;
             }
             if (!$item->isOK($msg)) {

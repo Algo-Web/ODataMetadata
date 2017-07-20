@@ -10,10 +10,10 @@ class TEntityTypeTypeTest extends TestCase
 {
     public function testSetBaseTypeBadData()
     {
-        $expected = "Base type must be a valid TQualifiedName";
+        $expected = 'Base type must be a valid TQualifiedName';
         $actual = null;
         $foo = new TEntityTypeType();
-        $baseType = " _ ";
+        $baseType = ' _ ';
 
         try {
             $foo->setBaseType($baseType);
@@ -25,7 +25,7 @@ class TEntityTypeTypeTest extends TestCase
 
     public function testIsDerivableTypeAttributesValidNewCreation()
     {
-        $expected = "Name cannot be null: AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\TEntityTypeType";
+        $expected = 'Name cannot be null: AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\TEntityTypeType';
         $actual = null;
         $foo = new TEntityTypeType();
 
@@ -39,8 +39,8 @@ class TEntityTypeTypeTest extends TestCase
 
     public function testIsDerivableTypeAttributesValidNameGoodBaseTypeNotGood()
     {
-        $expectedStarts = "Base type must be a valid TQualifiedName:";
-        $expectedEnds = "AlgoWeb_ODataMetadata_MetadataV3_edm_TEntityTypeType";
+        $expectedStarts = 'Base type must be a valid TQualifiedName:';
+        $expectedEnds = 'AlgoWeb_ODataMetadata_MetadataV3_edm_TEntityTypeType';
         $actual = null;
         $foo = m::mock(TEntityTypeType::class)->makePartial();
         $foo->shouldReceive('isTQualifiedNameValid')->withAnyArgs()->andReturn(true, false)->twice();
@@ -60,7 +60,7 @@ class TEntityTypeTypeTest extends TestCase
 
     public function testSetNameNull()
     {
-        $expected = "Name cannot be null";
+        $expected = 'Name cannot be null';
         $actual = null;
         $name = null;
 
@@ -76,7 +76,7 @@ class TEntityTypeTypeTest extends TestCase
 
     public function testSetNameNonString()
     {
-        $expected = "Name must be a valid TSimpleIdentifier";
+        $expected = 'Name must be a valid TSimpleIdentifier';
         $actual = null;
         $name = new \DateTime();
 
@@ -92,10 +92,10 @@ class TEntityTypeTypeTest extends TestCase
 
     public function testIsTTypeAttributesValidNameNotSimpleIdentifier()
     {
-        $expectedStarts = "Name must be a valid TSimpleIdentifier:";
-        $expectedEnds = "AlgoWeb_ODataMetadata_MetadataV3_edm_TEntityTypeType";
+        $expectedStarts = 'Name must be a valid TSimpleIdentifier:';
+        $expectedEnds = 'AlgoWeb_ODataMetadata_MetadataV3_edm_TEntityTypeType';
         $actual = null;
-        $name = " _ ";
+        $name = ' _ ';
 
         $foo = m::mock(TEntityTypeType::class)->makePartial();
         $foo->shouldReceive('isTSimpleIdentifierValid')->withAnyArgs()->andReturn(true, false)->twice();

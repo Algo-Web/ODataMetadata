@@ -5,10 +5,10 @@ namespace AlgoWeb\ODataMetadata\Tests;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 
-use Illuminate\Support\Str;
-
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
+
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TEdmxType;
+use Illuminate\Support\Str;
 
 class EdmxTest extends TestCase
 {
@@ -26,12 +26,12 @@ class EdmxTest extends TestCase
         $edmx = new Edmx();
         $this->assertTrue($edmx->isOK($msg), $msg);
         $this->assertNull($msg);
-        $ymlDir = dirname(__DIR__) . $ds . "src" . $ds . "MetadataV3" . $ds . "JMSmetadata";
+        $ymlDir = dirname(__DIR__) . $ds . 'src' . $ds . 'MetadataV3' . $ds . 'JMSmetadata';
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
                 ->addMetadataDir($ymlDir)
                 ->build();
-        $d = $serializer->serialize($edmx, "xml");
+        $d = $serializer->serialize($edmx, 'xml');
         $this->v3MetadataAgainstXSD($d);
     }
 
@@ -39,7 +39,7 @@ class EdmxTest extends TestCase
     {
         $ds = DIRECTORY_SEPARATOR;
 
-        $goodxsd = dirname(__DIR__) . $ds . "xsd" . $ds . "Microsoft.Data.Entity.Design.Edmx_3.Fixed.xsd";
+        $goodxsd = dirname(__DIR__) . $ds . 'xsd' . $ds . 'Microsoft.Data.Entity.Design.Edmx_3.Fixed.xsd';
         if (!file_exists($goodxsd)) {
             return true;
         }
@@ -66,12 +66,12 @@ class EdmxTest extends TestCase
      */
     private function checkEdmxSerialiseDeserialiseRoundTrip($ds, $edmx, $msg)
     {
-        $ymlDir = dirname(__DIR__) . $ds . "src" . $ds . "MetadataV3" . $ds . "JMSmetadata";
+        $ymlDir = dirname(__DIR__) . $ds . 'src' . $ds . 'MetadataV3' . $ds . 'JMSmetadata';
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
                 ->addMetadataDir($ymlDir)
                 ->build();
-        $d1 = $serializer->serialize($edmx, "xml");
+        $d1 = $serializer->serialize($edmx, 'xml');
         $this->v3MetadataAgainstXSD($d1);
         $edmxElectricBoogaloo = $serializer->deserialize($d1, get_class($edmx), 'xml');
         $this->assertTrue($edmxElectricBoogaloo->isOK($msg), $msg);
@@ -104,7 +104,7 @@ class EdmxTest extends TestCase
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
         $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
-        $NewEntity->setName("simpleEntityType");
+        $NewEntity->setName('simpleEntityType');
         $this->assertTrue($NewEntity->isOK($msg), $msg);
         $this->assertNull($msg);
         $edmx = new Edmx();
@@ -113,12 +113,12 @@ class EdmxTest extends TestCase
         $this->assertNull($msg);
 
 
-        $ymlDir = dirname(__DIR__) . $ds . "src" . $ds . "MetadataV3" . $ds . "JMSmetadata";
+        $ymlDir = dirname(__DIR__) . $ds . 'src' . $ds . 'MetadataV3' . $ds . 'JMSmetadata';
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
                 ->addMetadataDir($ymlDir)
                 ->build();
-        $d = $serializer->serialize($edmx, "xml");
+        $d = $serializer->serialize($edmx, 'xml');
 
         $this->v3MetadataAgainstXSD($d);
     }
@@ -128,7 +128,7 @@ class EdmxTest extends TestCase
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
         $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
-        $NewEntity->setName("simpleEntityType");
+        $NewEntity->setName('simpleEntityType');
         $this->assertTrue($NewEntity->isOK($msg), $msg);
         $this->assertNull($msg);
         $edmx = new Edmx();
@@ -145,10 +145,10 @@ class EdmxTest extends TestCase
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
 
-        $docLocation = dirname(__DIR__) . $ds . "tests" . $ds . "exampleV3ServiceDocument.xml";
+        $docLocation = dirname(__DIR__) . $ds . 'tests' . $ds . 'exampleV3ServiceDocument.xml';
         $document = file_get_contents($docLocation);
         $type = 'AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType';
-        $ymlDir = dirname(__DIR__) . $ds . "src" . $ds . "MetadataV3" . $ds . "JMSmetadata";
+        $ymlDir = dirname(__DIR__) . $ds . 'src' . $ds . 'MetadataV3' . $ds . 'JMSmetadata';
 
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
@@ -165,10 +165,10 @@ class EdmxTest extends TestCase
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
 
-        $docLocation = dirname(__DIR__) . $ds . "tests" . $ds . "exampleV3ServiceMetadata.xml";
+        $docLocation = dirname(__DIR__) . $ds . 'tests' . $ds . 'exampleV3ServiceMetadata.xml';
         $document = file_get_contents($docLocation);
         $type = 'AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx';
-        $ymlDir = dirname(__DIR__) . $ds . "src" . $ds . "MetadataV3" . $ds . "JMSmetadata";
+        $ymlDir = dirname(__DIR__) . $ds . 'src' . $ds . 'MetadataV3' . $ds . 'JMSmetadata';
 
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
@@ -186,11 +186,11 @@ class EdmxTest extends TestCase
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
 
-        $docLocation = dirname(__DIR__) . $ds . "tests" . $ds . "exampleV3ServiceMetadata.xml";
+        $docLocation = dirname(__DIR__) . $ds . 'tests' . $ds . 'exampleV3ServiceMetadata.xml';
         $document = file_get_contents($docLocation);
         $this->v3MetadataAgainstXSD($document);
         $type = 'AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx';
-        $ymlDir = dirname(__DIR__) . $ds . "src" . $ds . "MetadataV3" . $ds . "JMSmetadata";
+        $ymlDir = dirname(__DIR__) . $ds . 'src' . $ds . 'MetadataV3' . $ds . 'JMSmetadata';
 
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
@@ -208,13 +208,13 @@ class EdmxTest extends TestCase
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
         $NewProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
-        $NewProperty->setName("TheFirstProperty");
-        $NewProperty->setType("String");
+        $NewProperty->setName('TheFirstProperty');
+        $NewProperty->setType('String');
         $this->assertTrue($NewProperty->isOK($msg), $msg);
         $this->assertNull($msg);
 
         $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
-        $NewEntity->setName("simpleEntityType");
+        $NewEntity->setName('simpleEntityType');
         $NewEntity->addToProperty($NewProperty);
         $this->assertTrue($NewEntity->isOK($msg), $msg);
         $this->assertNull($msg);
@@ -231,12 +231,12 @@ class EdmxTest extends TestCase
         $this->assertNull($msg);
 
 
-        $ymlDir = dirname(__DIR__) . $ds . "src" . $ds . "MetadataV3" . $ds . "JMSmetadata";
+        $ymlDir = dirname(__DIR__) . $ds . 'src' . $ds . 'MetadataV3' . $ds . 'JMSmetadata';
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
                 ->addMetadataDir($ymlDir)
                 ->build();
-        $d = $serializer->serialize($edmx, "xml");
+        $d = $serializer->serialize($edmx, 'xml');
         $this->v3MetadataAgainstXSD($d);
     }
 
@@ -245,13 +245,13 @@ class EdmxTest extends TestCase
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
         $NewProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
-        $NewProperty->setName("TheFirstProperty");
-        $NewProperty->setType("String");
+        $NewProperty->setName('TheFirstProperty');
+        $NewProperty->setType('String');
         $this->assertTrue($NewProperty->isOK($msg), $msg);
         $this->assertNull($msg);
 
         $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
-        $NewEntity->setName("simpleEntityType");
+        $NewEntity->setName('simpleEntityType');
         $NewEntity->addToProperty($NewProperty);
         $this->assertTrue($NewEntity->isOK($msg), $msg);
         $this->assertNull($msg);
@@ -276,7 +276,7 @@ class EdmxTest extends TestCase
         $msg = null;
 
         $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
-        $NewEntity->setName("simpleEntityType");
+        $NewEntity->setName('simpleEntityType');
         $this->assertTrue($NewEntity->isOK($msg), $msg);
         $this->assertNull($msg);
 

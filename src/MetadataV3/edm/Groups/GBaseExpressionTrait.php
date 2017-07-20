@@ -15,7 +15,7 @@ trait GBaseExpressionTrait
     private $binary = null;
 
     /**
-     * @property integer $int
+     * @property int $int
      */
     private $int = null;
 
@@ -35,7 +35,7 @@ trait GBaseExpressionTrait
     private $decimal = null;
 
     /**
-     * @property boolean $bool
+     * @property bool $bool
      */
     private $bool = null;
 

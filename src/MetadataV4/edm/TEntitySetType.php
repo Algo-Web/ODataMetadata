@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TEntitySetType
+ * Class representing TEntitySetType.
  *
  * XSD Type: TEntitySet
  */
@@ -23,7 +23,7 @@ class TEntitySetType extends IsOK
     private $entityType = null;
 
     /**
-     * @property boolean $includeInServiceDocument
+     * @property bool $includeInServiceDocument
      */
     private $includeInServiceDocument = null;
 
@@ -39,7 +39,7 @@ class TEntitySetType extends IsOK
     private $annotation = array();
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -49,7 +49,7 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -61,7 +61,7 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * Gets as entityType
+     * Gets as entityType.
      *
      * @return string
      */
@@ -71,7 +71,7 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * Sets a new entityType
+     * Sets a new entityType.
      *
      * @param  string $entityType
      * @return self
@@ -83,9 +83,9 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * Gets as includeInServiceDocument
+     * Gets as includeInServiceDocument.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIncludeInServiceDocument()
     {
@@ -93,9 +93,9 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * Sets a new includeInServiceDocument
+     * Sets a new includeInServiceDocument.
      *
-     * @param  boolean $includeInServiceDocument
+     * @param  bool $includeInServiceDocument
      * @return self
      */
     public function setIncludeInServiceDocument($includeInServiceDocument)
@@ -105,10 +105,10 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * Adds as navigationPropertyBinding
+     * Adds as navigationPropertyBinding.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType $navigationPropertyBinding
+     * @return self
      */
     public function addToNavigationPropertyBinding(TNavigationPropertyBindingType $navigationPropertyBinding)
     {
@@ -117,10 +117,10 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * isset navigationPropertyBinding
+     * isset navigationPropertyBinding.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetNavigationPropertyBinding($index)
     {
@@ -128,7 +128,7 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * unset navigationPropertyBinding
+     * unset navigationPropertyBinding.
      *
      * @param  scalar $index
      * @return void
@@ -139,7 +139,7 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * Gets as navigationPropertyBinding
+     * Gets as navigationPropertyBinding.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType[]
      */
@@ -149,7 +149,7 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * Sets a new navigationPropertyBinding
+     * Sets a new navigationPropertyBinding.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyBindingType[]
      * $navigationPropertyBinding
@@ -162,10 +162,10 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -174,10 +174,10 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -185,7 +185,7 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -196,7 +196,7 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -206,7 +206,7 @@ class TEntitySetType extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self

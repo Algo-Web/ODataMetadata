@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TEntityTypeModificationFunctionMappingType
+ * Class representing TEntityTypeModificationFunctionMappingType.
  *
  * Type for EntityTypeMapping/ModificationFunctionMapping element
  *
@@ -33,7 +33,7 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
     private $updateFunction = null;
 
     /**
-     * Gets as deleteFunction
+     * Gets as deleteFunction.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeModificationFunctionType
      */
@@ -43,7 +43,7 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
     }
 
     /**
-     * Sets a new deleteFunction
+     * Sets a new deleteFunction.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeModificationFunctionType
      * $deleteFunction
@@ -60,7 +60,7 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
     }
 
     /**
-     * Gets as insertFunction
+     * Gets as insertFunction.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeModificationFunctionWithResultType
      */
@@ -70,7 +70,7 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
     }
 
     /**
-     * Sets a new insertFunction
+     * Sets a new insertFunction.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeModificationFunctionWithResultType
      * $insertFunction
@@ -87,7 +87,7 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
     }
 
     /**
-     * Gets as updateFunction
+     * Gets as updateFunction.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeModificationFunctionWithResultType
      */
@@ -97,7 +97,7 @@ class TEntityTypeModificationFunctionMappingType extends IsOK
     }
 
     /**
-     * Sets a new updateFunction
+     * Sets a new updateFunction.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeModificationFunctionWithResultType
      * $updateFunction

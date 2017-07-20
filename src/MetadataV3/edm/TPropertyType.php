@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TWrappedFunctionTypeTrait;
 
 /**
- * Class representing TPropertyType
+ * Class representing TPropertyType.
  *
  * XSD Type: TProperty
  */
@@ -47,7 +47,7 @@ class TPropertyType extends IsOK
     private $rowType = [];
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -57,7 +57,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -65,7 +65,7 @@ class TPropertyType extends IsOK
     public function setName($name)
     {
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -73,7 +73,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -83,7 +83,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -91,7 +91,7 @@ class TPropertyType extends IsOK
     public function setType($type)
     {
         if (null != $type && !$this->isTWrappedFunctionTypeValid($type)) {
-            $msg = "Type must be a valid TWrappedFunctionType";
+            $msg = 'Type must be a valid TWrappedFunctionType';
             throw new \InvalidArgumentException($msg);
         }
         $this->type = $type;
@@ -99,7 +99,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as collectionType
+     * Gets as collectionType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType
      */
@@ -109,7 +109,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new collectionType
+     * Sets a new collectionType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
      * @return self
@@ -125,7 +125,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as referenceType
+     * Gets as referenceType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType
      */
@@ -135,7 +135,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new referenceType
+     * Sets a new referenceType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
      * @return self
@@ -151,10 +151,10 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
+     * @return self
      */
     public function addToRowType(TPropertyType $property)
     {
@@ -167,10 +167,10 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * isset rowType
+     * isset rowType.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetRowType($index)
     {
@@ -178,7 +178,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * unset rowType
+     * unset rowType.
      *
      * @param  scalar $index
      * @return void
@@ -189,7 +189,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as rowType
+     * Gets as rowType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[]
      */
@@ -199,7 +199,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new rowType
+     * Sets a new rowType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      * @return self
@@ -221,11 +221,11 @@ class TPropertyType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             return false;
         }
         if (null != $this->type && !$this->isTWrappedFunctionTypeValid($this->type)) {
-            $msg = "Type must be a valid TWrappedFunctionType";
+            $msg = 'Type must be a valid TWrappedFunctionType';
             return false;
         }
         if (!$this->isTFacetAttributesTraitValid($msg)) {
@@ -260,7 +260,7 @@ class TPropertyType extends IsOK
                  + (isset($this->referenceType) ? 1 : 0)
                  + (0 < count($this->rowType) ? 1 : 0);
         if (1 < $count) {
-            $msg = "At most one of collection type, reference type and row type can be set/nonempty";
+            $msg = 'At most one of collection type, reference type and row type can be set/nonempty';
             return false;
         }
 

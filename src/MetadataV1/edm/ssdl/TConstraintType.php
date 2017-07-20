@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TConstraintType
+ * Class representing TConstraintType.
  *
  * XSD Type: TConstraint
  */
@@ -28,7 +28,7 @@ class TConstraintType extends IsOK
     private $dependent = null;
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType
      */
@@ -38,7 +38,7 @@ class TConstraintType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType $documentation
      * @return self
@@ -50,7 +50,7 @@ class TConstraintType extends IsOK
     }
 
     /**
-     * Gets as principal
+     * Gets as principal.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TReferentialConstraintRoleElementType
      */
@@ -60,7 +60,7 @@ class TConstraintType extends IsOK
     }
 
     /**
-     * Sets a new principal
+     * Sets a new principal.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TReferentialConstraintRoleElementType $principal
      * @return self
@@ -72,7 +72,7 @@ class TConstraintType extends IsOK
     }
 
     /**
-     * Gets as dependent
+     * Gets as dependent.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TReferentialConstraintRoleElementType
      */
@@ -82,7 +82,7 @@ class TConstraintType extends IsOK
     }
 
     /**
-     * Sets a new dependent
+     * Sets a new dependent.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TReferentialConstraintRoleElementType $dependent
      * @return self

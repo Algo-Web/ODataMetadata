@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 
 /**
- * Class representing TFunctionImportComplexTypeMappingType
+ * Class representing TFunctionImportComplexTypeMappingType.
  *
  * XSD Type: TFunctionImportComplexTypeMapping
  */
@@ -23,7 +23,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     );
 
     /**
-     * Gets as typeName
+     * Gets as typeName.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new typeName
+     * Sets a new typeName.
      *
      * @param  string $typeName
      * @return self
@@ -45,10 +45,10 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     }
 
     /**
-     * Adds as scalarProperty
+     * Adds as scalarProperty.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty
+     * @return self
      */
     public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
@@ -57,10 +57,10 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     }
 
     /**
-     * isset scalarProperty
+     * isset scalarProperty.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetScalarProperty($index)
     {
@@ -68,7 +68,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     }
 
     /**
-     * unset scalarProperty
+     * unset scalarProperty.
      *
      * @param  scalar $index
      * @return void
@@ -79,7 +79,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     }
 
     /**
-     * Gets as scalarProperty
+     * Gets as scalarProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType[]
      */
@@ -89,7 +89,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new scalarProperty
+     * Sets a new scalarProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self

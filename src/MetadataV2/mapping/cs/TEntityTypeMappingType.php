@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TEntityTypeMappingType
+ * Class representing TEntityTypeMappingType.
  *
  * XSD Type: TEntityTypeMapping
  */
@@ -29,7 +29,7 @@ class TEntityTypeMappingType extends IsOK
     private $modificationFunctionMapping = null;
 
     /**
-     * Gets as typeName
+     * Gets as typeName.
      *
      * @return string
      */
@@ -39,7 +39,7 @@ class TEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new typeName
+     * Sets a new typeName.
      *
      * @param  string $typeName
      * @return self
@@ -51,10 +51,10 @@ class TEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Adds as mappingFragment
+     * Adds as mappingFragment.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingFragmentType $mappingFragment
+     * @return self
      */
     public function addToMappingFragment(TMappingFragmentType $mappingFragment)
     {
@@ -63,10 +63,10 @@ class TEntityTypeMappingType extends IsOK
     }
 
     /**
-     * isset mappingFragment
+     * isset mappingFragment.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetMappingFragment($index)
     {
@@ -74,7 +74,7 @@ class TEntityTypeMappingType extends IsOK
     }
 
     /**
-     * unset mappingFragment
+     * unset mappingFragment.
      *
      * @param  scalar $index
      * @return void
@@ -85,7 +85,7 @@ class TEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Gets as mappingFragment
+     * Gets as mappingFragment.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingFragmentType[]
      */
@@ -95,7 +95,7 @@ class TEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new mappingFragment
+     * Sets a new mappingFragment.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TMappingFragmentType[] $mappingFragment
      * @return self
@@ -107,7 +107,7 @@ class TEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Gets as modificationFunctionMapping
+     * Gets as modificationFunctionMapping.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeModificationFunctionMappingType
      */
@@ -117,7 +117,7 @@ class TEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new modificationFunctionMapping
+     * Sets a new modificationFunctionMapping.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TEntityTypeModificationFunctionMappingType
      * $modificationFunctionMapping

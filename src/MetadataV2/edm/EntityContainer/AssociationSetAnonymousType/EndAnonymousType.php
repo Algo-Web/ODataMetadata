@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType;
 
 /**
- * Class representing EndAnonymousType
+ * Class representing EndAnonymousType.
  */
 class EndAnonymousType extends IsOK
 {
@@ -27,7 +27,7 @@ class EndAnonymousType extends IsOK
     private $documentation = null;
 
     /**
-     * Gets as role
+     * Gets as role.
      *
      * @return string
      */
@@ -37,7 +37,7 @@ class EndAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new role
+     * Sets a new role.
      *
      * @param  string $role
      * @return self
@@ -49,7 +49,7 @@ class EndAnonymousType extends IsOK
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return string
      */
@@ -59,7 +59,7 @@ class EndAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
      * @param  string $entitySet
      * @return self
@@ -71,7 +71,7 @@ class EndAnonymousType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
@@ -81,7 +81,7 @@ class EndAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self

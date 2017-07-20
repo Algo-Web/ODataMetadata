@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TDesignerType
+ * Class representing TDesignerType.
  *
  * XSD Type: TDesigner
  */
@@ -28,7 +28,7 @@ class TDesignerType extends IsOK
     private $diagrams = [];
 
     /**
-     * Gets as connection
+     * Gets as connection.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectionType
      */
@@ -38,7 +38,7 @@ class TDesignerType extends IsOK
     }
 
     /**
-     * Sets a new connection
+     * Sets a new connection.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectionType $connection
      * @return self
@@ -54,7 +54,7 @@ class TDesignerType extends IsOK
     }
 
     /**
-     * Gets as options
+     * Gets as options.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TOptionsType
      */
@@ -64,7 +64,7 @@ class TDesignerType extends IsOK
     }
 
     /**
-     * Sets a new options
+     * Sets a new options.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TOptionsType $options
      * @return self
@@ -80,10 +80,10 @@ class TDesignerType extends IsOK
     }
 
     /**
-     * Adds as diagram
+     * Adds as diagram.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TDiagramType $diagram
+     * @return self
      */
     public function addToDiagrams(TDiagramType $diagram)
     {
@@ -96,10 +96,10 @@ class TDesignerType extends IsOK
     }
 
     /**
-     * isset diagrams
+     * isset diagrams.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetDiagrams($index)
     {
@@ -107,7 +107,7 @@ class TDesignerType extends IsOK
     }
 
     /**
-     * unset diagrams
+     * unset diagrams.
      *
      * @param  scalar $index
      * @return void
@@ -118,7 +118,7 @@ class TDesignerType extends IsOK
     }
 
     /**
-     * Gets as diagrams
+     * Gets as diagrams.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TDiagramType[]
      */
@@ -128,7 +128,7 @@ class TDesignerType extends IsOK
     }
 
     /**
-     * Sets a new diagrams
+     * Sets a new diagrams.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TDiagramType[] $diagrams
      * @return self
@@ -140,7 +140,7 @@ class TDesignerType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TDiagramType'
         )
         ) {
-            $msg = "Diagrams array not a valid array";
+            $msg = 'Diagrams array not a valid array';
             throw new \InvalidArgumentException($msg);
         }
         $this->diagrams = $diagrams;
@@ -161,7 +161,7 @@ class TDesignerType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TDiagramType'
         )
         ) {
-            $msg = "Diagrams array not a valid array";
+            $msg = 'Diagrams array not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->diagrams, $msg)) {

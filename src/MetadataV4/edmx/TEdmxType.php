@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV4\edm\Schema;
 
 /**
- * Class representing TEdmxType
+ * Class representing TEdmxType.
  *
  * XSD Type: TEdmx
  */
@@ -29,7 +29,7 @@ class TEdmxType extends IsOK
     private $dataServices = null;
 
     /**
-     * Gets as version
+     * Gets as version.
      *
      * @return float
      */
@@ -39,7 +39,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Sets a new version
+     * Sets a new version.
      *
      * @param  float $version
      * @return self
@@ -51,10 +51,10 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Adds as reference
+     * Adds as reference.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType $reference
+     * @return self
      */
     public function addToReference(TReferenceType $reference)
     {
@@ -63,10 +63,10 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * isset reference
+     * isset reference.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetReference($index)
     {
@@ -74,7 +74,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * unset reference
+     * unset reference.
      *
      * @param  scalar $index
      * @return void
@@ -85,7 +85,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Gets as reference
+     * Gets as reference.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType[]
      */
@@ -95,7 +95,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Sets a new reference
+     * Sets a new reference.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType[] $reference
      * @return self
@@ -107,10 +107,10 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Adds as schema
+     * Adds as schema.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema $schema
+     * @return self
      */
     public function addToDataServices(Schema $schema)
     {
@@ -119,10 +119,10 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * isset dataServices
+     * isset dataServices.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetDataServices($index)
     {
@@ -130,7 +130,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * unset dataServices
+     * unset dataServices.
      *
      * @param  scalar $index
      * @return void
@@ -141,7 +141,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Gets as dataServices
+     * Gets as dataServices.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema[]
      */
@@ -151,7 +151,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Sets a new dataServices
+     * Sets a new dataServices.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Schema[] $dataServices
      * @return self
@@ -164,18 +164,18 @@ class TEdmxType extends IsOK
 
     public function isOK(&$msg = null)
     {
-        if (is_null($this->version)) {
-            $msg = "Edmx version can not be null";
+        if (null === $this->version) {
+            $msg = 'Edmx version can not be null';
             return false;
         }
         if (is_float($this->version)) {
             if (!$this->isValidArray($this->dataServices, '\AlgoWeb\ODataMetadata\MetadataV4\edm\Schema', 1)) {
-                $msg = "Edmx dataservice definition contains invalid enteries.";
+                $msg = 'Edmx dataservice definition contains invalid enteries.';
                 return false;
             }
         }
         if (!$this->isValidArray($this->reference, '\AlgoWeb\ODataMetadata\MetadataV4\edmx\TReferenceType')) {
-            $msg = "Edmx references contains invalid elements";
+            $msg = 'Edmx references contains invalid elements';
             return false;
         }
         if (!$this->isChildArrayOK($this->dataServices, $msg)) {

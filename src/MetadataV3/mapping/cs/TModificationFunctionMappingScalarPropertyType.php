@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrai
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TVersionTrait;
 
 /**
- * Class representing TModificationFunctionMappingScalarPropertyType
+ * Class representing TModificationFunctionMappingScalarPropertyType.
  *
  * Type for function mapping scalar property
  *
@@ -32,7 +32,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     private $version = null;
 
     /**
-     * Gets as parameterName
+     * Gets as parameterName.
      *
      * @return string
      */
@@ -42,7 +42,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     }
 
     /**
-     * Sets a new parameterName
+     * Sets a new parameterName.
      *
      * @param  string $parameterName
      * @return self
@@ -50,7 +50,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     public function setParameterName($parameterName)
     {
         if (!$this->isStringNotNullOrEmpty($parameterName)) {
-            $msg = "Parameter name cannot be null or empty";
+            $msg = 'Parameter name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->parameterName = $parameterName;
@@ -58,7 +58,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     }
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -76,7 +76,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     public function setName($name)
     {
         if (!$this->isStringNotNullOrEmpty($name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         if (!$this->isTSimpleIdentifierValid($name)) {
@@ -88,7 +88,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     }
 
     /**
-     * Gets as version
+     * Gets as version.
      *
      * @return string
      */
@@ -98,7 +98,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     }
 
     /**
-     * Sets a new version
+     * Sets a new version.
      *
      * @param  string $version
      * @return self
@@ -106,7 +106,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     public function setVersion($version)
     {
         if (null != $this->version && !$this->isTVersionValid($version)) {
-            $msg = "If set, version must be a valid TVersion";
+            $msg = 'If set, version must be a valid TVersion';
             throw new \InvalidArgumentException($msg);
         }
         $this->version = $version;
@@ -116,11 +116,11 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->parameterName)) {
-            $msg = "Parameter name cannot be null or empty";
+            $msg = 'Parameter name cannot be null or empty';
             return false;
         }
         if (!$this->isStringNotNullOrEmpty($this->name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             return false;
         }
         if (!$this->isTSimpleIdentifierValid($this->name)) {
@@ -128,7 +128,7 @@ class TModificationFunctionMappingScalarPropertyType extends IsOK
             return false;
         }
         if (null != $this->version && !$this->isTVersionValid($this->version)) {
-            $msg = "If set, version must be a valid TVersion";
+            $msg = 'If set, version must be a valid TVersion';
             return false;
         }
         return true;

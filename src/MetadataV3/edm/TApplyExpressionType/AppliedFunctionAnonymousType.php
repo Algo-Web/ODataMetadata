@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType;
 
 /**
- * Class representing AppliedFunctionAnonymousType
+ * Class representing AppliedFunctionAnonymousType.
  */
 class AppliedFunctionAnonymousType extends IsOK
 {

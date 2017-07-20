@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups\TModificationFunctionMapp
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TModificationFunctionMappingEndPropertyType
+ * Class representing TModificationFunctionMappingEndPropertyType.
  *
  * Type for function mapping end property
  *
@@ -22,7 +22,7 @@ class TModificationFunctionMappingEndPropertyType extends IsOK
     private $name = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -32,7 +32,7 @@ class TModificationFunctionMappingEndPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self

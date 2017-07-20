@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TEndPropertyType
+ * Class representing TEndPropertyType.
  *
  *  Type for End Property Elements in Association Maps
  *
@@ -26,7 +26,7 @@ class TEndPropertyType extends IsOK
     private $scalarProperty = [];
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -36,7 +36,7 @@ class TEndPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -56,10 +56,10 @@ class TEndPropertyType extends IsOK
     }
 
     /**
-     * Adds as scalarProperty
+     * Adds as scalarProperty.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
+     * @return self
      */
     public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
@@ -72,10 +72,10 @@ class TEndPropertyType extends IsOK
     }
 
     /**
-     * isset scalarProperty
+     * isset scalarProperty.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetScalarProperty($index)
     {
@@ -83,7 +83,7 @@ class TEndPropertyType extends IsOK
     }
 
     /**
-     * unset scalarProperty
+     * unset scalarProperty.
      *
      * @param  scalar $index
      * @return void
@@ -94,7 +94,7 @@ class TEndPropertyType extends IsOK
     }
 
     /**
-     * Gets as scalarProperty
+     * Gets as scalarProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[]
      */
@@ -104,7 +104,7 @@ class TEndPropertyType extends IsOK
     }
 
     /**
-     * Sets a new scalarProperty
+     * Sets a new scalarProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
@@ -139,7 +139,7 @@ class TEndPropertyType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType'
         )
         ) {
-            $msg = "Scalar property array not a valid array";
+            $msg = 'Scalar property array not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->scalarProperty, $msg)) {

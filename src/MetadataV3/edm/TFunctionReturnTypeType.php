@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
 
 /**
- * Class representing TFunctionReturnTypeType
+ * Class representing TFunctionReturnTypeType.
  *
  * XSD Type: TFunctionReturnType
  */
@@ -34,7 +34,7 @@ class TFunctionReturnTypeType extends IsOK
     private $rowType = [];
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -44,7 +44,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -56,7 +56,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as collectionType
+     * Gets as collectionType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType
      */
@@ -66,7 +66,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new collectionType
+     * Sets a new collectionType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
      * @return self
@@ -82,7 +82,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as referenceType
+     * Gets as referenceType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType
      */
@@ -92,7 +92,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new referenceType
+     * Sets a new referenceType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
      * @return self
@@ -108,10 +108,10 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
+     * @return self
      */
     public function addToRowType(TPropertyType $property)
     {
@@ -124,10 +124,10 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * isset rowType
+     * isset rowType.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetRowType($index)
     {
@@ -135,7 +135,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * unset rowType
+     * unset rowType.
      *
      * @param  scalar $index
      * @return void
@@ -146,7 +146,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as rowType
+     * Gets as rowType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[]
      */
@@ -156,7 +156,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new rowType
+     * Sets a new rowType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      * @return self

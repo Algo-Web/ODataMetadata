@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TTextType
+ * Class representing TTextType.
  *
  * TODO: I don't understand enough about the schema to do this one.
  *   <xs:complexType name="TText" mixed="true">

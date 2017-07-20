@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 
 /**
- * Class representing TQueryViewType
+ * Class representing TQueryViewType.
  *
  * XSD Type: TQueryView
  */
@@ -21,7 +21,7 @@ class TQueryViewType extends IsOK
     private $typeName = null;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param string $value
      */
@@ -31,7 +31,7 @@ class TQueryViewType extends IsOK
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
      * @param  string ...$value
      * @return string
@@ -45,7 +45,7 @@ class TQueryViewType extends IsOK
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */
@@ -55,7 +55,7 @@ class TQueryViewType extends IsOK
     }
 
     /**
-     * Gets as typeName
+     * Gets as typeName.
      *
      * @return string
      */
@@ -65,7 +65,7 @@ class TQueryViewType extends IsOK
     }
 
     /**
-     * Sets a new typeName
+     * Sets a new typeName.
      *
      * @param  string $typeName
      * @return self

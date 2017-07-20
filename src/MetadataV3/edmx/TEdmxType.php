@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 
 /**
- * Class representing TEdmxType
+ * Class representing TEdmxType.
  *
  * XSD Type: TEdmx
  */
@@ -34,7 +34,7 @@ class TEdmxType extends IsOK
     private $dataServiceType = null;
 
     /**
-     * Gets as version
+     * Gets as version.
      *
      * @return string
      */
@@ -44,7 +44,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Sets a new version
+     * Sets a new version.
      *
      * @param  string $version
      * @return self
@@ -52,7 +52,7 @@ class TEdmxType extends IsOK
     public function setVersion($version)
     {
         if (!$this->isStringNotNullOrEmpty($version)) {
-            $msg = "Version cannot be null or empty";
+            $msg = 'Version cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->version = $version;
@@ -60,7 +60,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Gets data service type
+     * Gets data service type.
      *
      * @return TDataServicesType
      */
@@ -70,7 +70,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Sets a new data service type
+     * Sets a new data service type.
      *
      * @param  TDataServicesType $dataServiceType
      * @return self
@@ -86,7 +86,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Gets as designer
+     * Gets as designer.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TDesignerType
      */
@@ -96,7 +96,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Sets a new designer
+     * Sets a new designer.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TDesignerType $designer
      * @return self
@@ -112,7 +112,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Gets as runtime
+     * Gets as runtime.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeType
      */
@@ -122,7 +122,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Sets a new runtime
+     * Sets a new runtime.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeType $runtime
      * @return self
@@ -140,11 +140,11 @@ class TEdmxType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->version)) {
-            $msg = "Version cannot be null or empty";
+            $msg = 'Version cannot be null or empty';
             return false;
         }
         if (!$this->dataServiceType instanceof TDataServicesType) {
-            $msg = "Data service type cannot be null";
+            $msg = 'Data service type cannot be null';
             return false;
         }
         if (null != $this->designer && !$this->designer->isOK($msg)) {

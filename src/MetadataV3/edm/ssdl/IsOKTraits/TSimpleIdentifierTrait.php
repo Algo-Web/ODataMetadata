@@ -3,9 +3,8 @@
  * Created by PhpStorm.
  * User: Doc
  * Date: 5/1/2017
- * Time: 8:44 PM
+ * Time: 8:44 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
 trait TSimpleIdentifierTrait
