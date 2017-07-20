@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TRuntimeType
+ * Class representing TRuntimeType.
  *
  * XSD Type: TRuntime
  */
@@ -28,7 +28,7 @@ class TRuntimeType extends IsOK
     private $mappings = null;
 
     /**
-     * Gets as storageModels
+     * Gets as storageModels.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeStorageModelsType
      */
@@ -38,7 +38,7 @@ class TRuntimeType extends IsOK
     }
 
     /**
-     * Sets a new storageModels
+     * Sets a new storageModels.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeStorageModelsType $storageModels
      * @return self
@@ -54,7 +54,7 @@ class TRuntimeType extends IsOK
     }
 
     /**
-     * Gets as conceptualModels
+     * Gets as conceptualModels.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeConceptualModelsType
      */
@@ -64,7 +64,7 @@ class TRuntimeType extends IsOK
     }
 
     /**
-     * Sets a new conceptualModels
+     * Sets a new conceptualModels.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeConceptualModelsType $conceptualModels
      * @return self
@@ -80,7 +80,7 @@ class TRuntimeType extends IsOK
     }
 
     /**
-     * Gets as mappings
+     * Gets as mappings.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeMappingsType
      */
@@ -90,7 +90,7 @@ class TRuntimeType extends IsOK
     }
 
     /**
-     * Sets a new mappings
+     * Sets a new mappings.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TRuntimeMappingsType $mappings
      * @return self

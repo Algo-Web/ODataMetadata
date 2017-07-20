@@ -17,7 +17,7 @@ trait TPropertyTypeTrait
         //$regex = "/[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}(\.[\p{L}\p{Nl}][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}){0,}/";
 
         if (!is_string($string)) {
-            $msg = "Input must be a string: " . get_class($this);
+            $msg = 'Input must be a string: ' . get_class($this);
             throw new \InvalidArgumentException($msg);
         }
         if (isset(static::$v3PropertyTypeCache[$string])) {

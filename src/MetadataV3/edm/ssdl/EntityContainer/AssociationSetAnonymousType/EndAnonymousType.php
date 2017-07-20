@@ -8,11 +8,11 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType;
 
 /**
- * Class representing EndAnonymousType
+ * Class representing EndAnonymousType.
  */
 class EndAnonymousType extends IsOK
 {
-    /**
+    /*
      * 1. The number of Ends has to match with ones defined in AssociationType
      * 2. Value for attribute Name should match the defined ones and EntitySet should be of the
      * defined Entity Type in AssociationType
@@ -31,7 +31,7 @@ class EndAnonymousType extends IsOK
     private $entitySet = null;
 
     /**
-     * Gets as role
+     * Gets as role.
      *
      * @return string
      */
@@ -41,7 +41,7 @@ class EndAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new role
+     * Sets a new role.
      *
      * @param  string $role
      * @return self
@@ -53,7 +53,7 @@ class EndAnonymousType extends IsOK
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return string
      */
@@ -63,7 +63,7 @@ class EndAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
      * @param  string $entitySet
      * @return self
@@ -77,11 +77,11 @@ class EndAnonymousType extends IsOK
     public function isOK(&$msg = null)
     {
         if (null != $this->role && !$this->isTSimpleIdentifierValid($this->role)) {
-            $msg = "Role must be a valid TSimpleIdentifier";
+            $msg = 'Role must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isTSimpleIdentifierValid($this->entitySet)) {
-            $msg = "Entity set must be a valid TSimpleIdentifier";
+            $msg = 'Entity set must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isExtensibilityElementOK($msg)) {

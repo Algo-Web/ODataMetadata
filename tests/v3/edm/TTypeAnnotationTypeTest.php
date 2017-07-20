@@ -17,13 +17,13 @@ class TTypeAnnotationTypeTest extends TestCase
     public function testSetStringActualString()
     {
         $foo = new TTypeAnnotationType();
-        $foo->setString("string");
+        $foo->setString('string');
         $this->assertEquals('string', $foo->getString());
     }
 
     public function testSetStringEmptyArrayAsString()
     {
-        $expected = "String must be a string";
+        $expected = 'String must be a string';
         $actual = null;
 
         $foo = new TTypeAnnotationType();
@@ -37,7 +37,7 @@ class TTypeAnnotationTypeTest extends TestCase
 
     public function testSetStringNonEmptyArrayAsString()
     {
-        $expected = "String must be a string";
+        $expected = 'String must be a string';
         $actual = null;
 
         $foo = new TTypeAnnotationType();
@@ -51,7 +51,7 @@ class TTypeAnnotationTypeTest extends TestCase
 
     public function testSetStringObjectAsString()
     {
-        $expected = "String must be a string";
+        $expected = 'String must be a string';
         $actual = null;
 
         $foo = new TTypeAnnotationType();

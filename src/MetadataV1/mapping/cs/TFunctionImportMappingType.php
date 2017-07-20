@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TFunctionImportMappingType
+ * Class representing TFunctionImportMappingType.
  *
  * XSD Type: TFunctionImportMapping
  */
@@ -29,7 +29,7 @@ class TFunctionImportMappingType extends IsOK
     private $resultMapping = null;
 
     /**
-     * Gets as functionName
+     * Gets as functionName.
      *
      * @return string
      */
@@ -39,7 +39,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Sets a new functionName
+     * Sets a new functionName.
      *
      * @param  string $functionName
      * @return self
@@ -51,7 +51,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Gets as functionImportName
+     * Gets as functionImportName.
      *
      * @return string
      */
@@ -61,7 +61,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Sets a new functionImportName
+     * Sets a new functionImportName.
      *
      * @param  string $functionImportName
      * @return self
@@ -73,11 +73,11 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Adds as entityTypeMapping
+     * Adds as entityTypeMapping.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType
      * $entityTypeMapping
+     * @return self
      */
     public function addToResultMapping(TFunctionImportEntityTypeMappingType $entityTypeMapping)
     {
@@ -86,10 +86,10 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * isset resultMapping
+     * isset resultMapping.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetResultMapping($index)
     {
@@ -97,7 +97,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * unset resultMapping
+     * unset resultMapping.
      *
      * @param  scalar $index
      * @return void
@@ -108,7 +108,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Gets as resultMapping
+     * Gets as resultMapping.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType[]
      */
@@ -118,7 +118,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Sets a new resultMapping
+     * Sets a new resultMapping.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportEntityTypeMappingType[]
      * $resultMapping

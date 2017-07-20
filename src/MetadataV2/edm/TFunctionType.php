@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TFunctionType
+ * Class representing TFunctionType.
  *
  * XSD Type: TFunction
  */
@@ -23,7 +23,7 @@ class TFunctionType extends IsOK
     private $returnType = array();
 
     /**
-     * @property boolean $nullable
+     * @property bool $nullable
      */
     private $nullable = null;
 
@@ -38,22 +38,22 @@ class TFunctionType extends IsOK
     private $maxLength = null;
 
     /**
-     * @property boolean $fixedLength
+     * @property bool $fixedLength
      */
     private $fixedLength = null;
 
     /**
-     * @property integer $precision
+     * @property int $precision
      */
     private $precision = null;
 
     /**
-     * @property integer $scale
+     * @property int $scale
      */
     private $scale = null;
 
     /**
-     * @property boolean $unicode
+     * @property bool $unicode
      */
     private $unicode = null;
 
@@ -78,7 +78,7 @@ class TFunctionType extends IsOK
     private $definingExpression = array();
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -88,7 +88,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -100,10 +100,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Adds as returnType
+     * Adds as returnType.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType $returnType
+     * @return self
      */
     public function addToReturnType(TFunctionReturnTypeType $returnType)
     {
@@ -112,10 +112,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * isset returnType
+     * isset returnType.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetReturnType($index)
     {
@@ -123,7 +123,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * unset returnType
+     * unset returnType.
      *
      * @param  scalar $index
      * @return void
@@ -134,7 +134,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as returnType
+     * Gets as returnType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType[]
      */
@@ -144,7 +144,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new returnType
+     * Sets a new returnType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionReturnTypeType[] $returnType
      * @return self
@@ -156,9 +156,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as nullable
+     * Gets as nullable.
      *
-     * @return boolean
+     * @return bool
      */
     public function getNullable()
     {
@@ -166,9 +166,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new nullable
+     * Sets a new nullable.
      *
-     * @param  boolean $nullable
+     * @param  bool $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -178,7 +178,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as defaultValue
+     * Gets as defaultValue.
      *
      * @return string
      */
@@ -188,7 +188,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new defaultValue
+     * Sets a new defaultValue.
      *
      * @param  string $defaultValue
      * @return self
@@ -200,7 +200,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as maxLength
+     * Gets as maxLength.
      *
      * @return string
      */
@@ -210,7 +210,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new maxLength
+     * Sets a new maxLength.
      *
      * @param  string $maxLength
      * @return self
@@ -222,9 +222,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as fixedLength
+     * Gets as fixedLength.
      *
-     * @return boolean
+     * @return bool
      */
     public function getFixedLength()
     {
@@ -232,9 +232,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new fixedLength
+     * Sets a new fixedLength.
      *
-     * @param  boolean $fixedLength
+     * @param  bool $fixedLength
      * @return self
      */
     public function setFixedLength($fixedLength)
@@ -244,9 +244,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as precision
+     * Gets as precision.
      *
-     * @return integer
+     * @return int
      */
     public function getPrecision()
     {
@@ -254,9 +254,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new precision
+     * Sets a new precision.
      *
-     * @param  integer $precision
+     * @param  int  $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -266,9 +266,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as scale
+     * Gets as scale.
      *
-     * @return integer
+     * @return int
      */
     public function getScale()
     {
@@ -276,9 +276,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new scale
+     * Sets a new scale.
      *
-     * @param  integer $scale
+     * @param  int  $scale
      * @return self
      */
     public function setScale($scale)
@@ -288,9 +288,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as unicode
+     * Gets as unicode.
      *
-     * @return boolean
+     * @return bool
      */
     public function getUnicode()
     {
@@ -298,9 +298,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new unicode
+     * Sets a new unicode.
      *
-     * @param  boolean $unicode
+     * @param  bool $unicode
      * @return self
      */
     public function setUnicode($unicode)
@@ -310,7 +310,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as collation
+     * Gets as collation.
      *
      * @return string
      */
@@ -320,7 +320,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new collation
+     * Sets a new collation.
      *
      * @param  string $collation
      * @return self
@@ -332,7 +332,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
@@ -342,7 +342,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
@@ -354,10 +354,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType $parameter
+     * @return self
      */
     public function addToParameter(TFunctionParameterType $parameter)
     {
@@ -366,10 +366,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetParameter($index)
     {
@@ -377,7 +377,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
      * @param  scalar $index
      * @return void
@@ -388,7 +388,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType[]
      */
@@ -398,7 +398,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionParameterType[] $parameter
      * @return self
@@ -410,10 +410,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Adds as definingExpression
+     * Adds as definingExpression.
      *
-     * @return self
      * @param  string $definingExpression
+     * @return self
      */
     public function addToDefiningExpression($definingExpression)
     {
@@ -422,10 +422,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * isset definingExpression
+     * isset definingExpression.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetDefiningExpression($index)
     {
@@ -433,7 +433,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * unset definingExpression
+     * unset definingExpression.
      *
      * @param  scalar $index
      * @return void
@@ -444,7 +444,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as definingExpression
+     * Gets as definingExpression.
      *
      * @return string[]
      */
@@ -454,7 +454,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new definingExpression
+     * Sets a new definingExpression.
      *
      * @param  string $definingExpression
      * @return self

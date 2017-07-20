@@ -11,7 +11,7 @@ class TAssociationEndTypeTest extends TestCase
 {
     public function testBadMultiplicity()
     {
-        $expected = "Multiplicity must be a valid TMultiplicity";
+        $expected = 'Multiplicity must be a valid TMultiplicity';
         $actual = null;
 
         $foo = new TAssociationEndType();
@@ -27,7 +27,7 @@ class TAssociationEndTypeTest extends TestCase
 
     public function testAddToOnDeleteBadData()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $foo = new TAssociationEndType();
@@ -59,7 +59,7 @@ class TAssociationEndTypeTest extends TestCase
 
     public function testSetOnDeleteBadItem()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $foo = new TAssociationEndType();
@@ -77,7 +77,7 @@ class TAssociationEndTypeTest extends TestCase
 
     public function testIsTOperationsOKBadData()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $foo = new TAssociationEndType();

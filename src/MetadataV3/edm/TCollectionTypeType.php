@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TFacetAttributesTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TUnwrappedFunctionTypeTrait;
 
 /**
- * Class representing TCollectionTypeType
+ * Class representing TCollectionTypeType.
  *
  * XSD Type: TCollectionType
  */
@@ -40,7 +40,7 @@ class TCollectionTypeType extends IsOK
     private $typeRef = null;
 
     /**
-     * Gets as elementType
+     * Gets as elementType.
      *
      * @return string
      */
@@ -50,7 +50,7 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * Sets a new elementType
+     * Sets a new elementType.
      *
      * @param  string $elementType
      * @return self
@@ -58,7 +58,7 @@ class TCollectionTypeType extends IsOK
     public function setElementType($elementType)
     {
         if (null != $elementType && !$this->isTUnwrappedFunctionTypeValid($elementType)) {
-            $msg = "Element type must be a valid TUnwrappedFunction";
+            $msg = 'Element type must be a valid TUnwrappedFunction';
             throw new \InvalidArgumentException($msg);
         }
         $this->elementType = $elementType;
@@ -66,7 +66,7 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * Gets as collectionType
+     * Gets as collectionType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType
      */
@@ -76,7 +76,7 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * Sets a new collectionType
+     * Sets a new collectionType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionTypeType $collectionType
      * @return self
@@ -92,7 +92,7 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * Gets as referenceType
+     * Gets as referenceType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType
      */
@@ -102,7 +102,7 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * Sets a new referenceType
+     * Sets a new referenceType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferenceTypeType $referenceType
      * @return self
@@ -118,10 +118,10 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType $property
+     * @return self
      */
     public function addToRowType(TPropertyType $property)
     {
@@ -134,10 +134,10 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * isset rowType
+     * isset rowType.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetRowType($index)
     {
@@ -145,7 +145,7 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * unset rowType
+     * unset rowType.
      *
      * @param  scalar $index
      * @return void
@@ -156,7 +156,7 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * Gets as rowType
+     * Gets as rowType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[]
      */
@@ -166,7 +166,7 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * Sets a new rowType
+     * Sets a new rowType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyType[] $rowType
      * @return self
@@ -181,7 +181,7 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * Gets as typeRef
+     * Gets as typeRef.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeRefType
      */
@@ -191,7 +191,7 @@ class TCollectionTypeType extends IsOK
     }
 
     /**
-     * Sets a new typeRef
+     * Sets a new typeRef.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeRefType $typeRef
      * @return self
@@ -209,7 +209,7 @@ class TCollectionTypeType extends IsOK
     public function isOK(&$msg = null)
     {
         if (null != $this->elementType && !$this->isTUnwrappedFunctionTypeValid($this->elementType)) {
-            $msg = "Element type must be a valid TUnwrappedFunction";
+            $msg = 'Element type must be a valid TUnwrappedFunction';
             return false;
         }
         if (!$this->isTFacetAttributesTraitValid($msg)) {
@@ -231,7 +231,7 @@ class TCollectionTypeType extends IsOK
         $count = (isset($this->collectionType) ? 1 : 0) + (isset($this->referenceType) ? 1 : 0)
                  + (0 < count($this->rowType) ? 1 : 0) + (isset($this->typeRef) ? 1 : 0);
         if (1 != $count) {
-            $msg = "Exactly one of collection type and reference type must not be null";
+            $msg = 'Exactly one of collection type and reference type must not be null';
             return false;
         }
 

@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing EndAnonymousType
+ * Class representing EndAnonymousType.
  */
 class EndAnonymousType extends IsOK
 {
@@ -27,7 +27,7 @@ class EndAnonymousType extends IsOK
     private $entitySet = null;
 
     /**
-     * Gets as role
+     * Gets as role.
      *
      * @return string
      */
@@ -37,7 +37,7 @@ class EndAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new role
+     * Sets a new role.
      *
      * @param  string $role
      * @return self
@@ -45,7 +45,7 @@ class EndAnonymousType extends IsOK
     public function setRole($role)
     {
         if (null != $role && !$this->isTSimpleIdentifierValid($role)) {
-            $msg = "Role must be a valid TSimpleIdentifier";
+            $msg = 'Role must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->role = $role;
@@ -53,7 +53,7 @@ class EndAnonymousType extends IsOK
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return string
      */
@@ -63,7 +63,7 @@ class EndAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
      * @param  string $entitySet
      * @return self
@@ -72,7 +72,7 @@ class EndAnonymousType extends IsOK
     {
         $msg = null;
         if (!$this->isTSimpleIdentifierValid($entitySet)) {
-            $msg = "Entity set must be a valid TSimpleIdentifier";
+            $msg = 'Entity set must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->entitySet = $entitySet;
@@ -82,11 +82,11 @@ class EndAnonymousType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->entitySet)) {
-            $msg = "Entity set must be a valid TSimpleIdentifier";
+            $msg = 'Entity set must be a valid TSimpleIdentifier';
             return false;
         }
         if (null != $this->role && !$this->isTSimpleIdentifierValid($this->role)) {
-            $msg = "Role must be a valid TSimpleIdentifier";
+            $msg = 'Role must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isExtensibilityElementOK($msg)) {

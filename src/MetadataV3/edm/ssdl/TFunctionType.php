@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TUndottedIdentifierTrait;
 
 /**
- * Class representing TFunctionType
+ * Class representing TFunctionType.
  *
  * XSD Type: TFunction
  */
@@ -27,12 +27,12 @@ class TFunctionType extends IsOK
     private $returnType = [];
 
     /**
-     * @property boolean $aggregate
+     * @property bool $aggregate
      */
     private $aggregate = null;
 
     /**
-     * @property boolean $builtIn
+     * @property bool $builtIn
      */
     private $builtIn = null;
 
@@ -42,19 +42,19 @@ class TFunctionType extends IsOK
     private $storeFunctionName = null;
 
     /**
-     * @property boolean $niladicFunction
+     * @property bool $niladicFunction
      */
     private $niladicFunction = null;
 
     /**
-     * @property boolean $isComposable
+     * @property bool $isComposable
      */
     private $isComposable = null;
 
     /**
      * @property string $parameterTypeSemantics
      */
-    private $parameterTypeSemantics = "AllowImplicitConversion";
+    private $parameterTypeSemantics = 'AllowImplicitConversion';
 
     /**
      * @property string $schema
@@ -77,7 +77,7 @@ class TFunctionType extends IsOK
     private $commandText = [];
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -87,7 +87,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -96,11 +96,11 @@ class TFunctionType extends IsOK
     {
         $msg = null;
         if (!$this->isStringNotNullOrEmpty($name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         if (!$this->isTUndottedIdentifierValid($name)) {
-            $msg = "Name must be a valid TUndottedIdentifier";
+            $msg = 'Name must be a valid TUndottedIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -108,10 +108,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Adds as returnType
+     * Adds as returnType.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType $returnType
+     * @return self
      */
     public function addToReturnType(TFunctionReturnTypeType $returnType)
     {
@@ -124,10 +124,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * isset returnType
+     * isset returnType.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetReturnType($index)
     {
@@ -135,7 +135,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * unset returnType
+     * unset returnType.
      *
      * @param  scalar $index
      * @return void
@@ -146,7 +146,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as returnType
+     * Gets as returnType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType[]
      */
@@ -156,7 +156,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new returnType
+     * Sets a new returnType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionReturnTypeType[] $returnType
      * @return self
@@ -177,9 +177,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as aggregate
+     * Gets as aggregate.
      *
-     * @return boolean
+     * @return bool
      */
     public function getAggregate()
     {
@@ -187,9 +187,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new aggregate
+     * Sets a new aggregate.
      *
-     * @param  boolean $aggregate
+     * @param  bool $aggregate
      * @return self
      */
     public function setAggregate($aggregate)
@@ -199,9 +199,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as builtIn
+     * Gets as builtIn.
      *
-     * @return boolean
+     * @return bool
      */
     public function getBuiltIn()
     {
@@ -209,9 +209,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new builtIn
+     * Sets a new builtIn.
      *
-     * @param  boolean $builtIn
+     * @param  bool $builtIn
      * @return self
      */
     public function setBuiltIn($builtIn)
@@ -221,7 +221,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as storeFunctionName
+     * Gets as storeFunctionName.
      *
      * @return string
      */
@@ -231,7 +231,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new storeFunctionName
+     * Sets a new storeFunctionName.
      *
      * @param  string $storeFunctionName
      * @return self
@@ -243,9 +243,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as niladicFunction
+     * Gets as niladicFunction.
      *
-     * @return boolean
+     * @return bool
      */
     public function getNiladicFunction()
     {
@@ -253,9 +253,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new niladicFunction
+     * Sets a new niladicFunction.
      *
-     * @param  boolean $niladicFunction
+     * @param  bool $niladicFunction
      * @return self
      */
     public function setNiladicFunction($niladicFunction)
@@ -265,9 +265,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as isComposable
+     * Gets as isComposable.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsComposable()
     {
@@ -275,9 +275,9 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new isComposable
+     * Sets a new isComposable.
      *
-     * @param  boolean $isComposable
+     * @param  bool $isComposable
      * @return self
      */
     public function setIsComposable($isComposable)
@@ -287,7 +287,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as parameterTypeSemantics
+     * Gets as parameterTypeSemantics.
      *
      * @return string
      */
@@ -297,7 +297,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new parameterTypeSemantics
+     * Sets a new parameterTypeSemantics.
      *
      * @param  string $parameterTypeSemantics
      * @return self
@@ -306,13 +306,13 @@ class TFunctionType extends IsOK
     {
         $msg = null;
         if (null != $parameterTypeSemantics && !$this->isStringNotNullOrEmpty($parameterTypeSemantics)) {
-            $msg = "Parameter type semantics cannot be empty";
+            $msg = 'Parameter type semantics cannot be empty';
             throw new \InvalidArgumentException($msg);
         }
         if (null != $parameterTypeSemantics
             && !$this->isTParameterTypeSemanticsValid($parameterTypeSemantics)
         ) {
-            $msg = "Parameter type semantics must be a valid TParameterTypeSemantics";
+            $msg = 'Parameter type semantics must be a valid TParameterTypeSemantics';
             throw new \InvalidArgumentException($msg);
         }
         $this->parameterTypeSemantics = $parameterTypeSemantics;
@@ -320,7 +320,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as schema
+     * Gets as schema.
      *
      * @return string
      */
@@ -330,7 +330,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new schema
+     * Sets a new schema.
      *
      * @param  string $schema
      * @return self
@@ -339,11 +339,11 @@ class TFunctionType extends IsOK
     {
         $msg = null;
         if (null != $schema && !$this->isStringNotNullOrEmpty($schema)) {
-            $msg = "Schema cannot be empty";
+            $msg = 'Schema cannot be empty';
             throw new \InvalidArgumentException($msg);
         }
         if (null != $schema && !$this->isTSimpleIdentifierValid($schema)) {
-            $msg = "Schema must be a valid TSimpleIdentifier";
+            $msg = 'Schema must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->schema = $schema;
@@ -351,7 +351,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
      */
@@ -361,7 +361,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
@@ -377,10 +377,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType $parameter
+     * @return self
      */
     public function addToParameter(TParameterType $parameter)
     {
@@ -393,10 +393,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetParameter($index)
     {
@@ -404,7 +404,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
      * @param  scalar $index
      * @return void
@@ -415,7 +415,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType[]
      */
@@ -425,7 +425,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TParameterType[] $parameter
      * @return self
@@ -446,16 +446,16 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Adds as commandText
+     * Adds as commandText.
      *
-     * @return self
      * @param  string $commandText
+     * @return self
      */
     public function addToCommandText($commandText)
     {
         $msg = null;
         if (!$this->isTCommandTextValid($commandText)) {
-            $msg = "All command text entries must be valid TCommandText";
+            $msg = 'All command text entries must be valid TCommandText';
             throw new \InvalidArgumentException($msg);
         }
         $this->commandText[] = $commandText;
@@ -463,10 +463,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * isset commandText
+     * isset commandText.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetCommandText($index)
     {
@@ -474,7 +474,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * unset commandText
+     * unset commandText.
      *
      * @param  scalar $index
      * @return void
@@ -485,7 +485,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as commandText
+     * Gets as commandText.
      *
      * @return string[]
      */
@@ -495,7 +495,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new commandText
+     * Sets a new commandText.
      *
      * @param  string $commandText
      * @return self
@@ -504,7 +504,7 @@ class TFunctionType extends IsOK
     {
         foreach ($commandText as $command) {
             if (!$this->isTCommandTextValid($command)) {
-                $msg = "All command text entries must be valid TCommandText";
+                $msg = 'All command text entries must be valid TCommandText';
                 throw new \InvalidArgumentException($msg);
             }
         }
@@ -515,39 +515,39 @@ class TFunctionType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             return false;
         }
         if (null != $this->storeFunctionName && !$this->isStringNotNullOrEmpty($this->storeFunctionName)) {
-            $msg = "Store function name cannot be empty";
+            $msg = 'Store function name cannot be empty';
             return false;
         }
         if (null != $this->parameterTypeSemantics && !$this->isStringNotNullOrEmpty($this->parameterTypeSemantics)) {
-            $msg = "Parameter type semantics cannot be empty";
+            $msg = 'Parameter type semantics cannot be empty';
             return false;
         }
         if (null != $this->schema && !$this->isStringNotNullOrEmpty($this->schema)) {
-            $msg = "Schema cannot be empty";
+            $msg = 'Schema cannot be empty';
             return false;
         }
         foreach ($this->commandText as $command) {
             if (!$this->isTCommandTextValid($command)) {
-                $msg = "All command text entries must be valid TCommandText";
+                $msg = 'All command text entries must be valid TCommandText';
                 return false;
             }
         }
         if (!$this->isTUndottedIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TUndottedIdentifier";
+            $msg = 'Name must be a valid TUndottedIdentifier';
             return false;
         }
         if (null != $this->schema && !$this->isTSimpleIdentifierValid($this->schema)) {
-            $msg = "Schema must be a valid TSimpleIdentifier";
+            $msg = 'Schema must be a valid TSimpleIdentifier';
             return false;
         }
         if (null != $this->parameterTypeSemantics
             && !$this->isTParameterTypeSemanticsValid($this->parameterTypeSemantics)
         ) {
-            $msg = "Parameter type semantics must be a valid TParameterTypeSemantics";
+            $msg = 'Parameter type semantics must be a valid TParameterTypeSemantics';
             return false;
         }
         if (!$this->isObjectNullOrOK($this->documentation, $msg)) {

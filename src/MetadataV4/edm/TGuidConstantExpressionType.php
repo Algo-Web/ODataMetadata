@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TGuidConstantExpressionType
+ * Class representing TGuidConstantExpressionType.
  *
  * XSD Type: TGuidConstantExpression
  */
@@ -18,7 +18,7 @@ class TGuidConstantExpressionType extends IsOK
     private $__value = null;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param string $value
      */
@@ -28,10 +28,10 @@ class TGuidConstantExpressionType extends IsOK
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param  string ...$value
-     * @param string[] $value
+     * @param  string   ...$value
+     * @param  string[] $value
      * @return string
      */
     public function value(...$value)
@@ -43,7 +43,7 @@ class TGuidConstantExpressionType extends IsOK
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */

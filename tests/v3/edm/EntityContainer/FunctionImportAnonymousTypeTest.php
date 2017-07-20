@@ -70,13 +70,13 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testSetMethodAccessBadData()
     {
-        $expected = "Method access must be a valid TAccess";
+        $expected = 'Method access must be a valid TAccess';
         $actual = null;
 
         $foo = new FunctionImportAnonymousType();
 
         try {
-            $foo->setMethodAccess("cheezburger");
+            $foo->setMethodAccess('cheezburger');
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -85,7 +85,7 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testSetEntitySetBadData()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $entitySet = m::mock(TOperandType::class)->makePartial();
@@ -115,7 +115,7 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testAddToReturnTypeBadData()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $entitySet = m::mock(TFunctionImportReturnTypeType::class)->makePartial();
@@ -147,7 +147,7 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testSetReturnTypeBadData()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $entitySet = m::mock(TFunctionImportReturnTypeType::class)->makePartial();
@@ -165,13 +165,13 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testSetNameBadData()
     {
-        $expected = "Name must be a valid TSimpleIdentifier";
+        $expected = 'Name must be a valid TSimpleIdentifier';
         $actual = null;
 
         $foo = new FunctionImportAnonymousType();
 
         try {
-            $foo->setName(" _ ");
+            $foo->setName(' _ ');
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -180,8 +180,8 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testIsTFunctionImportAttributesValid()
     {
-        $expected = "Name must be a valid TSimpleIdentifier:"
-                    ." AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\EntityContainer\\FunctionImportAnonymousType";
+        $expected = 'Name must be a valid TSimpleIdentifier:'
+                    .' AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\EntityContainer\\FunctionImportAnonymousType';
         $actual = null;
 
         $foo = new FunctionImportAnonymousType();
@@ -191,23 +191,23 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testIsComposableAndSideEffecting()
     {
-        $expected = "Cannot both be composable and side-effecting";
+        $expected = 'Cannot both be composable and side-effecting';
         $actual = null;
 
         $foo = new FunctionImportAnonymousType();
-        $foo->setName("Name");
+        $foo->setName('Name');
         $foo->setIsComposable(true);
         $foo->setIsSideEffecting(true);
 
         $foo->isTFunctionImportAttributesValid($actual);
         $this->assertEquals($expected, $actual);
-        $this->assertEquals("Name", $foo->getName());
+        $this->assertEquals('Name', $foo->getName());
     }
 
     public function testIsTFunctionImportAttributesValidWithAccessSet()
     {
         $foo = new FunctionImportAnonymousType();
-        $foo->setName("Name");
+        $foo->setName('Name');
         $foo->setMethodAccess('Public');
 
         $msg = null;
@@ -217,15 +217,15 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testIsTFunctionImportAttributesValidWithBadEntitySet()
     {
-        $expectedStarts = "Entity set must be either null or an instance of TOperandType:";
-        $expectedEnds = "AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\EntityContainer\\FunctionImportAnonymousType";
+        $expectedStarts = 'Entity set must be either null or an instance of TOperandType:';
+        $expectedEnds = 'AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\EntityContainer\\FunctionImportAnonymousType';
         $actual = null;
 
         $entitySet = m::mock(TOperandType::class)->makePartial();
         $entitySet->shouldReceive('isOK')->andReturn(true, false)->twice();
 
         $foo = new FunctionImportAnonymousType();
-        $foo->setName("Name");
+        $foo->setName('Name');
         $foo->setMethodAccess('Public');
         $foo->setEntitySet($entitySet);
 
@@ -236,14 +236,14 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testIsTFunctionImportAttributesValidWithBadReturnType()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $entitySet = m::mock(TFunctionImportReturnTypeType::class)->makePartial();
         $entitySet->shouldReceive('isOK')->andReturn(true, false)->once();
 
         $foo = new FunctionImportAnonymousType();
-        $foo->setName("Name");
+        $foo->setName('Name');
         $foo->setMethodAccess('Public');
         $foo->addToReturnType($entitySet);
 
@@ -253,7 +253,7 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testSetBadDocumentation()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $documentation = m::mock(TDocumentationType::class);
@@ -271,7 +271,7 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testAddBadParameter()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $function = m::mock(TFunctionImportParameterType::class);
@@ -303,7 +303,7 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testSetBadParameterArray()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $function = m::mock(TFunctionImportParameterType::class);
@@ -321,7 +321,7 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testIsOkUnderParameterNameCollision()
     {
-        $expected = "Name collision in parameters array";
+        $expected = 'Name collision in parameters array';
         $actual = null;
 
         $function = m::mock(TFunctionImportParameterType::class)->makePartial();
@@ -354,7 +354,7 @@ class FunctionImportAnonymousTypeTest extends TestCase
 
     public function testIsNotOkFromBadDocumentation()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $documentation = m::mock(TDocumentationType::class);

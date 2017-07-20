@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups\TModificationFunctionMapp
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TModificationFunctionMappingAssociationEndType
+ * Class representing TModificationFunctionMappingAssociationEndType.
  *
  * Type for function mapping association end
  *
@@ -32,7 +32,7 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
     private $to = null;
 
     /**
-     * Gets as associationSet
+     * Gets as associationSet.
      *
      * @return string
      */
@@ -42,7 +42,7 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new associationSet
+     * Sets a new associationSet.
      *
      * @param  string $associationSet
      * @return self
@@ -58,7 +58,7 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Gets as from
+     * Gets as from.
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new from
+     * Sets a new from.
      *
      * @param  string $from
      * @return self
@@ -84,7 +84,7 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Gets as to
+     * Gets as to.
      *
      * @return string
      */
@@ -94,7 +94,7 @@ class TModificationFunctionMappingAssociationEndType extends IsOK
     }
 
     /**
-     * Sets a new to
+     * Sets a new to.
      *
      * @param  string $to
      * @return self

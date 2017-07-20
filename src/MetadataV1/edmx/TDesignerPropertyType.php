@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TDesignerPropertyType
+ * Class representing TDesignerPropertyType.
  *
  * XSD Type: TDesignerProperty
  */
@@ -23,7 +23,7 @@ class TDesignerPropertyType extends IsOK
     private $value = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TDesignerPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -45,7 +45,7 @@ class TDesignerPropertyType extends IsOK
     }
 
     /**
-     * Gets as value
+     * Gets as value.
      *
      * @return string
      */
@@ -55,7 +55,7 @@ class TDesignerPropertyType extends IsOK
     }
 
     /**
-     * Sets a new value
+     * Sets a new value.
      *
      * @param  string $value
      * @return self

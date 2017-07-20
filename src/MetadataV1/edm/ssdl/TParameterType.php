@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TParameterType
+ * Class representing TParameterType.
  *
  * XSD Type: TParameter
  */
@@ -33,12 +33,12 @@ class TParameterType extends IsOK
     private $maxLength = null;
 
     /**
-     * @property integer $precision
+     * @property int $precision
      */
     private $precision = null;
 
     /**
-     * @property integer $scale
+     * @property int $scale
      */
     private $scale = null;
 
@@ -48,7 +48,7 @@ class TParameterType extends IsOK
     private $documentation = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -58,7 +58,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -70,7 +70,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -80,7 +80,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -92,7 +92,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as mode
+     * Gets as mode.
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new mode
+     * Sets a new mode.
      *
      * @param  string $mode
      * @return self
@@ -114,7 +114,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as maxLength
+     * Gets as maxLength.
      *
      * @return string
      */
@@ -124,7 +124,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new maxLength
+     * Sets a new maxLength.
      *
      * @param  string $maxLength
      * @return self
@@ -136,9 +136,9 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as precision
+     * Gets as precision.
      *
-     * @return integer
+     * @return int
      */
     public function getPrecision()
     {
@@ -146,9 +146,9 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new precision
+     * Sets a new precision.
      *
-     * @param  integer $precision
+     * @param  int  $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -158,9 +158,9 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as scale
+     * Gets as scale.
      *
-     * @return integer
+     * @return int
      */
     public function getScale()
     {
@@ -168,9 +168,9 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new scale
+     * Sets a new scale.
      *
-     * @param  integer $scale
+     * @param  int  $scale
      * @return self
      */
     public function setScale($scale)
@@ -180,7 +180,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType
      */
@@ -190,7 +190,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\TDocumentationType $documentation
      * @return self

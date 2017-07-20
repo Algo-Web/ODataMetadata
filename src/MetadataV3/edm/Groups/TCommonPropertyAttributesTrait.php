@@ -51,7 +51,7 @@ trait TCommonPropertyAttributesTrait
     private $type = null;
 
     /**
-     * @property boolean $nullable
+     * @property bool $nullable
      */
     private $nullable = true;
 
@@ -66,22 +66,22 @@ trait TCommonPropertyAttributesTrait
     private $maxLength = null;
 
     /**
-     * @property boolean $fixedLength
+     * @property bool $fixedLength
      */
     private $fixedLength = null;
 
     /**
-     * @property integer $precision
+     * @property int $precision
      */
     private $precision = null;
 
     /**
-     * @property integer $scale
+     * @property int $scale
      */
     private $scale = null;
 
     /**
-     * @property boolean $unicode
+     * @property bool $unicode
      */
     private $unicode = null;
 
@@ -111,7 +111,7 @@ trait TCommonPropertyAttributesTrait
     private $getterAccess = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -121,7 +121,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -130,7 +130,7 @@ trait TCommonPropertyAttributesTrait
     {
         $msg = null;
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -138,7 +138,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -148,7 +148,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -157,7 +157,7 @@ trait TCommonPropertyAttributesTrait
     {
         $msg = null;
         if (!$this->isTPropertyTypeValid($type)) {
-            $msg = "Type must be a valid TPropertyType";
+            $msg = 'Type must be a valid TPropertyType';
             throw new \InvalidArgumentException($msg);
         }
         $this->type = $type;
@@ -165,9 +165,9 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as nullable
+     * Gets as nullable.
      *
-     * @return boolean
+     * @return bool
      */
     public function getNullable()
     {
@@ -175,9 +175,9 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new nullable
+     * Sets a new nullable.
      *
-     * @param  boolean $nullable
+     * @param  bool $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -187,7 +187,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as defaultValue
+     * Gets as defaultValue.
      *
      * @return string
      */
@@ -197,7 +197,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new defaultValue
+     * Sets a new defaultValue.
      *
      * @param  string $defaultValue
      * @return self
@@ -208,7 +208,7 @@ trait TCommonPropertyAttributesTrait
             $defaultValue = strval($defaultValue);
         }
         if (null !== $defaultValue && !is_string($defaultValue)) {
-            $msg = "Default value must be resolvable to a string";
+            $msg = 'Default value must be resolvable to a string';
             throw new \InvalidArgumentException($msg);
         }
         $this->defaultValue = $defaultValue;
@@ -216,7 +216,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as maxLength
+     * Gets as maxLength.
      *
      * @return string
      */
@@ -226,7 +226,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new maxLength
+     * Sets a new maxLength.
      *
      * @param  string $maxLength
      * @return self
@@ -235,7 +235,7 @@ trait TCommonPropertyAttributesTrait
     {
         $msg = null;
         if (null != $maxLength && !$this->isTMaxLengthFacetValid($maxLength)) {
-            $msg = "Max length must be a valid TMaxLengthFacet";
+            $msg = 'Max length must be a valid TMaxLengthFacet';
             throw new \InvalidArgumentException($msg);
         }
         $this->maxLength = $maxLength;
@@ -243,9 +243,9 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as fixedLength
+     * Gets as fixedLength.
      *
-     * @return boolean
+     * @return bool
      */
     public function getFixedLength()
     {
@@ -253,9 +253,9 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new fixedLength
+     * Sets a new fixedLength.
      *
-     * @param  boolean $fixedLength
+     * @param  bool $fixedLength
      * @return self
      */
     public function setFixedLength($fixedLength)
@@ -265,9 +265,9 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as precision
+     * Gets as precision.
      *
-     * @return integer
+     * @return int
      */
     public function getPrecision()
     {
@@ -275,16 +275,16 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new precision
+     * Sets a new precision.
      *
-     * @param  integer $precision
+     * @param  int  $precision
      * @return self
      */
     public function setPrecision($precision)
     {
         $msg = null;
         if (null != $precision && !$this->isTPrecisionFacetValid($precision)) {
-            $msg = "Precision must be a valid TPrecisionFacet";
+            $msg = 'Precision must be a valid TPrecisionFacet';
             throw new \InvalidArgumentException($msg);
         }
         $this->precision = $precision;
@@ -292,9 +292,9 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as scale
+     * Gets as scale.
      *
-     * @return integer
+     * @return int
      */
     public function getScale()
     {
@@ -302,16 +302,16 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new scale
+     * Sets a new scale.
      *
-     * @param  integer $scale
+     * @param  int  $scale
      * @return self
      */
     public function setScale($scale)
     {
         $msg = null;
         if (null != $scale && !$this->isTScaleFacetValid($scale)) {
-            $msg = "Scale must be a valid TScaleFacet";
+            $msg = 'Scale must be a valid TScaleFacet';
             throw new \InvalidArgumentException($msg);
         }
         $this->scale = $scale;
@@ -319,9 +319,9 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as unicode
+     * Gets as unicode.
      *
-     * @return boolean
+     * @return bool
      */
     public function getUnicode()
     {
@@ -329,16 +329,16 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new unicode
+     * Sets a new unicode.
      *
-     * @param  boolean $unicode
+     * @param  bool $unicode
      * @return self
      */
     public function setUnicode($unicode)
     {
         $msg = null;
         if (null != $unicode && !$this->isTIsUnicodeFacetTraitValid($unicode)) {
-            $msg = "Unicode must be a valid TUnicodeFacet";
+            $msg = 'Unicode must be a valid TUnicodeFacet';
             throw new \InvalidArgumentException($msg);
         }
         $this->unicode = boolval($unicode);
@@ -346,7 +346,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as collation
+     * Gets as collation.
      *
      * @return string
      */
@@ -356,7 +356,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new collation
+     * Sets a new collation.
      *
      * @param  string $collation
      * @return self
@@ -368,7 +368,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as sRID
+     * Gets as sRID.
      *
      * @return string
      */
@@ -378,7 +378,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new sRID
+     * Sets a new sRID.
      *
      * @param  string $sRID
      * @return self
@@ -387,7 +387,7 @@ trait TCommonPropertyAttributesTrait
     {
         $msg = null;
         if (null != $sRID && !$this->isTSridFacetValid($sRID)) {
-            $msg = "SRID must be a valid TSridFacet";
+            $msg = 'SRID must be a valid TSridFacet';
             throw new \InvalidArgumentException($msg);
         }
         $this->sRID = $sRID;
@@ -395,7 +395,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as concurrencyMode
+     * Gets as concurrencyMode.
      *
      * @return string
      */
@@ -405,7 +405,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new concurrencyMode
+     * Sets a new concurrencyMode.
      *
      * @param  string $concurrencyMode
      * @return self
@@ -414,7 +414,7 @@ trait TCommonPropertyAttributesTrait
     {
         $msg = null;
         if (null != $concurrencyMode && !$this->isTConcurrencyModeValid($concurrencyMode)) {
-            $msg = "ConcurrencyMode must be a valid TConcurrencyMode";
+            $msg = 'ConcurrencyMode must be a valid TConcurrencyMode';
             throw new \InvalidArgumentException($msg);
         }
         $this->concurrencyMode = $concurrencyMode;
@@ -422,7 +422,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as setterAccess
+     * Gets as setterAccess.
      *
      * @return string
      */
@@ -432,7 +432,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new setterAccess
+     * Sets a new setterAccess.
      *
      * @param  string $setterAccess
      * @return self
@@ -441,7 +441,7 @@ trait TCommonPropertyAttributesTrait
     {
         $msg = null;
         if (null != $setterAccess && !$this->isTAccessOk($setterAccess)) {
-            $msg = "Setter access must be a valid TAccess";
+            $msg = 'Setter access must be a valid TAccess';
             throw new \InvalidArgumentException($msg);
         }
         $this->setterAccess = $setterAccess;
@@ -449,7 +449,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Gets as getterAccess
+     * Gets as getterAccess.
      *
      * @return string
      */
@@ -459,7 +459,7 @@ trait TCommonPropertyAttributesTrait
     }
 
     /**
-     * Sets a new getterAccess
+     * Sets a new getterAccess.
      *
      * @param  string $getterAccess
      * @return self
@@ -468,7 +468,7 @@ trait TCommonPropertyAttributesTrait
     {
         $msg = null;
         if (null != $getterAccess && !$this->isTAccessOk($getterAccess)) {
-            $msg = "Getter access must be a valid TAccess";
+            $msg = 'Getter access must be a valid TAccess';
             throw new \InvalidArgumentException($msg);
         }
         $this->getterAccess = $getterAccess;
@@ -478,59 +478,59 @@ trait TCommonPropertyAttributesTrait
     public function isTCommonPropertyAttributesValid(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier: " . get_class($this);
+            $msg = 'Name must be a valid TSimpleIdentifier: ' . get_class($this);
             return false;
         }
         if (!$this->isTPropertyTypeValid($this->type)) {
-            $msg = "Type must be a valid TPropertyType: " . get_class($this);
+            $msg = 'Type must be a valid TPropertyType: ' . get_class($this);
             return false;
         }
         if (null != $this->nullable && $this->nullable !== boolval($this->nullable)) {
-            $msg = "Nullable must be boolean: " . get_class($this);
+            $msg = 'Nullable must be boolean: ' . get_class($this);
             return false;
         }
         if (null != $this->defaultValue && !is_string($this->defaultValue)) {
-            $msg = "Default value must be a string: " . get_class($this);
+            $msg = 'Default value must be a string: ' . get_class($this);
             return false;
         }
         if (null != $this->maxLength && !$this->isTMaxLengthFacetValid($this->maxLength)) {
-            $msg = "Max length must be a valid TMaxLengthFacet: " . get_class($this);
+            $msg = 'Max length must be a valid TMaxLengthFacet: ' . get_class($this);
             return false;
         }
         if (null != $this->fixedLength && !$this->isTIsFixedLengthFacetTraitValid($this->fixedLength)) {
-            $msg = "Max length must be a valid TFixedLengthFacet: " . get_class($this);
+            $msg = 'Max length must be a valid TFixedLengthFacet: ' . get_class($this);
             return false;
         }
         if (null != $this->precision && !$this->isTPrecisionFacetValid($this->precision)) {
-            $msg = "Precision must be a valid TPrecisionFacet: " . get_class($this);
+            $msg = 'Precision must be a valid TPrecisionFacet: ' . get_class($this);
             return false;
         }
         if (null != $this->scale && !$this->isTScaleFacetValid($this->scale)) {
-            $msg = "Scale must be a valid TScaleFacet: " . get_class($this);
+            $msg = 'Scale must be a valid TScaleFacet: ' . get_class($this);
             return false;
         }
         if (null != $this->unicode && !$this->isTIsUnicodeFacetTraitValid($this->unicode)) {
-            $msg = "Unicode must be a valid TUnicodeFacet: " . get_class($this);
+            $msg = 'Unicode must be a valid TUnicodeFacet: ' . get_class($this);
             return false;
         }
         if (null != $this->collation && !$this->isTCollationFacetValid($this->collation)) {
-            $msg = "Collation must be a valid TCollationFacet: " . get_class($this);
+            $msg = 'Collation must be a valid TCollationFacet: ' . get_class($this);
             return false;
         }
         if (null != $this->sRID && !$this->isTSridFacetValid($this->sRID)) {
-            $msg = "SRID must be a valid TSridFacet: " . get_class($this);
+            $msg = 'SRID must be a valid TSridFacet: ' . get_class($this);
             return false;
         }
         if (null != $this->concurrencyMode && !$this->isTConcurrencyModeValid($this->concurrencyMode)) {
-            $msg = "ConcurrencyMode must be a valid TConcurrencyMode: " . get_class($this);
+            $msg = 'ConcurrencyMode must be a valid TConcurrencyMode: ' . get_class($this);
             return false;
         }
         if (null != $this->setterAccess && !$this->isTAccessOk($this->setterAccess)) {
-            $msg = "Setter access must be a valid TAccess: " . get_class($this);
+            $msg = 'Setter access must be a valid TAccess: ' . get_class($this);
             return false;
         }
         if (null != $this->getterAccess && !$this->isTAccessOk($this->getterAccess)) {
-            $msg = "Getter access must be a valid TAccess: " . get_class($this);
+            $msg = 'Getter access must be a valid TAccess: ' . get_class($this);
             return false;
         }
 

@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\StringTraits\XSDTopLevelTrait;
 
 /**
- * Class representing TSchemaType
+ * Class representing TSchemaType.
  *
  * XSD Type: TSchema
  */
@@ -36,7 +36,7 @@ class TSchemaType extends IsOK
     private $alias = null;
 
     /**
-     * Gets as namespaceUri
+     * Gets as namespaceUri.
      *
      * @return string
      */
@@ -46,7 +46,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Sets a new namespaceUri
+     * Sets a new namespaceUri.
      *
      * @param  string $namespaceUri
      * @return self
@@ -54,7 +54,7 @@ class TSchemaType extends IsOK
     public function setNamespaceUri($namespaceUri)
     {
         if (null != $namespaceUri && !$this->isURLValid($namespaceUri)) {
-            $msg = "Namespace url must be a valid url";
+            $msg = 'Namespace url must be a valid url';
             throw new \InvalidArgumentException($msg);
         }
         $this->namespaceUri = $namespaceUri;
@@ -62,7 +62,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Gets as alias
+     * Gets as alias.
      *
      * @return string
      */
@@ -72,7 +72,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Sets a new alias
+     * Sets a new alias.
      *
      * @param  string $alias
      * @return self
@@ -80,7 +80,7 @@ class TSchemaType extends IsOK
     public function setAlias($alias)
     {
         if (null != $alias && !$this->isTSimpleIdentifierValid($alias)) {
-            $msg = "Alias must be a valid TSimpleIdentifier";
+            $msg = 'Alias must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->alias = $alias;
@@ -97,15 +97,15 @@ class TSchemaType extends IsOK
             return true;
         }
         if (!$this->isTNamespaceNameValid($this->namespace)) {
-            $msg = "Namespace must be a valid TNamespaceName";
+            $msg = 'Namespace must be a valid TNamespaceName';
             return false;
         }
         if (null != $this->namespaceUri && !$this->isURLValid($this->namespaceUri)) {
-            $msg = "Namespace url must be a valid url";
+            $msg = 'Namespace url must be a valid url';
             return false;
         }
         if (null != $this->alias && !$this->isTSimpleIdentifierValid($this->alias)) {
-            $msg = "Alias must be a valid TSimpleIdentifier";
+            $msg = 'Alias must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isGSchemaBodyElementsValid($msg)) {
@@ -147,7 +147,7 @@ class TSchemaType extends IsOK
             $numDefaults += $isDefault ? 1 : 0;
         }
         if (1 != $numDefaults) {
-            $msg = "Exactly one entityContainer must be set as default container, actually have " . $numDefaults;
+            $msg = 'Exactly one entityContainer must be set as default container, actually have ' . $numDefaults;
             return false;
         }
 
@@ -159,52 +159,52 @@ class TSchemaType extends IsOK
                 die($this->getNamespace());
                 return false;
             }*/
-            $eSetType = str_replace($this->getNamespace() . ".", "", $eSetType);
+            $eSetType = str_replace($this->getNamespace() . '.', '', $eSetType);
             if (!in_array($eSetType, $entityTypeNames)) {
-                $msg = "entitySet Types should have a matching type name in entity Types";
+                $msg = 'entitySet Types should have a matching type name in entity Types';
                 return false;
             }
         }
 
         // Check Associations to associationSets
         if (count($associationSets) != count($associationNames)) {
-            $msg = "we have " . count($associationSets) . "association sets and " . count($associationNames)
-                    . " associations, they should be the same";
+            $msg = 'we have ' . count($associationSets) . 'association sets and ' . count($associationNames)
+                    . ' associations, they should be the same';
         }
         if (count($associationNames) * 2 < count($navigationProperties)) {
-            $msg = "we have too many navigation properties. should have no more then double the"
-                    ." number of associations.";
+            $msg = 'we have too many navigation properties. should have no more then double the'
+                    .' number of associations.';
         }
         foreach ($associationNames as $associationName => $associationEnds) {
             if (!array_key_exists($associationName, $associationSets)) {
-                $msg = "association " . $associationName . " exists without matching associationSet";
+                $msg = 'association ' . $associationName . ' exists without matching associationSet';
                 return false;
             }
 
             if (!array_key_exists($associationName, $navigationProperties)) {
-                $msg = "association " . $associationName . " exists without matching Natvigation Property";
+                $msg = 'association ' . $associationName . ' exists without matching Natvigation Property';
                 return false;
             }
             $roles = [$associationEnds[0]->getRole(), $associationEnds[1]->getRole()];
             if (!in_array($associationSets[$associationName][0]->getRole(), $roles)) {
-                $msg = "association Set role " . $associationSets[$associationName][0]->getRole()
-                        . "lacks a matching property in the attached association";
+                $msg = 'association Set role ' . $associationSets[$associationName][0]->getRole()
+                        . 'lacks a matching property in the attached association';
                 return false;
             }
             if (!in_array($associationSets[$associationName][1]->getRole(), $roles)) {
-                $msg = "association Set role " . $associationSets[$associationName][1]->getRole()
-                        . "lacks a matching property in the attached association";
+                $msg = 'association Set role ' . $associationSets[$associationName][1]->getRole()
+                        . 'lacks a matching property in the attached association';
                 return false;
             }
             foreach ($navigationProperties[$associationName] as $navProp) {
                 if (!in_array($navProp->getToRole(), $roles)) {
-                    $msg = "Navigation Property Role " . $navProp->getToRole()
-                            . " lacks a matching Property in the assocation";
+                    $msg = 'Navigation Property Role ' . $navProp->getToRole()
+                            . ' lacks a matching Property in the assocation';
                     return false;
                 }
                 if (!in_array($navProp->getFromRole(), $roles)) {
-                    $msg = "Navigation Property Role " .$navProp->getToRole()
-                            . " lacks a matching Property in the assocation";
+                    $msg = 'Navigation Property Role ' .$navProp->getToRole()
+                            . ' lacks a matching Property in the assocation';
                     return false;
                 }
             }
@@ -213,7 +213,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Gets as namespace
+     * Gets as namespace.
      *
      * @return string
      */
@@ -223,7 +223,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Sets a new namespace
+     * Sets a new namespace.
      *
      * @param  string $namespace
      * @return self
@@ -231,7 +231,7 @@ class TSchemaType extends IsOK
     public function setNamespace($namespace)
     {
         if (!$this->isTNamespaceNameValid($namespace)) {
-            $msg = "Namespace must be a valid TNamespaceName";
+            $msg = 'Namespace must be a valid TNamespaceName';
             throw new \InvalidArgumentException($msg);
         }
         $this->namespace = $namespace;

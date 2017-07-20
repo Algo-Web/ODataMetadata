@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
 
 /**
- * Class representing TOperandType
+ * Class representing TOperandType.
  *
  * XSD Type: TOperand
  */

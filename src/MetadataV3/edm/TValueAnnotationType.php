@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TValueAnnotationType
+ * Class representing TValueAnnotationType.
  *
  * XSD Type: TValueAnnotation
  */
@@ -73,7 +73,7 @@ class TValueAnnotationType extends IsOK
     }
     
     /**
-     * Gets as term
+     * Gets as term.
      *
      * @return string
      */
@@ -83,7 +83,7 @@ class TValueAnnotationType extends IsOK
     }
 
     /**
-     * Sets a new term
+     * Sets a new term.
      *
      * @param  string $term
      * @return self
@@ -92,7 +92,7 @@ class TValueAnnotationType extends IsOK
     {
         $term = trim($term);
         if (!$this->isTQualifiedNameValid($term)) {
-            $msg = "Term must be a valid TQualifiedName";
+            $msg = 'Term must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->term = $term;
@@ -100,7 +100,7 @@ class TValueAnnotationType extends IsOK
     }
 
     /**
-     * Gets as qualifier
+     * Gets as qualifier.
      *
      * @return string
      */
@@ -110,7 +110,7 @@ class TValueAnnotationType extends IsOK
     }
 
     /**
-     * Sets a new qualifier
+     * Sets a new qualifier.
      *
      * @param  string $qualifier
      * @return self
@@ -118,7 +118,7 @@ class TValueAnnotationType extends IsOK
     public function setQualifier($qualifier)
     {
         if (null != $qualifier && !$this->isTSimpleIdentifierValid($qualifier)) {
-            $msg = "Qualifier must be a valid TSimpleIdentifier";
+            $msg = 'Qualifier must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->qualifier = $qualifier;
@@ -128,11 +128,11 @@ class TValueAnnotationType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTQualifiedNameValid($this->term)) {
-            $msg = "Term must be a valid TQualifiedName";
+            $msg = 'Term must be a valid TQualifiedName';
             return false;
         }
         if (null != $this->qualifier && !$this->isTSimpleIdentifierValid($this->qualifier)) {
-            $msg = "Qualifier must be a valid TSimpleIdentifier";
+            $msg = 'Qualifier must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isGInlineExpressionsValid($msg)) {

@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TAssociationConnectorType
+ * Class representing TAssociationConnectorType.
  *
  * XSD Type: TAssociationConnector
  */
@@ -18,7 +18,7 @@ class TAssociationConnectorType extends IsOK
     private $association = null;
 
     /**
-     * @property boolean $manuallyRouted
+     * @property bool $manuallyRouted
      */
     private $manuallyRouted = null;
 
@@ -28,7 +28,7 @@ class TAssociationConnectorType extends IsOK
     private $connectorPoint = array();
 
     /**
-     * Gets as association
+     * Gets as association.
      *
      * @return string
      */
@@ -38,7 +38,7 @@ class TAssociationConnectorType extends IsOK
     }
 
     /**
-     * Sets a new association
+     * Sets a new association.
      *
      * @param  string $association
      * @return self
@@ -50,9 +50,9 @@ class TAssociationConnectorType extends IsOK
     }
 
     /**
-     * Gets as manuallyRouted
+     * Gets as manuallyRouted.
      *
-     * @return boolean
+     * @return bool
      */
     public function getManuallyRouted()
     {
@@ -60,9 +60,9 @@ class TAssociationConnectorType extends IsOK
     }
 
     /**
-     * Sets a new manuallyRouted
+     * Sets a new manuallyRouted.
      *
-     * @param  boolean $manuallyRouted
+     * @param  bool $manuallyRouted
      * @return self
      */
     public function setManuallyRouted($manuallyRouted)
@@ -72,10 +72,10 @@ class TAssociationConnectorType extends IsOK
     }
 
     /**
-     * Adds as connectorPoint
+     * Adds as connectorPoint.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edmx\TConnectorPointType $connectorPoint
+     * @return self
      */
     public function addToConnectorPoint(TConnectorPointType $connectorPoint)
     {
@@ -84,10 +84,10 @@ class TAssociationConnectorType extends IsOK
     }
 
     /**
-     * isset connectorPoint
+     * isset connectorPoint.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetConnectorPoint($index)
     {
@@ -95,7 +95,7 @@ class TAssociationConnectorType extends IsOK
     }
 
     /**
-     * unset connectorPoint
+     * unset connectorPoint.
      *
      * @param  scalar $index
      * @return void
@@ -106,7 +106,7 @@ class TAssociationConnectorType extends IsOK
     }
 
     /**
-     * Gets as connectorPoint
+     * Gets as connectorPoint.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edmx\TConnectorPointType[]
      */
@@ -116,7 +116,7 @@ class TAssociationConnectorType extends IsOK
     }
 
     /**
-     * Sets a new connectorPoint
+     * Sets a new connectorPoint.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edmx\TConnectorPointType[] $connectorPoint
      * @return self

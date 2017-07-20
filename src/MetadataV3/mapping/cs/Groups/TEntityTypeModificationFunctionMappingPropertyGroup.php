@@ -27,7 +27,7 @@ trait TEntityTypeModificationFunctionMappingPropertyGroup
     private $complexProperty = null;
 
     /**
-     * Gets as scalarProperty
+     * Gets as scalarProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      */
@@ -37,7 +37,7 @@ trait TEntityTypeModificationFunctionMappingPropertyGroup
     }
 
     /**
-     * Sets a new scalarProperty
+     * Sets a new scalarProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      * $scalarProperty
@@ -54,7 +54,7 @@ trait TEntityTypeModificationFunctionMappingPropertyGroup
     }
 
     /**
-     * Gets as associationEnd
+     * Gets as associationEnd.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingAssociationEndType
      */
@@ -64,7 +64,7 @@ trait TEntityTypeModificationFunctionMappingPropertyGroup
     }
 
     /**
-     * Sets a new associationEnd
+     * Sets a new associationEnd.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingAssociationEndType
      * $associationEnd
@@ -81,7 +81,7 @@ trait TEntityTypeModificationFunctionMappingPropertyGroup
     }
 
     /**
-     * Gets as complexProperty
+     * Gets as complexProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
      */
@@ -91,7 +91,7 @@ trait TEntityTypeModificationFunctionMappingPropertyGroup
     }
 
     /**
-     * Sets a new complexProperty
+     * Sets a new complexProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
      * $complexProperty

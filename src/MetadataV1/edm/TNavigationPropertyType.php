@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TNavigationPropertyType
+ * Class representing TNavigationPropertyType.
  *
  * XSD Type: TNavigationProperty
  */
@@ -48,7 +48,7 @@ class TNavigationPropertyType extends IsOK
     private $documentation = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -58,7 +58,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -70,7 +70,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as relationship
+     * Gets as relationship.
      *
      * @return string
      */
@@ -80,7 +80,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new relationship
+     * Sets a new relationship.
      *
      * @param  string $relationship
      * @return self
@@ -92,7 +92,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as toRole
+     * Gets as toRole.
      *
      * @return string
      */
@@ -102,7 +102,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new toRole
+     * Sets a new toRole.
      *
      * @param  string $toRole
      * @return self
@@ -114,7 +114,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as fromRole
+     * Gets as fromRole.
      *
      * @return string
      */
@@ -124,7 +124,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new fromRole
+     * Sets a new fromRole.
      *
      * @param  string $fromRole
      * @return self
@@ -136,7 +136,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as getterAccess
+     * Gets as getterAccess.
      *
      * @return string
      */
@@ -146,7 +146,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new getterAccess
+     * Sets a new getterAccess.
      *
      * @param  string $getterAccess
      * @return self
@@ -158,7 +158,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as setterAccess
+     * Gets as setterAccess.
      *
      * @return string
      */
@@ -168,7 +168,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new setterAccess
+     * Sets a new setterAccess.
      *
      * @param  string $setterAccess
      * @return self
@@ -180,7 +180,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType
      */
@@ -190,7 +190,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType $documentation
      * @return self

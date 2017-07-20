@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups\TPropertyGroup;
 
 /**
- * Class representing TMappingFragmentType
+ * Class representing TMappingFragmentType.
  *
  * Type for MappingFragment element
  *
@@ -21,12 +21,12 @@ class TMappingFragmentType extends IsOK
     private $storeEntitySet = null;
 
     /**
-     * @property boolean $makeColumnsDistinct
+     * @property bool $makeColumnsDistinct
      */
     private $makeColumnsDistinct = null;
 
     /**
-     * Gets as storeEntitySet
+     * Gets as storeEntitySet.
      *
      * @return string
      */
@@ -36,7 +36,7 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Sets a new storeEntitySet
+     * Sets a new storeEntitySet.
      *
      * @param  string $storeEntitySet
      * @return self
@@ -52,9 +52,9 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Gets as makeColumnsDistinct
+     * Gets as makeColumnsDistinct.
      *
-     * @return boolean
+     * @return bool
      */
     public function getMakeColumnsDistinct()
     {
@@ -62,9 +62,9 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Sets a new makeColumnsDistinct
+     * Sets a new makeColumnsDistinct.
      *
-     * @param  boolean $makeColumnsDistinct
+     * @param  bool $makeColumnsDistinct
      * @return self
      */
     public function setMakeColumnsDistinct($makeColumnsDistinct)

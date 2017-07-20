@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TPropertyReferenceExpressionType
+ * Class representing TPropertyReferenceExpressionType.
  *
  * XSD Type: TPropertyReferenceExpression
  */
@@ -28,7 +28,7 @@ class TPropertyReferenceExpressionType extends IsOK
     }
 
     /**
-     * Gets as property
+     * Gets as property.
      *
      * @return string
      */
@@ -38,7 +38,7 @@ class TPropertyReferenceExpressionType extends IsOK
     }
 
     /**
-     * Sets a new property
+     * Sets a new property.
      *
      * @param  string $property
      * @return self
@@ -46,7 +46,7 @@ class TPropertyReferenceExpressionType extends IsOK
     public function setProperty($property)
     {
         if (!$this->isTSimpleIdentifierValid($property)) {
-            $msg = "Property must be a valid TSimpleIdentifier";
+            $msg = 'Property must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->property = $property;
@@ -56,7 +56,7 @@ class TPropertyReferenceExpressionType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->property)) {
-            $msg = "Property must be a valid TSimpleIdentifier";
+            $msg = 'Property must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isGExpressionValid($msg)) {

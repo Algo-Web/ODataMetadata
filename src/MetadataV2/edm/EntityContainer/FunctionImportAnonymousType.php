@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType;
 use AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType;
 
 /**
- * Class representing FunctionImportAnonymousType
+ * Class representing FunctionImportAnonymousType.
  */
 class FunctionImportAnonymousType extends IsOK
 {
@@ -43,7 +43,7 @@ class FunctionImportAnonymousType extends IsOK
     private $parameter = array();
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -53,7 +53,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -65,7 +65,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Gets as returnType
+     * Gets as returnType.
      *
      * @return string
      */
@@ -75,7 +75,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new returnType
+     * Sets a new returnType.
      *
      * @param  string $returnType
      * @return self
@@ -87,7 +87,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return string
      */
@@ -97,7 +97,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
      * @param  string $entitySet
      * @return self
@@ -109,7 +109,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Gets as methodAccess
+     * Gets as methodAccess.
      *
      * @return string
      */
@@ -119,7 +119,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new methodAccess
+     * Sets a new methodAccess.
      *
      * @param  string $methodAccess
      * @return self
@@ -131,7 +131,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
@@ -141,7 +141,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
@@ -153,10 +153,10 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType $parameter
+     * @return self
      */
     public function addToParameter(TFunctionImportParameterType $parameter)
     {
@@ -165,10 +165,10 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetParameter($index)
     {
@@ -176,7 +176,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
      * @param  scalar $index
      * @return void
@@ -187,7 +187,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType[]
      */
@@ -197,7 +197,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TFunctionImportParameterType[] $parameter
      * @return self

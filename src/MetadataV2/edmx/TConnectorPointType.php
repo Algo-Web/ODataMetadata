@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TConnectorPointType
+ * Class representing TConnectorPointType.
  *
  * XSD Type: TConnectorPoint
  */
@@ -23,7 +23,7 @@ class TConnectorPointType extends IsOK
     private $pointY = null;
 
     /**
-     * Gets as pointX
+     * Gets as pointX.
      *
      * @return float
      */
@@ -33,7 +33,7 @@ class TConnectorPointType extends IsOK
     }
 
     /**
-     * Sets a new pointX
+     * Sets a new pointX.
      *
      * @param  float $pointX
      * @return self
@@ -45,7 +45,7 @@ class TConnectorPointType extends IsOK
     }
 
     /**
-     * Gets as pointY
+     * Gets as pointY.
      *
      * @return float
      */
@@ -55,7 +55,7 @@ class TConnectorPointType extends IsOK
     }
 
     /**
-     * Sets a new pointY
+     * Sets a new pointY.
      *
      * @param  float $pointY
      * @return self

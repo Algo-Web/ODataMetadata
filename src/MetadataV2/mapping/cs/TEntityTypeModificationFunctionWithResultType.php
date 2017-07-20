@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 
 /**
- * Class representing TEntityTypeModificationFunctionWithResultType
+ * Class representing TEntityTypeModificationFunctionWithResultType.
  *
  * XSD Type: TEntityTypeModificationFunctionWithResult
  */

@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation;
 
 /**
- * Class representing TReferenceType
+ * Class representing TReferenceType.
  *
  * XSD Type: TReference
  */
@@ -34,7 +34,7 @@ class TReferenceType extends IsOK
     private $annotation = array();
 
     /**
-     * Gets as uri
+     * Gets as uri.
      *
      * @return string
      */
@@ -44,7 +44,7 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * Sets a new uri
+     * Sets a new uri.
      *
      * @param  string $uri
      * @return self
@@ -56,10 +56,10 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * Adds as include
+     * Adds as include.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType $include
+     * @return self
      */
     public function addToInclude(TIncludeType $include)
     {
@@ -68,10 +68,10 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * isset include
+     * isset include.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetInclude($index)
     {
@@ -79,7 +79,7 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * unset include
+     * unset include.
      *
      * @param  scalar $index
      * @return void
@@ -90,7 +90,7 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * Gets as include
+     * Gets as include.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType[]
      */
@@ -100,7 +100,7 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * Sets a new include
+     * Sets a new include.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType[] $include
      * @return self
@@ -112,10 +112,10 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * Adds as includeAnnotations
+     * Adds as includeAnnotations.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType $includeAnnotations
+     * @return self
      */
     public function addToIncludeAnnotations(TIncludeAnnotationsType $includeAnnotations)
     {
@@ -124,10 +124,10 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * isset includeAnnotations
+     * isset includeAnnotations.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetIncludeAnnotations($index)
     {
@@ -135,7 +135,7 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * unset includeAnnotations
+     * unset includeAnnotations.
      *
      * @param  scalar $index
      * @return void
@@ -146,7 +146,7 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * Gets as includeAnnotations
+     * Gets as includeAnnotations.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType[]
      */
@@ -156,7 +156,7 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * Sets a new includeAnnotations
+     * Sets a new includeAnnotations.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeAnnotationsType[] $includeAnnotations
      * @return self
@@ -168,10 +168,10 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -180,10 +180,10 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -191,7 +191,7 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -202,7 +202,7 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -212,7 +212,7 @@ class TReferenceType extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
@@ -226,12 +226,12 @@ class TReferenceType extends IsOK
     protected function isOK(&$msg = null)
     {
         if (!$this->isURLValid($this->uri)) {
-            $msg = "Uri must be valid";
+            $msg = 'Uri must be valid';
             return false;
         }
 
         if (!$this->isValidArray($this->include, \AlgoWeb\ODataMetadata\MetadataV4\edmx\TIncludeType, 1)) {
-            $msg = "Include is not a valid array";
+            $msg = 'Include is not a valid array';
             return false;
         }
         if (!$this->isValidArray(
@@ -240,11 +240,11 @@ class TReferenceType extends IsOK
             1
         )
         ) {
-            $msg = "IncludeAnnotations is not a valid array";
+            $msg = 'IncludeAnnotations is not a valid array';
             return false;
         }
         if (!$this->isValidArray($this->annotation, \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation, 1)) {
-            $msg = "Annotation is not a valid array";
+            $msg = 'Annotation is not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->include, $msg)) {

@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TCommandTextTrait;
 
 /**
- * Class representing TFunctionType
+ * Class representing TFunctionType.
  *
  * XSD Type: TFunction
  */
@@ -41,7 +41,7 @@ class TFunctionType extends IsOK
     private $definingExpression = [];
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -51,7 +51,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -59,7 +59,7 @@ class TFunctionType extends IsOK
     public function setName($name)
     {
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -67,10 +67,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Adds as returnType
+     * Adds as returnType.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType $returnType
+     * @return self
      */
     public function addToReturnType(TFunctionReturnTypeType $returnType)
     {
@@ -83,10 +83,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * isset returnType
+     * isset returnType.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetReturnType($index)
     {
@@ -94,7 +94,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * unset returnType
+     * unset returnType.
      *
      * @param  scalar $index
      * @return void
@@ -105,7 +105,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as returnType
+     * Gets as returnType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType[]
      */
@@ -115,7 +115,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new returnType
+     * Sets a new returnType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType[] $returnType
      * @return self
@@ -135,7 +135,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
      */
@@ -145,7 +145,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
@@ -161,10 +161,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType $parameter
+     * @return self
      */
     public function addToParameter(TFunctionParameterType $parameter)
     {
@@ -177,10 +177,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetParameter($index)
     {
@@ -188,7 +188,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
      * @param  scalar $index
      * @return void
@@ -199,7 +199,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[]
      */
@@ -209,7 +209,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameter
      * @return self
@@ -229,10 +229,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Adds as definingExpression
+     * Adds as definingExpression.
      *
-     * @return self
      * @param  string $definingExpression
+     * @return self
      */
     public function addToDefiningExpression($definingExpression)
     {
@@ -241,10 +241,10 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * isset definingExpression
+     * isset definingExpression.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetDefiningExpression($index)
     {
@@ -252,7 +252,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * unset definingExpression
+     * unset definingExpression.
      *
      * @param  scalar $index
      * @return void
@@ -263,7 +263,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Gets as definingExpression
+     * Gets as definingExpression.
      *
      * @return string[]
      */
@@ -273,7 +273,7 @@ class TFunctionType extends IsOK
     }
 
     /**
-     * Sets a new definingExpression
+     * Sets a new definingExpression.
      *
      * @param  string $definingExpression
      * @return self
@@ -287,7 +287,7 @@ class TFunctionType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
@@ -311,7 +311,7 @@ class TFunctionType extends IsOK
         }
         foreach ($this->returnType as $type) {
             if (!is_string($type) || !$this->isTCommandTextValid($type)) {
-                $msg = implode($type) . " must be a valid TCommandText";
+                $msg = implode($type) . ' must be a valid TCommandText';
                 return false;
             }
         }

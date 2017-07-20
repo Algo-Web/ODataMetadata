@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TDesignerPropertyType
+ * Class representing TDesignerPropertyType.
  *
  * XSD Type: TDesignerProperty
  */
@@ -23,7 +23,7 @@ class TDesignerPropertyType extends IsOK
     private $value = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TDesignerPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -41,7 +41,7 @@ class TDesignerPropertyType extends IsOK
     public function setName($name)
     {
         if (!$this->isStringNotNullOrEmpty($name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -49,7 +49,7 @@ class TDesignerPropertyType extends IsOK
     }
 
     /**
-     * Gets as value
+     * Gets as value.
      *
      * @return string
      */
@@ -59,7 +59,7 @@ class TDesignerPropertyType extends IsOK
     }
 
     /**
-     * Sets a new value
+     * Sets a new value.
      *
      * @param  string $value
      * @return self
@@ -67,7 +67,7 @@ class TDesignerPropertyType extends IsOK
     public function setValue($value)
     {
         if (!$this->isStringNotNullOrEmpty($value)) {
-            $msg = "Value cannot be null or empty";
+            $msg = 'Value cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->value = $value;
@@ -77,11 +77,11 @@ class TDesignerPropertyType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             return false;
         }
         if (!$this->isStringNotNullOrEmpty($this->value)) {
-            $msg = "Value cannot be null or empty";
+            $msg = 'Value cannot be null or empty';
             return false;
         }
         return true;

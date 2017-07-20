@@ -17,12 +17,12 @@ trait TDerivableTypeAttributesTrait
     private $baseType = null;
 
     /**
-     * @property boolean $abstract
+     * @property bool $abstract
      */
     private $abstract = false;
 
     /**
-     * Gets as baseType
+     * Gets as baseType.
      *
      * @return string
      */
@@ -32,7 +32,7 @@ trait TDerivableTypeAttributesTrait
     }
 
     /**
-     * Sets a new baseType
+     * Sets a new baseType.
      *
      * @param  string $baseType
      * @return self
@@ -41,7 +41,7 @@ trait TDerivableTypeAttributesTrait
     {
         $msg = null;
         if (null != $baseType && !$this->isTQualifiedNameValid($baseType)) {
-            $msg = "Base type must be a valid TQualifiedName";
+            $msg = 'Base type must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->baseType = $baseType;
@@ -49,9 +49,9 @@ trait TDerivableTypeAttributesTrait
     }
 
     /**
-     * Gets as abstract
+     * Gets as abstract.
      *
-     * @return boolean
+     * @return bool
      */
     public function getAbstract()
     {
@@ -59,9 +59,9 @@ trait TDerivableTypeAttributesTrait
     }
 
     /**
-     * Sets a new abstract
+     * Sets a new abstract.
      *
-     * @param  boolean $abstract
+     * @param  bool $abstract
      * @return self
      */
     public function setAbstract($abstract)
@@ -76,7 +76,7 @@ trait TDerivableTypeAttributesTrait
             return false;
         }
         if (null != $this->baseType && !$this->isTQualifiedNameValid($this->baseType)) {
-            $msg = "Base type must be a valid TQualifiedName: " . get_class($this);
+            $msg = 'Base type must be a valid TQualifiedName: ' . get_class($this);
             return false;
         }
         return true;

@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\Groups\GEmptyElementExtensibilityT
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TActionTrait;
 
 /**
- * Class representing TOnActionType
+ * Class representing TOnActionType.
  *
  * XSD Type: TOnAction
  */
@@ -20,7 +20,7 @@ class TOnActionType extends IsOK
     private $action = null;
 
     /**
-     * Gets as action
+     * Gets as action.
      *
      * @return string
      */
@@ -30,7 +30,7 @@ class TOnActionType extends IsOK
     }
 
     /**
-     * Sets a new action
+     * Sets a new action.
      *
      * @param  string $action
      * @return self
@@ -38,11 +38,11 @@ class TOnActionType extends IsOK
     public function setAction($action)
     {
         if (!$this->isStringNotNullOrEmpty($action)) {
-            $msg = "Action cannot be null or empty";
+            $msg = 'Action cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         if (!$this->isTActionValid($action)) {
-            $msg = "Action must be valid TAction";
+            $msg = 'Action must be valid TAction';
             throw new \InvalidArgumentException($msg);
         }
         $this->action = $action;
@@ -50,17 +50,17 @@ class TOnActionType extends IsOK
     }
 
     /**
-     * @param null $msg
+     * @param  null $msg
      * @return bool
      */
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->action)) {
-            $msg = "Action cannot be null or empty";
+            $msg = 'Action cannot be null or empty';
             return false;
         }
         if (!$this->isTActionValid($this->action)) {
-            $msg = "Action must be valid TAction";
+            $msg = 'Action must be valid TAction';
             return false;
         }
         if (!$this->isExtensibilityElementOK($msg)) {

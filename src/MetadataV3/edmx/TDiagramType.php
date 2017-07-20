@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TDiagramType
+ * Class representing TDiagramType.
  *
  * XSD Type: TDiagram
  */
@@ -23,22 +23,22 @@ class TDiagramType extends IsOK
     private $diagramId = null;
 
     /**
-     * @property integer $zoomLevel
+     * @property int $zoomLevel
      */
     private $zoomLevel = null;
 
     /**
-     * @property boolean $showGrid
+     * @property bool $showGrid
      */
     private $showGrid = null;
 
     /**
-     * @property boolean $snapToGrid
+     * @property bool $snapToGrid
      */
     private $snapToGrid = null;
 
     /**
-     * @property boolean $displayType
+     * @property bool $displayType
      */
     private $displayType = null;
 
@@ -58,7 +58,7 @@ class TDiagramType extends IsOK
     private $inheritanceConnector = [];
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -76,7 +76,7 @@ class TDiagramType extends IsOK
     public function setName($name)
     {
         if (!$this->isStringNotNullOrEmpty($name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -84,7 +84,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Gets as diagramId
+     * Gets as diagramId.
      *
      * @return string
      */
@@ -94,7 +94,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Sets a new diagramId
+     * Sets a new diagramId.
      *
      * @param  string $diagramId
      * @return self
@@ -102,7 +102,7 @@ class TDiagramType extends IsOK
     public function setDiagramId($diagramId)
     {
         if (null != $diagramId && !$this->isStringNotNullOrEmpty($diagramId)) {
-            $msg = "Diagram ID cannot be empty";
+            $msg = 'Diagram ID cannot be empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->diagramId = $diagramId;
@@ -110,9 +110,9 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Gets as zoomLevel
+     * Gets as zoomLevel.
      *
-     * @return integer
+     * @return int
      */
     public function getZoomLevel()
     {
@@ -120,15 +120,15 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Sets a new zoomLevel
+     * Sets a new zoomLevel.
      *
-     * @param  integer $zoomLevel
+     * @param  int  $zoomLevel
      * @return self
      */
     public function setZoomLevel($zoomLevel)
     {
         if (null != $zoomLevel && !is_integer($zoomLevel)) {
-            $msg = "Zoom level must be integral";
+            $msg = 'Zoom level must be integral';
             throw new \InvalidArgumentException($msg);
         }
         $this->zoomLevel = $zoomLevel;
@@ -136,9 +136,9 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Gets as showGrid
+     * Gets as showGrid.
      *
-     * @return boolean
+     * @return bool
      */
     public function getShowGrid()
     {
@@ -146,9 +146,9 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Sets a new showGrid
+     * Sets a new showGrid.
      *
-     * @param  boolean $showGrid
+     * @param  bool $showGrid
      * @return self
      */
     public function setShowGrid($showGrid)
@@ -158,9 +158,9 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Gets as snapToGrid
+     * Gets as snapToGrid.
      *
-     * @return boolean
+     * @return bool
      */
     public function getSnapToGrid()
     {
@@ -168,9 +168,9 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Sets a new snapToGrid
+     * Sets a new snapToGrid.
      *
-     * @param  boolean $snapToGrid
+     * @param  bool $snapToGrid
      * @return self
      */
     public function setSnapToGrid($snapToGrid)
@@ -180,9 +180,9 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Gets as displayType
+     * Gets as displayType.
      *
-     * @return boolean
+     * @return bool
      */
     public function getDisplayType()
     {
@@ -190,9 +190,9 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Sets a new displayType
+     * Sets a new displayType.
      *
-     * @param  boolean $displayType
+     * @param  bool $displayType
      * @return self
      */
     public function setDisplayType($displayType)
@@ -202,10 +202,10 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Adds as entityTypeShape
+     * Adds as entityTypeShape.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType $entityTypeShape
+     * @return self
      */
     public function addToEntityTypeShape(TEntityTypeShapeType $entityTypeShape)
     {
@@ -218,10 +218,10 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * isset entityTypeShape
+     * isset entityTypeShape.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEntityTypeShape($index)
     {
@@ -229,7 +229,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * unset entityTypeShape
+     * unset entityTypeShape.
      *
      * @param  scalar $index
      * @return void
@@ -240,7 +240,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Gets as entityTypeShape
+     * Gets as entityTypeShape.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType[]
      */
@@ -250,7 +250,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Sets a new entityTypeShape
+     * Sets a new entityTypeShape.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType[] $entityTypeShape
      * @return self
@@ -262,7 +262,7 @@ class TDiagramType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType'
         )
         ) {
-            $msg = "Entity type shape array not a valid array";
+            $msg = 'Entity type shape array not a valid array';
             throw new \InvalidArgumentException($msg);
         }
         $this->entityTypeShape = $entityTypeShape;
@@ -270,10 +270,10 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Adds as associationConnector
+     * Adds as associationConnector.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType $associationConnector
+     * @return self
      */
     public function addToAssociationConnector(TAssociationConnectorType $associationConnector)
     {
@@ -286,10 +286,10 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * isset associationConnector
+     * isset associationConnector.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAssociationConnector($index)
     {
@@ -297,7 +297,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * unset associationConnector
+     * unset associationConnector.
      *
      * @param  scalar $index
      * @return void
@@ -308,7 +308,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Gets as associationConnector
+     * Gets as associationConnector.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType[]
      */
@@ -318,7 +318,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Sets a new associationConnector
+     * Sets a new associationConnector.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType[] $associationConnector
      * @return self
@@ -330,7 +330,7 @@ class TDiagramType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType'
         )
         ) {
-            $msg = "Association connector array not a valid array";
+            $msg = 'Association connector array not a valid array';
             throw new \InvalidArgumentException($msg);
         }
         $this->associationConnector = $associationConnector;
@@ -338,10 +338,10 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Adds as inheritanceConnector
+     * Adds as inheritanceConnector.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType $inheritanceConnector
+     * @return self
      */
     public function addToInheritanceConnector(TInheritanceConnectorType $inheritanceConnector)
     {
@@ -354,10 +354,10 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * isset inheritanceConnector
+     * isset inheritanceConnector.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetInheritanceConnector($index)
     {
@@ -365,7 +365,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * unset inheritanceConnector
+     * unset inheritanceConnector.
      *
      * @param  scalar $index
      * @return void
@@ -376,7 +376,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Gets as inheritanceConnector
+     * Gets as inheritanceConnector.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType[]
      */
@@ -386,7 +386,7 @@ class TDiagramType extends IsOK
     }
 
     /**
-     * Sets a new inheritanceConnector
+     * Sets a new inheritanceConnector.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType[] $inheritanceConnector
      * @return self
@@ -398,7 +398,7 @@ class TDiagramType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType'
         )
         ) {
-            $msg = "Inheritance connector array not a valid array";
+            $msg = 'Inheritance connector array not a valid array';
             throw new \InvalidArgumentException($msg);
         }
         $this->inheritanceConnector = $inheritanceConnector;
@@ -408,16 +408,16 @@ class TDiagramType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             return false;
         }
 
         if (null != $this->diagramId && !$this->isStringNotNullOrEmpty($this->diagramId)) {
-            $msg = "Diagram ID cannot be empty";
+            $msg = 'Diagram ID cannot be empty';
             return false;
         }
         if (null != $this->zoomLevel && !is_integer($this->zoomLevel)) {
-            $msg = "Zoom level must be integral";
+            $msg = 'Zoom level must be integral';
             return false;
         }
         if (!$this->isValidArray(
@@ -425,7 +425,7 @@ class TDiagramType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TEntityTypeShapeType'
         )
         ) {
-            $msg = "Entity type shape array not a valid array";
+            $msg = 'Entity type shape array not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->entityTypeShape, $msg)) {
@@ -436,7 +436,7 @@ class TDiagramType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TAssociationConnectorType'
         )
         ) {
-            $msg = "Association connector array not a valid array";
+            $msg = 'Association connector array not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->associationConnector, $msg)) {
@@ -447,7 +447,7 @@ class TDiagramType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TInheritanceConnectorType'
         )
         ) {
-            $msg = "Inheritance connector array not a valid array";
+            $msg = 'Inheritance connector array not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->inheritanceConnector, $msg)) {

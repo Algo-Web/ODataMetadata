@@ -3,20 +3,19 @@
  * Created by PhpStorm.
  * User: Doc
  * Date: 4/30/2017
- * Time: 1:29 PM
+ * Time: 1:29 PM.
  */
-
 namespace AlgoWeb\ODataMetadata;
 
 /**
- * trait xsdRestrictions
+ * trait xsdRestrictions.
  *
  * @package AlgoWeb\ODataMetadata
  */
 trait xsdRestrictions
 {
     /**
-     * Checks if it is a valid NCName
+     * Checks if it is a valid NCName.
      *
      * <xsd:simpleType name="NCName" id="NCName">
      *     <xsd:restriction base="xsd:Name">
@@ -25,7 +24,7 @@ trait xsdRestrictions
      * </xsd:simpleType>
      *
      * @param  string $string the string to check
-     * @return bool if it is valid
+     * @return bool   if it is valid
      */
     protected function isNCName($string)
     {
@@ -33,11 +32,11 @@ trait xsdRestrictions
     }
 
     /**
-     * Checks a pattern against a string
+     * Checks a pattern against a string.
      *
      * @param  string $pattern the regex pattern
      * @param  string $string  the string to check
-     * @return bool true if string matches pattern
+     * @return bool   true if string matches pattern
      */
     protected function matchesRegexPattern($pattern, $string)
     {
@@ -46,7 +45,7 @@ trait xsdRestrictions
     }
 
     /**
-     * Checks if is ivalid Name
+     * Checks if is ivalid Name.
      *
      * <xsd:simpleType name="Name" id="Name">
      *     <xsd:restriction base="xsd:token">
@@ -55,7 +54,7 @@ trait xsdRestrictions
      * </xsd:simpleType>
      *
      * @param  string $string the string to check
-     * @return bool  if it is valid
+     * @return bool   if it is valid
      */
     protected function isName($string)
     {

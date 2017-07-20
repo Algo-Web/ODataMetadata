@@ -6,14 +6,14 @@ class MappingTypeTests extends TestCase
 {
     public function testSimpleIdentifierValidWithTrailingSpace()
     {
-        $string = "UnitPrice ";
+        $string = 'UnitPrice ';
         $foo = new mappingTestType();
         $this->assertFalse($foo->isTSimpleIdentifierValid($string));
     }
 
     public function testSimpleIdentifierValidWithoutTrailingSpace()
     {
-        $string = "UnitPrice";
+        $string = 'UnitPrice';
 
         $foo = new mappingTestType();
         $this->assertTrue($foo->isTSimpleIdentifierValid($string));

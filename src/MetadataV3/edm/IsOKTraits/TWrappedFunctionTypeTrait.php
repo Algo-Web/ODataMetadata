@@ -17,7 +17,7 @@ trait TWrappedFunctionTypeTrait
         $regex = '/(Collection|Ref)\([^ \t]{1,}(\.[^ \t]{1,}){0,}\/)';
 
         if (!is_string($string)) {
-            $msg = "Input must be a string: " . get_class($this);
+            $msg = 'Input must be a string: ' . get_class($this);
             throw new \InvalidArgumentException($msg);
         }
         if ($this->isTQualifiedNameValid($string)) {

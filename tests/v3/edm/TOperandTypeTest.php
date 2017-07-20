@@ -30,13 +30,13 @@ class TOperandTypeTest extends TestCase
     public function testSetStringActualString()
     {
         $foo = new TOperandType();
-        $foo->setString("string");
+        $foo->setString('string');
         $this->assertEquals('string', $foo->getString());
     }
 
     public function testSetStringEmptyArrayAsString()
     {
-        $expected = "String must be a string";
+        $expected = 'String must be a string';
         $actual = null;
 
         $foo = new TOperandType();
@@ -50,7 +50,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetStringNonEmptyArrayAsString()
     {
-        $expected = "String must be a string";
+        $expected = 'String must be a string';
         $actual = null;
 
         $foo = new TOperandType();
@@ -64,7 +64,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetStringObjectAsString()
     {
-        $expected = "String must be a string";
+        $expected = 'String must be a string';
         $actual = null;
 
         $foo = new TOperandType();
@@ -80,7 +80,7 @@ class TOperandTypeTest extends TestCase
     {
         $expected = 'zyxvut';
         $foo = new TOperandType();
-        $foo->setBinary("zyxvut");
+        $foo->setBinary('zyxvut');
         $this->assertEquals($expected, $foo->getBinary());
     }
 
@@ -88,7 +88,7 @@ class TOperandTypeTest extends TestCase
     {
         $expected = 'zyxvut';
         $foo = new TOperandType();
-        $foo->setInt("zyxvut");
+        $foo->setInt('zyxvut');
         $this->assertEquals($expected, $foo->getInt());
     }
 
@@ -96,7 +96,7 @@ class TOperandTypeTest extends TestCase
     {
         $expected = 'zyxvut';
         $foo = new TOperandType();
-        $foo->setFloat("zyxvut");
+        $foo->setFloat('zyxvut');
         $this->assertEquals($expected, $foo->getFloat());
     }
 
@@ -104,7 +104,7 @@ class TOperandTypeTest extends TestCase
     {
         $expected = 'zyxvut';
         $foo = new TOperandType();
-        $foo->setDecimal("zyxvut");
+        $foo->setDecimal('zyxvut');
         $this->assertEquals($expected, $foo->getDecimal());
     }
 
@@ -133,7 +133,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadIf()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TIfExpressionType::class);
@@ -163,7 +163,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadRecord()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TRecordExpressionType::class);
@@ -193,7 +193,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadCollection()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TCollectionExpressionType::class);
@@ -223,7 +223,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadTypeAssert()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TTypeAssertExpressionType::class);
@@ -253,7 +253,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadTypeTest()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TTypeTestExpressionType::class);
@@ -283,7 +283,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadFunctionReference()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TFunctionReferenceExpressionType::class);
@@ -313,7 +313,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadEntitySetReference()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TEntitySetReferenceExpressionType::class);
@@ -343,7 +343,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadAnonymousFunction()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TAnonymousFunctionExpressionType::class);
@@ -373,7 +373,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadParameterReference()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TParameterReferenceExpressionType::class);
@@ -403,7 +403,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadApply()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TApplyExpressionType::class);
@@ -433,7 +433,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadPropertyReference()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TPropertyReferenceExpressionType::class);
@@ -463,7 +463,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadValueTermReference()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $if = m::mock(TValueTermReferenceExpressionType::class);
@@ -512,7 +512,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadEnum()
     {
-        $expected = "Enum must be a valid TQualifiedName";
+        $expected = 'Enum must be a valid TQualifiedName';
         $actual = null;
 
         $foo = new TOperandType();
@@ -526,7 +526,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetGetEnumRoundTrip()
     {
-        $expected = "Org.OData.Publication.V1.DocumentationUrl";
+        $expected = 'Org.OData.Publication.V1.DocumentationUrl';
 
         $foo = new TOperandType();
         $foo->setEnum($expected);
@@ -537,7 +537,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadPath()
     {
-        $expected = "Path must be a valid TQualifiedName";
+        $expected = 'Path must be a valid TQualifiedName';
         $actual = null;
 
         $foo = new TOperandType();
@@ -551,7 +551,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetGetPathRoundTrip()
     {
-        $expected = "Org.OData.Publication.V1.DocumentationUrl";
+        $expected = 'Org.OData.Publication.V1.DocumentationUrl';
 
         $foo = new TOperandType();
         $foo->setPath($expected);
@@ -562,7 +562,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetBadGuid()
     {
-        $expected = "Guid must be a valid TGuidLiteral";
+        $expected = 'Guid must be a valid TGuidLiteral';
         $actual = null;
 
         $foo = new TOperandType();
@@ -576,7 +576,7 @@ class TOperandTypeTest extends TestCase
 
     public function testSetGetGuidRoundTrip()
     {
-        $expected = "00000000-0000-0000-0000-000000000000";
+        $expected = '00000000-0000-0000-0000-000000000000';
         $actual = null;
 
         $foo = new TOperandType();

@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TTypeAnnotationType
+ * Class representing TTypeAnnotationType.
  *
  * XSD Type: TTypeAnnotation
  */
@@ -39,7 +39,7 @@ class TTypeAnnotationType extends IsOK
     private $propertyValue = [];
 
     /**
-     * Gets as term
+     * Gets as term.
      *
      * @return string
      */
@@ -49,7 +49,7 @@ class TTypeAnnotationType extends IsOK
     }
 
     /**
-     * Sets a new term
+     * Sets a new term.
      *
      * @param  string $term
      * @return self
@@ -57,7 +57,7 @@ class TTypeAnnotationType extends IsOK
     public function setTerm($term)
     {
         if (!$this->isTQualifiedNameValid($term)) {
-            $msg = "Term must be a valid TQualifiedName";
+            $msg = 'Term must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->term = $term;
@@ -65,7 +65,7 @@ class TTypeAnnotationType extends IsOK
     }
 
     /**
-     * Gets as qualifier
+     * Gets as qualifier.
      *
      * @return string
      */
@@ -75,7 +75,7 @@ class TTypeAnnotationType extends IsOK
     }
 
     /**
-     * Sets a new qualifier
+     * Sets a new qualifier.
      *
      * @param  string $qualifier
      * @return self
@@ -87,10 +87,10 @@ class TTypeAnnotationType extends IsOK
     }
 
     /**
-     * Adds as propertyValue
+     * Adds as propertyValue.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType $propertyValue
+     * @return self
      */
     public function addToPropertyValue(TPropertyValueType $propertyValue)
     {
@@ -103,10 +103,10 @@ class TTypeAnnotationType extends IsOK
     }
 
     /**
-     * isset propertyValue
+     * isset propertyValue.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetPropertyValue($index)
     {
@@ -114,7 +114,7 @@ class TTypeAnnotationType extends IsOK
     }
 
     /**
-     * unset propertyValue
+     * unset propertyValue.
      *
      * @param  scalar $index
      * @return void
@@ -125,7 +125,7 @@ class TTypeAnnotationType extends IsOK
     }
 
     /**
-     * Gets as propertyValue
+     * Gets as propertyValue.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[]
      */
@@ -135,7 +135,7 @@ class TTypeAnnotationType extends IsOK
     }
 
     /**
-     * Sets a new propertyValue
+     * Sets a new propertyValue.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyValueType[] $propertyValue
      * @return self
@@ -157,11 +157,11 @@ class TTypeAnnotationType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTQualifiedNameValid($this->term)) {
-            $msg = "Term must be a valid TQualifiedName";
+            $msg = 'Term must be a valid TQualifiedName';
             return false;
         }
         if (null != $this->qualifier && !$this->isTSimpleIdentifierValid($this->qualifier)) {
-            $msg = "Qualifier must be a valid TSimpleIdentifier";
+            $msg = 'Qualifier must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isGInlineExpressionsValid($msg)) {

@@ -17,13 +17,13 @@ class TTypeRefTypeTest extends TestCase
     public function testSetDefaultValueActualString()
     {
         $foo = new TTypeRefType();
-        $foo->setDefaultValue("string");
+        $foo->setDefaultValue('string');
         $this->assertEquals('string', $foo->getDefaultValue());
     }
 
     public function testSetDefaultValueEmptyArrayAsString()
     {
-        $expected = "Default value must be a string";
+        $expected = 'Default value must be a string';
         $actual = null;
 
         $foo = new TTypeRefType();
@@ -37,7 +37,7 @@ class TTypeRefTypeTest extends TestCase
 
     public function testSetDefaultValueNonEmptyArrayAsString()
     {
-        $expected = "Default value must be a string";
+        $expected = 'Default value must be a string';
         $actual = null;
 
         $foo = new TTypeRefType();
@@ -51,7 +51,7 @@ class TTypeRefTypeTest extends TestCase
 
     public function testSetDefaultValueObjectAsString()
     {
-        $expected = "Default value must be a string";
+        $expected = 'Default value must be a string';
         $actual = null;
 
         $foo = new TTypeRefType();

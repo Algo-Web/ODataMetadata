@@ -37,7 +37,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         $ds = DIRECTORY_SEPARATOR;
 
-        $goodxsd = dirname(__DIR__) . $ds . "xsd" . $ds . "Microsoft.Data.Entity.Design.Edmx_3.Fixed.xsd";
+        $goodxsd = dirname(__DIR__) . $ds . 'xsd' . $ds . 'Microsoft.Data.Entity.Design.Edmx_3.Fixed.xsd';
         if (!file_exists($goodxsd)) {
             return true;
         }
@@ -51,16 +51,16 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager = new MetadataManager();
         $result = null;
 
-        list($eType, $result) = $metadataManager->addEntityType("Category");
-        $this->assertNotFalse($eType, "Etype is false not type " . $metadataManager->getLastError());
-        $metadataManager->addPropertyToEntityType($eType, "CategoryID", "Int32", null, false, true, "Identity");
-        $metadataManager->addPropertyToEntityType($eType, "CategoryName", "String");
-        $metadataManager->addPropertyToEntityType($eType, "Description", "String");
-        $metadataManager->addPropertyToEntityType($eType, "Picture", "Binary");
+        list($eType, $result) = $metadataManager->addEntityType('Category');
+        $this->assertNotFalse($eType, 'Etype is false not type ' . $metadataManager->getLastError());
+        $metadataManager->addPropertyToEntityType($eType, 'CategoryID', 'Int32', null, false, true, 'Identity');
+        $metadataManager->addPropertyToEntityType($eType, 'CategoryName', 'String');
+        $metadataManager->addPropertyToEntityType($eType, 'Description', 'String');
+        $metadataManager->addPropertyToEntityType($eType, 'Picture', 'Binary');
 
-        list($eType, $result) = $metadataManager->addEntityType("CustomerDemographic");
-        $metadataManager->addPropertyToEntityType($eType, "CustomerTypeID", "String", null, false, true);
-        $metadataManager->addPropertyToEntityType($eType, "CustomerDesc", "String");
+        list($eType, $result) = $metadataManager->addEntityType('CustomerDemographic');
+        $metadataManager->addPropertyToEntityType($eType, 'CustomerTypeID', 'String', null, false, true);
+        $metadataManager->addPropertyToEntityType($eType, 'CustomerDesc', 'String');
 
 
         $msg = null;
@@ -78,99 +78,99 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager = new MetadataManager();
         $result = null;
 
-        list($CategoryType, $result) = $metadataManager->addEntityType("Category");
-        $this->assertNotFalse($CategoryType, "Etype is false not type " . $metadataManager->getLastError());
-        $metadataManager->addPropertyToEntityType($CategoryType, "CategoryID", "Int32", null, false, true, "Identity");
-        $metadataManager->addPropertyToEntityType($CategoryType, "CategoryName", "String");
-        $metadataManager->addPropertyToEntityType($CategoryType, "Description", "String");
-        $metadataManager->addPropertyToEntityType($CategoryType, "Picture", "Binary");
+        list($CategoryType, $result) = $metadataManager->addEntityType('Category');
+        $this->assertNotFalse($CategoryType, 'Etype is false not type ' . $metadataManager->getLastError());
+        $metadataManager->addPropertyToEntityType($CategoryType, 'CategoryID', 'Int32', null, false, true, 'Identity');
+        $metadataManager->addPropertyToEntityType($CategoryType, 'CategoryName', 'String');
+        $metadataManager->addPropertyToEntityType($CategoryType, 'Description', 'String');
+        $metadataManager->addPropertyToEntityType($CategoryType, 'Picture', 'Binary');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($CustomerDemographicType, $result) = $metadataManager->addEntityType("CustomerDemographic");
-        $metadataManager->addPropertyToEntityType($CustomerDemographicType, "CustomerTypeID", "String", null, false, true);
-        $metadataManager->addPropertyToEntityType($CustomerDemographicType, "CustomerDesc", "String");
+        list($CustomerDemographicType, $result) = $metadataManager->addEntityType('CustomerDemographic');
+        $metadataManager->addPropertyToEntityType($CustomerDemographicType, 'CustomerTypeID', 'String', null, false, true);
+        $metadataManager->addPropertyToEntityType($CustomerDemographicType, 'CustomerDesc', 'String');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($CustomerType, $result) = $metadataManager->addEntityType("Customer");
-        $metadataManager->addPropertyToEntityType($CustomerType, "CustomerID", "String", null, false, true);
-        $metadataManager->addPropertyToEntityType($CustomerType, "CompanyName", "String");
-        $metadataManager->addPropertyToEntityType($CustomerType, "ContactName", "String");
-        $metadataManager->addPropertyToEntityType($CustomerType, "ContactTitle", "String");
-        $metadataManager->addPropertyToEntityType($CustomerType, "Address", "String");
-        $metadataManager->addPropertyToEntityType($CustomerType, "City", "String");
-        $metadataManager->addPropertyToEntityType($CustomerType, "Region", "String");
-        $metadataManager->addPropertyToEntityType($CustomerType, "PostalCode", "String");
-        $metadataManager->addPropertyToEntityType($CustomerType, "Country", "String");
-        $metadataManager->addPropertyToEntityType($CustomerType, "Phone", "String");
-        $metadataManager->addPropertyToEntityType($CustomerType, "Fax", "String");
+        list($CustomerType, $result) = $metadataManager->addEntityType('Customer');
+        $metadataManager->addPropertyToEntityType($CustomerType, 'CustomerID', 'String', null, false, true);
+        $metadataManager->addPropertyToEntityType($CustomerType, 'CompanyName', 'String');
+        $metadataManager->addPropertyToEntityType($CustomerType, 'ContactName', 'String');
+        $metadataManager->addPropertyToEntityType($CustomerType, 'ContactTitle', 'String');
+        $metadataManager->addPropertyToEntityType($CustomerType, 'Address', 'String');
+        $metadataManager->addPropertyToEntityType($CustomerType, 'City', 'String');
+        $metadataManager->addPropertyToEntityType($CustomerType, 'Region', 'String');
+        $metadataManager->addPropertyToEntityType($CustomerType, 'PostalCode', 'String');
+        $metadataManager->addPropertyToEntityType($CustomerType, 'Country', 'String');
+        $metadataManager->addPropertyToEntityType($CustomerType, 'Phone', 'String');
+        $metadataManager->addPropertyToEntityType($CustomerType, 'Fax', 'String');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($EmployeeType, $result) = $metadataManager->addEntityType("Employee");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "EmployeeID", "Int32", null, false, true, "Identity");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "LastName", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "FirstName", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "Title", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "TitleOfCourtesy", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "BirthDate", "DateTime");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "HireDate", "DateTime");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "Address", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "City", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "Region", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "PostalCode", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "Country", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "HomePhone", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "Extension", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "Photo", "Binary");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "Notes", "String");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "ReportsTo", "Int32");
-        $metadataManager->addPropertyToEntityType($EmployeeType, "PhotoPath", "String");
+        list($EmployeeType, $result) = $metadataManager->addEntityType('Employee');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'EmployeeID', 'Int32', null, false, true, 'Identity');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'LastName', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'FirstName', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'Title', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'TitleOfCourtesy', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'BirthDate', 'DateTime');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'HireDate', 'DateTime');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'Address', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'City', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'Region', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'PostalCode', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'Country', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'HomePhone', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'Extension', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'Photo', 'Binary');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'Notes', 'String');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'ReportsTo', 'Int32');
+        $metadataManager->addPropertyToEntityType($EmployeeType, 'PhotoPath', 'String');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($Order_DetailType, $result) = $metadataManager->addEntityType("Order_Detail");
-        $metadataManager->addPropertyToEntityType($Order_DetailType, "OrderID", "Int32", null, false, true);
-        $metadataManager->addPropertyToEntityType($Order_DetailType, "ProductID", "Int32", null, false, true);
-        $metadataManager->addPropertyToEntityType($Order_DetailType, "UnitPrice", "Decimal");
-        $metadataManager->addPropertyToEntityType($Order_DetailType, "Quantity", "Int16");
-        $metadataManager->addPropertyToEntityType($Order_DetailType, "Discount", "Single");
+        list($Order_DetailType, $result) = $metadataManager->addEntityType('Order_Detail');
+        $metadataManager->addPropertyToEntityType($Order_DetailType, 'OrderID', 'Int32', null, false, true);
+        $metadataManager->addPropertyToEntityType($Order_DetailType, 'ProductID', 'Int32', null, false, true);
+        $metadataManager->addPropertyToEntityType($Order_DetailType, 'UnitPrice', 'Decimal');
+        $metadataManager->addPropertyToEntityType($Order_DetailType, 'Quantity', 'Int16');
+        $metadataManager->addPropertyToEntityType($Order_DetailType, 'Discount', 'Single');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($OrderType, $result) = $metadataManager->addEntityType("Order");
-        $metadataManager->addPropertyToEntityType($OrderType, "OrderID", "Int32", null, false, true, "Identity");
-        $metadataManager->addPropertyToEntityType($OrderType, "CustomerID", "String");
-        $metadataManager->addPropertyToEntityType($OrderType, "EmployeeID", "Int32");
-        $metadataManager->addPropertyToEntityType($OrderType, "OrderDate", "DateTime");
-        $metadataManager->addPropertyToEntityType($OrderType, "RequiredDate", "DateTime");
-        $metadataManager->addPropertyToEntityType($OrderType, "ShippedDate", "DateTime");
-        $metadataManager->addPropertyToEntityType($OrderType, "ShipVia", "DateTime");
-        $metadataManager->addPropertyToEntityType($OrderType, "Freight", "Decimal");
-        $metadataManager->addPropertyToEntityType($OrderType, "ShipName", "String");
-        $metadataManager->addPropertyToEntityType($OrderType, "ShipAddress", "String");
-        $metadataManager->addPropertyToEntityType($OrderType, "ShipCity", "String");
-        $metadataManager->addPropertyToEntityType($OrderType, "ShipRegion", "String");
-        $metadataManager->addPropertyToEntityType($OrderType, "ShipPostalCode", "String");
-        $metadataManager->addPropertyToEntityType($OrderType, "ShipCountry", "String");
+        list($OrderType, $result) = $metadataManager->addEntityType('Order');
+        $metadataManager->addPropertyToEntityType($OrderType, 'OrderID', 'Int32', null, false, true, 'Identity');
+        $metadataManager->addPropertyToEntityType($OrderType, 'CustomerID', 'String');
+        $metadataManager->addPropertyToEntityType($OrderType, 'EmployeeID', 'Int32');
+        $metadataManager->addPropertyToEntityType($OrderType, 'OrderDate', 'DateTime');
+        $metadataManager->addPropertyToEntityType($OrderType, 'RequiredDate', 'DateTime');
+        $metadataManager->addPropertyToEntityType($OrderType, 'ShippedDate', 'DateTime');
+        $metadataManager->addPropertyToEntityType($OrderType, 'ShipVia', 'DateTime');
+        $metadataManager->addPropertyToEntityType($OrderType, 'Freight', 'Decimal');
+        $metadataManager->addPropertyToEntityType($OrderType, 'ShipName', 'String');
+        $metadataManager->addPropertyToEntityType($OrderType, 'ShipAddress', 'String');
+        $metadataManager->addPropertyToEntityType($OrderType, 'ShipCity', 'String');
+        $metadataManager->addPropertyToEntityType($OrderType, 'ShipRegion', 'String');
+        $metadataManager->addPropertyToEntityType($OrderType, 'ShipPostalCode', 'String');
+        $metadataManager->addPropertyToEntityType($OrderType, 'ShipCountry', 'String');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($ProductType, $result) = $metadataManager->addEntityType("Product");
-        $metadataManager->addPropertyToEntityType($ProductType, "ProductID", "Int32", null, false, true, "Identity");
-        $metadataManager->addPropertyToEntityType($ProductType, "ProductName", "String");
-        $metadataManager->addPropertyToEntityType($ProductType, "SupplierID", "Int32");
-        $metadataManager->addPropertyToEntityType($ProductType, "CategoryID", "Int32");
-        $metadataManager->addPropertyToEntityType($ProductType, "QuantityPerUnit", "String");
-        $metadataManager->addPropertyToEntityType($ProductType, "UnitPrice", "Decimal");
-        $metadataManager->addPropertyToEntityType($ProductType, "UnitsInStock", "Int16");
-        $metadataManager->addPropertyToEntityType($ProductType, "UnitsOnOrder", "Int16");
-        $metadataManager->addPropertyToEntityType($ProductType, "ReorderLevel", "Int16");
-        $metadataManager->addPropertyToEntityType($ProductType, "Discontinued", "Boolean");
+        list($ProductType, $result) = $metadataManager->addEntityType('Product');
+        $metadataManager->addPropertyToEntityType($ProductType, 'ProductID', 'Int32', null, false, true, 'Identity');
+        $metadataManager->addPropertyToEntityType($ProductType, 'ProductName', 'String');
+        $metadataManager->addPropertyToEntityType($ProductType, 'SupplierID', 'Int32');
+        $metadataManager->addPropertyToEntityType($ProductType, 'CategoryID', 'Int32');
+        $metadataManager->addPropertyToEntityType($ProductType, 'QuantityPerUnit', 'String');
+        $metadataManager->addPropertyToEntityType($ProductType, 'UnitPrice', 'Decimal');
+        $metadataManager->addPropertyToEntityType($ProductType, 'UnitsInStock', 'Int16');
+        $metadataManager->addPropertyToEntityType($ProductType, 'UnitsOnOrder', 'Int16');
+        $metadataManager->addPropertyToEntityType($ProductType, 'ReorderLevel', 'Int16');
+        $metadataManager->addPropertyToEntityType($ProductType, 'Discontinued', 'Boolean');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        $expectedRelation = "Data.Category_Products_Product_Category";
+        $expectedRelation = 'Data.Category_Products_Product_Category';
         list($principalNav, ) = $metadataManager->addNavigationPropertyToEntityType(
-            $CategoryType, "*", "Products", $ProductType, "1", "Category", ["CategoryID"], ["CategoryID"]
+            $CategoryType, '*', 'Products', $ProductType, '1', 'Category', ['CategoryID'], ['CategoryID']
         );
         $this->assertEquals($expectedRelation, $principalNav->getRelationship());
         $metadataManager->addNavigationPropertyToEntityType(
-            $Order_DetailType, "1", "Order", $ProductType, "*", "Order_Details", ["OrderID"], ["CategoryID"]
+            $Order_DetailType, '1', 'Order', $ProductType, '*', 'Order_Details', ['OrderID'], ['CategoryID']
         );
 //        <NavigationProperty Name="Order_Details" Relationship="NorthwindModel.FK_Order_Details_Products" ToRole="Order_Details" FromRole="Products"/>
 
@@ -188,19 +188,19 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         list($msg, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
-        $expectedRelation = "Data.Category_custom_Customer_categor";
+        $expectedRelation = 'Data.Category_custom_Customer_categor';
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
-            "*",
-            "custom",
+            '*',
+            'custom',
             $CustomerType,
-            "*",
-            "categor"
+            '*',
+            'categor'
         );
         $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
-        $this->assertEquals("custom", $principal->getName());
-        $this->assertEquals("categor", $dependent->getName());
+        $this->assertEquals('custom', $principal->getName());
+        $this->assertEquals('categor', $dependent->getName());
         $this->assertEquals($expectedRelation, $principal->getRelationship());
         $this->assertEquals($expectedRelation, $dependent->getRelationship());
 
@@ -227,16 +227,16 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
-            "*",
-            "custom",
+            '*',
+            'custom',
             $CustomerType,
-            "1",
-            "categor"
+            '1',
+            'categor'
         );
         $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
-        $this->assertEquals("custom", $principal->getName());
-        $this->assertEquals("categor", $dependent->getName());
+        $this->assertEquals('custom', $principal->getName());
+        $this->assertEquals('categor', $dependent->getName());
 
         $navProps = [$principal, $dependent];
         $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
@@ -261,16 +261,16 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
-            "1",
-            "custom",
+            '1',
+            'custom',
             $CustomerType,
-            "*",
-            "categor"
+            '*',
+            'categor'
         );
         $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
-        $this->assertEquals("custom", $principal->getName());
-        $this->assertEquals("categor", $dependent->getName());
+        $this->assertEquals('custom', $principal->getName());
+        $this->assertEquals('categor', $dependent->getName());
 
         $navProps = [$principal, $dependent];
         $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
@@ -295,16 +295,16 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
-            "0..1",
-            "custom",
+            '0..1',
+            'custom',
             $CustomerType,
-            "1",
-            "categor"
+            '1',
+            'categor'
         );
         $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
-        $this->assertEquals("custom", $principal->getName());
-        $this->assertEquals("categor", $dependent->getName());
+        $this->assertEquals('custom', $principal->getName());
+        $this->assertEquals('categor', $dependent->getName());
 
         $navProps = [$principal, $dependent];
         $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
@@ -329,16 +329,16 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         list($principal, $dependent) = $metadataManager->addNavigationPropertyToEntityType(
             $CategoryType,
-            "1",
-            "custom",
+            '1',
+            'custom',
             $CustomerType,
-            "0..1",
-            "categor"
+            '0..1',
+            'categor'
         );
         $this->assertEquals($principal->getFromRole(), $dependent->getToRole());
         $this->assertEquals($dependent->getFromRole(), $principal->getToRole());
-        $this->assertEquals("custom", $principal->getName());
-        $this->assertEquals("categor", $dependent->getName());
+        $this->assertEquals('custom', $principal->getName());
+        $this->assertEquals('categor', $dependent->getName());
 
         $navProps = [$principal, $dependent];
         $assoc = $metadataManager->getEdmx()->getDataServiceType()->getSchema()[0]->getAssociation();
@@ -374,7 +374,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $returnType = m::mock(IsOK::class);
         $foo = new MetadataManager();
 
-        $expected = "Expected return type must be either TEntityType or TComplexType";
+        $expected = 'Expected return type must be either TEntityType or TComplexType';
         $actual = null;
 
         try {
@@ -391,7 +391,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($returnType instanceof TEntityTypeType, get_class($returnType));
         $foo = new MetadataManager();
 
-        $expected = "Name must be a non-empty string";
+        $expected = 'Name must be a non-empty string';
         $actual = null;
 
         try {
@@ -408,7 +408,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($returnType instanceof TEntityTypeType, get_class($returnType));
         $foo = new MetadataManager();
 
-        $expected = "Name must be a non-empty string";
+        $expected = 'Name must be a non-empty string';
         $actual = null;
 
         try {
@@ -422,7 +422,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     public function testCreateSingletonSuccessful()
     {
         $msg = null;
-        $name = "singleton";
+        $name = 'singleton';
         $returnType = m::mock(TEntityTypeType::class)->makePartial();
         $returnType->shouldReceive('getName')->andReturn('doubleton');
 
@@ -446,7 +446,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     public function testCreateSingletonWithDocumentation()
     {
         $msg = null;
-        $name = "singleton";
+        $name = 'singleton';
         $shortDesc = new TTextType();
         $longDesc = new TTextType();
 
@@ -473,7 +473,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     public function testCreateSingletonWithDocumentationOnlyShortDesc()
     {
         $msg = null;
-        $name = "singleton";
+        $name = 'singleton';
         $shortDesc = new TTextType();
         $longDesc = null;
 
@@ -500,7 +500,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     public function testCreateSingletonWithDocumentationOnlyLongDesc()
     {
         $msg = null;
-        $name = "singleton";
+        $name = 'singleton';
         $shortDesc = null;
         $longDesc = new TTextType();
 
@@ -528,17 +528,17 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
-        $expected = "Malformed multiplicity - valid values are *, 0..1 and 1";
+        $expected = 'Malformed multiplicity - valid values are *, 0..1 and 1';
         $actual = null;
 
         try {
             $metadataManager->addNavigationPropertyToEntityType(
                 $CategoryType,
-                "1",
-                "Customers",
+                '1',
+                'Customers',
                 $CustomerType,
-                "ABC",
-                "Categories"
+                'ABC',
+                'Categories'
             );
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
@@ -550,17 +550,17 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
-        $expected =  "Invalid multiplicity combination - 1 1";
+        $expected =  'Invalid multiplicity combination - 1 1';
         $actual = null;
 
         try {
             $metadataManager->addNavigationPropertyToEntityType(
                 $CategoryType,
-                "1",
-                "Customers",
+                '1',
+                'Customers',
                 $CustomerType,
-                "1",
-                "Categories"
+                '1',
+                'Categories'
             );
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
@@ -572,17 +572,17 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         list(, $metadataManager, $CategoryType, $CustomerType) = $this->setUpMetadataForNavTests();
 
-        $expected =  "Invalid multiplicity combination - * 0..1";
+        $expected =  'Invalid multiplicity combination - * 0..1';
         $actual = null;
 
         try {
             $metadataManager->addNavigationPropertyToEntityType(
                 $CategoryType,
-                "*",
-                "Customers",
+                '*',
+                'Customers',
                 $CustomerType,
-                "0..1",
-                "Categories"
+                '0..1',
+                'Categories'
             );
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
@@ -594,8 +594,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
 
-        $name = "Name";
-        $accessType = "Public";
+        $name = 'Name';
+        $accessType = 'Public';
         $summary = new TTextType();
         $longDescription = new TTextType();
 
@@ -614,8 +614,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
 
-        $name = "Name";
-        $accessType = "Public";
+        $name = 'Name';
+        $accessType = 'Public';
         $summary = new TTextType();
         $longDescription = null;
 
@@ -634,8 +634,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
 
-        $name = "Name";
-        $accessType = "Public";
+        $name = 'Name';
+        $accessType = 'Public';
         $summary = null;
         $longDescription = new TTextType();
 
@@ -652,13 +652,13 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testAddPropertyToComplexTypeDefaultValueArray()
     {
-        $expected = "Default value cannot be object or array";
+        $expected = 'Default value cannot be object or array';
         $actual = null;
 
         list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
         $complex = m::mock(TComplexTypeType::class);
-        $name = "name";
-        $type = "type";
+        $name = 'name';
+        $type = 'type';
         $defaultValue = [];
 
         try {
@@ -671,13 +671,13 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testAddPropertyToComplexTypeDefaultValueObject()
     {
-        $expected = "Default value cannot be object or array";
+        $expected = 'Default value cannot be object or array';
         $actual = null;
 
         list(, $metadataManager, , ) = $this->setUpMetadataForNavTests();
         $complex = m::mock(TComplexTypeType::class);
-        $name = "name";
-        $type = "type";
+        $name = 'name';
+        $type = 'type';
         $defaultValue = new \stdClass();
 
         try {
@@ -694,8 +694,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $complex = m::mock(TComplexTypeType::class);
         $complex->shouldReceive('addToProperty')
             ->with(m::type(TComplexTypePropertyType::class))->andReturnNull()->once();
-        $name = "name";
-        $type = "type";
+        $name = 'name';
+        $type = 'type';
         $defaultValue = true;
         $summary = new TTextType();
         $longDescription = new TTextType();
@@ -720,8 +720,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $complex = m::mock(TComplexTypeType::class);
         $complex->shouldReceive('addToProperty')
             ->with(m::type(TComplexTypePropertyType::class))->andReturnNull()->once();
-        $name = "name";
-        $type = "type";
+        $name = 'name';
+        $type = 'type';
         $defaultValue = true;
         $summary = new TTextType();
         $longDescription = null;
@@ -747,8 +747,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $complex = m::mock(TComplexTypeType::class);
         $complex->shouldReceive('addToProperty')
             ->with(m::type(TComplexTypePropertyType::class))->andReturnNull()->once();
-        $name = "name";
-        $type = "type";
+        $name = 'name';
+        $type = 'type';
         $defaultValue = true;
         $summary = null;
         $longDescription = new TTextType();
@@ -773,10 +773,10 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $entity = m::mock(TEntityTypeType::class);
         $entity->shouldReceive('addToProperty')
             ->with(m::type(TEntityPropertyType::class))->andReturnNull()->once();
-        $name = "name";
-        $type = "type";
+        $name = 'name';
+        $type = 'type';
         $summary = new TTextType();
-        $defaultValue = "true";
+        $defaultValue = 'true';
         $longDescription = new TTextType();
 
         $result = $metadataManager->addPropertyToEntityType(
@@ -793,7 +793,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertNotNull($result);
         $this->assertTrue(is_array($result->getDocumentation()));
         $this->assertEquals(1, count($result->getDocumentation()));
-        $this->assertEquals("true", $result->getDefaultValue());
+        $this->assertEquals('true', $result->getDefaultValue());
     }
 
     public function testAddPropertyToEntityTypeOnlySummary()
@@ -802,10 +802,10 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $entity = m::mock(TEntityTypeType::class);
         $entity->shouldReceive('addToProperty')
             ->with(m::type(TEntityPropertyType::class))->andReturnNull()->once();
-        $name = "name";
-        $type = "type";
+        $name = 'name';
+        $type = 'type';
         $summary = new TTextType();
-        $defaultValue = "true";
+        $defaultValue = 'true';
         $longDescription = null;
 
         $result = $metadataManager->addPropertyToEntityType(
@@ -822,7 +822,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertNotNull($result);
         $this->assertTrue(is_array($result->getDocumentation()));
         $this->assertEquals(0, count($result->getDocumentation()));
-        $this->assertEquals("true", $result->getDefaultValue());
+        $this->assertEquals('true', $result->getDefaultValue());
     }
 
     public function testAddPropertyToEntityTypeOnlyDescription()
@@ -831,10 +831,10 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $entity = m::mock(TEntityTypeType::class);
         $entity->shouldReceive('addToProperty')
             ->with(m::type(TEntityPropertyType::class))->andReturnNull()->once();
-        $name = "name";
-        $type = "type";
+        $name = 'name';
+        $type = 'type';
         $summary = null;
-        $defaultValue = "true";
+        $defaultValue = 'true';
         $longDescription = new TTextType();
 
         $result = $metadataManager->addPropertyToEntityType(
@@ -851,13 +851,13 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertNotNull($result);
         $this->assertTrue(is_array($result->getDocumentation()));
         $this->assertEquals(0, count($result->getDocumentation()));
-        $this->assertEquals("true", $result->getDefaultValue());
+        $this->assertEquals('true', $result->getDefaultValue());
     }
 
     public function testAddEntityTypeWithDocumentation()
     {
-        $name = "name";
-        $accessType = "Public";
+        $name = 'name';
+        $accessType = 'Public';
         $summary = new TTextType();
         $longDescription = new TTextType();
 
@@ -868,8 +868,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testAddEntityTypeWithDocumentationFromOnlySummary()
     {
-        $name = "name";
-        $accessType = "Public";
+        $name = 'name';
+        $accessType = 'Public';
         $summary = new TTextType();
         $longDescription = null;
 
@@ -880,8 +880,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
     public function testAddEntityTypeWithDocumentationFromOnlyDocumentation()
     {
-        $name = "name";
-        $accessType = "Public";
+        $name = 'name';
+        $accessType = 'Public';
         $summary = null;
         $longDescription = new TTextType();
 
@@ -910,10 +910,10 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
                 $dependentProperty,
                 null,
                 null,
-                "Public",
-                "Public",
-                "Public",
-                "Public",
+                'Public',
+                'Public',
+                'Public',
+                'Public',
                 $summary,
                 $longDescription,
                 $summary,
@@ -944,10 +944,10 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
                 $dependentProperty,
                 null,
                 null,
-                "Public",
-                "Public",
-                "Public",
-                "Public",
+                'Public',
+                'Public',
+                'Public',
+                'Public',
                 $summary,
                 $longDescription,
                 $summary,
@@ -978,10 +978,10 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
                 $dependentProperty,
                 null,
                 null,
-                "Public",
-                "Public",
-                "Public",
-                "Public",
+                'Public',
+                'Public',
+                'Public',
+                'Public',
                 $summary,
                 $longDescription,
                 $summary,
@@ -1003,7 +1003,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         $metadataManager = new MetadataManagerDummy();
 
-        $expected = "If you have both a dependent property and a principal property, relationship should match";
+        $expected = 'If you have both a dependent property and a principal property, relationship should match';
         $actual = null;
 
         try {
@@ -1012,8 +1012,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
                 $dependentType,
                 $principalNav,
                 $dependentNav,
-                "*",
-                "*"
+                '*',
+                '*'
             );
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
@@ -1036,7 +1036,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         $metadataManager = new MetadataManagerDummy();
 
-        $expected = "Principal to role should match dependent from role, and vice versa";
+        $expected = 'Principal to role should match dependent from role, and vice versa';
         $actual = null;
 
         try {
@@ -1045,8 +1045,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
                 $dependentType,
                 $principalNav,
                 $dependentNav,
-                "*",
-                "*"
+                '*',
+                '*'
             );
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
@@ -1069,7 +1069,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         $metadataManager = new MetadataManagerDummy();
 
-        $expected = "Principal to role should match dependent from role, and vice versa";
+        $expected = 'Principal to role should match dependent from role, and vice versa';
         $actual = null;
 
         try {
@@ -1078,8 +1078,8 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
                 $dependentType,
                 $principalNav,
                 $dependentNav,
-                "*",
-                "*"
+                '*',
+                '*'
             );
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
@@ -1093,12 +1093,12 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     private function setUpMetadataForNavTests()
     {
         $msg = null;
-        $metadataManager = new MetadataManager("Data", "Container");
+        $metadataManager = new MetadataManager('Data', 'Container');
         $expectedCategorySetName = 'Categories';
         $expectedCustomerSetName = 'Customers';
 
-        list($CategoryType, $CategorySet) = $metadataManager->addEntityType("Category");
-        list($CustomerType, $CustomerSet) = $metadataManager->addEntityType("Customer");
+        list($CategoryType, $CategorySet) = $metadataManager->addEntityType('Category');
+        list($CustomerType, $CustomerSet) = $metadataManager->addEntityType('Customer');
         $this->assertTrue($CategoryType->isOK($msg), $msg);
         $this->assertTrue($CustomerType->isOK($msg), $msg);
         $this->assertEquals($expectedCategorySetName, $CategorySet->getName());
@@ -1117,7 +1117,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
             $propFromRole = $prop->getFromRole();
             $fromMatch = $ends[0]->getRole() == $propToRole
                          || $ends[1]->getRole() == $propToRole;
-            $this->assertTrue($fromMatch, "toRole must match at least one end role");
+            $this->assertTrue($fromMatch, 'toRole must match at least one end role');
             if ($ends[0]->getRole() == $propToRole) {
                 $this->assertEquals($ends[1]->getRole(), $propFromRole);
                 $this->assertNotEquals($ends[0]->getRole(), $propFromRole);

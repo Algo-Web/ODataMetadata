@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
 
 /**
- * Class representing Schema
+ * Class representing Schema.
  */
 class Schema extends TSchemaType
 {
