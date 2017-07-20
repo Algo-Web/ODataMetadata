@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType;
 
 /**
- * Class representing ParametersAnonymousType
+ * Class representing ParametersAnonymousType.
  */
 class ParametersAnonymousType extends IsOK
 {
@@ -18,10 +18,10 @@ class ParametersAnonymousType extends IsOK
     private $parameter = [];
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType $parameter
+     * @return self
      */
     public function addToParameter(TFunctionParameterType $parameter)
     {
@@ -34,10 +34,10 @@ class ParametersAnonymousType extends IsOK
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetParameter($index)
     {
@@ -45,7 +45,7 @@ class ParametersAnonymousType extends IsOK
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
      * @param  scalar $index
      * @return void
@@ -56,7 +56,7 @@ class ParametersAnonymousType extends IsOK
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[]
      */
@@ -66,7 +66,7 @@ class ParametersAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameter
      * @return self

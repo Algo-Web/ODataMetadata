@@ -14,11 +14,11 @@ trait TSimpleIdentifierTrait
     protected function isTSimpleIdentifierValid($TSimpleIdentifier)
     {
         if (!$this->isNCName($TSimpleIdentifier)) {
-            $msg = "Qualifier must be a valid NCName";
+            $msg = 'Qualifier must be a valid NCName';
             return false;
         }
         if (strlen($TSimpleIdentifier > 128)) {
-            $msg = "The maximum length permitted for qualifier is 128";
+            $msg = 'The maximum length permitted for qualifier is 128';
             return false;
         }
         //      <!-- ECMAScript identifiers not starting with a '$' -->
@@ -27,7 +27,7 @@ trait TSimpleIdentifierTrait
             $TSimpleIdentifier
         )
         ) {
-            $msg = "The qualifier does not match the regex in the xsd.";
+            $msg = 'The qualifier does not match the regex in the xsd.';
             return false;
         }
         return true;

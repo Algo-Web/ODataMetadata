@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TEntityTypeType
+ * Class representing TEntityTypeType.
  *
  * XSD Type: TEntityType
  */
@@ -33,7 +33,7 @@ class TEntityTypeType extends IsOK
     private $property = array();
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -43,7 +43,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -55,7 +55,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType
      */
@@ -65,7 +65,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      * @return self
@@ -77,10 +77,10 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Adds as propertyRef
+     * Adds as propertyRef.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TPropertyRefType $propertyRef
+     * @return self
      */
     public function addToKey(TPropertyRefType $propertyRef)
     {
@@ -89,10 +89,10 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * isset key
+     * isset key.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetKey($index)
     {
@@ -100,7 +100,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * unset key
+     * unset key.
      *
      * @param  scalar $index
      * @return void
@@ -111,7 +111,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Gets as key
+     * Gets as key.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TPropertyRefType[]
      */
@@ -121,7 +121,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new key
+     * Sets a new key.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TPropertyRefType[] $key
      * @return self
@@ -133,10 +133,10 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TEntityPropertyType $property
+     * @return self
      */
     public function addToProperty(TEntityPropertyType $property)
     {
@@ -145,10 +145,10 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * isset property
+     * isset property.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetProperty($index)
     {
@@ -156,7 +156,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * unset property
+     * unset property.
      *
      * @param  scalar $index
      * @return void
@@ -167,7 +167,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Gets as property
+     * Gets as property.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TEntityPropertyType[]
      */
@@ -177,7 +177,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new property
+     * Sets a new property.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TEntityPropertyType[] $property
      * @return self

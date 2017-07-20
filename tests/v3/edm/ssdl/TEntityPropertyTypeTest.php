@@ -31,7 +31,7 @@ class TEntityPropertyTypeTest extends TestCase
 
     public function testSetObjectDefaultValue()
     {
-        $expected = "Default value cannot be empty";
+        $expected = 'Default value cannot be empty';
         $actual = null;
 
         $foo = new TEntityPropertyType();
@@ -45,7 +45,7 @@ class TEntityPropertyTypeTest extends TestCase
 
     public function testSetEmptyArrayDefaultValue()
     {
-        $expected = "Default value cannot be empty";
+        $expected = 'Default value cannot be empty';
         $actual = null;
 
         $foo = new TEntityPropertyType();
@@ -59,7 +59,7 @@ class TEntityPropertyTypeTest extends TestCase
 
     public function testSetNonEmptyArrayDefaultValue()
     {
-        $expected = "Default value cannot be empty";
+        $expected = 'Default value cannot be empty';
         $actual = null;
 
         $foo = new TEntityPropertyType();

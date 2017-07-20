@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TPropertyType
+ * Class representing TPropertyType.
  *
  * XSD Type: TProperty
  */
@@ -23,7 +23,7 @@ class TPropertyType extends IsOK
     private $type = null;
 
     /**
-     * @property boolean $nullable
+     * @property bool $nullable
      */
     private $nullable = null;
 
@@ -38,7 +38,7 @@ class TPropertyType extends IsOK
     private $maxLength = null;
 
     /**
-     * @property integer $precision
+     * @property int $precision
      */
     private $precision = null;
 
@@ -53,7 +53,7 @@ class TPropertyType extends IsOK
     private $sRID = null;
 
     /**
-     * @property boolean $unicode
+     * @property bool $unicode
      */
     private $unicode = null;
 
@@ -63,7 +63,7 @@ class TPropertyType extends IsOK
     private $annotation = array();
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -73,7 +73,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -85,7 +85,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -95,7 +95,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -107,9 +107,9 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as nullable
+     * Gets as nullable.
      *
-     * @return boolean
+     * @return bool
      */
     public function getNullable()
     {
@@ -117,9 +117,9 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new nullable
+     * Sets a new nullable.
      *
-     * @param  boolean $nullable
+     * @param  bool $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -129,7 +129,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as defaultValue
+     * Gets as defaultValue.
      *
      * @return string
      */
@@ -139,7 +139,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new defaultValue
+     * Sets a new defaultValue.
      *
      * @param  string $defaultValue
      * @return self
@@ -151,7 +151,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as maxLength
+     * Gets as maxLength.
      *
      * @return string
      */
@@ -161,7 +161,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new maxLength
+     * Sets a new maxLength.
      *
      * @param  string $maxLength
      * @return self
@@ -173,9 +173,9 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as precision
+     * Gets as precision.
      *
-     * @return integer
+     * @return int
      */
     public function getPrecision()
     {
@@ -183,9 +183,9 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new precision
+     * Sets a new precision.
      *
-     * @param  integer $precision
+     * @param  int  $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -195,7 +195,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as scale
+     * Gets as scale.
      *
      * @return string
      */
@@ -205,7 +205,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new scale
+     * Sets a new scale.
      *
      * @param  string $scale
      * @return self
@@ -217,7 +217,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as sRID
+     * Gets as sRID.
      *
      * @return string
      */
@@ -227,7 +227,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new sRID
+     * Sets a new sRID.
      *
      * @param  string $sRID
      * @return self
@@ -239,9 +239,9 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as unicode
+     * Gets as unicode.
      *
-     * @return boolean
+     * @return bool
      */
     public function getUnicode()
     {
@@ -249,9 +249,9 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new unicode
+     * Sets a new unicode.
      *
-     * @param  boolean $unicode
+     * @param  bool $unicode
      * @return self
      */
     public function setUnicode($unicode)
@@ -261,10 +261,10 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -273,10 +273,10 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -284,7 +284,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -295,7 +295,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -305,7 +305,7 @@ class TPropertyType extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self

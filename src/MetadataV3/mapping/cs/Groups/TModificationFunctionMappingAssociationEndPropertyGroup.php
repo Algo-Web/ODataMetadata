@@ -15,7 +15,7 @@ trait TModificationFunctionMappingAssociationEndPropertyGroup
     private $scalarProperty = null;
 
     /**
-     * Gets as scalarProperty
+     * Gets as scalarProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      */
@@ -25,7 +25,7 @@ trait TModificationFunctionMappingAssociationEndPropertyGroup
     }
 
     /**
-     * Sets a new scalarProperty
+     * Sets a new scalarProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      * $scalarProperty

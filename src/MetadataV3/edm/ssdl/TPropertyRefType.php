@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\Groups\GEmptyElementExtensibilityT
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TPropertyRefType
+ * Class representing TPropertyRefType.
  *
  * XSD Type: TPropertyRef
  */
@@ -20,7 +20,7 @@ class TPropertyRefType extends IsOK
     private $name = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -30,7 +30,7 @@ class TPropertyRefType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -38,11 +38,11 @@ class TPropertyRefType extends IsOK
     public function setName($name)
     {
         if (!$this->isStringNotNullOrEmpty($name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be valid TSimpleIdentifier";
+            $msg = 'Name must be valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -52,11 +52,11 @@ class TPropertyRefType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             return false;
         }
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be valid TSimpleIdentifier";
+            $msg = 'Name must be valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isExtensibilityElementOK($msg)) {

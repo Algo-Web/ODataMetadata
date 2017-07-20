@@ -28,17 +28,17 @@ trait TFunctionImportAttributesTrait
     private $entitySet = null;
 
     /**
-     * @property boolean $isComposable
+     * @property bool $isComposable
      */
     private $isComposable = false;
 
     /**
-     * @property boolean $isSideEffecting
+     * @property bool $isSideEffecting
      */
     private $isSideEffecting = true;
 
     /**
-     * @property boolean $isBindable
+     * @property bool $isBindable
      */
     private $isBindable = false;
 
@@ -48,7 +48,7 @@ trait TFunctionImportAttributesTrait
     private $methodAccess = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -58,7 +58,7 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -67,7 +67,7 @@ trait TFunctionImportAttributesTrait
     {
         $msg = null;
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -75,10 +75,10 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Adds as returnType
+     * Adds as returnType.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType $returnType
+     * @return self
      */
     public function addToReturnType(TFunctionImportReturnTypeType $returnType)
     {
@@ -91,10 +91,10 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * isset returnType
+     * isset returnType.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetReturnType($index)
     {
@@ -102,7 +102,7 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * unset returnType
+     * unset returnType.
      *
      * @param  scalar $index
      * @return void
@@ -113,7 +113,7 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Gets as returnType
+     * Gets as returnType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType[]
      */
@@ -123,7 +123,7 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Sets a new returnType
+     * Sets a new returnType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType[] $returnType
      * @return self
@@ -144,7 +144,7 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType
      */
@@ -154,7 +154,7 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
      * @return self
@@ -170,9 +170,9 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Gets as isComposable
+     * Gets as isComposable.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsComposable()
     {
@@ -180,9 +180,9 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Sets a new isComposable
+     * Sets a new isComposable.
      *
-     * @param  boolean $isComposable
+     * @param  bool $isComposable
      * @return self
      */
     public function setIsComposable($isComposable)
@@ -192,9 +192,9 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Gets as isSideEffecting
+     * Gets as isSideEffecting.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsSideEffecting()
     {
@@ -202,9 +202,9 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Sets a new isSideEffecting
+     * Sets a new isSideEffecting.
      *
-     * @param  boolean $isSideEffecting
+     * @param  bool $isSideEffecting
      * @return self
      */
     public function setIsSideEffecting($isSideEffecting)
@@ -214,9 +214,9 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Gets as isBindable
+     * Gets as isBindable.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsBindable()
     {
@@ -224,9 +224,9 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Sets a new isBindable
+     * Sets a new isBindable.
      *
-     * @param  boolean $isBindable
+     * @param  bool $isBindable
      * @return self
      */
     public function setIsBindable($isBindable)
@@ -236,7 +236,7 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Gets as methodAccess
+     * Gets as methodAccess.
      *
      * @return string
      */
@@ -246,7 +246,7 @@ trait TFunctionImportAttributesTrait
     }
 
     /**
-     * Sets a new methodAccess
+     * Sets a new methodAccess.
      *
      * @param  string $methodAccess
      * @return self
@@ -255,7 +255,7 @@ trait TFunctionImportAttributesTrait
     {
         $msg = null;
         if (null != $methodAccess && !$this->isTAccessOk($methodAccess)) {
-            $msg = "Method access must be a valid TAccess";
+            $msg = 'Method access must be a valid TAccess';
             throw new \InvalidArgumentException($msg);
         }
         $this->methodAccess = $methodAccess;
@@ -266,11 +266,11 @@ trait TFunctionImportAttributesTrait
     public function isTFunctionImportAttributesValid(&$msg)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier: " . get_class($this);
+            $msg = 'Name must be a valid TSimpleIdentifier: ' . get_class($this);
             return false;
         }
         if ($this->isComposable && $this->isSideEffecting) {
-            $msg = "Cannot both be composable and side-effecting";
+            $msg = 'Cannot both be composable and side-effecting';
             return false;
         }
         /*
@@ -279,11 +279,11 @@ trait TFunctionImportAttributesTrait
             return false;
         }*/
         if (!$this->isObjectNullOrType('\AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType', $this->entitySet)) {
-            $msg = "Entity set must be either null or an instance of TOperandType: " . get_class($this);
+            $msg = 'Entity set must be either null or an instance of TOperandType: ' . get_class($this);
             return false;
         }
         if (null != $this->methodAccess && !$this->isTAccessOk($this->methodAccess)) {
-            $msg = "Method access must be a valid TAccess: " . get_class($this);
+            $msg = 'Method access must be a valid TAccess: ' . get_class($this);
             return false;
         }
         if (!$this->isValidArrayOK(

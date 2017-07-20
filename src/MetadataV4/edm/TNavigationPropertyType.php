@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TNavigationPropertyType
+ * Class representing TNavigationPropertyType.
  *
  * XSD Type: TNavigationProperty
  */
@@ -23,7 +23,7 @@ class TNavigationPropertyType extends IsOK
     private $type = null;
 
     /**
-     * @property boolean $nullable
+     * @property bool $nullable
      */
     private $nullable = null;
 
@@ -33,7 +33,7 @@ class TNavigationPropertyType extends IsOK
     private $partner = null;
 
     /**
-     * @property boolean $containsTarget
+     * @property bool $containsTarget
      */
     private $containsTarget = null;
 
@@ -53,7 +53,7 @@ class TNavigationPropertyType extends IsOK
     private $annotation = array();
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -63,7 +63,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -75,7 +75,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -85,7 +85,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -97,9 +97,9 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as nullable
+     * Gets as nullable.
      *
-     * @return boolean
+     * @return bool
      */
     public function getNullable()
     {
@@ -107,9 +107,9 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new nullable
+     * Sets a new nullable.
      *
-     * @param  boolean $nullable
+     * @param  bool $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -119,7 +119,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as partner
+     * Gets as partner.
      *
      * @return string
      */
@@ -129,7 +129,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new partner
+     * Sets a new partner.
      *
      * @param  string $partner
      * @return self
@@ -141,9 +141,9 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as containsTarget
+     * Gets as containsTarget.
      *
-     * @return boolean
+     * @return bool
      */
     public function getContainsTarget()
     {
@@ -151,9 +151,9 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new containsTarget
+     * Sets a new containsTarget.
      *
-     * @param  boolean $containsTarget
+     * @param  bool $containsTarget
      * @return self
      */
     public function setContainsTarget($containsTarget)
@@ -163,10 +163,10 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Adds as referentialConstraint
+     * Adds as referentialConstraint.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType $referentialConstraint
+     * @return self
      */
     public function addToReferentialConstraint(TReferentialConstraintType $referentialConstraint)
     {
@@ -175,10 +175,10 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * isset referentialConstraint
+     * isset referentialConstraint.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetReferentialConstraint($index)
     {
@@ -186,7 +186,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * unset referentialConstraint
+     * unset referentialConstraint.
      *
      * @param  scalar $index
      * @return void
@@ -197,7 +197,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as referentialConstraint
+     * Gets as referentialConstraint.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType[]
      */
@@ -207,7 +207,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new referentialConstraint
+     * Sets a new referentialConstraint.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TReferentialConstraintType[] $referentialConstraint
      * @return self
@@ -219,10 +219,10 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Adds as onDelete
+     * Adds as onDelete.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType $onDelete
+     * @return self
      */
     public function addToOnDelete(TOnDeleteType $onDelete)
     {
@@ -231,10 +231,10 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * isset onDelete
+     * isset onDelete.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetOnDelete($index)
     {
@@ -242,7 +242,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * unset onDelete
+     * unset onDelete.
      *
      * @param  scalar $index
      * @return void
@@ -253,7 +253,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as onDelete
+     * Gets as onDelete.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType[]
      */
@@ -263,7 +263,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new onDelete
+     * Sets a new onDelete.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOnDeleteType[] $onDelete
      * @return self
@@ -275,10 +275,10 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -287,10 +287,10 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -298,7 +298,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -309,7 +309,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -319,7 +319,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self

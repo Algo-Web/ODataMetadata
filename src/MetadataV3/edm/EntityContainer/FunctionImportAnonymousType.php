@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType;
 
 /**
- * Class representing FunctionImportAnonymousType
+ * Class representing FunctionImportAnonymousType.
  */
 class FunctionImportAnonymousType extends IsOK
 {
@@ -26,7 +26,7 @@ class FunctionImportAnonymousType extends IsOK
     private $parameter = [];
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
      */
@@ -36,7 +36,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
@@ -52,10 +52,10 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType $parameter
+     * @return self
      */
     public function addToParameter(TFunctionImportParameterType $parameter)
     {
@@ -68,10 +68,10 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetParameter($index)
     {
@@ -79,7 +79,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
      * @param  scalar $index
      * @return void
@@ -90,7 +90,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType[]
      */
@@ -100,7 +100,7 @@ class FunctionImportAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportParameterType[] $parameter
      * @return self
@@ -150,7 +150,7 @@ class FunctionImportAnonymousType extends IsOK
                 );
                 $inName = $this->parameter[$j]->getName();
                 if ($outName == $inName) {
-                    $msg = "Name collision in parameters array";
+                    $msg = 'Name collision in parameters array';
                     return false;
                 }
             }

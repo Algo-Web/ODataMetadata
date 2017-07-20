@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TEntityTypeType
+ * Class representing TEntityTypeType.
  *
  * XSD Type: TEntityType
  */
@@ -23,7 +23,7 @@ class TEntityTypeType extends IsOK
     private $baseType = null;
 
     /**
-     * @property boolean $abstract
+     * @property bool $abstract
      */
     private $abstract = null;
 
@@ -53,7 +53,7 @@ class TEntityTypeType extends IsOK
     private $navigationProperty = array();
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -63,7 +63,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -75,7 +75,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Gets as baseType
+     * Gets as baseType.
      *
      * @return string
      */
@@ -85,7 +85,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new baseType
+     * Sets a new baseType.
      *
      * @param  string $baseType
      * @return self
@@ -97,9 +97,9 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Gets as abstract
+     * Gets as abstract.
      *
-     * @return boolean
+     * @return bool
      */
     public function getAbstract()
     {
@@ -107,9 +107,9 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new abstract
+     * Sets a new abstract.
      *
-     * @param  boolean $abstract
+     * @param  bool $abstract
      * @return self
      */
     public function setAbstract($abstract)
@@ -119,7 +119,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Gets as typeAccess
+     * Gets as typeAccess.
      *
      * @return string
      */
@@ -129,7 +129,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new typeAccess
+     * Sets a new typeAccess.
      *
      * @param  string $typeAccess
      * @return self
@@ -141,7 +141,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
@@ -151,7 +151,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self
@@ -163,10 +163,10 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Adds as propertyRef
+     * Adds as propertyRef.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyRefType $propertyRef
+     * @return self
      */
     public function addToKey(TPropertyRefType $propertyRef)
     {
@@ -175,10 +175,10 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * isset key
+     * isset key.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetKey($index)
     {
@@ -186,7 +186,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * unset key
+     * unset key.
      *
      * @param  scalar $index
      * @return void
@@ -197,7 +197,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Gets as key
+     * Gets as key.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyRefType[]
      */
@@ -207,7 +207,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new key
+     * Sets a new key.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyRefType[] $key
      * @return self
@@ -219,10 +219,10 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityPropertyType $property
+     * @return self
      */
     public function addToProperty(TEntityPropertyType $property)
     {
@@ -231,10 +231,10 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * isset property
+     * isset property.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetProperty($index)
     {
@@ -242,7 +242,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * unset property
+     * unset property.
      *
      * @param  scalar $index
      * @return void
@@ -253,7 +253,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Gets as property
+     * Gets as property.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityPropertyType[]
      */
@@ -263,7 +263,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new property
+     * Sets a new property.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TEntityPropertyType[] $property
      * @return self
@@ -275,10 +275,10 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Adds as navigationProperty
+     * Adds as navigationProperty.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TNavigationPropertyType $navigationProperty
+     * @return self
      */
     public function addToNavigationProperty(TNavigationPropertyType $navigationProperty)
     {
@@ -287,10 +287,10 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * isset navigationProperty
+     * isset navigationProperty.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetNavigationProperty($index)
     {
@@ -298,7 +298,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * unset navigationProperty
+     * unset navigationProperty.
      *
      * @param  scalar $index
      * @return void
@@ -309,7 +309,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Gets as navigationProperty
+     * Gets as navigationProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TNavigationPropertyType[]
      */
@@ -319,7 +319,7 @@ class TEntityTypeType extends IsOK
     }
 
     /**
-     * Sets a new navigationProperty
+     * Sets a new navigationProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TNavigationPropertyType[] $navigationProperty
      * @return self

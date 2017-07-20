@@ -29,13 +29,13 @@ class MetadataManager
     private $lastError = null;
     private $serializer = null;
 
-    public function __construct($namespaceName = "Data", $containerName = "DefaultContainer", Edmx $edmx = null)
+    public function __construct($namespaceName = 'Data', $containerName = 'DefaultContainer', Edmx $edmx = null)
     {
         $msg = null;
         $this->V3Edmx = (null == $edmx) ? new Edmx($namespaceName, $containerName) : $edmx;
         assert($this->V3Edmx->isOK($msg), $msg);
         $this->initSerialiser();
-        assert(null != $this->serializer, "Serializer must not be null at end of constructor");
+        assert(null != $this->serializer, 'Serializer must not be null at end of constructor');
     }
 
     public function getEdmx()
@@ -48,11 +48,11 @@ class MetadataManager
     public function getEdmxXML()
     {
         $cereal = $this->getSerialiser();
-        assert(null != $cereal, "Serializer must not be null when trying to get edmx xml");
-        return $cereal->serialize($this->getEdmx(), "xml");
+        assert(null != $cereal, 'Serializer must not be null when trying to get edmx xml');
+        return $cereal->serialize($this->getEdmx(), 'xml');
     }
 
-    public function addEntityType($name, $accessType = "Public", $summary = null, $longDescription = null)
+    public function addEntityType($name, $accessType = 'Public', $summary = null, $longDescription = null)
     {
         $NewEntity = new TEntityTypeType();
         $NewEntity->setName($name);
@@ -71,7 +71,7 @@ class MetadataManager
         return [$NewEntity, $entitySet];
     }
 
-    public function addComplexType($name, $accessType = "Public", $summary = null, $longDescription = null)
+    public function addComplexType($name, $accessType = 'Public', $summary = null, $longDescription = null)
     {
         $NewEntity = new TComplexTypeType();
         $NewEntity->setName($name);
@@ -98,7 +98,7 @@ class MetadataManager
         $longDescription = null
     ) {
         if (is_array($defaultValue) || is_object($defaultValue)) {
-            throw new \InvalidArgumentException("Default value cannot be object or array");
+            throw new \InvalidArgumentException('Default value cannot be object or array');
         }
         if (null != $defaultValue) {
             $defaultValue = var_export($defaultValue, true);
@@ -151,13 +151,13 @@ class MetadataManager
         $principalProperty,
         TEntityTypeType $dependentType,
         $dependentMultiplicity,
-        $dependentProperty = "",
+        $dependentProperty = '',
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null,
-        $principalGetterAccess = "Public",
-        $principalSetterAccess = "Public",
-        $dependentGetterAccess = "Public",
-        $dependentSetterAccess = "Public",
+        $principalGetterAccess = 'Public',
+        $principalSetterAccess = 'Public',
+        $dependentGetterAccess = 'Public',
+        $dependentSetterAccess = 'Public',
         $principalSummery = null,
         $principalLongDescription = null,
         $dependentSummery = null,
@@ -165,17 +165,17 @@ class MetadataManager
     ) {
         $principalEntitySetName = Str::plural($principalType->getName());
         $dependentEntitySetName = Str::plural($dependentType->getName());
-        $relationName = $principalType->getName() . "_" . $principalProperty . "_"
-                        . $dependentType->getName() . "_" . $dependentProperty;
-        $relationName = trim($relationName, "_");
+        $relationName = $principalType->getName() . '_' . $principalProperty . '_'
+                        . $dependentType->getName() . '_' . $dependentProperty;
+        $relationName = trim($relationName, '_');
 
         $namespace = $this->getNamespace();
         $relationFQName = $namespace . $relationName;
 
         $principalNavigationProperty = new TNavigationPropertyType();
         $principalNavigationProperty->setName($principalProperty);
-        $principalNavigationProperty->setToRole(trim($dependentEntitySetName . "_" . $dependentProperty, "_"));
-        $principalNavigationProperty->setFromRole($principalEntitySetName . "_" . $principalProperty);
+        $principalNavigationProperty->setToRole(trim($dependentEntitySetName . '_' . $dependentProperty, '_'));
+        $principalNavigationProperty->setFromRole($principalEntitySetName . '_' . $principalProperty);
         $principalNavigationProperty->setRelationship($relationFQName);
         $principalNavigationProperty->setGetterAccess($principalGetterAccess);
         $principalNavigationProperty->setSetterAccess($principalSetterAccess);
@@ -185,8 +185,8 @@ class MetadataManager
         if (!empty($dependentProperty)) {
             $dependentNavigationProperty = new TNavigationPropertyType();
             $dependentNavigationProperty->setName($dependentProperty);
-            $dependentNavigationProperty->setToRole($principalEntitySetName . "_" . $principalProperty);
-            $dependentNavigationProperty->setFromRole($dependentEntitySetName . "_" . $dependentProperty);
+            $dependentNavigationProperty->setToRole($principalEntitySetName . '_' . $principalProperty);
+            $dependentNavigationProperty->setFromRole($dependentEntitySetName . '_' . $dependentProperty);
             $dependentNavigationProperty->setRelationship($relationFQName);
             $dependentNavigationProperty->setGetterAccess($dependentGetterAccess);
             $dependentNavigationProperty->setSetterAccess($dependentSetterAccess);
@@ -234,24 +234,24 @@ class MetadataManager
         $multKeys = array_keys($multCombo);
         if (null != $dependentNavigationProperty) {
             if ($dependentNavigationProperty->getRelationship() != $principalNavigationProperty->getRelationship()) {
-                $msg = "If you have both a dependent property and a principal property,"
-                        ." relationship should match";
+                $msg = 'If you have both a dependent property and a principal property,'
+                        .' relationship should match';
                 throw new \InvalidArgumentException($msg);
             }
             if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole()
                 || $dependentNavigationProperty->getToRole() != $principalNavigationProperty->getFromRole()
             ) {
                 throw new \InvalidArgumentException(
-                    "Principal to role should match dependent from role, and vice versa"
+                    'Principal to role should match dependent from role, and vice versa'
                 );
             }
         }
         if (!in_array($principalMultiplicity, $multKeys) || !in_array($dependentMultiplicity, $multKeys)) {
-            throw new \InvalidArgumentException("Malformed multiplicity - valid values are *, 0..1 and 1");
+            throw new \InvalidArgumentException('Malformed multiplicity - valid values are *, 0..1 and 1');
         }
         if (!in_array($dependentMultiplicity, $multCombo[$principalMultiplicity])) {
             throw new \InvalidArgumentException(
-                "Invalid multiplicity combination - " . $principalMultiplicity . ' ' . $dependentMultiplicity
+                'Invalid multiplicity combination - ' . $principalMultiplicity . ' ' . $dependentMultiplicity
             );
         }
 
@@ -332,10 +332,10 @@ class MetadataManager
     }
 
     /**
-     * @param string    $name
-     * @param IsOK      $expectedReturnType
-     * @param TTextType $shortDesc
-     * @param TTextType $longDesc
+     * @param  string                      $name
+     * @param  IsOK                        $expectedReturnType
+     * @param  TTextType                   $shortDesc
+     * @param  TTextType                   $longDesc
      * @return FunctionImportAnonymousType
      */
     public function createSingleton(
@@ -345,12 +345,12 @@ class MetadataManager
         TTextType $longDesc = null
     ) {
         if (!($expectedReturnType instanceof TEntityTypeType) && !($expectedReturnType instanceof TComplexTypeType)) {
-            $msg = "Expected return type must be either TEntityType or TComplexType";
+            $msg = 'Expected return type must be either TEntityType or TComplexType';
             throw new \InvalidArgumentException($msg);
         }
 
         if (!is_string($name) || empty($name)) {
-            $msg = "Name must be a non-empty string";
+            $msg = 'Name must be a non-empty string';
             throw new \InvalidArgumentException($msg);
         }
 
@@ -372,7 +372,7 @@ class MetadataManager
 
     private function initSerialiser()
     {
-        $ymlDir = __DIR__ . DIRECTORY_SEPARATOR . "MetadataV3" . DIRECTORY_SEPARATOR . "JMSmetadata";
+        $ymlDir = __DIR__ . DIRECTORY_SEPARATOR . 'MetadataV3' . DIRECTORY_SEPARATOR . 'JMSmetadata';
         $this->serializer =
             SerializerBuilder::create()
             ->addMetadataDir($ymlDir)
@@ -411,16 +411,16 @@ class MetadataManager
     {
         $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
         if (0 == strlen(trim($namespace))) {
-            $namespace = "";
+            $namespace = '';
         } else {
-            $namespace .= ".";
+            $namespace .= '.';
         }
         return $namespace;
     }
 
     /**
-     * @param array  $constraintProperty
-     * @param string $targRole
+     * @param  array                                 $constraintProperty
+     * @param  string                                $targRole
      * @return TReferentialConstraintRoleElementType
      */
     protected function makeReferentialConstraint(array $constraintProperty, $targRole)

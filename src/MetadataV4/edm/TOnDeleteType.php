@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TOnDeleteType
+ * Class representing TOnDeleteType.
  *
  * XSD Type: TOnDelete
  */
@@ -23,7 +23,7 @@ class TOnDeleteType extends IsOK
     private $annotation = array();
 
     /**
-     * Gets as action
+     * Gets as action.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TOnDeleteType extends IsOK
     }
 
     /**
-     * Sets a new action
+     * Sets a new action.
      *
      * @param  string $action
      * @return self
@@ -45,10 +45,10 @@ class TOnDeleteType extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -57,10 +57,10 @@ class TOnDeleteType extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -68,7 +68,7 @@ class TOnDeleteType extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -79,7 +79,7 @@ class TOnDeleteType extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -89,7 +89,7 @@ class TOnDeleteType extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self

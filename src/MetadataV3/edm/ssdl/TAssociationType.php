@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TUndottedIdentifierTrait;
 
 /**
- * Class representing TAssociationType
+ * Class representing TAssociationType.
  *
  * XSD Type: TAssociation
  */
@@ -34,7 +34,7 @@ class TAssociationType extends IsOK
     private $referentialConstraint = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -44,7 +44,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -52,11 +52,11 @@ class TAssociationType extends IsOK
     public function setName($name)
     {
         if (!$this->isStringNotNullOrEmpty($name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         if (!$this->isTUndottedIdentifierValid($name)) {
-            $msg = "Name must be a valid TUndottedIdentifier";
+            $msg = 'Name must be a valid TUndottedIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -64,7 +64,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
      */
@@ -74,7 +74,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
@@ -90,10 +90,10 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Adds as end
+     * Adds as end.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType $end
+     * @return self
      */
     public function addToEnd(TAssociationEndType $end)
     {
@@ -106,10 +106,10 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * isset end
+     * isset end.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEnd($index)
     {
@@ -117,7 +117,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * unset end
+     * unset end.
      *
      * @param  scalar $index
      * @return void
@@ -128,7 +128,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Gets as end
+     * Gets as end.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType[]
      */
@@ -138,7 +138,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Sets a new end
+     * Sets a new end.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationEndType[] $end
      * @return self
@@ -161,7 +161,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Gets as referentialConstraint
+     * Gets as referentialConstraint.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TConstraintType
      */
@@ -171,7 +171,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Sets a new referentialConstraint
+     * Sets a new referentialConstraint.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TConstraintType $referentialConstraint
      * @return self
@@ -189,11 +189,11 @@ class TAssociationType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             return false;
         }
         if (!$this->isTUndottedIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TUndottedIdentifier";
+            $msg = 'Name must be a valid TUndottedIdentifier';
             return false;
         }
         if (!$this->isObjectNullOrOK($this->referentialConstraint, $msg)) {

@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TNamespaceNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TUsingType
+ * Class representing TUsingType.
  *
  * XSD Type: TUsing
  */
@@ -37,7 +37,7 @@ class TUsingType extends IsOK
     private $alias = null;
 
     /**
-     * Gets as namespace
+     * Gets as namespace.
      *
      * @return string
      */
@@ -47,7 +47,7 @@ class TUsingType extends IsOK
     }
 
     /**
-     * Sets a new namespace
+     * Sets a new namespace.
      *
      * @param  string $namespace
      * @return self
@@ -59,7 +59,7 @@ class TUsingType extends IsOK
     }
 
     /**
-     * Gets as namespaceUri
+     * Gets as namespaceUri.
      *
      * @return string
      */
@@ -69,7 +69,7 @@ class TUsingType extends IsOK
     }
 
     /**
-     * Sets a new namespaceUri
+     * Sets a new namespaceUri.
      *
      * @param  string $namespaceUri
      * @return self
@@ -81,7 +81,7 @@ class TUsingType extends IsOK
     }
 
     /**
-     * Gets as alias
+     * Gets as alias.
      *
      * @return string
      */
@@ -91,7 +91,7 @@ class TUsingType extends IsOK
     }
 
     /**
-     * Sets a new alias
+     * Sets a new alias.
      *
      * @param  string $alias
      * @return self
@@ -99,7 +99,7 @@ class TUsingType extends IsOK
     public function setAlias($alias)
     {
         if (!$this->isTSimpleIdentifierValid($alias)) {
-            $msg = "Alias must be a valid TSimpleIdentifier";
+            $msg = 'Alias must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->alias = $alias;
@@ -109,7 +109,7 @@ class TUsingType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->alias)) {
-            $msg = "Alias must be a valid TSimpleIdentifier";
+            $msg = 'Alias must be a valid TSimpleIdentifier';
             return false;
         }
         $setName = null != $this->namespace;
@@ -120,11 +120,11 @@ class TUsingType extends IsOK
         }
 
         if ($setName && !$this->isTNamespaceNameValid($this->namespace)) {
-            $msg = "Namespace must be a valid TNamespaceName";
+            $msg = 'Namespace must be a valid TNamespaceName';
             return false;
         }
         if ($setUri && !$this->isURLValid($this->namespaceUri)) {
-            $msg = "Namespace url must be a valid url";
+            $msg = 'Namespace url must be a valid url';
             return false;
         }
 

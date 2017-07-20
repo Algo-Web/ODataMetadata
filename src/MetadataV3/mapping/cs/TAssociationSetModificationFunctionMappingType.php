@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TAssociationSetModificationFunctionMappingType
+ * Class representing TAssociationSetModificationFunctionMappingType.
  *
  * Type for AssociationSetMapping/ModificationFunctionMapping element
  *
@@ -27,7 +27,7 @@ class TAssociationSetModificationFunctionMappingType extends IsOK
     private $insertFunction = null;
 
     /**
-     * Gets as deleteFunction
+     * Gets as deleteFunction.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetModificationFunctionType
      */
@@ -37,7 +37,7 @@ class TAssociationSetModificationFunctionMappingType extends IsOK
     }
 
     /**
-     * Sets a new deleteFunction
+     * Sets a new deleteFunction.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetModificationFunctionType
      * $deleteFunction
@@ -54,7 +54,7 @@ class TAssociationSetModificationFunctionMappingType extends IsOK
     }
 
     /**
-     * Gets as insertFunction
+     * Gets as insertFunction.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetModificationFunctionType
      */
@@ -64,7 +64,7 @@ class TAssociationSetModificationFunctionMappingType extends IsOK
     }
 
     /**
-     * Sets a new insertFunction
+     * Sets a new insertFunction.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetModificationFunctionType
      * $insertFunction

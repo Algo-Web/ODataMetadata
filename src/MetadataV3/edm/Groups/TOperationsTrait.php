@@ -2,8 +2,8 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Groups;
 
-use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use \AlgoWeb\ODataMetadata\MetadataV3\edm\TOnActionType;
+use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 
 trait TOperationsTrait
 {
@@ -14,10 +14,10 @@ trait TOperationsTrait
     private $onDelete = [];
 
     /**
-     * Adds as onDelete
+     * Adds as onDelete.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TOnActionType $onDelete
+     * @return self
      */
     public function addToOnDelete(TOnActionType $onDelete)
     {
@@ -30,10 +30,10 @@ trait TOperationsTrait
     }
 
     /**
-     * isset onDelete
+     * isset onDelete.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetOnDelete($index)
     {
@@ -41,7 +41,7 @@ trait TOperationsTrait
     }
 
     /**
-     * unset onDelete
+     * unset onDelete.
      *
      * @param  scalar $index
      * @return void
@@ -52,7 +52,7 @@ trait TOperationsTrait
     }
 
     /**
-     * Gets as onDelete
+     * Gets as onDelete.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TOnActionType[]
      */
@@ -62,7 +62,7 @@ trait TOperationsTrait
     }
 
     /**
-     * Sets a new onDelete
+     * Sets a new onDelete.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TOnActionType[] $onDelete
      * @return self

@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TScalarPropertyType
+ * Class representing TScalarPropertyType.
  *
  * Type for ScalarProperty Element
  *
@@ -26,7 +26,7 @@ class TScalarPropertyType extends IsOK
     private $columnName = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -36,7 +36,7 @@ class TScalarPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -56,7 +56,7 @@ class TScalarPropertyType extends IsOK
     }
 
     /**
-     * Gets as columnName
+     * Gets as columnName.
      *
      * @return string
      */
@@ -66,7 +66,7 @@ class TScalarPropertyType extends IsOK
     }
 
     /**
-     * Sets a new columnName
+     * Sets a new columnName.
      *
      * @param  string $columnName
      * @return self

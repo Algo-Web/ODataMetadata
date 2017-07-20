@@ -15,7 +15,7 @@ trait GEmptyElementExtensibilityTrait
     private $documentation = null;
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
      */
@@ -25,7 +25,7 @@ trait GEmptyElementExtensibilityTrait
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self

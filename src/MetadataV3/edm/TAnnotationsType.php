@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TAnnotationsType
+ * Class representing TAnnotationsType.
  *
  * XSD Type: TAnnotations
  */
@@ -41,7 +41,7 @@ class TAnnotationsType extends IsOK
     private $typeAnnotation = [];
 
     /**
-     * Gets as target
+     * Gets as target.
      *
      * @return string
      */
@@ -51,7 +51,7 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * Sets a new target
+     * Sets a new target.
      *
      * @param  string $target
      * @return self
@@ -59,7 +59,7 @@ class TAnnotationsType extends IsOK
     public function setTarget($target)
     {
         if (!$this->isTPathValid($target)) {
-            $msg = "Target must be a valid TPath";
+            $msg = 'Target must be a valid TPath';
             throw new \InvalidArgumentException($msg);
         }
         $this->target = $target;
@@ -67,7 +67,7 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * Gets as qualifier
+     * Gets as qualifier.
      *
      * @return string
      */
@@ -77,7 +77,7 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * Sets a new qualifier
+     * Sets a new qualifier.
      *
      * @param  string $qualifier
      * @return self
@@ -85,7 +85,7 @@ class TAnnotationsType extends IsOK
     public function setQualifier($qualifier)
     {
         if (null != $qualifier && !$this->isTSimpleIdentifierValid($qualifier)) {
-            $msg = "Qualifier must be a valid TSimpleIdentifier";
+            $msg = 'Qualifier must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->qualifier = $qualifier;
@@ -93,10 +93,10 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * Adds as valueAnnotation
+     * Adds as valueAnnotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType $valueAnnotation
+     * @return self
      */
     public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
@@ -109,10 +109,10 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * isset valueAnnotation
+     * isset valueAnnotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetValueAnnotation($index)
     {
@@ -120,7 +120,7 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * unset valueAnnotation
+     * unset valueAnnotation.
      *
      * @param  scalar $index
      * @return void
@@ -131,7 +131,7 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * Gets as valueAnnotation
+     * Gets as valueAnnotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[]
      */
@@ -141,7 +141,7 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * Sets a new valueAnnotation
+     * Sets a new valueAnnotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      * @return self
@@ -161,10 +161,10 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * Adds as typeAnnotation
+     * Adds as typeAnnotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType $typeAnnotation
+     * @return self
      */
     public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
@@ -177,10 +177,10 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * isset typeAnnotation
+     * isset typeAnnotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetTypeAnnotation($index)
     {
@@ -188,7 +188,7 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * unset typeAnnotation
+     * unset typeAnnotation.
      *
      * @param  scalar $index
      * @return void
@@ -199,7 +199,7 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * Gets as typeAnnotation
+     * Gets as typeAnnotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[]
      */
@@ -209,7 +209,7 @@ class TAnnotationsType extends IsOK
     }
 
     /**
-     * Sets a new typeAnnotation
+     * Sets a new typeAnnotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      * @return self
@@ -231,11 +231,11 @@ class TAnnotationsType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTPathValid($this->target)) {
-            $msg = "Target must be a valid TPath";
+            $msg = 'Target must be a valid TPath';
             return false;
         }
         if (null != $this->qualifier && !$this->isTSimpleIdentifierValid($this->qualifier)) {
-            $msg = "Qualifier must be a valid TSimpleIdentifier";
+            $msg = 'Qualifier must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isValidArrayOK(

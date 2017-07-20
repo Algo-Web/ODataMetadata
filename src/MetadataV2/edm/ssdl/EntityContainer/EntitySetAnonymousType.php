@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType;
 
 /**
- * Class representing EntitySetAnonymousType
+ * Class representing EntitySetAnonymousType.
  */
 class EntitySetAnonymousType extends IsOK
 {
@@ -47,7 +47,7 @@ class EntitySetAnonymousType extends IsOK
     private $definingQuery = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -57,7 +57,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -69,7 +69,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as entityType
+     * Gets as entityType.
      *
      * @return string
      */
@@ -79,7 +79,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new entityType
+     * Sets a new entityType.
      *
      * @param  string $entityType
      * @return self
@@ -91,7 +91,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as schema
+     * Gets as schema.
      *
      * @return string
      */
@@ -101,7 +101,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new schema
+     * Sets a new schema.
      *
      * @param  string $schema
      * @return self
@@ -113,7 +113,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as table
+     * Gets as table.
      *
      * @return string
      */
@@ -123,7 +123,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new table
+     * Sets a new table.
      *
      * @param  string $table
      * @return self
@@ -135,7 +135,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -145,7 +145,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -157,7 +157,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType
      */
@@ -167,7 +167,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      * @return self
@@ -179,7 +179,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as definingQuery
+     * Gets as definingQuery.
      *
      * @return string
      */
@@ -189,7 +189,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new definingQuery
+     * Sets a new definingQuery.
      *
      * @param  string $definingQuery
      * @return self

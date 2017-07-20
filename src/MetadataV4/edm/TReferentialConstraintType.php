@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TReferentialConstraintType
+ * Class representing TReferentialConstraintType.
  *
  * XSD Type: TReferentialConstraint
  */
@@ -28,7 +28,7 @@ class TReferentialConstraintType extends IsOK
     private $annotation = array();
 
     /**
-     * Gets as property
+     * Gets as property.
      *
      * @return string
      */
@@ -38,7 +38,7 @@ class TReferentialConstraintType extends IsOK
     }
 
     /**
-     * Sets a new property
+     * Sets a new property.
      *
      * @param  string $property
      * @return self
@@ -50,7 +50,7 @@ class TReferentialConstraintType extends IsOK
     }
 
     /**
-     * Gets as referencedProperty
+     * Gets as referencedProperty.
      *
      * @return string
      */
@@ -60,7 +60,7 @@ class TReferentialConstraintType extends IsOK
     }
 
     /**
-     * Sets a new referencedProperty
+     * Sets a new referencedProperty.
      *
      * @param  string $referencedProperty
      * @return self
@@ -72,10 +72,10 @@ class TReferentialConstraintType extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -84,10 +84,10 @@ class TReferentialConstraintType extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -95,7 +95,7 @@ class TReferentialConstraintType extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -106,7 +106,7 @@ class TReferentialConstraintType extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -116,7 +116,7 @@ class TReferentialConstraintType extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self

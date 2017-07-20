@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV2\edmx;
 
 /**
- * Class representing Edmx
+ * Class representing Edmx.
  */
 class Edmx extends TEdmxType
 {

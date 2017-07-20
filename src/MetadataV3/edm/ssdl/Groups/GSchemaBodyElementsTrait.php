@@ -27,10 +27,10 @@ trait GSchemaBodyElementsTrait
     private $function = [];
 
     /**
-     * Adds as association
+     * Adds as association.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationType $association
+     * @return self
      */
     public function addToAssociation(TAssociationType $association)
     {
@@ -43,10 +43,10 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * isset association
+     * isset association.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAssociation($index)
     {
@@ -54,7 +54,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * unset association
+     * unset association.
      *
      * @param  scalar $index
      * @return void
@@ -65,7 +65,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * Gets as association
+     * Gets as association.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationType[]
      */
@@ -75,7 +75,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * Sets a new association
+     * Sets a new association.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TAssociationType[] $association
      * @return self
@@ -95,10 +95,10 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * Adds as entityType
+     * Adds as entityType.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityTypeType $entityType
+     * @return self
      */
     public function addToEntityType(TEntityTypeType $entityType)
     {
@@ -111,10 +111,10 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * isset entityType
+     * isset entityType.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEntityType($index)
     {
@@ -122,7 +122,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * unset entityType
+     * unset entityType.
      *
      * @param  scalar $index
      * @return void
@@ -133,7 +133,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * Gets as entityType
+     * Gets as entityType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityTypeType[]
      */
@@ -143,7 +143,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * Sets a new entityType
+     * Sets a new entityType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TEntityTypeType[] $entityType
      * @return self
@@ -155,10 +155,10 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * Adds as entityContainer
+     * Adds as entityContainer.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer $entityContainer
+     * @return self
      */
     public function addToEntityContainer(EntityContainer $entityContainer)
     {
@@ -171,10 +171,10 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * isset entityContainer
+     * isset entityContainer.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEntityContainer($index)
     {
@@ -182,7 +182,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * unset entityContainer
+     * unset entityContainer.
      *
      * @param  scalar $index
      * @return void
@@ -193,7 +193,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * Gets as entityContainer
+     * Gets as entityContainer.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer[]
      */
@@ -203,7 +203,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * Sets a new entityContainer
+     * Sets a new entityContainer.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\EntityContainer[] $entityContainer
      * @return self
@@ -224,10 +224,10 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * Adds as function
+     * Adds as function.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionType $function
+     * @return self
      */
     public function addToFunction(TFunctionType $function)
     {
@@ -240,10 +240,10 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * isset function
+     * isset function.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetFunction($index)
     {
@@ -251,7 +251,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * unset function
+     * unset function.
      *
      * @param  scalar $index
      * @return void
@@ -262,7 +262,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * Gets as function
+     * Gets as function.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionType[]
      */
@@ -272,7 +272,7 @@ trait GSchemaBodyElementsTrait
     }
 
     /**
-     * Sets a new function
+     * Sets a new function.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TFunctionType[] $function
      * @return self

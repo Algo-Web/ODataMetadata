@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TRecordExpressionType
+ * Class representing TRecordExpressionType.
  *
  * XSD Type: TRecordExpression
  */
@@ -28,7 +28,7 @@ class TRecordExpressionType extends IsOK
     private $annotation = array();
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -38,7 +38,7 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -50,10 +50,10 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * Adds as propertyValue
+     * Adds as propertyValue.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyValueType $propertyValue
+     * @return self
      */
     public function addToPropertyValue(TPropertyValueType $propertyValue)
     {
@@ -62,10 +62,10 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * isset propertyValue
+     * isset propertyValue.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetPropertyValue($index)
     {
@@ -73,7 +73,7 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * unset propertyValue
+     * unset propertyValue.
      *
      * @param  scalar $index
      * @return void
@@ -84,7 +84,7 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * Gets as propertyValue
+     * Gets as propertyValue.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyValueType[]
      */
@@ -94,7 +94,7 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * Sets a new propertyValue
+     * Sets a new propertyValue.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyValueType[] $propertyValue
      * @return self
@@ -106,10 +106,10 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -118,10 +118,10 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -129,7 +129,7 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -140,7 +140,7 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -150,7 +150,7 @@ class TRecordExpressionType extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self

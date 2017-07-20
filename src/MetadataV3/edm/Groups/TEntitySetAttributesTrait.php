@@ -30,7 +30,7 @@ trait TEntitySetAttributesTrait
     private $getterAccess = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -40,7 +40,7 @@ trait TEntitySetAttributesTrait
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -49,7 +49,7 @@ trait TEntitySetAttributesTrait
     {
         $msg = null;
         if (null != $name && !$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -57,7 +57,7 @@ trait TEntitySetAttributesTrait
     }
 
     /**
-     * Gets as entityType
+     * Gets as entityType.
      *
      * @return string
      */
@@ -67,7 +67,7 @@ trait TEntitySetAttributesTrait
     }
 
     /**
-     * Sets a new entityType
+     * Sets a new entityType.
      *
      * @param  string $entityType
      * @return self
@@ -76,7 +76,7 @@ trait TEntitySetAttributesTrait
     {
         $msg = null;
         if (null != $entityType && !$this->isTQualifiedNameValid($entityType)) {
-            $msg = "Entity type must be a valid TQualifiedName";
+            $msg = 'Entity type must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->entityType = $entityType;
@@ -84,7 +84,7 @@ trait TEntitySetAttributesTrait
     }
 
     /**
-     * Gets as getterAccess
+     * Gets as getterAccess.
      *
      * @return string
      */
@@ -94,7 +94,7 @@ trait TEntitySetAttributesTrait
     }
 
     /**
-     * Sets a new getterAccess
+     * Sets a new getterAccess.
      *
      * @param  string $getterAccess
      * @return self
@@ -103,7 +103,7 @@ trait TEntitySetAttributesTrait
     {
         $msg = null;
         if (null != $getterAccess && !$this->isTAccessOk($getterAccess)) {
-            $msg = "Getter access must be a valid TAccess";
+            $msg = 'Getter access must be a valid TAccess';
             throw new \InvalidArgumentException($msg);
         }
         $this->getterAccess = $getterAccess;
@@ -114,15 +114,15 @@ trait TEntitySetAttributesTrait
     public function isTEntitySetAttributesOK(&$msg = null)
     {
         if (null != $this->name && !$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier: " . get_class($this);
+            $msg = 'Name must be a valid TSimpleIdentifier: ' . get_class($this);
             return false;
         }
         if (null != $this->entityType && !$this->isTQualifiedNameValid($this->entityType)) {
-            $msg = "Entity type must be a valid TQualifiedName: " . get_class($this);
+            $msg = 'Entity type must be a valid TQualifiedName: ' . get_class($this);
             return false;
         }
         if (null != $this->getterAccess && !$this->isTAccessOk($this->getterAccess)) {
-            $msg = "Getter access must be a valid TAccess: " . get_class($this);
+            $msg = 'Getter access must be a valid TAccess: ' . get_class($this);
             return false;
         }
 

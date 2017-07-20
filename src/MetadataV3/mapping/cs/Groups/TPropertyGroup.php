@@ -24,7 +24,7 @@ trait TPropertyGroup
     private $condition = null;
 
     /**
-     * Gets as complexProperty
+     * Gets as complexProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType
      */
@@ -34,7 +34,7 @@ trait TPropertyGroup
     }
 
     /**
-     * Sets a new complexProperty
+     * Sets a new complexProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TComplexPropertyType $complexProperty
      * @return self
@@ -50,7 +50,7 @@ trait TPropertyGroup
     }
 
     /**
-     * Gets as scalarProperty
+     * Gets as scalarProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType
      */
@@ -60,7 +60,7 @@ trait TPropertyGroup
     }
 
     /**
-     * Sets a new scalarProperty
+     * Sets a new scalarProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
      * @return self
@@ -76,7 +76,7 @@ trait TPropertyGroup
     }
 
     /**
-     * Gets as condition
+     * Gets as condition.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType
      */
@@ -86,7 +86,7 @@ trait TPropertyGroup
     }
 
     /**
-     * Sets a new condition
+     * Sets a new condition.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType $condition
      * @return self

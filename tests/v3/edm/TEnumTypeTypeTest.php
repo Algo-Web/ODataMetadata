@@ -9,7 +9,7 @@ class TEnumTypeTypeTest extends TestCase
 {
     public function testIsEDMSimpleTypeValidNonString()
     {
-        $expected = "Input must be a string: AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\TEnumTypeType";
+        $expected = 'Input must be a string: AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\TEnumTypeType';
         $actual = null;
 
         $type = new \DateTime();
@@ -25,7 +25,7 @@ class TEnumTypeTypeTest extends TestCase
 
     public function testIsTPropertyTypeValidNonString()
     {
-        $expected = "Input must be a string: AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\TEnumTypeType";
+        $expected = 'Input must be a string: AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\TEnumTypeType';
         $actual = null;
 
         $type = new \DateTime();
@@ -41,7 +41,7 @@ class TEnumTypeTypeTest extends TestCase
 
     public function testIsTPropertyTypeValidBlankString()
     {
-        $type = " _ ";
+        $type = ' _ ';
         $foo = new TEnumTypeType();
         $this->assertFalse($foo->isTPropertyTypeValid($type));
     }

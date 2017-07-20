@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TAssociationType
+ * Class representing TAssociationType.
  *
  * XSD Type: TAssociation
  */
@@ -35,7 +35,7 @@ class TAssociationType extends IsOK
     private $referentialConstraint = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -45,7 +45,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -53,7 +53,7 @@ class TAssociationType extends IsOK
     public function setName($name)
     {
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -61,7 +61,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
      */
@@ -71,7 +71,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
@@ -87,10 +87,10 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Adds as end
+     * Adds as end.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType $end
+     * @return self
      */
     public function addToEnd(TAssociationEndType $end)
     {
@@ -103,10 +103,10 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * isset end
+     * isset end.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEnd($index)
     {
@@ -114,7 +114,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * unset end
+     * unset end.
      *
      * @param  scalar $index
      * @return void
@@ -125,7 +125,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Gets as end
+     * Gets as end.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType[]
      */
@@ -135,7 +135,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Sets a new end
+     * Sets a new end.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationEndType[] $end
      * @return self
@@ -157,7 +157,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Gets as referentialConstraint
+     * Gets as referentialConstraint.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType
      */
@@ -167,7 +167,7 @@ class TAssociationType extends IsOK
     }
 
     /**
-     * Sets a new referentialConstraint
+     * Sets a new referentialConstraint.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TConstraintType $referentialConstraint
      * @return self
@@ -185,7 +185,7 @@ class TAssociationType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isObjectNullOrOK($this->documentation, $msg)) {

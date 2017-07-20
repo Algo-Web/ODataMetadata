@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TDateTimeOffsetConstantExpressionType
+ * Class representing TDateTimeOffsetConstantExpressionType.
  *
  * XSD Type: TDateTimeOffsetConstantExpression
  */
@@ -18,7 +18,7 @@ class TDateTimeOffsetConstantExpressionType extends IsOK
     private $__value = null;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param \DateTime $value
      */
@@ -28,10 +28,10 @@ class TDateTimeOffsetConstantExpressionType extends IsOK
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param  \DateTime ...$value
-     * @param \DateTime[] $value
+     * @param  \DateTime   ...$value
+     * @param  \DateTime[] $value
      * @return \DateTime
      */
     public function value(...$value)
@@ -43,7 +43,7 @@ class TDateTimeOffsetConstantExpressionType extends IsOK
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */

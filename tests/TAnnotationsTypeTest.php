@@ -9,7 +9,7 @@ class TAnnotationsTypeTest extends TestCase
     public function testTPathFromKnownDocument()
     {
         $foo = new TAnnotationsType();
-        $name = "ODataDemo.Product/Name";
+        $name = 'ODataDemo.Product/Name';
         $this->assertTrue($foo->isTPathValid($name));
     }
 }

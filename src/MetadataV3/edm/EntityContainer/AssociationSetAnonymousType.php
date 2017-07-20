@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing AssociationSetAnonymousType
+ * Class representing AssociationSetAnonymousType.
  */
 class AssociationSetAnonymousType extends IsOK
 {
@@ -37,7 +37,7 @@ class AssociationSetAnonymousType extends IsOK
     private $end = [];
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -47,7 +47,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -56,7 +56,7 @@ class AssociationSetAnonymousType extends IsOK
     {
         $msg = null;
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -64,7 +64,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as association
+     * Gets as association.
      *
      * @return string
      */
@@ -74,7 +74,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new association
+     * Sets a new association.
      *
      * @param  string $association
      * @return self
@@ -83,7 +83,7 @@ class AssociationSetAnonymousType extends IsOK
     {
         $msg = null;
         if (!$this->isTQualifiedNameValid($association)) {
-            $msg = "Association must be a valid TQualifiedName";
+            $msg = 'Association must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->association = $association;
@@ -91,12 +91,12 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Adds as end
+     * Adds as end.
      *
-     * @return self
      * @param
      * \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType
      * $end
+     * @return self
      */
     public function addToEnd(EndAnonymousType $end)
     {
@@ -109,10 +109,10 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * isset end
+     * isset end.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEnd($index)
     {
@@ -120,7 +120,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * unset end
+     * unset end.
      *
      * @param  scalar $index
      * @return void
@@ -131,7 +131,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as end
+     * Gets as end.
      *
      * @return
      * \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType[]
@@ -142,7 +142,7 @@ class AssociationSetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new end
+     * Sets a new end.
      *
      * @param
      * \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType[]
@@ -169,11 +169,11 @@ class AssociationSetAnonymousType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isTQualifiedNameValid($this->association)) {
-            $msg = "Association must be a valid TQualifiedName";
+            $msg = 'Association must be a valid TQualifiedName';
             return false;
         }
         if (!$this->isValidArrayOK(

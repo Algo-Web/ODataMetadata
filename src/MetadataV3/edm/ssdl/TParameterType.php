@@ -3,11 +3,11 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl;
 
 use AlgoWeb\ODataMetadata\IsOK;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TParameterModeTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TFunctionTypeTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits\TParameterModeTrait;
 
 /**
- * Class representing TParameterType
+ * Class representing TParameterType.
  *
  * XSD Type: TParameter
  */
@@ -35,12 +35,12 @@ class TParameterType extends IsOK
     private $maxLength = null;
 
     /**
-     * @property integer $precision
+     * @property int $precision
      */
     private $precision = null;
 
     /**
-     * @property integer $scale
+     * @property int $scale
      */
     private $scale = null;
 
@@ -55,7 +55,7 @@ class TParameterType extends IsOK
     private $documentation = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -65,7 +65,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -74,7 +74,7 @@ class TParameterType extends IsOK
     {
         $msg = null;
         if (!$this->isStringNotNullOrEmpty($name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -82,7 +82,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -92,7 +92,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -101,11 +101,11 @@ class TParameterType extends IsOK
     {
         $msg = null;
         if (!$this->isStringNotNullOrEmpty($type)) {
-            $msg = "Type cannot be null or empty";
+            $msg = 'Type cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         if (null != $type && !$this->isTFunctionTypeValid($type)) {
-            $msg = "Type must be a valid TFunctionType";
+            $msg = 'Type must be a valid TFunctionType';
             throw new \InvalidArgumentException($msg);
         }
         $this->type = $type;
@@ -113,7 +113,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as mode
+     * Gets as mode.
      *
      * @return string
      */
@@ -123,7 +123,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new mode
+     * Sets a new mode.
      *
      * @param  string $mode
      * @return self
@@ -132,11 +132,11 @@ class TParameterType extends IsOK
     {
         $msg = null;
         if (null != $mode && !$this->isStringNotNullOrEmpty($mode)) {
-            $msg = "Mode cannot be empty";
+            $msg = 'Mode cannot be empty';
             throw new \InvalidArgumentException($msg);
         }
         if (null != $mode && !$this->isTParameterModeValid($mode)) {
-            $msg = "Mode must be a valid TParameterMode";
+            $msg = 'Mode must be a valid TParameterMode';
             throw new \InvalidArgumentException($msg);
         }
         $this->mode = $mode;
@@ -144,7 +144,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as maxLength
+     * Gets as maxLength.
      *
      * @return string
      */
@@ -154,7 +154,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new maxLength
+     * Sets a new maxLength.
      *
      * @param  string $maxLength
      * @return self
@@ -166,9 +166,9 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as precision
+     * Gets as precision.
      *
-     * @return integer
+     * @return int
      */
     public function getPrecision()
     {
@@ -176,9 +176,9 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new precision
+     * Sets a new precision.
      *
-     * @param  integer $precision
+     * @param  int  $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -188,9 +188,9 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as scale
+     * Gets as scale.
      *
-     * @return integer
+     * @return int
      */
     public function getScale()
     {
@@ -198,9 +198,9 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new scale
+     * Sets a new scale.
      *
-     * @param  integer $scale
+     * @param  int  $scale
      * @return self
      */
     public function setScale($scale)
@@ -210,7 +210,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as sRID
+     * Gets as sRID.
      *
      * @return string
      */
@@ -220,7 +220,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new sRID
+     * Sets a new sRID.
      *
      * @param  string $sRID
      * @return self
@@ -229,7 +229,7 @@ class TParameterType extends IsOK
     {
         $msg = null;
         if (null != $sRID && !$this->isStringNotNullOrEmpty($sRID)) {
-            $msg = "SRID cannot be empty";
+            $msg = 'SRID cannot be empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->sRID = $sRID;
@@ -237,7 +237,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType
      */
@@ -247,7 +247,7 @@ class TParameterType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\TDocumentationType $documentation
      * @return self
@@ -265,27 +265,27 @@ class TParameterType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->name)) {
-            $msg = "Name cannot be null or empty";
+            $msg = 'Name cannot be null or empty';
             return false;
         }
         if (!$this->isStringNotNullOrEmpty($this->type)) {
-            $msg = "Type cannot be null or empty";
+            $msg = 'Type cannot be null or empty';
             return false;
         }
         if (null != $this->mode && !$this->isStringNotNullOrEmpty($this->mode)) {
-            $msg = "Mode cannot be empty";
+            $msg = 'Mode cannot be empty';
             return false;
         }
         if (null != $this->sRID && !$this->isStringNotNullOrEmpty($this->sRID)) {
-            $msg = "SRID cannot be empty";
+            $msg = 'SRID cannot be empty';
             return false;
         }
         if (null != $this->type && !$this->isTFunctionTypeValid($this->type)) {
-            $msg = "Type must be a valid TFunctionType";
+            $msg = 'Type must be a valid TFunctionType';
             return false;
         }
         if (null != $this->mode && !$this->isTParameterModeValid($this->mode)) {
-            $msg = "Mode must be a valid TParameterMode";
+            $msg = 'Mode must be a valid TParameterMode';
             return false;
         }
 

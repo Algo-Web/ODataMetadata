@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV2\edm\Schema;
 
 /**
- * Class representing TEdmxType
+ * Class representing TEdmxType.
  *
  * XSD Type: TEdmx
  */
@@ -34,7 +34,7 @@ class TEdmxType extends IsOK
     private $dataServices = null;
 
     /**
-     * Gets as version
+     * Gets as version.
      *
      * @return string
      */
@@ -44,7 +44,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Sets a new version
+     * Sets a new version.
      *
      * @param  string $version
      * @return self
@@ -56,7 +56,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Gets as designer
+     * Gets as designer.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edmx\TDesignerType
      */
@@ -66,7 +66,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Sets a new designer
+     * Sets a new designer.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edmx\TDesignerType $designer
      * @return self
@@ -78,7 +78,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Gets as runtime
+     * Gets as runtime.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edmx\TRuntimeType
      */
@@ -88,7 +88,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Sets a new runtime
+     * Sets a new runtime.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edmx\TRuntimeType $runtime
      * @return self
@@ -100,10 +100,10 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Adds as schema
+     * Adds as schema.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\Schema $schema
+     * @return self
      */
     public function addToDataServices(Schema $schema)
     {
@@ -112,10 +112,10 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * isset dataServices
+     * isset dataServices.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetDataServices($index)
     {
@@ -123,7 +123,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * unset dataServices
+     * unset dataServices.
      *
      * @param  scalar $index
      * @return void
@@ -134,7 +134,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Gets as dataServices
+     * Gets as dataServices.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\Schema[]
      */
@@ -144,7 +144,7 @@ class TEdmxType extends IsOK
     }
 
     /**
-     * Sets a new dataServices
+     * Sets a new dataServices.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\Schema[] $dataServices
      * @return self

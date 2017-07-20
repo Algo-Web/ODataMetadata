@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups\TPropertyGroup;
 use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TEntitySetMappingType
+ * Class representing TEntitySetMappingType.
  *
  * Type for EntitySet mapping element
  *
@@ -32,7 +32,7 @@ class TEntitySetMappingType extends IsOK
     private $storeEntitySet = null;
 
     /**
-     * @property boolean $makeColumnsDistinct
+     * @property bool $makeColumnsDistinct
      */
     private $makeColumnsDistinct = null;
 
@@ -52,7 +52,7 @@ class TEntitySetMappingType extends IsOK
     private $mappingFragment = [];
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -78,7 +78,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Gets as typeName
+     * Gets as typeName.
      *
      * @return string
      */
@@ -88,7 +88,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Sets a new typeName
+     * Sets a new typeName.
      *
      * @param  string $typeName
      * @return self
@@ -104,7 +104,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Gets as storeEntitySet
+     * Gets as storeEntitySet.
      *
      * @return string
      */
@@ -114,7 +114,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Sets a new storeEntitySet
+     * Sets a new storeEntitySet.
      *
      * @param  string $storeEntitySet
      * @return self
@@ -130,9 +130,9 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Gets as makeColumnsDistinct
+     * Gets as makeColumnsDistinct.
      *
-     * @return boolean
+     * @return bool
      */
     public function getMakeColumnsDistinct()
     {
@@ -140,9 +140,9 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Sets a new makeColumnsDistinct
+     * Sets a new makeColumnsDistinct.
      *
-     * @param  boolean $makeColumnsDistinct
+     * @param  bool $makeColumnsDistinct
      * @return self
      */
     public function setMakeColumnsDistinct($makeColumnsDistinct)
@@ -152,10 +152,10 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Adds as queryView
+     * Adds as queryView.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TQueryViewType $queryView
+     * @return self
      */
     public function addToQueryView(TQueryViewType $queryView)
     {
@@ -168,10 +168,10 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * isset queryView
+     * isset queryView.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetQueryView($index)
     {
@@ -179,7 +179,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * unset queryView
+     * unset queryView.
      *
      * @param  scalar $index
      * @return void
@@ -190,7 +190,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Gets as queryView
+     * Gets as queryView.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TQueryViewType[]
      */
@@ -200,7 +200,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Sets a new queryView
+     * Sets a new queryView.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TQueryViewType[] $queryView
      * @return self
@@ -221,10 +221,10 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Adds as entityTypeMapping
+     * Adds as entityTypeMapping.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType $entityTypeMapping
+     * @return self
      */
     public function addToEntityTypeMapping(TEntityTypeMappingType $entityTypeMapping)
     {
@@ -237,10 +237,10 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * isset entityTypeMapping
+     * isset entityTypeMapping.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEntityTypeMapping($index)
     {
@@ -248,7 +248,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * unset entityTypeMapping
+     * unset entityTypeMapping.
      *
      * @param  scalar $index
      * @return void
@@ -259,7 +259,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Gets as entityTypeMapping
+     * Gets as entityTypeMapping.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType[]
      */
@@ -269,7 +269,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Sets a new entityTypeMapping
+     * Sets a new entityTypeMapping.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType[] $entityTypeMapping
      * @return self
@@ -290,10 +290,10 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Adds as mappingFragment
+     * Adds as mappingFragment.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType $mappingFragment
+     * @return self
      */
     public function addToMappingFragment(TMappingFragmentType $mappingFragment)
     {
@@ -306,10 +306,10 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * isset mappingFragment
+     * isset mappingFragment.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetMappingFragment($index)
     {
@@ -317,7 +317,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * unset mappingFragment
+     * unset mappingFragment.
      *
      * @param  scalar $index
      * @return void
@@ -328,7 +328,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Gets as mappingFragment
+     * Gets as mappingFragment.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType[]
      */
@@ -338,7 +338,7 @@ class TEntitySetMappingType extends IsOK
     }
 
     /**
-     * Sets a new mappingFragment
+     * Sets a new mappingFragment.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TMappingFragmentType[] $mappingFragment
      * @return self
@@ -380,7 +380,7 @@ class TEntitySetMappingType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType'
         )
         ) {
-            $msg = "Mapping fragment array not a valid array";
+            $msg = 'Mapping fragment array not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->entityTypeMapping, $msg)) {
@@ -391,7 +391,7 @@ class TEntitySetMappingType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType'
         )
         ) {
-            $msg = "Query view array not a valid array";
+            $msg = 'Query view array not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->queryView, $msg)) {
@@ -402,7 +402,7 @@ class TEntitySetMappingType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityTypeMappingType'
         )
         ) {
-            $msg = "Mapping fragment array not a valid array";
+            $msg = 'Mapping fragment array not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->mappingFragment, $msg)) {

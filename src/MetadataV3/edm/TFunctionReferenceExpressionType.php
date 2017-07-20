@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 
 /**
- * Class representing TFunctionReferenceExpressionType
+ * Class representing TFunctionReferenceExpressionType.
  *
  * XSD Type: TFunctionReferenceExpression
  */
@@ -27,7 +27,7 @@ class TFunctionReferenceExpressionType extends IsOK
     private $parameter = [];
 
     /**
-     * Gets as function
+     * Gets as function.
      *
      * @return string
      */
@@ -37,7 +37,7 @@ class TFunctionReferenceExpressionType extends IsOK
     }
 
     /**
-     * Sets a new function
+     * Sets a new function.
      *
      * @param  string $function
      * @return self
@@ -45,7 +45,7 @@ class TFunctionReferenceExpressionType extends IsOK
     public function setFunction($function)
     {
         if (!$this->isTQualifiedNameValid($function)) {
-            $msg = "Function must be a valid TQualifiedName";
+            $msg = 'Function must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->function = $function;
@@ -53,11 +53,11 @@ class TFunctionReferenceExpressionType extends IsOK
     }
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType
      * $parameter
+     * @return self
      */
     public function addToParameter(TFunctionReferenceExpressionType\ParameterAnonymousType $parameter)
     {
@@ -70,10 +70,10 @@ class TFunctionReferenceExpressionType extends IsOK
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetParameter($index)
     {
@@ -81,7 +81,7 @@ class TFunctionReferenceExpressionType extends IsOK
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
      * @param  scalar $index
      * @return void
@@ -92,7 +92,7 @@ class TFunctionReferenceExpressionType extends IsOK
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return
      * \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
@@ -103,7 +103,7 @@ class TFunctionReferenceExpressionType extends IsOK
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType\ParameterAnonymousType[]
      * $parameter
@@ -127,7 +127,7 @@ class TFunctionReferenceExpressionType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTQualifiedNameValid($this->function)) {
-            $msg = "Function must be a valid TQualifiedName";
+            $msg = 'Function must be a valid TQualifiedName';
             return false;
         }
         if (!$this->isValidArrayOK(

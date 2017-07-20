@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnon
 use AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\EntitySetAnonymousType;
 
 /**
- * Class representing EntityContainer
+ * Class representing EntityContainer.
  */
 class EntityContainer extends IsOK
 {
@@ -35,7 +35,7 @@ class EntityContainer extends IsOK
     private $associationSet = array();
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -45,7 +45,7 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -57,7 +57,7 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType
      */
@@ -67,7 +67,7 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      * @return self
@@ -79,10 +79,10 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * Adds as entitySet
+     * Adds as entitySet.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\EntitySetAnonymousType $entitySet
+     * @return self
      */
     public function addToEntitySet(EntitySetAnonymousType $entitySet)
     {
@@ -91,10 +91,10 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * isset entitySet
+     * isset entitySet.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEntitySet($index)
     {
@@ -102,7 +102,7 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * unset entitySet
+     * unset entitySet.
      *
      * @param  scalar $index
      * @return void
@@ -113,7 +113,7 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\EntitySetAnonymousType[]
      */
@@ -123,7 +123,7 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\EntitySetAnonymousType[] $entitySet
      * @return self
@@ -135,11 +135,11 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * Adds as associationSet
+     * Adds as associationSet.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType
      * $associationSet
+     * @return self
      */
     public function addToAssociationSet(AssociationSetAnonymousType $associationSet)
     {
@@ -148,10 +148,10 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * isset associationSet
+     * isset associationSet.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAssociationSet($index)
     {
@@ -159,7 +159,7 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * unset associationSet
+     * unset associationSet.
      *
      * @param  scalar $index
      * @return void
@@ -170,7 +170,7 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * Gets as associationSet
+     * Gets as associationSet.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType[]
      */
@@ -180,7 +180,7 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * Sets a new associationSet
+     * Sets a new associationSet.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType[]
      * $associationSet

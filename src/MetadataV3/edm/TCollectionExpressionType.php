@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GBaseExpressionTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 
 /**
- * Class representing TCollectionExpressionType
+ * Class representing TCollectionExpressionType.
  *
  * XSD Type: TCollectionExpression
  */

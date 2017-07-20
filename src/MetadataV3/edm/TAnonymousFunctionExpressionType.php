@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GExpressionTrait;
 
 /**
- * Class representing TAnonymousFunctionExpressionType
+ * Class representing TAnonymousFunctionExpressionType.
  *
  * XSD Type: TAnonymousFunctionExpression
  */
@@ -26,10 +26,10 @@ class TAnonymousFunctionExpressionType extends IsOK
     private $parameters = [];
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType $parameter
+     * @return self
      */
     public function addToParameters(TFunctionParameterType $parameter)
     {
@@ -42,10 +42,10 @@ class TAnonymousFunctionExpressionType extends IsOK
     }
 
     /**
-     * isset parameters
+     * isset parameters.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetParameters($index)
     {
@@ -53,7 +53,7 @@ class TAnonymousFunctionExpressionType extends IsOK
     }
 
     /**
-     * unset parameters
+     * unset parameters.
      *
      * @param  scalar $index
      * @return void
@@ -64,7 +64,7 @@ class TAnonymousFunctionExpressionType extends IsOK
     }
 
     /**
-     * Gets as parameters
+     * Gets as parameters.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[]
      */
@@ -74,7 +74,7 @@ class TAnonymousFunctionExpressionType extends IsOK
     }
 
     /**
-     * Sets a new parameters
+     * Sets a new parameters.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionParameterType[] $parameters
      * @return self

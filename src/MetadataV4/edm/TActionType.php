@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TActionType
+ * Class representing TActionType.
  *
  * XSD Type: TAction
  */
@@ -23,7 +23,7 @@ class TActionType extends IsOK
     private $entitySetPath = null;
 
     /**
-     * @property boolean $isBound
+     * @property bool $isBound
      */
     private $isBound = null;
 
@@ -43,7 +43,7 @@ class TActionType extends IsOK
     private $returnType = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -53,7 +53,7 @@ class TActionType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -65,7 +65,7 @@ class TActionType extends IsOK
     }
 
     /**
-     * Gets as entitySetPath
+     * Gets as entitySetPath.
      *
      * @return string
      */
@@ -75,7 +75,7 @@ class TActionType extends IsOK
     }
 
     /**
-     * Sets a new entitySetPath
+     * Sets a new entitySetPath.
      *
      * @param  string $entitySetPath
      * @return self
@@ -87,9 +87,9 @@ class TActionType extends IsOK
     }
 
     /**
-     * Gets as isBound
+     * Gets as isBound.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsBound()
     {
@@ -97,9 +97,9 @@ class TActionType extends IsOK
     }
 
     /**
-     * Sets a new isBound
+     * Sets a new isBound.
      *
-     * @param  boolean $isBound
+     * @param  bool $isBound
      * @return self
      */
     public function setIsBound($isBound)
@@ -109,10 +109,10 @@ class TActionType extends IsOK
     }
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType $parameter
+     * @return self
      */
     public function addToParameter(TActionFunctionParameterType $parameter)
     {
@@ -121,10 +121,10 @@ class TActionType extends IsOK
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetParameter($index)
     {
@@ -132,7 +132,7 @@ class TActionType extends IsOK
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
      * @param  scalar $index
      * @return void
@@ -143,7 +143,7 @@ class TActionType extends IsOK
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType[]
      */
@@ -153,7 +153,7 @@ class TActionType extends IsOK
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionParameterType[] $parameter
      * @return self
@@ -165,10 +165,10 @@ class TActionType extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -177,10 +177,10 @@ class TActionType extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -188,7 +188,7 @@ class TActionType extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -199,7 +199,7 @@ class TActionType extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -209,7 +209,7 @@ class TActionType extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
@@ -221,7 +221,7 @@ class TActionType extends IsOK
     }
 
     /**
-     * Gets as returnType
+     * Gets as returnType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionReturnTypeType
      */
@@ -231,7 +231,7 @@ class TActionType extends IsOK
     }
 
     /**
-     * Sets a new returnType
+     * Sets a new returnType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TActionFunctionReturnTypeType $returnType
      * @return self

@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 use AlgoWeb\ODataMetadata\StringTraits\XSDTopLevelTrait;
 
 /**
- * Class representing TEnumTypeMemberType
+ * Class representing TEnumTypeMemberType.
  *
  * XSD Type: TEnumTypeMember
  */
@@ -21,12 +21,12 @@ class TEnumTypeMemberType extends IsOK
     private $name = null;
 
     /**
-     * @property integer $value
+     * @property int $value
      */
     private $value = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -36,7 +36,7 @@ class TEnumTypeMemberType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -44,7 +44,7 @@ class TEnumTypeMemberType extends IsOK
     public function setName($name)
     {
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -52,9 +52,9 @@ class TEnumTypeMemberType extends IsOK
     }
 
     /**
-     * Gets as value
+     * Gets as value.
      *
-     * @return integer
+     * @return int
      */
     public function getValue()
     {
@@ -62,9 +62,9 @@ class TEnumTypeMemberType extends IsOK
     }
 
     /**
-     * Sets a new value
+     * Sets a new value.
      *
-     * @param  integer $value
+     * @param  int  $value
      * @return self
      */
     public function setValue($value)
@@ -76,7 +76,7 @@ class TEnumTypeMemberType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             return false;
         }
         // this blows up, then we aren't ok

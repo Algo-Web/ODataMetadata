@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TComplexTypeType
+ * Class representing TComplexTypeType.
  *
  * XSD Type: TComplexType
  */
@@ -23,12 +23,12 @@ class TComplexTypeType extends IsOK
     private $baseType = null;
 
     /**
-     * @property boolean $abstract
+     * @property bool $abstract
      */
     private $abstract = null;
 
     /**
-     * @property boolean $openType
+     * @property bool $openType
      */
     private $openType = null;
 
@@ -48,7 +48,7 @@ class TComplexTypeType extends IsOK
     private $annotation = array();
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -58,7 +58,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -70,7 +70,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as baseType
+     * Gets as baseType.
      *
      * @return string
      */
@@ -80,7 +80,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new baseType
+     * Sets a new baseType.
      *
      * @param  string $baseType
      * @return self
@@ -92,9 +92,9 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as abstract
+     * Gets as abstract.
      *
-     * @return boolean
+     * @return bool
      */
     public function getAbstract()
     {
@@ -102,9 +102,9 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new abstract
+     * Sets a new abstract.
      *
-     * @param  boolean $abstract
+     * @param  bool $abstract
      * @return self
      */
     public function setAbstract($abstract)
@@ -114,9 +114,9 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as openType
+     * Gets as openType.
      *
-     * @return boolean
+     * @return bool
      */
     public function getOpenType()
     {
@@ -124,9 +124,9 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new openType
+     * Sets a new openType.
      *
-     * @param  boolean $openType
+     * @param  bool $openType
      * @return self
      */
     public function setOpenType($openType)
@@ -136,10 +136,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType $property
+     * @return self
      */
     public function addToProperty(TPropertyType $property)
     {
@@ -148,10 +148,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * isset property
+     * isset property.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetProperty($index)
     {
@@ -159,7 +159,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * unset property
+     * unset property.
      *
      * @param  scalar $index
      * @return void
@@ -170,7 +170,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as property
+     * Gets as property.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType[]
      */
@@ -180,7 +180,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new property
+     * Sets a new property.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TPropertyType[] $property
      * @return self
@@ -192,10 +192,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Adds as navigationProperty
+     * Adds as navigationProperty.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType $navigationProperty
+     * @return self
      */
     public function addToNavigationProperty(TNavigationPropertyType $navigationProperty)
     {
@@ -204,10 +204,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * isset navigationProperty
+     * isset navigationProperty.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetNavigationProperty($index)
     {
@@ -215,7 +215,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * unset navigationProperty
+     * unset navigationProperty.
      *
      * @param  scalar $index
      * @return void
@@ -226,7 +226,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as navigationProperty
+     * Gets as navigationProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType[]
      */
@@ -236,7 +236,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new navigationProperty
+     * Sets a new navigationProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TNavigationPropertyType[] $navigationProperty
      * @return self
@@ -248,10 +248,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -260,10 +260,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -271,7 +271,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -282,7 +282,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -292,7 +292,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self

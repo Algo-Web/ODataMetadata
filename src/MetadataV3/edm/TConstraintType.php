@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 
 /**
- * Class representing TConstraintType
+ * Class representing TConstraintType.
  *
  * XSD Type: TConstraint
  */
@@ -29,7 +29,7 @@ class TConstraintType extends IsOK
     private $dependent = null;
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
      */
@@ -39,7 +39,7 @@ class TConstraintType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
@@ -55,7 +55,7 @@ class TConstraintType extends IsOK
     }
 
     /**
-     * Gets as principal
+     * Gets as principal.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType
      */
@@ -65,7 +65,7 @@ class TConstraintType extends IsOK
     }
 
     /**
-     * Sets a new principal
+     * Sets a new principal.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType $principal
      * @return self
@@ -81,7 +81,7 @@ class TConstraintType extends IsOK
     }
 
     /**
-     * Gets as dependent
+     * Gets as dependent.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType
      */
@@ -91,7 +91,7 @@ class TConstraintType extends IsOK
     }
 
     /**
-     * Sets a new dependent
+     * Sets a new dependent.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType $dependent
      * @return self
@@ -112,11 +112,11 @@ class TConstraintType extends IsOK
             return false;
         }
         if (null == $this->principal || !$this->isObjectNullOrOK($this->principal, $msg)) {
-            $msg = (null != $msg) ? $msg : "Principal cannot be null";
+            $msg = (null != $msg) ? $msg : 'Principal cannot be null';
             return false;
         }
         if (null == $this->dependent || !$this->isObjectNullOrOK($this->dependent, $msg)) {
-            $msg = (null != $msg) ? $msg : "Dependent cannot be null";
+            $msg = (null != $msg) ? $msg : 'Dependent cannot be null';
             return false;
         }
 

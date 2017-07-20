@@ -12,7 +12,7 @@ class TComplexTypePropertyTypeTest extends TestCase
         $foo = new TComplexTypePropertyType();
 
         $mode = new \DateTime();
-        $expected = "Input must be a string: AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\TComplexTypePropertyType";
+        $expected = 'Input must be a string: AlgoWeb\\ODataMetadata\\MetadataV3\\edm\\TComplexTypePropertyType';
         $actual = null;
 
         try {
@@ -27,7 +27,7 @@ class TComplexTypePropertyTypeTest extends TestCase
     {
         $foo = new TComplexTypePropertyType();
 
-        $mode = "Fixed";
+        $mode = 'Fixed';
         $this->assertTrue($foo->isTConcurrencyModeValid($mode));
     }
 
@@ -35,7 +35,7 @@ class TComplexTypePropertyTypeTest extends TestCase
     {
         $foo = new TComplexTypePropertyType();
 
-        $mode = "None";
+        $mode = 'None';
         $this->assertTrue($foo->isTConcurrencyModeValid($mode));
     }
 }

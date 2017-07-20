@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TNavigationPropertyType
+ * Class representing TNavigationPropertyType.
  *
  * XSD Type: TNavigationProperty
  */
@@ -56,7 +56,7 @@ class TNavigationPropertyType extends IsOK
     private $setterAccess = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -66,7 +66,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -74,7 +74,7 @@ class TNavigationPropertyType extends IsOK
     public function setName($name)
     {
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -82,7 +82,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as relationship
+     * Gets as relationship.
      *
      * @return string
      */
@@ -92,7 +92,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new relationship
+     * Sets a new relationship.
      *
      * @param  string $relationship
      * @return self
@@ -100,7 +100,7 @@ class TNavigationPropertyType extends IsOK
     public function setRelationship($relationship)
     {
         if (!$this->isTQualifiedNameValid($relationship)) {
-            $msg = "Relationship must be a valid TQualifiedName";
+            $msg = 'Relationship must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->relationship = $relationship;
@@ -108,7 +108,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as toRole
+     * Gets as toRole.
      *
      * @return string
      */
@@ -118,7 +118,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new toRole
+     * Sets a new toRole.
      *
      * @param  string $toRole
      * @return self
@@ -126,7 +126,7 @@ class TNavigationPropertyType extends IsOK
     public function setToRole($toRole)
     {
         if (!$this->isTSimpleIdentifierValid($toRole)) {
-            $msg = "To role must be a valid TSimpleIdentifier";
+            $msg = 'To role must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->toRole = $toRole;
@@ -134,7 +134,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as fromRole
+     * Gets as fromRole.
      *
      * @return string
      */
@@ -144,7 +144,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new fromRole
+     * Sets a new fromRole.
      *
      * @param  string $fromRole
      * @return self
@@ -152,7 +152,7 @@ class TNavigationPropertyType extends IsOK
     public function setFromRole($fromRole)
     {
         if (!$this->isTSimpleIdentifierValid($fromRole)) {
-            $msg = "From role must be a valid TSimpleIdentifier";
+            $msg = 'From role must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->fromRole = $fromRole;
@@ -160,7 +160,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as getterAccess
+     * Gets as getterAccess.
      *
      * @return string
      */
@@ -170,7 +170,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new getterAccess
+     * Sets a new getterAccess.
      *
      * @param  string $getterAccess
      * @return self
@@ -178,7 +178,7 @@ class TNavigationPropertyType extends IsOK
     public function setGetterAccess($getterAccess)
     {
         if (null != $getterAccess && !$this->isTAccessOk($getterAccess)) {
-            $msg = "Getter access must be a valid TAccess";
+            $msg = 'Getter access must be a valid TAccess';
             throw new \InvalidArgumentException($msg);
         }
         $this->getterAccess = $getterAccess;
@@ -186,7 +186,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Gets as setterAccess
+     * Gets as setterAccess.
      *
      * @return string
      */
@@ -196,7 +196,7 @@ class TNavigationPropertyType extends IsOK
     }
 
     /**
-     * Sets a new setterAccess
+     * Sets a new setterAccess.
      *
      * @param  string $setterAccess
      * @return self
@@ -204,7 +204,7 @@ class TNavigationPropertyType extends IsOK
     public function setSetterAccess($setterAccess)
     {
         if (null != $setterAccess && !$this->isTAccessOk($setterAccess)) {
-            $msg = "Setter access must be a valid TAccess";
+            $msg = 'Setter access must be a valid TAccess';
             throw new \InvalidArgumentException($msg);
         }
         $this->setterAccess = $setterAccess;
@@ -214,27 +214,27 @@ class TNavigationPropertyType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isTQualifiedNameValid($this->relationship)) {
-            $msg = "Relationship must be a valid TQualifiedName";
+            $msg = 'Relationship must be a valid TQualifiedName';
             return false;
         }
         if (!$this->isTSimpleIdentifierValid($this->toRole)) {
-            $msg = "To role must be a valid TSimpleIdentifier";
+            $msg = 'To role must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isTSimpleIdentifierValid($this->fromRole)) {
-            $msg = "From role must be a valid TSimpleIdentifier";
+            $msg = 'From role must be a valid TSimpleIdentifier';
             return false;
         }
         if (null != $this->getterAccess && !$this->isTAccessOk($this->getterAccess)) {
-            $msg = "Getter access must be a valid TAccess";
+            $msg = 'Getter access must be a valid TAccess';
             return false;
         }
         if (null != $this->setterAccess && !$this->isTAccessOk($this->setterAccess)) {
-            $msg = "Setter access must be a valid TAccess";
+            $msg = 'Setter access must be a valid TAccess';
             return false;
         }
         if (!$this->isExtensibilityElementOK($msg)) {

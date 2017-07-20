@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TParameterReferenceExpressionType
+ * Class representing TParameterReferenceExpressionType.
  *
  * XSD Type: TParameterReferenceExpression
  */
@@ -20,7 +20,7 @@ class TParameterReferenceExpressionType extends IsOK
     private $name = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -30,7 +30,7 @@ class TParameterReferenceExpressionType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -38,7 +38,7 @@ class TParameterReferenceExpressionType extends IsOK
     public function setName($name)
     {
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifierValid";
+            $msg = 'Name must be a valid TSimpleIdentifierValid';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -48,7 +48,7 @@ class TParameterReferenceExpressionType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifierValid";
+            $msg = 'Name must be a valid TSimpleIdentifierValid';
             return false;
         }
         return true;
