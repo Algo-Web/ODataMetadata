@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TQualifiedNameTrait;
 use AlgoWeb\ODataMetadata\MetadataV4\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TAssociationSetMappingType
+ * Class representing TAssociationSetMappingType.
  *
  * Type for AssociationSetMapping element
  *
@@ -58,7 +58,7 @@ class TAssociationSetMappingType extends IsOK
     private $modificationFunctionMapping = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -68,7 +68,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -88,7 +88,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Gets as typeName
+     * Gets as typeName.
      *
      * @return string
      */
@@ -98,7 +98,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Sets a new typeName
+     * Sets a new typeName.
      *
      * @param  string $typeName
      * @return self
@@ -118,7 +118,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Gets as storeEntitySet
+     * Gets as storeEntitySet.
      *
      * @return string
      */
@@ -128,7 +128,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Sets a new storeEntitySet
+     * Sets a new storeEntitySet.
      *
      * @param  string $storeEntitySet
      * @return self
@@ -144,7 +144,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Gets as queryView
+     * Gets as queryView.
      *
      * @return string
      */
@@ -154,7 +154,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Sets a new queryView
+     * Sets a new queryView.
      *
      * @param  string $queryView
      * @return self
@@ -170,10 +170,10 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Adds as endProperty
+     * Adds as endProperty.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEndPropertyType $endProperty
+     * @return self
      */
     public function addToEndProperty(TEndPropertyType $endProperty)
     {
@@ -186,10 +186,10 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * isset endProperty
+     * isset endProperty.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEndProperty($index)
     {
@@ -197,7 +197,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * unset endProperty
+     * unset endProperty.
      *
      * @param  scalar $index
      * @return void
@@ -208,7 +208,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Gets as endProperty
+     * Gets as endProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEndPropertyType[]
      */
@@ -218,7 +218,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Sets a new endProperty
+     * Sets a new endProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEndPropertyType[] $endProperty
      * @return self
@@ -234,17 +234,17 @@ class TAssociationSetMappingType extends IsOK
             2
         )
         ) {
-            throw new \InvalidArgumentException("End property array not a valid array, or has more than 2 elements");
+            throw new \InvalidArgumentException('End property array not a valid array, or has more than 2 elements');
         }
         $this->endProperty = $endProperty;
         return $this;
     }
 
     /**
-     * Adds as condition
+     * Adds as condition.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType $condition
+     * @return self
      */
     public function addToCondition(TConditionType $condition)
     {
@@ -257,10 +257,10 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * isset condition
+     * isset condition.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetCondition($index)
     {
@@ -268,7 +268,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * unset condition
+     * unset condition.
      *
      * @param  scalar $index
      * @return void
@@ -279,7 +279,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Gets as condition
+     * Gets as condition.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType[]
      */
@@ -289,7 +289,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Sets a new condition
+     * Sets a new condition.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType[] $condition
      * @return self
@@ -310,7 +310,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Gets as modificationFunctionMapping
+     * Gets as modificationFunctionMapping.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetModificationFunctionMappingType
      */
@@ -320,7 +320,7 @@ class TAssociationSetMappingType extends IsOK
     }
 
     /**
-     * Sets a new modificationFunctionMapping
+     * Sets a new modificationFunctionMapping.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAssociationSetModificationFunctionMappingType
      * $modificationFunctionMapping
@@ -373,7 +373,7 @@ class TAssociationSetMappingType extends IsOK
             2
         )
         ) {
-            $msg = "End property array not a valid array, or has more than 2 elements";
+            $msg = 'End property array not a valid array, or has more than 2 elements';
             return false;
         }
         if (!$this->isChildArrayOK($this->endProperty, $msg)) {
@@ -384,7 +384,7 @@ class TAssociationSetMappingType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TConditionType'
         )
         ) {
-            $msg = "Condition array not a valid array";
+            $msg = 'Condition array not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->condition, $msg)) {

@@ -103,7 +103,7 @@ trait GExpressionTrait
     private $valueTermReference = null;
 
     /**
-     * Gets as string
+     * Gets as string.
      *
      * @return string
      */
@@ -113,7 +113,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new string
+     * Sets a new string.
      *
      * @param  string $string
      * @return self
@@ -122,7 +122,7 @@ trait GExpressionTrait
     {
         $msg = null;
         if (null !== $string && !is_string($string)) {
-            $msg = "String must be a string";
+            $msg = 'String must be a string';
             throw new \InvalidArgumentException($msg);
         }
         $this->string = $string;
@@ -130,7 +130,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as binary
+     * Gets as binary.
      *
      * @return mixed
      */
@@ -140,7 +140,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new binary
+     * Sets a new binary.
      *
      * @param  mixed $binary
      * @return self
@@ -152,9 +152,9 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as int
+     * Gets as int.
      *
-     * @return integer
+     * @return int
      */
     public function getInt()
     {
@@ -162,9 +162,9 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new int
+     * Sets a new int.
      *
-     * @param  integer $int
+     * @param  int  $int
      * @return self
      */
     public function setInt($int)
@@ -174,7 +174,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as float
+     * Gets as float.
      *
      * @return float
      */
@@ -184,7 +184,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new float
+     * Sets a new float.
      *
      * @param  float $float
      * @return self
@@ -196,7 +196,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as guid
+     * Gets as guid.
      *
      * @return string
      */
@@ -206,7 +206,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new guid
+     * Sets a new guid.
      *
      * @param  string $guid
      * @return self
@@ -215,7 +215,7 @@ trait GExpressionTrait
     {
         $msg = null;
         if (null != $guid && !$this->isTGuidLiteralValid($guid)) {
-            $msg = "Guid must be a valid TGuidLiteral";
+            $msg = 'Guid must be a valid TGuidLiteral';
             throw new \InvalidArgumentException($msg);
         }
         $this->guid = $guid;
@@ -223,7 +223,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as decimal
+     * Gets as decimal.
      *
      * @return float
      */
@@ -233,7 +233,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new decimal
+     * Sets a new decimal.
      *
      * @param  float $decimal
      * @return self
@@ -245,9 +245,9 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as bool
+     * Gets as bool.
      *
-     * @return boolean
+     * @return bool
      */
     public function getBool()
     {
@@ -255,9 +255,9 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new bool
+     * Sets a new bool.
      *
-     * @param  boolean $bool
+     * @param  bool $bool
      * @return self
      */
     public function setBool($bool)
@@ -267,7 +267,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as dateTime
+     * Gets as dateTime.
      *
      * @return \DateTime
      */
@@ -277,7 +277,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new dateTime
+     * Sets a new dateTime.
      *
      * @param  \DateTime $dateTime
      * @return self
@@ -289,7 +289,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as dateTimeOffset
+     * Gets as dateTimeOffset.
      *
      * @return \DateTime
      */
@@ -299,7 +299,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new dateTimeOffset
+     * Sets a new dateTimeOffset.
      *
      * @param  \DateTime $dateTimeOffset
      * @return self
@@ -311,7 +311,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as enum
+     * Gets as enum.
      *
      * @return string
      */
@@ -321,7 +321,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new enum
+     * Sets a new enum.
      *
      * @param  string $enum
      * @return self
@@ -330,7 +330,7 @@ trait GExpressionTrait
     {
         $msg = null;
         if (null != $enum && !$this->isTQualifiedNameValid($enum)) {
-            $msg = "Enum must be a valid TQualifiedName";
+            $msg = 'Enum must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->enum = $enum;
@@ -338,7 +338,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as path
+     * Gets as path.
      *
      * @return string
      */
@@ -348,7 +348,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new path
+     * Sets a new path.
      *
      * @param  string $path
      * @return self
@@ -357,7 +357,7 @@ trait GExpressionTrait
     {
         $msg = null;
         if (null != $path && !$this->isTQualifiedNameValid($path)) {
-            $msg = "Path must be a valid TQualifiedName";
+            $msg = 'Path must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->path = $path;
@@ -365,7 +365,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as if
+     * Gets as if.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType
      */
@@ -375,7 +375,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new if
+     * Sets a new if.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TIfExpressionType $if
      * @return self
@@ -391,7 +391,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as record
+     * Gets as record.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType
      */
@@ -401,7 +401,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new record
+     * Sets a new record.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TRecordExpressionType $record
      * @return self
@@ -417,7 +417,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as collection
+     * Gets as collection.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType
      */
@@ -427,7 +427,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new collection
+     * Sets a new collection.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TCollectionExpressionType $collection
      * @return self
@@ -443,7 +443,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as typeAssert
+     * Gets as typeAssert.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType
      */
@@ -453,7 +453,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new typeAssert
+     * Sets a new typeAssert.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAssertExpressionType $typeAssert
      * @return self
@@ -469,7 +469,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as typeTest
+     * Gets as typeTest.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType
      */
@@ -479,7 +479,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new typeTest
+     * Sets a new typeTest.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeTestExpressionType $typeTest
      * @return self
@@ -495,7 +495,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as functionReference
+     * Gets as functionReference.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType
      */
@@ -505,7 +505,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new functionReference
+     * Sets a new functionReference.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReferenceExpressionType $functionReference
      * @return self
@@ -521,7 +521,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as entitySetReference
+     * Gets as entitySetReference.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType
      */
@@ -531,7 +531,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new entitySetReference
+     * Sets a new entitySetReference.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntitySetReferenceExpressionType $entitySetReference
      * @return self
@@ -547,7 +547,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as anonymousFunction
+     * Gets as anonymousFunction.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType
      */
@@ -557,7 +557,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new anonymousFunction
+     * Sets a new anonymousFunction.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TAnonymousFunctionExpressionType $anonymousFunction
      * @return self
@@ -573,7 +573,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as parameterReference
+     * Gets as parameterReference.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType
      */
@@ -583,7 +583,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new parameterReference
+     * Sets a new parameterReference.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TParameterReferenceExpressionType $parameterReference
      * @return self
@@ -599,7 +599,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as apply
+     * Gets as apply.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType
      */
@@ -609,7 +609,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new apply
+     * Sets a new apply.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TApplyExpressionType $apply
      * @return self
@@ -625,7 +625,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as propertyReference
+     * Gets as propertyReference.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType
      */
@@ -635,7 +635,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new propertyReference
+     * Sets a new propertyReference.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyReferenceExpressionType $propertyReference
      * @return self
@@ -651,7 +651,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Gets as valueTermReference
+     * Gets as valueTermReference.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType
      */
@@ -661,7 +661,7 @@ trait GExpressionTrait
     }
 
     /**
-     * Sets a new valueTermReference
+     * Sets a new valueTermReference.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueTermReferenceExpressionType $valueTermReference
      * @return self
@@ -687,29 +687,29 @@ trait GExpressionTrait
                 $counter += isset($this->$name) ? 1 : 0;
             }
             if (-1 < $this->gExpressionMinimum && $counter < $this->gExpressionMinimum) {
-                $msg = $counter . " fields not null.  Need minimum of ".$this->gExpressionMinimum. ": "
+                $msg = $counter . ' fields not null.  Need minimum of '.$this->gExpressionMinimum. ': '
                         . get_class($this);
                 return false;
             }
             if (-1 < $this->gExpressionMaximum && $counter > $this->gExpressionMaximum) {
-                $msg = $counter . " fields not null.  Need maximum of ".$this->gExpressionMaximum. ": "
+                $msg = $counter . ' fields not null.  Need maximum of '.$this->gExpressionMaximum. ': '
                         . get_class($this);
                 return false;
             }
         }
 
         if (null != $this->guid && !$this->isTGuidLiteralValid($this->guid)) {
-            $msg = "Guid must be a valid TGuidLiteral: " . get_class($this);
+            $msg = 'Guid must be a valid TGuidLiteral: ' . get_class($this);
             return false;
         }
 
         if (null != $this->enum && !$this->isTQualifiedNameValid($this->enum)) {
-            $msg = "Enum must be a valid TQualifiedName: " . get_class($this);
+            $msg = 'Enum must be a valid TQualifiedName: ' . get_class($this);
             return false;
         }
 
         if (null != $this->path && !$this->isTQualifiedNameValid($this->path)) {
-            $msg = "Path must be a valid TQualifiedName: " . get_class($this);
+            $msg = 'Path must be a valid TQualifiedName: ' . get_class($this);
             return false;
         }
 
@@ -725,7 +725,7 @@ trait GExpressionTrait
                 return false;
             }
             if (!$this->isObjectNullOrType($type, $this->$key)) {
-                $msg = 'Type mismatch - should be ' . $type . ", is " . get_class($this->$key) . ": " . get_class($this);
+                $msg = 'Type mismatch - should be ' . $type . ', is ' . get_class($this->$key) . ': ' . get_class($this);
                 return false;
             }
         }

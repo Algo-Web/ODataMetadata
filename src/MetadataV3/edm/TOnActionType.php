@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GEmptyElementExtensibilityTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TActionTrait;
 
 /**
- * Class representing TOnActionType
+ * Class representing TOnActionType.
  *
  * XSD Type: TOnAction
  */
@@ -21,7 +21,7 @@ class TOnActionType extends IsOK
     private $action = null;
 
     /**
-     * Gets as action
+     * Gets as action.
      *
      * @return string
      */
@@ -31,7 +31,7 @@ class TOnActionType extends IsOK
     }
 
     /**
-     * Sets a new action
+     * Sets a new action.
      *
      * @param  string $action
      * @return self
@@ -39,7 +39,7 @@ class TOnActionType extends IsOK
     public function setAction($action)
     {
         if (!$this->isTActionValid($action)) {
-            $msg = "Action must be a valid TAction";
+            $msg = 'Action must be a valid TAction';
             throw new \InvalidArgumentException($msg);
         }
         $this->action = $action;
@@ -49,7 +49,7 @@ class TOnActionType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTActionValid($this->action)) {
-            $msg = "Action must be a valid TAction";
+            $msg = 'Action must be a valid TAction';
             return false;
         }
         if (!$this->isExtensibilityElementOK($msg)) {

@@ -17,7 +17,7 @@ class TFunctionTypeTest extends TestCase
 
     public function testIsSridFacetValidNegativeInteger()
     {
-        $expected = "Input must be non-negative integer";
+        $expected = 'Input must be non-negative integer';
         $actual = null;
 
         $foo = m::mock(TFunctionType::class)->makePartial();
@@ -33,7 +33,7 @@ class TFunctionTypeTest extends TestCase
 
     public function testIsSridFacetValidNonNegativeFloat()
     {
-        $expected = "Input must be integer";
+        $expected = 'Input must be integer';
         $actual = null;
 
         $foo = m::mock(TFunctionType::class)->makePartial();
@@ -48,7 +48,7 @@ class TFunctionTypeTest extends TestCase
 
     public function testIsSridFacetValidNegativeFloat()
     {
-        $expected = "Input must be integer";
+        $expected = 'Input must be integer';
         $actual = null;
 
         $foo = m::mock(TFunctionType::class)->makePartial();
@@ -64,7 +64,7 @@ class TFunctionTypeTest extends TestCase
 
     public function testIsSridFacetValidNonString()
     {
-        $expected = "Input must be a string";
+        $expected = 'Input must be a string';
         $actual = null;
 
         $foo = m::mock(TFunctionType::class)->makePartial();
@@ -80,7 +80,7 @@ class TFunctionTypeTest extends TestCase
 
     public function testPreserveStringNotAString()
     {
-        $expected = "Input must be a string";
+        $expected = 'Input must be a string';
         $actual = null;
 
         $foo = m::mock(TFunctionType::class)->makePartial();
@@ -96,7 +96,7 @@ class TFunctionTypeTest extends TestCase
 
     public function testReplaceStringNotAString()
     {
-        $expected = "Input must be a string";
+        $expected = 'Input must be a string';
         $actual = null;
 
         $foo = m::mock(TFunctionType::class)->makePartial();

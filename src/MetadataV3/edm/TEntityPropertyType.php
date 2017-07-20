@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TCommonPropertyAttributesTrait;
 
 /**
- * Class representing TEntityPropertyType
+ * Class representing TEntityPropertyType.
  *
  * XSD Type: TEntityProperty
  */
@@ -49,7 +49,7 @@ class TEntityPropertyType extends IsOK
     private $typeAnnotation = [];
 
     /**
-     * Gets as storeGeneratedPattern
+     * Gets as storeGeneratedPattern.
      *
      * @return string
      */
@@ -59,7 +59,7 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * Sets a new storeGeneratedPattern
+     * Sets a new storeGeneratedPattern.
      *
      * @param  string $storeGeneratedPattern
      * @return self
@@ -67,7 +67,7 @@ class TEntityPropertyType extends IsOK
     public function setStoreGeneratedPattern($storeGeneratedPattern)
     {
         if (null != $storeGeneratedPattern && !$this->isTGenerationPatternValid($storeGeneratedPattern)) {
-            $msg = "Store generation pattern must be a valid TGenerationPattern: " . get_class($this);
+            $msg = 'Store generation pattern must be a valid TGenerationPattern: ' . get_class($this);
             throw new \InvalidArgumentException($msg);
         }
         $this->storeGeneratedPattern = $storeGeneratedPattern;
@@ -75,10 +75,10 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * Adds as documentation
+     * Adds as documentation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
+     * @return self
      */
     public function addToDocumentation(TDocumentationType $documentation)
     {
@@ -91,10 +91,10 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * isset documentation
+     * isset documentation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetDocumentation($index)
     {
@@ -102,7 +102,7 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * unset documentation
+     * unset documentation.
      *
      * @param  scalar $index
      * @return void
@@ -113,7 +113,7 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[]
      */
@@ -123,7 +123,7 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[] $documentation
      * @return self
@@ -145,10 +145,10 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * Adds as valueAnnotation
+     * Adds as valueAnnotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType $valueAnnotation
+     * @return self
      */
     public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
@@ -161,10 +161,10 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * isset valueAnnotation
+     * isset valueAnnotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetValueAnnotation($index)
     {
@@ -172,7 +172,7 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * unset valueAnnotation
+     * unset valueAnnotation.
      *
      * @param  scalar $index
      * @return void
@@ -183,7 +183,7 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * Gets as valueAnnotation
+     * Gets as valueAnnotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[]
      */
@@ -193,7 +193,7 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * Sets a new valueAnnotation
+     * Sets a new valueAnnotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      * @return self
@@ -213,10 +213,10 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * Adds as typeAnnotation
+     * Adds as typeAnnotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType $typeAnnotation
+     * @return self
      */
     public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
@@ -229,10 +229,10 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * isset typeAnnotation
+     * isset typeAnnotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetTypeAnnotation($index)
     {
@@ -240,7 +240,7 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * unset typeAnnotation
+     * unset typeAnnotation.
      *
      * @param  scalar $index
      * @return void
@@ -251,7 +251,7 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * Gets as typeAnnotation
+     * Gets as typeAnnotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[]
      */
@@ -261,7 +261,7 @@ class TEntityPropertyType extends IsOK
     }
 
     /**
-     * Sets a new typeAnnotation
+     * Sets a new typeAnnotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      * @return self
@@ -283,7 +283,7 @@ class TEntityPropertyType extends IsOK
     public function isOK(&$msg = null)
     {
         if (null != $this->storeGeneratedPattern && !$this->isTGenerationPatternValid($this->storeGeneratedPattern)) {
-            $msg = "Store generation pattern must be a valid TGenerationPattern: " . get_class($this);
+            $msg = 'Store generation pattern must be a valid TGenerationPattern: ' . get_class($this);
             return false;
         }
         if (!$this->isValidArrayOK(

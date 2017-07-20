@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TOneChildExpressionType
+ * Class representing TOneChildExpressionType.
  *
  * XSD Type: TOneChildExpression
  */
@@ -23,7 +23,7 @@ class TOneChildExpressionType extends IsOK
     private $binary = null;
 
     /**
-     * @property boolean $bool
+     * @property bool $bool
      */
     private $bool = null;
 
@@ -63,7 +63,7 @@ class TOneChildExpressionType extends IsOK
     private $guid = null;
 
     /**
-     * @property integer $int
+     * @property int $int
      */
     private $int = null;
 
@@ -193,10 +193,10 @@ class TOneChildExpressionType extends IsOK
     private $urlRef = null;
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToAnnotation(Annotation $annotation)
     {
@@ -205,10 +205,10 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * isset annotation
+     * isset annotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAnnotation($index)
     {
@@ -216,7 +216,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * unset annotation
+     * unset annotation.
      *
      * @param  scalar $index
      * @return void
@@ -227,7 +227,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as annotation
+     * Gets as annotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -237,7 +237,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new annotation
+     * Sets a new annotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      * @return self
@@ -249,7 +249,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as binary
+     * Gets as binary.
      *
      * @return string
      */
@@ -259,7 +259,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new binary
+     * Sets a new binary.
      *
      * @param  string $binary
      * @return self
@@ -271,9 +271,9 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as bool
+     * Gets as bool.
      *
-     * @return boolean
+     * @return bool
      */
     public function getBool()
     {
@@ -281,9 +281,9 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new bool
+     * Sets a new bool.
      *
-     * @param  boolean $bool
+     * @param  bool $bool
      * @return self
      */
     public function setBool($bool)
@@ -293,7 +293,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as date
+     * Gets as date.
      *
      * @return \DateTime
      */
@@ -303,7 +303,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new date
+     * Sets a new date.
      *
      * @param  \DateTime $date
      * @return self
@@ -315,7 +315,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as dateTimeOffset
+     * Gets as dateTimeOffset.
      *
      * @return \DateTime
      */
@@ -325,7 +325,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new dateTimeOffset
+     * Sets a new dateTimeOffset.
      *
      * @param  \DateTime $dateTimeOffset
      * @return self
@@ -337,7 +337,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as decimal
+     * Gets as decimal.
      *
      * @return float
      */
@@ -347,7 +347,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new decimal
+     * Sets a new decimal.
      *
      * @param  float $decimal
      * @return self
@@ -359,7 +359,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as duration
+     * Gets as duration.
      *
      * @return \DateInterval
      */
@@ -369,7 +369,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new duration
+     * Sets a new duration.
      *
      * @param  \DateInterval $duration
      * @return self
@@ -381,10 +381,10 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Adds as enumMember
+     * Adds as enumMember.
      *
-     * @return self
      * @param  string $enumMember
+     * @return self
      */
     public function addToEnumMember($enumMember)
     {
@@ -393,10 +393,10 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * isset enumMember
+     * isset enumMember.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEnumMember($index)
     {
@@ -404,7 +404,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * unset enumMember
+     * unset enumMember.
      *
      * @param  scalar $index
      * @return void
@@ -415,7 +415,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as enumMember
+     * Gets as enumMember.
      *
      * @return string[]
      */
@@ -425,7 +425,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new enumMember
+     * Sets a new enumMember.
      *
      * @param  string $enumMember
      * @return self
@@ -437,7 +437,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as float
+     * Gets as float.
      *
      * @return float
      */
@@ -447,7 +447,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new float
+     * Sets a new float.
      *
      * @param  float $float
      * @return self
@@ -459,7 +459,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as guid
+     * Gets as guid.
      *
      * @return string
      */
@@ -469,7 +469,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new guid
+     * Sets a new guid.
      *
      * @param  string $guid
      * @return self
@@ -481,9 +481,9 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as int
+     * Gets as int.
      *
-     * @return integer
+     * @return int
      */
     public function getInt()
     {
@@ -491,9 +491,9 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new int
+     * Sets a new int.
      *
-     * @param  integer $int
+     * @param  int  $int
      * @return self
      */
     public function setInt($int)
@@ -503,7 +503,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as string
+     * Gets as string.
      *
      * @return string
      */
@@ -513,7 +513,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new string
+     * Sets a new string.
      *
      * @param  string $string
      * @return self
@@ -525,7 +525,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as timeOfDay
+     * Gets as timeOfDay.
      *
      * @return \DateTime
      */
@@ -535,7 +535,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new timeOfDay
+     * Sets a new timeOfDay.
      *
      * @param  \DateTime $timeOfDay
      * @return self
@@ -547,7 +547,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as annotationPath
+     * Gets as annotationPath.
      *
      * @return string
      */
@@ -557,7 +557,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new annotationPath
+     * Sets a new annotationPath.
      *
      * @param  string $annotationPath
      * @return self
@@ -569,7 +569,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as apply
+     * Gets as apply.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType
      */
@@ -579,7 +579,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new apply
+     * Sets a new apply.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType $apply
      * @return self
@@ -591,7 +591,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as cast
+     * Gets as cast.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType
      */
@@ -601,7 +601,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new cast
+     * Sets a new cast.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $cast
      * @return self
@@ -613,7 +613,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as collection
+     * Gets as collection.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType
      */
@@ -623,7 +623,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new collection
+     * Sets a new collection.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCollectionExpressionType $collection
      * @return self
@@ -635,7 +635,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as if
+     * Gets as if.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType
      */
@@ -645,7 +645,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new if
+     * Sets a new if.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TIfExpressionType $if
      * @return self
@@ -657,7 +657,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as eq
+     * Gets as eq.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -667,7 +667,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new eq
+     * Sets a new eq.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $eq
      * @return self
@@ -679,7 +679,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as ne
+     * Gets as ne.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -689,7 +689,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new ne
+     * Sets a new ne.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ne
      * @return self
@@ -701,7 +701,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as ge
+     * Gets as ge.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -711,7 +711,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new ge
+     * Sets a new ge.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $ge
      * @return self
@@ -723,7 +723,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as gt
+     * Gets as gt.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -733,7 +733,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new gt
+     * Sets a new gt.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $gt
      * @return self
@@ -745,7 +745,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as le
+     * Gets as le.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -755,7 +755,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new le
+     * Sets a new le.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $le
      * @return self
@@ -767,7 +767,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as lt
+     * Gets as lt.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -777,7 +777,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new lt
+     * Sets a new lt.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $lt
      * @return self
@@ -789,7 +789,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as and
+     * Gets as and.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -799,7 +799,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new and
+     * Sets a new and.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $and
      * @return self
@@ -811,7 +811,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as or
+     * Gets as or.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType
      */
@@ -821,7 +821,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new or
+     * Sets a new or.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TTwoChildrenExpressionType $or
      * @return self
@@ -833,7 +833,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as not
+     * Gets as not.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType
      */
@@ -843,7 +843,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new not
+     * Sets a new not.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $not
      * @return self
@@ -855,7 +855,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as isOf
+     * Gets as isOf.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType
      */
@@ -865,7 +865,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new isOf
+     * Sets a new isOf.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TCastOrIsOfExpressionType $isOf
      * @return self
@@ -877,7 +877,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as labeledElement
+     * Gets as labeledElement.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType
      */
@@ -887,7 +887,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new labeledElement
+     * Sets a new labeledElement.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TLabeledElementExpressionType $labeledElement
      * @return self
@@ -899,7 +899,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as labeledElementReference
+     * Gets as labeledElementReference.
      *
      * @return string
      */
@@ -909,7 +909,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new labeledElementReference
+     * Sets a new labeledElementReference.
      *
      * @param  string $labeledElementReference
      * @return self
@@ -921,10 +921,10 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Adds as annotation
+     * Adds as annotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation $annotation
+     * @return self
      */
     public function addToNull(Annotation $annotation)
     {
@@ -933,10 +933,10 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * isset null
+     * isset null.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetNull($index)
     {
@@ -944,7 +944,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * unset null
+     * unset null.
      *
      * @param  scalar $index
      * @return void
@@ -955,7 +955,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as null
+     * Gets as null.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[]
      */
@@ -965,7 +965,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new null
+     * Sets a new null.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $null
      * @return self
@@ -977,7 +977,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as navigationPropertyPath
+     * Gets as navigationPropertyPath.
      *
      * @return string
      */
@@ -987,7 +987,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new navigationPropertyPath
+     * Sets a new navigationPropertyPath.
      *
      * @param  string $navigationPropertyPath
      * @return self
@@ -999,7 +999,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as path
+     * Gets as path.
      *
      * @return string
      */
@@ -1009,7 +1009,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new path
+     * Sets a new path.
      *
      * @param  string $path
      * @return self
@@ -1021,7 +1021,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as propertyPath
+     * Gets as propertyPath.
      *
      * @return string
      */
@@ -1031,7 +1031,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new propertyPath
+     * Sets a new propertyPath.
      *
      * @param  string $propertyPath
      * @return self
@@ -1043,7 +1043,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as record
+     * Gets as record.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType
      */
@@ -1053,7 +1053,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new record
+     * Sets a new record.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TRecordExpressionType $record
      * @return self
@@ -1065,7 +1065,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Gets as urlRef
+     * Gets as urlRef.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType
      */
@@ -1075,7 +1075,7 @@ class TOneChildExpressionType extends IsOK
     }
 
     /**
-     * Sets a new urlRef
+     * Sets a new urlRef.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV4\edm\TOneChildExpressionType $urlRef
      * @return self

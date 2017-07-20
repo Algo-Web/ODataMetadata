@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TComplexTypeType
+ * Class representing TComplexTypeType.
  *
  * XSD Type: TComplexType
  */
@@ -33,7 +33,7 @@ class TComplexTypeType extends IsOK
     private $property = array();
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -43,7 +43,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -55,7 +55,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as typeAccess
+     * Gets as typeAccess.
      *
      * @return string
      */
@@ -65,7 +65,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new typeAccess
+     * Sets a new typeAccess.
      *
      * @param  string $typeAccess
      * @return self
@@ -77,7 +77,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType
      */
@@ -87,7 +87,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TDocumentationType $documentation
      * @return self
@@ -99,10 +99,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypePropertyType $property
+     * @return self
      */
     public function addToProperty(TComplexTypePropertyType $property)
     {
@@ -111,10 +111,10 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * isset property
+     * isset property.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetProperty($index)
     {
@@ -122,7 +122,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * unset property
+     * unset property.
      *
      * @param  scalar $index
      * @return void
@@ -133,7 +133,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Gets as property
+     * Gets as property.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypePropertyType[]
      */
@@ -143,7 +143,7 @@ class TComplexTypeType extends IsOK
     }
 
     /**
-     * Sets a new property
+     * Sets a new property.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\TComplexTypePropertyType[] $property
      * @return self

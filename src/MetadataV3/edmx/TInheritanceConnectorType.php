@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TInheritanceConnectorType
+ * Class representing TInheritanceConnectorType.
  *
  * XSD Type: TInheritanceConnector
  */
@@ -18,7 +18,7 @@ class TInheritanceConnectorType extends IsOK
     private $entityType = null;
 
     /**
-     * @property boolean $manuallyRouted
+     * @property bool $manuallyRouted
      */
     private $manuallyRouted = null;
 
@@ -28,7 +28,7 @@ class TInheritanceConnectorType extends IsOK
     private $connectorPoint = [];
 
     /**
-     * Gets as entityType
+     * Gets as entityType.
      *
      * @return string
      */
@@ -38,7 +38,7 @@ class TInheritanceConnectorType extends IsOK
     }
 
     /**
-     * Sets a new entityType
+     * Sets a new entityType.
      *
      * @param  string $entityType
      * @return self
@@ -46,7 +46,7 @@ class TInheritanceConnectorType extends IsOK
     public function setEntityType($entityType)
     {
         if (!$this->isStringNotNullOrEmpty($entityType)) {
-            $msg = "Entity type cannot be null or empty";
+            $msg = 'Entity type cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->entityType = $entityType;
@@ -54,9 +54,9 @@ class TInheritanceConnectorType extends IsOK
     }
 
     /**
-     * Gets as manuallyRouted
+     * Gets as manuallyRouted.
      *
-     * @return boolean
+     * @return bool
      */
     public function getManuallyRouted()
     {
@@ -64,9 +64,9 @@ class TInheritanceConnectorType extends IsOK
     }
 
     /**
-     * Sets a new manuallyRouted
+     * Sets a new manuallyRouted.
      *
-     * @param  boolean $manuallyRouted
+     * @param  bool $manuallyRouted
      * @return self
      */
     public function setManuallyRouted($manuallyRouted)
@@ -76,10 +76,10 @@ class TInheritanceConnectorType extends IsOK
     }
 
     /**
-     * Adds as connectorPoint
+     * Adds as connectorPoint.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType $connectorPoint
+     * @return self
      */
     public function addToConnectorPoint(TConnectorPointType $connectorPoint)
     {
@@ -92,10 +92,10 @@ class TInheritanceConnectorType extends IsOK
     }
 
     /**
-     * isset connectorPoint
+     * isset connectorPoint.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetConnectorPoint($index)
     {
@@ -103,7 +103,7 @@ class TInheritanceConnectorType extends IsOK
     }
 
     /**
-     * unset connectorPoint
+     * unset connectorPoint.
      *
      * @param  scalar $index
      * @return void
@@ -114,7 +114,7 @@ class TInheritanceConnectorType extends IsOK
     }
 
     /**
-     * Gets as connectorPoint
+     * Gets as connectorPoint.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType[]
      */
@@ -124,7 +124,7 @@ class TInheritanceConnectorType extends IsOK
     }
 
     /**
-     * Sets a new connectorPoint
+     * Sets a new connectorPoint.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType[] $connectorPoint
      * @return self
@@ -136,7 +136,7 @@ class TInheritanceConnectorType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType'
         )
         ) {
-            $msg = "Designer info property set not a valid array";
+            $msg = 'Designer info property set not a valid array';
             throw new \InvalidArgumentException($msg);
         }
         $this->connectorPoint = $connectorPoint;
@@ -146,7 +146,7 @@ class TInheritanceConnectorType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->entityType)) {
-            $msg = "Entity type cannot be null or empty";
+            $msg = 'Entity type cannot be null or empty';
             return false;
         }
 
@@ -155,7 +155,7 @@ class TInheritanceConnectorType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\edmx\TConnectorPointType'
         )
         ) {
-            $msg = "Designer info property set not a valid array";
+            $msg = 'Designer info property set not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->connectorPoint, $msg)) {

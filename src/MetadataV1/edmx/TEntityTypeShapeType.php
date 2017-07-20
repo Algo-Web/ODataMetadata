@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TEntityTypeShapeType
+ * Class representing TEntityTypeShapeType.
  *
  * XSD Type: TEntityTypeShape
  */
@@ -38,7 +38,7 @@ class TEntityTypeShapeType extends IsOK
     private $height = null;
 
     /**
-     * @property boolean $isExpanded
+     * @property bool $isExpanded
      */
     private $isExpanded = null;
 
@@ -48,7 +48,7 @@ class TEntityTypeShapeType extends IsOK
     private $fillColor = null;
 
     /**
-     * Gets as entityType
+     * Gets as entityType.
      *
      * @return string
      */
@@ -58,7 +58,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new entityType
+     * Sets a new entityType.
      *
      * @param  string $entityType
      * @return self
@@ -70,7 +70,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as pointX
+     * Gets as pointX.
      *
      * @return float
      */
@@ -80,7 +80,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new pointX
+     * Sets a new pointX.
      *
      * @param  float $pointX
      * @return self
@@ -92,7 +92,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as pointY
+     * Gets as pointY.
      *
      * @return float
      */
@@ -102,7 +102,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new pointY
+     * Sets a new pointY.
      *
      * @param  float $pointY
      * @return self
@@ -114,7 +114,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as width
+     * Gets as width.
      *
      * @return float
      */
@@ -124,7 +124,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new width
+     * Sets a new width.
      *
      * @param  float $width
      * @return self
@@ -136,7 +136,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as height
+     * Gets as height.
      *
      * @return float
      */
@@ -146,7 +146,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new height
+     * Sets a new height.
      *
      * @param  float $height
      * @return self
@@ -158,9 +158,9 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as isExpanded
+     * Gets as isExpanded.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsExpanded()
     {
@@ -168,9 +168,9 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new isExpanded
+     * Sets a new isExpanded.
      *
-     * @param  boolean $isExpanded
+     * @param  bool $isExpanded
      * @return self
      */
     public function setIsExpanded($isExpanded)
@@ -180,7 +180,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as fillColor
+     * Gets as fillColor.
      *
      * @return string
      */
@@ -190,7 +190,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new fillColor
+     * Sets a new fillColor.
      *
      * @param  string $fillColor
      * @return self

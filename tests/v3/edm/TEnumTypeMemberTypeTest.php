@@ -12,14 +12,14 @@ class TEnumTypeMemberTypeTest extends TestCase
     public function testPreserveString()
     {
         $foo = new TEnumTypeMemberType();
-        $expected = " string ";
+        $expected = ' string ';
         $actual = $foo->preserveString($expected);
         $this->assertEquals($expected, $actual);
     }
 
     public function testSetDocumentationNotOk()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
         $foo = new TEnumTypeMemberType();
         $documentation = m::mock(TDocumentationType::class);
@@ -35,7 +35,7 @@ class TEnumTypeMemberTypeTest extends TestCase
 
     public function testIsExtensibilityElementOKNoGoodnik()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
         $foo = new TEnumTypeMemberType();
         $documentation = m::mock(TDocumentationType::class);

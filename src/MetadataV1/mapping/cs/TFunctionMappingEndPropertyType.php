@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TFunctionMappingEndPropertyType
+ * Class representing TFunctionMappingEndPropertyType.
  *
  * XSD Type: TFunctionMappingEndProperty
  */
@@ -24,7 +24,7 @@ class TFunctionMappingEndPropertyType extends IsOK
     private $scalarProperty = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -34,7 +34,7 @@ class TFunctionMappingEndPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -46,7 +46,7 @@ class TFunctionMappingEndPropertyType extends IsOK
     }
 
     /**
-     * Gets as scalarProperty
+     * Gets as scalarProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType
      */
@@ -56,7 +56,7 @@ class TFunctionMappingEndPropertyType extends IsOK
     }
 
     /**
-     * Sets a new scalarProperty
+     * Sets a new scalarProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionMappingScalarPropertyType $scalarProperty
      * @return self

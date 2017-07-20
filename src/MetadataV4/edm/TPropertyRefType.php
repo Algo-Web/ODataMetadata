@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TPropertyRefType
+ * Class representing TPropertyRefType.
  *
  * XSD Type: TPropertyRef
  */
@@ -23,7 +23,7 @@ class TPropertyRefType extends IsOK
     private $alias = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TPropertyRefType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -45,7 +45,7 @@ class TPropertyRefType extends IsOK
     }
 
     /**
-     * Gets as alias
+     * Gets as alias.
      *
      * @return string
      */
@@ -55,7 +55,7 @@ class TPropertyRefType extends IsOK
     }
 
     /**
-     * Sets a new alias
+     * Sets a new alias.
      *
      * @param  string $alias
      * @return self

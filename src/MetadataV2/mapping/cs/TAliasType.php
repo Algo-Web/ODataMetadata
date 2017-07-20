@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 
 /**
- * Class representing TAliasType
+ * Class representing TAliasType.
  *
  * XSD Type: TAlias
  */
@@ -21,7 +21,7 @@ class TAliasType
     private $value = null;
 
     /**
-     * Gets as key
+     * Gets as key.
      *
      * @return string
      */
@@ -31,7 +31,7 @@ class TAliasType
     }
 
     /**
-     * Sets a new key
+     * Sets a new key.
      *
      * @param  string $key
      * @return self
@@ -43,7 +43,7 @@ class TAliasType
     }
 
     /**
-     * Gets as value
+     * Gets as value.
      *
      * @return string
      */
@@ -53,7 +53,7 @@ class TAliasType
     }
 
     /**
-     * Sets a new value
+     * Sets a new value.
      *
      * @param  string $value
      * @return self

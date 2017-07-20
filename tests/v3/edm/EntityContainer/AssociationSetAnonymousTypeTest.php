@@ -2,22 +2,22 @@
 
 namespace AlgoWeb\ODataMetadata\Tests\v3\edm\EntityContainer;
 
-use AlgoWeb\ODataMetadata\Tests\TestCase;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType\EndAnonymousType;
+use AlgoWeb\ODataMetadata\Tests\TestCase;
 use Mockery as m;
 
 class AssociationSetAnonymousTypeTest extends TestCase
 {
     public function testSetBadName()
     {
-        $expected = "Name must be a valid TSimpleIdentifier";
+        $expected = 'Name must be a valid TSimpleIdentifier';
         $actual = null;
 
         $foo = new AssociationSetAnonymousType();
 
         try {
-            $foo->setName(" _ ");
+            $foo->setName(' _ ');
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -26,13 +26,13 @@ class AssociationSetAnonymousTypeTest extends TestCase
 
     public function testSetBadAssociation()
     {
-        $expected = "Association must be a valid TQualifiedName";
+        $expected = 'Association must be a valid TQualifiedName';
         $actual = null;
 
         $foo = new AssociationSetAnonymousType();
 
         try {
-            $foo->setAssociation(" _ ");
+            $foo->setAssociation(' _ ');
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -41,7 +41,7 @@ class AssociationSetAnonymousTypeTest extends TestCase
 
     public function testAddBadEnd()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $end = m::mock(EndAnonymousType::class);
@@ -59,7 +59,7 @@ class AssociationSetAnonymousTypeTest extends TestCase
 
     public function testSetBadEnd()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $end = m::mock(EndAnonymousType::class);
@@ -90,7 +90,7 @@ class AssociationSetAnonymousTypeTest extends TestCase
 
     public function testIsOKNewObject()
     {
-        $expected = "Name must be a valid TSimpleIdentifier";
+        $expected = 'Name must be a valid TSimpleIdentifier';
         $actual = null;
 
         $foo = new AssociationSetAnonymousType();
@@ -100,7 +100,7 @@ class AssociationSetAnonymousTypeTest extends TestCase
 
     public function testIsOKMissingAssociation()
     {
-        $expected = "Association must be a valid TQualifiedName";
+        $expected = 'Association must be a valid TQualifiedName';
         $actual = null;
 
         $foo = new AssociationSetAnonymousType();
@@ -111,7 +111,7 @@ class AssociationSetAnonymousTypeTest extends TestCase
 
     public function testTooManyEnds()
     {
-        $expected = "Supplied array not a valid array: ".
+        $expected = 'Supplied array not a valid array: '.
                     'AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType';
         $actual = null;
 
@@ -120,7 +120,7 @@ class AssociationSetAnonymousTypeTest extends TestCase
 
         $foo = new AssociationSetAnonymousType();
         $foo->setName('UnitPrice');
-        $foo->setAssociation("Org.OData.Publication.V1.DocumentationUrl");
+        $foo->setAssociation('Org.OData.Publication.V1.DocumentationUrl');
         $foo->addToEnd($end);
         $foo->addToEnd($end);
         $foo->addToEnd($end);

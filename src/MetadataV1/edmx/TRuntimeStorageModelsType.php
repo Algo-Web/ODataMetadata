@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\Schema;
 
 /**
- * Class representing TRuntimeStorageModelsType
+ * Class representing TRuntimeStorageModelsType.
  *
  * XSD Type: TRuntimeStorageModels
  */
@@ -19,7 +19,7 @@ class TRuntimeStorageModelsType extends IsOK
     private $schema = null;
 
     /**
-     * Gets as schema
+     * Gets as schema.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\Schema
      */
@@ -29,7 +29,7 @@ class TRuntimeStorageModelsType extends IsOK
     }
 
     /**
-     * Sets a new schema
+     * Sets a new schema.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\edm\ssdl\Schema $schema
      * @return self

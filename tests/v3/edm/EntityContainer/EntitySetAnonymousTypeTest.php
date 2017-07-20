@@ -13,11 +13,11 @@ class EntitySetAnonymousTypeTest extends TestCase
 {
     public function testSetBadName()
     {
-        $expected = "Name must be a valid TSimpleIdentifier";
+        $expected = 'Name must be a valid TSimpleIdentifier';
         $actual = null;
 
         $foo = new EntitySetAnonymousType();
-        $name = " _ ";
+        $name = ' _ ';
 
         try {
             $foo->setName($name);
@@ -29,11 +29,11 @@ class EntitySetAnonymousTypeTest extends TestCase
 
     public function testSetBadEntityType()
     {
-        $expected = "Entity type must be a valid TQualifiedName";
+        $expected = 'Entity type must be a valid TQualifiedName';
         $actual = null;
 
         $foo = new EntitySetAnonymousType();
-        $name = " _ ";
+        $name = ' _ ';
 
         try {
             $foo->setEntityType($name);
@@ -45,11 +45,11 @@ class EntitySetAnonymousTypeTest extends TestCase
 
     public function testSetBadGetterAccess()
     {
-        $expected = "Getter access must be a valid TAccess";
+        $expected = 'Getter access must be a valid TAccess';
         $actual = null;
 
         $foo = new EntitySetAnonymousType();
-        $name = " _ ";
+        $name = ' _ ';
 
         try {
             $foo->setGetterAccess($name);
@@ -61,14 +61,14 @@ class EntitySetAnonymousTypeTest extends TestCase
 
     public function testIsTEntitySetAttributesOKBadName()
     {
-        $expectedStarts = "Name must be a valid TSimpleIdentifier";
-        $expectedEnds = "AlgoWeb_ODataMetadata_MetadataV3_edm_EntityContainer_EntitySetAnonymousType";
+        $expectedStarts = 'Name must be a valid TSimpleIdentifier';
+        $expectedEnds = 'AlgoWeb_ODataMetadata_MetadataV3_edm_EntityContainer_EntitySetAnonymousType';
         $actual = null;
 
         $foo = m::mock(EntitySetAnonymousType::class)->makePartial();
         $foo->shouldReceive('isTSimpleIdentifierValid')->andReturn(true, false)->twice();
         
-        $foo->setName(" _ ");
+        $foo->setName(' _ ');
         
         $this->assertFalse($foo->isTEntitySetAttributesOK($actual));
         $this->assertStringStartsWith($expectedStarts, $actual);
@@ -77,14 +77,14 @@ class EntitySetAnonymousTypeTest extends TestCase
 
     public function testIsTEntitySetAttributesOKBadEntityType()
     {
-        $expectedStarts = "Entity type must be a valid TQualifiedName";
-        $expectedEnds = "AlgoWeb_ODataMetadata_MetadataV3_edm_EntityContainer_EntitySetAnonymousType";
+        $expectedStarts = 'Entity type must be a valid TQualifiedName';
+        $expectedEnds = 'AlgoWeb_ODataMetadata_MetadataV3_edm_EntityContainer_EntitySetAnonymousType';
         $actual = null;
 
         $foo = m::mock(EntitySetAnonymousType::class)->makePartial();
         $foo->shouldReceive('isTQualifiedNameValid')->andReturn(true, false)->twice();
 
-        $foo->setEntityType(" _ ");
+        $foo->setEntityType(' _ ');
 
         $this->assertFalse($foo->isTEntitySetAttributesOK($actual));
         $this->assertStringStartsWith($expectedStarts, $actual);
@@ -93,14 +93,14 @@ class EntitySetAnonymousTypeTest extends TestCase
 
     public function testIsTEntitySetAttributesOKBadGetterAccess()
     {
-        $expectedStarts = "Getter access must be a valid TAccess";
-        $expectedEnds = "AlgoWeb_ODataMetadata_MetadataV3_edm_EntityContainer_EntitySetAnonymousType";
+        $expectedStarts = 'Getter access must be a valid TAccess';
+        $expectedEnds = 'AlgoWeb_ODataMetadata_MetadataV3_edm_EntityContainer_EntitySetAnonymousType';
         $actual = null;
 
         $foo = m::mock(EntitySetAnonymousType::class)->makePartial();
         $foo->shouldReceive('isTAccessOk')->andReturn(true, false)->twice();
 
-        $foo->setGetterAccess(" _ ");
+        $foo->setGetterAccess(' _ ');
 
         $this->assertFalse($foo->isTEntitySetAttributesOK($actual));
         $this->assertStringStartsWith($expectedStarts, $actual);
@@ -109,7 +109,7 @@ class EntitySetAnonymousTypeTest extends TestCase
 
     public function testSetBadTypeAnnotation()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $type = m::mock(TTypeAnnotationType::class)->makePartial();
@@ -207,7 +207,7 @@ class EntitySetAnonymousTypeTest extends TestCase
 
     public function testSetBadValueAnnotation()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $type = m::mock(TValueAnnotationType::class)->makePartial();

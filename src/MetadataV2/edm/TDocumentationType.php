@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TDocumentationType
+ * Class representing TDocumentationType.
  *
  * The Documentation element is used to provide documentation of comments on the
  * contents of the XML file. It is valid under Schema, Type, Index and Relationship
@@ -26,7 +26,7 @@ class TDocumentationType extends IsOK
     private $longDescription = null;
 
     /**
-     * Gets as summary
+     * Gets as summary.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TTextType
      */
@@ -36,7 +36,7 @@ class TDocumentationType extends IsOK
     }
 
     /**
-     * Sets a new summary
+     * Sets a new summary.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TTextType $summary
      * @return self
@@ -48,7 +48,7 @@ class TDocumentationType extends IsOK
     }
 
     /**
-     * Gets as longDescription
+     * Gets as longDescription.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TTextType
      */
@@ -58,7 +58,7 @@ class TDocumentationType extends IsOK
     }
 
     /**
-     * Sets a new longDescription
+     * Sets a new longDescription.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TTextType $longDescription
      * @return self

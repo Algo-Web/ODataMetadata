@@ -13,10 +13,10 @@ class TEdmxTypeTest extends TestCase
 {
     public function testSetEmptyVersion()
     {
-        $version = " ";
+        $version = ' ';
         $foo = new TEdmxType();
 
-        $expected = "Version cannot be null or empty";
+        $expected = 'Version cannot be null or empty';
         $actual = null;
 
         try {
@@ -33,7 +33,7 @@ class TEdmxTypeTest extends TestCase
         $dataServiceType->shouldReceive('isOK')->andReturn(false)->once();
         $foo = new TEdmxType();
 
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         try {
@@ -50,7 +50,7 @@ class TEdmxTypeTest extends TestCase
         $designer->shouldReceive('isOK')->andReturn(false)->once();
         $foo = new TEdmxType();
 
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         try {
@@ -77,7 +77,7 @@ class TEdmxTypeTest extends TestCase
         $runtime->shouldReceive('isOK')->andReturn(false)->once();
         $foo = new TEdmxType();
 
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         try {
@@ -100,7 +100,7 @@ class TEdmxTypeTest extends TestCase
 
     public function testIsNewObjectOK()
     {
-        $expected = "Version cannot be null or empty";
+        $expected = 'Version cannot be null or empty';
         $actual = null;
         $foo = new TEdmxType();
 
@@ -110,10 +110,10 @@ class TEdmxTypeTest extends TestCase
 
     public function testIsObjectWithoutDataServiceOK()
     {
-        $expected = "Data service type cannot be null";
+        $expected = 'Data service type cannot be null';
         $actual = null;
         $foo = new TEdmxType();
-        $foo->setVersion("1.5");
+        $foo->setVersion('1.5');
 
         $this->assertFalse($foo->isOK($actual));
         $this->assertEquals($expected, $actual);
@@ -121,12 +121,12 @@ class TEdmxTypeTest extends TestCase
 
     public function testIsObjectWithBadDataServiceOK()
     {
-        $unwanted2 = "Version cannot be null or empty";
+        $unwanted2 = 'Version cannot be null or empty';
         $actual = null;
         $dataServiceType = m::mock(TDataServicesType::class);
         $dataServiceType->shouldReceive('isOK')->andReturn(true, false)->twice();
         $foo = new TEdmxType();
-        $foo->setVersion("1.5");
+        $foo->setVersion('1.5');
         $foo->setDataServiceType($dataServiceType);
 
         $this->assertFalse($foo->isOK($actual));
@@ -136,15 +136,15 @@ class TEdmxTypeTest extends TestCase
 
     public function testIsObjectWithBadDesignerServiceOK()
     {
-        $unwanted = "Data service type cannot be null";
-        $unwanted2 = "Version cannot be null or empty";
+        $unwanted = 'Data service type cannot be null';
+        $unwanted2 = 'Version cannot be null or empty';
         $actual = null;
         $designer = m::mock(TDesignerType::class);
         $designer->shouldReceive('isOK')->andReturn(true, false)->twice();
         $dataServiceType = m::mock(TDataServicesType::class);
         $dataServiceType->shouldReceive('isOK')->andReturn(true)->once();
         $foo = new TEdmxType();
-        $foo->setVersion("1.5");
+        $foo->setVersion('1.5');
         $foo->setDataServiceType($dataServiceType);
         $foo->setDesigner($designer);
 
@@ -155,15 +155,15 @@ class TEdmxTypeTest extends TestCase
 
     public function testIsObjectWithBadRuntimeServiceOK()
     {
-        $unwanted = "Data service type cannot be null";
-        $unwanted2 = "Version cannot be null or empty";
+        $unwanted = 'Data service type cannot be null';
+        $unwanted2 = 'Version cannot be null or empty';
         $actual = null;
         $runtime = m::mock(TRuntimeType::class);
         $runtime->shouldReceive('isOK')->andReturn(true, false)->twice();
         $dataServiceType = m::mock(TDataServicesType::class);
         $dataServiceType->shouldReceive('isOK')->andReturn(true)->once();
         $foo = new TEdmxType();
-        $foo->setVersion("1.5");
+        $foo->setVersion('1.5');
         $foo->setDataServiceType($dataServiceType);
         $foo->setRuntime($runtime);
 

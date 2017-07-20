@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 
 /**
- * Class representing TMappingFragmentType
+ * Class representing TMappingFragmentType.
  *
  * XSD Type: TMappingFragment
  */
@@ -16,7 +16,7 @@ class TMappingFragmentType extends IsOK
     private $storeEntitySet = null;
 
     /**
-     * @property boolean $makeColumnsDistinct
+     * @property bool $makeColumnsDistinct
      */
     private $makeColumnsDistinct = null;
 
@@ -36,7 +36,7 @@ class TMappingFragmentType extends IsOK
     private $condition = null;
 
     /**
-     * Gets as storeEntitySet
+     * Gets as storeEntitySet.
      *
      * @return string
      */
@@ -46,7 +46,7 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Sets a new storeEntitySet
+     * Sets a new storeEntitySet.
      *
      * @param  string $storeEntitySet
      * @return self
@@ -58,9 +58,9 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Gets as makeColumnsDistinct
+     * Gets as makeColumnsDistinct.
      *
-     * @return boolean
+     * @return bool
      */
     public function getMakeColumnsDistinct()
     {
@@ -68,9 +68,9 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Sets a new makeColumnsDistinct
+     * Sets a new makeColumnsDistinct.
      *
-     * @param  boolean $makeColumnsDistinct
+     * @param  bool $makeColumnsDistinct
      * @return self
      */
     public function setMakeColumnsDistinct($makeColumnsDistinct)
@@ -80,7 +80,7 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Gets as complexProperty
+     * Gets as complexProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TComplexPropertyType
      */
@@ -90,7 +90,7 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Sets a new complexProperty
+     * Sets a new complexProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TComplexPropertyType $complexProperty
      * @return self
@@ -102,7 +102,7 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Gets as scalarProperty
+     * Gets as scalarProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType
      */
@@ -112,7 +112,7 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Sets a new scalarProperty
+     * Sets a new scalarProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty
      * @return self
@@ -124,7 +124,7 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Gets as condition
+     * Gets as condition.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TConditionType
      */
@@ -134,7 +134,7 @@ class TMappingFragmentType extends IsOK
     }
 
     /**
-     * Sets a new condition
+     * Sets a new condition.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TConditionType $condition
      * @return self

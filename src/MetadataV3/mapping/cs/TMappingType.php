@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSpaceTrait;
 
 /**
- * Type of root level mapping elements
+ * Type of root level mapping elements.
  *
  * XSD Type: TMapping
  */
@@ -31,7 +31,7 @@ class TMappingType extends IsOK
     private $entityContainerMapping = null;
 
     /**
-     * Gets as space
+     * Gets as space.
      *
      * @return string
      */
@@ -41,7 +41,7 @@ class TMappingType extends IsOK
     }
 
     /**
-     * Sets a new space
+     * Sets a new space.
      *
      * @param  string $space
      * @return self
@@ -49,7 +49,7 @@ class TMappingType extends IsOK
     public function setSpace($space)
     {
         if (!$this->isTSpaceValid($space)) {
-            $msg = "Space not a valid TSpace";
+            $msg = 'Space not a valid TSpace';
             throw new \InvalidArgumentException($msg);
         }
         $this->space = $space;
@@ -57,10 +57,10 @@ class TMappingType extends IsOK
     }
 
     /**
-     * Adds as alias
+     * Adds as alias.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType $alias
+     * @return self
      */
     public function addToAlias(TAliasType $alias)
     {
@@ -73,10 +73,10 @@ class TMappingType extends IsOK
     }
 
     /**
-     * isset alias
+     * isset alias.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAlias($index)
     {
@@ -84,7 +84,7 @@ class TMappingType extends IsOK
     }
 
     /**
-     * unset alias
+     * unset alias.
      *
      * @param  scalar $index
      * @return void
@@ -95,7 +95,7 @@ class TMappingType extends IsOK
     }
 
     /**
-     * Gets as alias
+     * Gets as alias.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType[]
      */
@@ -105,7 +105,7 @@ class TMappingType extends IsOK
     }
 
     /**
-     * Sets a new alias
+     * Sets a new alias.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType[] $alias
      * @return self
@@ -126,7 +126,7 @@ class TMappingType extends IsOK
     }
 
     /**
-     * Gets as entityContainerMapping
+     * Gets as entityContainerMapping.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityContainerMappingType
      */
@@ -136,7 +136,7 @@ class TMappingType extends IsOK
     }
 
     /**
-     * Sets a new entityContainerMapping
+     * Sets a new entityContainerMapping.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TEntityContainerMappingType
      * $entityContainerMapping
@@ -155,11 +155,11 @@ class TMappingType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSpaceValid($this->space)) {
-            $msg = "Space not a valid TSpace";
+            $msg = 'Space not a valid TSpace';
             return false;
         }
         if (!$this->isValidArray($this->alias, '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TAliasType')) {
-            $msg = "Alias not a valid array";
+            $msg = 'Alias not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->alias, $msg)) {

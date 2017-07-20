@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TConnectorPointType
+ * Class representing TConnectorPointType.
  *
  * XSD Type: TConnectorPoint
  */
@@ -23,7 +23,7 @@ class TConnectorPointType extends IsOK
     private $pointY = null;
 
     /**
-     * Gets as pointX
+     * Gets as pointX.
      *
      * @return float
      */
@@ -33,7 +33,7 @@ class TConnectorPointType extends IsOK
     }
 
     /**
-     * Sets a new pointX
+     * Sets a new pointX.
      *
      * @param  float $pointX
      * @return self
@@ -41,7 +41,7 @@ class TConnectorPointType extends IsOK
     public function setPointX($pointX)
     {
         if (null == $pointX || !is_numeric($pointX)) {
-            $msg = "Point X value must be present and numeric";
+            $msg = 'Point X value must be present and numeric';
             throw new \InvalidArgumentException($msg);
         }
         $this->pointX = $pointX;
@@ -49,7 +49,7 @@ class TConnectorPointType extends IsOK
     }
 
     /**
-     * Gets as pointY
+     * Gets as pointY.
      *
      * @return float
      */
@@ -59,7 +59,7 @@ class TConnectorPointType extends IsOK
     }
 
     /**
-     * Sets a new pointY
+     * Sets a new pointY.
      *
      * @param  float $pointY
      * @return self
@@ -67,7 +67,7 @@ class TConnectorPointType extends IsOK
     public function setPointY($pointY)
     {
         if (null == $pointY || !is_numeric($pointY)) {
-            $msg = "Point Y value must be present and numeric";
+            $msg = 'Point Y value must be present and numeric';
             throw new \InvalidArgumentException($msg);
         }
         $this->pointY = $pointY;
@@ -77,11 +77,11 @@ class TConnectorPointType extends IsOK
     public function isOK(&$msg = null)
     {
         if (null == $this->pointX || !is_numeric($this->pointX)) {
-            $msg = "Point X value must be present and numeric";
+            $msg = 'Point X value must be present and numeric';
             return false;
         }
         if (null == $this->pointY || !is_numeric($this->pointY)) {
-            $msg = "Point X value must be present and numeric";
+            $msg = 'Point X value must be present and numeric';
             return false;
         }
         return true;

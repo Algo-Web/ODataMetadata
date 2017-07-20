@@ -2,8 +2,8 @@
 
 namespace AlgoWeb\ODataMetadata\Tests\v3\edmx;
 
-use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
+use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 use Mockery as m;
 
@@ -11,7 +11,7 @@ class TDataServicesTypeTest extends TestCase
 {
     public function testServiceVersionGreaterThanMaxVersionWithIntegerVersions()
     {
-        $expected = "Data service version cannot be greater than maximum service version";
+        $expected = 'Data service version cannot be greater than maximum service version';
         $actual = null;
 
         try {
@@ -24,7 +24,7 @@ class TDataServicesTypeTest extends TestCase
 
     public function testServiceVersionGreaterThanMaxVersionWithNonIntegerVersions()
     {
-        $expected = "Data service version cannot be greater than maximum service version";
+        $expected = 'Data service version cannot be greater than maximum service version';
         $actual = null;
 
         try {
@@ -37,7 +37,7 @@ class TDataServicesTypeTest extends TestCase
 
     public function testMaxServiceVersionNotNumeric()
     {
-        $expected = "Maximum service version must be numeric";
+        $expected = 'Maximum service version must be numeric';
         $actual = null;
 
         try {
@@ -50,7 +50,7 @@ class TDataServicesTypeTest extends TestCase
 
     public function testDataServiceVersionNotNumeric()
     {
-        $expected = "Data service version must be numeric";
+        $expected = 'Data service version must be numeric';
         $actual = null;
 
         try {
@@ -63,7 +63,7 @@ class TDataServicesTypeTest extends TestCase
 
     public function testMaxDataServiceVersionOutOfRange()
     {
-        $expected = "Maximum data service version must be 3.0 or 4.0";
+        $expected = 'Maximum data service version must be 3.0 or 4.0';
         $actual = null;
 
         try {
@@ -76,7 +76,7 @@ class TDataServicesTypeTest extends TestCase
 
     public function testDataServiceVersionOutOfRange()
     {
-        $expected = "Data service version must be 1.0, 2.0, 3.0 or 4.0";
+        $expected = 'Data service version must be 1.0, 2.0, 3.0 or 4.0';
         $actual = null;
 
         try {
@@ -89,7 +89,7 @@ class TDataServicesTypeTest extends TestCase
 
     public function testShouldNotBeAbleToSetEmptySchemaArray()
     {
-        $expected = "Data services array not a valid array";
+        $expected = 'Data services array not a valid array';
         $actual = null;
 
         $foo = new TDataServicesType();
@@ -104,7 +104,7 @@ class TDataServicesTypeTest extends TestCase
 
     public function testTryToAddBadSchema()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $schema = m::mock(Schema::class);
@@ -135,7 +135,7 @@ class TDataServicesTypeTest extends TestCase
 
     public function testSetHigherDataThanDefaultMaxServiceVersionNotOK()
     {
-        $expected = "Data service version cannot be greater than maximum service version";
+        $expected = 'Data service version cannot be greater than maximum service version';
         $actual = null;
 
         $foo = new TDataServicesType();
@@ -146,7 +146,7 @@ class TDataServicesTypeTest extends TestCase
 
     public function testIsOKWhenSchemaNotOk()
     {
-        $expected = "";
+        $expected = '';
         $actual = null;
 
         $schema = m::mock(Schema::class);

@@ -31,7 +31,7 @@ class TSchemaTypeTest extends TestCase
         for ($i = 0; $i < 100; $i++) {
             $actualMax = max($type->getRand(), $actualMax);
         }
-        $this->assertTrue($expectedMax >= $actualMax, $actualMax . " must be less than ".$expectedMax);
+        $this->assertTrue($expectedMax >= $actualMax, $actualMax . ' must be less than '.$expectedMax);
     }
 
     public function testGetRandMinimum()
@@ -42,6 +42,6 @@ class TSchemaTypeTest extends TestCase
         for ($i = 0; $i < 100; $i++) {
             $actualMin = min($type->getRand(), $actualMin);
         }
-        $this->assertTrue($expectedMin <= $actualMin, $actualMin . " must be less than ".$expectedMin);
+        $this->assertTrue($expectedMin <= $actualMin, $actualMin . ' must be less than '.$expectedMin);
     }
 }

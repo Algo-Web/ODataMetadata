@@ -22,7 +22,7 @@ trait TModificationFunctionMappingComplexPropertyPropertyGroup
     private $complexProperty = null;
 
     /**
-     * Gets as scalarProperty
+     * Gets as scalarProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      */
@@ -32,7 +32,7 @@ trait TModificationFunctionMappingComplexPropertyPropertyGroup
     }
 
     /**
-     * Sets a new scalarProperty
+     * Sets a new scalarProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingScalarPropertyType
      * $scalarProperty
@@ -49,7 +49,7 @@ trait TModificationFunctionMappingComplexPropertyPropertyGroup
     }
 
     /**
-     * Gets as complexProperty
+     * Gets as complexProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
      */
@@ -59,7 +59,7 @@ trait TModificationFunctionMappingComplexPropertyPropertyGroup
     }
 
     /**
-     * Sets a new complexProperty
+     * Sets a new complexProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TModificationFunctionMappingComplexPropertyType
      * $complexProperty

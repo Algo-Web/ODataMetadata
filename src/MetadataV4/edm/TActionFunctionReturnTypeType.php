@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TActionFunctionReturnTypeType
+ * Class representing TActionFunctionReturnTypeType.
  *
  * XSD Type: TActionFunctionReturnType
  */
@@ -18,7 +18,7 @@ class TActionFunctionReturnTypeType extends IsOK
     private $type = null;
 
     /**
-     * @property boolean $nullable
+     * @property bool $nullable
      */
     private $nullable = null;
 
@@ -28,7 +28,7 @@ class TActionFunctionReturnTypeType extends IsOK
     private $maxLength = null;
 
     /**
-     * @property integer $precision
+     * @property int $precision
      */
     private $precision = null;
 
@@ -43,7 +43,7 @@ class TActionFunctionReturnTypeType extends IsOK
     private $sRID = null;
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -53,7 +53,7 @@ class TActionFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -65,9 +65,9 @@ class TActionFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as nullable
+     * Gets as nullable.
      *
-     * @return boolean
+     * @return bool
      */
     public function getNullable()
     {
@@ -75,9 +75,9 @@ class TActionFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new nullable
+     * Sets a new nullable.
      *
-     * @param  boolean $nullable
+     * @param  bool $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -87,7 +87,7 @@ class TActionFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as maxLength
+     * Gets as maxLength.
      *
      * @return string
      */
@@ -97,7 +97,7 @@ class TActionFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new maxLength
+     * Sets a new maxLength.
      *
      * @param  string $maxLength
      * @return self
@@ -109,9 +109,9 @@ class TActionFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as precision
+     * Gets as precision.
      *
-     * @return integer
+     * @return int
      */
     public function getPrecision()
     {
@@ -119,9 +119,9 @@ class TActionFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new precision
+     * Sets a new precision.
      *
-     * @param  integer $precision
+     * @param  int  $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -131,7 +131,7 @@ class TActionFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as scale
+     * Gets as scale.
      *
      * @return string
      */
@@ -141,7 +141,7 @@ class TActionFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new scale
+     * Sets a new scale.
      *
      * @param  string $scale
      * @return self
@@ -153,7 +153,7 @@ class TActionFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as sRID
+     * Gets as sRID.
      *
      * @return string
      */
@@ -163,7 +163,7 @@ class TActionFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new sRID
+     * Sets a new sRID.
      *
      * @param  string $sRID
      * @return self

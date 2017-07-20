@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TFunctionImportParameterAndR
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TFunctionImportReturnTypeType
+ * Class representing TFunctionImportReturnTypeType.
  *
  * XSD Type: TFunctionImportReturnType
  */
@@ -35,7 +35,7 @@ class TFunctionImportReturnTypeType extends IsOK
     private $entitySetAttribute = null;
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -45,7 +45,7 @@ class TFunctionImportReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -53,7 +53,7 @@ class TFunctionImportReturnTypeType extends IsOK
     public function setType($type)
     {
         if (null != $type && !$this->isTFunctionImportParameterAndReturnTypeValid($type)) {
-            $msg = "Type must be a valid TFunctionImportParameterAndReturnType";
+            $msg = 'Type must be a valid TFunctionImportParameterAndReturnType';
             throw new \InvalidArgumentException($msg);
         }
         $this->type = $type;
@@ -61,7 +61,7 @@ class TFunctionImportReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType
      */
@@ -71,7 +71,7 @@ class TFunctionImportReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType $entitySet
      * @return self
@@ -87,7 +87,7 @@ class TFunctionImportReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as entitySetAttribute
+     * Gets as entitySetAttribute.
      *
      * @return $string
      */
@@ -97,7 +97,7 @@ class TFunctionImportReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
      * @param  string $entitySetAttribute
      * @return self
@@ -105,11 +105,11 @@ class TFunctionImportReturnTypeType extends IsOK
     public function setEntitySetAttribute($entitySetAttribute)
     {
         if (!is_string($entitySetAttribute)) {
-            $msg = "EntitySet attribute must be a string";
+            $msg = 'EntitySet attribute must be a string';
             throw new \InvalidArgumentException($msg);
         }
         if (!$this->isTSimpleIdentifierValid($entitySetAttribute)) {
-            $msg = "Entity set attribute must be a valid TSimpleIdentifier";
+            $msg = 'Entity set attribute must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->entitySetAttribute = $entitySetAttribute;
@@ -119,14 +119,14 @@ class TFunctionImportReturnTypeType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->entitySetAttribute)) {
-            $msg = "Entity set attribute must be a valid TSimpleIdentifier";
+            $msg = 'Entity set attribute must be a valid TSimpleIdentifier';
             return false;
         };
         if (!$this->isObjectNullOrType('\AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType', $this->entitySet)) {
             return false;
         };
         if (null != $this->type && !$this->isTFunctionImportParameterAndReturnTypeValid($this->type)) {
-            $msg = "Type must be a valid TFunctionImportParameterAndReturnType";
+            $msg = 'Type must be a valid TFunctionImportParameterAndReturnType';
             return false;
         }
         return true;

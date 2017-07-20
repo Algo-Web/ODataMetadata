@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TResultBindingType
+ * Class representing TResultBindingType.
  *
  * Type for function mapping result binding
  *
@@ -26,7 +26,7 @@ class TResultBindingType extends IsOK
     private $name = null;
 
     /**
-     * Gets as columnName
+     * Gets as columnName.
      *
      * @return string
      */
@@ -36,7 +36,7 @@ class TResultBindingType extends IsOK
     }
 
     /**
-     * Sets a new columnName
+     * Sets a new columnName.
      *
      * @param  string $columnName
      * @return self
@@ -52,7 +52,7 @@ class TResultBindingType extends IsOK
     }
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -62,7 +62,7 @@ class TResultBindingType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self

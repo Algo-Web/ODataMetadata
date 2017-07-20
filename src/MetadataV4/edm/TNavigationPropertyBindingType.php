@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TNavigationPropertyBindingType
+ * Class representing TNavigationPropertyBindingType.
  *
  * XSD Type: TNavigationPropertyBinding
  */
@@ -23,7 +23,7 @@ class TNavigationPropertyBindingType extends IsOK
     private $target = null;
 
     /**
-     * Gets as path
+     * Gets as path.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TNavigationPropertyBindingType extends IsOK
     }
 
     /**
-     * Sets a new path
+     * Sets a new path.
      *
      * @param  string $path
      * @return self
@@ -45,7 +45,7 @@ class TNavigationPropertyBindingType extends IsOK
     }
 
     /**
-     * Gets as target
+     * Gets as target.
      *
      * @return string
      */
@@ -55,7 +55,7 @@ class TNavigationPropertyBindingType extends IsOK
     }
 
     /**
-     * Sets a new target
+     * Sets a new target.
      *
      * @param  string $target
      * @return self

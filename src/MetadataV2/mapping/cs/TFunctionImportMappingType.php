@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 
 /**
- * Class representing TFunctionImportMappingType
+ * Class representing TFunctionImportMappingType.
  *
  * XSD Type: TFunctionImportMapping
  */
@@ -27,7 +27,7 @@ class TFunctionImportMappingType extends IsOK
     private $resultMapping = null;
 
     /**
-     * Gets as functionName
+     * Gets as functionName.
      *
      * @return string
      */
@@ -37,7 +37,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Sets a new functionName
+     * Sets a new functionName.
      *
      * @param  string $functionName
      * @return self
@@ -49,7 +49,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Gets as functionImportName
+     * Gets as functionImportName.
      *
      * @return string
      */
@@ -59,7 +59,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Sets a new functionImportName
+     * Sets a new functionImportName.
      *
      * @param  string $functionImportName
      * @return self
@@ -71,7 +71,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Gets as resultMapping
+     * Gets as resultMapping.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionImportMappingResultMappingType
      */
@@ -81,7 +81,7 @@ class TFunctionImportMappingType extends IsOK
     }
 
     /**
-     * Sets a new resultMapping
+     * Sets a new resultMapping.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionImportMappingResultMappingType
      * $resultMapping

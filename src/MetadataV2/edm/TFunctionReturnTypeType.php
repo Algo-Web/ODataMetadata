@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TFunctionReturnTypeType
+ * Class representing TFunctionReturnTypeType.
  *
  * XSD Type: TFunctionReturnType
  */
@@ -18,7 +18,7 @@ class TFunctionReturnTypeType extends IsOK
     private $type = null;
 
     /**
-     * @property boolean $nullable
+     * @property bool $nullable
      */
     private $nullable = null;
 
@@ -33,22 +33,22 @@ class TFunctionReturnTypeType extends IsOK
     private $maxLength = null;
 
     /**
-     * @property boolean $fixedLength
+     * @property bool $fixedLength
      */
     private $fixedLength = null;
 
     /**
-     * @property integer $precision
+     * @property int $precision
      */
     private $precision = null;
 
     /**
-     * @property integer $scale
+     * @property int $scale
      */
     private $scale = null;
 
     /**
-     * @property boolean $unicode
+     * @property bool $unicode
      */
     private $unicode = null;
 
@@ -73,7 +73,7 @@ class TFunctionReturnTypeType extends IsOK
     private $rowType = null;
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -83,7 +83,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -95,9 +95,9 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as nullable
+     * Gets as nullable.
      *
-     * @return boolean
+     * @return bool
      */
     public function getNullable()
     {
@@ -105,9 +105,9 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new nullable
+     * Sets a new nullable.
      *
-     * @param  boolean $nullable
+     * @param  bool $nullable
      * @return self
      */
     public function setNullable($nullable)
@@ -117,7 +117,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as defaultValue
+     * Gets as defaultValue.
      *
      * @return string
      */
@@ -127,7 +127,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new defaultValue
+     * Sets a new defaultValue.
      *
      * @param  string $defaultValue
      * @return self
@@ -139,7 +139,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as maxLength
+     * Gets as maxLength.
      *
      * @return string
      */
@@ -149,7 +149,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new maxLength
+     * Sets a new maxLength.
      *
      * @param  string $maxLength
      * @return self
@@ -161,9 +161,9 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as fixedLength
+     * Gets as fixedLength.
      *
-     * @return boolean
+     * @return bool
      */
     public function getFixedLength()
     {
@@ -171,9 +171,9 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new fixedLength
+     * Sets a new fixedLength.
      *
-     * @param  boolean $fixedLength
+     * @param  bool $fixedLength
      * @return self
      */
     public function setFixedLength($fixedLength)
@@ -183,9 +183,9 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as precision
+     * Gets as precision.
      *
-     * @return integer
+     * @return int
      */
     public function getPrecision()
     {
@@ -193,9 +193,9 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new precision
+     * Sets a new precision.
      *
-     * @param  integer $precision
+     * @param  int  $precision
      * @return self
      */
     public function setPrecision($precision)
@@ -205,9 +205,9 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as scale
+     * Gets as scale.
      *
-     * @return integer
+     * @return int
      */
     public function getScale()
     {
@@ -215,9 +215,9 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new scale
+     * Sets a new scale.
      *
-     * @param  integer $scale
+     * @param  int  $scale
      * @return self
      */
     public function setScale($scale)
@@ -227,9 +227,9 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as unicode
+     * Gets as unicode.
      *
-     * @return boolean
+     * @return bool
      */
     public function getUnicode()
     {
@@ -237,9 +237,9 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new unicode
+     * Sets a new unicode.
      *
-     * @param  boolean $unicode
+     * @param  bool $unicode
      * @return self
      */
     public function setUnicode($unicode)
@@ -249,7 +249,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as collation
+     * Gets as collation.
      *
      * @return string
      */
@@ -259,7 +259,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new collation
+     * Sets a new collation.
      *
      * @param  string $collation
      * @return self
@@ -271,7 +271,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as collectionType
+     * Gets as collectionType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TCollectionTypeType
      */
@@ -281,7 +281,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new collectionType
+     * Sets a new collectionType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TCollectionTypeType $collectionType
      * @return self
@@ -293,7 +293,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as referenceType
+     * Gets as referenceType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TReferenceTypeType
      */
@@ -303,7 +303,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new referenceType
+     * Sets a new referenceType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TReferenceTypeType $referenceType
      * @return self
@@ -315,10 +315,10 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType $property
+     * @return self
      */
     public function addToRowType(TPropertyType $property)
     {
@@ -327,10 +327,10 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * isset rowType
+     * isset rowType.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetRowType($index)
     {
@@ -338,7 +338,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * unset rowType
+     * unset rowType.
      *
      * @param  scalar $index
      * @return void
@@ -349,7 +349,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Gets as rowType
+     * Gets as rowType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType[]
      */
@@ -359,7 +359,7 @@ class TFunctionReturnTypeType extends IsOK
     }
 
     /**
-     * Sets a new rowType
+     * Sets a new rowType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TPropertyType[] $rowType
      * @return self

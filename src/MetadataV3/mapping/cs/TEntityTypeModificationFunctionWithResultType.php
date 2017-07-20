@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 use AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\Groups\TResultBindingGroup;
 
 /**
- * Class representing TEntityTypeModificationFunctionWithResultType
+ * Class representing TEntityTypeModificationFunctionWithResultType.
  *
  * Extensions to modification function for entity type InsertFunction and UpdateFunction
  *

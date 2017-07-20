@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TUsingType
+ * Class representing TUsingType.
  *
  * XSD Type: TUsing
  */
@@ -28,7 +28,7 @@ class TUsingType extends IsOK
     private $documentation = null;
 
     /**
-     * Gets as namespace
+     * Gets as namespace.
      *
      * @return string
      */
@@ -38,7 +38,7 @@ class TUsingType extends IsOK
     }
 
     /**
-     * Sets a new namespace
+     * Sets a new namespace.
      *
      * @param  string $namespace
      * @return self
@@ -50,7 +50,7 @@ class TUsingType extends IsOK
     }
 
     /**
-     * Gets as alias
+     * Gets as alias.
      *
      * @return string
      */
@@ -60,7 +60,7 @@ class TUsingType extends IsOK
     }
 
     /**
-     * Sets a new alias
+     * Sets a new alias.
      *
      * @param  string $alias
      * @return self
@@ -72,7 +72,7 @@ class TUsingType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType
      */
@@ -82,7 +82,7 @@ class TUsingType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\TDocumentationType $documentation
      * @return self

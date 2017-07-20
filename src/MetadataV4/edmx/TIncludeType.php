@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TIncludeType
+ * Class representing TIncludeType.
  *
  * XSD Type: TInclude
  */
@@ -23,7 +23,7 @@ class TIncludeType extends IsOK
     private $alias = null;
 
     /**
-     * Gets as namespace
+     * Gets as namespace.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TIncludeType extends IsOK
     }
 
     /**
-     * Sets a new namespace
+     * Sets a new namespace.
      *
      * @param  string $namespace
      * @return self
@@ -45,7 +45,7 @@ class TIncludeType extends IsOK
     }
 
     /**
-     * Gets as alias
+     * Gets as alias.
      *
      * @return string
      */
@@ -55,7 +55,7 @@ class TIncludeType extends IsOK
     }
 
     /**
-     * Sets a new alias
+     * Sets a new alias.
      *
      * @param  string $alias
      * @return self
@@ -69,22 +69,22 @@ class TIncludeType extends IsOK
     protected function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->namespace)) {
-            $msg = "Namespace Must be defined";
+            $msg = 'Namespace Must be defined';
             return false;
         }
         if (!$this->isTNamespaceNameValid($this->namespace)) {
-            $msg = "Namespace Must be a valid NameSpace";
+            $msg = 'Namespace Must be a valid NameSpace';
             return false;
         }
 
 
         if (null != $this->alias) {
             if (!is_string($this->alias)) {
-                $msg = "Alias must be either a string or null";
+                $msg = 'Alias must be either a string or null';
                 return false;
             }
             if (!$this->isTSimpleIdentifierValid($this->alias)) {
-                $msg = "Alias must be a valid TSimpleIdentifier";
+                $msg = 'Alias must be a valid TSimpleIdentifier';
                 return false;
             }
         }

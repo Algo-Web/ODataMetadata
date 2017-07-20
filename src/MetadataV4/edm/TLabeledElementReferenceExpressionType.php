@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV4\edm;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TLabeledElementReferenceExpressionType
+ * Class representing TLabeledElementReferenceExpressionType.
  *
  * XSD Type: TLabeledElementReferenceExpression
  */
@@ -18,7 +18,7 @@ class TLabeledElementReferenceExpressionType extends IsOK
     private $__value = null;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param string $value
      */
@@ -28,10 +28,10 @@ class TLabeledElementReferenceExpressionType extends IsOK
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param  string ...$value
-     * @param string[] $value
+     * @param  string   ...$value
+     * @param  string[] $value
      * @return string
      */
     public function value(...$value)
@@ -43,7 +43,7 @@ class TLabeledElementReferenceExpressionType extends IsOK
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */

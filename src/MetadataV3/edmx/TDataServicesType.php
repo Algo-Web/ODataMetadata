@@ -26,16 +26,16 @@ class TDataServicesType extends IsOK
     public function __construct($maxDataServiceVersion = '3.0', $dataServiceVersion = '3.0')
     {
         if (!is_numeric($maxDataServiceVersion)) {
-            $msg = "Maximum service version must be numeric";
+            $msg = 'Maximum service version must be numeric';
             throw new \InvalidArgumentException($msg);
         }
         if (!is_numeric($dataServiceVersion)) {
-            $msg = "Data service version must be numeric";
+            $msg = 'Data service version must be numeric';
             throw new \InvalidArgumentException($msg);
         }
 
         if (floatval($maxDataServiceVersion) < floatval($dataServiceVersion)) {
-            $msg = "Data service version cannot be greater than maximum service version";
+            $msg = 'Data service version cannot be greater than maximum service version';
             throw new \InvalidArgumentException($msg);
         }
         $this->setDataServiceVersion($dataServiceVersion);
@@ -43,7 +43,7 @@ class TDataServicesType extends IsOK
     }
 
     /**
-     * Gets as MaxDataServiceVersion
+     * Gets as MaxDataServiceVersion.
      *
      * @return string
      */
@@ -53,7 +53,7 @@ class TDataServicesType extends IsOK
     }
 
     /**
-     * Sets a new DataServiceVersion
+     * Sets a new DataServiceVersion.
      *
      * @param  string $maxDataServiceVersion
      * @return self
@@ -62,7 +62,7 @@ class TDataServicesType extends IsOK
     {
         $maxDataValid = ['3.0', '4.0'];
         if (!in_array($maxDataServiceVersion, $maxDataValid)) {
-            $msg = "Maximum data service version must be 3.0 or 4.0";
+            $msg = 'Maximum data service version must be 3.0 or 4.0';
             throw new \InvalidArgumentException($msg);
         }
         $this->maxDataServiceVersion = $maxDataServiceVersion;
@@ -70,7 +70,7 @@ class TDataServicesType extends IsOK
     }
 
     /**
-     * Gets as DataServiceVersion
+     * Gets as DataServiceVersion.
      *
      * @return string
      */
@@ -80,7 +80,7 @@ class TDataServicesType extends IsOK
     }
 
     /**
-     * Sets a new DataServiceVersion
+     * Sets a new DataServiceVersion.
      *
      * @param  string $dataServiceVersion
      * @return self
@@ -89,17 +89,17 @@ class TDataServicesType extends IsOK
     {
         $dataValid = ['1.0', '2.0', '3.0', '4.0'];
         if (!in_array($dataServiceVersion, $dataValid)) {
-            $msg = "Data service version must be 1.0, 2.0, 3.0 or 4.0";
+            $msg = 'Data service version must be 1.0, 2.0, 3.0 or 4.0';
             throw new \InvalidArgumentException($msg);
         }
         $this->dataServiceVersion = $dataServiceVersion;
         return $this;
     }
     /**
-     * Adds as schema
+     * Adds as schema.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema $schema
+     * @return self
      */
     public function addToSchema(Schema $schema)
     {
@@ -112,10 +112,10 @@ class TDataServicesType extends IsOK
     }
 
     /**
-     * isset schema
+     * isset schema.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetSchema($index)
     {
@@ -123,7 +123,7 @@ class TDataServicesType extends IsOK
     }
 
     /**
-     * unset schema
+     * unset schema.
      *
      * @param  scalar $index
      * @return void
@@ -134,7 +134,7 @@ class TDataServicesType extends IsOK
     }
 
     /**
-     * Gets as schema
+     * Gets as schema.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema[]
      */
@@ -144,7 +144,7 @@ class TDataServicesType extends IsOK
     }
 
     /**
-     * Sets a new schema
+     * Sets a new schema.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\Schema[] $dataServices
      * @return self
@@ -158,7 +158,7 @@ class TDataServicesType extends IsOK
             1
         )
         ) {
-            $msg = "Data services array not a valid array";
+            $msg = 'Data services array not a valid array';
             throw new \InvalidArgumentException($msg);
         }
         $this->schema = $dataServices;
@@ -168,7 +168,7 @@ class TDataServicesType extends IsOK
     public function isOK(&$msg = null)
     {
         if ('3.0' == $this->maxDataServiceVersion && '4.0' == $this->dataServiceVersion) {
-            $msg = "Data service version cannot be greater than maximum service version";
+            $msg = 'Data service version cannot be greater than maximum service version';
             return false;
         }
 

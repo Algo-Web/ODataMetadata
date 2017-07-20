@@ -55,12 +55,12 @@ trait TFunctionImportParameterAttributesTrait
     private $maxLength = null;
 
     /**
-     * @property integer $precision
+     * @property int $precision
      */
     private $precision = null;
 
     /**
-     * @property integer $scale
+     * @property int $scale
      */
     private $scale = null;
 
@@ -70,7 +70,7 @@ trait TFunctionImportParameterAttributesTrait
     private $sRID = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -80,7 +80,7 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -89,7 +89,7 @@ trait TFunctionImportParameterAttributesTrait
     {
         $msg = null;
         if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = "Name must be a valid TSimpleIdentifier";
+            $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->name = $name;
@@ -97,7 +97,7 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -107,7 +107,7 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
      * @param  string $type
      * @return self
@@ -116,7 +116,7 @@ trait TFunctionImportParameterAttributesTrait
     {
         $msg = null;
         if (!$this->isTFunctionImportParameterAndReturnTypeValid($type)) {
-            $msg = "Type must be a valid TFunctionImportParameterAndReturnType";
+            $msg = 'Type must be a valid TFunctionImportParameterAndReturnType';
             throw new \InvalidArgumentException($msg);
         }
         $this->type = $type;
@@ -124,7 +124,7 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Gets as mode
+     * Gets as mode.
      *
      * @return string
      */
@@ -134,7 +134,7 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Sets a new mode
+     * Sets a new mode.
      *
      * @param  string $mode
      * @return self
@@ -143,7 +143,7 @@ trait TFunctionImportParameterAttributesTrait
     {
         $msg = null;
         if (null != $mode && !$this->isTParameterModeValid($mode)) {
-            $msg = "Mode must be a valid TParameterMode";
+            $msg = 'Mode must be a valid TParameterMode';
             throw new \InvalidArgumentException($msg);
         }
         $this->mode = $mode;
@@ -151,7 +151,7 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Gets as maxLength
+     * Gets as maxLength.
      *
      * @return string
      */
@@ -161,7 +161,7 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Sets a new maxLength
+     * Sets a new maxLength.
      *
      * @param  string $maxLength
      * @return self
@@ -170,7 +170,7 @@ trait TFunctionImportParameterAttributesTrait
     {
         $msg = null;
         if (null != $maxLength && !$this->isTMaxLengthFacetValid($maxLength)) {
-            $msg = "Max length must be a valid TMaxLengthFacet";
+            $msg = 'Max length must be a valid TMaxLengthFacet';
             throw new \InvalidArgumentException($msg);
         }
         $this->maxLength = $maxLength;
@@ -178,9 +178,9 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Gets as precision
+     * Gets as precision.
      *
-     * @return integer
+     * @return int
      */
     public function getPrecision()
     {
@@ -188,16 +188,16 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Sets a new precision
+     * Sets a new precision.
      *
-     * @param  integer $precision
+     * @param  int  $precision
      * @return self
      */
     public function setPrecision($precision)
     {
         $msg = null;
         if (null != $precision && !$this->isTPrecisionFacetValid($precision)) {
-            $msg = "Precision must be a valid TPrecisionFacet";
+            $msg = 'Precision must be a valid TPrecisionFacet';
             throw new \InvalidArgumentException($msg);
         }
         $this->precision = $precision;
@@ -205,9 +205,9 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Gets as scale
+     * Gets as scale.
      *
-     * @return integer
+     * @return int
      */
     public function getScale()
     {
@@ -215,16 +215,16 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Sets a new scale
+     * Sets a new scale.
      *
-     * @param  integer $scale
+     * @param  int  $scale
      * @return self
      */
     public function setScale($scale)
     {
         $msg = null;
         if (null != $scale && !$this->isTScaleFacetValid($scale)) {
-            $msg = "Scale must be a valid TScaleFacet";
+            $msg = 'Scale must be a valid TScaleFacet';
             throw new \InvalidArgumentException($msg);
         }
         $this->scale = $scale;
@@ -232,7 +232,7 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Gets as sRID
+     * Gets as sRID.
      *
      * @return string
      */
@@ -242,7 +242,7 @@ trait TFunctionImportParameterAttributesTrait
     }
 
     /**
-     * Sets a new sRID
+     * Sets a new sRID.
      *
      * @param  string $sRID
      * @return self
@@ -251,7 +251,7 @@ trait TFunctionImportParameterAttributesTrait
     {
         $msg = null;
         if (null != $sRID && !$this->isTSridFacetValid($sRID)) {
-            $msg = "SRID must be a valid TSRIDFacet";
+            $msg = 'SRID must be a valid TSRIDFacet';
             throw new \InvalidArgumentException($msg);
         }
         $this->sRID = $sRID;
@@ -261,31 +261,31 @@ trait TFunctionImportParameterAttributesTrait
     public function isTFunctionImportParameterAttributesValid(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = "Name must be a valid TSimpleIdentifier: " . get_class($this);
+            $msg = 'Name must be a valid TSimpleIdentifier: ' . get_class($this);
             return false;
         }
         if (!$this->isTFunctionImportParameterAndReturnTypeValid($this->type)) {
-            $msg = "Type must be a valid TFunctionImportParameterAndReturnType: " . get_class($this);
+            $msg = 'Type must be a valid TFunctionImportParameterAndReturnType: ' . get_class($this);
             return false;
         }
         if (null != $this->mode && !$this->isTParameterModeValid($this->mode)) {
-            $msg = "Mode must be a valid TParameterMode: " . get_class($this);
+            $msg = 'Mode must be a valid TParameterMode: ' . get_class($this);
             return false;
         }
         if (null != $this->maxLength && !$this->isTMaxLengthFacetValid($this->maxLength)) {
-            $msg = "Max length must be a valid TMaxLengthFacet: " . get_class($this);
+            $msg = 'Max length must be a valid TMaxLengthFacet: ' . get_class($this);
             return false;
         }
         if (null != $this->precision && !$this->isTPrecisionFacetValid($this->precision)) {
-            $msg = "Precision must be a valid TPrecisionFacet: " . get_class($this);
+            $msg = 'Precision must be a valid TPrecisionFacet: ' . get_class($this);
             return false;
         }
         if (null != $this->scale && !$this->isTScaleFacetValid($this->scale)) {
-            $msg = "Scale must be a valid TScaleFacet: " . get_class($this);
+            $msg = 'Scale must be a valid TScaleFacet: ' . get_class($this);
             return false;
         }
         if (null != $this->sRID && !$this->isTSridFacetValid($this->sRID)) {
-            $msg = "SRID must be a valid TSRIDFacet: " . get_class($this);
+            $msg = 'SRID must be a valid TSRIDFacet: ' . get_class($this);
             return false;
         }
 

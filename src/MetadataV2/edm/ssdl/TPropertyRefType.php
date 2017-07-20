@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TPropertyRefType
+ * Class representing TPropertyRefType.
  *
  * XSD Type: TPropertyRef
  */
@@ -23,7 +23,7 @@ class TPropertyRefType extends IsOK
     private $documentation = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TPropertyRefType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -45,7 +45,7 @@ class TPropertyRefType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType
      */
@@ -55,7 +55,7 @@ class TPropertyRefType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TDocumentationType $documentation
      * @return self

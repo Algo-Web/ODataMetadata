@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\GInlineExpressionsTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
 
 /**
- * Class representing TPropertyValueType
+ * Class representing TPropertyValueType.
  *
  * XSD Type: TPropertyValue
  */
@@ -67,7 +67,7 @@ class TPropertyValueType extends IsOK
     }
     
     /**
-     * Gets as property
+     * Gets as property.
      *
      * @return string
      */
@@ -77,7 +77,7 @@ class TPropertyValueType extends IsOK
     }
 
     /**
-     * Sets a new property
+     * Sets a new property.
      *
      * @param  string $property
      * @return self
@@ -85,7 +85,7 @@ class TPropertyValueType extends IsOK
     public function setProperty($property)
     {
         if (!$this->isTSimpleIdentifierValid($property)) {
-            $msg = "Property must be a valid TSimpleIdentifier";
+            $msg = 'Property must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
         }
         $this->property = $property;
@@ -95,7 +95,7 @@ class TPropertyValueType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTSimpleIdentifierValid($this->property)) {
-            $msg = "Property must be a valid TSimpleIdentifier";
+            $msg = 'Property must be a valid TSimpleIdentifier';
             return false;
         }
         if (!$this->isGInlineExpressionsValid($msg)) {

@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\mapping\cs;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TFunctionImportEntityTypeMappingType
+ * Class representing TFunctionImportEntityTypeMappingType.
  *
  * Type for (FunctionMapping|FunctionImportMapping)/EntityTypeMapping element
  *
@@ -30,7 +30,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     private $condition = [];
 
     /**
-     * Gets as typeName
+     * Gets as typeName.
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new typeName
+     * Sets a new typeName.
      *
      * @param  string $typeName
      * @return self
@@ -56,10 +56,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Adds as scalarProperty
+     * Adds as scalarProperty.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType $scalarProperty
+     * @return self
      */
     public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
@@ -72,10 +72,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * isset scalarProperty
+     * isset scalarProperty.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetScalarProperty($index)
     {
@@ -83,7 +83,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * unset scalarProperty
+     * unset scalarProperty.
      *
      * @param  scalar $index
      * @return void
@@ -94,7 +94,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Gets as scalarProperty
+     * Gets as scalarProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[]
      */
@@ -104,7 +104,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new scalarProperty
+     * Sets a new scalarProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
@@ -128,10 +128,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Adds as condition
+     * Adds as condition.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType $condition
+     * @return self
      */
     public function addToCondition(TFunctionImportConditionType $condition)
     {
@@ -144,10 +144,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * isset condition
+     * isset condition.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetCondition($index)
     {
@@ -155,7 +155,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * unset condition
+     * unset condition.
      *
      * @param  scalar $index
      * @return void
@@ -166,7 +166,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Gets as condition
+     * Gets as condition.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType[]
      */
@@ -176,7 +176,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new condition
+     * Sets a new condition.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType[] $condition
      * @return self
@@ -207,7 +207,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
         }
         $count = count($this->scalarProperty) + count($this->condition);
         if (1 > $count) {
-            $msg = "Scalar property array and condition array must not both be empty";
+            $msg = 'Scalar property array and condition array must not both be empty';
             return false;
         }
         if (!$this->isValidArray(
@@ -215,7 +215,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TScalarPropertyType'
         )
         ) {
-            $msg = "Scalar property array not a valid array";
+            $msg = 'Scalar property array not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->scalarProperty, $msg)) {
@@ -226,7 +226,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
             '\AlgoWeb\ODataMetadata\MetadataV3\mapping\cs\TFunctionImportConditionType'
         )
         ) {
-            $msg = "Condition array not a valid array";
+            $msg = 'Condition array not a valid array';
             return false;
         }
         if (!$this->isChildArrayOK($this->condition, $msg)) {

@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\edmx;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TEntityTypeShapeType
+ * Class representing TEntityTypeShapeType.
  *
  * XSD Type: TEntityTypeShape
  */
@@ -38,7 +38,7 @@ class TEntityTypeShapeType extends IsOK
     private $height = null;
 
     /**
-     * @property boolean $isExpanded
+     * @property bool $isExpanded
      */
     private $isExpanded = null;
 
@@ -48,7 +48,7 @@ class TEntityTypeShapeType extends IsOK
     private $fillColor = null;
 
     /**
-     * Gets as entityType
+     * Gets as entityType.
      *
      * @return string
      */
@@ -58,7 +58,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new entityType
+     * Sets a new entityType.
      *
      * @param  string $entityType
      * @return self
@@ -66,7 +66,7 @@ class TEntityTypeShapeType extends IsOK
     public function setEntityType($entityType)
     {
         if (!$this->isStringNotNullOrEmpty($this->entityType)) {
-            $msg = "Entity type cannot be null or empty";
+            $msg = 'Entity type cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->entityType = $entityType;
@@ -74,7 +74,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as pointX
+     * Gets as pointX.
      *
      * @return float
      */
@@ -84,7 +84,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new pointX
+     * Sets a new pointX.
      *
      * @param  float $pointX
      * @return self
@@ -92,7 +92,7 @@ class TEntityTypeShapeType extends IsOK
     public function setPointX($pointX)
     {
         if (null != $pointX && !is_numeric($pointX)) {
-            $msg = "Point X value must be numeric";
+            $msg = 'Point X value must be numeric';
             throw new \InvalidArgumentException($msg);
         }
         $this->pointX = $pointX;
@@ -100,7 +100,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as pointY
+     * Gets as pointY.
      *
      * @return float
      */
@@ -110,7 +110,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new pointY
+     * Sets a new pointY.
      *
      * @param  float $pointY
      * @return self
@@ -118,7 +118,7 @@ class TEntityTypeShapeType extends IsOK
     public function setPointY($pointY)
     {
         if (null != $pointY && !is_numeric($pointY)) {
-            $msg = "Point Y value must be numeric";
+            $msg = 'Point Y value must be numeric';
             throw new \InvalidArgumentException($msg);
         }
         $this->pointY = $pointY;
@@ -126,7 +126,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as width
+     * Gets as width.
      *
      * @return float
      */
@@ -136,7 +136,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new width
+     * Sets a new width.
      *
      * @param  float $width
      * @return self
@@ -144,7 +144,7 @@ class TEntityTypeShapeType extends IsOK
     public function setWidth($width)
     {
         if (null != $width && (!is_numeric($width) || 0 >= $width)) {
-            $msg = "Width value must be numeric and positive";
+            $msg = 'Width value must be numeric and positive';
             throw new \InvalidArgumentException($msg);
         }
         $this->width = $width;
@@ -152,7 +152,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as height
+     * Gets as height.
      *
      * @return float
      */
@@ -162,7 +162,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new height
+     * Sets a new height.
      *
      * @param  float $height
      * @return self
@@ -170,7 +170,7 @@ class TEntityTypeShapeType extends IsOK
     public function setHeight($height)
     {
         if (null != $height && (!is_numeric($height) || 0 >= $height)) {
-            $msg = "Height value must be numeric and positive";
+            $msg = 'Height value must be numeric and positive';
             throw new \InvalidArgumentException($msg);
         }
         $this->height = $height;
@@ -178,9 +178,9 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as isExpanded
+     * Gets as isExpanded.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsExpanded()
     {
@@ -188,9 +188,9 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new isExpanded
+     * Sets a new isExpanded.
      *
-     * @param  boolean $isExpanded
+     * @param  bool $isExpanded
      * @return self
      */
     public function setIsExpanded($isExpanded)
@@ -200,7 +200,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Gets as fillColor
+     * Gets as fillColor.
      *
      * @return string
      */
@@ -210,7 +210,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
-     * Sets a new fillColor
+     * Sets a new fillColor.
      *
      * @param  string $fillColor
      * @return self
@@ -218,7 +218,7 @@ class TEntityTypeShapeType extends IsOK
     public function setFillColor($fillColor)
     {
         if (null != $fillColor && !$this->isStringNotNullOrEmpty($fillColor)) {
-            $msg = "Fill color cannot be null or empty";
+            $msg = 'Fill color cannot be null or empty';
             throw new \InvalidArgumentException($msg);
         }
         $this->fillColor = $fillColor;
@@ -231,29 +231,29 @@ class TEntityTypeShapeType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isStringNotNullOrEmpty($this->entityType)) {
-            $msg = "Entity type cannot be null or empty";
+            $msg = 'Entity type cannot be null or empty';
             return false;
         }
 
         if (null != $this->fillColor && !$this->isStringNotNullOrEmpty($this->fillColor)) {
-            $msg = "Fill color cannot be empty";
+            $msg = 'Fill color cannot be empty';
             return false;
         }
 
         if (null != $this->pointX && !is_numeric($this->pointX)) {
-            $msg = "Point X value must be numeric";
+            $msg = 'Point X value must be numeric';
             return false;
         }
         if (null != $this->pointY && !is_numeric($this->pointY)) {
-            $msg = "Point Y value must be numeric";
+            $msg = 'Point Y value must be numeric';
             return false;
         }
         if (null != $this->width && (!is_numeric($this->width) || 0 >= $this->width)) {
-            $msg = "Width value must be numeric and positive";
+            $msg = 'Width value must be numeric and positive';
             return false;
         }
         if (null != $this->height && (!is_numeric($this->height) || 0 >= $this->height)) {
-            $msg = "Height value must be numeric and positive";
+            $msg = 'Height value must be numeric and positive';
             return false;
         }
 

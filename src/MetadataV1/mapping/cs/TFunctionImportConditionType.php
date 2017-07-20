@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TFunctionImportConditionType
+ * Class representing TFunctionImportConditionType.
  *
  * XSD Type: TFunctionImportCondition
  */
@@ -23,12 +23,12 @@ class TFunctionImportConditionType extends IsOK
     private $columnName = null;
 
     /**
-     * @property boolean $isNull
+     * @property bool $isNull
      */
     private $isNull = null;
 
     /**
-     * Gets as value
+     * Gets as value.
      *
      * @return string
      */
@@ -38,7 +38,7 @@ class TFunctionImportConditionType extends IsOK
     }
 
     /**
-     * Sets a new value
+     * Sets a new value.
      *
      * @param  string $value
      * @return self
@@ -50,7 +50,7 @@ class TFunctionImportConditionType extends IsOK
     }
 
     /**
-     * Gets as columnName
+     * Gets as columnName.
      *
      * @return string
      */
@@ -60,7 +60,7 @@ class TFunctionImportConditionType extends IsOK
     }
 
     /**
-     * Sets a new columnName
+     * Sets a new columnName.
      *
      * @param  string $columnName
      * @return self
@@ -72,9 +72,9 @@ class TFunctionImportConditionType extends IsOK
     }
 
     /**
-     * Gets as isNull
+     * Gets as isNull.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsNull()
     {
@@ -82,9 +82,9 @@ class TFunctionImportConditionType extends IsOK
     }
 
     /**
-     * Sets a new isNull
+     * Sets a new isNull.
      *
-     * @param  boolean $isNull
+     * @param  bool $isNull
      * @return self
      */
     public function setIsNull($isNull)

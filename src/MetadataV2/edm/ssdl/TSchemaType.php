@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TSchemaType
+ * Class representing TSchemaType.
  *
  * XSD Type: TSchema
  */
@@ -53,7 +53,7 @@ class TSchemaType extends IsOK
     private $function = array();
 
     /**
-     * Gets as namespace
+     * Gets as namespace.
      *
      * @return string
      */
@@ -63,7 +63,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Sets a new namespace
+     * Sets a new namespace.
      *
      * @param  string $namespace
      * @return self
@@ -75,7 +75,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Gets as alias
+     * Gets as alias.
      *
      * @return string
      */
@@ -85,7 +85,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Sets a new alias
+     * Sets a new alias.
      *
      * @param  string $alias
      * @return self
@@ -97,7 +97,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Gets as provider
+     * Gets as provider.
      *
      * @return string
      */
@@ -107,7 +107,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Sets a new provider
+     * Sets a new provider.
      *
      * @param  string $provider
      * @return self
@@ -119,7 +119,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Gets as providerManifestToken
+     * Gets as providerManifestToken.
      *
      * @return string
      */
@@ -129,7 +129,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Sets a new providerManifestToken
+     * Sets a new providerManifestToken.
      *
      * @param  string $providerManifestToken
      * @return self
@@ -141,10 +141,10 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Adds as association
+     * Adds as association.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TAssociationType $association
+     * @return self
      */
     public function addToAssociation(TAssociationType $association)
     {
@@ -153,10 +153,10 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * isset association
+     * isset association.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetAssociation($index)
     {
@@ -164,7 +164,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * unset association
+     * unset association.
      *
      * @param  scalar $index
      * @return void
@@ -175,7 +175,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Gets as association
+     * Gets as association.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TAssociationType[]
      */
@@ -185,7 +185,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Sets a new association
+     * Sets a new association.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TAssociationType[] $association
      * @return self
@@ -197,10 +197,10 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Adds as entityType
+     * Adds as entityType.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TEntityTypeType $entityType
+     * @return self
      */
     public function addToEntityType(TEntityTypeType $entityType)
     {
@@ -209,10 +209,10 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * isset entityType
+     * isset entityType.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEntityType($index)
     {
@@ -220,7 +220,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * unset entityType
+     * unset entityType.
      *
      * @param  scalar $index
      * @return void
@@ -231,7 +231,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Gets as entityType
+     * Gets as entityType.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TEntityTypeType[]
      */
@@ -241,7 +241,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Sets a new entityType
+     * Sets a new entityType.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TEntityTypeType[] $entityType
      * @return self
@@ -253,10 +253,10 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Adds as entityContainer
+     * Adds as entityContainer.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer $entityContainer
+     * @return self
      */
     public function addToEntityContainer(EntityContainer $entityContainer)
     {
@@ -265,10 +265,10 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * isset entityContainer
+     * isset entityContainer.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetEntityContainer($index)
     {
@@ -276,7 +276,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * unset entityContainer
+     * unset entityContainer.
      *
      * @param  scalar $index
      * @return void
@@ -287,7 +287,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Gets as entityContainer
+     * Gets as entityContainer.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer[]
      */
@@ -297,7 +297,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Sets a new entityContainer
+     * Sets a new entityContainer.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer[] $entityContainer
      * @return self
@@ -309,10 +309,10 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Adds as function
+     * Adds as function.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TFunctionType $function
+     * @return self
      */
     public function addToFunction(TFunctionType $function)
     {
@@ -321,10 +321,10 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * isset function
+     * isset function.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetFunction($index)
     {
@@ -332,7 +332,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * unset function
+     * unset function.
      *
      * @param  scalar $index
      * @return void
@@ -343,7 +343,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Gets as function
+     * Gets as function.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TFunctionType[]
      */
@@ -353,7 +353,7 @@ class TSchemaType extends IsOK
     }
 
     /**
-     * Sets a new function
+     * Sets a new function.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TFunctionType[] $function
      * @return self

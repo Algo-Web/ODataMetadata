@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType;
 
 /**
- * Class representing EntitySetAnonymousType
+ * Class representing EntitySetAnonymousType.
  */
 class EntitySetAnonymousType extends IsOK
 {
@@ -32,10 +32,10 @@ class EntitySetAnonymousType extends IsOK
     private $typeAnnotation = [];
     
     /**
-     * Adds as documentation
+     * Adds as documentation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
+     * @return self
      */
     public function addToDocumentation(TDocumentationType $documentation)
     {
@@ -48,10 +48,10 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * isset documentation
+     * isset documentation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetDocumentation($index)
     {
@@ -59,7 +59,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * unset documentation
+     * unset documentation.
      *
      * @param  scalar $index
      * @return void
@@ -70,7 +70,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[]
      */
@@ -80,7 +80,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType[] $documentation
      * @return self
@@ -103,10 +103,10 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Adds as valueAnnotation
+     * Adds as valueAnnotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType $valueAnnotation
+     * @return self
      */
     public function addToValueAnnotation(TValueAnnotationType $valueAnnotation)
     {
@@ -119,10 +119,10 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * isset valueAnnotation
+     * isset valueAnnotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetValueAnnotation($index)
     {
@@ -130,7 +130,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * unset valueAnnotation
+     * unset valueAnnotation.
      *
      * @param  scalar $index
      * @return void
@@ -141,7 +141,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as valueAnnotation
+     * Gets as valueAnnotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[]
      */
@@ -151,7 +151,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new valueAnnotation
+     * Sets a new valueAnnotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TValueAnnotationType[] $valueAnnotation
      * @return self
@@ -172,10 +172,10 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Adds as typeAnnotation
+     * Adds as typeAnnotation.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType $typeAnnotation
+     * @return self
      */
     public function addToTypeAnnotation(TTypeAnnotationType $typeAnnotation)
     {
@@ -188,10 +188,10 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * isset typeAnnotation
+     * isset typeAnnotation.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetTypeAnnotation($index)
     {
@@ -199,7 +199,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * unset typeAnnotation
+     * unset typeAnnotation.
      *
      * @param  scalar $index
      * @return void
@@ -210,7 +210,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Gets as typeAnnotation
+     * Gets as typeAnnotation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[]
      */
@@ -220,7 +220,7 @@ class EntitySetAnonymousType extends IsOK
     }
 
     /**
-     * Sets a new typeAnnotation
+     * Sets a new typeAnnotation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TTypeAnnotationType[] $typeAnnotation
      * @return self

@@ -3,9 +3,8 @@
  * Created by PhpStorm.
  * User: Doc
  * Date: 5/1/2017
- * Time: 9:25 PM
+ * Time: 9:25 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\ssdl\IsOKTraits;
 
 use AlgoWeb\ODataMetadata\xsdRestrictions;

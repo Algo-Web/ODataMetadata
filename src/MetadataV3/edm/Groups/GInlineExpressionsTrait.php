@@ -15,7 +15,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Gets as string
+     * Gets as string.
      *
      * @return string
      */
@@ -25,7 +25,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Sets a new string
+     * Sets a new string.
      *
      * @param  string $string
      * @return self
@@ -34,7 +34,7 @@ trait GInlineExpressionsTrait
     {
         $msg = null;
         if (null !== $string && !is_string($string)) {
-            $msg = "String must be a string";
+            $msg = 'String must be a string';
             throw new \InvalidArgumentException($msg);
         }
         $this->string = $string;
@@ -42,7 +42,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Gets as binary
+     * Gets as binary.
      *
      * @return mixed
      */
@@ -52,7 +52,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Sets a new binary
+     * Sets a new binary.
      *
      * @param  mixed $binary
      * @return self
@@ -61,7 +61,7 @@ trait GInlineExpressionsTrait
     {
         $msg = null;
         if (null != $binary && !$this->hexBinary($binary)) {
-            $msg = "Binary must be hexadecimal";
+            $msg = 'Binary must be hexadecimal';
             throw new \InvalidArgumentException($msg);
         }
         $this->binary = $binary;
@@ -69,9 +69,9 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Gets as int
+     * Gets as int.
      *
-     * @return integer
+     * @return int
      */
     public function getInt()
     {
@@ -79,16 +79,16 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Sets a new int
+     * Sets a new int.
      *
-     * @param  integer $int
+     * @param  int  $int
      * @return self
      */
     public function setInt($int)
     {
         $msg = null;
         if (null != $int && $int !== intval($int)) {
-            $msg = "Integer must be integral";
+            $msg = 'Integer must be integral';
             throw new \InvalidArgumentException($msg);
         }
         $this->int = $int;
@@ -96,7 +96,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Gets as float
+     * Gets as float.
      *
      * @return float
      */
@@ -106,7 +106,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Sets a new float
+     * Sets a new float.
      *
      * @param  float $float
      * @return self
@@ -115,7 +115,7 @@ trait GInlineExpressionsTrait
     {
         $msg = null;
         if (null != $float && $float !== floatval($float)) {
-            $msg = "Float must be floating-point";
+            $msg = 'Float must be floating-point';
             throw new \InvalidArgumentException($msg);
         }
         $this->float = $float;
@@ -123,7 +123,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Gets as guid
+     * Gets as guid.
      *
      * @return string
      */
@@ -133,7 +133,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Sets a new guid
+     * Sets a new guid.
      *
      * @param  string $guid
      * @return self
@@ -142,7 +142,7 @@ trait GInlineExpressionsTrait
     {
         $msg = null;
         if (null != $guid && !$this->isTGuidLiteralValid($guid)) {
-            $msg = "Guid must be valid GUID";
+            $msg = 'Guid must be valid GUID';
             throw new \InvalidArgumentException($msg);
         }
         $this->guid = $guid;
@@ -150,7 +150,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Gets as decimal
+     * Gets as decimal.
      *
      * @return float
      */
@@ -160,7 +160,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Sets a new decimal
+     * Sets a new decimal.
      *
      * @param  float $decimal
      * @return self
@@ -169,7 +169,7 @@ trait GInlineExpressionsTrait
     {
         $msg = null;
         if (null != $decimal && $decimal !== floatval($decimal)) {
-            $msg = "Decimal must be decimal";
+            $msg = 'Decimal must be decimal';
             throw new \InvalidArgumentException($msg);
         }
         $this->decimal = $decimal;
@@ -177,9 +177,9 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Gets as bool
+     * Gets as bool.
      *
-     * @return boolean
+     * @return bool
      */
     public function getBool()
     {
@@ -187,16 +187,16 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Sets a new bool
+     * Sets a new bool.
      *
-     * @param  boolean $bool
+     * @param  bool $bool
      * @return self
      */
     public function setBool($bool)
     {
         $msg = null;
         if (null != $bool && $bool !== boolval($bool)) {
-            $msg = "Bool must be boolean";
+            $msg = 'Bool must be boolean';
             throw new \InvalidArgumentException($msg);
         }
         $this->bool = $bool;
@@ -204,7 +204,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Gets as dateTime
+     * Gets as dateTime.
      *
      * @return \DateTime
      */
@@ -214,7 +214,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Sets a new dateTime
+     * Sets a new dateTime.
      *
      * @param  \DateTime $dateTime
      * @return self
@@ -223,7 +223,7 @@ trait GInlineExpressionsTrait
     {
         $msg = null;
         if (null != $dateTime && $dateTime !== $this->dateTime($dateTime)) {
-            $msg = "DateTime must be a valid date/time";
+            $msg = 'DateTime must be a valid date/time';
             throw new \InvalidArgumentException($msg);
         }
         $this->dateTime = $dateTime;
@@ -231,7 +231,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Gets as dateTimeOffset
+     * Gets as dateTimeOffset.
      *
      * @return \DateTime
      */
@@ -241,7 +241,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Sets a new dateTimeOffset
+     * Sets a new dateTimeOffset.
      *
      * @param  \DateTime $dateTimeOffset
      * @return self
@@ -250,7 +250,7 @@ trait GInlineExpressionsTrait
     {
         $msg = null;
         if (null != $dateTimeOffset && $dateTimeOffset !== $this->dateTime($dateTimeOffset)) {
-            $msg = "DateTimeOffset must be a valid date/time";
+            $msg = 'DateTimeOffset must be a valid date/time';
             throw new \InvalidArgumentException($msg);
         }
         $this->dateTimeOffset = $dateTimeOffset;
@@ -258,7 +258,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Gets as enum
+     * Gets as enum.
      *
      * @return string
      */
@@ -268,7 +268,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Sets a new enum
+     * Sets a new enum.
      *
      * @param  string $enum
      * @return self
@@ -277,7 +277,7 @@ trait GInlineExpressionsTrait
     {
         $msg = null;
         if (null != $enum && !$this->isTQualifiedNameValid($enum)) {
-            $msg = "Enum must be a valid TQualifiedName";
+            $msg = 'Enum must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->enum = $enum;
@@ -285,7 +285,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Gets as path
+     * Gets as path.
      *
      * @return string
      */
@@ -295,7 +295,7 @@ trait GInlineExpressionsTrait
     }
 
     /**
-     * Sets a new path
+     * Sets a new path.
      *
      * @param  string $path
      * @return self
@@ -304,7 +304,7 @@ trait GInlineExpressionsTrait
     {
         $msg = null;
         if (null != $path && !$this->isTQualifiedNameValid($path)) {
-            $msg = "Path must be a valid TQualifiedName";
+            $msg = 'Path must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->path = $path;
@@ -314,47 +314,47 @@ trait GInlineExpressionsTrait
     public function isGInlineExpressionsValid(&$msg = null)
     {
         if (null != $this->string && !is_string($this->string)) {
-            $msg = "String must be a string: " . get_class($this);
+            $msg = 'String must be a string: ' . get_class($this);
             return false;
         }
         if (null != $this->binary && !$this->hexBinary($this->binary)) {
-            $msg = "Binary must be hexadecimal: " . get_class($this);
+            $msg = 'Binary must be hexadecimal: ' . get_class($this);
             return false;
         }
         if (null != $this->int && $this->int !== intval($this->int)) {
-            $msg = "Integer must be integral: " . get_class($this);
+            $msg = 'Integer must be integral: ' . get_class($this);
             return false;
         }
         if (null != $this->float && $this->float !== floatval($this->float)) {
-            $msg = "Float must be floating-point: " . get_class($this);
+            $msg = 'Float must be floating-point: ' . get_class($this);
             return false;
         }
         if (null != $this->guid && !$this->isTGuidLiteralValid($this->guid)) {
-            $msg = "Guid must be valid GUID: " . get_class($this);
+            $msg = 'Guid must be valid GUID: ' . get_class($this);
             return false;
         }
         if (null != $this->bool && $this->bool !== boolval($this->bool)) {
-            $msg = "Bool must be boolean: " . get_class($this);
+            $msg = 'Bool must be boolean: ' . get_class($this);
             return false;
         }
         if (null != $this->decimal && $this->decimal !== floatval($this->decimal)) {
-            $msg = "Decimal must be decimal: " . get_class($this);
+            $msg = 'Decimal must be decimal: ' . get_class($this);
             return false;
         }
         if (null != $this->enum && !$this->isTQualifiedNameValid($this->enum)) {
-            $msg = "Enum must be a valid TQualifiedName: " . get_class($this);
+            $msg = 'Enum must be a valid TQualifiedName: ' . get_class($this);
             return false;
         }
         if (null != $this->path && !$this->isTQualifiedNameValid($this->path)) {
-            $msg = "Path must be a valid TQualifiedName: " . get_class($this);
+            $msg = 'Path must be a valid TQualifiedName: ' . get_class($this);
             return false;
         }
         if (null != $this->dateTime && $this->dateTime !== $this->dateTime($this->dateTime)) {
-            $msg = "DateTime must be a valid date/time: " . get_class($this);
+            $msg = 'DateTime must be a valid date/time: ' . get_class($this);
             return false;
         }
         if (null != $this->dateTimeOffset && $this->dateTimeOffset !== $this->dateTime($this->dateTimeOffset)) {
-            $msg = "DateTimeOffset must be a valid date/time: " . get_class($this);
+            $msg = 'DateTimeOffset must be a valid date/time: ' . get_class($this);
             return false;
         }
 

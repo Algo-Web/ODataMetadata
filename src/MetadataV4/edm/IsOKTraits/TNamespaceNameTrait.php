@@ -14,7 +14,7 @@ trait TNamespaceNameTrait
     protected function isTNamespaceNameValid($TNamespaceName)
     {
         if (!$this->isNCName($TNamespaceName)) {
-            $msg = "Term namespace must be a valid NCName";
+            $msg = 'Term namespace must be a valid NCName';
             return false;
         }
         //<!-- one or more SimpleIdentifiers separated by dots -->
@@ -23,7 +23,7 @@ trait TNamespaceNameTrait
             $TNamespaceName
         )
         ) {
-            $msg = "The term namespace does not match the regex in the xsd.";
+            $msg = 'The term namespace does not match the regex in the xsd.';
             return false;
         }
         return true;

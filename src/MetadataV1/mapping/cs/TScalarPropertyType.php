@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TScalarPropertyType
+ * Class representing TScalarPropertyType.
  *
  * XSD Type: TScalarProperty
  */
@@ -23,7 +23,7 @@ class TScalarPropertyType extends IsOK
     private $columnName = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -33,7 +33,7 @@ class TScalarPropertyType extends IsOK
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
      * @param  string $name
      * @return self
@@ -45,7 +45,7 @@ class TScalarPropertyType extends IsOK
     }
 
     /**
-     * Gets as columnName
+     * Gets as columnName.
      *
      * @return string
      */
@@ -55,7 +55,7 @@ class TScalarPropertyType extends IsOK
     }
 
     /**
-     * Sets a new columnName
+     * Sets a new columnName.
      *
      * @param  string $columnName
      * @return self

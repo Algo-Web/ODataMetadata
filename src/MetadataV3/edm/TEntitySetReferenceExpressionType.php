@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TQualifiedNameTrait;
 
 /**
- * Class representing TEntitySetReferenceExpressionType
+ * Class representing TEntitySetReferenceExpressionType.
  *
  * XSD Type: TEntitySetReferenceExpression
  */
@@ -20,7 +20,7 @@ class TEntitySetReferenceExpressionType extends IsOK
     private $entitySet = null;
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return string
      */
@@ -30,7 +30,7 @@ class TEntitySetReferenceExpressionType extends IsOK
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
      * @param  string $entitySet
      * @return self
@@ -38,7 +38,7 @@ class TEntitySetReferenceExpressionType extends IsOK
     public function setEntitySet($entitySet)
     {
         if (!$this->isTQualifiedNameValid($entitySet)) {
-            $msg = "Entity set must be a valid TQualifiedName";
+            $msg = 'Entity set must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
         }
         $this->entitySet = $entitySet;
@@ -48,7 +48,7 @@ class TEntitySetReferenceExpressionType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTQualifiedNameValid($this->entitySet)) {
-            $msg = "Entity set must be a valid TQualifiedName";
+            $msg = 'Entity set must be a valid TQualifiedName';
             return false;
         }
         return true;

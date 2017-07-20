@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV1\mapping\cs;
 use AlgoWeb\ODataMetadata\IsOK;
 
 /**
- * Class representing TFunctionImportEntityTypeMappingType
+ * Class representing TFunctionImportEntityTypeMappingType.
  *
  * XSD Type: TFunctionImportEntityTypeMapping
  */
@@ -25,7 +25,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     );
 
     /**
-     * Gets as typeName
+     * Gets as typeName.
      *
      * @return string
      */
@@ -35,7 +35,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new typeName
+     * Sets a new typeName.
      *
      * @param  string $typeName
      * @return self
@@ -47,10 +47,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Adds as condition
+     * Adds as condition.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportConditionType $condition
+     * @return self
      */
     public function addToCondition(TFunctionImportConditionType $condition)
     {
@@ -59,10 +59,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * isset condition
+     * isset condition.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetCondition($index)
     {
@@ -70,7 +70,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * unset condition
+     * unset condition.
      *
      * @param  scalar $index
      * @return void
@@ -81,7 +81,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Gets as condition
+     * Gets as condition.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportConditionType[]
      */
@@ -91,7 +91,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new condition
+     * Sets a new condition.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV1\mapping\cs\TFunctionImportConditionType[] $condition
      * @return self

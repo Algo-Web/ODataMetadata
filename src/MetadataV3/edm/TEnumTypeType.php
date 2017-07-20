@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Groups\TTypeAttributesTrait;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TPropertyTypeTrait;
 
 /**
- * Class representing TEnumTypeType
+ * Class representing TEnumTypeType.
  *
  * XSD Type: TEnumType
  */
@@ -22,7 +22,7 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * @property boolean $isFlags
+     * @property bool $isFlags
      */
     private $isFlags = null;
 
@@ -47,9 +47,9 @@ class TEnumTypeType extends IsOK
     private $member = [];
 
     /**
-     * Gets as isFlags
+     * Gets as isFlags.
      *
-     * @return boolean
+     * @return bool
      */
     public function getIsFlags()
     {
@@ -57,9 +57,9 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * Sets a new isFlags
+     * Sets a new isFlags.
      *
-     * @param  boolean $isFlags
+     * @param  bool $isFlags
      * @return self
      */
     public function setIsFlags($isFlags)
@@ -69,7 +69,7 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * Gets as underlyingType
+     * Gets as underlyingType.
      *
      * @return string
      */
@@ -79,7 +79,7 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * Sets a new underlyingType
+     * Sets a new underlyingType.
      *
      * @param  string $underlyingType
      * @return self
@@ -87,7 +87,7 @@ class TEnumTypeType extends IsOK
     public function setUnderlyingType($underlyingType)
     {
         if (!$this->isTPropertyTypeValid($underlyingType)) {
-            $msg = "Underlying type must be a valid TPropertyType";
+            $msg = 'Underlying type must be a valid TPropertyType';
             throw new \InvalidArgumentException($msg);
         }
         $this->underlyingType = $underlyingType;
@@ -95,7 +95,7 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * Gets as typeAccess
+     * Gets as typeAccess.
      *
      * @return string
      */
@@ -105,7 +105,7 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * Sets a new typeAccess
+     * Sets a new typeAccess.
      *
      * @param  string $typeAccess
      * @return self
@@ -113,7 +113,7 @@ class TEnumTypeType extends IsOK
     public function setTypeAccess($typeAccess)
     {
         if (!$this->isTPublicOrInternalAccessOK($typeAccess)) {
-            $msg = "Type access must be Public or Internal";
+            $msg = 'Type access must be Public or Internal';
             throw new \InvalidArgumentException($msg);
         }
         $this->typeAccess = $typeAccess;
@@ -121,7 +121,7 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
      */
@@ -131,7 +131,7 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
      * @return self
@@ -147,10 +147,10 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * Adds as member
+     * Adds as member.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType $member
+     * @return self
      */
     public function addToMember(TEnumTypeMemberType $member)
     {
@@ -159,10 +159,10 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * isset member
+     * isset member.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetMember($index)
     {
@@ -170,7 +170,7 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * unset member
+     * unset member.
      *
      * @param  scalar $index
      * @return void
@@ -181,7 +181,7 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * Gets as member
+     * Gets as member.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType[]
      */
@@ -191,7 +191,7 @@ class TEnumTypeType extends IsOK
     }
 
     /**
-     * Sets a new member
+     * Sets a new member.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TEnumTypeMemberType[] $member
      * @return self
@@ -213,11 +213,11 @@ class TEnumTypeType extends IsOK
     public function isOK(&$msg = null)
     {
         if (!$this->isTPropertyTypeValid($this->underlyingType)) {
-            $msg = "Underlying type must be a valid TPropertyType";
+            $msg = 'Underlying type must be a valid TPropertyType';
             return false;
         }
         if (!$this->isTPublicOrInternalAccessOK($this->typeAccess)) {
-            $msg = "Type access must be Public or Internal";
+            $msg = 'Type access must be Public or Internal';
             return false;
         }
         if (!$this->isObjectNullOrOK($this->documentation, $msg)) {

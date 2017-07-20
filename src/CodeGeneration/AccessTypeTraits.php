@@ -7,7 +7,7 @@ trait AccessTypeTraits
     public function isTAccessOk($string)
     {
         if (!is_string($string)) {
-            throw new \InvalidArgumentException("Input must be a string");
+            throw new \InvalidArgumentException('Input must be a string');
         }
         return 'Public' == $string || 'Internal' == $string || 'Protected' == $string || 'Private' == $string;
     }

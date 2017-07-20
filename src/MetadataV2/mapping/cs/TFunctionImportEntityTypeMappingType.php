@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV2\mapping\cs;
 
 /**
- * Class representing TFunctionImportEntityTypeMappingType
+ * Class representing TFunctionImportEntityTypeMappingType.
  *
  * XSD Type: TFunctionImportEntityTypeMapping
  */
@@ -30,7 +30,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     );
 
     /**
-     * Gets as typeName
+     * Gets as typeName.
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new typeName
+     * Sets a new typeName.
      *
      * @param  string $typeName
      * @return self
@@ -52,10 +52,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Adds as scalarProperty
+     * Adds as scalarProperty.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType $scalarProperty
+     * @return self
      */
     public function addToScalarProperty(TScalarPropertyType $scalarProperty)
     {
@@ -64,10 +64,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * isset scalarProperty
+     * isset scalarProperty.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetScalarProperty($index)
     {
@@ -75,7 +75,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * unset scalarProperty
+     * unset scalarProperty.
      *
      * @param  scalar $index
      * @return void
@@ -86,7 +86,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Gets as scalarProperty
+     * Gets as scalarProperty.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType[]
      */
@@ -96,7 +96,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new scalarProperty
+     * Sets a new scalarProperty.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TScalarPropertyType[] $scalarProperty
      * @return self
@@ -108,10 +108,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Adds as condition
+     * Adds as condition.
      *
-     * @return self
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionImportConditionType $condition
+     * @return self
      */
     public function addToCondition(TFunctionImportConditionType $condition)
     {
@@ -120,10 +120,10 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * isset condition
+     * isset condition.
      *
      * @param  scalar $index
-     * @return boolean
+     * @return bool
      */
     public function issetCondition($index)
     {
@@ -131,7 +131,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * unset condition
+     * unset condition.
      *
      * @param  scalar $index
      * @return void
@@ -142,7 +142,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Gets as condition
+     * Gets as condition.
      *
      * @return \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionImportConditionType[]
      */
@@ -152,7 +152,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     }
 
     /**
-     * Sets a new condition
+     * Sets a new condition.
      *
      * @param  \AlgoWeb\ODataMetadata\MetadataV2\mapping\cs\TFunctionImportConditionType[] $condition
      * @return self
