@@ -24,12 +24,13 @@
   ],
   "require": {
     "php": "~5.6|~7.0|~7.1",
+    "algo-web/xsd-types": "dev-master",
+    "fiunchinho/phpunit-randomizer": "2.0.*",
+    "illuminate/support": "^4.0|^5.1",
+    "jms/serializer": "^1.7",
     "mockery/mockery": "0.9.*|^1.0@dev",
     "phpunit/phpunit": "^5.6",
-    "jms/serializer": "^1.7",
-    "satooshi/php-coveralls": "dev-master",
-    "fiunchinho/phpunit-randomizer": "2.0.*",
-    "illuminate/support" : "^4.0|^5.1"
+    "satooshi/php-coveralls": "dev-master"
   },
   "requre-dev": {
     "brianium/paratest": "dev-master",
