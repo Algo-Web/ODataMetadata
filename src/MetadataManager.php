@@ -63,7 +63,7 @@ class MetadataManager
         $NewEntity->setName($name);
         $this->addDocumentation($summary, $longDescription, $NewEntity);
         $NewEntity->setAbstract($isAbstract);
-        $NewEntity->setBaseType(null === $baseType ? $baseType->getName():null);
+        $NewEntity->setBaseType(null === $baseType ? null:$baseType->getName());
         if ($isAbstract) {
             return [$NewEntity, null];
         }
