@@ -862,7 +862,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $longDescription = new TTextType();
 
         $metadataManager = new MetadataManager();
-        list($result, ) = $metadataManager->addEntityType($name, $accessType, $summary, $longDescription);
+        list($result, ) = $metadataManager->addEntityType($name, null, false, $accessType, $summary, $longDescription);
         $this->assertNotNull($result->getDocumentation());
     }
 
@@ -874,7 +874,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $longDescription = null;
 
         $metadataManager = new MetadataManager();
-        list($result, ) = $metadataManager->addEntityType($name, $accessType, $summary, $longDescription);
+        list($result, ) = $metadataManager->addEntityType($name, null, false, $accessType, $summary, $longDescription);
         $this->assertNull($result->getDocumentation());
     }
 
@@ -886,7 +886,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $longDescription = new TTextType();
 
         $metadataManager = new MetadataManager();
-        list($result, ) = $metadataManager->addEntityType($name, $accessType, $summary, $longDescription);
+        list($result, ) = $metadataManager->addEntityType($name, null, false, $accessType, $summary, $longDescription);
         $this->assertNull($result->getDocumentation());
     }
 
