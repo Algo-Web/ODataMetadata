@@ -52,14 +52,19 @@ class MetadataManager
         return $cereal->serialize($this->getEdmx(), 'xml');
     }
 
-    public function addEntityType($name, $isAbstract = false, TEntityTypeType $baseType = null, $accessType = 'Public', $summary = null, $longDescription = null)
+    public function addEntityType($name,
+                                  TEntityTypeType $baseType = null,
+                                  $isAbstract = false,
+                                  $accessType = 'Public',
+                                  $summary = null,
+                                  $longDescription = null)
     {
         $NewEntity = new TEntityTypeType();
         $NewEntity->setName($name);
         $this->addDocumentation($summary, $longDescription, $NewEntity);
         $NewEntity->setAbstract($isAbstract);
         $NewEntity->setBaseType($baseType->getName());
-        if($isAbstract){
+        if ($isAbstract) {
             return [$NewEntity,null];
         }
         $entitySet = new EntitySetAnonymousType();
