@@ -63,8 +63,9 @@ class MetadataManager
         $NewEntity->setName($name);
         $this->addDocumentation($summary, $longDescription, $NewEntity);
         $NewEntity->setAbstract($isAbstract);
-        $NewEntity->setBaseType(null === $baseType ? null:$baseType->getName());
+        $NewEntity->setBaseType(null === $baseType ? null:$this->getNamespace() . $baseType->getName());
         if ($isAbstract) {
+            $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
             return [$NewEntity, null];
         }
         $entitySet = new EntitySetAnonymousType();
