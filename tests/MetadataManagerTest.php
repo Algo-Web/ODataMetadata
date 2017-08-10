@@ -16,6 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
+use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
 use Mockery as m;
 
 class MetadataManagerTest extends \PHPUnit_Framework_TestCase
@@ -431,11 +432,16 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
 
         $schema = m::mock(Schema::class)->makePartial();
         $schema->shouldReceive('getEntityContainer')->andReturn([$entityContainer])->once();
-        $edmx = m::mock(Edmx::class)->makePartial();
-        $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
 
-        $foo = m::mock(MetadataManager::class)->makePartial();
+        $services = m::mock(TDataServicesType::class);
+        $services->shouldReceive('getSchema')->andReturn([$schema])->once();
+
+        $edmx = m::mock(Edmx::class)->makePartial();
+        $edmx->shouldReceive('getDataServiceType')->andReturn($services);
+
+        $foo = m::mock(MetadataManager::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $foo->shouldReceive('getEdmx')->andReturn($edmx);
+        $foo->shouldReceive('getNamespace')->andReturn('Data')->atLeast(1);
 
         $result = $foo->createSingleton($name, $returnType);
         $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
@@ -461,8 +467,9 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $edmx = m::mock(Edmx::class)->makePartial();
         $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
 
-        $foo = m::mock(MetadataManager::class)->makePartial();
+        $foo = m::mock(MetadataManager::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $foo->shouldReceive('getEdmx')->andReturn($edmx);
+        $foo->shouldReceive('getNamespace')->andReturn('Data')->atLeast(1);
 
         $result = $foo->createSingleton($name, $returnType, $shortDesc, $longDesc);
         $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
@@ -488,8 +495,9 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $edmx = m::mock(Edmx::class)->makePartial();
         $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
 
-        $foo = m::mock(MetadataManager::class)->makePartial();
+        $foo = m::mock(MetadataManager::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $foo->shouldReceive('getEdmx')->andReturn($edmx);
+        $foo->shouldReceive('getNamespace')->andReturn('Data')->atLeast(1);
 
         $result = $foo->createSingleton($name, $returnType, $shortDesc, $longDesc);
         $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
@@ -515,8 +523,9 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $edmx = m::mock(Edmx::class)->makePartial();
         $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema])->once();
 
-        $foo = m::mock(MetadataManager::class)->makePartial();
+        $foo = m::mock(MetadataManager::class)->makePartial()->shouldAllowMockingProtectedMethods();
         $foo->shouldReceive('getEdmx')->andReturn($edmx);
+        $foo->shouldReceive('getNamespace')->andReturn('Data')->atLeast(1);
 
         $result = $foo->createSingleton($name, $returnType, $shortDesc, $longDesc);
         $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
