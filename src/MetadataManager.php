@@ -340,15 +340,17 @@ class MetadataManager
     }
 
     /**
-     * @param  string                      $name
-     * @param  IsOK                        $expectedReturnType
-     * @param  TTextType                   $shortDesc
-     * @param  TTextType                   $longDesc
+     * @param  string                       $name
+     * @param  IsOK                         $expectedReturnType
+     * @param  EntitySetAnonymousType|null  $entitySet
+     * @param  TTextType                    $shortDesc
+     * @param  TTextType                    $longDesc
      * @return FunctionImportAnonymousType
      */
     public function createSingleton(
         $name,
         IsOK $expectedReturnType,
+        EntitySetAnonymousType $entitySet = null,
         TTextType $shortDesc = null,
         TTextType $longDesc = null
     ) {
@@ -368,10 +370,11 @@ class MetadataManager
         $namespace = $this->getNamespace();
         $typeName = $expectedReturnType->getName();
         $fqTypeName = $namespace.$typeName;
+        $fqSetName = ($entitySet == null) ? $typeName : $entitySet->getName();
 
         $returnType = new TFunctionImportReturnTypeType();
         $returnType->setType($fqTypeName);
-        $returnType->setEntitySetAttribute($typeName);
+        $returnType->setEntitySetAttribute($fqSetName);
         assert($returnType->isOK($msg), $msg);
         $funcType->addToReturnType($returnType);
         $this->addDocumentation($shortDesc, $longDesc, $funcType);

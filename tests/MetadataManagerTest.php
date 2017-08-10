@@ -17,6 +17,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
 use Mockery as m;
 
 class MetadataManagerTest extends \PHPUnit_Framework_TestCase
@@ -379,7 +380,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $actual = null;
 
         try {
-            $foo->createSingleton(null, $returnType);
+            $foo->createSingleton(null, $returnType, null);
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -396,7 +397,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $actual = null;
 
         try {
-            $foo->createSingleton(null, $returnType);
+            $foo->createSingleton(null, $returnType, null);
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -413,7 +414,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $actual = null;
 
         try {
-            $foo->createSingleton($returnType, $returnType);
+            $foo->createSingleton($returnType, $returnType, null);
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
@@ -449,6 +450,39 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($result->getDocumentation());
     }
 
+    public function testCreateSingletonSuccessfulWithEntitySet()
+    {
+        $msg = null;
+        $name = 'singleton';
+        $returnType = m::mock(TEntityTypeType::class)->makePartial();
+        $returnType->shouldReceive('getName')->andReturn('doubleton');
+
+        $entityContainer = m::mock(EntityContainer::class)->makePartial();
+        $entityContainer->shouldReceive('addToFunctionImport')->andReturn(null)->once();
+
+        $schema = m::mock(Schema::class)->makePartial();
+        $schema->shouldReceive('getEntityContainer')->andReturn([$entityContainer])->once();
+
+        $services = m::mock(TDataServicesType::class);
+        $services->shouldReceive('getSchema')->andReturn([$schema])->once();
+
+        $edmx = m::mock(Edmx::class)->makePartial();
+        $edmx->shouldReceive('getDataServiceType')->andReturn($services);
+
+        $foo = m::mock(MetadataManager::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $foo->shouldReceive('getEdmx')->andReturn($edmx);
+        $foo->shouldReceive('getNamespace')->andReturn('Data')->atLeast(1);
+
+        $entitySet = m::mock(EntitySetAnonymousType::class);
+        $entitySet->shouldReceive('getName')->andReturn('BorkBorkBorken')->atLeast(1);
+
+        $result = $foo->createSingleton($name, $returnType, $entitySet);
+        $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
+        $this->assertTrue($result->isOK($msg));
+        $this->assertNull($result->getDocumentation());
+        $this->assertEquals('BorkBorkBorken', $result->getReturnType()[0]->getEntitySetAttribute());
+    }
+
     public function testCreateSingletonWithDocumentation()
     {
         $msg = null;
@@ -471,7 +505,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $foo->shouldReceive('getEdmx')->andReturn($edmx);
         $foo->shouldReceive('getNamespace')->andReturn('Data')->atLeast(1);
 
-        $result = $foo->createSingleton($name, $returnType, $shortDesc, $longDesc);
+        $result = $foo->createSingleton($name, $returnType, null, $shortDesc, $longDesc);
         $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
         $this->assertTrue($result->isOK($msg));
         $this->assertNotNull($result->getDocumentation());
@@ -499,7 +533,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $foo->shouldReceive('getEdmx')->andReturn($edmx);
         $foo->shouldReceive('getNamespace')->andReturn('Data')->atLeast(1);
 
-        $result = $foo->createSingleton($name, $returnType, $shortDesc, $longDesc);
+        $result = $foo->createSingleton($name, $returnType, null, $shortDesc, $longDesc);
         $this->assertTrue($result instanceof EntityContainer\FunctionImportAnonymousType, get_class($result));
         $this->assertTrue($result->isOK($msg));
         $this->assertNull($result->getDocumentation());
