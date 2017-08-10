@@ -340,11 +340,11 @@ class MetadataManager
     }
 
     /**
-     * @param  string                       $name
-     * @param  IsOK                         $expectedReturnType
-     * @param  EntitySetAnonymousType|null  $entitySet
-     * @param  TTextType                    $shortDesc
-     * @param  TTextType                    $longDesc
+     * @param  string                      $name
+     * @param  IsOK                        $expectedReturnType
+     * @param  EntitySetAnonymousType|null $entitySet
+     * @param  TTextType|null              $shortDesc
+     * @param  TTextType|null              $longDesc
      * @return FunctionImportAnonymousType
      */
     public function createSingleton(

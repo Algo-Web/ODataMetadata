@@ -5,6 +5,7 @@ namespace AlgoWeb\ODataMetadata\Tests;
 use AlgoWeb\ODataMetadata\IsOK;
 use AlgoWeb\ODataMetadata\MetadataManager;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TAssociationType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TComplexTypePropertyType;
@@ -17,7 +18,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
 use Mockery as m;
 
 class MetadataManagerTest extends \PHPUnit_Framework_TestCase
