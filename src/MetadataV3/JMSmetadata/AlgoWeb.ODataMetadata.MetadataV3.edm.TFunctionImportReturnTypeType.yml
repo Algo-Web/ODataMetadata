@@ -28,3 +28,9 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionImportReturnTypeType:
                 getter: getEntitySet
                 setter: setEntitySet
             type: AlgoWeb\ODataMetadata\MetadataV3\edm\TOperandType
+        v3SimpleIdentifierCache:
+            exclude: true
+        v3SimpleIdentifierRegex:
+            exclude: true
+        v3EDMSimpleType:
+            exclude: true

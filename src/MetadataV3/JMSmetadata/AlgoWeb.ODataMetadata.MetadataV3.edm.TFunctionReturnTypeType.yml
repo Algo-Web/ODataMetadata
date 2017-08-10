@@ -125,3 +125,7 @@ AlgoWeb\ODataMetadata\MetadataV3\edm\TFunctionReturnTypeType:
                 entry_name: Property
                 skip_when_empty: true
                 namespace: http://schemas.microsoft.com/ado/2009/11/edm
+        v3SimpleIdentifierCache:
+            exclude: true
+        v3SimpleIdentifierRegex:
+            exclude: true
