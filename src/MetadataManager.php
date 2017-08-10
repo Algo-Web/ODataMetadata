@@ -52,45 +52,43 @@ class MetadataManager
         return $cereal->serialize($this->getEdmx(), 'xml');
     }
 
-    public function addEntityType($name,
-                                  TEntityTypeType $baseType = null,
-                                  $isAbstract = false,
-                                  $accessType = 'Public',
-                                  $summary = null,
-                                  $longDescription = null)
-    {
-        $NewEntity = new TEntityTypeType();
-        $NewEntity->setName($name);
-        $this->addDocumentation($summary, $longDescription, $NewEntity);
-        $NewEntity->setAbstract($isAbstract);
-        $NewEntity->setBaseType(null === $baseType ? null:$this->getNamespace() . $baseType->getName());
-        if ($isAbstract) {
-            $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
-            return [$NewEntity, null];
-        }
+    public function addEntityType(
+        $name,
+        TEntityTypeType $baseType = null,
+        $isAbstract = false,
+        $accessType = 'Public',
+        $summary = null,
+        $longDescription = null
+    ) {
+        $newEntity = new TEntityTypeType();
+        $newEntity->setName($name);
+        $this->addDocumentation($summary, $longDescription, $newEntity);
+        $newEntity->setAbstract($isAbstract);
+        $newEntity->setBaseType(null === $baseType ? null:$this->getNamespace() . $baseType->getName());
+
         $entitySet = new EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($NewEntity->getName()));
+        $entitySet->setName(Str::plural($newEntity->getName()));
         $namespace = $this->getNamespace();
-        $entityTypeName = $namespace . $NewEntity->getName();
+        $entityTypeName = $namespace . $newEntity->getName();
         $entitySet->setEntityType($entityTypeName);
         $entitySet->setGetterAccess($accessType);
 
-        $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
+        $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $this->V3Edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         assert($this->V3Edmx->isOK($this->lastError), $this->lastError);
-        return [$NewEntity, $entitySet];
+        return [$newEntity, $entitySet];
     }
 
     public function addComplexType($name, $accessType = 'Public', $summary = null, $longDescription = null)
     {
-        $NewEntity = new TComplexTypeType();
-        $NewEntity->setName($name);
-        $NewEntity->setTypeAccess($accessType);
-        $this->addDocumentation($summary, $longDescription, $NewEntity);
-        assert($NewEntity->isOK($this->lastError), $this->lastError);
-        $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToComplexType($NewEntity);
+        $newEntity = new TComplexTypeType();
+        $newEntity->setName($name);
+        $newEntity->setTypeAccess($accessType);
+        $this->addDocumentation($summary, $longDescription, $newEntity);
+        assert($newEntity->isOK($this->lastError), $this->lastError);
+        $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToComplexType($newEntity);
 
-        return $NewEntity;
+        return $newEntity;
     }
 
     public function getSerialiser()
@@ -245,7 +243,7 @@ class MetadataManager
         if (null != $dependentNavigationProperty) {
             if ($dependentNavigationProperty->getRelationship() != $principalNavigationProperty->getRelationship()) {
                 $msg = 'If you have both a dependent property and a principal property,'
-                        .' relationship should match';
+                       .' relationship should match';
                 throw new \InvalidArgumentException($msg);
             }
             if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole()
@@ -344,13 +342,15 @@ class MetadataManager
     /**
      * @param  string                      $name
      * @param  IsOK                        $expectedReturnType
-     * @param  TTextType                   $shortDesc
-     * @param  TTextType                   $longDesc
+     * @param  EntitySetAnonymousType|null $entitySet
+     * @param  TTextType|null              $shortDesc
+     * @param  TTextType|null              $longDesc
      * @return FunctionImportAnonymousType
      */
     public function createSingleton(
         $name,
         IsOK $expectedReturnType,
+        EntitySetAnonymousType $entitySet = null,
         TTextType $shortDesc = null,
         TTextType $longDesc = null
     ) {
@@ -367,10 +367,14 @@ class MetadataManager
         $funcType = new FunctionImportAnonymousType();
         $funcType->setName($name);
 
+        $namespace = $this->getNamespace();
         $typeName = $expectedReturnType->getName();
+        $fqTypeName = $namespace.$typeName;
+        $fqSetName = ($entitySet == null) ? $typeName : $entitySet->getName();
+
         $returnType = new TFunctionImportReturnTypeType();
-        $returnType->setType($typeName);
-        $returnType->setEntitySetAttribute($typeName);
+        $returnType->setType($fqTypeName);
+        $returnType->setEntitySetAttribute($fqSetName);
         assert($returnType->isOK($msg), $msg);
         $funcType->addToReturnType($returnType);
         $this->addDocumentation($shortDesc, $longDesc, $funcType);
@@ -385,8 +389,8 @@ class MetadataManager
         $ymlDir = __DIR__ . DIRECTORY_SEPARATOR . 'MetadataV3' . DIRECTORY_SEPARATOR . 'JMSmetadata';
         $this->serializer =
             SerializerBuilder::create()
-            ->addMetadataDir($ymlDir)
-            ->build();
+                ->addMetadataDir($ymlDir)
+                ->build();
     }
 
     public function __sleep()
@@ -417,7 +421,7 @@ class MetadataManager
     /**
      * @return string
      */
-    private function getNamespace()
+    protected function getNamespace()
     {
         $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
         if (0 == strlen(trim($namespace))) {
@@ -450,16 +454,16 @@ class MetadataManager
     /**
      * @param $summary
      * @param $longDescription
-     * @param $NewEntity
+     * @param $newEntity
      */
-    private function addDocumentation($summary, $longDescription, IsOK & $NewEntity)
+    private function addDocumentation($summary, $longDescription, IsOK & $newEntity)
     {
         if (null != $summary && null != $longDescription) {
             $documentation = $this->generateDocumentation($summary, $longDescription);
-            if (method_exists($NewEntity, 'addToDocumentation')) {
-                $NewEntity->addToDocumentation($documentation);
+            if (method_exists($newEntity, 'addToDocumentation')) {
+                $newEntity->addToDocumentation($documentation);
             } else {
-                $NewEntity->setDocumentation($documentation);
+                $newEntity->setDocumentation($documentation);
             }
         }
     }
