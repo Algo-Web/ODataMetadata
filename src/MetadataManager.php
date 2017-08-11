@@ -52,6 +52,15 @@ class MetadataManager
         return $cereal->serialize($this->getEdmx(), 'xml');
     }
 
+    /**
+     * @param $name
+     * @param TEntityTypeType|null $baseType
+     * @param bool $isAbstract
+     * @param string $accessType
+     * @param null $summary
+     * @param null $longDescription
+     * @return array
+     */
     public function addEntityType(
         $name,
         TEntityTypeType $baseType = null,
@@ -124,6 +133,18 @@ class MetadataManager
         return $newProperty;
     }
 
+    /**
+     * @param TEntityTypeType $entityType
+     * @param $name
+     * @param $type
+     * @param null $defaultValue
+     * @param bool $nullable
+     * @param bool $isKey
+     * @param null $storeGeneratedPattern
+     * @param null $summary
+     * @param null $longDescription
+     * @return TEntityPropertyType
+     */
     public function addPropertyToEntityType(
         TEntityTypeType $entityType,
         $name,
@@ -153,6 +174,25 @@ class MetadataManager
         return $newProperty;
     }
 
+    /**
+     * @param TEntityTypeType $principalType
+     * @param $principalMultiplicity
+     * @param $principalProperty
+     * @param TEntityTypeType $dependentType
+     * @param $dependentMultiplicity
+     * @param string $dependentProperty
+     * @param array|null $principalConstraintProperty
+     * @param array|null $dependentConstraintProperty
+     * @param string $principalGetterAccess
+     * @param string $principalSetterAccess
+     * @param string $dependentGetterAccess
+     * @param string $dependentSetterAccess
+     * @param null $principalSummery
+     * @param null $principalLongDescription
+     * @param null $dependentSummery
+     * @param null $dependentLongDescription
+     * @return array
+     */
     public function addNavigationPropertyToEntityType(
         TEntityTypeType $principalType,
         $principalMultiplicity,
@@ -228,6 +268,17 @@ class MetadataManager
         return [$principalNavigationProperty, $dependentNavigationProperty];
     }
 
+    /**
+     * @param TEntityTypeType $principalType
+     * @param TEntityTypeType $dependentType
+     * @param TNavigationPropertyType $principalNavigationProperty
+     * @param TNavigationPropertyType|null $dependentNavigationProperty
+     * @param $principalMultiplicity
+     * @param $dependentMultiplicity
+     * @param array|null $principalConstraintProperty
+     * @param array|null $dependentConstraintProperty
+     * @return TAssociationType
+     */
     protected function createAssocationFromNavigationProperty(
         TEntityTypeType $principalType,
         TEntityTypeType $dependentType,
@@ -294,10 +345,12 @@ class MetadataManager
 
         if ($hasPrincipalReferral && $hasDependentReferral) {
             $principalReferralConstraint = $this->makeReferentialConstraint(
-                $principalConstraintProperty, $principalTargRole
+                $principalConstraintProperty,
+                $principalTargRole
             );
             $dependentReferralConstraint = $this->makeReferentialConstraint(
-                $dependentConstraintProperty, $dependentTargRole
+                $dependentConstraintProperty,
+                $dependentTargRole
             );
             $constraint = new TConstraintType();
             $constraint->setPrincipal($principalReferralConstraint);
@@ -308,8 +361,10 @@ class MetadataManager
     }
 
     /**
+     * @param TAssociationType $association
      * @param string $principalEntitySetName
      * @param string $dependentEntitySetName
+     * @return AssociationSetAnonymousType
      */
     protected function createAssocationSetForAssocation(
         TAssociationType $association,
