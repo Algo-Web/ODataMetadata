@@ -26,13 +26,13 @@ class EntityContainer extends IsOK
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\EntitySetAnonymousType[]
      * $entitySet
      */
-    private $entitySet = array();
+    private $entitySet = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\EntityContainer\AssociationSetAnonymousType[]
      * $associationSet
      */
-    private $associationSet = array();
+    private $associationSet = [];
 
     /**
      * Gets as name.

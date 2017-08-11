@@ -10,6 +10,7 @@ trait TPathTrait
 
     /**
      * @param string $string
+     * @return bool
      */
     public function isTPathValid($string)
     {

@@ -61,7 +61,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     /**
      * isset condition.
      *
-     * @param  scalar $index
+     * @param  int $index
      * @return bool
      */
     public function issetCondition($index)
@@ -72,7 +72,7 @@ class TFunctionImportEntityTypeMappingType extends IsOK
     /**
      * unset condition.
      *
-     * @param  scalar $index
+     * @param  int $index
      * @return void
      */
     public function unsetCondition($index)

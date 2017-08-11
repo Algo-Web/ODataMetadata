@@ -32,7 +32,7 @@ trait TOperations
     /**
      * isset onDelete.
      *
-     * @param  scalar $index
+     * @param  int $index
      * @return bool
      */
     public function issetOnDelete($index)
@@ -43,7 +43,7 @@ trait TOperations
     /**
      * unset onDelete.
      *
-     * @param  scalar $index
+     * @param  int $index
      * @return void
      */
     public function unsetOnDelete($index)

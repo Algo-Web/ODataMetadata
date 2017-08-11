@@ -59,7 +59,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     /**
      * isset scalarProperty.
      *
-     * @param  scalar $index
+     * @param  int $index
      * @return bool
      */
     public function issetScalarProperty($index)
@@ -70,7 +70,7 @@ class TFunctionImportComplexTypeMappingType extends IsOK
     /**
      * unset scalarProperty.
      *
-     * @param  scalar $index
+     * @param  int $index
      * @return void
      */
     public function unsetScalarProperty($index)

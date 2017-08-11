@@ -10,6 +10,7 @@ trait TNamespaceNameTrait
 
     /**
      * @param string $TNamespaceName
+     * @return bool
      */
     protected function isTNamespaceNameValid($TNamespaceName)
     {

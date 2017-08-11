@@ -10,6 +10,7 @@ trait TSimpleIdentifierTrait
 
     /**
      * @param string $tSimpleIdentifier
+     * @return bool
      */
     protected function isTSimpleIdentifierValid($tSimpleIdentifier)
     {
