@@ -26,99 +26,99 @@ class MetadataManagerNavigationTest extends \PHPUnit_Framework_TestCase
         $metadataManager = new MetadataManager();
         $result = null;
 
-        list($CategoryType, $result) = $metadataManager->addEntityType('Category');
-        $this->assertNotFalse($CategoryType, 'Etype is false not type ' . $metadataManager->getLastError());
-        $metadataManager->addPropertyToEntityType($CategoryType, 'CategoryID', 'Int32', null, false, true, 'Identity');
-        $metadataManager->addPropertyToEntityType($CategoryType, 'CategoryName', 'String');
-        $metadataManager->addPropertyToEntityType($CategoryType, 'Description', 'String');
-        $metadataManager->addPropertyToEntityType($CategoryType, 'Picture', 'Binary');
+        list($categoryType, $result) = $metadataManager->addEntityType('Category');
+        $this->assertNotFalse($categoryType, 'Etype is false not type ' . $metadataManager->getLastError());
+        $metadataManager->addPropertyToEntityType($categoryType, 'CategoryID', 'Int32', null, false, true, 'Identity');
+        $metadataManager->addPropertyToEntityType($categoryType, 'CategoryName', 'String');
+        $metadataManager->addPropertyToEntityType($categoryType, 'Description', 'String');
+        $metadataManager->addPropertyToEntityType($categoryType, 'Picture', 'Binary');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($CustomerDemographicType, $result) = $metadataManager->addEntityType('CustomerDemographic');
-        $metadataManager->addPropertyToEntityType($CustomerDemographicType, 'CustomerTypeID', 'String', null, false, true);
-        $metadataManager->addPropertyToEntityType($CustomerDemographicType, 'CustomerDesc', 'String');
+        list($customerDemographicType, $result) = $metadataManager->addEntityType('CustomerDemographic');
+        $metadataManager->addPropertyToEntityType($customerDemographicType, 'CustomerTypeID', 'String', null, false, true);
+        $metadataManager->addPropertyToEntityType($customerDemographicType, 'CustomerDesc', 'String');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($CustomerType, $result) = $metadataManager->addEntityType('Customer');
-        $metadataManager->addPropertyToEntityType($CustomerType, 'CustomerID', 'String', null, false, true);
-        $metadataManager->addPropertyToEntityType($CustomerType, 'CompanyName', 'String');
-        $metadataManager->addPropertyToEntityType($CustomerType, 'ContactName', 'String');
-        $metadataManager->addPropertyToEntityType($CustomerType, 'ContactTitle', 'String');
-        $metadataManager->addPropertyToEntityType($CustomerType, 'Address', 'String');
-        $metadataManager->addPropertyToEntityType($CustomerType, 'City', 'String');
-        $metadataManager->addPropertyToEntityType($CustomerType, 'Region', 'String');
-        $metadataManager->addPropertyToEntityType($CustomerType, 'PostalCode', 'String');
-        $metadataManager->addPropertyToEntityType($CustomerType, 'Country', 'String');
-        $metadataManager->addPropertyToEntityType($CustomerType, 'Phone', 'String');
-        $metadataManager->addPropertyToEntityType($CustomerType, 'Fax', 'String');
+        list($customerType, $result) = $metadataManager->addEntityType('Customer');
+        $metadataManager->addPropertyToEntityType($customerType, 'CustomerID', 'String', null, false, true);
+        $metadataManager->addPropertyToEntityType($customerType, 'CompanyName', 'String');
+        $metadataManager->addPropertyToEntityType($customerType, 'ContactName', 'String');
+        $metadataManager->addPropertyToEntityType($customerType, 'ContactTitle', 'String');
+        $metadataManager->addPropertyToEntityType($customerType, 'Address', 'String');
+        $metadataManager->addPropertyToEntityType($customerType, 'City', 'String');
+        $metadataManager->addPropertyToEntityType($customerType, 'Region', 'String');
+        $metadataManager->addPropertyToEntityType($customerType, 'PostalCode', 'String');
+        $metadataManager->addPropertyToEntityType($customerType, 'Country', 'String');
+        $metadataManager->addPropertyToEntityType($customerType, 'Phone', 'String');
+        $metadataManager->addPropertyToEntityType($customerType, 'Fax', 'String');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($EmployeeType, $result) = $metadataManager->addEntityType('Employee');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'EmployeeID', 'Int32', null, false, true, 'Identity');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'LastName', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'FirstName', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'Title', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'TitleOfCourtesy', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'BirthDate', 'DateTime');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'HireDate', 'DateTime');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'Address', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'City', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'Region', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'PostalCode', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'Country', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'HomePhone', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'Extension', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'Photo', 'Binary');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'Notes', 'String');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'ReportsTo', 'Int32');
-        $metadataManager->addPropertyToEntityType($EmployeeType, 'PhotoPath', 'String');
+        list($employeeType, $result) = $metadataManager->addEntityType('Employee');
+        $metadataManager->addPropertyToEntityType($employeeType, 'EmployeeID', 'Int32', null, false, true, 'Identity');
+        $metadataManager->addPropertyToEntityType($employeeType, 'LastName', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'FirstName', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'Title', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'TitleOfCourtesy', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'BirthDate', 'DateTime');
+        $metadataManager->addPropertyToEntityType($employeeType, 'HireDate', 'DateTime');
+        $metadataManager->addPropertyToEntityType($employeeType, 'Address', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'City', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'Region', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'PostalCode', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'Country', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'HomePhone', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'Extension', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'Photo', 'Binary');
+        $metadataManager->addPropertyToEntityType($employeeType, 'Notes', 'String');
+        $metadataManager->addPropertyToEntityType($employeeType, 'ReportsTo', 'Int32');
+        $metadataManager->addPropertyToEntityType($employeeType, 'PhotoPath', 'String');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($Order_DetailType, $result) = $metadataManager->addEntityType('Order_Detail');
-        $metadataManager->addPropertyToEntityType($Order_DetailType, 'OrderID', 'Int32', null, false, true);
-        $metadataManager->addPropertyToEntityType($Order_DetailType, 'ProductID', 'Int32', null, false, true);
-        $metadataManager->addPropertyToEntityType($Order_DetailType, 'UnitPrice', 'Decimal');
-        $metadataManager->addPropertyToEntityType($Order_DetailType, 'Quantity', 'Int16');
-        $metadataManager->addPropertyToEntityType($Order_DetailType, 'Discount', 'Single');
+        list($orderDetailType, $result) = $metadataManager->addEntityType('Order_Detail');
+        $metadataManager->addPropertyToEntityType($orderDetailType, 'OrderID', 'Int32', null, false, true);
+        $metadataManager->addPropertyToEntityType($orderDetailType, 'ProductID', 'Int32', null, false, true);
+        $metadataManager->addPropertyToEntityType($orderDetailType, 'UnitPrice', 'Decimal');
+        $metadataManager->addPropertyToEntityType($orderDetailType, 'Quantity', 'Int16');
+        $metadataManager->addPropertyToEntityType($orderDetailType, 'Discount', 'Single');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($OrderType, $result) = $metadataManager->addEntityType('Order');
-        $metadataManager->addPropertyToEntityType($OrderType, 'OrderID', 'Int32', null, false, true, 'Identity');
-        $metadataManager->addPropertyToEntityType($OrderType, 'CustomerID', 'String');
-        $metadataManager->addPropertyToEntityType($OrderType, 'EmployeeID', 'Int32');
-        $metadataManager->addPropertyToEntityType($OrderType, 'OrderDate', 'DateTime');
-        $metadataManager->addPropertyToEntityType($OrderType, 'RequiredDate', 'DateTime');
-        $metadataManager->addPropertyToEntityType($OrderType, 'ShippedDate', 'DateTime');
-        $metadataManager->addPropertyToEntityType($OrderType, 'ShipVia', 'DateTime');
-        $metadataManager->addPropertyToEntityType($OrderType, 'Freight', 'Decimal');
-        $metadataManager->addPropertyToEntityType($OrderType, 'ShipName', 'String');
-        $metadataManager->addPropertyToEntityType($OrderType, 'ShipAddress', 'String');
-        $metadataManager->addPropertyToEntityType($OrderType, 'ShipCity', 'String');
-        $metadataManager->addPropertyToEntityType($OrderType, 'ShipRegion', 'String');
-        $metadataManager->addPropertyToEntityType($OrderType, 'ShipPostalCode', 'String');
-        $metadataManager->addPropertyToEntityType($OrderType, 'ShipCountry', 'String');
+        list($orderType, $result) = $metadataManager->addEntityType('Order');
+        $metadataManager->addPropertyToEntityType($orderType, 'OrderID', 'Int32', null, false, true, 'Identity');
+        $metadataManager->addPropertyToEntityType($orderType, 'CustomerID', 'String');
+        $metadataManager->addPropertyToEntityType($orderType, 'EmployeeID', 'Int32');
+        $metadataManager->addPropertyToEntityType($orderType, 'OrderDate', 'DateTime');
+        $metadataManager->addPropertyToEntityType($orderType, 'RequiredDate', 'DateTime');
+        $metadataManager->addPropertyToEntityType($orderType, 'ShippedDate', 'DateTime');
+        $metadataManager->addPropertyToEntityType($orderType, 'ShipVia', 'DateTime');
+        $metadataManager->addPropertyToEntityType($orderType, 'Freight', 'Decimal');
+        $metadataManager->addPropertyToEntityType($orderType, 'ShipName', 'String');
+        $metadataManager->addPropertyToEntityType($orderType, 'ShipAddress', 'String');
+        $metadataManager->addPropertyToEntityType($orderType, 'ShipCity', 'String');
+        $metadataManager->addPropertyToEntityType($orderType, 'ShipRegion', 'String');
+        $metadataManager->addPropertyToEntityType($orderType, 'ShipPostalCode', 'String');
+        $metadataManager->addPropertyToEntityType($orderType, 'ShipCountry', 'String');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
-        list($ProductType, $result) = $metadataManager->addEntityType('Product');
-        $metadataManager->addPropertyToEntityType($ProductType, 'ProductID', 'Int32', null, false, true, 'Identity');
-        $metadataManager->addPropertyToEntityType($ProductType, 'ProductName', 'String');
-        $metadataManager->addPropertyToEntityType($ProductType, 'SupplierID', 'Int32');
-        $metadataManager->addPropertyToEntityType($ProductType, 'CategoryID', 'Int32');
-        $metadataManager->addPropertyToEntityType($ProductType, 'QuantityPerUnit', 'String');
-        $metadataManager->addPropertyToEntityType($ProductType, 'UnitPrice', 'Decimal');
-        $metadataManager->addPropertyToEntityType($ProductType, 'UnitsInStock', 'Int16');
-        $metadataManager->addPropertyToEntityType($ProductType, 'UnitsOnOrder', 'Int16');
-        $metadataManager->addPropertyToEntityType($ProductType, 'ReorderLevel', 'Int16');
-        $metadataManager->addPropertyToEntityType($ProductType, 'Discontinued', 'Boolean');
+        list($productType, $result) = $metadataManager->addEntityType('Product');
+        $metadataManager->addPropertyToEntityType($productType, 'ProductID', 'Int32', null, false, true, 'Identity');
+        $metadataManager->addPropertyToEntityType($productType, 'ProductName', 'String');
+        $metadataManager->addPropertyToEntityType($productType, 'SupplierID', 'Int32');
+        $metadataManager->addPropertyToEntityType($productType, 'CategoryID', 'Int32');
+        $metadataManager->addPropertyToEntityType($productType, 'QuantityPerUnit', 'String');
+        $metadataManager->addPropertyToEntityType($productType, 'UnitPrice', 'Decimal');
+        $metadataManager->addPropertyToEntityType($productType, 'UnitsInStock', 'Int16');
+        $metadataManager->addPropertyToEntityType($productType, 'UnitsOnOrder', 'Int16');
+        $metadataManager->addPropertyToEntityType($productType, 'ReorderLevel', 'Int16');
+        $metadataManager->addPropertyToEntityType($productType, 'Discontinued', 'Boolean');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         $expectedRelation = 'Data.Category_Products_Product_Category';
         list($principalNav, ) = $metadataManager->addNavigationPropertyToEntityType(
-            $CategoryType, '*', 'Products', $ProductType, '1', 'Category', ['CategoryID'], ['CategoryID']
+            $categoryType, '*', 'Products', $productType, '1', 'Category', ['CategoryID'], ['CategoryID']
         );
         $this->assertEquals($expectedRelation, $principalNav->getRelationship());
         $metadataManager->addNavigationPropertyToEntityType(
-            $Order_DetailType, '1', 'Order', $ProductType, '*', 'Order_Details', ['OrderID'], ['CategoryID']
+            $orderDetailType, '1', 'Order', $productType, '*', 'Order_Details', ['OrderID'], ['CategoryID']
         );
 //        <NavigationProperty Name="Order_Details" Relationship="NorthwindModel.FK_Order_Details_Products" ToRole="Order_Details" FromRole="Products"/>
 
@@ -129,21 +129,21 @@ class MetadataManagerNavigationTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($msg);
 
         $d = $metadataManager->getEdmxXML();
-        $CategoryEType = null;
+        $categoryEType = null;
         $dom = new \DOMDocument();
         $dom->loadXML($d);
         foreach ($dom->getElementsByTagName('EntityType') as $eType) {
             foreach ($eType->attributes as $aType) {
                 if ($aType->name == 'Name' && $aType->value == 'Category') {
-                    $CategoryEType = $eType;
+                    $categoryEType = $eType;
                 }
             }
         }
-        $this->assertNotNull($CategoryEType, 'Count not find the category entity Type to get the navigation property');
-        $this->assertEquals('Products', $CategoryEType->getElementsByTagName('NavigationProperty')[0]->getAttribute('Name'), 'the product relationship was not found');
-        $ProductRelationship = $CategoryEType->getElementsByTagName('NavigationProperty')[0]->getAttribute('Relationship');
-        $ProductToRole = $CategoryEType->getElementsByTagName('NavigationProperty')[0]->getAttribute('ToRole');
-        $ProductFromRole = $CategoryEType->getElementsByTagName('NavigationProperty')[0]->getAttribute('FromRole');
+        $this->assertNotNull($categoryEType, 'Count not find the category entity Type to get the navigation property');
+        $this->assertEquals('Products', $categoryEType->getElementsByTagName('NavigationProperty')[0]->getAttribute('Name'), 'the product relationship was not found');
+        $ProductRelationship = $categoryEType->getElementsByTagName('NavigationProperty')[0]->getAttribute('Relationship');
+        $ProductToRole = $categoryEType->getElementsByTagName('NavigationProperty')[0]->getAttribute('ToRole');
+        $ProductFromRole = $categoryEType->getElementsByTagName('NavigationProperty')[0]->getAttribute('FromRole');
         $associationType = null;
         foreach ($dom->getElementsByTagName('Association') as $eType) {
             foreach ($eType->attributes as $aType) {

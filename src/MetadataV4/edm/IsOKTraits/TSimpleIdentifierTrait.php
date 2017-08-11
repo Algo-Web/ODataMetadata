@@ -9,22 +9,22 @@ trait TSimpleIdentifierTrait
     use xsdRestrictions;
 
     /**
-     * @param string $TSimpleIdentifier
+     * @param string $tSimpleIdentifier
      */
-    protected function isTSimpleIdentifierValid($TSimpleIdentifier)
+    protected function isTSimpleIdentifierValid($tSimpleIdentifier)
     {
-        if (!$this->isNCName($TSimpleIdentifier)) {
+        if (!$this->isNCName($tSimpleIdentifier)) {
             $msg = 'Qualifier must be a valid NCName';
             return false;
         }
-        if (strlen($TSimpleIdentifier > 128)) {
+        if (strlen($tSimpleIdentifier > 128)) {
             $msg = 'The maximum length permitted for qualifier is 128';
             return false;
         }
         //      <!-- ECMAScript identifiers not starting with a '$' -->
         if (!$this->matchesRegexPattern(
             "[\p{L}\p{Nl}_][\p{L}\p{Nl}\p{Nd}\p{Mn}\p{Mc}\p{Pc}\p{Cf}]{0,}",
-            $TSimpleIdentifier
+            $tSimpleIdentifier
         )
         ) {
             $msg = 'The qualifier does not match the regex in the xsd.';
