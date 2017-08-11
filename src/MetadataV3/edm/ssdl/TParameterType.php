@@ -72,7 +72,6 @@ class TParameterType extends IsOK
      */
     public function setName($name)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($name)) {
             $msg = 'Name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
@@ -99,7 +98,6 @@ class TParameterType extends IsOK
      */
     public function setType($type)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($type)) {
             $msg = 'Type cannot be null or empty';
             throw new \InvalidArgumentException($msg);
@@ -130,7 +128,6 @@ class TParameterType extends IsOK
      */
     public function setMode($mode)
     {
-        $msg = null;
         if (null != $mode && !$this->isStringNotNullOrEmpty($mode)) {
             $msg = 'Mode cannot be empty';
             throw new \InvalidArgumentException($msg);
@@ -227,7 +224,6 @@ class TParameterType extends IsOK
      */
     public function setSRID($sRID)
     {
-        $msg = null;
         if (null != $sRID && !$this->isStringNotNullOrEmpty($sRID)) {
             $msg = 'SRID cannot be empty';
             throw new \InvalidArgumentException($msg);

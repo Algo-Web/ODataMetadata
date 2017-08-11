@@ -120,7 +120,6 @@ trait GExpressionTrait
      */
     public function setString($string)
     {
-        $msg = null;
         if (null !== $string && !is_string($string)) {
             $msg = 'String must be a string';
             throw new \InvalidArgumentException($msg);
@@ -213,7 +212,6 @@ trait GExpressionTrait
      */
     public function setGuid($guid)
     {
-        $msg = null;
         if (null != $guid && !$this->isTGuidLiteralValid($guid)) {
             $msg = 'Guid must be a valid TGuidLiteral';
             throw new \InvalidArgumentException($msg);
@@ -328,7 +326,6 @@ trait GExpressionTrait
      */
     public function setEnum($enum)
     {
-        $msg = null;
         if (null != $enum && !$this->isTQualifiedNameValid($enum)) {
             $msg = 'Enum must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
@@ -716,7 +713,7 @@ trait GExpressionTrait
         foreach ($this->gExpressionSimpleFieldNames as $key => $type) {
             if (null != $type && null != $key && null != $this->$key) {
                 // this bit passes if nothing throws an exception
-                $result = $this->$type($this->$key);
+                $this->$type($this->$key);
             }
         }
 

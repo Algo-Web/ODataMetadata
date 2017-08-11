@@ -88,7 +88,6 @@ class TPropertyType extends IsOK
      */
     public function setName($name)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($name)) {
             $msg = 'Name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
@@ -119,7 +118,6 @@ class TPropertyType extends IsOK
      */
     public function setType($type)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($type)) {
             $msg = 'Type cannot be null or empty';
             throw new \InvalidArgumentException($msg);
@@ -172,7 +170,6 @@ class TPropertyType extends IsOK
      */
     public function setDefaultValue($defaultValue)
     {
-        $msg = null;
         if (null != $defaultValue && !$this->isStringNotNullOrEmpty($defaultValue)) {
             $msg = 'Default value cannot be empty';
             throw new \InvalidArgumentException($msg);
@@ -199,7 +196,6 @@ class TPropertyType extends IsOK
      */
     public function setMaxLength($maxLength)
     {
-        $msg = null;
         if (null != $maxLength && !(is_numeric($maxLength) && 0 <= $maxLength)) {
             $msg = 'Max length must be numeric and non-negative';
             throw new \InvalidArgumentException($msg);
@@ -248,7 +244,6 @@ class TPropertyType extends IsOK
      */
     public function setPrecision($precision)
     {
-        $msg = null;
         if (null != $precision && !(is_numeric($precision) && 0 <= $precision)) {
             $msg = 'Precision must be numeric and non-negative';
             throw new \InvalidArgumentException($msg);
@@ -275,7 +270,6 @@ class TPropertyType extends IsOK
      */
     public function setScale($scale)
     {
-        $msg = null;
         if (null != $scale && !(is_numeric($scale) && 0 <= $scale)) {
             $msg = 'Scale must be numeric and non-negative';
             throw new \InvalidArgumentException($msg);
@@ -324,7 +318,6 @@ class TPropertyType extends IsOK
      */
     public function setCollation($collation)
     {
-        $msg = null;
         if (null != $collation && !$this->isStringNotNullOrEmpty($collation)) {
             $msg = 'Collation value cannot be empty';
             throw new \InvalidArgumentException($msg);
@@ -351,7 +344,6 @@ class TPropertyType extends IsOK
      */
     public function setSRID($sRID)
     {
-        $msg = null;
         if (null != $sRID && !$this->isStringNotNullOrEmpty($sRID)) {
             $msg = 'SRID value cannot be empty';
             throw new \InvalidArgumentException($msg);

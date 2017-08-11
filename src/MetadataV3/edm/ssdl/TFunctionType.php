@@ -94,7 +94,6 @@ class TFunctionType extends IsOK
      */
     public function setName($name)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($name)) {
             $msg = 'Name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
@@ -304,7 +303,6 @@ class TFunctionType extends IsOK
      */
     public function setParameterTypeSemantics($parameterTypeSemantics)
     {
-        $msg = null;
         if (null != $parameterTypeSemantics && !$this->isStringNotNullOrEmpty($parameterTypeSemantics)) {
             $msg = 'Parameter type semantics cannot be empty';
             throw new \InvalidArgumentException($msg);
@@ -337,7 +335,6 @@ class TFunctionType extends IsOK
      */
     public function setSchema($schema)
     {
-        $msg = null;
         if (null != $schema && !$this->isStringNotNullOrEmpty($schema)) {
             $msg = 'Schema cannot be empty';
             throw new \InvalidArgumentException($msg);
@@ -453,7 +450,6 @@ class TFunctionType extends IsOK
      */
     public function addToCommandText($commandText)
     {
-        $msg = null;
         if (!$this->isTCommandTextValid($commandText)) {
             $msg = 'All command text entries must be valid TCommandText';
             throw new \InvalidArgumentException($msg);
