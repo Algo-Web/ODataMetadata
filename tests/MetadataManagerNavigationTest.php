@@ -28,6 +28,7 @@ class MetadataManagerNavigationTest extends \PHPUnit_Framework_TestCase
 
         list($categoryType, $result) = $metadataManager->addEntityType('Category');
         $this->assertNotFalse($categoryType, 'Etype is false not type ' . $metadataManager->getLastError());
+        assert($categoryType instanceof TEntityTypeType, get_class($categoryType));
         $metadataManager->addPropertyToEntityType($categoryType, 'CategoryID', 'Int32', null, false, true, 'Identity');
         $metadataManager->addPropertyToEntityType($categoryType, 'CategoryName', 'String');
         $metadataManager->addPropertyToEntityType($categoryType, 'Description', 'String');
@@ -35,11 +36,13 @@ class MetadataManagerNavigationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         list($customerDemographicType, $result) = $metadataManager->addEntityType('CustomerDemographic');
+        assert($customerDemographicType instanceof TEntityTypeType, get_class($customerDemographicType));
         $metadataManager->addPropertyToEntityType($customerDemographicType, 'CustomerTypeID', 'String', null, false, true);
         $metadataManager->addPropertyToEntityType($customerDemographicType, 'CustomerDesc', 'String');
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         list($customerType, $result) = $metadataManager->addEntityType('Customer');
+        assert($customerType instanceof TEntityTypeType, get_class($customerType));
         $metadataManager->addPropertyToEntityType($customerType, 'CustomerID', 'String', null, false, true);
         $metadataManager->addPropertyToEntityType($customerType, 'CompanyName', 'String');
         $metadataManager->addPropertyToEntityType($customerType, 'ContactName', 'String');
@@ -54,6 +57,7 @@ class MetadataManagerNavigationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         list($employeeType, $result) = $metadataManager->addEntityType('Employee');
+        assert($employeeType instanceof TEntityTypeType, get_class($employeeType));
         $metadataManager->addPropertyToEntityType($employeeType, 'EmployeeID', 'Int32', null, false, true, 'Identity');
         $metadataManager->addPropertyToEntityType($employeeType, 'LastName', 'String');
         $metadataManager->addPropertyToEntityType($employeeType, 'FirstName', 'String');
@@ -75,6 +79,7 @@ class MetadataManagerNavigationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         list($orderDetailType, $result) = $metadataManager->addEntityType('Order_Detail');
+        assert($orderDetailType instanceof TEntityTypeType, get_class($orderDetailType));
         $metadataManager->addPropertyToEntityType($orderDetailType, 'OrderID', 'Int32', null, false, true);
         $metadataManager->addPropertyToEntityType($orderDetailType, 'ProductID', 'Int32', null, false, true);
         $metadataManager->addPropertyToEntityType($orderDetailType, 'UnitPrice', 'Decimal');
@@ -83,6 +88,7 @@ class MetadataManagerNavigationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         list($orderType, $result) = $metadataManager->addEntityType('Order');
+        assert($orderType instanceof TEntityTypeType, get_class($orderType));
         $metadataManager->addPropertyToEntityType($orderType, 'OrderID', 'Int32', null, false, true, 'Identity');
         $metadataManager->addPropertyToEntityType($orderType, 'CustomerID', 'String');
         $metadataManager->addPropertyToEntityType($orderType, 'EmployeeID', 'Int32');
@@ -100,6 +106,7 @@ class MetadataManagerNavigationTest extends \PHPUnit_Framework_TestCase
         $this->assertTrue($metadataManager->getEdmx()->isOK($msg), $msg);
 
         list($productType, $result) = $metadataManager->addEntityType('Product');
+        assert($productType instanceof TEntityTypeType, get_class($productType));
         $metadataManager->addPropertyToEntityType($productType, 'ProductID', 'Int32', null, false, true, 'Identity');
         $metadataManager->addPropertyToEntityType($productType, 'ProductName', 'String');
         $metadataManager->addPropertyToEntityType($productType, 'SupplierID', 'Int32');
