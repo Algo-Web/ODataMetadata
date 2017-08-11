@@ -36,7 +36,7 @@ class TCollectionTypeType extends IsOK
     /**
      * isset rowType.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetRowType($index)
@@ -47,7 +47,7 @@ class TCollectionTypeType extends IsOK
     /**
      * unset rowType.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetRowType($index)

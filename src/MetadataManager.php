@@ -178,22 +178,22 @@ class MetadataManager
     }
 
     /**
-     * @param  TEntityTypeType $principalType
+     * @param TEntityTypeType $principalType
      * @param  $principalMultiplicity
      * @param  $principalProperty
-     * @param  TEntityTypeType $dependentType
+     * @param TEntityTypeType $dependentType
      * @param  $dependentMultiplicity
-     * @param  string     $dependentProperty
-     * @param  array|null $principalConstraintProperty
-     * @param  array|null $dependentConstraintProperty
-     * @param  string     $principalGetterAccess
-     * @param  string     $principalSetterAccess
-     * @param  string     $dependentGetterAccess
-     * @param  string     $dependentSetterAccess
-     * @param  null       $principalSummery
-     * @param  null       $principalLongDescription
-     * @param  null       $dependentSummery
-     * @param  null       $dependentLongDescription
+     * @param  string           $dependentProperty
+     * @param  array|null       $principalConstraintProperty
+     * @param  array|null       $dependentConstraintProperty
+     * @param  string           $principalGetterAccess
+     * @param  string           $principalSetterAccess
+     * @param  string           $dependentGetterAccess
+     * @param  string           $dependentSetterAccess
+     * @param  null             $principalSummery
+     * @param  null             $principalLongDescription
+     * @param  null             $dependentSummery
+     * @param  null             $dependentLongDescription
      * @return array<IsOK|null>
      */
     public function addNavigationPropertyToEntityType(

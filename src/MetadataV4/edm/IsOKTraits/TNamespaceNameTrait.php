@@ -9,7 +9,7 @@ trait TNamespaceNameTrait
     use xsdRestrictions;
 
     /**
-     * @param string $TNamespaceName
+     * @param  string $TNamespaceName
      * @return bool
      */
     protected function isTNamespaceNameValid($TNamespaceName)

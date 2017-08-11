@@ -59,7 +59,7 @@ class TEndPropertyType extends IsOK
     /**
      * isset scalarProperty.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetScalarProperty($index)
@@ -70,7 +70,7 @@ class TEndPropertyType extends IsOK
     /**
      * unset scalarProperty.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetScalarProperty($index)

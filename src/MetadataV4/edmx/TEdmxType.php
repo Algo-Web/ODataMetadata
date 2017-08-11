@@ -65,7 +65,7 @@ class TEdmxType extends IsOK
     /**
      * isset reference.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetReference($index)
@@ -76,7 +76,7 @@ class TEdmxType extends IsOK
     /**
      * unset reference.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetReference($index)
@@ -121,7 +121,7 @@ class TEdmxType extends IsOK
     /**
      * isset dataServices.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDataServices($index)
@@ -132,7 +132,7 @@ class TEdmxType extends IsOK
     /**
      * unset dataServices.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDataServices($index)

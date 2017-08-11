@@ -64,7 +64,7 @@ class TRecordExpressionType extends IsOK
     /**
      * isset propertyValue.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetPropertyValue($index)
@@ -75,7 +75,7 @@ class TRecordExpressionType extends IsOK
     /**
      * unset propertyValue.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetPropertyValue($index)
@@ -120,7 +120,7 @@ class TRecordExpressionType extends IsOK
     /**
      * isset annotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetAnnotation($index)
@@ -131,7 +131,7 @@ class TRecordExpressionType extends IsOK
     /**
      * unset annotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetAnnotation($index)

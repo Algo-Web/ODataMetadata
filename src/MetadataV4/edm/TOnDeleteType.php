@@ -59,7 +59,7 @@ class TOnDeleteType extends IsOK
     /**
      * isset annotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetAnnotation($index)
@@ -70,7 +70,7 @@ class TOnDeleteType extends IsOK
     /**
      * unset annotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetAnnotation($index)

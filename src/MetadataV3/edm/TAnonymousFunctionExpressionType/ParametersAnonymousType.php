@@ -36,7 +36,7 @@ class ParametersAnonymousType extends IsOK
     /**
      * isset parameter.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetParameter($index)
@@ -47,7 +47,7 @@ class ParametersAnonymousType extends IsOK
     /**
      * unset parameter.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetParameter($index)

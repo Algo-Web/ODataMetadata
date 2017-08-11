@@ -42,7 +42,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     /**
      * isset entityTypeMapping.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetEntityTypeMapping($index)
@@ -53,7 +53,7 @@ class TFunctionImportMappingResultMappingType extends IsOK
     /**
      * unset entityTypeMapping.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetEntityTypeMapping($index)

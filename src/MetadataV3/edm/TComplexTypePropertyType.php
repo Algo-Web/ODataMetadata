@@ -49,7 +49,7 @@ class TComplexTypePropertyType extends IsOK
     /**
      * isset documentation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDocumentation($index)
@@ -60,7 +60,7 @@ class TComplexTypePropertyType extends IsOK
     /**
      * unset documentation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDocumentation($index)
@@ -117,7 +117,7 @@ class TComplexTypePropertyType extends IsOK
     /**
      * isset valueAnnotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetValueAnnotation($index)
@@ -128,7 +128,7 @@ class TComplexTypePropertyType extends IsOK
     /**
      * unset valueAnnotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetValueAnnotation($index)
@@ -185,7 +185,7 @@ class TComplexTypePropertyType extends IsOK
     /**
      * isset typeAnnotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetTypeAnnotation($index)
@@ -196,7 +196,7 @@ class TComplexTypePropertyType extends IsOK
     /**
      * unset typeAnnotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetTypeAnnotation($index)

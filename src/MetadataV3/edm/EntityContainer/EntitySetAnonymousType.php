@@ -50,7 +50,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * isset documentation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDocumentation($index)
@@ -61,7 +61,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * unset documentation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDocumentation($index)
@@ -121,7 +121,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * isset valueAnnotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetValueAnnotation($index)
@@ -132,7 +132,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * unset valueAnnotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetValueAnnotation($index)
@@ -190,7 +190,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * isset typeAnnotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetTypeAnnotation($index)
@@ -201,7 +201,7 @@ class EntitySetAnonymousType extends IsOK
     /**
      * unset typeAnnotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetTypeAnnotation($index)

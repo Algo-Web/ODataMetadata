@@ -32,7 +32,7 @@ class TOptionsType extends IsOK
     /**
      * isset designerInfoPropertySet.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDesignerInfoPropertySet($index)
@@ -43,7 +43,7 @@ class TOptionsType extends IsOK
     /**
      * unset designerInfoPropertySet.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDesignerInfoPropertySet($index)

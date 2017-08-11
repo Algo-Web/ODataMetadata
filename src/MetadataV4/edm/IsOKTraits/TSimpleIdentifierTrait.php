@@ -9,7 +9,7 @@ trait TSimpleIdentifierTrait
     use xsdRestrictions;
 
     /**
-     * @param string $tSimpleIdentifier
+     * @param  string $tSimpleIdentifier
      * @return bool
      */
     protected function isTSimpleIdentifierValid($tSimpleIdentifier)

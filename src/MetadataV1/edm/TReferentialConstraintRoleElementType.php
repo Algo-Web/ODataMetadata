@@ -59,7 +59,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     /**
      * isset propertyRef.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetPropertyRef($index)
@@ -70,7 +70,7 @@ class TReferentialConstraintRoleElementType extends IsOK
     /**
      * unset propertyRef.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetPropertyRef($index)

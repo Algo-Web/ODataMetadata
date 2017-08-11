@@ -62,8 +62,8 @@ trait IsOKToolboxTrait
     }
 
     /**
-     * @param  IsOK|null    $object
-     * @param  string|null  $msg
+     * @param  IsOK|null   $object
+     * @param  string|null $msg
      * @return bool
      */
     protected function isObjectNullOrOK(IsOK $object = null, &$msg = null)
@@ -75,8 +75,9 @@ trait IsOKToolboxTrait
     }
 
     /**
-     * @param  IsOK|null    $object
-     * @param  string|null  $msg
+     * @param  IsOK|null   $object
+     * @param  string|null $msg
+     * @param  mixed       $instanceOf
      * @return bool
      */
     protected function isObjectNullOrType($instanceOf, IsOK $object = null, &$msg = null)
