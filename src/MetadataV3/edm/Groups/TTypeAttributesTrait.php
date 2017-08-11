@@ -30,7 +30,6 @@ trait TTypeAttributesTrait
      */
     public function setName($name)
     {
-        $msg = null;
         if (null == $name) {
             $msg = 'Name cannot be null';
             throw new \InvalidArgumentException($msg);

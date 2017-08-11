@@ -54,7 +54,6 @@ class AssociationSetAnonymousType extends IsOK
      */
     public function setName($name)
     {
-        $msg = null;
         if (!$this->isTSimpleIdentifierValid($name)) {
             $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
@@ -81,7 +80,6 @@ class AssociationSetAnonymousType extends IsOK
      */
     public function setAssociation($association)
     {
-        $msg = null;
         if (!$this->isTQualifiedNameValid($association)) {
             $msg = 'Association must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);

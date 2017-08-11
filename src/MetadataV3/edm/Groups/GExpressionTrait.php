@@ -352,7 +352,6 @@ trait GExpressionTrait
      */
     public function setPath($path)
     {
-        $msg = null;
         if (null != $path && !$this->isTQualifiedNameValid($path)) {
             $msg = 'Path must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);

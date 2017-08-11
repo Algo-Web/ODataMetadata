@@ -47,7 +47,6 @@ trait TEntitySetAttributesTrait
      */
     public function setName($name)
     {
-        $msg = null;
         if (null != $name && !$this->isTSimpleIdentifierValid($name)) {
             $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
@@ -74,7 +73,6 @@ trait TEntitySetAttributesTrait
      */
     public function setEntityType($entityType)
     {
-        $msg = null;
         if (null != $entityType && !$this->isTQualifiedNameValid($entityType)) {
             $msg = 'Entity type must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);
@@ -101,7 +99,6 @@ trait TEntitySetAttributesTrait
      */
     public function setGetterAccess($getterAccess)
     {
-        $msg = null;
         if (null != $getterAccess && !$this->isTAccessOk($getterAccess)) {
             $msg = 'Getter access must be a valid TAccess';
             throw new \InvalidArgumentException($msg);

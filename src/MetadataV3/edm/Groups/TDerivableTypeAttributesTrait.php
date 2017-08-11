@@ -39,7 +39,6 @@ trait TDerivableTypeAttributesTrait
      */
     public function setBaseType($baseType)
     {
-        $msg = null;
         if (null != $baseType && !$this->isTQualifiedNameValid($baseType)) {
             $msg = 'Base type must be a valid TQualifiedName';
             throw new \InvalidArgumentException($msg);

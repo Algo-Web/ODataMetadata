@@ -65,7 +65,6 @@ trait TFunctionImportAttributesTrait
      */
     public function setName($name)
     {
-        $msg = null;
         if (!$this->isTSimpleIdentifierValid($name)) {
             $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
@@ -253,7 +252,6 @@ trait TFunctionImportAttributesTrait
      */
     public function setMethodAccess($methodAccess)
     {
-        $msg = null;
         if (null != $methodAccess && !$this->isTAccessOk($methodAccess)) {
             $msg = 'Method access must be a valid TAccess';
             throw new \InvalidArgumentException($msg);

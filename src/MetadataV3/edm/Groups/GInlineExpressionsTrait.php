@@ -214,7 +214,6 @@ trait GInlineExpressionsTrait
      */
     public function setDateTime(\DateTime $dateTime)
     {
-        $msg = null;
         if (null != $dateTime && $dateTime !== $this->dateTime($dateTime)) {
             $msg = 'DateTime must be a valid date/time';
             throw new \InvalidArgumentException($msg);

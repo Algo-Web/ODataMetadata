@@ -55,7 +55,6 @@ class ParameterAnonymousType extends IsOK
      */
     public function setType($type)
     {
-        $msg = null;
         if (null != $type && !$this->isTWrappedFunctionTypeValid($type)) {
             $msg = 'Type must be a valid TWrappedFunctionType';
             throw new \InvalidArgumentException($msg);
