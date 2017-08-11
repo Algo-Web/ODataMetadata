@@ -54,11 +54,11 @@ class MetadataManager
 
     /**
      * @param $name
-     * @param TEntityTypeType|null $baseType
-     * @param bool $isAbstract
-     * @param string $accessType
-     * @param null $summary
-     * @param null $longDescription
+     * @param  TEntityTypeType|null $baseType
+     * @param  bool                 $isAbstract
+     * @param  string               $accessType
+     * @param  null                 $summary
+     * @param  null                 $longDescription
      * @return array
      */
     public function addEntityType(
@@ -137,12 +137,12 @@ class MetadataManager
      * @param TEntityTypeType $entityType
      * @param $name
      * @param $type
-     * @param null $defaultValue
-     * @param bool $nullable
-     * @param bool $isKey
-     * @param null $storeGeneratedPattern
-     * @param null $summary
-     * @param null $longDescription
+     * @param  null                $defaultValue
+     * @param  bool                $nullable
+     * @param  bool                $isKey
+     * @param  null                $storeGeneratedPattern
+     * @param  null                $summary
+     * @param  null                $longDescription
      * @return TEntityPropertyType
      */
     public function addPropertyToEntityType(
@@ -180,17 +180,17 @@ class MetadataManager
      * @param $principalProperty
      * @param TEntityTypeType $dependentType
      * @param $dependentMultiplicity
-     * @param string $dependentProperty
-     * @param array|null $principalConstraintProperty
-     * @param array|null $dependentConstraintProperty
-     * @param string $principalGetterAccess
-     * @param string $principalSetterAccess
-     * @param string $dependentGetterAccess
-     * @param string $dependentSetterAccess
-     * @param null $principalSummery
-     * @param null $principalLongDescription
-     * @param null $dependentSummery
-     * @param null $dependentLongDescription
+     * @param  string     $dependentProperty
+     * @param  array|null $principalConstraintProperty
+     * @param  array|null $dependentConstraintProperty
+     * @param  string     $principalGetterAccess
+     * @param  string     $principalSetterAccess
+     * @param  string     $dependentGetterAccess
+     * @param  string     $dependentSetterAccess
+     * @param  null       $principalSummery
+     * @param  null       $principalLongDescription
+     * @param  null       $dependentSummery
+     * @param  null       $dependentLongDescription
      * @return array
      */
     public function addNavigationPropertyToEntityType(
@@ -269,14 +269,14 @@ class MetadataManager
     }
 
     /**
-     * @param TEntityTypeType $principalType
-     * @param TEntityTypeType $dependentType
-     * @param TNavigationPropertyType $principalNavigationProperty
+     * @param TEntityTypeType              $principalType
+     * @param TEntityTypeType              $dependentType
+     * @param TNavigationPropertyType      $principalNavigationProperty
      * @param TNavigationPropertyType|null $dependentNavigationProperty
      * @param $principalMultiplicity
      * @param $dependentMultiplicity
-     * @param array|null $principalConstraintProperty
-     * @param array|null $dependentConstraintProperty
+     * @param  array|null       $principalConstraintProperty
+     * @param  array|null       $dependentConstraintProperty
      * @return TAssociationType
      */
     protected function createAssocationFromNavigationProperty(
@@ -361,9 +361,9 @@ class MetadataManager
     }
 
     /**
-     * @param TAssociationType $association
-     * @param string $principalEntitySetName
-     * @param string $dependentEntitySetName
+     * @param  TAssociationType            $association
+     * @param  string                      $principalEntitySetName
+     * @param  string                      $dependentEntitySetName
      * @return AssociationSetAnonymousType
      */
     protected function createAssocationSetForAssocation(

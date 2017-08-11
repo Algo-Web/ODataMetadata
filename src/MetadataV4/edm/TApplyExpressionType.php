@@ -234,7 +234,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset annotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetAnnotation($index)
@@ -245,7 +245,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset annotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -290,7 +290,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset binary.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetBinary($index)
@@ -301,7 +301,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset binary.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetBinary($index)
@@ -346,7 +346,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset bool.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetBool($index)
@@ -357,7 +357,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset bool.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetBool($index)
@@ -402,7 +402,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset date.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDate($index)
@@ -413,7 +413,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset date.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDate($index)
@@ -458,7 +458,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset dateTimeOffset.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDateTimeOffset($index)
@@ -469,7 +469,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset dateTimeOffset.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDateTimeOffset($index)
@@ -514,7 +514,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset decimal.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDecimal($index)
@@ -525,7 +525,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset decimal.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDecimal($index)
@@ -570,7 +570,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset duration.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDuration($index)
@@ -581,7 +581,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset duration.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDuration($index)
@@ -626,7 +626,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset enumMember.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetEnumMember($index)
@@ -637,7 +637,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset enumMember.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetEnumMember($index)
@@ -682,7 +682,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset float.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetFloat($index)
@@ -693,7 +693,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset float.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetFloat($index)
@@ -738,7 +738,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset guid.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetGuid($index)
@@ -749,7 +749,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset guid.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetGuid($index)
@@ -794,7 +794,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset int.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetInt($index)
@@ -805,7 +805,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset int.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetInt($index)
@@ -850,7 +850,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset string.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetString($index)
@@ -861,7 +861,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset string.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetString($index)
@@ -906,7 +906,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset timeOfDay.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetTimeOfDay($index)
@@ -917,7 +917,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset timeOfDay.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetTimeOfDay($index)
@@ -962,7 +962,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset annotationPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetAnnotationPath($index)
@@ -973,7 +973,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset annotationPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetAnnotationPath($index)
@@ -1018,7 +1018,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset apply.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetApply($index)
@@ -1029,7 +1029,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset apply.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetApply($index)
@@ -1074,7 +1074,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset cast.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetCast($index)
@@ -1085,7 +1085,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset cast.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetCast($index)
@@ -1130,7 +1130,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset collection.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetCollection($index)
@@ -1141,7 +1141,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset collection.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetCollection($index)
@@ -1186,7 +1186,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset if.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetIf($index)
@@ -1197,7 +1197,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset if.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetIf($index)
@@ -1242,7 +1242,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset eq.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetEq($index)
@@ -1253,7 +1253,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset eq.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetEq($index)
@@ -1298,7 +1298,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset ne.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetNe($index)
@@ -1309,7 +1309,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset ne.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetNe($index)
@@ -1354,7 +1354,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset ge.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetGe($index)
@@ -1365,7 +1365,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset ge.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetGe($index)
@@ -1410,7 +1410,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset gt.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetGt($index)
@@ -1421,7 +1421,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset gt.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetGt($index)
@@ -1466,7 +1466,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset le.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetLe($index)
@@ -1477,7 +1477,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset le.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetLe($index)
@@ -1522,7 +1522,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset lt.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetLt($index)
@@ -1533,7 +1533,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset lt.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetLt($index)
@@ -1578,7 +1578,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset and.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetAnd($index)
@@ -1589,7 +1589,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset and.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetAnd($index)
@@ -1634,7 +1634,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset or.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetOr($index)
@@ -1645,7 +1645,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset or.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetOr($index)
@@ -1690,7 +1690,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset not.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetNot($index)
@@ -1701,7 +1701,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset not.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetNot($index)
@@ -1746,7 +1746,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset isOf.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetIsOf($index)
@@ -1757,7 +1757,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset isOf.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetIsOf($index)
@@ -1802,7 +1802,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset labeledElement.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetLabeledElement($index)
@@ -1813,7 +1813,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset labeledElement.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetLabeledElement($index)
@@ -1858,7 +1858,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset labeledElementReference.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetLabeledElementReference($index)
@@ -1869,7 +1869,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset labeledElementReference.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetLabeledElementReference($index)
@@ -1914,7 +1914,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset null.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetNull($index)
@@ -1925,7 +1925,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset null.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetNull($index)
@@ -1970,7 +1970,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset navigationPropertyPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetNavigationPropertyPath($index)
@@ -1981,7 +1981,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset navigationPropertyPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetNavigationPropertyPath($index)
@@ -2026,7 +2026,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset path.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetPath($index)
@@ -2037,7 +2037,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset path.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetPath($index)
@@ -2082,7 +2082,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset propertyPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetPropertyPath($index)
@@ -2093,7 +2093,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset propertyPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetPropertyPath($index)
@@ -2138,7 +2138,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset record.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetRecord($index)
@@ -2149,7 +2149,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset record.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetRecord($index)
@@ -2194,7 +2194,7 @@ class TApplyExpressionType extends IsOK
     /**
      * isset urlRef.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetUrlRef($index)
@@ -2205,7 +2205,7 @@ class TApplyExpressionType extends IsOK
     /**
      * unset urlRef.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetUrlRef($index)

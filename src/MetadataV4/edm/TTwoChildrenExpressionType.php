@@ -207,7 +207,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset annotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetAnnotation($index)
@@ -218,7 +218,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset annotation.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetAnnotation($index)
@@ -263,7 +263,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset binary.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetBinary($index)
@@ -274,7 +274,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset binary.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetBinary($index)
@@ -319,7 +319,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset bool.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetBool($index)
@@ -330,7 +330,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset bool.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetBool($index)
@@ -375,7 +375,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset date.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDate($index)
@@ -386,7 +386,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset date.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDate($index)
@@ -431,7 +431,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset dateTimeOffset.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDateTimeOffset($index)
@@ -442,7 +442,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset dateTimeOffset.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDateTimeOffset($index)
@@ -487,7 +487,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset decimal.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDecimal($index)
@@ -498,7 +498,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset decimal.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDecimal($index)
@@ -543,7 +543,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset duration.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDuration($index)
@@ -554,7 +554,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset duration.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDuration($index)
@@ -599,7 +599,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset enumMember.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetEnumMember($index)
@@ -610,7 +610,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset enumMember.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetEnumMember($index)
@@ -655,7 +655,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset float.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetFloat($index)
@@ -666,7 +666,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset float.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetFloat($index)
@@ -711,7 +711,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset guid.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetGuid($index)
@@ -722,7 +722,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset guid.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetGuid($index)
@@ -767,7 +767,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset int.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetInt($index)
@@ -778,7 +778,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset int.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetInt($index)
@@ -799,7 +799,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * Sets a new int.
      *
-     * @param  int[]  $int
+     * @param  int[] $int
      * @return self
      */
     public function setInt(array $int)
@@ -823,7 +823,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset string.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetString($index)
@@ -834,7 +834,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset string.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetString($index)
@@ -879,7 +879,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset timeOfDay.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetTimeOfDay($index)
@@ -890,7 +890,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset timeOfDay.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetTimeOfDay($index)
@@ -935,7 +935,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset annotationPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetAnnotationPath($index)
@@ -946,7 +946,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset annotationPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetAnnotationPath($index)
@@ -991,7 +991,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset apply.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetApply($index)
@@ -1002,7 +1002,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset apply.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetApply($index)
@@ -1047,7 +1047,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset cast.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetCast($index)
@@ -1058,7 +1058,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset cast.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetCast($index)
@@ -1103,7 +1103,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset collection.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetCollection($index)
@@ -1114,7 +1114,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset collection.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetCollection($index)
@@ -1159,7 +1159,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset if.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetIf($index)
@@ -1170,7 +1170,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset if.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetIf($index)
@@ -1215,7 +1215,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset eq.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetEq($index)
@@ -1226,7 +1226,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset eq.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetEq($index)
@@ -1271,7 +1271,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset ne.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetNe($index)
@@ -1282,7 +1282,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset ne.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetNe($index)
@@ -1327,7 +1327,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset ge.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetGe($index)
@@ -1338,7 +1338,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset ge.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetGe($index)
@@ -1383,7 +1383,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset gt.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetGt($index)
@@ -1394,7 +1394,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset gt.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetGt($index)
@@ -1439,7 +1439,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset le.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetLe($index)
@@ -1450,7 +1450,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset le.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetLe($index)
@@ -1495,7 +1495,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset lt.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetLt($index)
@@ -1506,7 +1506,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset lt.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetLt($index)
@@ -1551,7 +1551,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset and.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetAnd($index)
@@ -1562,7 +1562,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset and.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetAnd($index)
@@ -1607,7 +1607,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset or.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetOr($index)
@@ -1618,7 +1618,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset or.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetOr($index)
@@ -1663,7 +1663,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset not.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetNot($index)
@@ -1674,7 +1674,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset not.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetNot($index)
@@ -1719,7 +1719,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset isOf.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetIsOf($index)
@@ -1730,7 +1730,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset isOf.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetIsOf($index)
@@ -1775,7 +1775,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset labeledElement.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetLabeledElement($index)
@@ -1786,7 +1786,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset labeledElement.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetLabeledElement($index)
@@ -1831,7 +1831,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset labeledElementReference.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetLabeledElementReference($index)
@@ -1842,7 +1842,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset labeledElementReference.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetLabeledElementReference($index)
@@ -1887,7 +1887,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset null.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetNull($index)
@@ -1898,7 +1898,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset null.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetNull($index)
@@ -1943,7 +1943,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset navigationPropertyPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetNavigationPropertyPath($index)
@@ -1954,7 +1954,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset navigationPropertyPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetNavigationPropertyPath($index)
@@ -1999,7 +1999,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset path.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetPath($index)
@@ -2010,7 +2010,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset path.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetPath($index)
@@ -2055,7 +2055,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset propertyPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetPropertyPath($index)
@@ -2066,7 +2066,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset propertyPath.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetPropertyPath($index)
@@ -2111,7 +2111,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset record.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetRecord($index)
@@ -2122,7 +2122,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset record.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetRecord($index)
@@ -2167,7 +2167,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * isset urlRef.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetUrlRef($index)
@@ -2178,7 +2178,7 @@ class TTwoChildrenExpressionType extends IsOK
     /**
      * unset urlRef.
      *
-     * @param  int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetUrlRef($index)
