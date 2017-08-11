@@ -292,7 +292,7 @@ class MetadataManager
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null
     ) {
-        $multCombo = ['*' => ['*', '1'], '0..1' => ['1'], '1' => ['*', '0..1']];
+        $multCombo = ['*' => ['*', '1', '0..1'], '0..1' => ['1', '*'], '1' => ['*', '0..1']];
         $multKeys = array_keys($multCombo);
         if (null != $dependentNavigationProperty) {
             if ($dependentNavigationProperty->getRelationship() != $principalNavigationProperty->getRelationship()) {

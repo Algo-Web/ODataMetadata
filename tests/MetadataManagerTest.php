@@ -620,7 +620,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
     {
         list(, $metadataManager, $categoryType, $customerType) = $this->setUpMetadataForNavTests();
 
-        $expected =  'Invalid multiplicity combination - * 0..1';
+        $expected = null;
         $actual = null;
 
         try {
