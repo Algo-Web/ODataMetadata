@@ -9,7 +9,8 @@ trait TPathTrait
     use xsdRestrictions;
 
     /**
-     * @param string $string
+     * @param  string $string
+     * @return bool
      */
     public function isTPathValid($string)
     {

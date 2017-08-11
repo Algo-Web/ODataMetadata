@@ -36,7 +36,7 @@ class TOptionsType extends IsOK
     /**
      * isset designerInfoPropertySet.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return bool
      */
     public function issetDesignerInfoPropertySet($index)
@@ -47,7 +47,7 @@ class TOptionsType extends IsOK
     /**
      * unset designerInfoPropertySet.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return void
      */
     public function unsetDesignerInfoPropertySet($index)
@@ -95,8 +95,6 @@ class TOptionsType extends IsOK
             $msg = 'Designer info property set not a valid array';
             return false;
         }
-        if (!$this->isChildArrayOK($this->designerInfoPropertySet, $msg)) {
-            return false;
-        }
+        return $this->isChildArrayOK($this->designerInfoPropertySet, $msg);
     }
 }

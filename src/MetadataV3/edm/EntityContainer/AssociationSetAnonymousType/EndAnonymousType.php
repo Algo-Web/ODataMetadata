@@ -70,7 +70,6 @@ class EndAnonymousType extends IsOK
      */
     public function setEntitySet($entitySet)
     {
-        $msg = null;
         if (!$this->isTSimpleIdentifierValid($entitySet)) {
             $msg = 'Entity set must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);

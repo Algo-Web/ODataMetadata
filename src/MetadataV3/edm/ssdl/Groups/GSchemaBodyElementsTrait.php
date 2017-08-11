@@ -45,7 +45,7 @@ trait GSchemaBodyElementsTrait
     /**
      * isset association.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return bool
      */
     public function issetAssociation($index)
@@ -56,7 +56,7 @@ trait GSchemaBodyElementsTrait
     /**
      * unset association.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return void
      */
     public function unsetAssociation($index)
@@ -113,7 +113,7 @@ trait GSchemaBodyElementsTrait
     /**
      * isset entityType.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return bool
      */
     public function issetEntityType($index)
@@ -124,7 +124,7 @@ trait GSchemaBodyElementsTrait
     /**
      * unset entityType.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return void
      */
     public function unsetEntityType($index)
@@ -173,7 +173,7 @@ trait GSchemaBodyElementsTrait
     /**
      * isset entityContainer.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return bool
      */
     public function issetEntityContainer($index)
@@ -184,7 +184,7 @@ trait GSchemaBodyElementsTrait
     /**
      * unset entityContainer.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return void
      */
     public function unsetEntityContainer($index)
@@ -242,7 +242,7 @@ trait GSchemaBodyElementsTrait
     /**
      * isset function.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return bool
      */
     public function issetFunction($index)
@@ -253,7 +253,7 @@ trait GSchemaBodyElementsTrait
     /**
      * unset function.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return void
      */
     public function unsetFunction($index)

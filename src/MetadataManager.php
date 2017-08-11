@@ -25,15 +25,15 @@ use JMS\Serializer\SerializerBuilder;
 
 class MetadataManager
 {
-    private $V3Edmx = null;
+    private $v3Edmx = null;
     private $lastError = null;
     private $serializer = null;
 
     public function __construct($namespaceName = 'Data', $containerName = 'DefaultContainer', Edmx $edmx = null)
     {
         $msg = null;
-        $this->V3Edmx = (null == $edmx) ? new Edmx($namespaceName, $containerName) : $edmx;
-        assert($this->V3Edmx->isOK($msg), $msg);
+        $this->v3Edmx = (null == $edmx) ? new Edmx($namespaceName, $containerName) : $edmx;
+        assert($this->v3Edmx->isOK($msg), $msg);
         $this->initSerialiser();
         assert(null != $this->serializer, 'Serializer must not be null at end of constructor');
     }
@@ -41,10 +41,13 @@ class MetadataManager
     public function getEdmx()
     {
         $msg = null;
-        assert($this->V3Edmx->isOK($msg), $msg);
-        return $this->V3Edmx;
+        assert($this->v3Edmx->isOK($msg), $msg);
+        return $this->v3Edmx;
     }
 
+    /**
+     * @return \JMS\Serializer\Serializer
+     */
     public function getEdmxXML()
     {
         $cereal = $this->getSerialiser();
@@ -52,6 +55,15 @@ class MetadataManager
         return $cereal->serialize($this->getEdmx(), 'xml');
     }
 
+    /**
+     * @param  string               $name
+     * @param  TEntityTypeType|null $baseType
+     * @param  bool                 $isAbstract
+     * @param  string               $accessType
+     * @param  null                 $summary
+     * @param  null                 $longDescription
+     * @return IsOK[]
+     */
     public function addEntityType(
         $name,
         TEntityTypeType $baseType = null,
@@ -73,9 +85,9 @@ class MetadataManager
         $entitySet->setEntityType($entityTypeName);
         $entitySet->setGetterAccess($accessType);
 
-        $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
-        $this->V3Edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
-        assert($this->V3Edmx->isOK($this->lastError), $this->lastError);
+        $this->v3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
+        $this->v3Edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
+        assert($this->v3Edmx->isOK($this->lastError), $this->lastError);
         return [$newEntity, $entitySet];
     }
 
@@ -86,7 +98,7 @@ class MetadataManager
         $newEntity->setTypeAccess($accessType);
         $this->addDocumentation($summary, $longDescription, $newEntity);
         assert($newEntity->isOK($this->lastError), $this->lastError);
-        $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToComplexType($newEntity);
+        $this->v3Edmx->getDataServiceType()->getSchema()[0]->addToComplexType($newEntity);
 
         return $newEntity;
     }
@@ -111,19 +123,31 @@ class MetadataManager
         if (null != $defaultValue) {
             $defaultValue = var_export($defaultValue, true);
         }
-        $NewProperty = new TComplexTypePropertyType();
-        $NewProperty->setName($name);
-        $NewProperty->setType($type);
-        $NewProperty->setNullable($nullable);
-        $this->addDocumentation($summary, $longDescription, $NewProperty);
+        $newProperty = new TComplexTypePropertyType();
+        $newProperty->setName($name);
+        $newProperty->setType($type);
+        $newProperty->setNullable($nullable);
+        $this->addDocumentation($summary, $longDescription, $newProperty);
         if (null != $defaultValue) {
-            $NewProperty->setDefaultValue($defaultValue);
+            $newProperty->setDefaultValue($defaultValue);
         }
-        assert($NewProperty->isOK($this->lastError), $this->lastError);
-        $complexType->addToProperty($NewProperty);
-        return $NewProperty;
+        assert($newProperty->isOK($this->lastError), $this->lastError);
+        $complexType->addToProperty($newProperty);
+        return $newProperty;
     }
 
+    /**
+     * @param TEntityTypeType $entityType
+     * @param $name
+     * @param $type
+     * @param  null                $defaultValue
+     * @param  bool                $nullable
+     * @param  bool                $isKey
+     * @param  null                $storeGeneratedPattern
+     * @param  null                $summary
+     * @param  null                $longDescription
+     * @return TEntityPropertyType
+     */
     public function addPropertyToEntityType(
         TEntityTypeType $entityType,
         $name,
@@ -135,24 +159,43 @@ class MetadataManager
         $summary = null,
         $longDescription = null
     ) {
-        $NewProperty = new TEntityPropertyType();
-        $NewProperty->setName($name);
-        $NewProperty->setType($type);
-        $NewProperty->setStoreGeneratedPattern($storeGeneratedPattern);
-        $NewProperty->setNullable($nullable);
-        $this->addDocumentation($summary, $longDescription, $NewProperty);
+        $newProperty = new TEntityPropertyType();
+        $newProperty->setName($name);
+        $newProperty->setType($type);
+        $newProperty->setStoreGeneratedPattern($storeGeneratedPattern);
+        $newProperty->setNullable($nullable);
+        $this->addDocumentation($summary, $longDescription, $newProperty);
         if (null != $defaultValue) {
-            $NewProperty->setDefaultValue($defaultValue);
+            $newProperty->setDefaultValue($defaultValue);
         }
-        $entityType->addToProperty($NewProperty);
+        $entityType->addToProperty($newProperty);
         if ($isKey) {
-            $Key = new TPropertyRefType();
-            $Key->setName($name);
-            $entityType->addToKey($Key);
+            $key = new TPropertyRefType();
+            $key->setName($name);
+            $entityType->addToKey($key);
         }
-        return $NewProperty;
+        return $newProperty;
     }
 
+    /**
+     * @param TEntityTypeType $principalType
+     * @param  $principalMultiplicity
+     * @param  $principalProperty
+     * @param TEntityTypeType $dependentType
+     * @param  $dependentMultiplicity
+     * @param  string           $dependentProperty
+     * @param  array|null       $principalConstraintProperty
+     * @param  array|null       $dependentConstraintProperty
+     * @param  string           $principalGetterAccess
+     * @param  string           $principalSetterAccess
+     * @param  string           $dependentGetterAccess
+     * @param  string           $dependentSetterAccess
+     * @param  null             $principalSummery
+     * @param  null             $principalLongDescription
+     * @param  null             $dependentSummery
+     * @param  null             $dependentLongDescription
+     * @return array<IsOK|null>
+     */
     public function addNavigationPropertyToEntityType(
         TEntityTypeType $principalType,
         $principalMultiplicity,
@@ -213,7 +256,7 @@ class MetadataManager
             $dependentConstraintProperty
         );
 
-        $this->V3Edmx->getDataServiceType()->getSchema()[0]->addToAssociation($assocation);
+        $this->v3Edmx->getDataServiceType()->getSchema()[0]->addToAssociation($assocation);
 
         $associationSet = $this->createAssocationSetForAssocation(
             $assocation,
@@ -221,13 +264,24 @@ class MetadataManager
             $dependentEntitySetName
         );
 
-        $this->V3Edmx->getDataServiceType()->getSchema()[0]
+        $this->v3Edmx->getDataServiceType()->getSchema()[0]
             ->getEntityContainer()[0]->addToAssociationSet($associationSet);
 
-        assert($this->V3Edmx->isOK($this->lastError), $this->lastError);
+        assert($this->v3Edmx->isOK($this->lastError), $this->lastError);
         return [$principalNavigationProperty, $dependentNavigationProperty];
     }
 
+    /**
+     * @param TEntityTypeType              $principalType
+     * @param TEntityTypeType              $dependentType
+     * @param TNavigationPropertyType      $principalNavigationProperty
+     * @param TNavigationPropertyType|null $dependentNavigationProperty
+     * @param $principalMultiplicity
+     * @param $dependentMultiplicity
+     * @param  array|null       $principalConstraintProperty
+     * @param  array|null       $dependentConstraintProperty
+     * @return TAssociationType
+     */
     protected function createAssocationFromNavigationProperty(
         TEntityTypeType $principalType,
         TEntityTypeType $dependentType,
@@ -294,10 +348,12 @@ class MetadataManager
 
         if ($hasPrincipalReferral && $hasDependentReferral) {
             $principalReferralConstraint = $this->makeReferentialConstraint(
-                $principalConstraintProperty, $principalTargRole
+                $principalConstraintProperty,
+                $principalTargRole
             );
             $dependentReferralConstraint = $this->makeReferentialConstraint(
-                $dependentConstraintProperty, $dependentTargRole
+                $dependentConstraintProperty,
+                $dependentTargRole
             );
             $constraint = new TConstraintType();
             $constraint->setPrincipal($principalReferralConstraint);
@@ -308,8 +364,10 @@ class MetadataManager
     }
 
     /**
-     * @param string $principalEntitySetName
-     * @param string $dependentEntitySetName
+     * @param  TAssociationType            $association
+     * @param  string                      $principalEntitySetName
+     * @param  string                      $dependentEntitySetName
+     * @return AssociationSetAnonymousType
      */
     protected function createAssocationSetForAssocation(
         TAssociationType $association,
@@ -334,6 +392,9 @@ class MetadataManager
         return $as;
     }
 
+    /**
+     * @return string|null
+     */
     public function getLastError()
     {
         return $this->lastError;
@@ -423,7 +484,7 @@ class MetadataManager
      */
     protected function getNamespace()
     {
-        $namespace = $this->V3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
+        $namespace = $this->v3Edmx->getDataServiceType()->getSchema()[0]->getNamespace();
         if (0 == strlen(trim($namespace))) {
             $namespace = '';
         } else {
@@ -444,9 +505,9 @@ class MetadataManager
         $referralConstraint = new TReferentialConstraintRoleElementType();
         $referralConstraint->setRole($targRole);
         foreach ($constraintProperty as $propertyRef) {
-            $TpropertyRef = new TPropertyRefType();
-            $TpropertyRef->setName($propertyRef);
-            $referralConstraint->addToPropertyRef($TpropertyRef);
+            $tPropertyRef = new TPropertyRefType();
+            $tPropertyRef->setName($propertyRef);
+            $referralConstraint->addToPropertyRef($tPropertyRef);
         }
         return $referralConstraint;
     }

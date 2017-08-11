@@ -87,7 +87,6 @@ trait TFunctionImportParameterAttributesTrait
      */
     public function setName($name)
     {
-        $msg = null;
         if (!$this->isTSimpleIdentifierValid($name)) {
             $msg = 'Name must be a valid TSimpleIdentifier';
             throw new \InvalidArgumentException($msg);
@@ -114,7 +113,6 @@ trait TFunctionImportParameterAttributesTrait
      */
     public function setType($type)
     {
-        $msg = null;
         if (!$this->isTFunctionImportParameterAndReturnTypeValid($type)) {
             $msg = 'Type must be a valid TFunctionImportParameterAndReturnType';
             throw new \InvalidArgumentException($msg);
@@ -141,7 +139,6 @@ trait TFunctionImportParameterAttributesTrait
      */
     public function setMode($mode)
     {
-        $msg = null;
         if (null != $mode && !$this->isTParameterModeValid($mode)) {
             $msg = 'Mode must be a valid TParameterMode';
             throw new \InvalidArgumentException($msg);
@@ -168,7 +165,6 @@ trait TFunctionImportParameterAttributesTrait
      */
     public function setMaxLength($maxLength)
     {
-        $msg = null;
         if (null != $maxLength && !$this->isTMaxLengthFacetValid($maxLength)) {
             $msg = 'Max length must be a valid TMaxLengthFacet';
             throw new \InvalidArgumentException($msg);
@@ -195,7 +191,6 @@ trait TFunctionImportParameterAttributesTrait
      */
     public function setPrecision($precision)
     {
-        $msg = null;
         if (null != $precision && !$this->isTPrecisionFacetValid($precision)) {
             $msg = 'Precision must be a valid TPrecisionFacet';
             throw new \InvalidArgumentException($msg);
@@ -222,7 +217,6 @@ trait TFunctionImportParameterAttributesTrait
      */
     public function setScale($scale)
     {
-        $msg = null;
         if (null != $scale && !$this->isTScaleFacetValid($scale)) {
             $msg = 'Scale must be a valid TScaleFacet';
             throw new \InvalidArgumentException($msg);
@@ -249,7 +243,6 @@ trait TFunctionImportParameterAttributesTrait
      */
     public function setSRID($sRID)
     {
-        $msg = null;
         if (null != $sRID && !$this->isTSridFacetValid($sRID)) {
             $msg = 'SRID must be a valid TSRIDFacet';
             throw new \InvalidArgumentException($msg);

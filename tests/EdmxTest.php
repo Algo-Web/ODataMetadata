@@ -103,12 +103,12 @@ class EdmxTest extends TestCase
     {
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
-        $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
-        $NewEntity->setName('simpleEntityType');
-        $this->assertTrue($NewEntity->isOK($msg), $msg);
+        $newEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
+        $newEntity->setName('simpleEntityType');
+        $this->assertTrue($newEntity->isOK($msg), $msg);
         $this->assertNull($msg);
         $edmx = new Edmx();
-        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
+        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $this->assertTrue($edmx->isOK($msg), $msg);
         $this->assertNull($msg);
 
@@ -127,12 +127,12 @@ class EdmxTest extends TestCase
     {
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
-        $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
-        $NewEntity->setName('simpleEntityType');
-        $this->assertTrue($NewEntity->isOK($msg), $msg);
+        $newEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
+        $newEntity->setName('simpleEntityType');
+        $this->assertTrue($newEntity->isOK($msg), $msg);
         $this->assertNull($msg);
         $edmx = new Edmx();
-        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
+        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $this->assertTrue($edmx->isOK($msg), $msg);
         $this->assertNull($msg);
 
@@ -207,25 +207,25 @@ class EdmxTest extends TestCase
     {
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
-        $NewProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
-        $NewProperty->setName('TheFirstProperty');
-        $NewProperty->setType('String');
-        $this->assertTrue($NewProperty->isOK($msg), $msg);
+        $newProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
+        $newProperty->setName('TheFirstProperty');
+        $newProperty->setType('String');
+        $this->assertTrue($newProperty->isOK($msg), $msg);
         $this->assertNull($msg);
 
-        $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
-        $NewEntity->setName('simpleEntityType');
-        $NewEntity->addToProperty($NewProperty);
-        $this->assertTrue($NewEntity->isOK($msg), $msg);
+        $newEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
+        $newEntity->setName('simpleEntityType');
+        $newEntity->addToProperty($newProperty);
+        $this->assertTrue($newEntity->isOK($msg), $msg);
         $this->assertNull($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($NewEntity->getName(), 2));
-        $entitySet->setEntityType($NewEntity->getName());
+        $entitySet->setName(Str::plural($newEntity->getName(), 2));
+        $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
         $this->assertNull($msg);
         $edmx = new Edmx();
-        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
+        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         $this->assertTrue($edmx->isOK($msg), $msg);
         $this->assertNull($msg);
@@ -244,25 +244,25 @@ class EdmxTest extends TestCase
     {
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
-        $NewProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
-        $NewProperty->setName('TheFirstProperty');
-        $NewProperty->setType('String');
-        $this->assertTrue($NewProperty->isOK($msg), $msg);
+        $newProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
+        $newProperty->setName('TheFirstProperty');
+        $newProperty->setType('String');
+        $this->assertTrue($newProperty->isOK($msg), $msg);
         $this->assertNull($msg);
 
-        $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
-        $NewEntity->setName('simpleEntityType');
-        $NewEntity->addToProperty($NewProperty);
-        $this->assertTrue($NewEntity->isOK($msg), $msg);
+        $newEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
+        $newEntity->setName('simpleEntityType');
+        $newEntity->addToProperty($newProperty);
+        $this->assertTrue($newEntity->isOK($msg), $msg);
         $this->assertNull($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($NewEntity->getName(), 2));
-        $entitySet->setEntityType($NewEntity->getName());
+        $entitySet->setName(Str::plural($newEntity->getName(), 2));
+        $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
         $this->assertNull($msg);
         $edmx = new Edmx();
-        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
+        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         $this->assertTrue($edmx->isOK($msg), $msg);
         $this->assertNull($msg);
@@ -275,18 +275,18 @@ class EdmxTest extends TestCase
         $ds = DIRECTORY_SEPARATOR;
         $msg = null;
 
-        $NewEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
-        $NewEntity->setName('simpleEntityType');
-        $this->assertTrue($NewEntity->isOK($msg), $msg);
+        $newEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
+        $newEntity->setName('simpleEntityType');
+        $this->assertTrue($newEntity->isOK($msg), $msg);
         $this->assertNull($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($NewEntity->getName(), 2));
-        $entitySet->setEntityType($NewEntity->getName());
+        $entitySet->setName(Str::plural($newEntity->getName(), 2));
+        $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
         $this->assertNull($msg);
         $edmx = new Edmx();
-        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($NewEntity);
+        $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         $this->assertTrue($edmx->isOK($msg), $msg);
         $this->assertNull($msg);

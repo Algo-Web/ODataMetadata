@@ -112,11 +112,11 @@ class TConstraintType extends IsOK
             return false;
         }
         if (null == $this->principal || !$this->isObjectNullOrOK($this->principal, $msg)) {
-            $msg = (null != $msg) ? $msg : 'Principal cannot be null';
+            $msg = (null !== $msg) ? $msg : 'Principal cannot be null';
             return false;
         }
         if (null == $this->dependent || !$this->isObjectNullOrOK($this->dependent, $msg)) {
-            $msg = (null != $msg) ? $msg : 'Dependent cannot be null';
+            $msg = (null !== $msg) ? $msg : 'Dependent cannot be null';
             return false;
         }
 

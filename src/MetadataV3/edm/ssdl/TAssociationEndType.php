@@ -109,7 +109,6 @@ class TAssociationEndType extends IsOK
      */
     public function setMultiplicity($multiplicity)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($multiplicity)) {
             $msg = 'Multiplicity cannot be null or empty';
             throw new \InvalidArgumentException($msg);

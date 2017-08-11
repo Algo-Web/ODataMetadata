@@ -44,7 +44,7 @@ class TAnonymousFunctionExpressionType extends IsOK
     /**
      * isset parameters.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return bool
      */
     public function issetParameters($index)
@@ -55,7 +55,7 @@ class TAnonymousFunctionExpressionType extends IsOK
     /**
      * unset parameters.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return void
      */
     public function unsetParameters($index)

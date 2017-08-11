@@ -34,7 +34,7 @@ trait TResultBindingGroup
     /**
      * isset resultBinding.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return bool
      */
     public function issetResultBinding($index)
@@ -45,7 +45,7 @@ trait TResultBindingGroup
     /**
      * unset resultBinding.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return void
      */
     public function unsetResultBinding($index)

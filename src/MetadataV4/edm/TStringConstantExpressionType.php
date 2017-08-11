@@ -30,7 +30,7 @@ class TStringConstantExpressionType extends IsOK
     /**
      * Gets or sets the inner value.
      *
-     * @param  string   ...$value
+     * @param  string[] ...$value
      * @param  string[] $value
      * @return string
      */

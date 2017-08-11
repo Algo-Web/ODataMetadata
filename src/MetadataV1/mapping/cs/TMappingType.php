@@ -65,7 +65,7 @@ class TMappingType extends IsOK
     /**
      * isset alias.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return bool
      */
     public function issetAlias($index)
@@ -76,7 +76,7 @@ class TMappingType extends IsOK
     /**
      * unset alias.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return void
      */
     public function unsetAlias($index)

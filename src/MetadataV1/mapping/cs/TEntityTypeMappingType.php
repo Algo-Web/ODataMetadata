@@ -65,7 +65,7 @@ class TEntityTypeMappingType extends IsOK
     /**
      * isset mappingFragment.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return bool
      */
     public function issetMappingFragment($index)
@@ -76,7 +76,7 @@ class TEntityTypeMappingType extends IsOK
     /**
      * unset mappingFragment.
      *
-     * @param  scalar $index
+     * @param  int  $index
      * @return void
      */
     public function unsetMappingFragment($index)

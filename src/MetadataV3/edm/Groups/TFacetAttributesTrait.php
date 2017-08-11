@@ -114,7 +114,6 @@ trait TFacetAttributesTrait
      */
     public function setDefaultValue($defaultValue)
     {
-        $msg = null;
         if (null !== $defaultValue && !is_string($defaultValue)) {
             $msg = 'Default value must be a string';
             throw new \InvalidArgumentException($msg);
@@ -164,7 +163,6 @@ trait TFacetAttributesTrait
      */
     public function setFixedLength($fixedLength)
     {
-        $msg = null;
         if (null != $fixedLength && !$this->isTIsFixedLengthFacetTraitValid($fixedLength)) {
             $msg = 'Fixed length must be a valid TFixedLengthFacet';
             throw new \InvalidArgumentException($msg);
@@ -237,7 +235,6 @@ trait TFacetAttributesTrait
      */
     public function setUnicode($unicode)
     {
-        $msg = null;
         if (null != $unicode && !$this->isTIsUnicodeFacetTraitValid($unicode)) {
             $msg = 'Unicode must be a valid TUnicodeFacet';
             throw new \InvalidArgumentException($msg);
@@ -264,7 +261,6 @@ trait TFacetAttributesTrait
      */
     public function setCollation($collation)
     {
-        $msg = null;
         if (null != $collation && !$this->isTCollationFacetValid($collation)) {
             $msg = 'Collation must be a valid TCollationFacet';
             throw new \InvalidArgumentException($msg);

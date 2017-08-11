@@ -94,7 +94,6 @@ class TEntityPropertyType extends IsOK
      */
     public function setName($name)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($name)) {
             $msg = 'Name cannot be null or empty';
             throw new \InvalidArgumentException($msg);
@@ -125,7 +124,6 @@ class TEntityPropertyType extends IsOK
      */
     public function setType($type)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($type)) {
             $msg = 'Type cannot be null or empty';
             throw new \InvalidArgumentException($msg);

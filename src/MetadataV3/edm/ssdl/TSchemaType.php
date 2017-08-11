@@ -52,7 +52,6 @@ class TSchemaType extends IsOK
      */
     public function setNamespace($namespace)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($namespace)) {
             $msg = 'Namespace cannot be null or empty';
             throw new \InvalidArgumentException($msg);
@@ -83,7 +82,6 @@ class TSchemaType extends IsOK
      */
     public function setAlias($alias)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($alias)) {
             $msg = 'Alias cannot be empty';
             throw new \InvalidArgumentException($msg);
@@ -114,7 +112,6 @@ class TSchemaType extends IsOK
      */
     public function setProvider($provider)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($provider)) {
             $msg = 'Provider cannot be null or empty';
             throw new \InvalidArgumentException($msg);
@@ -145,7 +142,6 @@ class TSchemaType extends IsOK
      */
     public function setProviderManifestToken($providerManifestToken)
     {
-        $msg = null;
         if (!$this->isStringNotNullOrEmpty($providerManifestToken)) {
             $msg = 'Provider manifest token cannot be null or empty';
             throw new \InvalidArgumentException($msg);

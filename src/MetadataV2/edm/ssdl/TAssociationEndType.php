@@ -35,7 +35,7 @@ class TAssociationEndType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\ssdl\TOnActionType[] $onDelete
      */
-    private $onDelete = array();
+    private $onDelete = [];
 
     /**
      * Gets as type.

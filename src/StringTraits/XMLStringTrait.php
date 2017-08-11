@@ -6,7 +6,7 @@ trait XMLStringTrait
 {
     /**
      * @param  string $string
-     * @return mixed
+     * @return string
      */
     public function preserveString($string)
     {
@@ -18,7 +18,7 @@ trait XMLStringTrait
 
     /**
      * @param  string $string
-     * @return mixed
+     * @return string
      */
     public function replaceString($string)
     {
@@ -31,7 +31,7 @@ trait XMLStringTrait
 
     /**
      * @param  string $string
-     * @return mixed
+     * @return string
      */
     public function collapseString($string)
     {
