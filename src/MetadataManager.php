@@ -45,6 +45,9 @@ class MetadataManager
         return $this->v3Edmx;
     }
 
+    /**
+     * @return \JMS\Serializer\Serializer
+     */
     public function getEdmxXML()
     {
         $cereal = $this->getSerialiser();
@@ -53,13 +56,13 @@ class MetadataManager
     }
 
     /**
-     * @param $name
+     * @param  string               $name
      * @param  TEntityTypeType|null $baseType
      * @param  bool                 $isAbstract
      * @param  string               $accessType
      * @param  null                 $summary
      * @param  null                 $longDescription
-     * @return array
+     * @return IsOK[]
      */
     public function addEntityType(
         $name,
@@ -175,11 +178,11 @@ class MetadataManager
     }
 
     /**
-     * @param TEntityTypeType $principalType
-     * @param $principalMultiplicity
-     * @param $principalProperty
-     * @param TEntityTypeType $dependentType
-     * @param $dependentMultiplicity
+     * @param  TEntityTypeType $principalType
+     * @param  $principalMultiplicity
+     * @param  $principalProperty
+     * @param  TEntityTypeType $dependentType
+     * @param  $dependentMultiplicity
      * @param  string     $dependentProperty
      * @param  array|null $principalConstraintProperty
      * @param  array|null $dependentConstraintProperty
@@ -191,7 +194,7 @@ class MetadataManager
      * @param  null       $principalLongDescription
      * @param  null       $dependentSummery
      * @param  null       $dependentLongDescription
-     * @return array
+     * @return array<IsOK|null>
      */
     public function addNavigationPropertyToEntityType(
         TEntityTypeType $principalType,
@@ -389,6 +392,9 @@ class MetadataManager
         return $as;
     }
 
+    /**
+     * @return string|null
+     */
     public function getLastError()
     {
         return $this->lastError;

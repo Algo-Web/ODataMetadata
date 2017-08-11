@@ -61,6 +61,11 @@ trait IsOKToolboxTrait
         return true;
     }
 
+    /**
+     * @param  IsOK|null    $object
+     * @param  string|null  $msg
+     * @return bool
+     */
     protected function isObjectNullOrOK(IsOK $object = null, &$msg = null)
     {
         if (null == $object) {
@@ -69,6 +74,11 @@ trait IsOKToolboxTrait
         return $object->isOK($msg);
     }
 
+    /**
+     * @param  IsOK|null    $object
+     * @param  string|null  $msg
+     * @return bool
+     */
     protected function isObjectNullOrType($instanceOf, IsOK $object = null, &$msg = null)
     {
         if (null == $object) {

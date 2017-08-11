@@ -3,6 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV2\edmx;
 
 use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV2\edm\Schema;
 
 /**
  * Class representing TRuntimeConceptualModelsType.
@@ -13,14 +14,14 @@ class TRuntimeConceptualModelsType extends IsOK
 {
 
     /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV2\edm\Schema $schema
+     * @property Schema $schema
      */
     private $schema = null;
 
     /**
      * Gets as schema.
      *
-     * @return \AlgoWeb\ODataMetadata\MetadataV2\edm\Schema
+     * @return Schema
      */
     public function getSchema()
     {
@@ -30,10 +31,10 @@ class TRuntimeConceptualModelsType extends IsOK
     /**
      * Sets a new schema.
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV2\edm\Schema $schema
+     * @param  Schema $schema
      * @return self
      */
-    public function setSchema(MetadataV2\edm\Schema $schema)
+    public function setSchema(Schema $schema)
     {
         $this->schema = $schema;
         return $this;

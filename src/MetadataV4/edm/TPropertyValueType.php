@@ -105,7 +105,7 @@ class TPropertyValueType extends IsOK
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\Annotation[] $annotation
      */
-    private $annotation = array();
+    private $annotation = [];
 
     /**
      * @property \AlgoWeb\ODataMetadata\MetadataV4\edm\TApplyExpressionType $apply
@@ -398,7 +398,7 @@ class TPropertyValueType extends IsOK
     /**
      * Sets a new enumMember.
      *
-     * @param  string $enumMember
+     * @param  string[] $enumMember
      * @return self
      */
     public function setEnumMember(array $enumMember)
