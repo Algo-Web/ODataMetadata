@@ -179,7 +179,7 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $metadataManager->addNavigationPropertyToEntityType(
             $orderDetailType, '1', 'Order', $productType, '*', 'Order_Details', ['OrderID'], ['CategoryID']
         );
-//        <NavigationProperty Name="Order_Details" Relationship="NorthwindModel.FK_Order_Details_Products" ToRole="Order_Details" FromRole="Products"/>
+        //        <NavigationProperty Name="Order_Details" Relationship="NorthwindModel.FK_Order_Details_Products" ToRole="Order_Details" FromRole="Products"/>
 
 
         $msg = null;
