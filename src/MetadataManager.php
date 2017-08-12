@@ -50,6 +50,9 @@ class MetadataManager
      */
     public function getEdmxXML()
     {
+        if (null == $this->serializer) {
+            $this->initSerialiser();
+        }
         $cereal = $this->getSerialiser();
         assert(null != $cereal, 'Serializer must not be null when trying to get edmx xml');
         return $cereal->serialize($this->getEdmx(), 'xml');
