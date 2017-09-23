@@ -467,22 +467,27 @@ class TEntityTypeType extends IsOK
     public function isStructureOK(&$msg = null)
     {
         $pArray = [];
+
         foreach ($this->getProperty() as $prop) {
-            if (in_array($prop->getName(), $pArray)) {
-                $msg = 'Property Names, and Navigation Property Must Be Unique ' . __CLASS__;
+            $propName = $prop->getName();
+            if (in_array($propName, $pArray)) {
+                $msg = 'Prop: Property Names, and Navigation Property Must Be Unique for '. $propName . ' on '
+                       . $this->getName() . ' '. __CLASS__;
                 return false;
             }
-            $pArray[] = $prop->getName();
+            $pArray[] = $propName;
         }
         foreach ($this->getNavigationProperty() as $prop) {
-            if (in_array($prop->getName(), $pArray)) {
-                $msg = 'Property Names, and Navigation Property Must Be Unique ' . __CLASS__;
+            $propName = $prop->getName();
+            if (in_array($propName, $pArray)) {
+                $msg = 'Nav: Property Names, and Navigation Property Must Be Unique for '. $propName . ' on '
+                       . $this->getName() . ' '. __CLASS__;
                 return false;
             }
             $pArray[] = $prop->getName();
         }
         if (in_array($this->getName(), $pArray)) {
-            $msg = 'entity types can not contain a property with the same name ' . __CLASS__;
+            $msg = 'Entity types can not contain a property with the same name ' . __CLASS__;
             return false;
         }
         return true;
