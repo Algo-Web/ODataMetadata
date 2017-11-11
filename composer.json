@@ -24,7 +24,6 @@
   ],
   "require": {
     "php": "~5.6|~7.0|~7.1",
-    "algo-web/xsd-types": "dev-master",
     "illuminate/support": "^4.0|^5.1",
     "jms/serializer": "^1.7"
   },
