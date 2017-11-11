@@ -25,17 +25,17 @@
   "require": {
     "php": "~5.6|~7.0|~7.1",
     "algo-web/xsd-types": "dev-master",
-    "fiunchinho/phpunit-randomizer": "2.0.*",
     "illuminate/support": "^4.0|^5.1",
-    "jms/serializer": "^1.7",
+    "jms/serializer": "^1.7"
+  },
+  "require-dev": {
+    "brianium/paratest": "0.15.*",
+    "phpspec/phpspec": "^3.0",
+    "squizlabs/php_codesniffer": "~2.3",
+    "fiunchinho/phpunit-randomizer": "2.0.*",
     "mockery/mockery": "0.9.*|^1.0@dev",
     "phpunit/phpunit": "^5.6",
     "satooshi/php-coveralls": "dev-master"
-  },
-  "requre-dev": {
-    "brianium/paratest": "dev-master",
-    "phpspec/phpspec": "^3.0",
-    "squizlabs/php_codesniffer": "~2.3"
   },
   "scripts": {
     "test": "phpunit",

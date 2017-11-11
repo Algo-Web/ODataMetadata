@@ -8,6 +8,8 @@ php:
 
 
 before_script:
+  # pull in package that downloads packages in parallel, to speed up travis builds
+  - composer global require hirak/prestissimo
   - composer install
 #  - wget http://getcomposer.org/composer.phar
 #  - php composer.phar require satooshi/php-coveralls:dev-master --dev --no-progress --prefer-source
