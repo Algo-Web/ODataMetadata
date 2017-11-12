@@ -1,11 +1,11 @@
 [![Build Status](https://travis-ci.org/Algo-Web/odatametadata.svg?branch=master)](https://travis-ci.org/Algo-Web/ODataMetadata)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Algo-Web/odatametadata/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Algo-Web/ODataMetadata/?branch=master)
-[![Coverage Status](https://coveralls.io/repos/github/Algo-Web/odatametadata/badge.svg?branch=master)](https://coveralls.io/github/Algo-Web/ODataMetadata?branch=master)
-[![Latest Stable Version](https://poser.pugx.org/algo-web/odatametadata/v/stable)](https://packagist.org/packages/algo-web/odatametadata)
-[![Latest Unstable Version](https://poser.pugx.org/algo-web/odatametadata/v/unstable)](https://packagist.org/packages/algo-web/odatametadata)
-[![Total Downloads](https://poser.pugx.org/algo-web/odatametadata/downloads)](https://packagist.org/packages/algo-web/odatametadata)
-[![Monthly Downloads](https://poser.pugx.org/algo-web/odatametadata/d/monthly)](https://packagist.org/packages/algo-web/odatametadata)
-[![Daily Downloads](https://poser.pugx.org/algo-web/odatametadata/d/daily)](https://packagist.org/packages/algo-web/odatametadata)
+[![Coverage Status](https://coveralls.io/repos/github/Algo-Web/ODataMetadata/badge.svg?branch=master)](https://coveralls.io/github/Algo-Web/ODataMetadata?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/algo-web/o-data-metadata/v/stable)](https://packagist.org/packages/algo-web/o-data-metadata)
+[![Latest Unstable Version](https://poser.pugx.org/algo-web/o-data-metadata/v/unstable)](https://packagist.org/packages/algo-web/o-data-metadata)
+[![Total Downloads](https://poser.pugx.org/algo-web/o-data-metadata/downloads)](https://packagist.org/packages/algo-web/o-data-metadata)
+[![Monthly Downloads](https://poser.pugx.org/algo-web/o-data-metadata/d/monthly)](https://packagist.org/packages/algo-web/o-data-metadata)
+[![Daily Downloads](https://poser.pugx.org/algo-web/o-data-metadata/d/daily)](https://packagist.org/packages/algo-web/o-data-metadata)
 
 # ODataMetadata
 
