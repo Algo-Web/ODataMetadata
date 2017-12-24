@@ -85,12 +85,10 @@ class MetadataManager
         $newEntity->setAbstract($isAbstract);
         $newEntity->setBaseType(null === $baseType ? null:$this->getNamespace() . $baseType->getName());
 
-        if (null === $pluralName) {
-            $pluralName = Str::plural($newEntity->getName());
-        }
+        $setName = null !== $pluralName ? $pluralName : Str::plural($newEntity->getName());
 
         $entitySet = new EntitySetAnonymousType();
-        $entitySet->setName($pluralName);
+        $entitySet->setName($setName);
         $namespace = $this->getNamespace();
         $entityTypeName = $namespace . $newEntity->getName();
         $entitySet->setEntityType($entityTypeName);
