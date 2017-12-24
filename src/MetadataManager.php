@@ -456,7 +456,7 @@ class MetadataManager
         return $funcType;
     }
 
-    private function initSerialiser()
+    protected function initSerialiser()
     {
         $ymlDir = __DIR__ . DIRECTORY_SEPARATOR . 'MetadataV3' . DIRECTORY_SEPARATOR . 'JMSmetadata';
         $this->serializer =

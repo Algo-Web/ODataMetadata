@@ -18,6 +18,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TNavigationPropertyType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
+use JMS\Serializer\Serializer;
 use Mockery as m;
 
 class MetadataManagerTest extends \PHPUnit_Framework_TestCase
@@ -1132,6 +1133,37 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         } catch (\InvalidArgumentException $e) {
             $actual = $e->getMessage();
         }
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testGetEmptyNamespace()
+    {
+        $schema = m::mock(Schema::class);
+        $schema->shouldReceive('getNamespace')->andReturn(' ');
+
+        $edmx = m::mock(Edmx::class);
+        $edmx->shouldReceive('isOk')->andReturn(true);
+        $edmx->shouldReceive('getDataServiceType->getSchema')->andReturn([$schema]);
+
+        $foo = new MetadataManagerDummy('Data', 'DefaultContainer', $edmx);
+
+        $expected = '';
+        $actual = $foo->getNamespace();
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testInitSerialiserFromNull()
+    {
+        $cereal = m::mock(Serializer::class);
+        $cereal->shouldReceive('serialize')->andReturn('cereal')->once();
+
+        $foo = m::mock(MetadataManager::class)->makePartial()->shouldAllowMockingProtectedMethods();
+        $foo->shouldReceive('initSerialiser')->andReturn(null)->once();
+        $foo->shouldReceive('getSerialiser')->andReturn($cereal)->once();
+        $foo->shouldReceive('getEdmx')->andReturn(null)->once();
+
+        $expected = 'cereal';
+        $actual = $foo->getEdmxXML();
         $this->assertEquals($expected, $actual);
     }
 
