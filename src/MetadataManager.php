@@ -67,6 +67,7 @@ class MetadataManager
      * @param  string               $accessType
      * @param  null                 $summary
      * @param  null                 $longDescription
+     * @param  null|mixed           $pluralName
      * @return IsOK[]
      */
     public function addEntityType(
