@@ -25,7 +25,7 @@ class BidirectionalMap
 
     public function getKey($value)
     {
-        if ($this->hasKey($value)) {
+        if ($this->hasValue($value)) {
             return $this->valueToKey[$value];
         }
         return null;
@@ -41,7 +41,7 @@ class BidirectionalMap
 
     public function getAllKeys()
     {
-        if (0 !== $this->keyToValue) {
+        if (0 !== count($this->keyToValue)) {
             return array_keys($this->keyToValue);
         }
         return $this->keyToValue;
@@ -49,7 +49,7 @@ class BidirectionalMap
 
     public function getAllValues()
     {
-        if (0 !== $this->valueToKey) {
+        if (0 !== count($this->valueToKey)) {
             return array_keys($this->valueToKey);
         }
         return $this->valueToKey;
@@ -67,11 +67,11 @@ class BidirectionalMap
         if ($this->hasKey($key)) {
             $this->removeKey($key);
         }
-        if ($this->hasValue($key)) {
-            $this->removeValue($key);
+        if ($this->hasValue($value)) {
+            $this->removeValue($value);
         }
         $this->keyToValue[$key] = $value;
-        $this->valueToKey[$key] = $value;
+        $this->valueToKey[$value] = $key;
     }
 
     public function removeKey($key)
