@@ -28,6 +28,7 @@ class MetadataManager
     private $v3Edmx = null;
     private $lastError = null;
     private $serializer = null;
+    private $typeNameToSetName = null;
 
     public function __construct($namespaceName = 'Data', $containerName = 'DefaultContainer', Edmx $edmx = null)
     {
@@ -36,6 +37,7 @@ class MetadataManager
         assert($this->v3Edmx->isOK($msg), $msg);
         $this->initSerialiser();
         assert(null != $this->serializer, 'Serializer must not be null at end of constructor');
+        $this->typeNameToSetName = new BidirectionalMap();
     }
 
     public function getEdmx()
@@ -73,7 +75,8 @@ class MetadataManager
         $isAbstract = false,
         $accessType = 'Public',
         $summary = null,
-        $longDescription = null
+        $longDescription = null,
+        $pluralName = null
     ) {
         $newEntity = new TEntityTypeType();
         $newEntity->setName($name);
@@ -81,8 +84,12 @@ class MetadataManager
         $newEntity->setAbstract($isAbstract);
         $newEntity->setBaseType(null === $baseType ? null:$this->getNamespace() . $baseType->getName());
 
+        if (null === $pluralName) {
+            $pluralName = Str::plural($newEntity->getName());
+        }
+
         $entitySet = new EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($newEntity->getName()));
+        $entitySet->setName($pluralName);
         $namespace = $this->getNamespace();
         $entityTypeName = $namespace . $newEntity->getName();
         $entitySet->setEntityType($entityTypeName);
@@ -91,6 +98,7 @@ class MetadataManager
         $this->v3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $this->v3Edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         assert($this->v3Edmx->isOK($this->lastError), $this->lastError);
+        $this->typeNameToSetName->put($name, $pluralName);
         return [$newEntity, $entitySet];
     }
 
@@ -217,8 +225,8 @@ class MetadataManager
         $dependentSummery = null,
         $dependentLongDescription = null
     ) {
-        $principalEntitySetName = Str::plural($principalType->getName());
-        $dependentEntitySetName = Str::plural($dependentType->getName());
+        $principalEntitySetName = $this->typeNameToSetName->getValue($principalType->getName());
+        $dependentEntitySetName = $this->typeNameToSetName->getValue($dependentType->getName());
         $relationName = $principalType->getName() . '_' . $principalProperty . '_'
                         . $dependentType->getName() . '_' . $dependentProperty;
         $relationName = trim($relationName, '_');
