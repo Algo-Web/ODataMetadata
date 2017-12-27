@@ -1167,6 +1167,19 @@ class MetadataManagerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testStaticGetterMethods()
+    {
+        $this->setUpMetadataForNavTests();
+
+        $expectedCustomerType = 'Customer';
+        $expectedCategoryType = 'Category';
+
+        $actualCustomerType = MetadataManager::getResourceTypeNameFromResourceSet('Customers');
+        $this->assertEquals($expectedCustomerType, $actualCustomerType);
+        $actualCategoryType = MetadataManager::getResourceTypeNameFromResourceSet('Categories');
+        $this->assertEquals($expectedCategoryType, $actualCategoryType);
+    }
+
     /**
      * @return array
      */

@@ -28,7 +28,7 @@ class MetadataManager
     private $v3Edmx = null;
     private $lastError = null;
     private $serializer = null;
-    private $typeNameToSetName = null;
+    private static $typeNameToSetName = null;
 
     public function __construct($namespaceName = 'Data', $containerName = 'DefaultContainer', Edmx $edmx = null)
     {
@@ -37,7 +37,7 @@ class MetadataManager
         assert($this->v3Edmx->isOK($msg), $msg);
         $this->initSerialiser();
         assert(null != $this->serializer, 'Serializer must not be null at end of constructor');
-        $this->typeNameToSetName = new BidirectionalMap();
+        self::$typeNameToSetName = new BidirectionalMap();
     }
 
     public function getEdmx()
@@ -99,7 +99,7 @@ class MetadataManager
         $this->v3Edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $this->v3Edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         assert($this->v3Edmx->isOK($this->lastError), $this->lastError);
-        $this->typeNameToSetName->put($name, $pluralName);
+        self::$typeNameToSetName->put($name, $pluralName);
         return [$newEntity, $entitySet];
     }
 
@@ -226,8 +226,8 @@ class MetadataManager
         $dependentSummery = null,
         $dependentLongDescription = null
     ) {
-        $principalEntitySetName = $this->typeNameToSetName->getValue($principalType->getName());
-        $dependentEntitySetName = $this->typeNameToSetName->getValue($dependentType->getName());
+        $principalEntitySetName = self::getResourceSetNameFromResourceType($principalType->getName());
+        $dependentEntitySetName = self::getResourceSetNameFromResourceType($dependentType->getName());
         $relationName = $principalType->getName() . '_' . $principalProperty . '_'
                         . $dependentType->getName() . '_' . $dependentProperty;
         $relationName = trim($relationName, '_');
@@ -476,6 +476,16 @@ class MetadataManager
     public function __wakeup()
     {
         $this->initSerialiser();
+    }
+
+    public static function getResourceSetNameFromResourceType($typeName)
+    {
+        return self::$typeNameToSetName->getValue($typeName);
+    }
+
+    public static function getResourceTypeNameFromResourceSet($setName)
+    {
+        return self::$typeNameToSetName->getKey($setName);
     }
 
     /**
