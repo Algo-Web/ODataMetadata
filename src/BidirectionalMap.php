@@ -13,16 +13,31 @@ class BidirectionalMap
         $this->valueToKey = [];
     }
 
+    /**
+     * Check if supplied key exists.
+     * @param $key
+     * @return bool
+     */
     public function hasKey($key)
     {
         return isset($this->keyToValue[$key]);
     }
 
+    /**
+     * Check if supplied key exists.
+     * @param $value
+     * @return bool
+     */
     public function hasValue($value)
     {
         return isset($this->valueToKey[$value]);
     }
 
+    /**
+     * Retrieve key matching supplied value.
+     * @param  mixed      $value
+     * @return mixed|null
+     */
     public function getKey($value)
     {
         if ($this->hasValue($value)) {
@@ -31,6 +46,11 @@ class BidirectionalMap
         return null;
     }
 
+    /**
+     * Retrieve value matching supplied key.
+     * @param  mixed      $key
+     * @return mixed|null
+     */
     public function getValue($key)
     {
         if ($this->hasKey($key)) {
@@ -74,25 +94,35 @@ class BidirectionalMap
         $this->valueToKey[$value] = $key;
     }
 
+    /**
+     * Remove supplied key from map and return matching value.
+     * @param  mixed      $key
+     * @return mixed|null
+     */
     public function removeKey($key)
     {
         if (!$this->hasKey($key)) {
             return null;
         }
         unset($this->valueToKey[$this->keyToValue[$key]]);
-        $v = $this->keyToValue[$key];
+        $value = $this->keyToValue[$key];
         unset($this->keyToValue[$key]);
-        return $v;
+        return $value;
     }
 
+    /**
+     * Remove supplied value from map and return matching key.
+     * @param  mixed      $value
+     * @return mixed|null
+     */
     public function removeValue($value)
     {
         if (!$this->hasValue($value)) {
             return null;
         }
         unset($this->keyToValue[$this->valueToKey[$value]]);
-        $k = $this->valueToKey[$value];
-        unset($this->valueToKey[$k]);
-        return $k;
+        $key = $this->valueToKey[$value];
+        unset($this->valueToKey[$value]);
+        return $key;
     }
 }
