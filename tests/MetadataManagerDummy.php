@@ -29,4 +29,9 @@ class MetadataManagerDummy extends MetadataManager
             $dependentConstraintProperty
         );
     }
+
+    public function getNamespace()
+    {
+        return parent::getNamespace();
+    }
 }
