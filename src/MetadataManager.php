@@ -468,13 +468,14 @@ class MetadataManager
 
     public function __sleep()
     {
-        $this->serializer = null;
+        $this->serializer = serialize(self::$typeNameToSetName);
         $result = array_keys(get_object_vars($this));
         return $result;
     }
 
     public function __wakeup()
     {
+        self::$typeNameToSetName = unserialize($this->serializer );
         $this->initSerialiser();
     }
 
