@@ -117,6 +117,9 @@ class MetadataManager
 
     public function getSerialiser()
     {
+        if (null == $this->serializer) {
+            $this->initSerialiser();
+        }
         return $this->serializer;
     }
 
@@ -476,7 +479,6 @@ class MetadataManager
     public function __wakeup()
     {
         self::$typeNameToSetName = unserialize($this->serializer );
-        $this->initSerialiser();
     }
 
     public static function getResourceSetNameFromResourceType($typeName)
