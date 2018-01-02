@@ -21,6 +21,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use Illuminate\Support\Str;
+use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 
 class MetadataManager
@@ -52,11 +53,10 @@ class MetadataManager
      */
     public function getEdmxXML()
     {
-        if (null == $this->serializer) {
-            $this->initSerialiser();
-        }
         $cereal = $this->getSerialiser();
-        assert(null != $cereal, 'Serializer must not be null when trying to get edmx xml');
+        if (!$cereal instanceof Serializer) {
+            throw new \Exception('Serializer must not be null when trying to get edmx xml');
+        }
         return $cereal->serialize($this->getEdmx(), 'xml');
     }
 
@@ -117,7 +117,7 @@ class MetadataManager
 
     public function getSerialiser()
     {
-        if (null == $this->serializer) {
+        if (null == $this->serializer || is_string($this->serializer)) {
             $this->initSerialiser();
         }
         return $this->serializer;
