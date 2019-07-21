@@ -1,5 +1,6 @@
 {
   "name": "bim/o-data-metadata",
+  "description": "Package responsible for OData feed metadata description",
   "type": "library",
   "keywords": [
     "OData",
@@ -25,7 +26,7 @@
   "repositories": [
     {
       "type": "vcs",
-      "url": "https://github.com/Algo-Web/serializer.git",
+      "url": "https://github.com/kirill533/serializer.git",
       "no-api": true
     }
   ],
@@ -41,7 +42,7 @@
     "fiunchinho/phpunit-randomizer": "2.0.*",
     "mockery/mockery": "0.9.*|^1.0@dev",
     "phpunit/phpunit": "^5.6",
-    "php-coveralls/php-coveralls": "dev-master"
+    "php-coveralls/php-coveralls": "*"
   },
   "scripts": {
     "test": "phpunit",
