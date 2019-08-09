@@ -33,7 +33,7 @@
   "require": {
     "php": "~5.6|~7.0|~7.1",
     "illuminate/support": "^4.0|^5.1",
-    "bim/serializer": "1.8.2"
+    "jms/serializer": ">=1.8.2"
   },
   "require-dev": {
     "brianium/paratest": "0.15.*",
