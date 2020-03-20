@@ -1,129 +1,172 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+namespace AlgoWeb\ODataMetadata\MetadataV3\Edm;
 
-use AlgoWeb\ODataMetadata\CodeGeneration\AccessTypeTraits;
-use AlgoWeb\ODataMetadata\IsOK;
-use AlgoWeb\ODataMetadata\IsOKTraits\IsOKToolboxTrait;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType;
-use AlgoWeb\ODataMetadata\MetadataV3\edm\IsOKTraits\TSimpleIdentifierTrait;
+use AlgoWeb\ODataMetadata\MetadataV3\AccessorType;
+use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasDocumentation;
+use AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\HasValueAnnotation;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityContainer\AssociationSet;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityContainer\EntitySet;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityContainer\FunctionImport;
+use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * Class representing EntityContainer.
+ * 2.1.14 EntityContainer
+ *
+ * EntityContainer is conceptually similar to a database or data source. It groups EntitySet, AssociationSet, and
+ * FunctionImport child elements that represent a data source.
+ *
+ * The following is an example of the EntityContainer element.
+ *
+ * <EntityContainer Name="Model1Container" >
+ * <EntitySet Name="CustomerSet" EntityType="Model1.Customer" />
+ * <EntitySet Name="OrderSet" EntityType="Model1.Order" />
+ * <AssociationSet Name="CustomerOrder" Association="Model1.CustomerOrder">
+ * <End Role="Customer" EntitySet="CustomerSet" />
+ * <End Role="Order" EntitySet="OrderSet" />
+ * </AssociationSet>
+ * </EntityContainer>
+ *
+ * The following rules apply to the EntityContainer element:
+ * - EntityContainer MUST have a Name attribute defined that is of type SimpleIdentifier.
+ * - EntityContainer can define an Extends attribute, which, if present, refers to another EntityContainer in scope
+ * by name.
+ * - EntityContainer elements that extend another EntityContainer inherit all of the extended EntitySet, AssociationSet,
+ *   and FunctionImport child elements from that EntityContainer.
+ * - EntityContainer can contain a maximum of one Documentation element.
+ * - EntityContainer can contain any number of AnnotationAttribute attributes. The full names of the AnnotationAttribute
+ *   attributes cannot collide.
+ * - EntityContainer can contain any number of FunctionImport, EntitySet, and AssociationSet elements, which can be
+ *   defined in any order.
+ * - FunctionImport, EntitySet, and AssociationSet names within an EntityContainer cannot collide.
+ * - If present, the Documentation child element MUST precede FunctionImport, EntitySet, and AssociationSet child
+ *   elements.
+ * - In CSDL 2.0 and CSDL 3.0, EntityContainer can contain any number of AnnotationElement elements.
+ * - In CSDL 3.0, EntityContainer can contain any number of ValueAnnotation elements.
+ * - In the sequence of child elements under EntityContainer, AnnotationElement follows all other elements.
+ *
+ * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.1
  */
-class EntityContainer extends IsOK
+class EntityContainer extends EdmBase
 {
-    use IsOKToolboxTrait, TSimpleIdentifierTrait, AccessTypeTraits;
     /**
-     * @property string $name
+     * EntityContainer can contain a maximum of one Documentation element.
+     * If present, the Documentation child element MUST precede FunctionImport, EntitySet, and AssociationSet
+     * child elements.
      */
-    private $name = null;
+    use HasDocumentation,
+        /**
+         * In CSDL 3.0, EntityContainer can contain any number of ValueAnnotation elements.
+         */
+        HasValueAnnotation;
+    /**
+     * @var string $name EntityContainer MUST have a Name attribute defined that is of type SimpleIdentifier.
+     */
+    private $name;
 
     /**
-     * @property string $extends
+     * @var string $extends EntityContainer can define an Extends attribute, which, if present, refers to another
+     * EntityContainer in scope by name.EntityContainer elements that extend another EntityContainer inherit all of the
+     * extended EntitySet, AssociationSet, and FunctionImport child elements from that EntityContainer.
      */
     private $extends = null;
 
     /**
-     * @property string $typeAccess
+     * @var AccessorType $typeAccess
      */
     private $typeAccess = null;
 
     /**
-     * @property bool $lazyLoadingEnabled
-     */
-    private $lazyLoadingEnabled = null;
-
-    /**
-     * @property bool $isDefaultEntityContainer
+     * @var bool $isDefaultEntityContainer
      */
     private $isDefaultEntityContainer = false;
 
     /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
+     * @var bool $lazyLoadingEnabled
      */
-    private $documentation = null;
-
+    private $lazyLoadingEnabled = null;
     /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType[]
-     * $functionImport
+     * EntityContainer can contain any number of FunctionImport, EntitySet, and AssociationSet elements, which can be
+     * defined in any order.
+     *
+     * FunctionImport, EntitySet, and AssociationSet names within an EntityContainer cannot collide.
+     */
+    /**
+     * @var FunctionImport[] $functionImport
      */
     private $functionImport = [];
 
     /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType[] $entitySet
+     * @var EntitySet[] $entitySet
      */
     private $entitySet = [];
 
     /**
-     * @property \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType[]
-     * $associationSet
+     * @var AssociationSet[] $associationSet
      */
     private $associationSet = [];
 
-    public function __construct($name = 'DefaultContainer')
+    public function __construct(
+        string $name,
+        bool $isDefaultEntityContainer = false,
+        Documentation $documentation= null,
+        bool $lazyLoadingEnabled = false)
     {
-        $this->setName($name);
+        $this->setName($name)
+            ->setIsDefaultEntityContainer($isDefaultEntityContainer)
+            ->setLazyLoadingEnabled($lazyLoadingEnabled)
+            ->setDocumentation($documentation);
     }
 
     /**
-     * Gets as name.
+     * Gets as name
      *
      * @return string
      */
-    public function getName()
+    public function getName():string
     {
         return $this->name;
     }
 
     /**
-     * Sets a new name.
+     * Sets a new name
      *
-     * @param  string $name
+     * @param string $name
      * @return self
      */
-    public function setName($name)
+    public function setName(string $name):self
     {
-        if (!$this->isTSimpleIdentifierValid($name)) {
-            $msg = 'Name(' . $name . ') must be a valid TSimpleIdentifier';
-            throw new \InvalidArgumentException($msg);
-        }
         $this->name = $name;
         return $this;
     }
 
     /**
-     * Gets as extends.
+     * Gets as extends
      *
-     * @return string
+     * @return string|null
      */
-    public function getExtends()
+    public function getExtends(): ?string
     {
         return $this->extends;
     }
 
     /**
-     * Sets a new extends.
+     * Sets a new extends
      *
-     * @param  string $extends
+     * @param string|null $extends
      * @return self
      */
-    public function setExtends($extends)
+    public function setExtends(?string $extends): self
     {
-        if (null != $extends && !$this->isTSimpleIdentifierValid($extends)) {
-            $msg = 'Extends must be a valid TSimpleIdentifier';
-            throw new \InvalidArgumentException($msg);
-        }
         $this->extends = $extends;
         return $this;
     }
 
     /**
-     * Gets as typeAccess.
+     * Gets as typeAccess
      *
-     * @return string
+     * @return AccessorType
      */
     public function getTypeAccess()
     {
@@ -131,362 +174,261 @@ class EntityContainer extends IsOK
     }
 
     /**
-     * Sets a new typeAccess.
+     * Sets a new typeAccess
      *
-     * @param  string $typeAccess
+     * @param AccessorType $typeAccess
      * @return self
      */
-    public function setTypeAccess($typeAccess)
+    public function setTypeAccess(AccessorType $typeAccess): self
     {
-        if (null != $typeAccess && !($this->isTPublicOrInternalAccessOK($typeAccess))) {
-            $msg = 'Type access must be Public or Internal';
-            throw new \InvalidArgumentException($msg);
-        }
         $this->typeAccess = $typeAccess;
         return $this;
     }
 
     /**
-     * Gets as lazyLoadingEnabled.
+     * Gets as lazyLoadingEnabled
      *
      * @return bool
      */
-    public function getLazyLoadingEnabled()
+    public function getLazyLoadingEnabled(): bool
     {
         return $this->lazyLoadingEnabled;
     }
 
     /**
-     * Sets a new lazyLoadingEnabled.
+     * Sets a new lazyLoadingEnabled
      *
-     * @param  bool $lazyLoadingEnabled
+     * @param bool $lazyLoadingEnabled
      * @return self
      */
-    public function setLazyLoadingEnabled($lazyLoadingEnabled)
+    public function setLazyLoadingEnabled(bool $lazyLoadingEnabled): self
     {
-        $this->lazyLoadingEnabled = boolval($lazyLoadingEnabled);
+        $this->lazyLoadingEnabled = $lazyLoadingEnabled;
         return $this;
     }
 
     /**
-     * Gets as documentation.
-     *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType
-     */
-    public function getDocumentation()
-    {
-        return $this->documentation;
-    }
-
-    /**
-     * Gets as lazyLoadingEnabled.
+     * Gets as IsDefaultEntityContainer
      *
      * @return bool
      */
-    public function getIsDefaultEntityContainer()
+    public function getIsDefaultEntityContainer(): bool
     {
-        return boolval($this->isDefaultEntityContainer);
+        return $this->isDefaultEntityContainer;
     }
 
     /**
-     * Sets a new isDefaultEntityContainer.
+     * Sets a new isDefaultEntityContainer
      *
-     * @param  bool $isDefaultEntityContainer
+     * @param bool $isDefaultEntityContainer
      * @return self
      */
-    public function setIsDefaultEntityContainer($isDefaultEntityContainer)
+    public function setIsDefaultEntityContainer(bool $isDefaultEntityContainer): self
     {
-        $this->isDefaultEntityContainer = boolval($isDefaultEntityContainer);
+        $this->isDefaultEntityContainer = $isDefaultEntityContainer;
         return $this;
     }
-
     /**
-     * Sets a new documentation.
+     * Adds as functionImport
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\TDocumentationType $documentation
-     * @return self
+     * @param FunctionImport $functionImport
+     *@return self
      */
-    public function setDocumentation(TDocumentationType $documentation)
+    public function addToFunctionImport(FunctionImport $functionImport): self
     {
-        $msg = null;
-        if (!$documentation->isOK($msg)) {
-            throw new \InvalidArgumentException($msg);
-        }
-        $this->documentation = $documentation;
-        return $this;
-    }
-
-    /**
-     * Adds as functionImport.
-     *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType
-     * $functionImport
-     * @return self
-     */
-    public function addToFunctionImport(FunctionImportAnonymousType $functionImport)
-    {
-        $msg = null;
-        if (!$functionImport->isOK($msg)) {
-            throw new \InvalidArgumentException($msg);
-        }
         $this->functionImport[] = $functionImport;
         return $this;
     }
 
     /**
-     * isset functionImport.
+     * isset functionImport
      *
-     * @param  scalar $index
+     * @param int $index
      * @return bool
      */
-    public function issetFunctionImport($index)
+    public function issetFunctionImport(int $index): bool
     {
         return isset($this->functionImport[$index]);
     }
 
     /**
-     * unset functionImport.
+     * unset functionImport
      *
-     * @param  scalar $index
+     * @param int $index
      * @return void
      */
-    public function unsetFunctionImport($index)
+    public function unsetFunctionImport(int $index): void
     {
         unset($this->functionImport[$index]);
     }
 
     /**
-     * Gets as functionImport.
+     * Gets as functionImport
      *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType[]
+     * @return FunctionImport[]
      */
-    public function getFunctionImport()
+    public function getFunctionImport(): array
     {
         return $this->functionImport;
     }
 
     /**
-     * Sets a new functionImport.
+     * Sets a new functionImport
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType[]
-     * $functionImport
+     * @param FunctionImport[] $functionImport
      * @return self
      */
-    public function setFunctionImport(array $functionImport)
+    public function setFunctionImport(array $functionImport): self
     {
-        if (!$this->isValidArrayOK(
-            $functionImport,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType',
-            $msg
-        )
-        ) {
-            throw new \InvalidArgumentException($msg);
-        }
         $this->functionImport = $functionImport;
         return $this;
     }
 
     /**
-     * Adds as entitySet.
+     * Adds as entitySet
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType $entitySet
+     * @param EntitySet $entitySet
      * @return self
      */
-    public function addToEntitySet(EntitySetAnonymousType $entitySet)
+    public function addToEntitySet(EntitySet $entitySet): self
     {
-        $msg = null;
-        if (!$entitySet->isOK($msg)) {
-            throw new \InvalidArgumentException($msg);
-        }
         $this->entitySet[] = $entitySet;
         return $this;
     }
 
     /**
-     * isset entitySet.
+     * isset entitySet
      *
-     * @param  scalar $index
+     * @param int $index
      * @return bool
      */
-    public function issetEntitySet($index)
+    public function issetEntitySet(int $index): bool
     {
         return isset($this->entitySet[$index]);
     }
 
     /**
-     * unset entitySet.
+     * unset entitySet
      *
-     * @param  scalar $index
+     * @param int $index
      * @return void
      */
-    public function unsetEntitySet($index)
+    public function unsetEntitySet(int $index): void
     {
         unset($this->entitySet[$index]);
     }
 
     /**
-     * Gets as entitySet.
+     * Gets as entitySet
      *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType[]
+     * @return EntitySet[]
      */
-    public function getEntitySet()
+    public function getEntitySet(): array
     {
         return $this->entitySet;
     }
 
     /**
-     * Sets a new entitySet.
+     * Sets a new entitySet
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType[] $entitySet
+     * @param EntitySet[] $entitySet
      * @return self
      */
-    public function setEntitySet(array $entitySet)
+    public function setEntitySet(array $entitySet): self
     {
-        if (!$this->isValidArrayOK(
-            $entitySet,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType',
-            $msg
-        )
-        ) {
-            throw new \InvalidArgumentException($msg);
-        }
         $this->entitySet = $entitySet;
         return $this;
     }
 
     /**
-     * Adds as associationSet.
+     * Adds as associationSet
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType
-     * $associationSet
      * @return self
+     * @param AssociationSet $associationSet
      */
-    public function addToAssociationSet(AssociationSetAnonymousType $associationSet)
+    public function addToAssociationSet(AssociationSet $associationSet): self
     {
-        $msg = null;
-        if (!$associationSet->isOK($msg)) {
-            throw new \InvalidArgumentException($msg);
-        }
         $this->associationSet[] = $associationSet;
         return $this;
     }
 
     /**
-     * isset associationSet.
+     * isset associationSet
      *
-     * @param  scalar $index
+     * @param int $index
      * @return bool
      */
-    public function issetAssociationSet($index)
+    public function issetAssociationSet(int $index):bool
     {
         return isset($this->associationSet[$index]);
     }
 
     /**
-     * unset associationSet.
+     * unset associationSet
      *
-     * @param  scalar $index
+     * @param int $index
      * @return void
      */
-    public function unsetAssociationSet($index)
+    public function unsetAssociationSet(int $index): void
     {
         unset($this->associationSet[$index]);
     }
 
     /**
-     * Gets as associationSet.
+     * Gets as associationSet
      *
-     * @return \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType[]
+     * @return AssociationSet[]
      */
-    public function getAssociationSet()
+    public function getAssociationSet(): array
     {
         return $this->associationSet;
     }
 
     /**
-     * Sets a new associationSet.
+     * Sets a new associationSet
      *
-     * @param  \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType[]
-     * $associationSet
+     * @param AssociationSet[] $associationSet
      * @return self
      */
-    public function setAssociationSet(array $associationSet)
+    public function setAssociationSet(array $associationSet): self
     {
-        if (!$this->isValidArrayOK(
-            $associationSet,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType',
-            $msg
-        )
-        ) {
-            throw new \InvalidArgumentException($msg);
-        }
         $this->associationSet = $associationSet;
         return $this;
     }
 
-    public function isOK(&$msg = null)
+    /**
+     * @return string
+     */
+    public function getDomName(): string
     {
-        if (!$this->isTSimpleIdentifierValid($this->name)) {
-            $msg = 'Name(' . $this->name . ') must be a valid TSimpleIdentifier ' . __FILE__ . ':' . __LINE__;
-            return false;
-        }
-
-        if (null != $this->extends && !$this->isTSimpleIdentifierValid($this->extends)) {
-            $msg = 'Extends must be a valid TSimpleIdentifier';
-            return false;
-        }
-
-        if (null != $this->typeAccess && !($this->isTPublicOrInternalAccessOK($this->typeAccess))) {
-            $msg = 'Type access must be Public or Internal';
-            return false;
-        }
-        
-        if (!$this->isObjectNullOrOK($this->documentation, $msg)) {
-            return false;
-        }
-
-        if (!$this->isValidArrayOK(
-            $this->functionImport,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\FunctionImportAnonymousType',
-            $msg
-        )
-        ) {
-            return false;
-        }
-
-        if (!$this->isValidArrayOK(
-            $this->entitySet,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType',
-            $msg
-        )
-        ) {
-            return false;
-        }
-
-        if (!$this->isValidArrayOK(
-            $this->associationSet,
-            '\AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\AssociationSetAnonymousType',
-            $msg
-        )
-        ) {
-            return false;
-        }
-
-        return $this->isStructureOK($msg);
+        return 'EntityContainer';
     }
 
-    public function isStructureOK(&$msg = null)
+    /**
+     * @return array|AttributeContainer[]
+     */
+    public function getAttributes(): array
     {
-        $entityNames = [];
-        foreach ($this->entitySet as $entitySet) {
-            $entityNames[] = $entitySet->getName();
-        }
-        foreach ($this->associationSet as $assocationSet) {
-            if (!in_array($assocationSet->getEnd()[0]->getEntitySet(), $entityNames)) {
-                $msg = 'The entitysets for assocations must have a valid entity set. ' . $assocationSet->getName() . ' Does not';
-                return false;
-            }
-        }
-        return true;
+        return [
+            new AttributeContainer('Name', $this->getName()),
+            new AttributeContainer('Extends', $this->getExtends(), true),
+            new AttributeContainer('metadata:IsDefaultEntityContainer', $this->getIsDefaultEntityContainer()),
+            new AttributeContainer('annotations:LazyLoadingEnabled', $this->getLazyLoadingEnabled()),
+        ];
+    }
+
+    /**
+     * @return array|DomBase[]
+     */
+    public function getChildElements(): array
+    {
+        return array_merge(
+            [$this->getDocumentation()],
+            $this->getFunctionImport(),
+            $this->getEntitySet(),
+            $this->getAssociationSet(),
+            [$this->getValueAnnotation()]
+        );
     }
 }
+

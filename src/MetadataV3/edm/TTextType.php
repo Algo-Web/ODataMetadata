@@ -1,18 +1,57 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
+namespace AlgoWeb\ODataMetadata\MetadataV3\Edm;
 
-use AlgoWeb\ODataMetadata\IsOK;
+use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
+use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
+use DOMElement;
 
 /**
- * Class representing TTextType.
+ * Class representing TTextType
  *
+ * 
  * XSD Type: TText
  */
-class TTextType extends IsOK
+class TTextType extends EdmBase
 {
-    public function isOK(&$msg = null)
+    private $__value = null;
+    private $name;
+    public function __construct(string $name, string $value)
     {
-        return true;
+        $this->__value = $value;
+        $this->name = $name;
+    }
+
+    public function __toString()
+    {
+        return $this->__value;
+    }
+    public function getTextContent(): ?string
+    {
+        return strval($this);
+    }
+    /**
+     * @return string
+     */
+    public function getDomName(): string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return array|AttributeContainer[]
+     */
+    public function getAttributes(): array
+    {
+        return [];
+    }
+
+    /**
+     * @return array|DomBase[]
+     */
+    public function getChildElements(): array
+    {
+        return [];
     }
 }
+
