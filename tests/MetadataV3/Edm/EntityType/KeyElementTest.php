@@ -10,11 +10,13 @@ class KeyElementTest extends TestCase
 {
     /**
      * @dataProvider KeyElementProvider
+     * @param mixed $expected
+     * @param mixed $propertyRefArray
      */
     public function testKeyElementXmlSerialize($expected, $propertyRefArray)
     {
         $key = new KeyElement();
-        foreach($propertyRefArray as $proRef){
+        foreach ($propertyRefArray as $proRef) {
             $key[]=$proRef;
         }
         $domNode = $this->writterContext->write($key, false);
@@ -23,20 +25,20 @@ class KeyElementTest extends TestCase
         $this->assertXmlStringEqualsXmlString($expected, $xml);
     }
 
-    public static function KeyElementProvider(){
+    public static function KeyElementProvider()
+    {
         return [
             [
                 '<Key>' .
                 '    <PropertyRef Name="ID"/>' .
-                '</Key>', [new PropertyRef("ID")]
+                '</Key>', [new PropertyRef('ID')]
             ],
             [
                 '<Key>' .
                 '    <PropertyRef Name="OrderID"/>' .
                 '    <PropertyRef Name="LineNumber"/>' .
-                '</Key>', [new PropertyRef("OrderID"), new PropertyRef('LineNumber')]
+                '</Key>', [new PropertyRef('OrderID'), new PropertyRef('LineNumber')]
             ]
         ];
-
     }
 }

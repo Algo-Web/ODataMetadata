@@ -3,13 +3,12 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Trait HasPrecision
+ * Trait HasPrecision.
  *
  * 5.3.4 The edm:Precision Attribute
  *
@@ -20,7 +19,7 @@ use DOMElement;
  * property's value. For a temporal property the value of this attribute specifies the number of decimal places
  * allowed in the seconds portion of the property's value.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.4
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.4
  * @mixin EdmBase
  */
 trait HasPrecision
@@ -30,7 +29,7 @@ trait HasPrecision
      */
     private $precision = null;
     /**
-     * Gets as precision
+     * Gets as precision.
      *
      * @return int|null
      */
@@ -40,9 +39,9 @@ trait HasPrecision
     }
 
     /**
-     * Sets a new precision
+     * Sets a new precision.
      *
-     * @param int|null $precision
+     * @param  int|null $precision
      * @return self
      */
     public function setPrecision(?int $precision): self
@@ -51,7 +50,8 @@ trait HasPrecision
         return $this;
     }
 
-    public function getAttributesHasPrecision(): array{
+    public function getAttributesHasPrecision(): array
+    {
         return [new AttributeContainer('Precision', $this->getPrecision(), true)];
     }
 }

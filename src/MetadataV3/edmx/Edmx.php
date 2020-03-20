@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edmx;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EdmBase;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
@@ -12,7 +11,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use AlgoWeb\ODataMetadata\Writer\WritterContext;
 
 /**
- * Class TEdmxType
+ * Class TEdmxType.
  *
  * 3.1 The edmx:Edmx Element
  *
@@ -54,17 +53,17 @@ class Edmx extends DomBase
 {
     /**
      * @var string $version 3.1.1 The Version Attribute
-     * The Version attribute MUST be present on the edmx:Edmx element.
+     *             The Version attribute MUST be present on the edmx:Edmx element.
      *
      * The Version attribute is a string value that specifies the version of the EDMX wrapper, and must be of the
      * form .. This version of the specification defines version 1.0 of the EDMX Wrapper.
      */
-    private $version = "1.0";
+    private $version = '1.0';
 
     /**
      * @var DataServices|Schema[] $dataServices  3.2 The edmx:DataServices Element
-     * The edmx:DataServices element contains zero or more Edm:Schema elements which define the schema(s) exposed by
-     * the OData service.
+     *                            The edmx:DataServices element contains zero or more Edm:Schema elements which define the schema(s) exposed by
+     *                            the OData service.
      */
     private $dataServices;
 
@@ -74,10 +73,10 @@ class Edmx extends DomBase
     }
 
     /**
-     * Adds as schema
+     * Adds as schema.
      *
+     * @param  Schema $schema
      * @return self
-     * @param Schema $schema
      */
     public function addToDataServices(Schema $schema)
     {
@@ -86,9 +85,9 @@ class Edmx extends DomBase
     }
 
     /**
-     * isset dataServices
+     * isset dataServices.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetDataServices($index)
@@ -97,9 +96,9 @@ class Edmx extends DomBase
     }
 
     /**
-     * unset dataServices
+     * unset dataServices.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetDataServices($index)
@@ -108,7 +107,7 @@ class Edmx extends DomBase
     }
 
     /**
-     * Gets as dataServices
+     * Gets as dataServices.
      *
      * @return Schema[]
      */
@@ -118,9 +117,9 @@ class Edmx extends DomBase
     }
 
     /**
-     * Sets a new dataServices
+     * Sets a new dataServices.
      *
-     * @param Schema[] $dataServices
+     * @param  Schema[] $dataServices
      * @return self
      */
     public function setDataServices(array $dataServices)
@@ -130,24 +129,26 @@ class Edmx extends DomBase
     }
 
 
-    public function XmlSerialize(OdataVersions $version){
+    public function XmlSerialize(OdataVersions $version)
+    {
         $context = new WritterContext($version);
         $domDocument = $context->getBaseDocument();
         $edmxElement = $context->createEdmxElement('edmx:Edmx');
         $domDocument->appendChild($edmxElement);
-        $this->setUpNamespaces($edmxElement,$context);
+        $this->setUpNamespaces($edmxElement, $context);
         $edmxElement->setAttribute('Version', $this->version);
         EdmBase::setSerilizationContext($context);
         $this->dataServices->XmlSerialize($edmxElement);
         return $domDocument->saveXML();
     }
 
-    private function setUpNamespaces(\DOMElement $edmxElement, WritterContext $context){
+    private function setUpNamespaces(\DOMElement $edmxElement, WritterContext $context)
+    {
         $edmxElement->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns', $context->getEdmNamespace());
         $edmxElement->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:annotations', $context->getAnnotationsNamespace());
         $edmxElement->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:metadata', $context->getMetadataNamespace());
         $context->registerNamespace(null, $context->getEdmNamespace());
-        $context->registerNamespace("annotations", $context->getAnnotationsNamespace());
+        $context->registerNamespace('annotations', $context->getAnnotationsNamespace());
         $context->registerNamespace('metadata', $context->getMetadataNamespace());
     }
 

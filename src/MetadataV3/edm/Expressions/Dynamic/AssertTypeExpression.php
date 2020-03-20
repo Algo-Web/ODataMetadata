@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\ReferenceType;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.36.2.4 AssertType Expression
+ * 2.1.36.2.4 AssertType Expression.
  *
  * An AssertType expression casts a child element expression to a given type. The result of the AssertType expression
  * is an instance of the specified type or an error. The following two examples show how you can use either the Type
@@ -34,7 +34,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - AssertType MUST contain one expression as a child element. The expression MUST follow ReferenceType
  * if ReferenceType is used to define the type.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.2
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.2
  * XSD Type: TTypeAssertExpression
  */
 class AssertTypeExpression extends DynamicBase
@@ -52,7 +52,7 @@ class AssertTypeExpression extends DynamicBase
     private $referenceType;
 
     /**
-     * Gets as operand
+     * Gets as operand.
      *
      * @return ExpressionBase
      */
@@ -62,9 +62,9 @@ class AssertTypeExpression extends DynamicBase
     }
 
     /**
-     * Sets a new operand
+     * Sets a new operand.
      *
-     * @param ExpressionBase $operand
+     * @param  ExpressionBase $operand
      * @return self
      */
     public function setOperand(ExpressionBase $operand):self
@@ -74,7 +74,7 @@ class AssertTypeExpression extends DynamicBase
     }
 
     /**
-     * Gets as referenceType
+     * Gets as referenceType.
      *
      * @return ReferenceType
      */
@@ -84,9 +84,9 @@ class AssertTypeExpression extends DynamicBase
     }
 
     /**
-     * Sets a new referenceType
+     * Sets a new referenceType.
      *
-     * @param ReferenceType $referenceType
+     * @param  ReferenceType $referenceType
      * @return self
      */
     public function setReferenceType(ReferenceType $referenceType)
@@ -122,6 +122,4 @@ class AssertTypeExpression extends DynamicBase
         $base[] = $this->getOperand();
         return $base;
     }
-
 }
-

@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\HasValueAnnotation;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.4 NavigationProperty
+ * 2.1.4 NavigationProperty.
  *
  * NavigationProperty elements define non-structural properties on entities that allow for navigation from one Entity
  * to another via a relationship. Standard properties describe a value that is associated with an entity, while
@@ -40,7 +40,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - In CSDL 3.0, NavigationProperty can contain any number of ValueAnnotation elements.
  * - Child elements of NavigationProperty are to appear in this sequence: Documentation, AnnotationElement.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.4
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.4
  *
  * XSD Type: TNavigationProperty
  */
@@ -51,8 +51,8 @@ class NavigationProperty extends EdmBase
         HasAccessors;
     /**
      * @var string $name The navigation property MUST provide a [simpleidentifier][csdl19] value to the edm:Name
-     * attribute. The name attribute is a meaningful string that characterizes the relationship when navigating from
-     * the entity that declared the navigation property to the related entity.
+     *             attribute. The name attribute is a meaningful string that characterizes the relationship when navigating from
+     *             the entity that declared the navigation property to the related entity.
      *
      * The name of the navigation property MUST be unique within the set of structural and navigation properties of
      * the containing entity type and any base types of the entity type.
@@ -61,14 +61,14 @@ class NavigationProperty extends EdmBase
 
     /**
      * @var string $relationship The edm:Relationship attribute MUST be given a [simpleidentifier][csdl19] or
-     * [qualifiedidentifier][csdl19] value. The value of the attribute MUST resolve to an association in the
-     * entity model.
+     *             [qualifiedidentifier][csdl19] value. The value of the attribute MUST resolve to an association in the
+     *             entity model.
      */
     private $relationship = null;
 
     /**
      * @var string $toRole The navigation property MUST provide a [simpleidentifier][csdl19] value to the edm:ToRole
-     * attribute. The edm:ToRole attribute is a name used to refer to the destination of the navigation property.
+     *             attribute. The edm:ToRole attribute is a name used to refer to the destination of the navigation property.
      *
      * The value provided to the edm:ToRole attribute MUST be the same as one of the edm:Role names on the
      * corresponding edm:Association.
@@ -77,7 +77,7 @@ class NavigationProperty extends EdmBase
 
     /**
      * @var string $fromRole The navigation property MUST provide a [][csdl19] value to the edm:FromRole attribute.
-     * The edm:FromRole attribute is a name used to refer to the destination of the navigation property.
+     *             The edm:FromRole attribute is a name used to refer to the destination of the navigation property.
      *
      * The value provided to the edm:FromRole attribute MUST be the same as one of the edm:Role names on the
      * corresponding edm:Association.
@@ -96,7 +96,7 @@ class NavigationProperty extends EdmBase
             ->setSetterAccess($setter);
     }
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -106,9 +106,9 @@ class NavigationProperty extends EdmBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -118,7 +118,7 @@ class NavigationProperty extends EdmBase
     }
 
     /**
-     * Gets as relationship
+     * Gets as relationship.
      *
      * @return string
      */
@@ -128,9 +128,9 @@ class NavigationProperty extends EdmBase
     }
 
     /**
-     * Sets a new relationship
+     * Sets a new relationship.
      *
-     * @param string $relationship
+     * @param  string $relationship
      * @return self
      */
     public function setRelationship($relationship)
@@ -140,7 +140,7 @@ class NavigationProperty extends EdmBase
     }
 
     /**
-     * Gets as toRole
+     * Gets as toRole.
      *
      * @return string
      */
@@ -150,9 +150,9 @@ class NavigationProperty extends EdmBase
     }
 
     /**
-     * Sets a new toRole
+     * Sets a new toRole.
      *
-     * @param string $toRole
+     * @param  string $toRole
      * @return self
      */
     public function setToRole($toRole)
@@ -162,7 +162,7 @@ class NavigationProperty extends EdmBase
     }
 
     /**
-     * Gets as fromRole
+     * Gets as fromRole.
      *
      * @return string
      */
@@ -172,9 +172,9 @@ class NavigationProperty extends EdmBase
     }
 
     /**
-     * Sets a new fromRole
+     * Sets a new fromRole.
      *
-     * @param string $fromRole
+     * @param  string $fromRole
      * @return self
      */
     public function setFromRole($fromRole)
@@ -218,4 +218,3 @@ class NavigationProperty extends EdmBase
         ];
     }
 }
-

@@ -1,7 +1,6 @@
 <?php
 namespace AlgoWeb\ODataMetadata\MetadataV3;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\INominalType;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\IScalarType;
 use DOMElement;

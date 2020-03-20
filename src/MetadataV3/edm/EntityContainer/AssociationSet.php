@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityContainer\AssociationSet\End;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.19 AssociationSet
+ * 2.1.19 AssociationSet.
  *
  * An AssociationSet contains relationship instances of the specified association. The association specifies the
  * EntityType elements of the two end points, whereas AssociationSet specifies the EntitySet element that corresponds
@@ -37,19 +37,19 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - AssociationSet can contain any number of AnnotationElement child elements.
  * - Child elements of AssociationSet are to appear in this sequence: Documentation, End, AnnotationElement.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.3
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.3
  */
 class AssociationSet extends EdmBase
 {
     use HasDocumentation;
     /**
-     * @var string $name An association set MUST provide a [simpleidentifier][csdl19] value for the edm:Name attribute.
+     * @var string $name an association set MUST provide a [simpleidentifier][csdl19] value for the edm:Name attribute
      */
     private $name;
 
     /**
-     * @var string $association An association set also has an edm:Association attribute that MUST be provided
-     * with a [qualifiedidentifier][csdl19] that resolves to an association in the entity model.
+     * @var string $association an association set also has an edm:Association attribute that MUST be provided
+     *             with a [qualifiedidentifier][csdl19] that resolves to an association in the entity model
      */
     private $association;
 
@@ -74,7 +74,7 @@ class AssociationSet extends EdmBase
     }
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -84,9 +84,9 @@ class AssociationSet extends EdmBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -96,7 +96,7 @@ class AssociationSet extends EdmBase
     }
 
     /**
-     * Gets as association
+     * Gets as association.
      *
      * @return string
      */
@@ -106,9 +106,9 @@ class AssociationSet extends EdmBase
     }
 
     /**
-     * Sets a new association
+     * Sets a new association.
      *
-     * @param string $association
+     * @param  string $association
      * @return self
      */
     public function setAssociation($association)
@@ -118,7 +118,7 @@ class AssociationSet extends EdmBase
     }
 
     /**
-     * Gets the first end
+     * Gets the first end.
      *
      * @return End|null
      */
@@ -128,9 +128,9 @@ class AssociationSet extends EdmBase
     }
 
     /**
-     * Sets a first end
+     * Sets a first end.
      *
-     * @param End|null $end
+     * @param  End|null $end
      * @return self
      */
     public function setEndOne(?End $end):self
@@ -140,7 +140,7 @@ class AssociationSet extends EdmBase
     }
 
     /**
-     * Gets the second end
+     * Gets the second end.
      *
      * @return End|null
      */
@@ -150,9 +150,9 @@ class AssociationSet extends EdmBase
     }
 
     /**
-     * Sets the second end
+     * Sets the second end.
      *
-     * @param End|null $end
+     * @param  End|null $end
      * @return self
      */
     public function setEndTwo(?End $end):self
@@ -192,4 +192,3 @@ class AssociationSet extends EdmBase
         ];
     }
 }
-

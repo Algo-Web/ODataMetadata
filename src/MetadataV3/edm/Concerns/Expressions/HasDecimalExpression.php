@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 trait HasDecimalExpression
 {
     /**
@@ -13,10 +12,10 @@ trait HasDecimalExpression
 
     ];
     /**
-     * Adds as decimal
+     * Adds as decimal.
      *
+     * @param  float $decimal
      * @return self
-     * @param float $decimal
      */
     public function addToDecimal($decimal)
     {
@@ -25,9 +24,9 @@ trait HasDecimalExpression
     }
 
     /**
-     * isset decimal
+     * isset decimal.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetDecimal($index)
@@ -36,9 +35,9 @@ trait HasDecimalExpression
     }
 
     /**
-     * unset decimal
+     * unset decimal.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetDecimal($index)
@@ -47,7 +46,7 @@ trait HasDecimalExpression
     }
 
     /**
-     * Gets as decimal
+     * Gets as decimal.
      *
      * @return float[]
      */
@@ -57,9 +56,9 @@ trait HasDecimalExpression
     }
 
     /**
-     * Sets a new decimal
+     * Sets a new decimal.
      *
-     * @param float[] $decimal
+     * @param  float[] $decimal
      * @return self
      */
     public function setDecimal(array $decimal)
@@ -67,5 +66,4 @@ trait HasDecimalExpression
         $this->decimal = $decimal;
         return $this;
     }
-
 }

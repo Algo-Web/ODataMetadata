@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
 
 /**
- * Class representing TEnumConstantExpressionType
+ * Class representing TEnumConstantExpressionType.
  *
  * 16.2.5 The Edm:EnumMemberReference Expression
  *
@@ -18,7 +18,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
  *         <EnumMemberReference>org.example.address.Type.Mailing</EnumMemberReference>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.5
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.5
  * XSD Type: TEnumConstantExpression
  */
 class TEnumMemberReferenceType extends DynamicBase
@@ -30,7 +30,7 @@ class TEnumMemberReferenceType extends DynamicBase
     private $__value = null;
 
     /**
-     * Construct
+     * Construct.
      *
      * @param string $value
      */
@@ -40,9 +40,9 @@ class TEnumMemberReferenceType extends DynamicBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value(string $value = null)
@@ -54,7 +54,7 @@ class TEnumMemberReferenceType extends DynamicBase
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */
@@ -62,7 +62,4 @@ class TEnumMemberReferenceType extends DynamicBase
     {
         return strval($this->__value);
     }
-
-
 }
-

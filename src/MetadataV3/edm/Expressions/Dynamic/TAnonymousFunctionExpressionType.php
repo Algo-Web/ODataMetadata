@@ -6,9 +6,9 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasExpression;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\ModelFunctionParameter;
 
 /**
- * Class representing TAnonymousFunctionExpressionType
+ * Class representing TAnonymousFunctionExpressionType.
  *
- * 
+ *
  * XSD Type: TAnonymousFunctionExpression
  */
 class TAnonymousFunctionExpressionType extends DynamicBase
@@ -21,9 +21,9 @@ class TAnonymousFunctionExpressionType extends DynamicBase
     private $parameters = null;
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @param ModelFunctionParameter $parameter
+     * @param  ModelFunctionParameter $parameter
      * @return self
      */
     public function addToParameters(ModelFunctionParameter $parameter)
@@ -33,9 +33,9 @@ class TAnonymousFunctionExpressionType extends DynamicBase
     }
 
     /**
-     * isset parameters
+     * isset parameters.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetParameters($index)
@@ -44,9 +44,9 @@ class TAnonymousFunctionExpressionType extends DynamicBase
     }
 
     /**
-     * unset parameters
+     * unset parameters.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetParameters($index)
@@ -55,7 +55,7 @@ class TAnonymousFunctionExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as parameters
+     * Gets as parameters.
      *
      * @return ModelFunctionParameter[]
      */
@@ -65,9 +65,9 @@ class TAnonymousFunctionExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new parameters
+     * Sets a new parameters.
      *
-     * @param ModelFunctionParameter[] $parameters
+     * @param  ModelFunctionParameter[] $parameters
      * @return self
      */
     public function setParameters(array $parameters)
@@ -76,4 +76,3 @@ class TAnonymousFunctionExpressionType extends DynamicBase
         return $this;
     }
 }
-

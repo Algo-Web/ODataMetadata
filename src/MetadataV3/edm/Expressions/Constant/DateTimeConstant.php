@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Constant;
 use DateTime;
 
 /**
- * Class representing TDateTimeConstantExpressionType
+ * Class representing TDateTimeConstantExpressionType.
  *
  * 16.1.3 The Edm:DateTime Constant Expression
  *
@@ -21,14 +21,14 @@ use DateTime;
  *         <DateTime>2000-01-01T16:00:00.000</DateTime>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.3
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.3
  * XSD Type: TDateTimeConstantExpression
  */
 class DateTimeConstant extends ConstantBase
 {
 
     /**
-     * Construct
+     * Construct.
      *
      * @param DateTime $value
      */
@@ -38,9 +38,9 @@ class DateTimeConstant extends ConstantBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param DateTime $value
+     * @param  DateTime $value
      * @return DateTime
      */
     public function value(DateTime $value = null): DateTime
@@ -52,7 +52,7 @@ class DateTimeConstant extends ConstantBase
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */
@@ -70,6 +70,4 @@ class DateTimeConstant extends ConstantBase
     {
         return 'DateTime';
     }
-
 }
-

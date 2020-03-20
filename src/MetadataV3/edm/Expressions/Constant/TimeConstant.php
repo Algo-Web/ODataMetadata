@@ -6,7 +6,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Constant;
 use DateTime;
 
 /**
- * Class representing TTimeConstantExpressionType
+ * Class representing TTimeConstantExpressionType.
  *
  * 16.1.10 The Edm:Time Constant Expression
  *
@@ -23,13 +23,13 @@ use DateTime;
  *         <Time>21:00:00-08:00</Time>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1
  * XSD Type: TTimeConstantExpression
  */
 class TimeConstant extends ConstantBase
 {
     /**
-     * Construct
+     * Construct.
      *
      * @param DateTime $value
      */
@@ -39,9 +39,9 @@ class TimeConstant extends ConstantBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param DateTime $value
+     * @param  DateTime $value
      * @return DateTime
      */
     public function value(DateTime $value = null): DateTime
@@ -53,7 +53,7 @@ class TimeConstant extends ConstantBase
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */

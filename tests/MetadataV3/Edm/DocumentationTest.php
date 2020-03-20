@@ -25,7 +25,8 @@ class DocumentationTest extends TestCase
         $this->assertEquals($expected, $xml);
     }
 
-    public static function documentationTestProvider(){
+    public static function documentationTestProvider()
+    {
         return [
             [
                 '<Documentation><Summary>Short Summery</Summary></Documentation>', 'Short Summery', null

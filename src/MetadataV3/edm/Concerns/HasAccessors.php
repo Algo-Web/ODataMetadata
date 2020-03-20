@@ -3,14 +3,13 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\AccessorType;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Trait HasAccessors
+ * Trait HasAccessors.
  * @mixin EdmBase
  */
 trait HasAccessors
@@ -25,7 +24,7 @@ trait HasAccessors
      */
     private $getterAccess = null;
     /**
-     * Gets as setterAccess
+     * Gets as setterAccess.
      *
      * @return string
      */
@@ -35,9 +34,9 @@ trait HasAccessors
     }
 
     /**
-     * Sets a new setterAccess
+     * Sets a new setterAccess.
      *
-     * @param AccessorType $setterAccess
+     * @param  AccessorType $setterAccess
      * @return self
      */
     public function setSetterAccess(?AccessorType $setterAccess): self
@@ -47,7 +46,7 @@ trait HasAccessors
     }
 
     /**
-     * Gets as getterAccess
+     * Gets as getterAccess.
      *
      * @return string
      */
@@ -57,9 +56,9 @@ trait HasAccessors
     }
 
     /**
-     * Sets a new getterAccess
+     * Sets a new getterAccess.
      *
-     * @param AccessorType $getterAccess
+     * @param  AccessorType $getterAccess
      * @return self
      */
     public function setGetterAccess(?AccessorType$getterAccess): self
@@ -68,11 +67,13 @@ trait HasAccessors
         return $this;
     }
 
-    public function XmlSerializeHasAccessors(DOMElement $thisNode){
-        $this->XmlSerializeNullableAttribute($thisNode,'cg:SetterAccess', $this->getSetterAccess());
-        $this->XmlSerializeNullableAttribute($thisNode,'cg:GetterAccess', $this->getGetterAccess());
+    public function XmlSerializeHasAccessors(DOMElement $thisNode)
+    {
+        $this->XmlSerializeNullableAttribute($thisNode, 'cg:SetterAccess', $this->getSetterAccess());
+        $this->XmlSerializeNullableAttribute($thisNode, 'cg:GetterAccess', $this->getGetterAccess());
     }
-    public function getAttributesHasAccessors(): array{
+    public function getAttributesHasAccessors(): array
+    {
         return [
             new AttributeContainer('cg:SetterAccess', $this->getSetterAccess(), true),
             new AttributeContainer('cg:GetterAccess', $this->getGetterAccess(), true)

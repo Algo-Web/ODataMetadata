@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\ReferenceType;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\RowType\Property;
 
 /**
- * Class representing ParameterAType
+ * Class representing ParameterAType.
  */
 class ParameterAType
 {
@@ -37,7 +37,7 @@ class ParameterAType
     private $rowType = null;
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -47,9 +47,9 @@ class ParameterAType
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType($type)
@@ -59,7 +59,7 @@ class ParameterAType
     }
 
     /**
-     * Adds as collectionType
+     * Adds as collectionType.
      *
      * @param CollectionType $collectionType
      *@return self
@@ -71,9 +71,9 @@ class ParameterAType
     }
 
     /**
-     * isset collectionType
+     * isset collectionType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetCollectionType($index)
@@ -82,9 +82,9 @@ class ParameterAType
     }
 
     /**
-     * unset collectionType
+     * unset collectionType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetCollectionType($index)
@@ -93,7 +93,7 @@ class ParameterAType
     }
 
     /**
-     * Gets as collectionType
+     * Gets as collectionType.
      *
      * @return CollectionType[]
      */
@@ -103,9 +103,9 @@ class ParameterAType
     }
 
     /**
-     * Sets a new collectionType
+     * Sets a new collectionType.
      *
-     * @param CollectionType[] $collectionType
+     * @param  CollectionType[] $collectionType
      * @return self
      */
     public function setCollectionType(array $collectionType)
@@ -115,7 +115,7 @@ class ParameterAType
     }
 
     /**
-     * Adds as referenceType
+     * Adds as referenceType.
      *
      * @param ReferenceType $referenceType
      *@return self
@@ -127,9 +127,9 @@ class ParameterAType
     }
 
     /**
-     * isset referenceType
+     * isset referenceType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetReferenceType($index)
@@ -138,9 +138,9 @@ class ParameterAType
     }
 
     /**
-     * unset referenceType
+     * unset referenceType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetReferenceType($index)
@@ -149,7 +149,7 @@ class ParameterAType
     }
 
     /**
-     * Gets as referenceType
+     * Gets as referenceType.
      *
      * @return ReferenceType[]
      */
@@ -159,9 +159,9 @@ class ParameterAType
     }
 
     /**
-     * Sets a new referenceType
+     * Sets a new referenceType.
      *
-     * @param ReferenceType[] $referenceType
+     * @param  ReferenceType[] $referenceType
      * @return self
      */
     public function setReferenceType(array $referenceType)
@@ -171,9 +171,9 @@ class ParameterAType
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @param Property $property
+     * @param  Property $property
      * @return self
      */
     public function addToRowType(Property $property)
@@ -183,9 +183,9 @@ class ParameterAType
     }
 
     /**
-     * isset rowType
+     * isset rowType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetRowType($index)
@@ -194,9 +194,9 @@ class ParameterAType
     }
 
     /**
-     * unset rowType
+     * unset rowType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetRowType($index)
@@ -205,7 +205,7 @@ class ParameterAType
     }
 
     /**
-     * Gets as rowType
+     * Gets as rowType.
      *
      * @return Property[]
      */
@@ -215,9 +215,9 @@ class ParameterAType
     }
 
     /**
-     * Sets a new rowType
+     * Sets a new rowType.
      *
-     * @param Property[] $rowType
+     * @param  Property[] $rowType
      * @return self
      */
     public function setRowType(array $rowType)
@@ -225,7 +225,4 @@ class ParameterAType
         $this->rowType = $rowType;
         return $this;
     }
-
-
 }
-

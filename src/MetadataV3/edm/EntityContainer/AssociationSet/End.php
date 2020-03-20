@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.20 AssociationSet End
+ * 2.1.20 AssociationSet End.
  *
  * The End element defines the two sides of the AssociationSet element. This association is defined between the two
  * EntitySets declared in an EntitySet attribute.
@@ -29,21 +29,21 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - End can contain any number of AnnotationElement elements.
  * - The child elements of End are to appear in this sequence: Documentation, AnnotationElement.
 
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.3.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.3.1
  */
 class End extends EdmBase
 {
     use HasDocumentation;
     /**
-     * @var string $role An association set end MUST provide a [simpleidentifier][csdl19] value for the edm:Role
-     * attribute that is the same as the value of one of the association ends' edm:Role attribute.
+     * @var string $role an association set end MUST provide a [simpleidentifier][csdl19] value for the edm:Role
+     *             attribute that is the same as the value of one of the association ends' edm:Role attribute
      */
     private $role;
 
     /**
      * @var string $entitySet The edm:End element MUST also provide a [simpleidentifier][csdl19] or
-     * [qualifiedidentifier][csdl19] value for the edm:EntitySet attribute. The entity set that is named MUST expose
-     * the entity type bound by the corresponding end of the association.
+     *             [qualifiedidentifier][csdl19] value for the edm:EntitySet attribute. The entity set that is named MUST expose
+     *             the entity type bound by the corresponding end of the association.
      */
     private $entitySet;
 
@@ -56,7 +56,7 @@ class End extends EdmBase
     }
 
     /**
-     * Gets as role
+     * Gets as role.
      *
      * @return string
      */
@@ -66,9 +66,9 @@ class End extends EdmBase
     }
 
     /**
-     * Sets a new role
+     * Sets a new role.
      *
-     * @param string $role
+     * @param  string $role
      * @return self
      */
     public function setRole(string $role): self
@@ -78,7 +78,7 @@ class End extends EdmBase
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return string
      */
@@ -88,9 +88,9 @@ class End extends EdmBase
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
-     * @param string $entitySet
+     * @param  string $entitySet
      * @return self
      */
     public function setEntitySet(string $entitySet): self
@@ -126,4 +126,3 @@ class End extends EdmBase
         return [$this->getDocumentation()];
     }
 }
-

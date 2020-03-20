@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Constant;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\ExpressionBase;
 use AlgoWeb\ODataMetadata\OdataVersions;
@@ -11,7 +10,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use AlgoWeb\ODataMetadata\Writer\IAttribute;
 
 /**
- * 2.1.36.1.2 Primitive Scalar Constant Expressions
+ * 2.1.36.1.2 Primitive Scalar Constant Expressions.
  *
  * The following expression elements are defined as primitive scalar constant expressions:
  * - String allows any sequence of UTF-8 characters.
@@ -47,7 +46,7 @@ use AlgoWeb\ODataMetadata\Writer\IAttribute;
  *         <ValueAnnotation Term="org.example.display.DisplayName" String="Supplier Directory" />
  *     </EntitySet>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1
  * @package AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Constant
  */
 abstract class ConstantBase extends ExpressionBase implements IAttribute
@@ -58,7 +57,7 @@ abstract class ConstantBase extends ExpressionBase implements IAttribute
     protected $__value = null;
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */

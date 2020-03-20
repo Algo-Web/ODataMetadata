@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\IScalarType;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.37 EnumType
+ * 2.1.37 EnumType.
  *
  * An EnumType element is used in CSDL 3.0 to declare an enumeration type. Enumeration types are scalar types.
  *
@@ -37,7 +37,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - EnumType elements can contain a list of zero or more Member child elements that are referred to as declared
  *   enumeration members.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.1
  * XSD Type: TEnumType
  */
 class Enum extends EdmBase implements INominalType, IScalarType
@@ -46,32 +46,32 @@ class Enum extends EdmBase implements INominalType, IScalarType
 
     /**
      * @var string $name EnumType elements MUST specify a Name attribute that is of type SimpleIdentifier.
-     * EnumType is a schema level named element and has a unique name.
+     *             EnumType is a schema level named element and has a unique name.
      */
     private $name;
 
     /**
      * @var bool $isFlags 8.1.2 The edm:IsFlags Attribute
-     * An enumeration type MAY specify a [boolean][csdl19] value for the edm:IsFlags attribute. A value of true
-     * indicates that the enumeration type allows multiple members to be selected simultaneously.
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.1.2
+     *           An enumeration type MAY specify a [boolean][csdl19] value for the edm:IsFlags attribute. A value of true
+     *           indicates that the enumeration type allows multiple members to be selected simultaneously.
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.1.2
      */
     private $isFlags = false;
 
     /**
      * @var string $underlyingType 8.1.1 The edm:UnderlyingType Attribute
-     * An enumeration type has an underlying type which specifies the allowable values for member mapping.
+     *             An enumeration type has an underlying type which specifies the allowable values for member mapping.
      *
      * The enumeration type MUST assign an value to the edm:UnderlyingType attribute. If the underlying type is not
      * specified, a 32-bit integer MUST be used as the underlying type.
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.1.1
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.1.1
      */
     private $underlyingType = null;
 
 
     /**
-     * @var EnumMember[] $member The enumeration type element contains zero or more child edm:Member elements
-     * enumerating the members of the enum.
+     * @var EnumMember[] $member the enumeration type element contains zero or more child edm:Member elements
+     *                   enumerating the members of the enum
      */
     private $member = [];
 
@@ -85,7 +85,7 @@ class Enum extends EdmBase implements INominalType, IScalarType
     }
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -95,9 +95,9 @@ class Enum extends EdmBase implements INominalType, IScalarType
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(string $name) : self
@@ -107,7 +107,7 @@ class Enum extends EdmBase implements INominalType, IScalarType
     }
 
     /**
-     * Gets as isFlags
+     * Gets as isFlags.
      *
      * @return bool
      */
@@ -117,19 +117,19 @@ class Enum extends EdmBase implements INominalType, IScalarType
     }
 
     /**
-     * Sets a new isFlags
+     * Sets a new isFlags.
      *
-     * @param bool $isFlags
+     * @param  bool $isFlags
      * @return self
      */
-    public function setIsFlags( bool $isFlags):self
+    public function setIsFlags(bool $isFlags):self
     {
         $this->isFlags = $isFlags;
         return $this;
     }
 
     /**
-     * Gets as underlyingType
+     * Gets as underlyingType.
      *
      * @return string|null
      */
@@ -139,9 +139,9 @@ class Enum extends EdmBase implements INominalType, IScalarType
     }
 
     /**
-     * Sets a new underlyingType
+     * Sets a new underlyingType.
      *
-     * @param string|null $underlyingType
+     * @param  string|null $underlyingType
      * @return self
      */
     public function setUnderlyingType(?string $underlyingType): self
@@ -151,9 +151,9 @@ class Enum extends EdmBase implements INominalType, IScalarType
     }
 
     /**
-     * Adds as member
+     * Adds as member.
      *
-     * @param EnumMember $member
+     * @param  EnumMember $member
      * @return self
      */
     public function addToMember(EnumMember $member): self
@@ -163,9 +163,9 @@ class Enum extends EdmBase implements INominalType, IScalarType
     }
 
     /**
-     * isset member
+     * isset member.
      *
-     * @param string $index
+     * @param  string $index
      * @return bool
      */
     public function issetMember(string $index): bool
@@ -174,9 +174,9 @@ class Enum extends EdmBase implements INominalType, IScalarType
     }
 
     /**
-     * unset member
+     * unset member.
      *
-     * @param string $index
+     * @param  string $index
      * @return void
      */
     public function unsetMember($index): void
@@ -185,7 +185,7 @@ class Enum extends EdmBase implements INominalType, IScalarType
     }
 
     /**
-     * Gets as member
+     * Gets as member.
      *
      * @return EnumMember[]
      */
@@ -195,9 +195,9 @@ class Enum extends EdmBase implements INominalType, IScalarType
     }
 
     /**
-     * Sets a new member
+     * Sets a new member.
      *
-     * @param EnumMember[] $member
+     * @param  EnumMember[] $member
      * @return self
      */
     public function setMember(array $member): self
@@ -240,4 +240,3 @@ class Enum extends EdmBase implements INominalType, IScalarType
         return false;
     }
 }
-

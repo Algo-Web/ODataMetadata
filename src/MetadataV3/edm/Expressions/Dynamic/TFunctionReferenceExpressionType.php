@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TFunctionReferenceExpressionType\ParameterAType;
 
 /**
- * Class representing TFunctionReferenceExpressionType
+ * Class representing TFunctionReferenceExpressionType.
  *
  * 16.2.6 The Edm:FunctionReference Expression
  *
@@ -25,7 +25,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TFunctionReferenceE
  *         </FunctionReference>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.6
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.6
  * XSD Type: TFunctionReferenceExpression
  */
 class TFunctionReferenceExpressionType extends DynamicBase
@@ -44,7 +44,7 @@ class TFunctionReferenceExpressionType extends DynamicBase
     ];
 
     /**
-     * Gets as function
+     * Gets as function.
      *
      * @return string
      */
@@ -54,9 +54,9 @@ class TFunctionReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new function
+     * Sets a new function.
      *
-     * @param string $function
+     * @param  string $function
      * @return self
      */
     public function setFunction($function)
@@ -66,7 +66,7 @@ class TFunctionReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
      * @param ParameterAType $parameter
      *@return self
@@ -78,9 +78,9 @@ class TFunctionReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetParameter($index)
@@ -89,9 +89,9 @@ class TFunctionReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetParameter($index)
@@ -100,7 +100,7 @@ class TFunctionReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return ParameterAType[]
      */
@@ -110,9 +110,9 @@ class TFunctionReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
-     * @param ParameterAType[] $parameter
+     * @param  ParameterAType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)
@@ -120,7 +120,4 @@ class TFunctionReferenceExpressionType extends DynamicBase
         $this->parameter = $parameter;
         return $this;
     }
-
-
 }
-

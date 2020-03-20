@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\HasType;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.30 Function ReturnType
+ * 2.1.30 Function ReturnType.
  *
  * ReturnType describes the shape of data that is returned from a Function. The return type of a function can be declared as a ReturnType attribute on a Function or as a child element.
  *
@@ -67,4 +67,3 @@ class FunctionReturn extends EdmBase
         return [$this->getChildElementsHasType()];
     }
 }
-

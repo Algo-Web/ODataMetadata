@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TAnonymousFun
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\ModelFunctionParameter;
 
 /**
- * Class representing ParametersAType
+ * Class representing ParametersAType.
  */
 class ParametersAType
 {
@@ -18,9 +18,9 @@ class ParametersAType
     ];
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @param ModelFunctionParameter $parameter
+     * @param  ModelFunctionParameter $parameter
      * @return self
      */
     public function addToParameter(ModelFunctionParameter $parameter)
@@ -30,9 +30,9 @@ class ParametersAType
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetParameter($index)
@@ -41,9 +41,9 @@ class ParametersAType
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetParameter($index)
@@ -52,7 +52,7 @@ class ParametersAType
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return ModelFunctionParameter[]
      */
@@ -62,9 +62,9 @@ class ParametersAType
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
-     * @param ModelFunctionParameter[] $parameter
+     * @param  ModelFunctionParameter[] $parameter
      * @return self
      */
     public function setParameter(array $parameter)
@@ -72,7 +72,4 @@ class ParametersAType
         $this->parameter = $parameter;
         return $this;
     }
-
-
 }
-

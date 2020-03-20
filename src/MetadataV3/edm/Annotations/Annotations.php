@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.35 Annotations
+ * 2.1.35 Annotations.
  *
  * The Annotations element is used to group one or more TypeAnnotation or ValueAnnotation elements that target the same model element.
  *
@@ -38,8 +38,8 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *
  * Annotations can appear only in Schema level.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl15.1
- * @link https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/9fb2fa3c-5aac-4430-87c6-6786314b1588
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl15.1
+ * @see https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/9fb2fa3c-5aac-4430-87c6-6786314b1588
  * XSD Type: TAnnotations
  */
 class Annotations extends EdmBase
@@ -47,8 +47,8 @@ class Annotations extends EdmBase
     use HasAnnotations;
     /**
      * @var string $target The Annotations element MUST have a Target attribute defined. The Target attribute names the
-     * element to which the contained TypeAnnotation and ValueAnnotation elements apply. Target has to be a namespace
-     * qualified name, alias qualified name, or FunctionImport Name.
+     *             element to which the contained TypeAnnotation and ValueAnnotation elements apply. Target has to be a namespace
+     *             qualified name, alias qualified name, or FunctionImport Name.
      *
      * The Target attribute MUST target one of the following:
      * ComplexType
@@ -66,13 +66,13 @@ class Annotations extends EdmBase
     private $target;
 
     /**
-     * @var string $qualifier Annotations can have a Qualifier attribute that is of type SimpleIdentifier.
+     * @var string $qualifier annotations can have a Qualifier attribute that is of type SimpleIdentifier
      */
     private $qualifier = null;
 
 
     /**
-     * Gets as target
+     * Gets as target.
      *
      * @return string
      */
@@ -82,9 +82,9 @@ class Annotations extends EdmBase
     }
 
     /**
-     * Sets a new target
+     * Sets a new target.
      *
-     * @param string $target
+     * @param  string $target
      * @return self
      */
     public function setTarget(string $target): self
@@ -94,7 +94,7 @@ class Annotations extends EdmBase
     }
 
     /**
-     * Gets as qualifier
+     * Gets as qualifier.
      *
      * @return string|null
      */
@@ -104,9 +104,9 @@ class Annotations extends EdmBase
     }
 
     /**
-     * Sets a new qualifier
+     * Sets a new qualifier.
      *
-     * @param string|null $qualifier
+     * @param  string|null $qualifier
      * @return self
      */
     public function setQualifier(?string $qualifier): self
@@ -129,8 +129,8 @@ class Annotations extends EdmBase
     public function getAttributes(): array
     {
         return [
-            new AttributeContainer("Target", $this->getTarget()),
-            new AttributeContainer("Qualifier", $this->getQualifier(), true)
+            new AttributeContainer('Target', $this->getTarget()),
+            new AttributeContainer('Qualifier', $this->getQualifier(), true)
         ];
     }
 
@@ -142,4 +142,3 @@ class Annotations extends EdmBase
         return array_merge($this->getValueAnnotation(), $this->getTypeAnnotation());
     }
 }
-

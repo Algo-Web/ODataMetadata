@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TApplyExpressionTyp
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TApplyExpressionType\ArgumentsAType;
 
 /**
- * Class representing TApplyExpressionType
+ * Class representing TApplyExpressionType.
  *
  * 16.2.1 The Edm:Apply Expression
  *
@@ -28,8 +28,8 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TApplyExpressionTyp
  *         </Apply>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.1
- * @link https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/2ab2b71d-caa8-47cd-a870-9214f99df76c
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.1
+ * @see https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/2ab2b71d-caa8-47cd-a870-9214f99df76c
  * XSD Type: TApplyExpression
  */
 class TApplyExpressionType extends DynamicBase
@@ -55,7 +55,7 @@ class TApplyExpressionType extends DynamicBase
     ];
 
     /**
-     * Gets as function
+     * Gets as function.
      *
      * @return string
      */
@@ -65,9 +65,9 @@ class TApplyExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new function
+     * Sets a new function.
      *
-     * @param string $function
+     * @param  string $function
      * @return self
      */
     public function setFunction($function)
@@ -77,7 +77,7 @@ class TApplyExpressionType extends DynamicBase
     }
 
     /**
-     * Adds as appliedFunction
+     * Adds as appliedFunction.
      *
      * @param AppliedFunctionAType $appliedFunction
      *@return self
@@ -89,9 +89,9 @@ class TApplyExpressionType extends DynamicBase
     }
 
     /**
-     * isset appliedFunction
+     * isset appliedFunction.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetAppliedFunction($index)
@@ -100,9 +100,9 @@ class TApplyExpressionType extends DynamicBase
     }
 
     /**
-     * unset appliedFunction
+     * unset appliedFunction.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetAppliedFunction($index)
@@ -111,7 +111,7 @@ class TApplyExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as appliedFunction
+     * Gets as appliedFunction.
      *
      * @return AppliedFunctionAType[]
      */
@@ -121,9 +121,9 @@ class TApplyExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new appliedFunction
+     * Sets a new appliedFunction.
      *
-     * @param AppliedFunctionAType[] $appliedFunction
+     * @param  AppliedFunctionAType[] $appliedFunction
      * @return self
      */
     public function setAppliedFunction(array $appliedFunction)
@@ -133,7 +133,7 @@ class TApplyExpressionType extends DynamicBase
     }
 
     /**
-     * Adds as arguments
+     * Adds as arguments.
      *
      * @param ArgumentsAType $arguments
      *@return self
@@ -145,9 +145,9 @@ class TApplyExpressionType extends DynamicBase
     }
 
     /**
-     * isset arguments
+     * isset arguments.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetArguments($index)
@@ -156,9 +156,9 @@ class TApplyExpressionType extends DynamicBase
     }
 
     /**
-     * unset arguments
+     * unset arguments.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetArguments($index)
@@ -167,7 +167,7 @@ class TApplyExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as arguments
+     * Gets as arguments.
      *
      * @return ArgumentsAType[]
      */
@@ -177,9 +177,9 @@ class TApplyExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new arguments
+     * Sets a new arguments.
      *
-     * @param ArgumentsAType[] $arguments
+     * @param  ArgumentsAType[] $arguments
      * @return self
      */
     public function setArguments(array $arguments)
@@ -187,7 +187,4 @@ class TApplyExpressionType extends DynamicBase
         $this->arguments = $arguments;
         return $this;
     }
-
-
 }
-

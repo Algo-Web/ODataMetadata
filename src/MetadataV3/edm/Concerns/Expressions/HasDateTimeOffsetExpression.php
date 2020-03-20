@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 use DateTime;
 
 trait HasDateTimeOffsetExpression
@@ -15,10 +14,10 @@ trait HasDateTimeOffsetExpression
 
     ];
     /**
-     * Adds as dateTimeOffset
+     * Adds as dateTimeOffset.
      *
+     * @param  DateTime $dateTimeOffset
      * @return self
-     * @param DateTime $dateTimeOffset
      */
     public function addToDateTimeOffset(DateTime $dateTimeOffset)
     {
@@ -27,9 +26,9 @@ trait HasDateTimeOffsetExpression
     }
 
     /**
-     * isset dateTimeOffset
+     * isset dateTimeOffset.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetDateTimeOffset($index)
@@ -38,9 +37,9 @@ trait HasDateTimeOffsetExpression
     }
 
     /**
-     * unset dateTimeOffset
+     * unset dateTimeOffset.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetDateTimeOffset($index)
@@ -49,7 +48,7 @@ trait HasDateTimeOffsetExpression
     }
 
     /**
-     * Gets as dateTimeOffset
+     * Gets as dateTimeOffset.
      *
      * @return DateTime[]
      */
@@ -59,9 +58,9 @@ trait HasDateTimeOffsetExpression
     }
 
     /**
-     * Sets a new dateTimeOffset
+     * Sets a new dateTimeOffset.
      *
-     * @param DateTime[] $dateTimeOffset
+     * @param  DateTime[] $dateTimeOffset
      * @return self
      */
     public function setDateTimeOffset(array $dateTimeOffset)
@@ -69,5 +68,4 @@ trait HasDateTimeOffsetExpression
         $this->dateTimeOffset = $dateTimeOffset;
         return $this;
     }
-
 }

@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasExpression;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Documentation;
 
 /**
- * Class representing TLabeledElementExpressionType
+ * Class representing TLabeledElementExpressionType.
  *
  * 16.2.9 The Edm:LabeledElement Expression
  *
@@ -26,8 +26,8 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Documentation;
  *         </LabeledElement>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.9
- * @link https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/32d84017-fbce-49f7-8de0-873e58edd259
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.9
+ * @see https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/32d84017-fbce-49f7-8de0-873e58edd259
  * XSD Type: TLabeledElement
  */
 class TLabeledElementExpressionType extends DynamicBase
@@ -45,7 +45,7 @@ class TLabeledElementExpressionType extends DynamicBase
 
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -55,9 +55,9 @@ class TLabeledElementExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -67,7 +67,7 @@ class TLabeledElementExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return Documentation
      */
@@ -77,9 +77,9 @@ class TLabeledElementExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
-     * @param Documentation $documentation
+     * @param  Documentation $documentation
      * @return self
      */
     public function setDocumentation(Documentation $documentation)
@@ -87,5 +87,4 @@ class TLabeledElementExpressionType extends DynamicBase
         $this->documentation = $documentation;
         return $this;
     }
-
 }

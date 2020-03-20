@@ -15,9 +15,9 @@ class UsingTest extends TestCase
      * @param $documentation
      * @dataProvider usingTestDataProvider
      */
-    public function testUsingTestXmlSerialize($expected,$namespace,$alias, $documentation)
+    public function testUsingTestXmlSerialize($expected, $namespace, $alias, $documentation)
     {
-        $using = new Using($namespace,$alias,$documentation);
+        $using = new Using($namespace, $alias, $documentation);
 
         $domNode = $this->writterContext->write($using, false);
         $this->TESTNODE->appendChild($domNode);

@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\HasValueAnnotation;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * Class representing TFunctionParameterType
+ * Class representing TFunctionParameterType.
  *
  * Function elements in conceptual schema definition language (CSDL) only support inbound parameters. CSDL does not
  * allow setting the FunctionParameter mode. It is always set to Mode="In".
@@ -58,7 +58,7 @@ class ModelFunctionParameter extends EdmBase
 
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -68,9 +68,9 @@ class ModelFunctionParameter extends EdmBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -109,4 +109,3 @@ class ModelFunctionParameter extends EdmBase
         ];
     }
 }
-

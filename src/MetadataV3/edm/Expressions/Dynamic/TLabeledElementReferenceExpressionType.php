@@ -4,7 +4,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
 
 /**
- * Class TLabeledElementReferenceExpressionType
+ * Class TLabeledElementReferenceExpressionType.
  *
  * 16.2.10 The Edm:LabeledElementReference Expression
  *
@@ -19,7 +19,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
  *         <LabeledElementReference>DisplayName</LabeledElement>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.10
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.10
  * XSD Type: TLabeledElementReferenceExpression
  */
 class TLabeledElementReferenceExpressionType extends DynamicBase
@@ -30,7 +30,7 @@ class TLabeledElementReferenceExpressionType extends DynamicBase
     protected $__value = null;
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */
@@ -40,7 +40,7 @@ class TLabeledElementReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Construct
+     * Construct.
      *
      * @param string $value
      */
@@ -50,9 +50,9 @@ class TLabeledElementReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value(string $value = null): string

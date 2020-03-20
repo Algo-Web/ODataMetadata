@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TAnonymousFunctionExpressionType;
 
 trait HasAnonymousFunctionExpression
@@ -17,7 +16,7 @@ trait HasAnonymousFunctionExpression
 
 
     /**
-     * Adds as anonymousFunction
+     * Adds as anonymousFunction.
      *
      * @param TAnonymousFunctionExpressionType $anonymousFunction
      *@return self
@@ -29,9 +28,9 @@ trait HasAnonymousFunctionExpression
     }
 
     /**
-     * isset anonymousFunction
+     * isset anonymousFunction.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetAnonymousFunction($index)
@@ -40,9 +39,9 @@ trait HasAnonymousFunctionExpression
     }
 
     /**
-     * unset anonymousFunction
+     * unset anonymousFunction.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetAnonymousFunction($index)
@@ -51,7 +50,7 @@ trait HasAnonymousFunctionExpression
     }
 
     /**
-     * Gets as anonymousFunction
+     * Gets as anonymousFunction.
      *
      * @return TAnonymousFunctionExpressionType[]
      */
@@ -61,9 +60,9 @@ trait HasAnonymousFunctionExpression
     }
 
     /**
-     * Sets a new anonymousFunction
+     * Sets a new anonymousFunction.
      *
-     * @param TAnonymousFunctionExpressionType[] $anonymousFunction
+     * @param  TAnonymousFunctionExpressionType[] $anonymousFunction
      * @return self
      */
     public function setAnonymousFunction(array $anonymousFunction)

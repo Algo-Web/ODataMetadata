@@ -3,13 +3,12 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets\HasConcurrencyMode;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * Trait HasCommonPropertyAttributes
+ * Trait HasCommonPropertyAttributes.
  *
  * 5.1 The edm:Property Element
  *
@@ -24,8 +23,8 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * A property MUST specify a unique name as well as a type and zero or more facets. Facets are attributes that modify
  * or constrain the acceptable values for a property value.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5
- * @link https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/50129087-bb7f-475e-a14d-7a8a4bdef966
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5
+ * @see https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/50129087-bb7f-475e-a14d-7a8a4bdef966
  * @mixin EdmBase
  * XSD Type: TCommonPropertyAttributes
  */
@@ -43,7 +42,7 @@ trait HasCommonPropertyAttributes
      *
      * The value of the name attribute MUST be unique within the set of properties and navigation properties for the
      * type and any of its base types.
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.1.1
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.1.1
      */
     private $name;
 
@@ -57,13 +56,12 @@ trait HasCommonPropertyAttributes
      * attribute MUST resolve to a complex type, enumeration type or primitive type, or a collection of complex,
      * enumeration or primitive types.
      *
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.2
-     *
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.2
      */
     private $type;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -73,9 +71,9 @@ trait HasCommonPropertyAttributes
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(string $name): self
@@ -85,7 +83,7 @@ trait HasCommonPropertyAttributes
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -95,9 +93,9 @@ trait HasCommonPropertyAttributes
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType(string $type): self
@@ -107,7 +105,8 @@ trait HasCommonPropertyAttributes
     }
 
 
-    public function getAttributesHasCommonPropertyAttributes(): array{
+    public function getAttributesHasCommonPropertyAttributes(): array
+    {
         return array_merge(
             [
                 new AttributeContainer('Name', $this->getName(), true),

@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
 use DateTime;
 
 /**
- * Class representing TIfExpressionType
+ * Class representing TIfExpressionType.
  *
  * 16.2.7 The Edm:If Expression
  *
@@ -32,11 +32,12 @@ use DateTime;
  *         </If>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.7
- * @link https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/120e2b40-c73a-4b0b-98c2-8d2ab6b8dfd3
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.7
+ * @see https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/120e2b40-c73a-4b0b-98c2-8d2ab6b8dfd3
  * XSD Type: TIfExpression
  */
-class TIfExpressionType extends DynamicBase{
+class TIfExpressionType extends DynamicBase
+{
     /**
      * @var string[] $string
      */
@@ -199,10 +200,10 @@ class TIfExpressionType extends DynamicBase{
     ];
 
     /**
-     * Adds as string
+     * Adds as string.
      *
+     * @param  string $string
      * @return self
-     * @param string $string
      */
     public function addToString($string)
     {
@@ -211,9 +212,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset string
+     * isset string.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetString($index)
@@ -222,9 +223,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset string
+     * unset string.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetString($index)
@@ -233,7 +234,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as string
+     * Gets as string.
      *
      * @return string[]
      */
@@ -243,9 +244,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new string
+     * Sets a new string.
      *
-     * @param string[] $string
+     * @param  string[] $string
      * @return self
      */
     public function setString(array $string)
@@ -255,10 +256,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as binary
+     * Adds as binary.
      *
+     * @param  mixed $binary
      * @return self
-     * @param mixed $binary
      */
     public function addToBinary($binary)
     {
@@ -267,9 +268,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset binary
+     * isset binary.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetBinary($index)
@@ -278,9 +279,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset binary
+     * unset binary.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetBinary($index)
@@ -289,7 +290,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as binary
+     * Gets as binary.
      *
      * @return mixed[]
      */
@@ -299,9 +300,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new binary
+     * Sets a new binary.
      *
-     * @param mixed $binary
+     * @param  mixed $binary
      * @return self
      */
     public function setBinary(array $binary)
@@ -311,10 +312,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as int
+     * Adds as int.
      *
+     * @param  int  $int
      * @return self
-     * @param int $int
      */
     public function addToInt($int)
     {
@@ -323,9 +324,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset int
+     * isset int.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetInt($index)
@@ -334,9 +335,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset int
+     * unset int.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetInt($index)
@@ -345,7 +346,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as int
+     * Gets as int.
      *
      * @return int[]
      */
@@ -355,9 +356,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new int
+     * Sets a new int.
      *
-     * @param int[] $int
+     * @param  int[] $int
      * @return self
      */
     public function setInt(array $int)
@@ -367,10 +368,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as float
+     * Adds as float.
      *
+     * @param  float $float
      * @return self
-     * @param float $float
      */
     public function addToFloat($float)
     {
@@ -379,9 +380,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset float
+     * isset float.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetFloat($index)
@@ -390,9 +391,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset float
+     * unset float.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetFloat($index)
@@ -401,7 +402,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as float
+     * Gets as float.
      *
      * @return float[]
      */
@@ -411,9 +412,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new float
+     * Sets a new float.
      *
-     * @param float[] $float
+     * @param  float[] $float
      * @return self
      */
     public function setFloat(array $float)
@@ -423,10 +424,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as guid
+     * Adds as guid.
      *
+     * @param  string $guid
      * @return self
-     * @param string $guid
      */
     public function addToGuid($guid)
     {
@@ -435,9 +436,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset guid
+     * isset guid.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetGuid($index)
@@ -446,9 +447,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset guid
+     * unset guid.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetGuid($index)
@@ -457,7 +458,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as guid
+     * Gets as guid.
      *
      * @return string[]
      */
@@ -467,9 +468,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new guid
+     * Sets a new guid.
      *
-     * @param string[] $guid
+     * @param  string[] $guid
      * @return self
      */
     public function setGuid(array $guid)
@@ -479,10 +480,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as decimal
+     * Adds as decimal.
      *
+     * @param  float $decimal
      * @return self
-     * @param float $decimal
      */
     public function addToDecimal($decimal)
     {
@@ -491,9 +492,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset decimal
+     * isset decimal.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetDecimal($index)
@@ -502,9 +503,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset decimal
+     * unset decimal.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetDecimal($index)
@@ -513,7 +514,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as decimal
+     * Gets as decimal.
      *
      * @return float[]
      */
@@ -523,9 +524,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new decimal
+     * Sets a new decimal.
      *
-     * @param float[] $decimal
+     * @param  float[] $decimal
      * @return self
      */
     public function setDecimal(array $decimal)
@@ -535,10 +536,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as bool
+     * Adds as bool.
      *
+     * @param  bool $bool
      * @return self
-     * @param bool $bool
      */
     public function addToBool($bool)
     {
@@ -547,9 +548,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset bool
+     * isset bool.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetBool($index)
@@ -558,9 +559,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset bool
+     * unset bool.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetBool($index)
@@ -569,7 +570,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as bool
+     * Gets as bool.
      *
      * @return bool[]
      */
@@ -579,9 +580,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new bool
+     * Sets a new bool.
      *
-     * @param bool[] $bool
+     * @param  bool[] $bool
      * @return self
      */
     public function setBool(array $bool)
@@ -591,10 +592,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as dateTime
+     * Adds as dateTime.
      *
+     * @param  DateTime $dateTime
      * @return self
-     * @param DateTime $dateTime
      */
     public function addToDateTime(DateTime $dateTime)
     {
@@ -603,9 +604,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset dateTime
+     * isset dateTime.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetDateTime($index)
@@ -614,9 +615,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset dateTime
+     * unset dateTime.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetDateTime($index)
@@ -625,7 +626,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as dateTime
+     * Gets as dateTime.
      *
      * @return DateTime[]
      */
@@ -635,9 +636,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new dateTime
+     * Sets a new dateTime.
      *
-     * @param DateTime[] $dateTime
+     * @param  DateTime[] $dateTime
      * @return self
      */
     public function setDateTime(array $dateTime)
@@ -647,10 +648,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as dateTimeOffset
+     * Adds as dateTimeOffset.
      *
+     * @param  DateTime $dateTimeOffset
      * @return self
-     * @param DateTime $dateTimeOffset
      */
     public function addToDateTimeOffset(DateTime $dateTimeOffset)
     {
@@ -659,9 +660,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset dateTimeOffset
+     * isset dateTimeOffset.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetDateTimeOffset($index)
@@ -670,9 +671,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset dateTimeOffset
+     * unset dateTimeOffset.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetDateTimeOffset($index)
@@ -681,7 +682,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as dateTimeOffset
+     * Gets as dateTimeOffset.
      *
      * @return DateTime[]
      */
@@ -691,9 +692,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new dateTimeOffset
+     * Sets a new dateTimeOffset.
      *
-     * @param DateTime[] $dateTimeOffset
+     * @param  DateTime[] $dateTimeOffset
      * @return self
      */
     public function setDateTimeOffset(array $dateTimeOffset)
@@ -703,10 +704,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as enum
+     * Adds as enum.
      *
+     * @param  string $enum
      * @return self
-     * @param string $enum
      */
     public function addToEnum($enum)
     {
@@ -715,9 +716,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset enum
+     * isset enum.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetEnum($index)
@@ -726,9 +727,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset enum
+     * unset enum.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetEnum($index)
@@ -737,7 +738,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as enum
+     * Gets as enum.
      *
      * @return string[]
      */
@@ -747,9 +748,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new enum
+     * Sets a new enum.
      *
-     * @param string[] $enum
+     * @param  string[] $enum
      * @return self
      */
     public function setEnum(array $enum)
@@ -759,10 +760,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as path
+     * Adds as path.
      *
+     * @param  string $path
      * @return self
-     * @param string $path
      */
     public function addToPath($path)
     {
@@ -771,9 +772,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset path
+     * isset path.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetPath($index)
@@ -782,9 +783,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset path
+     * unset path.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetPath($index)
@@ -793,7 +794,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as path
+     * Gets as path.
      *
      * @return string[]
      */
@@ -803,9 +804,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new path
+     * Sets a new path.
      *
-     * @param string[] $path
+     * @param  string[] $path
      * @return self
      */
     public function setPath(array $path)
@@ -815,10 +816,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as if
+     * Adds as if.
      *
+     * @param  TIfExpressionType $if
      * @return self
-     * @param TIfExpressionType $if
      */
     public function addToIf(TIfExpressionType $if)
     {
@@ -827,9 +828,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset if
+     * isset if.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetIf($index)
@@ -838,9 +839,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset if
+     * unset if.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetIf($index)
@@ -849,7 +850,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as if
+     * Gets as if.
      *
      * @return TIfExpressionType[]
      */
@@ -859,9 +860,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new if
+     * Sets a new if.
      *
-     * @param TIfExpressionType[] $if
+     * @param  TIfExpressionType[] $if
      * @return self
      */
     public function setIf(array $if)
@@ -871,10 +872,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as record
+     * Adds as record.
      *
+     * @param  TRecordExpressionType $record
      * @return self
-     * @param TRecordExpressionType $record
      */
     public function addToRecord(TRecordExpressionType $record)
     {
@@ -883,9 +884,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset record
+     * isset record.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetRecord($index)
@@ -894,9 +895,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset record
+     * unset record.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetRecord($index)
@@ -905,7 +906,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as record
+     * Gets as record.
      *
      * @return TRecordExpressionType[]
      */
@@ -915,9 +916,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new record
+     * Sets a new record.
      *
-     * @param TRecordExpressionType[] $record
+     * @param  TRecordExpressionType[] $record
      * @return self
      */
     public function setRecord(array $record)
@@ -927,10 +928,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as collection
+     * Adds as collection.
      *
+     * @param  TCollectionExpressionType $collection
      * @return self
-     * @param TCollectionExpressionType $collection
      */
     public function addToCollection(TCollectionExpressionType $collection)
     {
@@ -939,9 +940,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset collection
+     * isset collection.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetCollection($index)
@@ -950,9 +951,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset collection
+     * unset collection.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetCollection($index)
@@ -961,7 +962,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as collection
+     * Gets as collection.
      *
      * @return TCollectionExpressionType[]
      */
@@ -971,9 +972,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new collection
+     * Sets a new collection.
      *
-     * @param TCollectionExpressionType[] $collection
+     * @param  TCollectionExpressionType[] $collection
      * @return self
      */
     public function setCollection(array $collection)
@@ -983,7 +984,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as typeAssert
+     * Adds as typeAssert.
      *
      * @param AssertTypeExpression $typeAssert
      *@return self
@@ -995,9 +996,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset typeAssert
+     * isset typeAssert.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetTypeAssert($index)
@@ -1006,9 +1007,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset typeAssert
+     * unset typeAssert.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetTypeAssert($index)
@@ -1017,7 +1018,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as typeAssert
+     * Gets as typeAssert.
      *
      * @return AssertTypeExpression[]
      */
@@ -1027,9 +1028,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new typeAssert
+     * Sets a new typeAssert.
      *
-     * @param AssertTypeExpression[] $typeAssert
+     * @param  AssertTypeExpression[] $typeAssert
      * @return self
      */
     public function setTypeAssert(array $typeAssert)
@@ -1039,9 +1040,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as typeTest
+     * Adds as typeTest.
      *
-     * @param IsTypeExpression $typeTest
+     * @param  IsTypeExpression $typeTest
      * @return self
      */
     public function addToTypeTest(IsTypeExpression $typeTest)
@@ -1051,9 +1052,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset typeTest
+     * isset typeTest.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetTypeTest($index)
@@ -1062,9 +1063,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset typeTest
+     * unset typeTest.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetTypeTest($index)
@@ -1073,7 +1074,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as typeTest
+     * Gets as typeTest.
      *
      * @return IsTypeExpression[]
      */
@@ -1083,9 +1084,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new typeTest
+     * Sets a new typeTest.
      *
-     * @param IsTypeExpression[] $typeTest
+     * @param  IsTypeExpression[] $typeTest
      * @return self
      */
     public function setTypeTest(array $typeTest)
@@ -1095,10 +1096,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as functionReference
+     * Adds as functionReference.
      *
+     * @param  TFunctionReferenceExpressionType $functionReference
      * @return self
-     * @param TFunctionReferenceExpressionType $functionReference
      */
     public function addToFunctionReference(TFunctionReferenceExpressionType $functionReference)
     {
@@ -1107,9 +1108,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset functionReference
+     * isset functionReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetFunctionReference($index)
@@ -1118,9 +1119,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset functionReference
+     * unset functionReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetFunctionReference($index)
@@ -1129,7 +1130,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as functionReference
+     * Gets as functionReference.
      *
      * @return TFunctionReferenceExpressionType[]
      */
@@ -1139,9 +1140,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new functionReference
+     * Sets a new functionReference.
      *
-     * @param TFunctionReferenceExpressionType[] $functionReference
+     * @param  TFunctionReferenceExpressionType[] $functionReference
      * @return self
      */
     public function setFunctionReference(array $functionReference)
@@ -1151,10 +1152,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as entitySetReference
+     * Adds as entitySetReference.
      *
+     * @param  TEntitySetReferenceExpressionType $entitySetReference
      * @return self
-     * @param TEntitySetReferenceExpressionType $entitySetReference
      */
     public function addToEntitySetReference(TEntitySetReferenceExpressionType $entitySetReference)
     {
@@ -1163,9 +1164,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset entitySetReference
+     * isset entitySetReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetEntitySetReference($index)
@@ -1174,9 +1175,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset entitySetReference
+     * unset entitySetReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetEntitySetReference($index)
@@ -1185,7 +1186,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as entitySetReference
+     * Gets as entitySetReference.
      *
      * @return TEntitySetReferenceExpressionType[]
      */
@@ -1195,9 +1196,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new entitySetReference
+     * Sets a new entitySetReference.
      *
-     * @param TEntitySetReferenceExpressionType[] $entitySetReference
+     * @param  TEntitySetReferenceExpressionType[] $entitySetReference
      * @return self
      */
     public function setEntitySetReference(array $entitySetReference)
@@ -1207,10 +1208,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as anonymousFunction
+     * Adds as anonymousFunction.
      *
+     * @param  TAnonymousFunctionExpressionType $anonymousFunction
      * @return self
-     * @param TAnonymousFunctionExpressionType $anonymousFunction
      */
     public function addToAnonymousFunction(TAnonymousFunctionExpressionType $anonymousFunction)
     {
@@ -1219,9 +1220,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset anonymousFunction
+     * isset anonymousFunction.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetAnonymousFunction($index)
@@ -1230,9 +1231,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset anonymousFunction
+     * unset anonymousFunction.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetAnonymousFunction($index)
@@ -1241,7 +1242,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as anonymousFunction
+     * Gets as anonymousFunction.
      *
      * @return TAnonymousFunctionExpressionType[]
      */
@@ -1251,9 +1252,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new anonymousFunction
+     * Sets a new anonymousFunction.
      *
-     * @param TAnonymousFunctionExpressionType[] $anonymousFunction
+     * @param  TAnonymousFunctionExpressionType[] $anonymousFunction
      * @return self
      */
     public function setAnonymousFunction(array $anonymousFunction)
@@ -1263,10 +1264,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as parameterReference
+     * Adds as parameterReference.
      *
+     * @param  TParameterReferenceExpressionType $parameterReference
      * @return self
-     * @param TParameterReferenceExpressionType $parameterReference
      */
     public function addToParameterReference(TParameterReferenceExpressionType $parameterReference)
     {
@@ -1275,9 +1276,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset parameterReference
+     * isset parameterReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetParameterReference($index)
@@ -1286,9 +1287,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset parameterReference
+     * unset parameterReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetParameterReference($index)
@@ -1297,7 +1298,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as parameterReference
+     * Gets as parameterReference.
      *
      * @return TParameterReferenceExpressionType[]
      */
@@ -1307,9 +1308,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new parameterReference
+     * Sets a new parameterReference.
      *
-     * @param TParameterReferenceExpressionType[] $parameterReference
+     * @param  TParameterReferenceExpressionType[] $parameterReference
      * @return self
      */
     public function setParameterReference(array $parameterReference)
@@ -1319,10 +1320,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as apply
+     * Adds as apply.
      *
+     * @param  TApplyExpressionType $apply
      * @return self
-     * @param TApplyExpressionType $apply
      */
     public function addToApply(TApplyExpressionType $apply)
     {
@@ -1331,9 +1332,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset apply
+     * isset apply.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetApply($index)
@@ -1342,9 +1343,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset apply
+     * unset apply.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetApply($index)
@@ -1353,7 +1354,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as apply
+     * Gets as apply.
      *
      * @return TApplyExpressionType[]
      */
@@ -1363,9 +1364,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new apply
+     * Sets a new apply.
      *
-     * @param TApplyExpressionType[] $apply
+     * @param  TApplyExpressionType[] $apply
      * @return self
      */
     public function setApply(array $apply)
@@ -1375,10 +1376,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as propertyReference
+     * Adds as propertyReference.
      *
+     * @param  TPropertyReferenceExpressionType $propertyReference
      * @return self
-     * @param TPropertyReferenceExpressionType $propertyReference
      */
     public function addToPropertyReference(TPropertyReferenceExpressionType $propertyReference)
     {
@@ -1387,9 +1388,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset propertyReference
+     * isset propertyReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetPropertyReference($index)
@@ -1398,9 +1399,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset propertyReference
+     * unset propertyReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetPropertyReference($index)
@@ -1409,7 +1410,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as propertyReference
+     * Gets as propertyReference.
      *
      * @return TPropertyReferenceExpressionType[]
      */
@@ -1419,9 +1420,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new propertyReference
+     * Sets a new propertyReference.
      *
-     * @param TPropertyReferenceExpressionType[] $propertyReference
+     * @param  TPropertyReferenceExpressionType[] $propertyReference
      * @return self
      */
     public function setPropertyReference(array $propertyReference)
@@ -1431,10 +1432,10 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Adds as valueTermReference
+     * Adds as valueTermReference.
      *
+     * @param  TValueTermReferenceExpressionType $valueTermReference
      * @return self
-     * @param TValueTermReferenceExpressionType $valueTermReference
      */
     public function addToValueTermReference(TValueTermReferenceExpressionType $valueTermReference)
     {
@@ -1443,9 +1444,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * isset valueTermReference
+     * isset valueTermReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetValueTermReference($index)
@@ -1454,9 +1455,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * unset valueTermReference
+     * unset valueTermReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetValueTermReference($index)
@@ -1465,7 +1466,7 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Gets as valueTermReference
+     * Gets as valueTermReference.
      *
      * @return TValueTermReferenceExpressionType[]
      */
@@ -1475,9 +1476,9 @@ class TIfExpressionType extends DynamicBase{
     }
 
     /**
-     * Sets a new valueTermReference
+     * Sets a new valueTermReference.
      *
-     * @param TValueTermReferenceExpressionType[] $valueTermReference
+     * @param  TValueTermReferenceExpressionType[] $valueTermReference
      * @return self
      */
     public function setValueTermReference(array $valueTermReference)
@@ -1485,6 +1486,4 @@ class TIfExpressionType extends DynamicBase{
         $this->valueTermReference = $valueTermReference;
         return $this;
     }
-
 }
-

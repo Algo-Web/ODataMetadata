@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TValueTermReferenceExpressionType;
 
 trait HasValueTermReferenceExpression
@@ -16,7 +15,7 @@ trait HasValueTermReferenceExpression
     ];
 
     /**
-     * Adds as valueTermReference
+     * Adds as valueTermReference.
      *
      * @param TValueTermReferenceExpressionType $valueTermReference
      *@return self
@@ -28,9 +27,9 @@ trait HasValueTermReferenceExpression
     }
 
     /**
-     * isset valueTermReference
+     * isset valueTermReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetValueTermReference($index)
@@ -39,9 +38,9 @@ trait HasValueTermReferenceExpression
     }
 
     /**
-     * unset valueTermReference
+     * unset valueTermReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetValueTermReference($index)
@@ -50,7 +49,7 @@ trait HasValueTermReferenceExpression
     }
 
     /**
-     * Gets as valueTermReference
+     * Gets as valueTermReference.
      *
      * @return TValueTermReferenceExpressionType[]
      */
@@ -60,9 +59,9 @@ trait HasValueTermReferenceExpression
     }
 
     /**
-     * Sets a new valueTermReference
+     * Sets a new valueTermReference.
      *
-     * @param TValueTermReferenceExpressionType[] $valueTermReference
+     * @param  TValueTermReferenceExpressionType[] $valueTermReference
      * @return self
      */
     public function setValueTermReference(array $valueTermReference)

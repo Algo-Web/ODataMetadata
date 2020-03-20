@@ -4,7 +4,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
 
 /**
- * Class representing TPropertyReferenceExpressionType
+ * Class representing TPropertyReferenceExpressionType.
  *
  *16.2.13 The Edm:Path Expression
  *
@@ -32,8 +32,8 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
  *         <Path>FirstName</Path>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.13
- * @link https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/3f24f40e-f24d-4c7b-8407-b75a90566806
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.13
+ * @see https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/3f24f40e-f24d-4c7b-8407-b75a90566806
  * XSD Type: TPathExpression
  */
 class TPathExpression extends DynamicBase
@@ -44,7 +44,7 @@ class TPathExpression extends DynamicBase
     protected $__value = null;
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */
@@ -54,7 +54,7 @@ class TPathExpression extends DynamicBase
     }
 
     /**
-     * Construct
+     * Construct.
      *
      * @param string $value
      */
@@ -64,9 +64,9 @@ class TPathExpression extends DynamicBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value(string $value = null): string

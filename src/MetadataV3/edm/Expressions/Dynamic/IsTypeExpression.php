@@ -11,7 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\TypeRef;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.36.2.3 IsType Expression
+ * 2.1.36.2.3 IsType Expression.
  *
  * An IsType expression tests whether a child element expression is of a given type. The result of the IsType expression
  * is a Boolean value. The following two examples show how you can use either the Type attribute or the TypeRef child
@@ -34,7 +34,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - IsType MUST define the type either as an attribute or as a child element TypeRef.
  * - IsType MUST contain one expression as a child element. The expression MUST follow TypeRef if TypeRef is used to
  *   define the type.
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.8
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.8
  * XSD Type: TIsTypeExpression
  */
 class IsTypeExpression extends DynamicBase
@@ -52,7 +52,7 @@ class IsTypeExpression extends DynamicBase
     private $typeRef;
 
     /**
-     * Gets as operand
+     * Gets as operand.
      *
      * @return ExpressionBase
      */
@@ -62,9 +62,9 @@ class IsTypeExpression extends DynamicBase
     }
 
     /**
-     * Sets a new operand
+     * Sets a new operand.
      *
-     * @param ExpressionBase $operand
+     * @param  ExpressionBase $operand
      * @return self
      */
     public function setOperand(ExpressionBase $operand):self
@@ -74,7 +74,7 @@ class IsTypeExpression extends DynamicBase
     }
 
     /**
-     * Gets as referenceType
+     * Gets as referenceType.
      *
      * @return TypeRef
      */
@@ -84,9 +84,9 @@ class IsTypeExpression extends DynamicBase
     }
 
     /**
-     * Sets a new referenceType
+     * Sets a new referenceType.
      *
-     * @param TypeRef $typeRef
+     * @param  TypeRef $typeRef
      * @return self
      */
     public function setReferenceType(TypeRef $typeRef): self

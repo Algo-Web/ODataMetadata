@@ -6,7 +6,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.21 Documentation
+ * 2.1.21 Documentation.
  *
  * The Documentation element is used to provide documentation of comments on the contents of the conceptual schema
  * definition language (CSDL) file.
@@ -109,7 +109,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - Documentation can specify a description of the documentation inside a LongDescription element.
  * - The child elements of Documentation are to appear in this sequence: Summary, LongDescription, AnnotationElement.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl2.3
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl2.3
  * XSD Type: TDocumentation
  */
 class Documentation extends EdmBase
@@ -141,7 +141,7 @@ class Documentation extends EdmBase
     }
 
     /**
-     * Gets as summary
+     * Gets as summary.
      *
      * @return TTextType|null
      */
@@ -151,9 +151,9 @@ class Documentation extends EdmBase
     }
 
     /**
-     * Sets a new summary
+     * Sets a new summary.
      *
-     * @param TTextType|null $summary
+     * @param  TTextType|null $summary
      * @return self
      */
     public function setSummary(?TTextType $summary): self
@@ -163,7 +163,7 @@ class Documentation extends EdmBase
     }
 
     /**
-     * Gets as longDescription
+     * Gets as longDescription.
      *
      * @return TTextType|null
      */
@@ -173,9 +173,9 @@ class Documentation extends EdmBase
     }
 
     /**
-     * Sets a new longDescription
+     * Sets a new longDescription.
      *
-     * @param TTextType|null $longDescription
+     * @param  TTextType|null $longDescription
      * @return self
      */
     public function setLongDescription(?TTextType $longDescription): self
@@ -208,4 +208,3 @@ class Documentation extends EdmBase
         return [$this->getSummary(), $this->getLongDescription()];
     }
 }
-

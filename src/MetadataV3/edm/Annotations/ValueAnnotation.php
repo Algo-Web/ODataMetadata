@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.34 ValueAnnotation
+ * 2.1.34 ValueAnnotation.
  *
  * ValueAnnotation is used to attach a named value to a model element.
  *
@@ -49,21 +49,21 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * Null value for a term is distinct from the absence of a ValueAnnotation element for that term, in which case the
  * term has no value.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl15.4
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl15.4
  * XSD Type: TValueAnnotation
  */
 class ValueAnnotation extends EdmBase
 {
     /**
-     * @var string $term The ValueAnnotation element MUST have a Term attribute defined that is a
-     * namespace qualified name, alias qualified name, or SimpleIdentifier.
+     * @var string $term the ValueAnnotation element MUST have a Term attribute defined that is a
+     *             namespace qualified name, alias qualified name, or SimpleIdentifier
      */
     private $term = null;
 
     /**
      * @var string|null $qualifier ValueAnnotation can have a Qualifier attribute defined unless the ValueAnnotation is a
-     * child element of an Annotations element that has a Qualifier attribute defined. If a Qualifier is defined,
-     * it has to be a SimpleIdentifier. Qualifier is used to differentiate bindings based on external context.
+     *                  child element of an Annotations element that has a Qualifier attribute defined. If a Qualifier is defined,
+     *                  it has to be a SimpleIdentifier. Qualifier is used to differentiate bindings based on external context.
      *
      * The value of the edm:Qualifier attribute is an arbitrary string.
      * Type or value annotations MUST provide at most one value for the qualifier attribute. Type or value annotations
@@ -72,8 +72,8 @@ class ValueAnnotation extends EdmBase
     private $qualifier = null;
 
     /**
-     * @var Expressions\ExpressionBase $expression A ValueAnnotation can specify an expression as a
-     * child element or as an expression attribute that gives the value of the term.
+     * @var Expressions\ExpressionBase $expression a ValueAnnotation can specify an expression as a
+     *                                 child element or as an expression attribute that gives the value of the term
      */
     private $expression;
 
@@ -86,7 +86,7 @@ class ValueAnnotation extends EdmBase
     }
 
     /**
-     * Gets as term
+     * Gets as term.
      *
      * @return string
      */
@@ -96,9 +96,9 @@ class ValueAnnotation extends EdmBase
     }
 
     /**
-     * Sets a new term
+     * Sets a new term.
      *
-     * @param string $term
+     * @param  string $term
      * @return self
      */
     public function setTerm(string $term): self
@@ -108,7 +108,7 @@ class ValueAnnotation extends EdmBase
     }
 
     /**
-     * Gets as qualifier
+     * Gets as qualifier.
      *
      * @return string|null
      */
@@ -118,9 +118,9 @@ class ValueAnnotation extends EdmBase
     }
 
     /**
-     * Sets a new qualifier
+     * Sets a new qualifier.
      *
-     * @param string|null $qualifier
+     * @param  string|null $qualifier
      * @return self
      */
     public function setQualifier(?string $qualifier):self
@@ -129,7 +129,7 @@ class ValueAnnotation extends EdmBase
         return $this;
     }
     /**
-     * Gets as Expression
+     * Gets as Expression.
      *
      * @return Expressions\ExpressionBase
      */
@@ -139,9 +139,9 @@ class ValueAnnotation extends EdmBase
     }
 
     /**
-     * Sets a new Expression
+     * Sets a new Expression.
      *
-     * @param Expressions\ExpressionBase $expression
+     * @param  Expressions\ExpressionBase $expression
      * @return self
      */
     public function setExpression(Expressions\ExpressionBase $expression): self
@@ -164,9 +164,9 @@ class ValueAnnotation extends EdmBase
     public function getAttributes(): array
     {
         $base = [];
-        $base[] = new AttributeContainer("Term", $this->getTerm());
-        $base[] = new AttributeContainer("Qualifier", $this->getQualifier());
-        if(
+        $base[] = new AttributeContainer('Term', $this->getTerm());
+        $base[] = new AttributeContainer('Qualifier', $this->getQualifier());
+        if (
             $this->expression instanceof Expressions\Dynamic\TPathExpression ||
             $this->expression instanceof Expressions\Constant\StringConstant ||
             $this->expression instanceof Expressions\Constant\IntConstant ||
@@ -174,7 +174,7 @@ class ValueAnnotation extends EdmBase
             $this->expression instanceof Expressions\Constant\DecimalConstant ||
             $this->expression instanceof Expressions\Constant\BoolConstant ||
             $this->expression instanceof Expressions\Constant\DateTimeConstant
-        ){
+        ) {
             $base[] = $this->expression;
         }
         return $base;
@@ -185,7 +185,7 @@ class ValueAnnotation extends EdmBase
      */
     public function getChildElements(): array
     {
-        if(!(
+        if (!(
             $this->expression instanceof Expressions\Dynamic\TPathExpression ||
             $this->expression instanceof Expressions\Constant\StringConstant ||
             $this->expression instanceof Expressions\Constant\IntConstant ||
@@ -193,10 +193,9 @@ class ValueAnnotation extends EdmBase
             $this->expression instanceof Expressions\Constant\DecimalConstant ||
             $this->expression instanceof Expressions\Constant\BoolConstant ||
             $this->expression instanceof Expressions\Constant\DateTimeConstant
-        )){
+        )) {
             return [$this->expression];
         }
         return [];
     }
 }
-

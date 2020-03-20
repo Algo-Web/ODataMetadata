@@ -3,13 +3,12 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Trait HasNullable
+ * Trait HasNullable.
  *
  * 5.3.1 The edm:Nullable Attribute
  *
@@ -19,7 +18,7 @@ use DOMElement;
  *
  * If no value is specified, the nullable facet defaults to true.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.1
  * @mixin EdmBase
  */
 trait HasNullable
@@ -31,7 +30,7 @@ trait HasNullable
     private $nullable = true;
 
     /**
-     * Gets as nullable
+     * Gets as nullable.
      *
      * @return bool
      */
@@ -41,9 +40,9 @@ trait HasNullable
     }
 
     /**
-     * Sets a new nullable
+     * Sets a new nullable.
      *
-     * @param bool $nullable
+     * @param  bool $nullable
      * @return self
      */
     public function setNullable(bool $nullable): self
@@ -52,7 +51,8 @@ trait HasNullable
         return $this;
     }
 
-    public function getAttributesHasNullable(): array{
+    public function getAttributesHasNullable(): array
+    {
         return [new AttributeContainer('Nullable', $this->getNullable(), true)];
     }
 }

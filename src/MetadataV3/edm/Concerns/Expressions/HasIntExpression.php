@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 trait HasIntExpression
 {
     /**
@@ -14,10 +13,10 @@ trait HasIntExpression
     ];
 
     /**
-     * Adds as int
+     * Adds as int.
      *
+     * @param  int  $int
      * @return self
-     * @param int $int
      */
     public function addToInt($int)
     {
@@ -26,9 +25,9 @@ trait HasIntExpression
     }
 
     /**
-     * isset int
+     * isset int.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetInt($index)
@@ -37,9 +36,9 @@ trait HasIntExpression
     }
 
     /**
-     * unset int
+     * unset int.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetInt($index)
@@ -48,7 +47,7 @@ trait HasIntExpression
     }
 
     /**
-     * Gets as int
+     * Gets as int.
      *
      * @return int[]
      */
@@ -58,9 +57,9 @@ trait HasIntExpression
     }
 
     /**
-     * Sets a new int
+     * Sets a new int.
      *
-     * @param int[] $int
+     * @param  int[] $int
      * @return self
      */
     public function setInt(array $int)
@@ -68,5 +67,4 @@ trait HasIntExpression
         $this->int = $int;
         return $this;
     }
-
 }

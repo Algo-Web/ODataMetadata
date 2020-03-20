@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions\HasAnonymousFunctionExpression;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions\HasApplyExpression;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions\HasBinaryExpression;

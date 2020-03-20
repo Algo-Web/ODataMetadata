@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\Tests;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EdmBase;
 use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\WritterContext;
@@ -52,6 +51,5 @@ class TestCase extends \PHPUnit\Framework\TestCase
         );
         $domDocument->appendChild($baseElement);
         $this->TESTNODE = $baseElement;
-
     }
 }

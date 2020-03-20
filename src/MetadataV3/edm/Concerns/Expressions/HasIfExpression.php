@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TIfExpressionType;
 
 trait HasIfExpression
@@ -17,7 +16,7 @@ trait HasIfExpression
 
 
     /**
-     * Adds as if
+     * Adds as if.
      *
      * @param TIfExpressionType $if
      *@return self
@@ -29,9 +28,9 @@ trait HasIfExpression
     }
 
     /**
-     * isset if
+     * isset if.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetIf($index)
@@ -40,9 +39,9 @@ trait HasIfExpression
     }
 
     /**
-     * unset if
+     * unset if.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetIf($index)
@@ -51,7 +50,7 @@ trait HasIfExpression
     }
 
     /**
-     * Gets as if
+     * Gets as if.
      *
      * @return TIfExpressionType[]
      */
@@ -61,9 +60,9 @@ trait HasIfExpression
     }
 
     /**
-     * Sets a new if
+     * Sets a new if.
      *
-     * @param TIfExpressionType[] $if
+     * @param  TIfExpressionType[] $if
      * @return self
      */
     public function setIf(array $if)
@@ -71,5 +70,4 @@ trait HasIfExpression
         $this->if = $if;
         return $this;
     }
-
 }

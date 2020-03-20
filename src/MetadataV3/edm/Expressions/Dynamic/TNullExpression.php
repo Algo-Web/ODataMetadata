@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Documentation;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.36.1.1 Null
+ * 2.1.36.1.1 Null.
  *
  * Null is an expression that produces an untyped value.
  *
@@ -20,8 +20,8 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *         <Null />
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.11
- * @link https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/9e0ac041-e204-4a9b-a52e-07a72ee5114a
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.11
+ * @see https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/9e0ac041-e204-4a9b-a52e-07a72ee5114a
  * XSD Type: TNullExpression
  */
 class TNullExpression extends DynamicBase
@@ -33,7 +33,7 @@ class TNullExpression extends DynamicBase
 
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return Documentation
      */
@@ -43,9 +43,9 @@ class TNullExpression extends DynamicBase
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
-     * @param Documentation $documentation
+     * @param  Documentation $documentation
      * @return self
      */
     public function setDocumentation(Documentation $documentation)

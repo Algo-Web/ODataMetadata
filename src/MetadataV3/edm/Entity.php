@@ -74,32 +74,32 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - In CSDL 3.0, EntityType can contain any number of TypeAnnotation elements.
  * - In CSDL 3.0, EntityType can contain any number of ValueAnnotation elements.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1
  * XSD Type: TEntityType
  */
 class Entity extends EdmBase implements INominalType
 {
     use HasAnnotations,
-        /**
+        /*
          * An EntityType element can contain at most one Documentation element.
          */
         HasDocumentation;
     /**
      * @var string $name 6.1.1 The edm:Name Attribute
-     * A value of the form [simpleidentifier][csdl19] MUST be provided for the edm:Name attribute because an entity
-     * type is a nominal type. The value identifies the entity type and MUST be unique within the entity type's
-     * namespace.
+     *             A value of the form [simpleidentifier][csdl19] MUST be provided for the edm:Name attribute because an entity
+     *             type is a nominal type. The value identifies the entity type and MUST be unique within the entity type's
+     *             namespace.
      *
      * An EntityType is a schema level named element and has a unique name.
      *
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1.1
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1.1
      */
     private $name = null;
 
     /**
      * @var string $baseType 6.1.2 The edm:BaseType Attribute
-     * An entity type can inherit from another entity type by specifying a [singleentitytypereference][csdl19] value
-     * for the edm:BaseType attribute.
+     *             An entity type can inherit from another entity type by specifying a [singleentitytypereference][csdl19] value
+     *             for the edm:BaseType attribute.
      *
      * An entity type that provides a value for the base type attribute MUST NOT declare a key with the edm:Key element.
      *
@@ -108,16 +108,16 @@ class Entity extends EdmBase implements INominalType
      *
      * An entity type MUST NOT introduce an inheritance cycle via the base type attribute.
      *
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1.2
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1.2
      */
     private $baseType = null;
 
     /**
      * @var bool $abstract 6.1.3 The edm:Abstract Attribute
-     * An entity type MAY indicate that it cannot be instantiated by providing a [boolean][csdl19] value of true to the
-     * edm:Abstract attribute. If not specified, the abstract attribute defaults to false.
+     *           An entity type MAY indicate that it cannot be instantiated by providing a [boolean][csdl19] value of true to the
+     *           edm:Abstract attribute. If not specified, the abstract attribute defaults to false.
      *
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1.3
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1.3
      */
     private $abstract = false;
 
@@ -135,17 +135,17 @@ class Entity extends EdmBase implements INominalType
      * In CSDL 1.2, CSDL 2.0, and CSDL 3.0, an EntityType that represents an OpenEntityType MUST have an OpenType
      * attribute that is defined with its value equal to "true".
      *
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1.4
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1.4
      */
     private $openType = false;
     /**
      * @var bool $hasStream 6.1.5 The metadata:HasStream Attribute
-     * An entity type MAY contain the metadata:hasstream attribute.
+     *           An entity type MAY contain the metadata:hasstream attribute.
      *
      * A value of true specifies that the entity type is a media entity. Media entities are entities that represent a media stream, such as a photo. For more information on Media Entities, see [OData:Core][].
      *
      * If no value is provided for the HasStream attribute, the value of the HasStream attribute is set to false.
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1.5
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.1.5
      */
     private $hasStream = false;
 
@@ -161,8 +161,8 @@ class Entity extends EdmBase implements INominalType
 
     /**
      * @var PropertyHolder|Property[] $property EntityTypeProperty child elements are uniquely named within the
-     * inheritance hierarchy for the EntityType. Property child elements and NavigationProperty child elements
-     * cannot have the same name as their declaring EntityType.
+     *                                inheritance hierarchy for the EntityType. Property child elements and NavigationProperty child elements
+     *                                cannot have the same name as their declaring EntityType.
      */
     private $property;
 
@@ -192,7 +192,7 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -202,9 +202,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(string $name):self
@@ -214,7 +214,7 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Gets as baseType
+     * Gets as baseType.
      *
      * @return string|null
      */
@@ -224,9 +224,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Sets a new baseType
+     * Sets a new baseType.
      *
-     * @param string|null $baseType
+     * @param  string|null $baseType
      * @return self
      */
     public function setBaseType(?string $baseType):self
@@ -236,7 +236,7 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Gets as abstract
+     * Gets as abstract.
      *
      * @return bool
      */
@@ -246,9 +246,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Sets a new abstract
+     * Sets a new abstract.
      *
-     * @param bool $abstract
+     * @param  bool $abstract
      * @return self
      */
     public function setAbstract(bool $abstract): self
@@ -258,7 +258,7 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Gets as openType
+     * Gets as openType.
      *
      * @return bool
      */
@@ -268,9 +268,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Sets a new openType
+     * Sets a new openType.
      *
-     * @param bool $openType
+     * @param  bool $openType
      * @return self
      */
     public function setOpenType(bool $openType): self
@@ -279,7 +279,7 @@ class Entity extends EdmBase implements INominalType
         return $this;
     }
     /**
-     * Gets as openType
+     * Gets as openType.
      *
      * @return bool
      */
@@ -289,9 +289,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Sets a new HasStream
+     * Sets a new HasStream.
      *
-     * @param bool $hasStream
+     * @param  bool $hasStream
      * @return self
      */
     public function setHasStream(bool $hasStream): self
@@ -300,7 +300,7 @@ class Entity extends EdmBase implements INominalType
         return $this;
     }
     /**
-     * Gets as typeAccess
+     * Gets as typeAccess.
      *
      * @return AccessorType
      */
@@ -310,9 +310,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Sets a new typeAccess
+     * Sets a new typeAccess.
      *
-     * @param AccessorType $typeAccess
+     * @param  AccessorType $typeAccess
      * @return self
      */
     public function setTypeAccess(AccessorType $typeAccess): self
@@ -322,7 +322,7 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Adds as propertyRef
+     * Adds as propertyRef.
      *
      * @param PropertyRef $propertyRef
      *@return self
@@ -334,9 +334,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * isset key
+     * isset key.
      *
-     * @param string $index
+     * @param  string $index
      * @return bool
      */
     public function issetKey(string $index): bool
@@ -345,9 +345,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * unset key
+     * unset key.
      *
-     * @param string $index
+     * @param  string $index
      * @return void
      */
     public function unsetKey(string $index): void
@@ -356,7 +356,7 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Gets as key
+     * Gets as key.
      *
      * @return PropertyRef[]|KeyElement
      */
@@ -366,9 +366,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @param Property $property
+     * @param  Property $property
      * @return self
      */
     public function addToProperty(Property $property): self
@@ -378,9 +378,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * isset property
+     * isset property.
      *
-     * @param string $index
+     * @param  string $index
      * @return bool
      */
     public function issetProperty(string $index): bool
@@ -389,9 +389,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * unset property
+     * unset property.
      *
-     * @param string $index
+     * @param  string $index
      * @return void
      */
     public function unsetProperty(string $index): void
@@ -400,7 +400,7 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Gets as property
+     * Gets as property.
      *
      * @return Property[]|PropertyHolder
      */
@@ -410,7 +410,7 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Adds as navigationProperty
+     * Adds as navigationProperty.
      *
      * @param NavigationProperty $navigationProperty
      *@return self
@@ -422,9 +422,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * isset navigationProperty
+     * isset navigationProperty.
      *
-     * @param string $index
+     * @param  string $index
      * @return bool
      */
     public function issetNavigationProperty(string $index): bool
@@ -433,9 +433,9 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * unset navigationProperty
+     * unset navigationProperty.
      *
-     * @param string $index
+     * @param  string $index
      * @return void
      */
     public function unsetNavigationProperty(string $index): void
@@ -444,7 +444,7 @@ class Entity extends EdmBase implements INominalType
     }
 
     /**
-     * Gets as navigationProperty
+     * Gets as navigationProperty.
      *
      * @return NavigationProperty[]|NavigationPropertyHolder
      */
@@ -467,11 +467,11 @@ class Entity extends EdmBase implements INominalType
     public function getAttributes(): array
     {
         return [
-            new AttributeContainer('metadata:HasStream',$this->getHasStream(), true),
+            new AttributeContainer('metadata:HasStream', $this->getHasStream(), true),
             new AttributeContainer('Name', $this->getName()),
-            new AttributeContainer('BaseType',$this->getBaseType(), true),
-            new AttributeContainer('Abstract',$this->getAbstract()),
-            new AttributeContainer('OpenType',$this->getOpenType()),
+            new AttributeContainer('BaseType', $this->getBaseType(), true),
+            new AttributeContainer('Abstract', $this->getAbstract()),
+            new AttributeContainer('OpenType', $this->getOpenType()),
 
         ];
     }
@@ -494,4 +494,3 @@ class Entity extends EdmBase implements INominalType
             ]);
     }
 }
-

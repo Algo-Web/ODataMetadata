@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata;
 
-
 use MyCLabs\Enum\Enum;
 
 /**

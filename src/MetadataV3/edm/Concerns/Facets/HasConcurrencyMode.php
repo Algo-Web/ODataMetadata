@@ -3,14 +3,13 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\ConcurrencyMode;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Trait HasConcurrencyMode
+ * Trait HasConcurrencyMode.
  *
  * 5.3.10 The edm:ConcurrencyMode Attribute
  *
@@ -27,7 +26,7 @@ use DOMElement;
  *
  * The concurrency mode attribute MUST NOT be applied to properties whose type is a complex type
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.10
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.10
  * @mixin EdmBase
  */
 trait HasConcurrencyMode
@@ -37,7 +36,7 @@ trait HasConcurrencyMode
      */
     private $concurrencyMode = null;
     /**
-     * Gets as concurrencyMode
+     * Gets as concurrencyMode.
      *
      * @return ConcurrencyMode|null
      */
@@ -47,9 +46,9 @@ trait HasConcurrencyMode
     }
 
     /**
-     * Sets a new concurrencyMode
+     * Sets a new concurrencyMode.
      *
-     * @param ConcurrencyMode|null $concurrencyMode
+     * @param  ConcurrencyMode|null $concurrencyMode
      * @return self
      */
     public function setConcurrencyMode(?ConcurrencyMode $concurrencyMode): self
@@ -58,7 +57,8 @@ trait HasConcurrencyMode
         return $this;
     }
 
-    public function getAttributesHasConcurrencyMode(): array{
+    public function getAttributesHasConcurrencyMode(): array
+    {
         return [new AttributeContainer('ConcurrencyMode', $this->getConcurrencyMode(), true)];
     }
 }

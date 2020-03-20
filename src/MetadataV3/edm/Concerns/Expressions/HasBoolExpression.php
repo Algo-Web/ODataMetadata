@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 trait HasBoolExpression
 {
     /**
@@ -15,10 +14,10 @@ trait HasBoolExpression
 
 
     /**
-     * Adds as bool
+     * Adds as bool.
      *
+     * @param  bool $bool
      * @return self
-     * @param bool $bool
      */
     public function addToBool($bool)
     {
@@ -27,9 +26,9 @@ trait HasBoolExpression
     }
 
     /**
-     * isset bool
+     * isset bool.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetBool($index)
@@ -38,9 +37,9 @@ trait HasBoolExpression
     }
 
     /**
-     * unset bool
+     * unset bool.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetBool($index)
@@ -49,7 +48,7 @@ trait HasBoolExpression
     }
 
     /**
-     * Gets as bool
+     * Gets as bool.
      *
      * @return bool[]
      */
@@ -59,9 +58,9 @@ trait HasBoolExpression
     }
 
     /**
-     * Sets a new bool
+     * Sets a new bool.
      *
-     * @param bool[] $bool
+     * @param  bool[] $bool
      * @return self
      */
     public function setBool(array $bool)

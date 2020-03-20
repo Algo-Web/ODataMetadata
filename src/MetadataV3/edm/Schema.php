@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Annotations\Annotations;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.1 Schema
+ * 2.1.1 Schema.
  *
  * The Schema element is the top-level conceptual schema definition language (CSDL) construct that allows creation of
  * a namespace.
@@ -42,7 +42,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * In CSDL 3.0, Schema can contain any number of ValueTerm elements.
  * AnnotationElement elements MUST appear only after all other child elements of Schema.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl4.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl4.1
  * XSD Type: TSchema
  */
 class Schema extends DomBase
@@ -50,7 +50,7 @@ class Schema extends DomBase
 
     /**
      * @var string $namespace  A schema is identified by the value of the edm:Namespace attribute. The schema's
-     * namespace is combined with the name of elements in the entity model to create unique names.
+     *             namespace is combined with the name of elements in the entity model to create unique names.
      *
      * Identifiers that are used to name types MUST be unique within a namespace to prevent ambiguity.
      *
@@ -62,10 +62,10 @@ class Schema extends DomBase
 
     /**
      * @var string $alias A schema MAY provide a [simpleidentifier][csdl19] value for the edm:Alias attribute.
-     * An alias allows a CSDL document to qualify nominal types with a short string rather than a long namespace.
-     * For instance, org.example.vocabularies.display may simply have an alias of Self.
-     * An alias qualified name is resolved to a fully qualified name by examining aliases on edm:Using and
-     * edm:Schema elements.
+     *             An alias allows a CSDL document to qualify nominal types with a short string rather than a long namespace.
+     *             For instance, org.example.vocabularies.display may simply have an alias of Self.
+     *             An alias qualified name is resolved to a fully qualified name by examining aliases on edm:Using and
+     *             edm:Schema elements.
      *
      * An alias is scoped to the container in which it is declared. For example, a model referencing an annotations
      * document cannot use any aliases defined in that annotations document.
@@ -75,7 +75,7 @@ class Schema extends DomBase
 
     /**
      * @var Using[] $using The edm:Using element imports the contents of a specified namespace. A using element
-     * binds an alias to the namespace of any entity model.
+     *              binds an alias to the namespace of any entity model.
      *
      * Importing the contents of another model with a using element may alter the importing model. For instance,
      * a model may import an entity model containing an entity type derived from an entity type in the importing model.
@@ -86,21 +86,21 @@ class Schema extends DomBase
     ];
 
     /**
-     * @var Association[] $association  The edm:Association element represents an association in an entity model.
+     * @var Association[] $association  the edm:Association element represents an association in an entity model
      */
     private $association = [
 
     ];
 
     /**
-     * @var ComplexType[] $complexType The edm:ComplexType element represents a complex type in an entity model.
+     * @var ComplexType[] $complexType the edm:ComplexType element represents a complex type in an entity model
      */
     private $complexType = [
 
     ];
 
     /**
-     * @var Entity[] $entityType The edm:EntityType element represents an entity type in the entity model.
+     * @var Entity[] $entityType the edm:EntityType element represents an entity type in the entity model
      */
     private $entityType = [
 
@@ -152,8 +152,7 @@ class Schema extends DomBase
                                 array $valueTerm = [],
                                 array $function = [],
                                 array $annotations = []
-    )
-    {
+    ) {
         $this
             ->setNamespace($namespace)
             ->setAlias($alias)
@@ -169,7 +168,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Gets as namespace
+     * Gets as namespace.
      *
      * @return string
      */
@@ -179,9 +178,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Sets a new namespace
+     * Sets a new namespace.
      *
-     * @param string $namespace
+     * @param  string $namespace
      * @return self
      */
     public function setNamespace($namespace)
@@ -191,7 +190,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Gets as alias
+     * Gets as alias.
      *
      * @return string
      */
@@ -201,9 +200,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Sets a new alias
+     * Sets a new alias.
      *
-     * @param string $alias
+     * @param  string $alias
      * @return self
      */
     public function setAlias($alias)
@@ -213,9 +212,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Adds as using
+     * Adds as using.
      *
-     * @param Using $using
+     * @param  Using $using
      * @return self
      */
     public function addToUsing(Using $using)
@@ -225,9 +224,9 @@ class Schema extends DomBase
     }
 
     /**
-     * isset using
+     * isset using.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetUsing($index)
@@ -236,9 +235,9 @@ class Schema extends DomBase
     }
 
     /**
-     * unset using
+     * unset using.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetUsing($index)
@@ -247,7 +246,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Gets as using
+     * Gets as using.
      *
      * @return Using[]
      */
@@ -257,9 +256,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Sets a new using
+     * Sets a new using.
      *
-     * @param Using[] $using
+     * @param  Using[] $using
      * @return self
      */
     public function setUsing(array $using)
@@ -269,7 +268,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Adds as association
+     * Adds as association.
      *
      * @param Association $association
      *@return self
@@ -281,9 +280,9 @@ class Schema extends DomBase
     }
 
     /**
-     * isset association
+     * isset association.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetAssociation($index)
@@ -292,9 +291,9 @@ class Schema extends DomBase
     }
 
     /**
-     * unset association
+     * unset association.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetAssociation($index)
@@ -303,7 +302,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Gets as association
+     * Gets as association.
      *
      * @return Association[]
      */
@@ -313,9 +312,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Sets a new association
+     * Sets a new association.
      *
-     * @param Association[] $association
+     * @param  Association[] $association
      * @return self
      */
     public function setAssociation(array $association)
@@ -325,7 +324,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Adds as complexType
+     * Adds as complexType.
      *
      * @param ComplexType $complexType
      *@return self
@@ -337,9 +336,9 @@ class Schema extends DomBase
     }
 
     /**
-     * isset complexType
+     * isset complexType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetComplexType($index)
@@ -348,9 +347,9 @@ class Schema extends DomBase
     }
 
     /**
-     * unset complexType
+     * unset complexType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetComplexType($index)
@@ -359,7 +358,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Gets as complexType
+     * Gets as complexType.
      *
      * @return ComplexType[]
      */
@@ -369,9 +368,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Sets a new complexType
+     * Sets a new complexType.
      *
-     * @param ComplexType[] $complexType
+     * @param  ComplexType[] $complexType
      * @return self
      */
     public function setComplexType(array $complexType)
@@ -381,9 +380,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Adds as entityType
+     * Adds as entityType.
      *
-     * @param Entity $entityType
+     * @param  Entity $entityType
      * @return self
      */
     public function addToEntityType(Entity $entityType)
@@ -393,9 +392,9 @@ class Schema extends DomBase
     }
 
     /**
-     * isset entityType
+     * isset entityType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetEntityType($index)
@@ -404,9 +403,9 @@ class Schema extends DomBase
     }
 
     /**
-     * unset entityType
+     * unset entityType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetEntityType($index)
@@ -415,7 +414,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Gets as entityType
+     * Gets as entityType.
      *
      * @return Entity[]
      */
@@ -425,9 +424,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Sets a new entityType
+     * Sets a new entityType.
      *
-     * @param Entity[] $entityType
+     * @param  Entity[] $entityType
      * @return self
      */
     public function setEntityType(array $entityType)
@@ -437,9 +436,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Adds as enumType
+     * Adds as enumType.
      *
-     * @param Enum $enumType
+     * @param  Enum $enumType
      * @return self
      */
     public function addToEnumType(Enum $enumType)
@@ -449,9 +448,9 @@ class Schema extends DomBase
     }
 
     /**
-     * isset enumType
+     * isset enumType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetEnumType($index)
@@ -460,9 +459,9 @@ class Schema extends DomBase
     }
 
     /**
-     * unset enumType
+     * unset enumType.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetEnumType($index)
@@ -471,7 +470,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Gets as enumType
+     * Gets as enumType.
      *
      * @return Enum[]
      */
@@ -481,9 +480,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Sets a new enumType
+     * Sets a new enumType.
      *
-     * @param Enum[] $enumType
+     * @param  Enum[] $enumType
      * @return self
      */
     public function setEnumType(array $enumType)
@@ -493,9 +492,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Adds as valueTerm
+     * Adds as valueTerm.
      *
-     * @param ValueTerm $valueTerm
+     * @param  ValueTerm $valueTerm
      * @return self
      */
     public function addToValueTerm(ValueTerm $valueTerm)
@@ -505,9 +504,9 @@ class Schema extends DomBase
     }
 
     /**
-     * isset valueTerm
+     * isset valueTerm.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetValueTerm($index)
@@ -516,9 +515,9 @@ class Schema extends DomBase
     }
 
     /**
-     * unset valueTerm
+     * unset valueTerm.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetValueTerm($index)
@@ -527,7 +526,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Gets as valueTerm
+     * Gets as valueTerm.
      *
      * @return ValueTerm[]
      */
@@ -537,9 +536,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Sets a new valueTerm
+     * Sets a new valueTerm.
      *
-     * @param ValueTerm[] $valueTerm
+     * @param  ValueTerm[] $valueTerm
      * @return self
      */
     public function setValueTerm(array $valueTerm)
@@ -549,9 +548,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Adds as function
+     * Adds as function.
      *
-     * @param ModelFunction $function
+     * @param  ModelFunction $function
      * @return self
      */
     public function addToFunction(ModelFunction $function)
@@ -561,9 +560,9 @@ class Schema extends DomBase
     }
 
     /**
-     * isset function
+     * isset function.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetFunction($index)
@@ -572,9 +571,9 @@ class Schema extends DomBase
     }
 
     /**
-     * unset function
+     * unset function.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetFunction($index)
@@ -583,7 +582,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Gets as function
+     * Gets as function.
      *
      * @return ModelFunction[]
      */
@@ -593,9 +592,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Sets a new function
+     * Sets a new function.
      *
-     * @param ModelFunction[] $function
+     * @param  ModelFunction[] $function
      * @return self
      */
     public function setFunction(array $function)
@@ -605,7 +604,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Adds as annotations
+     * Adds as annotations.
      *
      * @param Annotations $annotations
      *@return self
@@ -617,9 +616,9 @@ class Schema extends DomBase
     }
 
     /**
-     * isset annotations
+     * isset annotations.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetAnnotations($index)
@@ -628,9 +627,9 @@ class Schema extends DomBase
     }
 
     /**
-     * unset annotations
+     * unset annotations.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetAnnotations($index)
@@ -639,7 +638,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Gets as annotations
+     * Gets as annotations.
      *
      * @return Annotations[]
      */
@@ -649,9 +648,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Sets a new annotations
+     * Sets a new annotations.
      *
-     * @param Annotations[] $annotations
+     * @param  Annotations[] $annotations
      * @return self
      */
     public function setAnnotations(array $annotations)
@@ -661,7 +660,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Adds as entityContainer
+     * Adds as entityContainer.
      *
      * @param EntityContainer $entityContainer
      *@return self
@@ -673,9 +672,9 @@ class Schema extends DomBase
     }
 
     /**
-     * isset entityContainer
+     * isset entityContainer.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetEntityContainer($index)
@@ -684,9 +683,9 @@ class Schema extends DomBase
     }
 
     /**
-     * unset entityContainer
+     * unset entityContainer.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetEntityContainer($index)
@@ -695,7 +694,7 @@ class Schema extends DomBase
     }
 
     /**
-     * Gets as entityContainer
+     * Gets as entityContainer.
      *
      * @return EntityContainer[]
      */
@@ -705,9 +704,9 @@ class Schema extends DomBase
     }
 
     /**
-     * Sets a new entityContainer
+     * Sets a new entityContainer.
      *
-     * @param EntityContainer[] $entityContainer
+     * @param  EntityContainer[] $entityContainer
      * @return self
      */
     public function setEntityContainer(array $entityContainer)
@@ -753,4 +752,3 @@ class Schema extends DomBase
         );
     }
 }
-

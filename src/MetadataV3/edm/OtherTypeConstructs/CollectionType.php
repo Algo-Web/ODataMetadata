@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.25 CollectionType
+ * 2.1.25 CollectionType.
  *
  * If the type of the FunctionParameter or ReturnType is a collection, the type can be expressed as an attribute or
  * by using child element syntax.
@@ -49,7 +49,7 @@ class CollectionType extends EdmBase implements IStructuralTypes
     private $containerFor = null;
 
     /**
-     * Gets the containerFor
+     * Gets the containerFor.
      *
      * @return IType
      */
@@ -59,9 +59,9 @@ class CollectionType extends EdmBase implements IStructuralTypes
     }
 
     /**
-     * Sets a new containerFor
+     * Sets a new containerFor.
      *
-     * @param IType $containerFor
+     * @param  IType $containerFor
      * @return self
      */
     public function setContainerFor(IType $containerFor): self
@@ -82,13 +82,12 @@ class CollectionType extends EdmBase implements IStructuralTypes
     /**
      * @return array|AttributeContainer[]
      */
-
     public function getAttributes(): array
     {
         $containerFor = $this->getContainerFor();
-        if(
+        if (
             $containerFor instanceof IStructuralTypes
-        ){
+        ) {
             return [];
         }
 
@@ -96,7 +95,7 @@ class CollectionType extends EdmBase implements IStructuralTypes
             new AttributeContainer('Type', strval($containerFor))
         ];
         return $containerFor instanceof IScalarType ?
-            array_merge($this->getAttributesHasFacets(),$baseAttribute) :
+            array_merge($this->getAttributesHasFacets(), $baseAttribute) :
             $baseAttribute;
     }
 
@@ -106,15 +105,14 @@ class CollectionType extends EdmBase implements IStructuralTypes
     public function getChildElements(): array
     {
         $containerFor = $this->getContainerFor();
-        if(
+        if (
             $containerFor instanceof CollectionType ||
             $containerFor instanceof ReferenceType ||
             $containerFor instanceof RowType ||
             $containerFor instanceof TypeRef
-        ){
+        ) {
             return [$this->containerFor];
         }
         return [];
     }
 }
-

@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\INominalType;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\IScalarType;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\IStructuralTypes;
@@ -20,7 +19,7 @@ trait HasType
 
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return IType
      */
@@ -30,9 +29,9 @@ trait HasType
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
-     * @param IType $type
+     * @param  IType $type
      * @return self
      */
     public function setType(IType $type)
@@ -47,15 +46,16 @@ trait HasType
     {
         $base = [];
         $type = $this->getType();
-        if($type instanceof IScalarType){
+        if ($type instanceof IScalarType) {
             $base = array_merge($base, $this->getAttributesHasFacets());
         }
-        if($type instanceof INominalType){
-            $base[] = New AttributeContainer("Type", $type->getName());
+        if ($type instanceof INominalType) {
+            $base[] = new AttributeContainer('Type', $type->getName());
         }
         return $base;
     }
-    public function getChildElementsHasType(): IType{
+    public function getChildElementsHasType(): IType
+    {
         return $this->getType() instanceof IStructuralTypes ? $this->getType() : null;
     }
 }

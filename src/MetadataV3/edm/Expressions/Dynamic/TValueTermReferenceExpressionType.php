@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
 use DateTime;
 
 /**
- * Class representing TValueTermReferenceExpressionType
+ * Class representing TValueTermReferenceExpressionType.
  *
  * 16.2.16 The Edm:ValueTermReference Expression
  *
@@ -17,7 +17,7 @@ use DateTime;
  *         <ValueTermReference Term="org.example.display.DisplayName" Qualifier="Mobile"/>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.16
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.16
  * XSD Type: TValueTermReferenceExpression
  */
 class TValueTermReferenceExpressionType extends DynamicBase
@@ -149,7 +149,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     private $valueTermReference = null;
 
     /**
-     * Gets as term
+     * Gets as term.
      *
      * @return string
      */
@@ -159,9 +159,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new term
+     * Sets a new term.
      *
-     * @param string $term
+     * @param  string $term
      * @return self
      */
     public function setTerm($term)
@@ -171,7 +171,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as qualifier
+     * Gets as qualifier.
      *
      * @return string
      */
@@ -181,9 +181,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new qualifier
+     * Sets a new qualifier.
      *
-     * @param string $qualifier
+     * @param  string $qualifier
      * @return self
      */
     public function setQualifier($qualifier)
@@ -193,7 +193,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as string
+     * Gets as string.
      *
      * @return string
      */
@@ -203,9 +203,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new string
+     * Sets a new string.
      *
-     * @param string $string
+     * @param  string $string
      * @return self
      */
     public function setString($string)
@@ -215,7 +215,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as binary
+     * Gets as binary.
      *
      * @return mixed
      */
@@ -225,9 +225,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new binary
+     * Sets a new binary.
      *
-     * @param mixed $binary
+     * @param  mixed $binary
      * @return self
      */
     public function setBinary($binary)
@@ -237,7 +237,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as int
+     * Gets as int.
      *
      * @return int
      */
@@ -247,9 +247,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new int
+     * Sets a new int.
      *
-     * @param int $int
+     * @param  int  $int
      * @return self
      */
     public function setInt($int)
@@ -259,7 +259,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as float
+     * Gets as float.
      *
      * @return float
      */
@@ -269,9 +269,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new float
+     * Sets a new float.
      *
-     * @param float $float
+     * @param  float $float
      * @return self
      */
     public function setFloat($float)
@@ -281,7 +281,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as guid
+     * Gets as guid.
      *
      * @return string
      */
@@ -291,9 +291,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new guid
+     * Sets a new guid.
      *
-     * @param string $guid
+     * @param  string $guid
      * @return self
      */
     public function setGuid($guid)
@@ -303,7 +303,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as decimal
+     * Gets as decimal.
      *
      * @return float
      */
@@ -313,9 +313,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new decimal
+     * Sets a new decimal.
      *
-     * @param float $decimal
+     * @param  float $decimal
      * @return self
      */
     public function setDecimal($decimal)
@@ -325,7 +325,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as bool
+     * Gets as bool.
      *
      * @return bool
      */
@@ -335,9 +335,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new bool
+     * Sets a new bool.
      *
-     * @param bool $bool
+     * @param  bool $bool
      * @return self
      */
     public function setBool($bool)
@@ -347,7 +347,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as dateTime
+     * Gets as dateTime.
      *
      * @return DateTime
      */
@@ -357,9 +357,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new dateTime
+     * Sets a new dateTime.
      *
-     * @param DateTime $dateTime
+     * @param  DateTime $dateTime
      * @return self
      */
     public function setDateTime(DateTime $dateTime)
@@ -369,7 +369,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as dateTimeOffset
+     * Gets as dateTimeOffset.
      *
      * @return DateTime
      */
@@ -379,9 +379,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new dateTimeOffset
+     * Sets a new dateTimeOffset.
      *
-     * @param DateTime $dateTimeOffset
+     * @param  DateTime $dateTimeOffset
      * @return self
      */
     public function setDateTimeOffset(DateTime $dateTimeOffset)
@@ -391,7 +391,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as enum
+     * Gets as enum.
      *
      * @return string
      */
@@ -401,9 +401,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new enum
+     * Sets a new enum.
      *
-     * @param string $enum
+     * @param  string $enum
      * @return self
      */
     public function setEnum($enum)
@@ -413,7 +413,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as path
+     * Gets as path.
      *
      * @return string
      */
@@ -423,9 +423,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new path
+     * Sets a new path.
      *
-     * @param string $path
+     * @param  string $path
      * @return self
      */
     public function setPath($path)
@@ -435,7 +435,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as if
+     * Gets as if.
      *
      * @return TIfExpressionType
      */
@@ -445,9 +445,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new if
+     * Sets a new if.
      *
-     * @param TIfExpressionType $if
+     * @param  TIfExpressionType $if
      * @return self
      */
     public function setIf(TIfExpressionType $if)
@@ -457,7 +457,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as record
+     * Gets as record.
      *
      * @return TRecordExpressionType
      */
@@ -467,9 +467,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new record
+     * Sets a new record.
      *
-     * @param TRecordExpressionType $record
+     * @param  TRecordExpressionType $record
      * @return self
      */
     public function setRecord(TRecordExpressionType $record)
@@ -479,7 +479,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as collection
+     * Gets as collection.
      *
      * @return TCollectionExpressionType
      */
@@ -489,9 +489,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new collection
+     * Sets a new collection.
      *
-     * @param TCollectionExpressionType $collection
+     * @param  TCollectionExpressionType $collection
      * @return self
      */
     public function setCollection(TCollectionExpressionType $collection)
@@ -501,7 +501,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as typeAssert
+     * Gets as typeAssert.
      *
      * @return AssertTypeExpression
      */
@@ -511,9 +511,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new typeAssert
+     * Sets a new typeAssert.
      *
-     * @param AssertTypeExpression $typeAssert
+     * @param  AssertTypeExpression $typeAssert
      * @return self
      */
     public function setTypeAssert(AssertTypeExpression $typeAssert)
@@ -523,7 +523,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as typeTest
+     * Gets as typeTest.
      *
      * @return IsTypeExpression
      */
@@ -533,9 +533,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new typeTest
+     * Sets a new typeTest.
      *
-     * @param IsTypeExpression $typeTest
+     * @param  IsTypeExpression $typeTest
      * @return self
      */
     public function setTypeTest(IsTypeExpression $typeTest)
@@ -545,7 +545,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as functionReference
+     * Gets as functionReference.
      *
      * @return TFunctionReferenceExpressionType
      */
@@ -555,9 +555,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new functionReference
+     * Sets a new functionReference.
      *
-     * @param TFunctionReferenceExpressionType $functionReference
+     * @param  TFunctionReferenceExpressionType $functionReference
      * @return self
      */
     public function setFunctionReference(TFunctionReferenceExpressionType $functionReference)
@@ -567,7 +567,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as entitySetReference
+     * Gets as entitySetReference.
      *
      * @return TEntitySetReferenceExpressionType
      */
@@ -577,9 +577,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new entitySetReference
+     * Sets a new entitySetReference.
      *
-     * @param TEntitySetReferenceExpressionType $entitySetReference
+     * @param  TEntitySetReferenceExpressionType $entitySetReference
      * @return self
      */
     public function setEntitySetReference(TEntitySetReferenceExpressionType $entitySetReference)
@@ -589,7 +589,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as anonymousFunction
+     * Gets as anonymousFunction.
      *
      * @return TAnonymousFunctionExpressionType
      */
@@ -599,9 +599,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new anonymousFunction
+     * Sets a new anonymousFunction.
      *
-     * @param TAnonymousFunctionExpressionType $anonymousFunction
+     * @param  TAnonymousFunctionExpressionType $anonymousFunction
      * @return self
      */
     public function setAnonymousFunction(TAnonymousFunctionExpressionType $anonymousFunction)
@@ -611,7 +611,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as parameterReference
+     * Gets as parameterReference.
      *
      * @return TParameterReferenceExpressionType
      */
@@ -621,9 +621,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new parameterReference
+     * Sets a new parameterReference.
      *
-     * @param TParameterReferenceExpressionType $parameterReference
+     * @param  TParameterReferenceExpressionType $parameterReference
      * @return self
      */
     public function setParameterReference(TParameterReferenceExpressionType $parameterReference)
@@ -633,7 +633,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as apply
+     * Gets as apply.
      *
      * @return TApplyExpressionType
      */
@@ -643,9 +643,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new apply
+     * Sets a new apply.
      *
-     * @param TApplyExpressionType $apply
+     * @param  TApplyExpressionType $apply
      * @return self
      */
     public function setApply(TApplyExpressionType $apply)
@@ -655,7 +655,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as propertyReference
+     * Gets as propertyReference.
      *
      * @return TPropertyReferenceExpressionType
      */
@@ -665,9 +665,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new propertyReference
+     * Sets a new propertyReference.
      *
-     * @param TPropertyReferenceExpressionType $propertyReference
+     * @param  TPropertyReferenceExpressionType $propertyReference
      * @return self
      */
     public function setPropertyReference(TPropertyReferenceExpressionType $propertyReference)
@@ -677,7 +677,7 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as valueTermReference
+     * Gets as valueTermReference.
      *
      * @return TValueTermReferenceExpressionType
      */
@@ -687,9 +687,9 @@ class TValueTermReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new valueTermReference
+     * Sets a new valueTermReference.
      *
-     * @param TValueTermReferenceExpressionType $valueTermReference
+     * @param  TValueTermReferenceExpressionType $valueTermReference
      * @return self
      */
     public function setValueTermReference(TValueTermReferenceExpressionType $valueTermReference)
@@ -697,7 +697,4 @@ class TValueTermReferenceExpressionType extends DynamicBase
         $this->valueTermReference = $valueTermReference;
         return $this;
     }
-
-
 }
-

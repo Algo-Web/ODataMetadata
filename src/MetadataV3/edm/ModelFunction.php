@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\HasValueAnnotation;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.23 Model Function
+ * 2.1.23 Model Function.
  *
  * A Function element is used to define or declare a user function. These functions are defined as child elements of
  * the Schema element.
@@ -51,7 +51,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - Parameter, DefiningExpression, and ReturnType can appear in any order.
  * - AnnotationElement has to be the last in the sequence of elements of a Function.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl11
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl11
  *
  * XSD Type: TFunction
  */
@@ -82,7 +82,7 @@ class ModelFunction extends EdmBase
     private $definingExpression = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -92,9 +92,9 @@ class ModelFunction extends EdmBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(string $name): self
@@ -105,7 +105,7 @@ class ModelFunction extends EdmBase
 
 
     /**
-     * Gets as returnType
+     * Gets as returnType.
      *
      * @return FunctionReturn|null
      */
@@ -115,9 +115,9 @@ class ModelFunction extends EdmBase
     }
 
     /**
-     * Sets a new returnType
+     * Sets a new returnType.
      *
-     * @param FunctionReturn|null $returnType
+     * @param  FunctionReturn|null $returnType
      * @return self
      */
     public function setReturnType(?FunctionReturn $returnType):self
@@ -127,9 +127,9 @@ class ModelFunction extends EdmBase
     }
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @param ModelFunctionParameter $parameter
+     * @param  ModelFunctionParameter $parameter
      * @return self
      */
     public function addToParameter(ModelFunctionParameter $parameter): self
@@ -139,9 +139,9 @@ class ModelFunction extends EdmBase
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
-     * @param string $name
+     * @param  string $name
      * @return bool
      */
     public function issetParameter(string $name): bool
@@ -150,9 +150,9 @@ class ModelFunction extends EdmBase
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
-     * @param string $name
+     * @param  string $name
      * @return void
      */
     public function unsetParameter(string $name):void
@@ -161,7 +161,7 @@ class ModelFunction extends EdmBase
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return ModelFunctionParameter[]
      */
@@ -171,9 +171,9 @@ class ModelFunction extends EdmBase
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
-     * @param ModelFunctionParameter[] $parameter
+     * @param  ModelFunctionParameter[] $parameter
      * @return self
      */
     public function setParameter(array $parameter):self
@@ -183,7 +183,7 @@ class ModelFunction extends EdmBase
     }
 
     /**
-     * Gets as definingExpression
+     * Gets as definingExpression.
      *
      * @return TTextType|null
      */
@@ -193,9 +193,9 @@ class ModelFunction extends EdmBase
     }
 
     /**
-     * Sets a new definingExpression
+     * Sets a new definingExpression.
      *
-     * @param string|null $definingExpression
+     * @param  string|null $definingExpression
      * @return self
      */
     public function setDefiningExpression(?string $definingExpression): self
@@ -224,7 +224,6 @@ class ModelFunction extends EdmBase
             new AttributeContainer('Name', $this->getName()),
             new AttributeContainer('ReturnType', $this->getReturnType(), true),
         ];
-
     }
 
     /**
@@ -238,7 +237,5 @@ class ModelFunction extends EdmBase
             [$this->getDefiningExpression()],
             $this->getValueAnnotation()
         );
-
     }
 }
-

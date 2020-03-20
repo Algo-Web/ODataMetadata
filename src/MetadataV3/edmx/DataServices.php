@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edmx;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EdmBase;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
@@ -13,7 +12,7 @@ use ArrayAccess;
 use DOMElement;
 
 /**
- * Class DataServices
+ * Class DataServices.
  *
  * 3.2 The edmx:DataServices Element
  * The edmx:DataServices element contains zero or more Edm:Schema elements which define the schema(s) exposed by the
@@ -46,7 +45,7 @@ class DataServices extends DomBase implements ArrayAccess
     public function getAttributes(WritterContext $wc = null): array
     {
         return [
-            new AttributeContainer('metadata:DataServiceVersion',$wc->getOdataVersion())
+            new AttributeContainer('metadata:DataServiceVersion', $wc->getOdataVersion())
         ];
     }
 
@@ -60,8 +59,8 @@ class DataServices extends DomBase implements ArrayAccess
 
     /**
      * @var Schema[] $dataServices 3.2 The edmx:DataServices Element
-     * The edmx:DataServices element contains zero or more Edm:Schema elements which define the schema(s) exposed by
-     * the OData service.
+     *               The edmx:DataServices element contains zero or more Edm:Schema elements which define the schema(s) exposed by
+     *               the OData service.
      */
     private $schema = [];
 
@@ -71,7 +70,8 @@ class DataServices extends DomBase implements ArrayAccess
      * This version of the specification defines the following valid data service version values:
      * "1.0", "2.0", and "3.0", corresponding to OData protocol versions 1.0, 2.0 and 3.0 respectively.
      */
-    private function getDataServiceVersion(): string {
+    private function getDataServiceVersion(): string
+    {
         return EdmBase::getSerilizationContext()->getOdataVersion();
     }
 
@@ -98,7 +98,4 @@ class DataServices extends DomBase implements ArrayAccess
     {
         unset($this->schema[$offset]);
     }
-
-
-
 }

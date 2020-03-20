@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use DOMElement;
 
 /**
- *   2.1.36 Expressions
+ *   2.1.36 Expressions.
  *
  * Values for a value term or properties of a type term are obtained by calculating expressions.
  * There are a variety of expressions that allow service authors to supply constant or dynamic values.

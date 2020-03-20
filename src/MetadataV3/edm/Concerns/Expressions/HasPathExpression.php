@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 trait HasPathExpression
 {
     /**
@@ -14,10 +13,10 @@ trait HasPathExpression
     ];
 
     /**
-     * Adds as path
+     * Adds as path.
      *
+     * @param  string $path
      * @return self
-     * @param string $path
      */
     public function addToPath($path)
     {
@@ -26,9 +25,9 @@ trait HasPathExpression
     }
 
     /**
-     * isset path
+     * isset path.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetPath($index)
@@ -37,9 +36,9 @@ trait HasPathExpression
     }
 
     /**
-     * unset path
+     * unset path.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetPath($index)
@@ -48,7 +47,7 @@ trait HasPathExpression
     }
 
     /**
-     * Gets as path
+     * Gets as path.
      *
      * @return string[]
      */
@@ -58,9 +57,9 @@ trait HasPathExpression
     }
 
     /**
-     * Sets a new path
+     * Sets a new path.
      *
-     * @param string[] $path
+     * @param  string[] $path
      * @return self
      */
     public function setPath(array $path)

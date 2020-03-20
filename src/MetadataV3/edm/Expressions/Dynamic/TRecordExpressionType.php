@@ -5,7 +5,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Annotations\PropertyValue;
 
 /**
- * Class representing TRecordExpressionType
+ * Class representing TRecordExpressionType.
  *
  * 16.2.15 The Edm:Record Expression
  *
@@ -26,9 +26,9 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Annotations\PropertyValue;
  *         </Record>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.15
- * @link https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/acee574d-2fe1-4da7-a65e-acf35643eb1d
- * @link https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/ecc942a0-af88-4012-be6f-439c706641d4
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.15
+ * @see https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/acee574d-2fe1-4da7-a65e-acf35643eb1d
+ * @see https://docs.microsoft.com/en-us/openspecs/windows_protocols/mc-csdl/ecc942a0-af88-4012-be6f-439c706641d4
  * XSD Type: TRecordExpression
  */
 class TRecordExpressionType extends DynamicBase
@@ -47,7 +47,7 @@ class TRecordExpressionType extends DynamicBase
     ];
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string
      */
@@ -57,9 +57,9 @@ class TRecordExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
-     * @param string $type
+     * @param  string $type
      * @return self
      */
     public function setType($type)
@@ -69,7 +69,7 @@ class TRecordExpressionType extends DynamicBase
     }
 
     /**
-     * Adds as propertyValue
+     * Adds as propertyValue.
      *
      * @param PropertyValue $propertyValue
      *@return self
@@ -81,9 +81,9 @@ class TRecordExpressionType extends DynamicBase
     }
 
     /**
-     * isset propertyValue
+     * isset propertyValue.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetPropertyValue($index)
@@ -92,9 +92,9 @@ class TRecordExpressionType extends DynamicBase
     }
 
     /**
-     * unset propertyValue
+     * unset propertyValue.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetPropertyValue($index)
@@ -103,7 +103,7 @@ class TRecordExpressionType extends DynamicBase
     }
 
     /**
-     * Gets as propertyValue
+     * Gets as propertyValue.
      *
      * @return PropertyValue[]
      */
@@ -113,9 +113,9 @@ class TRecordExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new propertyValue
+     * Sets a new propertyValue.
      *
-     * @param PropertyValue[] $propertyValue
+     * @param  PropertyValue[] $propertyValue
      * @return self
      */
     public function setPropertyValue(array $propertyValue)
@@ -123,7 +123,4 @@ class TRecordExpressionType extends DynamicBase
         $this->propertyValue = $propertyValue;
         return $this;
     }
-
-
 }
-

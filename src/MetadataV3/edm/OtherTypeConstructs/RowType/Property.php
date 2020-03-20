@@ -56,7 +56,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - Property can contain any number of AnnotationElement elements.
  * - AnnotationElement elements are last in the sequence of child elements of Property.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.1
  * XSD Type: TProperty
  */
 class Property extends EdmBase
@@ -68,7 +68,7 @@ class Property extends EdmBase
     private $name = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -78,9 +78,9 @@ class Property extends EdmBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -103,7 +103,7 @@ class Property extends EdmBase
     public function getAttributes(): array
     {
         return array_merge(
-            [new AttributeContainer('Name', $this->getName(),true)],
+            [new AttributeContainer('Name', $this->getName(), true)],
             $this->getAttributesHasType()
         );
     }
@@ -116,4 +116,3 @@ class Property extends EdmBase
         return [$this->getChildElementsHasType()];
     }
 }
-

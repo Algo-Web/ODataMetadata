@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\Writer;
 
-
 use AlgoWeb\ODataMetadata\OdataVersions;
 
 class AttributeContainer implements IAttribute
@@ -65,7 +64,7 @@ class AttributeContainer implements IAttribute
         return $this->value;
     }
     /**
-     * @param bool $nullCheck
+     * @param  bool               $nullCheck
      * @return AttributeContainer
      */
     public function setAttributeNullCheck(bool $nullCheck): AttributeContainer
@@ -75,7 +74,7 @@ class AttributeContainer implements IAttribute
     }
 
     /**
-     * @param string|null $value
+     * @param  string|null        $value
      * @return AttributeContainer
      */
     public function setAttributeValue(?string $value): AttributeContainer
@@ -85,10 +84,10 @@ class AttributeContainer implements IAttribute
     }
     /**
      * AttributeContainer constructor.
-     * @param string $name
-     * @param string $value
-     * @param bool $nullCheck
-     * @param OdataVersions|null $forVersion
+     * @param string                $name
+     * @param string                $value
+     * @param bool                  $nullCheck
+     * @param OdataVersions|null    $forVersion
      * @param array|OdataVersions[] $prohibitedVersions
      */
     public function __construct(
@@ -97,8 +96,7 @@ class AttributeContainer implements IAttribute
         bool $nullCheck = false,
         OdataVersions $forVersion = null,
         array $prohibitedVersions = []
-    )
-    {
+    ) {
         $this
             ->setAttributeName($name)
             ->setAttributeForVersion($forVersion)
@@ -109,15 +107,15 @@ class AttributeContainer implements IAttribute
 
     private function strval($value):string
     {
-        if(is_bool($value)){
-            return $value ? "true" : "false";
+        if (is_bool($value)) {
+            return $value ? 'true' : 'false';
         }
         return strval($value);
     }
 
 
     /**
-     * @param string $prefix
+     * @param  string             $prefix
      * @return AttributeContainer
      */
     public function setAttributePrefix(string $prefix): AttributeContainer
@@ -127,14 +125,14 @@ class AttributeContainer implements IAttribute
     }
 
     /**
-     * @param string $name
+     * @param  string             $name
      * @return AttributeContainer
      */
     public function setAttributeName(string $name): AttributeContainer
     {
         $prefix = null;
-        if(strpos($name, ':') !== false) {
-            list($prefix, $name) = explode(":", $name);
+        if (strpos($name, ':') !== false) {
+            list($prefix, $name) = explode(':', $name);
         }
         $this->name = $name;
         $this->prefix = $prefix;
@@ -143,7 +141,7 @@ class AttributeContainer implements IAttribute
 
 
     /**
-     * @param OdataVersions $forVersion
+     * @param  OdataVersions      $forVersion
      * @return AttributeContainer
      */
     public function setAttributeForVersion(OdataVersions $forVersion): AttributeContainer
@@ -153,7 +151,7 @@ class AttributeContainer implements IAttribute
     }
 
     /**
-     * @param array $prohibitedVersion
+     * @param  array              $prohibitedVersion
      * @return AttributeContainer
      */
     public function setAttributeProhibitedVersion(array $prohibitedVersion): AttributeContainer

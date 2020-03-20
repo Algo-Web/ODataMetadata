@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\NavigationProperty;
 use DOMElement;
@@ -43,7 +42,8 @@ class NavigationPropertyHolder implements \ArrayAccess
         unset($this->property[$offset]);
     }
 
-    public function __toArray(){
+    public function __toArray()
+    {
         return $this->property;
     }
 }

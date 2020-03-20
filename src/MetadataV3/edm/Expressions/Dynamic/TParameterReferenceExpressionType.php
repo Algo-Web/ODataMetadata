@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
 
 /**
- * Class representing TParameterReferenceExpressionType
+ * Class representing TParameterReferenceExpressionType.
  *
  * 16.2.12 The Edm:ParameterReference Expression
  *
@@ -19,7 +19,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
  *         <ParameterReference>Image</ParameterReference>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.12
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.12
  * XSD Type: TParameterReferenceExpression
  */
 class TParameterReferenceExpressionType extends DynamicBase
@@ -31,7 +31,7 @@ class TParameterReferenceExpressionType extends DynamicBase
     private $name = null;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -41,9 +41,9 @@ class TParameterReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -51,7 +51,4 @@ class TParameterReferenceExpressionType extends DynamicBase
         $this->name = $name;
         return $this;
     }
-
-
 }
-

@@ -3,7 +3,7 @@
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
 
 /**
- * Class representing TEntitySetReferenceExpressionType
+ * Class representing TEntitySetReferenceExpressionType.
  *
  * 16.2.4 The Edm:EntitySetReference Expression
  * The value of an Edm:EntitySetReference is a reference to an entity set. A reference to an entity set is a collection
@@ -18,7 +18,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic;
  *         <EntitySetReference>Self.SaleProducts</EntitySetReference>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.4
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.2.4
  * XSD Type: TEntitySetReferenceExpression
  */
 class TEntitySetReferenceExpressionType extends DynamicBase
@@ -30,7 +30,7 @@ class TEntitySetReferenceExpressionType extends DynamicBase
     private $entitySet = null;
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return string
      */
@@ -40,9 +40,9 @@ class TEntitySetReferenceExpressionType extends DynamicBase
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
-     * @param string $entitySet
+     * @param  string $entitySet
      * @return self
      */
     public function setEntitySet($entitySet)
@@ -50,7 +50,4 @@ class TEntitySetReferenceExpressionType extends DynamicBase
         $this->entitySet = $entitySet;
         return $this;
     }
-
-
 }
-

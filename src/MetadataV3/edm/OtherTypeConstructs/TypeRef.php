@@ -12,7 +12,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use AlgoWeb\ODataMetadata\Writer\IAttribute;
 
 /**
- * 2.1.26 TypeRef
+ * 2.1.26 TypeRef.
  *
  * The TypeRef element is used to reference an existing named type.
  *
@@ -39,7 +39,7 @@ use AlgoWeb\ODataMetadata\Writer\IAttribute;
  * - TypeRef elements can contain any number of AnnotationElement elements.
  * - AnnotationElement is last in the sequence of child elements of TypeRef.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl9.2
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl9.2
  * XSD Type: TTypeRef
  */
 class TypeRef extends EdmBase implements IStructuralTypes, IAttribute
@@ -58,7 +58,7 @@ class TypeRef extends EdmBase implements IStructuralTypes, IAttribute
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return INominalType
      */
@@ -68,9 +68,9 @@ class TypeRef extends EdmBase implements IStructuralTypes, IAttribute
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
-     * @param INominalType $type
+     * @param  INominalType $type
      * @return self
      */
     public function setType(INominalType $type): self
@@ -96,7 +96,7 @@ class TypeRef extends EdmBase implements IStructuralTypes, IAttribute
             new AttributeContainer('Type', $this->getType()->getName())
         ];
         return $this->getType() instanceof IScalarType ?
-            array_merge($this->getAttributesHasFacets(),$baseAttribute) :
+            array_merge($this->getAttributesHasFacets(), $baseAttribute) :
             $baseAttribute;
     }
 
@@ -143,4 +143,3 @@ class TypeRef extends EdmBase implements IStructuralTypes, IAttribute
         return false; //TODO: basically we check to see if Type is the only thing set, if so yes we are an attribute;
     }
 }
-

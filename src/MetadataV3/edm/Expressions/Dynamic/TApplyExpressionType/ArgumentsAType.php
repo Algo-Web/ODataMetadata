@@ -5,10 +5,9 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TApplyExpress
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasExpression;
 
 /**
- * Class representing ArgumentsAType
+ * Class representing ArgumentsAType.
  */
 class ArgumentsAType
 {
     use HasExpression;
 }
-

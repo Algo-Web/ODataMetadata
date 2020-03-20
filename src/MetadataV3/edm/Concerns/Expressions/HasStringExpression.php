@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 trait HasStringExpression
 {
     /**
@@ -14,10 +13,10 @@ trait HasStringExpression
     ];
 
     /**
-     * Adds as string
+     * Adds as string.
      *
+     * @param  string $string
      * @return self
-     * @param string $string
      */
     public function addToString($string)
     {
@@ -26,9 +25,9 @@ trait HasStringExpression
     }
 
     /**
-     * isset string
+     * isset string.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetString($index)
@@ -37,9 +36,9 @@ trait HasStringExpression
     }
 
     /**
-     * unset string
+     * unset string.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetString($index)
@@ -48,7 +47,7 @@ trait HasStringExpression
     }
 
     /**
-     * Gets as string
+     * Gets as string.
      *
      * @return string[]
      */
@@ -58,9 +57,9 @@ trait HasStringExpression
     }
 
     /**
-     * Sets a new string
+     * Sets a new string.
      *
-     * @param string[] $string
+     * @param  string[] $string
      * @return self
      */
     public function setString(array $string)

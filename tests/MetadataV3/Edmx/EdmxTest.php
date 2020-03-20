@@ -11,7 +11,6 @@ use AlgoWeb\ODataMetadata\Writer\WritterContext;
 
 class EdmxTest extends TestCase
 {
-
     public function testEdmxTestXmlSerialize()
     {
         $writterContext =  new WritterContext(OdataVersions::THREE());
@@ -23,7 +22,8 @@ class EdmxTest extends TestCase
         $this->assertXmlStringEqualsXmlString('<edmx:Edmx xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:annotations="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:metadata="http://schemas.microsoft.com/ado/2007/08/DataServices/Metadata" Version="1.0"><edmx:DataServices metadata:DataServiceVersion="3.0"><Schema /></edmx:DataServices></edmx:Edmx>', $xml);
     }
 
-    public function testEdmxSerializePartialSchema(){
+    public function testEdmxSerializePartialSchema()
+    {
         $writterContext =  new WritterContext(OdataVersions::THREE());
         $edmx = new Edmx();
         $schema = new Schema('ODataWebV3.Northwind.Model');

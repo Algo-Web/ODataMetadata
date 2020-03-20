@@ -3,9 +3,7 @@
 
 namespace AlgoWeb\ODataMetadata\Writer;
 
-
 use AlgoWeb\ODataMetadata\OdataVersions;
-
 
 interface IAttribute
 {

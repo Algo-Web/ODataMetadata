@@ -7,9 +7,9 @@ use AlgoWeb\ODataMetadata\Tests\TestCase;
 
 class EntityContainerTest extends TestCase
 {
-
-    public static function getEntityContainer(){
-        $entityContainer = new EntityContainer("NorthwindEntities", true,null,true);
+    public static function getEntityContainer()
+    {
+        $entityContainer = new EntityContainer('NorthwindEntities', true, null, true);
 
         $entitySetarray = [
             ['Categories','NorthwindModel.Category'],
@@ -39,71 +39,72 @@ class EntityContainerTest extends TestCase
             ['Summary_of_Sales_by_Quarters','NorthwindModel.Summary_of_Sales_by_Quarter'],
             ['Summary_of_Sales_by_Years','NorthwindModel.Summary_of_Sales_by_Year'],
         ];
-        foreach($entitySetarray as $es){
-            $entityContainer->addToEntitySet(new EntityContainer\EntitySet($es[0],$es[1]));
+        foreach ($entitySetarray as $es) {
+            $entityContainer->addToEntitySet(new EntityContainer\EntitySet($es[0], $es[1]));
         }
         $assocationSetArray = [
-            new EntityContainer\AssociationSet("FK_Products_Categories",
-                "NorthwindModel.FK_Products_Categories",
-                new EntityContainer\AssociationSet\End("Categories","Categories"),
-                new EntityContainer\AssociationSet\End("Products","Products")
+            new EntityContainer\AssociationSet('FK_Products_Categories',
+                'NorthwindModel.FK_Products_Categories',
+                new EntityContainer\AssociationSet\End('Categories', 'Categories'),
+                new EntityContainer\AssociationSet\End('Products', 'Products')
             ),
-            new EntityContainer\AssociationSet("CustomerCustomerDemo",
-                "NorthwindModel.CustomerCustomerDemo",
-                new EntityContainer\AssociationSet\End("CustomerDemographics","CustomerDemographics"),
-                new EntityContainer\AssociationSet\End("Customers","Customers")
+            new EntityContainer\AssociationSet('CustomerCustomerDemo',
+                'NorthwindModel.CustomerCustomerDemo',
+                new EntityContainer\AssociationSet\End('CustomerDemographics', 'CustomerDemographics'),
+                new EntityContainer\AssociationSet\End('Customers', 'Customers')
             ),
-            new EntityContainer\AssociationSet("FK_Orders_Customers",
-                "NorthwindModel.FK_Orders_Customers",
-                new EntityContainer\AssociationSet\End("Customers","Customers"),
-                new EntityContainer\AssociationSet\End("Orders","Orders")
+            new EntityContainer\AssociationSet('FK_Orders_Customers',
+                'NorthwindModel.FK_Orders_Customers',
+                new EntityContainer\AssociationSet\End('Customers', 'Customers'),
+                new EntityContainer\AssociationSet\End('Orders', 'Orders')
             ),
-            new EntityContainer\AssociationSet("FK_Employees_Employees",
-                "NorthwindModel.FK_Employees_Employees",
-                new EntityContainer\AssociationSet\End("Employees","Employees"),
-                new EntityContainer\AssociationSet\End("Employees","Employees1")
+            new EntityContainer\AssociationSet('FK_Employees_Employees',
+                'NorthwindModel.FK_Employees_Employees',
+                new EntityContainer\AssociationSet\End('Employees', 'Employees'),
+                new EntityContainer\AssociationSet\End('Employees', 'Employees1')
             ),
-            new EntityContainer\AssociationSet("FK_Orders_Employees",
-                "NorthwindModel.FK_Orders_Employees",
-                new EntityContainer\AssociationSet\End("Employees","Employees"),
-                new EntityContainer\AssociationSet\End("Orders","Orders")
+            new EntityContainer\AssociationSet('FK_Orders_Employees',
+                'NorthwindModel.FK_Orders_Employees',
+                new EntityContainer\AssociationSet\End('Employees', 'Employees'),
+                new EntityContainer\AssociationSet\End('Orders', 'Orders')
             ),
-            new EntityContainer\AssociationSet("EmployeeTerritories",
-                "NorthwindModel.EmployeeTerritories",
-                new EntityContainer\AssociationSet\End("Employees","Employees"),
-                new EntityContainer\AssociationSet\End("Territories","Territories")
+            new EntityContainer\AssociationSet('EmployeeTerritories',
+                'NorthwindModel.EmployeeTerritories',
+                new EntityContainer\AssociationSet\End('Employees', 'Employees'),
+                new EntityContainer\AssociationSet\End('Territories', 'Territories')
             ),
-            new EntityContainer\AssociationSet("FK_Order_Details_Orders",
-                "NorthwindModel.FK_Order_Details_Orders",
-                new EntityContainer\AssociationSet\End("Order_Details","Order_Details"),
-                new EntityContainer\AssociationSet\End("Orders","Orders")
+            new EntityContainer\AssociationSet('FK_Order_Details_Orders',
+                'NorthwindModel.FK_Order_Details_Orders',
+                new EntityContainer\AssociationSet\End('Order_Details', 'Order_Details'),
+                new EntityContainer\AssociationSet\End('Orders', 'Orders')
             ),
-            new EntityContainer\AssociationSet("FK_Order_Details_Products",
-                "NorthwindModel.FK_Order_Details_Products",
-                new EntityContainer\AssociationSet\End("Order_Details","Order_Details"),
-                new EntityContainer\AssociationSet\End("Products","Products")
+            new EntityContainer\AssociationSet('FK_Order_Details_Products',
+                'NorthwindModel.FK_Order_Details_Products',
+                new EntityContainer\AssociationSet\End('Order_Details', 'Order_Details'),
+                new EntityContainer\AssociationSet\End('Products', 'Products')
             ),
-            new EntityContainer\AssociationSet("FK_Orders_Shippers",
-                "NorthwindModel.FK_Orders_Shippers",
-                new EntityContainer\AssociationSet\End("Orders","Orders"),
-                new EntityContainer\AssociationSet\End("Shippers","Shippers")
+            new EntityContainer\AssociationSet('FK_Orders_Shippers',
+                'NorthwindModel.FK_Orders_Shippers',
+                new EntityContainer\AssociationSet\End('Orders', 'Orders'),
+                new EntityContainer\AssociationSet\End('Shippers', 'Shippers')
             ),
-            new EntityContainer\AssociationSet("FK_Products_Suppliers",
-                "NorthwindModel.FK_Products_Suppliers",
-                new EntityContainer\AssociationSet\End("Products","Products"),
-                new EntityContainer\AssociationSet\End("Suppliers","Suppliers")
+            new EntityContainer\AssociationSet('FK_Products_Suppliers',
+                'NorthwindModel.FK_Products_Suppliers',
+                new EntityContainer\AssociationSet\End('Products', 'Products'),
+                new EntityContainer\AssociationSet\End('Suppliers', 'Suppliers')
             ),
-            new EntityContainer\AssociationSet("FK_Territories_Region",
-                "NorthwindModel.FK_Territories_Region",
-                new EntityContainer\AssociationSet\End("Regions","Region"),
-                new EntityContainer\AssociationSet\End("Territories","Territories")
+            new EntityContainer\AssociationSet('FK_Territories_Region',
+                'NorthwindModel.FK_Territories_Region',
+                new EntityContainer\AssociationSet\End('Regions', 'Region'),
+                new EntityContainer\AssociationSet\End('Territories', 'Territories')
             ),
         ];
         $entityContainer->setAssociationSet($assocationSetArray);
         return $entityContainer;
     }
 
-    public function testXmlSerialize(){
+    public function testXmlSerialize()
+    {
         $domNode =  $this->TESTNODE;
         $entityContainer = self::getEntityContainer();
         $domNode = $this->writterContext->write($entityContainer, false);
@@ -188,7 +189,7 @@ class EntityContainerTest extends TestCase
                 </AssociationSet>
             </EntityContainer>', $xml);
     }
-/*
- *
- */
+    /*
+     *
+     */
 }

@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasDocumentation;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.8 Association
+ * 2.1.8 Association.
  *
  * An Association element defines a peer-to-peer relationship between participating EntityType elements and can support
  * different multiplicities at the two ends. OnDelete operational behavior can be specified at any end of the
@@ -40,18 +40,18 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - Child elements of Association are to appear in this sequence: Documentation, End, ReferentialConstraint,
  *   AnnotationElement.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl10
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl10
  * XSD Type: TAssociation
  */
 class Association
 {
-    /**
+    /*
      * An Association element can contain a maximum of one Documentation element.
      */
     use HasDocumentation;
     /**
      * @var string $name Association MUST have a Name attribute defined. The Name attribute is of type SimpleIdentifier.
-     * An Association is a schema level named element and has a unique name.
+     *             An Association is a schema level named element and has a unique name.
      */
     private $name;
 
@@ -67,7 +67,7 @@ class Association
     private $endTwo = null;
 
     /**
-     * @var ReferentialConstraint $referentialConstraint Association can have one ReferentialConstraint element defined.
+     * @var ReferentialConstraint $referentialConstraint association can have one ReferentialConstraint element defined
      */
     private $referentialConstraint = null;
 
@@ -81,7 +81,7 @@ class Association
             ->setDocumentation($documentation);
     }
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -91,9 +91,9 @@ class Association
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName($name)
@@ -103,7 +103,7 @@ class Association
     }
 
     /**
-     * Gets the first end
+     * Gets the first end.
      *
      * @return AssociationEnd|null
      */
@@ -113,9 +113,9 @@ class Association
     }
 
     /**
-     * Sets a first end
+     * Sets a first end.
      *
-     * @param AssociationEnd|null $end
+     * @param  AssociationEnd|null $end
      * @return self
      */
     public function setEndOne(?AssociationEnd $end): self
@@ -125,7 +125,7 @@ class Association
     }
 
     /**
-     * Gets the second end
+     * Gets the second end.
      *
      * @return AssociationEnd|null
      */
@@ -135,9 +135,9 @@ class Association
     }
 
     /**
-     * Sets the second end
+     * Sets the second end.
      *
-     * @param AssociationEnd|null $end
+     * @param  AssociationEnd|null $end
      * @return self
      */
     public function setEndTwo(?AssociationEnd $end)
@@ -146,7 +146,7 @@ class Association
         return $this;
     }
     /**
-     * Gets as referentialConstraint
+     * Gets as referentialConstraint.
      *
      * @return ReferentialConstraint|null
      */
@@ -156,9 +156,9 @@ class Association
     }
 
     /**
-     * Sets a new referentialConstraint
+     * Sets a new referentialConstraint.
      *
-     * @param ReferentialConstraint|null $referentialConstraint
+     * @param  ReferentialConstraint|null $referentialConstraint
      * @return self
      */
     public function setReferentialConstraint(?ReferentialConstraint $referentialConstraint):self
@@ -182,7 +182,7 @@ class Association
     public function getAttributes(): array
     {
         return [
-            new AttributeContainer('Name',$this->getName())
+            new AttributeContainer('Name', $this->getName())
         ];
     }
 
@@ -199,4 +199,3 @@ class Association
         ];
     }
 }
-

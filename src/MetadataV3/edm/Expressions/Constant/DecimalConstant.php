@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * Class representing TDecimalConstantExpressionType
+ * Class representing TDecimalConstantExpressionType.
  *
  * 16.1.5 The Edm:Decimal Constant Expression
  *
@@ -23,13 +23,13 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *         <Decimal>3.14</Decimal>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.5
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.5
  * XSD Type: TDecimalConstantExpression
  */
 class DecimalConstant extends ConstantBase
 {
     /**
-     * Construct
+     * Construct.
      *
      * @param float $value
      */
@@ -39,9 +39,9 @@ class DecimalConstant extends ConstantBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param float $value
+     * @param  float $value
      * @return float
      */
     public function value(float $value = null): float
@@ -60,4 +60,3 @@ class DecimalConstant extends ConstantBase
         return 'Decimal';
     }
 }
-

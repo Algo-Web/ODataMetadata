@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Annotations\TypeAnnotation;
 use DOMElement;
 
@@ -16,7 +15,7 @@ trait HasTypeAnnotation
 
 
     /**
-     * Adds as typeAnnotation
+     * Adds as typeAnnotation.
      *
      * @param TypeAnnotation $typeAnnotation
      *@return self
@@ -28,9 +27,9 @@ trait HasTypeAnnotation
     }
 
     /**
-     * isset typeAnnotation
+     * isset typeAnnotation.
      *
-     * @param int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetTypeAnnotation(int $index): bool
@@ -39,9 +38,9 @@ trait HasTypeAnnotation
     }
 
     /**
-     * unset typeAnnotation
+     * unset typeAnnotation.
      *
-     * @param int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetTypeAnnotation(int $index): void
@@ -50,7 +49,7 @@ trait HasTypeAnnotation
     }
 
     /**
-     * Gets as typeAnnotation
+     * Gets as typeAnnotation.
      *
      * @return TypeAnnotation[]
      */
@@ -60,9 +59,9 @@ trait HasTypeAnnotation
     }
 
     /**
-     * Sets a new typeAnnotation
+     * Sets a new typeAnnotation.
      *
-     * @param TypeAnnotation[] $typeAnnotation
+     * @param  TypeAnnotation[] $typeAnnotation
      * @return self
      */
     public function setHasTypeAnnotation(array $typeAnnotation): self
@@ -73,7 +72,7 @@ trait HasTypeAnnotation
     public function XmlSerializeHasTypeAnnotation(DOMElement $thisNode): void
     {
         //TODO: add conext version check
-        foreach($this->getTypeAnnotation() as $annotation){
+        foreach ($this->getTypeAnnotation() as $annotation) {
             $annotation->XmlSerialize($thisNode);
         }
     }

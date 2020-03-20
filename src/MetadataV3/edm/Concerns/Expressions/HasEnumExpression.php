@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 trait HasEnumExpression
 {
     /**
@@ -14,10 +13,10 @@ trait HasEnumExpression
     ];
 
     /**
-     * Adds as enum
+     * Adds as enum.
      *
+     * @param  string $enum
      * @return self
-     * @param string $enum
      */
     public function addToEnum($enum)
     {
@@ -26,9 +25,9 @@ trait HasEnumExpression
     }
 
     /**
-     * isset enum
+     * isset enum.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetEnum($index)
@@ -37,9 +36,9 @@ trait HasEnumExpression
     }
 
     /**
-     * unset enum
+     * unset enum.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetEnum($index)
@@ -48,7 +47,7 @@ trait HasEnumExpression
     }
 
     /**
-     * Gets as enum
+     * Gets as enum.
      *
      * @return string[]
      */
@@ -58,9 +57,9 @@ trait HasEnumExpression
     }
 
     /**
-     * Sets a new enum
+     * Sets a new enum.
      *
-     * @param string[] $enum
+     * @param  string[] $enum
      * @return self
      */
     public function setEnum(array $enum)

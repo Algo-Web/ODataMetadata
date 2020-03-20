@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 trait HasFloatExpression
 {
     /**
@@ -15,10 +14,10 @@ trait HasFloatExpression
 
 
     /**
-     * Adds as float
+     * Adds as float.
      *
+     * @param  float $float
      * @return self
-     * @param float $float
      */
     public function addToFloat($float)
     {
@@ -27,9 +26,9 @@ trait HasFloatExpression
     }
 
     /**
-     * isset float
+     * isset float.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetFloat($index)
@@ -38,9 +37,9 @@ trait HasFloatExpression
     }
 
     /**
-     * unset float
+     * unset float.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetFloat($index)
@@ -49,7 +48,7 @@ trait HasFloatExpression
     }
 
     /**
-     * Gets as float
+     * Gets as float.
      *
      * @return float[]
      */
@@ -59,9 +58,9 @@ trait HasFloatExpression
     }
 
     /**
-     * Sets a new float
+     * Sets a new float.
      *
-     * @param float[] $float
+     * @param  float[] $float
      * @return self
      */
     public function setFloat(array $float)

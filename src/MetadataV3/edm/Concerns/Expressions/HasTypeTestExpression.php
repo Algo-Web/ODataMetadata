@@ -3,7 +3,6 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\IsTypeExpression;
 
 trait HasTypeTestExpression
@@ -16,7 +15,7 @@ trait HasTypeTestExpression
     ];
 
     /**
-     * Adds as typeTest
+     * Adds as typeTest.
      *
      * @param IsTypeExpression $typeTest
      *@return self
@@ -30,9 +29,9 @@ trait HasTypeTestExpression
 
 
     /**
-     * isset typeTest
+     * isset typeTest.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetTypeTest($index)
@@ -41,9 +40,9 @@ trait HasTypeTestExpression
     }
 
     /**
-     * unset typeTest
+     * unset typeTest.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetTypeTest($index)
@@ -52,7 +51,7 @@ trait HasTypeTestExpression
     }
 
     /**
-     * Gets as typeTest
+     * Gets as typeTest.
      *
      * @return IsTypeExpression[]
      */
@@ -62,9 +61,9 @@ trait HasTypeTestExpression
     }
 
     /**
-     * Sets a new typeTest
+     * Sets a new typeTest.
      *
-     * @param IsTypeExpression[] $typeTest
+     * @param  IsTypeExpression[] $typeTest
      * @return self
      */
     public function setTypeTest(array $typeTest)

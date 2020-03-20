@@ -3,13 +3,12 @@
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Trait HasMaxLength
+ * Trait HasMaxLength.
  *
  * 5.3.2 The edm:MaxLength Attribute
  *
@@ -17,7 +16,7 @@ use DOMElement;
  * for the edm:MaxLength facet attribute. The value of this attribute specifies the maximum length of the value of
  * the property on a type instance.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.2
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.2
  * @mixin EdmBase
  */
 trait HasMaxLength
@@ -28,7 +27,7 @@ trait HasMaxLength
     private $maxLength = null;
 
     /**
-     * Gets as maxLength
+     * Gets as maxLength.
      *
      * @return int|null
      */
@@ -38,9 +37,9 @@ trait HasMaxLength
     }
 
     /**
-     * Sets a new maxLength
+     * Sets a new maxLength.
      *
-     * @param int|null $maxLength
+     * @param  int|null $maxLength
      * @return self
      */
     public function setMaxLength(?int $maxLength): self
@@ -49,7 +48,8 @@ trait HasMaxLength
         return $this;
     }
 
-    public function getAttributesHasMaxLength(): array{
+    public function getAttributesHasMaxLength(): array
+    {
         return [new AttributeContainer('MaxLength', $this->getMaxLength(), true)];
     }
 }

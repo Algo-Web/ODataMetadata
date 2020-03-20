@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use InvalidArgumentException;
 
 /**
- * 16.1.1 The Edm:Binary Constant Expression
+ * 16.1.1 The Edm:Binary Constant Expression.
  *
  * The Edm:Binary constant expression evaluates to a primitive binary value.A binary expression MUST be assigned a
  * value of the type [xs:hexbinary][csdl19].
@@ -21,13 +21,13 @@ use InvalidArgumentException;
  *         <Binary>3f3c6d78206c</Binary>
  *     </ValueAnnotation>
  * Binary contents coded in hexadecimal.
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.1
  * XSD Type: TBinaryConstantExpression
  */
 class BinaryConstant extends ConstantBase
 {
     /**
-     * Construct
+     * Construct.
      *
      * @param string $value
      */
@@ -37,9 +37,9 @@ class BinaryConstant extends ConstantBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value(string $value = null):string
@@ -47,9 +47,9 @@ class BinaryConstant extends ConstantBase
         if (null !== $value) {
             // stripe any white space
             $value = preg_replace('/\s+/', '', $value);
-            if(!ctype_xdigit($value)){
+            if (!ctype_xdigit($value)) {
                 throw new InvalidArgumentException(
-                    sprintf("values assigned %s to should be hexadecimal string", __CLASS__));
+                    sprintf('values assigned %s to should be hexadecimal string', __CLASS__));
             }
             $this->__value = $value;
         }
@@ -64,4 +64,3 @@ class BinaryConstant extends ConstantBase
         return 'Binary';
     }
 }
-

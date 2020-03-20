@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * 2.1.6 PropertyRef
+ * 2.1.6 PropertyRef.
  *
  * PropertyRef element refers to a declared property of an EntityType.
  *
@@ -22,7 +22,7 @@ use DOMElement;
  *   declaring EntityType.
  * - In CSDL 2.0 and CSDL 3.0, PropertyRef can contain any number of AnnotationElement elements.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.3
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.3
  * XSD Type: TPropertyRef
  */
 class PropertyRef extends EdmBase
@@ -30,7 +30,7 @@ class PropertyRef extends EdmBase
 
     /**
      * @var string $name PropertyRef MUST define the Name attribute. The Name attribute refers to the name of a
-     * Property defined in the declaring EntityType.
+     *             Property defined in the declaring EntityType.
      */
     private $name;
 
@@ -41,7 +41,7 @@ class PropertyRef extends EdmBase
     }
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -51,9 +51,9 @@ class PropertyRef extends EdmBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(string $name): self
@@ -96,4 +96,3 @@ class PropertyRef extends EdmBase
         return [];
     }
 }
-

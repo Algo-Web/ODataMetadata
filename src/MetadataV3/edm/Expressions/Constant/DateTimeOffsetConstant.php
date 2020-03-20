@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DateTime;
 
 /**
- * Class representing TDateTimeOffsetConstantExpressionType
+ * Class representing TDateTimeOffsetConstantExpressionType.
  *
  * 16.1.4 The Edm:DateTimeOffset Constant Expression
  *
@@ -24,13 +24,13 @@ use DateTime;
  *         <DateTime>2000-01-01T16:00:00.000Z-09:00</DateTime>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.
  * XSD Type: TDateTimeOffsetConstantExpression
  */
 class DateTimeOffsetConstant extends ConstantBase
 {
     /**
-     * Construct
+     * Construct.
      *
      * @param DateTime $value
      */
@@ -40,9 +40,9 @@ class DateTimeOffsetConstant extends ConstantBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param DateTime $value
+     * @param  DateTime $value
      * @return DateTime
      */
     public function value(DateTime $value = null): DateTime
@@ -54,7 +54,7 @@ class DateTimeOffsetConstant extends ConstantBase
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */
@@ -72,4 +72,3 @@ class DateTimeOffsetConstant extends ConstantBase
         return 'DateTimeOffset';
     }
 }
-

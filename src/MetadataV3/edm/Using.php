@@ -7,7 +7,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasDocumentation;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.13 Using
+ * 2.1.13 Using.
  *
  * Using imports the contents of the specified namespace. A schema can refer to contents of another schema or namespace
  * by importing it by using the Using clause. The imported namespace can be associated with an alias that is then used
@@ -39,20 +39,20 @@ class Using extends EdmBase
     use HasDocumentation;
     /**
      * @var string $namespace 4.2.1 The edm:Namespace Attribute
-     * A using element MUST provide a [namespace][csdl19] value to the edm:Namespace attribute. The value provided to
-     * the namespace attribute SHOULD match the namespace of an entity model that is in scope.
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl4.3
+     *             A using element MUST provide a [namespace][csdl19] value to the edm:Namespace attribute. The value provided to
+     *             the namespace attribute SHOULD match the namespace of an entity model that is in scope.
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl4.3
      */
     private $namespace;
 
     /**
      * @var string $alias 4.2.2 The edm:Alias Attribute
-     * A using element MUST define a [simpleidentifier][csdl19] value for the edm:Alias attribute.
-     * An alias allows a CSDL model to substitute a short string for a long namespace. For instance,
-     * org.example.vocabularies.display may be bound to an alias of display. An alias qualified name is resolved to a
-     * fully qualified name by examining aliases on edm:Using and edm:Schema elements.
+     *             A using element MUST define a [simpleidentifier][csdl19] value for the edm:Alias attribute.
+     *             An alias allows a CSDL model to substitute a short string for a long namespace. For instance,
+     *             org.example.vocabularies.display may be bound to an alias of display. An alias qualified name is resolved to a
+     *             fully qualified name by examining aliases on edm:Using and edm:Schema elements.
      *
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl4.4
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl4.4
      */
     private $alias = null;
 
@@ -65,7 +65,7 @@ class Using extends EdmBase
     }
 
     /**
-     * Gets as namespace
+     * Gets as namespace.
      *
      * @return string
      */
@@ -75,9 +75,9 @@ class Using extends EdmBase
     }
 
     /**
-     * Sets a new namespace
+     * Sets a new namespace.
      *
-     * @param string $namespace
+     * @param  string $namespace
      * @return self
      */
     public function setNamespace(string $namespace): self
@@ -87,7 +87,7 @@ class Using extends EdmBase
     }
 
     /**
-     * Gets as alias
+     * Gets as alias.
      *
      * @return string|null
      */
@@ -97,9 +97,9 @@ class Using extends EdmBase
     }
 
     /**
-     * Sets a new alias
+     * Sets a new alias.
      *
-     * @param string|null $alias
+     * @param  string|null $alias
      * @return self
      */
     public function setAlias(?string $alias): self
@@ -135,4 +135,3 @@ class Using extends EdmBase
         return [$this->getDocumentation()];
     }
 }
-
