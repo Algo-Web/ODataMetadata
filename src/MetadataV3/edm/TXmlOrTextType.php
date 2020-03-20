@@ -1,19 +1,16 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\MetadataV3\edm;
-
-use AlgoWeb\ODataMetadata\IsOK;
+namespace AlgoWeb\ODataMetadata\MetadataV3\Edm;
 
 /**
- * Class representing TXmlOrTextType.
+ * Class representing TXmlOrTextType
  *
  * This type allows pretty much any content
  * XSD Type: TXmlOrText
  */
-class TXmlOrTextType extends IsOK
+class TXmlOrTextType
 {
-    public function isOK(&$msg = null)
-    {
-        return true;
-    }
+
+
 }
+
