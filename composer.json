@@ -34,7 +34,8 @@
     "fiunchinho/phpunit-randomizer": "2.0.*",
     "mockery/mockery": "0.9.*|^1.0@dev",
     "phpunit/phpunit": "^5.6",
-    "php-coveralls/php-coveralls": ">=v2.1"
+    "php-coveralls/php-coveralls": ">=v2.1",
+    "pcov/clobber": "dev-master"
   },
   "scripts": {
     "test": "phpunit",
