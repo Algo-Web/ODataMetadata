@@ -20,7 +20,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
-use Illuminate\Support\Str;
+use Doctrine\Common\Inflector\Inflector;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 
@@ -86,7 +86,7 @@ class MetadataManager
         $newEntity->setBaseType(null === $baseType ? null:$this->getNamespace() . $baseType->getName());
 
         if (null === $pluralName) {
-            $pluralName = Str::plural($newEntity->getName());
+            $pluralName = Inflector::pluralize($newEntity->getName());
         }
 
         $entitySet = new EntitySetAnonymousType();

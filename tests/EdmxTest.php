@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
 
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TEdmxType;
-use Illuminate\Support\Str;
+use Doctrine\Common\Inflector\Inflector;
 
 class EdmxTest extends TestCase
 {
@@ -220,7 +220,7 @@ class EdmxTest extends TestCase
         $this->assertNull($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($newEntity->getName(), 2));
+        $entitySet->setName(Inflector::pluralize($newEntity->getName()));
         $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
         $this->assertNull($msg);
@@ -257,7 +257,7 @@ class EdmxTest extends TestCase
         $this->assertNull($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($newEntity->getName(), 2));
+        $entitySet->setName(Inflector::pluralize($newEntity->getName()));
         $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
         $this->assertNull($msg);
@@ -281,7 +281,7 @@ class EdmxTest extends TestCase
         $this->assertNull($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($newEntity->getName(), 2));
+        $entitySet->setName(Inflector::pluralize($newEntity->getName()));
         $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
         $this->assertNull($msg);
