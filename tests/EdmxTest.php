@@ -2,19 +2,19 @@
 
 namespace AlgoWeb\ODataMetadata\Tests;
 
+use AlgoWeb\ODataMetadata\MetadataManager;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
 
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TEdmxType;
-use Illuminate\Support\Str;
 
 class EdmxTest extends TestCase
 {
     public function testIsOKAtDefault()
     {
-        $msg = null;
+        $msg = '';
         $edmx = new Edmx();
         $this->assertTrue($edmx->isOK($msg), $msg);
     }
@@ -22,10 +22,10 @@ class EdmxTest extends TestCase
     public function testDefaultSerializeOk()
     {
         $ds = DIRECTORY_SEPARATOR;
-        $msg = null;
+        $msg = '';
         $edmx = new Edmx();
         $this->assertTrue($edmx->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
         $ymlDir = dirname(__DIR__) . $ds . 'src' . $ds . 'MetadataV3' . $ds . 'JMSmetadata';
         $serializer =
             \JMS\Serializer\SerializerBuilder::create()
@@ -52,10 +52,10 @@ class EdmxTest extends TestCase
     public function testDefaultSerializeDeserializeRoundTrip()
     {
         $ds = DIRECTORY_SEPARATOR;
-        $msg = null;
+        $msg = '';
         $edmx = new Edmx();
         $this->assertTrue($edmx->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
         $this->checkEdmxSerialiseDeserialiseRoundTrip($ds, $edmx, $msg);
     }
 
@@ -85,7 +85,7 @@ class EdmxTest extends TestCase
     public function testFirstLevelSerializeDeserializeRoundTrip()
     {
         $ds = DIRECTORY_SEPARATOR;
-        $msg = null;
+        $msg = '';
         $schema = new Schema('data', 'metadata');
         $this->assertTrue($schema->isOK($msg), $msg);
         $services = new TDataServicesType('3.0', '1.0');
@@ -94,7 +94,7 @@ class EdmxTest extends TestCase
         $edmx = new Edmx();
         $edmx->setDataServiceType($services);
         $this->assertTrue($edmx->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
         $this->checkEdmxSerialiseDeserialiseRoundTrip($ds, $edmx, $msg);
     }
@@ -102,15 +102,15 @@ class EdmxTest extends TestCase
     public function testWithSingleEntitySerializeOk()
     {
         $ds = DIRECTORY_SEPARATOR;
-        $msg = null;
+        $msg = '';
         $newEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
         $newEntity->setName('simpleEntityType');
         $this->assertTrue($newEntity->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
         $edmx = new Edmx();
         $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $this->assertTrue($edmx->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
 
         $ymlDir = dirname(__DIR__) . $ds . 'src' . $ds . 'MetadataV3' . $ds . 'JMSmetadata';
@@ -126,15 +126,15 @@ class EdmxTest extends TestCase
     public function testWithSingleEntitySerializeDeserializeRoundTrip()
     {
         $ds = DIRECTORY_SEPARATOR;
-        $msg = null;
+        $msg = '';
         $newEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
         $newEntity->setName('simpleEntityType');
         $this->assertTrue($newEntity->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
         $edmx = new Edmx();
         $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $this->assertTrue($edmx->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
         $this->checkEdmxSerialiseDeserialiseRoundTrip($ds, $edmx, $msg);
     }
@@ -143,7 +143,7 @@ class EdmxTest extends TestCase
     {
         $this->markTestSkipped('Skipped until service-document models get implemented');
         $ds = DIRECTORY_SEPARATOR;
-        $msg = null;
+        $msg = '';
 
         $docLocation = dirname(__DIR__) . $ds . 'tests' . $ds . 'exampleV3ServiceDocument.xml';
         $document = file_get_contents($docLocation);
@@ -163,7 +163,7 @@ class EdmxTest extends TestCase
     public function testKnownGoodV3MetadataDeserialiseToOk()
     {
         $ds = DIRECTORY_SEPARATOR;
-        $msg = null;
+        $msg = '';
 
         $docLocation = dirname(__DIR__) . $ds . 'tests' . $ds . 'exampleV3ServiceMetadata.xml';
         $document = file_get_contents($docLocation);
@@ -184,7 +184,7 @@ class EdmxTest extends TestCase
     {
         $this->markTestSkipped();
         $ds = DIRECTORY_SEPARATOR;
-        $msg = null;
+        $msg = '';
 
         $docLocation = dirname(__DIR__) . $ds . 'tests' . $ds . 'exampleV3ServiceMetadata.xml';
         $document = file_get_contents($docLocation);
@@ -206,29 +206,29 @@ class EdmxTest extends TestCase
     public function testWithSingleEntityWithPropertiesSerializeOk()
     {
         $ds = DIRECTORY_SEPARATOR;
-        $msg = null;
+        $msg = '';
         $newProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
         $newProperty->setName('TheFirstProperty');
         $newProperty->setType('String');
         $this->assertTrue($newProperty->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
         $newEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
         $newEntity->setName('simpleEntityType');
         $newEntity->addToProperty($newProperty);
         $this->assertTrue($newEntity->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($newEntity->getName(), 2));
+        $entitySet->setName(MetadataManager::pluralize($newEntity->getName()));
         $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
         $edmx = new Edmx();
         $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         $this->assertTrue($edmx->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
 
         $ymlDir = dirname(__DIR__) . $ds . 'src' . $ds . 'MetadataV3' . $ds . 'JMSmetadata';
@@ -243,29 +243,29 @@ class EdmxTest extends TestCase
     public function testWithSingleEntityWithPropertiesSerializeDeserializeRoundTrip()
     {
         $ds = DIRECTORY_SEPARATOR;
-        $msg = null;
+        $msg = '';
         $newProperty = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityPropertyType();
         $newProperty->setName('TheFirstProperty');
         $newProperty->setType('String');
         $this->assertTrue($newProperty->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
         $newEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
         $newEntity->setName('simpleEntityType');
         $newEntity->addToProperty($newProperty);
         $this->assertTrue($newEntity->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($newEntity->getName(), 2));
+        $entitySet->setName(MetadataManager::pluralize($newEntity->getName()));
         $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
         $edmx = new Edmx();
         $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         $this->assertTrue($edmx->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
         $this->checkEdmxSerialiseDeserialiseRoundTrip($ds, $edmx, $msg);
     }
@@ -273,23 +273,23 @@ class EdmxTest extends TestCase
     public function testWithSingleEntityWithoutPropertiesSerializeDeserializeRoundTrip()
     {
         $ds = DIRECTORY_SEPARATOR;
-        $msg = null;
+        $msg = '';
 
         $newEntity = new \AlgoWeb\ODataMetadata\MetadataV3\edm\TEntityTypeType();
         $newEntity->setName('simpleEntityType');
         $this->assertTrue($newEntity->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Str::plural($newEntity->getName(), 2));
+        $entitySet->setName(MetadataManager::pluralize($newEntity->getName()));
         $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
         $edmx = new Edmx();
         $edmx->getDataServiceType()->getSchema()[0]->addToEntityType($newEntity);
         $edmx->getDataServiceType()->getSchema()[0]->getEntityContainer()[0]->addToEntitySet($entitySet);
         $this->assertTrue($edmx->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
         $this->checkEdmxSerialiseDeserialiseRoundTrip($ds, $edmx, $msg);
     }

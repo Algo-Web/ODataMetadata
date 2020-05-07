@@ -20,7 +20,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TPropertyRefType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TReferentialConstraintRoleElementType;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
-use Illuminate\Support\Str;
+use Doctrine\Common\Inflector\Inflector;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 
@@ -83,10 +83,10 @@ class MetadataManager
         $newEntity->setName($name);
         $this->addDocumentation($summary, $longDescription, $newEntity);
         $newEntity->setAbstract($isAbstract);
-        $newEntity->setBaseType(null === $baseType ? null:$this->getNamespace() . $baseType->getName());
+        $newEntity->setBaseType(null === $baseType ? null : $this->getNamespace() . $baseType->getName());
 
         if (null === $pluralName) {
-            $pluralName = Str::plural($newEntity->getName());
+            $pluralName = self::pluralize($newEntity->getName());
         }
 
         $entitySet = new EntitySetAnonymousType();
@@ -232,7 +232,7 @@ class MetadataManager
         $principalEntitySetName = self::getResourceSetNameFromResourceType($principalType->getName());
         $dependentEntitySetName = self::getResourceSetNameFromResourceType($dependentType->getName());
         $relationName = $principalType->getName() . '_' . $principalProperty . '_'
-                        . $dependentType->getName() . '_' . $dependentProperty;
+            . $dependentType->getName() . '_' . $dependentProperty;
         $relationName = trim($relationName, '_');
 
         $namespace = $this->getNamespace();
@@ -312,7 +312,7 @@ class MetadataManager
         if (null != $dependentNavigationProperty) {
             if ($dependentNavigationProperty->getRelationship() != $principalNavigationProperty->getRelationship()) {
                 $msg = 'If you have both a dependent property and a principal property,'
-                       .' relationship should match';
+                    . ' relationship should match';
                 throw new \InvalidArgumentException($msg);
             }
             if ($dependentNavigationProperty->getFromRole() != $principalNavigationProperty->getToRole()
@@ -445,7 +445,7 @@ class MetadataManager
 
         $namespace = $this->getNamespace();
         $typeName = $expectedReturnType->getName();
-        $fqTypeName = $namespace.$typeName;
+        $fqTypeName = $namespace . $typeName;
         $fqSetName = ($entitySet == null) ? $typeName : $entitySet->getName();
 
         $returnType = new TFunctionImportReturnTypeType();
@@ -552,5 +552,13 @@ class MetadataManager
                 $newEntity->setDocumentation($documentation);
             }
         }
+    }
+
+    public static function pluralize($string): string
+    {
+        if (class_exists('Doctrine\Inflector\InflectorFactory')) {
+            return \Doctrine\Inflector\InflectorFactory::create()->build()->pluralize($string);
+        }
+        return Inflector::pluralize($string);
     }
 }

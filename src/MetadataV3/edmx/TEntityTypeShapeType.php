@@ -226,6 +226,7 @@ class TEntityTypeShapeType extends IsOK
     }
 
     /**
+     * @param  null|mixed $msg
      * @return bool
      */
     public function isOK(&$msg = null)

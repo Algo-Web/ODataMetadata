@@ -105,7 +105,7 @@ checks:
     code_rating: true
     closure_use_not_conflicting: true
     closure_use_modifiable: true
-    classes_in_camel_caps: false
+    classes_in_camel_caps: true
     check_method_contracts:
       verify_interface_like_constraints: true
       verify_documented_constraints: true
@@ -164,7 +164,7 @@ coding_style:
 tools:
   php_cs_fixer:
     config:
-      level: all
+      level: psr2
   php_code_sniffer:
     config:
       standard: PSR2
@@ -173,3 +173,12 @@ tools:
   php_pdepend: true
   php_sim: true
   php_changetracking: true
+
+build_failure_conditions:
+  - 'elements.rating(<= F).new.exists'
+  - 'issues.severity(>= CRITICAL).new.exists'
+
+build:
+  dependencies:
+    before:
+      - composer remove --dev pcov/clobber --no-update
