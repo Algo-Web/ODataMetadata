@@ -1,6 +1,7 @@
 {
   "name": "algo-web/o-data-metadata",
   "type": "library",
+  "description": "OData metadata handling for PHP developers",
   "keywords": [
     "OData",
     "metadata",
