@@ -31,7 +31,6 @@
   "require-dev": {
     "phpspec/phpspec": "^3.0",
     "squizlabs/php_codesniffer": "~2.3",
-    "fiunchinho/phpunit-randomizer": "2.0.*",
     "mockery/mockery": "0.9.*|^1.0@dev",
     "phpunit/phpunit": "^6.5",
     "php-coveralls/php-coveralls": ">=v2.1",
