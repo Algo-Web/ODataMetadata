@@ -2,13 +2,13 @@
 
 namespace AlgoWeb\ODataMetadata\Tests;
 
+use AlgoWeb\ODataMetadata\MetadataManager;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
 
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\TEdmxType;
-use Doctrine\Common\Inflector\Inflector;
 
 class EdmxTest extends TestCase
 {
@@ -220,7 +220,7 @@ class EdmxTest extends TestCase
         $this->assertNull($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Inflector::pluralize($newEntity->getName()));
+        $entitySet->setName(MetadataManager::pluralize($newEntity->getName()));
         $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
         $this->assertNull($msg);
@@ -257,7 +257,7 @@ class EdmxTest extends TestCase
         $this->assertNull($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Inflector::pluralize($newEntity->getName()));
+        $entitySet->setName(MetadataManager::pluralize($newEntity->getName()));
         $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
         $this->assertNull($msg);
@@ -281,7 +281,7 @@ class EdmxTest extends TestCase
         $this->assertNull($msg);
 
         $entitySet = new \AlgoWeb\ODataMetadata\MetadataV3\edm\EntityContainer\EntitySetAnonymousType();
-        $entitySet->setName(Inflector::pluralize($newEntity->getName()));
+        $entitySet->setName(MetadataManager::pluralize($newEntity->getName()));
         $entitySet->setEntityType($newEntity->getName());
         $this->assertTrue($entitySet->isOK($msg), $msg);
         $this->assertNull($msg);
