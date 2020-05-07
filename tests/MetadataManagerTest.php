@@ -21,7 +21,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edmx\TDataServicesType;
 use JMS\Serializer\Serializer;
 use Mockery as m;
 
-class MetadataManagerTest extends \PHPUnit_Framework_TestCase
+class MetadataManagerTest extends \PHPUnit\Framework\TestCase
 {
     public function testIsOKAtDefault()
     {

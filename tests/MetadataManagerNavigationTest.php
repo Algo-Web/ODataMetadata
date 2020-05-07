@@ -18,7 +18,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\TTextType;
 use AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx;
 use Mockery as m;
 
-class MetadataManagerNavigationTest extends \PHPUnit_Framework_TestCase
+class MetadataManagerNavigationTest extends \PHPUnit\Framework\TestCase
 {
     public function testEntitysAndPropertiesAndNavigationPropertiesAndRoleDIRECTION()
     {
