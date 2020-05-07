@@ -61,13 +61,13 @@ class MetadataManager
     }
 
     /**
-     * @param string $name
-     * @param TEntityTypeType|null $baseType
-     * @param bool $isAbstract
-     * @param string $accessType
-     * @param null $summary
-     * @param null $longDescription
-     * @param null|mixed $pluralName
+     * @param  string               $name
+     * @param  TEntityTypeType|null $baseType
+     * @param  bool                 $isAbstract
+     * @param  string               $accessType
+     * @param  null                 $summary
+     * @param  null                 $longDescription
+     * @param  null|mixed           $pluralName
      * @return IsOK[]
      */
     public function addEntityType(
@@ -78,8 +78,7 @@ class MetadataManager
         $summary = null,
         $longDescription = null,
         $pluralName = null
-    )
-    {
+    ) {
         $newEntity = new TEntityTypeType();
         $newEntity->setName($name);
         $this->addDocumentation($summary, $longDescription, $newEntity);
@@ -132,8 +131,7 @@ class MetadataManager
         $nullable = false,
         $summary = null,
         $longDescription = null
-    )
-    {
+    ) {
         if (is_array($defaultValue) || is_object($defaultValue)) {
             throw new \InvalidArgumentException('Default value cannot be object or array');
         }
@@ -157,12 +155,12 @@ class MetadataManager
      * @param TEntityTypeType $entityType
      * @param $name
      * @param $type
-     * @param null $defaultValue
-     * @param bool $nullable
-     * @param bool $isKey
-     * @param null $storeGeneratedPattern
-     * @param null $summary
-     * @param null $longDescription
+     * @param  null                $defaultValue
+     * @param  bool                $nullable
+     * @param  bool                $isKey
+     * @param  null                $storeGeneratedPattern
+     * @param  null                $summary
+     * @param  null                $longDescription
      * @return TEntityPropertyType
      */
     public function addPropertyToEntityType(
@@ -175,8 +173,7 @@ class MetadataManager
         $storeGeneratedPattern = null,
         $summary = null,
         $longDescription = null
-    )
-    {
+    ) {
         $newProperty = new TEntityPropertyType();
         $newProperty->setName($name);
         $newProperty->setType($type);
@@ -201,17 +198,17 @@ class MetadataManager
      * @param  $principalProperty
      * @param TEntityTypeType $dependentType
      * @param  $dependentMultiplicity
-     * @param string $dependentProperty
-     * @param array|null $principalConstraintProperty
-     * @param array|null $dependentConstraintProperty
-     * @param string $principalGetterAccess
-     * @param string $principalSetterAccess
-     * @param string $dependentGetterAccess
-     * @param string $dependentSetterAccess
-     * @param null $principalSummery
-     * @param null $principalLongDescription
-     * @param null $dependentSummery
-     * @param null $dependentLongDescription
+     * @param  string           $dependentProperty
+     * @param  array|null       $principalConstraintProperty
+     * @param  array|null       $dependentConstraintProperty
+     * @param  string           $principalGetterAccess
+     * @param  string           $principalSetterAccess
+     * @param  string           $dependentGetterAccess
+     * @param  string           $dependentSetterAccess
+     * @param  null             $principalSummery
+     * @param  null             $principalLongDescription
+     * @param  null             $dependentSummery
+     * @param  null             $dependentLongDescription
      * @return array<IsOK|null>
      */
     public function addNavigationPropertyToEntityType(
@@ -231,8 +228,7 @@ class MetadataManager
         $principalLongDescription = null,
         $dependentSummery = null,
         $dependentLongDescription = null
-    )
-    {
+    ) {
         $principalEntitySetName = self::getResourceSetNameFromResourceType($principalType->getName());
         $dependentEntitySetName = self::getResourceSetNameFromResourceType($dependentType->getName());
         $relationName = $principalType->getName() . '_' . $principalProperty . '_'
@@ -291,14 +287,14 @@ class MetadataManager
     }
 
     /**
-     * @param TEntityTypeType $principalType
-     * @param TEntityTypeType $dependentType
-     * @param TNavigationPropertyType $principalNavigationProperty
+     * @param TEntityTypeType              $principalType
+     * @param TEntityTypeType              $dependentType
+     * @param TNavigationPropertyType      $principalNavigationProperty
      * @param TNavigationPropertyType|null $dependentNavigationProperty
      * @param $principalMultiplicity
      * @param $dependentMultiplicity
-     * @param array|null $principalConstraintProperty
-     * @param array|null $dependentConstraintProperty
+     * @param  array|null       $principalConstraintProperty
+     * @param  array|null       $dependentConstraintProperty
      * @return TAssociationType
      */
     protected function createAssocationFromNavigationProperty(
@@ -310,8 +306,7 @@ class MetadataManager
         $dependentMultiplicity,
         array $principalConstraintProperty = null,
         array $dependentConstraintProperty = null
-    )
-    {
+    ) {
         $multCombo = ['*' => ['*', '1', '0..1'], '0..1' => ['1', '*'], '1' => ['*', '0..1']];
         $multKeys = array_keys($multCombo);
         if (null != $dependentNavigationProperty) {
@@ -384,17 +379,16 @@ class MetadataManager
     }
 
     /**
-     * @param TAssociationType $association
-     * @param string $principalEntitySetName
-     * @param string $dependentEntitySetName
+     * @param  TAssociationType            $association
+     * @param  string                      $principalEntitySetName
+     * @param  string                      $dependentEntitySetName
      * @return AssociationSetAnonymousType
      */
     protected function createAssocationSetForAssocation(
         TAssociationType $association,
         $principalEntitySetName,
         $dependentEntitySetName
-    )
-    {
+    ) {
         $as = new AssociationSetAnonymousType();
         $name = $association->getName();
         $as->setName($name);
@@ -422,11 +416,11 @@ class MetadataManager
     }
 
     /**
-     * @param string $name
-     * @param IsOK $expectedReturnType
-     * @param EntitySetAnonymousType|null $entitySet
-     * @param TTextType|null $shortDesc
-     * @param TTextType|null $longDesc
+     * @param  string                      $name
+     * @param  IsOK                        $expectedReturnType
+     * @param  EntitySetAnonymousType|null $entitySet
+     * @param  TTextType|null              $shortDesc
+     * @param  TTextType|null              $longDesc
      * @return FunctionImportAnonymousType
      */
     public function createSingleton(
@@ -435,8 +429,7 @@ class MetadataManager
         EntitySetAnonymousType $entitySet = null,
         TTextType $shortDesc = null,
         TTextType $longDesc = null
-    )
-    {
+    ) {
         if (!($expectedReturnType instanceof TEntityTypeType) && !($expectedReturnType instanceof TComplexTypeType)) {
             $msg = 'Expected return type must be either TEntityType or TComplexType';
             throw new \InvalidArgumentException($msg);
@@ -526,8 +519,8 @@ class MetadataManager
     }
 
     /**
-     * @param array $constraintProperty
-     * @param string $targRole
+     * @param  array                                 $constraintProperty
+     * @param  string                                $targRole
      * @return TReferentialConstraintRoleElementType
      */
     protected function makeReferentialConstraint(array $constraintProperty, $targRole)
