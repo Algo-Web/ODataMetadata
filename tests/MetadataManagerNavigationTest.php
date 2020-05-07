@@ -22,7 +22,7 @@ class MetadataManagerNavigationTest extends \PHPUnit\Framework\TestCase
 {
     public function testEntitysAndPropertiesAndNavigationPropertiesAndRoleDIRECTION()
     {
-        $msg = null;
+        $msg = '';
         $metadataManager = new MetadataManager();
         $result = null;
 
@@ -130,10 +130,10 @@ class MetadataManagerNavigationTest extends \PHPUnit\Framework\TestCase
 //        <NavigationProperty Name="Order_Details" Relationship="NorthwindModel.FK_Order_Details_Products" ToRole="Order_Details" FromRole="Products"/>
 
 
-        $msg = null;
+        $msg = '';
         $edmx = $metadataManager->getEdmx();
         $this->assertTrue($edmx->isOK($msg), $msg);
-        $this->assertNull($msg);
+        $this->assertEmpty($msg);
 
         $d = $metadataManager->getEdmxXML();
         $categoryEType = null;
