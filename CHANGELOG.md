@@ -1,3 +1,10 @@
+0.1.3 (2020-05-07)
+----------
+
+   * Remove obsolete dependencies
+   * Trim down and unwrap dependencies in use
+   * Drop PHP 5.6 support
+
 0.1.2 (2019-07-15)
 ------------------
 
