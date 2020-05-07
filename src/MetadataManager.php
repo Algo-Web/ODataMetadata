@@ -554,10 +554,10 @@ class MetadataManager
         }
     }
 
-    public function pluralize($string): string
+    public static function pluralize($string): string
     {
         if (class_exists('Doctrine\Inflector\InflectorFactory')) {
-            return Doctrine\Inflector\InflectorFactory::create()->build()->pluralize($string);
+            return \Doctrine\Inflector\InflectorFactory::create()->build()->pluralize($string);
         }
         return Inflector::pluralize($string);
     }
