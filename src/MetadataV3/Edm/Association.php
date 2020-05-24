@@ -87,7 +87,7 @@ class Association
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -98,7 +98,7 @@ class Association
      * @param string $name
      * @return self
      */
-    public function setName($name)
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
