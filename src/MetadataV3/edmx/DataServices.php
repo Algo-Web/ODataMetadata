@@ -42,13 +42,15 @@ class DataServices extends DomBase implements ArrayAccess
     {
         return 'edmx:DataServices';
     }
+
     /**
+     * @param WritterContext|null $wc
      * @return array|AttributeContainer[]
      */
     public function getAttributes(WritterContext $wc = null): array
     {
         return [
-            new AttributeContainer('metadata:DataServiceVersion',$wc->getOdataVersion())
+            new AttributeContainer('metadata:DataServiceVersion', $wc->getOdataVersion())
         ];
     }
 
