@@ -104,7 +104,7 @@ class NavigationProperty extends EdmBase
      *
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -115,7 +115,7 @@ class NavigationProperty extends EdmBase
      * @param string $name
      * @return self
      */
-    public function setName($name)
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
