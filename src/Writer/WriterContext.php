@@ -11,7 +11,7 @@ use AlgoWeb\ODataMetadata\OdataVersions;
 use DOMDocument;
 use DOMElement;
 
-class WritterContext
+class WriterContext
 {
     private $namespaceContainer;
 

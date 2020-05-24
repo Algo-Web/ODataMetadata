@@ -164,7 +164,7 @@ class AttributeContainer implements IAttribute
         return $this;
     }
 
-    public function apply(\DOMElement $node, WritterContext $context)
+    public function apply(\DOMElement $node, WriterContext $context)
     {
         if ($this->nullCheck && empty($this->value)) {
             return;

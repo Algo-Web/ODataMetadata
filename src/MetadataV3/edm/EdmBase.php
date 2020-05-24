@@ -8,7 +8,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\OdataVersions;
-use AlgoWeb\ODataMetadata\Writer\WritterContext;
+use AlgoWeb\ODataMetadata\Writer\WriterContext;
 use DOMElement;
 
 abstract class EdmBase extends DomBase

@@ -18,9 +18,9 @@ class SchemaTest extends TestCase
     {
         $schema = new Schema($namespace,$alias,[],[],[],[],$using);
 
-        $domNode = $this->writterContext->write($schema, false);
+        $domNode = $this->writerContext->write($schema, false);
         $this->TESTNODE->appendChild($domNode);
-        $xml = $this->writterContext->getBaseDocument()->saveXML($domNode);
+        $xml = $this->writerContext->getBaseDocument()->saveXML($domNode);
         $this->assertEquals($expected, $xml);
     }
 

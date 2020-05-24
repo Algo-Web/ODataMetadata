@@ -7,14 +7,14 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edmx\Edmx;
 use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Tests\MetadataV3\Edm\EntityContainerTest;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
-use AlgoWeb\ODataMetadata\Writer\WritterContext;
+use AlgoWeb\ODataMetadata\Writer\WriterContext;
 
 class EdmxTest extends TestCase
 {
 
     public function testEdmxTestXmlSerialize()
     {
-        $writterContext =  new WritterContext(OdataVersions::THREE());
+        $writterContext =  new WriterContext(OdataVersions::THREE());
 
         $edmx = new Edmx();
         $domNode = $writterContext->write($edmx);
@@ -24,7 +24,7 @@ class EdmxTest extends TestCase
     }
 
     public function testEdmxSerializePartialSchema(){
-        $writterContext =  new WritterContext(OdataVersions::THREE());
+        $writterContext =  new WriterContext(OdataVersions::THREE());
         $edmx = new Edmx();
         $schema = new Schema('ODataWebV3.Northwind.Model');
         $edmx->addToDataServices($schema);

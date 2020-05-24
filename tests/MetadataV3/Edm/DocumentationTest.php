@@ -19,9 +19,9 @@ class DocumentationTest extends TestCase
         $domNode =  $this->TESTNODE;
 
         $dataService = new Documentation($summery, $description);
-        $domNode = $this->writterContext->write($dataService, false);
+        $domNode = $this->writerContext->write($dataService, false);
         $this->TESTNODE->appendChild($domNode);
-        $xml = $this->writterContext->getBaseDocument()->saveXML($domNode);
+        $xml = $this->writerContext->getBaseDocument()->saveXML($domNode);
         $this->assertEquals($expected, $xml);
     }
 

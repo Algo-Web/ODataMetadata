@@ -11,7 +11,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\edm\EdmBase;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
-use AlgoWeb\ODataMetadata\Writer\WritterContext;
+use AlgoWeb\ODataMetadata\Writer\WriterContext;
 
 /**
  * Class TEdmxType
@@ -133,7 +133,7 @@ class Edmx extends DomBase
 
 
     public function XmlSerialize(OdataVersions $version){
-        $context = new WritterContext($version);
+        $context = new WriterContext($version);
         $domDocument = $context->getBaseDocument();
         $edmxElement = $context->createEdmxElement('edmx:Edmx');
         $domDocument->appendChild($edmxElement);
@@ -144,7 +144,7 @@ class Edmx extends DomBase
         return $domDocument->saveXML();
     }
 
-    private function setUpNamespaces(\DOMElement $edmxElement, WritterContext $context){
+    private function setUpNamespaces(\DOMElement $edmxElement, WriterContext $context){
         $edmxElement->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns', $context->getEdmNamespace());
         $edmxElement->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:annotations', $context->getAnnotationsNamespace());
         $edmxElement->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:metadata', $context->getMetadataNamespace());
