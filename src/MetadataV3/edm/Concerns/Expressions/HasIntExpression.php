@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 trait HasIntExpression
 {
     /**
@@ -70,5 +69,4 @@ trait HasIntExpression
         $this->int = $int;
         return $this;
     }
-
 }

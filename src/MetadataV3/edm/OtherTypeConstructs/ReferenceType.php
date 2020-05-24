@@ -150,7 +150,6 @@ class ReferenceType extends EdmBase implements IStructuralTypes, IAttribute
 
     public function getAttributeName(): string
     {
-       return 'Type';
+        return 'Type';
     }
 }
-

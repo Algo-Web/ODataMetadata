@@ -98,7 +98,7 @@ class TypeRef extends EdmBase implements IStructuralTypes, IAttribute
             new AttributeContainer('Type', $this->getType()->getName())
         ];
         return $this->getType() instanceof IScalarType ?
-            array_merge($this->getAttributesHasFacets(),$baseAttribute) :
+            array_merge($this->getAttributesHasFacets(), $baseAttribute) :
             $baseAttribute;
     }
 
@@ -145,4 +145,3 @@ class TypeRef extends EdmBase implements IStructuralTypes, IAttribute
         return false; //TODO: basically we check to see if Type is the only thing set, if so yes we are an attribute;
     }
 }
-

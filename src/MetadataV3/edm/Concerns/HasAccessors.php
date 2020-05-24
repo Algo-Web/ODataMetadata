@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\AccessorType;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
@@ -70,11 +69,13 @@ trait HasAccessors
         return $this;
     }
 
-    public function XmlSerializeHasAccessors(DOMElement $thisNode){
-        $this->XmlSerializeNullableAttribute($thisNode,'cg:SetterAccess', $this->getSetterAccess());
-        $this->XmlSerializeNullableAttribute($thisNode,'cg:GetterAccess', $this->getGetterAccess());
+    public function XmlSerializeHasAccessors(DOMElement $thisNode)
+    {
+        $this->XmlSerializeNullableAttribute($thisNode, 'cg:SetterAccess', $this->getSetterAccess());
+        $this->XmlSerializeNullableAttribute($thisNode, 'cg:GetterAccess', $this->getGetterAccess());
     }
-    public function getAttributesHasAccessors(): array{
+    public function getAttributesHasAccessors(): array
+    {
         return [
             new AttributeContainer('cg:SetterAccess', $this->getSetterAccess(), true),
             new AttributeContainer('cg:GetterAccess', $this->getGetterAccess(), true)

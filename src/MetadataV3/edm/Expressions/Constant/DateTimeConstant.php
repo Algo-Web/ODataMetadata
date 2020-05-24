@@ -72,6 +72,4 @@ class DateTimeConstant extends ConstantBase
     {
         return 'DateTime';
     }
-
 }
-

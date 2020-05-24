@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Property;
 use DOMElement;
@@ -44,7 +43,8 @@ class PropertyHolder implements \ArrayAccess
         unset($this->property[$offset]);
     }
 
-    public function __toArray(){
+    public function __toArray()
+    {
         return $this->property;
     }
 }

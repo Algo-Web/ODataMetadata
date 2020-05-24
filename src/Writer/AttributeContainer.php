@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Writer;
 
-
 use AlgoWeb\ODataMetadata\OdataVersions;
 
 class AttributeContainer implements IAttribute
@@ -99,8 +98,8 @@ class AttributeContainer implements IAttribute
         bool $nullCheck = false,
         OdataVersions $forVersion = null,
         array $prohibitedVersions = []
-    )
-    {
+    ) {
+    
         $this
             ->setAttributeName($name)
             ->setAttributeForVersion($forVersion)
@@ -111,7 +110,7 @@ class AttributeContainer implements IAttribute
 
     private function strval($value):string
     {
-        if(is_bool($value)){
+        if (is_bool($value)) {
             return $value ? "true" : "false";
         }
         return strval($value);
@@ -135,7 +134,7 @@ class AttributeContainer implements IAttribute
     public function setAttributeName(string $name): AttributeContainer
     {
         $prefix = null;
-        if(strpos($name, ':') !== false) {
+        if (strpos($name, ':') !== false) {
             list($prefix, $name) = explode(":", $name);
         }
         $this->name = $name;
@@ -170,7 +169,7 @@ class AttributeContainer implements IAttribute
             return;
         }
         if (null === $this->prefix) {
-$node->setAttribute($this->name,$this->value);
+            $node->setAttribute($this->name, $this->value);
         } else {
                 $node->setAttributeNS($context->getNamespaceForPrefix($this->prefix), $this->prefix . ':' . $this->name, $this->value);
         }

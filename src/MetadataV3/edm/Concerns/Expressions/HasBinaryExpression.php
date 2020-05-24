@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 trait HasBinaryExpression
 {
     /**
@@ -72,5 +71,4 @@ trait HasBinaryExpression
         $this->binary = $binary;
         return $this;
     }
-
 }

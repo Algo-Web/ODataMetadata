@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
@@ -54,7 +53,8 @@ trait HasNullable
         return $this;
     }
 
-    public function getAttributesHasNullable(): array{
+    public function getAttributesHasNullable(): array
+    {
         return [new AttributeContainer('Nullable', $this->getNullable(), true)];
     }
 }

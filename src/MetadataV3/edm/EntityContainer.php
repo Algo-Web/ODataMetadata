@@ -112,9 +112,10 @@ class EntityContainer extends EdmBase
     public function __construct(
         string $name,
         bool $isDefaultEntityContainer = false,
-        Documentation $documentation= null,
-        bool $lazyLoadingEnabled = false)
-    {
+        Documentation $documentation = null,
+        bool $lazyLoadingEnabled = false
+    ) {
+    
         $this->setName($name)
             ->setIsDefaultEntityContainer($isDefaultEntityContainer)
             ->setLazyLoadingEnabled($lazyLoadingEnabled)
@@ -433,4 +434,3 @@ class EntityContainer extends EdmBase
         );
     }
 }
-

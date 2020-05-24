@@ -86,4 +86,3 @@ class ValueTerm extends EdmBase
         return [$this->getChildElementsHasType()];
     }
 }
-

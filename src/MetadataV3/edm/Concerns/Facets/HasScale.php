@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
@@ -53,7 +52,8 @@ trait HasScale
         return $this;
     }
 
-    public function getAttributesHasScale(): array{
+    public function getAttributesHasScale(): array
+    {
         return [new AttributeContainer('Scale', $this->getScale(), true)];
     }
 }

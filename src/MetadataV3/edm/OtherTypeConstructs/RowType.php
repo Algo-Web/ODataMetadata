@@ -62,7 +62,7 @@ class RowType extends EdmBase implements ArrayAccess, IStructuralTypes
 
     public function offsetExists($offset): bool
     {
-        return array_key_exists($offset,$this->propertyTypes);
+        return array_key_exists($offset, $this->propertyTypes);
     }
 
     public function offsetGet($offset): Property
@@ -73,8 +73,8 @@ class RowType extends EdmBase implements ArrayAccess, IStructuralTypes
     public function offsetSet($offset, $value)
     {
         if (!$value instanceof Property) {
-        throw new InvalidArgumentException(sprintf('All Enteries in RowType must be %s', Property::class));
-    }
+            throw new InvalidArgumentException(sprintf('All Enteries in RowType must be %s', Property::class));
+        }
         if (null === $offset) {
             $this->propertyTypes[] = $value;
         } else {

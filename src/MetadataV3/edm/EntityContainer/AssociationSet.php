@@ -194,4 +194,3 @@ class AssociationSet extends EdmBase
         ];
     }
 }
-

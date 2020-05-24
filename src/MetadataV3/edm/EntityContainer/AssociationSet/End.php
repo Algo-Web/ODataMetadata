@@ -128,4 +128,3 @@ class End extends EdmBase
         return [$this->getDocumentation()];
     }
 }
-

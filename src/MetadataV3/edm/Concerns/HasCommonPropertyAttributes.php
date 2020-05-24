@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets\HasConcurrencyMode;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
@@ -109,7 +108,8 @@ trait HasCommonPropertyAttributes
     }
 
 
-    public function getAttributesHasCommonPropertyAttributes(): array{
+    public function getAttributesHasCommonPropertyAttributes(): array
+    {
         return array_merge(
             [
                 new AttributeContainer('Name', $this->getName(), true),

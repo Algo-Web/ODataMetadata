@@ -97,4 +97,3 @@ class OnDelete extends EdmBase
         return [$this->getDocumentation()];
     }
 }
-

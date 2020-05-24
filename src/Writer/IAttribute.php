@@ -5,9 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Writer;
 
-
 use AlgoWeb\ODataMetadata\OdataVersions;
-
 
 interface IAttribute
 {

@@ -54,7 +54,8 @@ trait HasFacets
         HasSRID,
         HasUnicode;
 
-    public function getAttributesHasFacets(): array{
+    public function getAttributesHasFacets(): array
+    {
         return array_merge(
             $this->getAttributesHasCollection(),
             $this->getAttributesHasDefaultValue(),

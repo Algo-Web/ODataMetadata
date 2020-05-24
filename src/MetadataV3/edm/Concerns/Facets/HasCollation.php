@@ -52,7 +52,8 @@ trait HasCollation
         return $this;
     }
 
-    public function getAttributesHasCollection(): array{
+    public function getAttributesHasCollection(): array
+    {
         return [new AttributeContainer('Collection', $this->getCollation(), true)];
     }
 }

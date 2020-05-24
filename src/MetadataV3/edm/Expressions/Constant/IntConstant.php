@@ -61,6 +61,4 @@ class IntConstant extends ConstantBase
     {
         return 'Int';
     }
-
 }
-

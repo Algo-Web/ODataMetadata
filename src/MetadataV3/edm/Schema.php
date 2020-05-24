@@ -143,19 +143,20 @@ class Schema extends DomBase
 
     ];
 
-    public function __construct(string $namespace = null,
-                                string $alias = null,
-                                array $association = [],
-                                array $complexType = [],
-                                array $entityType = [],
-                                array $entityContainer = [],
-                                array $using = [],
-                                array $enumType = [],
-                                array $valueTerm = [],
-                                array $function = [],
-                                array $annotations = []
-    )
-    {
+    public function __construct(
+        string $namespace = null,
+        string $alias = null,
+        array $association = [],
+        array $complexType = [],
+        array $entityType = [],
+        array $entityContainer = [],
+        array $using = [],
+        array $enumType = [],
+        array $valueTerm = [],
+        array $function = [],
+        array $annotations = []
+    ) {
+    
         $this
             ->setNamespace($namespace)
             ->setAlias($alias)
@@ -744,10 +745,10 @@ class Schema extends DomBase
     {
         return array_merge(
             $this->getUsing(), //Edm:Using
-            $this->getAssociation(),//Edm:Association
-            $this->getComplexType(),//Edm:ComplexType
-            $this->getEntityType(),//Edm:EntityType
-            $this->getEntityContainer(),//Edm:EntityContainer
+            $this->getAssociation(), //Edm:Association
+            $this->getComplexType(), //Edm:ComplexType
+            $this->getEntityType(), //Edm:EntityType
+            $this->getEntityContainer(), //Edm:EntityContainer
             $this->getFunction(), //Edm.Functions
             $this->getAnnotations(), // Edm:Annotations
             $this->getEnumType(), //Edm:EnumType
@@ -755,4 +756,3 @@ class Schema extends DomBase
         );
     }
 }
-

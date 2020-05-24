@@ -72,4 +72,3 @@ class BoolConstant extends ConstantBase
         return 'Bool';
     }
 }
-

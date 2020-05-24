@@ -118,11 +118,9 @@ class ReturnType extends EdmBase
      */
     public function getChildElements(): array
     {
-
     }
     public function requiredVersion(): OdataVersions
     {
         return OdataVersions::THREE();
     }
 }
-

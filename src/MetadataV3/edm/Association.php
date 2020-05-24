@@ -184,7 +184,7 @@ class Association
     public function getAttributes(): array
     {
         return [
-            new AttributeContainer('Name',$this->getName())
+            new AttributeContainer('Name', $this->getName())
         ];
     }
 
@@ -201,4 +201,3 @@ class Association
         ];
     }
 }
-

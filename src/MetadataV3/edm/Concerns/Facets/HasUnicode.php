@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
@@ -54,9 +53,10 @@ trait HasUnicode
         return $this;
     }
 
-    public function getAttributesHasUnicode(): array{
-        if(method_exists($this, 'getType')){
-            if($this->getType() != 'String'){
+    public function getAttributesHasUnicode(): array
+    {
+        if (method_exists($this, 'getType')) {
+            if ($this->getType() != 'String') {
                 return [];
             }
         }

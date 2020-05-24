@@ -69,4 +69,3 @@ class FunctionReturn extends EdmBase
         return [$this->getChildElementsHasType()];
     }
 }
-

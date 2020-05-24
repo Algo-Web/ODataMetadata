@@ -88,9 +88,8 @@ class CollectionType extends EdmBase implements IStructuralTypes
     public function getAttributes(): array
     {
         $containerFor = $this->getContainerFor();
-        if(
-            $containerFor instanceof IStructuralTypes
-        ){
+        if ($containerFor instanceof IStructuralTypes
+        ) {
             return [];
         }
 
@@ -98,7 +97,7 @@ class CollectionType extends EdmBase implements IStructuralTypes
             new AttributeContainer('Type', strval($containerFor))
         ];
         return $containerFor instanceof IScalarType ?
-            array_merge($this->getAttributesHasFacets(),$baseAttribute) :
+            array_merge($this->getAttributesHasFacets(), $baseAttribute) :
             $baseAttribute;
     }
 
@@ -108,15 +107,13 @@ class CollectionType extends EdmBase implements IStructuralTypes
     public function getChildElements(): array
     {
         $containerFor = $this->getContainerFor();
-        if(
-            $containerFor instanceof CollectionType ||
+        if ($containerFor instanceof CollectionType ||
             $containerFor instanceof ReferenceType ||
             $containerFor instanceof RowType ||
             $containerFor instanceof TypeRef
-        ){
+        ) {
             return [$this->containerFor];
         }
         return [];
     }
 }
-

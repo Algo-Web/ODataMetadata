@@ -74,4 +74,3 @@ class DateTimeOffsetConstant extends ConstantBase
         return 'DateTimeOffset';
     }
 }
-

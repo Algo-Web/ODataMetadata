@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
@@ -53,7 +52,8 @@ trait HasPrecision
         return $this;
     }
 
-    public function getAttributesHasPrecision(): array{
+    public function getAttributesHasPrecision(): array
+    {
         return [new AttributeContainer('Precision', $this->getPrecision(), true)];
     }
 }

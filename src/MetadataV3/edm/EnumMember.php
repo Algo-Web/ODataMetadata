@@ -132,7 +132,7 @@ class EnumMember extends EdmBase
     {
         return [
             new AttributeContainer('Name', $this->getName()),
-            new AttributeContainer('Value' , $this->getValue(), true)
+            new AttributeContainer('Value', $this->getValue(), true)
         ];
     }
 
@@ -144,4 +144,3 @@ class EnumMember extends EdmBase
         return [$this->getDocumentation()];
     }
 }
-

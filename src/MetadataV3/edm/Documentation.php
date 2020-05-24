@@ -210,4 +210,3 @@ class Documentation extends EdmBase
         return [$this->getSummary(), $this->getLongDescription()];
     }
 }
-
