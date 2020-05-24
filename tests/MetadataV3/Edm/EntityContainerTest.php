@@ -106,9 +106,9 @@ class EntityContainerTest extends TestCase
     public function testXmlSerialize(){
         $domNode =  $this->TESTNODE;
         $entityContainer = self::getEntityContainer();
-        $domNode = $this->writterContext->write($entityContainer, false);
+        $domNode = $this->writerContext->write($entityContainer, false);
         $this->TESTNODE->appendChild($domNode);
-        $xml = $this->writterContext->getBaseDocument()->saveXML($domNode);
+        $xml = $this->writerContext->getBaseDocument()->saveXML($domNode);
         /*echo $xml;
         die();*/
         $this->assertXmlStringEqualsXmlString('<EntityContainer xmlns:annotations="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="NorthwindEntities" metadata:IsDefaultEntityContainer="true"

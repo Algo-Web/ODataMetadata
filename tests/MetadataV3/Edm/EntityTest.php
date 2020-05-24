@@ -34,9 +34,9 @@ class EntityTest extends TestCase
             ->addToProperty(new Property('AccountNumber', 'Int32',true))
             ->addToNavigationProperty(new NavigationProperty('Orders','Model1.CustomerOrder', 'Order', 'Customer'));
 
-        $domNode = $this->writterContext->write($entity, false);
+        $domNode = $this->writerContext->write($entity, false);
         $this->TESTNODE->appendChild($domNode);
-        $xml = $this->writterContext->getBaseDocument()->saveXML($domNode);
+        $xml = $this->writerContext->getBaseDocument()->saveXML($domNode);
         $this->assertXmlStringEqualsXmlString($expected, $xml);
 
     }

@@ -17,9 +17,9 @@ class KeyElementTest extends TestCase
         foreach($propertyRefArray as $proRef){
             $key[]=$proRef;
         }
-        $domNode = $this->writterContext->write($key, false);
+        $domNode = $this->writerContext->write($key, false);
         $this->TESTNODE->appendChild($domNode);
-        $xml = $this->writterContext->getBaseDocument()->saveXML($this->TESTNODE->firstChild);
+        $xml = $this->writerContext->getBaseDocument()->saveXML($this->TESTNODE->firstChild);
         $this->assertXmlStringEqualsXmlString($expected, $xml);
     }
 

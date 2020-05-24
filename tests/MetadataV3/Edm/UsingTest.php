@@ -19,9 +19,9 @@ class UsingTest extends TestCase
     {
         $using = new Using($namespace,$alias,$documentation);
 
-        $domNode = $this->writterContext->write($using, false);
+        $domNode = $this->writerContext->write($using, false);
         $this->TESTNODE->appendChild($domNode);
-        $xml = $this->writterContext->getBaseDocument()->saveXML($domNode);
+        $xml = $this->writerContext->getBaseDocument()->saveXML($domNode);
         $this->assertEquals($expected, $xml);
     }
 

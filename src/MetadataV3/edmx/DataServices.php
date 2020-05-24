@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EdmBase;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
-use AlgoWeb\ODataMetadata\Writer\WritterContext;
+use AlgoWeb\ODataMetadata\Writer\WriterContext;
 use ArrayAccess;
 use DOMElement;
 
@@ -44,10 +44,10 @@ class DataServices extends DomBase implements ArrayAccess
     }
 
     /**
-     * @param WritterContext|null $wc
+     * @param WriterContext|null $wc
      * @return array|AttributeContainer[]
      */
-    public function getAttributes(WritterContext $wc = null): array
+    public function getAttributes(WriterContext $wc = null): array
     {
         return [
             new AttributeContainer('metadata:DataServiceVersion', $wc->getOdataVersion())

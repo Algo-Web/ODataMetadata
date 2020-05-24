@@ -5,14 +5,14 @@ namespace AlgoWeb\ODataMetadata\Tests;
 
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EdmBase;
 use AlgoWeb\ODataMetadata\OdataVersions;
-use AlgoWeb\ODataMetadata\Writer\WritterContext;
+use AlgoWeb\ODataMetadata\Writer\WriterContext;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var WritterContext
+     * @var WriterContext
      */
-    protected $writterContext = null;
+    protected $writerContext = null;
     /**
      * @var null|\DOMElement
      */
@@ -21,8 +21,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->writterContext =  new WritterContext(OdataVersions::THREE());
-        $this->setContext($this->writterContext);
+        $this->writerContext =  new WriterContext(OdataVersions::THREE());
+        $this->setContext($this->writerContext);
     }
 
     protected function tearDown(): void
@@ -30,7 +30,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         parent::tearDown();
     }
 
-    protected function setContext(WritterContext $context)
+    protected function setContext(WriterContext $context)
     {
         $domDocument = $context->getBaseDocument();
         $baseElement = $domDocument->createElement('BASE');

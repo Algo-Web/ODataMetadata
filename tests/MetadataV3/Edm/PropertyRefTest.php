@@ -12,9 +12,9 @@ class PropertyRefTest extends TestCase
     public function testPropertyRefXmlSerialize()
     {
         $propRef = new PropertyRef('CustomerId');
-        $domNode = $this->writterContext->write($propRef, false);
+        $domNode = $this->writerContext->write($propRef, false);
         $this->TESTNODE->appendChild($domNode);
-        $xml = $this->writterContext->getBaseDocument()->saveXML($domNode);
+        $xml = $this->writerContext->getBaseDocument()->saveXML($domNode);
         $this->assertXmlStringEqualsXmlString('<PropertyRef Name="CustomerId" />', $xml);
     }
 }
