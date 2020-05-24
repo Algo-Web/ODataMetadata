@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
@@ -77,7 +79,7 @@ class ModelFunction extends EdmBase
     ];
 
     /**
-     * @var TTextType $definingExpression
+     * @var TextType $definingExpression
      */
     private $definingExpression = null;
 
@@ -185,9 +187,9 @@ class ModelFunction extends EdmBase
     /**
      * Gets as definingExpression
      *
-     * @return TTextType|null
+     * @return TextType|null
      */
-    public function getDefiningExpression(): ?TTextType
+    public function getDefiningExpression(): ?TextType
     {
         return $this->definingExpression;
     }
@@ -202,7 +204,7 @@ class ModelFunction extends EdmBase
     {
         $this->definingExpression = null === $definingExpression ?
             null :
-            new TTextType('DefiningExpression', $definingExpression);
+            new TextType('DefiningExpression', $definingExpression);
         return $this;
     }
 

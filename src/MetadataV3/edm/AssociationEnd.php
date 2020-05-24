@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
@@ -40,7 +42,7 @@ class AssociationEnd extends EdmBase
      */
     use HasDocumentation;
     /**
-     * @var string $type 10.2.1 The edm:Type Attribute
+     * @var Entity $type 10.2.1 The edm:Type Attribute
      * Each end of the association MUST specify the entity type attached to that end. The value of the edm:Type
      * attribute must be a [singleentitytypereference][csdl19]. The value of the type attribute MUST resolve to an
      * entity type in the entity model.
@@ -74,7 +76,7 @@ class AssociationEnd extends EdmBase
      */
     private $onDelete = null;
 
-    public function __construct(string $type, Multiplicity $multiplicity, string $role = null, OnDelete $onDelete = null)
+    public function __construct(Entity $type, Multiplicity $multiplicity, string $role = null, OnDelete $onDelete = null)
     {
         $this
             ->setType($type)
@@ -86,9 +88,9 @@ class AssociationEnd extends EdmBase
     /**
      * Gets as type
      *
-     * @return string
+     * @return Entity
      */
-    public function getType():string
+    public function getType():Entity
     {
         return $this->type;
     }
@@ -96,10 +98,10 @@ class AssociationEnd extends EdmBase
     /**
      * Sets a new type
      *
-     * @param string $type
+     * @param Entity $type
      * @return self
      */
-    public function setType(string $type):self
+    public function setType(Entity $type):self
     {
         $this->type = $type;
         return $this;
@@ -123,6 +125,9 @@ class AssociationEnd extends EdmBase
      */
     public function setRole(?string $role): self
     {
+        if($role !== null && !isset($this->getType()->getNavigationProperty()[$role])){
+            throw new \InvalidArgumentException('If a roll is set on a assication End it should represent the navigation property on the attached type.');
+        }
         $this->role = $role;
         return $this;
     }
@@ -185,7 +190,7 @@ class AssociationEnd extends EdmBase
     public function getAttributes(): array
     {
         return [
-            new AttributeContainer('Type', $this->getType()),
+            new AttributeContainer('Type', $this->getType()->getName()),
             new AttributeContainer('Role', $this->getRole(), true),
             new AttributeContainer('Multiplicity', $this->getMultiplicity()),
 

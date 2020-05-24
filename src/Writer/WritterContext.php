@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\Writer;
 
 
@@ -109,8 +112,11 @@ class WritterContext
 
         $domElement->textContent = $rootNode->getTextContent();
 
-        foreach( $rootNode->getAttributes() as $attribute){
-            $attribute->apply($domElement, $this );
+        foreach( $rootNode->getAttributes($this) as $attribute){
+            if($this->shouldWrite($attribute)){
+                $attribute->apply($domElement, $this );
+
+            }
         }
         foreach(array_filter($rootNode->getChildElements()) as $childNode){
             $childElement = $this->write($childNode, false);
@@ -121,28 +127,14 @@ class WritterContext
 
     }
 
-    public function writeAttribute(DomElement $element, IAttribute $attribute)
-    {
-        if((null == $attribute->getValue() && $attribute->getNullCheck()) || !$this->shouldWrite($attribute)){
-            return;
-        }
-        null === $attribute->getPrefix() ?
-            $element->setAttribute($attribute->getName(), $attribute->getValue()) :
-            $element->setAttributeNS(
-                $this->getNamespaceForPrefix($attribute->getPrefix()),
-                $attribute->getPrefix() . ":" . $attribute->getName(),
-                $attribute->getValue()
-            );
-    }
-
     protected function shouldWrite(IAttribute $attribute){
         return
             (
-                OdataVersions::TWO() == $attribute->getForVersion() && $this->shouldWriteV2() ||
-                OdataVersions::THREE() == $attribute->getForVersion() && $this->shouldWriteV3() ||
-                OdataVersions::ONE() == $attribute->getForVersion()
+                OdataVersions::TWO() == $attribute->getAttributeForVersion() && $this->shouldWriteV2() ||
+                OdataVersions::THREE() == $attribute->getAttributeForVersion() && $this->shouldWriteV3() ||
+                OdataVersions::ONE() == $attribute->getAttributeForVersion()
             ) &&
-            !in_array($this->getOdataVersion(), $attribute->getProhibitedVersion());
+            !in_array($this->getOdataVersion(), $attribute->getAttributeProhibitedVersion());
     }
 
     private function registerNamespaces(){
