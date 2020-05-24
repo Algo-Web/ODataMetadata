@@ -116,4 +116,9 @@ class CollectionType extends EdmBase implements IStructuralTypes
         }
         return [];
     }
+
+    public function isAttribute(): bool
+    {
+       return false;
+    }
 }
