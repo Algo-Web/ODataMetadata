@@ -25,16 +25,16 @@
   ],
   "require": {
     "php": "^7.1",
-    "doctrine/inflector": ">=1.1",
-    "jms/serializer": "^3.0|^2.0|^1.7"
+    "myclabs/php-enum": "dev-master"
   },
   "require-dev": {
     "phpspec/phpspec": "^3.0",
     "squizlabs/php_codesniffer": "~2.3",
-    "mockery/mockery": "0.9.*|^1.0@dev",
     "phpunit/phpunit": "^7.0",
     "php-coveralls/php-coveralls": ">=v2.1",
-    "pcov/clobber": "dev-master"
+    "mockery/mockery": "^1.2|dev-master",
+    "symfony/var-dumper": ">=4.0.0"
+
   },
   "scripts": {
     "test": "phpunit",
