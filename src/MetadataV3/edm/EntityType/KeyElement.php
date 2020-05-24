@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\PropertyRef;

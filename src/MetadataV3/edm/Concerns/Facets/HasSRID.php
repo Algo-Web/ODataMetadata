@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
@@ -56,7 +55,8 @@ trait HasSRID
         return $this;
     }
 
-    public function getAttributesHasSRID(): array{
+    public function getAttributesHasSRID(): array
+    {
         return [new AttributeContainer('SRID', $this->getSRID(), true, OdataVersions::THREE())];
     }
 }

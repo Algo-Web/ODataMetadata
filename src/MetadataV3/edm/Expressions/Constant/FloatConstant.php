@@ -62,4 +62,3 @@ class FloatConstant extends ConstantBase
         return 'Float';
     }
 }
-

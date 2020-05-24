@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
@@ -50,7 +49,8 @@ trait HasDefaultValue
         return $this;
     }
 
-    public function getAttributesHasDefaultValue(): array{
+    public function getAttributesHasDefaultValue(): array
+    {
         return [new AttributeContainer('DefaultValue', $this->getDefaultValue(), true)];
     }
 }

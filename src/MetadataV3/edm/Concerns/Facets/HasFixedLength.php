@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
@@ -52,7 +51,8 @@ trait HasFixedLength
         return $this;
     }
 
-    public function getAttributesHasFixedLength(): array{
+    public function getAttributesHasFixedLength(): array
+    {
         return [new AttributeContainer('FixedLength', $this->getFixedLength(), true)];
     }
 }

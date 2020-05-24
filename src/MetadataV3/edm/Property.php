@@ -78,21 +78,24 @@ class Property extends EdmBase
         HasCommonPropertyAttributes,
         HasDocumentation,
         HasAccessors;
-    public function __construct(string $name,
-                                string $type,
-                                bool $nullable = null,
-                                string $defaultValue = null,
-                                int $maxLength = null,
-                                int $fixedLength = null, int
-                                $precision = null,
-                                int $scale = null,
-                                bool $unicode = true,
-                                EDMSimpleType $collection = null,
-                                ConcurrencyMode $concurrencyMode = null,
-                                Documentation $documentation = null,
-                                AccessorType $setterAccess = null,
-                                AccessorType $getterAccess = null)
-    {
+    public function __construct(
+        string $name,
+        string $type,
+        bool $nullable = null,
+        string $defaultValue = null,
+        int $maxLength = null,
+        int $fixedLength = null,
+        int
+        $precision = null,
+        int $scale = null,
+        bool $unicode = true,
+        EDMSimpleType $collection = null,
+        ConcurrencyMode $concurrencyMode = null,
+        Documentation $documentation = null,
+        AccessorType $setterAccess = null,
+        AccessorType $getterAccess = null
+    ) {
+    
         $this->setName($name)
             ->setType($type)
             ->setNullable($nullable)
@@ -136,4 +139,3 @@ class Property extends EdmBase
         ];
     }
 }
-

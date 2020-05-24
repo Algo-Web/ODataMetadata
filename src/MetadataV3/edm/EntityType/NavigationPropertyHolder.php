@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType;
 
-
 class NavigationPropertyHolder implements \ArrayAccess
 {
     /**
@@ -41,7 +40,8 @@ class NavigationPropertyHolder implements \ArrayAccess
         unset($this->property[$offset]);
     }
 
-    public function __toArray(){
+    public function __toArray()
+    {
         return $this->property;
     }
 }

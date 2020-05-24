@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3;
 
-
 class EDMSimpleTypeV1_2
 {
     // V1-2

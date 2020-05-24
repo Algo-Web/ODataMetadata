@@ -64,4 +64,3 @@ class StringConstant extends ConstantBase
         return 'String';
     }
 }
-

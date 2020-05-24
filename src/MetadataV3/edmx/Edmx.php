@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edmx;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\EdmBase;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Schema;
@@ -132,19 +131,21 @@ class Edmx extends DomBase
     }
 
 
-    public function XmlSerialize(OdataVersions $version){
+    public function XmlSerialize(OdataVersions $version)
+    {
         $context = new WriterContext($version);
         $domDocument = $context->getBaseDocument();
         $edmxElement = $context->createEdmxElement('edmx:Edmx');
         $domDocument->appendChild($edmxElement);
-        $this->setUpNamespaces($edmxElement,$context);
+        $this->setUpNamespaces($edmxElement, $context);
         $edmxElement->setAttribute('Version', $this->version);
         EdmBase::setSerilizationContext($context);
         $this->dataServices->XmlSerialize($edmxElement);
         return $domDocument->saveXML();
     }
 
-    private function setUpNamespaces(\DOMElement $edmxElement, WriterContext $context){
+    private function setUpNamespaces(\DOMElement $edmxElement, WriterContext $context)
+    {
         $edmxElement->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns', $context->getEdmNamespace());
         $edmxElement->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:annotations', $context->getAnnotationsNamespace());
         $edmxElement->setAttributeNS('http://www.w3.org/2000/xmlns/', 'xmlns:metadata', $context->getMetadataNamespace());

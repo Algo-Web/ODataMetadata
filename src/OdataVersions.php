@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata;
 
-
 use MyCLabs\Enum\Enum;
 
 /**

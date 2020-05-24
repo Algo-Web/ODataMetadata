@@ -124,7 +124,7 @@ class Enum extends EdmBase implements INominalType, IScalarType
      * @param bool $isFlags
      * @return self
      */
-    public function setIsFlags( bool $isFlags):self
+    public function setIsFlags(bool $isFlags):self
     {
         $this->isFlags = $isFlags;
         return $this;
@@ -242,4 +242,3 @@ class Enum extends EdmBase implements INominalType, IScalarType
         return false;
     }
 }
-

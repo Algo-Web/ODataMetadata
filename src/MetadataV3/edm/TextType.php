@@ -11,7 +11,7 @@ use DOMElement;
 /**
  * Class representing TTextType
  *
- * 
+ *
  * XSD Type: TText
  */
 class TextType extends EdmBase
@@ -56,4 +56,3 @@ class TextType extends EdmBase
         return [];
     }
 }
-

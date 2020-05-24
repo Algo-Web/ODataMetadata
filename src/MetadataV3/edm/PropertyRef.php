@@ -98,4 +98,3 @@ class PropertyRef extends EdmBase
         return [];
     }
 }
-

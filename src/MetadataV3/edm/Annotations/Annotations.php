@@ -144,4 +144,3 @@ class Annotations extends EdmBase
         return array_merge($this->getValueAnnotation(), $this->getTypeAnnotation());
     }
 }
-

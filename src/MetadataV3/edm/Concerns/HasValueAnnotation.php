@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Annotations\ValueAnnotation;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use DOMElement;
@@ -80,7 +79,7 @@ trait HasValueAnnotation
     public function XmlSerializeHasValueAnnotation(DOMElement $thisNode): void
     {
         //TODO: add conext version check
-        foreach($this->getValueAnnotation() as $annotation){
+        foreach ($this->getValueAnnotation() as $annotation) {
             $annotation->XmlSerialize($thisNode);
         }
     }

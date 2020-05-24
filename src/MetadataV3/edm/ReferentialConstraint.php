@@ -144,4 +144,3 @@ class ReferentialConstraint extends EdmBase
         ];
     }
 }
-

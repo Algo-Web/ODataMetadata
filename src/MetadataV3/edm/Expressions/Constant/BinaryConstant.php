@@ -49,9 +49,10 @@ class BinaryConstant extends ConstantBase
         if (null !== $value) {
             // stripe any white space
             $value = preg_replace('/\s+/', '', $value);
-            if(!ctype_xdigit($value)){
+            if (!ctype_xdigit($value)) {
                 throw new InvalidArgumentException(
-                    sprintf("values assigned %s to should be hexadecimal string", __CLASS__));
+                    sprintf("values assigned %s to should be hexadecimal string", __CLASS__)
+                );
             }
             $this->__value = $value;
         }
@@ -66,4 +67,3 @@ class BinaryConstant extends ConstantBase
         return 'Binary';
     }
 }
-

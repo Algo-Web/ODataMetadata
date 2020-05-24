@@ -137,4 +137,3 @@ class Using extends EdmBase
         return [$this->getDocumentation()];
     }
 }
-

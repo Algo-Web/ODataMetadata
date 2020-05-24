@@ -180,8 +180,9 @@ class Entity extends EdmBase implements INominalType
         bool $isAbstract = false,
         bool $isOpenType = false,
         bool $hasStream = false,
-        Documentation $documentation = null)
-    {
+        Documentation $documentation = null
+    ) {
+    
         $this->key = new KeyElement();
         $this->property = new PropertyHolder();
         $this->navigationProperty = new NavigationPropertyHolder();
@@ -470,11 +471,11 @@ class Entity extends EdmBase implements INominalType
     public function getAttributes(): array
     {
         return [
-            new AttributeContainer('metadata:HasStream',$this->getHasStream(), true),
+            new AttributeContainer('metadata:HasStream', $this->getHasStream(), true),
             new AttributeContainer('Name', $this->getName()),
-            new AttributeContainer('BaseType',$this->getBaseType(), true),
-            new AttributeContainer('Abstract',$this->getAbstract()),
-            new AttributeContainer('OpenType',$this->getOpenType()),
+            new AttributeContainer('BaseType', $this->getBaseType(), true),
+            new AttributeContainer('Abstract', $this->getAbstract()),
+            new AttributeContainer('OpenType', $this->getOpenType()),
 
         ];
     }
@@ -494,7 +495,8 @@ class Entity extends EdmBase implements INominalType
             [
                 $this->getTypeAnnotation(),
                 $this->getValueAnnotation(),
-            ]);
+            ]
+        );
     }
 
     public function isAttribute(): bool
@@ -502,4 +504,3 @@ class Entity extends EdmBase implements INominalType
         return false;
     }
 }
-

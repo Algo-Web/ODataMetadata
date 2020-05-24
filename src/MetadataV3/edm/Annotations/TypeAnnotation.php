@@ -176,4 +176,3 @@ class TypeAnnotation extends EdmBase
         return [$this->getPropertyValue()];
     }
 }
-

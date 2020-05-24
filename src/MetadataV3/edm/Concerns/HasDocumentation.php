@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Documentation;
 
@@ -43,7 +42,8 @@ trait HasDocumentation
         return $this;
     }
 
-    public function XmlSerializeHasDocumentation(\DOMElement $thisNode){
+    public function XmlSerializeHasDocumentation(\DOMElement $thisNode)
+    {
         null !== $this->getDocumentation() && $this->getDocumentation()->XmlSerialize($thisNode);
     }
 }

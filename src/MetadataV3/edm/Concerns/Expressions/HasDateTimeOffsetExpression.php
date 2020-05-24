@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 use DateTime;
 
 trait HasDateTimeOffsetExpression
@@ -71,5 +70,4 @@ trait HasDateTimeOffsetExpression
         $this->dateTimeOffset = $dateTimeOffset;
         return $this;
     }
-
 }

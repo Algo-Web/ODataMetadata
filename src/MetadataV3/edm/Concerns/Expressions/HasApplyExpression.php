@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TApplyExpressionType;
 
 trait HasApplyExpression
@@ -72,5 +71,4 @@ trait HasApplyExpression
         $this->apply = $apply;
         return $this;
     }
-
 }

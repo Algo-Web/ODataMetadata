@@ -226,7 +226,6 @@ class ModelFunction extends EdmBase
             new AttributeContainer('Name', $this->getName()),
             new AttributeContainer('ReturnType', $this->getReturnType(), true),
         ];
-
     }
 
     /**
@@ -240,7 +239,5 @@ class ModelFunction extends EdmBase
             [$this->getDefiningExpression()],
             $this->getValueAnnotation()
         );
-
     }
 }
-

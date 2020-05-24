@@ -105,7 +105,7 @@ class Property extends EdmBase
     public function getAttributes(): array
     {
         return array_merge(
-            [new AttributeContainer('Name', $this->getName(),true)],
+            [new AttributeContainer('Name', $this->getName(), true)],
             $this->getAttributesHasType()
         );
     }
@@ -118,4 +118,3 @@ class Property extends EdmBase
         return [$this->getChildElementsHasType()];
     }
 }
-

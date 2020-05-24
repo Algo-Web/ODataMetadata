@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Constant;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\ExpressionBase;
 use AlgoWeb\ODataMetadata\OdataVersions;

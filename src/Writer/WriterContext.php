@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Writer;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\OdataVersions;
@@ -34,43 +33,53 @@ class WriterContext
         $this->registerNamespaces();
     }
 
-    public function getBaseDocument(): DOMDocument{
+    public function getBaseDocument(): DOMDocument
+    {
         return $this->baseDocument;
     }
 
-    public function getEdmNamespace(){
+    public function getEdmNamespace()
+    {
         return $this->namespaceContainer->getEdmNamespace();
     }
-    public function getEdmxNamespace(){
+    public function getEdmxNamespace()
+    {
         return $this->namespaceContainer->getEdmxNamespace();
     }
-    public function getMetadataNamespace(){
+    public function getMetadataNamespace()
+    {
         return $this->namespaceContainer->getMetadataNamespace();
     }
-    public function getDataServiceNamespace(){
+    public function getDataServiceNamespace()
+    {
         return $this->namespaceContainer->getDataServiceNamespace();
     }
-    public function getAnnotationsNamespace(){
+    public function getAnnotationsNamespace()
+    {
         return $this->namespaceContainer->getAnnotationsNamespace();
     }
-    public function getOdataVersion():string {
+    public function getOdataVersion():string
+    {
         return strval($this->odataVersion);
     }
 
-    public function registerNamespace($prefix, $namespace){
+    public function registerNamespace($prefix, $namespace)
+    {
         $this->namespaceRegister[$prefix] = $namespace;
     }
 
-    public function getNamespaceForPrefix($prefix){
+    public function getNamespaceForPrefix($prefix)
+    {
         return $this->namespaceRegister[$prefix];
     }
 
-    protected function createElement($namespace,$name): DOMElement
+    protected function createElement($namespace, $name): DOMElement
     {
         return $this->baseDocument->createElementNS($namespace, $name);
     }
 
-    public function createEdmElement(string $name): DOMElement{
+    public function createEdmElement(string $name): DOMElement
+    {
         return $this->createElement($this->getEdmNamespace(), $name);
     }
     public function createEdmxElement(string $name): DOMElement
@@ -83,14 +92,13 @@ class WriterContext
         return
             $this->odataVersion == OdataVersions::TWO() ||
             $this->odataVersion == OdataVersions::THREE();
-
     }
     public function shouldWriteV3(): bool
     {
         return $this->odataVersion == OdataVersions::THREE();
-
     }
-    public function getXml(){
+    public function getXml()
+    {
         return $this->baseDocument->saveXML();
     }
 
@@ -99,35 +107,35 @@ class WriterContext
      * @param bool $isTopLevel
      * @return DOMElement
      */
-    public function write(DomBase $rootNode, bool $isTopLevel = true): DOMElement{
+    public function write(DomBase $rootNode, bool $isTopLevel = true): DOMElement
+    {
         $prefix = null;
         $qualifiedName = $rootNode->getDomName();
-        if(strpos($qualifiedName, ':') !== false) {
-            $prefix = substr($qualifiedName,0,strpos($qualifiedName, ':'));
+        if (strpos($qualifiedName, ':') !== false) {
+            $prefix = substr($qualifiedName, 0, strpos($qualifiedName, ':'));
         }
         $domElement = $this->baseDocument->createElementNS($this->getNamespaceForPrefix($prefix), $qualifiedName);
-        if($isTopLevel){
+        if ($isTopLevel) {
             $this->setUpNamespaces($domElement);
         }
 
         $domElement->textContent = $rootNode->getTextContent();
 
-        foreach( $rootNode->getAttributes($this) as $attribute){
-            if($this->shouldWrite($attribute)){
-                $attribute->apply($domElement, $this );
-
+        foreach ($rootNode->getAttributes($this) as $attribute) {
+            if ($this->shouldWrite($attribute)) {
+                $attribute->apply($domElement, $this);
             }
         }
-        foreach(array_filter($rootNode->getChildElements()) as $childNode){
+        foreach (array_filter($rootNode->getChildElements()) as $childNode) {
             $childElement = $this->write($childNode, false);
 
             $domElement->appendChild($childElement);
         }
         return $domElement;
-
     }
 
-    protected function shouldWrite(IAttribute $attribute){
+    protected function shouldWrite(IAttribute $attribute)
+    {
         return
             (
                 OdataVersions::TWO() == $attribute->getAttributeForVersion() && $this->shouldWriteV2() ||
@@ -137,22 +145,23 @@ class WriterContext
             !in_array($this->getOdataVersion(), $attribute->getAttributeProhibitedVersion());
     }
 
-    private function registerNamespaces(){
+    private function registerNamespaces()
+    {
         $this->registerNamespace(null, $this->getEdmNamespace());
         $this->registerNamespace("annotations", $this->getAnnotationsNamespace());
         $this->registerNamespace('metadata', $this->getMetadataNamespace());
         $this->registerNamespace('edmx', $this->getEdmxNamespace());
     }
 
-    private function setUpNamespaces(DOMElement $rootElement){
-        foreach($this->namespaceRegister as $prefix => $namespace){
+    private function setUpNamespaces(DOMElement $rootElement)
+    {
+        foreach ($this->namespaceRegister as $prefix => $namespace) {
             $qualifiedName = $prefix === "" ? 'xmlns' : 'xmlns:' . $prefix;
             $rootElement->setAttributeNS(
                 'http://www.w3.org/2000/xmlns/',
                 $qualifiedName,
-                $namespace);
-
+                $namespace
+            );
         }
-
     }
 }

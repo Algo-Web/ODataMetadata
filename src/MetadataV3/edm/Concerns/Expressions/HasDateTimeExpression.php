@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 use DateTime;
 
 trait HasDateTimeExpression
@@ -73,5 +72,4 @@ trait HasDateTimeExpression
         $this->dateTime = $dateTime;
         return $this;
     }
-
 }

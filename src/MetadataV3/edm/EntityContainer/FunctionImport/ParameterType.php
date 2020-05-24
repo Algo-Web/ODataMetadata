@@ -102,8 +102,9 @@ class ParameterType extends EdmBase
         int $maxLength = null,
         int $precision = null,
         int $scale = null,
-        string  $sRID = null)
-    {
+        string  $sRID = null
+    ) {
+    
         $this
             ->setName($name)
             ->setType($type)
@@ -220,4 +221,3 @@ class ParameterType extends EdmBase
             ];
     }
 }
-

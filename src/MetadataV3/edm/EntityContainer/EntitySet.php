@@ -129,4 +129,3 @@ class EntitySet extends EdmBase
         return [$this->getDocumentation(), $this->getValueAnnotation()];
     }
 }
-

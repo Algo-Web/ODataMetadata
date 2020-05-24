@@ -391,7 +391,7 @@ class FunctionImport extends EdmBase
     {
         return [
             new AttributeContainer('Name', $this->getName()),
-            new AttributeContainer('EntitySet', $this->getEntitySet(),true),
+            new AttributeContainer('EntitySet', $this->getEntitySet(), true),
             new AttributeContainer('EntitySetPath', $this->getEntitySetPath(), true),
             new AttributeContainer('ReturnType', $this->getReturnType()->getType(), true, OdataVersions::TWO(), [OdataVersions::THREE()]),
         ];
@@ -412,4 +412,3 @@ class FunctionImport extends EdmBase
         );
     }
 }
-

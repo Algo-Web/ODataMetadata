@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Writer;
 
-
 use AlgoWeb\ODataMetadata\OdataVersions;
 
 /**
@@ -72,7 +71,7 @@ class Namespaces
 
     public function __construct(OdataVersions $version)
     {
-        switch($version) {
+        switch ($version) {
             case OdataVersions::ONE():
                 $this->edmNamespace = self::V1EdmNamespace;
                 break;
@@ -90,19 +89,24 @@ class Namespaces
     }
 
 
-    public function getEdmNamespace(){
+    public function getEdmNamespace()
+    {
         return $this->edmNamespace;
     }
-    public function getEdmxNamespace(){
+    public function getEdmxNamespace()
+    {
         return $this->edmxNamespace;
     }
-    public function getMetadataNamespace(){
+    public function getMetadataNamespace()
+    {
         return $this->metadataNamespace;
     }
-    public function getDataServiceNamespace(){
+    public function getDataServiceNamespace()
+    {
         return $this->dataServiceNamespace;
     }
-    public function getAnnotationsNamespace(){
+    public function getAnnotationsNamespace()
+    {
         return $this->annotationsNamespace;
     }
 }

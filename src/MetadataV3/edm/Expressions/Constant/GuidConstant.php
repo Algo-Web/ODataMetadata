@@ -48,8 +48,8 @@ class GuidConstant extends ConstantBase
     {
         if (null !== $value) {
             $hexPattern = '[a-fA-F0-9]';
-            $guidPattern = sprintf('/%1$s{8}-%1$s{4}-%1$s{4}-%1$s{4}-%1$s{12}/m',$hexPattern);
-            if(!$this->completelyMatchesPattern($value,$guidPattern)){
+            $guidPattern = sprintf('/%1$s{8}-%1$s{4}-%1$s{4}-%1$s{4}-%1$s{12}/m', $hexPattern);
+            if (!$this->completelyMatchesPattern($value, $guidPattern)) {
                 throw new InvalidArgumentException(
                     sprintf("%s Should be assigned strings matching %s", __CLASS__, $guidPattern)
                 );
@@ -68,4 +68,3 @@ class GuidConstant extends ConstantBase
         return 'Guid';
     }
 }
-

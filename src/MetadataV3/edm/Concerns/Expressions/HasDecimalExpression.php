@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 trait HasDecimalExpression
 {
     /**
@@ -69,5 +68,4 @@ trait HasDecimalExpression
         $this->decimal = $decimal;
         return $this;
     }
-
 }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\Facets;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\ConcurrencyMode;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
@@ -60,7 +59,8 @@ trait HasConcurrencyMode
         return $this;
     }
 
-    public function getAttributesHasConcurrencyMode(): array{
+    public function getAttributesHasConcurrencyMode(): array
+    {
         return [new AttributeContainer('ConcurrencyMode', $this->getConcurrencyMode(), true)];
     }
 }

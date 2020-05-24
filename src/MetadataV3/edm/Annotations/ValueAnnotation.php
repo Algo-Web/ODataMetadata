@@ -168,15 +168,14 @@ class ValueAnnotation extends EdmBase
         $base = [];
         $base[] = new AttributeContainer("Term", $this->getTerm());
         $base[] = new AttributeContainer("Qualifier", $this->getQualifier());
-        if(
-    //        $this->expression instanceof Expressions\Dynamic\TPathExpression ||
+        if (//        $this->expression instanceof Expressions\Dynamic\TPathExpression ||
             $this->expression instanceof Expressions\Constant\StringConstant ||
             $this->expression instanceof Expressions\Constant\IntConstant ||
             $this->expression instanceof Expressions\Constant\FloatConstant ||
             $this->expression instanceof Expressions\Constant\DecimalConstant ||
             $this->expression instanceof Expressions\Constant\BoolConstant ||
             $this->expression instanceof Expressions\Constant\DateTimeConstant
-        ){
+        ) {
             $base[] = $this->expression;
         }
         return $base;
@@ -187,7 +186,7 @@ class ValueAnnotation extends EdmBase
      */
     public function getChildElements(): array
     {
-        if(!(
+        if (!(
       //      $this->expression instanceof Expressions\Dynamic\TPathExpression ||
             $this->expression instanceof Expressions\Constant\StringConstant ||
             $this->expression instanceof Expressions\Constant\IntConstant ||
@@ -195,10 +194,9 @@ class ValueAnnotation extends EdmBase
             $this->expression instanceof Expressions\Constant\DecimalConstant ||
             $this->expression instanceof Expressions\Constant\BoolConstant ||
             $this->expression instanceof Expressions\Constant\DateTimeConstant
-        )){
+        )) {
             return [$this->expression];
         }
         return [];
     }
 }
-

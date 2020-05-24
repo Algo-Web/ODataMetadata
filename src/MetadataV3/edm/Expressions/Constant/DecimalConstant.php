@@ -62,4 +62,3 @@ class DecimalConstant extends ConstantBase
         return 'Decimal';
     }
 }
-

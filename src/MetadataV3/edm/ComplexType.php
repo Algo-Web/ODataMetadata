@@ -202,4 +202,3 @@ class ComplexType extends EdmBase implements INominalType
         return false;
     }
 }
-

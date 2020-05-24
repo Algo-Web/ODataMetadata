@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TEntitySetReferenceExpressionType;
 
 trait HasEntitySetReferenceExpression
@@ -72,5 +71,4 @@ trait HasEntitySetReferenceExpression
         $this->entitySetReference = $entitySetReference;
         return $this;
     }
-
 }

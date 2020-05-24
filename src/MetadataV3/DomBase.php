@@ -5,11 +5,9 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3;
 
-
 use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use AlgoWeb\ODataMetadata\Writer\IAttribute;
-
 
 abstract class DomBase
 {
@@ -27,15 +25,14 @@ abstract class DomBase
     /**
      * @return string
      */
-    public abstract function getDomName(): string;
+    abstract public function getDomName(): string;
     /**
      * @return array|AttributeContainer[]
      */
-    public abstract function getAttributes(): array ;
+    abstract public function getAttributes(): array ;
 
     /**
      * @return array|DomBase[]
      */
-    public abstract function getChildElements(): array ;
-
+    abstract public function getChildElements(): array ;
 }
