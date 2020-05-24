@@ -1,12 +1,16 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\MetadataV3\Edm;
+declare(strict_types=1);
+
+namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType;
 
 use AlgoWeb\ODataMetadata\MetadataV3\AccessorType;
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasAccessors;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasDocumentation;
 use AlgoWeb\ODataMetadata\MetadataV3\edm\Concerns\HasValueAnnotation;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\Documentation;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**

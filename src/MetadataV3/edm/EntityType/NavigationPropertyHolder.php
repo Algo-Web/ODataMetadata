@@ -1,12 +1,10 @@
 <?php
 
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType;
 
-
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\NavigationProperty;
-use DOMElement;
 
 class NavigationPropertyHolder implements \ArrayAccess
 {

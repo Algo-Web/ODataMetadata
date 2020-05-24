@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Annotations;
 
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;

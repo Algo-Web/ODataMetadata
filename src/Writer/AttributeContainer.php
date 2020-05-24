@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Writer;
 
@@ -40,7 +42,7 @@ class AttributeContainer implements IAttribute
 
     public function getAttributeForVersion(): OdataVersions
     {
-        return $this->forVersion;
+        return $this->forVersion ?? OdataVersions::ONE();
     }
 
     public function getAttributeProhibitedVersion(): array
@@ -146,7 +148,7 @@ class AttributeContainer implements IAttribute
      * @param OdataVersions $forVersion
      * @return AttributeContainer
      */
-    public function setAttributeForVersion(OdataVersions $forVersion): AttributeContainer
+    public function setAttributeForVersion(?OdataVersions $forVersion): AttributeContainer
     {
         $this->forVersion = $forVersion;
         return $this;
@@ -160,5 +162,17 @@ class AttributeContainer implements IAttribute
     {
         $this->prohibitedVersion = $prohibitedVersion;
         return $this;
+    }
+
+    public function apply(\DOMElement $node, WritterContext $context)
+    {
+        if ($this->nullCheck && empty($this->value)) {
+            return;
+        }
+        if (null === $this->prefix) {
+$node->setAttribute($this->name,$this->value);
+        } else {
+                $node->setAttributeNS($context->getNamespaceForPrefix($this->prefix), $this->prefix . ':' . $this->name, $this->value);
+        }
     }
 }

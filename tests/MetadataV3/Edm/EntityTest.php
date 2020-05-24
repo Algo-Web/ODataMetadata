@@ -3,10 +3,9 @@
 namespace AlgoWeb\ODataMetadata\Tests\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Entity;
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType\KeyElement;
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\PropertyRef;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType\NavigationProperty;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Property;
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\NavigationProperty;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\PropertyRef;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 
 class EntityTest extends TestCase

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
@@ -116,12 +118,12 @@ class Documentation extends EdmBase
 {
 
     /**
-     * @var TTextType|null $summary
+     * @var TextType|null $summary
      */
     private $summary = null;
 
     /**
-     * @var TTextType|null $longDescription
+     * @var TextType|null $longDescription
      */
     private $longDescription = null;
 
@@ -131,21 +133,21 @@ class Documentation extends EdmBase
             ->setSummary(
                 null === $summary ?
                     null :
-                    new TTextType('Summary', $summary)
+                    new TextType('Summary', $summary)
             )
             ->setLongDescription(
                 null === $longDescription ?
                     null :
-                    new TTextType('LongDescription', $longDescription)
+                    new TextType('LongDescription', $longDescription)
             );
     }
 
     /**
      * Gets as summary
      *
-     * @return TTextType|null
+     * @return TextType|null
      */
-    public function getSummary(): ?TTextType
+    public function getSummary(): ?TextType
     {
         return $this->summary;
     }
@@ -153,10 +155,10 @@ class Documentation extends EdmBase
     /**
      * Sets a new summary
      *
-     * @param TTextType|null $summary
+     * @param TextType|null $summary
      * @return self
      */
-    public function setSummary(?TTextType $summary): self
+    public function setSummary(?TextType $summary): self
     {
         $this->summary = $summary;
         return $this;
@@ -165,9 +167,9 @@ class Documentation extends EdmBase
     /**
      * Gets as longDescription
      *
-     * @return TTextType|null
+     * @return TextType|null
      */
-    public function getLongDescription(): ?TTextType
+    public function getLongDescription(): ?TextType
     {
         return $this->longDescription;
     }
@@ -175,10 +177,10 @@ class Documentation extends EdmBase
     /**
      * Sets a new longDescription
      *
-     * @param TTextType|null $longDescription
+     * @param TextType|null $longDescription
      * @return self
      */
-    public function setLongDescription(?TTextType $longDescription): self
+    public function setLongDescription(?TextType $longDescription): self
     {
         $this->longDescription = $longDescription;
         return $this;

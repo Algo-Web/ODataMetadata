@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
@@ -193,6 +195,11 @@ class ComplexType extends EdmBase implements INominalType
             $this->getTypeAnnotation(),
             $this->getValueAnnotation()
         );
+    }
+
+    public function isAttribute(): bool
+    {
+        return false;
     }
 }
 

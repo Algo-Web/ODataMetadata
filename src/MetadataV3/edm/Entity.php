@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\AccessorType;
@@ -7,6 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasAnnotations;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasDocumentation;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType\KeyElement;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType\NavigationProperty;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType\NavigationPropertyHolder;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityType\PropertyHolder;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\INominalType;
@@ -492,6 +495,11 @@ class Entity extends EdmBase implements INominalType
                 $this->getTypeAnnotation(),
                 $this->getValueAnnotation(),
             ]);
+    }
+
+    public function isAttribute(): bool
+    {
+        return false;
     }
 }
 

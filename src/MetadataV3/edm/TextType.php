@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
@@ -12,7 +14,7 @@ use DOMElement;
  * 
  * XSD Type: TText
  */
-class TTextType extends EdmBase
+class TextType extends EdmBase
 {
     private $__value = null;
     private $name;

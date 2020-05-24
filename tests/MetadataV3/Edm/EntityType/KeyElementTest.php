@@ -19,7 +19,7 @@ class KeyElementTest extends TestCase
         }
         $domNode = $this->writterContext->write($key, false);
         $this->TESTNODE->appendChild($domNode);
-        $xml = $this->writterContext->getBaseDocument()->saveXML($domNode);
+        $xml = $this->writterContext->getBaseDocument()->saveXML($this->TESTNODE->firstChild);
         $this->assertXmlStringEqualsXmlString($expected, $xml);
     }
 
