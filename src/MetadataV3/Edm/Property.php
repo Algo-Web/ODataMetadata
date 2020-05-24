@@ -76,8 +76,8 @@ class Property extends EdmBase
 {
     use HasValueAnnotation,
         HasCommonPropertyAttributes,
-        HasDocumentation,
-        HasAccessors;
+        HasDocumentation;
+
     public function __construct(
         string $name,
         string $type,
@@ -85,8 +85,7 @@ class Property extends EdmBase
         string $defaultValue = null,
         int $maxLength = null,
         int $fixedLength = null,
-        int
-        $precision = null,
+        int $precision = null,
         int $scale = null,
         bool $unicode = true,
         EDMSimpleType $collection = null,

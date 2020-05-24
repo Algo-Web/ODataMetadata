@@ -110,4 +110,9 @@ class RowType extends EdmBase implements ArrayAccess, IStructuralTypes
     {
         return $this->propertyTypes;
     }
+
+    public function isAttribute(): bool
+    {
+        return false;
+    }
 }
