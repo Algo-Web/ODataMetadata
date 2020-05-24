@@ -169,7 +169,7 @@ class ValueAnnotation extends EdmBase
         $base[] = new AttributeContainer("Term", $this->getTerm());
         $base[] = new AttributeContainer("Qualifier", $this->getQualifier());
         if(
-            $this->expression instanceof Expressions\Dynamic\TPathExpression ||
+    //        $this->expression instanceof Expressions\Dynamic\TPathExpression ||
             $this->expression instanceof Expressions\Constant\StringConstant ||
             $this->expression instanceof Expressions\Constant\IntConstant ||
             $this->expression instanceof Expressions\Constant\FloatConstant ||
@@ -188,7 +188,7 @@ class ValueAnnotation extends EdmBase
     public function getChildElements(): array
     {
         if(!(
-            $this->expression instanceof Expressions\Dynamic\TPathExpression ||
+      //      $this->expression instanceof Expressions\Dynamic\TPathExpression ||
             $this->expression instanceof Expressions\Constant\StringConstant ||
             $this->expression instanceof Expressions\Constant\IntConstant ||
             $this->expression instanceof Expressions\Constant\FloatConstant ||
