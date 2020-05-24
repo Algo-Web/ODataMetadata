@@ -51,7 +51,7 @@ trait HasAccessors
     /**
      * Gets as getterAccess
      *
-     * @return string
+     * @return AccessorType|null
      */
     public function getGetterAccess(): ?AccessorType
     {
