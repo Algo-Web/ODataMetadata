@@ -115,7 +115,7 @@ class PropertyValue extends EdmBase
     public function getAttributes(): array
     {
         if(
-            $this->expression instanceof Expressions\Dynamic\TPathExpression ||
+          //  $this->expression instanceof Expressions\Dynamic\TPathExpression ||
             $this->expression instanceof Expressions\Constant\StringConstant ||
             $this->expression instanceof Expressions\Constant\IntConstant ||
             $this->expression instanceof Expressions\Constant\FloatConstant ||
@@ -134,7 +134,7 @@ class PropertyValue extends EdmBase
     public function getChildElements(): array
     {
         if(!(
-            $this->expression instanceof Expressions\Dynamic\TPathExpression ||
+          //  $this->expression instanceof Expressions\Dynamic\TPathExpression ||
             $this->expression instanceof Expressions\Constant\StringConstant ||
             $this->expression instanceof Expressions\Constant\IntConstant ||
             $this->expression instanceof Expressions\Constant\FloatConstant ||
