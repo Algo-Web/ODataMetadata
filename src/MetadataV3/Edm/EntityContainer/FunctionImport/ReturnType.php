@@ -5,12 +5,10 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityContainer\FunctionImport;
 
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions\HasEntitySetReferenceExpression;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TEntitySetReferenceExpressionType;
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\TOperandType;
 use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
-use DOMElement;
 
 /**
  * 2.1.16 FunctionImport ReturnType.
@@ -40,15 +38,11 @@ use DOMElement;
  */
 class ReturnType extends EdmBase
 {
+    use HasEntitySetReferenceExpression;
     /**
      * @var string $type
      */
     private $type = null;
-
-    /**
-     * @var TEntitySetReferenceExpressionType $entitySet
-     */
-    private $entitySet = null;
 
     /**
      * Gets as type.
@@ -69,28 +63,6 @@ class ReturnType extends EdmBase
     public function setType(?string $type): self
     {
         $this->type = $type;
-        return $this;
-    }
-
-    /**
-     * Gets as entitySet.
-     *
-     * @return TEntitySetReferenceExpressionType|null
-     */
-    public function getEntitySet(): ?TEntitySetReferenceExpressionType
-    {
-        return $this->entitySet;
-    }
-
-    /**
-     * Sets a new entitySet.
-     *
-     * @param  TEntitySetReferenceExpressionType|null $entitySet
-     * @return self
-     */
-    public function setEntitySet(?TEntitySetReferenceExpressionType $entitySet): self
-    {
-        $this->entitySet = $entitySet;
         return $this;
     }
 
