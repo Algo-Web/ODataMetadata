@@ -23,7 +23,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * The following rules apply to End elements inside an AssociationSet:
  * - End element can have the Role attribute specified. All End elements have the EntitySet attribute specified.
  * - The EntitySet is the Name of an EntitySet defined inside the same EntityContainer.
- * - The Role of the End element MUST map to a Role declared on one of the Ends of the Assocation referenced by the End
+ * - The Role of the End element MUST map to a Role declared on one of the Ends of the Association referenced by the End
  *   element's declaring AssociationSet.
  * - Each End that is declared by an AssociationSet refers to a different Role.
  * - The EntityType for a particular AssociationSetEnd is the same as or derived from the EntityType that is contained

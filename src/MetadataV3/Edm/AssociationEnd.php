@@ -126,7 +126,7 @@ class AssociationEnd extends EdmBase
     public function setRole(?string $role): self
     {
         if ($role !== null && !isset($this->getType()->getNavigationProperty()[$role])) {
-            throw new \InvalidArgumentException('If a roll is set on a assication End it should represent the navigation property on the attached type.');
+            throw new \InvalidArgumentException('If a roll is set on a association End it should represent the navigation property on the attached type.');
         }
         $this->role = $role;
         return $this;

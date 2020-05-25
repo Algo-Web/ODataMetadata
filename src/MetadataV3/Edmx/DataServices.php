@@ -29,7 +29,7 @@ use DOMElement;
  * <edmx:DataServices>
  *
  * The following rule applies to the edmx:DataServices element:
- * The edmx:DataServices element can contain any number of Schema sublements.<1>
+ * The edmx:DataServices element can contain any number of Schema sub-elements.<1>
  * @package AlgoWeb\ODataMetadata\MetadataV3
  */
 class DataServices extends DomBase implements ArrayAccess
