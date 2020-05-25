@@ -63,7 +63,7 @@ abstract class ConstantBase extends ExpressionBase implements IAttribute
      *
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return strval($this->__value);
     }

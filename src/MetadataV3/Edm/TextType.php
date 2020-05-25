@@ -24,10 +24,14 @@ class TextType extends EdmBase
         $this->name = $name;
     }
 
-    public function __toString()
+    /**
+     * @return string
+     */
+    public function __toString(): string
     {
         return $this->__value;
     }
+
     public function getTextContent(): ?string
     {
         return strval($this);
