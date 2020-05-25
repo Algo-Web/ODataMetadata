@@ -81,7 +81,7 @@ class ReturnType extends EdmBase
     {
         return [
             new AttributeContainer('Type', $this->getType(), true),
-            new AttributeContainer('EntitySet', $this->getEntitySet(), true)
+            new AttributeContainer('EntitySet', $this->getEntitySetReference(), true)
         ];
     }
 
