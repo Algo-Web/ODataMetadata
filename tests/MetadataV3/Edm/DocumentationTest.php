@@ -10,28 +10,27 @@ class DocumentationTest extends TestCase
 {
     /**
      * @param $expected
-     * @param $summery
+     * @param $summary
      * @param $description
      * @dataProvider documentationTestProvider
      */
-    public function testDocumentationTestXmlSerialize($expected, $summery, $description)
+    public function testDocumentationTestXmlSerialize($expected, $summary, $description)
     {
-        $domNode =  $this->TESTNODE;
-
-        $dataService = new Documentation($summery, $description);
+        $dataService = new Documentation($summary, $description);
         $domNode = $this->writerContext->write($dataService, false);
         $this->TESTNODE->appendChild($domNode);
         $xml = $this->writerContext->getBaseDocument()->saveXML($domNode);
         $this->assertEquals($expected, $xml);
     }
 
-    public static function documentationTestProvider(){
+    public static function documentationTestProvider()
+    {
         return [
             [
-                '<Documentation><Summary>Short Summery</Summary></Documentation>', 'Short Summery', null
+                '<Documentation><Summary>Short Summary</Summary></Documentation>', 'Short Summary', null
             ],
             [
-                '<Documentation><Summary>Short Summery</Summary><LongDescription>LongDescription</LongDescription></Documentation>', 'Short Summery', 'LongDescription'
+                '<Documentation><Summary>Short Summary</Summary><LongDescription>LongDescription</LongDescription></Documentation>', 'Short Summary', 'LongDescription'
             ],
             [
             '<Documentation><LongDescription>LongDescription</LongDescription></Documentation>', null, 'LongDescription'
