@@ -118,7 +118,10 @@ class ReferenceType extends EdmBase implements IStructuralTypes, IAttribute
         return $this->getDocumentation() === null;
     }
 
-    public function __toString()
+    /**
+     * @return string
+     */
+    public function __toString(): string
     {
         return sprintf('Ref(%s)', $this->getType()->getName());
     }

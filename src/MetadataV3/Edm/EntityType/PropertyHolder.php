@@ -43,7 +43,7 @@ class PropertyHolder implements \ArrayAccess
         unset($this->property[$offset]);
     }
 
-    public function __toArray()
+    public function __toArray(): array
     {
         return $this->property;
     }
