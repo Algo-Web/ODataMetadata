@@ -56,7 +56,7 @@ trait HasType
         }
         return $base;
     }
-    public function getChildElementsHasType(): IType
+    public function getChildElementsHasType(): ?IType
     {
         return $this->getType() instanceof IStructuralTypes ? $this->getType() : null;
     }
