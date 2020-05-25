@@ -61,7 +61,7 @@ class TimeConstant extends ConstantBase
      */
     public function __toString(): string
     {
-        // xsd:dateTime is the same as RFCRFC3339
+        // xsd:dateTime is the same as RFC3339
         return $this->__value->format(DateTime::RFC3339);
     }
 

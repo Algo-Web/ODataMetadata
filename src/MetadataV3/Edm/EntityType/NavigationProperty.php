@@ -88,14 +88,14 @@ class NavigationProperty extends EdmBase
      */
     private $fromRole = null;
 
-    public function __construct(string $name, string $relationship, string $toRole, string $fromRole, Documentation $documentaiton = null, AccessorType $getter = null, AccessorType $setter = null)
+    public function __construct(string $name, string $relationship, string $toRole, string $fromRole, Documentation $documentation = null, AccessorType $getter = null, AccessorType $setter = null)
     {
         $this
             ->setName($name)
             ->setRelationship($relationship)
             ->setToRole($toRole)
             ->setFromRole($fromRole)
-            ->setDocumentation($documentaiton)
+            ->setDocumentation($documentation)
             ->setGetterAccess($getter)
             ->setSetterAccess($setter);
     }

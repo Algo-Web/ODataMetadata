@@ -78,7 +78,7 @@ trait HasValueAnnotation
     }
     public function XmlSerializeHasValueAnnotation(DOMElement $thisNode): void
     {
-        //TODO: add conext version check
+        //TODO: add context version check
         foreach ($this->getValueAnnotation() as $annotation) {
             $annotation->XmlSerialize($thisNode);
         }

@@ -36,18 +36,18 @@ use AlgoWeb\ODataMetadata\Writer\WriterContext;
  *         </edmx:DataServices>
  *     </edmx:Edmx>
  *
- * The edmx:Edmx element defines the XML namespace for the EDMX document and contains the edmx:DataServices subelement.
+ * The edmx:Edmx element defines the XML namespace for the EDMX document and contains the edmx:DataServices sub-element.
  * The following rules apply to the edmx:Edmx element:
  * An EDMX document MUST have exactly one edmx:Edmx element as its root element.
  * The Version attribute MUST be defined on the edmx:Edmx element. Version is of type xs:string, as specified in the
  * XML schema [XMLSCHEMA1].
- * The edmx:Edmx element can contain a choice of zero or more of each of the following subelements:
+ * The edmx:Edmx element can contain a choice of zero or more of each of the following sub-elements:
  * edmx:Reference
  * edmx:AnnotationsReference
  *
- * Subelements in a given choice set can appear in any given order.
- * The edmx:Edmx element specifies exactly one edmx:DataServices subelement. This subelement MUST appear after the
- * edmx:Reference and edmx:AnnotationReference subelements, if present.
+ * Sub-elements in a given choice set can appear in any given order.
+ * The edmx:Edmx element specifies exactly one edmx:DataServices sub-element. This sub-element MUST appear after the
+ * edmx:Reference and edmx:AnnotationReference sub-elements, if present.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3
  */
