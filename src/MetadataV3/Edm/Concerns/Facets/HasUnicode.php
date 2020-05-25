@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Trait HasUnicode
+ * Trait HasUnicode.
  *
  * 5.3.6 The edm:Unicode Attribute
  *
@@ -32,7 +32,7 @@ trait HasUnicode
     private $unicode = true;
 
     /**
-     * Gets as unicode
+     * Gets as unicode.
      *
      * @return bool
      */
@@ -42,9 +42,9 @@ trait HasUnicode
     }
 
     /**
-     * Sets a new unicode
+     * Sets a new unicode.
      *
-     * @param bool $unicode
+     * @param  bool $unicode
      * @return self
      */
     public function setUnicode(bool $unicode): self

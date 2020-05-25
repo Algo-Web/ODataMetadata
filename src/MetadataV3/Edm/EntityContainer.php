@@ -14,7 +14,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityContainer\FunctionImport;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.14 EntityContainer
+ * 2.1.14 EntityContainer.
  *
  * EntityContainer is conceptually similar to a database or data source. It groups EntitySet, AssociationSet, and
  * FunctionImport child elements that represent a data source.
@@ -48,29 +48,29 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - In CSDL 3.0, EntityContainer can contain any number of ValueAnnotation elements.
  * - In the sequence of child elements under EntityContainer, AnnotationElement follows all other elements.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.1
  */
 class EntityContainer extends EdmBase
 {
-    /**
+    /*
      * EntityContainer can contain a maximum of one Documentation element.
      * If present, the Documentation child element MUST precede FunctionImport, EntitySet, and AssociationSet
      * child elements.
      */
     use HasDocumentation,
-        /**
+        /*
          * In CSDL 3.0, EntityContainer can contain any number of ValueAnnotation elements.
          */
         HasValueAnnotation;
     /**
-     * @var string $name EntityContainer MUST have a Name attribute defined that is of type SimpleIdentifier.
+     * @var string $name entityContainer MUST have a Name attribute defined that is of type SimpleIdentifier
      */
     private $name;
 
     /**
      * @var string $extends EntityContainer can define an Extends attribute, which, if present, refers to another
-     * EntityContainer in scope by name.EntityContainer elements that extend another EntityContainer inherit all of the
-     * extended EntitySet, AssociationSet, and FunctionImport child elements from that EntityContainer.
+     *             EntityContainer in scope by name.EntityContainer elements that extend another EntityContainer inherit all of the
+     *             extended EntitySet, AssociationSet, and FunctionImport child elements from that EntityContainer.
      */
     private $extends = null;
 
@@ -115,7 +115,6 @@ class EntityContainer extends EdmBase
         Documentation $documentation = null,
         bool $lazyLoadingEnabled = false
     ) {
-    
         $this->setName($name)
             ->setIsDefaultEntityContainer($isDefaultEntityContainer)
             ->setLazyLoadingEnabled($lazyLoadingEnabled)
@@ -123,7 +122,7 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -133,9 +132,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(string $name):self
@@ -145,7 +144,7 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Gets as extends
+     * Gets as extends.
      *
      * @return string|null
      */
@@ -155,9 +154,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Sets a new extends
+     * Sets a new extends.
      *
-     * @param string|null $extends
+     * @param  string|null $extends
      * @return self
      */
     public function setExtends(?string $extends): self
@@ -167,7 +166,7 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Gets as typeAccess
+     * Gets as typeAccess.
      *
      * @return AccessorType
      */
@@ -177,9 +176,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Sets a new typeAccess
+     * Sets a new typeAccess.
      *
-     * @param AccessorType $typeAccess
+     * @param  AccessorType $typeAccess
      * @return self
      */
     public function setTypeAccess(AccessorType $typeAccess): self
@@ -189,7 +188,7 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Gets as lazyLoadingEnabled
+     * Gets as lazyLoadingEnabled.
      *
      * @return bool
      */
@@ -199,9 +198,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Sets a new lazyLoadingEnabled
+     * Sets a new lazyLoadingEnabled.
      *
-     * @param bool $lazyLoadingEnabled
+     * @param  bool $lazyLoadingEnabled
      * @return self
      */
     public function setLazyLoadingEnabled(bool $lazyLoadingEnabled): self
@@ -211,7 +210,7 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Gets as IsDefaultEntityContainer
+     * Gets as IsDefaultEntityContainer.
      *
      * @return bool
      */
@@ -221,9 +220,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Sets a new isDefaultEntityContainer
+     * Sets a new isDefaultEntityContainer.
      *
-     * @param bool $isDefaultEntityContainer
+     * @param  bool $isDefaultEntityContainer
      * @return self
      */
     public function setIsDefaultEntityContainer(bool $isDefaultEntityContainer): self
@@ -232,7 +231,7 @@ class EntityContainer extends EdmBase
         return $this;
     }
     /**
-     * Adds as functionImport
+     * Adds as functionImport.
      *
      * @param FunctionImport $functionImport
      *@return self
@@ -244,9 +243,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * isset functionImport
+     * isset functionImport.
      *
-     * @param int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetFunctionImport(int $index): bool
@@ -255,9 +254,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * unset functionImport
+     * unset functionImport.
      *
-     * @param int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetFunctionImport(int $index): void
@@ -266,7 +265,7 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Gets as functionImport
+     * Gets as functionImport.
      *
      * @return FunctionImport[]
      */
@@ -276,9 +275,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Sets a new functionImport
+     * Sets a new functionImport.
      *
-     * @param FunctionImport[] $functionImport
+     * @param  FunctionImport[] $functionImport
      * @return self
      */
     public function setFunctionImport(array $functionImport): self
@@ -288,9 +287,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Adds as entitySet
+     * Adds as entitySet.
      *
-     * @param EntitySet $entitySet
+     * @param  EntitySet $entitySet
      * @return self
      */
     public function addToEntitySet(EntitySet $entitySet): self
@@ -300,9 +299,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * isset entitySet
+     * isset entitySet.
      *
-     * @param int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetEntitySet(int $index): bool
@@ -311,9 +310,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * unset entitySet
+     * unset entitySet.
      *
-     * @param int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetEntitySet(int $index): void
@@ -322,7 +321,7 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return EntitySet[]
      */
@@ -332,9 +331,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
-     * @param EntitySet[] $entitySet
+     * @param  EntitySet[] $entitySet
      * @return self
      */
     public function setEntitySet(array $entitySet): self
@@ -344,10 +343,10 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Adds as associationSet
+     * Adds as associationSet.
      *
+     * @param  AssociationSet $associationSet
      * @return self
-     * @param AssociationSet $associationSet
      */
     public function addToAssociationSet(AssociationSet $associationSet): self
     {
@@ -356,9 +355,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * isset associationSet
+     * isset associationSet.
      *
-     * @param int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetAssociationSet(int $index):bool
@@ -367,9 +366,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * unset associationSet
+     * unset associationSet.
      *
-     * @param int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetAssociationSet(int $index): void
@@ -378,7 +377,7 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Gets as associationSet
+     * Gets as associationSet.
      *
      * @return AssociationSet[]
      */
@@ -388,9 +387,9 @@ class EntityContainer extends EdmBase
     }
 
     /**
-     * Sets a new associationSet
+     * Sets a new associationSet.
      *
-     * @param AssociationSet[] $associationSet
+     * @param  AssociationSet[] $associationSet
      * @return self
      */
     public function setAssociationSet(array $associationSet): self

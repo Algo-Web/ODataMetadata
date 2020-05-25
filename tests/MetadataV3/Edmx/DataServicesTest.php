@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\Writer\WriterContext;
 
 class DataServicesTest extends TestCase
 {
-
     public function testDataServicesXmlSerialize()
     {
         $dataService = new DataServices();

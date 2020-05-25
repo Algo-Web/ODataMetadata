@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * Class representing TStringConstantExpressionType
+ * Class representing TStringConstantExpressionType.
  *
  * 16.1.9 The Edm:String Constant Expression
  *
@@ -25,13 +25,13 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *         <String>Product Catalog</String>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.9
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.9
  * XSD Type: TStringConstantExpression
  */
 class StringConstant extends ConstantBase
 {
     /**
-     * Construct
+     * Construct.
      *
      * @param string $value
      */
@@ -41,9 +41,9 @@ class StringConstant extends ConstantBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value(string $value = null): string

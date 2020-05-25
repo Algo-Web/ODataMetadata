@@ -2,8 +2,8 @@
 
 namespace AlgoWeb\ODataMetadata\Tests\MetadataV3;
 
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\Schema;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Entity;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\Schema;
 use AlgoWeb\ODataMetadata\MetadataV3\Edmx\Edmx;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 

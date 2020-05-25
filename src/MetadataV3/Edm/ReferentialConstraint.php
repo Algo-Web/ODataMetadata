@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasDocumentation;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.11 ReferentialConstraint
+ * 2.1.11 ReferentialConstraint.
  *
  * In Entity Data Model (EDM), a ReferentialConstraint element can exist between the key of one entity type and the
  * primitive property or properties of an associated entity type. A referential constraint is a constraint on the keys
@@ -51,7 +51,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - - Dependent,
  * - - AnnotationElement.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl10.4
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl10.4
  * XSD Type: TConstraint
  */
 class ReferentialConstraint extends EdmBase
@@ -69,7 +69,7 @@ class ReferentialConstraint extends EdmBase
     private $dependent = null;
 
     /**
-     * Gets as principal
+     * Gets as principal.
      *
      * @return ReferentialConstraintRole
      */
@@ -79,9 +79,9 @@ class ReferentialConstraint extends EdmBase
     }
 
     /**
-     * Sets a new principal
+     * Sets a new principal.
      *
-     * @param ReferentialConstraintRole $principal
+     * @param  ReferentialConstraintRole $principal
      * @return self
      */
     public function setPrincipal(ReferentialConstraintRole $principal)
@@ -93,7 +93,7 @@ class ReferentialConstraint extends EdmBase
     }
 
     /**
-     * Gets as dependent
+     * Gets as dependent.
      *
      * @return ReferentialConstraintRole
      */
@@ -103,9 +103,9 @@ class ReferentialConstraint extends EdmBase
     }
 
     /**
-     * Sets a new dependent
+     * Sets a new dependent.
      *
-     * @param ReferentialConstraintRole $dependent
+     * @param  ReferentialConstraintRole $dependent
      * @return self
      */
     public function setDependent(ReferentialConstraintRole $dependent)

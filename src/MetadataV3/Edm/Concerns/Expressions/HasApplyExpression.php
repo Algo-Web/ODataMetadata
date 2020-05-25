@@ -17,7 +17,7 @@ trait HasApplyExpression
     ];
 
     /**
-     * Adds as apply
+     * Adds as apply.
      *
      * @param TApplyExpressionType $apply
      *@return self
@@ -29,9 +29,9 @@ trait HasApplyExpression
     }
 
     /**
-     * isset apply
+     * isset apply.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetApply($index)
@@ -40,9 +40,9 @@ trait HasApplyExpression
     }
 
     /**
-     * unset apply
+     * unset apply.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetApply($index)
@@ -51,7 +51,7 @@ trait HasApplyExpression
     }
 
     /**
-     * Gets as apply
+     * Gets as apply.
      *
      * @return TApplyExpressionType[]
      */
@@ -61,9 +61,9 @@ trait HasApplyExpression
     }
 
     /**
-     * Sets a new apply
+     * Sets a new apply.
      *
-     * @param TApplyExpressionType[] $apply
+     * @param  TApplyExpressionType[] $apply
      * @return self
      */
     public function setApply(array $apply)

@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\OnAction\ActionType;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.10 OnDelete
+ * 2.1.10 OnDelete.
  *
  * The OnDelete element is a trigger that is associated with a relationship. The action is performed on one end of the
  * relationship when the state of the other side of the relationship changes.
@@ -32,7 +32,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - OnDelete can contain any number of AnnotationElement elements.
  * - Child elements of OnDelete are to appear in this sequence: Documentation, AnnotationElement.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl10.3
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl10.3
  * XSD Type: TOnAction
  */
 class OnDelete extends EdmBase
@@ -50,7 +50,7 @@ class OnDelete extends EdmBase
     }
 
     /**
-     * Gets as action
+     * Gets as action.
      *
      * @return ActionType
      */
@@ -60,9 +60,9 @@ class OnDelete extends EdmBase
     }
 
     /**
-     * Sets a new action
+     * Sets a new action.
      *
-     * @param ActionType $action
+     * @param  ActionType $action
      * @return self
      */
     public function setAction(ActionType $action):self

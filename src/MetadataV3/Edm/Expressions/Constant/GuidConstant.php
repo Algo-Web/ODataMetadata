@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Constant;
 use InvalidArgumentException;
 
 /**
- * Class representing TGuidConstantExpressionType
+ * Class representing TGuidConstantExpressionType.
  *
  * 16.1.7 The Edm:Guid Constant Expression
  *
@@ -23,13 +23,13 @@ use InvalidArgumentException;
  *         <Guid>21EC2020-3AEA-1069-A2DD-08002B30309D</Guid>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.7
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.7
  * XSD Type: TGuidConstantExpression
  */
 class GuidConstant extends ConstantBase
 {
     /**
-     * Construct
+     * Construct.
      *
      * @param string $value
      */
@@ -39,9 +39,9 @@ class GuidConstant extends ConstantBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param string $value
+     * @param  string $value
      * @return string
      */
     public function value(string $value = null): string
@@ -51,7 +51,7 @@ class GuidConstant extends ConstantBase
             $guidPattern = sprintf('/%1$s{8}-%1$s{4}-%1$s{4}-%1$s{4}-%1$s{12}/m', $hexPattern);
             if (!$this->completelyMatchesPattern($value, $guidPattern)) {
                 throw new InvalidArgumentException(
-                    sprintf("%s Should be assigned strings matching %s", __CLASS__, $guidPattern)
+                    sprintf('%s Should be assigned strings matching %s', __CLASS__, $guidPattern)
                 );
             }
 

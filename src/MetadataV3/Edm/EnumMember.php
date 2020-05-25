@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasDocumentation;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.38 EnumType Member
+ * 2.1.38 EnumType Member.
  *
  * A Member element is used inside an EnumType element to declare a member of an enumeration type.
  *
@@ -29,7 +29,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *   the value of the previous member for subsequent members.
 
 Multiple members with different Name attributes can have the same Value attributes. When mapping from a value of the underlying type to a Member of an EnumType, the first matching Member is used.
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.2.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.2.1
  * * XSD Type: TEnumTypeMember
  */
 class EnumMember extends EdmBase
@@ -37,9 +37,9 @@ class EnumMember extends EdmBase
     use HasDocumentation;
     /**
      * @var string $name 8.2.1 The edm:Name Attribute
-     * Each enumeration member MUST provide a [simpleidentifier][csdl19] value for the edm:Name attribute. The
-     * enumeration type MUST NOT declare two members with the same name.
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.2.1
+     *             Each enumeration member MUST provide a [simpleidentifier][csdl19] value for the edm:Name attribute. The
+     *             enumeration type MUST NOT declare two members with the same name.
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.2.1
      */
     private $name = null;
 
@@ -61,7 +61,7 @@ class EnumMember extends EdmBase
      *         <Member Name="Overnight" />
      *     </EnumType>
      *
-     * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.2.2
+     * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.2.2
      */
     private $value = null;
 
@@ -74,7 +74,7 @@ class EnumMember extends EdmBase
     }
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -84,9 +84,9 @@ class EnumMember extends EdmBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(string $name): self
@@ -96,7 +96,7 @@ class EnumMember extends EdmBase
     }
 
     /**
-     * Gets as value
+     * Gets as value.
      *
      * @return int|null
      */
@@ -106,9 +106,9 @@ class EnumMember extends EdmBase
     }
 
     /**
-     * Sets a new value
+     * Sets a new value.
      *
-     * @param int|null $value
+     * @param  int|null $value
      * @return self
      */
     public function setValue(?int $value): self

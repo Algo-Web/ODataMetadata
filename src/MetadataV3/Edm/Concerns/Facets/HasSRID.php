@@ -11,7 +11,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Class HasSRID
+ * Class HasSRID.
  *
  * 5.3.8 The edm:SRID Attribute
  *
@@ -24,7 +24,7 @@ use DOMElement;
  * The valid values of the SRID attribute and their meanings are as defined by the
  * [European Petroleum Survey Group (EPSG)][http://www.epsg.org/Geodetic.html].
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.8
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.8
  * @mixin EdmBase
  */
 trait HasSRID
@@ -35,7 +35,7 @@ trait HasSRID
     private $sRID = null;
 
     /**
-     * Gets as sRID
+     * Gets as sRID.
      *
      * @return string|null
      */
@@ -44,9 +44,9 @@ trait HasSRID
         return $this->sRID;
     }
     /**
-     * Sets a new sRID
+     * Sets a new sRID.
      *
-     * @param string|null $sRID
+     * @param  string|null $sRID
      * @return self
      */
     public function setSRID(?string $sRID)

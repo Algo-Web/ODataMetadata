@@ -17,7 +17,7 @@ trait HasParameterReferenceExpression
     ];
 
     /**
-     * Adds as parameterReference
+     * Adds as parameterReference.
      *
      * @param TParameterReferenceExpressionType $parameterReference
      *@return self
@@ -29,9 +29,9 @@ trait HasParameterReferenceExpression
     }
 
     /**
-     * isset parameterReference
+     * isset parameterReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetParameterReference($index)
@@ -40,9 +40,9 @@ trait HasParameterReferenceExpression
     }
 
     /**
-     * unset parameterReference
+     * unset parameterReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetParameterReference($index)
@@ -51,7 +51,7 @@ trait HasParameterReferenceExpression
     }
 
     /**
-     * Gets as parameterReference
+     * Gets as parameterReference.
      *
      * @return TParameterReferenceExpressionType[]
      */
@@ -61,9 +61,9 @@ trait HasParameterReferenceExpression
     }
 
     /**
-     * Sets a new parameterReference
+     * Sets a new parameterReference.
      *
-     * @param TParameterReferenceExpressionType[] $parameterReference
+     * @param  TParameterReferenceExpressionType[] $parameterReference
      * @return self
      */
     public function setParameterReference(array $parameterReference)

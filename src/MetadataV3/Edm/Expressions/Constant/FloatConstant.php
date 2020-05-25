@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * Class representing TFloatConstantExpressionType
+ * Class representing TFloatConstantExpressionType.
  *
  * 16.1.6 The Edm:Float Constant Expression
  *
@@ -24,13 +24,13 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *         <Float>3.14</Float>
  * </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.6
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.6
  * XSD Type: TFloatConstantExpression
  */
 class FloatConstant extends ConstantBase
 {
     /**
-     * Construct
+     * Construct.
      *
      * @param float $value
      */
@@ -40,9 +40,9 @@ class FloatConstant extends ConstantBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param float $value
+     * @param  float $value
      * @return float
      */
     public function value(float $value = null): float

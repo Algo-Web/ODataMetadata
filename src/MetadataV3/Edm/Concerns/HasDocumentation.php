@@ -5,11 +5,11 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns;
 
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Documentation;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 
 /**
- * Trait HasDocumentation
+ * Trait HasDocumentation.
  * @package AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns
  * @mixin EdmBase
  */
@@ -21,7 +21,7 @@ trait HasDocumentation
     private $documentation = null;
 
     /**
-     * Gets as documentation
+     * Gets as documentation.
      *
      * @return null|Documentation
      */
@@ -31,9 +31,9 @@ trait HasDocumentation
     }
 
     /**
-     * Sets a new documentation
+     * Sets a new documentation.
      *
-     * @param Documentation|null $documentation
+     * @param  Documentation|null $documentation
      * @return self
      */
     public function setDocumentation(?Documentation $documentation): self

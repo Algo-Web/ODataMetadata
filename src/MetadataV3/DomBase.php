@@ -11,7 +11,6 @@ use AlgoWeb\ODataMetadata\Writer\IAttribute;
 
 abstract class DomBase
 {
-
     public function requiredVersion(): OdataVersions
     {
         return OdataVersions::ONE();

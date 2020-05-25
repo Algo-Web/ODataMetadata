@@ -11,7 +11,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * 2.1.5 Entity Key
+ * 2.1.5 Entity Key.
  *
  * A Key element describes which Property elements form a key that can uniquely identify instances of an EntityType.
  * Any set of non-nullable, immutable, scalar type declared properties can serve as the key.
@@ -29,7 +29,7 @@ use DOMElement;
  * - Each PropertyRef child element names a Property of a type that is equality comparable.
  * - In CSDL 2.0 and CSDL 3.0, Key can contain any number of AnnotationElement elements.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.2
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl6.2
  *
  * XSD Type: TEntityKeyElement
  */

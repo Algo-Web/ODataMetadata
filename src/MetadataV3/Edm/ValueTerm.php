@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasType;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.31 ValueTerm
+ * 2.1.31 ValueTerm.
  *
  * A ValueTerm element is used to define a value term in Entity Data Model (EDM).
  * The following is an example of a ValueTerm element.
@@ -26,7 +26,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - The ValueTerm element can have a DefaultValue attribute to provide a value for the ValueTerm if the term is applied
  *   but has no value specified.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl14.2
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl14.2
  * XSD Type: TValueTerm
  */
 class ValueTerm extends EdmBase
@@ -38,7 +38,7 @@ class ValueTerm extends EdmBase
     private $name;
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -48,9 +48,9 @@ class ValueTerm extends EdmBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(string $name): self

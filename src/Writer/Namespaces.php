@@ -8,7 +8,7 @@ namespace AlgoWeb\ODataMetadata\Writer;
 use AlgoWeb\ODataMetadata\OdataVersions;
 
 /**
- * Class Namespaces
+ * Class Namespaces.
  *
  * 1 Common Schema Definition Language (CSDL) Namespaces
  *
@@ -20,7 +20,7 @@ use AlgoWeb\ODataMetadata\OdataVersions;
 class Namespaces
 {
     /**
-     * 1.1 Entity Data Model for Data Services Packaging (EDMX) Namespace
+     * 1.1 Entity Data Model for Data Services Packaging (EDMX) Namespace.
      *
      * Elements and attributes associated with the top-level wrapper that contains the CSDL used to define the entity
      * model for an OData Service are qualified with the Entity Data Model for Data Services Packaging
@@ -31,7 +31,7 @@ class Namespaces
      */
     private const EDMXNamespace = 'http://schemas.microsoft.com/ado/2007/06/edmx';
     /**
-     * 1.2 Entity Data Model (EDM) Namespace
+     * 1.2 Entity Data Model (EDM) Namespace.
      *
      * Elements and attributes that define the entity model exposed by the OData Service are qualified with the Entity
      * Data Model namespace: http://schemas.microsoft.com/ado/2009/11/edm.

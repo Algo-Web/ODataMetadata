@@ -11,5 +11,4 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs;
  */
 interface IScalarType extends IType
 {
-
 }

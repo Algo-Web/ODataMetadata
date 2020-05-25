@@ -17,7 +17,7 @@ trait HasTypeAssertExpression
     ];
 
     /**
-     * Adds as typeAssert
+     * Adds as typeAssert.
      *
      * @param AssertTypeExpression $typeAssert
      *@return self
@@ -29,9 +29,9 @@ trait HasTypeAssertExpression
     }
 
     /**
-     * isset typeAssert
+     * isset typeAssert.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetTypeAssert($index)
@@ -40,9 +40,9 @@ trait HasTypeAssertExpression
     }
 
     /**
-     * unset typeAssert
+     * unset typeAssert.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetTypeAssert($index)
@@ -51,7 +51,7 @@ trait HasTypeAssertExpression
     }
 
     /**
-     * Gets as typeAssert
+     * Gets as typeAssert.
      *
      * @return AssertTypeExpression[]
      */
@@ -61,9 +61,9 @@ trait HasTypeAssertExpression
     }
 
     /**
-     * Sets a new typeAssert
+     * Sets a new typeAssert.
      *
-     * @param AssertTypeExpression[] $typeAssert
+     * @param  AssertTypeExpression[] $typeAssert
      * @return self
      */
     public function setTypeAssert(array $typeAssert)

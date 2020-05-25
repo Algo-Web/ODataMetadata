@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.25 CollectionType
+ * 2.1.25 CollectionType.
  *
  * If the type of the FunctionParameter or ReturnType is a collection, the type can be expressed as an attribute or
  * by using child element syntax.
@@ -51,7 +51,7 @@ class CollectionType extends EdmBase implements IStructuralTypes
     private $containerFor = null;
 
     /**
-     * Gets the containerFor
+     * Gets the containerFor.
      *
      * @return IType
      */
@@ -61,9 +61,9 @@ class CollectionType extends EdmBase implements IStructuralTypes
     }
 
     /**
-     * Sets a new containerFor
+     * Sets a new containerFor.
      *
-     * @param IType $containerFor
+     * @param  IType $containerFor
      * @return self
      */
     public function setContainerFor(IType $containerFor): self
@@ -84,7 +84,6 @@ class CollectionType extends EdmBase implements IStructuralTypes
     /**
      * @return array|AttributeContainer[]
      */
-
     public function getAttributes(): array
     {
         $containerFor = $this->getContainerFor();
@@ -119,6 +118,6 @@ class CollectionType extends EdmBase implements IStructuralTypes
 
     public function isAttribute(): bool
     {
-       return false;
+        return false;
     }
 }

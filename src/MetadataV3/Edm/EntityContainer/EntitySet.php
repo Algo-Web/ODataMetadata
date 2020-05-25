@@ -13,7 +13,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.18 EntitySet
+ * 2.1.18 EntitySet.
  *
  * An EntitySet element is a named set that can contain instances of a specified EntityType element and any of the
  * specified EntityType subtypes. More than one EntitySet for a particular EntityType can be defined.
@@ -37,7 +37,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - In CSDL 3.0, EntitySet can contain any number of ValueAnnotation elements.
  * - Child elements of EntitySet are to appear in this sequence:  Documentation, AnnotationElement.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.2
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.2
  */
 class EntitySet extends EdmBase
 {
@@ -60,7 +60,7 @@ class EntitySet extends EdmBase
     }
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -70,9 +70,9 @@ class EntitySet extends EdmBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(string $name): self
@@ -82,7 +82,7 @@ class EntitySet extends EdmBase
     }
 
     /**
-     * Gets as entityType
+     * Gets as entityType.
      *
      * @return string
      */
@@ -92,9 +92,9 @@ class EntitySet extends EdmBase
     }
 
     /**
-     * Sets a new entityType
+     * Sets a new entityType.
      *
-     * @param string $entityType
+     * @param  string $entityType
      * @return self
      */
     public function setEntityType(string $entityType): self

@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * Class representing TIntConstantExpressionType
+ * Class representing TIntConstantExpressionType.
  *
  * 16.1.8 The Edm:Int Constant Expression
  * The Edm:Int constant expression evaluates to a primitive integral value. An integral expression MUST be assigned a
@@ -24,13 +24,13 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *         <Int>42</Int>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.8
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.8
  * XSD Type: TIntConstantExpression
  */
 class IntConstant extends ConstantBase
 {
     /**
-     * Construct
+     * Construct.
      *
      * @param int $value
      */
@@ -40,9 +40,9 @@ class IntConstant extends ConstantBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param int $value
+     * @param  int $value
      * @return int
      */
     public function value(int $value = null): int

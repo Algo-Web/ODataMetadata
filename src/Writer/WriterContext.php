@@ -103,8 +103,8 @@ class WriterContext
     }
 
     /**
-     * @param DomBase $rootNode
-     * @param bool $isTopLevel
+     * @param  DomBase    $rootNode
+     * @param  bool       $isTopLevel
      * @return DOMElement
      */
     public function write(DomBase $rootNode, bool $isTopLevel = true): DOMElement
@@ -148,7 +148,7 @@ class WriterContext
     private function registerNamespaces()
     {
         $this->registerNamespace(null, $this->getEdmNamespace());
-        $this->registerNamespace("annotations", $this->getAnnotationsNamespace());
+        $this->registerNamespace('annotations', $this->getAnnotationsNamespace());
         $this->registerNamespace('metadata', $this->getMetadataNamespace());
         $this->registerNamespace('edmx', $this->getEdmxNamespace());
     }
@@ -156,7 +156,7 @@ class WriterContext
     private function setUpNamespaces(DOMElement $rootElement)
     {
         foreach ($this->namespaceRegister as $prefix => $namespace) {
-            $qualifiedName = $prefix === "" ? 'xmlns' : 'xmlns:' . $prefix;
+            $qualifiedName = $prefix === '' ? 'xmlns' : 'xmlns:' . $prefix;
             $rootElement->setAttributeNS(
                 'http://www.w3.org/2000/xmlns/',
                 $qualifiedName,

@@ -17,10 +17,10 @@ trait HasBinaryExpression
 
 
     /**
-     * Adds as binary
+     * Adds as binary.
      *
+     * @param  mixed $binary
      * @return self
-     * @param mixed $binary
      */
     public function addToBinary($binary)
     {
@@ -29,9 +29,9 @@ trait HasBinaryExpression
     }
 
     /**
-     * isset binary
+     * isset binary.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetBinary($index)
@@ -40,9 +40,9 @@ trait HasBinaryExpression
     }
 
     /**
-     * unset binary
+     * unset binary.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetBinary($index)
@@ -51,7 +51,7 @@ trait HasBinaryExpression
     }
 
     /**
-     * Gets as binary
+     * Gets as binary.
      *
      * @return mixed[]
      */
@@ -61,9 +61,9 @@ trait HasBinaryExpression
     }
 
     /**
-     * Sets a new binary
+     * Sets a new binary.
      *
-     * @param mixed $binary
+     * @param  mixed $binary
      * @return self
      */
     public function setBinary(array $binary)

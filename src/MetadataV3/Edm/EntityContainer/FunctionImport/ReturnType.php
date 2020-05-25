@@ -13,7 +13,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * 2.1.16 FunctionImport ReturnType
+ * 2.1.16 FunctionImport ReturnType.
  *
  * A ReturnType describes the shape of data that is returned from a FunctionImport element. ReturnType is used to map
  * to stored procedures with multiple result sets. In CSDL 3.0, the return type of a function import can be declared
@@ -35,7 +35,7 @@ use DOMElement;
  *   attributes cannot collide.
  * - The order of the ReturnType elements MUST match that of the underlying stored procedure.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.5
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.5
  * XSD Type: TFunctionImportReturnType
  */
 class ReturnType extends EdmBase
@@ -51,7 +51,7 @@ class ReturnType extends EdmBase
     private $entitySet = null;
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return string|null
      */
@@ -61,9 +61,9 @@ class ReturnType extends EdmBase
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
-     * @param string|null $type
+     * @param  string|null $type
      * @return self
      */
     public function setType(?string $type): self
@@ -73,7 +73,7 @@ class ReturnType extends EdmBase
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return TEntitySetReferenceExpressionType|null
      */
@@ -83,9 +83,9 @@ class ReturnType extends EdmBase
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
-     * @param TEntitySetReferenceExpressionType|null $entitySet
+     * @param  TEntitySetReferenceExpressionType|null $entitySet
      * @return self
      */
     public function setEntitySet(?TEntitySetReferenceExpressionType $entitySet): self

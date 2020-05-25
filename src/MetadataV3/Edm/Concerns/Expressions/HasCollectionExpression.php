@@ -16,7 +16,7 @@ trait HasCollectionExpression
 
     ];
     /**
-     * Adds as collection
+     * Adds as collection.
      *
      * @param TCollectionExpressionType $collection
      *@return self
@@ -28,9 +28,9 @@ trait HasCollectionExpression
     }
 
     /**
-     * isset collection
+     * isset collection.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetCollection($index)
@@ -39,9 +39,9 @@ trait HasCollectionExpression
     }
 
     /**
-     * unset collection
+     * unset collection.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetCollection($index)
@@ -50,7 +50,7 @@ trait HasCollectionExpression
     }
 
     /**
-     * Gets as collection
+     * Gets as collection.
      *
      * @return TCollectionExpressionType[]
      */
@@ -60,9 +60,9 @@ trait HasCollectionExpression
     }
 
     /**
-     * Sets a new collection
+     * Sets a new collection.
      *
-     * @param TCollectionExpressionType[] $collection
+     * @param  TCollectionExpressionType[] $collection
      * @return self
      */
     public function setCollection(array $collection)

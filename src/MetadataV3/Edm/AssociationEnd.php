@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Multiplicity;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.9 Association End
+ * 2.1.9 Association End.
  *
  * For a given Association, the End element defines one side of the relationship. End defines what type is participating in the relationship, multiplicity or the cardinality, and if there are any operation associations, like cascade delete.
  *
@@ -30,12 +30,12 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - End can contain any number of AnnotationElement elements.
  * - Child elements of End are to appear in this sequence: Documentation, OnDelete, AnnotationElement.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl10.2
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl10.2
  * XSD Type: TAssociationEnd
  */
 class AssociationEnd extends EdmBase
 {
-    /**
+    /*
      * End can contain a maximum of one Documentation element.
 
 
@@ -43,33 +43,33 @@ class AssociationEnd extends EdmBase
     use HasDocumentation;
     /**
      * @var Entity $type 10.2.1 The edm:Type Attribute
-     * Each end of the association MUST specify the entity type attached to that end. The value of the edm:Type
-     * attribute must be a [singleentitytypereference][csdl19]. The value of the type attribute MUST resolve to an
-     * entity type in the entity model.
+     *             Each end of the association MUST specify the entity type attached to that end. The value of the edm:Type
+     *             attribute must be a [singleentitytypereference][csdl19]. The value of the type attribute MUST resolve to an
+     *             entity type in the entity model.
      */
     private $type;
 
     /**
      * @var string $role 10.2.2 The edm:Role Attribute
-     * The edm:Role attribute allows the association end to be bound to a navigation property. The association end MAY
-     * assign a [simpleidentifier][csdl19] value to the edm:Role attribute.
+     *             The edm:Role attribute allows the association end to be bound to a navigation property. The association end MAY
+     *             assign a [simpleidentifier][csdl19] value to the edm:Role attribute.
      */
     private $role = null;
 
     /**
      * @var Multiplicity $multiplicity 10.2.3 The edm:Multiplicity Attribute
-     * The edm:Multiplicity attribute defines the cardinality of the association end. The value of the attribute MUST
-     * be one of the following:
-     * - 0..1  zero or one
-     * - 1  exactly one
-     * - *  zero or more
+     *                   The edm:Multiplicity attribute defines the cardinality of the association end. The value of the attribute MUST
+     *                   be one of the following:
+     *                   - 0..1  zero or one
+     *                   - 1  exactly one
+     *                   - *  zero or more
      */
     private $multiplicity;
 
     /**
      * @var OnDelete $onDelete 10.3 The edm:OnDelete Element
-     * The edm:OnDelete element prescribes the action that should be taken when the entity on the opposing end of the
-     * association is deleted.
+     *               The edm:OnDelete element prescribes the action that should be taken when the entity on the opposing end of the
+     *               association is deleted.
      *
      * If present, the edm:OnDelete element MUST define a value for the edm:Action attribute. The value assigned to the
      * action attribute MUST be Cascade or None.
@@ -86,7 +86,7 @@ class AssociationEnd extends EdmBase
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return Entity
      */
@@ -96,9 +96,9 @@ class AssociationEnd extends EdmBase
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
-     * @param Entity $type
+     * @param  Entity $type
      * @return self
      */
     public function setType(Entity $type):self
@@ -108,7 +108,7 @@ class AssociationEnd extends EdmBase
     }
 
     /**
-     * Gets as role
+     * Gets as role.
      *
      * @return string|null
      */
@@ -118,9 +118,9 @@ class AssociationEnd extends EdmBase
     }
 
     /**
-     * Sets a new role
+     * Sets a new role.
      *
-     * @param string|null $role
+     * @param  string|null $role
      * @return self
      */
     public function setRole(?string $role): self
@@ -133,7 +133,7 @@ class AssociationEnd extends EdmBase
     }
 
     /**
-     * Gets as multiplicity
+     * Gets as multiplicity.
      *
      * @return Multiplicity
      */
@@ -143,9 +143,9 @@ class AssociationEnd extends EdmBase
     }
 
     /**
-     * Sets a new multiplicity
+     * Sets a new multiplicity.
      *
-     * @param Multiplicity $multiplicity
+     * @param  Multiplicity $multiplicity
      * @return self
      */
     public function setMultiplicity(Multiplicity $multiplicity): self
@@ -155,7 +155,7 @@ class AssociationEnd extends EdmBase
     }
 
     /**
-     * Gets as onDelete
+     * Gets as onDelete.
      *
      * @return OnDelete
      */
@@ -165,9 +165,9 @@ class AssociationEnd extends EdmBase
     }
 
     /**
-     * Sets a new onDelete
+     * Sets a new onDelete.
      *
-     * @param OnDelete $onDelete
+     * @param  OnDelete $onDelete
      * @return self
      */
     public function setOnDelete(OnDelete $onDelete): self

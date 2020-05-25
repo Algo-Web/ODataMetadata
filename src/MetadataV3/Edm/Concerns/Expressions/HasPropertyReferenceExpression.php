@@ -17,7 +17,7 @@ trait HasPropertyReferenceExpression
     ];
 
     /**
-     * Adds as propertyReference
+     * Adds as propertyReference.
      *
      * @param TPropertyReferenceExpressionType $propertyReference
      *@return self
@@ -29,9 +29,9 @@ trait HasPropertyReferenceExpression
     }
 
     /**
-     * isset propertyReference
+     * isset propertyReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetPropertyReference($index)
@@ -40,9 +40,9 @@ trait HasPropertyReferenceExpression
     }
 
     /**
-     * unset propertyReference
+     * unset propertyReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetPropertyReference($index)
@@ -51,7 +51,7 @@ trait HasPropertyReferenceExpression
     }
 
     /**
-     * Gets as propertyReference
+     * Gets as propertyReference.
      *
      * @return TPropertyReferenceExpressionType[]
      */
@@ -61,9 +61,9 @@ trait HasPropertyReferenceExpression
     }
 
     /**
-     * Sets a new propertyReference
+     * Sets a new propertyReference.
      *
-     * @param TPropertyReferenceExpressionType[] $propertyReference
+     * @param  TPropertyReferenceExpressionType[] $propertyReference
      * @return self
      */
     public function setPropertyReference(array $propertyReference)

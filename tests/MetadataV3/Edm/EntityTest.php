@@ -10,7 +10,6 @@ use AlgoWeb\ODataMetadata\Tests\TestCase;
 
 class EntityTest extends TestCase
 {
-
     public function testEntityTestXmlSerialize()
     {
         $expected =
@@ -25,19 +24,18 @@ class EntityTest extends TestCase
             '    <Property Name="AccountNumber" Type="Int32" Nullable="true"/>'.
             '</EntityType>';
 
-        $entity = new Entity("Customer");
+        $entity = new Entity('Customer');
 
         $entity->addToKey(new PropertyRef('CustomerId'))
-            ->addToProperty(new Property('CustomerId', 'Int32',false))
-            ->addToProperty(new Property('FirstName', 'String',true))
-            ->addToProperty(new Property('LastName', 'String',true))
-            ->addToProperty(new Property('AccountNumber', 'Int32',true))
-            ->addToNavigationProperty(new NavigationProperty('Orders','Model1.CustomerOrder', 'Order', 'Customer'));
+            ->addToProperty(new Property('CustomerId', 'Int32', false))
+            ->addToProperty(new Property('FirstName', 'String', true))
+            ->addToProperty(new Property('LastName', 'String', true))
+            ->addToProperty(new Property('AccountNumber', 'Int32', true))
+            ->addToNavigationProperty(new NavigationProperty('Orders', 'Model1.CustomerOrder', 'Order', 'Customer'));
 
         $domNode = $this->writerContext->write($entity, false);
         $this->TESTNODE->appendChild($domNode);
         $xml = $this->writerContext->getBaseDocument()->saveXML($domNode);
         $this->assertXmlStringEqualsXmlString($expected, $xml);
-
     }
 }

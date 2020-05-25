@@ -18,10 +18,10 @@ trait HasDateTimeExpression
 
 
     /**
-     * Adds as dateTime
+     * Adds as dateTime.
      *
+     * @param  DateTime $dateTime
      * @return self
-     * @param DateTime $dateTime
      */
     public function addToDateTime(DateTime $dateTime)
     {
@@ -30,9 +30,9 @@ trait HasDateTimeExpression
     }
 
     /**
-     * isset dateTime
+     * isset dateTime.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetDateTime($index)
@@ -41,9 +41,9 @@ trait HasDateTimeExpression
     }
 
     /**
-     * unset dateTime
+     * unset dateTime.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetDateTime($index)
@@ -52,7 +52,7 @@ trait HasDateTimeExpression
     }
 
     /**
-     * Gets as dateTime
+     * Gets as dateTime.
      *
      * @return DateTime[]
      */
@@ -62,9 +62,9 @@ trait HasDateTimeExpression
     }
 
     /**
-     * Sets a new dateTime
+     * Sets a new dateTime.
      *
-     * @param DateTime[] $dateTime
+     * @param  DateTime[] $dateTime
      * @return self
      */
     public function setDateTime(array $dateTime)

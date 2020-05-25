@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Trait HasFixedLength
+ * Trait HasFixedLength.
  *
  * 5.3.3 The edm:FixedLength Attribute
  *
@@ -18,7 +18,7 @@ use DOMElement;
  * for the edm:FixedLength facet attribute. The value of this attribute specifies the size of the array used to
  * store the value of the property on a type instance.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.3
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.3
  * @mixin EdmBase
  */
 trait HasFixedLength
@@ -30,7 +30,7 @@ trait HasFixedLength
 
 
     /**
-     * Gets as fixedLength
+     * Gets as fixedLength.
      *
      * @return int|null
      */
@@ -40,9 +40,9 @@ trait HasFixedLength
     }
 
     /**
-     * Sets a new fixedLength
+     * Sets a new fixedLength.
      *
-     * @param int|null $fixedLength
+     * @param  int|null $fixedLength
      * @return self
      */
     public function setFixedLength(?int $fixedLength): self
