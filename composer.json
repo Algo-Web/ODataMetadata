@@ -25,7 +25,10 @@
     }
   ],
   "require": {
-    "php": "^7.1|^8.0"
+    "php": "^7.1|^8.0",
+    "myclabs/php-enum": "dev-master",
+    "ext-dom": "*"
+
   },
   "require-dev": {
     "mockery/mockery": "0.9.*|^1.0@dev",
