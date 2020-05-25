@@ -81,7 +81,7 @@ class Property extends EdmBase
     public function __construct(
         string $name,
         string $type,
-        bool $nullable = null,
+        bool $nullable = false,
         string $defaultValue = null,
         int $maxLength = null,
         int $fixedLength = null,
