@@ -94,13 +94,6 @@ class FunctionImport extends EdmBase
     private $returnType = null;
 
     /**
-     * @var TEntitySetReferenceExpressionType|null $entitySet If the return type of FunctionImport is a collection of entities, the EntitySet
-     *                                             attribute is defined.
-     *
-     * If the return type of FunctionImport is of ComplexType or scalar type, the EntitySet attribute cannot be defined.
-     */
-    private $entitySet = null;
-    /**
      * @var string In CSDL 3.0, FunctionImport can have an EntitySetPath attribute defined. EntitySetPath defines the
      *             EntitySet that contains the entities that are returned by the FunctionImport when that EntitySet is dependent
      *             on one of the FunctionImport parameters. For example, the entities returned from a FunctionImport can be
