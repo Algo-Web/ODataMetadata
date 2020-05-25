@@ -69,11 +69,6 @@ trait HasAccessors
         return $this;
     }
 
-    public function XmlSerializeHasAccessors(DOMElement $thisNode)
-    {
-        $this->XmlSerializeNullableAttribute($thisNode, 'cg:SetterAccess', $this->getSetterAccess());
-        $this->XmlSerializeNullableAttribute($thisNode, 'cg:GetterAccess', $this->getGetterAccess());
-    }
     public function getAttributesHasAccessors(): array
     {
         return [
