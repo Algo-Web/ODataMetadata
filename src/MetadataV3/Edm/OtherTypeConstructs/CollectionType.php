@@ -113,7 +113,7 @@ class CollectionType extends EdmBase implements IStructuralTypes
         ) {
             $containerFor = $this->getContainerFor();
             assert($containerFor instanceof DomBase);
-            return [$this->containerFor];
+            return [$containerFor];
         }
         return [];
     }
