@@ -51,16 +51,16 @@ class ParameterType extends EdmBase
      * attributes. The descriptions of these facets and their implications are covered elsewhere in this specification.
      * https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.6.3
      */
-    use HasNullable,
-        HasMaxLength,
-        HasPrecision,
-        HasScale,
-        HasSRID,
-        /*
-         * Parameter can contain a maximum of one Documentation element.
-         */
-        HasDocumentation,
-        HasValueAnnotation;
+    use HasNullable;
+    use HasMaxLength;
+    use HasPrecision;
+    use HasScale;
+    use HasSRID;
+    /*
+     * Parameter can contain a maximum of one Documentation element.
+     */
+    use HasDocumentation;
+    use HasValueAnnotation;
     /**
      * @var string $name parameter MUST have a Name defined
      */
@@ -102,7 +102,7 @@ class ParameterType extends EdmBase
         int $maxLength = null,
         int $precision = null,
         int $scale = null,
-        string  $sRID = null
+        string $sRID = null
     ) {
         $this
             ->setName($name)
@@ -120,7 +120,7 @@ class ParameterType extends EdmBase
      *
      * @return string
      */
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -131,7 +131,7 @@ class ParameterType extends EdmBase
      * @param  string $name
      * @return self
      */
-    public function setName(string $name):self
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
@@ -142,7 +142,7 @@ class ParameterType extends EdmBase
      *
      * @return string
      */
-    public function getType():string
+    public function getType(): string
     {
         return $this->type;
     }
@@ -153,7 +153,7 @@ class ParameterType extends EdmBase
      * @param  string $type
      * @return self
      */
-    public function setType(string $type):self
+    public function setType(string $type): self
     {
         $this->type = $type;
         return $this;
@@ -175,7 +175,7 @@ class ParameterType extends EdmBase
      * @param  ParameterMode|null $mode
      * @return self
      */
-    public function setMode(?ParameterMode$mode):self
+    public function setMode(?ParameterMode $mode): self
     {
         $this->mode = $mode;
         return $this;

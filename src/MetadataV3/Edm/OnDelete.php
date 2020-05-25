@@ -65,7 +65,7 @@ class OnDelete extends EdmBase
      * @param  ActionType $action
      * @return self
      */
-    public function setAction(ActionType $action):self
+    public function setAction(ActionType $action): self
     {
         $this->action = $action;
         return $this;

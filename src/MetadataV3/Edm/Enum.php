@@ -102,7 +102,7 @@ class Enum extends EdmBase implements INominalType, IScalarType
      * @param  string $name
      * @return self
      */
-    public function setName(string $name) : self
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
@@ -124,7 +124,7 @@ class Enum extends EdmBase implements INominalType, IScalarType
      * @param  bool $isFlags
      * @return self
      */
-    public function setIsFlags(bool $isFlags):self
+    public function setIsFlags(bool $isFlags): self
     {
         $this->isFlags = $isFlags;
         return $this;

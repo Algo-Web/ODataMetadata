@@ -65,8 +65,8 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  */
 class ComplexType extends EdmBase implements INominalType
 {
-    use HasDocumentation,
-        HasAnnotations;
+    use HasDocumentation;
+    use HasAnnotations;
     /**
      * @var string $name A ComplexType MUST have a Name attribute defined. Name is of type SimpleIdentifier and
      *             represents the name of this ComplexType.

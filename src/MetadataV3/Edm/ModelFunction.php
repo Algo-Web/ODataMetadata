@@ -59,8 +59,8 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  */
 class ModelFunction extends EdmBase
 {
-    use HasDocumentation,
-        HasValueAnnotation;
+    use HasDocumentation;
+    use HasValueAnnotation;
     /**
      * @var string $name
      */
@@ -122,7 +122,7 @@ class ModelFunction extends EdmBase
      * @param  FunctionReturn|null $returnType
      * @return self
      */
-    public function setReturnType(?FunctionReturn $returnType):self
+    public function setReturnType(?FunctionReturn $returnType): self
     {
         $this->returnType = $returnType;
         return $this;
@@ -157,7 +157,7 @@ class ModelFunction extends EdmBase
      * @param  string $name
      * @return void
      */
-    public function unsetParameter(string $name):void
+    public function unsetParameter(string $name): void
     {
         unset($this->parameter[$name]);
     }
@@ -167,7 +167,7 @@ class ModelFunction extends EdmBase
      *
      * @return ModelFunctionParameter[]
      */
-    public function getParameter():array
+    public function getParameter(): array
     {
         return $this->parameter;
     }
@@ -178,7 +178,7 @@ class ModelFunction extends EdmBase
      * @param  ModelFunctionParameter[] $parameter
      * @return self
      */
-    public function setParameter(array $parameter):self
+    public function setParameter(array $parameter): self
     {
         $this->parameter = $this->elementToNamedArray($parameter);
         return $this;

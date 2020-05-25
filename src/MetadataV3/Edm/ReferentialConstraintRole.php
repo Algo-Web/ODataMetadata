@@ -97,7 +97,7 @@ class ReferentialConstraintRole extends EdmBase
      *
      * @return string
      */
-    public function getRole():string
+    public function getRole(): string
     {
         return $this->role;
     }
@@ -108,7 +108,7 @@ class ReferentialConstraintRole extends EdmBase
      * @param  string $role
      * @return self
      */
-    public function setRole(string $role) : self
+    public function setRole(string $role): self
     {
         $this->role = $role;
         return $this;
@@ -130,18 +130,18 @@ class ReferentialConstraintRole extends EdmBase
      * @param  PropertyRef $role
      * @return self
      */
-    public function setPropertyRef(PropertyRef $role) : self
+    public function setPropertyRef(PropertyRef $role): self
     {
         $this->propertyRef = $role;
         return $this;
     }
 
-    public function setIsPrincipal(bool $isPrincipal) : self
+    public function setIsPrincipal(bool $isPrincipal): self
     {
         $this->isPrincipal = $isPrincipal;
         return $this;
     }
-    public function getIsPrincipal() : bool
+    public function getIsPrincipal(): bool
     {
         return $this->isPrincipal;
     }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\Tests\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Entity;
@@ -14,14 +16,14 @@ class EntityTest extends TestCase
     {
         $expected =
             '<EntityType Abstract="false" Name="Customer" OpenType="false"  metadata:HasStream="false">' .
-            '    <Key>'.
-            '        <PropertyRef Name="CustomerId" />'.
-            '    </Key>'.
-            '    <NavigationProperty Name="Orders" Relationship="Model1.CustomerOrder" FromRole="Customer" ToRole="Order"/>'.
-            '    <Property Name="CustomerId" Type="Int32" Nullable="false"/>'.
-            '    <Property Name="FirstName" Type="String" Nullable="true" Unicode="true"/>'.
-            '    <Property Name="LastName" Type="String" Nullable="true" Unicode="true"/>'.
-            '    <Property Name="AccountNumber" Type="Int32" Nullable="true"/>'.
+            '    <Key>' .
+            '        <PropertyRef Name="CustomerId" />' .
+            '    </Key>' .
+            '    <NavigationProperty Name="Orders" Relationship="Model1.CustomerOrder" FromRole="Customer" ToRole="Order"/>' .
+            '    <Property Name="CustomerId" Type="Int32" Nullable="false"/>' .
+            '    <Property Name="FirstName" Type="String" Nullable="true" Unicode="true"/>' .
+            '    <Property Name="LastName" Type="String" Nullable="true" Unicode="true"/>' .
+            '    <Property Name="AccountNumber" Type="Int32" Nullable="true"/>' .
             '</EntityType>';
 
         $entity = new Entity('Customer');

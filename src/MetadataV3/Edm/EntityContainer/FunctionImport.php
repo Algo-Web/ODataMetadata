@@ -72,12 +72,12 @@ class FunctionImport extends EdmBase
     /*
      * In CSDL 3.0, FunctionImport can contain any number of ValueAnnotation elements.
      */
-    use HasValueAnnotation,
-        /*
-         * The FunctionImport element can contain a maximum of one Documentation element.
-         */
-        HasDocumentation,
-        HasEntitySetReferenceExpression;
+    use HasValueAnnotation;
+    /*
+     * The FunctionImport element can contain a maximum of one Documentation element.
+     */
+    use HasDocumentation;
+    use HasEntitySetReferenceExpression;
     /**
      * @var string $name FunctionImport MUST have a Name attribute defined. Name attribute is of type SimpleIdentifier.
      */
@@ -146,7 +146,7 @@ class FunctionImport extends EdmBase
      *
      * @return string
      */
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -201,7 +201,7 @@ class FunctionImport extends EdmBase
      * @param  string|null $entitySet
      * @return self
      */
-    public function setEntitySetPath(?string $entitySet):self
+    public function setEntitySetPath(?string $entitySet): self
     {
         $this->entitySetPath = $entitySet;
         return $this;
@@ -323,7 +323,7 @@ class FunctionImport extends EdmBase
      * @param  int  $index
      * @return void
      */
-    public function unsetParameter(int $index):void
+    public function unsetParameter(int $index): void
     {
         unset($this->parameter[$index]);
     }
@@ -333,7 +333,7 @@ class FunctionImport extends EdmBase
      *
      * @return ParameterType[]
      */
-    public function getParameter():array
+    public function getParameter(): array
     {
         return $this->parameter;
     }

@@ -14,7 +14,7 @@ use MyCLabs\Enum\Enum;
  */
 class OdataVersions extends Enum
 {
-    private const ONE = '1.0';
-    private const TWO = '2.0';
+    private const ONE   = '1.0';
+    private const TWO   = '2.0';
     private const THREE = '3.0';
 }

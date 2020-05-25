@@ -82,11 +82,11 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  */
 class Entity extends EdmBase implements INominalType
 {
-    use HasAnnotations,
-        /*
-         * An EntityType element can contain at most one Documentation element.
-         */
-        HasDocumentation;
+    use HasAnnotations;
+    /*
+     * An EntityType element can contain at most one Documentation element.
+     */
+    use HasDocumentation;
     /**
      * @var string $name 6.1.1 The edm:Name Attribute
      *             A value of the form [simpleidentifier][csdl19] MUST be provided for the edm:Name attribute because an entity
@@ -182,8 +182,8 @@ class Entity extends EdmBase implements INominalType
         bool $hasStream = false,
         Documentation $documentation = null
     ) {
-        $this->key = new KeyElement();
-        $this->property = new PropertyHolder();
+        $this->key                = new KeyElement();
+        $this->property           = new PropertyHolder();
         $this->navigationProperty = new NavigationPropertyHolder();
         $this
             ->setName($name)
@@ -210,7 +210,7 @@ class Entity extends EdmBase implements INominalType
      * @param  string $name
      * @return self
      */
-    public function setName(string $name):self
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
@@ -221,7 +221,7 @@ class Entity extends EdmBase implements INominalType
      *
      * @return string|null
      */
-    public function getBaseType() : ?string
+    public function getBaseType(): ?string
     {
         return $this->baseType;
     }
@@ -232,7 +232,7 @@ class Entity extends EdmBase implements INominalType
      * @param  string|null $baseType
      * @return self
      */
-    public function setBaseType(?string $baseType):self
+    public function setBaseType(?string $baseType): self
     {
         $this->baseType = $baseType;
         return $this;
@@ -243,7 +243,7 @@ class Entity extends EdmBase implements INominalType
      *
      * @return bool
      */
-    public function getAbstract():bool
+    public function getAbstract(): bool
     {
         return $this->abstract;
     }
@@ -451,7 +451,7 @@ class Entity extends EdmBase implements INominalType
      *
      * @return NavigationProperty[]|NavigationPropertyHolder
      */
-    public function getNavigationProperty():NavigationPropertyHolder
+    public function getNavigationProperty(): NavigationPropertyHolder
     {
         return $this->navigationProperty;
     }

@@ -50,9 +50,9 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  */
 class NavigationProperty extends EdmBase
 {
-    use HasDocumentation,
-        HasValueAnnotation,
-        HasAccessors;
+    use HasDocumentation;
+    use HasValueAnnotation;
+    use HasAccessors;
     /**
      * @var string $name The navigation property MUST provide a [simpleidentifier][csdl19] value to the edm:Name
      *             attribute. The name attribute is a meaningful string that characterizes the relationship when navigating from
@@ -216,8 +216,9 @@ class NavigationProperty extends EdmBase
      */
     public function getChildElements(): array
     {
-        return array_merge([
-            $this->getDocumentation()],
+        return array_merge(
+            [
+                $this->getDocumentation()],
             $this->getValueAnnotation()
         );
     }

@@ -63,7 +63,7 @@ trait HasAccessors
      * @param  AccessorType $getterAccess
      * @return self
      */
-    public function setGetterAccess(?AccessorType$getterAccess): self
+    public function setGetterAccess(?AccessorType $getterAccess): self
     {
         $this->getterAccess = $getterAccess;
         return $this;

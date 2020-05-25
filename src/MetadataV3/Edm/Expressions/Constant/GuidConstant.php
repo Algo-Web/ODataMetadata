@@ -47,7 +47,7 @@ class GuidConstant extends ConstantBase
     public function value(string $value = null): string
     {
         if (null !== $value) {
-            $hexPattern = '[a-fA-F0-9]';
+            $hexPattern  = '[a-fA-F0-9]';
             $guidPattern = sprintf('/%1$s{8}-%1$s{4}-%1$s{4}-%1$s{4}-%1$s{12}/m', $hexPattern);
             if (!$this->completelyMatchesPattern($value, $guidPattern)) {
                 throw new InvalidArgumentException(

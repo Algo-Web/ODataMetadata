@@ -27,8 +27,8 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - The order of the Member elements has meaning and MUST be preserved.
  * - If the value of the Member element is not specified, the value is zero for the first member and one more than
  *   the value of the previous member for subsequent members.
-
-Multiple members with different Name attributes can have the same Value attributes. When mapping from a value of the underlying type to a Member of an EnumType, the first matching Member is used.
+ *
+ * Multiple members with different Name attributes can have the same Value attributes. When mapping from a value of the underlying type to a Member of an EnumType, the first matching Member is used.
  * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl8.2.1
  * * XSD Type: TEnumTypeMember
  */

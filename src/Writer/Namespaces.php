@@ -46,7 +46,7 @@ class Namespaces
      * In this specification the namespace prefix Edm is used to represent the Entity Data Model namespace, however
      * the prefix name is not prescriptive.
      */
-    private const V1EdmNamespace= 'http://schemas.microsoft.com/ado/2006/04/edm';
+    private const V1EdmNamespace = 'http://schemas.microsoft.com/ado/2006/04/edm';
     private const V2EdmNamespace = 'http://schemas.microsoft.com/ado/2008/09/edm';
     private const V3EdmNamespace = 'http://schemas.microsoft.com/ado/2009/11/edm';
     /**
@@ -82,8 +82,8 @@ class Namespaces
                 $this->edmNamespace = self::V3EdmNamespace;
                 break;
         }
-        $this->edmxNamespace = self::EDMXNamespace;
-        $this->metadataNamespace = self::MetadataNamespace;
+        $this->edmxNamespace        = self::EDMXNamespace;
+        $this->metadataNamespace    = self::MetadataNamespace;
         $this->dataServiceNamespace = self::DataServicesNamespace;
         $this->annotationsNamespace = self::AnnotationsNamespace;
     }

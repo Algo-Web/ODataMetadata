@@ -46,7 +46,8 @@ use AlgoWeb\ODataMetadata\Writer\IAttribute;
  */
 class TypeRef extends EdmBase implements IStructuralTypes, IAttribute
 {
-    use HasDocumentation, HasFacets;
+    use HasDocumentation;
+    use HasFacets;
     /**
      * @var INominalType $type
      */

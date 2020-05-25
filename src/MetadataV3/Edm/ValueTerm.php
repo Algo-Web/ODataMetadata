@@ -31,7 +31,8 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  */
 class ValueTerm extends EdmBase
 {
-    use HasType, HasDocumentation;
+    use HasType;
+    use HasDocumentation;
     /**
      * @var string $name
      */

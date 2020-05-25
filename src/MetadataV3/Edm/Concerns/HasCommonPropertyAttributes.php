@@ -32,9 +32,9 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  */
 trait HasCommonPropertyAttributes
 {
-    use HasFacets,
-        HasConcurrencyMode,
-        HasAccessors;
+    use HasFacets;
+    use HasConcurrencyMode;
+    use HasAccessors;
     /**
      * @var string $name 5.1.1 The edm:Name Attribute
      *

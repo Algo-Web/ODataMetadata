@@ -163,7 +163,7 @@ class Association
      * @param  ReferentialConstraint|null $referentialConstraint
      * @return self
      */
-    public function setReferentialConstraint(?ReferentialConstraint $referentialConstraint):self
+    public function setReferentialConstraint(?ReferentialConstraint $referentialConstraint): self
     {
         $this->referentialConstraint = $referentialConstraint;
         return $this;

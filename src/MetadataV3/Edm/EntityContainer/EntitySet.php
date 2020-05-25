@@ -41,7 +41,8 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  */
 class EntitySet extends EdmBase
 {
-    use HasDocumentation, HasAnnotations;
+    use HasDocumentation;
+    use HasAnnotations;
     /**
      * @var string $name
      */
@@ -64,7 +65,7 @@ class EntitySet extends EdmBase
      *
      * @return string
      */
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }

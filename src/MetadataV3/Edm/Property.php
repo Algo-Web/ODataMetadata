@@ -74,9 +74,9 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  */
 class Property extends EdmBase
 {
-    use HasValueAnnotation,
-        HasCommonPropertyAttributes,
-        HasDocumentation;
+    use HasValueAnnotation;
+    use HasCommonPropertyAttributes;
+    use HasDocumentation;
 
     public function __construct(
         string $name,

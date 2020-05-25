@@ -21,7 +21,7 @@ class PropertyHolder implements \ArrayAccess
         return array_key_exists($offset, $this->property);
     }
 
-    public function offsetGet($offset):Property
+    public function offsetGet($offset): Property
     {
         $this->property[$offset];
     }
