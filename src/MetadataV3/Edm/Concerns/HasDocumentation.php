@@ -16,7 +16,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 trait HasDocumentation
 {
     /**
-     * @var ?TDocumentationType $documentation
+     * @var Documentation|null $documentation
      */
     private $documentation = null;
 
