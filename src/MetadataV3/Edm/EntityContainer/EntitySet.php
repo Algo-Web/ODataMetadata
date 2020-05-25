@@ -126,6 +126,6 @@ class EntitySet extends EdmBase
      */
     public function getChildElements(): array
     {
-        return [$this->getDocumentation(), $this->getValueAnnotation()];
+        return array_merge([$this->getDocumentation()], $this->getValueAnnotation());
     }
 }
