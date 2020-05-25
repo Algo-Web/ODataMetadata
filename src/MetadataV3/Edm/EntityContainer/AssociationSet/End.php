@@ -49,7 +49,7 @@ class End extends EdmBase
      */
     private $entitySet;
 
-    public function __construct(string $entitySet, string $role = null, Documentation $documentation = null)
+    public function __construct(string $entitySet, string $role, Documentation $documentation = null)
     {
         $this
             ->setEntitySet($entitySet)
