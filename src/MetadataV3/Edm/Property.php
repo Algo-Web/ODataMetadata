@@ -131,9 +131,9 @@ class Property extends EdmBase
      */
     public function getChildElements(): array
     {
-        return [
-            $this->getDocumentation(),
+        return array_merge([
+            $this->getDocumentation()],
             $this->getValueAnnotation()
-        ];
+        );
     }
 }
