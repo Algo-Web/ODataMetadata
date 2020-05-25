@@ -61,7 +61,7 @@ class BoolConstant extends ConstantBase
      */
     public function __toString(): string
     {
-        return $this->__value ? "true" : "false";
+        return $this->__value ? 'true' : 'false';
     }
 
     /**

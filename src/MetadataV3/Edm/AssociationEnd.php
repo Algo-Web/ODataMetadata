@@ -90,7 +90,7 @@ class AssociationEnd extends EdmBase
      *
      * @return Entity
      */
-    public function getType():Entity
+    public function getType(): Entity
     {
         return $this->type;
     }
@@ -101,7 +101,7 @@ class AssociationEnd extends EdmBase
      * @param  Entity $type
      * @return self
      */
-    public function setType(Entity $type):self
+    public function setType(Entity $type): self
     {
         $this->type = $type;
         return $this;

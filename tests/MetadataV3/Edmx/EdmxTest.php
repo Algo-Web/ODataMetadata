@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\Tests\MetadataV3\Edmx;
 
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Schema;
@@ -15,7 +17,7 @@ class EdmxTest extends TestCase
     {
         $writterContext =  new WriterContext(OdataVersions::THREE());
 
-        $edmx = new Edmx();
+        $edmx    = new Edmx();
         $domNode = $writterContext->write($edmx);
         $writterContext->getBaseDocument()->appendChild($domNode);
         $xml = $writterContext->getBaseDocument()->saveXML($domNode);
@@ -25,8 +27,8 @@ class EdmxTest extends TestCase
     public function testEdmxSerializePartialSchema()
     {
         $writterContext =  new WriterContext(OdataVersions::THREE());
-        $edmx = new Edmx();
-        $schema = new Schema('ODataWebV3.Northwind.Model');
+        $edmx           = new Edmx();
+        $schema         = new Schema('ODataWebV3.Northwind.Model');
         $edmx->addToDataServices($schema);
         $schema->addToEntityContainer(EntityContainerTest::getEntityContainer());
         $domNode = $writterContext->write($edmx);

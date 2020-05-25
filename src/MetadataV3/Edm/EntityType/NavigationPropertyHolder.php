@@ -18,7 +18,7 @@ class NavigationPropertyHolder implements \ArrayAccess
     }
 
 
-    public function offsetGet($offset):NavigationProperty
+    public function offsetGet($offset): NavigationProperty
     {
         $this->property[$offset];
     }

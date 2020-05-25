@@ -30,7 +30,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *   by the related EntitySet. An End element can contain a maximum of one Documentation element.
  * - End can contain any number of AnnotationElement elements.
  * - The child elements of End are to appear in this sequence: Documentation, AnnotationElement.
-
+ *
  * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.3.1
  */
 class End extends EdmBase

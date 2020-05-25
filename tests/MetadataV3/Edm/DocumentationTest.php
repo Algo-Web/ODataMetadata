@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\Tests\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Documentation;
@@ -17,7 +19,7 @@ class DocumentationTest extends TestCase
     public function testDocumentationTestXmlSerialize($expected, $summary, $description)
     {
         $dataService = new Documentation($summary, $description);
-        $domNode = $this->writerContext->write($dataService, false);
+        $domNode     = $this->writerContext->write($dataService, false);
         $this->TESTNODE->appendChild($domNode);
         $xml = $this->writerContext->getBaseDocument()->saveXML($domNode);
         $this->assertEquals($expected, $xml);
@@ -33,7 +35,7 @@ class DocumentationTest extends TestCase
                 '<Documentation><Summary>Short Summary</Summary><LongDescription>LongDescription</LongDescription></Documentation>', 'Short Summary', 'LongDescription'
             ],
             [
-            '<Documentation><LongDescription>LongDescription</LongDescription></Documentation>', null, 'LongDescription'
+                '<Documentation><LongDescription>LongDescription</LongDescription></Documentation>', null, 'LongDescription'
             ]
         ];
     }

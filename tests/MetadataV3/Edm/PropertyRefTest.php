@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\Tests\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\PropertyRef;

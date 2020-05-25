@@ -46,7 +46,7 @@ class KeyElement extends EdmBase implements \ArrayAccess
     }
 
 
-    public function offsetGet($offset):PropertyRef
+    public function offsetGet($offset): PropertyRef
     {
         $this->propertyReferences[$offset];
     }

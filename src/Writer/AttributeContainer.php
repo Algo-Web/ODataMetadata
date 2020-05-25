@@ -107,7 +107,7 @@ class AttributeContainer implements IAttribute
             ->setAttributeValue($this->strval($value));
     }
 
-    private function strval($value):string
+    private function strval($value): string
     {
         if (is_bool($value)) {
             return $value ? 'true' : 'false';
@@ -136,7 +136,7 @@ class AttributeContainer implements IAttribute
         if (strpos($name, ':') !== false) {
             list($prefix, $name) = explode(':', $name);
         }
-        $this->name = $name;
+        $this->name   = $name;
         $this->prefix = $prefix;
         return $this;
     }

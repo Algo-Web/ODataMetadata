@@ -21,7 +21,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * The following is an example of the Schema element:
  *
  *     <Schema Alias="Model" Namespace="Test.Simple.Model" xmlns:edm="http://schemas.microsoft.com/ado/2009/11/edm" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-
+ *
  * The following rules apply to the Schema element.
  * - The CSDL document MUST have the Schema element as its root element.
  * - The Namespace attribute is defined for each Schema element. Namespace is of type QualifiedName. A namespace is a

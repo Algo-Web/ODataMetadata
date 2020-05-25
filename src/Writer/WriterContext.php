@@ -26,8 +26,8 @@ class WriterContext
 
     public function __construct(OdataVersions $version, DOMDocument $document = null)
     {
-        $this->odataVersion = $version;
-        $this->baseDocument = $document ?? new DOMDocument();
+        $this->odataVersion       = $version;
+        $this->baseDocument       = $document ?? new DOMDocument();
         $this->namespaceContainer = new Namespaces($version);
         $this->registerNamespace('edmx', $this->getEdmxNamespace());
         $this->registerNamespaces();
@@ -58,7 +58,7 @@ class WriterContext
     {
         return $this->namespaceContainer->getAnnotationsNamespace();
     }
-    public function getOdataVersion():string
+    public function getOdataVersion(): string
     {
         return strval($this->odataVersion);
     }
@@ -109,7 +109,7 @@ class WriterContext
      */
     public function write(DomBase $rootNode, bool $isTopLevel = true): DOMElement
     {
-        $prefix = null;
+        $prefix        = null;
         $qualifiedName = $rootNode->getDomName();
         if (strpos($qualifiedName, ':') !== false) {
             $prefix = substr($qualifiedName, 0, strpos($qualifiedName, ':'));

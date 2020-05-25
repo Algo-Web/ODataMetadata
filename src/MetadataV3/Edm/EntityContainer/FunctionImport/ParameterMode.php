@@ -17,7 +17,7 @@ use MyCLabs\Enum\Enum;
  */
 class ParameterMode extends Enum
 {
-    protected const In = 'In';
-    protected const Out = 'Out';
+    protected const In    = 'In';
+    protected const Out   = 'Out';
     protected const InOut = 'InOut';
 }

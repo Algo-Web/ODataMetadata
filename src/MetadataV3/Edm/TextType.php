@@ -21,7 +21,7 @@ class TextType extends EdmBase
     public function __construct(string $name, string $value)
     {
         $this->__value = $value;
-        $this->name = $name;
+        $this->name    = $name;
     }
 
     /**

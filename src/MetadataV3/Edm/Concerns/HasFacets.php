@@ -44,15 +44,15 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  */
 trait HasFacets
 {
-    use HasCollation,
-        HasDefaultValue,
-        HasFixedLength,
-        HasMaxLength,
-        HasNullable,
-        HasPrecision,
-        HasScale,
-        HasSRID,
-        HasUnicode;
+    use HasCollation;
+    use HasDefaultValue;
+    use HasFixedLength;
+    use HasMaxLength;
+    use HasNullable;
+    use HasPrecision;
+    use HasScale;
+    use HasSRID;
+    use HasUnicode;
 
     public function getAttributesHasFacets(): array
     {

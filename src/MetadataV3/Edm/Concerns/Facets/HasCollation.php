@@ -46,7 +46,7 @@ trait HasCollation
      * @param  EDMSimpleType|null $collation
      * @return self
      */
-    public function setCollation(?EDMSimpleType $collation):self
+    public function setCollation(?EDMSimpleType $collation): self
     {
         $this->collation = $collation;
         return $this;

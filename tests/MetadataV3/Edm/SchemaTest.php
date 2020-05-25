@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\Tests\MetadataV3\Edm;
 
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Schema;
@@ -60,10 +62,10 @@ class SchemaTest extends TestCase
             ]
         ];
         $usingArray = UsingTest::usingTestDataProvider();
-        $data = [];
+        $data       = [];
         foreach ($usingArray as $usingItem) {
             $expected = $usingItem[0];
-            $using = new Using($usingItem[1], $usingItem[2], $usingItem[3]);
+            $using    = new Using($usingItem[1], $usingItem[2], $usingItem[3]);
             foreach ($base as $baseItem) {
                 $data[] = [sprintf($baseItem[0], $expected), $baseItem[1], $baseItem[2], [$using]];
             }

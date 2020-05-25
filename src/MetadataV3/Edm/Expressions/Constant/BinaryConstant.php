@@ -44,7 +44,7 @@ class BinaryConstant extends ConstantBase
      * @param  string $value
      * @return string
      */
-    public function value(string $value = null):string
+    public function value(string $value = null): string
     {
         if (null !== $value) {
             // stripe any white space

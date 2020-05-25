@@ -51,7 +51,8 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  */
 class ModelFunctionParameter extends EdmBase
 {
-    use HasType, HasValueAnnotation;
+    use HasType;
+    use HasValueAnnotation;
     /**
      * @var string $name
      */

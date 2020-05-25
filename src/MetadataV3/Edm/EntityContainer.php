@@ -57,11 +57,11 @@ class EntityContainer extends EdmBase
      * If present, the Documentation child element MUST precede FunctionImport, EntitySet, and AssociationSet
      * child elements.
      */
-    use HasDocumentation,
-        /*
-         * In CSDL 3.0, EntityContainer can contain any number of ValueAnnotation elements.
-         */
-        HasValueAnnotation;
+    use HasDocumentation;
+    /*
+     * In CSDL 3.0, EntityContainer can contain any number of ValueAnnotation elements.
+     */
+    use HasValueAnnotation;
     /**
      * @var string $name entityContainer MUST have a Name attribute defined that is of type SimpleIdentifier
      */
@@ -126,7 +126,7 @@ class EntityContainer extends EdmBase
      *
      * @return string
      */
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
@@ -137,7 +137,7 @@ class EntityContainer extends EdmBase
      * @param  string $name
      * @return self
      */
-    public function setName(string $name):self
+    public function setName(string $name): self
     {
         $this->name = $name;
         return $this;
@@ -360,7 +360,7 @@ class EntityContainer extends EdmBase
      * @param  int  $index
      * @return bool
      */
-    public function issetAssociationSet(int $index):bool
+    public function issetAssociationSet(int $index): bool
     {
         return isset($this->associationSet[$index]);
     }

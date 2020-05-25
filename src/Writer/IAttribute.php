@@ -11,7 +11,7 @@ interface IAttribute
 {
     public function getAttributeValue(): ?string;
 
-    public function getAttributeNullCheck():bool ;
+    public function getAttributeNullCheck(): bool ;
 
     public function getAttributeForVersion(): OdataVersions;
 
@@ -19,5 +19,5 @@ interface IAttribute
 
     public function getAttributePrefix(): ?string;
 
-    public function getAttributeName():string;
+    public function getAttributeName(): string;
 }

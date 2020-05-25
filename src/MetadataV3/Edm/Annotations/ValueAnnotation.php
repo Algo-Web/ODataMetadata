@@ -125,7 +125,7 @@ class ValueAnnotation extends EdmBase
      * @param  string|null $qualifier
      * @return self
      */
-    public function setQualifier(?string $qualifier):self
+    public function setQualifier(?string $qualifier): self
     {
         $this->qualifier = $qualifier;
         return $this;
@@ -165,7 +165,7 @@ class ValueAnnotation extends EdmBase
      */
     public function getAttributes(): array
     {
-        $base = [];
+        $base   = [];
         $base[] = new AttributeContainer('Term', $this->getTerm());
         $base[] = new AttributeContainer('Qualifier', $this->getQualifier());
         if (//        $this->expression instanceof Expressions\Dynamic\TPathExpression ||

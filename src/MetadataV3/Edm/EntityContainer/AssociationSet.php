@@ -135,7 +135,7 @@ class AssociationSet extends EdmBase
      * @param  End|null $end
      * @return self
      */
-    public function setEndOne(?End $end):self
+    public function setEndOne(?End $end): self
     {
         $this->endOne = $end;
         return $this;
@@ -157,7 +157,7 @@ class AssociationSet extends EdmBase
      * @param  End|null $end
      * @return self
      */
-    public function setEndTwo(?End $end):self
+    public function setEndTwo(?End $end): self
     {
         $this->endTwo = $end;
         return $this;

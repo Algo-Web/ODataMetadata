@@ -21,6 +21,6 @@ use MyCLabs\Enum\Enum;
 class Multiplicity extends Enum
 {
     protected const NullOne = '0..1';
-    protected const One = '1';
-    protected const Multi = '*';
+    protected const One     = '1';
+    protected const Multi   = '*';
 }
