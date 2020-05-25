@@ -90,6 +90,7 @@ class ReturnType extends EdmBase
      */
     public function getChildElements(): array
     {
+        return [];
     }
     public function requiredVersion(): OdataVersions
     {
