@@ -9,13 +9,13 @@ use AlgoWeb\ODataMetadata\Tests\TestCase;
 class KeyElementTest extends TestCase
 {
     /**
-     * @dataProvider KeyElementProvider
+     * @dataProvider keyElementProvider
      */
     public function testKeyElementXmlSerialize($expected, $propertyRefArray)
     {
         $key = new KeyElement();
-        foreach($propertyRefArray as $proRef){
-            $key[]=$proRef;
+        foreach ($propertyRefArray as $proRef) {
+            $key[] = $proRef;
         }
         $domNode = $this->writerContext->write($key, false);
         $this->TESTNODE->appendChild($domNode);
@@ -23,7 +23,8 @@ class KeyElementTest extends TestCase
         $this->assertXmlStringEqualsXmlString($expected, $xml);
     }
 
-    public static function KeyElementProvider(){
+    public static function keyElementProvider()
+    {
         return [
             [
                 '<Key>' .
@@ -37,6 +38,5 @@ class KeyElementTest extends TestCase
                 '</Key>', [new PropertyRef("OrderID"), new PropertyRef('LineNumber')]
             ]
         ];
-
     }
 }
