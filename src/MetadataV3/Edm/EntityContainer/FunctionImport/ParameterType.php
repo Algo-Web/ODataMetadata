@@ -214,9 +214,9 @@ class ParameterType extends EdmBase
     public function getChildElements(): array
     {
         return
-            [
-                $this->getDocumentation(),
+            array_merge([
+                $this->getDocumentation()],
                 $this->getValueAnnotation()
-            ];
+            );
     }
 }
