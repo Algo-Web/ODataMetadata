@@ -64,7 +64,7 @@ class TypeRef extends EdmBase implements IStructuralTypes, IAttribute
      *
      * @return INominalType
      */
-    public function getType(): string
+    public function getType(): INominalType
     {
         return $this->type;
     }
