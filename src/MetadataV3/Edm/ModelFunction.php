@@ -224,7 +224,7 @@ class ModelFunction extends EdmBase
     {
         return [
             new AttributeContainer('Name', $this->getName()),
-            new AttributeContainer('ReturnType', $this->getReturnType(), true),
+            //new AttributeContainer('ReturnType', $this->getReturnType(), true),
         ];
     }
 
@@ -237,6 +237,7 @@ class ModelFunction extends EdmBase
             [$this->getDocumentation()],
             $this->getParameter(),
             [$this->getDefiningExpression()],
+            [$this->getReturnType()],
             $this->getValueAnnotation()
         );
     }
