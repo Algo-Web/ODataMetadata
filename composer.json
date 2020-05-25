@@ -25,7 +25,8 @@
   ],
   "require": {
     "php": "^7.1",
-    "myclabs/php-enum": "dev-master"
+    "myclabs/php-enum": "dev-master",
+    "ext-dom": "*"
   },
   "require-dev": {
     "phpspec/phpspec": "^3.0",
