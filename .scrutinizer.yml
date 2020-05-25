@@ -83,7 +83,7 @@ checks:
       interface_name: '^[A-Z][a-zA-Z0-9]*Interface$'
       type_name: '^[A-Z][a-zA-Z0-9]*$'
       exception_name: '^[A-Z][a-zA-Z0-9]*Exception$'
-      isser_method_name: '^(?:is|has|should|may|supports)'
+      isser_method_name: '^(?:is|has|should|may|supports|get|set)'
     more_specific_types_in_doc_comments: true
     missing_arguments: true
     method_calls_on_non_object: true
@@ -130,6 +130,8 @@ checks:
     avoid_aliased_php_functions: true
     assignment_of_null_return: true
     argument_type_checks: true
+    excluded_dependencies:
+      - satooshi/php-coveralls
 
 coding_style:
   php:
@@ -175,10 +177,5 @@ tools:
   php_changetracking: true
 
 build_failure_conditions:
-  - 'elements.rating(<= F).new.exists'
+  - 'elements.rating(<= D).new.exists'
   - 'issues.severity(>= CRITICAL).new.exists'
-
-build:
-  dependencies:
-    before:
-      - composer remove --dev pcov/clobber --no-update
