@@ -6,6 +6,7 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityContainer;
 
 use AlgoWeb\ODataMetadata\MetadataV3\AccessorType;
 use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions\HasEntitySetReferenceExpression;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasDocumentation;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasValueAnnotation;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
@@ -75,7 +76,8 @@ class FunctionImport extends EdmBase
         /*
          * The FunctionImport element can contain a maximum of one Documentation element.
          */
-        HasDocumentation;
+        HasDocumentation,
+        HasEntitySetReferenceExpression;
     /**
      * @var string $name FunctionImport MUST have a Name attribute defined. Name attribute is of type SimpleIdentifier.
      */
@@ -190,27 +192,6 @@ class FunctionImport extends EdmBase
         return $this;
     }
 
-    /**
-     * Gets as entitySet.
-     *
-     * @return TEntitySetReferenceExpressionType|null
-     */
-    public function getEntitySet(): ?TEntitySetReferenceExpressionType
-    {
-        return $this->entitySet;
-    }
-
-    /**
-     * Sets a new entitySet.
-     *
-     * @param  TEntitySetReferenceExpressionType|null $entitySet
-     * @return self
-     */
-    public function setEntitySet(?TEntitySetReferenceExpressionType $entitySet):self
-    {
-        $this->entitySet = $entitySet;
-        return $this;
-    }
     /**
      * Gets as entitySet.
      *
@@ -391,7 +372,7 @@ class FunctionImport extends EdmBase
     {
         return [
             new AttributeContainer('Name', $this->getName()),
-            new AttributeContainer('EntitySet', $this->getEntitySet(), true),
+            new AttributeContainer('EntitySet', $this->getEntitySetReference(), true),
             new AttributeContainer('EntitySetPath', $this->getEntitySetPath(), true),
             new AttributeContainer('ReturnType', $this->getReturnType()->getType(), true, OdataVersions::TWO(), [OdataVersions::THREE()]),
         ];
