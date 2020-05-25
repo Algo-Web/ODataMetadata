@@ -41,9 +41,4 @@ trait HasDocumentation
         $this->documentation = $documentation;
         return $this;
     }
-
-    public function XmlSerializeHasDocumentation(\DOMElement $thisNode)
-    {
-        null !== $this->getDocumentation() && $this->getDocumentation()->XmlSerialize($thisNode);
-    }
 }

@@ -64,14 +64,6 @@ class PropertyRef extends EdmBase
         return $this;
     }
 
-
-    public function XmlSerialize(DOMElement $parent)
-    {
-        $propRef = self::getSerilizationContext()->createEdmElement('PropertyRef');
-        $propRef->setAttribute('Name', $this->getName());
-        $parent->appendChild($propRef);
-    }
-
     /**
      * @return string
      */
