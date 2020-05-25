@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Trait HasScale
+ * Trait HasScale.
  *
  * 5.3.5 The edm:Scale Attribute
  *
@@ -20,7 +20,7 @@ use DOMElement;
  *
  * The value of the edm:Scale attribute MUST be less than or equal to the value of the edm:Precision attribute.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.5
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.5
  * @mixin EdmBase
  */
 trait HasScale
@@ -31,7 +31,7 @@ trait HasScale
     private $scale = null;
 
     /**
-     * Gets as scale
+     * Gets as scale.
      *
      * @return int|null
      */
@@ -41,9 +41,9 @@ trait HasScale
     }
 
     /**
-     * Sets a new scale
+     * Sets a new scale.
      *
-     * @param int|null $scale
+     * @param  int|null $scale
      * @return self
      */
     public function setScale(?int $scale): self

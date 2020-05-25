@@ -12,7 +12,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs\INominalType;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.7 ComplexType
+ * 2.1.7 ComplexType.
  *
  * A ComplexType element represents a set of related information. Like an EntityType element, a ComplexType element
  * consists of one or more properties of scalar type or complex type. However, unlike an EntityType element, a
@@ -60,7 +60,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - In CSDL 3.0, ComplexType can contain any number of TypeAnnotation elements.
  * - In CSDL 3.0, ComplexType can contain any number of ValueAnnotation elements.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl7
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl7
  * XSD Type: TComplexType
  */
 class ComplexType extends EdmBase implements INominalType
@@ -69,8 +69,8 @@ class ComplexType extends EdmBase implements INominalType
         HasAnnotations;
     /**
      * @var string $name A ComplexType MUST have a Name attribute defined. Name is of type SimpleIdentifier and
-     * represents the name of this ComplexType.
-     * ComplexType is a schema level named element and has a unique name.
+     *             represents the name of this ComplexType.
+     *             ComplexType is a schema level named element and has a unique name.
      */
     private $name;
 
@@ -89,7 +89,7 @@ class ComplexType extends EdmBase implements INominalType
     }
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -99,9 +99,9 @@ class ComplexType extends EdmBase implements INominalType
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(string $name): self
@@ -111,9 +111,9 @@ class ComplexType extends EdmBase implements INominalType
     }
 
     /**
-     * Adds as property
+     * Adds as property.
      *
-     * @param Property $property
+     * @param  Property $property
      * @return self
      */
     public function addToProperty(Property $property)
@@ -123,9 +123,9 @@ class ComplexType extends EdmBase implements INominalType
     }
 
     /**
-     * isset property
+     * isset property.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetProperty($index)
@@ -134,9 +134,9 @@ class ComplexType extends EdmBase implements INominalType
     }
 
     /**
-     * unset property
+     * unset property.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetProperty($index)
@@ -145,7 +145,7 @@ class ComplexType extends EdmBase implements INominalType
     }
 
     /**
-     * Gets as property
+     * Gets as property.
      *
      * @return PropertyHolder|Property[]
      */
@@ -155,9 +155,9 @@ class ComplexType extends EdmBase implements INominalType
     }
 
     /**
-     * Sets a new property
+     * Sets a new property.
      *
-     * @param PropertyHolder|Property[] $property
+     * @param  PropertyHolder|Property[] $property
      * @return self
      */
     public function setProperty(array $property)

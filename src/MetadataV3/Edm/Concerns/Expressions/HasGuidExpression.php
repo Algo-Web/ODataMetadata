@@ -16,10 +16,10 @@ trait HasGuidExpression
 
 
     /**
-     * Adds as guid
+     * Adds as guid.
      *
+     * @param  string $guid
      * @return self
-     * @param string $guid
      */
     public function addToGuid($guid)
     {
@@ -28,9 +28,9 @@ trait HasGuidExpression
     }
 
     /**
-     * isset guid
+     * isset guid.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetGuid($index)
@@ -39,9 +39,9 @@ trait HasGuidExpression
     }
 
     /**
-     * unset guid
+     * unset guid.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetGuid($index)
@@ -50,7 +50,7 @@ trait HasGuidExpression
     }
 
     /**
-     * Gets as guid
+     * Gets as guid.
      *
      * @return string[]
      */
@@ -60,9 +60,9 @@ trait HasGuidExpression
     }
 
     /**
-     * Sets a new guid
+     * Sets a new guid.
      *
-     * @param string[] $guid
+     * @param  string[] $guid
      * @return self
      */
     public function setGuid(array $guid)

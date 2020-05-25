@@ -17,7 +17,7 @@ use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.15 FunctionImport
+ * 2.1.15 FunctionImport.
  *
  * FunctionImport element is used to import stored procedures or functions that are defined in the Store Schema Model
  * into Entity Data Model (EDM).
@@ -64,15 +64,15 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - Child elements of FunctionImport are to appear in this sequence:
  *   Documentation (if present), ReturnType, Parameter, AnnotationElement.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.4
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl12.4
  */
 class FunctionImport extends EdmBase
 {
-    /**
+    /*
      * In CSDL 3.0, FunctionImport can contain any number of ValueAnnotation elements.
      */
     use HasValueAnnotation,
-        /**
+        /*
          * The FunctionImport element can contain a maximum of one Documentation element.
          */
         HasDocumentation;
@@ -83,7 +83,7 @@ class FunctionImport extends EdmBase
 
     /**
      * @var ReturnType|null $returnType FunctionImport can define a ReturnType as an attribute.
-     * In CSDL 3.0, the ReturnType can be defined as either an attribute or a child element, but not both.
+     *                      In CSDL 3.0, the ReturnType can be defined as either an attribute or a child element, but not both.
      *
      * If defined in CSDL 1.1, CSDL 2.0, and CSDL 3.0, the type of ReturnType MUST be a scalar type, EntityType,
      * or ComplexType that is in scope or a collection of one of these in-scope types. In CSDL 1.0, the ReturnType
@@ -93,27 +93,27 @@ class FunctionImport extends EdmBase
 
     /**
      * @var TEntitySetReferenceExpressionType|null $entitySet If the return type of FunctionImport is a collection of entities, the EntitySet
-     * attribute is defined.
+     *                                             attribute is defined.
      *
      * If the return type of FunctionImport is of ComplexType or scalar type, the EntitySet attribute cannot be defined.
      */
     private $entitySet = null;
     /**
      * @var string In CSDL 3.0, FunctionImport can have an EntitySetPath attribute defined. EntitySetPath defines the
-     * EntitySet that contains the entities that are returned by the FunctionImport when that EntitySet is dependent
-     * on one of the FunctionImport parameters. For example, the entities returned from a FunctionImport can be
-     * dependent on the entity set that is passed to the FunctionImport as a parameter. In this case, a static EntitySet
-     * is not sufficient, and an EntitySetPath is used. EntitySetPath is composed of segments that are separated by a
-     * forward slash. The first segment refers to a FunctionImport parameter. Each remaining segment represents either
-     * navigation, in which case the segment is a SimpleIdentifier, or a type cast, in which case the segment is a
-     * QualifiedName.
+     *             EntitySet that contains the entities that are returned by the FunctionImport when that EntitySet is dependent
+     *             on one of the FunctionImport parameters. For example, the entities returned from a FunctionImport can be
+     *             dependent on the entity set that is passed to the FunctionImport as a parameter. In this case, a static EntitySet
+     *             is not sufficient, and an EntitySetPath is used. EntitySetPath is composed of segments that are separated by a
+     *             forward slash. The first segment refers to a FunctionImport parameter. Each remaining segment represents either
+     *             navigation, in which case the segment is a SimpleIdentifier, or a type cast, in which case the segment is a
+     *             QualifiedName.
      */
     private $entitySetPath = null;
 
     /**
      * @var bool $isComposable FunctionImport can have an IsComposable attribute defined. Possible values are "true"
-     * and "false". If the IsComposable attribute is omitted, the value of the IsComposable attribute is assumed to
-     * be "false".
+     *           and "false". If the IsComposable attribute is omitted, the value of the IsComposable attribute is assumed to
+     *           be "false".
      *
      * FunctionImport cannot have IsComposable set to "true" if IsSideEffecting is set to "true".
      */
@@ -121,14 +121,14 @@ class FunctionImport extends EdmBase
 
     /**
      * @var bool $isSideEffecting FunctionImport can have an IsSideEffecting attribute defined. Possible values are
-     * "true" and "false". If the IsSideEffecting attribute is omitted, the value of the IsSideEffecting attribute
-     * defaults to "true".
+     *           "true" and "false". If the IsSideEffecting attribute is omitted, the value of the IsSideEffecting attribute
+     *           defaults to "true".
      */
     private $isSideEffecting = true;
 
     /**
      * @var bool $isBindable FunctionImport can have an IsBindable attribute defined. Possible values are "true" and
-     * "false". If the IsBindable attribute is omitted, the value of the IsBindable attribute is assumed to be "false".
+     *           "false". If the IsBindable attribute is omitted, the value of the IsBindable attribute is assumed to be "false".
      *
      * When IsBindable is set to "true", FunctionImport MUST have at least one Parameter element defined.
      */
@@ -142,12 +142,12 @@ class FunctionImport extends EdmBase
 
     /**
      * @var ParameterType[] $parameter FunctionImport can have zero or more Parameter elements.
-     * Parameter element names inside a FunctionImport cannot collide.
+     *                      Parameter element names inside a FunctionImport cannot collide.
      */
     private $parameter = [];
 
     /**
-     * Gets as name
+     * Gets as name.
      *
      * @return string
      */
@@ -157,9 +157,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Sets a new name
+     * Sets a new name.
      *
-     * @param string $name
+     * @param  string $name
      * @return self
      */
     public function setName(string $name): self
@@ -169,7 +169,7 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Gets as returnType
+     * Gets as returnType.
      *
      * @return ReturnType|null
      */
@@ -179,9 +179,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Sets a new returnType
+     * Sets a new returnType.
      *
-     * @param ReturnType|null $returnType
+     * @param  ReturnType|null $returnType
      * @return self
      */
     public function setReturnType(?ReturnType $returnType): self
@@ -191,7 +191,7 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return TEntitySetReferenceExpressionType|null
      */
@@ -201,9 +201,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
-     * @param TEntitySetReferenceExpressionType|null $entitySet
+     * @param  TEntitySetReferenceExpressionType|null $entitySet
      * @return self
      */
     public function setEntitySet(?TEntitySetReferenceExpressionType $entitySet):self
@@ -212,7 +212,7 @@ class FunctionImport extends EdmBase
         return $this;
     }
     /**
-     * Gets as entitySet
+     * Gets as entitySet.
      *
      * @return string|null
      */
@@ -222,9 +222,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Sets a new entitySet
+     * Sets a new entitySet.
      *
-     * @param string|null $entitySet
+     * @param  string|null $entitySet
      * @return self
      */
     public function setEntitySetPath(?string $entitySet):self
@@ -233,7 +233,7 @@ class FunctionImport extends EdmBase
         return $this;
     }
     /**
-     * Gets as isComposable
+     * Gets as isComposable.
      *
      * @return bool
      */
@@ -243,9 +243,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Sets a new isComposable
+     * Sets a new isComposable.
      *
-     * @param bool $isComposable
+     * @param  bool $isComposable
      * @return self
      */
     public function setIsComposable(bool $isComposable): self
@@ -255,7 +255,7 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Gets as isSideEffecting
+     * Gets as isSideEffecting.
      *
      * @return bool
      */
@@ -265,9 +265,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Sets a new isSideEffecting
+     * Sets a new isSideEffecting.
      *
-     * @param bool $isSideEffecting
+     * @param  bool $isSideEffecting
      * @return self
      */
     public function setIsSideEffecting(bool $isSideEffecting): self
@@ -277,7 +277,7 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Gets as isBindable
+     * Gets as isBindable.
      *
      * @return bool
      */
@@ -287,9 +287,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Sets a new isBindable
+     * Sets a new isBindable.
      *
-     * @param bool $isBindable
+     * @param  bool $isBindable
      * @return self
      */
     public function setIsBindable(bool $isBindable): self
@@ -299,7 +299,7 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Gets as methodAccess
+     * Gets as methodAccess.
      *
      * @return AccessorType|null
      */
@@ -309,9 +309,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Sets a new methodAccess
+     * Sets a new methodAccess.
      *
-     * @param AccessorType|null $methodAccess
+     * @param  AccessorType|null $methodAccess
      * @return self
      */
     public function setMethodAccess(?AccessorType $methodAccess): self
@@ -321,9 +321,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Adds as parameter
+     * Adds as parameter.
      *
-     * @param ParameterType $parameter
+     * @param  ParameterType $parameter
      * @return self
      */
     public function addToParameter(ParameterType $parameter): self
@@ -333,9 +333,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * isset parameter
+     * isset parameter.
      *
-     * @param int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetParameter(int $index): bool
@@ -344,9 +344,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * unset parameter
+     * unset parameter.
      *
-     * @param int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetParameter(int $index):void
@@ -355,7 +355,7 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Gets as parameter
+     * Gets as parameter.
      *
      * @return ParameterType[]
      */
@@ -365,9 +365,9 @@ class FunctionImport extends EdmBase
     }
 
     /**
-     * Sets a new parameter
+     * Sets a new parameter.
      *
-     * @param ParameterType[] $parameter
+     * @param  ParameterType[] $parameter
      * @return self
      */
     public function setParameter(array $parameter): self

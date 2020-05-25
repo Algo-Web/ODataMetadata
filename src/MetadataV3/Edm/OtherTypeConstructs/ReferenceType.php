@@ -14,7 +14,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use AlgoWeb\ODataMetadata\Writer\IAttribute;
 
 /**
- * 2.1.27 ReferenceType
+ * 2.1.27 ReferenceType.
  *
  * ReferenceType is used to specify the reference to an actual entity either in the return type or in a parameter definition. The reference type can be specified as an attribute or by using child element syntax.
  *
@@ -43,7 +43,7 @@ use AlgoWeb\ODataMetadata\Writer\IAttribute;
  * - ReferenceType elements can contain any number of AnnotationElement elements.
  * - AnnotationElement is last in the sequence of child elements of ReferenceType.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl9.3
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl9.3
  *
  * XSD Type: TReferenceType
  */
@@ -66,7 +66,7 @@ class ReferenceType extends EdmBase implements IStructuralTypes, IAttribute
     }
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return Entity
      */
@@ -76,9 +76,9 @@ class ReferenceType extends EdmBase implements IStructuralTypes, IAttribute
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
-     * @param Entity $type
+     * @param  Entity $type
      * @return self
      */
     public function setType(Entity $type): self

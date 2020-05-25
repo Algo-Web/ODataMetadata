@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Class representing TTextType
+ * Class representing TTextType.
  *
  *
  * XSD Type: TText

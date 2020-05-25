@@ -8,7 +8,6 @@ use AlgoWeb\ODataMetadata\Tests\TestCase;
 
 class PropertyRefTest extends TestCase
 {
-
     public function testPropertyRefXmlSerialize()
     {
         $propRef = new PropertyRef('CustomerId');

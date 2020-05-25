@@ -22,7 +22,6 @@ abstract class EdmBase extends DomBase
         return array_reduce(
             $raw,
             function ($carry, $item) {
-
                 if (!method_exists($item, 'getName')) {
                     throw new \InvalidArgumentException('attempted to a none named element to a named array');
                 }

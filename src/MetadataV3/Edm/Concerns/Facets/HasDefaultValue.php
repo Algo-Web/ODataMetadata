@@ -10,14 +10,14 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Trait HasDefaultValue
+ * Trait HasDefaultValue.
  *
  * 5.3.9 The edm:DefaultValue Attribute
  *
  * A string property MAY define a value for the edm:DefaultValue attribute. The value
  * of this attribute determines the value of the property on new type instances.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.9
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.9
  * @mixin EdmBase
  */
 trait HasDefaultValue
@@ -28,7 +28,7 @@ trait HasDefaultValue
     private $defaultValue = null;
 
     /**
-     * Gets as defaultValue
+     * Gets as defaultValue.
      *
      * @return string|null
      */
@@ -38,9 +38,9 @@ trait HasDefaultValue
     }
 
     /**
-     * Sets a new defaultValue
+     * Sets a new defaultValue.
      *
-     * @param string|null $defaultValue
+     * @param  string|null $defaultValue
      * @return self
      */
     public function setDefaultValue(?string $defaultValue): self

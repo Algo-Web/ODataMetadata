@@ -17,7 +17,7 @@ trait HasEntitySetReferenceExpression
     ];
 
     /**
-     * Adds as entitySetReference
+     * Adds as entitySetReference.
      *
      * @param TEntitySetReferenceExpressionType $entitySetReference
      *@return self
@@ -29,9 +29,9 @@ trait HasEntitySetReferenceExpression
     }
 
     /**
-     * isset entitySetReference
+     * isset entitySetReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetEntitySetReference($index)
@@ -40,9 +40,9 @@ trait HasEntitySetReferenceExpression
     }
 
     /**
-     * unset entitySetReference
+     * unset entitySetReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetEntitySetReference($index)
@@ -51,7 +51,7 @@ trait HasEntitySetReferenceExpression
     }
 
     /**
-     * Gets as entitySetReference
+     * Gets as entitySetReference.
      *
      * @return TEntitySetReferenceExpressionType[]
      */
@@ -61,9 +61,9 @@ trait HasEntitySetReferenceExpression
     }
 
     /**
-     * Sets a new entitySetReference
+     * Sets a new entitySetReference.
      *
-     * @param TEntitySetReferenceExpressionType[] $entitySetReference
+     * @param  TEntitySetReferenceExpressionType[] $entitySetReference
      * @return self
      */
     public function setEntitySetReference(array $entitySetReference)

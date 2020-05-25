@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * Class representing TBoolConstantExpressionType
+ * Class representing TBoolConstantExpressionType.
  *
  * 16.1.2 The Edm:Bool Constant Expression
  *
@@ -25,13 +25,13 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *         <Bool>true</Bool>
  *     </ValueAnnotation>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.2
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl16.1.2
  * XSD Type: TBoolConstantExpression
  */
 class BoolConstant extends ConstantBase
 {
     /**
-     * Construct
+     * Construct.
      *
      * @param bool $value
      */
@@ -41,9 +41,9 @@ class BoolConstant extends ConstantBase
     }
 
     /**
-     * Gets or sets the inner value
+     * Gets or sets the inner value.
      *
-     * @param bool $value
+     * @param  bool $value
      * @return bool
      */
     public function value(bool $value = null): bool
@@ -55,7 +55,7 @@ class BoolConstant extends ConstantBase
     }
 
     /**
-     * Gets a string value
+     * Gets a string value.
      *
      * @return string
      */

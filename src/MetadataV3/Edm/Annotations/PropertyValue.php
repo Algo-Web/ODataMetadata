@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.33 PropertyValue
+ * 2.1.33 PropertyValue.
  *
  * A PropertyValue element is used to assign the result of an expression to a property of a term.
  *
@@ -40,25 +40,25 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *
  *     <PropertyValue Property="ContactName" String="ContactName1" />
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl15.3
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl15.3
  * XSD Type: TPropertyValue
  */
 class PropertyValue extends EdmBase
 {
     /**
      * @var string $property The property value element MUST assign a [simpleidentifier][csdl19] value to the
-     * edm:Property attribute. The value of the property attribute SHOULD resolve to a property on the term
-     * referenced by the type annotation.
+     *             edm:Property attribute. The value of the property attribute SHOULD resolve to a property on the term
+     *             referenced by the type annotation.
      */
     private $property;
     /**
      * @var Expressions\ExpressionBase A property value MUST contain exactly one expression. The expression MAY be
-     * provided using element notation or attribute notation.
+     *                                 provided using element notation or attribute notation.
      */
     private $expression;
 
     /**
-     * Gets as property
+     * Gets as property.
      *
      * @return string
      */
@@ -68,9 +68,9 @@ class PropertyValue extends EdmBase
     }
 
     /**
-     * Sets a new property
+     * Sets a new property.
      *
-     * @param string $property
+     * @param  string $property
      * @return self
      */
     public function setProperty(string $property): self
@@ -80,7 +80,7 @@ class PropertyValue extends EdmBase
     }
 
     /**
-     * Gets as expression
+     * Gets as expression.
      *
      * @return Expressions\ExpressionBase
      */
@@ -90,9 +90,9 @@ class PropertyValue extends EdmBase
     }
 
     /**
-     * Sets a new valueTermReference
+     * Sets a new valueTermReference.
      *
-     * @param Expressions\ExpressionBase $expression
+     * @param  Expressions\ExpressionBase $expression
      * @return self
      */
     public function setExpression(Expressions\ExpressionBase $expression): self

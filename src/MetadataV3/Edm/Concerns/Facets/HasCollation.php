@@ -11,7 +11,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Trait HasCollation
+ * Trait HasCollation.
  *
  * 5.3.7 The edm:Collation Attribute
  *
@@ -21,7 +21,7 @@ use DOMElement;
  * Binary, Boolean, Byte, DateTime, DateTimeOffset, Time, Decimal, Double, Single, Guid, Int16, Int32, Int64, String,
  * SByte
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.7
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3.7
  * @mixin EdmBase
  */
 trait HasCollation
@@ -31,7 +31,7 @@ trait HasCollation
      */
     private $collation = null;
     /**
-     * Gets as collation
+     * Gets as collation.
      *
      * @return EDMSimpleType|null
      */
@@ -41,9 +41,9 @@ trait HasCollation
     }
 
     /**
-     * Sets a new collation
+     * Sets a new collation.
      *
-     * @param EDMSimpleType|null $collation
+     * @param  EDMSimpleType|null $collation
      * @return self
      */
     public function setCollation(?EDMSimpleType $collation):self

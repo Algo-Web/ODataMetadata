@@ -11,7 +11,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 use DOMElement;
 
 /**
- * Trait HasAccessors
+ * Trait HasAccessors.
  * @mixin EdmBase
  */
 trait HasAccessors
@@ -26,7 +26,7 @@ trait HasAccessors
      */
     private $getterAccess = null;
     /**
-     * Gets as setterAccess
+     * Gets as setterAccess.
      *
      * @return string
      */
@@ -36,9 +36,9 @@ trait HasAccessors
     }
 
     /**
-     * Sets a new setterAccess
+     * Sets a new setterAccess.
      *
-     * @param AccessorType $setterAccess
+     * @param  AccessorType $setterAccess
      * @return self
      */
     public function setSetterAccess(?AccessorType $setterAccess): self
@@ -48,7 +48,7 @@ trait HasAccessors
     }
 
     /**
-     * Gets as getterAccess
+     * Gets as getterAccess.
      *
      * @return AccessorType|null
      */
@@ -58,9 +58,9 @@ trait HasAccessors
     }
 
     /**
-     * Sets a new getterAccess
+     * Sets a new getterAccess.
      *
-     * @param AccessorType $getterAccess
+     * @param  AccessorType $getterAccess
      * @return self
      */
     public function setGetterAccess(?AccessorType$getterAccess): self

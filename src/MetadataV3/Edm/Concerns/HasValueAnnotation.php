@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use DOMElement;
 
 /**
- * Class HasValueAnnotation
+ * Class HasValueAnnotation.
  * @package AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns
  * @mixin EdmBase
  */
@@ -22,7 +22,7 @@ trait HasValueAnnotation
     private $valueAnnotation = [];
 
     /**
-     * Adds as valueAnnotation
+     * Adds as valueAnnotation.
      *
      * @param ValueAnnotation $valueAnnotation
      *@return self
@@ -34,9 +34,9 @@ trait HasValueAnnotation
     }
 
     /**
-     * isset valueAnnotation
+     * isset valueAnnotation.
      *
-     * @param int $index
+     * @param  int  $index
      * @return bool
      */
     public function issetValueAnnotation(int $index): bool
@@ -45,9 +45,9 @@ trait HasValueAnnotation
     }
 
     /**
-     * unset valueAnnotation
+     * unset valueAnnotation.
      *
-     * @param int $index
+     * @param  int  $index
      * @return void
      */
     public function unsetValueAnnotation(int $index)
@@ -56,7 +56,7 @@ trait HasValueAnnotation
     }
 
     /**
-     * Gets as valueAnnotation
+     * Gets as valueAnnotation.
      *
      * @return ValueAnnotation[]
      */
@@ -66,9 +66,9 @@ trait HasValueAnnotation
     }
 
     /**
-     * Sets a new valueAnnotation
+     * Sets a new valueAnnotation.
      *
-     * @param ValueAnnotation[] $valueAnnotation
+     * @param  ValueAnnotation[] $valueAnnotation
      * @return self
      */
     public function setValueAnnotation(array $valueAnnotation): self

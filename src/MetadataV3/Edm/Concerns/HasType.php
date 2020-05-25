@@ -21,7 +21,7 @@ trait HasType
 
 
     /**
-     * Gets as type
+     * Gets as type.
      *
      * @return IType
      */
@@ -31,9 +31,9 @@ trait HasType
     }
 
     /**
-     * Sets a new type
+     * Sets a new type.
      *
-     * @param IType $type
+     * @param  IType $type
      * @return self
      */
     public function setType(IType $type)
@@ -52,7 +52,7 @@ trait HasType
             $base = array_merge($base, $this->getAttributesHasFacets());
         }
         if ($type instanceof INominalType) {
-            $base[] = new AttributeContainer("Type", $type->getName());
+            $base[] = new AttributeContainer('Type', $type->getName());
         }
         return $base;
     }

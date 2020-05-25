@@ -18,7 +18,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * Trait HasFacets
+ * Trait HasFacets.
  *
  * 5.3 Property Facets
  * Property facets allow a model to provide additional constraints or data about the value of structural properties.
@@ -39,7 +39,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *         </Collection>
  *     </ReturnType>
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.3
  * XSD Type: TFacetAttributes
  */
 trait HasFacets

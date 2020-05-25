@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs;
 
 /**
- * Interface IStructuralTypes
+ * Interface IStructuralTypes.
  *
  * Used to define
  * - CollectionType
@@ -18,5 +18,4 @@ namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\OtherTypeConstructs;
  */
 interface IStructuralTypes extends IType
 {
-
 }

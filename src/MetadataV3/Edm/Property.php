@@ -69,7 +69,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  *   treated as if it includes N with a value of "null".
  * - A dynamic property of an OpenEntityType cannot have the same name as a declared property on the same
  *   OpenEntityType.
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.1
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl5.1
  * XSD Type: TEntityProperty
  */
 class Property extends EdmBase
@@ -94,7 +94,6 @@ class Property extends EdmBase
         AccessorType $setterAccess = null,
         AccessorType $getterAccess = null
     ) {
-    
         $this->setName($name)
             ->setType($type)
             ->setNullable($nullable)

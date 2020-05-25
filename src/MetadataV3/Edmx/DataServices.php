@@ -14,7 +14,7 @@ use ArrayAccess;
 use DOMElement;
 
 /**
- * Class DataServices
+ * Class DataServices.
  *
  * 3.2 The edmx:DataServices Element
  * The edmx:DataServices element contains zero or more Edm:Schema elements which define the schema(s) exposed by the
@@ -43,7 +43,7 @@ class DataServices extends DomBase implements ArrayAccess
     }
 
     /**
-     * @param WriterContext|null $wc
+     * @param  WriterContext|null         $wc
      * @return array|AttributeContainer[]
      */
     public function getAttributes(WriterContext $wc = null): array
@@ -63,8 +63,8 @@ class DataServices extends DomBase implements ArrayAccess
 
     /**
      * @var Schema[] $dataServices 3.2 The edmx:DataServices Element
-     * The edmx:DataServices element contains zero or more Edm:Schema elements which define the schema(s) exposed by
-     * the OData service.
+     *               The edmx:DataServices element contains zero or more Edm:Schema elements which define the schema(s) exposed by
+     *               the OData service.
      */
     private $schema = [];
 

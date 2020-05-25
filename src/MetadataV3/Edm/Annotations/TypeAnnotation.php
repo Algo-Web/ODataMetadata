@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.32 TypeAnnotation
+ * 2.1.32 TypeAnnotation.
  *
  * A TypeAnnotation element is used to annotate a model element with a term and provide zero or more values for the properties of the term.
  *
@@ -27,7 +27,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - - Annotations
  * - TypeAnnotation can have a Qualifier attribute defined unless the TypeAnnotation is a child element of an Annotations element that has a Qualifier attribute defined. If a Qualifier is defined, it has to be a SimpleIdentifier. Qualifier is used to differentiate bindings based on environmental concerns.
  * - A TypeAnnotation can contain any number of PropertyValue elements.
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl15.2
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl15.2
  * XSD Type: TTypeAnnotation
  */
 class TypeAnnotation extends EdmBase
@@ -49,7 +49,7 @@ class TypeAnnotation extends EdmBase
     private $propertyValue = [];
 
     /**
-     * Gets as term
+     * Gets as term.
      *
      * @return string
      */
@@ -59,9 +59,9 @@ class TypeAnnotation extends EdmBase
     }
 
     /**
-     * Sets a new term
+     * Sets a new term.
      *
-     * @param string $term
+     * @param  string $term
      * @return self
      */
     public function setTerm($term)
@@ -71,7 +71,7 @@ class TypeAnnotation extends EdmBase
     }
 
     /**
-     * Gets as qualifier
+     * Gets as qualifier.
      *
      * @return string
      */
@@ -81,9 +81,9 @@ class TypeAnnotation extends EdmBase
     }
 
     /**
-     * Sets a new qualifier
+     * Sets a new qualifier.
      *
-     * @param string $qualifier
+     * @param  string $qualifier
      * @return self
      */
     public function setQualifier($qualifier)
@@ -93,7 +93,7 @@ class TypeAnnotation extends EdmBase
     }
 
     /**
-     * Adds as propertyValue
+     * Adds as propertyValue.
      *
      * @param PropertyValue $propertyValue
      *@return self
@@ -105,9 +105,9 @@ class TypeAnnotation extends EdmBase
     }
 
     /**
-     * isset propertyValue
+     * isset propertyValue.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetPropertyValue($index)
@@ -116,9 +116,9 @@ class TypeAnnotation extends EdmBase
     }
 
     /**
-     * unset propertyValue
+     * unset propertyValue.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetPropertyValue($index)
@@ -127,7 +127,7 @@ class TypeAnnotation extends EdmBase
     }
 
     /**
-     * Gets as propertyValue
+     * Gets as propertyValue.
      *
      * @return PropertyValue[]
      */
@@ -137,9 +137,9 @@ class TypeAnnotation extends EdmBase
     }
 
     /**
-     * Sets a new propertyValue
+     * Sets a new propertyValue.
      *
-     * @param PropertyValue[] $propertyValue
+     * @param  PropertyValue[] $propertyValue
      * @return self
      */
     public function setPropertyValue(array $propertyValue)

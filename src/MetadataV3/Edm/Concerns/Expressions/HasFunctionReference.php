@@ -17,7 +17,7 @@ trait HasFunctionReference
     ];
 
     /**
-     * Adds as functionReference
+     * Adds as functionReference.
      *
      * @param TFunctionReferenceExpressionType $functionReference
      *@return self
@@ -29,9 +29,9 @@ trait HasFunctionReference
     }
 
     /**
-     * isset functionReference
+     * isset functionReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return bool
      */
     public function issetFunctionReference($index)
@@ -40,9 +40,9 @@ trait HasFunctionReference
     }
 
     /**
-     * unset functionReference
+     * unset functionReference.
      *
-     * @param int|string $index
+     * @param  int|string $index
      * @return void
      */
     public function unsetFunctionReference($index)
@@ -51,7 +51,7 @@ trait HasFunctionReference
     }
 
     /**
-     * Gets as functionReference
+     * Gets as functionReference.
      *
      * @return TFunctionReferenceExpressionType[]
      */
@@ -61,9 +61,9 @@ trait HasFunctionReference
     }
 
     /**
-     * Sets a new functionReference
+     * Sets a new functionReference.
      *
-     * @param TFunctionReferenceExpressionType[] $functionReference
+     * @param  TFunctionReferenceExpressionType[] $functionReference
      * @return self
      */
     public function setFunctionReference(array $functionReference)

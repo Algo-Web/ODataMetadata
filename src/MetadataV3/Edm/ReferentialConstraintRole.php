@@ -8,7 +8,7 @@ use AlgoWeb\ODataMetadata\MetadataV3\DomBase;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
 /**
- * 2.1.12 ReferentialConstraint Role
+ * 2.1.12 ReferentialConstraint Role.
  *
  * When defining ReferentialConstraint elements, Role MUST be used to indicate which end of the association is the Principal and which end of the relationship is the Dependent. Thus, the ReferentialConstraint contains two Role definitions: the Principal and the Dependent.
  *
@@ -68,7 +68,7 @@ use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
  * - In CSDL 2.0 and CSDL 3.0, Dependent can contain any number of AnnotationElement elements.
  * - Child elements of Dependent are to appear in this sequence: PropertyRef, AnnotationElement.
  *
- * @link https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl10.5
+ * @see https://www.odata.org/documentation/odata-version-3-0/common-schema-definition-language-csdl/#csdl10.5
  * XSD Type: TReferentialConstraintRoleElement
  */
 class ReferentialConstraintRole extends EdmBase
@@ -93,7 +93,7 @@ class ReferentialConstraintRole extends EdmBase
     }
 
     /**
-     * Gets as role
+     * Gets as role.
      *
      * @return string
      */
@@ -103,9 +103,9 @@ class ReferentialConstraintRole extends EdmBase
     }
 
     /**
-     * Sets a new role
+     * Sets a new role.
      *
-     * @param string $role
+     * @param  string $role
      * @return self
      */
     public function setRole(string $role) : self
@@ -115,7 +115,7 @@ class ReferentialConstraintRole extends EdmBase
     }
 
     /**
-     * Gets as role
+     * Gets as role.
      *
      * @return PropertyRef
      */
@@ -125,9 +125,9 @@ class ReferentialConstraintRole extends EdmBase
     }
 
     /**
-     * Sets a new role
+     * Sets a new role.
      *
-     * @param PropertyRef $role
+     * @param  PropertyRef $role
      * @return self
      */
     public function setPropertyRef(PropertyRef $role) : self
