@@ -137,7 +137,7 @@ class FunctionImport extends EdmBase
     private $isBindable = false;
 
     /**
-     * @var AccessorType? $methodAccess
+     * @var AccessorType|null $methodAccess
      */
     private $methodAccess = null;
 
