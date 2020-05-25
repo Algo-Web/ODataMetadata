@@ -67,9 +67,9 @@ class AssociationEnd extends EdmBase
     private $multiplicity;
 
     /**
-     * @var OnDelete $onDelete 10.3 The edm:OnDelete Element
-     *               The edm:OnDelete element prescribes the action that should be taken when the entity on the opposing end of the
-     *               association is deleted.
+     * @var OnDelete|null $onDelete 10.3 The edm:OnDelete Element
+     *                    The edm:OnDelete element prescribes the action that should be taken when the entity on the
+     *                    opposing end of the association is deleted.
      *
      * If present, the edm:OnDelete element MUST define a value for the edm:Action attribute. The value assigned to the
      * action attribute MUST be Cascade or None.
@@ -157,9 +157,9 @@ class AssociationEnd extends EdmBase
     /**
      * Gets as onDelete.
      *
-     * @return OnDelete
+     * @return OnDelete|null
      */
-    public function getOnDelete(): OnDelete
+    public function getOnDelete(): ?OnDelete
     {
         return $this->onDelete;
     }
@@ -167,10 +167,10 @@ class AssociationEnd extends EdmBase
     /**
      * Sets a new onDelete.
      *
-     * @param  OnDelete $onDelete
+     * @param  OnDelete|null $onDelete
      * @return self
      */
-    public function setOnDelete(OnDelete $onDelete): self
+    public function setOnDelete(?OnDelete $onDelete): self
     {
         $this->onDelete = $onDelete;
         return $this;
