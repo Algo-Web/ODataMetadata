@@ -173,6 +173,6 @@ class TypeAnnotation extends EdmBase
      */
     public function getChildElements(): array
     {
-        return [$this->getPropertyValue()];
+        return $this->getPropertyValue();
     }
 }
