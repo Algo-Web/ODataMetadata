@@ -49,7 +49,7 @@ class BoolConstant extends ConstantBase
     public function value(bool $value = null): bool
     {
         if (null !== $value) {
-            $this->__value = $value ? "true" : "false";
+            $this->__value = $value;
         }
         return $this->__value;
     }
@@ -61,7 +61,7 @@ class BoolConstant extends ConstantBase
      */
     public function __toString(): string
     {
-        return strval($this->__value);
+        return $this->__value ? "true" : "false";
     }
 
     /**

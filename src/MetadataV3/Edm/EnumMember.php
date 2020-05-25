@@ -65,7 +65,7 @@ class EnumMember extends EdmBase
      */
     private $value = null;
 
-    public function __construct(string $name, string $value = null, Documentation $documentation = null)
+    public function __construct(string $name, int $value = null, Documentation $documentation = null)
     {
         $this
             ->setName($name)
