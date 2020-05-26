@@ -115,6 +115,7 @@ class Property extends EdmBase
      */
     public function getChildElements(): array
     {
-        return [$this->getChildElementsHasType()];
-    }
+        $type = $this->getChildElementsHasType();
+        assert(null === $type || $type instanceof DomBase);
+        return null === $type ? [] : [$type];    }
 }
