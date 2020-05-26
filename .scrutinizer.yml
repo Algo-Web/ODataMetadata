@@ -197,3 +197,10 @@ tools:
 build_failure_conditions:
   - 'elements.rating(<= D).new.exists'
   - 'issues.severity(>= CRITICAL).new.exists'
+
+build:
+  nodes:
+    analysis:
+      tests:
+        override:
+          - php-scrutinizer-run
