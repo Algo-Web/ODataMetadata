@@ -31,27 +31,27 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions\HasValueTermRefere
 
 trait HasExpression
 {
-    use HasValueTermReferenceExpression;
-    use HasAnonymousFunctionExpression;
-    use HasApplyExpression;
+    //use HasValueTermReferenceExpression;
+    //use HasAnonymousFunctionExpression;
+    //use HasApplyExpression;
     use HasBinaryExpression;
     use HasBoolExpression;
-    use HasCollectionExpression;
+    //use HasCollectionExpression;
     use HasDateTimeExpression;
     use HasDateTimeOffsetExpression;
     use HasDecimalExpression;
     use HasEntitySetReferenceExpression;
     use HasEnumExpression;
     use HasFloatExpression;
-    use HasFunctionReference;
+    //use HasFunctionReference;
     use HasGuidExpression;
-    use HasIfExpression;
+    //use HasIfExpression;
     use HasIntExpression;
-    use HasParameterReferenceExpression;
+    //use HasParameterReferenceExpression;
     use HasPathExpression;
-    use HasPropertyReferenceExpression;
-    use HasRecordExpression;
+    //use HasPropertyReferenceExpression;
+    //use HasRecordExpression;
     use HasStringExpression;
-    use HasTypeAssertExpression;
-    use HasTypeTestExpression;
+    //use HasTypeAssertExpression;
+    //use HasTypeTestExpression;
 }
