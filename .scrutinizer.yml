@@ -170,17 +170,17 @@ filter:
     - vednor/
 
   excluded_paths:
-    - src/Edm/Concerns/Expression/HasValueTermReferenceExpression.php
-    - src/Edm/Concerns/Expression/HasAnonymousFunctionExpression.php
-    - src/Edm/Concerns/Expression/HasApplyExpression.php
-    - src/Edm/Concerns/Expression/HasCollectionExpression.php
-    - src/Edm/Concerns/Expression/HasFunctionReference.php
-    - src/Edm/Concerns/Expression/HasIfExpression.php
-    - src/Edm/Concerns/Expression/HasParameterReferenceExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasValueTermReferenceExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasAnonymousFunctionExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasApplyExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasCollectionExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasFunctionReference.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasIfExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasParameterReferenceExpression.php
     - src/Edm/Concerns/Expression/HasPropertyReferenceExpression.php
-    - src/Edm/Concerns/Expression/HasRecordExpression.php
-    - src/Edm/Concerns/Expression/HasTypeAssertExpression.php
-    - src/Edm/Concerns/Expression/HasTypeTestExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasRecordExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasTypeAssertExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasTypeTestExpression.php
 tools:
   php_cs_fixer:
     config:
