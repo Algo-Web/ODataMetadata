@@ -12,8 +12,6 @@ use AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\HasValueAnnotation;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EdmBase;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityContainer\FunctionImport\ParameterType;
 use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityContainer\FunctionImport\ReturnType;
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TEntitySetReferenceExpressionType;
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\TOperandType;
 use AlgoWeb\ODataMetadata\OdataVersions;
 use AlgoWeb\ODataMetadata\Writer\AttributeContainer;
 
@@ -365,7 +363,7 @@ class FunctionImport extends EdmBase
     {
         return [
             new AttributeContainer('Name', $this->getName()),
-            new AttributeContainer('EntitySet', $this->getEntitySetReference(), true),
+            new AttributeContainer('EntitySet', $this->getEntitySetReference()->getName(), true),
             new AttributeContainer('EntitySetPath', $this->getEntitySetPath(), true),
             new AttributeContainer('ReturnType', $this->getReturnType()->getType(), true, OdataVersions::TWO(), [OdataVersions::THREE()]),
         ];

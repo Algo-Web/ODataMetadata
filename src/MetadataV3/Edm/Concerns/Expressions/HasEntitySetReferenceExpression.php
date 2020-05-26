@@ -5,57 +5,30 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions;
 
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\Expressions\Dynamic\TEntitySetReferenceExpressionType;
+use AlgoWeb\ODataMetadata\MetadataV3\Edm\EntityContainer\EntitySet;
 
+/**
+ * Trait HasEntitySetReferenceExpression
+ *
+ * An EntitySetReference is used at times when a direct reference to an entityset already existing in the schema is required
+ * most cases should not use the reference object directly but instead call get name on the referene type.
+ *
+ * @package AlgoWeb\ODataMetadata\MetadataV3\Edm\Concerns\Expressions
+ */
 trait HasEntitySetReferenceExpression
 {
     /**
-     * @var TEntitySetReferenceExpressionType[] $entitySetReference
+     * @var EntitySet $entitySetReference
      */
-    private $entitySetReference = [
+    private $entitySetReference = null;
 
-    ];
-
-    /**
-     * Adds as entitySetReference.
-     *
-     * @param TEntitySetReferenceExpressionType $entitySetReference
-     *@return self
-     */
-    public function addToEntitySetReference(TEntitySetReferenceExpressionType $entitySetReference)
-    {
-        $this->entitySetReference[] = $entitySetReference;
-        return $this;
-    }
-
-    /**
-     * isset entitySetReference.
-     *
-     * @param  int|string $index
-     * @return bool
-     */
-    public function issetEntitySetReference($index)
-    {
-        return isset($this->entitySetReference[$index]);
-    }
-
-    /**
-     * unset entitySetReference.
-     *
-     * @param  int|string $index
-     * @return void
-     */
-    public function unsetEntitySetReference($index)
-    {
-        unset($this->entitySetReference[$index]);
-    }
 
     /**
      * Gets as entitySetReference.
      *
-     * @return TEntitySetReferenceExpressionType[]
+     * @return EntitySet
      */
-    public function getEntitySetReference()
+    public function getEntitySetReference(): EntitySet
     {
         return $this->entitySetReference;
     }
@@ -63,10 +36,10 @@ trait HasEntitySetReferenceExpression
     /**
      * Sets a new entitySetReference.
      *
-     * @param  TEntitySetReferenceExpressionType[] $entitySetReference
+     * @param  EntitySet $entitySetReference
      * @return self
      */
-    public function setEntitySetReference(array $entitySetReference)
+    public function setEntitySetReference(EntitySet $entitySetReference): self
     {
         $this->entitySetReference = $entitySetReference;
         return $this;
