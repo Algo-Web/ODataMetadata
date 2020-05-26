@@ -25,7 +25,7 @@ trait HasType
      *
      * @return IType
      */
-    public function getType()
+    public function getType(): ?IType
     {
         return $this->type;
     }
@@ -36,7 +36,7 @@ trait HasType
      * @param  IType $type
      * @return self
      */
-    public function setType(IType $type)
+    public function setType(?IType $type)
     {
         $this->type = $type;
         return $this;
