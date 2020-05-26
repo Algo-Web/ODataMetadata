@@ -73,10 +73,9 @@ class ValueTerm extends EdmBase
      */
     public function getAttributes(): array
     {
-        return [
-            new AttributeContainer('Name', $this->getName()),
-            $this->getAttributesHasType()
-        ];
+        return array_merge([
+            new AttributeContainer('Name', $this->getName())],
+            $this->getAttributesHasType());
     }
 
     /**
