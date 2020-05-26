@@ -66,6 +66,8 @@ class FunctionReturn extends EdmBase
      */
     public function getChildElements(): array
     {
-        return [$this->getChildElementsHasType()];
+        $type = $this->getChildElementsHasType();
+        assert($type instanceof DomBase || null === $type);
+        return null === $type ? [] : [$type];
     }
 }
