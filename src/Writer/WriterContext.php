@@ -120,8 +120,8 @@ class WriterContext
         }
 
         $domElement->textContent = $rootNode->getTextContent();
-
-        foreach ($rootNode->getAttributes($this) as $attribute) {
+//TODO: gotta find a better way to special case this in DataService.
+        foreach ($rootNode->/** @scrutinizer ignore-call */ getAttributes($this) as $attribute) {
             if ($this->shouldWrite($attribute)) {
                 $attribute->apply($domElement, $this);
             }
