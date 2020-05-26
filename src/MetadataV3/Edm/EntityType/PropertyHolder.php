@@ -23,7 +23,7 @@ class PropertyHolder implements \ArrayAccess
 
     public function offsetGet($offset): Property
     {
-        $this->property[$offset];
+        return $this->property[$offset];
     }
 
     public function offsetSet($offset, $value): void
