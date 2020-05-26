@@ -83,9 +83,8 @@ class ValueTerm extends EdmBase
      */
     public function getChildElements(): array
     {
-
         $type = $this->getChildElementsHasType();
         assert(null === $type || $type instanceof DomBase);
-        return null === $type ? [] : [$type];
+        return [$type];
     }
 }
