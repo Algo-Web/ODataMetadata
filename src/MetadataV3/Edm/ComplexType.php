@@ -80,8 +80,9 @@ class ComplexType extends EdmBase implements INominalType
     private $property = [
 
     ];
-    public function __construct(string $name, array $property = [], Documentation $documentation = null)
+    public function __construct(string $name, PropertyHolder $property = null, Documentation $documentation = null)
     {
+        $property = $property ?? new PropertyHolder();
         $this
             ->setName($name)
             ->setProperty($property)
@@ -116,7 +117,7 @@ class ComplexType extends EdmBase implements INominalType
      * @param  Property $property
      * @return self
      */
-    public function addToProperty(Property $property)
+    public function addToProperty(Property $property): self
     {
         $this->property[] = $property;
         return $this;
@@ -128,7 +129,7 @@ class ComplexType extends EdmBase implements INominalType
      * @param  int|string $index
      * @return bool
      */
-    public function issetProperty($index)
+    public function issetProperty($index): bool
     {
         return isset($this->property[$index]);
     }
@@ -139,7 +140,7 @@ class ComplexType extends EdmBase implements INominalType
      * @param  int|string $index
      * @return void
      */
-    public function unsetProperty($index)
+    public function unsetProperty($index): void
     {
         unset($this->property[$index]);
     }
@@ -149,7 +150,7 @@ class ComplexType extends EdmBase implements INominalType
      *
      * @return PropertyHolder|Property[]
      */
-    public function getProperty()
+    public function getProperty() : PropertyHolder
     {
         return $this->property;
     }
@@ -160,7 +161,7 @@ class ComplexType extends EdmBase implements INominalType
      * @param  PropertyHolder|Property[] $property
      * @return self
      */
-    public function setProperty(array $property)
+    public function setProperty(PropertyHolder $property): self
     {
         $this->property = $property;
         return $this;
