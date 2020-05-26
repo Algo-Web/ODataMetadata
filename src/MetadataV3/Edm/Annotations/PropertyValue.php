@@ -114,17 +114,18 @@ class PropertyValue extends EdmBase
      */
     public function getAttributes(): array
     {
-        if (//  $this->expression instanceof Expressions\Dynamic\TPathExpression ||
+        return $this->isAnnotation() ? [$this->expression] : [];
+    }
+
+    private function isAnnotation(){
+        return (//  $this->expression instanceof Expressions\Dynamic\TPathExpression ||
             $this->expression instanceof Expressions\Constant\StringConstant ||
             $this->expression instanceof Expressions\Constant\IntConstant ||
             $this->expression instanceof Expressions\Constant\FloatConstant ||
             $this->expression instanceof Expressions\Constant\DecimalConstant ||
             $this->expression instanceof Expressions\Constant\BoolConstant ||
             $this->expression instanceof Expressions\Constant\DateTimeConstant
-        ) {
-            return [$this->expression];
-        }
-        return [];
+        );
     }
 
     /**
@@ -132,17 +133,6 @@ class PropertyValue extends EdmBase
      */
     public function getChildElements(): array
     {
-        if (!(
-          //  $this->expression instanceof Expressions\Dynamic\TPathExpression ||
-            $this->expression instanceof Expressions\Constant\StringConstant ||
-            $this->expression instanceof Expressions\Constant\IntConstant ||
-            $this->expression instanceof Expressions\Constant\FloatConstant ||
-            $this->expression instanceof Expressions\Constant\DecimalConstant ||
-            $this->expression instanceof Expressions\Constant\BoolConstant ||
-            $this->expression instanceof Expressions\Constant\DateTimeConstant
-        )) {
-            return [$this->expression];
-        }
-        return [];
+        return $this->isAnnotation() ? [] : [$this->expression];
     }
 }
