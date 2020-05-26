@@ -28,9 +28,9 @@ trait HasAccessors
     /**
      * Gets as setterAccess.
      *
-     * @return string
+     * @return AccessorType|null
      */
-    public function getSetterAccess()
+    public function getSetterAccess(): ?AccessorType
     {
         return $this->setterAccess;
     }
@@ -38,7 +38,7 @@ trait HasAccessors
     /**
      * Sets a new setterAccess.
      *
-     * @param  AccessorType $setterAccess
+     * @param  AccessorType|null $setterAccess
      * @return self
      */
     public function setSetterAccess(?AccessorType $setterAccess): self
@@ -60,7 +60,7 @@ trait HasAccessors
     /**
      * Sets a new getterAccess.
      *
-     * @param  AccessorType $getterAccess
+     * @param  AccessorType|null $getterAccess
      * @return self
      */
     public function setGetterAccess(?AccessorType $getterAccess): self
