@@ -145,7 +145,7 @@ class Edmx extends DomBase
      */
     public function getChildElements(): array
     {
-        return [$this->getDataServices()];
+        return $this->getDataServices();
     }
 
     /**
