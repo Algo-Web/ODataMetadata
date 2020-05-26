@@ -48,8 +48,14 @@ class DataServices extends DomBase implements ArrayAccess
      */
     public function getAttributes(WriterContext $wc = null): array
     {
+        /**
+         * @return string 3.2.1 The metadata:DataServiceVersion Attribute
+         * The metadata:DataServiceVersion attribute describes the version of OData protocol required to consume the service.
+         * This version of the specification defines the following valid data service version values:
+         * "1.0", "2.0", and "3.0", corresponding to OData protocol versions 1.0, 2.0 and 3.0 respectively.
+         */
         return [
-            new AttributeContainer('metadata:DataServiceVersion', $wc->getOdataVersion())
+            new AttributeContainer('metadata:DataServiceVersion', $wc->/** @scrutinizer ignore-call */getOdataVersion())
         ];
     }
 
@@ -68,16 +74,7 @@ class DataServices extends DomBase implements ArrayAccess
      */
     private $schema = [];
 
-    /**
-     * @return string 3.2.1 The metadata:DataServiceVersion Attribute
-     * The metadata:DataServiceVersion attribute describes the version of OData protocol required to consume the service.
-     * This version of the specification defines the following valid data service version values:
-     * "1.0", "2.0", and "3.0", corresponding to OData protocol versions 1.0, 2.0 and 3.0 respectively.
-     */
-    private function getDataServiceVersion(): string
-    {
-        return EdmBase::getSerilizationContext()->getOdataVersion();
-    }
+
 
     public function offsetExists($offset)
     {
