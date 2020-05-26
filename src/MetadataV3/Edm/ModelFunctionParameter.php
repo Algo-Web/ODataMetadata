@@ -106,8 +106,10 @@ class ModelFunctionParameter extends EdmBase
      */
     public function getChildElements(): array
     {
+        $type = $this->getChildElementsHasType();
+        assert(null === $type || $type instanceof DomBase);
         return [
-            $this->getChildElementsHasType(),
+            $type,
             $this->getValueAnnotation()
         ];
     }
