@@ -75,4 +75,14 @@ class AmbiguousEntityContainerBinding extends AmbiguousBinding implements IEntit
     {
         return $this->namespaceName;
     }
+
+    public function isDefault(): ?bool
+    {
+        return null;
+    }
+
+    public function isLazyLoadEnabled(): ?bool
+    {
+        return null;
+    }
 }
