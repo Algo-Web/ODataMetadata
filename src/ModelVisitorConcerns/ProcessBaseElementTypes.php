@@ -1,0 +1,47 @@
+<?php
+
+
+namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
+
+use AlgoWeb\ODataMetadata\EdmModelVisitor;
+use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
+use AlgoWeb\ODataMetadata\Interfaces\INamedElement;
+use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
+use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
+
+/**
+ * Class ProcessBaseElementTypes
+ * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
+ * @mixin EdmModelVisitor
+ */
+trait ProcessBaseElementTypes
+{
+
+    protected function ProcessElement(IEdmElement $element): void
+    {
+        $this->startElement($element, __METHOD__);
+        $this->VisitAnnotations($this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element));
+        $this->endElement($element, __METHOD__);
+    }
+
+    protected function ProcessNamedElement(INamedElement $element): void
+    {
+        $this->startElement($element, __METHOD__);
+        $this->ProcessElement($element);
+        $this->endElement($element, __METHOD__);
+    }
+
+    protected function ProcessSchemaElement(ISchemaElement $element): void
+    {
+        $this->startElement($element, __METHOD__);
+        $this->ProcessVocabularyAnnotatable($element);
+        $this->ProcessNamedElement($element);
+        $this->endElement($element, __METHOD__);
+    }
+
+    protected function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $annotatable): void
+    {
+        $this->startElement($annotatable, __METHOD__);
+        $this->endElement($annotatable, __METHOD__);
+    }
+}
