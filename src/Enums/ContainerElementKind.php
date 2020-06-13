@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Enums;
 
 /**
- * Class EdmContainerElementKind
+ * Class EdmContainerElementKind.
  *
  * Defines EDM container element types.
  *
@@ -15,7 +17,7 @@ namespace AlgoWeb\ODataMetadata\Enums;
  */
 class ContainerElementKind extends Enum
 {
-    protected const None = 1;
-    protected const EntitySet = 2;
+    protected const None           = 1;
+    protected const EntitySet      = 2;
     protected const FunctionImport = 3;
 }

@@ -1,14 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\IStringTypeReference;
 use AlgoWeb\ODataMetadata\StringConst;
-
 
 /**
  * Represents a reference to an EDM string type.
@@ -45,18 +45,18 @@ class EdmStringTypeReference extends EdmPrimitiveTypeReference implements IStrin
         ?int $maxLength = null,
         ?bool $isFixedLength = null,
         ?bool $isUnicode = null,
-        ?string $collation = null)
+        ?string $collation = null
+    )
     {
         parent::__construct($definition, $isNullable);
-        if ($isUnbounded && $maxLength !== null)
-        {
+        if ($isUnbounded && $maxLength !== null) {
             throw new InvalidOperationException(StringConst::EdmModel_Validator_Semantic_IsUnboundedCannotBeTrueWhileMaxLengthIsNotNull());
         }
-        $this->isUnbounded =$isUnbounded;
-        $this->maxLength = $maxLength;
+        $this->isUnbounded   =$isUnbounded;
+        $this->maxLength     = $maxLength;
         $this->isFixedLength = $isFixedLength;
-        $this->isUnicode = $isUnicode;
-        $this->collation = $collation;
+        $this->isUnicode     = $isUnicode;
+        $this->collation     = $collation;
     }
 
     /**

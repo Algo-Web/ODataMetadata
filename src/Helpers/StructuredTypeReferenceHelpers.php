@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
@@ -9,7 +11,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 
 /**
- * Trait StructuredTypeReferenceHelpers
+ * Trait StructuredTypeReferenceHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
  * @mixin IStructuredTypeReference
  */
@@ -18,7 +20,7 @@ trait StructuredTypeReferenceHelpers
     /**
      * Gets the definition of this structured type reference.
      *
-     * @return IStructuredType|null The definition of this structured type reference.
+     * @return IStructuredType|null the definition of this structured type reference
      */
     public function StructuredDefinition(): ?IStructuredType
     {
@@ -49,7 +51,7 @@ trait StructuredTypeReferenceHelpers
     /**
      * Returns the base type of the definition of this reference.
      *
-     * @return IStructuredType The base type of the definition of this reference.
+     * @return IStructuredType the base type of the definition of this reference
      */
     public function BaseType(): IStructuredType
     {
@@ -59,9 +61,9 @@ trait StructuredTypeReferenceHelpers
     /**
      * Gets all structural properties declared in the definition of this reference.
      *
-     * @return IStructuralProperty[] All structural properties declared in the definition of this reference.
+     * @return IStructuralProperty[] all structural properties declared in the definition of this reference
      */
-    public function DeclaredStructuralProperties():array
+    public function DeclaredStructuralProperties(): array
     {
         return $this->StructuredDefinition()->DeclaredStructuralProperties();
     }
@@ -69,9 +71,9 @@ trait StructuredTypeReferenceHelpers
     /**
      * Gets all structural properties declared in the definition of this reference and all its base types.
      *
-     * @return IStructuralProperty[] All structural properties declared in the definition of this reference and all its base types.
+     * @return IStructuralProperty[] all structural properties declared in the definition of this reference and all its base types
      */
-    public function StructuralProperties():array
+    public function StructuralProperties(): array
     {
         return $this->StructuredDefinition()->StructuralProperties();
     }
@@ -79,7 +81,7 @@ trait StructuredTypeReferenceHelpers
     /**
      * Finds a property from the definition of this reference.
      *
-     * @param string $name Name of the property to find.
+     * @param  string    $name name of the property to find
      * @return IProperty The requested property if it exists. Otherwise, null.
      */
     public function FindProperty(string $name): IProperty

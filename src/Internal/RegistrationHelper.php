@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Internal;
 
@@ -23,24 +25,26 @@ use AlgoWeb\ODataMetadata\StringConst;
 use ArrayAccess;
 
 /**
- * Class RegistrationHelper
+ * Class RegistrationHelper.
  * @package AlgoWeb\ODataMetadata
  * @internal
  */
 abstract class RegistrationHelper
 {
     /**
-     * @param ISchemaElement $element
-     * @param array<string, ISchemaType> $schemaTypeDictionary
-     * @param array<string, IValueTerm> $valueTermDictionary
-     * @param array<string, object> $functionGroupDictionary
+     * @param ISchemaElement                  $element
+     * @param array<string, ISchemaType>      $schemaTypeDictionary
+     * @param array<string, IValueTerm>       $valueTermDictionary
+     * @param array<string, object>           $functionGroupDictionary
      * @param array<string, IEntityContainer> $containerDictionary
      */
-    public static function RegisterSchemaElement(ISchemaElement $element,
-                                                    array $schemaTypeDictionary,
-                                                    array $valueTermDictionary,
-                                                    array $functionGroupDictionary,
-                                                    array $containerDictionary)
+    public static function RegisterSchemaElement(
+        ISchemaElement $element,
+        array $schemaTypeDictionary,
+        array $valueTermDictionary,
+        array $functionGroupDictionary,
+        array $containerDictionary
+    )
     {
         $qualifiedName = $element->FullName();
         switch ($element->getSchemaElementKind()) {
@@ -72,8 +76,8 @@ abstract class RegistrationHelper
     }
 
     /**
-     * @param IProperty $element
-     * @param string $name
+     * @param IProperty                $element
+     * @param string                   $name
      * @param array<string, IProperty> $dictionary
      */
     public static function RegisterProperty(IProperty $element, string $name, array $dictionary)
@@ -83,15 +87,15 @@ abstract class RegistrationHelper
     //Dictionary
     // Func<T, T, T>
     /**
-     * @param IEdmElement $element
-     * @param string $name
-     * @param array<string, IEdmElement> $elementDictionary
+     * @param IEdmElement                                   $element
+     * @param string                                        $name
+     * @param array<string, IEdmElement>                    $elementDictionary
      * @param callable(IEdmElement,IEdmElement):IEdmElement $ambiguityCreator
      */
     public static function AddElement($element, string $name, array $elementDictionary, callable $ambiguityCreator)
     {
         if (array_key_exists($name, $elementDictionary)) {
-            $preexisting = $elementDictionary[$name];
+            $preexisting              = $elementDictionary[$name];
             $elementDictionary[$name] = $ambiguityCreator($preexisting, $element);
         } else {
             $elementDictionary[$name] = $element;
@@ -99,8 +103,8 @@ abstract class RegistrationHelper
     }
 
     /**
-     * @param IFunctionBase $function
-     * @param string $name
+     * @param IFunctionBase         $function
+     * @param string                $name
      * @param array<string, object> $functionListDictionary
      */
     public static function AddFunction(IFunctionBase $function, string $name, array $functionListDictionary)

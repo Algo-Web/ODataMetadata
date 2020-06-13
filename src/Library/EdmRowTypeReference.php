@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Helpers\RowTypeReferenceHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IRowType;
@@ -15,5 +16,4 @@ class EdmRowTypeReference extends EdmTypeReference implements IRowTypeReference
     {
         parent::__construct($definition, $isNullable);
     }
-
 }

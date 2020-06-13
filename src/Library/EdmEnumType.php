@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
@@ -38,26 +39,26 @@ class EdmEnumType extends EdmType implements IEnumType
 
     /**
      * EdmEnumType constructor.
-     * @param string $namespaceName
-     * @param string $name
+     * @param string                                $namespaceName
+     * @param string                                $name
      * @param PrimitiveTypeKind|IPrimitiveType|null $underlyingType
-     * @param bool|null $isFlags
+     * @param bool|null                             $isFlags
      */
     public function __construct(string $namespaceName, string $name, $underlyingType = null, bool $isFlags = false)
     {
         $underlyingType = $underlyingType ?? PrimitiveTypeKind::Int32();
-        if($underlyingType instanceof PrimitiveTypeKind){
+        if ($underlyingType instanceof PrimitiveTypeKind) {
             $underlyingType = EdmCoreModel::getInstance()->GetPrimitive($underlyingType, false);
         }
         assert($underlyingType instanceof IPrimitiveType);
-        $this->namespaceName = $namespaceName;
-        $this->name = $name;
+        $this->namespaceName  = $namespaceName;
+        $this->name           = $name;
         $this->underlyingType = $underlyingType;
-        $this->isFlags = $isFlags;
+        $this->isFlags        = $isFlags;
     }
 
     /**
-     * @return IPrimitiveType Gets the underlying type of this enumeration type.
+     * @return IPrimitiveType gets the underlying type of this enumeration type
      */
     public function getUnderlyingType(): IPrimitiveType
     {
@@ -65,7 +66,7 @@ class EdmEnumType extends EdmType implements IEnumType
     }
 
     /**
-     * @return IEnumMember[] Gets the members of this enumeration type.
+     * @return IEnumMember[] gets the members of this enumeration type
      */
     public function getMembers(): array
     {
@@ -73,7 +74,7 @@ class EdmEnumType extends EdmType implements IEnumType
     }
 
     /**
-     * @return bool Gets a value indicating whether the enumeration type can be treated as a bit field.
+     * @return bool gets a value indicating whether the enumeration type can be treated as a bit field
      */
     public function isFlags(): bool
     {
@@ -81,7 +82,7 @@ class EdmEnumType extends EdmType implements IEnumType
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {
@@ -89,7 +90,7 @@ class EdmEnumType extends EdmType implements IEnumType
     }
 
     /**
-     * @return SchemaElementKind Gets the kind of this schema element.
+     * @return SchemaElementKind gets the kind of this schema element
      */
     public function getSchemaElementKind(): SchemaElementKind
     {
@@ -97,7 +98,7 @@ class EdmEnumType extends EdmType implements IEnumType
     }
 
     /**
-     * @return string Gets the namespace this schema element belongs to.
+     * @return string gets the namespace this schema element belongs to
      */
     public function getNamespace(): string
     {
@@ -105,7 +106,7 @@ class EdmEnumType extends EdmType implements IEnumType
     }
 
     /**
-     * @return TypeKind Gets the kind of this type.
+     * @return TypeKind gets the kind of this type
      */
     public function getTypeKind(): TypeKind
     {
@@ -116,7 +117,7 @@ class EdmEnumType extends EdmType implements IEnumType
     /**
      * Adds a new member to this enum type.
      *
-     * @param IEnumMember $member The member to add.
+     * @param IEnumMember $member the member to add
      */
     public function AddRawMember(IEnumMember $member): void
     {
@@ -126,9 +127,9 @@ class EdmEnumType extends EdmType implements IEnumType
     /**
      * Creates and adds a new member to this enum type.
      *
-     * @param string $name Name of the member.
-     * @param IPrimitiveValue $value Value of the member.
-     * @return EdmEnumMember Created member.
+     * @param  string          $name  name of the member
+     * @param  IPrimitiveValue $value value of the member
+     * @return EdmEnumMember   created member
      */
     public function AddMember(string $name, IPrimitiveValue $value): EdmEnumMember
     {

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Values;
-
 
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IPropertyValue;
@@ -24,17 +25,17 @@ class EdmPropertyValue implements IPropertyValue
     /**
      * Initializes a new instance of the "EdmPropertyValue" class with non-initialized "Value" property.
      * This constructor allows setting Value property once after EdmPropertyValue has been constructed.
-     * @param string $name Name of the property for which this provides a value.
+     * @param string      $name  name of the property for which this provides a value
      * @param IValue|null $value Value of the property. one set it can not be changed.
      */
     public function __construct(string $name, IValue $value = null)
     {
-        $this->name = $name;
+        $this->name  = $name;
         $this->value = $value;
     }
 
     /**
-     * @return IValue Gets the data stored in this value.
+     * @return IValue gets the data stored in this value
      */
     public function getValue(): ?IValue
     {
@@ -46,7 +47,7 @@ class EdmPropertyValue implements IPropertyValue
      *
      * The value can be initialized only once either using the constructor or by assigning value directly to this property.
      * once initialized it can not be changed
-     * @param IValue $value the value for the property.
+     * @param  IValue           $value the value for the property
      * @return EdmPropertyValue
      */
     public function setValue(IValue $value): self
@@ -59,11 +60,10 @@ class EdmPropertyValue implements IPropertyValue
     }
 
     /**
-     * @return string Gets the name of the property this value is associated with.
+     * @return string gets the name of the property this value is associated with
      */
     public function getName(): string
     {
         return $this->name;
     }
-
 }

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmNamedElement
+ * Interface IEdmNamedElement.
  *
  * Common base interface for all named EDM elements.
  *
@@ -13,8 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface INamedElement extends IEdmElement
 {
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string;
-
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Edm\Internal\Cache;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
@@ -40,19 +41,19 @@ class BadProperty extends BadElement implements IStructuralProperty
     /**
      * BadProperty constructor.
      * @param IStructuredType $declaringType
-     * @param string $name
-     * @param EdmError[] $errors
+     * @param string          $name
+     * @param EdmError[]      $errors
      */
     public function __construct(IStructuredType $declaringType, ?string $name, array $errors)
     {
         parent::__construct($errors);
-        $this->type = new Cache(BadProperty::class, ITypeReference::class);
-        $this->name = $name ?? '';
+        $this->type          = new Cache(BadProperty::class, ITypeReference::class);
+        $this->name          = $name ?? '';
         $this->declaringType = $declaringType;
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {
@@ -60,7 +61,7 @@ class BadProperty extends BadElement implements IStructuralProperty
     }
 
     /**
-     * @return PropertyKind Gets the kind of this property.
+     * @return PropertyKind gets the kind of this property
      */
     public function getPropertyKind(): PropertyKind
     {
@@ -68,7 +69,7 @@ class BadProperty extends BadElement implements IStructuralProperty
     }
 
     /**
-     * @return ITypeReference Gets the type of this property.
+     * @return ITypeReference gets the type of this property
      */
     public function getType(): ITypeReference
     {
@@ -76,7 +77,7 @@ class BadProperty extends BadElement implements IStructuralProperty
     }
 
     /**
-     * @return IStructuredType Gets the type that this property belongs to.
+     * @return IStructuredType gets the type that this property belongs to
      */
     public function getDeclaringType(): IStructuredType
     {
@@ -84,7 +85,7 @@ class BadProperty extends BadElement implements IStructuralProperty
     }
 
     /**
-     * @return string Gets the default value of this property.
+     * @return string gets the default value of this property
      */
     public function getDefaultValueString(): string
     {
@@ -92,7 +93,7 @@ class BadProperty extends BadElement implements IStructuralProperty
     }
 
     /**
-     * @return ConcurrencyMode Gets the concurrency mode of this property.
+     * @return ConcurrencyMode gets the concurrency mode of this property
      */
     public function getConcurrencyMode(): ConcurrencyMode
     {

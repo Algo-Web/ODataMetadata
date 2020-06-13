@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Csdl\Internal\Parsing;
 
@@ -10,5 +12,4 @@ namespace AlgoWeb\ODataMetadata\Csdl\Internal\Parsing;
  */
 class CsdlDocumentParser
 {
-
 }

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmVocabularyAnnotatable
+ * Interface IEdmVocabularyAnnotatable.
  *
  * Represents an element that can be targeted by Vocabulary Annotations
  *
@@ -12,5 +14,4 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
  */
 interface IVocabularyAnnotatable extends IEdmElement
 {
-
 }

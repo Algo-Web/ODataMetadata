@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
@@ -9,7 +11,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use Generator;
 
 /**
- * Trait StructuredTypeDefinitionHelpers
+ * Trait StructuredTypeDefinitionHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
  * @mixin IStructuredType
  */
@@ -18,15 +20,16 @@ trait StructuredTypeHelpers
     /**
      * Gets all properties of the structured type definition and its base types.
      *
-     * @return Generator Properties of this type.
+     * @return Generator properties of this type
      */
-    public function Properties(): Generator{
-        if($this->getBaseType() !== null){
-            foreach ($this->getBaseType()->Properties() as $baseProperty){
+    public function Properties(): Generator
+    {
+        if ($this->getBaseType() !== null) {
+            foreach ($this->getBaseType()->Properties() as $baseProperty) {
                 yield $baseProperty;
             }
         }
-        foreach($this->getDeclaredProperties() as $declaredProperty){
+        foreach ($this->getDeclaredProperties() as $declaredProperty) {
             yield $declaredProperty;
         }
     }
@@ -34,11 +37,11 @@ trait StructuredTypeHelpers
     /**
      * Gets all structural properties declared in the IStructuredTypeDefinition.
      *
-     * @return IStructuralProperty[] All structural properties declared in the IStructuredTypeDefinition.
+     * @return IStructuralProperty[] all structural properties declared in the IStructuredTypeDefinition
      */
     public function DeclaredStructuralProperties()
     {
-        return array_filter($this->getDeclaredProperties(), function(IProperty $value){
+        return array_filter($this->getDeclaredProperties(), function (IProperty $value) {
             return $value instanceof IStructuralProperty;
         });
     }
@@ -46,27 +49,25 @@ trait StructuredTypeHelpers
     /**
      * Gets the structural properties declared in this type definition and all base types.
      *
-     * @return IStructuralProperty[] The structural properties declared in this type definition and all base types.
+     * @return IStructuralProperty[] the structural properties declared in this type definition and all base types
      */
     public function StructuralProperties()
     {
         $props = iterator_to_array($this->Properties());
-        return array_filter($props,function(IProperty $value){
+        return array_filter($props, function (IProperty $value) {
             return $value instanceof IStructuralProperty;
         });
     }
 
-    public function InheritsFrom(IStructuredType $potentialBaseType){
+    public function InheritsFrom(IStructuredType $potentialBaseType)
+    {
         $type = $this;
-        do
-        {
+        do {
             $type = $type->getBaseType();
-            if ($type === $potentialBaseType)
-            {
+            if ($type === $potentialBaseType) {
                 return true;
             }
-        }
-        while ($type !== null);
+        } while ($type !== null);
         return false;
     }
 }

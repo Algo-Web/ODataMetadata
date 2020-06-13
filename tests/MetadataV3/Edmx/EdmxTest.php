@@ -15,7 +15,7 @@ class EdmxTest extends TestCase
 {
     public function testEdmxTestXmlSerialize()
     {
-        $model    = new EdmModel();
+        $model      = new EdmModel();
         $xmlWritter = new \XMLWriter();
         $this->assertTrue(EdmxWriter::TryWriteEdmx($model, $xmlWritter));
         $expected = '<edmx:Edmx xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:annotations="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx" xmlns:metadata="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="3.0">
@@ -55,11 +55,11 @@ class EdmxTest extends TestCase
             ['Summary_of_Sales_by_Years','Summary_of_Sales_by_Year'],
         ];
 
-        $model    = new EdmModel();
-        $entityContainer = new EdmEntityContainer('ODataWebV3.Northwind.Model','NorthwindEntities', true, true);
+        $model           = new EdmModel();
+        $entityContainer = new EdmEntityContainer('ODataWebV3.Northwind.Model', 'NorthwindEntities', true, true);
 
         foreach ($entitySetarray as $es) {
-            $entityType = new EdmEntityType('NorthwindModel',$es[1]);
+            $entityType = new EdmEntityType('NorthwindModel', $es[1]);
             $entityContainer->AddEntitySet($es[0], $entityType);
         }
         $model->AddElement($entityContainer);

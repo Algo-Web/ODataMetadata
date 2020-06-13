@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
 
 use AlgoWeb\ODataMetadata\Interfaces\Values\IGuidValue;
 
 /**
- * Class IGuidConstantExpression
+ * Class IGuidConstantExpression.
  *
  * Represents an EDM guid constant expression.
  *
@@ -14,5 +16,4 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IGuidValue;
  */
 interface IGuidConstantExpression extends IExpression, IGuidValue
 {
-
 }

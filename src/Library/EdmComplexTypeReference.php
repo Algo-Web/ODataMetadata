@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
 
@@ -18,8 +20,8 @@ class EdmComplexTypeReference extends EdmTypeReference implements IComplexTypeRe
 
     /**
      * Initializes a new instance of the EdmComplexTypeReference class.
-     * @param IComplexType $definition The type definition this reference refers to.
-     * @param bool $isNullable Denotes whether the type can be nullable.
+     * @param IComplexType $definition the type definition this reference refers to
+     * @param bool         $isNullable denotes whether the type can be nullable
      */
     public function __construct(IComplexType $definition, bool $isNullable)
     {

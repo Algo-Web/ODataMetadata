@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
-
 
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\EdmConstants;
@@ -15,15 +16,15 @@ use AlgoWeb\ODataMetadata\StringConst;
 
 abstract class Helpers
 {
-    public const AssociationNameEscapeChar = '_';
-    public const AssociationNameEscapeString = "_";
-    public const AssociationNameEscapeStringEscaped = "__";
+    public const AssociationNameEscapeChar          = '_';
+    public const AssociationNameEscapeString        = '_';
+    public const AssociationNameEscapeStringEscaped = '__';
 
     public static function GetPathSegmentEntityType(ITypeReference $segmentType): IEntityType
     {
         return ($segmentType->IsCollection() ? $segmentType->AsCollection()->ElementType() : $segmentType)->AsEntity()->EntityDefinition();
     }
-    public static function FindAcrossModels(IModel $model, string $qualifiedName,callable $finder, $ambiguousCreator)
+    public static function FindAcrossModels(IModel $model, string $qualifiedName, callable $finder, $ambiguousCreator)
     {
         $candidate = $finder($model, $qualifiedName);
 
@@ -39,17 +40,15 @@ abstract class Helpers
 
 
     /**
-     * @param string $typeOf Type of the annotation being returned.
+     * @param string $typeOf type of the annotation being returned
      * @param $annotation
      * @return mixed|null
      */
     public static function AnnotationValue(string $typeOf, $annotation)
     {
-        if ($annotation != null)
-        {
+        if ($annotation != null) {
             $isSpecificAnnotation = is_a($annotation, $typeOf);
-            if ($isSpecificAnnotation)
-            {
+            if ($isSpecificAnnotation) {
                 return $annotation;
             }
 
@@ -63,33 +62,34 @@ abstract class Helpers
         return null;
     }
 
-    public static function classNameToLocalName(string $className) : string{
+    public static function classNameToLocalName(string $className): string
+    {
         // Use the name of the type as its local name for annotations.
         // Filter out special characters to produce a valid name:
         // '.'                      Appears in qualified names.
         // '`', '[', ']', ','       Appear in generic instantiations.
         // '+'                      Appears in names of local classes.
         return str_replace(
-            "_",
-            "_____",
+            '_',
+            '_____',
             str_replace(
                 '.',
                 '_',
                 str_replace(
-                    "[",
-                    "",
+                    '[',
+                    '',
                     str_replace(
-                        "]",
-                        "",
+                        ']',
+                        '',
                         str_replace(
-                            ",",
-                            "__",
+                            ',',
+                            '__',
                             str_replace(
-                                "`",
-                                "___",
+                                '`',
+                                '___',
                                 str_replace(
-                                    "+",
-                                    "____",
+                                    '+',
+                                    '____',
                                     $className
                                 )
                             )
@@ -103,16 +103,15 @@ abstract class Helpers
     /**
      * Gets the namespace used for the association serialized for a navigation property.
      *
-     * @param IModel $model Model containing the navigation property.
-     * @param INavigationProperty $property The navigation property.
-     * @return string The association namespace.
+     * @param  IModel              $model    model containing the navigation property
+     * @param  INavigationProperty $property the navigation property
+     * @return string              the association namespace
      */
     public static function GetAssociationNamespace(IModel $model, INavigationProperty $property): string
     {
         $property->PopulateCaches();
         $associationNamespace = $model->GetAnnotationValue('string', $property, EdmConstants::InternalUri, CsdlConstants::AssociationNamespaceAnnotation);
-        if ($associationNamespace == null)
-        {
+        if ($associationNamespace == null) {
             $associationNamespace = $property->GetPrimary()->DeclaringEntityType()->getNamespace();
         }
 
@@ -123,14 +122,14 @@ abstract class Helpers
     public static function GetQualifiedAndEscapedPropertyName(INavigationProperty $property): string
     {
         return
-            str_replace('.', self::AssociationNameEscapeChar,self::EscapeName($property->DeclaringEntityType()->getNamespace())) .
+            str_replace('.', self::AssociationNameEscapeChar, self::EscapeName($property->DeclaringEntityType()->getNamespace())) .
             self::AssociationNameEscapeChar .
             self::EscapeName($property->DeclaringEntityType()->getNamespace()) .
             self::AssociationNameEscapeChar .
             self::EscapeName($property->getName());
     }
 
-    private static function EscapeName(string $name):string
+    private static function EscapeName(string $name): string
     {
         return str_replace(self::AssociationNameEscapeString, self::AssociationNameEscapeStringEscaped, $name);
     }

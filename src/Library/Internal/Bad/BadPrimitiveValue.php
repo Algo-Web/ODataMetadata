@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
@@ -14,16 +15,16 @@ class BadPrimitiveValue extends BadElement implements IPrimitiveValue
     /**
      * @var IPrimitiveTypeReference
      */
-     private $type;
+    private $type;
 
-     public function __construct(IPrimitiveTypeReference $type, array $errors)
-     {
-         parent::__construct($errors);
-         $this->type = $type;
-     }
+    public function __construct(IPrimitiveTypeReference $type, array $errors)
+    {
+        parent::__construct($errors);
+        $this->type = $type;
+    }
 
     /**
-     * @return ITypeReference Gets the type of this value.
+     * @return ITypeReference gets the type of this value
      */
     public function getType(): ITypeReference
     {
@@ -31,7 +32,7 @@ class BadPrimitiveValue extends BadElement implements IPrimitiveValue
     }
 
     /**
-     * @return ValueKind Gets the kind of this value.
+     * @return ValueKind gets the kind of this value
      */
     public function getValueKind(): ValueKind
     {

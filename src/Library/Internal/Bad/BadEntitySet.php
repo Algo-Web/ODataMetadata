@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Enums\ContainerElementKind;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
@@ -29,19 +30,19 @@ class BadEntitySet extends BadElement implements IEntitySet
 
     /**
      * BadEntitySet constructor.
-     * @param string|null $name
+     * @param string|null      $name
      * @param IEntityContainer $container
-     * @param array $errors
+     * @param array            $errors
      */
-    public function __construct(?string $name, IEntityContainer $container,array $errors)
+    public function __construct(?string $name, IEntityContainer $container, array $errors)
     {
         parent::__construct($errors);
-        $this->name = $name ?? '';
+        $this->name      = $name ?? '';
         $this->container = $container;
     }
 
     /**
-     * @return ContainerElementKind Gets the kind of element of this container element.
+     * @return ContainerElementKind gets the kind of element of this container element
      */
     public function getContainerElementKind(): ContainerElementKind
     {
@@ -49,7 +50,7 @@ class BadEntitySet extends BadElement implements IEntitySet
     }
 
     /**
-     * @return IEntityContainer|null Gets the container that contains this element.
+     * @return IEntityContainer|null gets the container that contains this element
      */
     public function getContainer(): ?IEntityContainer
     {
@@ -57,7 +58,7 @@ class BadEntitySet extends BadElement implements IEntitySet
     }
 
     /**
-     * @return IEntityType Gets the entity type contained in this entity set.
+     * @return IEntityType gets the entity type contained in this entity set
      */
     public function getElementType(): IEntityType
     {
@@ -65,7 +66,7 @@ class BadEntitySet extends BadElement implements IEntitySet
     }
 
     /**
-     * @return array|INavigationTargetMapping[] Gets the navigation targets of this entity set.
+     * @return array|INavigationTargetMapping[] gets the navigation targets of this entity set
      */
     public function getNavigationTargets(): array
     {
@@ -75,8 +76,8 @@ class BadEntitySet extends BadElement implements IEntitySet
     /**
      * Finds the entity set that a navigation property targets.
      *
-     * @param INavigationProperty $navigationProperty The navigation property.
-     * @return IEntitySet The entity set that the navigation property targets, or null if no such entity set exists.
+     * @param  INavigationProperty $navigationProperty the navigation property
+     * @return IEntitySet          the entity set that the navigation property targets, or null if no such entity set exists
      */
     public function findNavigationTarget(INavigationProperty $navigationProperty): ?IEntitySet
     {
@@ -84,7 +85,7 @@ class BadEntitySet extends BadElement implements IEntitySet
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {

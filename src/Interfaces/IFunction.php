@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmFunction
+ * Interface IEdmFunction.
  *
  * Represents an EDM function.
  *
@@ -13,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface IFunction extends IFunctionBase, ISchemaElement
 {
     /**
-     * @return string Gets the defining expression of this function.
+     * @return string gets the defining expression of this function
      */
     public function getDefiningExpression(): string;
 }

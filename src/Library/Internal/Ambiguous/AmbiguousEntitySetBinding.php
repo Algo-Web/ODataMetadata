@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
-
 
 use AlgoWeb\ODataMetadata\Enums\ContainerElementKind;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
@@ -62,8 +63,8 @@ class AmbiguousEntitySetBinding extends AmbiguousBinding implements IEntitySet
     /**
      * Finds the entity set that a navigation property targets.
      *
-     * @param INavigationProperty $navigationProperty The navigation property.
-     * @return IEntitySet The entity set that the navigation property targets, or null if no such entity set exists.
+     * @param  INavigationProperty $navigationProperty the navigation property
+     * @return IEntitySet          the entity set that the navigation property targets, or null if no such entity set exists
      */
     public function findNavigationTarget(INavigationProperty $navigationProperty): IEntitySet
     {

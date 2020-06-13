@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmStructuredTypeReference
+ * Interface IEdmStructuredTypeReference.
  *
  * Represents references to EDM structured types.
  *
@@ -12,5 +14,4 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
  */
 interface IStructuredTypeReference extends ITypeReference
 {
-
 }

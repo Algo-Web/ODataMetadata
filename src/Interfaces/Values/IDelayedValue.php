@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 
 /**
- * Interface IDelayedValue
+ * Interface IDelayedValue.
  *
  *  Represents a lazily computed value.
  *
@@ -13,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 interface IDelayedValue
 {
     /**
-     * @return IValue Gets the data stored in this value.
+     * @return IValue gets the data stored in this value
      */
     public function getValue();
 }

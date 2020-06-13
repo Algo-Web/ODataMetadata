@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
@@ -60,11 +61,12 @@ class EdmModelVisitor
 
     public function __construct(IModel $model)
     {
-        $this->model = $model;
-        $this->visitors = new SplObjectStorage();
+        $this->model                 = $model;
+        $this->visitors              = new SplObjectStorage();
         $this->cloneElementContainer = new SplObjectStorage();
     }
-    public function visit():void{
+    public function visit(): void
+    {
         $this->visitEdmModel();
     }
     protected function visitEdmModel(): void
@@ -79,18 +81,21 @@ class EdmModelVisitor
         $this->VisitVocabularyAnnotations($model->getVocabularyAnnotations());
     }
 
-    public function addVisitor(IVisitor $visitor):self {
+    public function addVisitor(IVisitor $visitor): self
+    {
         $this->visitors[] = $visitor;
         return $this;
     }
-    public function removeVisitor(IVisitor $visitor): self {
-        if($this->visitors->contains($visitor)){
+    public function removeVisitor(IVisitor $visitor): self
+    {
+        if ($this->visitors->contains($visitor)) {
             $this->visitors->detach($visitor);
         }
         return $this;
     }
 
-    public function hasVisitor(IVisitor $visitor):bool {
+    public function hasVisitor(IVisitor $visitor): bool
+    {
         return $this->visitors->contains($visitor);
     }
 
@@ -98,28 +103,26 @@ class EdmModelVisitor
      * @var SplObjectStorage
      */
     private $cloneElementContainer;
-    protected function startElement(IEdmElement $element, string $method):void
+    protected function startElement(IEdmElement $element, string $method): void
     {
-        $method = $this->sanitizeMethodName($method);
+        $method       = $this->sanitizeMethodName($method);
         $elementClone = clone $element;
         $this->cloneElementContainer->offsetSet($element, $elementClone);
-        foreach($this->visitors as $visitor)
-        {
+        foreach ($this->visitors as $visitor) {
             $visitor->{'start' . $method}($elementClone);
         }
     }
 
     protected function endElement(IEdmElement $element, string $method): void
     {
-        $method = $this->sanitizeMethodName($method);
+        $method       = $this->sanitizeMethodName($method);
         $elementClone =  $this->cloneElementContainer->offsetGet($element);
-        foreach($this->visitors as $visitor)
-        {
+        foreach ($this->visitors as $visitor) {
             $visitor->{'end' . $method}($elementClone);
         }
     }
     private function sanitizeMethodName(string $methodName): string
     {
-        return substr($methodName,7);
+        return substr($methodName, 7);
     }
 }

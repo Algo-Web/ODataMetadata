@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\EdmUtil;
@@ -14,7 +15,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\Concerns\SimpleICheckable;
 
 /**
- * Class BadPrimitiveType
+ * Class BadPrimitiveType.
  *
  * Represents a semantically invalid EDM primitive type definition.
  *
@@ -39,26 +40,24 @@ class BadPrimitiveType extends BadType implements IPrimitiveType
 
     /**
      * BadPrimitiveType constructor.
-     * @param string $qualifiedName
+     * @param string            $qualifiedName
      * @param PrimitiveTypeKind $primitiveKind
-     * @param EdmError[] $errors
+     * @param EdmError[]        $errors
      */
     public function __construct(?string $qualifiedName, PrimitiveTypeKind $primitiveKind, array $errors)
     {
         parent::__construct($errors);
         $this->primitiveKind = $primitiveKind;
-        $qualifiedName = $qualifiedName ?? '';
-        $name = null;
-        $namespaceName = null;
+        $qualifiedName       = $qualifiedName ?? '';
+        $name                = null;
+        $namespaceName       = null;
         EdmUtil::TryGetNamespaceNameFromQualifiedName($qualifiedName, $namespaceName, $name);
         $this->namespaceName = $namespaceName;
-        $this->name = $name;
-
-
+        $this->name          = $name;
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {
@@ -66,7 +65,7 @@ class BadPrimitiveType extends BadType implements IPrimitiveType
     }
 
     /**
-     * @return PrimitiveTypeKind Gets the primitive kind of this type.
+     * @return PrimitiveTypeKind gets the primitive kind of this type
      */
     public function getPrimitiveKind(): PrimitiveTypeKind
     {
@@ -74,7 +73,7 @@ class BadPrimitiveType extends BadType implements IPrimitiveType
     }
 
     /**
-     * @return SchemaElementKind Gets the kind of this schema element.
+     * @return SchemaElementKind gets the kind of this schema element
      */
     public function getSchemaElementKind(): SchemaElementKind
     {
@@ -82,7 +81,7 @@ class BadPrimitiveType extends BadType implements IPrimitiveType
     }
 
     /**
-     * @return string Gets the namespace this schema element belongs to.
+     * @return string gets the namespace this schema element belongs to
      */
     public function getNamespace(): string
     {
@@ -90,7 +89,7 @@ class BadPrimitiveType extends BadType implements IPrimitiveType
     }
 
     /**
-     * @return TypeKind Gets the kind of this type.
+     * @return TypeKind gets the kind of this type
      */
     public function getTypeKind(): TypeKind
     {

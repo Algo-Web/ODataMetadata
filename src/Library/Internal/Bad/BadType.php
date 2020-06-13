@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
@@ -17,7 +18,7 @@ class BadType extends BadElement implements IType
     }
 
     /**
-     * @return TypeKind Gets the kind of this type.
+     * @return TypeKind gets the kind of this type
      */
     public function getTypeKind(): TypeKind
     {

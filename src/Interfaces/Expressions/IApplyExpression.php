@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
 
 /**
- * Interface IApplyExpression
+ * Interface IApplyExpression.
  *
  * Represents an EDM function application expression.
  *
@@ -13,12 +15,12 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
 interface IApplyExpression extends IExpression
 {
     /**
-     * @return IExpression Gets the applied function.
+     * @return IExpression gets the applied function
      */
     public function getAppliedFunction(): IExpression;
 
     /**
-     * @return IExpression[] Gets the arguments to the function.
+     * @return IExpression[] gets the arguments to the function
      */
     public function getArguments(): array;
 }

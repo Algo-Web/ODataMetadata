@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 
 /**
- * Interface IBinaryValue
+ * Interface IBinaryValue.
  *
  * Represents an EDM binary value.
  *
@@ -13,9 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 interface IBinaryValue extends IPrimitiveValue
 {
     /**
-     *
-     *
-     * @return string[] Gets the definition of this binary value.
+     * @return string[] gets the definition of this binary value
      */
     public function getValue(): array ;
 }

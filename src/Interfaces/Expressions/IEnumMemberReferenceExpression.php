@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 
 /**
- * Interface IEnumMemberReferenceExpression
+ * Interface IEnumMemberReferenceExpression.
  *
  * Represents an EDM enumeration member reference expression.
  *
@@ -16,7 +17,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 interface IEnumMemberReferenceExpression extends IExpression
 {
     /**
-     * @return IEnumMember Gets the referenced enum member.
+     * @return IEnumMember gets the referenced enum member
      */
     public function getReferencedEnumMember(): IEnumMember;
 }

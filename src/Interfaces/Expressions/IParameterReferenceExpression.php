@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 
 /**
- * Interface IParameterReferenceExpression
+ * Interface IParameterReferenceExpression.
  *
  * Represents an EDM parameter reference expression.
  *
@@ -16,9 +17,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 interface IParameterReferenceExpression extends IExpression
 {
     /**
-     *
-     *
-     * @return IFunctionParameter Gets the referenced parameter.
+     * @return IFunctionParameter gets the referenced parameter
      */
     public function getReferencedParameter(): IFunctionParameter;
 }

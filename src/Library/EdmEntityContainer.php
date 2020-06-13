@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Enums\ContainerElementKind;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
@@ -58,16 +59,16 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
     /**
      * Initializes a new instance of the EdmEntityContainer class.
      *
-     * @param string $namespaceName Namespace of the entity container.
-     * @param string $name Name of the entity container.
+     * @param string    $namespaceName     namespace of the entity container
+     * @param string    $name              name of the entity container
      * @param bool|null $isDefault
      * @param bool|null $isLazyLoadEnabled
      */
     public function __construct(string $namespaceName, string $name, bool $isDefault = null, bool $isLazyLoadEnabled = null)
     {
-        $this->namespaceName = $namespaceName;
-        $this->name = $name;
-        $this->isDefault = $isDefault;
+        $this->namespaceName     = $namespaceName;
+        $this->name              = $name;
+        $this->isDefault         = $isDefault;
         $this->isLazyLoadEnabled = $isLazyLoadEnabled;
     }
 
@@ -84,8 +85,8 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
     /**
      *  Searches for an entity set with the given name in this entity container and returns null if no such set exists.
      *
-     * @param string $setName The name of the element being found
-     * @return IEntitySet|null The requested element, or null if the element does not exist.
+     * @param  string          $setName The name of the element being found
+     * @return IEntitySet|null the requested element, or null if the element does not exist
      */
     public function findEntitySet(string $setName): ?IEntitySet
     {
@@ -96,12 +97,12 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
      * Searches for function imports with the given name in this entity container and returns empty enumerable if no
      * such function import exists.
      *
-     * @param string $functionName The name of the function import being found.
-     * @return array|IFunctionImport[] A group of the requested function imports, or an empty enumerable if no such function import exists.
+     * @param  string                  $functionName the name of the function import being found
+     * @return array|IFunctionImport[] a group of the requested function imports, or an empty enumerable if no such function import exists
      */
     public function findFunctionImports(string $functionName): array
     {
-        if(array_key_exists($functionName, $this->functionImportDictionary)){
+        if (array_key_exists($functionName, $this->functionImportDictionary)) {
             $element = $this->functionImportDictionary[$functionName];
             return is_array($element) ? $element : [$element];
         }
@@ -109,7 +110,7 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {
@@ -117,7 +118,7 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
     }
 
     /**
-     * @return SchemaElementKind Gets the kind of this schema element.
+     * @return SchemaElementKind gets the kind of this schema element
      */
     public function getSchemaElementKind(): SchemaElementKind
     {
@@ -125,7 +126,7 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
     }
 
     /**
-     * @return string Gets the namespace this schema element belongs to.
+     * @return string gets the namespace this schema element belongs to
      */
     public function getNamespace(): string
     {
@@ -134,14 +135,14 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
     /**
      * Creates and adds a function import to this entity container.
      *
-     * @param string $name Name of the function import.
-     * @param ITypeReference $returnType Return type of the function import.
-     * @param IExpression|null $entitySet An entity set containing entities returned by this function import.
-     * The two expression kinds supported are IEntitySetReferenceExpression and IPathExpression.
-     * @param bool|null $sideEffecting A value indicating whether this function import has side-effects.
-     * @param bool|null $composable A value indicating whether this function import can be composed inside expressions.
-     * @param bool|null $bindable A value indicating whether this function import can be used as an extension method for the type of the first parameter of this function import.
-     * @return EdmFunctionImport Created function import.
+     * @param  string            $name          name of the function import
+     * @param  ITypeReference    $returnType    return type of the function import
+     * @param  IExpression|null  $entitySet     An entity set containing entities returned by this function import.
+     *                                          The two expression kinds supported are IEntitySetReferenceExpression and IPathExpression.
+     * @param  bool|null         $sideEffecting a value indicating whether this function import has side-effects
+     * @param  bool|null         $composable    a value indicating whether this function import can be composed inside expressions
+     * @param  bool|null         $bindable      a value indicating whether this function import can be used as an extension method for the type of the first parameter of this function import
+     * @return EdmFunctionImport created function import
      */
     public function AddFunctionImport(string $name, ITypeReference $returnType, ?IExpression $entitySet, ?bool $sideEffecting, ?bool $composable, ?bool $bindable): EdmFunctionImport
     {
@@ -155,9 +156,9 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
     /**
      *  Creates and adds an entity set to this entity container.
      *
-     * @param string $name Name of the entity set.
-     * @param IEntityType $elementType The entity type of the elements in this entity set.
-     * @return EdmEntitySet Created entity set.
+     * @param  string       $name        name of the entity set
+     * @param  IEntityType  $elementType the entity type of the elements in this entity set
+     * @return EdmEntitySet created entity set
      */
     public function AddEntitySet(string $name, IEntityType $elementType): EdmEntitySet
     {
@@ -168,14 +169,13 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
 
     /**
      * Adds an entity container element to this entity container.
-     * @param IEntityContainerElement $element The element to add.
+     * @param IEntityContainerElement $element the element to add
      */
     public function AddElement(IEntityContainerElement $element): void
     {
         $this->containerElements[] = $element;
 
-        switch ($element->getContainerElementKind())
-        {
+        switch ($element->getContainerElementKind()) {
             case ContainerElementKind::EntitySet():
                 RegistrationHelper::AddElement($element, $element->getName(), $this->entitySetDictionary, [RegistrationHelper::class, 'CreateAmbiguousEntitySetBinding']);
                 break;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
 
@@ -13,7 +15,7 @@ class EdmPrimitiveTypeReference extends EdmTypeReference implements IPrimitiveTy
     use PrimitiveTypeReferenceHelpers;
 
     /**
-     * @return bool Gets a value indicating whether this type is nullable.
+     * @return bool gets a value indicating whether this type is nullable
      */
     public function getNullable(): bool
     {
@@ -21,7 +23,7 @@ class EdmPrimitiveTypeReference extends EdmTypeReference implements IPrimitiveTy
     }
 
     /**
-     * @return IPrimitiveType|null Gets the definition to which this type refers.
+     * @return IPrimitiveType|null gets the definition to which this type refers
      */
     public function getDefinition(): ?IType
     {

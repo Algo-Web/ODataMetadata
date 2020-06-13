@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
 
@@ -18,9 +20,9 @@ class EdmRowType extends EdmStructuredType implements IRowType
     }
 
     /**
-     * @return TypeKind Gets the kind of this type.
+     * @return TypeKind gets the kind of this type
      */
-    function getTypeKind(): TypeKind
+    public function getTypeKind(): TypeKind
     {
         return TypeKind::Row();
     }

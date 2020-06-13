@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface ILocatable
+ * Interface ILocatable.
  *
  * Interface for all EDM elements that can be located.
  *
@@ -13,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface ILocatable
 {
     /**
-     * @return ILocation|null Gets the location of this element.
+     * @return ILocation|null gets the location of this element
      */
     public function getLocation(): ?ILocation;
 }

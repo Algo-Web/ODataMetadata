@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmEntityReferenceType
+ * Interface IEdmEntityReferenceType.
  *
  * Represents a definition of an EDM entity reference type.
  *
@@ -13,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface IEntityReferenceType extends IType
 {
     /**
-     * @return IEntityType Gets the entity type pointed to by this entity reference.
+     * @return IEntityType gets the entity type pointed to by this entity reference
      */
     public function getEntityType(): IEntityType;
 }

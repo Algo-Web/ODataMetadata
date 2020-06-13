@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 
 /**
- * Interface IStringValue
+ * Interface IStringValue.
  *
  * Represents an EDM string value.
  *
@@ -13,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 interface IStringValue extends IPrimitiveValue
 {
     /**
-     * @return string Gets the definition of this string value.
+     * @return string gets the definition of this string value
      */
     public function getValue(): string;
 }

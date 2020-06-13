@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainerElement;
@@ -12,7 +13,6 @@ use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 
 trait ProcessDataModel
 {
-
     protected function ProcessEntityContainer(IEntityContainer $container): void
     {
         $this->startElement($container, __METHOD__);
@@ -36,9 +36,9 @@ trait ProcessDataModel
         $this->endElement($set, __METHOD__);
     }
 
-    abstract function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $container): void;
+    abstract public function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $container): void;
 
-    abstract function ProcessNamedElement(INamedElement $element): void;
+    abstract public function ProcessNamedElement(INamedElement $element): void;
 
-    abstract function VisitEntityContainerElements(array $getElements): void;
+    abstract public function VisitEntityContainerElements(array $getElements): void;
 }

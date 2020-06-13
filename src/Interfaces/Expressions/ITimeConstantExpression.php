@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
 
 use AlgoWeb\ODataMetadata\Interfaces\Values\ITimeValue;
 
 /**
- * Interface ITimeConstantExpression
+ * Interface ITimeConstantExpression.
  *
  * Represents an EDM time constant expression
  *
@@ -14,5 +16,4 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\ITimeValue;
  */
 interface ITimeConstantExpression extends IExpression, ITimeValue
 {
-
 }

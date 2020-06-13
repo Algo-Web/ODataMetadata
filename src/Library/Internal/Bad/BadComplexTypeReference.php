@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\Interfaces\ICheckable;
@@ -17,8 +18,8 @@ class BadComplexTypeReference extends EdmComplexTypeReference implements IChecka
 
     /**
      * BadComplexTypeReference constructor.
-     * @param string $qualifiedName
-     * @param bool $isNullable
+     * @param string     $qualifiedName
+     * @param bool       $isNullable
      * @param EdmError[] $errors
      */
     public function __construct(string $qualifiedName, bool $isNullable, array $errors)

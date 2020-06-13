@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\ComplexTypeHelpers;
 
 /**
- * Interface IEdmComplexType
+ * Interface IEdmComplexType.
  *
  *  Represents a definition of an EDM complex type.
  *
@@ -15,5 +17,4 @@ use AlgoWeb\ODataMetadata\Helpers\ComplexTypeHelpers;
  */
 interface IComplexType extends IStructuredType, ISchemaType, ITerm
 {
-
 }

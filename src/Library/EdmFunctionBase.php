@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Enums\FunctionParameterMode;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionBase;
@@ -27,8 +28,8 @@ class EdmFunctionBase extends EdmNamedElement implements IFunctionBase
     /**
      * Initializes a new instance of the EdmFunctionBase class.
      *
-     * @param string $name The name of the function.
-     * @param ITypeReference $returnType The return type of the function.
+     * @param string         $name       the name of the function
+     * @param ITypeReference $returnType the return type of the function
      */
     public function __construct(string $name, ?ITypeReference $returnType)
     {
@@ -59,8 +60,8 @@ class EdmFunctionBase extends EdmNamedElement implements IFunctionBase
     /**
      * Searches for a parameter with the given name, and returns null if no such parameter exists.
      *
-     * @param string $name The name of the parameter being found.
-     * @return IFunctionParameter|null The requested parameter or null if no such parameter exists.
+     * @param  string                  $name the name of the parameter being found
+     * @return IFunctionParameter|null the requested parameter or null if no such parameter exists
      */
     public function findParameter(string $name): ?IFunctionParameter
     {
@@ -75,14 +76,14 @@ class EdmFunctionBase extends EdmNamedElement implements IFunctionBase
     /**
      * Creates and adds a parameter to this function (as the last parameter).
      *
-     * @param string $name The name of the parameter being added.
-     * @param ITypeReference $type The type of the parameter being added.
-     * @param FunctionParameterMode|null $mode Mode of the parameter.
-     * @return EdmFunctionParameter Created parameter.
+     * @param  string                     $name the name of the parameter being added
+     * @param  ITypeReference             $type the type of the parameter being added
+     * @param  FunctionParameterMode|null $mode mode of the parameter
+     * @return EdmFunctionParameter       created parameter
      */
     public function AddParameter(string $name, ITypeReference $type, ?FunctionParameterMode $mode = null): EdmFunctionParameter
     {
-        $parameter = new EdmFunctionParameter($this, $name, $type, $mode);
+        $parameter          = new EdmFunctionParameter($this, $name, $type, $mode);
         $this->parameters[] = $parameter;
         return $parameter;
     }
@@ -90,7 +91,7 @@ class EdmFunctionBase extends EdmNamedElement implements IFunctionBase
     /**
      * Adds a parameter to this function (as the last parameter).
      *
-     * @param IFunctionParameter $parameter The parameter being added.
+     * @param IFunctionParameter $parameter the parameter being added
      */
     public function AddRawParameter(IFunctionParameter $parameter): void
     {

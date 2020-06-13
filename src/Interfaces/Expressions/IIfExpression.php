@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
 
 /**
- * Interface IIfExpression
+ * Interface IIfExpression.
  *
  * Represents an EDM if expression.
  *
@@ -13,17 +15,17 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
 interface IIfExpression extends IExpression
 {
     /**
-     * @return IExpression Gets the test expression.
+     * @return IExpression gets the test expression
      */
     public function getTestExpression(): IExpression;
 
     /**
-     * @return IExpression Gets the expression to evaluate if <see cref="TestExpression"/> evaluates to true.
+     * @return IExpression gets the expression to evaluate if <see cref="TestExpression"/> evaluates to true
      */
-    public function getTrueExpression (): IExpression;
+    public function getTrueExpression(): IExpression;
 
     /**
-     * @return IExpression  Gets the expression to evaluate if <see cref="TestExpression"/> evaluates to false.
+     * @return IExpression gets the expression to evaluate if <see cref="TestExpression"/> evaluates to false
      */
     public function getFalseExpression(): IExpression;
 }

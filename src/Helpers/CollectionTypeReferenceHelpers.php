@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
@@ -8,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ICollectionTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 /**
- * Trait CollectionTypeReferenceHelpers
+ * Trait CollectionTypeReferenceHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
  * @mixin ICollectionTypeReference
  */
@@ -17,7 +19,7 @@ trait CollectionTypeReferenceHelpers
     /**
      * Gets the definition of this collection reference.
      *
-     * @return ICollectionType The definition of this collection reference.
+     * @return ICollectionType the definition of this collection reference
      */
     public function CollectionDefinition(): ICollectionType
     {

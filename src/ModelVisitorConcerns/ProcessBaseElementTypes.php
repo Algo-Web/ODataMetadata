@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
 
@@ -10,13 +12,12 @@ use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 
 /**
- * Class ProcessBaseElementTypes
+ * Class ProcessBaseElementTypes.
  * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
  * @mixin EdmModelVisitor
  */
 trait ProcessBaseElementTypes
 {
-
     protected function ProcessElement(IEdmElement $element): void
     {
         $this->startElement($element, __METHOD__);

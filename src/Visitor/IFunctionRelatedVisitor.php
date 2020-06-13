@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Visitor;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionBase;
@@ -19,5 +20,4 @@ interface IFunctionRelatedVisitor
     public function endFunctionBase(IFunctionBase $functionBase): void;
     public function startFunctionParameter(IFunctionParameter $parameter): void;
     public function endFunctionParameter(IFunctionParameter $parameter): void;
-
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation;
 
@@ -32,25 +34,27 @@ final class ValidationContext
 
     /**
      * ValidationContext constructor.
-     * @param IModel $model
+     * @param IModel                      $model
      * @param callable(IEdmElement): bool $isBad
      */
     public function __construct(IModel $model, callable $isBad)
     {
-        /** @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
+        /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            (is_array($isBad) ? new ReflectionMethod(...$isBad) : new ReflectionFunction($isBad))->getParameters()[0]->getType()->getName() === IEdmElement::class
-            , '$isBad should be a callable taking one parameter of Type IEdmElement');
-        /** @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
+            (is_array($isBad) ? new ReflectionMethod(...$isBad) : new ReflectionFunction($isBad))->getParameters()[0]->getType()->getName() === IEdmElement::class,
+            '$isBad should be a callable taking one parameter of Type IEdmElement'
+        );
+        /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            (is_array($isBad) ? new ReflectionMethod(...$isBad) : new ReflectionFunction($isBad))->getReturnType()->getName() === 'bool'
-            , '$isBad should be a callable returning a boolean');
+            (is_array($isBad) ? new ReflectionMethod(...$isBad) : new ReflectionFunction($isBad))->getReturnType()->getName() === 'bool',
+            '$isBad should be a callable returning a boolean'
+        );
         $this->model = $model;
         $this->isBad = $isBad;
     }
 
     /**
-     * @return IModel Gets the model being validated.
+     * @return IModel gets the model being validated
      */
     public function getModel(): IModel
     {
@@ -68,8 +72,8 @@ final class ValidationContext
     /**
      * Method returns true if the element is known to have structural errors associated with it.
      *
-     * @param IEdmElement $element The element to test.
-     * @return bool True if the element has structural errors associated with it.
+     * @param  IEdmElement $element the element to test
+     * @return bool        true if the element has structural errors associated with it
      */
     public function checkIsBad(IEdmElement $element): bool
     {
@@ -79,9 +83,9 @@ final class ValidationContext
     /**
      * Register an error with the validation context.
      *
-     * @param ILocation $location Location of the error.
-     * @param EdmErrorCode $errorCode Value representing the error.
-     * @param string $errorMessage Message text describing the error.
+     * @param ILocation    $location     location of the error
+     * @param EdmErrorCode $errorCode    value representing the error
+     * @param string       $errorMessage message text describing the error
      */
     public function AddError(ILocation $location, EdmErrorCode $errorCode, string $errorMessage): void
     {
@@ -91,7 +95,7 @@ final class ValidationContext
     /**
      * Register an error with the validation context.
      *
-     * @param EdmError $error Error to register.
+     * @param EdmError $error error to register
      */
     public function AddRawError(EdmError $error): void
     {

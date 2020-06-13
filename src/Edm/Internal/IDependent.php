@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Internal;
 
@@ -10,5 +12,4 @@ namespace AlgoWeb\ODataMetadata\Edm\Internal;
  */
 interface IDependent extends IFlushCaches
 {
-
 }

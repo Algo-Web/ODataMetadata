@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
@@ -13,7 +15,7 @@ use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 interface ICheckable
 {
     /**
-     * @return EdmError[] Gets an error if one exists with the current object.
+     * @return EdmError[] gets an error if one exists with the current object
      */
     public function getErrors(): array;
 }

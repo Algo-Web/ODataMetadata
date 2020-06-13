@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Cyclic;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -21,5 +22,4 @@ class CyclicEntityType extends BadEntityType
     {
         parent::__construct($qualifiedName, [new EdmError($location, EdmErrorCode::BadCyclicEntity(), StringConst::Bad_CyclicEntity($qualifiedName)) ]);
     }
-
 }

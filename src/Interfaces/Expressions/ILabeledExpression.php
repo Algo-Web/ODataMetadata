@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
 
 use AlgoWeb\ODataMetadata\Interfaces\INamedElement;
 
 /**
- * Interface ILabeledExpression
+ * Interface ILabeledExpression.
  *
  * Represents an EDM labeled expression element.
  *
@@ -15,7 +17,7 @@ use AlgoWeb\ODataMetadata\Interfaces\INamedElement;
 interface ILabeledExpression extends INamedElement, IExpression
 {
     /**
-     * @return IExpression Gets the underlying expression.
+     * @return IExpression gets the underlying expression
      */
     public function getExpression(): IExpression;
 }

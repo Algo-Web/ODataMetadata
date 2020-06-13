@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmEnumType
+ * Interface IEdmEnumType.
  *
  * Represents a definition of an EDM enumeration type.
  *
@@ -13,17 +15,17 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface IEnumType extends ISchemaType
 {
     /**
-     * @return IPrimitiveType Gets the underlying type of this enumeration type.
+     * @return IPrimitiveType gets the underlying type of this enumeration type
      */
     public function getUnderlyingType(): IPrimitiveType;
 
     /**
-     * @return IEnumMember[] Gets the members of this enumeration type.
+     * @return IEnumMember[] gets the members of this enumeration type
      */
     public function getMembers(): array;
 
     /**
-     * @return bool Gets a value indicating whether the enumeration type can be treated as a bit field.
+     * @return bool gets a value indicating whether the enumeration type can be treated as a bit field
      */
     public function isFlags(): bool;
 }

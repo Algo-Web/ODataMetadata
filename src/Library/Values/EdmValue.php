@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Values;
 
@@ -16,14 +18,14 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IValue;
 abstract class EdmValue implements IValue, IDelayedValue
 {
     /**
-     * @var ITypeReference Type of the value.
+     * @var ITypeReference type of the value
      */
     private $type;
 
     /**
      * Initializes a new instance of the EdmValue class.
      *
-     * @param ITypeReference $type Type of the value.
+     * @param ITypeReference $type type of the value
      */
     public function __construct(ITypeReference $type)
     {
@@ -32,7 +34,7 @@ abstract class EdmValue implements IValue, IDelayedValue
 
 
     /**
-     * @return ITypeReference Gets the type of this value.
+     * @return ITypeReference gets the type of this value
      */
     public function getType(): ITypeReference
     {
@@ -40,7 +42,7 @@ abstract class EdmValue implements IValue, IDelayedValue
     }
 
     /**
-     * @return ValueKind Gets the kind of this value.
+     * @return ValueKind gets the kind of this value
      */
-    public abstract function getValueKind(): ValueKind;
+    abstract public function getValueKind(): ValueKind;
 }

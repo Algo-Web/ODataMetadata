@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Helpers\ToTraceString;
 use AlgoWeb\ODataMetadata\Helpers\TypeReferenceHelpers;
@@ -24,8 +25,8 @@ abstract class EdmTypeReference extends EdmElement implements ITypeReference
     /**
      * Initializes a new instance of the EdmTypeReference class.
      *
-     * @param IType $definition Type that describes this value.
-     * @param bool $isNullable Denotes whether the type can be nullable.
+     * @param IType $definition type that describes this value
+     * @param bool  $isNullable denotes whether the type can be nullable
      */
     public function __construct(IType $definition, bool $isNullable)
     {
@@ -34,7 +35,7 @@ abstract class EdmTypeReference extends EdmElement implements ITypeReference
     }
 
     /**
-     * @return bool Gets a value indicating whether this type is nullable.
+     * @return bool gets a value indicating whether this type is nullable
      */
     public function getNullable(): bool
     {
@@ -42,14 +43,14 @@ abstract class EdmTypeReference extends EdmElement implements ITypeReference
     }
 
     /**
-     * @return IType|null Gets the definition to which this type refers.
+     * @return IType|null gets the definition to which this type refers
      */
     public function getDefinition(): ?IType
     {
         return $this->definition;
     }
 
-    public function __toString():string
+    public function __toString(): string
     {
         return ToTraceString::ToTraceString($this);
     }

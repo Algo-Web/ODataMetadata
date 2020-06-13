@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\CollectionTypeReferenceHelpers;
 
 /**
- * Interface IEdmCollectionTypeReference
+ * Interface IEdmCollectionTypeReference.
  *
  * Represents references to EDM Collection types.
  *
@@ -15,5 +17,4 @@ use AlgoWeb\ODataMetadata\Helpers\CollectionTypeReferenceHelpers;
  */
 interface ICollectionTypeReference extends ITypeReference
 {
-
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IDecimalTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
@@ -14,20 +15,20 @@ class EdmDecimalTypeReference extends EdmPrimitiveTypeReference implements IDeci
 
     /**
      * Initializes a new instance of the EdmDecimalTypeReference class.
-     * @param IPrimitiveType $definition The type this reference refers to.
-     * @param bool $isNullable Denotes whether the type can be nullable.
-     * @param int|null $precision Precision of values with this type.
-     * @param int|null $scale Scale of values with this type.
+     * @param IPrimitiveType $definition the type this reference refers to
+     * @param bool           $isNullable denotes whether the type can be nullable
+     * @param int|null       $precision  precision of values with this type
+     * @param int|null       $scale      scale of values with this type
      */
     public function __construct(IPrimitiveType $definition, bool $isNullable, ?int $precision = null, ?int $scale = null)
     {
         parent::__construct($definition, $isNullable);
         $this->precision = $precision;
-        $this->scale = $scale;
+        $this->scale     = $scale;
     }
 
     /**
-     * @return int|null Gets the precision of this type.
+     * @return int|null gets the precision of this type
      */
     public function getPrecision(): ?int
     {
@@ -35,7 +36,7 @@ class EdmDecimalTypeReference extends EdmPrimitiveTypeReference implements IDeci
     }
 
     /**
-     * @return int|null Gets the scale of this type.
+     * @return int|null gets the scale of this type
      */
     public function getScale(): ?int
     {

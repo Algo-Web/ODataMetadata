@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmRowType
+ * Interface IEdmRowType.
  *
  * Represents a definition of an EDM row type.
  *
@@ -12,5 +14,4 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
  */
 interface IRowType extends IStructuredType
 {
-
 }

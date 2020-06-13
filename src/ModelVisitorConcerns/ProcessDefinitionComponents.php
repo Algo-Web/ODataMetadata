@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\INamedElement;
@@ -14,8 +15,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 
 trait ProcessDefinitionComponents
 {
-
-    protected function ProcessNavigationProperty(INavigationProperty $property):void
+    protected function ProcessNavigationProperty(INavigationProperty $property): void
     {
         $this->startElement($property, __METHOD__);
         $this->ProcessProperty($property);
@@ -45,9 +45,9 @@ trait ProcessDefinitionComponents
         $this->endElement($enumMember, __METHOD__);
     }
 
-    abstract function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $property): void;
+    abstract public function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $property): void;
 
-    abstract function ProcessNamedElement(INamedElement $property): void;
+    abstract public function ProcessNamedElement(INamedElement $property): void;
 
-    abstract function VisitTypeReference(ITypeReference $getType): void;
+    abstract public function VisitTypeReference(ITypeReference $getType): void;
 }

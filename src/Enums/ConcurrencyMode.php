@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Enums;
 
 /**
- * Class EdmConcurrencyMode
+ * Class EdmConcurrencyMode.
  *
  * Enumerates the EDM property concurrency modes.
  *
@@ -15,6 +17,6 @@ namespace AlgoWeb\ODataMetadata\Enums;
  */
 class ConcurrencyMode extends Enum
 {
-    protected const None = 0;
+    protected const None  = 0;
     protected const Fixed = 1;
 }

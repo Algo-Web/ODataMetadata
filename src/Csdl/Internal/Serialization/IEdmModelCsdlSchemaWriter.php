@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\Csdl\Internal\Serialization;
 
 use AlgoWeb\ODataMetadata\Enums\OnDeleteAction;

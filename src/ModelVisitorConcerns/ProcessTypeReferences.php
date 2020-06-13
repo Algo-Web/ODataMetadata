@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IBinaryTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
@@ -23,11 +24,8 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ITemporalTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
-/**
- */
 trait ProcessTypeReferences
 {
-
     protected function ProcessComplexTypeReference(IComplexTypeReference $reference): void
     {
         $this->startElement($reference, __METHOD__);
@@ -129,12 +127,11 @@ trait ProcessTypeReferences
         $this->endElement($reference, __METHOD__);
     }
 
-    abstract function ProcessEntityReferenceType(IEntityReferenceType $EntityReferenceDefinition): void;
+    abstract public function ProcessEntityReferenceType(IEntityReferenceType $EntityReferenceDefinition): void;
 
-    abstract function ProcessElement(IEdmElement $element): void;
+    abstract public function ProcessElement(IEdmElement $element): void;
 
-    abstract function ProcessCollectionType(ICollectionType $CollectionDefinition): void;
+    abstract public function ProcessCollectionType(ICollectionType $CollectionDefinition): void;
 
-    abstract function ProcessRowType(IRowType $RowDefinition): void;
-
+    abstract public function ProcessRowType(IRowType $RowDefinition): void;
 }

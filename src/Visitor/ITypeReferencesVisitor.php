@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Visitor;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IBinaryTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionTypeReference;

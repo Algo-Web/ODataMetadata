@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\EdmModelVisitor;
 use AlgoWeb\ODataMetadata\Enums\PropertyKind;
@@ -20,16 +21,15 @@ use AlgoWeb\ODataMetadata\Interfaces\IType;
 use AlgoWeb\ODataMetadata\StringConst;
 
 /**
- * Class VisitTypeDefinitions
+ * Class VisitTypeDefinitions.
  * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
  * @mixin EdmModelVisitor
  */
 trait VisitTypeDefinitions
 {
-    public function VisitSchemaType(IType $definition):void
+    public function VisitSchemaType(IType $definition): void
     {
-        switch ($definition->getTypeKind())
-        {
+        switch ($definition->getTypeKind()) {
             case TypeKind::Complex():
                 assert($definition instanceof IComplexType);
                 $this->ProcessComplexType($definition);
@@ -52,11 +52,11 @@ trait VisitTypeDefinitions
         }
     }
 
-    abstract function ProcessComplexType(IComplexType $definition): void;
+    abstract public function ProcessComplexType(IComplexType $definition): void;
 
-    abstract function ProcessEntityType(IEntityType $definition): void;
+    abstract public function ProcessEntityType(IEntityType $definition): void;
 
-    abstract function ProcessEnumType(IEnumType $definition): void;
+    abstract public function ProcessEnumType(IEnumType $definition): void;
 
     /**
      * @param IProperty[] $properties
@@ -68,8 +68,7 @@ trait VisitTypeDefinitions
 
     public function VisitProperty(IProperty $property): void
     {
-        switch ($property->getPropertyKind())
-        {
+        switch ($property->getPropertyKind()) {
             case PropertyKind::Navigation():
                 assert($property instanceof INavigationProperty);
                 $this->ProcessNavigationProperty($property);
@@ -87,11 +86,11 @@ trait VisitTypeDefinitions
         }
     }
 
-    abstract function ProcessProperty(IProperty $property): void;
+    abstract public function ProcessProperty(IProperty $property): void;
 
-    abstract function ProcessNavigationProperty(INavigationProperty $property): void;
+    abstract public function ProcessNavigationProperty(INavigationProperty $property): void;
 
-    abstract function ProcessStructuralProperty(IStructuralProperty $property): void;
+    abstract public function ProcessStructuralProperty(IStructuralProperty $property): void;
 
     /**
      * @param IEnumMember[] $enumMembers
@@ -101,10 +100,10 @@ trait VisitTypeDefinitions
         self::VisitCollection($enumMembers, [$this, 'VisitEnumMember']);
     }
 
-    public function VisitEnumMember(IEnumMember $enumMember):void
+    public function VisitEnumMember(IEnumMember $enumMember): void
     {
         $this->ProcessEnumMember($enumMember);
     }
 
-    abstract function ProcessEnumMember(IEnumMember $enumMember): void;
+    abstract public function ProcessEnumMember(IEnumMember $enumMember): void;
 }

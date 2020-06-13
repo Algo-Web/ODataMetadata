@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Enums;
 
-
 /**
- * Class EdmTypeKind
+ * Class EdmTypeKind.
  *
  * Defines EDM metatypes.
  *
@@ -29,23 +30,23 @@ namespace AlgoWeb\ODataMetadata\Enums;
  */
 class TypeKind extends Enum
 {
-    protected const None =1;
-    protected const Primitive = 2;
-    protected const Entity = 3;
-    protected const Complex = 4;
-    protected const Row = 5;
-    protected const Collection = 6;
+    protected const None            =1;
+    protected const Primitive       = 2;
+    protected const Entity          = 3;
+    protected const Complex         = 4;
+    protected const Row             = 5;
+    protected const Collection      = 6;
     protected const EntityReference = 7;
-    protected const Enum = 8;
+    protected const Enum            = 8;
 
     /**
      *  Returns true if this type kind represents a structured type.
      *
-     * @return bool This kind refers to a structured type.
+     * @return bool this kind refers to a structured type
      */
     public function IsStructured(): bool
     {
-        switch ($this){
+        switch ($this) {
             case TypeKind::Entity():
             case TypeKind::Complex():
             case TypeKind::Row():

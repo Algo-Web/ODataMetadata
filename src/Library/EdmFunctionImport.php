@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Enums\ContainerElementKind;
 use AlgoWeb\ODataMetadata\Helpers\FunctionImportHelpers;
@@ -17,36 +18,36 @@ class EdmFunctionImport extends EdmFunctionBase implements IFunctionImport
     /**
      * @var IEntityContainer
      */
-private $container;
+    private $container;
     /**
      * @var IExpression
      */
-private $entitySet;
+    private $entitySet;
     /**
      * @var bool
      */
-private $isSideEffecting;
+    private $isSideEffecting;
     /**
      * @var bool
      */
-private $isComposable;
+    private $isComposable;
     /**
      * @var bool
      */
-private $isBindable;
+    private $isBindable;
 
-public function __construct(IEntityContainer $container,string $name, ?ITypeReference $returnType, IExpression $entitySet = null, bool $isSideEffecting = true, bool $isComposable = false, bool $isBindable= false)
-{
-    parent::__construct($name, $returnType);
-    $this->container = $container;
-    $this->entitySet = $entitySet;
-    $this->isBindable = $isBindable;
-    $this->isComposable = $isComposable;
-    $this->isSideEffecting = $isSideEffecting;
-}
+    public function __construct(IEntityContainer $container, string $name, ?ITypeReference $returnType, IExpression $entitySet = null, bool $isSideEffecting = true, bool $isComposable = false, bool $isBindable= false)
+    {
+        parent::__construct($name, $returnType);
+        $this->container       = $container;
+        $this->entitySet       = $entitySet;
+        $this->isBindable      = $isBindable;
+        $this->isComposable    = $isComposable;
+        $this->isSideEffecting = $isSideEffecting;
+    }
 
     /**
-     * @return ContainerElementKind Gets the kind of element of this container element.
+     * @return ContainerElementKind gets the kind of element of this container element
      */
     public function getContainerElementKind(): ContainerElementKind
     {
@@ -54,7 +55,7 @@ public function __construct(IEntityContainer $container,string $name, ?ITypeRefe
     }
 
     /**
-     * @return IEntityContainer|null Gets the container that contains this element.
+     * @return IEntityContainer|null gets the container that contains this element
      */
     public function getContainer(): ?IEntityContainer
     {
@@ -71,7 +72,7 @@ public function __construct(IEntityContainer $container,string $name, ?ITypeRefe
     }
 
     /**
-     * @return bool Gets a value indicating whether this functon import can be composed inside expressions.
+     * @return bool gets a value indicating whether this functon import can be composed inside expressions
      */
     public function isComposable(): bool
     {
@@ -79,8 +80,8 @@ public function __construct(IEntityContainer $container,string $name, ?ITypeRefe
     }
 
     /**
-     * @return bool Gets a value indicating whether this function import can be used as an extension method for the
-     *              type of the first parameter of this function import.
+     * @return bool gets a value indicating whether this function import can be used as an extension method for the
+     *              type of the first parameter of this function import
      */
     public function isBindable(): bool
     {
@@ -88,7 +89,7 @@ public function __construct(IEntityContainer $container,string $name, ?ITypeRefe
     }
 
     /**
-     * @return IExpression Gets the entity set containing entities returned by this function import.
+     * @return IExpression gets the entity set containing entities returned by this function import
      */
     public function getEntitySet(): IExpression
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Internal;
 
@@ -24,7 +26,8 @@ class CacheHelper
     {
         return (object)[];
     }
-    public static function GetBoxed(bool $value){
+    public static function GetBoxed(bool $value)
+    {
         return $value;
     }
 }

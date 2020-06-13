@@ -1,12 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Enums;
 
-
-
 /**
- * Class EdmTermKind
+ * Class EdmTermKind.
  *
  * Defines EDM term kinds.
  *
@@ -17,7 +17,7 @@ namespace AlgoWeb\ODataMetadata\Enums;
  */
 class TermKind extends Enum
 {
-    protected const None = 1;
-    protected const Type = 2;
+    protected const None  = 1;
+    protected const Type  = 2;
     protected const Value = 3;
 }

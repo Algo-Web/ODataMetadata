@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Enums;
 
 /**
- * Class EdmPrimitiveTypeKind
+ * Class EdmPrimitiveTypeKind.
  *
  *  Enumerates the kinds of Edm Primitives.
  *
@@ -82,45 +84,45 @@ class PrimitiveTypeKind extends Enum
      * Represents a primitive type of unknown kind.
      */
     protected const None = '';
-// V1-2
-    protected const Binary = 'Edm.Binary';
-    protected const Boolean = 'Edm.Boolean';
-    protected const Byte = 'Edm.Byte';
-    protected const DateTime = 'Edm.DateTime';
+    // V1-2
+    protected const Binary         = 'Edm.Binary';
+    protected const Boolean        = 'Edm.Boolean';
+    protected const Byte           = 'Edm.Byte';
+    protected const DateTime       = 'Edm.DateTime';
     protected const DateTimeOffset = 'Edm.DateTimeOffset';
-    protected const Time = 'Edm.Time';
-    protected const Decimal = 'Edm.Decimal';
-    protected const Double = 'Edm.Double';
-    protected const Single = 'Edm.Single';
-    protected const Guid = 'Edm.Guid';
-    protected const Int16 = 'Edm.Int16';
-    protected const Int32 = 'Edm.Int32';
-    protected const Int64 = 'Edm.Int64';
-    protected const String = 'Edm.String';
-    protected const SByte = 'Edm.SByte';
-    protected const Stream = 'Edm.Stream'; //TODO: check this value,.
+    protected const Time           = 'Edm.Time';
+    protected const Decimal        = 'Edm.Decimal';
+    protected const Double         = 'Edm.Double';
+    protected const Single         = 'Edm.Single';
+    protected const Guid           = 'Edm.Guid';
+    protected const Int16          = 'Edm.Int16';
+    protected const Int32          = 'Edm.Int32';
+    protected const Int64          = 'Edm.Int64';
+    protected const String         = 'Edm.String';
+    protected const SByte          = 'Edm.SByte';
+    protected const Stream         = 'Edm.Stream'; //TODO: check this value,.
     //V3
-    protected const Geography = 'Edm.Geography';
-    protected const GeographyPoint = 'Edm.Point';
-    protected const GeographyLineString = 'Edm.LineString';
-    protected const GeographyPolygon = 'Edm.Polygon';
-    protected const GeographyMultiPolygon = 'Edm.MultiPoint';
+    protected const Geography                = 'Edm.Geography';
+    protected const GeographyPoint           = 'Edm.Point';
+    protected const GeographyLineString      = 'Edm.LineString';
+    protected const GeographyPolygon         = 'Edm.Polygon';
+    protected const GeographyMultiPolygon    = 'Edm.MultiPoint';
     protected const GeographyMultiLineString = 'Edm.MultiLineString';
-    protected const GeographyMultiPoint = 'Edm.MultiPolygon';
-    protected const GeographyCollection = 'Edm.GeographyCollection';
-    protected const Geometry = 'Edm.Geometry';
-    protected const GeometryPoint = 'Edm.GeometricPoint';
-    protected const GeometryLineString = 'Edm.GeometricLineString';
-    protected const GeometryPolygon = 'Edm.Edm.GeometricPolygon';
-    protected const GeometryMultiPoint = 'Edm.GeometricMultiPoint';
-    protected const GeometryMultiLineString = 'Edm.GeometricMultiLineString';
-    protected const GeometryMultiPolygon = 'Edm.GeometricMultiPolygon';
-    protected const GeometryCollection = 'Edm.GeometryCollection';
+    protected const GeographyMultiPoint      = 'Edm.MultiPolygon';
+    protected const GeographyCollection      = 'Edm.GeographyCollection';
+    protected const Geometry                 = 'Edm.Geometry';
+    protected const GeometryPoint            = 'Edm.GeometricPoint';
+    protected const GeometryLineString       = 'Edm.GeometricLineString';
+    protected const GeometryPolygon          = 'Edm.Edm.GeometricPolygon';
+    protected const GeometryMultiPoint       = 'Edm.GeometricMultiPoint';
+    protected const GeometryMultiLineString  = 'Edm.GeometricMultiLineString';
+    protected const GeometryMultiPolygon     = 'Edm.GeometricMultiPolygon';
+    protected const GeometryCollection       = 'Edm.GeometryCollection';
 
     /**
      * Returns true if this type kind represents a spatial type.
      *
-     * @return bool This kind refers to a spatial type.
+     * @return bool this kind refers to a spatial type
      */
     public function IsSpatial(): bool
     {
@@ -148,14 +150,14 @@ class PrimitiveTypeKind extends Enum
     /**
      * Returns true if this type kind represents a temporal type.
      *
-     * @return bool This kind refers to a temporal type.
+     * @return bool this kind refers to a temporal type
      */
-    public  function IsTemporal(): bool
+    public function IsTemporal(): bool
     {
         $temporalTypes = [
-             self::Time(),
-             self::DateTime(),
-             self::DateTimeOffset(),
+            self::Time(),
+            self::DateTime(),
+            self::DateTimeOffset(),
         ];
         return in_array($this, $temporalTypes);
     }
@@ -163,16 +165,16 @@ class PrimitiveTypeKind extends Enum
     /**
      * Returns true if this primitive type kind represents an integer type.
      *
-     * @return bool This kind refers to an integer type.
+     * @return bool this kind refers to an integer type
      */
     public function IsIntegral(): bool
     {
         $integralTypes = [
-             self::Int64(),
-             self::Int32(),
-             self::Int16(),
-             self::Byte(),
-             self::SByte(),
+            self::Int64(),
+            self::Int32(),
+            self::Int16(),
+            self::Byte(),
+            self::SByte(),
         ];
         return in_array($this, $integralTypes);
     }
@@ -181,11 +183,10 @@ class PrimitiveTypeKind extends Enum
     /**
      * Returns true if this reference refers to a signed integral type.
      *
-     * @return bool This reference refers to a signed integral type.
+     * @return bool this reference refers to a signed integral type
      */
     public function isSignedIntegral(): bool
     {
-
         return $this == PrimitiveTypeKind::SByte() ||
             $this == PrimitiveTypeKind::Int16() ||
             $this == PrimitiveTypeKind::Int32() ||

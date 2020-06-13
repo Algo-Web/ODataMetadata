@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Internal;
 
@@ -14,5 +16,4 @@ interface IDependencyTrigger
      * @return array<IDependent>
      */
     public function getDependents(): array;
-
 }

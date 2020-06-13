@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
-
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
@@ -17,7 +18,7 @@ use AlgoWeb\ODataMetadata\Library\EdmTemporalTypeReference;
 use AlgoWeb\ODataMetadata\StringConst;
 
 /**
- * Trait PrimitiveTypeHelpers
+ * Trait PrimitiveTypeHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
  * @mixin IPrimitiveType
  */
@@ -25,8 +26,7 @@ trait PrimitiveTypeHelpers
 {
     public function GetPrimitiveTypeReference(bool $isNullable): IPrimitiveTypeReference
     {
-        switch ($this->getPrimitiveKind())
-        {
+        switch ($this->getPrimitiveKind()) {
             case PrimitiveTypeKind::Boolean():
             case PrimitiveTypeKind::Byte():
             case PrimitiveTypeKind::Double():

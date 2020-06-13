@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
@@ -8,7 +10,7 @@ use AlgoWeb\ODataMetadata\Helpers\StructuredTypeHelpers;
 use AlgoWeb\ODataMetadata\Helpers\TypeHelpers;
 
 /**
- * Interface IEdmEntityType
+ * Interface IEdmEntityType.
  *
  * Represents a definition of an EDM entity type.
  *
@@ -20,7 +22,7 @@ use AlgoWeb\ODataMetadata\Helpers\TypeHelpers;
 interface IEntityType extends IStructuredType, ISchemaType, ITerm
 {
     /**
-     * @return array|IStructuralProperty[] Gets the structural properties of the entity type that make up the entity key.
+     * @return array|IStructuralProperty[] gets the structural properties of the entity type that make up the entity key
      */
     public function getDeclaredKey(): ?array;
 }

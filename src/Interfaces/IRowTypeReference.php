@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\RowTypeReferenceHelpers;
 
 /**
- * Class IEdmRowTypeReference
+ * Class IEdmRowTypeReference.
  *
  * Represents references to row types.
  *
@@ -15,5 +17,4 @@ use AlgoWeb\ODataMetadata\Helpers\RowTypeReferenceHelpers;
  */
 interface IRowTypeReference extends IStructuredTypeReference
 {
-
 }

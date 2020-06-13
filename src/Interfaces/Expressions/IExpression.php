@@ -1,12 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
+
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 
 /**
- * Interface IExpression
+ * Interface IExpression.
  *
  * Represents an EDM expression.
  *
@@ -15,7 +18,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 interface IExpression extends IEdmElement
 {
     /**
-     * @return ExpressionKind Gets the kind of this expression.
+     * @return ExpressionKind gets the kind of this expression
      */
     public function getExpressionKind(): ExpressionKind;
 }

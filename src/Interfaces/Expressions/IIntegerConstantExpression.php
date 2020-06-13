@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\Values\IIntegerValue;
 
 /**
- * Interface IIntegerConstantExpression
+ * Interface IIntegerConstantExpression.
  *
  * Represents an EDM integer constant expression.
  *
@@ -15,5 +16,4 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IIntegerValue;
  */
 interface IIntegerConstantExpression extends IExpression, IIntegerValue
 {
-
 }

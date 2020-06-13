@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
-
 
 use AlgoWeb\ODataMetadata\Enums\ContainerElementKind;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
@@ -49,7 +50,7 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
      */
     public function getReturnType(): ITypeReference
     {
-return null;
+        return null;
     }
 
     /**
@@ -64,14 +65,13 @@ return null;
          */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? null : $bindings[0]->getParameters();
-
     }
 
     /**
      * Searches for a parameter with the given name, and returns null if no such parameter exists.
      *
-     * @param string $name The name of the parameter being found.
-     * @return IFunctionParameter|null The requested parameter or null if no such parameter exists.
+     * @param  string                  $name the name of the parameter being found
+     * @return IFunctionParameter|null the requested parameter or null if no such parameter exists
      */
     public function findParameter(string $name): ?IFunctionParameter
     {
@@ -84,7 +84,7 @@ return null;
 
     /**
      *  Gets a value indicating whether this function import has side-effects.
-     *  isSideEffecting cannot be return true if isComposable  also returns true
+     *  isSideEffecting cannot be return true if isComposable  also returns true.
      * @return bool
      */
     public function isSideEffecting(): bool

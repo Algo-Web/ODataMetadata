@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Helpers\EdmElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
@@ -15,5 +16,4 @@ use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 abstract class EdmElement implements IEdmElement
 {
     use EdmElementHelpers;
-
 }

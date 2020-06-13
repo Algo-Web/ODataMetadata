@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\EdmUtil;
@@ -23,7 +24,7 @@ class BadNamedStructuredType extends BadStructuredType implements ISchemaElement
     /**
      * BadNamedStructuredType constructor.
      * @param string|null $qualifiedName
-     * @param EdmError[] $errors
+     * @param EdmError[]  $errors
      */
     public function __construct(?string $qualifiedName, array $errors)
     {
@@ -32,12 +33,13 @@ class BadNamedStructuredType extends BadStructuredType implements ISchemaElement
         EdmUtil::TryGetNamespaceNameFromQualifiedName($qualifiedName, $this->namespaceName, $this->name);
     }
 
-    public function getName(): string{
+    public function getName(): string
+    {
         return $this->name;
     }
 
     /**
-     * @return SchemaElementKind Gets the kind of this schema element.
+     * @return SchemaElementKind gets the kind of this schema element
      */
     public function getSchemaElementKind(): SchemaElementKind
     {
@@ -45,7 +47,7 @@ class BadNamedStructuredType extends BadStructuredType implements ISchemaElement
     }
 
     /**
-     * @return string Gets the namespace this schema element belongs to.
+     * @return string gets the namespace this schema element belongs to
      */
     public function getNamespace(): string
     {

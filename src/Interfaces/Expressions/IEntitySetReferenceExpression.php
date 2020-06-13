@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 
 /**
- * Interface IEntitySetReferenceExpression
+ * Interface IEntitySetReferenceExpression.
  *
  * Represents an EDM entity set reference expression.
  *
@@ -16,7 +17,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 interface IEntitySetReferenceExpression extends IExpression
 {
     /**
-     * @return IEntitySet Gets the referenced entity set.
+     * @return IEntitySet gets the referenced entity set
      */
     public function getReferencedEntitySet(): IEntitySet;
 }

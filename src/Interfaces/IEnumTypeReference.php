@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\EnumTypeReferenceHelpers;
 
 /**
- * Interface IEdmEnumTypeReference
+ * Interface IEdmEnumTypeReference.
  *
  * Represents references to EDM enumeration types.
  *
@@ -15,5 +17,4 @@ use AlgoWeb\ODataMetadata\Helpers\EnumTypeReferenceHelpers;
  */
 interface IEnumTypeReference extends ITypeReference
 {
-
 }

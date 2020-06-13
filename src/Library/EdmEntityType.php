@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\Multiplicity;
@@ -38,30 +39,29 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
     /**
      * Initializes a new instance of the EdmEntityType class.
      *
-     * @param string $namespaceName Namespace the entity belongs to.
-     * @param string $name Name of the entity.
-     * @param bool $isAbstract Denotes an entity that cannot be instantiated.
-     * @param bool $isOpen Denotes if the type is open.
-     * @param IEntityType $baseStructuredType The base type of this entity type.
+     * @param string      $namespaceName      namespace the entity belongs to
+     * @param string      $name               name of the entity
+     * @param bool        $isAbstract         denotes an entity that cannot be instantiated
+     * @param bool        $isOpen             denotes if the type is open
+     * @param IEntityType $baseStructuredType the base type of this entity type
      */
     public function __construct(string $namespaceName, string $name, bool $isAbstract =false, bool $isOpen= true, IEntityType $baseStructuredType = null)
     {
         parent::__construct($isAbstract, $isOpen, $baseStructuredType);
         $this->namespaceName = $namespaceName;
-        $this->name = $name;
-
+        $this->name          = $name;
     }
 
     /**
-     * @return TypeKind Gets the kind of this type.
+     * @return TypeKind gets the kind of this type
      */
-    function getTypeKind(): TypeKind
+    public function getTypeKind(): TypeKind
     {
         return TypeKind::Entity();
     }
 
     /**
-     * @return array|IStructuralProperty[] Gets the structural properties of the entity type that make up the entity key.
+     * @return array|IStructuralProperty[] gets the structural properties of the entity type that make up the entity key
      */
     public function getDeclaredKey(): ?array
     {
@@ -69,7 +69,7 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {
@@ -77,7 +77,7 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
     }
 
     /**
-     * @return SchemaElementKind Gets the kind of this schema element.
+     * @return SchemaElementKind gets the kind of this schema element
      */
     public function getSchemaElementKind(): SchemaElementKind
     {
@@ -85,7 +85,7 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
     }
 
     /**
-     * @return string Gets the namespace this schema element belongs to.
+     * @return string gets the namespace this schema element belongs to
      */
     public function getNamespace(): string
     {
@@ -109,7 +109,6 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
      */
     public function AddKeys(array ...$keyProperties): void
     {
-
         foreach ($keyProperties as $property) {
             if ($this->declaredKey === null) {
                 $this->declaredKey = [];
@@ -123,9 +122,9 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
      * Creates and adds a unidirectional navigation property to this type.
      * Navigation property partner is created, but not added to the navigation target type.
      *
-     * @param EdmNavigationPropertyInfo $propertyInfo Information to create the navigation property.
-     * @param EdmNavigationPropertyInfo|null $partnerInfo Information to create the partner navigation property.
-     * @return EdmNavigationProperty Created navigation property.
+     * @param  EdmNavigationPropertyInfo      $propertyInfo information to create the navigation property
+     * @param  EdmNavigationPropertyInfo|null $partnerInfo  information to create the partner navigation property
+     * @return EdmNavigationProperty          created navigation property
      */
     public function AddUnidirectionalNavigation(EdmNavigationPropertyInfo $propertyInfo, EdmNavigationPropertyInfo $partnerInfo = null): EdmNavigationProperty
     {
@@ -140,13 +139,13 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
     /**
      * Creates and adds a navigation property to this type and adds its navigation partner to the navigation target type.
      *
-     * @param EdmNavigationPropertyInfo $propertyInfo Information to create the navigation property.
-     * @param EdmNavigationPropertyInfo $partnerInfo Information to create the partner navigation property.
-     * @return EdmNavigationProperty Created navigation property.
+     * @param  EdmNavigationPropertyInfo $propertyInfo information to create the navigation property
+     * @param  EdmNavigationPropertyInfo $partnerInfo  information to create the partner navigation property
+     * @return EdmNavigationProperty     created navigation property
      */
     public function AddBidirectionalNavigation(EdmNavigationPropertyInfo $propertyInfo, EdmNavigationPropertyInfo $partnerInfo): EdmNavigationProperty
     {
-        EdmUtil::CheckArgumentNull($propertyInfo->target, "propertyInfo.Target");
+        EdmUtil::CheckArgumentNull($propertyInfo->target, 'propertyInfo.Target');
 
         if (!$propertyInfo->target instanceof EdmEntityType) {
             throw new ArgumentException(StringConst::Constructable_TargetMustBeStock(EdmEntityType::class));
@@ -167,8 +166,8 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
      * Whenever this method applies new values to partnerInfo, it will return a copy of it (thus won't modify the original).
      * If partnerInfo is null, a new info object will be produced.
      *
-     * @param EdmNavigationPropertyInfo $propertyInfo Primary navigation property info.
-     * @param EdmNavigationPropertyInfo $partnerInfo Partner navigation property info. May be null.
+     * @param  EdmNavigationPropertyInfo $propertyInfo primary navigation property info
+     * @param  EdmNavigationPropertyInfo $partnerInfo  Partner navigation property info. May be null.
      * @return EdmNavigationPropertyInfo Partner info
      */
     private function FixUpDefaultPartnerInfo(EdmNavigationPropertyInfo $propertyInfo, EdmNavigationPropertyInfo $partnerInfo): EdmNavigationPropertyInfo
@@ -184,7 +183,7 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
                 $partnerInfoOverride = $partnerInfo->clone();
             }
 
-            $partnerInfoOverride->name = $propertyInfo->name ?? '' . "Partner";
+            $partnerInfoOverride->name = $propertyInfo->name ?? '' . 'Partner';
         }
 
         if ($partnerInfo->target == null) {

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmSpatialTypeReference
+ * Interface IEdmSpatialTypeReference.
  *
  *  Represents a reference to an EDM spatial type.
  *
@@ -13,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface ISpatialTypeReference extends IPrimitiveTypeReference
 {
     /**
-     * @return int Gets the Spatial Reference Identifier of this spatial type.
+     * @return int gets the Spatial Reference Identifier of this spatial type
      */
     public function getSpatialReferenceIdentifier(): int;
 }

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmNavigationTargetMapping
+ * Interface IEdmNavigationTargetMapping.
  *
  * Represents a mapping from an EDM navigation property to an entity set.
  *
@@ -13,13 +15,12 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface INavigationTargetMapping
 {
     /**
-     * @return INavigationProperty Gets the navigation property.
+     * @return INavigationProperty gets the navigation property
      */
     public function getNavigationProperty(): INavigationProperty;
 
     /**
-     * @return IEntitySet Gets the target entity set.
+     * @return IEntitySet gets the target entity set
      */
     public function getTargetEntitySet(): IEntitySet;
-
 }

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 
 /**
- * Class IEdmFunctionImport
+ * Class IEdmFunctionImport.
  *
  * Represents an EDM function import.
  *
@@ -21,18 +23,18 @@ interface IFunctionImport extends IFunctionBase, IEntityContainerElement
     public function isSideEffecting(): bool;
 
     /**
-     * @return bool Gets a value indicating whether this functon import can be composed inside expressions.
+     * @return bool gets a value indicating whether this functon import can be composed inside expressions
      */
     public function isComposable(): bool;
 
     /**
-     * @return bool Gets a value indicating whether this function import can be used as an extension method for the
-     *              type of the first parameter of this function import.
+     * @return bool gets a value indicating whether this function import can be used as an extension method for the
+     *              type of the first parameter of this function import
      */
     public function isBindable(): bool;
 
     /**
-     * @return IExpression Gets the entity set containing entities returned by this function import.
+     * @return IExpression gets the entity set containing entities returned by this function import
      */
     public function getEntitySet(): IExpression;
 }

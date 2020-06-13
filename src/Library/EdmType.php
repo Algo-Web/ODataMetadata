@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Helpers\ToTraceString;
 use AlgoWeb\ODataMetadata\Helpers\TypeHelpers;

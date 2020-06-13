@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Interfaces\IRowType;
@@ -18,5 +19,4 @@ class BadRowType extends BadStructuredType implements IRowType
     {
         return TypeKind::Row();
     }
-
 }

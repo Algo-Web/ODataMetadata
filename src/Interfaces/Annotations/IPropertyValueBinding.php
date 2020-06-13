@@ -1,15 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Annotations;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 
 /**
- * Interface IEdmPropertyValueBinding
+ * Interface IEdmPropertyValueBinding.
  *
  * Represents a property binding specified as part of an EDM type annotation.
  *
@@ -18,14 +19,12 @@ use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 interface IPropertyValueBinding extends IEdmElement
 {
     /**
-
-     * @return IProperty Gets the property that is given a value by the annotation.
+     * @return IProperty gets the property that is given a value by the annotation
      */
     public function getBoundProperty(): IProperty ;
 
     /**
-
-     * @return IExpression Gets the expression producing the value of the annotation.
+     * @return IExpression gets the expression producing the value of the annotation
      */
     public function getValue(): IExpression ;
 }

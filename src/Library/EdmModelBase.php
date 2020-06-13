@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Helpers\ModelHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations;
@@ -53,23 +54,23 @@ abstract class EdmModelBase extends EdmElement implements IModel
 
     /**
      * EdmModelBase constructor.
-     * @param IModel[] $referencedModels
+     * @param IModel[]                         $referencedModels
      * @param EdmDirectValueAnnotationsManager $annotationsManager
      */
     public function __construct(array $referencedModels, EdmDirectValueAnnotationsManager $annotationsManager)
     {
-        $this->referencedModels = $referencedModels;
+        $this->referencedModels   = $referencedModels;
         $this->referencedModels[] = EdmCoreModel::getInstance();
         $this->annotationsManager = $annotationsManager;
     }
 
     /**
-     * @return ISchemaElement[] Gets the collection of schema elements that are contained in this model.
+     * @return ISchemaElement[] gets the collection of schema elements that are contained in this model
      */
-    public abstract function getSchemaElements(): array;
+    abstract public function getSchemaElements(): array;
 
     /**
-     * @return Annotations\IVocabularyAnnotation[] Gets the collection of vocabulary annotations that are contained in this model.
+     * @return Annotations\IVocabularyAnnotation[] gets the collection of vocabulary annotations that are contained in this model
      */
     public function getVocabularyAnnotations(): array
     {
@@ -77,7 +78,7 @@ abstract class EdmModelBase extends EdmElement implements IModel
     }
 
     /**
-     * @return IModel[] Gets the collection of models referred to by this model.
+     * @return IModel[] gets the collection of models referred to by this model
      */
     public function getReferencedModels(): array
     {
@@ -85,7 +86,7 @@ abstract class EdmModelBase extends EdmElement implements IModel
     }
 
     /**
-     * @return Annotations\IDirectValueAnnotationsManager Gets the model's annotations manager.
+     * @return Annotations\IDirectValueAnnotationsManager gets the model's annotations manager
      */
     public function getDirectValueAnnotationsManager(): Annotations\IDirectValueAnnotationsManager
     {
@@ -96,7 +97,7 @@ abstract class EdmModelBase extends EdmElement implements IModel
      * Searches for an entity container with the given name in this model and returns null if no such entity container
      * exists.
      *
-     * @param string $qualifiedName The name of the entity container being found.
+     * @param  string           $qualifiedName the name of the entity container being found
      * @return ISchemaType|null The requested entity container, or null if no such entity container exists
      */
     public function findDeclaredType(string $qualifiedName): ?ISchemaType
@@ -107,8 +108,8 @@ abstract class EdmModelBase extends EdmElement implements IModel
     /**
      * Searches for a type with the given name in this model and returns null if no such type exists.
      *
-     * @param string $name The qualified name of the type being found.
-     * @return IEntityContainer|null The requested type, or null if no such type exists.
+     * @param  string                $name the qualified name of the type being found
+     * @return IEntityContainer|null the requested type, or null if no such type exists
      */
     public function findDeclaredEntityContainer(string $name): ?IEntityContainer
     {
@@ -119,17 +120,15 @@ abstract class EdmModelBase extends EdmElement implements IModel
      * Searches for functions with the given name in this model and returns an empty enumerable if no such function
      * exists.
      *
-     * @param string $qualifiedName The qualified name of the function being found.
-     * @return IFunction[] A set of functions sharing the specified qualified name, or an empty enumerable if no
-     *                        such function exists.
+     * @param  string      $qualifiedName the qualified name of the function being found
+     * @return IFunction[] a set of functions sharing the specified qualified name, or an empty enumerable if no
+     *                                   such function exists
      */
     public function findDeclaredFunctions(string $qualifiedName): array
     {
-        if (array_key_exists($qualifiedName, $this->functionDictionary))
-        {
+        if (array_key_exists($qualifiedName, $this->functionDictionary)) {
             $element = $this->functionDictionary[$qualifiedName];
-            if ($element instanceof  IFunction)
-            {
+            if ($element instanceof  IFunction) {
                 return [$element];
             }
 
@@ -142,8 +141,8 @@ abstract class EdmModelBase extends EdmElement implements IModel
     /**
      * Searches for a value term with the given name in this model and returns null if no such value term exists.
      *
-     * @param string $qualifiedName The qualified name of the value term being found.
-     * @return IValueTerm|null The requested value term, or null if no such value term exists.
+     * @param  string          $qualifiedName the qualified name of the value term being found
+     * @return IValueTerm|null the requested value term, or null if no such value term exists
      */
     public function findDeclaredValueTerm(string $qualifiedName): ?IValueTerm
     {
@@ -153,8 +152,8 @@ abstract class EdmModelBase extends EdmElement implements IModel
     /**
      *  Searches for vocabulary annotations specified by this model.
      *
-     * @param IVocabularyAnnotatable $element The annotated element.
-     * @return Annotations\IVocabularyAnnotation[] The vocabulary annotations for the element.
+     * @param  IVocabularyAnnotatable              $element the annotated element
+     * @return Annotations\IVocabularyAnnotation[] the vocabulary annotations for the element
      */
     public function findDeclaredVocabularyAnnotations(IVocabularyAnnotatable $element): array
     {
@@ -164,15 +163,15 @@ abstract class EdmModelBase extends EdmElement implements IModel
     /**
      * Finds a list of types that derive directly from the supplied type.
      *
-     * @param IStructuredType $baseType The base type that derived types are being searched for.
-     * @return IStructuredType[] A list of types from this model that derive directly from the given type.
+     * @param  IStructuredType   $baseType the base type that derived types are being searched for
+     * @return IStructuredType[] a list of types from this model that derive directly from the given type
      */
-    public abstract function findDirectlyDerivedTypes(IStructuredType $baseType): array;
+    abstract public function findDirectlyDerivedTypes(IStructuredType $baseType): array;
 
     /**
      * Adds a schema element to this model.
      *
-     * @param ISchemaElement $element The element to register.
+     * @param ISchemaElement $element the element to register
      */
     protected function RegisterElement(ISchemaElement $element): void
     {
@@ -182,7 +181,7 @@ abstract class EdmModelBase extends EdmElement implements IModel
     /**
      * Adds a model reference to this model.
      *
-     * @param IModel $model The model to reference.
+     * @param IModel $model the model to reference
      */
     protected function AddReferencedModel(IModel $model): void
     {

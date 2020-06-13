@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Visitor;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
@@ -34,5 +35,4 @@ interface ITypeDefinitionsVisitor
     public function endSchemaType(ISchemaType $type): void;
     public function startType(IType $definition): void;
     public function endType(IType $definition): void;
-
 }

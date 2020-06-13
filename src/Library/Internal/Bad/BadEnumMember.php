@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
@@ -28,19 +29,19 @@ class BadEnumMember extends BadElement implements IEnumMember
 
     /**
      * BadEnumMember constructor.
-     * @param IEnumType $declaringType
+     * @param IEnumType   $declaringType
      * @param string|null $name
-     * @param EdmError[] $errors
+     * @param EdmError[]  $errors
      */
     public function __construct(IEnumType $declaringType, ?string $name, array $errors)
     {
         parent::__construct($errors);
-        $this->name = $name ?? '';
+        $this->name          = $name ?? '';
         $this->declaringType = $declaringType;
     }
 
     /**
-     * @return IPrimitiveValue Gets the value of this enumeration type member.
+     * @return IPrimitiveValue gets the value of this enumeration type member
      */
     public function getValue(): IPrimitiveValue
     {
@@ -54,7 +55,7 @@ class BadEnumMember extends BadElement implements IEnumMember
     }
 
     /**
-     * @return IEnumType Gets the type that this member belongs to.
+     * @return IEnumType gets the type that this member belongs to
      */
     public function getDeclaringType(): IEnumType
     {
@@ -62,7 +63,7 @@ class BadEnumMember extends BadElement implements IEnumMember
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Values;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
@@ -21,8 +22,8 @@ class EdmDateTimeConstant extends EdmValue implements IDateTimeConstantExpressio
     /**
      * Initializes a new instance of the EdmDateTimeConstant class.
      *
-     * @param DateTime $value DateTime value represented by this value.
-     * @param ITemporalTypeReference|null $type Type of the DateTime.
+     * @param DateTime                    $value dateTime value represented by this value
+     * @param ITemporalTypeReference|null $type  type of the DateTime
      */
     public function __construct(DateTime $value, ?ITemporalTypeReference $type = null)
     {
@@ -31,9 +32,7 @@ class EdmDateTimeConstant extends EdmValue implements IDateTimeConstantExpressio
     }
 
     /**
-     *
-     *
-     * @return DateTime Gets the definition of this binary value.
+     * @return DateTime gets the definition of this binary value
      */
     public function getValue(): DateTime
     {
@@ -41,7 +40,7 @@ class EdmDateTimeConstant extends EdmValue implements IDateTimeConstantExpressio
     }
 
     /**
-     * @return ExpressionKind Gets the kind of this expression.
+     * @return ExpressionKind gets the kind of this expression
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -49,7 +48,7 @@ class EdmDateTimeConstant extends EdmValue implements IDateTimeConstantExpressio
     }
 
     /**
-     * @return ValueKind Gets the kind of this value.
+     * @return ValueKind gets the kind of this value
      */
     public function getValueKind(): ValueKind
     {

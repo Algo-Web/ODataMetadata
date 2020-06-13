@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
@@ -20,7 +21,6 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 trait ProcessTypeDefinitions
 {
-
     protected function ProcessComplexType(IComplexType $definition): void
     {
         $this->startElement($definition, __METHOD__);
@@ -96,15 +96,15 @@ trait ProcessTypeDefinitions
         $this->endElement($definition, __METHOD__);
     }
 
-    abstract function ProcessSchemaElement(ISchemaElement $definition): void;
+    abstract public function ProcessSchemaElement(ISchemaElement $definition): void;
 
-    abstract function ProcessTerm(ITerm $definition): void;
+    abstract public function ProcessTerm(ITerm $definition): void;
 
-    abstract function ProcessElement(IEdmElement $definition): void;
+    abstract public function ProcessElement(IEdmElement $definition): void;
 
-    abstract function VisitTypeReference(ITypeReference $getElementType): void;
+    abstract public function VisitTypeReference(ITypeReference $getElementType): void;
 
-    abstract function VisitEnumMembers(array $getMembers): void;
+    abstract public function VisitEnumMembers(array $getMembers): void;
 
-    abstract function VisitProperties(array $getDeclaredProperties): void;
+    abstract public function VisitProperties(array $getDeclaredProperties): void;
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
-
 
 use AlgoWeb\ODataMetadata\Enums\Multiplicity;
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
@@ -11,7 +12,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 
 /**
- * Trait NavigationPropertyHelpers
+ * Trait NavigationPropertyHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
  */
 trait NavigationPropertyHelpers
@@ -19,7 +20,7 @@ trait NavigationPropertyHelpers
     /**
      * Gets the multiplicity of this end of a bidirectional relationship between this navigation property and its partner.
      *
-     * @return Multiplicity The multiplicity of this end of the relationship.
+     * @return Multiplicity the multiplicity of this end of the relationship
      */
     public function Multiplicity(): Multiplicity
     {
@@ -27,9 +28,9 @@ trait NavigationPropertyHelpers
          * @var INavigationProperty $this ;
          */
         $partner = $this->getPartner();
-        if($partner !== null){
+        if ($partner !== null) {
             $partnerType = $partner->getType();
-            if($partnerType->IsCollection()){
+            if ($partnerType->IsCollection()) {
                 return Multiplicity::Many();
             }
             return $partnerType->getNullable() ? Multiplicity::ZeroOrOne() : Multiplicity::One();
@@ -40,7 +41,7 @@ trait NavigationPropertyHelpers
     /**
      * Gets the entity type targeted by this navigation property.
      *
-     * @return IEntityType The entity type targeted by this navigation property.
+     * @return IEntityType the entity type targeted by this navigation property
      */
     public function ToEntityType(): IEntityType
     {
@@ -48,14 +49,12 @@ trait NavigationPropertyHelpers
          * @var INavigationProperty $this;
          */
         $target = $this->getType()->getDefinition();
-        if($target->getTypeKind()->isCollection())
-        {
+        if ($target->getTypeKind()->isCollection()) {
             assert($target instanceof ICollectionType);
             $target = $target->getElementType()->getDefinition();
         }
 
-        if($target->getTypeKind()->isEntityReference())
-        {
+        if ($target->getTypeKind()->isEntityReference()) {
             assert($target instanceof IEntityReferenceType);
             $target = $target->getEntityType();
         }
@@ -66,7 +65,7 @@ trait NavigationPropertyHelpers
     /**
      * Gets the entity type declaring this navigation property.
      *
-     * @return IEntityType The entity type that declares this navigation property.
+     * @return IEntityType the entity type that declares this navigation property
      */
     public function DeclaringEntityType(): IEntityType
     {
@@ -92,7 +91,7 @@ trait NavigationPropertyHelpers
     /**
      * Gets the primary end of a pair of partnered navigation properties, selecting the principal end if there is one and making a stable, arbitrary choice otherwise.
      *
-     * @return INavigationProperty The primary end between the navigation property and its partner.
+     * @return INavigationProperty the primary end between the navigation property and its partner
      */
     public function GetPrimary(): INavigationProperty
     {
@@ -100,22 +99,19 @@ trait NavigationPropertyHelpers
          * @var INavigationProperty $property;
          */
         $property = $this;
-        if ($property->isPrincipal())
-        {
+        if ($property->isPrincipal()) {
             return $property;
         }
 
         $partner = $property->getPartner();
-        if ($partner->isPrincipal())
-        {
+        if ($partner->isPrincipal()) {
             return $partner;
         }
 
         // There is no meaningful basis for determining which of the two partners is principal,
         // so break the tie with an arbitrary, stable comparision.
         $nameComparison = strcmp($property->getName(), $partner->getName());
-        if ($nameComparison == 0)
-        {
+        if ($nameComparison == 0) {
             $nameComparison = strcmp($property->DeclaringEntityType()->FullName(), $partner->DeclaringEntityType()->FullName());
         }
 

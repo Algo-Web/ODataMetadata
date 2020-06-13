@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
-
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
@@ -17,7 +18,7 @@ class AmbiguousTypeBinding extends AmbiguousBinding implements ISchemaType
     public function __construct(ISchemaType $first, ISchemaType $second)
     {
         parent::__construct($first, $second);
-        assert($first->getNamespace() === $second->getNamespace(), "Schema elements should only be ambiguous with other elements in the same namespace");
+        assert($first->getNamespace() === $second->getNamespace(), 'Schema elements should only be ambiguous with other elements in the same namespace');
         $this->namespaceName = $first->getNamespace() ?? '';
     }
 
@@ -42,7 +43,7 @@ class AmbiguousTypeBinding extends AmbiguousBinding implements ISchemaType
     }
 
     /**
-     * @return TypeKind Gets the kind of this type.
+     * @return TypeKind gets the kind of this type
      */
     public function getTypeKind(): TypeKind
     {

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\Enums\ContainerElementKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
@@ -18,10 +19,8 @@ trait VisitDataModel
      */
     public function visitEntityContainerElements(array $elements): void
     {
-        foreach ($elements as $element )
-        {
-            switch ($element->getContainerElementKind())
-            {
+        foreach ($elements as $element) {
+            switch ($element->getContainerElementKind()) {
                 case ContainerElementKind::EntitySet():
                     assert($element instanceof IEntitySet);
                     $this->processEntitySet($element);
@@ -40,7 +39,7 @@ trait VisitDataModel
         }
     }
 
-    public abstract function processEntityContainerElement(IEntityContainerElement $element): void;
-    public abstract function processFunctionImport(IFunctionImport $element): void;
-    public abstract function processEntitySet(IEntitySet $element): void;
+    abstract public function processEntityContainerElement(IEntityContainerElement $element): void;
+    abstract public function processFunctionImport(IFunctionImport $element): void;
+    abstract public function processEntitySet(IEntitySet $element): void;
 }

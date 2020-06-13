@@ -1,15 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 
 /**
- * Class EdmEntityReferenceType
+ * Class EdmEntityReferenceType.
  *
  *  Represents a definition of an EDM entity reference type.
  *
@@ -25,7 +26,7 @@ class EdmEntityReferenceType extends EdmType implements IEntityReferenceType
     /**
      * Initializes a new instance of the EdmEntityReferenceType class.
      *
-     * @param IEntityType $entityType The entity referred to by this entity reference.
+     * @param IEntityType $entityType the entity referred to by this entity reference
      */
     public function __construct(IEntityType $entityType)
     {
@@ -33,7 +34,7 @@ class EdmEntityReferenceType extends EdmType implements IEntityReferenceType
     }
 
     /**
-     * @return IEntityType Gets the entity type pointed to by this entity reference.
+     * @return IEntityType gets the entity type pointed to by this entity reference
      */
     public function getEntityType(): IEntityType
     {
@@ -41,7 +42,7 @@ class EdmEntityReferenceType extends EdmType implements IEntityReferenceType
     }
 
     /**
-     * @return TypeKind Gets the kind of this type.
+     * @return TypeKind gets the kind of this type
      */
     public function getTypeKind(): TypeKind
     {

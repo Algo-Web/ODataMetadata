@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\EdmElementHelpers;
 
 /**
- * Class IEdmElement
+ * Class IEdmElement.
  *
  * Common base interface for all EDM elements.
  *
@@ -15,5 +17,4 @@ use AlgoWeb\ODataMetadata\Helpers\EdmElementHelpers;
  */
 interface IEdmElement
 {
-
 }

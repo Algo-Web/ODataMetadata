@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation;
 
 use AlgoWeb\ODataMetadata\Interfaces\ILocation;
 
 /**
- * Class EdmError
+ * Class EdmError.
  *
  * Represents a reportable error in EDM
  *
@@ -30,18 +32,18 @@ class EdmError
     /**
      * Initializes a new instance of the EdmError class.
      *
-     * @param ILocation|null $errorLocation The location where the error occurred.
-     * @param EdmErrorCode $errorCode An Enum representing the error.
-     * @param string $errorMessage A human readable message describing the error.
+     * @param ILocation|null $errorLocation the location where the error occurred
+     * @param EdmErrorCode   $errorCode     an Enum representing the error
+     * @param string         $errorMessage  a human readable message describing the error
      */
     public function __construct(?ILocation $errorLocation, EdmErrorCode $errorCode, string $errorMessage)
     {
         $this->location = $errorLocation;
-        $this->code = $errorCode;
-        $this->message = $errorMessage;
+        $this->code     = $errorCode;
+        $this->message  = $errorMessage;
     }
     /**
-     * @return ILocation|null Gets the location of the error in the file in which it occurred.
+     * @return ILocation|null gets the location of the error in the file in which it occurred
      */
     public function getErrorLocation(): ?ILocation
     {
@@ -49,7 +51,7 @@ class EdmError
     }
 
     /**
-     * @return EdmErrorCode Gets the code representing the error.
+     * @return EdmErrorCode gets the code representing the error
      */
     public function getErrorCode(): EdmErrorCode
     {
@@ -57,7 +59,7 @@ class EdmError
     }
 
     /**
-     * @return string Gets a human readable string describing the error.
+     * @return string gets a human readable string describing the error
      */
     public function getErrorMessage(): string
     {
@@ -65,7 +67,7 @@ class EdmError
     }
 
     /**
-     * @return string A string representation of the error.
+     * @return string a string representation of the error
      */
     public function __toString(): string
     {

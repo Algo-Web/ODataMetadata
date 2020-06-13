@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation;
 
 use MyCLabs\Enum\Enum;
 
 /**
- * Class EdmErrorCode
+ * Class EdmErrorCode.
  *
  * EdmLib validation error codes
  *
@@ -45,7 +47,7 @@ use MyCLabs\Enum\Enum;
 class EdmErrorCode extends Enum
 {
     /**
-     * Invalid error code
+     * Invalid error code.
      */
     protected const InvalidErrorCodeValue = 0;
 
@@ -72,27 +74,27 @@ class EdmErrorCode extends Enum
     // MalformedXml = 7;
 
     /**
-     * Encountered an XML node that was never used
+     * Encountered an XML node that was never used.
      */
     protected const UnexpectedXmlNodeType = 8;
 
     /**
-     * Encountered an XML attribute that was never used
+     * Encountered an XML attribute that was never used.
      */
     protected const UnexpectedXmlAttribute = 9;
 
     /**
-     * Encountered an XML element that was never used
+     * Encountered an XML element that was never used.
      */
     protected const UnexpectedXmlElement = 10;
 
     /**
-     * Text was found in a location it was not allowed in
+     * Text was found in a location it was not allowed in.
      */
     protected const TextNotAllowed = 11;
 
     /**
-     * An empty file was provided to the parser
+     * An empty file was provided to the parser.
      */
     protected const EmptyFile = 12;
 
@@ -100,14 +102,14 @@ class EdmErrorCode extends Enum
     // protected const InvalidAlias = 14;
 
     /**
-     * An XML element was missing a required attribute
+     * An XML element was missing a required attribute.
      */
     protected const MissingAttribute = 15;
 
     //protected const IntegerExpected = 16;
 
     /**
-     * Invalid Name
+     * Invalid Name.
      */
     protected const InvalidName = 17;
 
@@ -174,19 +176,19 @@ class EdmErrorCode extends Enum
     // unused 50;
 
     /**
-     * Precision out of range
+     * Precision out of range.
      */
     protected const PrecisionOutOfRange = 51;
 
     /**
-     * Scale out of range
+     * Scale out of range.
      */
     protected const ScaleOutOfRange = 52;
 
     // protected const DefaultNotAllowed = 53;
     // protected const InvalidDefault = 54;
     /**
-     * One of the required facets is missing
+     * One of the required facets is missing.
      */
     // protected const RequiredFacetMissing = 55;
     // protected const BadImageFormatException = 56;
@@ -202,7 +204,7 @@ class EdmErrorCode extends Enum
     // CircularlyDefinedType = 61;
 
     /**
-     * The provided association is invalid
+     * The provided association is invalid.
      */
     protected const InvalidAssociation = 62;
 
@@ -211,7 +213,7 @@ class EdmErrorCode extends Enum
      */
     // protected const FacetNotAllowedByType = 63;
     /**
-     * This facet value is constant and is specified in the schema
+     * This facet value is constant and is specified in the schema.
      */
     // protected const ConstantFacetSpecifiedInSchema = 64;
     // unused 65;
@@ -284,7 +286,7 @@ class EdmErrorCode extends Enum
     // reserved for critical structural errors 91;
 
     /**
-     * Multiplicity value was malformed
+     * Multiplicity value was malformed.
      */
     protected const InvalidMultiplicity = 92;
 
@@ -293,12 +295,12 @@ class EdmErrorCode extends Enum
     // unused = 95
 
     /**
-     * The value for the Action attribute is invalid or not allowed in the current context
+     * The value for the Action attribute is invalid or not allowed in the current context.
      */
     protected const InvalidAction = 96;
 
     /**
-     * An error occured processing the OnDelete element
+     * An error occured processing the OnDelete element.
      */
     protected const InvalidOnDelete = 97;
 
@@ -311,7 +313,7 @@ class EdmErrorCode extends Enum
     // InvalidContainerTypeForEnd = 99;
 
     /**
-     * The extent name used in the EntittyContainerType End does not match the name of any of the EntityContainerProperties in the containing EntityContainer
+     * The extent name used in the EntittyContainerType End does not match the name of any of the EntityContainerProperties in the containing EntityContainer.
      */
     protected const InvalidEndEntitySet = 100;
 
@@ -336,11 +338,11 @@ class EdmErrorCode extends Enum
     // unused 104;
     // unused 105;
     /**
-     * Not a valid parameter direction for the parameter in a function
+     * Not a valid parameter direction for the parameter in a function.
      */
     // protected const BadParameterDirection = 106;
     /**
-     * Unable to infer an optional schema part; to resolve this; be more explicit
+     * Unable to infer an optional schema part; to resolve this; be more explicit.
      */
     // protected const FailedInference = 107;
     // unused = 108;
@@ -351,17 +353,17 @@ class EdmErrorCode extends Enum
     protected const EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty = 109;
 
     /**
-     * Invalid role value in the relationship constraint
+     * Invalid role value in the relationship constraint.
      */
     protected const InvalidRoleInRelationshipConstraint = 110;
 
     /**
-     * Invalid Property in relationship constraint
+     * Invalid Property in relationship constraint.
      */
     protected const InvalidPropertyInRelationshipConstraint = 111;
 
     /**
-     * Type mismatch between ToProperty and FromProperty in the relationship constraint
+     * Type mismatch between ToProperty and FromProperty in the relationship constraint.
      */
     protected const TypeMismatchRelationshipConstraint = 112;
 
@@ -371,7 +373,7 @@ class EdmErrorCode extends Enum
     protected const InvalidMultiplicityOfPrincipalEnd = 113;
 
     /**
-     * The number of properties in the FromProperty and ToProperty in the relationship constraint must be identical
+     * The number of properties in the FromProperty and ToProperty in the relationship constraint must be identical.
      */
     protected const MismatchNumberOfPropertiesInRelationshipConstraint = 114;
 
@@ -389,80 +391,80 @@ class EdmErrorCode extends Enum
     protected const OpenTypeNotSupported = 117;
 
     /**
-     * Vocabulary annotations are not supported before EDM 3.0
+     * Vocabulary annotations are not supported before EDM 3.0.
      */
     protected const VocabularyAnnotationsNotSupportedBeforeV3 = 118;
 
     /**
-     * Same role referred in the ToRole and FromRole of a referential constraint
+     * Same role referred in the ToRole and FromRole of a referential constraint.
      */
     protected const SameRoleReferredInReferentialConstraint = 119;
 
     /**
-     * Invalid value for attribute ParameterTypeSemantics
+     * Invalid value for attribute ParameterTypeSemantics.
      */
     // protected const InvalidValueForParameterTypeSemantics = 120;
     /**
-     * Invalid type used for a Relationship End Type
+     * Invalid type used for a Relationship End Type.
      */
     // protected const InvalidRelationshipEndType = 121;
     /**
-     * Invalid PrimitiveTypeKind
+     * Invalid PrimitiveTypeKind.
      */
     // protected const InvalidPrimitiveTypeKind = 122;
     // unused 123;
     /**
-     * Invalid TypeConversion DestinationType
+     * Invalid TypeConversion DestinationType.
      */
     // protected const InvalidTypeConversionDestinationType = 124;
     /**
-     * Expected a integer value between 0 - 255
+     * Expected a integer value between 0 - 255.
      */
     // protected const ByteValueExpected = 125;
     /**
-     * Invalid Type specified in function
+     * Invalid Type specified in function.
      */
     // protected const FunctionWithNonScalarTypeNotSupported = 126;
     /**
-     * Precision must not be greater than 28
+     * Precision must not be greater than 28.
      */
     // protected const PrecisionMoreThanAllowedMax = 127;
 
     /**
-     * Properties that are part of entity key must be of scalar type
+     * Properties that are part of entity key must be of scalar type.
      */
     protected const EntityKeyMustBeScalar = 128;
 
     /**
-     * Binary type properties which are part of entity key are currently supported before V2.0
+     * Binary type properties which are part of entity key are currently supported before V2.0.
      */
     protected const EntityKeyMustNotBeBinary = 129;
 
     /**
-     * The primitive type kind does not have a prefered mapping
+     * The primitive type kind does not have a prefered mapping.
      */
     // protected const NoPreferredMappingForPrimitiveTypeKind = 130;
     /**
-     * More than one PreferredMapping for a PrimitiveTypeKind
+     * More than one PreferredMapping for a PrimitiveTypeKind.
      */
     // protected const TooManyPreferredMappingsForPrimitiveTypeKind = 131;
 
     /**
-     * End with * multiplicity cannot have operations specified
+     * End with * multiplicity cannot have operations specified.
      */
     protected const EndWithManyMultiplicityCannotHaveOperationsSpecified = 132;
 
     /**
-     * EntitySet type has no keys
+     * EntitySet type has no keys.
      */
     protected const EntitySetTypeHasNoKeys = 133;
 
     /**
-     * Invalid Number Of Parameters For Aggregate Function
+     * Invalid Number Of Parameters For Aggregate Function.
      */
     // protected const InvalidNumberOfParametersForAggregateFunction = 134;
     /**
-     * Invalid Parameter Type For Aggregate Function
+     * Invalid Parameter Type For Aggregate Function.
      */
     // protected const InvalidParameterTypeForAggregateFunction = 135;
     /**
@@ -486,20 +488,20 @@ class EdmErrorCode extends Enum
      */
     // protected const FunctionDeclaresCommandTextAndStoreFunctionName = 140;
     /**
-     * System Namespace
+     * System Namespace.
      */
     // protected const SystemNamespace = 141;
     /**
-     * Empty DefiningQuery text
+     * Empty DefiningQuery text.
      */
     // protected const EmptyDefiningQuery = 142;
     /**
-     * Schema, Table and DefiningQuery are all specified, and are mutualy exlusive
+     * Schema, Table and DefiningQuery are all specified, and are mutualy exlusive.
      */
     // protected const  TableAndSchemaAreMutuallyExclusiveWithDefiningQuery = 143;
 
     /**
-     * ConcurrencyMode value was malformed
+     * ConcurrencyMode value was malformed.
      */
     protected const InvalidConcurrencyMode = 144;
 
@@ -540,12 +542,12 @@ class EdmErrorCode extends Enum
     protected const ComposableFunctionImportMustHaveReturnType = 152;
 
     /**
-     * Same Entity Set Taking part in the same role of the relationship set in two different relationship sets
+     * Same Entity Set Taking part in the same role of the relationship set in two different relationship sets.
      */
     protected const SimilarRelationshipEnd = 153;
 
     /**
-     * Entity key refers to the same property twice
+     * Entity key refers to the same property twice.
      */
     protected const DuplicatePropertySpecifiedInEntityKey = 154;
 
@@ -561,7 +563,7 @@ class EdmErrorCode extends Enum
     // NonComplexCollections = 158;
 
     /**
-     * No Key defined on Entity Type
+     * No Key defined on Entity Type.
      */
     protected const KeyMissingOnEntityType = 159;
 
@@ -569,7 +571,7 @@ class EdmErrorCode extends Enum
     // InvalidNamespaceInUsing = 160;
 
     /**
-     * Need not specify system namespace in using
+     * Need not specify system namespace in using.
      */
     protected const SystemNamespaceEncountered = 161;
 
@@ -577,75 +579,75 @@ class EdmErrorCode extends Enum
     // CannotUseSystemNamespaceAsAlias = 162;
 
     /**
-     * Invalid qualification specified for type
+     * Invalid qualification specified for type.
      */
     protected const InvalidNamespaceName = 163;
 
     /**
-     * Invalid Entity Container Name in extends attribute
+     * Invalid Entity Container Name in extends attribute.
      */
     // protected const InvalidEntityContainerNameInExtends = 164;
     /**
-     * Invalid CollectionKind value in property CollectionKind attribute
+     * Invalid CollectionKind value in property CollectionKind attribute.
      */
     // protected const InvalidCollectionKind = 165;
     /**
-     * Must specify namespace or alias of the schema in which this type is defined
+     * Must specify namespace or alias of the schema in which this type is defined.
      */
     // protected const InvalidNamespaceOrAliasSpecified = 166;
     /**
-     * Entity Container cannot extend itself
+     * Entity Container cannot extend itself.
      */
     // protected const EntityContainerCannotExtendItself = 167;
     /**
-     * Failed to retrieve provider manifest
+     * Failed to retrieve provider manifest.
      */
     // protected const FailedToRetrieveProviderManifest = 168;
     /**
-     * Mismatched Provider Manifest token values in SSDL artifacts
+     * Mismatched Provider Manifest token values in SSDL artifacts.
      */
     // protected const ProviderManifestTokenMismatch = 169;
     /**
-     * Missing Provider Manifest token value in SSDL artifact(s)
+     * Missing Provider Manifest token value in SSDL artifact(s).
      */
     // protected const ProviderManifestTokenNotFound = 170;
     /**
-     * Empty CommandText element
+     * Empty CommandText element.
      */
     //protected const  EmptyCommandText = 171;
     /**
-     * Inconsistent Provider values in SSDL artifacts
+     * Inconsistent Provider values in SSDL artifacts.
      */
     // protected const InconsistentProvider = 172;
     /**
-     * Inconsistent Provider Manifest token values in SSDL artifacts
+     * Inconsistent Provider Manifest token values in SSDL artifacts.
      */
     // protected const InconsistentProviderManifestToken = 173;
     /**
-    // Duplicated Function overloads
+     * // Duplicated Function overloads
      */
     // protected const DuplicatedFunctionoverloads = 174;
     /**
-     * Invalid Provider
+     * Invalid Provider.
      */
     // protected const InvalidProvider = 175;
     /**
-     * Function With Non Edm Type Not Supported
+     * Function With Non Edm Type Not Supported.
      */
     // protected const FunctionWithNonEdmTypeNotSupported = 176;
     /**
-     * Complex Type As Return Type And Defined Entity Set
+     * Complex Type As Return Type And Defined Entity Set.
      */
     // protected const ComplexTypeAsReturnTypeAndDefinedEntitySet = 177;
     /**
-     * Complex Type As Return Type And Defined Entity Set
+     * Complex Type As Return Type And Defined Entity Set.
      */
     // protected const ComplexTypeAsReturnTypeAndNestedComplexProperty = 178;
-// unused 179;
-// unused 180;
-// unused 181;
+    // unused 179;
+    // unused 180;
+    // unused 181;
     /**
-     * In model functions facet attribute is allowed only on ScalarTypes
+     * In model functions facet attribute is allowed only on ScalarTypes.
      */
     // protected const FacetOnNonScalarType = 182;
     /**
@@ -653,7 +655,7 @@ class EdmErrorCode extends Enum
      */
     // protected const IncorrectlyPlacedFacet = 183;
     /**
-     * Return type has not been declared
+     * Return type has not been declared.
      */
     // protected const ReturnTypeNotDeclared = 184;
     // protected const TypeNotDeclared = 185;
@@ -662,28 +664,28 @@ class EdmErrorCode extends Enum
     // protected const TypeDeclaredAsAttributeAndElement = 188;
     // protected const ReferenceToNonEntityType = 189;
     /**
-     * Invalid value in the EnumTypeOption
+     * Invalid value in the EnumTypeOption.
      */
     // protected const InvalidValueInEnumOption = 190;
     // protected const IncompatibleSchemaVersion = 191;
     /**
-     * The structural annotation cannot use codegen namespaces
+     * The structural annotation cannot use codegen namespaces.
      */
     // protected const NoCodeGenNamespaceInStructuralAnnotation = 192;
     /**
-     * Function and type cannot have the same fully qualified name
+     * Function and type cannot have the same fully qualified name.
      */
     // protected const AmbiguousFunctionAndType = 193;
     /**
-     * Cannot load different version of schema in the same ItemCollection
+     * Cannot load different version of schema in the same ItemCollection.
      */
     // protected const  CannotLoadDifferentVersionOfSchemaInTheSameItemCollection = 194;
     /**
-     * Expected bool value
+     * Expected bool value.
      */
     // protected const BoolValueExpected = 195;
     /**
-     * End without Multiplicity specified
+     * End without Multiplicity specified.
      */
     // protected const EndWithoutMultiplicity = 196;
     /**
@@ -691,13 +693,13 @@ class EdmErrorCode extends Enum
      */
     // protected const TVFReturnTypeRowHasNonScalarProperty = 197;
     /**
-     * The name of NamedEdmItem must not be empty or white space only
+     * The name of NamedEdmItem must not be empty or white space only.
      */
     // protected const EdmModel_NameMustNotBeEmptyOrWhiteSpace = 198;
     /**
-     * EdmTypeReference is empty
+     * EdmTypeReference is empty.
      */
-// Unused 199;
+    // Unused 199;
     // protected const EdmAssociationType_AssociationEndMustNotBeNull = 200;
     // protected const EdmAssociationConstraint_DependentEndMustNotBeNull = 201;
     // protected const EdmAssociationConstraint_DependentPropertiesMustNotBeEmpty = 202;
@@ -799,12 +801,12 @@ class EdmErrorCode extends Enum
     protected const BadUnresolvedEntitySet = 233;
 
     /**
-     * Could not find a property with that name
+     * Could not find a property with that name.
      */
     protected const BadUnresolvedProperty = 234;
 
     /**
-     * Could not find an association end with that name
+     * Could not find an association end with that name.
      */
     protected const BadNonComputableAssociationEnd = 235;
 
@@ -864,7 +866,7 @@ class EdmErrorCode extends Enum
     protected const FunctionsNotSupportedBeforeV2 = 256;
 
     /**
-     * Value terms are not supported before EDM 3.0
+     * Value terms are not supported before EDM 3.0.
      */
     protected const ValueTermsNotSupportedBeforeV3 = 257;
 
@@ -938,37 +940,37 @@ class EdmErrorCode extends Enum
     protected const MaxLengthOutOfRange = 272;
 
     /**
-     * Binding context for Path expression does not supply an entity type
+     * Binding context for Path expression does not supply an entity type.
      */
     protected const PathExpressionHasNoEntityContext = 274;
 
     /**
-     * Invalid value for SRID
+     * Invalid value for SRID.
      */
     protected const InvalidSrid = 275;
 
     /**
-     * Invalid value for max length
+     * Invalid value for max length.
      */
     protected const InvalidMaxLength = 276;
 
     /**
-     * Invalid value for long
+     * Invalid value for long.
      */
     protected const InvalidLong = 277;
 
     /**
-     * Invalid value for integer
+     * Invalid value for integer.
      */
     protected const InvalidInteger = 278;
 
     /**
-     * Invalid association set
+     * Invalid association set.
      */
     protected const InvalidAssociationSet = 279;
 
     /**
-     * Invalid parameter mode
+     * Invalid parameter mode.
      */
     protected const InvalidParameterMode = 280;
 
@@ -978,7 +980,7 @@ class EdmErrorCode extends Enum
     protected const BadUnresolvedEntityType = 281;
 
     /**
-     * Value is invalid
+     * Value is invalid.
      */
     protected const InvalidValue = 282;
 
@@ -1023,7 +1025,7 @@ class EdmErrorCode extends Enum
     protected const InvalidIfExpressionIncorrectNumberOfOperands = 290;
 
     /**
-     * Enums were present in a model with a version below 3.0
+     * Enums were present in a model with a version below 3.0.
      */
     protected const EnumsNotSupportedBeforeV3 = 291;
 
@@ -1073,12 +1075,12 @@ class EdmErrorCode extends Enum
     protected const InvalidLabeledElementExpressionIncorrectNumberOfOperands = 300;
 
     /**
-     * Could not find a LabeledElement with that name
+     * Could not find a LabeledElement with that name.
      */
     protected const BadUnresolvedLabeledElement = 301;
 
     /**
-     * Could not find a enum member with that name
+     * Could not find a enum member with that name.
      */
     protected const BadUnresolvedEnumMember = 302;
 
@@ -1088,7 +1090,7 @@ class EdmErrorCode extends Enum
     protected const InvalidAssertTypeExpressionIncorrectNumberOfOperands = 303;
 
     /**
-     * Could not find a Parameter with that name
+     * Could not find a Parameter with that name.
      */
     protected const BadUnresolvedParameter = 304;
 
