@@ -100,27 +100,27 @@ abstract class EdmValueWriter
 
     public static function FloatAsXml(float $f): string
     {
-        return XmlConvert::floatToString($f);
+        return XmlConvert::floatToString($f) .'F';
     }
 
     public static function DecimalAsXml(float $d): string
     {
-        return XmlConvert::floatToString($d);
+        return XmlConvert::floatToString($d) . 'M';
     }
 
     public static function DateTimeAsXml(DateTime $d): string
     {
-        return $d->format('y-n-jTG:i:s:u') . '000';
+        return $d->format('Y-m-d\TH:i:s.u') . '000';
     }
 
     public static function TimeAsXml(DateTime $d): string
     {
-        return $d->format("hh\:mm\:ss\.uuu");
+        return $d->format("h\:i\:s\.u");
     }
 
     public static function DateTimeOffsetAsXml(DateTime $d): string
     {
-        return $d->format('Z');
+        return $d->format('Y-m-d\TH:i:s.v\ZP');
     }
 
     public static function GuidAsXml(string $g): string
