@@ -84,4 +84,15 @@ class BadEntityContainer extends BadElement implements IEntityContainer
     {
         return $this->namespaceName;
     }
+
+
+    public function isDefault(): ?bool
+    {
+        return null;
+    }
+
+    public function isLazyLoadEnabled(): ?bool
+    {
+        return null;
+    }
 }
