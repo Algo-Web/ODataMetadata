@@ -201,9 +201,10 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
     /**
      * @param string|ISchemaElement $elementOrNamespaceName
      */
-    private function CheckSchemaElementReference(string $elementOrNamespaceName): void
+    private function CheckSchemaElementReference($elementOrNamespaceName): void
     {
         $namespaceName = $elementOrNamespaceName instanceof ISchemaElement ? $elementOrNamespaceName->getNamespace() : $elementOrNamespaceName;
+        assert(is_string($namespaceName));
         if ($this->activeSchema != null) {
             $this->activeSchema->addNamespaceUsing($namespaceName);
         }
