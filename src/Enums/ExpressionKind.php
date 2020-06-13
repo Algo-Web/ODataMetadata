@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Enums;
 
-
 /**
- * Class ExpressionKind
+ * Class ExpressionKind.
  *
  *  Defines EDM expression kinds.
  *
@@ -40,31 +41,31 @@ namespace AlgoWeb\ODataMetadata\Enums;
  */
 class ExpressionKind extends Enum
 {
-    protected const None = 0;
-    protected const BinaryConstant = 1;
-    protected const BooleanConstant = 2;
-    protected const DateTimeConstant = 3;
-    protected const DateTimeOffsetConstant = 4;
-    protected const DecimalConstant = 5;
-    protected const FloatingConstant = 6;
-    protected const GuidConstant = 7;
-    protected const IntegerConstant = 8;
-    protected const StringConstant = 9;
-    protected const TimeConstant  = 10;
-    protected const Null  = 11;
-    protected const Record  = 12;
-    protected const Collection  = 14;
-    protected const Path  = 15;
-    protected const ParameterReference  = 16;
-    protected const FunctionReference  = 17;
-    protected const PropertyReference  = 18;
-    protected const ValueTermReference  = 19;
-    protected const EntitySetReference  = 20;
-    protected const EnumMemberReference  = 21;
-    protected const If  = 22;
-    protected const AssertType  = 23;
-    protected const IsType  = 24;
-    protected const FunctionApplication  = 25;
+    protected const None                        = 0;
+    protected const BinaryConstant              = 1;
+    protected const BooleanConstant             = 2;
+    protected const DateTimeConstant            = 3;
+    protected const DateTimeOffsetConstant      = 4;
+    protected const DecimalConstant             = 5;
+    protected const FloatingConstant            = 6;
+    protected const GuidConstant                = 7;
+    protected const IntegerConstant             = 8;
+    protected const StringConstant              = 9;
+    protected const TimeConstant                = 10;
+    protected const Null                        = 11;
+    protected const Record                      = 12;
+    protected const Collection                  = 14;
+    protected const Path                        = 15;
+    protected const ParameterReference          = 16;
+    protected const FunctionReference           = 17;
+    protected const PropertyReference           = 18;
+    protected const ValueTermReference          = 19;
+    protected const EntitySetReference          = 20;
+    protected const EnumMemberReference         = 21;
+    protected const If                          = 22;
+    protected const AssertType                  = 23;
+    protected const IsType                      = 24;
+    protected const FunctionApplication         = 25;
     protected const LabeledExpressionReference  = 26;
-    protected const Labeled  = 27;
+    protected const Labeled                     = 27;
 }

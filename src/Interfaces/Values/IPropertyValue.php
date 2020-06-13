@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 
 /**
- * Interface IPropertyValue
+ * Interface IPropertyValue.
  *
  * Represents a value of an EDM property.
  *
@@ -13,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 interface IPropertyValue extends IDelayedValue
 {
     /**
-     * @return string Gets the name of the property this value is associated with.
+     * @return string gets the name of the property this value is associated with
      */
     public function getName(): string;
 }

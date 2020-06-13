@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\INamedElement;
 
 /**
- * Class EdmNamedElement
+ * Class EdmNamedElement.
  *
  * Common base class for all named EDM elements.
  *
@@ -23,7 +24,7 @@ class EdmNamedElement extends EdmElement implements INamedElement
     /**
      * Initializes a new instance of the EdmNamedElement class.
      *
-     * @param string $name Name of the element.
+     * @param string $name name of the element
      */
     public function __construct(string $name)
     {
@@ -31,7 +32,7 @@ class EdmNamedElement extends EdmElement implements INamedElement
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {

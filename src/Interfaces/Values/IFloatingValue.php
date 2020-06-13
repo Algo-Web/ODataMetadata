@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 
 /**
- * Interface IFloatingValueextends
+ * Interface IFloatingValueextends.
  *
  * Represents an EDM floating point value.
  *
@@ -13,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 interface IFloatingValue extends IPrimitiveValue
 {
     /**
-     * @return float Gets the definition of this floating   value.
+     * @return float gets the definition of this floating   value
      */
     public function getValue(): float ;
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
-
 
 use AlgoWeb\ODataMetadata\Enums\PropertyKind;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;

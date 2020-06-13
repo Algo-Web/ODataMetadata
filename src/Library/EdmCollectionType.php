@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
@@ -23,7 +24,7 @@ class EdmCollectionType extends EdmType implements ICollectionType
     /**
      * Initializes a new instance of the EdmCollectionType class.
      *
-     * @param ITypeReference $elementType The type of the elements in this collection.
+     * @param ITypeReference $elementType the type of the elements in this collection
      */
     public function __construct(ITypeReference $elementType)
     {
@@ -31,7 +32,7 @@ class EdmCollectionType extends EdmType implements ICollectionType
     }
 
     /**
-     * @return TypeKind Gets the kind of this type.
+     * @return TypeKind gets the kind of this type
      */
     public function getTypeKind(): TypeKind
     {
@@ -39,7 +40,7 @@ class EdmCollectionType extends EdmType implements ICollectionType
     }
 
     /**
-     * @return ITypeReference Gets the element type of this collection.
+     * @return ITypeReference gets the element type of this collection
      */
     public function getElementType(): ITypeReference
     {

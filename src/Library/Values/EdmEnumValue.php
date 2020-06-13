@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Values;
-
 
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
@@ -17,10 +18,10 @@ class EdmEnumValue extends EdmValue implements IEnumValue
     /**
      * Initializes a new instance of the EdmBooleanConstant class.
      *
-     * @param IEnumMember|IPrimitiveValue $value The enumeration or underlying type value.
-     * @param IEnumTypeReference|null $type Type of the boolean. A reference to the enumeration type that describes this value.
+     * @param IEnumMember|IPrimitiveValue $value the enumeration or underlying type value
+     * @param IEnumTypeReference|null     $type  Type of the boolean. A reference to the enumeration type that describes this value.
      */
-    public function __construct( $value, ?IEnumTypeReference $type = null)
+    public function __construct($value, ?IEnumTypeReference $type = null)
     {
         parent::__construct($type);
         $value = $value instanceof IEnumMember ? $value->getValue(): $value;
@@ -29,7 +30,7 @@ class EdmEnumValue extends EdmValue implements IEnumValue
     }
 
     /**
-     * @return IPrimitiveValue Gets the definition of this binary value.
+     * @return IPrimitiveValue gets the definition of this binary value
      */
     public function getValue(): IPrimitiveValue
     {
@@ -37,7 +38,7 @@ class EdmEnumValue extends EdmValue implements IEnumValue
     }
 
     /**
-     * @return ValueKind Gets the kind of this value.
+     * @return ValueKind gets the kind of this value
      */
     public function getValueKind(): ValueKind
     {

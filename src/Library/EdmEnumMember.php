@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
@@ -27,19 +28,19 @@ class EdmEnumMember extends EdmNamedElement implements IEnumMember
     /**
      * Initializes a new instance of the EdmEnumMember class.
      *
-     * @param IEnumType $declaringType The type that declares this member.
-     * @param string $name Name of this enumeration member.
-     * @param IPrimitiveValue $value Value of this enumeration member.
+     * @param IEnumType       $declaringType the type that declares this member
+     * @param string          $name          name of this enumeration member
+     * @param IPrimitiveValue $value         value of this enumeration member
      */
     public function __construct(IEnumType $declaringType, string $name, IPrimitiveValue $value)
     {
         parent::__construct($name);
         $this->declaringType = $declaringType;
-        $this->value = $value;
+        $this->value         = $value;
     }
 
     /**
-     * @return IPrimitiveValue Gets the value of this enumeration type member.
+     * @return IPrimitiveValue gets the value of this enumeration type member
      */
     public function getValue(): IPrimitiveValue
     {
@@ -47,7 +48,7 @@ class EdmEnumMember extends EdmNamedElement implements IEnumMember
     }
 
     /**
-     * @return IEnumType Gets the type that this member belongs to.
+     * @return IEnumType gets the type that this member belongs to
      */
     public function getDeclaringType(): IEnumType
     {

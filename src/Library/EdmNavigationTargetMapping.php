@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
@@ -18,26 +19,26 @@ class EdmNavigationTargetMapping implements INavigationTargetMapping
     /**
      * @var INavigationProperty
      */
-private  $navigationProperty;
+    private $navigationProperty;
     /**
      * @var IEntitySet
      */
-private  $targetEntitySet;
+    private $targetEntitySet;
 
     /**
      * Creates a new navigation target mapping.
      *
-     * @param INavigationProperty $navigationProperty The navigation property.
-     * @param IEntitySet $targetEntitySet The entity set that the navigation propertion targets.
+     * @param INavigationProperty $navigationProperty the navigation property
+     * @param IEntitySet          $targetEntitySet    the entity set that the navigation propertion targets
      */
     public function __construct(INavigationProperty $navigationProperty, IEntitySet $targetEntitySet)
     {
         $this->navigationProperty = $navigationProperty;
-        $this->targetEntitySet = $targetEntitySet;
+        $this->targetEntitySet    = $targetEntitySet;
     }
 
     /**
-     * @return INavigationProperty Gets the navigation property.
+     * @return INavigationProperty gets the navigation property
      */
     public function getNavigationProperty(): INavigationProperty
     {
@@ -45,7 +46,7 @@ private  $targetEntitySet;
     }
 
     /**
-     * @return IEntitySet Gets the target entity set.
+     * @return IEntitySet gets the target entity set
      */
     public function getTargetEntitySet(): IEntitySet
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
@@ -7,7 +9,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexTypeReference;
 
 /**
- * Class ComplexTypeReferenceHelpers
+ * Class ComplexTypeReferenceHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
  */
 trait ComplexTypeReferenceHelpers
@@ -30,7 +32,7 @@ trait ComplexTypeReferenceHelpers
     /**
      * Gets the base type of this reference.
      *
-     * @return IComplexType The base type of this reference.
+     * @return IComplexType the base type of this reference
      */
     public function BaseComplexType(): IComplexType
     {

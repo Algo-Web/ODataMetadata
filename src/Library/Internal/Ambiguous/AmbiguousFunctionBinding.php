@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
-
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
@@ -13,7 +14,7 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
 {
     public function __construct(IFunction $first, IFunction $second)
     {
-        parent::__construct($first,$second);
+        parent::__construct($first, $second);
     }
 
 
@@ -54,8 +55,8 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
     /**
      * Searches for a parameter with the given name, and returns null if no such parameter exists.
      *
-     * @param string $name The name of the parameter being found.
-     * @return IFunctionParameter The requested parameter or null if no such parameter exists.
+     * @param  string             $name the name of the parameter being found
+     * @return IFunctionParameter the requested parameter or null if no such parameter exists
      */
     public function findParameter(string $name): ?IFunctionParameter
     {

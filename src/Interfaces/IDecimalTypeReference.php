@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmDecimalTypeReference
+ * Interface IEdmDecimalTypeReference.
  *
  * Represents a reference to an EDM decimal type.
  *
@@ -13,12 +15,12 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface IDecimalTypeReference extends IPrimitiveTypeReference
 {
     /**
-     * @return int|null Gets the precision of this type.
+     * @return int|null gets the precision of this type
      */
     public function getPrecision(): ?int;
 
     /**
-     * @return int|null Gets the scale of this type.
+     * @return int|null gets the scale of this type
      */
     public function getScale(): ?int;
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IApplyExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IAssertTypeExpression;
@@ -35,12 +36,10 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 trait ProcessExpressions
 {
-
     protected function ProcessExpression(IExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
         $this->endElement($expression, __METHOD__);
-
     }
 
     protected function ProcessStringConstantExpression(IStringConstantExpression $expression): void
@@ -243,11 +242,11 @@ trait ProcessExpressions
         $this->endElement($expression, __METHOD__);
     }
 
-    abstract function VisitExpression(IExpression $getValue): void;
+    abstract public function VisitExpression(IExpression $getValue): void;
 
-    abstract function VisitTypeReference(ITypeReference $getType): void;
+    abstract public function VisitTypeReference(ITypeReference $getType): void;
 
-    abstract function VisitExpressions(array $getArguments): void;
+    abstract public function VisitExpressions(array $getArguments): void;
 
-    abstract function VisitPropertyConstructors(array $getProperties): void;
+    abstract public function VisitPropertyConstructors(array $getProperties): void;
 }

@@ -18,10 +18,10 @@ class CompleteTest extends TestCase
 {
     public function testFromFascet()
     {
-        $customer = Structure::getCustomers();
-        $employPriv = Structure::getEmployeePrivileges();
-        $employ = Structure::getEmployees();
-        $model = new EdmModel();
+        $customer        = Structure::getCustomers();
+        $employPriv      = Structure::getEmployeePrivileges();
+        $employ          = Structure::getEmployees();
+        $model           = new EdmModel();
         $entityContainer = new EdmEntityContainer('Northwind', 'NorthwindEntities', true, true);
         $model->AddElement(array_values($customer)[0]);
         $customerSet = $entityContainer->AddEntitySet(array_keys($customer)[0], array_values($customer)[0]);
@@ -33,15 +33,15 @@ class CompleteTest extends TestCase
         /**
          * @var EdmEntityType $employee
          */
-        $employee = array_values($employ)[0];
-        $navPropInfo = new EdmNavigationPropertyInfo();
-        $navPropInfo->name = 'priv';
-        $navPropInfo->targetMultiplicity = Multiplicity::Many();
-        $navPropInfo->target = array_values($employPriv)[0];
-        $navPropInfo1 = new EdmNavigationPropertyInfo();
-        $navPropInfo1->name = 'employee';
+        $employee                         = array_values($employ)[0];
+        $navPropInfo                      = new EdmNavigationPropertyInfo();
+        $navPropInfo->name                = 'priv';
+        $navPropInfo->targetMultiplicity  = Multiplicity::Many();
+        $navPropInfo->target              = array_values($employPriv)[0];
+        $navPropInfo1                     = new EdmNavigationPropertyInfo();
+        $navPropInfo1->name               = 'employee';
         $navPropInfo1->targetMultiplicity = Multiplicity::One();
-        $navProp = $employee->AddBidirectionalNavigation($navPropInfo, $navPropInfo1);
+        $navProp                          = $employee->AddBidirectionalNavigation($navPropInfo, $navPropInfo1);
         $employSet->AddNavigationTarget($navProp, $EmployPrivSet);
         $xmlWritter = new XMLWriter();
         $this->assertTrue(EdmxWriter::TryWriteEdmx($model, $xmlWritter));

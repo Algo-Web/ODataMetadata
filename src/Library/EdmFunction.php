@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
@@ -22,20 +23,20 @@ class EdmFunction extends EdmFunctionBase implements IFunction
     /**
      * Initializes a new instance of the EdmFunction class.
      *
-     * @param string $namespaceName Namespace of the function.
-     * @param string $name Name of the function.
-     * @param ITypeReference $returnType Return type of the function.
-     * @param string|null $definingExpression Defining expression of the function (for example an eSQL expression).
+     * @param string         $namespaceName      namespace of the function
+     * @param string         $name               name of the function
+     * @param ITypeReference $returnType         return type of the function
+     * @param string|null    $definingExpression defining expression of the function (for example an eSQL expression)
      */
     public function __construct(string $namespaceName, string $name, ITypeReference $returnType, string $definingExpression = null)
     {
         parent::__construct($name, $returnType);
-        $this->namespaceName = $namespaceName;
+        $this->namespaceName      = $namespaceName;
         $this->definingExpression = $definingExpression;
     }
 
     /**
-     * @return string Gets the defining expression of this function.
+     * @return string gets the defining expression of this function
      */
     public function getDefiningExpression(): string
     {
@@ -43,7 +44,7 @@ class EdmFunction extends EdmFunctionBase implements IFunction
     }
 
     /**
-     * @return SchemaElementKind Gets the kind of this schema element.
+     * @return SchemaElementKind gets the kind of this schema element
      */
     public function getSchemaElementKind(): SchemaElementKind
     {
@@ -51,7 +52,7 @@ class EdmFunction extends EdmFunctionBase implements IFunction
     }
 
     /**
-     * @return string Gets the namespace this schema element belongs to.
+     * @return string gets the namespace this schema element belongs to
      */
     public function getNamespace(): string
     {

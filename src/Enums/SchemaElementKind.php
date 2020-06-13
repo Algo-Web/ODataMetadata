@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Enums;
 
-
 /**
- * Class EdmSchemaElementKind
+ * Class EdmSchemaElementKind.
  *
  * Defines EDM schema element types.
  *
@@ -15,14 +16,12 @@ namespace AlgoWeb\ODataMetadata\Enums;
  * @method static Function(): self Represents a schema element implementing @see IFunction
  * @method static ValueTerm(): self Represents a schema element implementing @see IValueTerm
  * @method static EntityContainer(): self Represents a schema element implementing @see IEntityContainer
-
  */
 class SchemaElementKind extends Enum
 {
-    protected const None = null;
-    protected const TypeDefinition = 'SchemaType';
-    protected const Function = 'Function';
-    protected const ValueTerm = 'ValueTerm';
+    protected const None            = null;
+    protected const TypeDefinition  = 'SchemaType';
+    protected const Function        = 'Function';
+    protected const ValueTerm       = 'ValueTerm';
     protected const EntityContainer = 'EntityContainer';
-
 }

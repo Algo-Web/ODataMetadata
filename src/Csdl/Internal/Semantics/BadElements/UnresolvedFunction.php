@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Csdl\Internal\Semantics\BadElements;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -36,7 +37,7 @@ class UnresolvedFunction extends BadElement implements IFunction, IUnresolvedEle
      */
     private $returnType;
 
-    public function __construct(?string $qualifiedName, string $errorMessage,  ILocation $location)
+    public function __construct(?string $qualifiedName, string $errorMessage, ILocation $location)
     {
         parent::__construct([new EdmError($location, EdmErrorCode::BadUnresolvedFunction(), $errorMessage)]);
         //$this->qualifiedName = $qualifiedName ?? '';
@@ -45,7 +46,7 @@ class UnresolvedFunction extends BadElement implements IFunction, IUnresolvedEle
     }
 
     /**
-     * @return string Gets the defining expression of this function.
+     * @return string gets the defining expression of this function
      */
     public function getDefiningExpression(): string
     {
@@ -75,8 +76,8 @@ class UnresolvedFunction extends BadElement implements IFunction, IUnresolvedEle
     /**
      * Searches for a parameter with the given name, and returns null if no such parameter exists.
      *
-     * @param string $name The name of the parameter being found.
-     * @return IFunctionParameter|null The requested parameter or null if no such parameter exists.
+     * @param  string                  $name the name of the parameter being found
+     * @return IFunctionParameter|null the requested parameter or null if no such parameter exists
      */
     public function findParameter(string $name): ?IFunctionParameter
     {
@@ -84,7 +85,7 @@ class UnresolvedFunction extends BadElement implements IFunction, IUnresolvedEle
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {
@@ -92,7 +93,7 @@ class UnresolvedFunction extends BadElement implements IFunction, IUnresolvedEle
     }
 
     /**
-     * @return SchemaElementKind Gets the kind of this schema element.
+     * @return SchemaElementKind gets the kind of this schema element
      */
     public function getSchemaElementKind(): SchemaElementKind
     {
@@ -100,7 +101,7 @@ class UnresolvedFunction extends BadElement implements IFunction, IUnresolvedEle
     }
 
     /**
-     * @return string Gets the namespace this schema element belongs to.
+     * @return string gets the namespace this schema element belongs to
      */
     public function getNamespace(): string
     {

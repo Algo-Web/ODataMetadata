@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Util;
-
 
 class XmlConvert
 {
@@ -16,11 +17,12 @@ class XmlConvert
         return strval($i);
     }
 
-    public static function floatToString(float $f): string{
-        if($f == INF){
+    public static function floatToString(float $f): string
+    {
+        if ($f == INF) {
             return 'INF';
         }
-        if($f == -INF){
+        if ($f == -INF) {
             return '-INF';
         }
         return strval($f);

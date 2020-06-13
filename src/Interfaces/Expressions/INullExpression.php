@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\Values\INullValue;
 
 /**
- * Interface INullExpression
+ * Interface INullExpression.
  *
  * Represents an EDM null expression.
  *
@@ -15,5 +16,4 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\INullValue;
  */
 interface INullExpression extends IExpression, INullValue
 {
-
 }

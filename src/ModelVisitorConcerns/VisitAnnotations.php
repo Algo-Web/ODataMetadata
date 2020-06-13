@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\EdmModelVisitor;
 use AlgoWeb\ODataMetadata\Enums\TermKind;
@@ -15,7 +16,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
 use AlgoWeb\ODataMetadata\StringConst;
 
 /**
- * Trait VisitAnnotations
+ * Trait VisitAnnotations.
  * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
  * @mixin EdmModelVisitor
  */
@@ -44,10 +45,8 @@ trait VisitAnnotations
 
     public function visitVocabularyAnnotation(IVocabularyAnnotation $annotation): void
     {
-        if ($annotation->getTerm() != null)
-        {
-            switch ($annotation->getTerm()->getTermKind())
-            {
+        if ($annotation->getTerm() != null) {
+            switch ($annotation->getTerm()->getTermKind()) {
                 case TermKind::Type():
                     assert($annotation instanceof ITypeAnnotation);
                     $this->processTypeAnnotation($annotation);
@@ -62,9 +61,7 @@ trait VisitAnnotations
                 default:
                     throw new InvalidOperationException(StringConst::UnknownEnumVal_TermKind($annotation->getTerm()->getTermKind()->getKey()));
             }
-        }
-        else
-        {
+        } else {
             $this->processVocabularyAnnotation($annotation);
         }
     }
@@ -76,11 +73,9 @@ trait VisitAnnotations
     {
         self::visitCollection($bindings, [$this, 'processPropertyValueBinding']);
     }
-    public abstract function processImmediateValueAnnotation(IDirectValueAnnotation $annotation): void;
-    public abstract function processTypeAnnotation(ITypeAnnotation $annotation): void;
-    public abstract function processValueAnnotation(IValueAnnotation $annotation): void;
-    public abstract function processVocabularyAnnotation(IVocabularyAnnotation $annotation): void;
-    public abstract function processPropertyValueBinding(IPropertyValueBinding  $annotation): void;
-
-
+    abstract public function processImmediateValueAnnotation(IDirectValueAnnotation $annotation): void;
+    abstract public function processTypeAnnotation(ITypeAnnotation $annotation): void;
+    abstract public function processValueAnnotation(IValueAnnotation $annotation): void;
+    abstract public function processVocabularyAnnotation(IVocabularyAnnotation $annotation): void;
+    abstract public function processPropertyValueBinding(IPropertyValueBinding $annotation): void;
 }

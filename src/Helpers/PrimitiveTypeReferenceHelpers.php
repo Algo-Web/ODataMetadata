@@ -1,15 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
-
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
 
 /**
- * Trait PrimitiveTypeReferenceHelpers
+ * Trait PrimitiveTypeReferenceHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
  */
 trait PrimitiveTypeReferenceHelpers
@@ -17,7 +18,7 @@ trait PrimitiveTypeReferenceHelpers
     /**
      * Gets the definition of this primitive type reference.
      *
-     * @return IPrimitiveType Definition of this primitive type reference.
+     * @return IPrimitiveType definition of this primitive type reference
      */
     public function PrimitiveDefinition(): ?IPrimitiveType
     {
@@ -32,7 +33,7 @@ trait PrimitiveTypeReferenceHelpers
     /**
      * Gets the primitive kind of the definition referred to by this type reference.
      *
-     * @return PrimitiveTypeKind Primitive kind of the definition of this reference.
+     * @return PrimitiveTypeKind primitive kind of the definition of this reference
      */
     public function PrimitiveKind(): PrimitiveTypeKind
     {

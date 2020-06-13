@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Helpers\CollectionTypeReferenceHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
@@ -21,8 +22,8 @@ class EdmCollectionTypeReference extends EdmTypeReference implements ICollection
     /**
      * Initializes a new instance of the EdmCollectionTypeReference class.
      *
-     * @param ICollectionType $collectionType The type definition this reference refers to.
-     * @param bool $isNullable Denotes whether the type can be nullable.
+     * @param ICollectionType $collectionType the type definition this reference refers to
+     * @param bool            $isNullable     denotes whether the type can be nullable
      */
     public function __construct(ICollectionType $collectionType, bool $isNullable)
     {
@@ -30,7 +31,7 @@ class EdmCollectionTypeReference extends EdmTypeReference implements ICollection
     }
 
     /**
-     * @return bool Gets a value indicating whether this type is nullable.
+     * @return bool gets a value indicating whether this type is nullable
      */
     public function getNullable(): bool
     {
@@ -38,7 +39,7 @@ class EdmCollectionTypeReference extends EdmTypeReference implements ICollection
     }
 
     /**
-     * @return IType|null Gets the definition to which this type refers.
+     * @return IType|null gets the definition to which this type refers
      */
     public function getDefinition(): ?IType
     {

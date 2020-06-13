@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\ComplexTypeReferenceHelpers;
 
 /**
- * Class IEdmComplexTypeReference
+ * Class IEdmComplexTypeReference.
  *
  * Represents references to EDM complex types.
  *
@@ -15,5 +17,4 @@ use AlgoWeb\ODataMetadata\Helpers\ComplexTypeReferenceHelpers;
  */
 interface IComplexTypeReference extends IStructuredTypeReference
 {
-
 }

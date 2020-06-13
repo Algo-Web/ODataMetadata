@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad\Cyclic;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -20,11 +21,10 @@ class CyclicComplexType extends BadComplexType
     /**
      * CyclicComplexType constructor.
      * @param string|null $qualifiedName
-     * @param ILocation $location
+     * @param ILocation   $location
      */
     public function __construct(?string $qualifiedName, ILocation $location)
     {
         parent::__construct($qualifiedName, [new EdmError($location, EdmErrorCode::BadCyclicComplex(), StringConst::Bad_CyclicComplex($qualifiedName)) ]);
     }
-
 }

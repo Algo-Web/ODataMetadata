@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 
 /**
- * Interface INullValue
+ * Interface INullValue.
  *
  *  Represents an EDM null value.
  *
@@ -12,5 +14,4 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Values;
  */
 interface INullValue extends IValue
 {
-
 }

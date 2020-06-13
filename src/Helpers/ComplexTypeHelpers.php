@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 
 /**
- * Trait ComplexTypeHelpers
+ * Trait ComplexTypeHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
  */
 trait ComplexTypeHelpers
@@ -15,9 +16,9 @@ trait ComplexTypeHelpers
     /**
      * Gets the base type of this references definition.
      *
-     * @return IComplexType The base type of this references definition.
+     * @return IComplexType the base type of this references definition
      */
-    public function BaseComplexType() : IComplexType
+    public function BaseComplexType(): IComplexType
     {
         /**
          * @var IComplexType $this;

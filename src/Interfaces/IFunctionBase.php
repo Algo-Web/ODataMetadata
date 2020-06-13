@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmFunctionBase
+ * Interface IEdmFunctionBase.
  *
  * Represents the common base type of EDM functions and function imports.
  *
@@ -29,8 +31,8 @@ interface IFunctionBase extends INamedElement, IVocabularyAnnotatable
     /**
      * Searches for a parameter with the given name, and returns null if no such parameter exists.
      *
-     * @param string $name The name of the parameter being found.
-     * @return IFunctionParameter|null The requested parameter or null if no such parameter exists.
+     * @param  string                  $name the name of the parameter being found
+     * @return IFunctionParameter|null the requested parameter or null if no such parameter exists
      */
     public function findParameter(string $name): ?IFunctionParameter;
 }

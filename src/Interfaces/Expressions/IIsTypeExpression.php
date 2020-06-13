@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 /**
- * Interface IIsTypeExpression
+ * Interface IIsTypeExpression.
  *
  * Represents an EDM type test expression.
  *
@@ -16,12 +17,12 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 interface IIsTypeExpression extends IExpression
 {
     /**
-     * @return IExpression Gets the expression whose type is to be tested.
+     * @return IExpression gets the expression whose type is to be tested
      */
     public function getOperand(): IExpression;
 
     /**
-     * @return ITypeReference Gets the type to be tested against.
+     * @return ITypeReference gets the type to be tested against
      */
     public function getType(): ITypeReference;
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Csdl\Internal\Serialization;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -13,32 +14,29 @@ use AlgoWeb\ODataMetadata\Interfaces\IModel;
 
 abstract class SerializationValidator
 {
-
-        private static function getSerializationRuleSet(): ValidationRuleSet
-        {
-            return new ValidationRuleSet([]);
-}
-        public static function GetSerializationErrors(IModel $root): array
-        {
-            $errors = [];
-            EdmValidator::Validate($root, self::getSerializationRuleSet(), $errors);
-            $errors = array_filter($errors, [self::class, 'SignificantToSerialization']);
-            return $errors;
-        }
+    private static function getSerializationRuleSet(): ValidationRuleSet
+    {
+        return new ValidationRuleSet([]);
+    }
+    public static function GetSerializationErrors(IModel $root): array
+    {
+        $errors = [];
+        EdmValidator::Validate($root, self::getSerializationRuleSet(), $errors);
+        $errors = array_filter($errors, [self::class, 'SignificantToSerialization']);
+        return $errors;
+    }
 
     /**
-     * @param EdmError $error
+     * @param  EdmError $error
      * @return bool
      */
     private static function SignificantToSerialization(EdmError $error)
-        {
-            if (ValidationHelper::IsInterfaceCritical($error))
-            {
-                return true;
-            }
+    {
+        if (ValidationHelper::IsInterfaceCritical($error)) {
+            return true;
+        }
 
-            switch ($error->getErrorCode())
-            {
+        switch ($error->getErrorCode()) {
                 case EdmErrorCode::InvalidName():
                 case EdmErrorCode::NameTooLong():
                 case EdmErrorCode::InvalidNamespaceName():
@@ -61,6 +59,6 @@ abstract class SerializationValidator
                     return true;
             }
 
-            return false;
-        }
+        return false;
+    }
 }

@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
-
 
 use AlgoWeb\ODataMetadata\Enums\TermKind;
 
 /**
- * Interface IEdmTerm
+ * Interface IEdmTerm.
  *
  * Term to which an annotation can bind.
  *

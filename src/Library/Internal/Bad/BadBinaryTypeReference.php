@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Interfaces\ICheckable;
@@ -24,5 +25,4 @@ class BadBinaryTypeReference extends EdmBinaryTypeReference implements ICheckabl
         $this->errors = $errors;
         parent::__construct(new BadPrimitiveType($qualifiedName, PrimitiveTypeKind::Binary(), $errors), $isNullable, false, null, false);
     }
-
 }

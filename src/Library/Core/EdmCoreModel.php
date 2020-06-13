@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Core;
-
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
@@ -59,7 +60,7 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
      */
     private $primitiveTypes;
 
-    private const EdmNamespace = "Edm";
+    private const EdmNamespace = 'Edm';
     /**
      * @var array<string, PrimitiveTypeKind>
      */
@@ -80,45 +81,45 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     public function __construct()
     {
         $this->annotationsManager = new EdmDirectValueAnnotationsManager();
-        $primitiveDouble = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Double", PrimitiveTypeKind::Double());
-        $primitiveSingle = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Single", PrimitiveTypeKind::Single());
+        $primitiveDouble          = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Double', PrimitiveTypeKind::Double());
+        $primitiveSingle          = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Single', PrimitiveTypeKind::Single());
 
-        $primitiveInt64 = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Int64", PrimitiveTypeKind::Int64());
-        $primitiveInt32 = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Int32", PrimitiveTypeKind::Int32());
-        $primitiveInt16 = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Int16", PrimitiveTypeKind::Int16());
-        $primitiveSByte = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "SByte", PrimitiveTypeKind::SByte());
-        $primitiveByte = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Byte", PrimitiveTypeKind::Byte());
+        $primitiveInt64 = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Int64', PrimitiveTypeKind::Int64());
+        $primitiveInt32 = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Int32', PrimitiveTypeKind::Int32());
+        $primitiveInt16 = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Int16', PrimitiveTypeKind::Int16());
+        $primitiveSByte = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'SByte', PrimitiveTypeKind::SByte());
+        $primitiveByte  = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Byte', PrimitiveTypeKind::Byte());
 
-        $primitiveBoolean = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Boolean", PrimitiveTypeKind::Boolean());
-        $primitiveGuid = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Guid", PrimitiveTypeKind::Guid());
+        $primitiveBoolean = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Boolean', PrimitiveTypeKind::Boolean());
+        $primitiveGuid    = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Guid', PrimitiveTypeKind::Guid());
 
-        $primitiveTime = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Time", PrimitiveTypeKind::Time());
-        $primitiveDateTime = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "DateTime", PrimitiveTypeKind::DateTime());
-        $primitiveDateTimeOffset = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "DateTimeOffset", PrimitiveTypeKind::DateTimeOffset());
+        $primitiveTime           = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Time', PrimitiveTypeKind::Time());
+        $primitiveDateTime       = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'DateTime', PrimitiveTypeKind::DateTime());
+        $primitiveDateTimeOffset = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'DateTimeOffset', PrimitiveTypeKind::DateTimeOffset());
 
-        $primitiveDecimal = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Decimal", PrimitiveTypeKind::Decimal());
+        $primitiveDecimal = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Decimal', PrimitiveTypeKind::Decimal());
 
-        $primitiveBinary = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Binary", PrimitiveTypeKind::Binary());
-        $primitiveString = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "String", PrimitiveTypeKind::String());
-        $primitiveStream = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Stream", PrimitiveTypeKind::Stream());
+        $primitiveBinary = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Binary', PrimitiveTypeKind::Binary());
+        $primitiveString = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'String', PrimitiveTypeKind::String());
+        $primitiveStream = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Stream', PrimitiveTypeKind::Stream());
 
-        $primitiveGeography = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Geography", PrimitiveTypeKind::Geography());
-        $primitiveGeographyPoint = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeographyPoint", PrimitiveTypeKind::GeographyPoint());
-        $primitiveGeographyLineString = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeographyLineString", PrimitiveTypeKind::GeographyLineString());
-        $primitiveGeographyPolygon = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeographyPolygon", PrimitiveTypeKind::GeographyPolygon());
-        $primitiveGeographyCollection = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeographyCollection", PrimitiveTypeKind::GeographyCollection());
-        $primitiveGeographyMultiPolygon = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeographyMultiPolygon", PrimitiveTypeKind::GeographyMultiPolygon());
-        $primitiveGeographyMultiLineString = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeographyMultiLineString", PrimitiveTypeKind::GeographyMultiLineString());
-        $primitiveGeographyMultiPoint = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeographyMultiPoint", PrimitiveTypeKind::GeographyMultiPoint());
-        $primitiveGeometry = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "Geometry", PrimitiveTypeKind::Geometry());
-        $primitiveGeometryPoint = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeometryPoint", PrimitiveTypeKind::GeometryPoint());
-        $primitiveGeometryLineString = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeometryLineString", PrimitiveTypeKind::GeometryLineString());
-        $primitiveGeometryPolygon = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeometryPolygon", PrimitiveTypeKind::GeometryPolygon());
-        $primitiveGeometryCollection = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeometryCollection", PrimitiveTypeKind::GeometryCollection());
-        $primitiveGeometryMultiPolygon = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeometryMultiPolygon", PrimitiveTypeKind::GeometryMultiPolygon());
-        $primitiveGeometryMultiLineString = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeometryMultiLineString", PrimitiveTypeKind::GeometryMultiLineString());
-        $primitiveGeometryMultiPoint = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, "GeometryMultiPoint", PrimitiveTypeKind::GeometryMultiPoint());
-        $this->primitiveTypes = [
+        $primitiveGeography                = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Geography', PrimitiveTypeKind::Geography());
+        $primitiveGeographyPoint           = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeographyPoint', PrimitiveTypeKind::GeographyPoint());
+        $primitiveGeographyLineString      = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeographyLineString', PrimitiveTypeKind::GeographyLineString());
+        $primitiveGeographyPolygon         = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeographyPolygon', PrimitiveTypeKind::GeographyPolygon());
+        $primitiveGeographyCollection      = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeographyCollection', PrimitiveTypeKind::GeographyCollection());
+        $primitiveGeographyMultiPolygon    = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeographyMultiPolygon', PrimitiveTypeKind::GeographyMultiPolygon());
+        $primitiveGeographyMultiLineString = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeographyMultiLineString', PrimitiveTypeKind::GeographyMultiLineString());
+        $primitiveGeographyMultiPoint      = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeographyMultiPoint', PrimitiveTypeKind::GeographyMultiPoint());
+        $primitiveGeometry                 = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'Geometry', PrimitiveTypeKind::Geometry());
+        $primitiveGeometryPoint            = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeometryPoint', PrimitiveTypeKind::GeometryPoint());
+        $primitiveGeometryLineString       = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeometryLineString', PrimitiveTypeKind::GeometryLineString());
+        $primitiveGeometryPolygon          = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeometryPolygon', PrimitiveTypeKind::GeometryPolygon());
+        $primitiveGeometryCollection       = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeometryCollection', PrimitiveTypeKind::GeometryCollection());
+        $primitiveGeometryMultiPolygon     = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeometryMultiPolygon', PrimitiveTypeKind::GeometryMultiPolygon());
+        $primitiveGeometryMultiLineString  = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeometryMultiLineString', PrimitiveTypeKind::GeometryMultiLineString());
+        $primitiveGeometryMultiPoint       = new EdmValidCoreModelPrimitiveType(self::EdmNamespace, 'GeometryMultiPoint', PrimitiveTypeKind::GeometryMultiPoint());
+        $this->primitiveTypes              = [
             $primitiveBinary,
             $primitiveBoolean,
             $primitiveByte,
@@ -156,20 +157,19 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
          * @var EdmValidCoreModelPrimitiveType $primitive
          */
         foreach ($this->primitiveTypes as $primitive) {
-            $this->primitiveTypeKinds[$primitive->getName()] = $primitive->getPrimitiveKind();
-            $this->primitiveTypeKinds[$primitive->getNamespace() . '.' . $primitive->getName()] = $primitive->getPrimitiveKind();
-            $this->primitiveTypesByKind[strval($primitive->getPrimitiveKind())] = $primitive;
+            $this->primitiveTypeKinds[$primitive->getName()]                                     = $primitive->getPrimitiveKind();
+            $this->primitiveTypeKinds[$primitive->getNamespace() . '.' . $primitive->getName()]  = $primitive->getPrimitiveKind();
+            $this->primitiveTypesByKind[strval($primitive->getPrimitiveKind())]                  = $primitive;
             $this->primitiveTypeByName[$primitive->getNamespace() . '.' . $primitive->getName()] = $primitive;
-
         }
     }
 
     /**
-     * @return string Gets the namespace of this core model.
+     * @return string gets the namespace of this core model
      */
     public static function Namespace(): string
     {
-        return "Edm";
+        return 'Edm';
     }
 
     /**
@@ -216,7 +216,7 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
      * Searches for an entity container with the given name in this model and returns null if no such entity container
      * exists.
      *
-     * @param string $qualifiedName The name of the entity container being found.
+     * @param  string           $qualifiedName the name of the entity container being found
      * @return ISchemaType|null The requested entity container, or null if no such entity container exists
      */
     public function findDeclaredType(string $qualifiedName): ?ISchemaType
@@ -227,8 +227,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Searches for a type with the given name in this model and returns null if no such type exists.
      *
-     * @param string $name The qualified name of the type being found.
-     * @return IEntityContainer|null The requested type, or null if no such type exists.
+     * @param  string                $name the qualified name of the type being found
+     * @return IEntityContainer|null the requested type, or null if no such type exists
      */
     public function findDeclaredEntityContainer(string $name): ?IEntityContainer
     {
@@ -239,9 +239,9 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
      * Searches for functions with the given name in this model and returns an empty enumerable if no such function
      * exists.
      *
-     * @param string $qualifiedName The qualified name of the function being found.
-     * @return IFunction[] A set of functions sharing the specified qualified name, or an empty enumerable if no
-     *                        such function exists.
+     * @param  string      $qualifiedName the qualified name of the function being found
+     * @return IFunction[] a set of functions sharing the specified qualified name, or an empty enumerable if no
+     *                                   such function exists
      */
     public function findDeclaredFunctions(string $qualifiedName): array
     {
@@ -251,8 +251,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Searches for a value term with the given name in this model and returns null if no such value term exists.
      *
-     * @param string $qualifiedName The qualified name of the value term being found.
-     * @return IValueTerm|null The requested value term, or null if no such value term exists.
+     * @param  string          $qualifiedName the qualified name of the value term being found
+     * @return IValueTerm|null the requested value term, or null if no such value term exists
      */
     public function findDeclaredValueTerm(string $qualifiedName): ?IValueTerm
     {
@@ -262,8 +262,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      *  Searches for vocabulary annotations specified by this model.
      *
-     * @param IVocabularyAnnotatable $element The annotated element.
-     * @return Annotations\IVocabularyAnnotation[] The vocabulary annotations for the element.
+     * @param  IVocabularyAnnotatable              $element the annotated element
+     * @return Annotations\IVocabularyAnnotation[] the vocabulary annotations for the element
      */
     public function findDeclaredVocabularyAnnotations(IVocabularyAnnotatable $element): array
     {
@@ -273,8 +273,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Finds a list of types that derive directly from the supplied type.
      *
-     * @param IStructuredType $baseType The base type that derived types are being searched for.
-     * @return IStructuredType[] A list of types from this model that derive directly from the given type.
+     * @param  IStructuredType   $baseType the base type that derived types are being searched for
+     * @return IStructuredType[] a list of types from this model that derive directly from the given type
      */
     public function findDirectlyDerivedTypes(IStructuredType $baseType): array
     {
@@ -284,8 +284,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a non-atomic collection type definition.
      *
-     * @param ITypeReference $elementType Type of elements in the collection.
-     * @return ICollectionTypeReference A new non-atomic collection type reference.
+     * @param  ITypeReference           $elementType type of elements in the collection
+     * @return ICollectionTypeReference a new non-atomic collection type reference
      */
     public static function GetCollection(ITypeReference $elementType): ICollectionTypeReference
     {
@@ -300,8 +300,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets primitive type by kind.
      *
-     * @param PrimitiveTypeKind $kind Kind of the primitive type.
-     * @return IPrimitiveType Primitive type definition.
+     * @param  PrimitiveTypeKind $kind kind of the primitive type
+     * @return IPrimitiveType    primitive type definition
      */
     public function GetPrimitiveType(PrimitiveTypeKind $kind): IPrimitiveType
     {
@@ -311,7 +311,7 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets the PrimitiveTypeKind by the type name.
      *
-     * @param string $typeName Name of the type to look up.
+     * @param  string            $typeName name of the type to look up
      * @return PrimitiveTypeKind PrimitiveTypeKind of the type.<
      */
     public function GetPrimitiveTypeKind(string $typeName): PrimitiveTypeKind
@@ -322,19 +322,16 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a primitive type of the specified kind.
      *
-     * @param PrimitiveTypeKind $kind Primitive kind of the type reference being created.
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IPrimitiveTypeReference A new primitive type reference.
+     * @param  PrimitiveTypeKind       $kind       primitive kind of the type reference being created
+     * @param  bool                    $isNullable flag specifying if the referenced type should be nullable
+     * @return IPrimitiveTypeReference a new primitive type reference
      */
     public function GetPrimitive(PrimitiveTypeKind $kind, bool $isNullable): IPrimitiveTypeReference
     {
         $primitiveDefinition = $this->GetCoreModelPrimitiveType($kind);
-        if ($primitiveDefinition !== null)
-        {
+        if ($primitiveDefinition !== null) {
             return $primitiveDefinition->GetPrimitiveTypeReference($isNullable);
-        }
-        else
-        {
+        } else {
             throw new InvalidOperationException(StringConst::EdmPrimitive_UnexpectedKind());
         }
     }
@@ -342,10 +339,10 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to the Int16 primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IPrimitiveTypeReference A new primitive type reference.
+     * @param  bool                    $isNullable flag specifying if the referenced type should be nullable
+     * @return IPrimitiveTypeReference a new primitive type reference
      */
-    public function GetInt16(bool $isNullable):  IPrimitiveTypeReference
+    public function GetInt16(bool $isNullable): IPrimitiveTypeReference
     {
         return new EdmPrimitiveTypeReference($this->GetCoreModelPrimitiveType(PrimitiveTypeKind::Int16()), $isNullable);
     }
@@ -353,8 +350,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to the Int32 primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IPrimitiveTypeReference A new primitive type reference.
+     * @param  bool                    $isNullable flag specifying if the referenced type should be nullable
+     * @return IPrimitiveTypeReference a new primitive type reference
      */
     public function GetInt32(bool $isNullable): IPrimitiveTypeReference
     {
@@ -364,8 +361,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to the Int64 primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IPrimitiveTypeReference A new primitive type reference.
+     * @param  bool                    $isNullable flag specifying if the referenced type should be nullable
+     * @return IPrimitiveTypeReference a new primitive type reference
      */
     public function GetInt64(bool $isNullable): IPrimitiveTypeReference
     {
@@ -375,8 +372,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to the Boolean primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IPrimitiveTypeReference A new primitive type reference.
+     * @param  bool                    $isNullable flag specifying if the referenced type should be nullable
+     * @return IPrimitiveTypeReference a new primitive type reference
      */
     public function GetBoolean(bool $isNullable): IPrimitiveTypeReference
     {
@@ -386,7 +383,7 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to the Byte primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
+     * @param  bool                    $isNullable flag specifying if the referenced type should be nullable
      * @return IPrimitiveTypeReference A new primitive type reference.<
      */
     public function GetByte(bool $isNullable): IPrimitiveTypeReference
@@ -397,8 +394,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to the SByte primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IPrimitiveTypeReference A new primitive type reference.
+     * @param  bool                    $isNullable flag specifying if the referenced type should be nullable
+     * @return IPrimitiveTypeReference a new primitive type reference
      */
     public function GetSByte(bool $isNullable): IPrimitiveTypeReference
     {
@@ -408,8 +405,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to the Guid primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IPrimitiveTypeReference A new primitive type reference.
+     * @param  bool                    $isNullable flag specifying if the referenced type should be nullable
+     * @return IPrimitiveTypeReference a new primitive type reference
      */
     public function GetGuid(bool $isNullable): IPrimitiveTypeReference
     {
@@ -419,8 +416,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a datetime primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return ITemporalTypeReference A new datetime type reference.
+     * @param  bool                   $isNullable flag specifying if the referenced type should be nullable
+     * @return ITemporalTypeReference a new datetime type reference
      */
     public function GetDateTime(bool $isNullable): ITemporalTypeReference
     {
@@ -430,8 +427,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a datetime with offset primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return ITemporalTypeReference A new datetime with offset type reference.
+     * @param  bool                   $isNullable flag specifying if the referenced type should be nullable
+     * @return ITemporalTypeReference a new datetime with offset type reference
      */
     public function GetDateTimeOffset(bool $isNullable): ITemporalTypeReference
     {
@@ -441,8 +438,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a time primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return ITemporalTypeReference A new time type reference.
+     * @param  bool                   $isNullable flag specifying if the referenced type should be nullable
+     * @return ITemporalTypeReference a new time type reference
      */
     public function GetTime(bool $isNullable): ITemporalTypeReference
     {
@@ -452,10 +449,10 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a decimal primitive type definition.
      *
-     * @param int|null $precision Precision of values of this type.
-     * @param int|null $scale Scale of values of this type.
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IDecimalTypeReference A new decimal type reference.
+     * @param  int|null              $precision  precision of values of this type
+     * @param  int|null              $scale      scale of values of this type
+     * @param  bool                  $isNullable flag specifying if the referenced type should be nullable
+     * @return IDecimalTypeReference a new decimal type reference
      */
     public function GetDecimal(?int $precision, ?int $scale, bool $isNullable): IDecimalTypeReference
     {
@@ -466,8 +463,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a single primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IPrimitiveTypeReference A new single type reference.
+     * @param  bool                    $isNullable flag specifying if the referenced type should be nullable
+     * @return IPrimitiveTypeReference a new single type reference
      */
     public function GetSingle(bool $isNullable): IPrimitiveTypeReference
     {
@@ -477,8 +474,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a double primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IPrimitiveTypeReference A new double type reference.
+     * @param  bool                    $isNullable flag specifying if the referenced type should be nullable
+     * @return IPrimitiveTypeReference a new double type reference
      */
     public function GetDouble(bool $isNullable): IPrimitiveTypeReference
     {
@@ -488,8 +485,8 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a stream primitive type definition.
      *
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IPrimitiveTypeReference A new stream type reference.
+     * @param  bool                    $isNullable flag specifying if the referenced type should be nullable
+     * @return IPrimitiveTypeReference a new stream type reference
      */
     public function GetStream(bool $isNullable): IPrimitiveTypeReference
     {
@@ -499,14 +496,14 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a temporal primitive type definition.
      *
-     * @param PrimitiveTypeKind $kind Primitive kind of the type reference being created.
-     * @param int|null $precision Precision of values of this type.
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return ITemporalTypeReference A new temporal type reference.
+     * @param  PrimitiveTypeKind      $kind       primitive kind of the type reference being created
+     * @param  int|null               $precision  precision of values of this type
+     * @param  bool                   $isNullable flag specifying if the referenced type should be nullable
+     * @return ITemporalTypeReference a new temporal type reference
      */
     public function GetTemporal(PrimitiveTypeKind $kind, ?int $precision, bool $isNullable): ITemporalTypeReference
     {
-        if($kind->IsTemporal()) {
+        if ($kind->IsTemporal()) {
             return new EdmTemporalTypeReference($this->GetCoreModelPrimitiveType($kind), $isNullable, $precision);
         }
         throw new InvalidOperationException(StringConst::EdmPrimitive_UnexpectedKind());
@@ -515,11 +512,11 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a binary primitive type definition.
      *
-     * @param bool $isUnbounded Flag specifying if max length is unbounded.
-     * @param int|null $maxLength Maximum length of the type.
-     * @param bool|null $isFixedLength Flag specifying if the type will have a fixed length.
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IBinaryTypeReference A new binary type reference.
+     * @param  bool                 $isUnbounded   flag specifying if max length is unbounded
+     * @param  int|null             $maxLength     maximum length of the type
+     * @param  bool|null            $isFixedLength flag specifying if the type will have a fixed length
+     * @param  bool                 $isNullable    flag specifying if the referenced type should be nullable
+     * @return IBinaryTypeReference a new binary type reference
      */
     public function GetBinary(bool $isUnbounded, ?int $maxLength, ?bool $isFixedLength, bool $isNullable): IBinaryTypeReference
     {
@@ -529,14 +526,14 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a spatial primitive type definition.
      *
-     * @param PrimitiveTypeKind $kind Primitive kind of the type reference being created.
-     * @param int|null $spatialReferenceIdentifier Spatial Reference Identifier for the spatial type being created.
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return ISpatialTypeReference A new spatial type reference.
+     * @param  PrimitiveTypeKind     $kind                       primitive kind of the type reference being created
+     * @param  int|null              $spatialReferenceIdentifier spatial Reference Identifier for the spatial type being created
+     * @param  bool                  $isNullable                 flag specifying if the referenced type should be nullable
+     * @return ISpatialTypeReference a new spatial type reference
      */
     public function GetSpatial(PrimitiveTypeKind $kind, ?int $spatialReferenceIdentifier, bool $isNullable): ISpatialTypeReference
     {
-        if($kind->IsSpatial()) {
+        if ($kind->IsSpatial()) {
             return new EdmSpatialTypeReference($this->GetCoreModelPrimitiveType($kind), $isNullable, $spatialReferenceIdentifier);
         }
         throw new InvalidOperationException(StringConst::EdmPrimitive_UnexpectedKind());
@@ -545,17 +542,16 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets a reference to a string primitive type definition.
      *
-     * @param bool $isUnbounded Flag specifying if max length is the maximum allowable value.
-     * @param int|null $maxLength Maximum length of the type.
-     * @param bool|null $isFixedLength Flag specifying if the type will have a fixed length.
-     * @param bool|null $isUnicode Flag specifying if the type should support unicode encoding.
-     * @param string|null $collation String representing how data should be ordered.
-     * @param bool $isNullable Flag specifying if the referenced type should be nullable.
-     * @return IStringTypeReference A new string type reference.
+     * @param  bool                 $isUnbounded   flag specifying if max length is the maximum allowable value
+     * @param  int|null             $maxLength     maximum length of the type
+     * @param  bool|null            $isFixedLength flag specifying if the type will have a fixed length
+     * @param  bool|null            $isUnicode     flag specifying if the type should support unicode encoding
+     * @param  string|null          $collation     string representing how data should be ordered
+     * @param  bool                 $isNullable    flag specifying if the referenced type should be nullable
+     * @return IStringTypeReference a new string type reference
      */
     public function GetString(bool $isUnbounded, ?int $maxLength, ?bool $isFixedLength, ?bool $isUnicode, ?string $collation, bool $isNullable): IStringTypeReference
     {
         return new EdmStringTypeReference($this->GetCoreModelPrimitiveType(PrimitiveTypeKind::String()), $isNullable, $isUnbounded, $maxLength, $isFixedLength, $isUnicode, $collation);
     }
-
 }

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Enums\PropertyKind;
 
 /**
- * Interface IEdmProperty
+ * Interface IEdmProperty.
  *
  * Represents an EDM property.
  *
@@ -15,17 +17,17 @@ use AlgoWeb\ODataMetadata\Enums\PropertyKind;
 interface IProperty extends INamedElement, IVocabularyAnnotatable
 {
     /**
-     * @return PropertyKind Gets the kind of this property.
+     * @return PropertyKind gets the kind of this property
      */
     public function getPropertyKind(): PropertyKind;
 
     /**
-     * @return ITypeReference Gets the type of this property.
+     * @return ITypeReference gets the type of this property
      */
     public function getType(): ITypeReference;
 
     /**
-     * @return IStructuredType Gets the type that this property belongs to.
+     * @return IStructuredType gets the type that this property belongs to
      */
     public function getDeclaringType(): IStructuredType;
 }

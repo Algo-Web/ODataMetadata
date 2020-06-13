@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\EntityTypeReferenceHelpers;
 
 /**
- * Interface IEdmEntityTypeReference
+ * Interface IEdmEntityTypeReference.
  *
  * Represents references to entity types.
  *
@@ -15,5 +17,4 @@ use AlgoWeb\ODataMetadata\Helpers\EntityTypeReferenceHelpers;
  */
 interface IEntityTypeReference extends IStructuredTypeReference
 {
-
 }

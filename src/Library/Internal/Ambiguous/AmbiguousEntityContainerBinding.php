@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
-
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
@@ -35,8 +36,8 @@ class AmbiguousEntityContainerBinding extends AmbiguousBinding implements IEntit
     /**
      *  Searches for an entity set with the given name in this entity container and returns null if no such set exists.
      *
-     * @param string $setName The name of the element being found
-     * @return IEntitySet|null The requested element, or null if the element does not exist.
+     * @param  string          $setName The name of the element being found
+     * @return IEntitySet|null the requested element, or null if the element does not exist
      */
     public function findEntitySet(string $setName): ?IEntitySet
     {
@@ -47,8 +48,8 @@ class AmbiguousEntityContainerBinding extends AmbiguousBinding implements IEntit
      * Searches for function imports with the given name in this entity container and returns empty enumerable if no
      * such function import exists.
      *
-     * @param string $functionName The name of the function import being found.
-     * @return array|IFunctionImport[] A group of the requested function imports, or an empty enumerable if no such function import exists.
+     * @param  string                  $functionName the name of the function import being found
+     * @return array|IFunctionImport[] a group of the requested function imports, or an empty enumerable if no such function import exists
      */
     public function findFunctionImports(string $functionName): array
     {

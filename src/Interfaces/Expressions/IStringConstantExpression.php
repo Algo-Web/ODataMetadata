@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\Values\IStringValue;
 
 /**
- * Interface IStringConstantExpression
+ * Interface IStringConstantExpression.
  *
  * Represents an EDM string constant expression
  *
@@ -15,5 +16,4 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IStringValue;
  */
 interface IStringConstantExpression extends IExpression, IStringValue
 {
-
 }

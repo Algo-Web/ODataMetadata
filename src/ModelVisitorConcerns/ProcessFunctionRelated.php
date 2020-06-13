@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainerElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
@@ -32,11 +33,10 @@ trait ProcessFunctionRelated
         $this->endElement($functionImport, __METHOD__);
     }
 
-    protected  function ProcessFunctionBase(IFunctionBase $functionBase): void
+    protected function ProcessFunctionBase(IFunctionBase $functionBase): void
     {
         $this->startElement($functionBase, __METHOD__);
-        if ($functionBase->getReturnType() != null)
-        {
+        if ($functionBase->getReturnType() != null) {
             $this->VisitTypeReference($functionBase->getReturnType());
         }
 
@@ -54,16 +54,15 @@ trait ProcessFunctionRelated
         $this->endElement($parameter, __METHOD__);
     }
 
-    abstract function ProcessSchemaElement(ISchemaElement $function): void;
+    abstract public function ProcessSchemaElement(ISchemaElement $function): void;
 
-    abstract function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $parameter): void;
+    abstract public function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $parameter): void;
 
-    abstract function ProcessNamedElement(INamedElement $parameter): void;
+    abstract public function ProcessNamedElement(INamedElement $parameter): void;
 
-    abstract function VisitTypeReference(ITypeReference $getType): void;
+    abstract public function VisitTypeReference(ITypeReference $getType): void;
 
-    abstract function VisitFunctionParameters(?array $getParameters): void;
+    abstract public function VisitFunctionParameters(?array $getParameters): void;
 
-    abstract function ProcessEntityContainerElement(IEntityContainerElement $functionImport): void;
-
+    abstract public function ProcessEntityContainerElement(IEntityContainerElement $functionImport): void;
 }

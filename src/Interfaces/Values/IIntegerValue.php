@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 
 /**
- * Interface IIntegerValue
+ * Interface IIntegerValue.
  *
  * Represents an EDM integer value.
  *
@@ -13,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 interface IIntegerValue extends IPrimitiveValue
 {
     /**
-     * @return int Gets the definition of this integer value.
+     * @return int gets the definition of this integer value
      */
     public function getValue(): int;
 }

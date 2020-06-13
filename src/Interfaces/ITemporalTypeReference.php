@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmTemporalTypeReference
+ * Interface IEdmTemporalTypeReference.
  *
  * Represents a reference to an EDM temporal (Time, DateTime, DateTimeOffset) type.
  *
@@ -13,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface ITemporalTypeReference extends IPrimitiveTypeReference
 {
     /**
-     * @return int|null Gets the precision of this temporal type.
+     * @return int|null gets the precision of this temporal type
      */
     public function getPrecision(): ?int;
 }

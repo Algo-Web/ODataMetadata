@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Values;
-
 
 use DateTime;
 
 /**
- * Interface IDateTimeOffsetValue
+ * Interface IDateTimeOffsetValue.
  *
  * Represents an EDM datetime with offset value.
  *
@@ -16,7 +17,7 @@ use DateTime;
 interface IDateTimeOffsetValue extends IPrimitiveValue
 {
     /**
-     * @return DateTime Gets the definition of this value.
+     * @return DateTime gets the definition of this value
      */
-public function getValue(): DateTime;
+    public function getValue(): DateTime;
 }

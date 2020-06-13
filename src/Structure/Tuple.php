@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Structure;
-
 
 class Tuple
 {
@@ -28,5 +29,4 @@ class Tuple
     public function __construct($item1, $item2)
     {
     }
-
 }

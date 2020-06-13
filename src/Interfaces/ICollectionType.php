@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmCollectionType
+ * Interface IEdmCollectionType.
  *
  * Represents a definition of an EDM collection type.
  *
@@ -13,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface ICollectionType extends IType
 {
     /**
-     * @return ITypeReference Gets the element type of this collection.
+     * @return ITypeReference gets the element type of this collection
      */
     public function getElementType(): ITypeReference;
 }

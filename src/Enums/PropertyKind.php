@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Enums;
 
 /**
- * Class EdmPropertyKind
+ * Class EdmPropertyKind.
  *
  * Defines EDM property types.
  *
@@ -18,5 +20,4 @@ class PropertyKind extends Enum
     protected const None       = 1;
     protected const Structural = 2;
     protected const Navigation = 3;
-
 }

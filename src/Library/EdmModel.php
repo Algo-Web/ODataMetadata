@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
 
@@ -40,19 +42,19 @@ class EdmModel extends EdmModelBase
     }
 
     /**
-     * @return ISchemaElement[] Gets the collection of schema elements that are contained in this model.
+     * @return ISchemaElement[] gets the collection of schema elements that are contained in this model
      */
     public function getSchemaElements(): array
     {
         return $this->elements;
     }
     /**
-     * @return IVocabularyAnnotation[] Gets the collection of vocabulary annotations that are contained in this model.
+     * @return IVocabularyAnnotation[] gets the collection of vocabulary annotations that are contained in this model
      */
     public function getVocabularyAnnotations(): array
     {
         $values = [];
-        foreach($this->vocabularyAnnotationsDictionary as $annotation){
+        foreach ($this->vocabularyAnnotationsDictionary as $annotation) {
             $values[] = $annotation;
         }
         return $values;
@@ -60,7 +62,7 @@ class EdmModel extends EdmModelBase
     /**
      * Adds a model reference to this model.
      *
-     * @param IModel $model The model to reference.
+     * @param IModel $model the model to reference
      */
     public function AddReferencedModel(IModel $model): void
     {
@@ -69,8 +71,8 @@ class EdmModel extends EdmModelBase
     /**
      * Finds a list of types that derive directly from the supplied type.
      *
-     * @param IStructuredType $baseType The base type that derived types are being searched for.
-     * @return IStructuredType[] A list of types from this model that derive directly from the given type.
+     * @param  IStructuredType   $baseType the base type that derived types are being searched for
+     * @return IStructuredType[] a list of types from this model that derive directly from the given type
      */
     public function findDirectlyDerivedTypes(IStructuredType $baseType): array
     {
@@ -83,7 +85,7 @@ class EdmModel extends EdmModelBase
     /**
      * Adds a schema element to this model.
      *
-     * @param ISchemaElement $element Element to be added.
+     * @param ISchemaElement $element element to be added
      */
     public function AddElement(ISchemaElement $element): void
     {
@@ -101,12 +103,11 @@ class EdmModel extends EdmModelBase
     /**
      *  Adds a collection of schema elements to this model.
      *
-     * @param ISchemaElement[] $newElements Elements to be added.
+     * @param ISchemaElement[] $newElements elements to be added
      */
     public function AddElements(array $newElements): void
     {
-        foreach ($newElements as $element)
-        {
+        foreach ($newElements as $element) {
             $this->AddElement($element);
         }
     }
@@ -114,17 +115,16 @@ class EdmModel extends EdmModelBase
     /**
      * Adds a vocabulary annotation to this model.
      *
-     * @param IVocabularyAnnotation $annotation The annotation to be added.
+     * @param IVocabularyAnnotation $annotation the annotation to be added
      */
     public function AddVocabularyAnnotation(IVocabularyAnnotation $annotation)
     {
-        if ($annotation->getTarget() == null)
-        {
+        if ($annotation->getTarget() == null) {
             throw new InvalidOperationException(StringConst::Constructable_VocabularyAnnotationMustHaveTarget());
         }
 
         $elementAnnotations = [];
-        if($this->vocabularyAnnotationsDictionary->offsetExists($annotation->getTarget())){
+        if ($this->vocabularyAnnotationsDictionary->offsetExists($annotation->getTarget())) {
             $elementAnnotations = $this->vocabularyAnnotationsDictionary->offsetGet($annotation->getTarget());
         }
         $elementAnnotations[] = $annotation;

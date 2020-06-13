@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
@@ -20,9 +21,9 @@ class EdmSpatialTypeReference extends EdmPrimitiveTypeReference implements ISpat
     /**
      * Initializes a new instance of the <see cref="EdmSpatialTypeReference"/> class.
      *
-     * @param IPrimitiveType $definition The type this reference refers to.
-     * @param bool $isNullable Denotes whether the type can be nullable.
-     * @param int|null $spatialReferenceIdentifier Spatial Reference Identifier for the spatial type being created.
+     * @param IPrimitiveType $definition                 the type this reference refers to
+     * @param bool           $isNullable                 denotes whether the type can be nullable
+     * @param int|null       $spatialReferenceIdentifier spatial Reference Identifier for the spatial type being created
      */
     public function __construct(IPrimitiveType $definition, bool $isNullable, ?int $spatialReferenceIdentifier = null)
     {
@@ -50,7 +51,7 @@ class EdmSpatialTypeReference extends EdmPrimitiveTypeReference implements ISpat
     }
 
     /**
-     * @return bool Gets a value indicating whether this type is nullable.
+     * @return bool gets a value indicating whether this type is nullable
      */
     public function getNullable(): bool
     {
@@ -58,7 +59,7 @@ class EdmSpatialTypeReference extends EdmPrimitiveTypeReference implements ISpat
     }
 
     /**
-     * @return IType|null Gets the definition to which this type refers.
+     * @return IType|null gets the definition to which this type refers
      */
     public function getDefinition(): ?IType
     {
@@ -66,7 +67,7 @@ class EdmSpatialTypeReference extends EdmPrimitiveTypeReference implements ISpat
     }
 
     /**
-     * @return int Gets the precision of this temporal type.
+     * @return int gets the precision of this temporal type
      */
     public function getSpatialReferenceIdentifier(): int
     {

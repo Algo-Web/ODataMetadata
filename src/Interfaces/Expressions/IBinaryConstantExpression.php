@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\Values\IBinaryValue;
 
 /**
- * Interface IBinaryConstantExpression
+ * Interface IBinaryConstantExpression.
  *
  * Represents an EDM binary constant expression.
  *
@@ -15,7 +16,5 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IBinaryValue;
  */
 interface IBinaryConstantExpression extends IExpression, IBinaryValue
 {
-
     public function getValue(): array;
-
 }

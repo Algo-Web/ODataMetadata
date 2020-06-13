@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Enums;
-
 
 use BadMethodCallException;
 
@@ -30,12 +31,13 @@ abstract class Enum extends \MyCLabs\Enum\Enum
     }
 
     /**
-     * @param self ...$candidates
+     * @param  self ...$candidates
      * @return bool
      */
-    public function isAnyOf(self ...$candidates): bool {
-        foreach($candidates as $candidate){
-            if($this->isFlag($candidate->getValue())){
+    public function isAnyOf(self ...$candidates): bool
+    {
+        foreach ($candidates as $candidate) {
+            if ($this->isFlag($candidate->getValue())) {
                 return true;
             }
         }

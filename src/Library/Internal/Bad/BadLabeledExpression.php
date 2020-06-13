@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Edm\Internal\Cache;
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
@@ -25,11 +26,11 @@ class BadLabeledExpression extends BadElement implements ILabeledExpression
     {
         parent::__construct($errors);
         $this->expressionCache = new Cache(BadLabeledExpression::class, IExpression::class);
-        $this->name = $name ?? '';
+        $this->name            = $name ?? '';
     }
 
     /**
-     * @return ExpressionKind Gets the kind of this expression.
+     * @return ExpressionKind gets the kind of this expression
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -37,17 +38,17 @@ class BadLabeledExpression extends BadElement implements ILabeledExpression
     }
 
     /**
-     * @return IExpression Gets the underlying expression.
+     * @return IExpression gets the underlying expression
      */
     public function getExpression(): IExpression
     {
-        $expression = $this->expressionCache->getValue($this,[$this,'ComputeExpression']);
+        $expression = $this->expressionCache->getValue($this, [$this,'ComputeExpression']);
         assert($expression instanceof IExpression);
         return $expression;
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {

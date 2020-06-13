@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IPropertyValueBinding;
@@ -15,7 +16,6 @@ use AlgoWeb\ODataMetadata\Interfaces\INamedElement;
 
 trait ProcessAnnotations
 {
-
     protected function ProcessVocabularyAnnotation(IVocabularyAnnotation $annotation): void
     {
         $this->startElement($annotation, __METHOD__);
@@ -53,11 +53,11 @@ trait ProcessAnnotations
         $this->endElement($binding, __METHOD__);
     }
 
-    abstract function VisitExpression(IExpression $getValue): void;
+    abstract public function VisitExpression(IExpression $getValue): void;
 
-    abstract function VisitPropertyValueBindings(array $getPropertyValueBindings): void;
+    abstract public function VisitPropertyValueBindings(array $getPropertyValueBindings): void;
 
-    abstract function ProcessNamedElement(INamedElement $annotation): void;
+    abstract public function ProcessNamedElement(INamedElement $annotation): void;
 
-    abstract function ProcessElement(IEdmElement $annotation): void;
+    abstract public function ProcessElement(IEdmElement $annotation): void;
 }

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmValueTerm
+ * Interface IEdmValueTerm.
  *
  * Represents an EDM value term.
  *
@@ -13,8 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface IValueTerm extends ISchemaElement, ITerm
 {
     /**
-     * @return ITypeReference Gets the type of this term.
+     * @return ITypeReference gets the type of this term
      */
     public function getType(): ITypeReference;
-
 }

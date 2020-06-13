@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceType;
@@ -23,12 +24,11 @@ class BadEntityReferenceType extends BadType implements IEntityReferenceType
     public function __construct(array $errors)
     {
         parent::__construct($errors);
-        $this->entityType = new BadEntityType('', $this->getErrors()    );
-
+        $this->entityType = new BadEntityType('', $this->getErrors());
     }
 
     /**
-     * @return IEntityType Gets the entity type pointed to by this entity reference.
+     * @return IEntityType gets the entity type pointed to by this entity reference
      */
     public function getEntityType(): IEntityType
     {

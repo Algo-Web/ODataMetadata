@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Core;
-
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
@@ -31,11 +32,11 @@ class EdmValidCoreModelPrimitiveType extends EdmType implements IPrimitiveType, 
     private $primitiveKind;
 
     public function __construct(?string $namespaceName, ?string $name, PrimitiveTypeKind $primitiveKind)
-{
-$this->namespaceName = $namespaceName ?? '';
-$this->name = $name ?? '';
-$this->primitiveKind = $primitiveKind;
-}
+    {
+        $this->namespaceName = $namespaceName ?? '';
+        $this->name          = $name ?? '';
+        $this->primitiveKind = $primitiveKind;
+    }
 
     /**
      * Gets the name of this element.
@@ -78,7 +79,7 @@ $this->primitiveKind = $primitiveKind;
     }
 
     /**
-     * @return TypeKind Gets the kind of this type.
+     * @return TypeKind gets the kind of this type
      */
     public function getTypeKind(): TypeKind
     {

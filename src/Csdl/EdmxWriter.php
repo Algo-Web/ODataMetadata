@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Csdl;
 
@@ -56,49 +58,45 @@ class EdmxWriter
 
     private function __construct(IModel $model, array $schemas, XmlWriter $writer, Version $edmxVersion, EdmxTarget $target)
     {
-        $this->model = $model;
-        $this->schemas = $schemas;
-        $this->writer = $writer;
+        $this->model       = $model;
+        $this->schemas     = $schemas;
+        $this->writer      = $writer;
         $this->edmxVersion = $edmxVersion;
-        $this->target = $target;
+        $this->target      = $target;
 
-        assert(in_array($edmxVersion, CsdlConstants::getSupportedVersions(),'Unsupported Edmx Version'));
+        assert(in_array($edmxVersion, CsdlConstants::getSupportedVersions(), 'Unsupported Edmx Version'));
         $this->edmxNamespace = CsdlConstants::versionToEdmxNamespace(/*Version::v1());/*/ $edmxVersion);
     }
 
     /**
      * Outputs an EDMX artifact to the provided XmlWriter.
      *
-     * @param IModel $model Model to be written.
-     * @param XMLWriter $writer XmlWriter the generated EDMX will be written to.
-     * @param EdmxTarget $target Target implementation of the EDMX being generated.
-     * @param array $errors Errors that prevented successful serialization, or no errors if serialization was successfull.
-     * @return bool A value indicating whether serialization was successful.
+     * @param  IModel     $model  model to be written
+     * @param  XMLWriter  $writer xmlWriter the generated EDMX will be written to
+     * @param  EdmxTarget $target target implementation of the EDMX being generated
+     * @param  array      $errors errors that prevented successful serialization, or no errors if serialization was successfull
+     * @return bool       a value indicating whether serialization was successful
      */
-    public static function TryWriteEdmx(IModel $model, XmlWriter $writer, EdmxTarget $target = null, array &$errors = []):bool
+    public static function TryWriteEdmx(IModel $model, XmlWriter $writer, EdmxTarget $target = null, array &$errors = []): bool
     {
         $target = $target ?? EdmxTarget::OData();
         $errors = SerializationValidator::GetSerializationErrors($model);
-        if (count($errors) > 0)
-        {
+        if (count($errors) > 0) {
             return false;
         }
 
         $edmxVersion = $model->GetEdmxVersion();
-        if ($edmxVersion != null)
-        {
-            if (!in_array($edmxVersion, CsdlConstants::getSupportedVersions())){
+        if ($edmxVersion != null) {
+            if (!in_array($edmxVersion, CsdlConstants::getSupportedVersions())) {
                 $errors = [new EdmError(new CsdlLocation(0, 0), EdmErrorCode::UnknownEdmxVersion(), StringConst::Serializer_UnknownEdmxVersion())];
                 return false;
             }
-        }
-        elseif (! $edmxVersion = CsdlConstants::EdmToEdmxVersions($model->GetEdmVersion() ?? Version::v3()))
-        {
+        } elseif (! $edmxVersion = CsdlConstants::EdmToEdmxVersions($model->GetEdmVersion() ?? Version::v3())) {
             $errors = [new EdmError(new CsdlLocation(0, 0), EdmErrorCode::UnknownEdmVersion(), StringConst::Serializer_UnknownEdmVersion()) ];
             return false;
         }
 
-            $schemas = (new EdmModelSchemaSeparationSerializationVisitor($model))->GetSchemas();
+        $schemas = (new EdmModelSchemaSeparationSerializationVisitor($model))->GetSchemas();
         $writer->openMemory();
         $writer->startDocument();
         $writer->setIndent(true);
@@ -113,8 +111,7 @@ class EdmxWriter
 
     private function WriteEdmx(): void
     {
-        switch ($this->target)
-        {
+        switch ($this->target) {
             case EdmxTarget::OData():
                 $this->WriteODataEdmx();
                 break;
@@ -132,12 +129,12 @@ class EdmxWriter
         $this->EndElement(); // </Edmx>
     }
 
-    private function WriteEdmxElement():void
+    private function WriteEdmxElement(): void
     {
         $this->writer->startElementNs(CsdlConstants::Prefix_Edmx, CsdlConstants::Element_Edmx, $this->getEdmxNamespace());
         $this->writer->writeAttribute(CsdlConstants::Prefix_Xml_Namespace, CsdlConstants::versionToEdmNamespace($this->edmxVersion));
-        $this->writer->writeAttributeNs(CsdlConstants::Prefix_Xml_Namespace, CsdlConstants::Prefix_ODataMetadata , null, CsdlConstants::ODataMetadataNamespace);
-        $this->writer->writeAttributeNs(CsdlConstants::Prefix_Xml_Namespace, CsdlConstants::Prefix_Annotations , null, CsdlConstants::AnnotationNamespace);
+        $this->writer->writeAttributeNs(CsdlConstants::Prefix_Xml_Namespace, CsdlConstants::Prefix_ODataMetadata, null, CsdlConstants::ODataMetadataNamespace);
+        $this->writer->writeAttributeNs(CsdlConstants::Prefix_Xml_Namespace, CsdlConstants::Prefix_Annotations, null, CsdlConstants::AnnotationNamespace);
 
         $this->writer->writeAttribute(CsdlConstants::Attribute_Version, /*Version::v1()->toString());*/ $this->edmxVersion->toString());
     }
@@ -146,29 +143,23 @@ class EdmxWriter
     {
         $this->writer->startElementNs(CsdlConstants::Prefix_Edmx, CsdlConstants::Element_DataServices, $this->getEdmxNamespace());
         $dataServiceVersion = $this->model->GetDataServiceVersion();
-        if ($dataServiceVersion != null)
-        {
+        if ($dataServiceVersion != null) {
             $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_DataServiceVersion, CsdlConstants::ODataMetadataNamespace, $dataServiceVersion->ToString());
-        }else{
+        } else {
             $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_DataServiceVersion, CsdlConstants::ODataMetadataNamespace, $this->edmxVersion->ToString());
-
         }
 
         $dataServiceMaxVersion = $this->model->GetMaxDataServiceVersion();
-        if ($dataServiceMaxVersion != null)
-        {
+        if ($dataServiceMaxVersion != null) {
             $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_MaxDataServiceVersion, CsdlConstants::ODataMetadataNamespace, $dataServiceMaxVersion->ToString());
         }
     }
 
-    /**
-     *
-     */
+
     private function WriteSchemas(): void
     {
         $edmVersion = $this->model->GetEdmVersion() ?? Version::v3();
-        foreach ($this->schemas as $schema)
-        {
+        foreach ($this->schemas as $schema) {
             $visitor = new EdmModelCsdlSerializationVisitor($this->model, $this->writer, $edmVersion);
             $visitor->VisitEdmSchema($schema, $this->model->GetNamespacePrefixMappings());
         }

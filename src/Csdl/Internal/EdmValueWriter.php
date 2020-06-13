@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Csdl\Internal;
-
 
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
 use AlgoWeb\ODataMetadata\Exception\NotSupportedException;
@@ -59,7 +60,7 @@ abstract class EdmValueWriter
                 assert($v instanceof ITimeValue);
                 return self::TimeAsXml($v->getValue());
             default:
-                /** @noinspection PhpUnhandledExceptionInspection */
+                /* @noinspection PhpUnhandledExceptionInspection */
                 throw new NotSupportedException(StringConst::ValueWriter_NonSerializableValue($v->getValueKind()->getKey()));
         }
     }
@@ -73,7 +74,7 @@ abstract class EdmValueWriter
     {
         $chars = [];
         for ($i = 0; $i < count($binary); ++$i) {
-            $chars[$i << 1] = self::$Hex[$binary[$i] >> 4];
+            $chars[$i << 1]     = self::$Hex[$binary[$i] >> 4];
             $chars[$i << 1 | 1] = self::$Hex[$binary[$i] & 0x0F];
         }
 
@@ -109,7 +110,7 @@ abstract class EdmValueWriter
 
     public static function DateTimeAsXml(DateTime $d): string
     {
-        return $d->format("y-n-jTG:i:s:u") . '000';
+        return $d->format('y-n-jTG:i:s:u') . '000';
     }
 
     public static function TimeAsXml(DateTime $d): string

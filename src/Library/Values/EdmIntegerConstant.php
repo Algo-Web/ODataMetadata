@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Values;
 
@@ -20,19 +22,17 @@ class EdmIntegerConstant extends EdmValue implements IIntegerConstantExpression
     /**
      * Initializes a new instance of the EdmGuidConstant class.
      *
-     * @param int $value String value represented by this value.
-     * @param IPrimitiveTypeReference|null $type Type of the boolean.
+     * @param int                          $value string value represented by this value
+     * @param IPrimitiveTypeReference|null $type  type of the boolean
      */
-    public function __construct( int $value, ?IPrimitiveTypeReference $type = null)
+    public function __construct(int $value, ?IPrimitiveTypeReference $type = null)
     {
         parent::__construct($type);
         $this->value = $value;
     }
 
     /**
-     *
-     *
-     * @return int Gets the definition of this binary value.
+     * @return int gets the definition of this binary value
      */
     public function getValue(): int
     {
@@ -40,7 +40,7 @@ class EdmIntegerConstant extends EdmValue implements IIntegerConstantExpression
     }
 
     /**
-     * @return ExpressionKind Gets the kind of this expression.
+     * @return ExpressionKind gets the kind of this expression
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -48,7 +48,7 @@ class EdmIntegerConstant extends EdmValue implements IIntegerConstantExpression
     }
 
     /**
-     * @return ValueKind Gets the kind of this value.
+     * @return ValueKind gets the kind of this value
      */
     public function getValueKind(): ValueKind
     {

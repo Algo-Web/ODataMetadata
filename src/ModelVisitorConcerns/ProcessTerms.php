@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\Interfaces\ITerm;
@@ -23,9 +24,7 @@ trait ProcessTerms
         $this->VisitTypeReference($term->getType());
     }
 
-    abstract function ProcessSchemaElement(ISchemaElement $term): void;
+    abstract public function ProcessSchemaElement(ISchemaElement $term): void;
 
-    abstract function VisitTypeReference(ITypeReference $getType): void;
-
-
+    abstract public function VisitTypeReference(ITypeReference $getType): void;
 }

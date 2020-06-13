@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmDocumentation
+ * Interface IEdmDocumentation.
  *
  * Represents an EDM documentation.
  *
@@ -13,12 +15,12 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface IDocumentation
 {
     /**
-     * @return string Gets a summary of this documentation.
+     * @return string gets a summary of this documentation
      */
     public function getSummary(): string;
 
     /**
-     * @return string Gets a long description of this documentation.
+     * @return string gets a long description of this documentation
      */
     public function getDescription(): string;
 }

@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmSchemaType
+ * Interface IEdmSchemaType.
  *
  * Represents an EDM type defined in an EDM schema.
  *
@@ -12,5 +14,4 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
  */
 interface ISchemaType extends IType, ISchemaElement
 {
-
 }

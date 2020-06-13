@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
 
@@ -8,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 
 /**
- * Class EdmNavigationPropertyInfo
+ * Class EdmNavigationPropertyInfo.
  *
  * Represents an EDM navigation property info used during construction of navigation properties.
  *
@@ -39,9 +41,8 @@ final class EdmNavigationPropertyInfo
 
     public $onDelete;
 
-    public function clone(): EdmNavigationPropertyInfo{
+    public function clone(): EdmNavigationPropertyInfo
+    {
         return clone $this;
     }
-
-
 }

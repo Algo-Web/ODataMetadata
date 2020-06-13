@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\ILocation;
 
 /**
- * Class ObjectLocation
+ * Class ObjectLocation.
  * @package AlgoWeb\ODataMetadata\Validation
  */
 class ObjectLocation implements ILocation
@@ -28,7 +29,7 @@ class ObjectLocation implements ILocation
     }
 
     /**
-     * @return mixed  Gets the object.
+     * @return mixed gets the object
      */
     public function getObject()
     {

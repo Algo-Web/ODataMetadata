@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Csdl\Internal\Serialization;
-
 
 use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
@@ -40,12 +41,12 @@ class EdmSchema
 
     public function __construct(string $namespaceString)
     {
-        $this->schemaNamespace = $namespaceString;
-        $this->schemaElements = [];
-        $this->entityContainers = [];
+        $this->schemaNamespace                 = $namespaceString;
+        $this->schemaElements                  = [];
+        $this->entityContainers                = [];
         $this->associationNavigationProperties = [];
-        $this->annotations = [];
-        $this->usedNamespaces = [];
+        $this->annotations                     = [];
+        $this->usedNamespaces                  = [];
     }
     /**
      * @return string
@@ -95,7 +96,7 @@ class EdmSchema
         return $this->usedNamespaces;
     }
 
-    public function addSchemaElement(ISchemaElement $element):self
+    public function addSchemaElement(ISchemaElement $element): self
     {
         $this->schemaElements[] = $element;
         return $this;
@@ -109,10 +110,8 @@ class EdmSchema
 
     public function addNamespaceUsing(string $usedNamespace): self
     {
-        if ($usedNamespace != EdmConstants::EdmNamespace)
-        {
-            if (!in_array($usedNamespace,$this->usedNamespaces))
-            {
+        if ($usedNamespace != EdmConstants::EdmNamespace) {
+            if (!in_array($usedNamespace, $this->usedNamespaces)) {
                 $this->usedNamespaces[] = $usedNamespace;
             }
         }
@@ -121,7 +120,7 @@ class EdmSchema
 
     public function addVocabularyAnnotation(IVocabularyAnnotation $annotation)
     {
-        if(!array_key_exists($annotation->TargetString(), $this->annotations)){
+        if (!array_key_exists($annotation->TargetString(), $this->annotations)) {
             $this->annotations[$annotation->TargetString()] = [];
         }
         $this->annotations[$annotation->TargetString()][] = $annotation;

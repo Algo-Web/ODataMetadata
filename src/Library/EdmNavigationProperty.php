@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\EdmUtil;
@@ -40,21 +41,23 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
      */
     private $dependentProperties;
 
-    public function __construct(IEntityType $declaringType,
-                                string $name,
-                                ITypeReference $type,
-                                ?array $dependentProperties,
-                                ?bool $containsTarget,
-                                ?OnDeleteAction $onDelete)
+    public function __construct(
+        IEntityType $declaringType,
+        string $name,
+        ITypeReference $type,
+        ?array $dependentProperties,
+        ?bool $containsTarget,
+        ?OnDeleteAction $onDelete
+    )
     {
         parent::__construct($declaringType, $name, $type);
         $this->dependentProperties = $dependentProperties;
-        $this->containsTarget = $containsTarget ?? CsdlConstants::Default_ContainsTarget;
-        $this->onDelete = $onDelete ?? OnDeleteAction::None();
+        $this->containsTarget      = $containsTarget ?? CsdlConstants::Default_ContainsTarget;
+        $this->onDelete            = $onDelete ?? OnDeleteAction::None();
     }
 
     /**
-     * @return INavigationProperty Gets the partner of this navigation property.
+     * @return INavigationProperty gets the partner of this navigation property
      */
     public function getPartner(): INavigationProperty
     {
@@ -62,7 +65,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
     }
 
     /**
-     * @return OnDeleteAction Gets the action to execute on the deletion of this end of a bidirectional association.
+     * @return OnDeleteAction gets the action to execute on the deletion of this end of a bidirectional association
      */
     public function getOnDelete(): OnDeleteAction
     {
@@ -70,7 +73,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
     }
 
     /**
-     * @return bool Gets whether this navigation property originates at the principal end of an association.
+     * @return bool gets whether this navigation property originates at the principal end of an association
      */
     public function isPrincipal(): bool
     {
@@ -78,8 +81,8 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
     }
 
     /**
-     * @return IStructuralProperty[]|null Gets the dependent properties of this navigation property, returning null if
-     *                                    this is the principal end or if there is no referential constraint.
+     * @return IStructuralProperty[]|null gets the dependent properties of this navigation property, returning null if
+     *                                    this is the principal end or if there is no referential constraint
      */
     public function getDependentProperties(): ?array
     {
@@ -87,7 +90,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
     }
 
     /**
-     * @return bool Gets a value indicating whether the navigation target is contained inside the navigation source.
+     * @return bool gets a value indicating whether the navigation target is contained inside the navigation source
      */
     public function containsTarget(): bool
     {
@@ -95,7 +98,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
     }
 
     /**
-     * @return PropertyKind Gets the kind of this property.
+     * @return PropertyKind gets the kind of this property
      */
     public function getPropertyKind(): PropertyKind
     {
@@ -105,34 +108,37 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
     /**
      * Creates two navigation properties representing an association between two entity types.
      *
-     * @param EdmNavigationPropertyInfo $propertyInfo Information to create the navigation property.
-     * @param EdmNavigationPropertyInfo $partnerInfo Information to create the partner navigation property.
-     * @return EdmNavigationProperty Created navigation property.
+     * @param  EdmNavigationPropertyInfo $propertyInfo information to create the navigation property
+     * @param  EdmNavigationPropertyInfo $partnerInfo  information to create the partner navigation property
+     * @return EdmNavigationProperty     created navigation property
      */
     public static function CreateNavigationPropertyWithPartnerFromInfo(
         EdmNavigationPropertyInfo $propertyInfo,
-        EdmNavigationPropertyInfo $partnerInfo): EdmNavigationProperty
+        EdmNavigationPropertyInfo $partnerInfo
+    ): EdmNavigationProperty
     {
-        EdmUtil::CheckArgumentNull($propertyInfo->name, "propertyInfo.Name");
-        EdmUtil::CheckArgumentNull($propertyInfo->target, "propertyInfo.Target");
-        EdmUtil::CheckArgumentNull($partnerInfo->name, "partnerInfo.Name");
-        EdmUtil::CheckArgumentNull($partnerInfo->target, "partnerInfo.Target");
+        EdmUtil::CheckArgumentNull($propertyInfo->name, 'propertyInfo.Name');
+        EdmUtil::CheckArgumentNull($propertyInfo->target, 'propertyInfo.Target');
+        EdmUtil::CheckArgumentNull($partnerInfo->name, 'partnerInfo.Name');
+        EdmUtil::CheckArgumentNull($partnerInfo->target, 'partnerInfo.Target');
 
         $end1 = new EdmNavigationProperty(
             $partnerInfo->target,
             $propertyInfo->name,
-            self::CreateNavigationPropertyType($propertyInfo->target, $propertyInfo->targetMultiplicity, "propertyInfo.TargetMultiplicity"),
+            self::CreateNavigationPropertyType($propertyInfo->target, $propertyInfo->targetMultiplicity, 'propertyInfo.TargetMultiplicity'),
             $propertyInfo->dependentProperties,
             $propertyInfo->containsTarget,
-            $propertyInfo->onDelete);
+            $propertyInfo->onDelete
+        );
 
         $end2 = new EdmNavigationProperty(
             $propertyInfo->target,
             $partnerInfo->name,
-            self::CreateNavigationPropertyType($partnerInfo->target, $partnerInfo->targetMultiplicity, "partnerInfo.TargetMultiplicity"),
+            self::CreateNavigationPropertyType($partnerInfo->target, $partnerInfo->targetMultiplicity, 'partnerInfo.TargetMultiplicity'),
             $partnerInfo->dependentProperties,
             $partnerInfo->containsTarget,
-            $partnerInfo->onDelete);
+            $partnerInfo->onDelete
+        );
 
         $end1->partner = $end2;
         $end2->partner = $end1;
@@ -143,17 +149,17 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
     /**
      * Creates two navigation properties representing an association between two entity types.
      *
-     * @param string $propertyName Navigation property name.
-     * @param ITypeReference $propertyType Type of the navigation property.
-     * @param IStructuralProperty[] $dependentProperties Dependent properties of the navigation source.
-     * @param bool $containsTarget A value indicating whether the navigation source logically contains the navigation target.
-     * @param OnDeleteAction $onDelete Action to take upon deletion of an instance of the navigation source.
-     * @param string $partnerPropertyName Navigation partner property name.
-     * @param ITypeReference $partnerPropertyType Type of the navigation partner property.
-     * @param IStructuralProperty[] $partnerDependentProperties Dependent properties of the navigation target.
-     * @param bool $partnerContainsTarget A value indicating whether the navigation target logically contains the navigation source.
-     * @param OnDeleteAction $partnerOnDelete Action to take upon deletion of an instance of the navigation target.
-     * @return EdmNavigationProperty Navigation property.
+     * @param  string                $propertyName               navigation property name
+     * @param  ITypeReference        $propertyType               type of the navigation property
+     * @param  IStructuralProperty[] $dependentProperties        dependent properties of the navigation source
+     * @param  bool                  $containsTarget             a value indicating whether the navigation source logically contains the navigation target
+     * @param  OnDeleteAction        $onDelete                   action to take upon deletion of an instance of the navigation source
+     * @param  string                $partnerPropertyName        navigation partner property name
+     * @param  ITypeReference        $partnerPropertyType        type of the navigation partner property
+     * @param  IStructuralProperty[] $partnerDependentProperties dependent properties of the navigation target
+     * @param  bool                  $partnerContainsTarget      a value indicating whether the navigation target logically contains the navigation source
+     * @param  OnDeleteAction        $partnerOnDelete            action to take upon deletion of an instance of the navigation target
+     * @return EdmNavigationProperty navigation property
      */
     public static function CreateNavigationPropertyWithPartner(
         string $propertyName,
@@ -165,17 +171,17 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         ITypeReference $partnerPropertyType,
         array $partnerDependentProperties,
         bool $partnerContainsTarget,
-        OnDeleteAction $partnerOnDelete): EdmNavigationProperty
+        OnDeleteAction $partnerOnDelete
+    ): EdmNavigationProperty
     {
-
         $declaringType = self::GetEntityType($partnerPropertyType);
         if ($declaringType == null) {
-            throw new ArgumentException(StringConst::Constructable_EntityTypeOrCollectionOfEntityTypeExpected("partnerPropertyType"));
+            throw new ArgumentException(StringConst::Constructable_EntityTypeOrCollectionOfEntityTypeExpected('partnerPropertyType'));
         }
 
         $partnerDeclaringType = self::GetEntityType($propertyType);
         if ($partnerDeclaringType == null) {
-            throw new ArgumentException(StringConst::Constructable_EntityTypeOrCollectionOfEntityTypeExpected("propertyType"));
+            throw new ArgumentException(StringConst::Constructable_EntityTypeOrCollectionOfEntityTypeExpected('propertyType'));
         }
 
         $end1 = new EdmNavigationProperty(
@@ -184,7 +190,8 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
             $propertyType,
             $dependentProperties,
             $containsTarget,
-            $onDelete);
+            $onDelete
+        );
 
         $end2 = new EdmNavigationProperty(
             $partnerDeclaringType,
@@ -192,7 +199,8 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
             $partnerPropertyType,
             $partnerDependentProperties,
             $partnerContainsTarget,
-            $partnerOnDelete);
+            $partnerOnDelete
+        );
 
         $end1->partner = $end2;
         $end2->partner = $end1;
@@ -204,7 +212,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         $entityType = null;
         if ($type->IsEntity()) {
             $entityType = $type->getDefinition();
-        } else if ($type->IsCollection()) {
+        } elseif ($type->IsCollection()) {
             $collectionDef = $type->getDefinition();
             assert($collectionDef instanceof ICollectionType);
             $type = $collectionDef->getElementType();
@@ -221,8 +229,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         IEntityType $entityType,
         Multiplicity $multiplicity,
         string $multiplicityParameterName
-    ): ITypeReference
-    {
+    ): ITypeReference {
         switch ($multiplicity) {
             case Multiplicity::ZeroOrOne():
                 return new EdmEntityTypeReference($entityType, true);

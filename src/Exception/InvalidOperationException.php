@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Exception;
-
 
 use InvalidArgumentException;
 use Symfony\Component\Console\Exception\ExceptionInterface;

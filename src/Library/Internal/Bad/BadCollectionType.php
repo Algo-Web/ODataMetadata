@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
@@ -18,7 +19,7 @@ class BadCollectionType extends BadType implements ICollectionType
 
     /**
      * BadCollectionType constructor.
-     * @param EdmError[]  $errors
+     * @param EdmError[] $errors
      */
     public function __construct(array $errors)
     {
@@ -31,7 +32,7 @@ class BadCollectionType extends BadType implements ICollectionType
     }
 
     /**
-     * @return ITypeReference Gets the element type of this collection.
+     * @return ITypeReference gets the element type of this collection
      */
     public function getElementType(): ITypeReference
     {

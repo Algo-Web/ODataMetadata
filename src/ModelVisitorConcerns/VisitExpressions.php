@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
 
 use AlgoWeb\ODataMetadata\EdmModelVisitor;
+use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IApplyExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IAssertTypeExpression;
@@ -16,7 +19,6 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IDecimalConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IEntitySetReferenceExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IEnumMemberReferenceExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
-use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IFloatingConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IFunctionReferenceExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IGuidConstantExpression;
@@ -36,7 +38,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\RecordExpression\IPropertyConst
 use AlgoWeb\ODataMetadata\StringConst;
 
 /**
- * Trait VisitExpressions
+ * Trait VisitExpressions.
  * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
  * @mixin EdmModelVisitor
  */
@@ -49,8 +51,7 @@ trait VisitExpressions
 
     public function VisitExpression(IExpression $expression): void
     {
-        switch ($expression->getExpressionKind())
-        {
+        switch ($expression->getExpressionKind()) {
             case ExpressionKind::AssertType():
                 assert($expression instanceof  IAssertTypeExpression);
                 $this->processAssertTypeExpression($expression);
@@ -170,30 +171,30 @@ trait VisitExpressions
         self::VisitCollection($constructor, [$this, 'processPropertyConstructor']);
     }
 
-    public abstract function processAssertTypeExpression(IAssertTypeExpression $expression): void;
-    public abstract function processBinaryConstantExpression(IBinaryConstantExpression $expression): void;
-    public abstract function processBooleanConstantExpression(IBooleanConstantExpression $expression): void;
-    public abstract function processExpression(IExpression $expression): void;
-    public abstract function processPropertyReferenceExpression(IPropertyReferenceExpression $expression): void;
-    public abstract function processTimeConstantExpression(ITimeConstantExpression $expression): void;
-    public abstract function processStringConstantExpression(IStringConstantExpression $expression): void;
-    public abstract function processRecordExpression(IRecordExpression $expression): void;
-    public abstract function processPathExpression(IPathExpression $expression): void;
-    public abstract function processNullConstantExpression(INullExpression $expression): void;
-    public abstract function processLabeledExpression(ILabeledExpression $expression): void;
-    public abstract function processLabeledExpressionReferenceExpression(ILabeledExpressionReferenceExpression $expression): void;
-    public abstract function processParameterReferenceExpression(IParameterReferenceExpression $expression): void;
-    public abstract function processIsTypeExpression(IIsTypeExpression $expression): void;
-    public abstract function processIntegerConstantExpression(IIntegerConstantExpression $expression): void;
-    public abstract function processIfExpression(IIfExpression $expression): void;
-    public abstract function processGuidConstantExpression(IGuidConstantExpression $expression): void;
-    public abstract function processFunctionReferenceExpression(IFunctionReferenceExpression $expression): void;
-    public abstract function processFunctionApplicationExpression(IApplyExpression $expression): void;
-    public abstract function processFloatingConstantExpression(IFloatingConstantExpression $expression): void;
-    public abstract function processEnumMemberReferenceExpression(IEnumMemberReferenceExpression $expression): void;
-    public abstract function processEntitySetReferenceExpression(IEntitySetReferenceExpression $expression): void;
-    public abstract function processDecimalConstantExpression(IDecimalConstantExpression $expression): void;
-    public abstract function processDateTimeOffsetConstantExpression(IDateTimeOffsetConstantExpression $expression): void;
-    public abstract function processDateTimeConstantExpression(IDateTimeConstantExpression $expression): void;
-    public abstract function processCollectionExpression(ICollectionExpression $expression): void;
+    abstract public function processAssertTypeExpression(IAssertTypeExpression $expression): void;
+    abstract public function processBinaryConstantExpression(IBinaryConstantExpression $expression): void;
+    abstract public function processBooleanConstantExpression(IBooleanConstantExpression $expression): void;
+    abstract public function processExpression(IExpression $expression): void;
+    abstract public function processPropertyReferenceExpression(IPropertyReferenceExpression $expression): void;
+    abstract public function processTimeConstantExpression(ITimeConstantExpression $expression): void;
+    abstract public function processStringConstantExpression(IStringConstantExpression $expression): void;
+    abstract public function processRecordExpression(IRecordExpression $expression): void;
+    abstract public function processPathExpression(IPathExpression $expression): void;
+    abstract public function processNullConstantExpression(INullExpression $expression): void;
+    abstract public function processLabeledExpression(ILabeledExpression $expression): void;
+    abstract public function processLabeledExpressionReferenceExpression(ILabeledExpressionReferenceExpression $expression): void;
+    abstract public function processParameterReferenceExpression(IParameterReferenceExpression $expression): void;
+    abstract public function processIsTypeExpression(IIsTypeExpression $expression): void;
+    abstract public function processIntegerConstantExpression(IIntegerConstantExpression $expression): void;
+    abstract public function processIfExpression(IIfExpression $expression): void;
+    abstract public function processGuidConstantExpression(IGuidConstantExpression $expression): void;
+    abstract public function processFunctionReferenceExpression(IFunctionReferenceExpression $expression): void;
+    abstract public function processFunctionApplicationExpression(IApplyExpression $expression): void;
+    abstract public function processFloatingConstantExpression(IFloatingConstantExpression $expression): void;
+    abstract public function processEnumMemberReferenceExpression(IEnumMemberReferenceExpression $expression): void;
+    abstract public function processEntitySetReferenceExpression(IEntitySetReferenceExpression $expression): void;
+    abstract public function processDecimalConstantExpression(IDecimalConstantExpression $expression): void;
+    abstract public function processDateTimeOffsetConstantExpression(IDateTimeOffsetConstantExpression $expression): void;
+    abstract public function processDateTimeConstantExpression(IDateTimeConstantExpression $expression): void;
+    abstract public function processCollectionExpression(ICollectionExpression $expression): void;
 }

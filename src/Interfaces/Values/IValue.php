@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 
@@ -8,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 /**
- * Interface IValue
+ * Interface IValue.
  *
  *  Represents an EDM value.
  *
@@ -17,12 +19,12 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 interface IValue extends IEdmElement
 {
     /**
-     * @return ITypeReference Gets the type of this value.
+     * @return ITypeReference gets the type of this value
      */
     public function getType(): ITypeReference;
 
     /**
-     * @return ValueKind Gets the kind of this value.
+     * @return ValueKind gets the kind of this value
      */
     public function getValueKind(): ValueKind;
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Values;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
@@ -22,19 +23,17 @@ class EdmDateTimeOffsetConstant extends EdmValue implements IDateTimeOffsetConst
     /**
      * Initializes a new instance of the EdmBooleanConstant class.
      *
-     * @param DateTime $value Boolean value represented by this value.
-     * @param ITemporalTypeReference|null $type Type of the boolean.
+     * @param DateTime                    $value boolean value represented by this value
+     * @param ITemporalTypeReference|null $type  type of the boolean
      */
-    public function __construct( DateTime $value, ?ITemporalTypeReference $type = null)
+    public function __construct(DateTime $value, ?ITemporalTypeReference $type = null)
     {
         parent::__construct($type);
         $this->value = $value;
     }
 
     /**
-     *
-     *
-     * @return DateTime Gets the definition of this binary value.
+     * @return DateTime gets the definition of this binary value
      */
     public function getValue(): DateTime
     {
@@ -42,7 +41,7 @@ class EdmDateTimeOffsetConstant extends EdmValue implements IDateTimeOffsetConst
     }
 
     /**
-     * @return ExpressionKind Gets the kind of this expression.
+     * @return ExpressionKind gets the kind of this expression
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -50,11 +49,10 @@ class EdmDateTimeOffsetConstant extends EdmValue implements IDateTimeOffsetConst
     }
 
     /**
-     * @return ValueKind Gets the kind of this value.
+     * @return ValueKind gets the kind of this value
      */
     public function getValueKind(): ValueKind
     {
         return ValueKind::DateTimeOffset();
     }
-
 }

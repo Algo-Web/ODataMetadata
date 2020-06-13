@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\Values\IBooleanValue;
 
 /**
- * Interface IBooleanConstantExpression
+ * Interface IBooleanConstantExpression.
  *
  * Represents an EDM boolean constant expression
  *
@@ -15,5 +16,4 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IBooleanValue;
  */
 interface IBooleanConstantExpression extends IExpression, IBooleanValue
 {
-
 }

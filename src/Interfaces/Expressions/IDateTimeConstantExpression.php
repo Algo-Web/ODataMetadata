@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\Values\IDateTimeValue;
 
 /**
- * Interface IDateTimeConstantExpression
+ * Interface IDateTimeConstantExpression.
  *
  *  Represents an EDM datetime constant expression.
  *
@@ -15,5 +16,4 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IDateTimeValue;
  */
 interface IDateTimeConstantExpression extends IExpression, IDateTimeValue
 {
-
 }

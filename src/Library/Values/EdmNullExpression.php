@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Values;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
@@ -12,7 +13,7 @@ use InvalidArgumentException;
 
 class EdmNullExpression extends EdmValue implements INullExpression
 {
-    private static $instance = null;
+    private static $instance       = null;
     private static $allowConstruct = false;
     /**
      * Singleton EdmNullExpression instance.
@@ -22,13 +23,13 @@ class EdmNullExpression extends EdmValue implements INullExpression
     public static function getInstance()
     {
         self::$allowConstruct = true;
-        self::$instance = self::$instance ?? new EdmNullExpression();
+        self::$instance       = self::$instance ?? new EdmNullExpression();
         self::$allowConstruct = false;
         return self::$instance;
     }
     public function __construct()
     {
-        if(!self::$allowConstruct){
+        if (!self::$allowConstruct) {
             throw new InvalidArgumentException(
                 'Illegal construction of ' . self::class
             );
@@ -37,7 +38,7 @@ class EdmNullExpression extends EdmValue implements INullExpression
     }
 
     /**
-     * @return ExpressionKind Gets the kind of this expression.
+     * @return ExpressionKind gets the kind of this expression
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -45,7 +46,7 @@ class EdmNullExpression extends EdmValue implements INullExpression
     }
 
     /**
-     * @return ValueKind Gets the kind of this value.
+     * @return ValueKind gets the kind of this value
      */
     public function getValueKind(): ValueKind
     {
@@ -53,7 +54,7 @@ class EdmNullExpression extends EdmValue implements INullExpression
     }
 
     /**
-     * @return IValue Gets the data stored in this value.
+     * @return IValue gets the data stored in this value
      */
     public function getValue()
     {

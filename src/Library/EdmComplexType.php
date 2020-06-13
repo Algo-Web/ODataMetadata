@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Enums\TermKind;
@@ -29,32 +30,31 @@ class EdmComplexType extends EdmStructuredType implements IComplexType
     private $name;
 
     /**
-     *
      * Initializes a new instance of the EdmComplexType class.
      * Note: Complex type inheritance is not supported in EDM version 3.0 and above.
      *
-     * @param string $namespaceName The namespace this type belongs to.
-     * @param string $name The name of this type within its namespace.
-     * @param bool $isAbstract Denotes whether this complex type is abstract.
-     * @param IStructuredType|null $baseStructuredType The base type of this complex type.
+     * @param string               $namespaceName      the namespace this type belongs to
+     * @param string               $name               the name of this type within its namespace
+     * @param bool                 $isAbstract         denotes whether this complex type is abstract
+     * @param IStructuredType|null $baseStructuredType the base type of this complex type
      */
-    public function __construct(string $namespaceName, string $name,?IStructuredType $baseStructuredType = null, bool $isAbstract = false)
+    public function __construct(string $namespaceName, string $name, ?IStructuredType $baseStructuredType = null, bool $isAbstract = false)
     {
         parent::__construct($isAbstract, false, $baseStructuredType);
         $this->namespaceName = $namespaceName;
-        $this->name = $name;
+        $this->name          = $name;
     }
 
     /**
-     * @return TypeKind Gets the kind of this type.
+     * @return TypeKind gets the kind of this type
      */
-    function getTypeKind(): TypeKind
+    public function getTypeKind(): TypeKind
     {
         return TypeKind::Complex();
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {
@@ -62,7 +62,7 @@ class EdmComplexType extends EdmStructuredType implements IComplexType
     }
 
     /**
-     * @return SchemaElementKind Gets the kind of this schema element.
+     * @return SchemaElementKind gets the kind of this schema element
      */
     public function getSchemaElementKind(): SchemaElementKind
     {
@@ -70,7 +70,7 @@ class EdmComplexType extends EdmStructuredType implements IComplexType
     }
 
     /**
-     * @return string Gets the namespace this schema element belongs to.
+     * @return string gets the namespace this schema element belongs to
      */
     public function getNamespace(): string
     {
@@ -78,7 +78,7 @@ class EdmComplexType extends EdmStructuredType implements IComplexType
     }
 
     /**
-     * @return TermKind Gets the kind of a term.
+     * @return TermKind gets the kind of a term
      */
     public function getTermKind(): TermKind
     {

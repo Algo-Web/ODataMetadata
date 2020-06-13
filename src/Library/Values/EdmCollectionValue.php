@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Values;
-
 
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionTypeReference;
@@ -20,22 +21,22 @@ class EdmCollectionValue extends EdmValue implements ICollectionValue
     /**
      * @var IDelayedValue[]
      */
-private $elements;
+    private $elements;
 
     /**
      *  Initializes a new instance of the EdmCollectionValue class.
      *
-     * @param ICollectionTypeReference $type A reference to a collection type that describes this collection value
-     * @param IDelayedValue[] $elements The collection of values stored in this collection value
+     * @param ICollectionTypeReference $type     A reference to a collection type that describes this collection value
+     * @param IDelayedValue[]          $elements The collection of values stored in this collection value
      */
-public function __construct(ICollectionTypeReference $type, array $elements)
-{
-    parent::__construct($type);
-    $this->elements = $elements;
-}
+    public function __construct(ICollectionTypeReference $type, array $elements)
+    {
+        parent::__construct($type);
+        $this->elements = $elements;
+    }
 
     /**
-     * @return ValueKind Gets the kind of this value.
+     * @return ValueKind gets the kind of this value
      */
     public function getValueKind(): ValueKind
     {
@@ -43,7 +44,7 @@ public function __construct(ICollectionTypeReference $type, array $elements)
     }
 
     /**
-     * @return IDelayedValue[] Gets the values stored in this collection.
+     * @return IDelayedValue[] gets the values stored in this collection
      */
     public function getElements(): array
     {
@@ -51,7 +52,7 @@ public function __construct(ICollectionTypeReference $type, array $elements)
     }
 
     /**
-     * @return IValue Gets the data stored in this value.
+     * @return IValue gets the data stored in this value
      */
     public function getValue()
     {

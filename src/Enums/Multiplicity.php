@@ -1,11 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Enums;
 
-
 /**
- * Class EdmMultiplicity
+ * Class EdmMultiplicity.
  *
  * Enumerates the multiplicities of EDM navigation properties.
  *
@@ -17,8 +18,8 @@ namespace AlgoWeb\ODataMetadata\Enums;
  */
 class Multiplicity extends Enum
 {
-    protected const Unknown     = "";
-    protected const ZeroOrOne = '0..1';
+    protected const Unknown     = '';
+    protected const ZeroOrOne   = '0..1';
     protected const One         = '1';
     protected const Many        = '*';
 }

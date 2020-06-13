@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 
 use DateTime;
 
 /**
- * Interface ITimeValue
+ * Interface ITimeValue.
  *
  * Represents an EDM time value.
  *
@@ -15,7 +17,7 @@ use DateTime;
 interface ITimeValue
 {
     /**
-     * @return DateTime Gets the definition of this time value.
+     * @return DateTime gets the definition of this time value
      */
     public function getValue(): DateTime;
 }

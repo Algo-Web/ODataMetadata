@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Enums;
 
 /**
- * Class EdmOnDeleteAction
+ * Class EdmOnDeleteAction.
  *
  * Enumerates the actions EDM can apply on deletes.
  *
@@ -14,6 +16,6 @@ namespace AlgoWeb\ODataMetadata\Enums;
  */
 class OnDeleteAction extends Enum
 {
-    protected const None    = "None";
-    protected const Cascade = "Cascade";
+    protected const None    = 'None';
+    protected const Cascade = 'Cascade';
 }

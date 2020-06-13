@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
@@ -9,7 +11,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 
 /**
- * Trait EntityContainerHelpers
+ * Trait EntityContainerHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
  * @mixin IEntityContainer
  */
@@ -18,10 +20,11 @@ trait EntityContainerHelpers
     /**
      * Returns entity sets belonging to an IEdmEntityContainer.
      *
-     * @return IEntitySet[] Entity sets belonging to an IEdmEntityContainer.
+     * @return IEntitySet[] entity sets belonging to an IEdmEntityContainer
      */
-    public function EntitySets(): array{
-        return array_filter($this->getElements(), function(IEntityContainerElement $item){
+    public function EntitySets(): array
+    {
+        return array_filter($this->getElements(), function (IEntityContainerElement $item) {
             return $item instanceof IEntitySet;
         });
     }
@@ -29,14 +32,12 @@ trait EntityContainerHelpers
     /**
      * Returns function imports belonging to an IEdmEntityContainer.
      *
-     * @return IFunctionImport[] Function imports belonging to an IEdmEntityContainer.
+     * @return IFunctionImport[] function imports belonging to an IEdmEntityContainer
      */
     public function FunctionImports(): array
     {
-        return array_filter($this->getElements(), function(IEntityContainerElement $item){
+        return array_filter($this->getElements(), function (IEntityContainerElement $item) {
             return $item instanceof IFunctionImport;
         });
     }
-
-
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
-
 
 use AlgoWeb\ODataMetadata\EdmModelVisitor;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
@@ -15,7 +16,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 use AlgoWeb\ODataMetadata\StringConst;
 
 /**
- * Trait VisitElements
+ * Trait VisitElements.
  * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
  * @mixin EdmModelVisitor
  */
@@ -26,13 +27,12 @@ trait VisitElements
      */
     public function visitSchemaElements(array $elements): void
     {
-        self::visitCollection($elements,[$this, 'VisitSchemaElement']);
+        self::visitCollection($elements, [$this, 'VisitSchemaElement']);
     }
 
     public function visitSchemaElement(ISchemaElement $element): void
     {
-        switch ($element->getSchemaElementKind())
-        {
+        switch ($element->getSchemaElementKind()) {
             case SchemaElementKind::Function():
                 assert($element instanceof IFunction);
                 $this->processFunction($element);
@@ -57,10 +57,9 @@ trait VisitElements
         }
     }
 
-    public abstract function processFunction(IFunction $element): void;
-    public abstract function visitSchemaType(IType $element): void;
-    public abstract function processValueTerm(IValueTerm $element): void;
-    public abstract function processEntityContainer(IEntityContainer $element): void;
-    public abstract function processSchemaElement(ISchemaElement $element): void;
-
+    abstract public function processFunction(IFunction $element): void;
+    abstract public function visitSchemaType(IType $element): void;
+    abstract public function processValueTerm(IValueTerm $element): void;
+    abstract public function processEntityContainer(IEntityContainer $element): void;
+    abstract public function processSchemaElement(ISchemaElement $element): void;
 }

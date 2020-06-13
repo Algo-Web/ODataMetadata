@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
 
@@ -35,8 +37,9 @@ class AmbiguousBinding extends BadElement
         $this->addBinding($second);
     }
 
-    public function getName(): string {
-        if(isset($this->bindings[0])){
+    public function getName(): string
+    {
+        if (isset($this->bindings[0])) {
             return $this->bindings[0]->getName();
         }
         return '';
@@ -44,7 +47,7 @@ class AmbiguousBinding extends BadElement
 
     public function addBinding(INamedElement $binding): void
     {
-        if(!in_array($binding, $this->bindings)){
+        if (!in_array($binding, $this->bindings)) {
             $this->bindings[] =  $binding;
         }
     }

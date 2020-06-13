@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\Enums\TermKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
@@ -20,7 +21,7 @@ class BadEntityType extends BadNamedStructuredType implements IEntityType
     }
 
     /**
-     * @return array|IStructuralProperty[] Gets the structural properties of the entity type that make up the entity key.
+     * @return array|IStructuralProperty[] gets the structural properties of the entity type that make up the entity key
      */
     public function getDeclaredKey(): ?array
     {

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
 
 use AlgoWeb\ODataMetadata\Interfaces\Values\IFloatingValue;
 
 /**
- * Interface IEdmFloatingConstantExpression
+ * Interface IEdmFloatingConstantExpression.
  *
  * Represents an EDM floating constant expression.
  *
@@ -14,5 +16,4 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IFloatingValue;
  */
 interface IFloatingConstantExpression extends IExpression, IFloatingValue
 {
-
 }

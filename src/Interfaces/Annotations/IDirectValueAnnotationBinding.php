@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Annotations;
 
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 
 /**
- * Class IEdmDirectValueAnnotationBinding
+ * Class IEdmDirectValueAnnotationBinding.
  *
  * Represents the combination of an EDM annotation with an immediate value and the element to which it is attached.
  *
@@ -20,17 +22,17 @@ interface IDirectValueAnnotationBinding
     public function getElement(): IEdmElement;
 
     /**
-     * @return string Gets the namespace URI of the annotation.
+     * @return string gets the namespace URI of the annotation
      */
     public function getNamespaceUri(): string;
 
     /**
-     * @return string Gets the local name of this annotation.
+     * @return string gets the local name of this annotation
      */
     public function getName(): string;
 
     /**
-     * @return mixed Gets the value of this annotation.
+     * @return mixed gets the value of this annotation
      */
     public function value();
 }

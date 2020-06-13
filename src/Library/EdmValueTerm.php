@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
@@ -25,21 +26,21 @@ class EdmValueTerm extends EdmNamedElement implements IValueTerm
     /**
      * Initializes a new instance of EdmValueTerm class.
      * The new value term will be of the nullable primitive if a PrimitiveTypeKind is passed.
-     * @param string $namespaceName Namespace of the term.
-     * @param string $name Name of the term.
-     * @param ITypeReference|PrimitiveTypeKind $type Type of the term.
+     * @param string                           $namespaceName namespace of the term
+     * @param string                           $name          name of the term
+     * @param ITypeReference|PrimitiveTypeKind $type          type of the term
      */
-    public function __construct(string $namespaceName, string $name,  $type)
+    public function __construct(string $namespaceName, string $name, $type)
     {
         $type = ($type instanceof PrimitiveTypeKind) ? EdmCoreModel::getInstance()->GetPrimitive($type, true): $type;
         assert($type instanceof ITypeReference);
         parent::__construct($name);
-        $this->type = $type;
+        $this->type          = $type;
         $this->namespaceName = $namespaceName;
     }
 
     /**
-     * @return SchemaElementKind Gets the kind of this schema element.
+     * @return SchemaElementKind gets the kind of this schema element
      */
     public function getSchemaElementKind(): SchemaElementKind
     {
@@ -47,7 +48,7 @@ class EdmValueTerm extends EdmNamedElement implements IValueTerm
     }
 
     /**
-     * @return string Gets the namespace this schema element belongs to.
+     * @return string gets the namespace this schema element belongs to
      */
     public function getNamespace(): string
     {
@@ -65,7 +66,7 @@ class EdmValueTerm extends EdmNamedElement implements IValueTerm
     }
 
     /**
-     * @return ITypeReference Gets the type of this term.
+     * @return ITypeReference gets the type of this term
      */
     public function getType(): ITypeReference
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
 
@@ -7,7 +9,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\RecordExpression\IPropertyConst
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 
 /**
- * Interface IRecordExpression
+ * Interface IRecordExpression.
  *
  * Represents an EDM record construction expression.
  *
@@ -16,13 +18,12 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 interface IRecordExpression extends IExpression
 {
     /**
-     * @return IStructuredTypeReference Gets the declared type of the record, or null if there is no declared type.
+     * @return IStructuredTypeReference gets the declared type of the record, or null if there is no declared type
      */
     public function getDeclaredType(): ?IStructuredTypeReference;
 
     /**
-     * @return IPropertyConstructor[] Gets the constructed property values.
+     * @return IPropertyConstructor[] gets the constructed property values
      */
     public function getProperties(): array;
-
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Enums\FunctionParameterMode;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionBase;
@@ -32,22 +33,22 @@ class EdmFunctionParameter extends EdmNamedElement implements IFunctionParameter
     /**
      * Initializes a new instance of the EdmFunctionParameter class.
      *
-     * @param IFunctionBase $declaringFunction Declaring function of the parameter.
-     * @param string $name Name of the parameter.
-     * @param ITypeReference $type Type of the parameter.
-     * @param FunctionParameterMode|null $mode Mode of the parameter.
+     * @param IFunctionBase              $declaringFunction declaring function of the parameter
+     * @param string                     $name              name of the parameter
+     * @param ITypeReference             $type              type of the parameter
+     * @param FunctionParameterMode|null $mode              mode of the parameter
      */
     public function __construct(IFunctionBase $declaringFunction, string $name, ITypeReference $type, FunctionParameterMode $mode = null)
     {
         parent::__construct($name);
-        $mode = $mode ?? FunctionParameterMode::In();
-        $this->type = $type;
-        $this->mode = $mode;
+        $mode                    = $mode ?? FunctionParameterMode::In();
+        $this->type              = $type;
+        $this->mode              = $mode;
         $this->declaringFunction = $declaringFunction;
     }
 
     /**
-     * @return ITypeReference Gets the type of this function parameter.
+     * @return ITypeReference gets the type of this function parameter
      */
     public function getType(): ITypeReference
     {
@@ -55,7 +56,7 @@ class EdmFunctionParameter extends EdmNamedElement implements IFunctionParameter
     }
 
     /**
-     * @return IFunctionBase Gets the function or function import that declared this parameter.
+     * @return IFunctionBase gets the function or function import that declared this parameter
      */
     public function getDeclaringFunction(): IFunctionBase
     {
@@ -63,7 +64,7 @@ class EdmFunctionParameter extends EdmNamedElement implements IFunctionParameter
     }
 
     /**
-     * @return FunctionParameterMode Gets the mode of this function parameter.
+     * @return FunctionParameterMode gets the mode of this function parameter
      */
     public function getMode(): FunctionParameterMode
     {

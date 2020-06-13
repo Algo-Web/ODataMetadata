@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
-
 
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
@@ -28,16 +29,15 @@ class BadEnumType extends BadType implements IEnumType
      */
     private $name;
 
-    public function __construct(?string $qualifiedName,array $errors)
+    public function __construct(?string $qualifiedName, array $errors)
     {
         parent::__construct($errors);
         $qualifiedName = $qualifiedName ?? '';
         EdmUtil::TryGetNamespaceNameFromQualifiedName($qualifiedName, $this->namespaceName, $this->name);
-
     }
 
     /**
-     * @return IPrimitiveType Gets the underlying type of this enumeration type.
+     * @return IPrimitiveType gets the underlying type of this enumeration type
      */
     public function getUnderlyingType(): IPrimitiveType
     {
@@ -45,7 +45,7 @@ class BadEnumType extends BadType implements IEnumType
     }
 
     /**
-     * @return IEnumMember[] Gets the members of this enumeration type.
+     * @return IEnumMember[] gets the members of this enumeration type
      */
     public function getMembers(): array
     {
@@ -53,7 +53,7 @@ class BadEnumType extends BadType implements IEnumType
     }
 
     /**
-     * @return bool Gets a value indicating whether the enumeration type can be treated as a bit field.
+     * @return bool gets a value indicating whether the enumeration type can be treated as a bit field
      */
     public function isFlags(): bool
     {
@@ -61,7 +61,7 @@ class BadEnumType extends BadType implements IEnumType
     }
 
     /**
-     * @return string Gets the name of this element.
+     * @return string gets the name of this element
      */
     public function getName(): string
     {
@@ -69,7 +69,7 @@ class BadEnumType extends BadType implements IEnumType
     }
 
     /**
-     * @return SchemaElementKind Gets the kind of this schema element.
+     * @return SchemaElementKind gets the kind of this schema element
      */
     public function getSchemaElementKind(): SchemaElementKind
     {
@@ -77,7 +77,7 @@ class BadEnumType extends BadType implements IEnumType
     }
 
     /**
-     * @return string Gets the namespace this schema element belongs to.
+     * @return string gets the namespace this schema element belongs to
      */
     public function getNamespace(): string
     {

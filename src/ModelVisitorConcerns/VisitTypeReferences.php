@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
 
@@ -23,7 +25,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\StringConst;
 
 /**
- * Trait VisitTypeReferences
+ * Trait VisitTypeReferences.
  * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
  * @mixin EdmModelVisitor
  */
@@ -31,8 +33,7 @@ trait VisitTypeReferences
 {
     public function visitTypeReference(ITypeReference $reference): void
     {
-        switch ($reference->getDefinition()->getTypeKind())
-        {
+        switch ($reference->getDefinition()->getTypeKind()) {
             case TypeKind::Collection():
                 $this->processCollectionTypeReference($reference->AsCollection());
                 break;
@@ -62,18 +63,17 @@ trait VisitTypeReferences
         }
     }
 
-    abstract function processCollectionTypeReference(ICollectionTypeReference $reference): void;
-    abstract function ProcessComplexTypeReference(IComplexTypeReference  $reference): void;
-    abstract function ProcessEntityTypeReference(IEntityTypeReference $reference): void;
-    abstract function ProcessEntityReferenceTypeReference(IEntityReferenceTypeReference $reference): void;
-    abstract function ProcessEnumTypeReference(IEnumTypeReference $reference): void;
-    abstract function ProcessRowTypeReference(IRowTypeReference $reference): void;
-    abstract function ProcessTypeReference(ITypeReference $reference): void;
+    abstract public function processCollectionTypeReference(ICollectionTypeReference $reference): void;
+    abstract public function ProcessComplexTypeReference(IComplexTypeReference $reference): void;
+    abstract public function ProcessEntityTypeReference(IEntityTypeReference $reference): void;
+    abstract public function ProcessEntityReferenceTypeReference(IEntityReferenceTypeReference $reference): void;
+    abstract public function ProcessEnumTypeReference(IEnumTypeReference $reference): void;
+    abstract public function ProcessRowTypeReference(IRowTypeReference $reference): void;
+    abstract public function ProcessTypeReference(ITypeReference $reference): void;
 
     public function visitPrimitiveTypeReference(IPrimitiveTypeReference $reference): void
     {
-        switch ($reference->PrimitiveKind())
-        {
+        switch ($reference->PrimitiveKind()) {
             case PrimitiveTypeKind::Binary():
                 $this->processBinaryTypeReference($reference->AsBinary());
                 break;
@@ -124,10 +124,10 @@ trait VisitTypeReferences
         }
     }
 
-    abstract function processBinaryTypeReference(IBinaryTypeReference $AsBinary): void;
-    abstract function processDecimalTypeReference(IDecimalTypeReference $AsDecimal): void;
-    abstract function processPrimitiveTypeReference(IPrimitiveTypeReference $reference): void;
-    abstract function processSpatialTypeReference(ISpatialTypeReference $AsSpatial): void;
-    abstract function processTemporalTypeReference(ITemporalTypeReference $AsTemporal): void;
-    abstract function processStringTypeReference(IStringTypeReference $AsString): void;
+    abstract public function processBinaryTypeReference(IBinaryTypeReference $AsBinary): void;
+    abstract public function processDecimalTypeReference(IDecimalTypeReference $AsDecimal): void;
+    abstract public function processPrimitiveTypeReference(IPrimitiveTypeReference $reference): void;
+    abstract public function processSpatialTypeReference(ISpatialTypeReference $AsSpatial): void;
+    abstract public function processTemporalTypeReference(ITemporalTypeReference $AsTemporal): void;
+    abstract public function processStringTypeReference(IStringTypeReference $AsString): void;
 }

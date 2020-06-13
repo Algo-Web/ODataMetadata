@@ -1,15 +1,16 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library;
-
 
 use AlgoWeb\ODataMetadata\Helpers\EntityReferenceTypeReferenceHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceTypeReference;
 
 /**
- * Class EdmEntityReferenceTypeReference
+ * Class EdmEntityReferenceTypeReference.
  *
  * Represents a reference to an EDM entity reference type.
  *
@@ -22,8 +23,8 @@ class EdmEntityReferenceTypeReference extends EdmTypeReference implements IEntit
     /**
      * Initializes a new instance of the EdmEntityReferenceTypeReference class.
      *
-     * @param IEntityReferenceType $definition The definition referred to by this reference.
-     * @param bool $isNullable Denotes whether the type can be nullable.
+     * @param IEntityReferenceType $definition the definition referred to by this reference
+     * @param bool                 $isNullable denotes whether the type can be nullable
      */
     public function __construct(IEntityReferenceType $definition, bool $isNullable)
     {

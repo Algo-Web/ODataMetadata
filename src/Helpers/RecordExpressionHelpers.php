@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
@@ -7,7 +9,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IRecordExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\RecordExpression\IPropertyConstructor;
 
 /**
- * Trait RecordExpressionHelpers
+ * Trait RecordExpressionHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
  * @mixin IRecordExpression
  */
@@ -16,8 +18,8 @@ trait RecordExpressionHelpers
     /**
      * Finds a property of a record expression.
      *
-     * @param string $propertyName Name of the property to find.
-     * @return IPropertyConstructor|null The property, if found, otherwise null.
+     * @param  string                    $propertyName name of the property to find
+     * @return IPropertyConstructor|null the property, if found, otherwise null
      */
     public function FindProperty(string $propertyName): ?IPropertyConstructor
     {
