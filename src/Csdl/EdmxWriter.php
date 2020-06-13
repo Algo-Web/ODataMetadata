@@ -64,7 +64,7 @@ class EdmxWriter
         $this->edmxVersion = $edmxVersion;
         $this->target      = $target;
 
-        assert(in_array($edmxVersion, CsdlConstants::getSupportedVersions(), 'Unsupported Edmx Version'));
+        assert(in_array($edmxVersion, CsdlConstants::getSupportedVersions()), 'Unsupported Edmx Version');
         $this->edmxNamespace = CsdlConstants::versionToEdmxNamespace(/*Version::v1());/*/ $edmxVersion);
     }
 
