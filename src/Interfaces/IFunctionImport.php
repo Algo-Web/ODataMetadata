@@ -34,7 +34,7 @@ interface IFunctionImport extends IFunctionBase, IEntityContainerElement
     public function isBindable(): bool;
 
     /**
-     * @return IExpression gets the entity set containing entities returned by this function import
+     * @return IExpression|null gets the entity set containing entities returned by this function import
      */
-    public function getEntitySet(): IExpression;
+    public function getEntitySet(): ?IExpression;
 }

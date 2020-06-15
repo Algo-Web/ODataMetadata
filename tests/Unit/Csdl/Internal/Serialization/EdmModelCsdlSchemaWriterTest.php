@@ -10,8 +10,18 @@ use AlgoWeb\ODataMetadata\Enums\ConcurrencyMode;
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\FunctionParameterMode;
 use AlgoWeb\ODataMetadata\Enums\Multiplicity;
+use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IBinaryConstantExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IEntitySetReferenceExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
+use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
+use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
+use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
+use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadNamedStructuredType;
+use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadType;
+use AlgoWeb\ODataMetadata\StringConst;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 use AlgoWeb\ODataMetadata\Version;
 use Mockery as m;
@@ -163,6 +173,102 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $foo->WriteInlineExpression($expr);
         $writer->endElement();
 
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
+    public function testWriteFunctionImportElementHeaderBothComposableAndSideEffecting()
+    {
+        $writer = new \XMLWriter();
+        $writer->openMemory();
+        $writer->startDocument();
+        $writer->setIndent(true);
+        $writer->setIndentString('   ');
+        $foo = $this->getSchemaWriterWithMock($writer);
+
+        $import = m::mock(IFunctionImport::class)->makePartial();
+        $import->shouldReceive('isComposable')->andReturn(true)->once();
+        $import->shouldReceive('isSideEffecting')->andReturn(true)->once();
+        $import->shouldReceive('getName')->andReturn('functionName')->once();
+
+        $msg = 'The function import \'functionName\' cannot be composable and side-effecting at the same time.';
+        $this->expectException(InvalidOperationException::class);
+        $this->expectExceptionMessage($msg);
+
+        $foo->WriteFunctionImportElementHeader($import);
+    }
+
+    public function functionImportElementHeaderProvider(): array
+    {
+        $result = [];
+        $result[] = [false, false, IEntitySetReferenceExpression::class, false, '<?xml version="1.0"?>'.PHP_EOL.'<FunctionImport Name="functionName" ReturnType="fullName" IsSideEffecting="false" EntitySet="name"/>'.PHP_EOL];
+        $result[] = [false, true, IPathExpression::class, false, '<?xml version="1.0"?>'.PHP_EOL.'<FunctionImport Name="functionName" ReturnType="fullName" EntitySetPath="path"/>'.PHP_EOL];
+        $result[] = [true, false, IBinaryConstantExpression::class, true, ''];
+        $result[] = [false, true, null, false, '<?xml version="1.0"?>'.PHP_EOL.'<FunctionImport Name="functionName" ReturnType="fullName"/>'.PHP_EOL];
+
+        return $result;
+    }
+
+    /**
+     * @dataProvider functionImportElementHeaderProvider
+     *
+     * @param bool $isComposable
+     * @param bool $isSideEffecting
+     * @param string|null $type
+     * @param bool $kaboom
+     * @param string $expected
+     * @throws \ReflectionException
+     */
+    public function testWriteFunctionImportElementHeader(
+        bool $isComposable,
+        bool $isSideEffecting,
+        ?string $type,
+        bool $kaboom,
+        string $expected
+    ) {
+        $writer = new \XMLWriter();
+        $writer->openMemory();
+        $writer->startDocument();
+        $writer->setIndent(true);
+        $writer->setIndentString('   ');
+        $foo = $this->getSchemaWriterWithMock($writer);
+
+        $entitySet = null;
+        if (null !== $type) {
+            $entitySet = m::mock($type);
+            $entitySet->shouldReceive('getPath')->andReturn(['path']);
+            $entitySet->shouldReceive('getReferencedEntitySet->getName')->andReturn('name');
+        }
+
+        if ($kaboom) {
+            $msg = StringConst::EdmModel_Validator_Semantic_FunctionImportEntitySetExpressionIsInvalid('functionName');
+
+            $this->expectException(InvalidOperationException::class);
+            $this->expectExceptionMessage($msg);
+        }
+
+        $schemaElement = m::mock(BadNamedStructuredType::class)->makePartial();
+        $schemaElement->shouldReceive('fullName')->andReturn('fullName');
+
+        $typeRef = m::mock(ITypeReference::class);
+        $typeRef->shouldReceive('isCollection')->andReturn(false);
+        $typeRef->shouldReceive('isEntityReference')->andReturn(false);
+        $typeRef->shouldReceive('getDefinition')->andReturn($schemaElement);
+
+        $import = m::mock(IFunctionImport::class)->makePartial();
+        $import->shouldReceive('getReturnType')->andReturn($typeRef);
+        $import->shouldReceive('isComposable')->andReturn($isComposable)->once();
+        $import->shouldReceive('isSideEffecting')->andReturn($isSideEffecting)->once();
+        $import->shouldReceive('getName')->andReturn('functionName')->once();
+        $import->shouldReceive('getEntitySet')->andReturn($entitySet)->atLeast(1);
+        $import->shouldReceive('isBindable')->andReturn(false)->once();
+
+        $foo->WriteFunctionImportElementHeader($import);
+
+        $writer->endElement();
         $actual = $writer->outputMemory(true);
         $this->assertEquals($expected, $actual);
     }
