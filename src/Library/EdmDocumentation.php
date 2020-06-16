@@ -25,17 +25,17 @@ class EdmDocumentation implements IDocumentation
     }
 
     /**
-     * @return string gets a summary of this documentation
+     * @return string|null gets a summary of this documentation
      */
-    public function getSummary(): string
+    public function getSummary(): ?string
     {
         return $this->summary;
     }
 
     /**
-     * @return string gets a long description of this documentation
+     * @return string|null gets a long description of this documentation
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
