@@ -10,17 +10,23 @@ use AlgoWeb\ODataMetadata\Enums\ConcurrencyMode;
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\FunctionParameterMode;
 use AlgoWeb\ODataMetadata\Enums\Multiplicity;
+use AlgoWeb\ODataMetadata\Enums\ValueKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IBinaryConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IEntitySetReferenceExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
+use AlgoWeb\ODataMetadata\Interfaces\IDocumentation;
+use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
+use AlgoWeb\ODataMetadata\Interfaces\Values\IPrimitiveValue;
+use AlgoWeb\ODataMetadata\Library\EdmEnumMember;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadNamedStructuredType;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadType;
+use AlgoWeb\ODataMetadata\Library\Values\EdmEnumValue;
 use AlgoWeb\ODataMetadata\StringConst;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 use AlgoWeb\ODataMetadata\Version;
@@ -267,6 +273,83 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $import->shouldReceive('isBindable')->andReturn(false)->once();
 
         $foo->WriteFunctionImportElementHeader($import);
+
+        $writer->endElement();
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function writeDocumentationElementProvider(): array
+    {
+        $result = [];
+        $result[] = [null, null, '<?xml version="1.0"?>'.PHP_EOL.'<Documentation/>'.PHP_EOL];
+        $result[] = ['summary', null, '<?xml version="1.0"?>'.PHP_EOL.'<Documentation>'.PHP_EOL.'   <Summary><![CDATA[summary]]></Summary>'.PHP_EOL.'</Documentation>'.PHP_EOL];
+        $result[] = [null, 'description', '<?xml version="1.0"?>'.PHP_EOL.'<Documentation>'.PHP_EOL.'   <LongDescription><![CDATA[description]]></LongDescription>'.PHP_EOL.'</Documentation>'.PHP_EOL];
+        $result[] = ['summary', 'description', '<?xml version="1.0"?>'.PHP_EOL.'<Documentation>'.PHP_EOL.'   <Summary><![CDATA[summary]]></Summary>'.PHP_EOL.'   <LongDescription><![CDATA[description]]></LongDescription>'.PHP_EOL.'</Documentation>'.PHP_EOL];
+
+        return $result;
+    }
+
+    /**
+     * @dataProvider writeDocumentationElementProvider
+     *
+     * @param string|null $summary
+     * @param string|null $description
+     * @param string $expected
+     */
+    public function testWriteDocumentationElementProvider(?string $summary, ?string $description, string $expected)
+    {
+        $writer = new \XMLWriter();
+        $writer->openMemory();
+        $writer->startDocument();
+        $writer->setIndent(true);
+        $writer->setIndentString('   ');
+        $foo = $this->getSchemaWriterWithMock($writer);
+
+        $doc = m::mock(IDocumentation::class)->makePartial();
+        $doc->shouldReceive('getSummary')->andReturn($summary);
+        $doc->shouldReceive('getDescription')->andReturn($description);
+
+        $foo->WriteDocumentationElement($doc);
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function writeEnumMemberElementHeaderProvider(): array
+    {
+        $result = [];
+        $result[] = [null, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name" Value="0"/>'.PHP_EOL];
+        $result[] = [false, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name"/>'.PHP_EOL];
+        $result[] = [true, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name" Value="0"/>'.PHP_EOL];
+        return $result;
+    }
+
+    /**
+     * @dataProvider writeEnumMemberElementHeaderProvider
+     *
+     * @param bool|null $explicit
+     * @param string $expected
+     * @throws \ReflectionException
+     */
+    public function testWriteEnumMemberElementHeader(?bool $explicit, string $expected)
+    {
+        $writer = new \XMLWriter();
+        $writer->openMemory();
+        $writer->startDocument();
+        $writer->setIndent(true);
+        $writer->setIndentString('   ');
+        $foo = $this->getSchemaWriterWithMock($writer);
+
+        $prim = m::mock(IPrimitiveValue::class)->makePartial();
+        $prim->shouldReceive('getValueKind')->andReturn(ValueKind::Integer());
+        $prim->shouldReceive('getValue')->andReturn(0);
+
+        $enum = m::mock(EdmEnumMember::class)->makePartial();
+        $enum->shouldReceive('IsValueExplicit')->andReturn($explicit);
+        $enum->shouldReceive('getName')->andReturn('name');
+        $enum->shouldReceive('getValue')->andReturn($prim);
+
+        $foo->WriteEnumMemberElementHeader($enum);
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
