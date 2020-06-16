@@ -15,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface IValueTerm extends ISchemaElement, ITerm
 {
     /**
-     * @return ITypeReference gets the type of this term
+     * @return ITypeReference|null gets the type of this term
      */
-    public function getType(): ITypeReference;
+    public function getType(): ?ITypeReference;
 }

@@ -16,14 +16,19 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IBinaryConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IEntitySetReferenceExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
+use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 use AlgoWeb\ODataMetadata\Interfaces\IDocumentation;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
+use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
+use AlgoWeb\ODataMetadata\Interfaces\IType;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
+use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IPrimitiveValue;
 use AlgoWeb\ODataMetadata\Library\EdmEnumMember;
+use AlgoWeb\ODataMetadata\Library\EdmEnumType;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadNamedStructuredType;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadType;
 use AlgoWeb\ODataMetadata\Library\Values\EdmEnumValue;
@@ -350,6 +355,106 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $enum->shouldReceive('getValue')->andReturn($prim);
 
         $foo->WriteEnumMemberElementHeader($enum);
+
+        $writer->endElement();
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
+    public function testWriteComplexTypeElementHeader()
+    {
+        $writer = new \XMLWriter();
+        $writer->openMemory();
+        $writer->startDocument();
+        $writer->setIndent(true);
+        $writer->setIndentString('   ');
+        $foo = $this->getSchemaWriterWithMock($writer);
+
+        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<ComplexType Name="name"/>'.PHP_EOL;
+
+        $complex = m::mock(IComplexType::class)->makePartial();
+        $complex->shouldReceive('getName')->andReturn('name');
+        $complex->shouldReceive('isAbstract')->andReturn(false);
+        $complex->shouldReceive('BaseComplexType')->andReturn(null);
+
+        $foo->WriteComplexTypeElementHeader($complex);
+
+        $writer->endElement();
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
+    public function testWritePropertyRefElement()
+    {
+        $writer = new \XMLWriter();
+        $writer->openMemory();
+        $writer->startDocument();
+        $writer->setIndent(true);
+        $writer->setIndentString('   ');
+        $foo = $this->getSchemaWriterWithMock($writer);
+
+        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<PropertyRef Name="name"/>'.PHP_EOL;
+
+        $prop = m::mock(IStructuralProperty::class);
+        $prop->shouldReceive('getName')->andReturn('name');
+
+        $foo->WritePropertyRefElement($prop);
+
+        $writer->endElement();
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function writeValueTermElementHeaderProvider(): array
+    {
+        $result = [];
+        $result[] = [false, null, '<?xml version="1.0"?>'.PHP_EOL.'<ValueTerm Name="name"/>'.PHP_EOL];
+        $result[] = [true, null, '<?xml version="1.0"?>'.PHP_EOL.'<ValueTerm Name="name"/>'.PHP_EOL];
+        $result[] = [false, ITypeReference::class, '<?xml version="1.0"?>'.PHP_EOL.'<ValueTerm Name="name"/>'.PHP_EOL];
+        $result[] = [true, ITypeReference::class, '<?xml version="1.0"?>'.PHP_EOL.'<ValueTerm Name="name" Type="fullName"/>'.PHP_EOL];
+
+        return $result;
+    }
+
+    /**
+     * @dataProvider writeValueTermElementHeaderProvider
+     *
+     * @param bool $isInline
+     * @param $type
+     * @param string $expected
+     * @throws \ReflectionException
+     */
+    public function testWriteValueTermElementHeader(bool $isInline, $type, string $expected)
+    {
+        $writer = new \XMLWriter();
+        $writer->openMemory();
+        $writer->startDocument();
+        $writer->setIndent(true);
+        $writer->setIndentString('   ');
+        $foo = $this->getSchemaWriterWithMock($writer);
+
+        $typeRef = null;
+        if ($type) {
+            $def = m::mock(EdmEnumType::class)->makePartial();
+            $def->shouldReceive('FullName')->andReturn('fullName');
+
+            $typeRef = m::mock($type);
+            $typeRef->shouldReceive('isCollection')->andReturn(false);
+            $typeRef->shouldReceive('isEntityReference')->andReturn(false);
+            $typeRef->shouldReceive('getDefinition')->andReturn($def);
+        }
+
+        $term = m::mock(IValueTerm::class);
+        $term->shouldReceive('getType')->andReturn($typeRef);
+        $term->shouldReceive('getName')->andReturn('name');
+
+        $foo->WriteValueTermElementHeader($term, $isInline);
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);

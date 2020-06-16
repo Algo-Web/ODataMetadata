@@ -58,12 +58,13 @@ class AmbiguousValueTermBinding extends AmbiguousBinding implements IValueTerm
     /**
      * Gets the type of this term.
      *
-     * @return ITypeReference
+     * @return ITypeReference|null
      */
-    public function getType(): ITypeReference
+    public function getType(): ?ITypeReference
     {
         return $this->computeType();
     }
+
     private function computeType(): ITypeReference
     {
         return new BadTypeReference(new BadType($this->getErrors()), true);

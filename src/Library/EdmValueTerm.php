@@ -66,9 +66,9 @@ class EdmValueTerm extends EdmNamedElement implements IValueTerm
     }
 
     /**
-     * @return ITypeReference gets the type of this term
+     * @return ITypeReference|null gets the type of this term
      */
-    public function getType(): ITypeReference
+    public function getType(): ?ITypeReference
     {
         return $this->type;
     }
