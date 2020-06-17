@@ -116,4 +116,50 @@ class TypeReferenceHelpersTest extends TestCase
 
         $this->assertEquals($expected, $actual);
     }
+
+    public function primitiveKindCheckProvider(): array
+    {
+        $result = [];
+        $result[] = ['IsBinary'];
+        $result[] = ['IsBoolean'];
+        $result[] = ['IsTemporal'];
+        $result[] = ['IsDateTime'];
+        $result[] = ['IsDateTimeOffset'];
+        $result[] = ['IsTime'];
+        $result[] = ['IsRow'];
+        $result[] = ['IsStructured'];
+        $result[] = ['IsPrimitive'];
+        $result[] = ['IsDecimal'];
+        $result[] = ['IsFloating'];
+        $result[] = ['IsSingle'];
+        $result[] = ['IsDouble'];
+        $result[] = ['IsGuid'];
+        $result[] = ['IsSignedIntegral'];
+        $result[] = ['IsSByte'];
+        $result[] = ['IsInt16'];
+        $result[] = ['IsInt32'];
+        $result[] = ['IsInt64'];
+        $result[] = ['IsIntegral'];
+        $result[] = ['IsByte'];
+        $result[] = ['IsString'];
+        $result[] = ['IsStream'];
+        $result[] = ['IsSpatial'];
+
+        return $result;
+    }
+
+    /**
+     * @dataProvider primitiveKindCheckProvider
+     *
+     * @param string $function
+     */
+    public function testPrimitiveKindCheck(string $function)
+    {
+        $foo = new EdmRowTypeReference(null, false);
+
+        $expected = false;
+        $actual = $foo->{$function}();
+
+        $this->assertEquals($expected, $actual);
+    }
 }

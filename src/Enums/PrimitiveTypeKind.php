@@ -127,24 +127,24 @@ class PrimitiveTypeKind extends Enum
     public function IsSpatial(): bool
     {
         $spatialTypes = [
-            self::Geography(),
-            self::GeographyPoint(),
-            self::GeographyLineString(),
-            self::GeographyPolygon(),
-            self::GeographyCollection(),
-            self::GeographyMultiPoint(),
-            self::GeographyMultiLineString(),
-            self::GeographyMultiPolygon(),
-            self::Geometry(),
-            self::GeometryPoint(),
-            self::GeometryLineString(),
-            self::GeometryPolygon(),
-            self::GeometryCollection(),
-            self::GeometryMultiPolygon(),
-            self::GeometryMultiLineString(),
-            self::GeometryMultiPoint()
+            self::Geography,
+            self::GeographyPoint,
+            self::GeographyLineString,
+            self::GeographyPolygon,
+            self::GeographyCollection,
+            self::GeographyMultiPoint,
+            self::GeographyMultiLineString,
+            self::GeographyMultiPolygon,
+            self::Geometry,
+            self::GeometryPoint,
+            self::GeometryLineString,
+            self::GeometryPolygon,
+            self::GeometryCollection,
+            self::GeometryMultiPolygon,
+            self::GeometryMultiLineString,
+            self::GeometryMultiPoint
         ];
-        return in_array($this, $spatialTypes);
+        return in_array($this->getValue(), $spatialTypes);
     }
 
     /**
@@ -155,11 +155,11 @@ class PrimitiveTypeKind extends Enum
     public function IsTemporal(): bool
     {
         $temporalTypes = [
-            self::Time(),
-            self::DateTime(),
-            self::DateTimeOffset(),
+            self::Time,
+            self::DateTime,
+            self::DateTimeOffset,
         ];
-        return in_array($this, $temporalTypes);
+        return in_array($this->getValue(), $temporalTypes);
     }
 
     /**
@@ -170,13 +170,13 @@ class PrimitiveTypeKind extends Enum
     public function IsIntegral(): bool
     {
         $integralTypes = [
-            self::Int64(),
-            self::Int32(),
-            self::Int16(),
-            self::Byte(),
-            self::SByte(),
+            self::Int64,
+            self::Int32,
+            self::Int16,
+            self::Byte,
+            self::SByte,
         ];
-        return in_array($this, $integralTypes);
+        return in_array($this->getValue(), $integralTypes);
     }
 
 
@@ -187,9 +187,15 @@ class PrimitiveTypeKind extends Enum
      */
     public function isSignedIntegral(): bool
     {
-        return $this == PrimitiveTypeKind::SByte() ||
-            $this == PrimitiveTypeKind::Int16() ||
-            $this == PrimitiveTypeKind::Int32() ||
-            $this == PrimitiveTypeKind::Int64();
+        $value = $this->getValue();
+
+        $signedIntegralTypes = [
+            self::Int64,
+            self::Int32,
+            self::Int16,
+            self::SByte,
+        ];
+
+        return in_array($this->getValue(), $signedIntegralTypes);
     }
 }
