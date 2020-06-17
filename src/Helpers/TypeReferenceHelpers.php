@@ -408,7 +408,7 @@ trait TypeReferenceHelpers
         }
 
         $typeDefinition = $this->getDefinition();
-        if ($typeDefinition->getTypeKind()->isPrimitive()) {
+        if (null !== $typeDefinition && $typeDefinition->getTypeKind()->isPrimitive()) {
             if ($typeDefinition instanceof IPrimitiveType) {
                 switch ($typeDefinition->getPrimitiveKind()) {
                     case PrimitiveTypeKind::Boolean():

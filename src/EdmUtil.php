@@ -68,14 +68,17 @@ class EdmUtil
         return true;
     }
 
-    public static function TryGetNamespaceNameFromQualifiedName(string $qualifiedName, string &$namespaceName, string &$name)
-    {
+    public static function TryGetNamespaceNameFromQualifiedName(
+        string $qualifiedName,
+        ?string &$namespaceName,
+        ?string &$name
+    ): bool {
         // Qualified name can be a function import name which is separated by '/'
         $lastSlash = strrpos($qualifiedName, '/');
-        if ($lastSlash !== false) {
+        if (false === $lastSlash) {
             // Not a FunctionImport
             $lastDot = strrpos($qualifiedName, '.');
-            if ($lastDot === false) {
+            if (false === $lastDot) {
                 $namespaceName = '';
                 $name          = $qualifiedName;
                 return false;
