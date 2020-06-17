@@ -63,7 +63,7 @@ trait PrimitiveTypeHelpers
             case PrimitiveTypeKind::GeometryCollection():
             case PrimitiveTypeKind::GeometryMultiPolygon():
             case PrimitiveTypeKind::GeometryMultiLineString():
-            case PrimitiveTypeKind::GeometryMultiPoint:
+            case PrimitiveTypeKind::GeometryMultiPoint():
                 return new EdmSpatialTypeReference($this, $isNullable);
             default:
                 throw new InvalidOperationException(StringConst::EdmPrimitive_UnexpectedKind());
