@@ -25,10 +25,10 @@ abstract class EdmTypeReference extends EdmElement implements ITypeReference
     /**
      * Initializes a new instance of the EdmTypeReference class.
      *
-     * @param IType $definition type that describes this value
-     * @param bool  $isNullable denotes whether the type can be nullable
+     * @param IType|null $definition type that describes this value
+     * @param bool       $isNullable denotes whether the type can be nullable
      */
-    public function __construct(IType $definition, bool $isNullable)
+    public function __construct(?IType $definition, bool $isNullable)
     {
         $this->definition = $definition;
         $this->isNullable = $isNullable;

@@ -12,7 +12,8 @@ use AlgoWeb\ODataMetadata\Interfaces\IRowTypeReference;
 class EdmRowTypeReference extends EdmTypeReference implements IRowTypeReference
 {
     use RowTypeReferenceHelpers;
-    public function __construct(IRowType $definition, bool $isNullable)
+
+    public function __construct(?IRowType $definition, bool $isNullable)
     {
         parent::__construct($definition, $isNullable);
     }
