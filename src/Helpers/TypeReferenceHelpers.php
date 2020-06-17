@@ -81,8 +81,7 @@ trait TypeReferenceHelpers
     public function FullName(): ?string
     {
         $namedDefinition = $this->getDefinition();
-        $namedDefinition = $namedDefinition instanceof ISchemaElement ? $namedDefinition : null;
-        return $namedDefinition !== null ? $namedDefinition->FullName() : null;
+        return $namedDefinition instanceof ISchemaElement ? $namedDefinition->FullName() : null;
     }
 
     /**
@@ -93,7 +92,7 @@ trait TypeReferenceHelpers
     public function PrimitiveKind(): PrimitiveTypeKind
     {
         $typeDefinition = $this->getDefinition();
-        if ($typeDefinition->getTypeKind()->isPrimitive()) {
+        if (null === $typeDefinition || !$typeDefinition->getTypeKind()->isPrimitive()) {
             return PrimitiveTypeKind::None();
         }
         assert($typeDefinition instanceof IPrimitiveType);
