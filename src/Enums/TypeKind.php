@@ -30,7 +30,7 @@ namespace AlgoWeb\ODataMetadata\Enums;
  */
 class TypeKind extends Enum
 {
-    protected const None            =1;
+    protected const None            = 1;
     protected const Primitive       = 2;
     protected const Entity          = 3;
     protected const Complex         = 4;
@@ -46,10 +46,10 @@ class TypeKind extends Enum
      */
     public function IsStructured(): bool
     {
-        switch ($this) {
-            case TypeKind::Entity():
-            case TypeKind::Complex():
-            case TypeKind::Row():
+        switch ($this->getValue()) {
+            case TypeKind::Entity:
+            case TypeKind::Complex:
+            case TypeKind::Row:
                 return true;
         }
         return false;
