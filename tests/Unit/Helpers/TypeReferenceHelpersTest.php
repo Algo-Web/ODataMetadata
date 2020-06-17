@@ -86,4 +86,34 @@ class TypeReferenceHelpersTest extends TestCase
 
         $this->assertEquals($expected, $actual);
     }
+
+    public function typeKindCheckProvider(): array
+    {
+        $result = [];
+        $result[] = ['IsCollection'];
+        $result[] = ['IsEntity'];
+        $result[] = ['IsEntityReference'];
+        $result[] = ['IsComplex'];
+        $result[] = ['IsEnum'];
+        $result[] = ['IsRow'];
+        $result[] = ['IsStructured'];
+        $result[] = ['IsPrimitive'];
+
+        return $result;
+    }
+
+    /**
+     * @dataProvider typeKindCheckProvider
+     *
+     * @param string $function
+     */
+    public function testTypeKindCheck(string $function)
+    {
+        $foo = new EdmRowTypeReference(null, false);
+
+        $expected = false;
+        $actual = $foo->{$function}();
+
+        $this->assertEquals($expected, $actual);
+    }
 }
