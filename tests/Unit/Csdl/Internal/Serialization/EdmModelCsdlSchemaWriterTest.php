@@ -168,11 +168,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      */
     public function testWriteInlineExpression(ExpressionKind $kind, $payload, $expected, bool $kaboom)
     {
-        $writer = new \XMLWriter();
-        $writer->openMemory();
-        $writer->startDocument();
-        $writer->setIndent(true);
-        $writer->setIndentString('   ');
+        $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
         $expr = m::mock(IExpression::class)->makePartial();
@@ -196,11 +192,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      */
     public function testWriteFunctionImportElementHeaderBothComposableAndSideEffecting()
     {
-        $writer = new \XMLWriter();
-        $writer->openMemory();
-        $writer->startDocument();
-        $writer->setIndent(true);
-        $writer->setIndentString('   ');
+        $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
         $import = m::mock(IFunctionImport::class)->makePartial();
@@ -243,11 +235,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         bool $kaboom,
         string $expected
     ) {
-        $writer = new \XMLWriter();
-        $writer->openMemory();
-        $writer->startDocument();
-        $writer->setIndent(true);
-        $writer->setIndentString('   ');
+        $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
         $entitySet = null;
@@ -307,11 +295,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      */
     public function testWriteDocumentationElementProvider(?string $summary, ?string $description, string $expected)
     {
-        $writer = new \XMLWriter();
-        $writer->openMemory();
-        $writer->startDocument();
-        $writer->setIndent(true);
-        $writer->setIndentString('   ');
+        $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
         $doc = m::mock(IDocumentation::class)->makePartial();
@@ -341,11 +325,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      */
     public function testWriteEnumMemberElementHeader(?bool $explicit, string $expected)
     {
-        $writer = new \XMLWriter();
-        $writer->openMemory();
-        $writer->startDocument();
-        $writer->setIndent(true);
-        $writer->setIndentString('   ');
+        $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
         $prim = m::mock(IPrimitiveValue::class)->makePartial();
@@ -369,11 +349,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      */
     public function testWriteComplexTypeElementHeader()
     {
-        $writer = new \XMLWriter();
-        $writer->openMemory();
-        $writer->startDocument();
-        $writer->setIndent(true);
-        $writer->setIndentString('   ');
+        $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
         $expected = '<?xml version="1.0"?>'.PHP_EOL.'<ComplexType Name="name"/>'.PHP_EOL;
@@ -395,11 +371,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      */
     public function testWritePropertyRefElement()
     {
-        $writer = new \XMLWriter();
-        $writer->openMemory();
-        $writer->startDocument();
-        $writer->setIndent(true);
-        $writer->setIndentString('   ');
+        $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
         $expected = '<?xml version="1.0"?>'.PHP_EOL.'<PropertyRef Name="name"/>'.PHP_EOL;
@@ -435,11 +407,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      */
     public function testWriteValueTermElementHeader(bool $isInline, $type, string $expected)
     {
-        $writer = new \XMLWriter();
-        $writer->openMemory();
-        $writer->startDocument();
-        $writer->setIndent(true);
-        $writer->setIndentString('   ');
+        $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
         $typeRef = null;
@@ -486,11 +454,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      */
     public function testWriteEnumTypeElementHeaderProvider(PrimitiveTypeKind $type, bool $isFlags, string $expected)
     {
-        $writer = new \XMLWriter();
-        $writer->openMemory();
-        $writer->startDocument();
-        $writer->setIndent(true);
-        $writer->setIndentString('   ');
+        $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
         $prim = m::mock(IPrimitiveType::class)->makePartial();
@@ -510,11 +474,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
     public function testWriteDeclaredKeyPropertiesElementHeader()
     {
-        $writer = new \XMLWriter();
-        $writer->openMemory();
-        $writer->startDocument();
-        $writer->setIndent(true);
-        $writer->setIndentString('   ');
+        $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
         $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Key/>'.PHP_EOL;
@@ -551,5 +511,18 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
         $foo = new EdmModelCsdlSchemaWriter($model, $mappings, $ver, $writer);
         return $foo;
+    }
+
+    /**
+     * @return \XMLWriter
+     */
+    protected function getWriter(): \XMLWriter
+    {
+        $writer = new \XMLWriter();
+        $writer->openMemory();
+        $writer->startDocument();
+        $writer->setIndent(true);
+        $writer->setIndentString('   ');
+        return $writer;
     }
 }
