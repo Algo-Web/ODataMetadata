@@ -12,6 +12,7 @@ use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\OnDeleteAction;
 use AlgoWeb\ODataMetadata\Enums\TermKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
+use AlgoWeb\ODataMetadata\Exception\NotSupportedException;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IPropertyValueBinding;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\ITypeAnnotation;
@@ -109,6 +110,12 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter           = $schemaWriter ?? new EdmModelCsdlSchemaWriter($model, $this->namespaceAliasMappings, $this->edmVersion, $xmlWriter);
     }
 
+    /**
+     * @param EdmSchema $element
+     * @param array $mappings
+     * @throws \ReflectionException
+     * @throws NotSupportedException
+     */
     public function VisitEdmSchema(EdmSchema $element, array $mappings): void
     {
         $alias = null;
@@ -157,6 +164,11 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter->WriteEndElement();
     }
 
+    /**
+     * @param IEntityContainer $element
+     * @throws \ReflectionException
+     * @throws NotSupportedException
+     */
     protected function ProcessEntityContainer(IEntityContainer $element): void
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteEntityContainerElementHeader']);
@@ -190,6 +202,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($element);
     }
 
+    /**
+     * @param IEntitySet $element
+     * @throws NotSupportedException
+     */
     protected function ProcessEntitySet(IEntitySet $element): void
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteEntitySetElementHeader']);
@@ -197,6 +213,11 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($element);
     }
 
+    /**
+     * @param IEntityType $element
+     * @throws NotSupportedException
+     * @throws \ReflectionException
+     */
     protected function ProcessEntityType(IEntityType $element): void
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteEntityTypeElementHeader']);
@@ -209,6 +230,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($element);
     }
 
+    /**
+     * @param IStructuralProperty $element
+     * @throws NotSupportedException
+     */
     protected function ProcessStructuralProperty(IStructuralProperty $element): void
     {
         $inlineType = self::IsInlineType($element->getType());
@@ -224,31 +249,55 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($element);
     }
 
+    /**
+     * @param IBinaryTypeReference $element
+     * @throws \ReflectionException
+     */
     protected function ProcessBinaryTypeReference(IBinaryTypeReference $element): void
     {
         $this->schemaWriter->WriteBinaryTypeAttributes($element);
     }
 
+    /**
+     * @param IDecimalTypeReference $element
+     * @throws \ReflectionException
+     */
     protected function ProcessDecimalTypeReference(IDecimalTypeReference $element): void
     {
         $this->schemaWriter->WriteDecimalTypeAttributes($element);
     }
 
+    /**
+     * @param ISpatialTypeReference $element
+     * @throws \ReflectionException
+     */
     protected function ProcessSpatialTypeReference(ISpatialTypeReference $element): void
     {
         $this->schemaWriter->WriteSpatialTypeAttributes($element);
     }
 
+    /**
+     * @param IStringTypeReference $element
+     * @throws \ReflectionException
+     */
     protected function ProcessStringTypeReference(IStringTypeReference $element): void
     {
         $this->schemaWriter->WriteStringTypeAttributes($element);
     }
 
+    /**
+     * @param ITemporalTypeReference $element
+     * @throws \ReflectionException
+     */
     protected function ProcessTemporalTypeReference(ITemporalTypeReference $element): void
     {
         $this->schemaWriter->WriteTemporalTypeAttributes($element);
     }
 
+    /**
+     * @param INavigationProperty $element
+     * @throws NotSupportedException
+     */
     protected function ProcessNavigationProperty(INavigationProperty $element): void
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteNavigationPropertyElementHeader']);
@@ -256,6 +305,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->navigationProperties[] = $element;
     }
 
+    /**
+     * @param IComplexType $element
+     * @throws NotSupportedException
+     */
     protected function ProcessComplexType(IComplexType $element): void
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteComplexTypeElementHeader']);
@@ -263,6 +316,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($element);
     }
 
+    /**
+     * @param IEnumType $element
+     * @throws NotSupportedException
+     */
     protected function ProcessEnumType(IEnumType $element): void
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteEnumTypeElementHeader']);
@@ -270,12 +327,20 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($element);
     }
 
+    /**
+     * @param IEnumMember $element
+     * @throws NotSupportedException
+     */
     protected function ProcessEnumMember(IEnumMember $element): void
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteEnumMemberElementHeader']);
         $this->FinishElement($element);
     }
 
+    /**
+     * @param IValueTerm $term
+     * @throws NotSupportedException
+     */
     protected function ProcessValueTerm(IValueTerm $term): void
     {
         $inlineType = $term->getType() != null && self::IsInlineType($term->getType());
@@ -293,6 +358,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($term);
     }
 
+    /**
+     * @param IFunction $element
+     * @throws NotSupportedException
+     */
     protected function ProcessFunction(IFunction $element): void
     {
         if ($element->getReturnType() != null) {
@@ -321,6 +390,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($element);
     }
 
+    /**
+     * @param IFunctionParameter $element
+     * @throws NotSupportedException
+     */
     protected function ProcessFunctionParameter(IFunctionParameter $element): void
     {
         $inlineType = self::IsInlineType($element->getType());
@@ -340,6 +413,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($element);
     }
 
+    /**
+     * @param ICollectionType $element
+     * @throws NotSupportedException
+     */
     protected function ProcessCollectionType(ICollectionType $element): void
     {
         $inlineType = self::IsInlineType($element->getElementType());
@@ -364,6 +441,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter->WriteEndElement();
     }
 
+    /**
+     * @param IFunctionImport $functionImport
+     * @throws NotSupportedException
+     */
     protected function ProcessFunctionImport(IFunctionImport $functionImport): void
     {
         if ($functionImport->getReturnType() != null && !self::IsInlineType($functionImport->getReturnType())) {
@@ -377,6 +458,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
 
     #region Vocabulary Annotations
 
+    /**
+     * @param IValueAnnotation $annotation
+     * @throws NotSupportedException
+     */
     protected function ProcessValueAnnotation(IValueAnnotation $annotation): void
     {
         $isInline = self::IsInlineExpression($annotation->getValue());
@@ -390,6 +475,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($annotation);
     }
 
+    /**
+     * @param ITypeAnnotation $annotation
+     * @throws NotSupportedException
+     */
     protected function ProcessTypeAnnotation(ITypeAnnotation $annotation): void
     {
         $this->BeginElement($annotation, [$this->schemaWriter, 'WriteTypeAnnotationElementHeader']);
@@ -397,6 +486,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($annotation);
     }
 
+    /**
+     * @param IPropertyValueBinding $binding
+     * @throws NotSupportedException
+     */
     protected function ProcessPropertyValueBinding(IPropertyValueBinding $binding): void
     {
         $isInline = self::IsInlineExpression($binding->getValue());
@@ -424,6 +517,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter->WriteBinaryConstantExpressionElement($expression);
     }
 
+    /**
+     * @param IRecordExpression $expression
+     * @throws NotSupportedException
+     */
     protected function ProcessRecordExpression(IRecordExpression $expression): void
     {
         $this->BeginElement($expression, [$this->schemaWriter, 'WriteRecordExpressionElementHeader']);
@@ -431,6 +528,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($expression);
     }
 
+    /**
+     * @param ILabeledExpression $element
+     * @throws NotSupportedException
+     */
     protected function ProcessLabeledExpression(ILabeledExpression $element): void
     {
         if ($element->getName() == null) {
@@ -442,6 +543,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         }
     }
 
+    /**
+     * @param IPropertyConstructor $constructor
+     * @throws NotSupportedException
+     */
     protected function ProcessPropertyConstructor(IPropertyConstructor $constructor): void
     {
         $isInline = self::IsInlineExpression($constructor->getValue());
@@ -455,6 +560,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($constructor);
     }
 
+    /**
+     * @param IPropertyReferenceExpression $expression
+     * @throws NotSupportedException
+     */
     protected function ProcessPropertyReferenceExpression(IPropertyReferenceExpression $expression): void
     {
         $this->BeginElement($expression, [$this->schemaWriter, 'WritePropertyReferenceExpressionElementHeader']);
@@ -465,16 +574,27 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($expression);
     }
 
+    /**
+     * @param IPathExpression $expression
+     */
     protected function ProcessPathExpression(IPathExpression $expression): void
     {
         $this->schemaWriter->WritePathExpressionElement($expression);
     }
 
+    /**
+     * @param IParameterReferenceExpression $expression
+     * @throws \ReflectionException
+     */
     protected function ProcessParameterReferenceExpression(IParameterReferenceExpression $expression): void
     {
         $this->schemaWriter->WriteParameterReferenceExpressionElement($expression);
     }
 
+    /**
+     * @param ICollectionExpression $expression
+     * @throws NotSupportedException
+     */
     protected function ProcessCollectionExpression(ICollectionExpression $expression): void
     {
         $this->BeginElement($expression, [$this->schemaWriter, 'WriteCollectionExpressionElementHeader']);
@@ -482,6 +602,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($expression);
     }
 
+    /**
+     * @param IIsTypeExpression $expression
+     * @throws NotSupportedException
+     */
     protected function ProcessIsTypeExpression(IIsTypeExpression $expression): void
     {
         $inlineType = self::IsInlineType($expression->getType());
@@ -503,6 +627,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter->WriteIntegerConstantExpressionElement($expression);
     }
 
+    /**
+     * @param IIfExpression $expression
+     * @throws NotSupportedException
+     */
     protected function ProcessIfExpression(IIfExpression $expression): void
     {
         $this->BeginElement($expression, [$this->schemaWriter, 'WriteIfExpressionElementHeader']);
@@ -510,11 +638,19 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->FinishElement($expression);
     }
 
+    /**
+     * @param IFunctionReferenceExpression $expression
+     * @throws \ReflectionException
+     */
     protected function ProcessFunctionReferenceExpression(IFunctionReferenceExpression $expression): void
     {
         $this->schemaWriter->WriteFunctionReferenceExpressionElement($expression);
     }
 
+    /**
+     * @param IApplyExpression $expression
+     * @throws NotSupportedException
+     */
     protected function ProcessFunctionApplicationExpression(IApplyExpression $expression): void
     {
         $isFunction = $expression->getAppliedFunction()->getExpressionKind() == ExpressionKind::FunctionReference();
@@ -539,11 +675,19 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter->WriteGuidConstantExpressionElement($expression);
     }
 
+    /**
+     * @param IEnumMemberReferenceExpression $expression
+     * @throws \ReflectionException
+     */
     protected function ProcessEnumMemberReferenceExpression(IEnumMemberReferenceExpression $expression): void
     {
         $this->schemaWriter->WriteEnumMemberReferenceExpressionElement($expression);
     }
 
+    /**
+     * @param IEntitySetReferenceExpression $expression
+     * @throws \ReflectionException
+     */
     protected function ProcessEntitySetReferenceExpression(IEntitySetReferenceExpression $expression): void
     {
         $this->schemaWriter->WriteEntitySetReferenceExpressionElement($expression);
@@ -574,6 +718,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter->WriteNullConstantExpressionElement($expression);
     }
 
+    /**
+     * @param IAssertTypeExpression $expression
+     * @throws NotSupportedException
+     */
     protected function ProcessAssertTypeExpression(IAssertTypeExpression $expression): void
     {
         $inlineType = self::IsInlineType($expression->getType());
@@ -622,6 +770,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
 
     /**
      * @param iterable|IDirectValueAnnotation[] $annotations
+     * @throws NotSupportedException
      */
     private function ProcessAnnotations(iterable $annotations): void
     {
@@ -635,6 +784,11 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         }
     }
 
+    /**
+     * @param INavigationProperty $element
+     * @throws \ReflectionException
+     * @throws NotSupportedException
+     */
     private function ProcessAssociation(INavigationProperty $element): void
     {
         $end1 = $element->GetPrimary();
@@ -671,6 +825,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     /**
      * @param INavigationProperty               $element
      * @param iterable|IDirectValueAnnotation[] $annotations
+     * @throws \ReflectionException
+     * @throws NotSupportedException
      */
     private function ProcessAssociationEnd(INavigationProperty $element, iterable $annotations): void
     {
@@ -688,6 +844,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     /**
      * @param INavigationProperty               $element
      * @param iterable|IDirectValueAnnotation[] $annotations
+     * @throws \ReflectionException
+     * @throws NotSupportedException
      */
     private function ProcessReferentialConstraint(INavigationProperty $element, iterable $annotations): void
     {
@@ -713,6 +871,12 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter->WriteEndElement();
     }
 
+    /**
+     * @param IEntitySet $entitySet
+     * @param INavigationProperty $property
+     * @throws \ReflectionException
+     * @throws NotSupportedException
+     */
     private function ProcessAssociationSet(IEntitySet $entitySet, INavigationProperty $property): void
     {
         /**
@@ -747,6 +911,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param IEntitySet                        $entitySet
      * @param INavigationProperty               $property
      * @param iterable|IDirectValueAnnotation[] $annotations
+     * @throws \ReflectionException
+     * @throws NotSupportedException
      */
     private function ProcessAssociationSetEnd(IEntitySet $entitySet, INavigationProperty $property, iterable $annotations): void
     {
@@ -756,6 +922,11 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter->WriteEndElement();
     }
 
+    /**
+     * @param ITypeReference $element
+     * @param bool $inlineType
+     * @throws \ReflectionException
+     */
     private function ProcessFacets(ITypeReference $element, bool $inlineType): void
     {
         if ($element != null) {
@@ -779,6 +950,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
 
     /**
      * @param iterable|IStructuralProperty[] $keyProperties
+     * @throws \ReflectionException
      */
     private function VisitEntityTypeDeclaredKey(iterable $keyProperties): void
     {
@@ -789,6 +961,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
 
     /**
      * @param iterable|IStructuralProperty[] $properties
+     * @throws \ReflectionException
      */
     private function VisitPropertyRefs(iterable $properties): void
     {
@@ -799,6 +972,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
 
     /**
      * @param iterable|IDirectValueAnnotation[] $annotations
+     * @throws NotSupportedException
      */
     private function VisitAttributeAnnotations(iterable $annotations): void
     {
@@ -834,11 +1008,18 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         }
     }
 
+    /**
+     * @param IDirectValueAnnotation $annotation
+     * @throws NotSupportedException
+     */
     private function ProcessAttributeAnnotation(IDirectValueAnnotation $annotation): void
     {
         $this->schemaWriter->WriteAnnotationStringAttribute($annotation);
     }
 
+    /**
+     * @param IDirectValueAnnotation $annotation
+     */
     private function ProcessElementAnnotation(IDirectValueAnnotation $annotation): void
     {
         $this->schemaWriter->WriteAnnotationStringElement($annotation);
@@ -846,6 +1027,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
 
     /**
      * @param iterable|IVocabularyAnnotation[] $annotations
+     * @throws NotSupportedException
      */
     private function VisitElementVocabularyAnnotations(iterable $annotations): void
     {
@@ -869,6 +1051,12 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         }
     }
 
+    /**
+     * @param IEdmElement $element
+     * @param callable $elementHeaderWriter
+     * @param callable ...$additionalAttributeWriters
+     * @throws NotSupportedException
+     */
     private function BeginElement(IEdmElement $element, callable $elementHeaderWriter, callable ...$additionalAttributeWriters)
     {
         $elementHeaderWriter($element);
@@ -886,6 +1074,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         }
     }
 
+    /**
+     * @param IEdmElement $element
+     * @throws NotSupportedException
+     */
     private function FinishElement(IEdmElement $element): void
     {
         $this->VisitPrimitiveElementAnnotations($this->model->getDirectValueAnnotationsManager()->GetDirectValueAnnotations($element));
