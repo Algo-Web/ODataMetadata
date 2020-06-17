@@ -782,7 +782,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     private function VisitEntityTypeDeclaredKey(iterable $keyProperties): void
     {
-        $this->schemaWriter->WriteDelaredKeyPropertiesElementHeader();
+        $this->schemaWriter->WriteDeclaredKeyPropertiesElementHeader();
         $this->VisitPropertyRefs($keyProperties);
         $this->schemaWriter->WriteEndElement();
     }

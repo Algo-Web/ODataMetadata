@@ -508,6 +508,24 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    public function testWriteDeclaredKeyPropertiesElementHeader()
+    {
+        $writer = new \XMLWriter();
+        $writer->openMemory();
+        $writer->startDocument();
+        $writer->setIndent(true);
+        $writer->setIndentString('   ');
+        $foo = $this->getSchemaWriterWithMock($writer);
+
+        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Key/>'.PHP_EOL;
+
+        $foo->WriteDeclaredKeyPropertiesElementHeader();
+
+        $writer->endElement();
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
     /**
      * @return EdmModelCsdlSchemaWriter
      */

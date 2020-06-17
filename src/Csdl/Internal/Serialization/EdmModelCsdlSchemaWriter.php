@@ -217,7 +217,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->WriteOptionalAttribute(CsdlConstants::Attribute_OpenType, $entityType->isOpen(), CsdlConstants::Default_OpenType, [EdmValueWriter::class,'BooleanAsXml']);
     }
 
-    public function WriteDelaredKeyPropertiesElementHeader(): void
+    public function WriteDeclaredKeyPropertiesElementHeader(): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Key);
     }

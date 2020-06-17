@@ -79,7 +79,7 @@ interface IEdmModelCsdlSchemaWriter
 
     public function WriteEntityTypeElementHeader(IEntityType $entityType): void;
 
-    public function WriteDelaredKeyPropertiesElementHeader(): void;
+    public function WriteDeclaredKeyPropertiesElementHeader(): void;
 
     public function WritePropertyRefElement(IStructuralProperty $property): void;
 
