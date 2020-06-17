@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\Enums\ConcurrencyMode;
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\FunctionParameterMode;
 use AlgoWeb\ODataMetadata\Enums\Multiplicity;
+use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IBinaryConstantExpression;
@@ -19,8 +20,10 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 use AlgoWeb\ODataMetadata\Interfaces\IDocumentation;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
+use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
+use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
@@ -456,6 +459,50 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
         $foo->WriteValueTermElementHeader($term, $isInline);
 
+        $writer->endElement();
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function writeEnumTypeElementHeaderProvider(): array
+    {
+        $result = [];
+        $result[] = [PrimitiveTypeKind::Int32(), false, '<?xml version="1.0"?>'.PHP_EOL.'<EnumType Name="name"/>'.PHP_EOL];
+        $result[] = [PrimitiveTypeKind::Int64(), false, '<?xml version="1.0"?>'.PHP_EOL.'<EnumType Name="name" UnderlyingType="FullName"/>'.PHP_EOL];
+        $result[] = [PrimitiveTypeKind::Int32(), true, '<?xml version="1.0"?>'.PHP_EOL.'<EnumType Name="name" IsFlags="true"/>'.PHP_EOL];
+        $result[] = [PrimitiveTypeKind::Int64(), true, '<?xml version="1.0"?>'.PHP_EOL.'<EnumType Name="name" UnderlyingType="FullName" IsFlags="true"/>'.PHP_EOL];
+
+
+        return $result;
+    }
+
+    /**
+     * @dataProvider writeEnumTypeElementHeaderProvider
+     *
+     * @param PrimitiveTypeKind $type
+     * @param bool $isFlags
+     * @param string $expected
+     * @throws \ReflectionException
+     */
+    public function testWriteEnumTypeElementHeaderProvider(PrimitiveTypeKind $type, bool $isFlags, string $expected)
+    {
+        $writer = new \XMLWriter();
+        $writer->openMemory();
+        $writer->startDocument();
+        $writer->setIndent(true);
+        $writer->setIndentString('   ');
+        $foo = $this->getSchemaWriterWithMock($writer);
+
+        $prim = m::mock(IPrimitiveType::class)->makePartial();
+        $prim->shouldReceive('getPrimitiveKind')->andReturn($type);
+        $prim->shouldReceive('FullName')->andReturn('FullName');
+
+        $enum = m::mock(IEnumType::class)->makePartial();
+        $enum->shouldReceive('getUnderlyingType')->andReturn($prim);
+        $enum->shouldReceive('getName')->andReturn('name');
+        $enum->shouldReceive('isFlags')->andReturn($isFlags);
+
+        $foo->WriteEnumTypeElementHeader($enum);
         $writer->endElement();
         $actual = $writer->outputMemory(true);
         $this->assertEquals($expected, $actual);
