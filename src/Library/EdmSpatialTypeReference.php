@@ -67,9 +67,9 @@ class EdmSpatialTypeReference extends EdmPrimitiveTypeReference implements ISpat
     }
 
     /**
-     * @return int gets the precision of this temporal type
+     * @return int|null gets the precision of this temporal type
      */
-    public function getSpatialReferenceIdentifier(): int
+    public function getSpatialReferenceIdentifier(): ?int
     {
         return $this->spatialReferenceIdentifier;
     }

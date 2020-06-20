@@ -42,7 +42,7 @@ abstract class ToTraceString
                 $s .= self::ToTraceString($element->getDefinition());
                 $s = self::AppendKeyValue($s, EdmConstants::FacetName_Nullable, $element->getNullable() ? 'TRUE' : 'FALSE');
                 if ($element->isPrimitive()) {
-                    self::AppendFacets($s, $element->AsPrimitive());
+                    $s = self::AppendFacets($s, $element->AsPrimitive());
                 }
                 $s .= ']';
                 return $s;
@@ -79,18 +79,18 @@ abstract class ToTraceString
     {
         switch ($type->PrimitiveKind()) {
             case PrimitiveTypeKind::Binary():
-                self::AppendBinaryFacets($s, $type->AsBinary());
+                $s = self::AppendBinaryFacets($s, $type->AsBinary());
                 break;
             case PrimitiveTypeKind::Decimal():
-                self::AppendDecimalFacets($s, $type->AsDecimal());
+                $s = self::AppendDecimalFacets($s, $type->AsDecimal());
                 break;
             case PrimitiveTypeKind::String():
-                self::AppendStringFacets($s, $type->AsString());
+                $s = self::AppendStringFacets($s, $type->AsString());
                 break;
             case PrimitiveTypeKind::Time():
             case PrimitiveTypeKind::DateTime():
             case PrimitiveTypeKind::DateTimeOffset():
-                self::AppendTemporalFacets($s, $type->AsTemporal());
+                $s = self::AppendTemporalFacets($s, $type->AsTemporal());
                 break;
             case PrimitiveTypeKind::Geography():
             case PrimitiveTypeKind::GeographyPoint():
@@ -108,7 +108,7 @@ abstract class ToTraceString
             case PrimitiveTypeKind::GeometryMultiPolygon():
             case PrimitiveTypeKind::GeometryMultiLineString():
             case PrimitiveTypeKind::GeometryMultiPoint():
-                self::AppendSpatialFacets($s, $type->AsSpatial());
+                $s = self::AppendSpatialFacets($s, $type->AsSpatial());
                 break;
         }
         return $s;
@@ -119,7 +119,7 @@ abstract class ToTraceString
     {
         self::AppendKeyValue($sb, EdmConstants::FacetName_FixedLength, $type->isFixedLength() ? 'TRUE' : 'FALSE');
         if ($type->isUnBounded() || $type->getMaxLength() != null) {
-            self::AppendKeyValue($sb, EdmConstants::FacetName_MaxLength, ($type->isUnBounded()) ? EdmConstants::Value_Max : strval($type->getMaxLength()));
+            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_MaxLength, ($type->isUnBounded()) ? EdmConstants::Value_Max : strval($type->getMaxLength()));
         }
         return $sb;
     }
@@ -127,19 +127,19 @@ abstract class ToTraceString
     private static function AppendStringFacets(string $sb, IStringTypeReference $type): string
     {
         if ($type->isFixedLength() != null) {
-            self::AppendKeyValue($sb, EdmConstants::FacetName_FixedLength, $type->isFixedLength() ? 'TRUE' : 'FALSE');
+            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_FixedLength, $type->isFixedLength() ? 'TRUE' : 'FALSE');
         }
 
         if ($type->isUnbounded() == true || $type->getMaxLength() != null) {
-            self::AppendKeyValue($sb, EdmConstants::FacetName_MaxLength, $type->isUnbounded() ? EdmConstants::Value_Max : $type->getMaxLength());
+            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_MaxLength, $type->isUnbounded() ? EdmConstants::Value_Max : $type->getMaxLength());
         }
 
         if ($type->isUnicode() != null) {
-            self::AppendKeyValue($sb, EdmConstants::FacetName_Unicode, $type->isUnicode() ? 'TRUE' : 'FALSE');
+            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Unicode, $type->isUnicode() ? 'TRUE' : 'FALSE');
         }
 
         if ($type->getCollation() != null) {
-            self::AppendKeyValue($sb, EdmConstants::FacetName_Collation, $type->getCollation());
+            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Collation, $type->getCollation());
         }
         return $sb;
     }
@@ -147,7 +147,7 @@ abstract class ToTraceString
     private static function AppendTemporalFacets(string $sb, ITemporalTypeReference $type): string
     {
         if ($type->getPrecision() != null) {
-            self::AppendKeyValue($sb, EdmConstants::FacetName_Precision, $type->getPrecision());
+            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Precision, $type->getPrecision());
         }
         return $sb;
     }
@@ -155,21 +155,28 @@ abstract class ToTraceString
     private static function AppendDecimalFacets(string $sb, IDecimalTypeReference $type): string
     {
         if ($type->getPrecision() != null) {
-            self::AppendKeyValue($sb, EdmConstants::FacetName_Precision, $type->getPrecision());
+            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Precision, $type->getPrecision());
         }
 
         if ($type->getScale() != null) {
-            self::AppendKeyValue($sb, EdmConstants::FacetName_Scale, $type->getScale());
+            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Scale, $type->getScale());
         }
         return $sb;
     }
 
     private static function AppendSpatialFacets(string $sb, ISpatialTypeReference $type): string
     {
-        self::AppendKeyValue($sb, EdmConstants::FacetName_Srid, $type->getSpatialReferenceIdentifier() != null ? $type->getSpatialReferenceIdentifier(): EdmConstants::Value_SridVariable);
+        $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Srid, $type->getSpatialReferenceIdentifier() != null ? $type->getSpatialReferenceIdentifier(): EdmConstants::Value_SridVariable);
         return $sb;
     }
-    private static function AppendKeyValue(string $s, string $key, string $value)
+
+    /**
+     * @param string $s
+     * @param string $key
+     * @param string|int|null $value
+     * @return string
+     */
+    private static function AppendKeyValue(string $s, string $key, $value)
     {
         $s .= ' ';
         $s .= $key;
