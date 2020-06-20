@@ -15,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface ISpatialTypeReference extends IPrimitiveTypeReference
 {
     /**
-     * @return int gets the Spatial Reference Identifier of this spatial type
+     * @return int|null gets the Spatial Reference Identifier of this spatial type
      */
-    public function getSpatialReferenceIdentifier(): int;
+    public function getSpatialReferenceIdentifier(): ?int;
 }
