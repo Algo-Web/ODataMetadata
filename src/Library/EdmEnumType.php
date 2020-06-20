@@ -82,9 +82,9 @@ class EdmEnumType extends EdmType implements IEnumType
     }
 
     /**
-     * @return string gets the name of this element
+     * @return string|null gets the name of this element
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }

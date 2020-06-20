@@ -33,7 +33,10 @@ class BadNamedStructuredType extends BadStructuredType implements ISchemaElement
         EdmUtil::TryGetNamespaceNameFromQualifiedName($qualifiedName, $this->namespaceName, $this->name);
     }
 
-    public function getName(): string
+    /**
+     * @return string|null gets the name of this element
+     */
+    public function getName(): ?string
     {
         return $this->name;
     }

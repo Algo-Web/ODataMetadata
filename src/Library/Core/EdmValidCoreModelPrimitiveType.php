@@ -41,9 +41,9 @@ class EdmValidCoreModelPrimitiveType extends EdmType implements IPrimitiveType, 
     /**
      * Gets the name of this element.
      *
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }

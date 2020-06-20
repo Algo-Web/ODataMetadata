@@ -69,9 +69,9 @@ class BadProperty extends BadElement implements IStructuralProperty
     }
 
     /**
-     * @return ITypeReference gets the type of this property
+     * @return ITypeReference|null gets the type of this property
      */
-    public function getType(): ITypeReference
+    public function getType(): ?ITypeReference
     {
         return $this->type->getValue($this, [$this,'ComputeType']);
     }

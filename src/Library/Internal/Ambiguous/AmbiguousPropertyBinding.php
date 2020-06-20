@@ -38,9 +38,9 @@ class AmbiguousPropertyBinding extends AmbiguousBinding implements IProperty
     /**
      * Gets the type of this property.
      *
-     * @return ITypeReference
+     * @return ITypeReference|null
      */
-    public function getType(): ITypeReference
+    public function getType(): ?ITypeReference
     {
         return new BadTypeReference(new BadType($this->getErrors()), true);
     }

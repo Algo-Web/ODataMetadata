@@ -28,9 +28,9 @@ class BadEntityReferenceType extends BadType implements IEntityReferenceType
     }
 
     /**
-     * @return IEntityType gets the entity type pointed to by this entity reference
+     * @return IEntityType|null gets the entity type pointed to by this entity reference
      */
-    public function getEntityType(): IEntityType
+    public function getEntityType(): ?IEntityType
     {
         return $this->entityType;
     }
