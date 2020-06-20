@@ -22,9 +22,9 @@ interface IProperty extends INamedElement, IVocabularyAnnotatable
     public function getPropertyKind(): PropertyKind;
 
     /**
-     * @return ITypeReference gets the type of this property
+     * @return ITypeReference|null gets the type of this property
      */
-    public function getType(): ITypeReference;
+    public function getType(): ?ITypeReference;
 
     /**
      * @return IStructuredType gets the type that this property belongs to

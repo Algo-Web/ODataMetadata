@@ -32,9 +32,9 @@ class BadCollectionType extends BadType implements ICollectionType
     }
 
     /**
-     * @return ITypeReference gets the element type of this collection
+     * @return ITypeReference|null gets the element type of this collection
      */
-    public function getElementType(): ITypeReference
+    public function getElementType(): ?ITypeReference
     {
         return $this->elementType;
     }

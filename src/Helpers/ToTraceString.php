@@ -27,10 +27,10 @@ abstract class ToTraceString
     /**
      * Returns the text representation of the current object.
      *
-     * @param  IEdmElement $element reference to the calling object
-     * @return string      the text representation of the current object
+     * @param  IEdmElement|null $element reference to the calling object
+     * @return string           the text representation of the current object
      */
-    public static function ToTraceString(IEdmElement $element): string
+    public static function ToTraceString(?IEdmElement $element): string
     {
         switch (true) {
             case $element instanceof ISchemaElement:

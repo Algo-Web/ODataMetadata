@@ -85,9 +85,9 @@ class UnresolvedFunction extends BadElement implements IFunction, IUnresolvedEle
     }
 
     /**
-     * @return string gets the name of this element
+     * @return string|null gets the name of this element
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }

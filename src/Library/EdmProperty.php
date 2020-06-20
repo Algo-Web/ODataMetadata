@@ -53,9 +53,9 @@ abstract class EdmProperty extends EdmNamedElement implements IProperty
     abstract public function getPropertyKind(): PropertyKind;
 
     /**
-     * @return ITypeReference gets the type of this property
+     * @return ITypeReference|null gets the type of this property
      */
-    public function getType(): ITypeReference
+    public function getType(): ?ITypeReference
     {
         return $this->type;
     }
