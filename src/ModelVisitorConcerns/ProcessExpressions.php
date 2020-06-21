@@ -36,30 +36,30 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 trait ProcessExpressions
 {
-    protected function ProcessExpression(IExpression $expression): void
+    protected function processExpression(IExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessStringConstantExpression(IStringConstantExpression $expression): void
+    protected function processStringConstantExpression(IStringConstantExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessBinaryConstantExpression(IBinaryConstantExpression $expression): void
+    protected function processBinaryConstantExpression(IBinaryConstantExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessRecordExpression(IRecordExpression $expression): void
+    protected function processRecordExpression(IRecordExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         if ($expression->getDeclaredType() != null) {
             $this->VisitTypeReference($expression->getDeclaredType());
         }
@@ -68,177 +68,177 @@ trait ProcessExpressions
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessPropertyReferenceExpression(IPropertyReferenceExpression $expression): void
+    protected function processPropertyReferenceExpression(IPropertyReferenceExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         if ($expression->getBase() != null) {
             $this->VisitExpression($expression->getBase());
         }
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessPathExpression(IPathExpression $expression): void
+    protected function processPathExpression(IPathExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessParameterReferenceExpression(IParameterReferenceExpression $expression): void
+    protected function processParameterReferenceExpression(IParameterReferenceExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessCollectionExpression(ICollectionExpression $expression): void
+    protected function processCollectionExpression(ICollectionExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->VisitExpressions($expression->getElements());
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessLabeledExpressionReferenceExpression(ILabeledExpressionReferenceExpression $expression): void
+    protected function processLabeledExpressionReferenceExpression(ILabeledExpressionReferenceExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessIsTypeExpression(IIsTypeExpression $expression): void
+    protected function processIsTypeExpression(IIsTypeExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->VisitTypeReference($expression->getType());
         $this->VisitExpression($expression->getOperand());
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessIntegerConstantExpression(IIntegerConstantExpression $expression): void
+    protected function processIntegerConstantExpression(IIntegerConstantExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessIfExpression(IIfExpression $expression): void
+    protected function processIfExpression(IIfExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->VisitExpression($expression->getTestExpression());
         $this->VisitExpression($expression->getTrueExpression());
         $this->VisitExpression($expression->getFalseExpression());
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessFunctionReferenceExpression(IFunctionReferenceExpression $expression): void
+    protected function processFunctionReferenceExpression(IFunctionReferenceExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessFunctionApplicationExpression(IApplyExpression $expression): void
+    protected function processFunctionApplicationExpression(IApplyExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->VisitExpression($expression->getAppliedFunction());
         $this->VisitExpressions($expression->getArguments());
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessFloatingConstantExpression(IFloatingConstantExpression $expression): void
+    protected function processFloatingConstantExpression(IFloatingConstantExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessGuidConstantExpression(IGuidConstantExpression $expression): void
+    protected function processGuidConstantExpression(IGuidConstantExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessEnumMemberReferenceExpression(IEnumMemberReferenceExpression $expression): void
+    protected function processEnumMemberReferenceExpression(IEnumMemberReferenceExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessEntitySetReferenceExpression(IEntitySetReferenceExpression $expression): void
+    protected function processEntitySetReferenceExpression(IEntitySetReferenceExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessDecimalConstantExpression(IDecimalConstantExpression $expression): void
+    protected function processDecimalConstantExpression(IDecimalConstantExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessDateTimeConstantExpression(IDateTimeConstantExpression $expression): void
+    protected function processDateTimeConstantExpression(IDateTimeConstantExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessDateTimeOffsetConstantExpression(IDateTimeOffsetConstantExpression $expression): void
+    protected function processDateTimeOffsetConstantExpression(IDateTimeOffsetConstantExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessTimeConstantExpression(ITimeConstantExpression $expression): void
+    protected function processTimeConstantExpression(ITimeConstantExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessBooleanConstantExpression(IBooleanConstantExpression $expression): void
+    protected function processBooleanConstantExpression(IBooleanConstantExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessAssertTypeExpression(IAssertTypeExpression $expression): void
+    protected function processAssertTypeExpression(IAssertTypeExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->VisitTypeReference($expression->getType());
         $this->VisitExpression($expression->getOperand());
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessLabeledExpression(ILabeledExpression $expression): void
+    protected function processLabeledExpression(ILabeledExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
         $this->VisitExpression($expression->getExpression());
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function ProcessPropertyConstructor(IPropertyConstructor $constructor): void
+    protected function processPropertyConstructor(IPropertyConstructor $constructor): void
     {
         $this->startElement($constructor, __METHOD__);
         $this->VisitExpression($constructor->getValue());
         $this->endElement($constructor, __METHOD__);
     }
 
-    protected function ProcessNullConstantExpression(INullExpression $expression): void
+    protected function processNullConstantExpression(INullExpression $expression): void
     {
         $this->startElement($expression, __METHOD__);
-        $this->ProcessExpression($expression);
+        $this->processExpression($expression);
         $this->endElement($expression, __METHOD__);
     }
 
