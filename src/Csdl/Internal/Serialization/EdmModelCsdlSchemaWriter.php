@@ -799,7 +799,9 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
 
     private static function EntitySetAsXml(IEntitySet $set): string
     {
-        return $set->getContainer()->FullName() . '/' . $set->getName();
+        $stem = $set->getContainer() ? $set->getContainer()->FullName() : '';
+
+        return $stem . '/' . $set->getName();
     }
 
     private static function SridAsXml(?int $i): string

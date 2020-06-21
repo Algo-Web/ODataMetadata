@@ -33,6 +33,10 @@ trait VisitTypeReferences
 {
     public function visitTypeReference(ITypeReference $reference): void
     {
+        if (null === $reference->getDefinition()) {
+            throw new InvalidOperationException(StringConst::UnknownEnumVal_TypeKind('null'));
+        }
+
         switch ($reference->getDefinition()->getTypeKind()) {
             case TypeKind::Collection():
                 $this->processCollectionTypeReference($reference->AsCollection());
