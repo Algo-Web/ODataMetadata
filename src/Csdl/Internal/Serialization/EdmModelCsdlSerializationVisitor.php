@@ -570,10 +570,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     protected function ProcessLabeledExpression(ILabeledExpression $element): void
     {
         if ($element->getName() == null) {
-            parent::ProcessLabeledExpression($element);
+            parent::processLabeledExpression($element);
         } else {
             $this->BeginElement($element, [$this->schemaWriter, 'WriteLabeledElementHeader']);
-            parent::ProcessLabeledExpression($element);
+            parent::processLabeledExpression($element);
             $this->FinishElement($element);
         }
     }
@@ -589,7 +589,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->schemaWriter->WritePropertyConstructorElementHeader($t, $isInline);
         });
         if (!$isInline) {
-            parent::ProcessPropertyConstructor($constructor);
+            parent::processPropertyConstructor($constructor);
         }
 
         $this->FinishElement($constructor);
@@ -669,7 +669,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     protected function ProcessIfExpression(IIfExpression $expression): void
     {
         $this->BeginElement($expression, [$this->schemaWriter, 'WriteIfExpressionElementHeader']);
-        parent::ProcessIfExpression($expression);
+        parent::processIfExpression($expression);
         $this->FinishElement($expression);
     }
 
