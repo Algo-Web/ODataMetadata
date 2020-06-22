@@ -168,10 +168,7 @@ abstract class ValidationHelper
     public static function ItemExistsInReferencedModel(IModel $model, string $fullName, bool $checkEntityContainer): bool
     {
         foreach ($model->getReferencedModels() as $referenced) {
-            if ($referenced->findDeclaredType($fullName) != null ||
-                    $referenced->findDeclaredValueTerm($fullName) != null ||
-                    ($checkEntityContainer && $referenced->findDeclaredEntityContainer($fullName) != null) ||
-                    (count($referenced->findDeclaredFunctions($fullName) ?? [])!= 0)) {
+            if (self::checkItemReference($fullName, $checkEntityContainer, $referenced)) {
                 return true;
             }
         }
@@ -183,15 +180,8 @@ abstract class ValidationHelper
     public static function FunctionOrNameExistsInReferencedModel(IModel $model, IFunction $function, string $functionFullName, bool $checkEntityContainer): bool
     {
         foreach ($model->getReferencedModels() as $referenced) {
-            if ($referenced->findDeclaredType($functionFullName) != null ||
-                    $referenced->findDeclaredValueTerm($functionFullName) != null ||
-                    ($checkEntityContainer && $referenced->findDeclaredEntityContainer($functionFullName) != null)) {
+            if (self::checkFunctionOrNameReference($function, $functionFullName, $checkEntityContainer, $referenced)) {
                 return true;
-            } else {
-                $functionList = $referenced->findDeclaredFunctions($functionFullName) ?? [];
-                if (count(array_filter($functionList, [$function, 'IsFunctionSignatureEquivalentTo'])) > 0) {
-                    return true;
-                }
             }
         }
 
@@ -221,5 +211,47 @@ abstract class ValidationHelper
         }
 
         return false;
+    }
+
+    /**
+     * @param string $fullName
+     * @param bool $checkEntityContainer
+     * @param IModel $referenced
+     * @return bool|null
+     */
+    protected static function checkItemReference(string $fullName, bool $checkEntityContainer, IModel $referenced): bool
+    {
+        if (self::checkExistsCore($referenced, $fullName, $checkEntityContainer)) {
+            return true;
+        }
+        $functionList = $referenced->findDeclaredFunctions($fullName) ?? [];
+        return 0 != count($functionList);
+    }
+
+    /**
+     * @param IFunction $function
+     * @param string $functionFullName
+     * @param bool $checkEntityContainer
+     * @param IModel $referenced
+     * @return bool|null
+     */
+    protected static function checkFunctionOrNameReference(
+        IFunction $function,
+        string $functionFullName,
+        bool $checkEntityContainer,
+        IModel $referenced
+    ): bool {
+        if (self::checkExistsCore($referenced, $functionFullName, $checkEntityContainer)) {
+            return true;
+        }
+        $functionList = $referenced->findDeclaredFunctions($functionFullName) ?? [];
+        return 0 < count(array_filter($functionList, [$function, 'IsFunctionSignatureEquivalentTo']));
+    }
+
+    protected static function checkExistsCore(IModel $referenced, string $fullName, bool $checkEntityContainer): bool
+    {
+        return $referenced->findDeclaredType($fullName) != null ||
+               $referenced->findDeclaredValueTerm($fullName) != null ||
+               ($checkEntityContainer && $referenced->findDeclaredEntityContainer($fullName) != null);
     }
 }
