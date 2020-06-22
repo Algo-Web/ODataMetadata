@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
 use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\EdmUtil;
+use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
@@ -53,8 +54,12 @@ abstract class ValidationHelper
     public static function AllPropertiesAreNullable(array $properties): bool
     {
         return count(array_filter($properties, function (IStructuralProperty $item) {
-            return $item->getType()->getNullable();
-        })) === 0;
+            try {
+                return $item->getType()->getNullable();
+            } catch (\Throwable $e) {
+                throw new InvalidOperationException($e->getMessage());
+            }
+        })) === count($properties);
     }
 
     /**
@@ -64,7 +69,11 @@ abstract class ValidationHelper
     public static function HasNullableProperty(array $properties): bool
     {
         return count(array_filter($properties, function (IStructuralProperty $item) {
-            return $item->getType()->getNullable();
+            try {
+                return $item->getType()->getNullable();
+            } catch (\Throwable $e) {
+                throw new InvalidOperationException($e->getMessage());
+            }
         })) > 0;
     }
 
@@ -180,7 +189,7 @@ abstract class ValidationHelper
                 return true;
             } else {
                 $functionList = $referenced->findDeclaredFunctions($functionFullName) ?? [];
-                if (array_filter($functionList, [$function, 'IsFunctionSignatureEquivalentTo']) > 0) {
+                if (count(array_filter($functionList, [$function, 'IsFunctionSignatureEquivalentTo'])) > 0) {
                     return true;
                 }
             }
