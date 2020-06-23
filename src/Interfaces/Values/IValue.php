@@ -19,9 +19,9 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 interface IValue extends IEdmElement
 {
     /**
-     * @return ITypeReference gets the type of this value
+     * @return ITypeReference|null gets the type of this value
      */
-    public function getType(): ITypeReference;
+    public function getType(): ?ITypeReference;
 
     /**
      * @return ValueKind gets the kind of this value
