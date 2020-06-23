@@ -24,9 +24,9 @@ class EdmDateTimeOffsetConstant extends EdmValue implements IDateTimeOffsetConst
      * Initializes a new instance of the EdmBooleanConstant class.
      *
      * @param DateTime                    $value boolean value represented by this value
-     * @param ITemporalTypeReference|null $type  type of the boolean
+     * @param ITemporalTypeReference      $type  type of the DateTimeOffset
      */
-    public function __construct(DateTime $value, ?ITemporalTypeReference $type = null)
+    public function __construct(DateTime $value, ITemporalTypeReference $type)
     {
         parent::__construct($type);
         $this->value = $value;

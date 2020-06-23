@@ -19,9 +19,9 @@ class EdmTimeConstant extends EdmValue implements ITimeConstantExpression
      * Initializes a new instance of the EdmTimeConstant class.
      *
      * @param DateTime                    $value time value represented by this value
-     * @param ITemporalTypeReference|null $type  type of the Time
+     * @param ITemporalTypeReference      $type  type of the Time
      */
-    public function __construct(DateTime $value, ?ITemporalTypeReference $type = null)
+    public function __construct(DateTime $value, ITemporalTypeReference $type)
     {
         parent::__construct($type);
         $this->value = $value;
@@ -40,7 +40,7 @@ class EdmTimeConstant extends EdmValue implements ITimeConstantExpression
      */
     public function getExpressionKind(): ExpressionKind
     {
-        return ExpressionKind::DateTimeConstant();
+        return ExpressionKind::TimeConstant();
     }
 
     /**
@@ -48,6 +48,6 @@ class EdmTimeConstant extends EdmValue implements ITimeConstantExpression
      */
     public function getValueKind(): ValueKind
     {
-        return ValueKind::DateTime();
+        return ValueKind::Time();
     }
 }
