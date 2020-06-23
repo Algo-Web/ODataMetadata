@@ -23,9 +23,9 @@ class EdmIntegerConstant extends EdmValue implements IIntegerConstantExpression
      * Initializes a new instance of the EdmGuidConstant class.
      *
      * @param int                          $value string value represented by this value
-     * @param IPrimitiveTypeReference|null $type  type of the boolean
+     * @param IPrimitiveTypeReference      $type  type of the integer
      */
-    public function __construct(int $value, ?IPrimitiveTypeReference $type = null)
+    public function __construct(int $value, ?IPrimitiveTypeReference $type)
     {
         parent::__construct($type);
         $this->value = $value;

@@ -23,9 +23,9 @@ class EdmGuidConstant extends EdmValue implements IGuidConstantExpression
      * Initializes a new instance of the EdmGuidConstant class.
      *
      * @param string                       $value string value represented by this value
-     * @param IPrimitiveTypeReference|null $type  type of the boolean
+     * @param IPrimitiveTypeReference      $type  type of the guid
      */
-    public function __construct(string $value, ?IPrimitiveTypeReference $type = null)
+    public function __construct(string $value, IPrimitiveTypeReference $type)
     {
         parent::__construct($type);
         $this->value = $value;
