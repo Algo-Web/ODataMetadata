@@ -17,10 +17,12 @@ use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
 use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
+use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
 use AlgoWeb\ODataMetadata\Interfaces\ILocation;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Interfaces\INamedElement;
+use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
@@ -456,6 +458,78 @@ class ValidationHelperTest extends TestCase
         $model->shouldReceive('getReferencedModels')->andReturn([$refModel]);
 
         $actual = ValidationHelper::FunctionOrNameExistsInReferencedModel($model, $iFunc, 'Name', $isEntityContainer);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testTypeIndirectlyContainsTargetWhenInheritsFrom()
+    {
+        $source = m::mock(IEntityType::class);
+        $source->shouldReceive('IsOrInheritsFrom')->andReturn(true);
+        $target = m::mock(IEntityType::class);
+
+        $context = m::mock(IModel::class)->makePartial();
+        $visited = new \SplObjectStorage();
+
+        $expected = true;
+        $actual = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
+        $this->assertEquals($expected, $actual);
+
+        $expected = false;
+        $actual = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testTypeIndirectlyContainsTargetViaNavTypeInheritsFromTarget()
+    {
+        $navType2 = m::mock(IEntityType::class);
+        $navType2->shouldReceive('IsOrInheritsFrom')->andReturn(false);
+        $navType3 = m::mock(IEntityType::class);
+        $navType3->shouldReceive('IsOrInheritsFrom')->andReturn(true);
+
+        $navProp1 = m::mock(INavigationProperty::class)->makePartial();
+        $navProp1->shouldReceive('containsTarget')->andReturn(false);
+        $navProp2 = m::mock(INavigationProperty::class)->makePartial();
+        $navProp2->shouldReceive('containsTarget')->andReturn(true);
+        $navProp2->shouldReceive('ToEntityType')->andReturn($navType2);
+        $navProp3 = m::mock(INavigationProperty::class)->makePartial();
+        $navProp3->shouldReceive('containsTarget')->andReturn(true);
+        $navProp3->shouldReceive('ToEntityType')->andReturn($navType3);
+
+        $source = m::mock(IEntityType::class);
+        $source->shouldReceive('IsOrInheritsFrom')->andReturn(false);
+        $source->shouldReceive('NavigationProperties')->andReturn([$navProp1, $navProp3]);
+
+        $target = m::mock(IEntityType::class);
+
+        $context = m::mock(IModel::class)->makePartial();
+        $visited = new \SplObjectStorage();
+
+        $expected = true;
+        $actual = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testTypeIndirectlyContainsTargetViaDerivedType()
+    {
+        $derivedType1 = m::mock(IEntityType::class);
+        $derivedType1->shouldReceive('IsOrInheritsFrom')->andReturn(true);
+
+        $derivedType2 = m::mock(IEntityType::class);
+        $derivedType2->shouldReceive('IsOrInheritsFrom')->andReturn(true);
+
+        $context = m::mock(IModel::class)->makePartial();
+        $context->shouldReceive('FindAllDerivedTypes')->andReturn([$derivedType1, $derivedType2]);
+
+        $source = m::mock(IEntityType::class);
+        $source->shouldReceive('IsOrInheritsFrom')->andReturn(false);
+        $source->shouldReceive('NavigationProperties')->andReturn([]);
+
+        $target = m::mock(IEntityType::class);
+
+        $visited = new \SplObjectStorage();
+
+        $expected = true;
+        $actual = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
         $this->assertEquals($expected, $actual);
     }
 }
