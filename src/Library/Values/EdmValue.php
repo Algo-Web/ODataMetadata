@@ -27,7 +27,7 @@ abstract class EdmValue implements IValue, IDelayedValue
      *
      * @param ITypeReference $type type of the value
      */
-    public function __construct(ITypeReference $type)
+    public function __construct(?ITypeReference $type)
     {
         $this->type = $type;
     }
@@ -36,7 +36,7 @@ abstract class EdmValue implements IValue, IDelayedValue
     /**
      * @return ITypeReference gets the type of this value
      */
-    public function getType(): ITypeReference
+    public function getType(): ?ITypeReference
     {
         return $this->type;
     }
