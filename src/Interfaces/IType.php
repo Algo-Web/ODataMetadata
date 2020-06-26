@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
+use AlgoWeb\ODataMetadata\Helpers\TypeHelpers;
 
 /**
  * Interface IEdmType.
@@ -13,6 +14,7 @@ use AlgoWeb\ODataMetadata\Enums\TypeKind;
  * Represents the definition of an EDM type.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
+ * @mixin TypeHelpers
  */
 interface IType extends IEdmElement
 {
