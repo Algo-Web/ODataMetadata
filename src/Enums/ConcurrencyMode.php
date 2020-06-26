@@ -12,8 +12,10 @@ namespace AlgoWeb\ODataMetadata\Enums;
  *
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Enums
- * @method static None(): self Denotes a property that should be used for optimistic concurrency checks.
- * @method static Fixed(): self Denotes a property that should not be used for optimistic concurrency checks.
+ * @method static self None() Denotes a property that should be used for optimistic concurrency checks.
+ * @method bool isNone()
+ * @method static self Fixed() Denotes a property that should not be used for optimistic concurrency checks.
+ * @method bool isFixed()
  */
 class ConcurrencyMode extends Enum
 {

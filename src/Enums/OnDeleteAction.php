@@ -11,11 +11,13 @@ namespace AlgoWeb\ODataMetadata\Enums;
  * Enumerates the actions EDM can apply on deletes.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Enums
- * @method static None(): self Take no action on delete.
- * @method static Cascade(): self On delete also delete items on the other end of the association.
+ * @method static self None() Take no action on delete.
+ * @method bool isNone()
+ * @method static self Cascade() On delete also delete items on the other end of the association.
+ * @method bool isCascade()
  */
 class OnDeleteAction extends Enum
 {
-    protected const None    = 'None';
-    protected const Cascade = 'Cascade';
+    protected const None    = 0;
+    protected const Cascade = 1;
 }

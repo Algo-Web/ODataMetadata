@@ -11,71 +11,71 @@ namespace AlgoWeb\ODataMetadata\Enums;
  *  Enumerates the kinds of Edm Primitives.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Enums
- * @method static None(): self Represents a primitive type of unknown kind.
+ * @method static self None() Represents a primitive type of unknown kind.
  * @method bool isNone()
- * @method static Binary(): self Represents a Binary type.
+ * @method static self Binary(): self Represents a Binary type.
  * @method bool isBinary()
- * @method static Boolean(): self Represents a Boolean type.
+ * @method static self Boolean(): self Represents a Boolean type.
  * @method bool isBoolean()
- * @method static Byte(): self Represents a Byte type.
+ * @method static self Byte(): self Represents a Byte type.
  * @method bool isByte()
- * @method static DateTime(): self Represents a DateTime type.
+ * @method static self DateTime(): self Represents a DateTime type.
  * @method bool isDateTime()
- * @method static DateTimeOffset(): self Represents a DateTimeOffset type.
+ * @method static self DateTimeOffset(): self Represents a DateTimeOffset type.
  * @method bool isDateTimeOffset()
- * @method static Decimal(): self Represents a Decimal type.
+ * @method static self Decimal(): self Represents a Decimal type.
  * @method bool isDecimal()
- * @method static Double(): self Represents a Double type.
+ * @method static self Double(): self Represents a Double type.
  * @method bool isDouble()
- * @method static Guid(): self Represents a Guid type.
+ * @method static self Guid(): self Represents a Guid type.
  * @method bool isGuid()
- * @method static Int16(): self Represents a Int16 type.
+ * @method static self Int16(): self Represents a Int16 type.
  * @method bool isInt16()
- * @method static Int32(): self Represents a Int32 type.
+ * @method static self Int32(): self Represents a Int32 type.
  * @method bool isInt32()
- * @method static Int64(): self Represents a Int64 type.
+ * @method static self Int64(): self Represents a Int64 type.
  * @method bool isInt64()
- * @method static SByte(): self Represents a SByte type.
+ * @method static self SByte(): self Represents a SByte type.
  * @method bool isSByte()
- * @method static Single(): self Represents a Single type.
+ * @method static self Single(): self Represents a Single type.
  * @method bool isSingle()
- * @method static String(): self Represents a String type.
+ * @method static self String(): self Represents a String type.
  * @method bool isString()
- * @method static Stream(): Represents a Stream type.
+ * @method static self Stream(): Represents a Stream type.
  * @method bool isStream()
- * @method static Time(): self Represents a Time type.
+ * @method static self Time(): self Represents a Time type.
  * @method bool isTime()
- * @method static Geography(): self Represents an arbitrary Geography type.
+ * @method static self Geography(): self Represents an arbitrary Geography type.
  * @method bool isGeography()
- * @method static GeographyPoint(): self Represents a geography Point type.
+ * @method static self GeographyPoint(): self Represents a geography Point type.
  * @method bool isGeographyPoint()
- * @method static GeographyLineString(): self Represents a geography LineString type.
+ * @method static self GeographyLineString(): self Represents a geography LineString type.
  * @method bool isGeographyLineString()
- * @method static GeographyPolygon(): self Represents a geography Polygon type.
+ * @method static self GeographyPolygon(): self Represents a geography Polygon type.
  * @method bool isGeographyPolygon()
- * @method static GeographyMultiPolygon(): self Represents a geography MultiPoint type.
+ * @method static self GeographyMultiPolygon(): self Represents a geography MultiPoint type.
  * @method bool isGeographyMultiPolygon()
- * @method static GeographyMultiLineString(): self Represents a geography MultiLineString type.
+ * @method static self GeographyMultiLineString(): self Represents a geography MultiLineString type.
  * @method bool isGeographyMultiLineString()
- * @method static GeographyMultiPoint(): self Represents a geography MultiPolygon type.
+ * @method static self GeographyMultiPoint(): self Represents a geography MultiPolygon type.
  * @method bool isGeographyMultiPoint()
- * @method static GeographyCollection(): self Represents a geography GeographyCollection type.
+ * @method static self GeographyCollection(): self Represents a geography GeographyCollection type.
  * @method bool isGeographyCollection()
- * @method static Geometry(): self Represents an arbitrary Geometry type.
+ * @method static self Geometry(): self Represents an arbitrary Geometry type.
  * @method bool isGeometry()
- * @method static GeometryPoint(): self Represents a geometry Point type.
+ * @method static self GeometryPoint(): self Represents a geometry Point type.
  * @method bool isGeometryPoint()
- * @method static GeometryLineString(): self Represents a geometry LineString type.
+ * @method static self GeometryLineString(): self Represents a geometry LineString type.
  * @method bool isGeometryLineString()
- * @method static GeometryPolygon(): self Represents a geometry Polygon type.
+ * @method static self GeometryPolygon(): self Represents a geometry Polygon type.
  * @method bool isGeometryPolygon()
- * @method static GeometryMultiPoint(): self Represents a geometry MultiPoint type.
+ * @method static self GeometryMultiPoint(): self Represents a geometry MultiPoint type.
  * @method bool isGeometryMultiPoint()
- * @method static GeometryMultiLineString(): self  Represents a geometry MultiLineString type.
+ * @method static self GeometryMultiLineString(): self  Represents a geometry MultiLineString type.
  * @method bool isGeometryMultiLineString()
- * @method static GeometryMultiPolygon(): self Represents a geometry MultiPolygon type.
+ * @method static self GeometryMultiPolygon(): self Represents a geometry MultiPolygon type.
  * @method bool isGeometryMultiPolygon()
- * @method static GeometryCollection(): self  Represents a geometry GeometryCollection type.
+ * @method static self GeometryCollection(): self  Represents a geometry GeometryCollection type.
  * @method bool isGeometryCollection()
  */
 class PrimitiveTypeKind extends Enum

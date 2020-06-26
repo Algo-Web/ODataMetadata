@@ -11,9 +11,12 @@ namespace AlgoWeb\ODataMetadata\Enums;
  * Defines EDM container element types.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Enums
- * @method static None(): self Represents an element where the container kind is unknown or in error.
- * @method static EntitySet(): self Represents an element implementing IEdmEntitySet
- * @method static FunctionImport(): self Represents an element implementing IEdmFunctionImport
+ * @method static self None() Represents an element where the container kind is unknown or in error.
+ * @method bool isEntitySet()
+ * @method static self EntitySet() Represents an element implementing IEdmEntitySet
+ * @method bool isNone()
+ * @method static self FunctionImport() Represents an element implementing IEdmFunctionImport
+ * @method bool isFunctionImport()
  */
 class ContainerElementKind extends Enum
 {
