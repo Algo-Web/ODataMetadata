@@ -36,7 +36,7 @@ abstract class ValidationHelper
     public static function AddMemberNameToHashSet(INamedElement $item, HashSetInternal $memberNameList, ValidationContext $context, EdmErrorCode $errorCode, string $errorString, bool $suppressError)
     {
         $name = $item instanceof ISchemaElement ? $item->FullName() : $item->getName();
-        if (!$memberNameList->add($name)) {
+        if ($memberNameList->add($name)) {
             if (!$suppressError) {
                 $context->AddError($item->Location(), $errorCode, $errorString);
             }
