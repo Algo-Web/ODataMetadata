@@ -12,9 +12,13 @@ namespace AlgoWeb\ODataMetadata\Enums;
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Enums
  * @method static Unknown(): self The Multiplicity of the association end is unknown.
+ * @method bool isUnknown()
  * @method static ZeroOrOne(): self The Multiplicity of the association end is zero or one.
+ * @method bool isZeroOrOne()
  * @method static One(): self The Multiplicity of the association end is one.
+ * @method bool isOne()
  * @method static Many(): self The Multiplicity of the association end is many.
+ * @method bool isMany()
  */
 class Multiplicity extends Enum
 {
