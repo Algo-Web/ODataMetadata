@@ -307,7 +307,7 @@ class XmlCharType
         }
         if(file_exists('XmlCharType.bin')){
             $file = fopen('XmlCharType.bin', 'rb');
-            self::$m_CharProperties = fopen('php:\\memory', 'r+wb');
+            self::$m_CharProperties = fopen('php://memory', 'w+b');
             stream_copy_to_stream($file,self::$m_CharProperties);
             fclose($file);
             return;
@@ -344,7 +344,6 @@ class XmlCharType
         }
     }
     protected static function generateFile(){
-        XmlCharType::InitInstance();
         $fileArray = [];
         for($i = 0; $i < 65536; $i++){
             $fileArray[$i] = XmlCharType::$s_CharProperties[$i] ?? 0;
@@ -362,7 +361,8 @@ class XmlCharType
     private static $instance = null;
     public static function Instance(){
         self::InitInstance();
-        return self::$instance ?? self::$instance = new self(new UnmanagedByteArray(self::$m_CharProperties));
+        $umArray = new UnmanagedByteArray(self::$m_CharProperties);
+        return self::$instance ?? self::$instance = new self($umArray);
     }
 
     private $charProperties = null;
@@ -375,11 +375,11 @@ class XmlCharType
 
     public function IsStartNCNameChar(string $ch): bool{
             assert(mb_strlen($ch, 'UTF-8') === 1);
-        return $this->charProperties[\Composer\Autoload\mb_ord($ch, 'UTF-8')] & self::fNCStartNameSC !== 0;
+        return ($this->charProperties[mb_ord($ch, 'UTF-8')] & self::fNCStartNameSC) !== 0;
     }
 
     public function IsNCNameChar(string $ch): bool{
-        return $this->charProperties[\Composer\Autoload\mb_ord($ch, 'UTF-8')] & self::fNCNameSC !== 0;
+        return ($this->charProperties[mb_ord($ch, 'UTF-8')] & self::fNCNameSC) !== 0;
     }
 }
 
