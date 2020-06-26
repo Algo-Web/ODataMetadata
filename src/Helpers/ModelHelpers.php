@@ -5,13 +5,16 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
+use AlgoWeb\ODataMetadata\Asserts;
 use AlgoWeb\ODataMetadata\Csdl\Internal\Serialization\Helpers\AssociationAnnotations;
 use AlgoWeb\ODataMetadata\Csdl\Internal\Serialization\Helpers\AssociationSetAnnotations;
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\EdmConstants;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
+use AlgoWeb\ODataMetadata\Interfaces\IFunction;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
@@ -55,7 +58,7 @@ trait ModelHelpers
         $this->getDirectValueAnnotationsManager()->setAnnotationValue($element, $namespaceName, $localName, $value);
     }
 
-    private static function findEntityContainer(): callable
+    public static function EntityContainerFinder(): callable
     {
         return function (IModel $model, string $qualifiedName): IEntityContainer {
             return $model->findDeclaredEntityContainer($qualifiedName);
@@ -69,13 +72,13 @@ trait ModelHelpers
         };
     }
 
-    private static function findFunctions(): callable
+    private static function FunctionsFinder(): callable
     {
         return function (IModel $model, string $qualifiedName): array {
             return $model->findDeclaredFunctions($qualifiedName);
         };
     }
-    private static function findValueTerm(): callable
+    private static function ValueTermFinder(): callable
     {
         return function (IModel $model, string $qualifiedName): IValueTerm {
             return $model->findDeclaredValueTerm($qualifiedName);
@@ -89,6 +92,64 @@ trait ModelHelpers
         };
     }
 
+    private function FindAcrossModels(string $qualifiedName, callable $finder, callable $ambiguousCreator)
+    {
+        $model = $this;
+        Asserts::assertSignatureMatches(function(IModel $model, string $qualifiedName){}, $finder, '$finder');
+        Asserts::assertSignatureMatches(function($candidate, $fromReference){}, $ambiguousCreator, '$ambiguousCreator');
+        $candidate = $finder($model, $qualifiedName);
+        foreach($model->getReferencedModels() as $reference){
+            $fromReference = $finder($reference, $qualifiedName);
+            if($fromReference !== null){
+                $candidate = $candidate === null ? $fromReference : $ambiguousCreator($candidate, $fromReference);
+            }
+        }
+        return $candidate;
+    }
+
+    /**
+     * Searches for an entity container with the given name in this model and all referenced models and returns null
+     * if no such entity container exists.
+     *
+     * @param string $qualifiedName The qualified name of the entity container being found.
+     * @return IEntityContainer The requested entity container, or null if no such entity container exists.
+     */
+    public function FindEntityContainer(string $qualifiedName): ?IEntityContainer
+    {
+        EdmUtil::CheckArgumentNull($qualifiedName, "$qualifiedName");
+
+        return $this->FindAcrossModels($qualifiedName, self::EntityContainerFinder(), [RegistrationHelper::class, 'CreateAmbiguousEntityContainerBinding']);
+    }
+
+
+    /**
+     * Searches for a value term with the given name in this model and all referenced models and returns null if no
+     * such value term exists.
+     *
+     * @param string $qualifiedName The qualified name of the value term being found.
+     * @return IValueTerm The requested value term, or null if no such value term exists.
+     */
+    public function FindValueTerm(string $qualifiedName): ?IValueTerm
+    {
+        EdmUtil::CheckArgumentNull($qualifiedName, "qualifiedName");
+
+        return $this->FindAcrossModels( $qualifiedName, self::ValueTermFinder(), [RegistrationHelper::class, 'CreateAmbiguousValueTermBinding']);
+    }
+
+
+    /***
+     * Searches for functions with the given name in this model and all referenced models and returns an empty
+     * enumerable if no such functions exist.
+     *
+     * @param string $qualifiedName The qualified name of the functions being found.
+     * @return IFunction[] The requested functions.
+     */
+    public  function FindFunctions(string $qualifiedName): array
+    {
+        EdmUtil::CheckArgumentNull($qualifiedName, "qualifiedName");
+
+        return $this->FindAcrossModels($qualifiedName, self::FunctionsFinder(), self::mergeFunctions()) ?? [];
+    }
 
     /**
      * Gets the value for the EDM version of the Model.
@@ -224,7 +285,7 @@ trait ModelHelpers
         $property->PopulateCaches();
         return $this->GetAssociationNamespace($property) . '.' . $this->GetAssociationName($property);
     }
-    public function FindType(string $qualifiedName): ISchemaType
+    public function FindType(string $qualifiedName): ?ISchemaType
     {
         return Helpers::FindAcrossModels($this, $qualifiedName, self::findTypec(), [RegistrationHelper::class, 'CreateAmbiguousTypeBinding']);
     }
