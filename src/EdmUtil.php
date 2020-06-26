@@ -35,6 +35,7 @@ class EdmUtil
     // we could create the StartCharacterExp and OtherCharacterExp dynamically to force inclusion of the missing Nl and Cf characters...
     private const StartCharacterExp = "[\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Lm}\p{Nl}]";
     private const OtherCharacterExp = "[\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Lm}\p{Nl}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Cf}]";
+
     //private const NameExp = self::StartCharacterExp . self::OtherCharacterExp . "{0,}";
 
     public static function IsNullOrWhiteSpaceInternal(?string $value): bool
@@ -80,21 +81,21 @@ class EdmUtil
             $lastDot = strrpos($qualifiedName, '.');
             if (false === $lastDot) {
                 $namespaceName = '';
-                $name          = $qualifiedName;
+                $name = $qualifiedName;
                 return false;
             }
 
             $namespaceName = substr($qualifiedName, 0, $lastDot);
-            $name          = substr($qualifiedName, $lastDot + 1);
+            $name = substr($qualifiedName, $lastDot + 1);
             return true;
         }
 
         $namespaceName = substr($qualifiedName, 0, $lastSlash);
-        $name          = substr($qualifiedName, $lastSlash + 1);
+        $name = substr($qualifiedName, $lastSlash + 1);
         return true;
     }
 
-    public static function FullyQualifiedName(IVocabularyAnnotatable $element): string
+    public static function FullyQualifiedName(IVocabularyAnnotatable $element): ?string
     {
         if ($element instanceof ISchemaElement) {
             if ($element instanceof IFunction) {
@@ -103,7 +104,7 @@ class EdmUtil
                 return $element->FullName();
             }
         } else {
-            if ($element instanceof  IEntityContainerElement) {
+            if ($element instanceof IEntityContainerElement) {
                 if ($element instanceof IFunctionImport) {
                     return $element->getContainer()->FullName() . '/' . self::ParameterizedName($element);
                 } else {
@@ -135,9 +136,9 @@ class EdmUtil
 
     public static function ParameterizedName(IFunctionBase $function): string
     {
-        $index          = 0;
+        $index = 0;
         $parameterCount = count($function->getParameters());
-        $s              = '';
+        $s = '';
         if ($function instanceof UnresolvedFunction) {
             $s .= $function->getNamespace();
             $s .= '/';
@@ -172,5 +173,18 @@ class EdmUtil
 
         $s .= ')';
         return $s;
+    }
+    public static function IsValidDottedName(string $name): bool
+    {
+        // Each part of the dotted name needs to be a valid name.
+        return array_reduce(explode('.', $name), function(bool $carry, string $part): bool{
+            $carry &= self::IsValidUndottedName($part);
+            return $carry;
+        }, true);
+    }
+    public static function IsValidUndottedName(string $name): bool
+    {
+        $nameExp = '^' . self::StartCharacterExp . self::OtherCharacterExp . '{0,}';
+        return !empty($name) && preg_match($nameExp, $name);
     }
 }
