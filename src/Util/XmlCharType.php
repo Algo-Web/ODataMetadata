@@ -348,7 +348,7 @@ class XmlCharType
         for($i = 0; $i < 65536; $i++){
             $fileArray[$i] = XmlCharType::$s_CharProperties[$i] ?? 0;
         }
-        $bin = fopen('XmlCharType.bin', 'w+b');
+        $bin = fopen(__DIR__ . DIRECTORY_SEPARATOR . 'XmlCharType.bin', 'w+b');
         self::$m_CharProperties = fopen('php://memory', 'w+b');
         foreach($fileArray as $enum){
             fwrite($bin, chr($enum));
