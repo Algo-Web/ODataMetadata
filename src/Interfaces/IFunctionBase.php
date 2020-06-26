@@ -6,7 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 /**
- * Interface IEdmFunctionBase.
+ * Interface IFunctionBase.
  *
  * Represents the common base type of EDM functions and function imports.
  *
