@@ -41,9 +41,9 @@
   },
   "autoload": {
     "psr-4": {
-      "AlgoWeb\\ODataMetadata\\": "src/",
-      "files": ["src/polyfill.php"]
-    }
+      "AlgoWeb\\ODataMetadata\\": "src/"
+    },
+    "files": ["src/polyfill.php"]
   },
   "autoload-dev": {
     "classmap": [
