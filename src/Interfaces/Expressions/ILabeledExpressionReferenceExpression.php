@@ -10,6 +10,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
  *
  * Represents a reference to an EDM labeled expression.
  *
+ * TODO: rename this to ILabeledElementReferenceExpression
  * @package AlgoWeb\ODataMetadata\Interfaces\Expressions
  */
 interface ILabeledExpressionReferenceExpression extends IExpression
