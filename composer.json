@@ -46,6 +46,7 @@
     "psr-4": {
       "AlgoWeb\\ODataMetadata\\": "src/"
     },
+    "files": ["src/polyfill.php"],
     "classmap": [
       "tests/"
     ]
