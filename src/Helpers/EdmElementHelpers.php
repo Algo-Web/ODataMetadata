@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
+use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Edm\Validation\ObjectLocation;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\ILocatable;
@@ -25,5 +26,9 @@ trait EdmElementHelpers
     public function Location(): ?ILocation
     {
         return $this instanceof ILocatable && $this->getLocation() !== null ? $this->getLocation() : new ObjectLocation($this);
+    }
+
+    public function getErrors(): iterable{
+        return InterfaceValidator::GetStructuralErrors($this);
     }
 }
