@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation;
 
+use AlgoWeb\ODataMetadata\Asserts;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\ILocation;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
@@ -39,6 +40,10 @@ final class ValidationContext
      */
     public function __construct(IModel $model, callable $isBad)
     {
+
+        assert(
+            Asserts::assertSignatureMatches(function(IEdmElement $one): bool{}, $isBad, '$isBad')
+        );
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
             (is_array($isBad) ? new ReflectionMethod(...$isBad) : new ReflectionFunction($isBad))->getParameters()[0]->getType()->getName() === IEdmElement::class,
