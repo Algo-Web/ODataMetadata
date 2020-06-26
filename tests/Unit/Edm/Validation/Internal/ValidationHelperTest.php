@@ -16,6 +16,7 @@ use AlgoWeb\ODataMetadata\Edm\Validation\Internal\ValidationHelper;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
 use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
+use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
@@ -27,6 +28,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
+use AlgoWeb\ODataMetadata\Structure\HashSetInternal;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 use Mockery as m;
 
@@ -92,13 +94,14 @@ class ValidationHelperTest extends TestCase
         }
 
         if ($inArray) {
-            $memList = ['Name' => true];
+            $memList = new HashSetInternal();
+            $memList->add('Name');
         } else {
-            $memList = [];
+            $memList = new HashSetInternal();
         }
 
         $model = m::mock(IModel::class);
-        $context = new ValidationContext($model, function() { return false; });
+        $context = new ValidationContext($model, function(IEdmElement $one): bool { return false; });
         $code = EdmErrorCode::InvalidElementAnnotation();
 
         $actual = ValidationHelper::AddMemberNameToHashSet($item, $memList, $context, $code, 'errString', $suppressError);

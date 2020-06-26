@@ -77,7 +77,7 @@ class EdmModelCsdlSerializationVisitorTest extends TestCase
         $expected .= '    </EntityType>'.PHP_EOL.'</Schema>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
 
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function constantTypeReferenceProvider(): array
