@@ -16,34 +16,17 @@ use ReflectionMethod;
  */
 abstract class ValidationRule
 {
-    private $validate;
-    abstract public function getValidatedType(): string;
 
     /** @noinspection PhpDocMissingThrowsInspection */
     /**
      * Initializes a new instance of the ValidationRule class.
-     *
-     * @param callable $validate action to perform the validation
      */
-    public function __construct(callable $validate)
+    public function __construct()
     {
-        /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
-        assert(
-            (is_array($validate) ? new ReflectionMethod(...$validate) : new ReflectionFunction($validate))->getParameters()[0]->getType()->getName() === ValidationContext::class,
-            '$isBad should be a callable taking Two parameter the first being of Type ValidationContext'
-        );
-        /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
-        assert(
-            (is_array($validate) ? new ReflectionMethod(...$validate) : new ReflectionFunction($validate))->getParameters()[1]->getType()->getName() === $this->getValidatedType(),
-            '$isBad should be a callable taking Two parameter the Second being of Type' . $this->getValidatedType()
-        );
-        $this->validate = $validate;
     }
 
-    public function Evaluate(ValidationContext $context, ?IEdmElement $item)
-    {
-        assert(is_a($item, $this->getValidatedType()), 'item should be ' . $this->getValidatedType());
-        $validate = $this->validate;
-        $validate($context, $item);
-    }
+    abstract public function __invoke(ValidationContext $context, ?IEdmElement $item);
+
+    abstract public function getValidatedType(): string;
+
 }
