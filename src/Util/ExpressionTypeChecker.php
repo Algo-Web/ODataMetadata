@@ -139,7 +139,7 @@ abstract class ExpressionTypeChecker
         EdmUtil::CheckArgumentNull($expression, "expression");
 
         // If we don't have a type to assert this passes vacuously.
-        if ($type == null || $type->TypeKind()->isNone()) {
+        if (null === $type || $type->TypeKind()->isNone()) {
             $discoveredErrors = [];
             return true;
         }
@@ -157,7 +157,7 @@ abstract class ExpressionTypeChecker
             case ExpressionKind::TimeConstant():
                 $primitiveValue = $expression;
                 assert($primitiveValue instanceof IPrimitiveValue);
-                if ($primitiveValue->getType() !== null) {
+                if (null !== $primitiveValue->getType()) {
                     return self::TestTypeReferenceMatch(
                         $primitiveValue->getType(),
                         $type,
@@ -176,9 +176,9 @@ abstract class ExpressionTypeChecker
             case ExpressionKind::FunctionApplication():
                 $applyExpression = $expression;
                 assert($applyExpression instanceof IApplyExpression);
-                if ($applyExpression->getAppliedFunction() !== null) {
+                if (null !== $applyExpression->getAppliedFunction()) {
                     $function = $applyExpression->getAppliedFunction();
-                    if ($function != null && $function instanceof IFunctionBase) {
+                    if (null !== $function && $function instanceof IFunctionBase) {
                         return self::TestTypeReferenceMatch(
                             $function->getReturnType(),
                             $type,
@@ -206,7 +206,7 @@ abstract class ExpressionTypeChecker
             case ExpressionKind::Record():
                 $recordExpression = $expression;
                 assert($recordExpression instanceof IRecordExpression);
-                if ($recordExpression->getDeclaredType() !== null) {
+                if (null !== $recordExpression->getDeclaredType()) {
                     return self::TestTypeReferenceMatch(
                         $recordExpression->getDeclaredType(),
                         $type,
@@ -226,7 +226,7 @@ abstract class ExpressionTypeChecker
             case ExpressionKind::Collection():
                 $collectionExpression = $expression;
                 assert($collectionExpression instanceof ICollectionExpression);
-                if ($collectionExpression->getDeclaredType() !== null) {
+                if (null !== $collectionExpression->getDeclaredType()) {
                     return self::TestTypeReferenceMatch(
                         $collectionExpression->getDeclaredType(),
                         $type,
@@ -360,12 +360,12 @@ abstract class ExpressionTypeChecker
         $structuredContext = $context;
         assert($structuredContext instanceof IStructuredType);
 
-        if ($structuredContext != null) {
+        if (null !== $structuredContext) {
             $result = $context;
 
             foreach ($expression->getPath() as $segment) {
                 $structuredResult = $result;
-                if ($structuredResult === null || !$structuredResult instanceof IStructuredType) {
+                if (null === $structuredResult || !$structuredResult instanceof IStructuredType) {
                     $discoveredErrors = [
                         new EdmError(
                             $expression->Location(),
@@ -377,10 +377,10 @@ abstract class ExpressionTypeChecker
                 }
 
                 $resultProperty = $structuredResult->findProperty($segment);
-                $result = ($resultProperty != null) ? $resultProperty->getType()->getDefinition() : null;
+                $result = (null !== $resultProperty) ? $resultProperty->getType()->getDefinition() : null;
 
                 // If the path is not resolved, it could refer to an open type, and we cannot make an assertion about its type.
-                if ($result == null) {
+                if (null === $result) {
                     $discoveredErrors = [];
                     return true;
                 }
@@ -450,7 +450,7 @@ abstract class ExpressionTypeChecker
                     break;
                 }
             }
-            if ($expressionProperty === null) {
+            if (null === $expressionProperty) {
                 $errors[] = new EdmError(
                     $expression->Location(),
                     EdmErrorCode::RecordExpressionMissingRequiredProperty(),
@@ -664,7 +664,7 @@ abstract class ExpressionTypeChecker
 
 
         $stringType = $type->AsString();
-        if ($stringType->getMaxLength() !== null && strlen($expression->getValue()) > $stringType->getMaxLength()) {
+        if (null !== $stringType->getMaxLength() && strlen($expression->getValue()) > $stringType->getMaxLength()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -774,7 +774,7 @@ abstract class ExpressionTypeChecker
         }
 
         $binaryType = $type->AsBinary();
-        if ($binaryType->getMaxLength() !== null && strval($expression->getValue()) > $binaryType->getMaxLength()) {
+        if (null !== $binaryType->getMaxLength() && strval($expression->getValue()) > $binaryType->getMaxLength()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -799,7 +799,7 @@ abstract class ExpressionTypeChecker
         }
 
         // A bad type reference matches anything (so as to avoid generating spurious errors).
-        if (count($expressionType->getErrors()) !==0 ) {
+        if (0 !== count($expressionType->getErrors())) {
             $discoveredErrors = [];
             return true;
         }
@@ -828,7 +828,7 @@ abstract class ExpressionTypeChecker
             }
         } else {
             // A bad type matches anything (so as to avoid generating spurious errors).
-            if ($expressionType->getTypeKind()->isNone() || count($expressionType->getErrors()) !== 0) {
+            if ($expressionType->getTypeKind()->isNone() || 0 !== count($expressionType->getErrors())) {
                 $discoveredErrors = [];
                 return true;
             }
