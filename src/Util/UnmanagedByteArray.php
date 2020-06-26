@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\Util;
 use AlgoWeb\ODataMetadata\Exception\ArgumentException;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 
-class UnmanagedByteArray implements \ArrayAccess, \IteratorAggregate
+class UnmanagedByteArray implements \ArrayAccess, \IteratorAggregate, \Countable
 {
     private $memoryStream;
     private $length;
@@ -46,7 +46,7 @@ class UnmanagedByteArray implements \ArrayAccess, \IteratorAggregate
      */
     public function offsetGet($offset)
     {
-        if(!$this->offsetGet($offset)){
+        if(!$this->offsetExists($offset)){
             throw new ArgumentException(sprintf('%s is out of range', $offset));
         }
         fseek($this->memoryStream, $offset);
@@ -83,5 +83,13 @@ class UnmanagedByteArray implements \ArrayAccess, \IteratorAggregate
     public function offsetUnset($offset)
     {
         throw new InvalidOperationException('items can not be unset in an unmanaged array');
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function count()
+    {
+        return $this->length;
     }
 }
