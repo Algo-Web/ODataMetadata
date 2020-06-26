@@ -20,7 +20,7 @@ trait StructuredTypeHelpers
     /**
      * Gets all properties of the structured type definition and its base types.
      *
-     * @return Generator properties of this type
+     * @return Generator|IProperty[] properties of this type
      */
     public function Properties(): Generator
     {
