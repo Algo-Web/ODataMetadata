@@ -651,9 +651,10 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
+        // This chucks a wobbly when using assertXmlStringEqualsXmlString
         $expected = '<?xml version="1.0"?>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testVisitLabeledExpressionHasNonEmptyDefinition()
@@ -897,9 +898,10 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
+        // This chucks a wobbly when using assertXmlStringEqualsXmlString
         $expected = '<?xml version="1.0"?>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
+        $this->assertEquals($expected, $actual);
     }
 
     public function testVisitValueTermReferenceHasNonEmptyDefinition()
