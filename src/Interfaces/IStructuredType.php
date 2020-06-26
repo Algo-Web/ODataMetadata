@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\StructuredTypeHelpers;
+use AlgoWeb\ODataMetadata\Helpers\TypeHelpers;
 
 /**
  * Interface IEdmStructuredType.
@@ -14,6 +15,7 @@ use AlgoWeb\ODataMetadata\Helpers\StructuredTypeHelpers;
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
  * @mixin StructuredTypeHelpers
+ * @mixin TypeHelpers
  */
 interface IStructuredType extends IType
 {
