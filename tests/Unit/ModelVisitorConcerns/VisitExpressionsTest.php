@@ -123,7 +123,7 @@ class VisitExpressionsTest extends TestCase
 
         $expected = '<?xml version="1.0"?>'.PHP_EOL.'<String><![CDATA[]]></String>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitBooleanTypeExpressionHasNonEmptyDefinition()
@@ -151,7 +151,7 @@ class VisitExpressionsTest extends TestCase
 
         $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Bool><![CDATA[true]]></Bool>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitCollectionExpressionHasNonEmptyDefinition()
@@ -180,7 +180,7 @@ class VisitExpressionsTest extends TestCase
 
         $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Collection>'.PHP_EOL.'    <Documentation/>'.PHP_EOL.'</Collection>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitDateTimeConstantExpressionHasNonEmptyDefinition()
@@ -210,7 +210,7 @@ class VisitExpressionsTest extends TestCase
 
         $expected = '<?xml version="1.0"?>'.PHP_EOL.'<DateTime><![CDATA[2000-01-01T00:00:00.000000000]]></DateTime>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitDateTimeOffsetConstantExpressionHasNonEmptyDefinition()
@@ -242,7 +242,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<DateTimeOffset><![CDATA[2000-01-01T00:00:00.000Z+10:00]]></DateTimeOffset>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitDecimalConstantExpressionHasNonEmptyDefinition()
@@ -272,7 +272,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<Decimal><![CDATA[0.1M]]></Decimal>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitEntitySetReferenceExpressionHasNonEmptyDefinition()
@@ -306,7 +306,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<EntitySetReference Name="/Name"/>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitEnumMemberReferenceExpressionHasNonEmptyDefinition()
@@ -343,7 +343,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<EnumMemberReference Name="FullName/Name"/>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitFloatingConstantExpressionHasNonEmptyDefinition()
@@ -373,7 +373,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<Float><![CDATA[0.1F]]></Float>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitFunctionApplicationExpressionHasNonEmptyDefinition()
@@ -407,7 +407,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<Apply>'.PHP_EOL.'    <Documentation/>'.PHP_EOL.'</Apply>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitFunctionReferenceExpressionHasNonEmptyDefinition()
@@ -442,7 +442,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<FunctionReference Name="FullName"/>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitGuidConstantExpressionHasNonEmptyDefinition()
@@ -472,7 +472,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<Guid><![CDATA[059d1a1e-11bc-4951-88f7-940cf1d1a66a]]></Guid>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitIfExpressionHasNonEmptyDefinition()
@@ -513,7 +513,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<If>'.PHP_EOL.'    <Documentation/>'.PHP_EOL.'</If>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitIntegerConstantExpressionHasNonEmptyDefinition()
@@ -543,7 +543,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<Int><![CDATA[1]]></Int>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitIsTypeExpressionHasNonEmptyDefinition()
@@ -582,7 +582,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<IsType>'.PHP_EOL.'    <Documentation/>'.PHP_EOL.'</IsType>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitParameterReferenceExpressionHasNonEmptyDefinition()
@@ -618,7 +618,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<ParameterReference Name="Name"/>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitLabeledExpressionReferenceHasNonEmptyDefinition()
@@ -653,7 +653,7 @@ class VisitExpressionsTest extends TestCase
 
         $expected = '<?xml version="1.0"?>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitLabeledExpressionHasNonEmptyDefinition()
@@ -691,7 +691,7 @@ class VisitExpressionsTest extends TestCase
                     '    <Documentation/>'.PHP_EOL
                     .'</LabeledElement>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitNullExpressionHasNonEmptyDefinition()
@@ -727,7 +727,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<Null/>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitPathExpressionHasNonEmptyDefinition()
@@ -762,7 +762,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<Path><![CDATA[]]></Path>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitPropertyReferenceExpressionHasNonEmptyDefinition()
@@ -803,7 +803,7 @@ class VisitExpressionsTest extends TestCase
                     '<PropertyReference Name="Name">'.PHP_EOL.'    <Documentation/>'.PHP_EOL.
                     '</PropertyReference>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitRecordHasNonEmptyDefinition()
@@ -838,7 +838,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<Record>'.PHP_EOL.'    <Documentation/>'.PHP_EOL.'</Record>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitStringConstantExpressionHasNonEmptyDefinition()
@@ -868,7 +868,7 @@ class VisitExpressionsTest extends TestCase
         $expected = '<?xml version="1.0"?>'.PHP_EOL.
                     '<String><![CDATA[foo]]></String>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitTimeConstantExpressionHasNonEmptyDefinition()
@@ -899,7 +899,7 @@ class VisitExpressionsTest extends TestCase
 
         $expected = '<?xml version="1.0"?>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testVisitValueTermReferenceHasNonEmptyDefinition()
@@ -942,7 +942,7 @@ class VisitExpressionsTest extends TestCase
                     '<PropertyReference Name="Name">'.PHP_EOL.'    <Documentation/>'.PHP_EOL.
                     '</PropertyReference>'.PHP_EOL;
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     /**

@@ -14,9 +14,18 @@ use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IBinaryConstantExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IBooleanConstantExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IDateTimeConstantExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IDateTimeOffsetConstantExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IDecimalConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IEntitySetReferenceExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IFloatingConstantExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IGuidConstantExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IIntegerConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IStringConstantExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\ITimeConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 use AlgoWeb\ODataMetadata\Interfaces\IDocumentation;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
@@ -29,6 +38,9 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
+use AlgoWeb\ODataMetadata\Interfaces\Values\IBinaryValue;
+use AlgoWeb\ODataMetadata\Interfaces\Values\IBooleanValue;
+use AlgoWeb\ODataMetadata\Interfaces\Values\IIntegerValue;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IPrimitiveValue;
 use AlgoWeb\ODataMetadata\Library\EdmEnumMember;
 use AlgoWeb\ODataMetadata\Library\EdmEnumType;
@@ -141,18 +153,18 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
     {
         $result = [];
 
-        $result[] = [ExpressionKind::BinaryConstant(), [0xFF], '<?xml version="1.0"?>'.PHP_EOL.'<Test Binary="FF"/>'.PHP_EOL, false];
-        $result[] = [ExpressionKind::BooleanConstant(), true, '<?xml version="1.0"?>'.PHP_EOL.'<Test Bool="true"/>'.PHP_EOL, false];
-        $result[] = [ExpressionKind::DateTimeConstant(), new \DateTime('2000-01-01'), '<?xml version="1.0"?>'.PHP_EOL.'<Test DateTime="2000-01-01T00:00:00.000000000"/>'.PHP_EOL, false];
-        $result[] = [ExpressionKind::DateTimeOffsetConstant(), new \DateTime('2000-01-02 01:02:03'), '<?xml version="1.0"?>'.PHP_EOL.'<Test DateTimeOffset="2000-01-02T01:02:03.000Z+00:00"/>'.PHP_EOL, false];
-        $result[] = [ExpressionKind::DecimalConstant(), 0, '<?xml version="1.0"?>'.PHP_EOL.'<Test Decimal="0M"/>'.PHP_EOL, false];
-        $result[] = [ExpressionKind::FloatingConstant(), 0, '<?xml version="1.0"?>'.PHP_EOL.'<Test Float="0F"/>'.PHP_EOL, false];
-        $result[] = [ExpressionKind::GuidConstant(), '059d1a1e-11bc-4951-88f7-940cf1d1a66a', '<?xml version="1.0"?>'.PHP_EOL.'<Test Guid="059d1a1e-11bc-4951-88f7-940cf1d1a66a"/>'.PHP_EOL, false];
-        $result[] = [ExpressionKind::IntegerConstant(), 0, '<?xml version="1.0"?>'.PHP_EOL.'<Test Int="0"/>'.PHP_EOL, false];
-        $result[] = [ExpressionKind::Path(), ['all', 'your', 'base', 'are', 'belong', 'to', 'us'], '<?xml version="1.0"?>'.PHP_EOL.'<Test Path="all/your/base/are/belong/to/us"/>'.PHP_EOL, false];
-        $result[] = [ExpressionKind::StringConstant(), 'string', '<?xml version="1.0"?>'.PHP_EOL.'<Test String="string"/>'.PHP_EOL, false];
-        $result[] = [ExpressionKind::TimeConstant(), new \DateTime('2000-01-01 01:02:03'), '<?xml version="1.0"?>'.PHP_EOL.'<Test Time="01:02:03.000000"/>'.PHP_EOL, false];
-        $result[] = [ExpressionKind::EntitySetReference(), null, '<?xml version="1.0"?>'.PHP_EOL.'<Test/>'.PHP_EOL, false];
+        $result[] = [ExpressionKind::BinaryConstant(), [0xFF], '<?xml version="1.0"?>'.PHP_EOL.'<Test Binary="FF"/>'.PHP_EOL, false, IBinaryConstantExpression::class];
+        $result[] = [ExpressionKind::BooleanConstant(), true, '<?xml version="1.0"?>'.PHP_EOL.'<Test Bool="true"/>'.PHP_EOL, false, IBooleanConstantExpression::class];
+        $result[] = [ExpressionKind::DateTimeConstant(), new \DateTime('2000-01-01'), '<?xml version="1.0"?>'.PHP_EOL.'<Test DateTime="2000-01-01T00:00:00.000000000"/>'.PHP_EOL, false, IDateTimeConstantExpression::class];
+        $result[] = [ExpressionKind::DateTimeOffsetConstant(), new \DateTime('2000-01-02 01:02:03'), '<?xml version="1.0"?>'.PHP_EOL.'<Test DateTimeOffset="2000-01-02T01:02:03.000Z+00:00"/>'.PHP_EOL, false, IDateTimeOffsetConstantExpression::class];
+        $result[] = [ExpressionKind::DecimalConstant(), 0, '<?xml version="1.0"?>'.PHP_EOL.'<Test Decimal="0M"/>'.PHP_EOL, false, IDecimalConstantExpression::class];
+        $result[] = [ExpressionKind::FloatingConstant(), 0, '<?xml version="1.0"?>'.PHP_EOL.'<Test Float="0F"/>'.PHP_EOL, false, IFloatingConstantExpression::class];
+        $result[] = [ExpressionKind::GuidConstant(), '059d1a1e-11bc-4951-88f7-940cf1d1a66a', '<?xml version="1.0"?>'.PHP_EOL.'<Test Guid="059d1a1e-11bc-4951-88f7-940cf1d1a66a"/>'.PHP_EOL, false, IGuidConstantExpression::class];
+        $result[] = [ExpressionKind::IntegerConstant(), 0, '<?xml version="1.0"?>'.PHP_EOL.'<Test Int="0"/>'.PHP_EOL, false, IIntegerConstantExpression::class];
+        $result[] = [ExpressionKind::Path(), ['all', 'your', 'base', 'are', 'belong', 'to', 'us'], '<?xml version="1.0"?>'.PHP_EOL.'<Test Path="all/your/base/are/belong/to/us"/>'.PHP_EOL, false, IPathExpression::class];
+        $result[] = [ExpressionKind::StringConstant(), 'string', '<?xml version="1.0"?>'.PHP_EOL.'<Test String="string"/>'.PHP_EOL, false, IStringConstantExpression::class];
+        $result[] = [ExpressionKind::TimeConstant(), new \DateTime('2000-01-01 01:02:03'), '<?xml version="1.0"?>'.PHP_EOL.'<Test Time="01:02:03.000000"/>'.PHP_EOL, false, ITimeConstantExpression::class];
+        $result[] = [ExpressionKind::EntitySetReference(), null, '<?xml version="1.0"?>'.PHP_EOL.'<Test/>'.PHP_EOL, false, IEntitySetReferenceExpression::class];
 
         return $result;
     }
@@ -166,12 +178,12 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      * @param bool $kaboom
      * @throws \ReflectionException
      */
-    public function testWriteInlineExpression(ExpressionKind $kind, $payload, $expected, bool $kaboom)
+    public function testWriteInlineExpression(ExpressionKind $kind, $payload, $expected, bool $kaboom, string $type)
     {
         $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
-        $expr = m::mock(IExpression::class)->makePartial();
+        $expr = m::mock($type)->makePartial();
         $expr->shouldReceive('getExpressionKind')->andReturn($kind);
         if ($kind != ExpressionKind::Path()) {
             $expr->shouldReceive('getValue')->andReturn($payload);
@@ -184,7 +196,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $writer->endElement();
 
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     /**
@@ -272,7 +284,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function writeDocumentationElementProvider(): array
@@ -304,15 +316,15 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
         $foo->WriteDocumentationElement($doc);
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function writeEnumMemberElementHeaderProvider(): array
     {
         $result = [];
-        $result[] = [null, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name" Value="0"/>'.PHP_EOL];
-        $result[] = [false, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name"/>'.PHP_EOL];
-        $result[] = [true, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name" Value="0"/>'.PHP_EOL];
+        $result[] = [null, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name" Value="0"/>'.PHP_EOL, IIntegerValue::class];
+        $result[] = [false, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name"/>'.PHP_EOL, IBooleanValue::class];
+        $result[] = [true, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name" Value="0"/>'.PHP_EOL, IIntegerValue::class];
         return $result;
     }
 
@@ -323,12 +335,12 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      * @param string $expected
      * @throws \ReflectionException
      */
-    public function testWriteEnumMemberElementHeader(?bool $explicit, string $expected)
+    public function testWriteEnumMemberElementHeader(?bool $explicit, string $expected, string $type)
     {
         $writer = $this->getWriter();
         $foo = $this->getSchemaWriterWithMock($writer);
 
-        $prim = m::mock(IPrimitiveValue::class)->makePartial();
+        $prim = m::mock($type)->makePartial();
         $prim->shouldReceive('getValueKind')->andReturn(ValueKind::Integer());
         $prim->shouldReceive('getValue')->andReturn(0);
 
@@ -341,7 +353,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     /**
@@ -363,7 +375,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     /**
@@ -383,7 +395,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function writeValueTermElementHeaderProvider(): array
@@ -429,7 +441,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function writeEnumTypeElementHeaderProvider(): array
@@ -469,7 +481,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $foo->WriteEnumTypeElementHeader($enum);
         $writer->endElement();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     public function testWriteDeclaredKeyPropertiesElementHeader()
@@ -483,7 +495,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
     /**
