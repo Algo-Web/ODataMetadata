@@ -27,4 +27,41 @@ class XmlConvert
         }
         return strval($f);
     }
+
+    /**
+     * Start name character types - as defined in Namespaces XML 1.0 spec (second edition) production [6]
+     * NCNameStartChar combined with the production [4] NameStartChar of XML 1.0 spec
+     *
+     * @param string $ch
+     * @return bool
+     */
+    public static function IsStartNCNameChar(string $ch): bool
+    {
+        // TODO: this method needs
+        return true;
+    }
+
+    /**
+     * Name character types - as defined in Namespaces XML 1.0 spec (second edition) production [6] NCNameStartChar
+     * combined with the production [4] NameChar of XML 1.0 spec
+     *
+     * @param string $ch
+     * @return bool
+     */
+    public static function IsNCNameChar(string $ch)
+    {
+        // TODO: this method needs
+        return true;
+    }
+
+    public static function VerifyNCName(string $name): bool{
+        $length = strlen($name);
+        for( $i = 1; $i < $length; $i++)
+        {
+            if(!self::IsNCNameChar($name[$i])){
+                return false;
+            }
+        }
+        return self::IsStartNCNameChar($name[0]);
+    }
 }
