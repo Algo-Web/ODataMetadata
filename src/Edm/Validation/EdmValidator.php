@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation;
 
+use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Version;
 
@@ -25,7 +26,6 @@ abstract class EdmValidator
      */
     public static function Validate(IModel $root, $versionOrRuleset, array &$errors): bool
     {
-        return true;
         $ruleSet = $versionOrRuleset instanceof Version ?
             ValidationRuleSet::getEdmModelRuleSet($versionOrRuleset) :
             $versionOrRuleset;
