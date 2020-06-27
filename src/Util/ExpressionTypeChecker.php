@@ -130,12 +130,17 @@ abstract class ExpressionTypeChecker
      * @param IExpression $expression The expression to assert the type of.
      * @param ITypeReference $type The type to assert the expression as.
      * @param IType|null $context The context paths are to be evaluated in.
-     * @param bool $matchExactly A value indicating whether the expression must match the asserted type exactly, or simply be compatible.
+     * @param bool $matchExactly Must the expression must match the asserted type exactly, or simply be compatible?
      * @param iterable $discoveredErrors Errors produced if the expression does not match the specified type.
      * @return bool A value indicating whether the expression is valid for the given type or not.
      */
-    public static function tryAssertType(IExpression $expression, ITypeReference $type, IType $context = null, bool $matchExactly = false, iterable &$discoveredErrors = []): bool
-    {
+    public static function tryAssertType(
+        IExpression $expression,
+        ITypeReference $type,
+        IType $context = null,
+        bool $matchExactly = false,
+        iterable &$discoveredErrors = []
+    ): bool {
         EdmUtil::CheckArgumentNull($expression, "expression");
 
         // If we don't have a type to assert this passes vacuously.
@@ -282,8 +287,11 @@ abstract class ExpressionTypeChecker
         }
     }
 
-    public static function TryAssertPrimitiveAsType(IPrimitiveValue $expression, ITypeReference $type, iterable &$discoveredErrors): bool
-    {
+    public static function TryAssertPrimitiveAsType(
+        IPrimitiveValue $expression,
+        ITypeReference $type,
+        iterable &$discoveredErrors
+    ): bool {
         if (!$type->IsPrimitive()) {
             $discoveredErrors =  [
                 new EdmError(
@@ -338,8 +346,11 @@ abstract class ExpressionTypeChecker
         }
     }
 
-    protected static function TryAssertNullAsType(INullExpression $expression, ITypeReference $type, iterable &$discoveredErrors)
-    {
+    protected static function TryAssertNullAsType(
+        INullExpression $expression,
+        ITypeReference $type,
+        iterable &$discoveredErrors
+    ): bool {
         if (!$type->getNullable()) {
             $discoveredErrors = [
                 new EdmError(
@@ -355,8 +366,13 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    protected static function TryAssertPathAsType(IPathExpression $expression, ITypeReference $type, IType $context, bool $matchExactly, iterable &$discoveredErrors)
-    {
+    protected static function TryAssertPathAsType(
+        IPathExpression $expression,
+        ITypeReference $type,
+        IType $context,
+        bool $matchExactly,
+        iterable &$discoveredErrors
+    ): bool {
         $structuredContext = $context;
         assert($structuredContext instanceof IStructuredType);
 
@@ -379,7 +395,7 @@ abstract class ExpressionTypeChecker
                 $resultProperty = $structuredResult->findProperty($segment);
                 $result = (null !== $resultProperty) ? $resultProperty->getType()->getDefinition() : null;
 
-                // If the path is not resolved, it could refer to an open type, and we cannot make an assertion about its type.
+                // If the path is not resolved, it could refer to an open type, and we can't assert its type.
                 if (null === $result) {
                     $discoveredErrors = [];
                     return true;
@@ -399,8 +415,13 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    protected static function TryAssertIfAsType(IIfExpression $expression, ITypeReference $type, IType $context, bool $matchExactly, &$discoveredErrors): bool
-    {
+    protected static function TryAssertIfAsType(
+        IIfExpression $expression,
+        ITypeReference $type,
+        IType $context,
+        bool $matchExactly,
+        &$discoveredErrors
+    ): bool {
         $ifTrueErrors = [];
         $ifFalseErrors = [];
         $success = self::TryAssertType($expression->getTrueExpression(), $type, $context, $matchExactly, $ifTrueErrors);
@@ -420,8 +441,13 @@ abstract class ExpressionTypeChecker
         return $success;
     }
 
-    public static function TryAssertRecordAsType(IRecordExpression $expression, ITypeReference $type, IType $context, bool $matchExactly, iterable &$discoveredErrors)
-    {
+    public static function TryAssertRecordAsType(
+        IRecordExpression $expression,
+        ITypeReference $type,
+        IType $context,
+        bool $matchExactly,
+        iterable &$discoveredErrors
+    ): bool {
         EdmUtil::CheckArgumentNull($expression, "expression");
         EdmUtil::CheckArgumentNull($type, "type");
 
@@ -498,8 +524,13 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    public static function TryAssertCollectionAsType(ICollectionExpression $expression, ITypeReference $type, IType $context, bool $matchExactly, &$discoveredErrors)
-    {
+    public static function TryAssertCollectionAsType(
+        ICollectionExpression $expression,
+        ITypeReference $type,
+        IType $context,
+        bool $matchExactly,
+        &$discoveredErrors
+    ): bool {
         if (!$type->IsCollection()) {
             $discoveredErrors = [
                 new EdmError(
@@ -530,8 +561,11 @@ abstract class ExpressionTypeChecker
         return $success;
     }
 
-    private static function TryAssertGuidConstantAsType(IGuidConstantExpression $expression, ITypeReference $type, &$discoveredErrors): bool
-    {
+    private static function TryAssertGuidConstantAsType(
+        IGuidConstantExpression $expression,
+        ITypeReference $type,
+        &$discoveredErrors
+    ): bool {
         if (!$type->IsGuid()) {
             $discoveredErrors = [
                 new EdmError(
@@ -547,8 +581,11 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertFloatingConstantAsType(IFloatingConstantExpression $expression, ITypeReference $type, &$discoveredErrors): bool
-    {
+    private static function TryAssertFloatingConstantAsType(
+        IFloatingConstantExpression $expression,
+        ITypeReference $type,
+        &$discoveredErrors
+    ): bool {
         if (!$type->IsFloating()) {
             $discoveredErrors = [
                 new EdmError(
@@ -564,8 +601,11 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertDecimalConstantAsType(IDecimalConstantExpression $expression, ITypeReference $type, &$discoveredErrors):bool
-    {
+    private static function TryAssertDecimalConstantAsType(
+        IDecimalConstantExpression $expression,
+        ITypeReference $type,
+        &$discoveredErrors
+    ): bool {
         if (!$type->IsDecimal()) {
             $discoveredErrors = [
                 new EdmError(
@@ -581,8 +621,11 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertDateTimeOffsetConstantAsType(IDateTimeOffsetConstantExpression $expression, ITypeReference $type, &$discoveredErrors): bool
-    {
+    private static function TryAssertDateTimeOffsetConstantAsType(
+        IDateTimeOffsetConstantExpression $expression,
+        ITypeReference $type,
+        &$discoveredErrors
+    ): bool {
         if (!$type->IsDateTimeOffset()) {
             $discoveredErrors = [
                 new EdmError(
@@ -598,8 +641,11 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertDateTimeConstantAsType(IDateTimeConstantExpression $expression, ITypeReference $type, &$discoveredErrors): bool
-    {
+    private static function TryAssertDateTimeConstantAsType(
+        IDateTimeConstantExpression $expression,
+        ITypeReference $type,
+        &$discoveredErrors
+    ): bool {
         if (!$type->IsDateTime()) {
             $discoveredErrors = [
                 new EdmError(
@@ -615,8 +661,11 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertTimeConstantAsType(ITimeConstantExpression $expression, ITypeReference $type, &$discoveredErrors): bool
-    {
+    private static function TryAssertTimeConstantAsType(
+        ITimeConstantExpression $expression,
+        ITypeReference $type,
+        &$discoveredErrors
+    ): bool {
         if (!$type->IsTime()) {
             $discoveredErrors = [
                 new EdmError(
@@ -632,8 +681,11 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertBooleanConstantAsType(IBooleanConstantExpression $expression, ITypeReference $type, &$discoveredErrors): bool
-    {
+    private static function TryAssertBooleanConstantAsType(
+        IBooleanConstantExpression $expression,
+        ITypeReference $type,
+        &$discoveredErrors
+    ): bool {
         if (!$type->IsBoolean()) {
             $discoveredErrors = [
                 new EdmError(
@@ -649,8 +701,11 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertStringConstantAsType(IStringConstantExpression $expression, ITypeReference $type, &$discoveredErrors)
-    {
+    private static function TryAssertStringConstantAsType(
+        IStringConstantExpression $expression,
+        ITypeReference $type,
+        &$discoveredErrors
+    ) {
         if (!$type->IsString()) {
             $discoveredErrors = [
                 new EdmError(
@@ -682,8 +737,11 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertIntegerConstantAsType(IIntegerConstantExpression $expression, ITypeReference $type, &$discoveredErrors): bool
-    {
+    private static function TryAssertIntegerConstantAsType(
+        IIntegerConstantExpression $expression,
+        ITypeReference $type,
+        &$discoveredErrors
+    ): bool {
         if (!$type->IsIntegral()) {
             $discoveredErrors = [
                 new EdmError(
@@ -743,8 +801,12 @@ abstract class ExpressionTypeChecker
         }
     }
 
-    private static function TryAssertIntegerConstantInRange(IIntegerConstantExpression $expression, int $min, int $max, &$discoveredErrors): bool
-    {
+    private static function TryAssertIntegerConstantInRange(
+        IIntegerConstantExpression $expression,
+        int $min,
+        int $max,
+        &$discoveredErrors
+    ): bool {
         if ($expression->getValue() < $min || $expression->getValue() > $max) {
             $discoveredErrors = [
                 new EdmError(
@@ -760,8 +822,11 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertBinaryConstantAsType(IBinaryConstantExpression $expression, ITypeReference $type, &$discoveredErrors): bool
-    {
+    private static function TryAssertBinaryConstantAsType(
+        IBinaryConstantExpression $expression,
+        ITypeReference $type,
+        &$discoveredErrors
+    ): bool {
         if (!$type->IsBinary()) {
             $discoveredErrors = [
                 new EdmError(
@@ -792,8 +857,13 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TestTypeReferenceMatch(ITypeReference $expressionType, ITypeReference $assertedType, ILocation $location, bool $matchExactly, &$discoveredErrors): bool
-    {
+    private static function TestTypeReferenceMatch(
+        ITypeReference $expressionType,
+        ITypeReference $assertedType,
+        ILocation $location,
+        bool $matchExactly,
+        &$discoveredErrors
+    ): bool {
         if (!self::TestNullabilityMatch($expressionType, $assertedType, $location, $discoveredErrors)) {
             return false;
         }
@@ -813,8 +883,13 @@ abstract class ExpressionTypeChecker
         );
     }
 
-    private static function TestTypeMatch(IType $expressionType, IType $assertedType, ILocation $location, bool $matchExactly, &$discoveredErrors): bool
-    {
+    private static function TestTypeMatch(
+        IType $expressionType,
+        IType $assertedType,
+        ILocation $location,
+        bool $matchExactly,
+        &$discoveredErrors
+    ): bool {
         if ($matchExactly) {
             if (!EdmElementComparer::isEquivalentTo($expressionType, $assertedType)) {
                 $discoveredErrors = [
@@ -877,8 +952,12 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TestNullabilityMatch(ITypeReference $expressionType, ITypeReference $assertedType, ILocation $location, &$discoveredErrors): bool
-    {
+    private static function TestNullabilityMatch(
+        ITypeReference $expressionType,
+        ITypeReference $assertedType,
+        ILocation $location,
+        &$discoveredErrors
+    ): bool {
         if (!$assertedType->getNullable() && $expressionType->getNullable()) {
             $discoveredErrors = [
                 new EdmError(
