@@ -127,16 +127,16 @@ abstract class ExpressionTypeChecker
      * If the expression does not claim a type this method will attempt to check the validity of the expression itself
      * with the asserted type.
      *
-     * @param IExpression $expression The expression to assert the type of.
-     * @param ITypeReference $type The type to assert the expression as.
+     * @param IExpression|null $expression The expression to assert the type of.
+     * @param ITypeReference|null $type The type to assert the expression as.
      * @param IType|null $context The context paths are to be evaluated in.
      * @param bool $matchExactly Must the expression must match the asserted type exactly, or simply be compatible?
      * @param iterable $discoveredErrors Errors produced if the expression does not match the specified type.
      * @return bool A value indicating whether the expression is valid for the given type or not.
      */
     public static function tryAssertType(
-        IExpression $expression,
-        ITypeReference $type,
+        IExpression $expression = null,
+        ITypeReference $type = null,
         IType $context = null,
         bool $matchExactly = false,
         iterable &$discoveredErrors = []
@@ -839,13 +839,13 @@ abstract class ExpressionTypeChecker
         }
 
         $binaryType = $type->AsBinary();
-        if (null !== $binaryType->getMaxLength() && strval($expression->getValue()) > $binaryType->getMaxLength()) {
+        if (null !== $binaryType->getMaxLength() && count($expression->getValue()) > $binaryType->getMaxLength()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
                     EdmErrorCode::BinaryConstantLengthOutOfRange(),
                     StringConst::EdmModel_Validator_Semantic_BinaryConstantLengthOutOfRange(
-                        strval($expression->getValue()),
+                        implode('', $expression->getValue()),
                         $binaryType->getMaxLength()
                     )
                 )
