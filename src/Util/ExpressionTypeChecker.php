@@ -376,43 +376,38 @@ abstract class ExpressionTypeChecker
         $structuredContext = $context;
         assert($structuredContext instanceof IStructuredType);
 
-        if (null !== $structuredContext) {
-            $result = $context;
+        $result = $context;
 
-            foreach ($expression->getPath() as $segment) {
-                $structuredResult = $result;
-                if (null === $structuredResult || !$structuredResult instanceof IStructuredType) {
-                    $discoveredErrors = [
-                        new EdmError(
-                            $expression->Location(),
-                            EdmErrorCode::PathIsNotValidForTheGivenContext(),
-                            StringConst::EdmModel_Validator_Semantic_PathIsNotValidForTheGivenContext($segment)
-                        )
-                    ];
-                    return false;
-                }
-
-                $resultProperty = $structuredResult->findProperty($segment);
-                $result = (null !== $resultProperty) ? $resultProperty->getType()->getDefinition() : null;
-
-                // If the path is not resolved, it could refer to an open type, and we can't assert its type.
-                if (null === $result) {
-                    $discoveredErrors = [];
-                    return true;
-                }
+        foreach ($expression->getPath() as $segment) {
+            $structuredResult = $result;
+            if (!$structuredResult instanceof IStructuredType) {
+                $discoveredErrors = [
+                    new EdmError(
+                        $expression->Location(),
+                        EdmErrorCode::PathIsNotValidForTheGivenContext(),
+                        StringConst::EdmModel_Validator_Semantic_PathIsNotValidForTheGivenContext($segment)
+                    )
+                ];
+                return false;
             }
 
-            return self::TestTypeMatch(
-                $result,
-                $type->getDefinition(),
-                $expression->Location(),
-                $matchExactly,
-                $discoveredErrors
-            );
+            $resultProperty = $structuredResult->findProperty($segment);
+            $result = (null !== $resultProperty) ? $resultProperty->getType()->getDefinition() : null;
+
+            // If the path is not resolved, it could refer to an open type, and we can't assert its type.
+            if (null === $result) {
+                $discoveredErrors = [];
+                return true;
+            }
         }
 
-        $discoveredErrors = [];
-        return true;
+        return self::TestTypeMatch(
+            $result,
+            $type->getDefinition(),
+            $expression->Location(),
+            $matchExactly,
+            $discoveredErrors
+        );
     }
 
     protected static function TryAssertIfAsType(
