@@ -18,9 +18,9 @@ use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 interface IVocabularyAnnotation extends IEdmElement
 {
     /**
-     * @return string gets the qualifier used to discriminate between multiple bindings of the same property or type
+     * @return string|null gets the qualifier used to discriminate between multiple bindings of the same property/type
      */
-    public function getQualifier(): string;
+    public function getQualifier(): ?string;
 
     /**
      * @return ITerm gets the term bound by the annotation

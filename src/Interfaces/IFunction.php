@@ -15,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 interface IFunction extends IFunctionBase, ISchemaElement
 {
     /**
-     * @return string gets the defining expression of this function
+     * @return string|null gets the defining expression of this function
      */
-    public function getDefiningExpression(): string;
+    public function getDefiningExpression(): ?string;
 }

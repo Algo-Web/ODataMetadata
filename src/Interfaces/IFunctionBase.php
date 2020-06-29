@@ -17,9 +17,9 @@ interface IFunctionBase extends INamedElement, IVocabularyAnnotatable
     /**
      * Gets the return type of this function.
      *
-     * @return ITypeReference
+     * @return ITypeReference|null
      */
-    public function getReturnType(): ITypeReference;
+    public function getReturnType(): ?ITypeReference;
 
     /**
      * Gets the collection of parameters for this function.
