@@ -201,8 +201,10 @@ abstract class ExpressionTypeChecker
                 assert($expression instanceof IIfExpression);
                 return self::TryAssertIfAsType($expression, $type, $context, $matchExactly, $discoveredErrors);
             case ExpressionKind::IsType():
+                $coreModel = EdmCoreModel::getInstance();
+                $boolean = $coreModel->GetBoolean(false);
                 return self::TestTypeReferenceMatch(
-                    EdmCoreModel::getInstance()->GetBoolean(false),
+                    $boolean,
                     $type,
                     $expression->Location(),
                     $matchExactly,
@@ -855,13 +857,14 @@ abstract class ExpressionTypeChecker
     private static function TestTypeReferenceMatch(
         ITypeReference $expressionType,
         ITypeReference $assertedType,
-        ILocation $location,
+        ?ILocation $location,
         bool $matchExactly,
         &$discoveredErrors
     ): bool {
         if (!self::TestNullabilityMatch($expressionType, $assertedType, $location, $discoveredErrors)) {
             return false;
         }
+        dd($expressionType->getErrors());
 
         // A bad type reference matches anything (so as to avoid generating spurious errors).
         if (0 !== count($expressionType->getErrors())) {
@@ -881,7 +884,7 @@ abstract class ExpressionTypeChecker
     private static function TestTypeMatch(
         IType $expressionType,
         IType $assertedType,
-        ILocation $location,
+        ?ILocation $location,
         bool $matchExactly,
         &$discoveredErrors
     ): bool {
@@ -950,7 +953,7 @@ abstract class ExpressionTypeChecker
     private static function TestNullabilityMatch(
         ITypeReference $expressionType,
         ITypeReference $assertedType,
-        ILocation $location,
+        ?ILocation $location,
         &$discoveredErrors
     ): bool {
         if (!$assertedType->getNullable() && $expressionType->getNullable()) {

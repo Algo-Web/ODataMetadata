@@ -15,9 +15,9 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
 interface IApplyExpression extends IExpression
 {
     /**
-     * @return IExpression gets the applied function
+     * @return IExpression|null gets the applied function
      */
-    public function getAppliedFunction(): IExpression;
+    public function getAppliedFunction(): ?IExpression;
 
     /**
      * @return IExpression[] gets the arguments to the function
