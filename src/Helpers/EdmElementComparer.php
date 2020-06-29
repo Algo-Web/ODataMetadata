@@ -39,14 +39,20 @@ abstract class EdmElementComparer
     {
         $equivalent = true;
         $interfaces = class_implements($thisType);
-        foreach($interfaces as $interface){
-            if(!method_exists(self::class, 'Is' . $interface . 'EquivalentTo')){
+        $interfaces = array_filter($interfaces, function ($value) {
+            return false !== strpos($value, 'AlgoWeb\\ODataMetadata');
+        });
+        foreach ($interfaces as $rawInterface) {
+            $bitz = explode('\\', $rawInterface);
+            $interface = end($bitz);
+            $methodName = 'is' . $interface . 'EquivalentTo';
+            if (!method_exists(self::class, $methodName)) {
                 continue;
             }
-            if(!in_array($interface, class_implements($otherType))){
+            if (!in_array($rawInterface, class_implements($otherType))) {
                 return false;
             }
-            $equivalent &= self::{'Is' . $interface . 'EquivalentTo' }($thisType, $otherType);
+            $equivalent &= self::{$methodName}($thisType, $otherType);
         }
         return $equivalent;
     }
@@ -61,57 +67,51 @@ abstract class EdmElementComparer
      */
     protected static function isITypeEquivalentTo(IType $thisType, IType $otherType): bool
     {
-        if ($thisType === $otherType)
-        {
+        if ($thisType === $otherType) {
             return true;
         }
 
-        if ($thisType === null || $otherType === null)
-        {
+        if ($thisType === null || $otherType === null) {
             return false;
         }
 
-        if ($thisType->getTypeKind() !== $otherType->getTypeKind())
-        {
+        if ($thisType->getTypeKind() != $otherType->getTypeKind()) {
             return false;
         }
-        if(!$thisType->getTypeKind()->isAnyOf(
-            [
-                TypeKind::Primitive(),
-                TypeKind::Complex(),
-                TypeKind::Entity(),
-                TypeKind::Enum(),
-                TypeKind::Collection(),
-                TypeKind::EntityReference(),
-                TypeKind::Row(),
-                TypeKind::None()
-            ]
-        )){
-            throw new InvalidOperationException(StringConst::UnknownEnumVal_TypeKind($thisType->getTypeKind()->getKey()));
+
+        if (!$thisType->getTypeKind()->isAnyOf(
+            TypeKind::Primitive(),
+            TypeKind::Complex(),
+            TypeKind::Entity(),
+            TypeKind::Enum(),
+            TypeKind::Collection(),
+            TypeKind::EntityReference(),
+            TypeKind::Row(),
+            TypeKind::None()
+        )) {
+            throw new InvalidOperationException(
+                StringConst::UnknownEnumVal_TypeKind($thisType->getTypeKind()->getKey())
+            );
         }
         return true;
     }
 
     protected static function isITypeReferenceEquivalentTo(ITypeReference $thisType, ITypeReference $otherType):bool
     {
-        if ($thisType === $otherType)
-        {
+        if ($thisType === $otherType) {
             return true;
         }
 
-        if ($thisType === null || $otherType === null)
-        {
+        if ($thisType === null || $otherType === null) {
             return false;
         }
 
         $typeKind = $thisType->TypeKind();
-        if (!$typeKind->equals($otherType->TypeKind()))
-        {
+        if (!$typeKind->equals($otherType->TypeKind())) {
             return false;
         }
 
-        if (!$typeKind->isPrimitive())
-        {
+        if (!$typeKind->isPrimitive()) {
             return $thisType->getNullable() === $otherType->getNullable() &&
                 self::isEquivalentTo($thisType->getDefinition(), $otherType->getDefinition());
         }
