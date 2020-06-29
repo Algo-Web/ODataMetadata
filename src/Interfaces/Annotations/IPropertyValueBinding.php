@@ -21,10 +21,10 @@ interface IPropertyValueBinding extends IEdmElement
     /**
      * @return IProperty gets the property that is given a value by the annotation
      */
-    public function getBoundProperty(): IProperty ;
+    public function getBoundProperty(): IProperty;
 
     /**
      * @return IExpression gets the expression producing the value of the annotation
      */
-    public function getValue(): IExpression ;
+    public function getValue(): IExpression;
 }

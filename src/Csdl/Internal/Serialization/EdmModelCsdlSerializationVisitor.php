@@ -789,7 +789,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
 
     private static function IsInlineExpression(IExpression $expression): bool
     {
-        return $expression->getExpressionKind()->isAnyOf([
+        return $expression->getExpressionKind()->isAnyOf(
             ExpressionKind::BinaryConstant(),
             ExpressionKind::BooleanConstant(),
             ExpressionKind::DateTimeConstant(),
@@ -801,7 +801,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             ExpressionKind::Path(),
             ExpressionKind::StringConstant(),
             ExpressionKind::TimeConstant()
-        ]);
+        );
     }
 
     /**
