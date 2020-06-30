@@ -9,7 +9,6 @@ use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\EdmVocabularyAnnotationSerializationLocation;
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\IVocabularyAnnotationHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 

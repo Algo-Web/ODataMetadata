@@ -6,7 +6,6 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\EdmUtil;
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\IFunctionImportHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;

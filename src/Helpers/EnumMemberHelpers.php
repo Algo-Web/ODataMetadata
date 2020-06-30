@@ -7,7 +7,6 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\EdmConstants;
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\IEnumMemberHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 
