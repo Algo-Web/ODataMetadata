@@ -38,6 +38,7 @@ trait ModelHelpers
         $localName     = $localName ?? Helpers::classNameToLocalName($typeof);
         return Helpers::AnnotationValue($typeof, $this->getDirectValueAnnotationsManager()->getAnnotationValue($element, $namespaceName, $localName));
     }
+
     // This internal method exists so we can get a consistent view of the mappings through the entire serialization process.
     // Otherwise, changes to the dictionary durring serialization would result in an invalid or inconsistent output.
     public function GetNamespaceAliases(): array
@@ -45,8 +46,16 @@ trait ModelHelpers
         /*
          * @var IModel $this
          */
-        return $this->GetAnnotationValue('array', $this, EdmConstants::InternalUri, CsdlConstants::NamespaceAliasAnnotation) ??[];
+        /** @var array|null $result */
+        $result = $this->GetAnnotationValue(
+            'array',
+            $this,
+            EdmConstants::InternalUri,
+            CsdlConstants::NamespaceAliasAnnotation
+        );
+        return $result ?? [];
     }
+
     /**
      * Sets an annotation value for an EDM element. If the value is null, no annotation is added and an existing
      * annotation with the same name is removed.
@@ -63,14 +72,14 @@ trait ModelHelpers
 
     public static function EntityContainerFinder(): callable
     {
-        return function (IModel $model, string $qualifiedName): IEntityContainer {
+        return function (IModel $model, string $qualifiedName): ?IEntityContainer {
             return $model->findDeclaredEntityContainer($qualifiedName);
         };
     }
 
     private static function findTypec(): callable
     {
-        return function (IModel $model, string $qualifiedName): ISchemaType {
+        return function (IModel $model, string $qualifiedName): ?ISchemaType {
             return $model->findDeclaredType($qualifiedName);
         };
     }
@@ -83,7 +92,7 @@ trait ModelHelpers
     }
     private static function ValueTermFinder(): callable
     {
-        return function (IModel $model, string $qualifiedName): IValueTerm {
+        return function (IModel $model, string $qualifiedName): ?IValueTerm {
             return $model->findDeclaredValueTerm($qualifiedName);
         };
     }
@@ -277,10 +286,18 @@ trait ModelHelpers
      */
     public function GetNamespacePrefixMappings(): array
     {
-        /*
+        /**
          * @var IModel $this
          */
-        return $this->GetAnnotationValue('array', $this, EdmConstants::InternalUri, CsdlConstants::NamespacePrefixAnnotation)??[];
+        /** @var array|null $result */
+        $result = $this->GetAnnotationValue(
+            'array',
+            $this,
+            EdmConstants::InternalUri,
+            CsdlConstants::NamespacePrefixAnnotation
+        );
+
+        return $result ?? [];
     }
 
 
@@ -304,7 +321,10 @@ trait ModelHelpers
     public function GetAssociationEndName(INavigationProperty $property): string
     {
         $property->PopulateCaches();
-        return $this->GetAnnotationValue('string', $property, EdmConstants::InternalUri, CsdlConstants::AssociationEndNameAnnotation) ?? $property->getPartner()->getName();
+        /** @var string|null $result */
+        $result = $this->GetAnnotationValue('string', $property, EdmConstants::InternalUri, CsdlConstants::AssociationEndNameAnnotation);
+
+        return $result ?? $property->getPartner()->getName();
     }
 
     /**
@@ -318,6 +338,7 @@ trait ModelHelpers
         $property->PopulateCaches();
         return $this->GetAssociationNamespace($property) . '.' . $this->GetAssociationName($property);
     }
+
     public function FindType(string $qualifiedName): ?ISchemaType
     {
         $findTypeMethod = self::findTypec();
