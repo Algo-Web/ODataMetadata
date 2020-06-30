@@ -5,13 +5,13 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\ITypeHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
 
 /**
  * Trait TypeHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
- * @mixin IType
  */
 trait TypeHelpers
 {
