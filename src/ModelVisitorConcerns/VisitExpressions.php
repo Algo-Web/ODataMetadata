@@ -46,11 +46,17 @@ trait VisitExpressions
 {
     public function VisitExpressions(array $expressions): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         self::VisitCollection($expressions, [$this, 'VisitExpression']);
     }
 
     public function VisitExpression(IExpression $expression): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         switch ($expression->getExpressionKind()) {
             case ExpressionKind::AssertType():
                 assert($expression instanceof  IAssertTypeExpression);
@@ -168,33 +174,9 @@ trait VisitExpressions
      */
     public function visitPropertyConstructors(array $constructor): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         self::VisitCollection($constructor, [$this, 'processPropertyConstructor']);
     }
-
-    abstract public function processAssertTypeExpression(IAssertTypeExpression $expression): void;
-    abstract public function processBinaryConstantExpression(IBinaryConstantExpression $expression): void;
-    abstract public function processBooleanConstantExpression(IBooleanConstantExpression $expression): void;
-    abstract public function processExpression(IExpression $expression): void;
-    abstract public function processPropertyReferenceExpression(IPropertyReferenceExpression $expression): void;
-    abstract public function processTimeConstantExpression(ITimeConstantExpression $expression): void;
-    abstract public function processStringConstantExpression(IStringConstantExpression $expression): void;
-    abstract public function processRecordExpression(IRecordExpression $expression): void;
-    abstract public function processPathExpression(IPathExpression $expression): void;
-    abstract public function processNullConstantExpression(INullExpression $expression): void;
-    abstract public function processLabeledExpression(ILabeledExpression $expression): void;
-    abstract public function processLabeledExpressionReferenceExpression(ILabeledExpressionReferenceExpression $expression): void;
-    abstract public function processParameterReferenceExpression(IParameterReferenceExpression $expression): void;
-    abstract public function processIsTypeExpression(IIsTypeExpression $expression): void;
-    abstract public function processIntegerConstantExpression(IIntegerConstantExpression $expression): void;
-    abstract public function processIfExpression(IIfExpression $expression): void;
-    abstract public function processGuidConstantExpression(IGuidConstantExpression $expression): void;
-    abstract public function processFunctionReferenceExpression(IFunctionReferenceExpression $expression): void;
-    abstract public function processFunctionApplicationExpression(IApplyExpression $expression): void;
-    abstract public function processFloatingConstantExpression(IFloatingConstantExpression $expression): void;
-    abstract public function processEnumMemberReferenceExpression(IEnumMemberReferenceExpression $expression): void;
-    abstract public function processEntitySetReferenceExpression(IEntitySetReferenceExpression $expression): void;
-    abstract public function processDecimalConstantExpression(IDecimalConstantExpression $expression): void;
-    abstract public function processDateTimeOffsetConstantExpression(IDateTimeOffsetConstantExpression $expression): void;
-    abstract public function processDateTimeConstantExpression(IDateTimeConstantExpression $expression): void;
-    abstract public function processCollectionExpression(ICollectionExpression $expression): void;
 }

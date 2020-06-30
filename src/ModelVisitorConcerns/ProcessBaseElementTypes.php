@@ -14,12 +14,14 @@ use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 /**
  * Class ProcessBaseElementTypes.
  * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
- * @mixin EdmModelVisitor
  */
 trait ProcessBaseElementTypes
 {
     protected function ProcessElement(IEdmElement $element): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($element, __METHOD__);
         $this->VisitAnnotations($this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element));
         $this->endElement($element, __METHOD__);
@@ -27,6 +29,9 @@ trait ProcessBaseElementTypes
 
     protected function ProcessNamedElement(INamedElement $element): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($element, __METHOD__);
         $this->ProcessElement($element);
         $this->endElement($element, __METHOD__);
@@ -34,6 +39,9 @@ trait ProcessBaseElementTypes
 
     protected function ProcessSchemaElement(ISchemaElement $element): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($element, __METHOD__);
         $this->ProcessVocabularyAnnotatable($element);
         $this->ProcessNamedElement($element);
@@ -42,6 +50,9 @@ trait ProcessBaseElementTypes
 
     protected function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $annotatable): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($annotatable, __METHOD__);
         $this->endElement($annotatable, __METHOD__);
     }
