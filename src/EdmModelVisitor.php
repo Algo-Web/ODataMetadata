@@ -43,7 +43,6 @@ class EdmModelVisitor
     use ProcessFunctionRelated;
     use ProcessTerms;
     use ProcessTypeDefinitions;
-    use ProcessTypeDefinitions;
     use ProcessTypeReferences;
     /**
      * @var SplObjectStorage|IVisitor[]
