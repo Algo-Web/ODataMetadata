@@ -7,7 +7,6 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Edm\Validation\ObjectLocation;
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\IEdmElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\ILocatable;
 use AlgoWeb\ODataMetadata\Interfaces\ILocation;
@@ -30,6 +29,9 @@ trait EdmElementHelpers
 
     public function getErrors(): iterable
     {
+        /**
+         * @var IEdmElement $this
+         */
         return InterfaceValidator::GetStructuralErrors($this);
     }
 }

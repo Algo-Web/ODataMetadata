@@ -6,7 +6,6 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\ITypeHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
 

@@ -6,7 +6,6 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\IPrimitiveTypeReferenceHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
 
