@@ -61,7 +61,7 @@ abstract class ToTraceString
                 $s = TypeKind::Row()->getKey();
                 $s .= '(';
                 foreach ($element->Properties() as $prop) {
-                    if ($prop === null) {
+                    if (null === $prop) {
                         continue;
                     }
                     $s .= self::ToTraceString($prop);
@@ -118,7 +118,7 @@ abstract class ToTraceString
     private static function AppendBinaryFacets(string $sb, IBinaryTypeReference $type): string
     {
         self::AppendKeyValue($sb, EdmConstants::FacetName_FixedLength, $type->isFixedLength() ? 'TRUE' : 'FALSE');
-        if ($type->isUnBounded() || $type->getMaxLength() != null) {
+        if ($type->isUnBounded() || null !== $type->getMaxLength()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_MaxLength, ($type->isUnBounded()) ? EdmConstants::Value_Max : strval($type->getMaxLength()));
         }
         return $sb;
@@ -126,19 +126,19 @@ abstract class ToTraceString
 
     private static function AppendStringFacets(string $sb, IStringTypeReference $type): string
     {
-        if ($type->isFixedLength() != null) {
+        if (true === $type->isFixedLength()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_FixedLength, $type->isFixedLength() ? 'TRUE' : 'FALSE');
         }
 
-        if ($type->isUnbounded() == true || $type->getMaxLength() != null) {
+        if (true === $type->isUnbounded() || null !== $type->getMaxLength()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_MaxLength, $type->isUnbounded() ? EdmConstants::Value_Max : $type->getMaxLength());
         }
 
-        if ($type->isUnicode() != null) {
+        if (true === $type->isUnicode()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Unicode, $type->isUnicode() ? 'TRUE' : 'FALSE');
         }
 
-        if ($type->getCollation() != null) {
+        if (null !== $type->getCollation()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Collation, $type->getCollation());
         }
         return $sb;
@@ -146,7 +146,7 @@ abstract class ToTraceString
 
     private static function AppendTemporalFacets(string $sb, ITemporalTypeReference $type): string
     {
-        if ($type->getPrecision() != null) {
+        if (null !== $type->getPrecision()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Precision, $type->getPrecision());
         }
         return $sb;
@@ -154,11 +154,11 @@ abstract class ToTraceString
 
     private static function AppendDecimalFacets(string $sb, IDecimalTypeReference $type): string
     {
-        if ($type->getPrecision() != null) {
+        if (null !== $type->getPrecision()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Precision, $type->getPrecision());
         }
 
-        if ($type->getScale() != null) {
+        if (null !== $type->getScale()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Scale, $type->getScale());
         }
         return $sb;
