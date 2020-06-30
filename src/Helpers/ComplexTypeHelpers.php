@@ -16,15 +16,15 @@ trait ComplexTypeHelpers
     /**
      * Gets the base type of this references definition.
      *
-     * @return IComplexType the base type of this references definition
+     * @return IComplexType|null the base type of this references definition
      */
-    public function BaseComplexType(): IComplexType
+    public function BaseComplexType(): ?IComplexType
     {
         /**
          * @var IComplexType $this;
          */
         $base = $this->getBaseType();
-        assert($base instanceof IComplexType, 'the base type of a complex type should always be another complex type');
+        assert(null === $base || $base instanceof IComplexType, 'the base type of a complex type should always be another complex type');
         return $base;
     }
 }

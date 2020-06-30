@@ -14,7 +14,7 @@ interface IComplexTypeHelpers
     /**
      * Gets the base type of this references definition.
      *
-     * @return IComplexType the base type of this references definition
+     * @return IComplexType|null the base type of this references definition
      */
-    public function BaseComplexType(): IComplexType;
+    public function BaseComplexType(): ?IComplexType;
 }
