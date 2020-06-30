@@ -196,6 +196,6 @@ class PrimitiveTypeKind extends Enum
             self::SByte,
         ];
 
-        return in_array($this->getValue(), $signedIntegralTypes);
+        return in_array($value, $signedIntegralTypes);
     }
 }
