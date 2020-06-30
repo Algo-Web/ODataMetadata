@@ -320,10 +320,11 @@ trait ModelHelpers
     }
     public function FindType(string $qualifiedName): ?ISchemaType
     {
+        $findTypeMethod = self::findTypec();
         /**
          * @var IModel $this
          */
-        return Helpers::FindAcrossModels($this, $qualifiedName, self::findTypec(), [RegistrationHelper::class, 'CreateAmbiguousTypeBinding']);
+        return Helpers::FindAcrossModels($this, $qualifiedName, $findTypeMethod, [RegistrationHelper::class, 'CreateAmbiguousTypeBinding']);
     }
 
     /**
