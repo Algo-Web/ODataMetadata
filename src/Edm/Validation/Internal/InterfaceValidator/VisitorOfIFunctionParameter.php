@@ -11,13 +11,13 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 
 class VisitorOfIFunctionParameter extends VisitorOfT
 {
-    protected function VisitT($parameter, array &$followup, array &$references): iterable
+    protected function VisitT($parameter, array &$followup, array &$references): ?iterable
     {
         assert($parameter instanceof IFunctionParameter);
 
         $errors = null;
 
-        if ($parameter->getType() != null) {
+        if (null !== $parameter->getType()) {
             // Parameter owns its type reference, so it goes as a followup.
             $followup[] = $parameter->getType();
         } else {
@@ -30,7 +30,7 @@ class VisitorOfIFunctionParameter extends VisitorOfT
             );
         }
 
-        if ($parameter->getDeclaringFunction() != null) {
+        if (null !== $parameter->getDeclaringFunction()) {
             $references[] = $parameter->getDeclaringFunction();
         } else {
             InterfaceValidator::CollectErrors(

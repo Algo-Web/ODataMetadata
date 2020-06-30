@@ -13,7 +13,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 
 final class VisitorOfIEntityContainerElement extends VisitorOfT
 {
-    protected function VisitT($item, array &$followup, array &$references): iterable
+    protected function VisitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IEntityContainerElement);
         $termKindError = null;
@@ -33,7 +33,7 @@ final class VisitorOfIEntityContainerElement extends VisitorOfT
                 break;
         }
 
-        return $termKindError != null ? [ $termKindError ] : null;
+        return null !== $termKindError ? [ $termKindError ] : null;
     }
 
     public function forType(): string

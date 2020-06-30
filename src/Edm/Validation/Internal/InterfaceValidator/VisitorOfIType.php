@@ -18,7 +18,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IType;
 
 final class VisitorOfIType extends VisitorOfT
 {
-    protected function VisitT($type, array &$followup, array &$references): iterable
+    protected function VisitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof IType);
         $typeKindError = null;
@@ -59,7 +59,7 @@ final class VisitorOfIType extends VisitorOfT
                         break;
                 }
 
-        return $typeKindError != null ? [$typeKindError ] : null;
+        return null !== $typeKindError ? [$typeKindError ] : null;
     }
 
     public function forType(): string

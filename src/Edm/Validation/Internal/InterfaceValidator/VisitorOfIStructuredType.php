@@ -14,19 +14,19 @@ use AlgoWeb\ODataMetadata\StringConst;
 
 class VisitorOfIStructuredType extends VisitorOfT
 {
-    protected function VisitT($type, array &$followup, array &$references): iterable
+    protected function VisitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof IStructuredType);
         $errors = null;
         InterfaceValidator::ProcessEnumerable($type, $type->getDeclaredProperties(), 'DeclaredProperties', $followup, $errors);
 
-        if ($type->getBaseType() != null) {
+        if (null !== $type->getBaseType()) {
             $visitedTypes   = [];
             $visitedTypes[] = $type;
             /**
              * @var IStructuredType|null $currentBaseType
              */
-            for ($currentBaseType = $type->getBaseType(); $currentBaseType != null; $currentBaseType = $currentBaseType->getBaseType()) {
+            for ($currentBaseType = $type->getBaseType(); null !== $currentBaseType; $currentBaseType = $currentBaseType->getBaseType()) {
                 if (in_array($currentBaseType, $visitedTypes)) {
                     $typeName = $type instanceof ISchemaType ? $type->FullName() : get_class($type);
                     InterfaceValidator::CollectErrors(

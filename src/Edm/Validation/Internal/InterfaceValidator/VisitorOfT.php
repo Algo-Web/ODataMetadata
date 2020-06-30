@@ -17,7 +17,7 @@ abstract class VisitorOfT
         return $this->VisitT($item, $followup, $references);
     }
 
-    abstract protected function VisitT($item, array &$followup, array &$references): iterable;
+    abstract protected function VisitT($item, array &$followup, array &$references): ?iterable;
 
     abstract public function forType(): string;
 }

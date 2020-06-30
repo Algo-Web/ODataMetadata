@@ -37,7 +37,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IValueTermReferenceExpression;
 
 class VisitorOfIExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IExpression);
         // Trying to reduce amount of noise in errors - if this expression is bad, then most likely it will have an unacceptable kind, no need to report it.
@@ -154,7 +154,7 @@ class VisitorOfIExpression extends VisitorOfT
             }
         }
 
-        return $expressionKindError != null ? [ $expressionKindError ] : null;
+        return null !== $expressionKindError ? [ $expressionKindError ] : null;
     }
 
     public function forType(): string

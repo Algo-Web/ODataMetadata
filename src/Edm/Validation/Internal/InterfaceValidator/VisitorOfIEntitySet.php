@@ -11,12 +11,12 @@ use AlgoWeb\ODataMetadata\Interfaces\INavigationTargetMapping;
 
 class VisitorOfIEntitySet extends VisitorOfT
 {
-    protected function VisitT($item, array &$followup, array &$references): iterable
+    protected function VisitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IEntitySet);
         $errors = null;
 
-        if ($item->getElementType() != null) {
+        if (null !== $item->getElementType()) {
             $references[] = $item->getElementType();
         } else {
             InterfaceValidator::CollectErrors(
@@ -41,7 +41,7 @@ class VisitorOfIEntitySet extends VisitorOfT
          * @var INavigationTargetMapping $navTargetMapping
          */
         foreach ($navTargetMappings as $navTargetMapping) {
-            if ($navTargetMapping->getNavigationProperty() != null) {
+            if (null !== $navTargetMapping->getNavigationProperty()) {
                 $references[] = $navTargetMapping->getNavigationProperty();
             } else {
                 InterfaceValidator::CollectErrors(
@@ -53,7 +53,7 @@ class VisitorOfIEntitySet extends VisitorOfT
                 );
             }
 
-            if ($navTargetMapping->getTargetEntitySet() != null) {
+            if (null !== $navTargetMapping->getTargetEntitySet()) {
                 $references[] = $navTargetMapping->getTargetEntitySet();
             } else {
                 InterfaceValidator::CollectErrors(

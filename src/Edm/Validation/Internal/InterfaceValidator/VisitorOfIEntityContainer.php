@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 
 final class VisitorOfIEntityContainer extends VisitorOfT
 {
-    protected function VisitT($item, array &$followup, array &$references): iterable
+    protected function VisitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IEntityContainer);
         $errors = null;

@@ -10,14 +10,14 @@ use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
 
 class VisitorOfIEnumType extends VisitorOfT
 {
-    protected function VisitT($type, array &$followup, array &$references): iterable
+    protected function VisitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof IEnumType);
         $errors = null;
 
         InterfaceValidator::ProcessEnumerable($type, $type->getMembers(), 'Members', $followup, $errors);
 
-        if ($type->getUnderlyingType() != null) {
+        if (null !== $type->getUnderlyingType()) {
             $references[] = $type->getUnderlyingType();
         } else {
             InterfaceValidator::CollectErrors(

@@ -10,10 +10,10 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IDelayedValue;
 
 class VisitorOfIDelayedValue extends VisitorOfT
 {
-    protected function VisitT($value, array &$followup, array &$references): iterable
+    protected function VisitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof IDelayedValue);
-        if ($value->getValue() != null) {
+        if (null !== $value->getValue()) {
             $followup[] = $value->getValue();
             return null;
         } else {

@@ -10,10 +10,10 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IEnumMemberReferenceExpression;
 
 class VisitorOfIEnumMemberReferenceExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IEnumMemberReferenceExpression);
-        if ($expression->getReferencedEnumMember() != null) {
+        if (null !== $expression->getReferencedEnumMember()) {
             $references[] = $expression->getReferencedEnumMember();
             return null;
         } else {

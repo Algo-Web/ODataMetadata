@@ -10,10 +10,10 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceType;
 
 final class VisitorOfIEntityReferenceType extends VisitorOfT
 {
-    protected function VisitT($type, array &$followup, array &$references): iterable
+    protected function VisitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof IEntityReferenceType);
-        if ($type->getEntityType() != null) {
+        if (null !== $type->getEntityType()) {
             $references[] = $type->getEntityType();
             return null;
         } else {

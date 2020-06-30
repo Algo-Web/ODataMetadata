@@ -10,10 +10,10 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IEnumValue;
 
 class VisitorOfIEnumValue extends VisitorOfT
 {
-    protected function VisitT($value, array &$followup, array &$references): iterable
+    protected function VisitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof IEnumValue);
-        if ($value->getValue() != null) {
+        if (null !== $value->getValue()) {
             $followup[] = $value->getValue();
             return null;
         } else {

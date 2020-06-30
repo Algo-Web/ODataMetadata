@@ -9,10 +9,10 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 
 class VisitorOfIFunctionImport extends VisitorOfT
 {
-    protected function VisitT($functionImport, array &$followup, array &$references): iterable
+    protected function VisitT($functionImport, array &$followup, array &$references): ?iterable
     {
         assert($functionImport instanceof IFunctionImport);
-        if ($functionImport->getEntitySet() != null) {
+        if (null !== $functionImport->getEntitySet()) {
             $followup[] = $functionImport->getEntitySet();
         }
 

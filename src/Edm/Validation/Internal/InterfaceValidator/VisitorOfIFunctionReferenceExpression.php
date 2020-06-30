@@ -12,10 +12,10 @@ use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 
 class VisitorOfIFunctionReferenceExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IFunctionReferenceExpression);
-        if ($expression->getReferencedFunction() != null) {
+        if (null !== $expression->getReferencedFunction()) {
             assert(
                 $expression->getReferencedFunction() instanceof ISchemaElement ||
                 $expression instanceof IEntityContainerElement,

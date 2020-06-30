@@ -10,12 +10,12 @@ use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 
 class VisitorOfIEnumMember extends VisitorOfT
 {
-    protected function VisitT($member, array &$followup, array &$references): iterable
+    protected function VisitT($member, array &$followup, array &$references): ?iterable
     {
         assert($member instanceof IEnumMember);
         $errors = null;
 
-        if ($member->getDeclaringType() != null) {
+        if (null !== $member->getDeclaringType()) {
             $references[] = $member->getDeclaringType();
         } else {
             InterfaceValidator::CollectErrors(
@@ -27,7 +27,7 @@ class VisitorOfIEnumMember extends VisitorOfT
             );
         }
 
-        if ($member->getValue() != null) {
+        if (null !== $member->getValue()) {
             $followup[] = $member->getValue();
         } else {
             InterfaceValidator::CollectErrors(
