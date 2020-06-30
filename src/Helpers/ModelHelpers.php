@@ -11,6 +11,7 @@ use AlgoWeb\ODataMetadata\Csdl\Internal\Serialization\Helpers\AssociationSetAnno
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\EdmUtil;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IModelHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
@@ -28,7 +29,6 @@ use SplObjectStorage;
 /**
  * Trait ModelHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
- * @mixin IModel
  */
 trait ModelHelpers
 {

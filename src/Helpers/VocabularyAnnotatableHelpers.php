@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IVocabularyAnnotatableHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
@@ -12,7 +13,6 @@ use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 /**
  * Trait VocabularyAnnotatableHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
- * @mixin IVocabularyAnnotatable
  */
 trait VocabularyAnnotatableHelpers
 {

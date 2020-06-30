@@ -13,7 +13,6 @@ use Generator;
 /**
  * Trait StructuredTypeDefinitionHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
- * @mixin IStructuredType
  */
 trait StructuredTypeHelpers
 {
@@ -22,7 +21,7 @@ trait StructuredTypeHelpers
      *
      * @return Generator|IProperty[] properties of this type
      */
-    public function Properties(): Generator
+    public function Properties(): iterable
     {
         if ($this->getBaseType() !== null) {
             foreach ($this->getBaseType()->Properties() as $baseProperty) {

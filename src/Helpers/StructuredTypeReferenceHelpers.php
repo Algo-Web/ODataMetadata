@@ -8,12 +8,10 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
-use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 
 /**
  * Trait StructuredTypeReferenceHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
- * @mixin IStructuredTypeReference
  */
 trait StructuredTypeReferenceHelpers
 {

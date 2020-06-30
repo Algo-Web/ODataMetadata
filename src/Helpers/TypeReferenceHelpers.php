@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\ITypeReferenceHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IBinaryTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ICheckable;
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
@@ -58,7 +59,6 @@ use AlgoWeb\ODataMetadata\StringConst;
 /**
  * Class TypeReferenceHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
- * @mixin ITypeReference
  */
 trait TypeReferenceHelpers
 {
