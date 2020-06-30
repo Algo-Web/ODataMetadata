@@ -55,7 +55,7 @@ abstract class EdmElementComparer
             }
             $equivalent &= self::{$methodName}($thisType, $otherType);
         }
-        return $equivalent;
+        return boolval($equivalent);
     }
 
     /**

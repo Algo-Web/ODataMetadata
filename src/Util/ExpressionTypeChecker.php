@@ -437,7 +437,7 @@ abstract class ExpressionTypeChecker
             $discoveredErrors = [];
         }
 
-        return $success;
+        return boolval($success);
     }
 
     public static function TryAssertRecordAsType(
@@ -756,8 +756,8 @@ abstract class ExpressionTypeChecker
             case PrimitiveTypeKind::Int64():
                 return self::TryAssertIntegerConstantInRange(
                     $expression,
-                    -9223372036854775808,
-                    9223372036854775807,
+                    (int)-9223372036854775808,
+                    (int)9223372036854775807,
                     $discoveredErrors
                 );
             case PrimitiveTypeKind::Int32():
