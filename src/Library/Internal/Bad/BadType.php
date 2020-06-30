@@ -14,7 +14,8 @@ class BadType extends BadElement implements IType
 {
     use SimpleBaseToString;
     use TypeHelpers;
-    public function __construct(array $errors)
+
+    public function __construct(iterable $errors)
     {
         parent::__construct($errors);
     }
