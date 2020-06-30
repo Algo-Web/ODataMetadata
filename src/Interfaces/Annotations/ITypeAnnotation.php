@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Annotations;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\ITypeAnnotationHelpers;
 use AlgoWeb\ODataMetadata\Helpers\TypeAnnotationHelpers;
 
 /**
@@ -13,9 +14,8 @@ use AlgoWeb\ODataMetadata\Helpers\TypeAnnotationHelpers;
  * Represents an EDM type annotation.
  *
  * @package AlgoWeb\ODataMetadata\Interfaces\Annotations
- * @mixin TypeAnnotationHelpers
  */
-interface ITypeAnnotation extends IVocabularyAnnotation
+interface ITypeAnnotation extends IVocabularyAnnotation, ITypeAnnotationHelpers
 {
     /**
      * @return IPropertyValueBinding[] gets the value annotations for the properties of the type

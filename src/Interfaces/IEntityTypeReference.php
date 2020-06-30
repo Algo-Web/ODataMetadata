@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\EntityTypeReferenceHelpers;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IEntityTypeReferenceHelpers;
 
 /**
  * Interface IEdmEntityTypeReference.
@@ -13,8 +14,7 @@ use AlgoWeb\ODataMetadata\Helpers\EntityTypeReferenceHelpers;
  * Represents references to entity types.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin EntityTypeReferenceHelpers
  */
-interface IEntityTypeReference extends IStructuredTypeReference
+interface IEntityTypeReference extends IStructuredTypeReference, IEntityTypeReferenceHelpers
 {
 }

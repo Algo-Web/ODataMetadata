@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Expressions;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IRecordExpressionHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\RecordExpression\IPropertyConstructor;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 
@@ -15,7 +16,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
  *
  * @package AlgoWeb\ODataMetadata\Interfaces\Expressions
  */
-interface IRecordExpression extends IExpression
+interface IRecordExpression extends IExpression, IRecordExpressionHelpers
 {
     /**
      * @return IStructuredTypeReference gets the declared type of the record, or null if there is no declared type

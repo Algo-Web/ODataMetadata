@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IStructuredTypeHelpers;
 use AlgoWeb\ODataMetadata\Helpers\StructuredTypeHelpers;
 use AlgoWeb\ODataMetadata\Helpers\TypeHelpers;
 
@@ -14,10 +15,8 @@ use AlgoWeb\ODataMetadata\Helpers\TypeHelpers;
  * Common base interface for definitions of EDM structured types.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin StructuredTypeHelpers
- * @mixin TypeHelpers
  */
-interface IStructuredType extends IType
+interface IStructuredType extends IType, IStructuredTypeHelpers
 {
     /**
      * @return bool gets a value indicating whether this type is abstract

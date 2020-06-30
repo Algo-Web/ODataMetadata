@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\ISchemaElementHelpers;
 use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
 
 /**
@@ -14,9 +15,8 @@ use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
  * Common base interface for all named children of EDM schemata.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin SchemaElementHelpers
  */
-interface ISchemaElement extends INamedElement, IVocabularyAnnotatable
+interface ISchemaElement extends INamedElement, IVocabularyAnnotatable, ISchemaElementHelpers
 {
     /**
      * @return SchemaElementKind gets the kind of this schema element

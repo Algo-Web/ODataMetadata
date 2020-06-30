@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IModelHelpers;
 use AlgoWeb\ODataMetadata\Helpers\ModelHelpers;
 
 /**
@@ -16,9 +17,8 @@ use AlgoWeb\ODataMetadata\Helpers\ModelHelpers;
  * -- The backing implementation of an element can be loaded or created on demand.
  * -- No direct element mutation occurs through the interfaces.
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin ModelHelpers
  */
-interface IModel extends IEdmElement
+interface IModel extends IEdmElement, IModelHelpers
 {
     /**
      * @return ISchemaElement[] gets the collection of schema elements that are contained in this model

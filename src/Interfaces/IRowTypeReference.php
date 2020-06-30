@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IRowTypeReferenceHelpers;
 use AlgoWeb\ODataMetadata\Helpers\RowTypeReferenceHelpers;
 
 /**
@@ -13,8 +14,7 @@ use AlgoWeb\ODataMetadata\Helpers\RowTypeReferenceHelpers;
  * Represents references to row types.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin RowTypeReferenceHelpers
  */
-interface IRowTypeReference extends IStructuredTypeReference
+interface IRowTypeReference extends IStructuredTypeReference, IRowTypeReferenceHelpers
 {
 }

@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\ComplexTypeReferenceHelpers;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IComplexTypeReferenceHelpers;
 
 /**
  * Class IEdmComplexTypeReference.
@@ -13,8 +14,7 @@ use AlgoWeb\ODataMetadata\Helpers\ComplexTypeReferenceHelpers;
  * Represents references to EDM complex types.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin ComplexTypeReferenceHelpers
  */
-interface IComplexTypeReference extends IStructuredTypeReference
+interface IComplexTypeReference extends IStructuredTypeReference, IComplexTypeReferenceHelpers
 {
 }
