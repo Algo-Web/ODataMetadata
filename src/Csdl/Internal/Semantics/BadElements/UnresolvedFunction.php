@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 use AlgoWeb\ODataMetadata\Interfaces\ILocation;
@@ -24,6 +25,8 @@ use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadTypeReference;
  */
 class UnresolvedFunction extends BadElement implements IFunction, IUnresolvedElement
 {
+    use SchemaElementHelpers;
+
     /**
      * @var string
      */
