@@ -28,5 +28,4 @@ abstract class ValidationRule
     abstract public function __invoke(ValidationContext $context, ?IEdmElement $item);
 
     abstract public function getValidatedType(): string;
-
 }

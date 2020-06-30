@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 17/06/20
- * Time: 11:14 PM
+ * Time: 11:14 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Csdl\Internal\Serialization;
 
 use AlgoWeb\ODataMetadata\Csdl\Internal\Serialization\EdmModelCsdlSerializationVisitor;
@@ -22,7 +23,7 @@ class EdmModelCsdlSerializationVisitorTest extends TestCase
 {
     public function simpleTypeReferenceProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Decimal(), 'Edm.Decimal'];
         $result[] = [PrimitiveTypeKind::Time(), 'Edm.Time'];
         $result[] = [PrimitiveTypeKind::Geometry(), 'Edm.Geometry'];
@@ -33,8 +34,8 @@ class EdmModelCsdlSerializationVisitorTest extends TestCase
     /**
      * @dataProvider simpleTypeReferenceProvider
      *
-     * @param PrimitiveTypeKind $type
-     * @param string $expType
+     * @param  PrimitiveTypeKind                                      $type
+     * @param  string                                                 $expType
      * @throws \AlgoWeb\ODataMetadata\Exception\NotSupportedException
      * @throws \ReflectionException
      */
@@ -49,7 +50,7 @@ class EdmModelCsdlSerializationVisitorTest extends TestCase
         $model->shouldReceive('getDirectValueAnnotationsManager->GetDirectValueAnnotations')->andReturn([]);
         $model->shouldReceive('findDeclaredVocabularyAnnotations')->andReturn([]);
         $model->shouldReceive('GetAnnotationValue')->andReturn($doc);
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
@@ -68,13 +69,13 @@ class EdmModelCsdlSerializationVisitorTest extends TestCase
         $tail .= '>';
 
         $writer->endElement();
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Schema Namespace="namespace">'.PHP_EOL;
-        $expected .= '    <EntityType Name="any" OpenType="true">'.PHP_EOL;
-        $expected .= '        <Documentation/>'.PHP_EOL;
-        $expected .= '        <Property Name="employee_id" Type="'.$expType.$tail.PHP_EOL;
-        $expected .= '            <Documentation/>'.PHP_EOL;
-        $expected .= '        </Property>'.PHP_EOL;
-        $expected .= '    </EntityType>'.PHP_EOL.'</Schema>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Schema Namespace="namespace">' . PHP_EOL;
+        $expected .= '    <EntityType Name="any" OpenType="true">' . PHP_EOL;
+        $expected .= '        <Documentation/>' . PHP_EOL;
+        $expected .= '        <Property Name="employee_id" Type="' . $expType . $tail . PHP_EOL;
+        $expected .= '            <Documentation/>' . PHP_EOL;
+        $expected .= '        </Property>' . PHP_EOL;
+        $expected .= '    </EntityType>' . PHP_EOL . '</Schema>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);

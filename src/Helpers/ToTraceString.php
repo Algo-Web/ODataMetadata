@@ -171,9 +171,9 @@ abstract class ToTraceString
     }
 
     /**
-     * @param string $s
-     * @param string $key
-     * @param string|int|null $value
+     * @param  string          $s
+     * @param  string          $key
+     * @param  string|int|null $value
      * @return string
      */
     private static function AppendKeyValue(string $s, string $key, $value)

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEnumMember;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -19,20 +20,23 @@ use AlgoWeb\ODataMetadata\Util\ExpressionTypeChecker;
  */
 class EnumMemberValueMustHaveSameTypeAsUnderlyingType extends EnumMemberRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $enumMember)
     {
         assert($enumMember instanceof IEnumMember);
         $discoveredErrors = [];
-                   if (
+        if (
                        !$context->checkIsBad($enumMember->getDeclaringType()) &&
                        !$context->checkIsBad($enumMember->getDeclaringType()->getUnderlyingType()) &&
-                       !ExpressionTypeChecker::TryAssertPrimitiveAsType($enumMember->getValue(),
-                           EdmTypeSemantics::GetPrimitiveTypeReference($enumMember->getDeclaringType()->getUnderlyingType(), false), $discoveredErrors))
-                   {
-                       $context->AddError(
-                           $enumMember->Location(),
-                           EdmErrorCode::EnumMemberTypeMustMatchEnumUnderlyingType(),
-                           StringConst::EdmModel_Validator_Semantic_EnumMemberTypeMustMatchEnumUnderlyingType($enumMember->getName()));
-                   }    }
+                       !ExpressionTypeChecker::TryAssertPrimitiveAsType(
+                           $enumMember->getValue(),
+                           EdmTypeSemantics::GetPrimitiveTypeReference($enumMember->getDeclaringType()->getUnderlyingType(), false),
+                           $discoveredErrors
+                       )) {
+            $context->AddError(
+                $enumMember->Location(),
+                EdmErrorCode::EnumMemberTypeMustMatchEnumUnderlyingType(),
+                StringConst::EdmModel_Validator_Semantic_EnumMemberTypeMustMatchEnumUnderlyingType($enumMember->getName())
+            );
+        }
+    }
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEnumType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,16 +18,15 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class EnumMustHaveIntegerUnderlyingType extends EnumTypeRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $enumType)
     {
         assert($enumType instanceof IEnumType);
-        if (!$enumType->getUnderlyingType()->getPrimitiveKind()->isIntegral() && !$context->checkIsBad($enumType->getUnderlyingType()))
-        {
+        if (!$enumType->getUnderlyingType()->getPrimitiveKind()->isIntegral() && !$context->checkIsBad($enumType->getUnderlyingType())) {
             $context->AddError(
                 $enumType->Location(),
                 EdmErrorCode::EnumMustHaveIntegerUnderlyingType(),
-                StringConst::EdmModel_Validator_Semantic_EnumMustHaveIntegralUnderlyingType($enumType->FullName()));
+                StringConst::EdmModel_Validator_Semantic_EnumMustHaveIntegralUnderlyingType($enumType->FullName())
+            );
         }
     }
 }

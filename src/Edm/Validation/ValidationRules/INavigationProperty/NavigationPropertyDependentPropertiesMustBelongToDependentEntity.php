@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
 
@@ -17,7 +19,6 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class NavigationPropertyDependentPropertiesMustBelongToDependentEntity extends NavigationPropertyRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $navigationProperty)
     {
         assert($navigationProperty instanceof INavigationProperty);
@@ -33,7 +34,8 @@ class NavigationPropertyDependentPropertiesMustBelongToDependentEntity extends N
                         $context->AddError(
                             $navigationProperty->Location(),
                             EdmErrorCode::DependentPropertiesMustBelongToDependentEntity(),
-                            StringConst::EdmModel_Validator_Semantic_DependentPropertiesMustBelongToDependentEntity($dependantProperty->getName(), $dependentEntity->getName()));
+                            StringConst::EdmModel_Validator_Semantic_DependentPropertiesMustBelongToDependentEntity($dependantProperty->getName(), $dependentEntity->getName())
+                        );
                     }
                 }
             }

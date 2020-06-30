@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 24/06/20
- * Time: 1:59 AM
+ * Time: 1:59 AM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
@@ -30,17 +31,17 @@ class ConstantsTest extends TestCase
 {
     public function constantProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [EdmBinaryConstant::class, IBinaryTypeReference::class, ['a'], ExpressionKind::BinaryConstant(), ValueKind::Binary()];
         $result[] = [EdmBooleanConstant::class, IPrimitiveTypeReference::class, true, ExpressionKind::BooleanConstant(), ValueKind::Boolean()];
-        $result[] = [EdmDateTimeConstant::class, ITemporalTypeReference::class, new \DateTime, ExpressionKind::DateTimeConstant(), ValueKind::DateTime()];
-        $result[] = [EdmDateTimeOffsetConstant::class, ITemporalTypeReference::class, new \DateTime, ExpressionKind::DateTimeOffsetConstant(), ValueKind::DateTimeOffset()];
+        $result[] = [EdmDateTimeConstant::class, ITemporalTypeReference::class, new \DateTime(), ExpressionKind::DateTimeConstant(), ValueKind::DateTime()];
+        $result[] = [EdmDateTimeOffsetConstant::class, ITemporalTypeReference::class, new \DateTime(), ExpressionKind::DateTimeOffsetConstant(), ValueKind::DateTimeOffset()];
         $result[] = [EdmDecimalConstant::class, IPrimitiveTypeReference::class, 0.1, ExpressionKind::DecimalConstant(), ValueKind::Decimal()];
         $result[] = [EdmFloatingConstant::class, IPrimitiveTypeReference::class, 0.1, ExpressionKind::FloatingConstant(), ValueKind::Floating()];
         $result[] = [EdmGuidConstant::class, IPrimitiveTypeReference::class, 'abc', ExpressionKind::GuidConstant(), ValueKind::Guid()];
         $result[] = [EdmIntegerConstant::class, IPrimitiveTypeReference::class, 1, ExpressionKind::IntegerConstant(), ValueKind::Integer()];
         $result[] = [EdmStringConstant::class, IPrimitiveTypeReference::class, 'abc', ExpressionKind::StringConstant(), ValueKind::String()];
-        $result[] = [EdmTimeConstant::class, ITemporalTypeReference::class, new \DateTime, ExpressionKind::TimeConstant(), ValueKind::Time()];
+        $result[] = [EdmTimeConstant::class, ITemporalTypeReference::class, new \DateTime(), ExpressionKind::TimeConstant(), ValueKind::Time()];
 
         return $result;
     }
@@ -52,7 +53,7 @@ class ConstantsTest extends TestCase
      * @param string $typeRef
      * @param $value
      * @param ExpressionKind $expressionKind
-     * @param ValueKind $valueKind
+     * @param ValueKind      $valueKind
      */
     public function testEdmConstant(
         string $class,

@@ -100,7 +100,7 @@ abstract class EdmValueWriter
 
     public static function FloatAsXml(float $f): string
     {
-        return XmlConvert::floatToString($f) .'F';
+        return XmlConvert::floatToString($f) . 'F';
     }
 
     public static function DecimalAsXml(float $d): string

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEnumType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\ValidationHelper;
@@ -23,19 +24,18 @@ class EnumTypeEnumMemberNameAlreadyDefined extends EnumTypeRule
     {
         assert($enumType instanceof IEnumType);
         $memberNames = new HashSetInternal();
-        foreach ($enumType->getMembers() as $member)
-        {
+        foreach ($enumType->getMembers() as $member) {
             // We only want to report the properties that are declared in this type. Otherwise properties will get
             // reported multiple times due to inheritance.
-            if ($member != null)
-            {
+            if ($member != null) {
                 ValidationHelper::AddMemberNameToHashSet(
                     $member,
                     $memberNames,
                     $context,
                     EdmErrorCode::AlreadyDefined(),
                     StringConst::EdmModel_Validator_Semantic_EnumMemberNameAlreadyDefined($member->getName()),
-                    false);
+                    false
+                );
             }
         }
     }

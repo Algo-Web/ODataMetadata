@@ -1,5 +1,7 @@
 <?php
-if(!function_exists('mb_ord')) {
+
+declare(strict_types=1);
+if (!function_exists('mb_ord')) {
     function mb_ord($s, $encoding = null)
     {
         $getEncoding = function ($encoding) {

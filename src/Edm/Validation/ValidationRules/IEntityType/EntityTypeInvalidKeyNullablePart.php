@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,22 +18,18 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class EntityTypeInvalidKeyNullablePart extends EntityTypeRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $entityType)
     {
         assert($entityType instanceof IEntityType);
-        if ($entityType->Key() != null)
-        {
-            foreach ($entityType->Key() as $key)
-            {
-                if ($key->getType()->IsPrimitive())
-                {
-                    if ($key->getType()->getNullable())
-                    {
+        if ($entityType->Key() != null) {
+            foreach ($entityType->Key() as $key) {
+                if ($key->getType()->IsPrimitive()) {
+                    if ($key->getType()->getNullable()) {
                         $context->AddError(
                             $key->Location(),
                             EdmErrorCode::InvalidKey(),
-                            StringConst::EdmModel_Validator_Semantic_InvalidKeyNullablePart($key->getName(), $entityType->getName()));
+                            StringConst::EdmModel_Validator_Semantic_InvalidKeyNullablePart($key->getName(), $entityType->getName())
+                        );
                     }
                 }
             }

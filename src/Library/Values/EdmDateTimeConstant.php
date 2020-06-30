@@ -22,8 +22,8 @@ class EdmDateTimeConstant extends EdmValue implements IDateTimeConstantExpressio
     /**
      * Initializes a new instance of the EdmDateTimeConstant class.
      *
-     * @param DateTime                    $value dateTime value represented by this value
-     * @param ITemporalTypeReference      $type  type of the DateTime
+     * @param DateTime               $value dateTime value represented by this value
+     * @param ITemporalTypeReference $type  type of the DateTime
      */
     public function __construct(DateTime $value, ITemporalTypeReference $type)
     {

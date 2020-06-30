@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\ISchemaElement;
-
 
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -19,7 +20,6 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class SchemaElementNamespaceIsNotAllowed extends SchemaElementRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $item)
     {
         assert($item instanceof ISchemaElement);
@@ -28,14 +28,14 @@ class SchemaElementNamespaceIsNotAllowed extends SchemaElementRule
             strlen($item->getNamespace()) <= CsdlConstants::Max_NamespaceLength &&
             strlen($item->getNamespace()) > 0 &&
             !EdmUtil::IsNullOrWhiteSpaceInternal($item->getNamespace())
-        )
-        {
-            if (!EdmUtil::IsValidDottedName($item->getNamespace()))
-            {
+        ) {
+            if (!EdmUtil::IsValidDottedName($item->getNamespace())) {
                 $context->AddError(
                     $item->Location(),
                     EdmErrorCode::InvalidNamespaceName(),
-                    StringConst::EdmModel_Validator_Syntactic_EdmModel_NamespaceNameIsNotAllowed($item->getNamespace()));
+                    StringConst::EdmModel_Validator_Syntactic_EdmModel_NamespaceNameIsNotAllowed($item->getNamespace())
+                );
             }
-        }    }
+        }
+    }
 }

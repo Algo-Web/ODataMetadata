@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunction;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -18,15 +19,12 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class FunctionOnlyInputParametersAllowedInFunctions extends FunctionRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $function)
     {
         assert($function instanceof IFunction);
-        foreach ($function->getParameters() as $parameter)
-        {
+        foreach ($function->getParameters() as $parameter) {
             assert($parameter instanceof IFunctionParameter);
-            if (!$parameter->getMode()->isIn())
-            {
+            if (!$parameter->getMode()->isIn()) {
                 $context->AddError(
                     $parameter->Location(),
                     EdmErrorCode::OnlyInputParametersAllowedInFunctions(),

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
-
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
@@ -31,9 +32,9 @@ abstract class EdmElementComparer
     /**
      * Returns true if the compared type is semantically equivalent to this type.
      *
-     * @param IEdmElement $thisType Type being compared.
-     * @param IEdmElement $otherType Type being compared to.
-     * @return bool Equivalence of the two types.
+     * @param  IEdmElement $thisType  type being compared
+     * @param  IEdmElement $otherType type being compared to
+     * @return bool        equivalence of the two types
      */
     public static function isEquivalentTo(IEdmElement $thisType, IEdmElement $otherType): bool
     {
@@ -43,8 +44,8 @@ abstract class EdmElementComparer
             return false !== strpos($value, 'AlgoWeb\\ODataMetadata');
         });
         foreach ($interfaces as $rawInterface) {
-            $bitz = explode('\\', $rawInterface);
-            $interface = end($bitz);
+            $bitz       = explode('\\', $rawInterface);
+            $interface  = end($bitz);
             $methodName = 'is' . $interface . 'EquivalentTo';
             if (!method_exists(self::class, $methodName)) {
                 continue;
@@ -61,9 +62,9 @@ abstract class EdmElementComparer
      * Returns true if the compared type is semantically equivalent to this type.
      * Schema types (ISchemaType) are compared by their object refs.
      *
-     * @param IType $thisType Type being compared.
-     * @param IType $otherType Type being compared to.
-     * @return bool Equivalence of the two types.
+     * @param  IType $thisType  type being compared
+     * @param  IType $otherType type being compared to
+     * @return bool  equivalence of the two types
      */
     protected static function isITypeEquivalentTo(IType $thisType, IType $otherType): bool
     {
@@ -96,7 +97,7 @@ abstract class EdmElementComparer
         return true;
     }
 
-    protected static function isITypeReferenceEquivalentTo(ITypeReference $thisType, ITypeReference $otherType):bool
+    protected static function isITypeReferenceEquivalentTo(ITypeReference $thisType, ITypeReference $otherType): bool
     {
         if ($thisType === $otherType) {
             return true;
@@ -122,38 +123,34 @@ abstract class EdmElementComparer
      * Returns true if function signatures are semantically equivalent.
      * Signature includes function name (INamedElement) and its parameter types.
      *
-     * @param IFunctionBase $thisFunction Reference to the calling object.
-     * @param IFunctionBase $otherFunction Function being compared to.
-     * @return bool Equivalence of signatures of the two functions.
+     * @param  IFunctionBase $thisFunction  reference to the calling object
+     * @param  IFunctionBase $otherFunction function being compared to
+     * @return bool          equivalence of signatures of the two functions
      */
     public static function isFunctionSignatureEquivalentTo(IFunctionBase $thisFunction, IFunctionBase $otherFunction): bool
     {
-        if ($thisFunction === $otherFunction)
-        {
+        if ($thisFunction === $otherFunction) {
             return true;
         }
 
-        if ($thisFunction->getName() != $otherFunction->getName())
-        {
+        if ($thisFunction->getName() != $otherFunction->getName()) {
             return false;
         }
 
-        if (!self::isEquivalentTo($thisFunction->getReturnType(), $otherFunction->getReturnType()))
-        {
+        if (!self::isEquivalentTo($thisFunction->getReturnType(), $otherFunction->getReturnType())) {
             return false;
         }
 
-        $thisTypeKeys = array_keys($thisFunction->getParameters());
+        $thisTypeKeys  = array_keys($thisFunction->getParameters());
         $otherTypeKeys = array_keys($otherFunction->getParameters());
-        $keyCount =  count($thisTypeKeys);
-        for($i = 0; $i < $keyCount; ++$i){
-            if(
+        $keyCount      =  count($thisTypeKeys);
+        for ($i = 0; $i < $keyCount; ++$i) {
+            if (
             !self::isEquivalentTo(
                 $thisFunction->getParameters()[$thisTypeKeys[$i]],
                 $otherFunction->getParameters()[$otherTypeKeys[$i]]
             )
-            )
-            {
+            ) {
                 return false;
             }
         }
@@ -164,19 +161,17 @@ abstract class EdmElementComparer
     /**
      * Returns true if the compared function parameter is semantically equivalent to this function parameter.
      *
-     * @param IFunctionParameter $thisParameter Reference to the calling object.
-     * @param IFunctionParameter $otherParameter Function parameter being compared to.
-     * @return bool Equivalence of the two function parameters.
+     * @param  IFunctionParameter $thisParameter  reference to the calling object
+     * @param  IFunctionParameter $otherParameter function parameter being compared to
+     * @return bool               equivalence of the two function parameters
      */
     protected static function IsIFunctionParameterEquivalentTo(IFunctionParameter $thisParameter, IFunctionParameter $otherParameter): bool
     {
-        if ($thisParameter === $otherParameter)
-        {
+        if ($thisParameter === $otherParameter) {
             return true;
         }
 
-        if ($thisParameter === null || $otherParameter === null)
-        {
+        if ($thisParameter === null || $otherParameter === null) {
             return false;
         }
 
@@ -210,22 +205,20 @@ abstract class EdmElementComparer
 
     protected static function isIRowTypeEquivalentTo(IRowType $thisType, IRowType $otherType): bool
     {
-        if (count($thisType->getDeclaredProperties()) != count($otherType->getDeclaredProperties()))
-        {
+        if (count($thisType->getDeclaredProperties()) != count($otherType->getDeclaredProperties())) {
             return false;
         }
 
-        $thisTypeKeys = array_keys($thisType->getDeclaredProperties());
+        $thisTypeKeys  = array_keys($thisType->getDeclaredProperties());
         $otherTypeKeys = array_keys($otherType->getDeclaredProperties());
-        $keyCount =  count($thisTypeKeys);
-        for($i = 0; $i < $keyCount; ++$i){
-            if(
+        $keyCount      =  count($thisTypeKeys);
+        for ($i = 0; $i < $keyCount; ++$i) {
+            if (
             !self::isEquivalentTo(
                 $thisType->getDeclaredProperties()[$thisTypeKeys[$i]],
                 $thisType->getDeclaredProperties()[$otherTypeKeys[$i]]
             )
-            )
-            {
+            ) {
                 return false;
             }
         }
@@ -234,13 +227,11 @@ abstract class EdmElementComparer
 
     protected static function isIStructuralPropertyEquivalentTo(IStructuralProperty $thisProp, IStructuralProperty $otherProp): bool
     {
-        if ($thisProp === $otherProp)
-        {
+        if ($thisProp === $otherProp) {
             return true;
         }
 
-        if ($thisProp == null || $otherProp == null)
-        {
+        if ($thisProp == null || $otherProp == null) {
             return false;
         }
 
@@ -252,12 +243,11 @@ abstract class EdmElementComparer
     protected static function isIPrimitiveTypeReferenceEquivalentTo(IPrimitiveTypeReference $thisType, IPrimitiveTypeReference $otherType): bool
     {
         $thisTypePrimitiveKind = $thisType->PrimitiveKind();
-        if ($thisTypePrimitiveKind->equals($otherType->PrimitiveKind()))
-        {
+        if ($thisTypePrimitiveKind->equals($otherType->PrimitiveKind())) {
             return false;
         }
 
-        if(
+        if (
             $thisTypePrimitiveKind->isAnyOf(
                 [
                     PrimitiveTypeKind::Binary(),
@@ -268,12 +258,11 @@ abstract class EdmElementComparer
                     PrimitiveTypeKind::DateTimeOffset()
                 ]
             ) ||
-            $thisTypePrimitiveKind->IsSpatial()){
+            $thisTypePrimitiveKind->IsSpatial()) {
             return $thisType->getNullable() === $otherType->getNullable() &&
                 self::isEquivalentTo($thisType->getDefinition(), $otherType->getDefinition());
         }
         return true;
-
     }
 
     protected static function isIBinaryTypeReferenceEquivalentTo(IBinaryTypeReference $thisType, IBinaryTypeReference $otherType): bool

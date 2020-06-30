@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\ITemporalTypeReference;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -18,12 +19,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class TemporalTypeReferencePrecisionOutOfRange extends TemporalTypeReferenceRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof ITemporalTypeReference);
-        if ($type->getPrecision() > EdmConstants::Max_Precision || $type->getPrecision() < EdmConstants::Min_Precision)
-        {
+        if ($type->getPrecision() > EdmConstants::Max_Precision || $type->getPrecision() < EdmConstants::Min_Precision) {
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::PrecisionOutOfRange(),

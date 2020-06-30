@@ -121,8 +121,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param EdmSchema $element
-     * @param array $mappings
+     * @param  EdmSchema             $element
+     * @param  array                 $mappings
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
@@ -182,7 +182,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IEntityContainer $element
+     * @param  IEntityContainer      $element
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
@@ -230,7 +230,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IEntitySet $element
+     * @param  IEntitySet            $element
      * @throws NotSupportedException
      */
     protected function ProcessEntitySet(IEntitySet $element): void
@@ -241,7 +241,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IEntityType $element
+     * @param  IEntityType           $element
      * @throws NotSupportedException
      * @throws \ReflectionException
      */
@@ -260,7 +260,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IStructuralProperty $element
+     * @param  IStructuralProperty   $element
      * @throws NotSupportedException
      */
     protected function ProcessStructuralProperty(IStructuralProperty $element): void
@@ -279,7 +279,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IBinaryTypeReference $element
+     * @param  IBinaryTypeReference $element
      * @throws \ReflectionException
      */
     protected function ProcessBinaryTypeReference(IBinaryTypeReference $element): void
@@ -288,7 +288,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IDecimalTypeReference $element
+     * @param  IDecimalTypeReference $element
      * @throws \ReflectionException
      */
     protected function ProcessDecimalTypeReference(IDecimalTypeReference $element): void
@@ -297,7 +297,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param ISpatialTypeReference $element
+     * @param  ISpatialTypeReference $element
      * @throws \ReflectionException
      */
     protected function ProcessSpatialTypeReference(ISpatialTypeReference $element): void
@@ -306,7 +306,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IStringTypeReference $element
+     * @param  IStringTypeReference $element
      * @throws \ReflectionException
      */
     protected function ProcessStringTypeReference(IStringTypeReference $element): void
@@ -315,7 +315,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param ITemporalTypeReference $element
+     * @param  ITemporalTypeReference $element
      * @throws \ReflectionException
      */
     protected function ProcessTemporalTypeReference(ITemporalTypeReference $element): void
@@ -324,7 +324,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param INavigationProperty $element
+     * @param  INavigationProperty   $element
      * @throws NotSupportedException
      */
     protected function ProcessNavigationProperty(INavigationProperty $element): void
@@ -335,7 +335,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IComplexType $element
+     * @param  IComplexType          $element
      * @throws NotSupportedException
      */
     protected function ProcessComplexType(IComplexType $element): void
@@ -346,7 +346,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IEnumType $element
+     * @param  IEnumType             $element
      * @throws NotSupportedException
      */
     protected function ProcessEnumType(IEnumType $element): void
@@ -357,7 +357,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IEnumMember $element
+     * @param  IEnumMember           $element
      * @throws NotSupportedException
      */
     protected function ProcessEnumMember(IEnumMember $element): void
@@ -367,7 +367,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IValueTerm $term
+     * @param  IValueTerm            $term
      * @throws NotSupportedException
      */
     protected function ProcessValueTerm(IValueTerm $term): void
@@ -388,7 +388,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IFunction $element
+     * @param  IFunction             $element
      * @throws NotSupportedException
      */
     protected function ProcessFunction(IFunction $element): void
@@ -420,7 +420,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IFunctionParameter $element
+     * @param  IFunctionParameter    $element
      * @throws NotSupportedException
      */
     protected function ProcessFunctionParameter(IFunctionParameter $element): void
@@ -443,7 +443,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param ICollectionType $element
+     * @param  ICollectionType       $element
      * @throws NotSupportedException
      */
     protected function ProcessCollectionType(ICollectionType $element): void
@@ -473,7 +473,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IFunctionImport $functionImport
+     * @param  IFunctionImport       $functionImport
      * @throws NotSupportedException
      */
     protected function ProcessFunctionImport(IFunctionImport $functionImport): void
@@ -494,7 +494,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     #region Vocabulary Annotations
 
     /**
-     * @param IValueAnnotation $annotation
+     * @param  IValueAnnotation      $annotation
      * @throws NotSupportedException
      */
     protected function ProcessValueAnnotation(IValueAnnotation $annotation): void
@@ -511,7 +511,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param ITypeAnnotation $annotation
+     * @param  ITypeAnnotation       $annotation
      * @throws NotSupportedException
      */
     protected function ProcessTypeAnnotation(ITypeAnnotation $annotation): void
@@ -522,7 +522,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IPropertyValueBinding $binding
+     * @param  IPropertyValueBinding $binding
      * @throws NotSupportedException
      */
     protected function ProcessPropertyValueBinding(IPropertyValueBinding $binding): void
@@ -553,7 +553,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IRecordExpression $expression
+     * @param  IRecordExpression     $expression
      * @throws NotSupportedException
      */
     protected function ProcessRecordExpression(IRecordExpression $expression): void
@@ -564,7 +564,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param ILabeledExpression $element
+     * @param  ILabeledExpression    $element
      * @throws NotSupportedException
      */
     protected function ProcessLabeledExpression(ILabeledExpression $element): void
@@ -579,7 +579,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IPropertyConstructor $constructor
+     * @param  IPropertyConstructor  $constructor
      * @throws NotSupportedException
      */
     protected function ProcessPropertyConstructor(IPropertyConstructor $constructor): void
@@ -596,7 +596,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IPropertyReferenceExpression $expression
+     * @param  IPropertyReferenceExpression $expression
      * @throws NotSupportedException
      */
     protected function ProcessPropertyReferenceExpression(IPropertyReferenceExpression $expression): void
@@ -618,7 +618,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IParameterReferenceExpression $expression
+     * @param  IParameterReferenceExpression $expression
      * @throws \ReflectionException
      */
     protected function ProcessParameterReferenceExpression(IParameterReferenceExpression $expression): void
@@ -627,7 +627,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param ICollectionExpression $expression
+     * @param  ICollectionExpression $expression
      * @throws NotSupportedException
      */
     protected function ProcessCollectionExpression(ICollectionExpression $expression): void
@@ -638,7 +638,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IIsTypeExpression $expression
+     * @param  IIsTypeExpression     $expression
      * @throws NotSupportedException
      */
     protected function ProcessIsTypeExpression(IIsTypeExpression $expression): void
@@ -663,7 +663,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IIfExpression $expression
+     * @param  IIfExpression         $expression
      * @throws NotSupportedException
      */
     protected function ProcessIfExpression(IIfExpression $expression): void
@@ -674,7 +674,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IFunctionReferenceExpression $expression
+     * @param  IFunctionReferenceExpression $expression
      * @throws \ReflectionException
      */
     protected function ProcessFunctionReferenceExpression(IFunctionReferenceExpression $expression): void
@@ -683,7 +683,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IApplyExpression $expression
+     * @param  IApplyExpression      $expression
      * @throws NotSupportedException
      */
     protected function ProcessFunctionApplicationExpression(IApplyExpression $expression): void
@@ -711,7 +711,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IEnumMemberReferenceExpression $expression
+     * @param  IEnumMemberReferenceExpression $expression
      * @throws \ReflectionException
      */
     protected function ProcessEnumMemberReferenceExpression(IEnumMemberReferenceExpression $expression): void
@@ -720,7 +720,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IEntitySetReferenceExpression $expression
+     * @param  IEntitySetReferenceExpression $expression
      * @throws \ReflectionException
      */
     protected function ProcessEntitySetReferenceExpression(IEntitySetReferenceExpression $expression): void
@@ -754,7 +754,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IAssertTypeExpression $expression
+     * @param  IAssertTypeExpression $expression
      * @throws NotSupportedException
      */
     protected function ProcessAssertTypeExpression(IAssertTypeExpression $expression): void
@@ -805,7 +805,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param iterable|IDirectValueAnnotation[] $annotations
+     * @param  iterable|IDirectValueAnnotation[] $annotations
      * @throws NotSupportedException
      */
     private function ProcessAnnotations(iterable $annotations): void
@@ -822,7 +822,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param INavigationProperty $element
+     * @param  INavigationProperty   $element
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
@@ -866,8 +866,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param INavigationProperty               $element
-     * @param iterable|IDirectValueAnnotation[] $annotations
+     * @param  INavigationProperty               $element
+     * @param  iterable|IDirectValueAnnotation[] $annotations
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
@@ -885,8 +885,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param INavigationProperty               $element
-     * @param iterable|IDirectValueAnnotation[] $annotations
+     * @param  INavigationProperty               $element
+     * @param  iterable|IDirectValueAnnotation[] $annotations
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
@@ -915,8 +915,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IEntitySet $entitySet
-     * @param INavigationProperty $property
+     * @param  IEntitySet            $entitySet
+     * @param  INavigationProperty   $property
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
@@ -957,9 +957,9 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IEntitySet                        $entitySet
-     * @param INavigationProperty               $property
-     * @param iterable|IDirectValueAnnotation[] $annotations
+     * @param  IEntitySet                        $entitySet
+     * @param  INavigationProperty               $property
+     * @param  iterable|IDirectValueAnnotation[] $annotations
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
@@ -975,8 +975,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param ITypeReference $element
-     * @param bool $inlineType
+     * @param  ITypeReference       $element
+     * @param  bool                 $inlineType
      * @throws \ReflectionException
      */
     private function ProcessFacets(ITypeReference $element, bool $inlineType): void
@@ -990,7 +990,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             if ($inlineType) {
                 if ($element->TypeKind()->isCollection()) {
                     $collectionElement = $element->AsCollection();
-                    $type = $collectionElement->CollectionDefinition()->getElementType();
+                    $type              = $collectionElement->CollectionDefinition()->getElementType();
                     $this->schemaWriter->WriteNullableAttribute($type);
                     $this->VisitTypeReference($type);
                 } else {
@@ -1002,7 +1002,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param iterable|IStructuralProperty[] $keyProperties
+     * @param  iterable|IStructuralProperty[] $keyProperties
      * @throws \ReflectionException
      */
     private function VisitEntityTypeDeclaredKey(iterable $keyProperties): void
@@ -1013,7 +1013,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param iterable|IStructuralProperty[] $properties
+     * @param  iterable|IStructuralProperty[] $properties
      * @throws \ReflectionException
      */
     private function VisitPropertyRefs(iterable $properties): void
@@ -1024,7 +1024,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param iterable|IDirectValueAnnotation[] $annotations
+     * @param  iterable|IDirectValueAnnotation[] $annotations
      * @throws NotSupportedException
      */
     private function VisitAttributeAnnotations(iterable $annotations): void
@@ -1062,7 +1062,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IDirectValueAnnotation $annotation
+     * @param  IDirectValueAnnotation $annotation
      * @throws NotSupportedException
      */
     private function ProcessAttributeAnnotation(IDirectValueAnnotation $annotation): void
@@ -1079,7 +1079,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param iterable|IVocabularyAnnotation[] $annotations
+     * @param  iterable|IVocabularyAnnotation[] $annotations
      * @throws NotSupportedException
      */
     private function VisitElementVocabularyAnnotations(iterable $annotations): void
@@ -1107,9 +1107,9 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IEdmElement $element
-     * @param callable $elementHeaderWriter
-     * @param callable ...$additionalAttributeWriters
+     * @param  IEdmElement           $element
+     * @param  callable              $elementHeaderWriter
+     * @param  callable              ...$additionalAttributeWriters
      * @throws NotSupportedException
      */
     private function BeginElement(
@@ -1140,7 +1140,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     }
 
     /**
-     * @param IEdmElement $element
+     * @param  IEdmElement           $element
      * @throws NotSupportedException
      */
     private function FinishElement(IEdmElement $element): void

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IValueAnnotation;
 
@@ -17,14 +19,12 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class ValueAnnotationInaccessibleTerm extends ValueAnnotationRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $annotation)
     {
         assert($annotation instanceof IValueAnnotation);
         // An unbound term is not treated as a semantic error, and looking up its name would fail.
         $term = $annotation->getTerm();
-        if (!($term instanceof IUnresolvedElement) && $context->getModel()->FindValueTerm($term->FullName()) == null)
-        {
+        if (!($term instanceof IUnresolvedElement) && $context->getModel()->FindValueTerm($term->FullName()) == null) {
             $context->AddError(
                 $annotation->Location(),
                 EdmErrorCode::BadUnresolvedTerm(),

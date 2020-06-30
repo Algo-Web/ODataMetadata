@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\ISchemaElement;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -18,16 +19,15 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class SchemaElementNamespaceMustNotBeEmptyOrWhiteSpace extends SchemaElementRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $item)
     {
         assert($item instanceof ISchemaElement);
-        if (EdmUtil::IsNullOrWhiteSpaceInternal($item->getNamespace()) || strlen($item->getNamespace()) === 0)
-        {
+        if (EdmUtil::IsNullOrWhiteSpaceInternal($item->getNamespace()) || strlen($item->getNamespace()) === 0) {
             $context->AddError(
                 $item->Location(),
                 EdmErrorCode::InvalidNamespaceName(),
-                StringConst::EdmModel_Validator_Syntactic_MissingNamespaceName());
+                StringConst::EdmModel_Validator_Syntactic_MissingNamespaceName()
+            );
         }
     }
 }

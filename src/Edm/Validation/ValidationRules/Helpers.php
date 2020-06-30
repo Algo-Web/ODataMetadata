@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules;
-
 
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -23,12 +24,14 @@ abstract class Helpers
             $context->AddError(
                 $location,
                 EdmErrorCode::BadAmbiguousElementBinding(),
-                StringConst::EdmModel_Validator_Semantic_AmbiguousType($type->FullName()));
-        } else if (!EdmElementComparer::isEquivalentTo($foundType, $type)) {
+                StringConst::EdmModel_Validator_Semantic_AmbiguousType($type->FullName())
+            );
+        } elseif (!EdmElementComparer::isEquivalentTo($foundType, $type)) {
             $context->AddError(
                 $location,
                 EdmErrorCode::BadUnresolvedType(),
-                StringConst::EdmModel_Validator_Semantic_InaccessibleType($type->FullName()));
+                StringConst::EdmModel_Validator_Semantic_InaccessibleType($type->FullName())
+            );
         }
     }
 
@@ -38,17 +41,20 @@ abstract class Helpers
             $context->AddError(
                 $location,
                 EdmErrorCode::InvalidName(),
-                StringConst::EdmModel_Validator_Syntactic_MissingName());
-        } else if (strlen($name) > CsdlConstants::Max_NameLength) {
+                StringConst::EdmModel_Validator_Syntactic_MissingName()
+            );
+        } elseif (strlen($name) > CsdlConstants::Max_NameLength) {
             $context->AddError(
                 $location,
                 EdmErrorCode::NameTooLong(),
-                StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsTooLong($name));
-        } else if (!EdmUtil::IsValidUndottedName($name)) {
+                StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsTooLong($name)
+            );
+        } elseif (!EdmUtil::IsValidUndottedName($name)) {
             $context->AddError(
                 $location,
                 EdmErrorCode::InvalidName(),
-                StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsNotAllowed($name));
+                StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsNotAllowed($name)
+            );
         }
     }
 }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntitySet;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,7 +18,6 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class EntitySetNavigationPropertyMappingsMustBeUnique extends EntitySetRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $set)
     {
         assert($set instanceof IEntitySet);
@@ -27,7 +27,8 @@ class EntitySetNavigationPropertyMappingsMustBeUnique extends EntitySetRule
                 $context->AddError(
                     $set->Location(),
                     EdmErrorCode::DuplicateNavigationPropertyMapping(),
-                    StringConst::EdmModel_Validator_Semantic_DuplicateNavigationPropertyMapping($set->getContainer()->FullName() . "." . $set->getName(), $mapping->getNavigationProperty()->getName()));
+                    StringConst::EdmModel_Validator_Semantic_DuplicateNavigationPropertyMapping($set->getContainer()->FullName() . '.' . $set->getName(), $mapping->getNavigationProperty()->getName())
+                );
             } else {
                 $mappedPropertySet[] = $mapping->getNavigationProperty();
             }

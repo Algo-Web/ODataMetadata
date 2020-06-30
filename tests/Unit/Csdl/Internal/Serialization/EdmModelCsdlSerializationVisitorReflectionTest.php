@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 29/06/20
- * Time: 8:18 PM
+ * Time: 8:18 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Csdl\Internal\Serialization;
 
 use AlgoWeb\ODataMetadata\Csdl\Internal\Serialization\EdmModelCsdlSerializationVisitor;
@@ -50,7 +51,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $element = m::mock(IComplexType::class)->makePartial();
@@ -67,8 +68,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<ComplexType Name="name">'.PHP_EOL.'<Documentation/>'.PHP_EOL;
-        $expected .= '</ComplexType>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<ComplexType Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
+        $expected .= '</ComplexType>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
@@ -78,13 +79,13 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $primType = m::mock(IPrimitiveType::class);
         $primType->shouldReceive('getPrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
 
-        $primVal = m::mock(IPrimitiveValue::class . ', '. IIntegerValue::class);
+        $primVal = m::mock(IPrimitiveValue::class . ', ' . IIntegerValue::class);
         $primVal->shouldReceive('getValueKind')->andReturn(ValueKind::Integer());
         $primVal->shouldReceive('getValue')->andReturn(11);
 
@@ -109,10 +110,10 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<EnumType Name="name">'.PHP_EOL. '<Documentation/>' .PHP_EOL
-                    . '<Member Name="member" Value="11">'.PHP_EOL;
-        $expected .= '<Documentation/>'.PHP_EOL . '</Member>'.PHP_EOL;
-        $expected .= '</EnumType>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<EnumType Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL
+                    . '<Member Name="member" Value="11">' . PHP_EOL;
+        $expected .= '<Documentation/>' . PHP_EOL . '</Member>' . PHP_EOL;
+        $expected .= '</EnumType>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
@@ -122,7 +123,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -152,7 +153,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $element = m::mock(IFunction::class)->makePartial();
@@ -169,8 +170,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Function Name="name">'.PHP_EOL. '<Documentation/>' .PHP_EOL;
-        $expected .= '</Function>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Function Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
+        $expected .= '</Function>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
@@ -180,7 +181,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $element = m::mock(IFunction::class)->makePartial();
@@ -197,9 +198,9 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Function Name="name">'.PHP_EOL. '<Documentation/>' .PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Function Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
         $expected .= '<DefiningExpression>OH NOES!</DefiningExpression>';
-        $expected .= '</Function>'.PHP_EOL;
+        $expected .= '</Function>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
@@ -209,7 +210,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $rPrim = m::mock(IPrimitiveTypeReference::class);
@@ -238,9 +239,9 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Function Name="name">'.PHP_EOL. '<Documentation/>' .PHP_EOL;
-        $expected .= '<ReturnType/>'.PHP_EOL;
-        $expected .= '</Function>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Function Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
+        $expected .= '<ReturnType/>' . PHP_EOL;
+        $expected .= '</Function>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
@@ -250,7 +251,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $rPrim = m::mock(IPrimitiveTypeReference::class);
@@ -280,8 +281,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Parameter Mode="InOut" Name="name">'.PHP_EOL. '<Documentation/>' .PHP_EOL;
-        $expected .= '</Parameter>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Parameter Mode="InOut" Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
+        $expected .= '</Parameter>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
@@ -291,7 +292,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $rPrim = m::mock(IPrimitiveTypeReference::class);
@@ -321,8 +322,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<CollectionType>'.PHP_EOL. '<Documentation/>' .PHP_EOL;
-        $expected .= '</CollectionType>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<CollectionType>' . PHP_EOL . '<Documentation/>' . PHP_EOL;
+        $expected .= '</CollectionType>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
@@ -332,7 +333,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $element = m::mock(IRowType::class)->makePartial();
@@ -346,8 +347,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<RowType/>'.PHP_EOL;
-        $actual = $writer->outputMemory(true);
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<RowType/>' . PHP_EOL;
+        $actual   = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -356,7 +357,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -385,7 +386,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $schema = m::mock(ISchemaElement::class);
@@ -418,8 +419,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<FunctionImport IsBindable="true" IsComposable="true" Name="Name" ReturnType="Ref(FullName)">'.PHP_EOL;
-        $expected .= '<Documentation/>'.PHP_EOL.'</FunctionImport>';
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<FunctionImport IsBindable="true" IsComposable="true" Name="Name" ReturnType="Ref(FullName)">' . PHP_EOL;
+        $expected .= '<Documentation/>' . PHP_EOL . '</FunctionImport>';
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
@@ -429,7 +430,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $expr = m::mock(IExpression::class);
@@ -451,8 +452,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<ValueAnnotation Term="FullName">'.PHP_EOL;
-        $expected .= '<Documentation/>'.PHP_EOL.'</ValueAnnotation>';
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<ValueAnnotation Term="FullName">' . PHP_EOL;
+        $expected .= '<Documentation/>' . PHP_EOL . '</ValueAnnotation>';
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
@@ -462,7 +463,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $expr = m::mock(IExpression::class);
@@ -485,8 +486,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<TypeAnnotation Term="FullName">'.PHP_EOL;
-        $expected .= '<Documentation/>'.PHP_EOL.'</TypeAnnotation>';
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<TypeAnnotation Term="FullName">' . PHP_EOL;
+        $expected .= '<Documentation/>' . PHP_EOL . '</TypeAnnotation>';
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
@@ -496,7 +497,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $expr = m::mock(IExpression::class);
@@ -517,8 +518,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<PropertyValue Property="Name">'.PHP_EOL;
-        $expected .= '<Documentation/>'.PHP_EOL.'</PropertyValue>';
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<PropertyValue Property="Name">' . PHP_EOL;
+        $expected .= '<Documentation/>' . PHP_EOL . '</PropertyValue>';
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);

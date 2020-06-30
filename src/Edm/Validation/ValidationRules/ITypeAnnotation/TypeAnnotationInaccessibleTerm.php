@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\ITypeAnnotation;
-
 
 use AlgoWeb\ODataMetadata\Csdl\Internal\Semantics\BadElements\IUnresolvedElement;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -19,15 +20,13 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class TypeAnnotationInaccessibleTerm extends TypeAnnotationRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $annotation)
     {
         assert($annotation instanceof ITypeAnnotation);
         $term = $annotation->getTerm();
         if (
             !($term instanceof IUnresolvedElement) &&
-            $context->getModel()->FindType($term->FullName()) instanceof IStructuredType)
-        {
+            $context->getModel()->FindType($term->FullName()) instanceof IStructuredType) {
             $context->AddError(
                 $annotation->Location(),
                 EdmErrorCode::BadUnresolvedTerm(),

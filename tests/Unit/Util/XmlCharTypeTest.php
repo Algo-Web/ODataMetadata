@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace Unit\Util;
-
 
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 use AlgoWeb\ODataMetadata\Util\XmlCharType;
@@ -18,7 +19,8 @@ class XmlCharTypeTest extends TestCase
      * @param $withCache
      * @throws \ReflectionException
      */
-    public function testIsStartNCNameChar($char, $startChar, $withCache){
+    public function testIsStartNCNameChar($char, $startChar, $withCache)
+    {
         $charType = XmlCharType::Instance();
         $this->assertEquals($startChar, $charType->IsStartNCNameChar($char));
     }
@@ -34,5 +36,4 @@ class XmlCharTypeTest extends TestCase
 
         ];
     }
-
 }

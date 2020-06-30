@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -18,26 +19,25 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class StructuredTypeBaseTypeMustBeSameKindAsDerivedKind extends StructuredTypeRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $structuredType)
     {
         assert($structuredType instanceof IStructuredType);
         // We can either have 2 rules (entity and complex) or have one rule and exclude row type. I'm choosing the latter.
-        if ($structuredType instanceof ISchemaType)
-        {
+        if ($structuredType instanceof ISchemaType) {
             if (
                 $structuredType->getBaseType() != null &&
                 $structuredType->getBaseType()->getTypeKind() !== $structuredType->getTypeKind()
-            )
-            {
+            ) {
                 $context->AddError(
                     $structuredType->Location(),
                     (
-                    $structuredType->getTypeKind()->isEntity() ?
+                        $structuredType->getTypeKind()->isEntity() ?
                         EdmErrorCode::EntityMustHaveEntityBaseType()
                         :
-                        EdmErrorCode::ComplexTypeMustHaveComplexBaseType()),
-                    StringConst::EdmModel_Validator_Semantic_BaseTypeMustHaveSameTypeKind());
+                        EdmErrorCode::ComplexTypeMustHaveComplexBaseType()
+                    ),
+                    StringConst::EdmModel_Validator_Semantic_BaseTypeMustHaveSameTypeKind()
+                );
             }
         }
     }

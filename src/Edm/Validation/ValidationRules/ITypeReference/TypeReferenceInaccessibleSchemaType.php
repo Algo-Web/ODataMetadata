@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\ITypeReference;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\Helpers;
@@ -17,13 +18,11 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
  */
 class TypeReferenceInaccessibleSchemaType extends TypeReferenceRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $typeReference)
     {
         assert($typeReference instanceof ITypeReference);
         $schemaType = $typeReference->getDefinition();
-        if ($schemaType !== null && $schemaType instanceof ISchemaType && !$context->checkIsBad($schemaType))
-        {
+        if ($schemaType !== null && $schemaType instanceof ISchemaType && !$context->checkIsBad($schemaType)) {
             Helpers::CheckForUnreachableTypeError($context, $schemaType, $typeReference->Location());
         }
     }

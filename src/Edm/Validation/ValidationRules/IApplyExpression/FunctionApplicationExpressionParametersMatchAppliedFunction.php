@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IApplyExpression;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -26,11 +27,9 @@ class FunctionApplicationExpressionParametersMatchAppliedFunction extends ApplyE
         assert($functionReference instanceof IFunctionReferenceExpression);
         if (
             $functionReference->getReferencedFunction() != null &&
-            !$context->checkIsBad($functionReference->getReferencedFunction()))
-        {
+            !$context->checkIsBad($functionReference->getReferencedFunction())) {
             if (
-                count($functionReference->getReferencedFunction()->getParameters()) != count($expression->getArguments()))
-            {
+                count($functionReference->getReferencedFunction()->getParameters()) != count($expression->getArguments())) {
                 $context->AddError(
                     $expression->Location(),
                     EdmErrorCode::IncorrectNumberOfArguments(),
@@ -42,15 +41,12 @@ class FunctionApplicationExpressionParametersMatchAppliedFunction extends ApplyE
                 );
             }
             $parameters = $functionReference->getReferencedFunction()->getParameters();
-            $arguments = $expression->getArguments();
+            $arguments  = $expression->getArguments();
             reset($arguments);
-            foreach ($parameters as $parameter)
-            {
+            foreach ($parameters as $parameter) {
                 $recursiveErrors = null;
-                if (!ExpressionTypeChecker::tryAssertType(current($arguments),$parameter->getType(), $recursiveErrors))
-                {
-                    foreach ($recursiveErrors as $error)
-                    {
+                if (!ExpressionTypeChecker::tryAssertType(current($arguments), $parameter->getType(), $recursiveErrors)) {
+                    foreach ($recursiveErrors as $error) {
                         $context->AddRawError($error);
                     }
                 }

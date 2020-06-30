@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 
@@ -12,5 +14,5 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
  */
 abstract class VisitorBase
 {
-    public abstract function Visit($item, array &$followup, array &$references): iterable;
+    abstract public function Visit($item, array &$followup, array &$references): iterable;
 }

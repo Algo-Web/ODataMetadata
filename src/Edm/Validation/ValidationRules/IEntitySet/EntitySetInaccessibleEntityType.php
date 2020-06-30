@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntitySet;
 
@@ -15,12 +17,10 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
  */
 class EntitySetInaccessibleEntityType extends EntitySetRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $entitySet)
     {
         assert($entitySet instanceof IEntitySet);
-        if (!$context->checkIsBad($entitySet->getElementType()))
-        {
+        if (!$context->checkIsBad($entitySet->getElementType())) {
             Helpers::CheckForUnreachableTypeError($context, $entitySet->getElementType(), $entitySet->Location());
         }
     }

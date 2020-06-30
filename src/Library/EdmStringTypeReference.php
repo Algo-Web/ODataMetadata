@@ -46,8 +46,7 @@ class EdmStringTypeReference extends EdmPrimitiveTypeReference implements IStrin
         ?bool $isFixedLength = null,
         ?bool $isUnicode = null,
         ?string $collation = null
-    )
-    {
+    ) {
         parent::__construct($definition, $isNullable);
         if ($isUnbounded && $maxLength !== null) {
             throw new InvalidOperationException(StringConst::EdmModel_Validator_Semantic_IsUnboundedCannotBeTrueWhileMaxLengthIsNotNull());

@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 21/06/20
- * Time: 4:34 PM
+ * Time: 4:34 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\ModelVisitorConcerns;
 
 use AlgoWeb\ODataMetadata\Csdl\Internal\Serialization\EdmModelCsdlSerializationVisitor;
@@ -60,7 +61,7 @@ class VisitExpressionsTest extends TestCase
 {
     public function testVisitAssertTypeExpressionNoDefinition()
     {
-        $model = m::mock(IModel::class)->makePartial();
+        $model   = m::mock(IModel::class)->makePartial();
         $typeRef = m::mock(ITypeReference::class);
         $typeRef->shouldReceive('getDefinition')->andReturn(null);
 
@@ -82,7 +83,7 @@ class VisitExpressionsTest extends TestCase
         $rType = m::mock(IType::class)->makePartial();
         $rType->shouldReceive('getTypeKind')->andReturn(m::mock(TypeKind::class)->makePartial());
 
-        $model = m::mock(IModel::class)->makePartial();
+        $model   = m::mock(IModel::class)->makePartial();
         $typeRef = m::mock(ITypeReference::class);
         $typeRef->shouldReceive('getDefinition')->andReturn($rType);
 
@@ -106,7 +107,7 @@ class VisitExpressionsTest extends TestCase
         $model = m::mock(IModel::class)->makePartial();
         $model->shouldReceive('GetNamespaceAliases')->andReturn([]);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -121,8 +122,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<String><![CDATA[]]></String>'.PHP_EOL;
-        $actual = $writer->outputMemory(true);
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<String><![CDATA[]]></String>' . PHP_EOL;
+        $actual   = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
@@ -134,7 +135,7 @@ class VisitExpressionsTest extends TestCase
         $model = m::mock(IModel::class)->makePartial();
         $model->shouldReceive('GetNamespaceAliases')->andReturn([]);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -149,8 +150,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Bool><![CDATA[true]]></Bool>'.PHP_EOL;
-        $actual = $writer->outputMemory(true);
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Bool><![CDATA[true]]></Bool>' . PHP_EOL;
+        $actual   = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
@@ -163,7 +164,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -178,8 +179,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Collection>'.PHP_EOL.'    <Documentation/>'.PHP_EOL.'</Collection>'.PHP_EOL;
-        $actual = $writer->outputMemory(true);
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Collection>' . PHP_EOL . '    <Documentation/>' . PHP_EOL . '</Collection>' . PHP_EOL;
+        $actual   = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
@@ -191,7 +192,7 @@ class VisitExpressionsTest extends TestCase
         $model = m::mock(IModel::class)->makePartial();
         $model->shouldReceive('GetNamespaceAliases')->andReturn([]);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -208,8 +209,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<DateTime><![CDATA[2000-01-01T00:00:00.000000000]]></DateTime>'.PHP_EOL;
-        $actual = $writer->outputMemory(true);
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<DateTime><![CDATA[2000-01-01T00:00:00.000000000]]></DateTime>' . PHP_EOL;
+        $actual   = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
 
@@ -221,13 +222,13 @@ class VisitExpressionsTest extends TestCase
         $model = m::mock(IModel::class)->makePartial();
         $model->shouldReceive('GetNamespaceAliases')->andReturn([]);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
         $typeRef->shouldReceive('getDefinition')->andReturn($rType);
 
-        $tz = new \DateTimeZone('Australia/Brisbane');
+        $tz   = new \DateTimeZone('Australia/Brisbane');
         $time = new \DateTime('2000-01-01', $tz);
 
         $expression = m::mock(IExpression::class . ', ' . IDateTimeOffsetConstantExpression::class);
@@ -239,8 +240,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<DateTimeOffset><![CDATA[2000-01-01T00:00:00.000Z+10:00]]></DateTimeOffset>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<DateTimeOffset><![CDATA[2000-01-01T00:00:00.000Z+10:00]]></DateTimeOffset>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -254,7 +255,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -269,8 +270,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<Decimal><![CDATA[0.1M]]></Decimal>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<Decimal><![CDATA[0.1M]]></Decimal>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -284,7 +285,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -303,8 +304,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<EntitySetReference Name="/Name"/>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<EntitySetReference Name="/Name"/>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -318,7 +319,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -340,8 +341,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<EnumMemberReference Name="FullName/Name"/>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<EnumMemberReference Name="FullName/Name"/>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -355,7 +356,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -370,8 +371,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<Float><![CDATA[0.1F]]></Float>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<Float><![CDATA[0.1F]]></Float>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -385,7 +386,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -404,8 +405,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<Apply>'.PHP_EOL.'    <Documentation/>'.PHP_EOL.'</Apply>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<Apply>' . PHP_EOL . '    <Documentation/>' . PHP_EOL . '</Apply>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -419,7 +420,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -439,8 +440,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<FunctionReference Name="FullName"/>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<FunctionReference Name="FullName"/>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -454,7 +455,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -469,8 +470,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<Guid><![CDATA[059d1a1e-11bc-4951-88f7-940cf1d1a66a]]></Guid>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<Guid><![CDATA[059d1a1e-11bc-4951-88f7-940cf1d1a66a]]></Guid>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -484,7 +485,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -510,8 +511,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<If>'.PHP_EOL.'    <Documentation/>'.PHP_EOL.'</If>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<If>' . PHP_EOL . '    <Documentation/>' . PHP_EOL . '</If>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -525,7 +526,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -540,8 +541,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<Int><![CDATA[1]]></Int>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<Int><![CDATA[1]]></Int>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -555,7 +556,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $primRef = m::mock(IPrimitiveTypeReference::class)->makePartial();
@@ -579,8 +580,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<IsType>'.PHP_EOL.'    <Documentation/>'.PHP_EOL.'</IsType>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<IsType>' . PHP_EOL . '    <Documentation/>' . PHP_EOL . '</IsType>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -594,7 +595,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -615,8 +616,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<ParameterReference Name="Name"/>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<ParameterReference Name="Name"/>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -630,7 +631,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -652,8 +653,8 @@ class VisitExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         // This chucks a wobbly when using assertXmlStringEqualsXmlString
-        $expected = '<?xml version="1.0"?>'.PHP_EOL;
-        $actual = $writer->outputMemory(true);
+        $expected = '<?xml version="1.0"?>' . PHP_EOL;
+        $actual   = $writer->outputMemory(true);
 
         $this->assertEquals(trim($expected), trim($actual));
     }
@@ -667,7 +668,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -688,10 +689,10 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<LabeledElement Name="Name">'.PHP_EOL.
-                    '    <Documentation/>'.PHP_EOL
-                    .'</LabeledElement>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<LabeledElement Name="Name">' . PHP_EOL .
+                    '    <Documentation/>' . PHP_EOL
+                    . '</LabeledElement>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -705,7 +706,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -726,8 +727,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<Null/>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<Null/>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -741,7 +742,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -761,8 +762,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<Path><![CDATA[]]></Path>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<Path><![CDATA[]]></Path>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -776,7 +777,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -801,9 +802,9 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<PropertyReference Name="Name">'.PHP_EOL.'    <Documentation/>'.PHP_EOL.
-                    '</PropertyReference>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<PropertyReference Name="Name">' . PHP_EOL . '    <Documentation/>' . PHP_EOL .
+                    '</PropertyReference>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -817,7 +818,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -837,8 +838,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<Record>'.PHP_EOL.'    <Documentation/>'.PHP_EOL.'</Record>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<Record>' . PHP_EOL . '    <Documentation/>' . PHP_EOL . '</Record>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -852,7 +853,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -867,8 +868,8 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<String><![CDATA[foo]]></String>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<String><![CDATA[foo]]></String>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -882,7 +883,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $typeRef = m::mock(ITypeReference::class);
@@ -900,8 +901,8 @@ class VisitExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         // This chucks a wobbly when using assertXmlStringEqualsXmlString
-        $expected = '<?xml version="1.0"?>'.PHP_EOL;
-        $actual = $writer->outputMemory(true);
+        $expected = '<?xml version="1.0"?>' . PHP_EOL;
+        $actual   = $writer->outputMemory(true);
         $this->assertEquals(trim($expected), trim($actual));
     }
 
@@ -914,7 +915,7 @@ class VisitExpressionsTest extends TestCase
 
         $model = $this->getMockModel($doc);
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $prop = m::mock(IProperty::class)->makePartial();
@@ -941,9 +942,9 @@ class VisitExpressionsTest extends TestCase
 
         $foo->VisitExpressions([$expression]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.
-                    '<PropertyReference Name="Name">'.PHP_EOL.'    <Documentation/>'.PHP_EOL.
-                    '</PropertyReference>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL .
+                    '<PropertyReference Name="Name">' . PHP_EOL . '    <Documentation/>' . PHP_EOL .
+                    '</PropertyReference>' . PHP_EOL;
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -973,7 +974,7 @@ class VisitExpressionsTest extends TestCase
     }
 
     /**
-     * @param m\Mock $doc
+     * @param  m\Mock         $doc
      * @return IDocumentation
      */
     protected function getMockModel(IDocumentation $doc): IModel

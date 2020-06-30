@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\ValidationHelper;
@@ -32,7 +33,8 @@ class StructuredTypePropertyNameAlreadyDefined extends StructuredTypeRule
                     $context,
                     EdmErrorCode::AlreadyDefined(),
                     StringConst::EdmModel_Validator_Semantic_PropertyNameAlreadyDefined($property->getName()),
-                    !in_array($property, $structuredType->getDeclaredProperties()));
+                    !in_array($property, $structuredType->getDeclaredProperties())
+                );
             }
         }
     }

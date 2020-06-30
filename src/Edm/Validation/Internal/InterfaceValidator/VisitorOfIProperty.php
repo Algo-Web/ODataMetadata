@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Enums\PropertyKind;
@@ -12,20 +13,18 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 
 class VisitorOfIProperty extends VisitorOfT
 {
-
     protected function VisitT($property, array &$followup, array &$references): iterable
     {
         assert($property instanceof IProperty);
         $errors = null;
 
-        switch ($property->getPropertyKind())
-        {
+        switch ($property->getPropertyKind()) {
             case PropertyKind::Structural():
                 InterfaceValidator::CollectErrors(
                     InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $property,
                         $property->getPropertyKind(),
-                        "PropertyKind",
+                        'PropertyKind',
                         IStructuralProperty::class
                     ),
                     $errors
@@ -37,7 +36,7 @@ class VisitorOfIProperty extends VisitorOfT
                     InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $property,
                         $property->getPropertyKind(),
-                        "PropertyKind",
+                        'PropertyKind',
                         INavigationProperty::class
                     ),
                     $errors
@@ -52,39 +51,33 @@ class VisitorOfIProperty extends VisitorOfT
                     InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
                         $property,
                         $property->getPropertyKind()->getKey(),
-                        "PropertyKind"
+                        'PropertyKind'
                     ),
                     $errors
                 );
                 break;
         }
 
-        if ($property->getType() != null)
-        {
+        if ($property->getType() != null) {
             // Property owns its type reference, so it goes as a followup.
             $followup[] = $property->getType();
-        }
-        else
-        {
+        } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
                     $property,
-                    "Type"
+                    'Type'
                 ),
                 $errors
             );
         }
 
-        if ($property->getDeclaringType() != null)
-        {
+        if ($property->getDeclaringType() != null) {
             $references[] = $property->getDeclaringType();
-        }
-        else
-        {
+        } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
                     $property,
-                    "DeclaringType"
+                    'DeclaringType'
                 ),
                 $errors
             );

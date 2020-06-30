@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
@@ -10,24 +11,21 @@ use AlgoWeb\ODataMetadata\Interfaces\INavigationTargetMapping;
 
 class VisitorOfIEntitySet extends VisitorOfT
 {
-
     protected function VisitT($item, array &$followup, array &$references): iterable
     {
         assert($item instanceof IEntitySet);
         $errors = null;
 
-        if ($item->getElementType() != null)
-        {
+        if ($item->getElementType() != null) {
             $references[] = $item->getElementType();
-        }
-        else
-        {
+        } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
                     $item,
-                    "ElementType"
+                    'ElementType'
                 ),
-                $errors);
+                $errors
+            );
         }
 
         // Navigation targets are not EDM elements, so we expand and process them here instead of adding them as followups.
@@ -35,38 +33,33 @@ class VisitorOfIEntitySet extends VisitorOfT
         InterfaceValidator::ProcessEnumerable(
             $item,
             $item->getNavigationTargets(),
-            "NavigationTargets",
+            'NavigationTargets',
             $navTargetMappings,
-            $errors);
+            $errors
+        );
         /**
          * @var INavigationTargetMapping $navTargetMapping
          */
-        foreach ($navTargetMappings as $navTargetMapping)
-        {
-            if ($navTargetMapping->getNavigationProperty() != null)
-            {
+        foreach ($navTargetMappings as $navTargetMapping) {
+            if ($navTargetMapping->getNavigationProperty() != null) {
                 $references[] = $navTargetMapping->getNavigationProperty();
-            }
-            else
-            {
+            } else {
                 InterfaceValidator::CollectErrors(
                     InterfaceValidator::CreatePropertyMustNotBeNullError(
                         $navTargetMapping,
-                        "NavigationProperty"
+                        'NavigationProperty'
                     ),
-                    $errors);
+                    $errors
+                );
             }
 
-            if ($navTargetMapping->getTargetEntitySet() != null)
-            {
+            if ($navTargetMapping->getTargetEntitySet() != null) {
                 $references[] = $navTargetMapping->getTargetEntitySet();
-            }
-            else
-            {
+            } else {
                 InterfaceValidator::CollectErrors(
                     InterfaceValidator::CreatePropertyMustNotBeNullError(
                         $navTargetMapping,
-                        "TargetEntitySet"
+                        'TargetEntitySet'
                     ),
                     $errors
                 );

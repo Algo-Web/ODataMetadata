@@ -1,13 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INamedElement;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRule;
 use AlgoWeb\ODataMetadata\Interfaces\INamedElement;
 
-abstract class NamedElementRule  extends ValidationRule
+abstract class NamedElementRule extends ValidationRule
 {
     public function getValidatedType(): string
     {

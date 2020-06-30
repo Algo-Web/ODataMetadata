@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,7 +18,6 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class OnlyEntityTypesCanBeOpen extends StructuredTypeRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $structuredType)
     {
         assert($structuredType instanceof IStructuredType);
@@ -25,7 +25,8 @@ class OnlyEntityTypesCanBeOpen extends StructuredTypeRule
             $context->AddError(
                 $structuredType->Location(),
                 EdmErrorCode::OpenTypeNotSupported(),
-                StringConst::EdmModel_Validator_Semantic_OpenTypesSupportedForEntityTypesOnly());
+                StringConst::EdmModel_Validator_Semantic_OpenTypesSupportedForEntityTypesOnly()
+            );
         }
     }
 }

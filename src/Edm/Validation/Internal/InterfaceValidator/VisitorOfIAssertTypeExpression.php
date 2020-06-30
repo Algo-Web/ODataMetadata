@@ -1,46 +1,40 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IAssertTypeExpression;
 
 class VisitorOfIAssertTypeExpression extends VisitorOfT
 {
-
-
     protected function VisitT($expression, array &$followup, array &$references): iterable
     {
         assert($expression instanceof IAssertTypeExpression);
         $errors = null;
 
-        if ($expression->getOperand() != null)
-        {
+        if ($expression->getOperand() != null) {
             $followup[] = $expression->getOperand();
-        }
-        else
-        {
+        } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
                     $expression,
-                    "Operand"
+                    'Operand'
                 ),
-                $errors);
+                $errors
+            );
         }
 
-        if ($expression->getType() != null)
-        {
+        if ($expression->getType() != null) {
             // Assert owns its type reference, so it goes as a followup.
             $followup[] = $expression->getType();
-        }
-        else
-        {
+        } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
                     $expression,
-                    "Type"
+                    'Type'
                 ),
                 $errors
             );

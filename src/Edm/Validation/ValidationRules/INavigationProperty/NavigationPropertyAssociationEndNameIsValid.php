@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
 
@@ -15,7 +17,6 @@ use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
  */
 class NavigationPropertyAssociationEndNameIsValid extends NavigationPropertyRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
         assert($property instanceof INavigationProperty);

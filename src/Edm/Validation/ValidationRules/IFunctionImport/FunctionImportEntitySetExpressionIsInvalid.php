@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -20,27 +21,23 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class FunctionImportEntitySetExpressionIsInvalid extends FunctionImportRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        if ($functionImport->getEntitySet() != null)
-        {
+        if ($functionImport->getEntitySet() != null) {
             if (
                 !$functionImport->getEntitySet()->getExpressionKind()->isEntitySetReference() &&
                 !$functionImport->getEntitySet()->getExpressionKind()->isPath()
-            )
-            {
+            ) {
                 $context->AddError(
                     $functionImport->Location(),
                     EdmErrorCode::FunctionImportEntitySetExpressionIsInvalid(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportEntitySetExpressionKindIsInvalid(
                         $functionImport->getName(),
-                        $functionImport->getEntitySet()->getExpressionKind()->getKey())
+                        $functionImport->getEntitySet()->getExpressionKind()->getKey()
+                    )
                 );
-            }
-            else
-            {
+            } else {
                 /**
                  * @var IEntitySet $entitySet;
                  */
@@ -56,13 +53,14 @@ class FunctionImportEntitySetExpressionIsInvalid extends FunctionImportRule
                 if (
                     !$functionImport->TryGetStaticEntitySet($entitySet) &&
                     !$functionImport->TryGetRelativeEntitySetPath($context->getModel(), $parameter, $path)
-                )
-                {
+                ) {
                     $context->AddError(
                         $functionImport->Location(),
                         EdmErrorCode::FunctionImportEntitySetExpressionIsInvalid(),
-                        StringConst::EdmModel_Validator_Semantic_FunctionImportEntitySetExpressionIsInvalid($functionImport->getName()));
+                        StringConst::EdmModel_Validator_Semantic_FunctionImportEntitySetExpressionIsInvalid($functionImport->getName())
+                    );
                 }
             }
-        }    }
+        }
+    }
 }

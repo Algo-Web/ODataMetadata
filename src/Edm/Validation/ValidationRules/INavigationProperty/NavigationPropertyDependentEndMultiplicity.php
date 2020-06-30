@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\ValidationHelper;
@@ -21,32 +22,28 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class NavigationPropertyDependentEndMultiplicity extends NavigationPropertyRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $navigationProperty)
     {
         assert($navigationProperty instanceof INavigationProperty);
         $dependentProperties = $navigationProperty->getDependentProperties();
-        if ($dependentProperties != null)
-        {
-            if (ValidationHelper::PropertySetsAreEquivalent($navigationProperty->DeclaringEntityType()->Key(), $dependentProperties))
-            {
+        if ($dependentProperties != null) {
+            if (ValidationHelper::PropertySetsAreEquivalent($navigationProperty->DeclaringEntityType()->Key(), $dependentProperties)) {
                 if (
                     !$navigationProperty->Multiplicity()->isZeroOrOne() &&
                     !$navigationProperty->Multiplicity()->isOne()
-                )
-                {
+                ) {
                     $context->AddError(
                         $navigationProperty->Location(),
                         EdmErrorCode::InvalidMultiplicityOfDependentEnd(),
-                        StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfDependentEndMustBeZeroOneOrOne($navigationProperty->getName()));
+                        StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfDependentEndMustBeZeroOneOrOne($navigationProperty->getName())
+                    );
                 }
-            }
-            else if ($navigationProperty->Multiplicity()->isMany())
-            {
+            } elseif ($navigationProperty->Multiplicity()->isMany()) {
                 $context->AddError(
                     $navigationProperty->Location(),
                     EdmErrorCode::InvalidMultiplicityOfDependentEnd(),
-                    StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfDependentEndMustBeMany($navigationProperty->getName()));
+                    StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfDependentEndMustBeMany($navigationProperty->getName())
+                );
             }
         }
     }

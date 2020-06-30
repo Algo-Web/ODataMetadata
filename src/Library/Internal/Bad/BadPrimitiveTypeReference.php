@@ -19,9 +19,9 @@ class BadPrimitiveTypeReference extends EdmPrimitiveTypeReference implements ICh
 
     /**
      * BadPrimitiveTypeReference constructor.
-     * @param string|null     $qualifiedName
-     * @param bool            $isNullable
-     * @param EdmError[]      $errors
+     * @param string|null $qualifiedName
+     * @param bool        $isNullable
+     * @param EdmError[]  $errors
      */
     public function __construct(?string $qualifiedName, bool $isNullable, array $errors)
     {

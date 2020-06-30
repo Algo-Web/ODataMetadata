@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 29/06/20
- * Time: 11:26 PM
+ * Time: 11:26 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
@@ -25,7 +26,7 @@ class EdmTypeSemanticsTest extends TestCase
 {
     public function primitiveTypeReferenceProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Boolean(), EdmPrimitiveTypeReference::class];
         $result[] = [PrimitiveTypeKind::Byte(), EdmPrimitiveTypeReference::class];
         $result[] = [PrimitiveTypeKind::Double(), EdmPrimitiveTypeReference::class];
@@ -66,7 +67,7 @@ class EdmTypeSemanticsTest extends TestCase
      * @dataProvider primitiveTypeReferenceProvider
      *
      * @param PrimitiveTypeKind $kind
-     * @param string $expectedClass
+     * @param string            $expectedClass
      */
     public function testGetPrimitiveTypeReference(PrimitiveTypeKind $kind, string $expectedClass)
     {

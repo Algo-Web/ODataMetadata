@@ -1,15 +1,15 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 class VisitorOfIValueTerm extends VisitorOfT
 {
-
     protected function VisitT($term, array &$followup, array &$references): iterable
     {
         assert($term instanceof IValueTerm);
@@ -18,7 +18,7 @@ class VisitorOfIValueTerm extends VisitorOfT
             $followup[] = $term->getType();
             return null;
         } else {
-            return [InterfaceValidator::CreatePropertyMustNotBeNullError($term, "Type")];
+            return [InterfaceValidator::CreatePropertyMustNotBeNullError($term, 'Type')];
         }
     }
 

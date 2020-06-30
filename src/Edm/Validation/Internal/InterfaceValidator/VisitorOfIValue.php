@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
@@ -24,25 +25,22 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IValue;
 
 class VisitorOfIValue extends VisitorOfT
 {
-
     protected function VisitT($value, array &$followup, array &$references): iterable
     {
         assert($value instanceof IValue);
         $errors = null;
-        if ($value->getType() != null)
-        {
+        if ($value->getType() != null) {
             // Value owns its type reference, so it goes as a followup.
             $followup[] = $value->getType();
         }
 
-        switch ($value->getValueKind())
-        {
+        switch ($value->getValueKind()) {
             case ValueKind::Binary():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         IBinaryValue::class
                     ),
                     $errors
@@ -51,10 +49,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::Boolean():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         IBooleanValue::class
                     ),
                     $errors
@@ -63,10 +61,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::Collection():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         ICollectionValue::class
                     ),
                     $errors
@@ -75,10 +73,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::DateTime():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         IDateTimeValue::class
                     ),
                     $errors
@@ -87,10 +85,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::DateTimeOffset():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         IDateTimeOffsetValue::class
                     ),
                     $errors
@@ -99,10 +97,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::Decimal():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         IDecimalValue::class
                     ),
                     $errors
@@ -111,10 +109,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::Enum():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         IEnumValue::class
                     ),
                     $errors
@@ -123,10 +121,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::Floating():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         IFloatingValue::class
                     ),
                     $errors
@@ -135,10 +133,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::Guid():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         IGuidValue::class
                     ),
                     $errors
@@ -147,10 +145,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::Integer():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         IIntegerValue::class
                     ),
                     $errors
@@ -159,10 +157,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::Null():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         INullValue::class
                     ),
                     $errors
@@ -171,10 +169,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::String():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         IStringValue::class
                     ),
                     $errors
@@ -183,10 +181,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::Structured():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         IStructuredValue::class
                     ),
                     $errors
@@ -195,10 +193,10 @@ class VisitorOfIValue extends VisitorOfT
 
             case ValueKind::Time():
                 InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError (
+                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $value,
                         $value->getValueKind(),
-                        "ValueKind",
+                        'ValueKind',
                         ITimeValue::class
                     ),
                     $errors
@@ -213,9 +211,10 @@ class VisitorOfIValue extends VisitorOfT
                     InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
                         $value,
                         $value->getValueKind()->getKey(),
-                        "ValueKind"
+                        'ValueKind'
                     ),
-                    $errors);
+                    $errors
+                );
                 break;
         }
 

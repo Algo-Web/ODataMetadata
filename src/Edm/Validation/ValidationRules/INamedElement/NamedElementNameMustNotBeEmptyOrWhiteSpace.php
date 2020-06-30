@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INamedElement;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class NamedElementNameMustNotBeEmptyOrWhiteSpace extends NamedElementRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $item)
     {
         assert($item instanceof INamedElement);
-        if (EdmUtil::IsNullOrWhiteSpaceInternal($item->getName()) || strlen($item->getName()) === 0)
-        {
+        if (EdmUtil::IsNullOrWhiteSpaceInternal($item->getName()) || strlen($item->getName()) === 0) {
             $context->AddError(
                 $item->Location(),
                 EdmErrorCode::InvalidName(),

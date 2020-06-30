@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Util;
-
 
 class XmlCharType
 {
@@ -14,14 +15,14 @@ class XmlCharType
     // NCName characters -- Section 2.3 [4]          (Name characters without ':')
     // Character data characters -- Section 2.2 [2]
     // PubidChar ::=  #x20 | #xD | #xA | [a-zA-Z0-9] | [-'()+,./:=?;!*#@$_%] Section 2.3 of spec
-    protected const  fWhitespace = 1;
-    protected const  fLetter = 2;
+    protected const  fWhitespace    = 1;
+    protected const  fLetter        = 2;
     protected const  fNCStartNameSC = 4;
-    protected const  fNCNameSC = 8;
-    protected const  fCharData = 16;
-    protected const  fNCNameXml4e = 32;
-    protected const  fText = 64;
-    protected const  fAttrValue = 128;
+    protected const  fNCNameSC      = 8;
+    protected const  fCharData      = 16;
+    protected const  fNCNameXml4e   = 32;
+    protected const  fText          = 64;
+    protected const  fAttrValue     = 128;
 
     protected const s_Whitespace =
         "\u{0009}\u{000a}\u{000d}\u{000d}  ";
@@ -305,15 +306,15 @@ class XmlCharType
         if (self::$m_CharProperties != null) {
             return;
         }
-        if(file_exists('XmlCharType.bin')){
-            $file = fopen('XmlCharType.bin', 'rb');
+        if (file_exists('XmlCharType.bin')) {
+            $file                   = fopen('XmlCharType.bin', 'rb');
             self::$m_CharProperties = fopen('php://memory', 'w+b');
-            stream_copy_to_stream($file,self::$m_CharProperties);
+            stream_copy_to_stream($file, self::$m_CharProperties);
             fclose($file);
             return;
         }
 
-        $chProps = [];
+        $chProps                = [];
         self::$s_CharProperties = $chProps;
         self::SetProperties(self::s_Whitespace, self::fWhitespace);
         self::SetProperties(self::s_LetterXml4e, self::fLetter);
@@ -329,28 +330,27 @@ class XmlCharType
     private static function SetProperties(string $ranges, int $value): void
     {
         assert(mb_strlen($ranges, 'UTF-8') % 2 === 0);
-        for ($p = 0; $p < mb_strlen($ranges, 'UTF-8'); $p +=2)
-        {
-            $str1 = mb_substr($ranges,$p,1,'UTF-8');
-            $str2 = mb_substr($ranges,$p+1,1,'UTF-8');
+        for ($p = 0; $p < mb_strlen($ranges, 'UTF-8'); $p +=2) {
+            $str1 = mb_substr($ranges, $p, 1, 'UTF-8');
+            $str2 = mb_substr($ranges, $p+1, 1, 'UTF-8');
             for ($i = mb_ord($str1),
-                 $last = mb_ord($str2); $i <= $last; $i++)
-            {
-                if(!isset(self::$s_CharProperties[$i])){
+                 $last = mb_ord($str2); $i <= $last; $i++) {
+                if (!isset(self::$s_CharProperties[$i])) {
                     self::$s_CharProperties[$i] = $value;
                 }
                 self::$s_CharProperties[$i] |= $value;
             }
         }
     }
-    protected static function generateFile(){
+    protected static function generateFile()
+    {
         $fileArray = [];
-        for($i = 0; $i < 65536; $i++){
+        for ($i = 0; $i < 65536; $i++) {
             $fileArray[$i] = XmlCharType::$s_CharProperties[$i] ?? 0;
         }
-        $bin = fopen(__DIR__ . DIRECTORY_SEPARATOR . 'XmlCharType.bin', 'w+b');
+        $bin                    = fopen(__DIR__ . DIRECTORY_SEPARATOR . 'XmlCharType.bin', 'w+b');
         self::$m_CharProperties = fopen('php://memory', 'w+b');
-        foreach($fileArray as $enum){
+        foreach ($fileArray as $enum) {
             fwrite($bin, chr($enum));
             fwrite(self::$m_CharProperties, chr($enum));
         }
@@ -359,9 +359,10 @@ class XmlCharType
     #endregion
 
     private static $instance = null;
-    public static function Instance(){
+    public static function Instance()
+    {
         self::InitInstance();
-        $umArray = new UnmanagedByteArray(self::$m_CharProperties);
+        $umArray                                  = new UnmanagedByteArray(self::$m_CharProperties);
         return self::$instance ?? self::$instance = new self($umArray);
     }
 
@@ -373,13 +374,14 @@ class XmlCharType
         $this->charProperties = $charProperties;
     }
 
-    public function IsStartNCNameChar(string $ch): bool{
-            assert(mb_strlen($ch, 'UTF-8') === 1);
+    public function IsStartNCNameChar(string $ch): bool
+    {
+        assert(mb_strlen($ch, 'UTF-8') === 1);
         return ($this->charProperties[mb_ord($ch, 'UTF-8')] & self::fNCStartNameSC) !== 0;
     }
 
-    public function IsNCNameChar(string $ch): bool{
+    public function IsNCNameChar(string $ch): bool
+    {
         return ($this->charProperties[mb_ord($ch, 'UTF-8')] & self::fNCNameSC) !== 0;
     }
 }
-

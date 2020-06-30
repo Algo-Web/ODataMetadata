@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\ValidationHelper;
@@ -19,15 +20,12 @@ use SplObjectStorage;
  */
 class NavigationPropertyEntityMustNotIndirectlyContainItself extends NavigationPropertyRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
         assert($property instanceof INavigationProperty);
         if ($property->containsTarget() &&
-            !$property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType()))
-        {
-            if (ValidationHelper::TypeIndirectlyContainsTarget($property->ToEntityType(), $property->DeclaringEntityType(), new SplObjectStorage()/*new HashSetInternal()*/, $context->getModel()))
-            {
+            !$property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType())) {
+            if (ValidationHelper::TypeIndirectlyContainsTarget($property->ToEntityType(), $property->DeclaringEntityType(), new SplObjectStorage()/*new HashSetInternal()*/, $context->getModel())) {
                 $context->AddError(
                     $property->Location(),
                     EdmErrorCode::NavigationPropertyEntityMustNotIndirectlyContainItself(),

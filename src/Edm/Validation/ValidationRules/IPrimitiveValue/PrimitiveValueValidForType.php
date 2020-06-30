@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IPrimitiveValue;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
@@ -19,15 +20,12 @@ class PrimitiveValueValidForType extends PrimitiveValueRule
     public function __invoke(ValidationContext $context, ?IEdmElement $value)
     {
         assert($value instanceof IPrimitiveValue);
-        if ($value->getType() != null && !$context->checkIsBad($value) && !$context->checkIsBad($value->getType()))
-        {
+        if ($value->getType() != null && !$context->checkIsBad($value) && !$context->checkIsBad($value->getType())) {
             $discoveredErrors = null;
             ExpressionTypeChecker::TryAssertPrimitiveAsType($value, $value->getType(), $discoveredErrors);
-            foreach ($discoveredErrors as $error)
-            {
+            foreach ($discoveredErrors as $error) {
                 $context->AddRawError($error);
             }
         }
     }
-
 }

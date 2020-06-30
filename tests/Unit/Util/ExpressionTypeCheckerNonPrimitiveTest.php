@@ -1,11 +1,12 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 27/06/20
- * Time: 8:43 PM
+ * Time: 8:43 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Util;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
@@ -49,7 +50,7 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $errors = ['foo'];
 
         $expected = true;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(0, count($errors));
     }
@@ -67,7 +68,7 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $errors = [];
 
         $expected = false;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(1, count($errors));
 
@@ -75,7 +76,7 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $error = $errors[0];
 
         $expected = 'Null value cannot have a non-nullable type.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -93,9 +94,9 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $context = m::mock(IStructuredType::class);
         $context->shouldReceive('findProperty')->andReturn(null)->once();
 
-        $errors = [];
+        $errors   = [];
         $expected = false;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(1, count($errors));
 
@@ -103,7 +104,7 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The path cannot be resolved in the given context. The segment \'foo\' failed to resolve.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -121,9 +122,9 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $context = m::mock(IStructuredType::class);
         $context->shouldReceive('findProperty')->andReturn(null)->once();
 
-        $errors = [];
+        $errors   = [];
         $expected = true;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(0, count($errors));
     }
@@ -145,9 +146,9 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $context = m::mock(IStructuredType::class);
         $context->shouldReceive('findProperty')->andReturn($prop)->once();
 
-        $errors = [];
+        $errors   = [];
         $expected = true;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(0, count($errors));
     }
@@ -175,9 +176,9 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $context = m::mock(IStructuredType::class);
         $context->shouldReceive('findProperty')->andReturn($prop)->once();
 
-        $errors = [];
+        $errors   = [];
         $expected = true;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(0, count($errors));
     }
@@ -195,9 +196,9 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
 
         $context = null;
 
-        $errors = [];
+        $errors   = [];
         $expected = true;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(0, count($errors));
     }
@@ -218,16 +219,16 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
 
         $context = null;
 
-        $errors = [];
+        $errors   = [];
         $expected = true;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, $context, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(0, count($errors));
     }
 
     public function functionExpressionMatchExactlyProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [true, true, null];
         $result[] = [false, false, 'The type of the expression is incompatible with the asserted type.'];
 
@@ -237,8 +238,8 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
     /**
      * @dataProvider functionExpressionMatchExactlyProvider
      *
-     * @param bool $expected
-     * @param bool $isEquivalent
+     * @param bool        $expected
+     * @param bool        $isEquivalent
      * @param string|null $msg
      */
     public function testTryAssertTypeFunctionExpressionMatchExactly(bool $expected, bool $isEquivalent, ?string $msg)
@@ -261,7 +262,7 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $base = m::mock(IFunctionBase::class)->makePartial();
         $base->shouldReceive('getReturnType')->andReturn($returnType);
 
-        $func = m::mock(IExpression::class . ', '. IFunctionBase::class);
+        $func = m::mock(IExpression::class . ', ' . IFunctionBase::class);
         $func->shouldReceive('getAppliedFunction')->andReturn($base)->once();
         $func->shouldReceive('getReturnType')->andReturn($returnType);
 
@@ -280,7 +281,7 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
 
         $errors = [];
         $actual = ExpressionTypeChecker::tryAssertType($expression, $type, $context, true, $errors);
-        
+
         $this->assertEquals($expected, $actual);
         $this->assertEquals(intval(!$expected), count($errors));
         if (null !== $msg) {
@@ -293,7 +294,7 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
     public function typeMatchProvider(): array
     {
         //expressedPrimitive assertedPrimitive samePrimitiveTypeKind promotesTo inheritsFrom  expected msg
-        $result = [];
+        $result   = [];
         $result[] = [true, true, false, false, true, false, 'Cannot promote the primitive type \'UnknownType\' to the specified primitive type \'UnknownType\'.'];
         $result[] = [false, false, false, false, false, false, 'The type of the expression is incompatible with the asserted type.'];
         $result[] = [false, true, false, true, false, false, 'The type of the expression is incompatible with the asserted type.'];
@@ -314,12 +315,12 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
     /**
      * @dataProvider typeMatchProvider
      *
-     * @param bool $expressedPrimitive
-     * @param bool $assertedPrimitive
-     * @param bool $samePrimitiveType
-     * @param bool $promotesTo
-     * @param bool $inheritsFrom
-     * @param bool|null $expected
+     * @param bool        $expressedPrimitive
+     * @param bool        $assertedPrimitive
+     * @param bool        $samePrimitiveType
+     * @param bool        $promotesTo
+     * @param bool        $inheritsFrom
+     * @param bool|null   $expected
      * @param string|null $msg
      */
     public function testTryAssertTypeFunctionExpressionMatchNotExactly(
@@ -362,7 +363,7 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
 
         $base = m::mock(IFunctionBase::class)->makePartial();
 
-        $func = m::mock(IExpression::class . ', '. IFunctionBase::class);
+        $func = m::mock(IExpression::class . ', ' . IFunctionBase::class);
         $func->shouldReceive('getAppliedFunction')->andReturn($base)->once();
         $func->shouldReceive('getReturnType')->andReturn($returnType);
 
@@ -372,7 +373,7 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $expression->shouldReceive('Location')->andReturn(null);
 
         $typeKind = TypeKind::Primitive();
-        $type = m::mock(ITypeReference::class);
+        $type     = m::mock(ITypeReference::class);
         $type->shouldReceive('TypeKind')->andReturn($typeKind);
         $type->shouldReceive('getNullable')->andReturn(false);
         $type->shouldReceive('getDefinition')->andReturn($typeDef);
@@ -393,8 +394,8 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
 
     public function ifTypeProvider(): array
     {
-        $result = [];
-        $result[] = [false, ExpressionKind::None(), 2, "The type of the expression is incompatible with the asserted type."];
+        $result   = [];
+        $result[] = [false, ExpressionKind::None(), 2, 'The type of the expression is incompatible with the asserted type.'];
         $result[] = [true, ExpressionKind::IntegerConstant(), 0, null];
 
         return $result;
@@ -403,10 +404,10 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
     /**
      * @dataProvider ifTypeProvider
      *
-     * @param bool $expected
+     * @param bool           $expected
      * @param ExpressionKind $kind
-     * @param int $numErrors
-     * @param string|null $msg
+     * @param int            $numErrors
+     * @param string|null    $msg
      */
     public function testTryAssertTypeIfExpression(
         bool $expected,
@@ -414,7 +415,7 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         int $numErrors,
         ?string $msg
     ) {
-        $expressType = IExpression::class . ', '. IPrimitiveValue::class;
+        $expressType = IExpression::class . ', ' . IPrimitiveValue::class;
         if (0 === $numErrors) {
             $expressType .= ', ' . IIntegerConstantExpression::class;
         }

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IBinaryTypeReference;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class BinaryTypeReferenceBinaryUnboundedNotValidForMaxLength extends BinaryTypeReferenceRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IBinaryTypeReference);
-        if ($type->getMaxLength() != null && $type->isUnBounded())
-        {
+        if ($type->getMaxLength() != null && $type->isUnBounded()) {
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::IsUnboundedCannotBeTrueWhileMaxLengthIsNotNull(),

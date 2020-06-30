@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IBinaryTypeReference;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class BinaryTypeReferenceBinaryMaxLengthNegative extends BinaryTypeReferenceRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IBinaryTypeReference);
-        if ($type->getMaxLength() < 0)
-        {
+        if ($type->getMaxLength() < 0) {
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::MaxLengthOutOfRange(),

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IPrimitiveTypeReference;
 
@@ -16,15 +18,15 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class SpatialTypeReferencesNotSupportedBeforeV3 extends PrimitiveTypeReferenceRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IPrimitiveTypeReference);
-        if ($type->IsSpatial())
-        {
+        if ($type->IsSpatial()) {
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::SpatialTypeReferencesNotSupportedBeforeV3(),
-                StringConst::EdmModel_Validator_Semantic_SpatialTypeReferencesNotSupportedBeforeV3());
-        }    }
+                StringConst::EdmModel_Validator_Semantic_SpatialTypeReferencesNotSupportedBeforeV3()
+            );
+        }
+    }
 }

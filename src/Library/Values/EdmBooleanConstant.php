@@ -22,8 +22,8 @@ class EdmBooleanConstant extends EdmValue implements IBooleanConstantExpression
     /**
      * Initializes a new instance of the EdmBooleanConstant class.
      *
-     * @param bool                         $value boolean value represented by this value
-     * @param IPrimitiveTypeReference      $type  type of the boolean
+     * @param bool                    $value boolean value represented by this value
+     * @param IPrimitiveTypeReference $type  type of the boolean
      */
     public function __construct(bool $value, IPrimitiveTypeReference $type)
     {

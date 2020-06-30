@@ -81,17 +81,17 @@ class EdmUtil
             $lastDot = strrpos($qualifiedName, '.');
             if (false === $lastDot) {
                 $namespaceName = '';
-                $name = $qualifiedName;
+                $name          = $qualifiedName;
                 return false;
             }
 
             $namespaceName = substr($qualifiedName, 0, $lastDot);
-            $name = substr($qualifiedName, $lastDot + 1);
+            $name          = substr($qualifiedName, $lastDot + 1);
             return true;
         }
 
         $namespaceName = substr($qualifiedName, 0, $lastSlash);
-        $name = substr($qualifiedName, $lastSlash + 1);
+        $name          = substr($qualifiedName, $lastSlash + 1);
         return true;
     }
 
@@ -136,9 +136,9 @@ class EdmUtil
 
     public static function ParameterizedName(IFunctionBase $function): string
     {
-        $index = 0;
+        $index          = 0;
         $parameterCount = count($function->getParameters());
-        $s = '';
+        $s              = '';
         if ($function instanceof UnresolvedFunction) {
             $s .= $function->getNamespace();
             $s .= '/';
@@ -177,7 +177,7 @@ class EdmUtil
     public static function IsValidDottedName(string $name): bool
     {
         // Each part of the dotted name needs to be a valid name.
-        return array_reduce(explode('.', $name), function(bool $carry, string $part): bool{
+        return array_reduce(explode('.', $name), function (bool $carry, string $part): bool {
             $carry &= self::IsValidUndottedName($part);
             return $carry;
         }, true);

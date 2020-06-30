@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Helpers;
-
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
@@ -18,10 +19,9 @@ use AlgoWeb\ODataMetadata\StringConst;
 
 abstract class EdmTypeSemantics
 {
-    public static function GetPrimitiveTypeReference(IPrimitiveType $type, bool $isNullable):IPrimitiveTypeReference
+    public static function GetPrimitiveTypeReference(IPrimitiveType $type, bool $isNullable): IPrimitiveTypeReference
     {
-        switch ($type->getPrimitiveKind())
-        {
+        switch ($type->getPrimitiveKind()) {
             case PrimitiveTypeKind::Boolean():
             case PrimitiveTypeKind::Byte():
             case PrimitiveTypeKind::Double():

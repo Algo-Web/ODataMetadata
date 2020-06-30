@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IVocabularyAnnotatable;
 
@@ -22,10 +24,8 @@ class VocabularyAnnotatableNoDuplicateAnnotations extends VocabularyAnnotatableR
     {
         assert($annotatable instanceof IVocabularyAnnotatable);
         $annotationSet = new HashSetInternal();
-        foreach ($annotatable->VocabularyAnnotations($context->getModel()) as  $annotation)
-        {
-            if (!$annotationSet->add($annotation->getTerm()->FullName() . ":" . $annotation->getQualifier()))
-            {
+        foreach ($annotatable->VocabularyAnnotations($context->getModel()) as  $annotation) {
+            if (!$annotationSet->add($annotation->getTerm()->FullName() . ':' . $annotation->getQualifier())) {
                 $context->AddError(
                     $annotation->Location(),
                     EdmErrorCode::DuplicateAnnotation(),
@@ -33,11 +33,11 @@ class VocabularyAnnotatableNoDuplicateAnnotations extends VocabularyAnnotatableR
                         EdmUtil::FullyQualifiedName(
                             $annotatable
                         ),
-                        $annotation->getTerm()->FullName(), $annotation->getQualifier()
+                        $annotation->getTerm()->FullName(),
+                        $annotation->getQualifier()
                     )
                 );
             }
         }
     }
-
 }
