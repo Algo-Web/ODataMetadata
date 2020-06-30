@@ -26,9 +26,9 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
     /**
      * Gets the defining expression of this function.
      *
-     * @return string
+     * @return string|null
      */
-    public function getDefiningExpression(): string
+    public function getDefiningExpression(): ?string
     {
         return null;
     }
@@ -36,9 +36,9 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
     /**
      * Gets the return type of this function.
      *
-     * @return ITypeReference
+     * @return ITypeReference|null
      */
-    public function getReturnType(): ITypeReference
+    public function getReturnType(): ?ITypeReference
     {
         return null;
     }
@@ -46,9 +46,9 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
     /**
      * Gets the collection of parameters for this function.
      *
-     * @return IFunctionParameter[]
+     * @return IFunctionParameter[]|null
      */
-    public function getParameters(): array
+    public function getParameters(): ?array
     {
         /**
          * @var IFunction[] $bindings

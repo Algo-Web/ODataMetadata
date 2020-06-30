@@ -64,9 +64,9 @@ class AmbiguousEntitySetBinding extends AmbiguousBinding implements IEntitySet
      * Finds the entity set that a navigation property targets.
      *
      * @param  INavigationProperty $navigationProperty the navigation property
-     * @return IEntitySet          the entity set that the navigation property targets, or null if no such entity set exists
+     * @return IEntitySet|null     the entity set that the navigation property targets, or null if no such entity set exists
      */
-    public function findNavigationTarget(INavigationProperty $navigationProperty): IEntitySet
+    public function findNavigationTarget(INavigationProperty $navigationProperty): ?IEntitySet
     {
         return null;
     }
