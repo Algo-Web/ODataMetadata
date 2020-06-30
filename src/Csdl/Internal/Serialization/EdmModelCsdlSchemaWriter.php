@@ -784,12 +784,12 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
 
     private static function ParameterAsXml(IFunctionParameter $parameter): string
     {
-        return $parameter->getName();
+        return $parameter->getName() ?? '';
     }
 
     private static function PropertyAsXml(IProperty $property): string
     {
-        return $property->getName();
+        return $property->getName() ?? '';
     }
 
     private static function EnumMemberAsXml(IEnumMember $member): string
