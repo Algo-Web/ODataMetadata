@@ -202,7 +202,7 @@ trait TypeReferenceHelpers
      */
     public function IsBoolean(): bool
     {
-        return $this->PrimitiveKind() == PrimitiveTypeKind::Boolean();
+        return $this->PrimitiveKind()->equals(PrimitiveTypeKind::Boolean());
     }
 
     /**
