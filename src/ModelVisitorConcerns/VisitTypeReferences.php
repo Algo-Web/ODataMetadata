@@ -21,7 +21,7 @@ trait VisitTypeReferences
 {
     public function visitTypeReference(ITypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         if (null === $reference->getDefinition()) {
@@ -61,7 +61,7 @@ trait VisitTypeReferences
 
     public function visitPrimitiveTypeReference(IPrimitiveTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         switch ($reference->PrimitiveKind()) {

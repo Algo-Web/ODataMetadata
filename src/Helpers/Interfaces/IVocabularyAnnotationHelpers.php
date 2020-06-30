@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
 
 use AlgoWeb\ODataMetadata\Enums\EdmVocabularyAnnotationSerializationLocation;
@@ -14,7 +16,7 @@ interface IVocabularyAnnotationHelpers
     /**
      * Sets the location an annotation should be serialized in.
      *
-     * @param IModel $model model containing the annotation
+     * @param IModel                                            $model    model containing the annotation
      * @param EdmVocabularyAnnotationSerializationLocation|null $location the location the annotation should appear
      */
     public function SetSerializationLocation(IModel $model, ?EdmVocabularyAnnotationSerializationLocation $location): void;
@@ -22,7 +24,7 @@ interface IVocabularyAnnotationHelpers
     /**
      * Gets the location an annotation should be serialized in.
      *
-     * @param IModel $model model containing the annotation
+     * @param  IModel                                            $model model containing the annotation
      * @return EdmVocabularyAnnotationSerializationLocation|null the location the annotation should be serialized at
      */
     public function GetSerializationLocation(IModel $model): ?EdmVocabularyAnnotationSerializationLocation;
@@ -30,7 +32,7 @@ interface IVocabularyAnnotationHelpers
     /**
      * Sets the schema an annotation should appear in.
      *
-     * @param IModel $model model containing the annotation
+     * @param IModel $model           model containing the annotation
      * @param string $schemaNamespace the schema the annotation belongs in
      */
     public function SetSchemaNamespace(IModel $model, string $schemaNamespace): void;
@@ -38,7 +40,7 @@ interface IVocabularyAnnotationHelpers
     /**
      * Gets the schema an annotation should be serialized in.
      *
-     * @param IModel $model model containing the annotation
+     * @param  IModel $model model containing the annotation
      * @return string name of the schema the annotation belongs to
      */
     public function GetSchemaNamespace(IModel $model): string;

@@ -20,12 +20,11 @@ trait ProcessTerms
 
     protected function ProcessValueTerm(IValueTerm $term): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->ProcessSchemaElement($term);
         $this->ProcessTerm($term);
         $this->VisitTypeReference($term->getType());
     }
-
 }

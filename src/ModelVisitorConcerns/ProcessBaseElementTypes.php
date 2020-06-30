@@ -19,7 +19,7 @@ trait ProcessBaseElementTypes
 {
     protected function ProcessElement(IEdmElement $element): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($element, __METHOD__);
@@ -29,7 +29,7 @@ trait ProcessBaseElementTypes
 
     protected function ProcessNamedElement(INamedElement $element): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($element, __METHOD__);
@@ -39,7 +39,7 @@ trait ProcessBaseElementTypes
 
     protected function ProcessSchemaElement(ISchemaElement $element): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($element, __METHOD__);
@@ -50,7 +50,7 @@ trait ProcessBaseElementTypes
 
     protected function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $annotatable): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($annotatable, __METHOD__);

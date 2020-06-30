@@ -1,7 +1,8 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
+declare(strict_types=1);
 
+namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
 
 /**
  * Trait SchemaElementHelpers.

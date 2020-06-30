@@ -23,9 +23,9 @@ class VisitorOfIFunctionParameter extends VisitorOfT
         } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
-                            $parameter,
-                            'Type'
-                        ),
+                    $parameter,
+                    'Type'
+                ),
                 $errors
             );
         }
@@ -35,9 +35,9 @@ class VisitorOfIFunctionParameter extends VisitorOfT
         } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
-                            $parameter,
-                            'DeclaringFunction'
-                        ),
+                    $parameter,
+                    'DeclaringFunction'
+                ),
                 $errors
             );
         }
@@ -46,10 +46,10 @@ class VisitorOfIFunctionParameter extends VisitorOfT
                     $parameter->getMode()->getValue() > FunctionParameterMode::InOut()->getValue()) {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreateEnumPropertyOutOfRangeError(
-                            $parameter,
-                            $parameter->getMode(),
-                            'Mode'
-                        ),
+                    $parameter,
+                    $parameter->getMode(),
+                    'Mode'
+                ),
                 $errors
             );
         }

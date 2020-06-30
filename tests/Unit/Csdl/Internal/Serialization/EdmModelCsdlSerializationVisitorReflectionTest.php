@@ -392,7 +392,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $writer  = $this->getWriter();
         $version = Version::v3();
 
-        $schema = m::mock(ISchemaElement::class . ', '. IEntityType::class);
+        $schema = m::mock(ISchemaElement::class . ', ' . IEntityType::class);
         $schema->shouldReceive('FullName')->andReturn('FullName');
 
         $eType = m::mock(IEntityReferenceType::class)->makePartial();

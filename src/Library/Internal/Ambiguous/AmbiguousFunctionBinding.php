@@ -14,7 +14,8 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
 {
-    use SchemaElementHelpers, FunctionImportHelpers;
+    use SchemaElementHelpers;
+    use FunctionImportHelpers;
 
     public function __construct(IFunction $first, IFunction $second)
     {

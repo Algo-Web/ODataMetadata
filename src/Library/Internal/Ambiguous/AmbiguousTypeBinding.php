@@ -14,7 +14,9 @@ use AlgoWeb\ODataMetadata\Interfaces\ISchemaType;
 
 class AmbiguousTypeBinding extends AmbiguousBinding implements ISchemaType
 {
-    use FunctionImportHelpers, SchemaElementHelpers, TypeHelpers;
+    use FunctionImportHelpers;
+    use SchemaElementHelpers;
+    use TypeHelpers;
 
     /**
      * @var string

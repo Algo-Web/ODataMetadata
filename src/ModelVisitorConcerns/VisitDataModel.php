@@ -20,7 +20,7 @@ trait VisitDataModel
      */
     public function visitEntityContainerElements(array $elements): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         foreach ($elements as $element) {

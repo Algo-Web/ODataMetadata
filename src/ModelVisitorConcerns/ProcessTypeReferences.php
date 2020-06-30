@@ -29,7 +29,7 @@ trait ProcessTypeReferences
 {
     protected function ProcessComplexTypeReference(IComplexTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -39,7 +39,7 @@ trait ProcessTypeReferences
 
     protected function ProcessEntityTypeReference(IEntityTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -49,7 +49,7 @@ trait ProcessTypeReferences
 
     protected function ProcessEntityReferenceTypeReference(IEntityReferenceTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -60,7 +60,7 @@ trait ProcessTypeReferences
 
     protected function ProcessRowTypeReference(IRowTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -71,7 +71,7 @@ trait ProcessTypeReferences
 
     protected function ProcessCollectionTypeReference(ICollectionTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -82,7 +82,7 @@ trait ProcessTypeReferences
 
     protected function ProcessEnumTypeReference(IEnumTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -92,7 +92,7 @@ trait ProcessTypeReferences
 
     protected function ProcessBinaryTypeReference(IBinaryTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -102,7 +102,7 @@ trait ProcessTypeReferences
 
     protected function ProcessDecimalTypeReference(IDecimalTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -112,7 +112,7 @@ trait ProcessTypeReferences
 
     protected function ProcessSpatialTypeReference(ISpatialTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -122,7 +122,7 @@ trait ProcessTypeReferences
 
     protected function ProcessStringTypeReference(IStringTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -132,7 +132,7 @@ trait ProcessTypeReferences
 
     protected function ProcessTemporalTypeReference(ITemporalTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -142,7 +142,7 @@ trait ProcessTypeReferences
 
     protected function ProcessPrimitiveTypeReference(IPrimitiveTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -152,7 +152,7 @@ trait ProcessTypeReferences
 
     protected function ProcessStructuredTypeReference(IStructuredTypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);
@@ -162,7 +162,7 @@ trait ProcessTypeReferences
 
     protected function ProcessTypeReference(ITypeReference $reference): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($reference, __METHOD__);

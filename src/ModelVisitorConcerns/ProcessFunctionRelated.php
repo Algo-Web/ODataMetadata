@@ -20,7 +20,7 @@ trait ProcessFunctionRelated
 {
     protected function ProcessFunction(IFunction $function): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($function, __METHOD__);
@@ -31,7 +31,7 @@ trait ProcessFunctionRelated
 
     protected function ProcessFunctionImport(IFunctionImport $functionImport): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($functionImport, __METHOD__);
@@ -42,7 +42,7 @@ trait ProcessFunctionRelated
 
     protected function ProcessFunctionBase(IFunctionBase $functionBase): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($functionBase, __METHOD__);
@@ -57,7 +57,7 @@ trait ProcessFunctionRelated
 
     protected function ProcessFunctionParameter(IFunctionParameter $parameter): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($parameter, __METHOD__);

@@ -19,7 +19,7 @@ trait ProcessAnnotations
 {
     protected function ProcessVocabularyAnnotation(IVocabularyAnnotation $annotation): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($annotation, __METHOD__);
@@ -29,7 +29,7 @@ trait ProcessAnnotations
 
     protected function ProcessImmediateValueAnnotation(IDirectValueAnnotation $annotation): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($annotation, __METHOD__);
@@ -39,7 +39,7 @@ trait ProcessAnnotations
 
     protected function ProcessValueAnnotation(IValueAnnotation $annotation): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($annotation, __METHOD__);
@@ -50,7 +50,7 @@ trait ProcessAnnotations
 
     protected function ProcessTypeAnnotation(ITypeAnnotation $annotation): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($annotation, __METHOD__);
@@ -61,7 +61,7 @@ trait ProcessAnnotations
 
     protected function ProcessPropertyValueBinding(IPropertyValueBinding $binding): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($binding, __METHOD__);
