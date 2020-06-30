@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Library;
 
 use AlgoWeb\ODataMetadata\Edm\Internal\IDependent;
 use AlgoWeb\ODataMetadata\Enums\PropertyKind;
+use AlgoWeb\ODataMetadata\Helpers\VocabularyAnnotatableHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
@@ -20,6 +21,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
  */
 abstract class EdmProperty extends EdmNamedElement implements IProperty
 {
+    use VocabularyAnnotatableHelpers;
     /***
      * @var IStructuredType
      */

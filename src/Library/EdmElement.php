@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library;
 
 use AlgoWeb\ODataMetadata\Helpers\EdmElementHelpers;
+use AlgoWeb\ODataMetadata\Helpers\VocabularyAnnotatableHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 
 /**

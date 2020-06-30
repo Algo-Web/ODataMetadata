@@ -6,9 +6,11 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library;
 
 use AlgoWeb\ODataMetadata\Enums\FunctionParameterMode;
+use AlgoWeb\ODataMetadata\Helpers\VocabularyAnnotatableHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionBase;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
+use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 
 /**
  * Represents an EDM function parameter.
@@ -17,6 +19,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
  */
 class EdmFunctionParameter extends EdmNamedElement implements IFunctionParameter
 {
+    use VocabularyAnnotatableHelpers;
     /**
      * @var ITypeReference
      */

@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\EdmElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IDelayedValue;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IValue;
@@ -17,6 +18,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IValue;
  */
 abstract class EdmValue implements IValue, IDelayedValue
 {
+    use EdmElementHelpers;
     /**
      * @var ITypeReference type of the value
      */
