@@ -159,13 +159,13 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->xmlWriter->startElement(CsdlConstants::Element_Documentation);
         if ($documentation->getSummary() != null) {
             $this->xmlWriter->startElement(CsdlConstants::Element_Summary);
-            $this->xmlWriter->writeCdata($documentation->getSummary());
+            $this->xmlWriter->text($documentation->getSummary());
             $this->WriteEndElement();
         }
 
         if ($documentation->getDescription() != null) {
             $this->xmlWriter->startElement(CsdlConstants::Element_LongDescription);
-            $this->xmlWriter->writeCdata($documentation->getDescription());
+            $this->xmlWriter->text($documentation->getDescription());
             $this->WriteEndElement();
         }
 
@@ -383,7 +383,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteDefiningExpressionElement(string $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_DefiningExpression);
-        $this->xmlWriter->writeCdata($expression);
+        $this->xmlWriter->text($expression);
         $this->xmlWriter->endElement();
     }
 
@@ -547,21 +547,21 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteStringConstantExpressionElement(IStringConstantExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_String);
-        $this->xmlWriter->writeCdata(EdmValueWriter::StringAsXml($expression->getValue()));
+        $this->xmlWriter->text(EdmValueWriter::StringAsXml($expression->getValue()));
         $this->WriteEndElement();
     }
 
     public function WriteBinaryConstantExpressionElement(IBinaryConstantExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_String);
-        $this->xmlWriter->writeCdata(EdmValueWriter::BinaryAsXml($expression->getValue()));
+        $this->xmlWriter->text(EdmValueWriter::BinaryAsXml($expression->getValue()));
         $this->WriteEndElement();
     }
 
     public function WriteBooleanConstantExpressionElement(IBooleanConstantExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Bool);
-        $this->xmlWriter->writeCdata(EdmValueWriter::BooleanAsXml($expression->getValue()));
+        $this->xmlWriter->text(EdmValueWriter::BooleanAsXml($expression->getValue()));
         $this->WriteEndElement();
     }
 
@@ -574,28 +574,28 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteDateTimeConstantExpressionElement(IDateTimeConstantExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_DateTime);
-        $this->xmlWriter->writeCdata(EdmValueWriter::DateTimeAsXml($expression->getValue()));
+        $this->xmlWriter->text(EdmValueWriter::DateTimeAsXml($expression->getValue()));
         $this->WriteEndElement();
     }
 
     public function WriteDateTimeOffsetConstantExpressionElement(IDateTimeOffsetConstantExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_DateTimeOffset);
-        $this->xmlWriter->writeCdata(EdmValueWriter::DateTimeOffsetAsXml($expression->getValue()));
+        $this->xmlWriter->text(EdmValueWriter::DateTimeOffsetAsXml($expression->getValue()));
         $this->WriteEndElement();
     }
 
     public function WriteDecimalConstantExpressionElement(IDecimalConstantExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Decimal);
-        $this->xmlWriter->writeCdata(EdmValueWriter::DecimalAsXml($expression->getValue()));
+        $this->xmlWriter->text(EdmValueWriter::DecimalAsXml($expression->getValue()));
         $this->WriteEndElement();
     }
 
     public function WriteFloatingConstantExpressionElement(IFloatingConstantExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Float);
-        $this->xmlWriter->writeCdata(EdmValueWriter::FloatAsXml($expression->getValue()));
+        $this->xmlWriter->text(EdmValueWriter::FloatAsXml($expression->getValue()));
         $this->WriteEndElement();
     }
 
@@ -612,21 +612,21 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteGuidConstantExpressionElement(IGuidConstantExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Guid);
-        $this->xmlWriter->writeCdata(EdmValueWriter::GuidAsXml($expression->getValue()));
+        $this->xmlWriter->text(EdmValueWriter::GuidAsXml($expression->getValue()));
         $this->WriteEndElement();
     }
 
     public function WriteIntegerConstantExpressionElement(IIntegerConstantExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Int);
-        $this->xmlWriter->writeCdata(EdmValueWriter::LongAsXml($expression->getValue()));
+        $this->xmlWriter->text(EdmValueWriter::LongAsXml($expression->getValue()));
         $this->WriteEndElement();
     }
 
     public function WritePathExpressionElement(IPathExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Path);
-        $this->xmlWriter->writeCdata(self::PathAsXml($expression->getPath()));
+        $this->xmlWriter->text(self::PathAsXml($expression->getPath()));
         $this->WriteEndElement();
     }
 
