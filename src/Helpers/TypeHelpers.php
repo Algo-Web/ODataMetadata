@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
+use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Helpers\Interfaces\ITypeHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
@@ -42,4 +43,6 @@ trait TypeHelpers
         assert($otherType instanceof IStructuredType, 'by this point types should be structures');
         return $thisType->InheritsFrom($otherType);
     }
+
+    abstract public function getTypeKind(): TypeKind;
 }

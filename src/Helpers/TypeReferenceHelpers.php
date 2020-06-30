@@ -34,6 +34,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ISpatialTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IStringTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ITemporalTypeReference;
+use AlgoWeb\ODataMetadata\Interfaces\IType;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmCollectionTypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmComplexTypeReference;
@@ -391,7 +392,7 @@ trait TypeReferenceHelpers
     public function IsSpatial(): bool
     {
         $primitiveTypeKind = $this->PrimitiveKind();
-        return null === $primitiveTypeKind ? null : $primitiveTypeKind->IsSpatial();
+        return null === $primitiveTypeKind ? false : $primitiveTypeKind->IsSpatial();
     }
 
     // The As*** functions never return null -- if the supplied type does not have the appropriate shape, an encoding of a bad type is returned.
@@ -904,4 +905,6 @@ trait TypeReferenceHelpers
             )
         ];
     }
+    abstract public function getDefinition(): ?IType;
+
 }

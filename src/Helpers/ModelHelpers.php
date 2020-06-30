@@ -12,6 +12,7 @@ use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Helpers\Interfaces\IModelHelpers;
+use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotationsManager;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
@@ -42,6 +43,7 @@ trait ModelHelpers
     // Otherwise, changes to the dictionary durring serialization would result in an invalid or inconsistent output.
     public function GetNamespaceAliases(): array
     {
+        assert($this instanceof IEdmElement);
         return $this->GetAnnotationValue('array', $this, EdmConstants::InternalUri, CsdlConstants::NamespaceAliasAnnotation) ??[];
     }
     /**
@@ -505,4 +507,10 @@ trait ModelHelpers
             }
         }
     }
+
+    abstract public function getDirectValueAnnotationsManager(): IDirectValueAnnotationsManager;
+    /**
+     * @return IModel[] gets the collection of models referred to by this model
+     */
+    abstract public function getReferencedModels(): array;
 }
