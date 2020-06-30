@@ -23,6 +23,7 @@ use AlgoWeb\ODataMetadata\StringConst;
 use AlgoWeb\ODataMetadata\Structure\HashSetInternal;
 use Exception;
 use SplObjectStorage;
+use Throwable;
 use XMLReader;
 
 abstract class ValidationHelper
@@ -55,7 +56,7 @@ abstract class ValidationHelper
         return count(array_filter($properties, function (IStructuralProperty $item) {
             try {
                 return $item->getType()->getNullable();
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 throw new InvalidOperationException($e->getMessage());
             }
         })) === count($properties);
@@ -70,7 +71,7 @@ abstract class ValidationHelper
         return count(array_filter($properties, function (IStructuralProperty $item) {
             try {
                 return $item->getType()->getNullable();
-            } catch (\Throwable $e) {
+            } catch (Throwable $e) {
                 throw new InvalidOperationException($e->getMessage());
             }
         })) > 0;
