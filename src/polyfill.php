@@ -48,3 +48,19 @@ if (!function_exists('mb_ord')) {
         return $code;
     }
 }
+if(!function_exists('iterable_to_array')) {
+    function iterable_to_array(iterable $it): array
+    {
+        if (is_array($it)) return $it;
+        $ret = [];
+        array_push($ret, ...$it);
+        return $ret;
+    }
+}
+if(!function_exists('iterable_to_traversable')) {
+
+    function iterable_to_traversable(iterable $it): Traversable
+    {
+        yield from $it;
+    }
+}
