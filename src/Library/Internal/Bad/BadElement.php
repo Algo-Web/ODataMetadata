@@ -11,7 +11,6 @@ use AlgoWeb\ODataMetadata\Helpers\VocabularyAnnotatableHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\ICheckable;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
-use AlgoWeb\ODataMetadata\Library\Internal\Bad\Concerns\SimpleICheckable;
 
 /**
  *  Represents an invalid EDM element.
@@ -26,7 +25,7 @@ class BadElement implements IEdmElement, ICheckable, IVocabularyAnnotatable
      * BadElement constructor.
      * @param EdmError[] $errors
      */
-    public function __construct(array $errors)
+    public function __construct(iterable $errors)
     {
         $this->errors = $errors;
     }
