@@ -23,7 +23,7 @@ class VisitorOfIPrimitiveType extends VisitorOfT
             )
         )
         {
-            return [InterfaceValidator::CreateInterfaceKindValueUnexpectedError($type, $type->getPrimitiveKind(), "PrimitiveKind") ];
+            return [InterfaceValidator::CreateInterfaceKindValueUnexpectedError($type, $type->getPrimitiveKind()->getKey(), "PrimitiveKind") ];
         }
         else
         {

@@ -151,7 +151,7 @@ class VisitorOfIExpression extends VisitorOfT
                     break;
 
                 default:
-                    $expressionKindError = InterfaceValidator::CreateInterfaceKindValueUnexpectedError($expression, $expression->getExpressionKind(), "ExpressionKind");
+                    $expressionKindError = InterfaceValidator::CreateInterfaceKindValueUnexpectedError($expression, $expression->getExpressionKind()->getKey(), "ExpressionKind");
                     break;
             }
         }

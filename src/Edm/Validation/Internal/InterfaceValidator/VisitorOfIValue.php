@@ -212,7 +212,7 @@ class VisitorOfIValue extends VisitorOfT
                 InterfaceValidator::CollectErrors(
                     InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
                         $value,
-                        $value->getValueKind(),
+                        $value->getValueKind()->getKey(),
                         "ValueKind"
                     ),
                     $errors);
