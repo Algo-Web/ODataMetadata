@@ -38,6 +38,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ITerm;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
+use AlgoWeb\ODataMetadata\Interfaces\Values\IIntegerValue;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IPrimitiveValue;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 use AlgoWeb\ODataMetadata\Version;
@@ -83,7 +84,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $primType = m::mock(IPrimitiveType::class);
         $primType->shouldReceive('getPrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
 
-        $primVal = m::mock(IPrimitiveValue::class);
+        $primVal = m::mock(IPrimitiveValue::class . ', '. IIntegerValue::class);
         $primVal->shouldReceive('getValueKind')->andReturn(ValueKind::Integer());
         $primVal->shouldReceive('getValue')->andReturn(11);
 
