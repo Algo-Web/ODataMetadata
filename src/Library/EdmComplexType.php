@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Enums\TermKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Helpers\ComplexTypeHelpers;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 
@@ -19,7 +20,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
  */
 class EdmComplexType extends EdmStructuredType implements IComplexType
 {
-    use ComplexTypeHelpers;
+    use ComplexTypeHelpers, SchemaElementHelpers;
     /**
      * @var string
      */

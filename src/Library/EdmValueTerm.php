@@ -8,12 +8,16 @@ namespace AlgoWeb\ODataMetadata\Library;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Enums\TermKind;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
+use AlgoWeb\ODataMetadata\Helpers\VocabularyAnnotatableHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 use AlgoWeb\ODataMetadata\Library\Core\EdmCoreModel;
 
 class EdmValueTerm extends EdmNamedElement implements IValueTerm
 {
+    use VocabularyAnnotatableHelpers, SchemaElementHelpers;
+
     /**
      * @var string
      */

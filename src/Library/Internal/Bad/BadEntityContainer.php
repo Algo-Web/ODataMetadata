@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Helpers\EntityContainerHelpers;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainerElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
@@ -20,7 +21,8 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
  */
 class BadEntityContainer extends BadElement implements IEntityContainer
 {
-    use EntityContainerHelpers;
+    use EntityContainerHelpers, SchemaElementHelpers;
+
     private $namespaceName;
     private $name;
     public function __construct(?string $qualifiedName, array $errors)

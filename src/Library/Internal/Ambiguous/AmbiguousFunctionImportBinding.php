@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
 
 use AlgoWeb\ODataMetadata\Enums\ContainerElementKind;
+use AlgoWeb\ODataMetadata\Helpers\FunctionImportHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
@@ -14,6 +15,8 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFunctionImport
 {
+    use FunctionImportHelpers;
+
     public function __construct(IFunctionImport $first, IFunctionImport $second)
     {
         parent::__construct($first, $second);

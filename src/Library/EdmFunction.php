@@ -6,11 +6,14 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library;
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 class EdmFunction extends EdmFunctionBase implements IFunction
 {
+    use SchemaElementHelpers;
+
     /**
      * @var string
      */

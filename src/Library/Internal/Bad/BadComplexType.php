@@ -7,10 +7,13 @@ namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
 
 use AlgoWeb\ODataMetadata\Enums\TermKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
+use AlgoWeb\ODataMetadata\Helpers\ComplexTypeHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 
 class BadComplexType extends BadNamedStructuredType implements IComplexType
 {
+    use ComplexTypeHelpers;
+
     public function __construct(?string $qualifiedName, array $errors)
     {
         parent::__construct($qualifiedName, $errors);
