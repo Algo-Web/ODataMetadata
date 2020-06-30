@@ -23,6 +23,9 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 use AlgoWeb\ODataMetadata\Interfaces\IDocumentation;
+use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceType;
+use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceTypeReference;
+use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
@@ -389,11 +392,14 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $writer  = $this->getWriter();
         $version = Version::v3();
 
-        $schema = m::mock(ISchemaElement::class);
+        $schema = m::mock(ISchemaElement::class . ', ' . IEntityType::class);
         $schema->shouldReceive('FullName')->andReturn('FullName');
 
-        $entRef = m::mock(IEntityTypeReference::class);
-        $entRef->shouldReceive('EntityReferenceDefinition->getEntityType')->andReturn($schema);
+        $eType = m::mock(IEntityReferenceType::class)->makePartial();
+        $eType->shouldReceive('getEntityType')->andReturn($schema);
+
+        $entRef = m::mock(IEntityReferenceTypeReference::class)->makePartial();
+        $entRef->shouldReceive('EntityReferenceDefinition')->andReturn($eType);
 
         $typeRef = m::mock(ITypeReference::class);
         $typeRef->shouldReceive('getDefinition')->andReturn(null);

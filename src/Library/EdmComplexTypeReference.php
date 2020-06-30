@@ -6,6 +6,8 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library;
 
 use AlgoWeb\ODataMetadata\Helpers\ComplexTypeReferenceHelpers;
+use AlgoWeb\ODataMetadata\Helpers\StructuredTypeHelpers;
+use AlgoWeb\ODataMetadata\Helpers\StructuredTypeReferenceHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexTypeReference;
 
@@ -17,6 +19,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IComplexTypeReference;
 class EdmComplexTypeReference extends EdmTypeReference implements IComplexTypeReference
 {
     use ComplexTypeReferenceHelpers;
+    use StructuredTypeReferenceHelpers;
 
     /**
      * Initializes a new instance of the EdmComplexTypeReference class.

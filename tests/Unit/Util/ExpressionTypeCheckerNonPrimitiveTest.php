@@ -24,6 +24,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionBase;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
+use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
@@ -85,14 +86,18 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $expression = m::mock(IPathExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::Path());
         $expression->shouldReceive('Location')->andReturn(null);
-        $expression->shouldReceive('getPath')->andReturn(['foo']);
+        $expression->shouldReceive('getPath')->andReturn(['foo', 'bar']);
 
         $type = m::mock(ITypeReference::class);
         $type->shouldReceive('TypeKind->IsNone')->andReturn(false)->once();
         $type->shouldReceive('getNullable')->andReturn(false);
+        $type->shouldReceive('getDefinition')->andReturn(null);
+
+        $iProp = m::mock(IProperty::class);
+        $iProp->shouldReceive('getType->getDefinition')->andReturn(m::mock(IType::class));
 
         $context = m::mock(IStructuredType::class);
-        $context->shouldReceive('findProperty')->andReturn(null)->once();
+        $context->shouldReceive('findProperty')->andReturn($iProp)->once();
 
         $errors   = [];
         $expected = false;
@@ -103,7 +108,7 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         /** @var EdmError $error */
         $error = $errors[0];
 
-        $expected = 'The path cannot be resolved in the given context. The segment \'foo\' failed to resolve.';
+        $expected = 'The path cannot be resolved in the given context. The segment \'bar\' failed to resolve.';
         $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
@@ -295,15 +300,15 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
     {
         //expressedPrimitive assertedPrimitive samePrimitiveTypeKind promotesTo inheritsFrom  expected msg
         $result   = [];
-        $result[] = [true, true, false, false, true, false, 'Cannot promote the primitive type \'UnknownType\' to the specified primitive type \'UnknownType\'.'];
+        $result[] = [true, true, false, false, true, false, 'Cannot promote the primitive type \'FullName\' to the specified primitive type \'FullName\'.'];
         $result[] = [false, false, false, false, false, false, 'The type of the expression is incompatible with the asserted type.'];
         $result[] = [false, true, false, true, false, false, 'The type of the expression is incompatible with the asserted type.'];
         $result[] = [false, false, true, true, true, true, null];
         $result[] = [false, true, true, false, false, false, 'The type of the expression is incompatible with the asserted type.'];
         $result[] = [false, false, true, false, true, true, null];
-        $result[] = [true, true, true, true, false, false, 'Cannot promote the primitive type \'UnknownType\' to the specified primitive type \'UnknownType\'.'];
+        $result[] = [true, true, true, true, false, false, 'Cannot promote the primitive type \'FullName\' to the specified primitive type \'FullName\'.'];
         $result[] = [true, false, false, true, false, false, 'The type of the expression is incompatible with the asserted type.'];
-        $result[] = [true, true, true, true, true, false, 'Cannot promote the primitive type \'UnknownType\' to the specified primitive type \'UnknownType\'.'];
+        $result[] = [true, true, true, true, true, false, 'Cannot promote the primitive type \'FullName\' to the specified primitive type \'FullName\'.'];
         $result[] = [true, false, true, false, true, true, null];
         $result[] = [false, false, false, true, true, true, null];
         $result[] = [true, false, true, false, false, false, 'The type of the expression is incompatible with the asserted type.'];
@@ -343,18 +348,30 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
             }
         }
 
-        $typeDef = m::mock(IEdmElement::class . ', ' . IType::class);
+        $typeClass = IEdmElement::class . ', ' . IType::class;
+        if ($expressedPrimitive) {
+            $typeClass .= ', ' . IPrimitiveType::class;
+        }
+
+        $typeDef = m::mock($typeClass);
         $typeDef->shouldReceive('getTypeKind')
             ->andReturn($expressedPrimitive ? TypeKind::Primitive() : TypeKind::Entity());
         $typeDef->shouldReceive('getPrimitiveKind')->andReturn($primType1);
         $typeDef->shouldReceive('getErrors')->andReturn([])->atLeast(1);
+        $typeDef->shouldReceive('FullName')->andReturn('FullName');
 
-        $returnDef = m::mock(IEdmElement::class . ', ' . IType::class);
+        $retClass = IEdmElement::class . ', ' . IType::class;
+        if ($assertedPrimitive) {
+            $retClass .= ', ' . IPrimitiveType::class;
+        }
+
+        $returnDef = m::mock($retClass);
         $returnDef->shouldReceive('getTypeKind')
             ->andReturn($assertedPrimitive ? TypeKind::Primitive() : TypeKind::Entity());
         $returnDef->shouldReceive('getPrimitiveKind')->andReturn($primType2);
         $returnDef->shouldReceive('getErrors')->andReturn([])->atLeast(1);
         $returnDef->shouldReceive('IsOrInheritsFrom')->andReturn($inheritsFrom);
+        $returnDef->shouldReceive('FullName')->andReturn('FullName');
 
         $returnType = m::mock(ITypeReference::class);
         $returnType->shouldReceive('getNullable')->andReturn(false);

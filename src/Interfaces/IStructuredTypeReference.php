@@ -5,6 +5,8 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IStructuredTypeReferenceHelpers;
+
 /**
  * Interface IEdmStructuredTypeReference.
  *
@@ -12,6 +14,6 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
  */
-interface IStructuredTypeReference extends ITypeReference
+interface IStructuredTypeReference extends ITypeReference, IStructuredTypeReferenceHelpers
 {
 }

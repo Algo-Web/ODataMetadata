@@ -87,9 +87,9 @@ final class VisitorOfISchemaElement extends VisitorOfT
         if ($item->getNamespace() == null) {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
-                            $item,
-                            'Namespace'
-                        ),
+                    $item,
+                    'Namespace'
+                ),
                 $errors
             );
         }

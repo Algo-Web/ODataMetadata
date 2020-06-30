@@ -17,5 +17,5 @@ interface ICheckable
     /**
      * @return EdmError[] gets an error if one exists with the current object
      */
-    public function getErrors(): array;
+    public function getErrors(): iterable;
 }

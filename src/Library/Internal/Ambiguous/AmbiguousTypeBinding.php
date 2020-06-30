@@ -7,10 +7,17 @@ namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
+use AlgoWeb\ODataMetadata\Helpers\FunctionImportHelpers;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
+use AlgoWeb\ODataMetadata\Helpers\TypeHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaType;
 
 class AmbiguousTypeBinding extends AmbiguousBinding implements ISchemaType
 {
+    use FunctionImportHelpers;
+    use SchemaElementHelpers;
+    use TypeHelpers;
+
     /**
      * @var string
      */

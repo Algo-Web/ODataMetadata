@@ -20,9 +20,9 @@ class VisitorOfIValueTermReferenceExpression extends VisitorOfT
         } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
-                            $expression,
-                            'Base'
-                        ),
+                    $expression,
+                    'Base'
+                ),
                 $errors
             );
         }
@@ -32,9 +32,9 @@ class VisitorOfIValueTermReferenceExpression extends VisitorOfT
         } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
-                            $expression,
-                            'Term'
-                        ),
+                    $expression,
+                    'Term'
+                ),
                 $errors
             );
         }

@@ -18,7 +18,6 @@ use AlgoWeb\ODataMetadata\StringConst;
 /**
  * Trait VisitElements.
  * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
- * @mixin EdmModelVisitor
  */
 trait VisitElements
 {
@@ -27,11 +26,17 @@ trait VisitElements
      */
     public function visitSchemaElements(array $elements): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         self::visitCollection($elements, [$this, 'VisitSchemaElement']);
     }
 
     public function visitSchemaElement(ISchemaElement $element): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         switch ($element->getSchemaElementKind()) {
             case SchemaElementKind::Function():
                 assert($element instanceof IFunction);
@@ -56,10 +61,4 @@ trait VisitElements
                 throw new InvalidOperationException(StringConst::UnknownEnumVal_SchemaElementKind($element->getSchemaElementKind()->getKey()));
         }
     }
-
-    abstract public function processFunction(IFunction $element): void;
-    abstract public function visitSchemaType(IType $element): void;
-    abstract public function processValueTerm(IValueTerm $element): void;
-    abstract public function processEntityContainer(IEntityContainer $element): void;
-    abstract public function processSchemaElement(ISchemaElement $element): void;
 }

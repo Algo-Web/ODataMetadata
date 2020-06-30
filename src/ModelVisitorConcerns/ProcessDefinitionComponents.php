@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
 
+use AlgoWeb\ODataMetadata\EdmModelVisitor;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\INamedElement;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
@@ -17,6 +18,9 @@ trait ProcessDefinitionComponents
 {
     protected function ProcessNavigationProperty(INavigationProperty $property): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($property, __METHOD__);
         $this->ProcessProperty($property);
         $this->endElement($property, __METHOD__);
@@ -24,6 +28,9 @@ trait ProcessDefinitionComponents
 
     protected function ProcessStructuralProperty(IStructuralProperty $property): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($property, __METHOD__);
         $this->ProcessProperty($property);
         $this->endElement($property, __METHOD__);
@@ -31,6 +38,9 @@ trait ProcessDefinitionComponents
 
     protected function ProcessProperty(IProperty $property): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($property, __METHOD__);
         $this->ProcessVocabularyAnnotatable($property);
         $this->ProcessNamedElement($property);
@@ -40,14 +50,11 @@ trait ProcessDefinitionComponents
 
     protected function ProcessEnumMember(IEnumMember $enumMember): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($enumMember, __METHOD__);
         $this->ProcessNamedElement($enumMember);
         $this->endElement($enumMember, __METHOD__);
     }
-
-    abstract public function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $property): void;
-
-    abstract public function ProcessNamedElement(INamedElement $property): void;
-
-    abstract public function VisitTypeReference(ITypeReference $getType): void;
 }

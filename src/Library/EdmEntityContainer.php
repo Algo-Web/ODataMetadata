@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Helpers\EntityContainerHelpers;
 use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
+use AlgoWeb\ODataMetadata\Helpers\VocabularyAnnotatableHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IEntitySetReferenceExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
@@ -27,6 +28,7 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
 {
     use EntityContainerHelpers;
     use SchemaElementHelpers;
+    use VocabularyAnnotatableHelpers;
     /**
      * @var string
      */

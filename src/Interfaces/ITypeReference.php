@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\EdmElementHelpers;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\ITypeReferenceHelpers;
 use AlgoWeb\ODataMetadata\Helpers\TypeReferenceHelpers;
 
 /**
@@ -14,10 +15,8 @@ use AlgoWeb\ODataMetadata\Helpers\TypeReferenceHelpers;
  *  Represents a references to a type.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin TypeReferenceHelpers
- * @mixin EdmElementHelpers
  */
-interface ITypeReference extends IEdmElement
+interface ITypeReference extends IEdmElement, ITypeReferenceHelpers
 {
     /**
      * @return bool gets a value indicating whether this type is nullable

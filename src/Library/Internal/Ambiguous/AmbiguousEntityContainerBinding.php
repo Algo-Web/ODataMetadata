@@ -6,6 +6,8 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
+use AlgoWeb\ODataMetadata\Helpers\EntityContainerHelpers;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainerElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
@@ -13,6 +15,9 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 
 class AmbiguousEntityContainerBinding extends AmbiguousBinding implements IEntityContainer
 {
+    use SchemaElementHelpers;
+    use EntityContainerHelpers;
+
     private $namespaceName;
 
     public function __construct(IEntityContainer $first, IEntityContainer $second)

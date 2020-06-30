@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Library;
 
+use AlgoWeb\ODataMetadata\Helpers\EnumMemberHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IPrimitiveValue;
@@ -16,6 +17,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IPrimitiveValue;
  */
 class EdmEnumMember extends EdmNamedElement implements IEnumMember
 {
+    use EnumMemberHelpers;
     /**
      * @var IEnumType
      */

@@ -11,7 +11,6 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 /**
  * Trait VisitFunctionRelated.
  * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
- * @mixin EdmModelVisitor
  */
 trait VisitFunctionRelated
 {
@@ -20,7 +19,9 @@ trait VisitFunctionRelated
      */
     public function VisitFunctionParameters(?array $parameters): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         self::VisitCollection($parameters, [$this, 'ProcessFunctionParameter']);
     }
-    abstract public function ProcessFunctionParameter(IFunctionParameter $parameter): void;
 }

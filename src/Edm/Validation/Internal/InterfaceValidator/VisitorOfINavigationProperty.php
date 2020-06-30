@@ -30,19 +30,19 @@ class VisitorOfINavigationProperty extends VisitorOfT
             if ($property->getPartner()->getPartner() !== $property || $property->getPartner() === $property) {
                 InterfaceValidator::CollectErrors(
                     new EdmError(
-                                InterfaceValidator::GetLocation($property),
-                                EdmErrorCode::InterfaceCriticalNavigationPartnerInvalid(),
-                                StringConst::EdmModel_Validator_Syntactic_NavigationPartnerInvalid($property->getName())
-                            ),
+                        InterfaceValidator::GetLocation($property),
+                        EdmErrorCode::InterfaceCriticalNavigationPartnerInvalid(),
+                        StringConst::EdmModel_Validator_Syntactic_NavigationPartnerInvalid($property->getName())
+                    ),
                     $errors
                 );
             }
         } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
-                            $property,
-                            'Partner'
-                        ),
+                    $property,
+                    'Partner'
+                ),
                 $errors
             );
         }
@@ -61,10 +61,10 @@ class VisitorOfINavigationProperty extends VisitorOfT
                     $property->getOnDelete() > OnDeleteAction::Cascade()->getValue()) {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreateEnumPropertyOutOfRangeError(
-                            $property,
-                            $property->getOnDelete(),
-                            'OnDelete'
-                        ),
+                    $property,
+                    $property->getOnDelete(),
+                    'OnDelete'
+                ),
                 $errors
             );
         }

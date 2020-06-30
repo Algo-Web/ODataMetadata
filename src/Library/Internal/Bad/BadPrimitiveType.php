@@ -11,6 +11,7 @@ use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Helpers\PrimitiveTypeHelpers;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\Concerns\SimpleICheckable;
 
@@ -24,7 +25,7 @@ use AlgoWeb\ODataMetadata\Library\Internal\Bad\Concerns\SimpleICheckable;
 class BadPrimitiveType extends BadType implements IPrimitiveType
 {
     use PrimitiveTypeHelpers;
-    use SimpleICheckable;
+    use SchemaElementHelpers;
     /**
      * @var PrimitiveTypeKind
      */

@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IPrimitiveTypeHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmBinaryTypeReference;
@@ -20,7 +21,6 @@ use AlgoWeb\ODataMetadata\StringConst;
 /**
  * Trait PrimitiveTypeHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
- * @mixin IPrimitiveType
  */
 trait PrimitiveTypeHelpers
 {

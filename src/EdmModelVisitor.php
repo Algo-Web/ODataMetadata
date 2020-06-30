@@ -43,7 +43,6 @@ class EdmModelVisitor
     use ProcessFunctionRelated;
     use ProcessTerms;
     use ProcessTypeDefinitions;
-    use ProcessTypeDefinitions;
     use ProcessTypeReferences;
     /**
      * @var SplObjectStorage|IVisitor[]
@@ -57,6 +56,9 @@ class EdmModelVisitor
         }
     }
 
+    /**
+     * @var IModel
+     */
     protected $model;
 
     public function __construct(IModel $model)

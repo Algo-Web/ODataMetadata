@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
@@ -20,6 +21,8 @@ use AlgoWeb\ODataMetadata\Library\Core\EdmCoreModel;
  */
 class BadEnumType extends BadType implements IEnumType
 {
+    use SchemaElementHelpers;
+
     /**
      * @var string
      */

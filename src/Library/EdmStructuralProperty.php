@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Library;
 
 use AlgoWeb\ODataMetadata\Enums\ConcurrencyMode;
 use AlgoWeb\ODataMetadata\Enums\PropertyKind;
+use AlgoWeb\ODataMetadata\Helpers\VocabularyAnnotatableHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
@@ -18,6 +19,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
  */
 class EdmStructuralProperty extends EdmProperty implements IStructuralProperty
 {
+    use VocabularyAnnotatableHelpers;
     /**
      * @var string|null
      */

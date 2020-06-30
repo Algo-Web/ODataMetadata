@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Library;
 
 use AlgoWeb\ODataMetadata\Edm\Internal\Cache;
 use AlgoWeb\ODataMetadata\Enums\ContainerElementKind;
+use AlgoWeb\ODataMetadata\Helpers\VocabularyAnnotatableHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
@@ -16,6 +17,7 @@ use SplObjectStorage;
 
 class EdmEntitySet extends EdmNamedElement implements IEntitySet
 {
+    use VocabularyAnnotatableHelpers;
     /**
      * @var IEntityContainer
      */

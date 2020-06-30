@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
 
+use AlgoWeb\ODataMetadata\EdmModelVisitor;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IPropertyValueBinding;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\ITypeAnnotation;
@@ -18,6 +19,9 @@ trait ProcessAnnotations
 {
     protected function ProcessVocabularyAnnotation(IVocabularyAnnotation $annotation): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($annotation, __METHOD__);
         $this->ProcessElement($annotation);
         $this->endElement($annotation, __METHOD__);
@@ -25,6 +29,9 @@ trait ProcessAnnotations
 
     protected function ProcessImmediateValueAnnotation(IDirectValueAnnotation $annotation): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($annotation, __METHOD__);
         $this->ProcessNamedElement($annotation);
         $this->endElement($annotation, __METHOD__);
@@ -32,6 +39,9 @@ trait ProcessAnnotations
 
     protected function ProcessValueAnnotation(IValueAnnotation $annotation): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($annotation, __METHOD__);
         $this->ProcessVocabularyAnnotation($annotation);
         $this->VisitExpression($annotation->getValue());
@@ -40,6 +50,9 @@ trait ProcessAnnotations
 
     protected function ProcessTypeAnnotation(ITypeAnnotation $annotation): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($annotation, __METHOD__);
         $this->ProcessVocabularyAnnotation($annotation);
         $this->VisitPropertyValueBindings($annotation->getPropertyValueBindings());
@@ -48,16 +61,11 @@ trait ProcessAnnotations
 
     protected function ProcessPropertyValueBinding(IPropertyValueBinding $binding): void
     {
+        /*
+         * @var EdmModelVisitor $this
+         */
         $this->startElement($binding, __METHOD__);
         $this->VisitExpression($binding->getValue());
         $this->endElement($binding, __METHOD__);
     }
-
-    abstract public function VisitExpression(IExpression $getValue): void;
-
-    abstract public function VisitPropertyValueBindings(array $getPropertyValueBindings): void;
-
-    abstract public function ProcessNamedElement(INamedElement $annotation): void;
-
-    abstract public function ProcessElement(IEdmElement $annotation): void;
 }

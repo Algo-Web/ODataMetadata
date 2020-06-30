@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\EntityContainerHelpers;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IEntityContainerHelpers;
 
 /**
  * Interface IEdmEntityContainer.
@@ -13,9 +14,8 @@ use AlgoWeb\ODataMetadata\Helpers\EntityContainerHelpers;
  * Represents an EDM entity container.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin EntityContainerHelpers
  */
-interface IEntityContainer extends ISchemaElement
+interface IEntityContainer extends ISchemaElement, IEntityContainerHelpers
 {
     /**
      * @return array|IEntityContainerElement[] gets a collection of the elements of this entity container

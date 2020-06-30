@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\EnumTypeReferenceHelpers;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IEnumTypeReferenceHelpers;
 
 /**
  * Interface IEdmEnumTypeReference.
@@ -13,8 +14,7 @@ use AlgoWeb\ODataMetadata\Helpers\EnumTypeReferenceHelpers;
  * Represents references to EDM enumeration types.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin EnumTypeReferenceHelpers
  */
-interface IEnumTypeReference extends ITypeReference
+interface IEnumTypeReference extends ITypeReference, IEnumTypeReferenceHelpers
 {
 }

@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\Multiplicity;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\INavigationPropertyHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
