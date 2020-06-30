@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Enums\TermKind;
@@ -13,28 +14,27 @@ use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 class VisitorOfITerm extends VisitorOfT
 {
-
     protected function VisitT($term, array &$followup, array &$references): iterable
     {
         assert($term instanceof ITerm);
         $termKindError = null;
 
-        switch ($term->getTermKind())
-        {
+        switch ($term->getTermKind()) {
             case TermKind::Type():
                 InterfaceValidator::CollectErrors(
                     InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $term,
                         $term->getTermKind(),
-                        "TermKind",
+                        'TermKind',
                         ISchemaType::class
                     ),
                     $termKindError
                 );
                 InterfaceValidator::CollectErrors(
                     InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $term, $term->getTermKind(),
-                        "TermKind",
+                        $term,
+                        $term->getTermKind(),
+                        'TermKind',
                         IStructuredType::class
                     ),
                     $termKindError
@@ -46,7 +46,7 @@ class VisitorOfITerm extends VisitorOfT
                     InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                         $term,
                         $term->getTermKind(),
-                        "TermKind",
+                        'TermKind',
                         IValueTerm::class
                     ),
                     $termKindError
@@ -61,7 +61,7 @@ class VisitorOfITerm extends VisitorOfT
                     InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
                         $term,
                         $term->getTermKind()->getKey(),
-                        "TermKind"
+                        'TermKind'
                     ),
                     $termKindError
                 );

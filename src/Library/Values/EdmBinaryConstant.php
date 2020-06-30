@@ -22,8 +22,8 @@ class EdmBinaryConstant extends EdmValue implements IBinaryConstantExpression
     /**
      * Initializes a new instance of the EdmBinaryConstant class.
      *
-     * @param string[]                  $value
-     * @param IBinaryTypeReference      $type
+     * @param string[]             $value
+     * @param IBinaryTypeReference $type
      */
     public function __construct(array $value, IBinaryTypeReference $type)
     {

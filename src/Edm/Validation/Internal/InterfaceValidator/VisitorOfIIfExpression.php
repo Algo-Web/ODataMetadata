@@ -1,59 +1,51 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IIfExpression;
 
 class VisitorOfIIfExpression extends VisitorOfT
 {
-
     protected function VisitT($expression, array &$followup, array &$references): iterable
     {
         assert($expression instanceof IIfExpression);
         $errors = null;
 
-        if ($expression->getTestExpression() != null)
-        {
+        if ($expression->getTestExpression() != null) {
             $followup[] = $expression->getTestExpression();
-        }
-        else
-        {
+        } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
                     $expression,
-                    "TestExpression"
+                    'TestExpression'
                 ),
                 $errors
             );
         }
 
-        if ($expression->getTrueExpression() != null)
-        {
+        if ($expression->getTrueExpression() != null) {
             $followup[] = $expression->getTrueExpression();
-        }
-        else
-        {
+        } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
                     $expression,
-                    "TrueExpression"
+                    'TrueExpression'
                 ),
                 $errors
             );
         }
 
-        if ($expression->getFalseExpression() != null)
-        {
+        if ($expression->getFalseExpression() != null) {
             $followup[] = $expression->getFalseExpression();
-        }
-        else
-        {
+        } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $expression, "FalseExpression"
+                    $expression,
+                    'FalseExpression'
                 ),
                 $errors
             );

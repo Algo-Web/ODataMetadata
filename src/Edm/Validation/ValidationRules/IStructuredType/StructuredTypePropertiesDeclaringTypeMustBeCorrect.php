@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,20 +18,17 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class StructuredTypePropertiesDeclaringTypeMustBeCorrect extends StructuredTypeRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $structuredType)
     {
         assert($structuredType instanceof IStructuredType);
-        foreach ($structuredType->getDeclaredProperties() as $property)
-        {
-            if ($property != null)
-            {
-                if ($property->getDeclaringType() !== $structuredType)
-                {
+        foreach ($structuredType->getDeclaredProperties() as $property) {
+            if ($property != null) {
+                if ($property->getDeclaringType() !== $structuredType) {
                     $context->AddError(
                         $property->Location(),
                         EdmErrorCode::DeclaringTypeMustBeCorrect(),
-                        StringConst::EdmModel_Validator_Semantic_DeclaringTypeMustBeCorrect($property->getName()));
+                        StringConst::EdmModel_Validator_Semantic_DeclaringTypeMustBeCorrect($property->getName())
+                    );
                 }
             }
         }

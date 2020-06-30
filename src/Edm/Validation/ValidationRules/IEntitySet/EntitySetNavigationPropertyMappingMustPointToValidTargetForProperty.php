@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntitySet;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,26 +18,25 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty extends EntitySetRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $set)
     {
         assert($set instanceof IEntitySet);
-        foreach ($set->getNavigationTargets() as $mapping)
-        {
+        foreach ($set->getNavigationTargets() as $mapping) {
             if (
                 !(
                     $mapping->getTargetEntitySet()->getElementType()->IsOrInheritsFrom(
                         $mapping->getNavigationProperty()->ToEntityType()
                     ) ||
                     $mapping->getNavigationProperty()->ToEntityType()->IsOrInheritsFrom(
-                        $mapping->getTargetEntitySet()->getElementType())
+                        $mapping->getTargetEntitySet()->getElementType()
+                    )
                 ) &&
-                !$context->checkIsBad($mapping->getTargetEntitySet()))
-            {
+                !$context->checkIsBad($mapping->getTargetEntitySet())) {
                 $context->AddError(
                     $set->Location(),
                     EdmErrorCode::EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty(),
-                    StringConst::EdmModel_Validator_Semantic_EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty($mapping->getNavigationProperty()->getName(), $mapping->getTargetEntitySet()->getName()));
+                    StringConst::EdmModel_Validator_Semantic_EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty($mapping->getNavigationProperty()->getName(), $mapping->getTargetEntitySet()->getName())
+                );
             }
         }
     }

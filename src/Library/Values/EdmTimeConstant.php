@@ -18,8 +18,8 @@ class EdmTimeConstant extends EdmValue implements ITimeConstantExpression
     /**
      * Initializes a new instance of the EdmTimeConstant class.
      *
-     * @param DateTime                    $value time value represented by this value
-     * @param ITemporalTypeReference      $type  type of the Time
+     * @param DateTime               $value time value represented by this value
+     * @param ITemporalTypeReference $type  type of the Time
      */
     public function __construct(DateTime $value, ITemporalTypeReference $type)
     {

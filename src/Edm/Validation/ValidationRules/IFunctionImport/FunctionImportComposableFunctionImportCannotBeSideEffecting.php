@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
@@ -16,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class FunctionImportComposableFunctionImportCannotBeSideEffecting extends FunctionImportRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        if ($functionImport->isComposable() && $functionImport->isSideEffecting())
-        {
+        if ($functionImport->isComposable() && $functionImport->isSideEffecting()) {
             $context->AddError(
                 $functionImport->Location(),
                 EdmErrorCode::ComposableFunctionImportCannotBeSideEffecting(),

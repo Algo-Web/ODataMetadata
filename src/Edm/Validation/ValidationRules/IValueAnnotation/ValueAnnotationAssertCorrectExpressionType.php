@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IValueAnnotation;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IValueAnnotation;
@@ -17,17 +18,14 @@ use AlgoWeb\ODataMetadata\Util\ExpressionTypeChecker;
  */
 class ValueAnnotationAssertCorrectExpressionType extends ValueAnnotationRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $annotation)
     {
         assert($annotation instanceof IValueAnnotation);
         $errors = null;
-        $term = $annotation->getTerm();
+        $term   = $annotation->getTerm();
         assert($term instanceof IValueTerm);
-        if (!ExpressionTypeChecker::tryAssertType( $annotation->getValue(),$term->getType(), $errors))
-        {
-            foreach ($errors as $error)
-            {
+        if (!ExpressionTypeChecker::tryAssertType($annotation->getValue(), $term->getType(), $errors)) {
+            foreach ($errors as $error) {
                 $context->AddRawError($error);
             }
         }

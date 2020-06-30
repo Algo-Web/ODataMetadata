@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,19 +18,18 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class EntityTypeInvalidKeyKeyDefinedInBaseClass extends EntityTypeRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $entityType)
     {
         assert($entityType instanceof IEntityType);
         if ($entityType->getBaseType() != null &&
             $entityType->getDeclaredKey() != null &&
             $entityType->getBaseType()->getTypeKind()->isEntity() &&
-            $entityType->BaseEntityType()->getDeclaredKey() != null)
-        {
+            $entityType->BaseEntityType()->getDeclaredKey() != null) {
             $context->AddError(
                 $entityType->Location(),
                 EdmErrorCode::InvalidKey(),
-                StringConst::EdmModel_Validator_Semantic_InvalidKeyKeyDefinedInBaseClass($entityType->getName(), $entityType->BaseEntityType()->getName()));
+                StringConst::EdmModel_Validator_Semantic_InvalidKeyKeyDefinedInBaseClass($entityType->getName(), $entityType->BaseEntityType()->getName())
+            );
         }
     }
 }

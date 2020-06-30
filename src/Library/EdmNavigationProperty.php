@@ -48,8 +48,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         ?array $dependentProperties,
         ?bool $containsTarget,
         ?OnDeleteAction $onDelete
-    )
-    {
+    ) {
         parent::__construct($declaringType, $name, $type);
         $this->dependentProperties = $dependentProperties;
         $this->containsTarget      = $containsTarget ?? CsdlConstants::Default_ContainsTarget;
@@ -115,8 +114,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
     public static function CreateNavigationPropertyWithPartnerFromInfo(
         EdmNavigationPropertyInfo $propertyInfo,
         EdmNavigationPropertyInfo $partnerInfo
-    ): EdmNavigationProperty
-    {
+    ): EdmNavigationProperty {
         EdmUtil::CheckArgumentNull($propertyInfo->name, 'propertyInfo.Name');
         EdmUtil::CheckArgumentNull($propertyInfo->target, 'propertyInfo.Target');
         EdmUtil::CheckArgumentNull($partnerInfo->name, 'partnerInfo.Name');
@@ -172,8 +170,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         array $partnerDependentProperties,
         bool $partnerContainsTarget,
         OnDeleteAction $partnerOnDelete
-    ): EdmNavigationProperty
-    {
+    ): EdmNavigationProperty {
         $declaringType = self::GetEntityType($partnerPropertyType);
         if ($declaringType == null) {
             throw new ArgumentException(StringConst::Constructable_EntityTypeOrCollectionOfEntityTypeExpected('partnerPropertyType'));

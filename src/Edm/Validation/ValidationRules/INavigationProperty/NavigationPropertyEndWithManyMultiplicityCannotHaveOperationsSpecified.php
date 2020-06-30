@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
 
@@ -23,8 +25,7 @@ class NavigationPropertyEndWithManyMultiplicityCannotHaveOperationsSpecified ext
         if (
             $end->Multiplicity()->isMany() &&
             !$end->getOnDelete()->isNone()
-        )
-        {
+        ) {
             $context->AddError(
                 $end->Location(),
                 EdmErrorCode::EndWithManyMultiplicityCannotHaveOperationsSpecified(),

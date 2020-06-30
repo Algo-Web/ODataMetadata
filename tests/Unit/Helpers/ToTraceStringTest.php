@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 21/06/20
- * Time: 2:42 AM
+ * Time: 2:42 AM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
@@ -34,7 +35,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('FullName')->andReturn('FullName');
 
         $expected = 'FullName';
-        $actual = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::ToTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -45,7 +46,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('FullName')->andReturn('FullName');
 
         $expected = 'UnknownType';
-        $actual = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::ToTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -57,7 +58,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getName')->andReturn('Name');
 
         $expected = 'Name';
-        $actual = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::ToTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -74,7 +75,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getName')->andReturn(null);
 
         $expected = ':[UnknownType Nullable=FALSE]';
-        $actual = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::ToTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -85,7 +86,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getEntityType')->andReturn(null);
 
         $expected = 'EntityReference()';
-        $actual = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::ToTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -99,7 +100,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getEntityType')->andReturn($eType);
 
         $expected = 'EntityReference(FullName)';
-        $actual = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::ToTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -110,7 +111,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getElementType')->andReturn(null);
 
         $expected = 'Collection()';
-        $actual = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::ToTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -127,7 +128,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getElementType')->andReturn($eType);
 
         $expected = 'Collection([UnknownType Nullable=TRUE])';
-        $actual = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::ToTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -141,14 +142,14 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('Properties')->andReturn([$prop1, null]);
 
         $expected = 'Row(FullName)';
-        $actual = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::ToTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
 
     public function binaryFacetProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [true, false, null, true, '[UnknownType Nullable=TRUE]'];
         $result[] = [true, false, null, false, '[UnknownType Nullable=FALSE]'];
         $result[] = [true, false, 10, true, '[UnknownType Nullable=TRUE MaxLength=10]'];
@@ -172,11 +173,11 @@ class ToTraceStringTest extends TestCase
     /**
      * @dataProvider binaryFacetProvider
      *
-     * @param bool $isFixed
-     * @param bool $isUnbounded
+     * @param bool     $isFixed
+     * @param bool     $isUnbounded
      * @param int|null $maxLen
-     * @param bool $isNullable
-     * @param string $expected
+     * @param bool     $isNullable
+     * @param string   $expected
      */
     public function testTraceStringBinaryFacet(bool $isFixed, bool $isUnbounded, ?int $maxLen, bool $isNullable, string $expected)
     {
@@ -201,7 +202,7 @@ class ToTraceStringTest extends TestCase
 
     public function decimalFacetProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [null, null, true, '[UnknownType Nullable=TRUE]'];
         $result[] = [8, null, false, '[UnknownType Nullable=FALSE Precision=8]'];
         $result[] = [null, 4, true, '[UnknownType Nullable=TRUE Scale=4]'];
@@ -215,8 +216,8 @@ class ToTraceStringTest extends TestCase
      *
      * @param int|null $precision
      * @param int|null $scale
-     * @param bool $isNullable
-     * @param string $expected
+     * @param bool     $isNullable
+     * @param string   $expected
      */
     public function testTraceStringDecimalFacet(?int $precision, ?int $scale, bool $isNullable, string $expected)
     {
@@ -240,7 +241,7 @@ class ToTraceStringTest extends TestCase
 
     public function temporalFacetProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Time(), null, '[UnknownType Nullable=TRUE]'];
         $result[] = [PrimitiveTypeKind::DateTime(), null, '[UnknownType Nullable=TRUE]'];
         $result[] = [PrimitiveTypeKind::DateTimeOffset(), null, '[UnknownType Nullable=TRUE]'];
@@ -255,8 +256,8 @@ class ToTraceStringTest extends TestCase
      * @dataProvider temporalFacetProvider
      *
      * @param PrimitiveTypeKind $typeKind
-     * @param int|null $precision
-     * @param string $expected
+     * @param int|null          $precision
+     * @param string            $expected
      */
     public function testTraceStringTemporalFacet(PrimitiveTypeKind $typeKind, ?int $precision, string $expected)
     {
@@ -279,7 +280,7 @@ class ToTraceStringTest extends TestCase
 
     public function stringFacetProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [null, false, null, null, 'collate', '[UnknownType Nullable=TRUE Collation=collate]'];
         $result[] = [true, false, 10, null, null, '[UnknownType Nullable=TRUE FixedLength=TRUE MaxLength=10]'];
         $result[] = [false, false, null, null, 'collate', '[UnknownType Nullable=TRUE Collation=collate]'];
@@ -299,12 +300,12 @@ class ToTraceStringTest extends TestCase
     /**
      * @dataProvider stringFacetProvider
      *
-     * @param bool|null $isFixedLen
-     * @param bool $isUnbounded
-     * @param int|null $maxLen
-     * @param bool|null $isUnicode
+     * @param bool|null   $isFixedLen
+     * @param bool        $isUnbounded
+     * @param int|null    $maxLen
+     * @param bool|null   $isUnicode
      * @param string|null $collation
-     * @param string $expected
+     * @param string      $expected
      */
     public function testTraceStringStringFacet(?bool $isFixedLen, bool $isUnbounded, ?int $maxLen, ?bool $isUnicode, ?string $collation, string $expected)
     {
@@ -331,7 +332,7 @@ class ToTraceStringTest extends TestCase
 
     public function spatialFacetProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Geography(), null, '[UnknownType Nullable=TRUE SRID=Variable]'];
         $result[] = [PrimitiveTypeKind::Geography(), 11, '[UnknownType Nullable=TRUE SRID=11]'];
         $result[] = [PrimitiveTypeKind::GeographyPoint(), null, '[UnknownType Nullable=TRUE SRID=Variable]'];
@@ -374,8 +375,8 @@ class ToTraceStringTest extends TestCase
      * @dataProvider spatialFacetProvider
      *
      * @param PrimitiveTypeKind $type
-     * @param int|null $srid
-     * @param string $expected
+     * @param int|null          $srid
+     * @param string            $expected
      */
     public function testTraceStringSpatialFacet(PrimitiveTypeKind $type, ?int $srid, string $expected)
     {

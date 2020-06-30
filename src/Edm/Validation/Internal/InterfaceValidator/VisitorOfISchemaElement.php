@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
@@ -14,20 +15,18 @@ use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 final class VisitorOfISchemaElement extends VisitorOfT
 {
-
     protected function VisitT($item, array &$followup, array &$references): iterable
     {
         assert($item instanceof ISchemaElement);
         $errors =[];
 
-                switch ($item->getSchemaElementKind())
-                {
+        switch ($item->getSchemaElementKind()) {
                     case SchemaElementKind::TypeDefinition():
                         InterfaceValidator::CollectErrors(
                             InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                                 $item,
                                 $item->getSchemaElementKind(),
-                                "SchemaElementKind",
+                                'SchemaElementKind',
                                 ISchemaType::class
                             ),
                             $errors
@@ -39,7 +38,7 @@ final class VisitorOfISchemaElement extends VisitorOfT
                             InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                                 $item,
                                 $item->getSchemaElementKind(),
-                                "SchemaElementKind",
+                                'SchemaElementKind',
                                 IFunction::class
                             ),
                             $errors
@@ -51,7 +50,7 @@ final class VisitorOfISchemaElement extends VisitorOfT
                             InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                                 $item,
                                 $item->getSchemaElementKind(),
-                                "SchemaElementKind",
+                                'SchemaElementKind',
                                 IValueTerm::class
                             ),
                             $errors
@@ -63,7 +62,7 @@ final class VisitorOfISchemaElement extends VisitorOfT
                             InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                                 $item,
                                 $item->getSchemaElementKind(),
-                                "SchemaElementKind",
+                                'SchemaElementKind',
                                 IEntityContainer::class
                             ),
                             $errors
@@ -78,24 +77,24 @@ final class VisitorOfISchemaElement extends VisitorOfT
                             InterfaceValidator::CreateEnumPropertyOutOfRangeError(
                                 $item,
                                 $item->getSchemaElementKind(),
-                                "SchemaElementKind"
+                                'SchemaElementKind'
                             ),
                             $errors
                         );
                         break;
                 }
 
-                if ($item->getNamespace() == null)
-                {
-                    InterfaceValidator::CollectErrors(
-                        InterfaceValidator::CreatePropertyMustNotBeNullError(
+        if ($item->getNamespace() == null) {
+            InterfaceValidator::CollectErrors(
+                InterfaceValidator::CreatePropertyMustNotBeNullError(
                             $item,
-                            "Namespace"
+                            'Namespace'
                         ),
-                        $errors);
-                }
+                $errors
+            );
+        }
 
-                return $errors;
+        return $errors;
     }
 
     public function forType(): string

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
@@ -16,16 +18,15 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class ComposableFunctionImportMustHaveReturnType extends FunctionImportRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        if ($functionImport->IsComposable() && $functionImport->getReturnType() == null)
-        {
+        if ($functionImport->IsComposable() && $functionImport->getReturnType() == null) {
             $context->AddError(
                 $functionImport->Location(),
                 EdmErrorCode::ComposableFunctionImportMustHaveReturnType(),
-                StringConst::EdmModel_Validator_Semantic_ComposableFunctionImportMustHaveReturnType($functionImport->getName()));
+                StringConst::EdmModel_Validator_Semantic_ComposableFunctionImportMustHaveReturnType($functionImport->getName())
+            );
         }
     }
 }

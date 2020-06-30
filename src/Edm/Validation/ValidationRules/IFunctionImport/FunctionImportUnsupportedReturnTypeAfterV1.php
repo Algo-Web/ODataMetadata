@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class FunctionImportUnsupportedReturnTypeAfterV1 extends FunctionImportRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        if ($functionImport->getReturnType() != null)
-        {
+        if ($functionImport->getReturnType() != null) {
             $elementType = $functionImport->getReturnType()->IsCollection() ?
                 $functionImport->getReturnType()->AsCollection()->ElementType() :
                 $functionImport->getReturnType();
@@ -32,8 +31,7 @@ class FunctionImportUnsupportedReturnTypeAfterV1 extends FunctionImportRule
                 !$elementType->IsComplex() &&
                 !$elementType->IsEnum() &&
                 !$context->checkIsBad($elementType->getDefinition())
-            )
-            {
+            ) {
                 $context->AddError(
                     $functionImport->Location(),
                     EdmErrorCode::FunctionImportUnsupportedReturnType(),

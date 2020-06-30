@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IVocabularyAnnotation;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,7 +18,6 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class VocabularyAnnotationsNotSupportedBeforeV3 extends VocabularyAnnotationRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $vocabularyAnnotation)
     {
         assert($vocabularyAnnotation instanceof IVocabularyAnnotation);

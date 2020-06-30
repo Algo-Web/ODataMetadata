@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class NavigationPropertyInvalidOperationMultipleEndsInAssociation extends NavigationPropertyRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $navigationProperty)
     {
         assert($navigationProperty instanceof INavigationProperty);
-        if (!$navigationProperty->getOnDelete()->isNone() && !$navigationProperty->getPartner()->getOnDelete()->isNone())
-        {
+        if (!$navigationProperty->getOnDelete()->isNone() && !$navigationProperty->getPartner()->getOnDelete()->isNone()) {
             $context->AddError(
                 $navigationProperty->Location(),
                 EdmErrorCode::InvalidAction(),

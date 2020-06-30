@@ -28,7 +28,8 @@ trait EdmElementHelpers
         return $this instanceof ILocatable && $this->getLocation() !== null ? $this->getLocation() : new ObjectLocation($this);
     }
 
-    public function getErrors(): iterable{
+    public function getErrors(): iterable
+    {
         return InterfaceValidator::GetStructuralErrors($this);
     }
 }

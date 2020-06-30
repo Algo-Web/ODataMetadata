@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class FunctionImportBindableFunctionImportMustHaveParameters extends FunctionImportRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        if ($functionImport->isBindable() && count($functionImport->getParameters()) === 0)
-        {
+        if ($functionImport->isBindable() && count($functionImport->getParameters()) === 0) {
             $context->AddError(
                 $functionImport->Location(),
                 EdmErrorCode::BindableFunctionImportMustHaveParameters(),

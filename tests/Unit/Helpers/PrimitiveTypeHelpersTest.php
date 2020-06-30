@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 17/06/20
- * Time: 10:41 PM
+ * Time: 10:41 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
@@ -23,7 +24,7 @@ class PrimitiveTypeHelpersTest extends TestCase
 {
     public function asPrimitivePrimitiveTypeProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Boolean()];
         $result[] = [PrimitiveTypeKind::Byte()];
         $result[] = [PrimitiveTypeKind::Double()];
@@ -55,7 +56,7 @@ class PrimitiveTypeHelpersTest extends TestCase
 
     public function asPrimitiveSpatialTypeProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Geography()];
         $result[] = [PrimitiveTypeKind::GeographyPoint()];
         $result[] = [PrimitiveTypeKind::GeographyLineString()];
@@ -93,7 +94,7 @@ class PrimitiveTypeHelpersTest extends TestCase
 
     public function asPrimitiveTemporalTypeProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Time()];
         $result[] = [PrimitiveTypeKind::DateTime()];
         $result[] = [PrimitiveTypeKind::DateTimeOffset()];
@@ -118,7 +119,7 @@ class PrimitiveTypeHelpersTest extends TestCase
 
     public function asPrimitiveMiscTypeProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Binary(), EdmBinaryTypeReference::class];
         $result[] = [PrimitiveTypeKind::String(), EdmStringTypeReference::class];
         $result[] = [PrimitiveTypeKind::Decimal(), EdmDecimalTypeReference::class];
@@ -144,7 +145,7 @@ class PrimitiveTypeHelpersTest extends TestCase
     public function testGetPrimitiveTypeBadType()
     {
         $type = PrimitiveTypeKind::None();
-        $foo = new EdmValidCoreModelPrimitiveType('', '', $type);
+        $foo  = new EdmValidCoreModelPrimitiveType('', '', $type);
 
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('Unexpected primitive type kind.');

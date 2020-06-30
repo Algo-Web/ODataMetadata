@@ -17,8 +17,8 @@ class EdmFloatingConstant extends EdmValue implements IFloatingConstantExpressio
     /**
      * Initializes a new instance of the EdmBooleanConstant class.
      *
-     * @param float                        $value boolean value represented by this value
-     * @param IPrimitiveTypeReference      $type  type of the float
+     * @param float                   $value boolean value represented by this value
+     * @param IPrimitiveTypeReference $type  type of the float
      */
     public function __construct(float $value, IPrimitiveTypeReference $type)
     {

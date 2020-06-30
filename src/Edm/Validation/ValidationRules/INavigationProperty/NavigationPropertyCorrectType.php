@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
 
@@ -18,37 +20,29 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class NavigationPropertyCorrectType extends NavigationPropertyRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
         assert($property instanceof INavigationProperty);
         $isBad = false;
 
-        if ($property->ToEntityType() !== $property->getPartner()->DeclaringEntityType())
-        {
+        if ($property->ToEntityType() !== $property->getPartner()->DeclaringEntityType()) {
             $isBad = true;
-        }
-        else
-        {
-            switch ($property->getPartner()->Multiplicity())
-            {
+        } else {
+            switch ($property->getPartner()->Multiplicity()) {
                 case Multiplicity::Many():
-                    if (!$property->getType()->IsCollection())
-                    {
+                    if (!$property->getType()->IsCollection()) {
                         $isBad = true;
                     }
 
                     break;
                 case Multiplicity::ZeroOrOne():
-                    if ($property->getType()->IsCollection() || !$property->getType()->getNullable())
-                    {
+                    if ($property->getType()->IsCollection() || !$property->getType()->getNullable()) {
                         $isBad = true;
                     }
 
                     break;
                 case Multiplicity::One():
-                    if ($property->getType()->IsCollection() || $property->getType()->getNullable())
-                    {
+                    if ($property->getType()->IsCollection() || $property->getType()->getNullable()) {
                         $isBad = true;
                     }
 
@@ -56,12 +50,12 @@ class NavigationPropertyCorrectType extends NavigationPropertyRule
             }
         }
 
-        if ($isBad)
-        {
+        if ($isBad) {
             $context->AddError(
                 $property->Location(),
                 EdmErrorCode::InvalidNavigationPropertyType(),
-                StringConst::EdmModel_Validator_Semantic_InvalidNavigationPropertyType($property->getName()));
+                StringConst::EdmModel_Validator_Semantic_InvalidNavigationPropertyType($property->getName())
+            );
         }
     }
 }

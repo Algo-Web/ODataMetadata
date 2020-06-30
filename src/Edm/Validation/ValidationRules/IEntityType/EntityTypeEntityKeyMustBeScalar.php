@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -18,21 +19,18 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class EntityTypeEntityKeyMustBeScalar extends EntitySetRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $entityType)
     {
         assert($entityType instanceof IEntityType);
-        if ($entityType->Key() != null)
-        {
-            foreach ($entityType->Key() as $key)
-            {
+        if ($entityType->Key() != null) {
+            foreach ($entityType->Key() as $key) {
                 assert($key instanceof IStructuralProperty);
-                if (!$key->getType()->IsPrimitive() && !$context->checkIsBad($key))
-                {
+                if (!$key->getType()->IsPrimitive() && !$context->checkIsBad($key)) {
                     $context->AddError(
                         $key->Location(),
                         EdmErrorCode::EntityKeyMustBeScalar(),
-                        StringConst::EdmModel_Validator_Semantic_EntityKeyMustBeScalar($key->getName(), $entityType->getName()));
+                        StringConst::EdmModel_Validator_Semantic_EntityKeyMustBeScalar($key->getName(), $entityType->getName())
+                    );
                 }
             }
         }

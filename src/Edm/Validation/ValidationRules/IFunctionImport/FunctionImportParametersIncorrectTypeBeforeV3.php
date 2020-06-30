@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
@@ -16,22 +18,21 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class FunctionImportParametersIncorrectTypeBeforeV3 extends FunctionImportRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        foreach ($functionImport->getParameters() as $functionParameter)
-        {
+        foreach ($functionImport->getParameters() as $functionParameter) {
             $type = $functionParameter->getType();
             if (
                 !$type->IsPrimitive() && !$type->IsComplex() && !$context->checkIsBad($type->getDefinition())
-            )
-            {
+            ) {
                 $context->AddError(
                     $functionParameter->Location(),
                     EdmErrorCode::FunctionImportParameterIncorrectType(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportParameterIncorrectType(
-                        $type->FullName(), $functionParameter->getName())
+                        $type->FullName(),
+                        $functionParameter->getName()
+                    )
                 );
             }
         }

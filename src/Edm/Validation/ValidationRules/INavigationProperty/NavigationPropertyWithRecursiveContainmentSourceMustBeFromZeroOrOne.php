@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -15,13 +16,12 @@ use AlgoWeb\ODataMetadata\StringConst;
  *  is the same as
  *  the declaring type of the property, then the multiplicity of the source of navigation is Zero-Or-One.
  *  This depends on there being a targeting cycle. Because of the rule EntitySetNavigationMappingMustBeBidirectional,
- *  we know that either this is always true, or there will be an error
+ *  we know that either this is always true, or there will be an error.
  *
  * @package AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty
  */
 class NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne extends NavigationPropertyRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
         assert($property instanceof INavigationProperty);
@@ -29,8 +29,7 @@ class NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne extend
             $property->containsTarget() &&
             $property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType()) &&
             !$property->Multiplicity()->isZeroOrOne()
-        )
-        {
+        ) {
             $context->AddError(
                 $property->Location(),
                 EdmErrorCode::NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne(),

@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -26,19 +27,16 @@ class StructuredTypeInvalidMemberNameMatchesTypeName extends StructuredTypeRule
         assert($schemaType instanceof ISchemaType);
 
         $properties = $structuredType->Properties();
-        if (count($properties) > 0)
-        {
-            foreach ($properties as $property )
-            {
-                if ($property != null)
-                {
+        if (count($properties) > 0) {
+            foreach ($properties as $property) {
+                if ($property != null) {
                     assert($property instanceof IProperty);
-                    if ($property->getName() === $schemaType->getName())
-                    {
+                    if ($property->getName() === $schemaType->getName()) {
                         $context->AddError(
                             $property->Location(),
                             EdmErrorCode::BadProperty(),
-                            StringConst::EdmModel_Validator_Semantic_InvalidMemberNameMatchesTypeName($property->getName()));
+                            StringConst::EdmModel_Validator_Semantic_InvalidMemberNameMatchesTypeName($property->getName())
+                        );
                     }
                 }
             }

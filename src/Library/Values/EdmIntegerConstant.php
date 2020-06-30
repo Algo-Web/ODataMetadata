@@ -22,8 +22,8 @@ class EdmIntegerConstant extends EdmValue implements IIntegerConstantExpression
     /**
      * Initializes a new instance of the EdmGuidConstant class.
      *
-     * @param int                          $value string value represented by this value
-     * @param IPrimitiveTypeReference      $type  type of the integer
+     * @param int                     $value string value represented by this value
+     * @param IPrimitiveTypeReference $type  type of the integer
      */
     public function __construct(int $value, ?IPrimitiveTypeReference $type)
     {

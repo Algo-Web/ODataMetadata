@@ -1,32 +1,29 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
 
 class VisitorOfIEnumType extends VisitorOfT
 {
-
     protected function VisitT($type, array &$followup, array &$references): iterable
     {
         assert($type instanceof IEnumType);
         $errors = null;
 
-        InterfaceValidator::ProcessEnumerable($type, $type->getMembers(), "Members", $followup,  $errors);
+        InterfaceValidator::ProcessEnumerable($type, $type->getMembers(), 'Members', $followup, $errors);
 
-        if ($type->getUnderlyingType() != null)
-        {
+        if ($type->getUnderlyingType() != null) {
             $references[] = $type->getUnderlyingType();
-        }
-        else
-        {
+        } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
                     $type,
-                    "UnderlyingType"
+                    'UnderlyingType'
                 ),
                 $errors
             );

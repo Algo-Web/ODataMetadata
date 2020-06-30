@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
@@ -16,19 +18,18 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class FunctionImportParametersCannotHaveModeOfNone extends FunctionImportRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $function)
     {
         assert($function instanceof IFunctionImport);
-        foreach ($function->getParameters() as $parameter)
-        {
-            if ($parameter->getMode()->isNone() && !$context->checkIsBad($function))
-            {
+        foreach ($function->getParameters() as $parameter) {
+            if ($parameter->getMode()->isNone() && !$context->checkIsBad($function)) {
                 $context->AddError(
                     $parameter->Location(),
                     EdmErrorCode::InvalidFunctionImportParameterMode(),
                     StringConst::EdmModel_Validator_Semantic_InvalidFunctionImportParameterMode(
-                        $parameter->getName(), $function->getName())
+                        $parameter->getName(),
+                        $function->getName()
+                    )
                 );
             }
         }

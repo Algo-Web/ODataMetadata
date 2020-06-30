@@ -22,8 +22,8 @@ class EdmGuidConstant extends EdmValue implements IGuidConstantExpression
     /**
      * Initializes a new instance of the EdmGuidConstant class.
      *
-     * @param string                       $value string value represented by this value
-     * @param IPrimitiveTypeReference      $type  type of the guid
+     * @param string                  $value string value represented by this value
+     * @param IPrimitiveTypeReference $type  type of the guid
      */
     public function __construct(string $value, IPrimitiveTypeReference $type)
     {

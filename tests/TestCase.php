@@ -9,13 +9,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * @param $object
      * @param $methodName
-     * @param mixed ...$args
-     * @return mixed
+     * @param  mixed                ...$args
      * @throws \ReflectionException
+     * @return mixed
      */
     public function callPrivateMethod($object, $methodName, ...$args)
     {
-        $reflectionClass = new \ReflectionClass($object);
+        $reflectionClass  = new \ReflectionClass($object);
         $reflectionMethod = $reflectionClass->getMethod($methodName);
         $reflectionMethod->setAccessible(true);
 
@@ -34,7 +34,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
     public function setPrivateProperty($object, $propertyName, $newValue)
     {
         $closure = \Closure::bind(function ($class) use ($propertyName) {
-            return $class->$propertyName;
+            return $class->{$propertyName};
         }, null, get_class($object));
         $propertyValue = &$closure($object);
         $propertyValue = $newValue;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IValueTerm;
 
@@ -16,7 +18,6 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class ValueTermsNotSupportedBeforeV3 extends ValueTermsRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $valueTerm)
     {
         assert($valueTerm instanceof IValueTerm);
@@ -26,5 +27,4 @@ class ValueTermsNotSupportedBeforeV3 extends ValueTermsRule
             StringConst::EdmModel_Validator_Semantic_ValueTermsNotSupportedBeforeV3()
         );
     }
-
 }

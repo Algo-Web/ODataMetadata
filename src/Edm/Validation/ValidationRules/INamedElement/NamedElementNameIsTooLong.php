@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INamedElement;
-
 
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -18,16 +19,15 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class NamedElementNameIsTooLong extends NamedElementRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $item)
     {
         assert($item instanceof INamedElement);
-        if (!EdmUtil::IsNullOrWhiteSpaceInternal($item->getName()) && strlen($item->getName()) > CsdlConstants::Max_NameLength)
-        {
+        if (!EdmUtil::IsNullOrWhiteSpaceInternal($item->getName()) && strlen($item->getName()) > CsdlConstants::Max_NameLength) {
             $context->AddError(
                 $item->Location(),
                 EdmErrorCode::NameTooLong(),
-                StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsTooLong($item->getName()));
+                StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsTooLong($item->getName())
+            );
         }
     }
 }

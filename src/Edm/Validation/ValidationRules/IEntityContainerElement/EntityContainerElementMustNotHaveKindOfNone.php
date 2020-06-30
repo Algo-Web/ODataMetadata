@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityContainerElement;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,17 +18,15 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class EntityContainerElementMustNotHaveKindOfNone extends EntityContainerRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $element)
     {
         assert($element instanceof IEntityContainerElement);
-        if ($element->getContainerElementKind()->isNone() && !$context->checkIsBad($element))
-        {
+        if ($element->getContainerElementKind()->isNone() && !$context->checkIsBad($element)) {
             $context->AddError(
                 $element->Location(),
                 EdmErrorCode::EntityContainerElementMustNotHaveKindOfNone(),
-                StringConst::EdmModel_Validator_Semantic_EntityContainerElementMustNotHaveKindOfNone($element->getContainer()->FullName() . '/' . $element->getName()));
+                StringConst::EdmModel_Validator_Semantic_EntityContainerElementMustNotHaveKindOfNone($element->getContainer()->FullName() . '/' . $element->getName())
+            );
         }
     }
-
 }

@@ -95,12 +95,12 @@ trait ModelHelpers
     private function FindAcrossModels(string $qualifiedName, callable $finder, callable $ambiguousCreator)
     {
         $model = $this;
-        Asserts::assertSignatureMatches(function(IModel $model, string $qualifiedName){}, $finder, '$finder');
-        Asserts::assertSignatureMatches(function($candidate, $fromReference){}, $ambiguousCreator, '$ambiguousCreator');
+        Asserts::assertSignatureMatches(function (IModel $model, string $qualifiedName) {}, $finder, '$finder');
+        Asserts::assertSignatureMatches(function ($candidate, $fromReference) {}, $ambiguousCreator, '$ambiguousCreator');
         $candidate = $finder($model, $qualifiedName);
-        foreach($model->getReferencedModels() as $reference){
+        foreach ($model->getReferencedModels() as $reference) {
             $fromReference = $finder($reference, $qualifiedName);
-            if($fromReference !== null){
+            if ($fromReference !== null) {
                 $candidate = $candidate === null ? $fromReference : $ambiguousCreator($candidate, $fromReference);
             }
         }
@@ -111,8 +111,8 @@ trait ModelHelpers
      * Searches for an entity container with the given name in this model and all referenced models and returns null
      * if no such entity container exists.
      *
-     * @param string $qualifiedName The qualified name of the entity container being found.
-     * @return IEntityContainer The requested entity container, or null if no such entity container exists.
+     * @param  string           $qualifiedName the qualified name of the entity container being found
+     * @return IEntityContainer the requested entity container, or null if no such entity container exists
      */
     public function FindEntityContainer(string $qualifiedName): ?IEntityContainer
     {
@@ -126,14 +126,14 @@ trait ModelHelpers
      * Searches for a value term with the given name in this model and all referenced models and returns null if no
      * such value term exists.
      *
-     * @param string $qualifiedName The qualified name of the value term being found.
-     * @return IValueTerm The requested value term, or null if no such value term exists.
+     * @param  string     $qualifiedName the qualified name of the value term being found
+     * @return IValueTerm the requested value term, or null if no such value term exists
      */
     public function FindValueTerm(string $qualifiedName): ?IValueTerm
     {
-        EdmUtil::CheckArgumentNull($qualifiedName, "qualifiedName");
+        EdmUtil::CheckArgumentNull($qualifiedName, 'qualifiedName');
 
-        return $this->FindAcrossModels( $qualifiedName, self::ValueTermFinder(), [RegistrationHelper::class, 'CreateAmbiguousValueTermBinding']);
+        return $this->FindAcrossModels($qualifiedName, self::ValueTermFinder(), [RegistrationHelper::class, 'CreateAmbiguousValueTermBinding']);
     }
 
 
@@ -144,9 +144,9 @@ trait ModelHelpers
      * @param string $qualifiedName The qualified name of the functions being found.
      * @return IFunction[] The requested functions.
      */
-    public  function FindFunctions(string $qualifiedName): array
+    public function FindFunctions(string $qualifiedName): array
     {
-        EdmUtil::CheckArgumentNull($qualifiedName, "qualifiedName");
+        EdmUtil::CheckArgumentNull($qualifiedName, 'qualifiedName');
 
         return $this->FindAcrossModels($qualifiedName, self::FunctionsFinder(), self::mergeFunctions()) ?? [];
     }

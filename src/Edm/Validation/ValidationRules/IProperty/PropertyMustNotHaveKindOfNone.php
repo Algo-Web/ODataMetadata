@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IProperty;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -20,8 +21,7 @@ class PropertyMustNotHaveKindOfNone extends PropertyRule
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
         assert($property instanceof IProperty);
-        if ($property->getPropertyKind()->isNone() && !$context->checkIsBad($property))
-        {
+        if ($property->getPropertyKind()->isNone() && !$context->checkIsBad($property)) {
             $context->AddError(
                 $property->Location(),
                 EdmErrorCode::PropertyMustNotHaveKindOfNone(),

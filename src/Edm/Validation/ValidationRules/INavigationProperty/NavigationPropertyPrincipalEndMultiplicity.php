@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
 
@@ -20,7 +22,6 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class NavigationPropertyPrincipalEndMultiplicity extends NavigationPropertyRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $navigationProperty)
     {
         assert($navigationProperty instanceof INavigationProperty);
@@ -40,35 +41,30 @@ class NavigationPropertyPrincipalEndMultiplicity extends NavigationPropertyRule
         if ($dependentProperties === null) {
             return;
         }
-        if (ValidationHelper::AllPropertiesAreNullable($dependentProperties))
-        {
-            if (!$navigationProperty->getPartner()->Multiplicity()->isZeroOrOne())
-            {
+        if (ValidationHelper::AllPropertiesAreNullable($dependentProperties)) {
+            if (!$navigationProperty->getPartner()->Multiplicity()->isZeroOrOne()) {
                 $context->AddError(
                     $navigationProperty->getPartner()->Location(),
                     EdmErrorCode::InvalidMultiplicityOfPrincipalEnd(),
-                    StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfPrincipalEndDependentPropertiesAllNullable($navigationProperty->getPartner()->getName(), $navigationProperty->getName()));
+                    StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfPrincipalEndDependentPropertiesAllNullable($navigationProperty->getPartner()->getName(), $navigationProperty->getName())
+                );
             }
-        }
-        else if (!ValidationHelper::HasNullableProperty($dependentProperties))
-        {
-            if (!$navigationProperty->getPartner()->Multiplicity()->isOne())
-            {
+        } elseif (!ValidationHelper::HasNullableProperty($dependentProperties)) {
+            if (!$navigationProperty->getPartner()->Multiplicity()->isOne()) {
                 $context->AddError(
                     $navigationProperty->getPartner()->Location(),
                     EdmErrorCode::InvalidMultiplicityOfPrincipalEnd(),
-                    StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfPrincipalEndDependentPropertiesAllNonnullable($navigationProperty->getPartner()->getName(), $navigationProperty->getName()));
+                    StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfPrincipalEndDependentPropertiesAllNonnullable($navigationProperty->getPartner()->getName(), $navigationProperty->getName())
+                );
             }
-        }
-        else
-        {
+        } else {
             if (!$navigationProperty->getPartner()->Multiplicity()->isOne() &&
-                !$navigationProperty->getPartner()->Multiplicity()->isZeroOrOne())
-            {
+                !$navigationProperty->getPartner()->Multiplicity()->isZeroOrOne()) {
                 $context->AddError(
                     $navigationProperty->getPartner()->Location(),
                     EdmErrorCode::InvalidMultiplicityOfPrincipalEnd(),
-                    StringConst::EdmModel_Validator_Semantic_NavigationPropertyPrincipalEndMultiplicityUpperBoundMustBeOne($navigationProperty->getName()));
+                    StringConst::EdmModel_Validator_Semantic_NavigationPropertyPrincipalEndMultiplicityUpperBoundMustBeOne($navigationProperty->getName())
+                );
             }
         }
     }

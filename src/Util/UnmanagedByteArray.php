@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Util;
-
 
 use AlgoWeb\ODataMetadata\Exception\ArgumentException;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
@@ -16,25 +17,25 @@ class UnmanagedByteArray implements \ArrayAccess, \IteratorAggregate, \Countable
     public function __construct(&$stream, $readonly = true)
     {
         assert(is_resource($stream));
-        $stat = fstat($stream);
-        $this->length = $stat['size'];
-        $this->readonly = $readonly;
+        $stat               = fstat($stream);
+        $this->length       = $stat['size'];
+        $this->readonly     = $readonly;
         $this->memoryStream = $stream;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getIterator()
     {
         rewind($this->memoryStream);
-        while(false !== $char = fgetc($this->memoryStream)){
+        while (false !== $char = fgetc($this->memoryStream)) {
             yield ord($char);
         }
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function offsetExists($offset)
     {
@@ -42,11 +43,11 @@ class UnmanagedByteArray implements \ArrayAccess, \IteratorAggregate, \Countable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function offsetGet($offset)
     {
-        if(!$this->offsetExists($offset)){
+        if (!$this->offsetExists($offset)) {
             throw new ArgumentException(sprintf('%s is out of range', $offset));
         }
         fseek($this->memoryStream, $offset);
@@ -54,31 +55,31 @@ class UnmanagedByteArray implements \ArrayAccess, \IteratorAggregate, \Countable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function offsetSet($offset, $value)
     {
-        if(!is_int($value) || $value <0 || $value > 255){
+        if (!is_int($value) || $value <0 || $value > 255) {
             throw new \InvalidArgumentException(sprintf('%s is an invalid value for a ByteArray', $value));
         }
-        if($this->readonly){
+        if ($this->readonly) {
             throw new InvalidOperationException('attempt to write to read only array');
         }
-        if($offset !== null || $offset < 0 || $offset > $this->length ){
+        if ($offset !== null || $offset < 0 || $offset > $this->length) {
             throw new \InvalidArgumentException('allowable offsets are between 0 and full legnth or null');
         }
-        if(null === $offset){
+        if (null === $offset) {
             fseek($this->memoryStream, 0, SEEK_END);
-        }else {
+        } else {
             fseek($this->memoryStream, $offset);
         }
         fwrite($this->memoryStream, chr($value));
-        $stat = fstat($this->memoryStream);
+        $stat         = fstat($this->memoryStream);
         $this->length = $stat['size'];
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function offsetUnset($offset)
     {
@@ -86,7 +87,7 @@ class UnmanagedByteArray implements \ArrayAccess, \IteratorAggregate, \Countable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function count()
     {

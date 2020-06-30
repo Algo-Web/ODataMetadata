@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IDirectValueAnnotation;
 
@@ -20,14 +22,12 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class ImmediateValueAnnotationElementAnnotationIsValid extends DirectValueAnnotationRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $annotation)
     {
         assert($annotation instanceof IDirectValueAnnotation);
         $stringValue = $annotation->getValue();
-                    if ($stringValue != null && $stringValue instanceof IStringValue)
-                    {
-                        if (
+        if ($stringValue != null && $stringValue instanceof IStringValue) {
+            if (
                             boolval(
                                 $context
                                     ->getModel()
@@ -38,18 +38,18 @@ class ImmediateValueAnnotationElementAnnotationIsValid extends DirectValueAnnota
                                         CsdlConstants::IsSerializedAsElementAnnotation
                                     ) ?? false
                             )
-                        )
-                        {
-                            if (
+                        ) {
+                if (
                                 EdmUtil::IsNullOrWhiteSpaceInternal($annotation->getNamespaceUri()) ||
                                 EdmUtil::IsNullOrWhiteSpaceInternal($annotation->getName())
-                            )
-                            {
-                                $context->AddError(
-                                    $annotation->Location(),
-                                    EdmErrorCode::InvalidElementAnnotation(),
-                                    StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationMismatchedTerm());
-                            }
-                        }
-                    }    }
+                            ) {
+                    $context->AddError(
+                        $annotation->Location(),
+                        EdmErrorCode::InvalidElementAnnotation(),
+                        StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationMismatchedTerm()
+                    );
+                }
+            }
+        }
+    }
 }

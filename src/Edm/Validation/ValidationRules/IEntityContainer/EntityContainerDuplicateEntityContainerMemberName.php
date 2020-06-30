@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityContainer;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\ValidationHelper;
@@ -21,64 +22,54 @@ use AlgoWeb\ODataMetadata\Structure\HashSetInternal;
  */
 class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $entityContainer)
     {
         assert($entityContainer instanceof IEntityContainer);
         $nonFunctionNameList = new HashSetInternal();
-        $functionDictionary = [];
-        foreach ($entityContainer->getElements() as $item)
-        {
-            if ($item instanceof IFunctionImport)
-            {
+        $functionDictionary  = [];
+        foreach ($entityContainer->getElements() as $item) {
+            if ($item instanceof IFunctionImport) {
                 $function = $item;
-                if ($nonFunctionNameList->contains($item->getName()))
-                {
+                if ($nonFunctionNameList->contains($item->getName())) {
                     $context->AddError(
                         $item->Location(),
                         EdmErrorCode::DuplicateEntityContainerMemberName(),
-                        StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName()));
+                        StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName())
+                    );
                 }
 
                 $functionList = null;
-                if (isset($functionDictionary[$function->getName()]))
-                {
+                if (isset($functionDictionary[$function->getName()])) {
                     $functionList = $functionDictionary[$function->getName()];
                     /**
                      * @var IFunctionImport $existingFunction
                      */
-                    foreach ($functionList as  $existingFunction)
-                    {
-                        if (EdmElementComparer::isFunctionSignatureEquivalentTo($function, $existingFunction))
-                        {
+                    foreach ($functionList as  $existingFunction) {
+                        if (EdmElementComparer::isFunctionSignatureEquivalentTo($function, $existingFunction)) {
                             $context->AddError(
                                 $item->Location(),
                                 EdmErrorCode::DuplicateEntityContainerMemberName(),
-                                StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName()));
+                                StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName())
+                            );
                             break;
                         }
                     }
-                }
-                else
-                {
+                } else {
                     $functionList = [];
                 }
 
-                $functionList[] = $function;
+                $functionList[]                           = $function;
                 $functionDictionary[$function->getName()] = $functionList;
-            }
-            else
-            {
+            } else {
                 if (ValidationHelper::AddMemberNameToHashSet(
                     $item,
                     $nonFunctionNameList,
                     $context,
                     EdmErrorCode::DuplicateEntityContainerMemberName(),
                     StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName()),
-                    false))
-                {
-                    if (isset($functionDictionary[$item->getName()]))
-                    {
+                    false
+                )) {
+                    if (isset($functionDictionary[$item->getName()])) {
                         $context->AddError(
                             $item->Location(),
                             EdmErrorCode::DuplicateEntityContainerMemberName(),
@@ -89,5 +80,4 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
             }
         }
     }
-
 }

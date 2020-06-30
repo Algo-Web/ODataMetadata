@@ -44,8 +44,7 @@ abstract class RegistrationHelper
         array $valueTermDictionary,
         array $functionGroupDictionary,
         array $containerDictionary
-    )
-    {
+    ) {
         $qualifiedName = $element->FullName();
         switch ($element->getSchemaElementKind()) {
             case SchemaElementKind::Function():

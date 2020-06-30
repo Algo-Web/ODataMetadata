@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
 
@@ -18,18 +20,14 @@ use AlgoWeb\ODataMetadata\Structure\HashSetInternal;
  */
 class NavigationPropertyDuplicateDependentProperty extends NavigationPropertyRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $navigationProperty)
     {
         assert($navigationProperty instanceof INavigationProperty);
         $dependentProperties = $navigationProperty->getDependentProperties();
-        if ($dependentProperties != null)
-        {
+        if ($dependentProperties != null) {
             $propertyNames = new HashSetInternal();
-            foreach ($navigationProperty->getDependentProperties() as $property)
-            {
-                if ($property != null)
-                {
+            foreach ($navigationProperty->getDependentProperties() as $property) {
+                if ($property != null) {
                     ValidationHelper::AddMemberNameToHashSet(
                         $property,
                         $propertyNames,
@@ -39,7 +37,8 @@ class NavigationPropertyDuplicateDependentProperty extends NavigationPropertyRul
                             $property->getName(),
                             $navigationProperty->getName()
                         ),
-                        false);
+                        false
+                    );
                 }
             }
         }

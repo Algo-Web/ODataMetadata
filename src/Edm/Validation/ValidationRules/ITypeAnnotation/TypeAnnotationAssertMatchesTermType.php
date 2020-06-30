@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\ITypeAnnotation;
 
@@ -19,7 +21,6 @@ use AlgoWeb\ODataMetadata\Structure\HashSetInternal;
  */
 class TypeAnnotationAssertMatchesTermType extends TypeAnnotationRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $annotation)
     {
         assert($annotation instanceof ITypeAnnotation);
@@ -28,11 +29,9 @@ class TypeAnnotationAssertMatchesTermType extends TypeAnnotationRule
 
         $foundProperties = new HashSetInternal();
 
-        foreach ($type->Properties() as  $typeProperty)
-        {
+        foreach ($type->Properties() as  $typeProperty) {
             $annotationProperty = $annotation->FindPropertyBinding($typeProperty);
-            if ($annotationProperty == null)
-            {
+            if ($annotationProperty == null) {
                 $context->AddRawError(
                     new EdmError(
                         $annotation->Location(),
@@ -42,23 +41,19 @@ class TypeAnnotationAssertMatchesTermType extends TypeAnnotationRule
                         )
                     )
                 );
-            }
-            else
-            {
+            } else {
                 $foundProperties->add($typeProperty);
             }
         }
 
-        if (!$type->isOpen())
-        {
-            foreach ($annotation->getPropertyValueBindings() as $property)
-            {
-                if (!$foundProperties.contains($property->getBoundProperty()) && !$context->checkIsBad($property))
-                {
+        if (!$type->isOpen()) {
+            foreach ($annotation->getPropertyValueBindings() as $property) {
+                if (!$foundProperties . contains($property->getBoundProperty()) && !$context->checkIsBad($property)) {
                     $context->AddError(
                         $property->Location(),
                         EdmErrorCode::TypeAnnotationHasExtraProperties(),
-                        StringConst::EdmModel_Validator_Semantic_TypeAnnotationHasExtraProperties($property->getBoundProperty()->getName()));
+                        StringConst::EdmModel_Validator_Semantic_TypeAnnotationHasExtraProperties($property->getBoundProperty()->getName())
+                    );
                 }
             }
         }

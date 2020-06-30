@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IComplexType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,16 +18,15 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class ComplexTypeInvalidAbstractComplexType extends ComplexTypeRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $complexType)
     {
         assert($complexType instanceof IComplexType);
-        if ($complexType->isAbstract())
-        {
+        if ($complexType->isAbstract()) {
             $context->AddError(
                 $complexType->Location(),
                 EdmErrorCode::InvalidAbstractComplexType(),
-                StringConst::EdmModel_Validator_Semantic_InvalidComplexTypeAbstract($complexType->FullName()));
+                StringConst::EdmModel_Validator_Semantic_InvalidComplexTypeAbstract($complexType->FullName())
+            );
         }
     }
 }

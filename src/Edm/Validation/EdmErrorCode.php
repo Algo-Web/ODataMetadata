@@ -710,7 +710,7 @@ class EdmErrorCode extends Enum
      */
     // protected const InconsistentProviderManifestToken = 173;
     /**
-     * // Duplicated Function overloads
+     * // Duplicated Function overloads.
      */
     // protected const DuplicatedFunctionoverloads = 174;
     /**

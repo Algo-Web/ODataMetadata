@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IPrimitiveTypeReference;
 
@@ -16,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class StreamTypeReferencesNotSupportedBeforeV3 extends PrimitiveTypeReferenceRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IPrimitiveTypeReference);
-        if ($type->IsStream())
-        {
+        if ($type->IsStream()) {
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::StreamTypeReferencesNotSupportedBeforeV3(),

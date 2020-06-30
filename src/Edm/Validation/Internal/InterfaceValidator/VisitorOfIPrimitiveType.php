@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
@@ -10,7 +11,6 @@ use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 
 class VisitorOfIPrimitiveType extends VisitorOfT
 {
-
     protected function VisitT($type, array &$followup, array &$references): iterable
     {
         assert($type instanceof IPrimitiveType);
@@ -21,12 +21,9 @@ class VisitorOfIPrimitiveType extends VisitorOfT
                 $type->getPrimitiveKind()->getValue() < PrimitiveTypeKind::None()->getValue() ||
                 $type->getPrimitiveKind()->getValue() > PrimitiveTypeKind::GeometryMultiPoint()->getValue()
             )
-        )
-        {
-            return [InterfaceValidator::CreateInterfaceKindValueUnexpectedError($type, $type->getPrimitiveKind()->getKey(), "PrimitiveKind") ];
-        }
-        else
-        {
+        ) {
+            return [InterfaceValidator::CreateInterfaceKindValueUnexpectedError($type, $type->getPrimitiveKind()->getKey(), 'PrimitiveKind') ];
+        } else {
             return null;
         }
     }

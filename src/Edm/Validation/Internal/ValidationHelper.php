@@ -213,9 +213,9 @@ abstract class ValidationHelper
     }
 
     /**
-     * @param string $fullName
-     * @param bool $checkEntityContainer
-     * @param IModel $referenced
+     * @param  string    $fullName
+     * @param  bool      $checkEntityContainer
+     * @param  IModel    $referenced
      * @return bool|null
      */
     protected static function checkItemReference(string $fullName, bool $checkEntityContainer, IModel $referenced): bool
@@ -228,10 +228,10 @@ abstract class ValidationHelper
     }
 
     /**
-     * @param IFunction $function
-     * @param string $functionFullName
-     * @param bool $checkEntityContainer
-     * @param IModel $referenced
+     * @param  IFunction $function
+     * @param  string    $functionFullName
+     * @param  bool      $checkEntityContainer
+     * @param  IModel    $referenced
      * @return bool|null
      */
     protected static function checkFunctionOrNameReference(

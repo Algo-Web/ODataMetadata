@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,16 +18,15 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class EntityTypeKeyMissingOnEntityType extends EntityTypeRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $entityType)
     {
-        assert( $entityType instanceof IEntityType);
-        if (($entityType->Key() == null || count($entityType->Key()) == 0) && $entityType->getBaseType() === null)
-        {
+        assert($entityType instanceof IEntityType);
+        if (($entityType->Key() == null || count($entityType->Key()) == 0) && $entityType->getBaseType() === null) {
             $context->AddError(
                 $entityType->Location(),
                 EdmErrorCode::KeyMissingOnEntityType(),
-                StringConst::EdmModel_Validator_Semantic_KeyMissingOnEntityType($entityType->getName()));
+                StringConst::EdmModel_Validator_Semantic_KeyMissingOnEntityType($entityType->getName())
+            );
         }
     }
 }

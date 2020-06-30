@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStringTypeReference;
 
@@ -16,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class StringTypeReferenceStringUnboundedNotValidForMaxLength extends StringTypeReferenceRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IStringTypeReference);
-        if ($type->getMaxLength() != null && $type->isUnbounded())
-        {
+        if ($type->getMaxLength() != null && $type->isUnbounded()) {
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::IsUnboundedCannotBeTrueWhileMaxLengthIsNotNull(),

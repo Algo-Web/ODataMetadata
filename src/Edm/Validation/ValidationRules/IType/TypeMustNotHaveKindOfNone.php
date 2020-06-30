@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,17 +18,15 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class TypeMustNotHaveKindOfNone extends TypeRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IType);
-        if ($type->getTypeKind()->isNone() && !$context->checkIsBad($type))
-        {
+        if ($type->getTypeKind()->isNone() && !$context->checkIsBad($type)) {
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::TypeMustNotHaveKindOfNone(),
-                StringConst::EdmModel_Validator_Semantic_TypeMustNotHaveKindOfNone());
+                StringConst::EdmModel_Validator_Semantic_TypeMustNotHaveKindOfNone()
+            );
         }
     }
-
 }

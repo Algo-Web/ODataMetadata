@@ -40,9 +40,8 @@ final class ValidationContext
      */
     public function __construct(IModel $model, callable $isBad)
     {
-
         assert(
-            Asserts::assertSignatureMatches(function(IEdmElement $one): bool{}, $isBad, '$isBad')
+            Asserts::assertSignatureMatches(function (IEdmElement $one): bool {}, $isBad, '$isBad')
         );
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(

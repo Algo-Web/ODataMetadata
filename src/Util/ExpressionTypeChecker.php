@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Util;
 
@@ -54,85 +56,85 @@ abstract class ExpressionTypeChecker
     private static function getPromotionMap(): array
     {
         return self::$promotionMap ?? self::$promotionMap = [
-                PrimitiveTypeKind::Byte()->getValue() => [
-                    PrimitiveTypeKind::Int16()->getValue() => true,
-                    PrimitiveTypeKind::Int32()->getValue() => true,
-                    PrimitiveTypeKind::Int64()->getValue() => true,
-                ],
-                PrimitiveTypeKind::SByte()->getValue() => [
-                    PrimitiveTypeKind::Int16()->getValue() => true,
-                    PrimitiveTypeKind::Int32()->getValue() => true,
-                    PrimitiveTypeKind::Int64()->getValue() => true,
-                ],
-                PrimitiveTypeKind::Int16()->getValue() => [
-                    PrimitiveTypeKind::Int32()->getValue() => true,
-                    PrimitiveTypeKind::Int64()->getValue() => true,
-                ],
-                PrimitiveTypeKind::Int32()->getValue() => [
-                    PrimitiveTypeKind::Int64()->getValue() => true,
-                ],
-                PrimitiveTypeKind::Single()->getValue() => [
-                    PrimitiveTypeKind::Double()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeographyCollection()->getValue() => [
-                    PrimitiveTypeKind::Geography()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeographyLineString()->getValue() => [
-                    PrimitiveTypeKind::Geography()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeographyMultiLineString()->getValue() => [
-                    PrimitiveTypeKind::Geography()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeographyMultiPoint()->getValue() => [
-                    PrimitiveTypeKind::Geography()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeographyMultiPolygon()->getValue() => [
-                    PrimitiveTypeKind::Geography()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeographyPoint()->getValue() => [
-                    PrimitiveTypeKind::Geography()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeographyPolygon()->getValue() => [
-                    PrimitiveTypeKind::Geography()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeometryCollection()->getValue() => [
-                    PrimitiveTypeKind::Geometry()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeometryLineString()->getValue() => [
-                    PrimitiveTypeKind::Geometry()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeometryMultiLineString()->getValue() => [
-                    PrimitiveTypeKind::Geometry()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeometryMultiPoint()->getValue() => [
-                    PrimitiveTypeKind::Geometry()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeometryMultiPolygon()->getValue() => [
-                    PrimitiveTypeKind::Geometry()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeometryPoint()->getValue() => [
-                    PrimitiveTypeKind::Geometry()->getValue() => true,
-                ],
-                PrimitiveTypeKind::GeometryPolygon()->getValue() => [
-                    PrimitiveTypeKind::Geometry()->getValue() => true,
-                ],
-            ];
+            PrimitiveTypeKind::Byte()->getValue() => [
+                PrimitiveTypeKind::Int16()->getValue() => true,
+                PrimitiveTypeKind::Int32()->getValue() => true,
+                PrimitiveTypeKind::Int64()->getValue() => true,
+            ],
+            PrimitiveTypeKind::SByte()->getValue() => [
+                PrimitiveTypeKind::Int16()->getValue() => true,
+                PrimitiveTypeKind::Int32()->getValue() => true,
+                PrimitiveTypeKind::Int64()->getValue() => true,
+            ],
+            PrimitiveTypeKind::Int16()->getValue() => [
+                PrimitiveTypeKind::Int32()->getValue() => true,
+                PrimitiveTypeKind::Int64()->getValue() => true,
+            ],
+            PrimitiveTypeKind::Int32()->getValue() => [
+                PrimitiveTypeKind::Int64()->getValue() => true,
+            ],
+            PrimitiveTypeKind::Single()->getValue() => [
+                PrimitiveTypeKind::Double()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeographyCollection()->getValue() => [
+                PrimitiveTypeKind::Geography()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeographyLineString()->getValue() => [
+                PrimitiveTypeKind::Geography()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeographyMultiLineString()->getValue() => [
+                PrimitiveTypeKind::Geography()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeographyMultiPoint()->getValue() => [
+                PrimitiveTypeKind::Geography()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeographyMultiPolygon()->getValue() => [
+                PrimitiveTypeKind::Geography()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeographyPoint()->getValue() => [
+                PrimitiveTypeKind::Geography()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeographyPolygon()->getValue() => [
+                PrimitiveTypeKind::Geography()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeometryCollection()->getValue() => [
+                PrimitiveTypeKind::Geometry()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeometryLineString()->getValue() => [
+                PrimitiveTypeKind::Geometry()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeometryMultiLineString()->getValue() => [
+                PrimitiveTypeKind::Geometry()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeometryMultiPoint()->getValue() => [
+                PrimitiveTypeKind::Geometry()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeometryMultiPolygon()->getValue() => [
+                PrimitiveTypeKind::Geometry()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeometryPoint()->getValue() => [
+                PrimitiveTypeKind::Geometry()->getValue() => true,
+            ],
+            PrimitiveTypeKind::GeometryPolygon()->getValue() => [
+                PrimitiveTypeKind::Geometry()->getValue() => true,
+            ],
+        ];
     }
 
     /**
-     * Determines if the type of an expression is compatible with the provided type
+     * Determines if the type of an expression is compatible with the provided type.
      *
      * If the expression has an associated type, this function will check that it matches the expected type and stop
      * looking further. If an expression claims a type, it must be validated that the type is valid for the expression.
      * If the expression does not claim a type this method will attempt to check the validity of the expression itself
      * with the asserted type.
      *
-     * @param IExpression|null $expression The expression to assert the type of.
-     * @param ITypeReference|null $type The type to assert the expression as.
-     * @param IType|null $context The context paths are to be evaluated in.
-     * @param bool $matchExactly Must the expression must match the asserted type exactly, or simply be compatible?
-     * @param iterable $discoveredErrors Errors produced if the expression does not match the specified type.
-     * @return bool A value indicating whether the expression is valid for the given type or not.
+     * @param  IExpression|null    $expression       the expression to assert the type of
+     * @param  ITypeReference|null $type             the type to assert the expression as
+     * @param  IType|null          $context          the context paths are to be evaluated in
+     * @param  bool                $matchExactly     Must the expression must match the asserted type exactly, or simply be compatible?
+     * @param  iterable            $discoveredErrors errors produced if the expression does not match the specified type
+     * @return bool                a value indicating whether the expression is valid for the given type or not
      */
     public static function tryAssertType(
         IExpression $expression = null,
@@ -141,7 +143,7 @@ abstract class ExpressionTypeChecker
         bool $matchExactly = false,
         iterable &$discoveredErrors = []
     ): bool {
-        EdmUtil::CheckArgumentNull($expression, "expression");
+        EdmUtil::CheckArgumentNull($expression, 'expression');
 
         // If we don't have a type to assert this passes vacuously.
         if (null === $type || $type->TypeKind()->isNone()) {
@@ -202,7 +204,7 @@ abstract class ExpressionTypeChecker
                 return self::TryAssertIfAsType($expression, $type, $context, $matchExactly, $discoveredErrors);
             case ExpressionKind::IsType():
                 $coreModel = EdmCoreModel::getInstance();
-                $boolean = $coreModel->GetBoolean(false);
+                $boolean   = $coreModel->GetBoolean(false);
                 return self::TestTypeReferenceMatch(
                     $boolean,
                     $type,
@@ -394,7 +396,7 @@ abstract class ExpressionTypeChecker
             }
 
             $resultProperty = $structuredResult->findProperty($segment);
-            $result = (null !== $resultProperty) ? $resultProperty->getType()->getDefinition() : null;
+            $result         = (null !== $resultProperty) ? $resultProperty->getType()->getDefinition() : null;
 
             // If the path is not resolved, it could refer to an open type, and we can't assert its type.
             if (null === $result) {
@@ -419,9 +421,9 @@ abstract class ExpressionTypeChecker
         bool $matchExactly,
         &$discoveredErrors
     ): bool {
-        $ifTrueErrors = [];
+        $ifTrueErrors  = [];
         $ifFalseErrors = [];
-        $success = self::TryAssertType($expression->getTrueExpression(), $type, $context, $matchExactly, $ifTrueErrors);
+        $success       = self::TryAssertType($expression->getTrueExpression(), $type, $context, $matchExactly, $ifTrueErrors);
         $success &= self::TryAssertType(
             $expression->getFalseExpression(),
             $type,
@@ -445,8 +447,8 @@ abstract class ExpressionTypeChecker
         bool $matchExactly,
         iterable &$discoveredErrors
     ): bool {
-        EdmUtil::CheckArgumentNull($expression, "expression");
-        EdmUtil::CheckArgumentNull($type, "type");
+        EdmUtil::CheckArgumentNull($expression, 'expression');
+        EdmUtil::CheckArgumentNull($type, 'type');
 
         if (!$type->IsStructured()) {
             $discoveredErrors = [
@@ -460,15 +462,15 @@ abstract class ExpressionTypeChecker
         }
 
         $foundProperties = new HashSetInternal();
-        $errors = [];
+        $errors          = [];
 
         $structuredType = $type->AsStructured();
-        $definition = $structuredType->getDefinition();
+        $definition     = $structuredType->getDefinition();
         assert($definition instanceof IStructuredType);
         foreach ($definition->Properties() as $typeProperty) {
             $expressionProperty = null;
-            foreach($expression->getProperties() as $p) {
-                if($p->getName() === $typeProperty->getName()) {
+            foreach ($expression->getProperties() as $p) {
+                if ($p->getName() === $typeProperty->getName()) {
                     $expressionProperty = $p;
                     break;
                 }
@@ -540,9 +542,9 @@ abstract class ExpressionTypeChecker
         }
 
         $collectionElementType = $type->AsCollection()->ElementType();
-        $success = true;
-        $errors = [];
-        $recursiveErrors = [];
+        $success               = true;
+        $errors                = [];
+        $recursiveErrors       = [];
         foreach ($expression->getElements() as $element) {
             $success &= self::TryAssertType(
                 $element,
@@ -907,7 +909,7 @@ abstract class ExpressionTypeChecker
 
             if ($expressionType->getTypeKind()->isPrimitive() && $assertedType->getTypeKind()->isPrimitive()) {
                 $primitiveExpressionType = $expressionType;
-                $primitiveAssertedType = $assertedType ;
+                $primitiveAssertedType   = $assertedType ;
                 assert($primitiveExpressionType instanceof IPrimitiveType);
                 assert($primitiveAssertedType instanceof IPrimitiveType);
                 if (!self::PromotesTo(

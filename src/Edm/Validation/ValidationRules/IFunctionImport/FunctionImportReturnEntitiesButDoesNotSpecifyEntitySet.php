@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
@@ -17,18 +19,15 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class FunctionImportReturnEntitiesButDoesNotSpecifyEntitySet extends FunctionImportRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        if ($functionImport->getReturnType() != null && $functionImport->getEntitySet() == null)
-        {
+        if ($functionImport->getReturnType() != null && $functionImport->getEntitySet() == null) {
             $elementType = $functionImport->getReturnType()->IsCollection() ?
                 $functionImport->getReturnType()->AsCollection()->ElementType()
                 :
                 $functionImport->getReturnType();
-            if ($elementType->IsEntity() && !$context->checkIsBad($elementType->getDefinition()))
-            {
+            if ($elementType->IsEntity() && !$context->checkIsBad($elementType->getDefinition())) {
                 $context->AddError(
                     $functionImport->Location(),
                     EdmErrorCode::FunctionImportReturnsEntitiesButDoesNotSpecifyEntitySet(),

@@ -43,7 +43,7 @@ class TypeReferenceHelpersTest extends TestCase
 
     public function testFullNameDefinitionISchemaElement()
     {
-        $row = IRowType::class;
+        $row    = IRowType::class;
         $schema = ISchemaElement::class;
 
         $def = m::mock($row . ', ' . $schema)->makePartial();
@@ -53,7 +53,7 @@ class TypeReferenceHelpersTest extends TestCase
         $foo = new EdmRowTypeReference($def, false);
 
         $expected = 'FullName';
-        $actual = $foo->FullName();
+        $actual   = $foo->FullName();
 
         $this->assertEquals($expected, $actual);
     }
@@ -64,7 +64,7 @@ class TypeReferenceHelpersTest extends TestCase
         $foo = new EdmRowTypeReference($def, false);
 
         $expected = PrimitiveTypeKind::None();
-        $actual = $foo->PrimitiveKind();
+        $actual   = $foo->PrimitiveKind();
 
         $this->assertEquals($expected, $actual);
     }
@@ -77,7 +77,7 @@ class TypeReferenceHelpersTest extends TestCase
         $foo = new EdmRowTypeReference($def, false);
 
         $expected = PrimitiveTypeKind::None();
-        $actual = $foo->PrimitiveKind();
+        $actual   = $foo->PrimitiveKind();
 
         $this->assertEquals($expected, $actual);
     }
@@ -91,14 +91,14 @@ class TypeReferenceHelpersTest extends TestCase
         $foo = new EdmRowTypeReference($def, false);
 
         $expected = PrimitiveTypeKind::Boolean();
-        $actual = $foo->PrimitiveKind();
+        $actual   = $foo->PrimitiveKind();
 
         $this->assertEquals($expected, $actual);
     }
 
     public function typeKindCheckProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = ['IsCollection'];
         $result[] = ['IsEntity'];
         $result[] = ['IsEntityReference'];
@@ -121,14 +121,14 @@ class TypeReferenceHelpersTest extends TestCase
         $foo = new EdmRowTypeReference(null, false);
 
         $expected = false;
-        $actual = $foo->{$function}();
+        $actual   = $foo->{$function}();
 
         $this->assertEquals($expected, $actual);
     }
 
     public function primitiveKindCheckProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = ['IsBinary'];
         $result[] = ['IsBoolean'];
         $result[] = ['IsTemporal'];
@@ -167,7 +167,7 @@ class TypeReferenceHelpersTest extends TestCase
         $foo = new EdmRowTypeReference(null, false);
 
         $expected = false;
-        $actual = $foo->{$function}();
+        $actual   = $foo->{$function}();
 
         $this->assertEquals($expected, $actual);
     }
@@ -181,9 +181,9 @@ class TypeReferenceHelpersTest extends TestCase
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
         /** @var EdmError $error */
-        $error = $errors[0];
+        $error    = $errors[0];
         $expected = 'The type \'UnnamedType\' could not be converted to be a \'Primitive\' type.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
         $this->assertEquals(230, $error->getErrorCode()->getValue());
     }
@@ -203,9 +203,9 @@ class TypeReferenceHelpersTest extends TestCase
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
         /** @var EdmError $error */
-        $error = $errors[0];
+        $error    = $errors[0];
         $expected = 'The type \'FullName\' could not be converted to be a \'Primitive\' type.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
         $this->assertEquals(230, $error->getErrorCode()->getValue());
     }
@@ -225,9 +225,9 @@ class TypeReferenceHelpersTest extends TestCase
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
         /** @var EdmError $error */
-        $error = $errors[0];
+        $error    = $errors[0];
         $expected = 'The type \'FullName\' could not be converted to be a \'Binary\' type.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
         $this->assertEquals(230, $error->getErrorCode()->getValue());
     }
@@ -247,9 +247,9 @@ class TypeReferenceHelpersTest extends TestCase
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
         /** @var EdmError $error */
-        $error = $errors[0];
+        $error    = $errors[0];
         $expected = 'The type \'FullName\' could not be converted to be a \'Decimal\' type.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
         $this->assertEquals(230, $error->getErrorCode()->getValue());
     }
@@ -269,16 +269,16 @@ class TypeReferenceHelpersTest extends TestCase
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
         /** @var EdmError $error */
-        $error = $errors[0];
+        $error    = $errors[0];
         $expected = 'The type \'FullName\' could not be converted to be a \'String\' type.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
         $this->assertEquals(230, $error->getErrorCode()->getValue());
     }
 
     public function asPrimitivePrimitiveTypeProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Boolean()];
         $result[] = [PrimitiveTypeKind::Byte()];
         $result[] = [PrimitiveTypeKind::Double()];
@@ -309,14 +309,14 @@ class TypeReferenceHelpersTest extends TestCase
 
         $actual = $foo->AsPrimitive();
         $this->assertTrue($actual instanceof EdmPrimitiveTypeReference);
-        $def = $actual->getDefinition();
+        $def  = $actual->getDefinition();
         $kind = $def->getPrimitiveKind();
         $this->assertEquals($type, $kind);
     }
 
     public function asPrimitiveSpatialTypeProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Geography()];
         $result[] = [PrimitiveTypeKind::GeographyPoint()];
         $result[] = [PrimitiveTypeKind::GeographyLineString()];
@@ -357,16 +357,16 @@ class TypeReferenceHelpersTest extends TestCase
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
         /** @var EdmError $error */
-        $error = $errors[0];
+        $error    = $errors[0];
         $expected = 'The type \'FullName\' could not be converted to be a \'Spatial\' type.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
         $this->assertEquals(230, $error->getErrorCode()->getValue());
     }
 
     public function asPrimitiveTemporalTypeProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Time()];
         $result[] = [PrimitiveTypeKind::DateTime()];
         $result[] = [PrimitiveTypeKind::DateTimeOffset()];
@@ -393,9 +393,9 @@ class TypeReferenceHelpersTest extends TestCase
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
         /** @var EdmError $error */
-        $error = $errors[0];
+        $error    = $errors[0];
         $expected = 'The type \'FullName\' could not be converted to be a \'Temporal\' type.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
         $this->assertEquals(230, $error->getErrorCode()->getValue());
     }

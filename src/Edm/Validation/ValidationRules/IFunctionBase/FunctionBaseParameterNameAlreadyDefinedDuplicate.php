@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionBase;
 
@@ -18,15 +20,12 @@ use AlgoWeb\ODataMetadata\Structure\HashSetInternal;
  */
 class FunctionBaseParameterNameAlreadyDefinedDuplicate extends FunctionBaseRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $edmFunction)
     {
         assert($edmFunction instanceof IFunctionBase);
         $parameterList = new HashSetInternal();
-        if ($edmFunction->getParameters() != null)
-        {
-            foreach ($edmFunction->getParameters() as  $parameter)
-            {
+        if ($edmFunction->getParameters() != null) {
+            foreach ($edmFunction->getParameters() as  $parameter) {
                 ValidationHelper::AddMemberNameToHashSet(
                     $parameter,
                     $parameterList,

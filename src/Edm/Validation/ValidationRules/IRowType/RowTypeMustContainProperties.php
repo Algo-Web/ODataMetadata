@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IRowType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class RowTypeMustContainProperties extends RowTypeRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $rowType)
     {
         assert($rowType instanceof IRowType);
-        if (count($rowType->Properties()) === 0)
-        {
+        if (count($rowType->Properties()) === 0) {
             $context->AddError(
                 $rowType->Location(),
                 EdmErrorCode::RowTypeMustHaveProperties(),

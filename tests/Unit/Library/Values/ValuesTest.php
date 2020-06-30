@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 24/06/20
- * Time: 2:28 AM
+ * Time: 2:28 AM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
@@ -32,7 +33,7 @@ class ValuesTest extends TestCase
     public function testCollectionValue()
     {
         $type = m::mock(ICollectionTypeReference::class)->makePartial();
-        $foo = new EdmCollectionValue($type, []);
+        $foo  = new EdmCollectionValue($type, []);
 
         $this->assertEquals(ValueKind::Collection(), $foo->getValueKind());
         $this->assertEquals([], $foo->getElements());
@@ -45,7 +46,7 @@ class ValuesTest extends TestCase
         $type = m::mock(IEnumTypeReference::class)->makePartial();
 
         $primVal = m::mock(IPrimitiveValue::class)->makePartial();
-        $value = m::mock(IEnumMember::class)->makePartial();
+        $value   = m::mock(IEnumMember::class)->makePartial();
         $value->shouldReceive('getValue')->andReturn($primVal);
 
         $foo = new EdmEnumValue($value, $type);
@@ -146,5 +147,4 @@ class ValuesTest extends TestCase
 
         new EdmNullExpression();
     }
-
 }

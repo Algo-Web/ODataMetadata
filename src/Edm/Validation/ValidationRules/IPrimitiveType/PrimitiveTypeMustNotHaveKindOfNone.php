@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IPrimitiveType;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,17 +18,15 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class PrimitiveTypeMustNotHaveKindOfNone extends PrimitiveTypeRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IPrimitiveType);
-        if ($type->getPrimitiveKind()->isNone() && !$context->checkIsBad($type))
-        {
+        if ($type->getPrimitiveKind()->isNone() && !$context->checkIsBad($type)) {
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::PrimitiveTypeMustNotHaveKindOfNone(),
-                StringConst::EdmModel_Validator_Semantic_PrimitiveTypeMustNotHaveKindOfNone($type->FullName()));
+                StringConst::EdmModel_Validator_Semantic_PrimitiveTypeMustNotHaveKindOfNone($type->FullName())
+            );
         }
     }
-
 }

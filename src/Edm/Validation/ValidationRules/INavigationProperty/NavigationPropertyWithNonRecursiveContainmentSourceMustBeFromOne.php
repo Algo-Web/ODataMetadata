@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -18,17 +19,17 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOne extends NavigationPropertyRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
         assert($property instanceof INavigationProperty);
         if ($property->containsTarget() &&
             !$property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType()) &&
-            !$property->Multiplicity()->isOne())
-        {
+            !$property->Multiplicity()->isOne()) {
             $context->AddError(
                 $property->Location(),
                 EdmErrorCode::NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOne(),
-                StringConst::EdmModel_Validator_Semantic_NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOne($property->getName()));
-        }    }
+                StringConst::EdmModel_Validator_Semantic_NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOne($property->getName())
+            );
+        }
+    }
 }

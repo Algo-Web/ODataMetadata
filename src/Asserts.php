@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata;
-
 
 use AlgoWeb\ODataMetadata\Exception\ArgumentException;
 use ReflectionException;
@@ -12,19 +13,19 @@ use ReflectionMethod;
 
 abstract class Asserts
 {
-    private static function performAsserts():bool
+    private static function performAsserts(): bool
     {
         return assert_options(ASSERT_ACTIVE) === 1;
     }
 
     public static function assertSignatureMatches(callable $expected, callable $actual, string $callablePropName): bool
     {
-        if(!self::performAsserts()){
+        if (!self::performAsserts()) {
             return true;
         }
         $expectedReflection = self::getReflection($expected);
-        $actualReflection = self::getReflection($actual);
-        $messageBuilder = function (string $messagePrefix = '') use ($callablePropName, $expectedReflection, $actualReflection): string{
+        $actualReflection   = self::getReflection($actual);
+        $messageBuilder     = function (string $messagePrefix = '') use ($callablePropName, $expectedReflection, $actualReflection): string {
             return sprintf(
                 '%s%s should be a callable with signature %s, however callable with signature %s provided',
                 empty($messagePrefix) ? $messagePrefix : trim($messagePrefix) . ' ',
@@ -37,7 +38,7 @@ abstract class Asserts
             $expectedReflection->getNumberOfRequiredParameters() ===  $actualReflection->getNumberOfRequiredParameters(),
             $messageBuilder('Incorrect Parameter Count')
         );
-        if($expectedReflection->hasReturnType()){
+        if ($expectedReflection->hasReturnType()) {
             assert(
                 $actualReflection->hasReturnType(),
                 $messageBuilder('Missing Return Type')
@@ -47,7 +48,7 @@ abstract class Asserts
                 $expectedReflection->getReturnType()->getName() === $actualReflection->getReturnType()->getName(),
                 $messageBuilder('IncorrectOrInvalid ReturnType')
             );
-            if(!$expectedReflection->getReturnType()->allowsNull()){
+            if (!$expectedReflection->getReturnType()->allowsNull()) {
                 assert(
                     !$actualReflection->getReturnType()->allowsNull(),
                     $messageBuilder('Nullable ReturnType Not allowed')
@@ -55,8 +56,8 @@ abstract class Asserts
             }
         }
 
-        for($i = 0; $i < $expectedReflection->getNumberOfParameters(); $i++){
-            if($expectedReflection->getParameters()[$i]->hasType()){
+        for ($i = 0; $i < $expectedReflection->getNumberOfParameters(); $i++) {
+            if ($expectedReflection->getParameters()[$i]->hasType()) {
                 assert(
                     $actualReflection->getParameters()[$i]->hasType(),
                     $messageBuilder(sprintf('Parameter %s Is missing TypeHint', $i))
@@ -66,7 +67,7 @@ abstract class Asserts
                     $expectedReflection->getParameters()[$i]->getType()->getName() === $actualReflection->getParameters()[$i]->getType()->getName(),
                     $messageBuilder(sprintf('Parameter %s has Incorrect Type', $i))
                 );
-                if(!$expectedReflection->getParameters()[$i]->allowsNull()){
+                if (!$expectedReflection->getParameters()[$i]->allowsNull()) {
                     assert(
                         !$actualReflection->getParameters()[$i]->allowsNull(),
                         $messageBuilder(sprintf('Parameter %s should disallow Nulls', $i))
@@ -80,15 +81,15 @@ abstract class Asserts
     private static function getSignatureFromReflection(ReflectionFunctionAbstract $reflection): string
     {
         $parameters = [];
-        foreach($reflection->getParameters() as $parameter) {
+        foreach ($reflection->getParameters() as $parameter) {
             $parameterString = '';
-            if($parameter->hasType()){
+            if ($parameter->hasType()) {
                 $parameterString .= $parameter->getType()->allowsNull() ? '?' : '';
                 $parameterString .=$parameter->getType()->getName() . ' ';
             }
             $parameterString .= $parameter->isVariadic() ? '...$' : '$';
             $parameterString .= $parameter->getName();
-            if($parameter->isOptional()){
+            if ($parameter->isOptional()) {
                 try {
                     $parameterString .= ' = ' . strval($parameter->getDefaultValue());
                 } catch (ReflectionException $e) {
@@ -97,7 +98,7 @@ abstract class Asserts
             $parameters[] = $parameterString;
         }
         $return = '';
-        if($reflection->hasReturnType()){
+        if ($reflection->hasReturnType()) {
             $return .= ': ' . $reflection->getReturnType()->getName();
         }
         return sprintf('function(%s)%s', implode(',', $parameters), $return);

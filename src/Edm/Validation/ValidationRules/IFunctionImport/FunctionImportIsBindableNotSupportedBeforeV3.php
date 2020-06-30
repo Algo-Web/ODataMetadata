@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
@@ -16,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class FunctionImportIsBindableNotSupportedBeforeV3 extends FunctionImportRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof  IFunctionImport);
-        if ($functionImport->isBindable() != CsdlConstants::Default_IsBindable)
-        {
+        if ($functionImport->isBindable() != CsdlConstants::Default_IsBindable) {
             $context->AddError(
                 $functionImport->Location(),
                 EdmErrorCode::FunctionImportBindableNotSupportedBeforeV3(),

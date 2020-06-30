@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IDecimalTypeReference;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
@@ -17,12 +18,10 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 class DecimalTypeReferenceScaleOutOfRange extends DecimalTypeReferenceRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IDecimalTypeReference);
-        if ($type->getScale() > $type->getPrecision() || $type->getScale() < 0)
-        {
+        if ($type->getScale() > $type->getPrecision() || $type->getScale() < 0) {
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::ScaleOutOfRange(),

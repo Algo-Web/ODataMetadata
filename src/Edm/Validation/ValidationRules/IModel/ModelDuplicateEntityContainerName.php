@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IModel;
-
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\ValidationHelper;
@@ -20,14 +21,12 @@ use AlgoWeb\ODataMetadata\Structure\HashSetInternal;
  */
 class ModelDuplicateEntityContainerName extends ModelRule
 {
-
     public function __invoke(ValidationContext $context, ?IEdmElement $model)
     {
         assert($model instanceof IModel);
         $entityContainerNameList = new HashSetInternal();
-        foreach ($model->getSchemaElements() as $item)
-        {
-            if(!$item instanceof IEntityContainer){
+        foreach ($model->getSchemaElements() as $item) {
+            if (!$item instanceof IEntityContainer) {
                 continue;
             }
             ValidationHelper::AddMemberNameToHashSet(

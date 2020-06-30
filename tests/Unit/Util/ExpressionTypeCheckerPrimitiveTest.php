@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 27/06/20
- * Time: 7:12 AM
+ * Time: 7:12 AM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Util;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
@@ -50,7 +51,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $expression = m::mock(IExpression::class);
 
         $expected = true;
-        $actual = ExpressionTypeChecker::tryAssertType($expression);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression);
         $this->assertEquals($expected, $actual);
     }
 
@@ -64,7 +65,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $errors = ['foo'];
 
         $expected = true;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(0, count($errors));
     }
@@ -90,11 +91,11 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
     /**
      * @dataProvider primitiveTypeProvider
      *
-     * @param ExpressionKind $kind
-     * @param ValueKind $value
-     * @param string $expressionType
-     * @param string $checkMethod
-     * @param string|null $asMethod
+     * @param ExpressionKind         $kind
+     * @param ValueKind              $value
+     * @param string                 $expressionType
+     * @param string                 $checkMethod
+     * @param string|null            $asMethod
      * @param PrimitiveTypeKind|null $primKind
      */
     public function testTryAssertTypeWithPrimitiveTypeDirectlyAsserted(
@@ -105,7 +106,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         string $asMethod = null,
         PrimitiveTypeKind $primKind = null
     ) {
-        $expression = m::mock(IExpression::class . ', '. IPrimitiveValue::class . ', ' . $expressionType);
+        $expression = m::mock(IExpression::class . ', ' . IPrimitiveValue::class . ', ' . $expressionType);
         $expression->shouldReceive('getExpressionKind')->andReturn($kind);
         $expression->shouldReceive('getType')->andReturn(null);
         $expression->shouldReceive('getValueKind')->andReturn($value);
@@ -138,7 +139,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $errors = ['foo'];
 
         $expected = true;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(0, count($errors));
     }
@@ -147,9 +148,9 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
      * @dataProvider primitiveTypeProvider
      *
      * @param ExpressionKind $kind
-     * @param ValueKind $value
-     * @param string $expressionType
-     * @param string $checkMethod
+     * @param ValueKind      $value
+     * @param string         $expressionType
+     * @param string         $checkMethod
      */
     public function testTryAssertTypeWithPrimitiveTypeDirectlyAssertedFailure(
         ExpressionKind $kind,
@@ -157,7 +158,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         string $expressionType,
         string $checkMethod
     ) {
-        $expression = m::mock(IExpression::class . ', '. IPrimitiveValue::class . ', ' . $expressionType);
+        $expression = m::mock(IExpression::class . ', ' . IPrimitiveValue::class . ', ' . $expressionType);
         $expression->shouldReceive('getExpressionKind')->andReturn($kind);
         $expression->shouldReceive('getType')->andReturn(null);
         $expression->shouldReceive('getValueKind')->andReturn($value);
@@ -171,7 +172,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $errors = [];
 
         $expected = false;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(1, count($errors));
     }
@@ -184,17 +185,17 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $type->shouldReceive('IsPrimitive')->andReturn(false)->once();
 
         $expected = false;
-        $errors = [];
+        $errors   = [];
 
         $expected = false;
-        $actual = ExpressionTypeChecker::TryAssertPrimitiveAsType($expression, $type, $errors);
+        $actual   = ExpressionTypeChecker::TryAssertPrimitiveAsType($expression, $type, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(1, count($errors));
         /** @var EdmError $error */
         $error = $errors[0];
 
         $expected = 'A primitive expression is incompatible with a non-primitive type.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
         $this->assertNull($error->getErrorLocation());
     }
@@ -208,17 +209,17 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $type->shouldReceive('IsPrimitive')->andReturn(true)->once();
 
         $expected = false;
-        $errors = [];
+        $errors   = [];
 
         $expected = false;
-        $actual = ExpressionTypeChecker::TryAssertPrimitiveAsType($expression, $type, $errors);
+        $actual   = ExpressionTypeChecker::TryAssertPrimitiveAsType($expression, $type, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(1, count($errors));
         /** @var EdmError $error */
         $error = $errors[0];
 
         $expected = 'The primitive expression is not compatible with the asserted type.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
         $this->assertNull($error->getErrorLocation());
     }
@@ -238,18 +239,18 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
      * @dataProvider stringConstantProvider
      *
      * @param string $value
-     * @param bool $expected
+     * @param bool   $expected
      */
     public function testTryAssertTypeStringTypeWithDifferentLengths(string $value, bool $expected)
     {
         $expressionType = IStringConstantExpression::class;
-        $kind = ExpressionKind::StringConstant();
-        $valueKind = ValueKind::String();
+        $kind           = ExpressionKind::StringConstant();
+        $valueKind      = ValueKind::String();
 
         $result = m::mock(IStringTypeReference::class);
         $result->shouldReceive('getMaxLength')->andReturn(2);
 
-        $expression = m::mock(IExpression::class . ', '. IPrimitiveValue::class . ', ' . $expressionType);
+        $expression = m::mock(IExpression::class . ', ' . IPrimitiveValue::class . ', ' . $expressionType);
         $expression->shouldReceive('getExpressionKind')->andReturn($kind);
         $expression->shouldReceive('getType')->andReturn(null);
         $expression->shouldReceive('getValueKind')->andReturn($valueKind);
@@ -284,18 +285,18 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
      * @dataProvider binaryConstantProvider
      *
      * @param array $value
-     * @param bool $expected
+     * @param bool  $expected
      */
     public function testTryAssertTypeBinaryTypeWithDifferentLengths(array $value, bool $expected)
     {
         $expressionType = IBinaryConstantExpression::class;
-        $kind = ExpressionKind::BinaryConstant();
-        $valueKind = ValueKind::Binary();
+        $kind           = ExpressionKind::BinaryConstant();
+        $valueKind      = ValueKind::Binary();
 
         $result = m::mock(IBinaryTypeReference::class);
         $result->shouldReceive('getMaxLength')->andReturn(2);
 
-        $expression = m::mock(IExpression::class . ', '. IPrimitiveValue::class . ', ' . $expressionType);
+        $expression = m::mock(IExpression::class . ', ' . IPrimitiveValue::class . ', ' . $expressionType);
         $expression->shouldReceive('getExpressionKind')->andReturn($kind);
         $expression->shouldReceive('getType')->andReturn(null);
         $expression->shouldReceive('getValueKind')->andReturn($valueKind);
@@ -317,7 +318,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
 
     public function integerConstantRangeProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [PrimitiveTypeKind::Int64(), -9223372036854775808, true];
         $result[] = [PrimitiveTypeKind::Int64(), -9223372036854775808 + 1, true];
         $result[] = [PrimitiveTypeKind::Int64(), 9223372036854775807 - 1, true];
@@ -361,10 +362,10 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
     public function testTryAssertTypeIntegerBoundaryRangeChecks(PrimitiveTypeKind $primKind, $value, bool $expected)
     {
         $expressionType = IIntegerConstantExpression::class;
-        $kind = ExpressionKind::IntegerConstant();
-        $valueKind = ValueKind::Integer();
+        $kind           = ExpressionKind::IntegerConstant();
+        $valueKind      = ValueKind::Integer();
 
-        $expression = m::mock(IExpression::class . ', '. IPrimitiveValue::class . ', ' . $expressionType);
+        $expression = m::mock(IExpression::class . ', ' . IPrimitiveValue::class . ', ' . $expressionType);
         $expression->shouldReceive('getExpressionKind')->andReturn($kind);
         $expression->shouldReceive('getType')->andReturn(null);
         $expression->shouldReceive('getValueKind')->andReturn($valueKind);
@@ -405,7 +406,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $errors = [];
 
         $expected = false;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(intval(!$expected), count($errors));
 
@@ -413,7 +414,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $error = $errors[0];
 
         $expected = 'Cannot assert the nullable type \'CheckType\' as a non-nullable type.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -442,7 +443,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $errors = [];
 
         $expected = true;
-        $actual = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertType($expression, $type, null, false, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(intval(!$expected), count($errors));
     }

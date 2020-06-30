@@ -69,9 +69,9 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
     /**
      * @dataProvider multiplicityProvider
      *
-     * @param Multiplicity $mult
-     * @param string $expected
-     * @param bool $kaboom
+     * @param  Multiplicity         $mult
+     * @param  string               $expected
+     * @param  bool                 $kaboom
      * @throws \ReflectionException
      */
     public function testMultiplicityAsXml(Multiplicity $mult, string $expected, bool $kaboom)
@@ -101,9 +101,9 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
     /**
      * @dataProvider funcParmProvider
      *
-     * @param FunctionParameterMode $mode
-     * @param string $expected
-     * @param bool $kaboom
+     * @param  FunctionParameterMode $mode
+     * @param  string                $expected
+     * @param  bool                  $kaboom
      * @throws \ReflectionException
      */
     public function testFunctionParameterModeAsXml(FunctionParameterMode $mode, string $expected, bool $kaboom)
@@ -132,9 +132,9 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
     /**
      * @dataProvider concurrencyModeProvider
      *
-     * @param ConcurrencyMode $mode
-     * @param string $expected
-     * @param bool $kaboom
+     * @param  ConcurrencyMode      $mode
+     * @param  string               $expected
+     * @param  bool                 $kaboom
      * @throws \ReflectionException
      */
     public function testConcurrencyModeAsXml(ConcurrencyMode $mode, string $expected, bool $kaboom)
@@ -153,18 +153,18 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
     {
         $result = [];
 
-        $result[] = [ExpressionKind::BinaryConstant(), [0xFF], '<?xml version="1.0"?>'.PHP_EOL.'<Test Binary="FF"/>'.PHP_EOL, false, IBinaryConstantExpression::class];
-        $result[] = [ExpressionKind::BooleanConstant(), true, '<?xml version="1.0"?>'.PHP_EOL.'<Test Bool="true"/>'.PHP_EOL, false, IBooleanConstantExpression::class];
-        $result[] = [ExpressionKind::DateTimeConstant(), new \DateTime('2000-01-01'), '<?xml version="1.0"?>'.PHP_EOL.'<Test DateTime="2000-01-01T00:00:00.000000000"/>'.PHP_EOL, false, IDateTimeConstantExpression::class];
-        $result[] = [ExpressionKind::DateTimeOffsetConstant(), new \DateTime('2000-01-02 01:02:03'), '<?xml version="1.0"?>'.PHP_EOL.'<Test DateTimeOffset="2000-01-02T01:02:03.000Z+00:00"/>'.PHP_EOL, false, IDateTimeOffsetConstantExpression::class];
-        $result[] = [ExpressionKind::DecimalConstant(), 0, '<?xml version="1.0"?>'.PHP_EOL.'<Test Decimal="0M"/>'.PHP_EOL, false, IDecimalConstantExpression::class];
-        $result[] = [ExpressionKind::FloatingConstant(), 0, '<?xml version="1.0"?>'.PHP_EOL.'<Test Float="0F"/>'.PHP_EOL, false, IFloatingConstantExpression::class];
-        $result[] = [ExpressionKind::GuidConstant(), '059d1a1e-11bc-4951-88f7-940cf1d1a66a', '<?xml version="1.0"?>'.PHP_EOL.'<Test Guid="059d1a1e-11bc-4951-88f7-940cf1d1a66a"/>'.PHP_EOL, false, IGuidConstantExpression::class];
-        $result[] = [ExpressionKind::IntegerConstant(), 0, '<?xml version="1.0"?>'.PHP_EOL.'<Test Int="0"/>'.PHP_EOL, false, IIntegerConstantExpression::class];
-        $result[] = [ExpressionKind::Path(), ['all', 'your', 'base', 'are', 'belong', 'to', 'us'], '<?xml version="1.0"?>'.PHP_EOL.'<Test Path="all/your/base/are/belong/to/us"/>'.PHP_EOL, false, IPathExpression::class];
-        $result[] = [ExpressionKind::StringConstant(), 'string', '<?xml version="1.0"?>'.PHP_EOL.'<Test String="string"/>'.PHP_EOL, false, IStringConstantExpression::class];
-        $result[] = [ExpressionKind::TimeConstant(), new \DateTime('2000-01-01 01:02:03'), '<?xml version="1.0"?>'.PHP_EOL.'<Test Time="01:02:03.000000"/>'.PHP_EOL, false, ITimeConstantExpression::class];
-        $result[] = [ExpressionKind::EntitySetReference(), null, '<?xml version="1.0" >'.PHP_EOL.'<Test/>'.PHP_EOL, true, IEntitySetReferenceExpression::class];
+        $result[] = [ExpressionKind::BinaryConstant(), [0xFF], '<?xml version="1.0"?>' . PHP_EOL . '<Test Binary="FF"/>' . PHP_EOL, false, IBinaryConstantExpression::class];
+        $result[] = [ExpressionKind::BooleanConstant(), true, '<?xml version="1.0"?>' . PHP_EOL . '<Test Bool="true"/>' . PHP_EOL, false, IBooleanConstantExpression::class];
+        $result[] = [ExpressionKind::DateTimeConstant(), new \DateTime('2000-01-01'), '<?xml version="1.0"?>' . PHP_EOL . '<Test DateTime="2000-01-01T00:00:00.000000000"/>' . PHP_EOL, false, IDateTimeConstantExpression::class];
+        $result[] = [ExpressionKind::DateTimeOffsetConstant(), new \DateTime('2000-01-02 01:02:03'), '<?xml version="1.0"?>' . PHP_EOL . '<Test DateTimeOffset="2000-01-02T01:02:03.000Z+00:00"/>' . PHP_EOL, false, IDateTimeOffsetConstantExpression::class];
+        $result[] = [ExpressionKind::DecimalConstant(), 0, '<?xml version="1.0"?>' . PHP_EOL . '<Test Decimal="0M"/>' . PHP_EOL, false, IDecimalConstantExpression::class];
+        $result[] = [ExpressionKind::FloatingConstant(), 0, '<?xml version="1.0"?>' . PHP_EOL . '<Test Float="0F"/>' . PHP_EOL, false, IFloatingConstantExpression::class];
+        $result[] = [ExpressionKind::GuidConstant(), '059d1a1e-11bc-4951-88f7-940cf1d1a66a', '<?xml version="1.0"?>' . PHP_EOL . '<Test Guid="059d1a1e-11bc-4951-88f7-940cf1d1a66a"/>' . PHP_EOL, false, IGuidConstantExpression::class];
+        $result[] = [ExpressionKind::IntegerConstant(), 0, '<?xml version="1.0"?>' . PHP_EOL . '<Test Int="0"/>' . PHP_EOL, false, IIntegerConstantExpression::class];
+        $result[] = [ExpressionKind::Path(), ['all', 'your', 'base', 'are', 'belong', 'to', 'us'], '<?xml version="1.0"?>' . PHP_EOL . '<Test Path="all/your/base/are/belong/to/us"/>' . PHP_EOL, false, IPathExpression::class];
+        $result[] = [ExpressionKind::StringConstant(), 'string', '<?xml version="1.0"?>' . PHP_EOL . '<Test String="string"/>' . PHP_EOL, false, IStringConstantExpression::class];
+        $result[] = [ExpressionKind::TimeConstant(), new \DateTime('2000-01-01 01:02:03'), '<?xml version="1.0"?>' . PHP_EOL . '<Test Time="01:02:03.000000"/>' . PHP_EOL, false, ITimeConstantExpression::class];
+        $result[] = [ExpressionKind::EntitySetReference(), null, '<?xml version="1.0" >' . PHP_EOL . '<Test/>' . PHP_EOL, true, IEntitySetReferenceExpression::class];
 
         return $result;
     }
@@ -175,13 +175,13 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      * @param ExpressionKind $kind
      * @param $payload
      * @param $expected
-     * @param bool $kaboom
+     * @param  bool                 $kaboom
      * @throws \ReflectionException
      */
     public function testWriteInlineExpression(ExpressionKind $kind, $payload, $expected, bool $kaboom, string $type)
     {
         $writer = $this->getWriter();
-        $foo = $this->getSchemaWriterWithMock($writer);
+        $foo    = $this->getSchemaWriterWithMock($writer);
 
         $expr = m::mock($type)->makePartial();
         $expr->shouldReceive('getExpressionKind')->andReturn($kind);
@@ -210,7 +210,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
     public function testWriteFunctionImportElementHeaderBothComposableAndSideEffecting()
     {
         $writer = $this->getWriter();
-        $foo = $this->getSchemaWriterWithMock($writer);
+        $foo    = $this->getSchemaWriterWithMock($writer);
 
         $import = m::mock(IFunctionImport::class)->makePartial();
         $import->shouldReceive('isComposable')->andReturn(true)->once();
@@ -226,11 +226,11 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
     public function functionImportElementHeaderProvider(): array
     {
-        $result = [];
-        $result[] = [false, false, IEntitySetReferenceExpression::class, false, '<?xml version="1.0"?>'.PHP_EOL.'<FunctionImport Name="functionName" ReturnType="fullName" IsSideEffecting="false" EntitySet="name"/>'.PHP_EOL];
-        $result[] = [false, true, IPathExpression::class, false, '<?xml version="1.0"?>'.PHP_EOL.'<FunctionImport Name="functionName" ReturnType="fullName" EntitySetPath="path"/>'.PHP_EOL];
+        $result   = [];
+        $result[] = [false, false, IEntitySetReferenceExpression::class, false, '<?xml version="1.0"?>' . PHP_EOL . '<FunctionImport Name="functionName" ReturnType="fullName" IsSideEffecting="false" EntitySet="name"/>' . PHP_EOL];
+        $result[] = [false, true, IPathExpression::class, false, '<?xml version="1.0"?>' . PHP_EOL . '<FunctionImport Name="functionName" ReturnType="fullName" EntitySetPath="path"/>' . PHP_EOL];
         $result[] = [true, false, IBinaryConstantExpression::class, true, ''];
-        $result[] = [false, true, null, false, '<?xml version="1.0"?>'.PHP_EOL.'<FunctionImport Name="functionName" ReturnType="fullName"/>'.PHP_EOL];
+        $result[] = [false, true, null, false, '<?xml version="1.0"?>' . PHP_EOL . '<FunctionImport Name="functionName" ReturnType="fullName"/>' . PHP_EOL];
 
         return $result;
     }
@@ -238,11 +238,11 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
     /**
      * @dataProvider functionImportElementHeaderProvider
      *
-     * @param bool $isComposable
-     * @param bool $isSideEffecting
-     * @param string|null $type
-     * @param bool $kaboom
-     * @param string $expected
+     * @param  bool                 $isComposable
+     * @param  bool                 $isSideEffecting
+     * @param  string|null          $type
+     * @param  bool                 $kaboom
+     * @param  string               $expected
      * @throws \ReflectionException
      */
     public function testWriteFunctionImportElementHeader(
@@ -253,7 +253,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         string $expected
     ) {
         $writer = $this->getWriter();
-        $foo = $this->getSchemaWriterWithMock($writer);
+        $foo    = $this->getSchemaWriterWithMock($writer);
 
         $entitySet = null;
         if (null !== $type) {
@@ -294,11 +294,11 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
     public function writeDocumentationElementProvider(): array
     {
-        $result = [];
-        $result[] = [null, null, '<?xml version="1.0"?>'.PHP_EOL.'<Documentation/>'.PHP_EOL];
-        $result[] = ['summary', null, '<?xml version="1.0"?>'.PHP_EOL.'<Documentation>'.PHP_EOL.'   <Summary><![CDATA[summary]]></Summary>'.PHP_EOL.'</Documentation>'.PHP_EOL];
-        $result[] = [null, 'description', '<?xml version="1.0"?>'.PHP_EOL.'<Documentation>'.PHP_EOL.'   <LongDescription><![CDATA[description]]></LongDescription>'.PHP_EOL.'</Documentation>'.PHP_EOL];
-        $result[] = ['summary', 'description', '<?xml version="1.0"?>'.PHP_EOL.'<Documentation>'.PHP_EOL.'   <Summary><![CDATA[summary]]></Summary>'.PHP_EOL.'   <LongDescription><![CDATA[description]]></LongDescription>'.PHP_EOL.'</Documentation>'.PHP_EOL];
+        $result   = [];
+        $result[] = [null, null, '<?xml version="1.0"?>' . PHP_EOL . '<Documentation/>' . PHP_EOL];
+        $result[] = ['summary', null, '<?xml version="1.0"?>' . PHP_EOL . '<Documentation>' . PHP_EOL . '   <Summary><![CDATA[summary]]></Summary>' . PHP_EOL . '</Documentation>' . PHP_EOL];
+        $result[] = [null, 'description', '<?xml version="1.0"?>' . PHP_EOL . '<Documentation>' . PHP_EOL . '   <LongDescription><![CDATA[description]]></LongDescription>' . PHP_EOL . '</Documentation>' . PHP_EOL];
+        $result[] = ['summary', 'description', '<?xml version="1.0"?>' . PHP_EOL . '<Documentation>' . PHP_EOL . '   <Summary><![CDATA[summary]]></Summary>' . PHP_EOL . '   <LongDescription><![CDATA[description]]></LongDescription>' . PHP_EOL . '</Documentation>' . PHP_EOL];
 
         return $result;
     }
@@ -308,12 +308,12 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      *
      * @param string|null $summary
      * @param string|null $description
-     * @param string $expected
+     * @param string      $expected
      */
     public function testWriteDocumentationElementProvider(?string $summary, ?string $description, string $expected)
     {
         $writer = $this->getWriter();
-        $foo = $this->getSchemaWriterWithMock($writer);
+        $foo    = $this->getSchemaWriterWithMock($writer);
 
         $doc = m::mock(IDocumentation::class)->makePartial();
         $doc->shouldReceive('getSummary')->andReturn($summary);
@@ -326,24 +326,24 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
     public function writeEnumMemberElementHeaderProvider(): array
     {
-        $result = [];
-        $result[] = [null, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name" Value="0"/>'.PHP_EOL, IIntegerValue::class];
-        $result[] = [false, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name"/>'.PHP_EOL, IBooleanValue::class];
-        $result[] = [true, '<?xml version="1.0"?>'.PHP_EOL.'<Member Name="name" Value="0"/>'.PHP_EOL, IIntegerValue::class];
+        $result   = [];
+        $result[] = [null, '<?xml version="1.0"?>' . PHP_EOL . '<Member Name="name" Value="0"/>' . PHP_EOL, IIntegerValue::class];
+        $result[] = [false, '<?xml version="1.0"?>' . PHP_EOL . '<Member Name="name"/>' . PHP_EOL, IBooleanValue::class];
+        $result[] = [true, '<?xml version="1.0"?>' . PHP_EOL . '<Member Name="name" Value="0"/>' . PHP_EOL, IIntegerValue::class];
         return $result;
     }
 
     /**
      * @dataProvider writeEnumMemberElementHeaderProvider
      *
-     * @param bool|null $explicit
-     * @param string $expected
+     * @param  bool|null            $explicit
+     * @param  string               $expected
      * @throws \ReflectionException
      */
     public function testWriteEnumMemberElementHeader(?bool $explicit, string $expected, string $type)
     {
         $writer = $this->getWriter();
-        $foo = $this->getSchemaWriterWithMock($writer);
+        $foo    = $this->getSchemaWriterWithMock($writer);
 
         $prim = m::mock($type)->makePartial();
         $prim->shouldReceive('getValueKind')->andReturn(ValueKind::Integer());
@@ -367,9 +367,9 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
     public function testWriteComplexTypeElementHeader()
     {
         $writer = $this->getWriter();
-        $foo = $this->getSchemaWriterWithMock($writer);
+        $foo    = $this->getSchemaWriterWithMock($writer);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<ComplexType Name="name"/>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<ComplexType Name="name"/>' . PHP_EOL;
 
         $complex = m::mock(IComplexType::class)->makePartial();
         $complex->shouldReceive('getName')->andReturn('name');
@@ -389,9 +389,9 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
     public function testWritePropertyRefElement()
     {
         $writer = $this->getWriter();
-        $foo = $this->getSchemaWriterWithMock($writer);
+        $foo    = $this->getSchemaWriterWithMock($writer);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<PropertyRef Name="name"/>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<PropertyRef Name="name"/>' . PHP_EOL;
 
         $prop = m::mock(IStructuralProperty::class);
         $prop->shouldReceive('getName')->andReturn('name');
@@ -405,11 +405,11 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
     public function writeValueTermElementHeaderProvider(): array
     {
-        $result = [];
-        $result[] = [false, null, '<?xml version="1.0"?>'.PHP_EOL.'<ValueTerm Name="name"/>'.PHP_EOL];
-        $result[] = [true, null, '<?xml version="1.0"?>'.PHP_EOL.'<ValueTerm Name="name"/>'.PHP_EOL];
-        $result[] = [false, ITypeReference::class, '<?xml version="1.0"?>'.PHP_EOL.'<ValueTerm Name="name"/>'.PHP_EOL];
-        $result[] = [true, ITypeReference::class, '<?xml version="1.0"?>'.PHP_EOL.'<ValueTerm Name="name" Type="fullName"/>'.PHP_EOL];
+        $result   = [];
+        $result[] = [false, null, '<?xml version="1.0"?>' . PHP_EOL . '<ValueTerm Name="name"/>' . PHP_EOL];
+        $result[] = [true, null, '<?xml version="1.0"?>' . PHP_EOL . '<ValueTerm Name="name"/>' . PHP_EOL];
+        $result[] = [false, ITypeReference::class, '<?xml version="1.0"?>' . PHP_EOL . '<ValueTerm Name="name"/>' . PHP_EOL];
+        $result[] = [true, ITypeReference::class, '<?xml version="1.0"?>' . PHP_EOL . '<ValueTerm Name="name" Type="fullName"/>' . PHP_EOL];
 
         return $result;
     }
@@ -419,13 +419,13 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      *
      * @param bool $isInline
      * @param $type
-     * @param string $expected
+     * @param  string               $expected
      * @throws \ReflectionException
      */
     public function testWriteValueTermElementHeader(bool $isInline, $type, string $expected)
     {
         $writer = $this->getWriter();
-        $foo = $this->getSchemaWriterWithMock($writer);
+        $foo    = $this->getSchemaWriterWithMock($writer);
 
         $typeRef = null;
         if ($type) {
@@ -451,11 +451,11 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
     public function writeEnumTypeElementHeaderProvider(): array
     {
-        $result = [];
-        $result[] = [PrimitiveTypeKind::Int32(), false, '<?xml version="1.0"?>'.PHP_EOL.'<EnumType Name="name"/>'.PHP_EOL];
-        $result[] = [PrimitiveTypeKind::Int64(), false, '<?xml version="1.0"?>'.PHP_EOL.'<EnumType Name="name" UnderlyingType="FullName"/>'.PHP_EOL];
-        $result[] = [PrimitiveTypeKind::Int32(), true, '<?xml version="1.0"?>'.PHP_EOL.'<EnumType Name="name" IsFlags="true"/>'.PHP_EOL];
-        $result[] = [PrimitiveTypeKind::Int64(), true, '<?xml version="1.0"?>'.PHP_EOL.'<EnumType Name="name" UnderlyingType="FullName" IsFlags="true"/>'.PHP_EOL];
+        $result   = [];
+        $result[] = [PrimitiveTypeKind::Int32(), false, '<?xml version="1.0"?>' . PHP_EOL . '<EnumType Name="name"/>' . PHP_EOL];
+        $result[] = [PrimitiveTypeKind::Int64(), false, '<?xml version="1.0"?>' . PHP_EOL . '<EnumType Name="name" UnderlyingType="FullName"/>' . PHP_EOL];
+        $result[] = [PrimitiveTypeKind::Int32(), true, '<?xml version="1.0"?>' . PHP_EOL . '<EnumType Name="name" IsFlags="true"/>' . PHP_EOL];
+        $result[] = [PrimitiveTypeKind::Int64(), true, '<?xml version="1.0"?>' . PHP_EOL . '<EnumType Name="name" UnderlyingType="FullName" IsFlags="true"/>' . PHP_EOL];
 
 
         return $result;
@@ -464,15 +464,15 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
     /**
      * @dataProvider writeEnumTypeElementHeaderProvider
      *
-     * @param PrimitiveTypeKind $type
-     * @param bool $isFlags
-     * @param string $expected
+     * @param  PrimitiveTypeKind    $type
+     * @param  bool                 $isFlags
+     * @param  string               $expected
      * @throws \ReflectionException
      */
     public function testWriteEnumTypeElementHeaderProvider(PrimitiveTypeKind $type, bool $isFlags, string $expected)
     {
         $writer = $this->getWriter();
-        $foo = $this->getSchemaWriterWithMock($writer);
+        $foo    = $this->getSchemaWriterWithMock($writer);
 
         $prim = m::mock(IPrimitiveType::class)->makePartial();
         $prim->shouldReceive('getPrimitiveKind')->andReturn($type);
@@ -492,9 +492,9 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
     public function testWriteDeclaredKeyPropertiesElementHeader()
     {
         $writer = $this->getWriter();
-        $foo = $this->getSchemaWriterWithMock($writer);
+        $foo    = $this->getSchemaWriterWithMock($writer);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<Key/>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Key/>' . PHP_EOL;
 
         $foo->WriteDeclaredKeyPropertiesElementHeader();
 
@@ -508,10 +508,10 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      */
     protected function getSchemaWriter(): EdmModelCsdlSchemaWriter
     {
-        $model = m::mock(IModel::class)->makePartial();
+        $model    = m::mock(IModel::class)->makePartial();
         $mappings = [];
-        $ver = Version::v3();
-        $writer = new \XMLWriter();
+        $ver      = Version::v3();
+        $writer   = new \XMLWriter();
 
         $foo = new EdmModelCsdlSchemaWriter($model, $mappings, $ver, $writer);
         return $foo;
@@ -522,9 +522,9 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
      */
     protected function getSchemaWriterWithMock(\XMLWriter $writer): EdmModelCsdlSchemaWriter
     {
-        $model = m::mock(IModel::class)->makePartial();
+        $model    = m::mock(IModel::class)->makePartial();
         $mappings = [];
-        $ver = Version::v3();
+        $ver      = Version::v3();
 
         $foo = new EdmModelCsdlSchemaWriter($model, $mappings, $ver, $writer);
         return $foo;

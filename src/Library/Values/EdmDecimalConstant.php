@@ -22,8 +22,8 @@ class EdmDecimalConstant extends EdmValue implements IDecimalConstantExpression
     /**
      * Initializes a new instance of the EdmBooleanConstant class.
      *
-     * @param float                        $value boolean value represented by this value
-     * @param IPrimitiveTypeReference      $type  type of the decimal
+     * @param float                   $value boolean value represented by this value
+     * @param IPrimitiveTypeReference $type  type of the decimal
      */
     public function __construct(float $value, IPrimitiveTypeReference $type)
     {

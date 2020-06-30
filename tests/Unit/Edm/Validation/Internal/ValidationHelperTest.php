@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: alex
  * Date: 22/06/20
- * Time: 1:36 PM
+ * Time: 1:36 PM.
  */
 
 declare(strict_types=1);
@@ -36,7 +36,7 @@ class ValidationHelperTest extends TestCase
 {
     public function namespaceProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [EdmConstants::TransientNamespace, true];
         $result[] = [EdmConstants::EdmNamespace, true];
         $result[] = ['foo', false];
@@ -47,7 +47,7 @@ class ValidationHelperTest extends TestCase
     /**
      * @dataProvider namespaceProvider
      * @param string $namespace
-     * @param bool $expected
+     * @param bool   $expected
      */
     public function testIsEdmSystemNamespace(string $namespace, bool $expected)
     {
@@ -74,10 +74,10 @@ class ValidationHelperTest extends TestCase
     /**
      * @dataProvider addMemberNameProvider
      *
-     * @param bool $isSchema
-     * @param bool $inArray
-     * @param bool $suppressError
-     * @param bool $expected
+     * @param  bool                 $isSchema
+     * @param  bool                 $inArray
+     * @param  bool                 $suppressError
+     * @param  bool                 $expected
      * @throws \ReflectionException
      */
     public function testAddMemberNameToHashSet(bool $isSchema, bool $inArray, bool $suppressError, bool $expected)
@@ -100,9 +100,9 @@ class ValidationHelperTest extends TestCase
             $memList = new HashSetInternal();
         }
 
-        $model = m::mock(IModel::class);
-        $context = new ValidationContext($model, function(IEdmElement $one): bool { return false; });
-        $code = EdmErrorCode::InvalidElementAnnotation();
+        $model   = m::mock(IModel::class);
+        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $code    = EdmErrorCode::InvalidElementAnnotation();
 
         $actual = ValidationHelper::AddMemberNameToHashSet($item, $memList, $context, $code, 'errString', $suppressError);
         $this->assertEquals($expected, $actual);
@@ -218,7 +218,7 @@ class ValidationHelperTest extends TestCase
         $prop2 = m::mock(IStructuralProperty::class)->makePartial();
         $prop2->shouldReceive('getType->getNullable')->andReturn(false);
 
-        $set = [$prop1, $prop2];
+        $set    = [$prop1, $prop2];
         $subset = [$prop2];
 
         $this->assertTrue(ValidationHelper::PropertySetIsSubset($set, $subset));
@@ -235,7 +235,7 @@ class ValidationHelperTest extends TestCase
         $prop3 = m::mock(IStructuralProperty::class)->makePartial();
         $prop3->shouldReceive('getType->getNullable')->andReturn(false);
 
-        $set = [$prop1, $prop2];
+        $set    = [$prop1, $prop2];
         $subset = [$prop2, $prop3];
 
         $this->assertFalse(ValidationHelper::PropertySetIsSubset($set, $subset));
@@ -288,10 +288,10 @@ class ValidationHelperTest extends TestCase
 
     public function isInterfaceCriticalProvider(): array
     {
-        $low = EdmErrorCode::InterfaceCriticalPropertyValueMustNotBeNull()->getValue();
+        $low  = EdmErrorCode::InterfaceCriticalPropertyValueMustNotBeNull()->getValue();
         $high = EdmErrorCode::InterfaceCriticalCycleInTypeHierarchy()->getValue();
 
-        $result = [];
+        $result   = [];
         $result[] = [$low - 1, false];
         $result[] = [$low, true];
         $result[] = [$low + 1, true];
@@ -305,13 +305,13 @@ class ValidationHelperTest extends TestCase
     /**
      * @dataProvider isInterfaceCriticalProvider
      *
-     * @param int $errorCode
+     * @param int  $errorCode
      * @param bool $expected
      */
     public function testIsInterfaceCritical(int $errorCode, bool $expected)
     {
         $error = m::mock(EdmError::class);
-        $error->shouldReceive("getErrorCode->getValue")->andReturn($errorCode);
+        $error->shouldReceive('getErrorCode->getValue')->andReturn($errorCode);
 
         $actual = ValidationHelper::IsInterfaceCritical($error);
         $this->assertEquals($expected, $actual);
@@ -347,10 +347,10 @@ class ValidationHelperTest extends TestCase
      *
      * @param string|null $declaredType
      * @param string|null $declaredValue
-     * @param bool $isEntityContainer
+     * @param bool        $isEntityContainer
      * @param string|null $declaredEC
-     * @param int|null $numFunc
-     * @param bool $expected
+     * @param int|null    $numFunc
+     * @param bool        $expected
      */
     public function testItemExistsInReferenceProvider(
         ?string $declaredType,
@@ -360,15 +360,15 @@ class ValidationHelperTest extends TestCase
         ?int $numFunc,
         bool $expected
     ) {
-        $decType = $declaredType ? m::mock(ISchemaType::class)->makePartial() : null;
-        $decVal = $declaredValue ? m::mock(IValueTerm::class)->makePartial() : null;
+        $decType      = $declaredType ? m::mock(ISchemaType::class)->makePartial() : null;
+        $decVal       = $declaredValue ? m::mock(IValueTerm::class)->makePartial() : null;
         $decContainer = $declaredEC ? m::mock(IEntityContainer::class)->makePartial() : null;
         switch ($numFunc) {
             case 0:
                 $decFun = [];
                 break;
             case 1:
-                $func = m::mock(IFunction::class)->makePartial();
+                $func   = m::mock(IFunction::class)->makePartial();
                 $decFun = [$func];
                 break;
             default:
@@ -419,10 +419,10 @@ class ValidationHelperTest extends TestCase
      *
      * @param string|null $declaredType
      * @param string|null $declaredValue
-     * @param bool $isEntityContainer
+     * @param bool        $isEntityContainer
      * @param string|null $declaredEC
-     * @param int|null $numFunc
-     * @param bool $expected
+     * @param int|null    $numFunc
+     * @param bool        $expected
      */
     public function testFunctionOrNameExistsInReferenceProvider(
         ?string $declaredType,
@@ -432,15 +432,15 @@ class ValidationHelperTest extends TestCase
         ?int $numFunc,
         bool $expected
     ) {
-        $decType = $declaredType ? m::mock(ISchemaType::class)->makePartial() : null;
-        $decVal = $declaredValue ? m::mock(IValueTerm::class)->makePartial() : null;
+        $decType      = $declaredType ? m::mock(ISchemaType::class)->makePartial() : null;
+        $decVal       = $declaredValue ? m::mock(IValueTerm::class)->makePartial() : null;
         $decContainer = $declaredEC ? m::mock(IEntityContainer::class)->makePartial() : null;
         switch ($numFunc) {
             case 0:
                 $decFun = [];
                 break;
             case 1:
-                $func = m::mock(IFunction::class)->makePartial();
+                $func   = m::mock(IFunction::class)->makePartial();
                 $decFun = [$func];
                 break;
             default:
@@ -474,11 +474,11 @@ class ValidationHelperTest extends TestCase
         $visited = new \SplObjectStorage();
 
         $expected = true;
-        $actual = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
+        $actual   = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
         $this->assertEquals($expected, $actual);
 
         $expected = false;
-        $actual = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
+        $actual   = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
         $this->assertEquals($expected, $actual);
     }
 
@@ -508,7 +508,7 @@ class ValidationHelperTest extends TestCase
         $visited = new \SplObjectStorage();
 
         $expected = true;
-        $actual = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
+        $actual   = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
         $this->assertEquals($expected, $actual);
     }
 
@@ -532,7 +532,7 @@ class ValidationHelperTest extends TestCase
         $visited = new \SplObjectStorage();
 
         $expected = true;
-        $actual = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
+        $actual   = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
         $this->assertEquals($expected, $actual);
     }
 }

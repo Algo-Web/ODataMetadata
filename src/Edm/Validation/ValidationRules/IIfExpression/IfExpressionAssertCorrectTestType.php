@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IIfExpression;
 
@@ -23,13 +25,12 @@ class IfExpressionAssertCorrectTestType extends IfExpressionRule
         $errors = null;
         if (!ExpressionTypeChecker::tryAssertType(
             $expression->getTestExpression(),
-            EdmCoreModel::getInstance()->GetBoolean(false), $errors))
-        {
-            foreach ($errors as $error)
-            {
+            EdmCoreModel::getInstance()->GetBoolean(false),
+            $errors
+        )) {
+            foreach ($errors as $error) {
                 $context->AddRawError($error);
             }
         }
     }
-
 }

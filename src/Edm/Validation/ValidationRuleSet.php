@@ -154,12 +154,12 @@ class ValidationRuleSet implements \IteratorAggregate
     /**
      * Gets the default validation ruleset for the given version.
      *
-     * @param Version $versionOrRuleset The EDM version being validated.
-     * @return ValidationRuleSet The set of rules to validate that the model conforms to the given version.
+     * @param  Version           $versionOrRuleset the EDM version being validated
+     * @return ValidationRuleSet the set of rules to validate that the model conforms to the given version
      */
     public static function getEdmModelRuleSet(Version $version): self
     {
-        switch ($version){
+        switch ($version) {
             case Version::v1():
                 return self::getV1RuleSet();
             case Version::v1_1():
@@ -172,11 +172,10 @@ class ValidationRuleSet implements \IteratorAggregate
                 return self::getV3RuleSet();
         }
         throw new InvalidOperationException(StringConst::Serializer_UnknownEdmVersion());
-
     }
 
     /**
-     * @param string $type the interfaces or class name for which we are seeking rules
+     * @param  string           $type the interfaces or class name for which we are seeking rules
      * @return ValidationRule[]
      */
     public function GetRules(string $type): array
@@ -184,13 +183,13 @@ class ValidationRuleSet implements \IteratorAggregate
         return $this->rules[$type] ?? [];
     }
 
-    private function AddRule(ValidationRule $rule):void
+    private function AddRule(ValidationRule $rule): void
     {
         $typeName = $rule->getValidatedType();
-        if(!isset($this->rules[$typeName])){
+        if (!isset($this->rules[$typeName])) {
             $this->rules[$typeName] = [];
         }
-        if(in_array($rule, $this->rules[$typeName])){
+        if (in_array($rule, $this->rules[$typeName])) {
             throw new InvalidOperationException(StringConst::RuleSet_DuplicateRulesExistInRuleSet());
         }
         $this->rules[$typeName][] = $rule;
@@ -295,8 +294,8 @@ class ValidationRuleSet implements \IteratorAggregate
         ]);
     }
 
-    private static function getV1RuleSet(): self{
-
+    private static function getV1RuleSet(): self
+    {
         return new self(
             self::getBaseRuleSet(),
             [
@@ -317,16 +316,18 @@ class ValidationRuleSet implements \IteratorAggregate
                 new StreamTypeReferencesNotSupportedBeforeV3(),
                 new SpatialTypeReferencesNotSupportedBeforeV3(),
                 new ModelDuplicateSchemaElementNameBeforeV3(),
-            ]);
+            ]
+        );
     }
 
-    private static function getV1_1RuleSet(): self{
+    private static function getV1_1RuleSet(): self
+    {
         $filteredBase = [];
-        foreach(self::getBaseRuleSet() as $baseRule){
-            if(
+        foreach (self::getBaseRuleSet() as $baseRule) {
+            if (
                 $baseRule instanceof ComplexTypeInvalidAbstractComplexType ||
                 $baseRule instanceof ComplexTypeInvalidPolymorphicComplexType
-            ){
+            ) {
                 continue;
             }
             $filteredBase[] = $baseRule;
@@ -357,11 +358,11 @@ class ValidationRuleSet implements \IteratorAggregate
     private static function getV1_2RuleSet(): self
     {
         $filteredBase = [];
-        foreach(self::getBaseRuleSet() as $baseRule){
-            if(
+        foreach (self::getBaseRuleSet() as $baseRule) {
+            if (
                 $baseRule instanceof ComplexTypeInvalidAbstractComplexType ||
                 $baseRule instanceof ComplexTypeInvalidPolymorphicComplexType
-            ){
+            ) {
                 continue;
             }
             $filteredBase[] = $baseRule;
@@ -388,7 +389,7 @@ class ValidationRuleSet implements \IteratorAggregate
         );
     }
 
-    private static function  getV2RuleSet(): self
+    private static function getV2RuleSet(): self
     {
         return new self(
             self::getBaseRuleSet(),
@@ -406,7 +407,8 @@ class ValidationRuleSet implements \IteratorAggregate
                 new StreamTypeReferencesNotSupportedBeforeV3(),
                 new SpatialTypeReferencesNotSupportedBeforeV3(),
                 new ModelDuplicateSchemaElementNameBeforeV3(),
-            ]);
+            ]
+        );
     }
 
     private static function getV3RuleSet(): self
@@ -420,19 +422,16 @@ class ValidationRuleSet implements \IteratorAggregate
         );
     }
     /**
-     * Retrieve an external iterator
+     * Retrieve an external iterator.
      * @return Traversable|ValidationRule An instance of an object implementing <b>Iterator</b> or
      */
     public function getIterator(): Traversable
     {
-        foreach ($this->rules as $ruleList)
-        {
-            foreach ($ruleList as $rule)
-            {
+        foreach ($this->rules as $ruleList) {
+            foreach ($ruleList as $rule) {
                 assert($rule instanceof ValidationRule);
                 yield $rule;
             }
         }
     }
 }
-

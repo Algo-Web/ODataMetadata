@@ -17,7 +17,6 @@ namespace AlgoWeb\ODataMetadata\Enums;
  * @method bool isStructural()
  * @method static Navigation(): self Represents a property implementing @see IEdmNavigationProperty
  * @method bool isNavigation()
-
  */
 class PropertyKind extends Enum
 {
