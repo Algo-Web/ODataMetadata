@@ -864,7 +864,7 @@ abstract class ExpressionTypeChecker
         if (!self::TestNullabilityMatch($expressionType, $assertedType, $location, $discoveredErrors)) {
             return false;
         }
-        dd($expressionType->getErrors());
+        //dd($expressionType->getErrors());
 
         // A bad type reference matches anything (so as to avoid generating spurious errors).
         if (0 !== count($expressionType->getErrors())) {
@@ -980,7 +980,7 @@ abstract class ExpressionTypeChecker
             (
                 isset($promotionMap[$startingKind->getValue()]) &&
                 isset($promotionMap[$startingKind->getValue()][$target->getValue()]) &&
-                $promotionMap[$startingKind->getValue()][$target->getValue()]
+                $promotionMap[$startingKind->geCreateInterfaceKindValueUnexpectedErrortValue()][$target->getValue()]
             );
     }
 }

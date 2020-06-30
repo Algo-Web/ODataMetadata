@@ -60,7 +60,7 @@ class VisitorOfITerm extends VisitorOfT
                 InterfaceValidator::CollectErrors(
                     InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
                         $term,
-                        $term->getTermKind(),
+                        $term->getTermKind()->getKey(),
                         "TermKind"
                     ),
                     $termKindError

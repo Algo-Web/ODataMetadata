@@ -327,7 +327,7 @@ class StringConst
     protected const EdmModel_Validator_Syntactic_EnumPropertyValueOutOfRange           = 'The property \'%s.%s\' of type \'%s\' has value \'%s\' that is not a valid enum member.';
     protected const EdmModel_Validator_Syntactic_InterfaceKindValueMismatch            = 'An object with the value \'%s\' of the \'%s.%s\' property must implement \'%s\' interface.';
     protected const EdmModel_Validator_Syntactic_TypeRefInterfaceTypeKindValueMismatch = 'An object implementing \'%s\' interface has type definition of kind \'%s\'. The type reference interface must match to the kind of the  definition.';
-    protected const EdmModel_Validator_Syntactic_InterfaceKindValueUnexpected          = 'The value \'%s\' of the property \'%s.%s\' is not semantically valid. A semantically valid model must not contain elements of kind \'%s\'.';
+    protected const EdmModel_Validator_Syntactic_InterfaceKindValueUnexpected          = 'The value \'%s\' of the property \'%s.%s\' is not semantically valid. A semantically valid model must not contain elements of kind \'%1$s\'.';
     protected const EdmModel_Validator_Syntactic_EnumerableMustNotHaveNullElements     = 'The value of the enumeration the property \'%s.%s\' contains a null element. Enumeration properties must not contain null elements.';
     protected const EdmModel_Validator_Syntactic_NavigationPartnerInvalid              = 'The partner of the navigation property \'%s\' must not be the same property, and must point back to the navigation property.';
     protected const EdmModel_Validator_Syntactic_InterfaceCriticalCycleInTypeHierarchy = 'The chain of base types of type \'%s\' is cyclic.';

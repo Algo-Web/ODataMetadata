@@ -55,7 +55,7 @@ final class VisitorOfIType extends VisitorOfT
                         break;
 
                     default:
-                        $typeKindError = InterfaceValidator::CreateInterfaceKindValueUnexpectedError($type, $type->getTypeKind(), "TypeKind");
+                        $typeKindError = InterfaceValidator::CreateInterfaceKindValueUnexpectedError($type, $type->getTypeKind()->getKey(), "TypeKind");
                         break;
                 }
 

@@ -51,7 +51,7 @@ class VisitorOfIProperty extends VisitorOfT
                 InterfaceValidator::CollectErrors(
                     InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
                         $property,
-                        $property->getPropertyKind(),
+                        $property->getPropertyKind()->getKey(),
                         "PropertyKind"
                     ),
                     $errors
