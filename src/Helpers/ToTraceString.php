@@ -166,7 +166,12 @@ abstract class ToTraceString
 
     private static function AppendSpatialFacets(string $sb, ISpatialTypeReference $type): string
     {
-        $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Srid, $type->getSpatialReferenceIdentifier() != null ? $type->getSpatialReferenceIdentifier(): EdmConstants::Value_SridVariable);
+        $sb = self::AppendKeyValue(
+            $sb,
+            EdmConstants::FacetName_Srid,
+            null !== $type->getSpatialReferenceIdentifier()
+                ? $type->getSpatialReferenceIdentifier(): EdmConstants::Value_SridVariable
+        );
         return $sb;
     }
 

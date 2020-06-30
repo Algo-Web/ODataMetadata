@@ -151,7 +151,7 @@ abstract class ExpressionTypeChecker
             return true;
         }
 
-        switch ($expression->getExpressionKind()) {
+        switch ($expression->/** @scrutinizer ignore-call */getExpressionKind()) {
             case ExpressionKind::IntegerConstant():
             case ExpressionKind::StringConstant():
             case ExpressionKind::BinaryConstant():
@@ -443,7 +443,7 @@ abstract class ExpressionTypeChecker
     public static function TryAssertRecordAsType(
         IRecordExpression $expression,
         ITypeReference $type,
-        IType $context,
+        ?IType $context,
         bool $matchExactly,
         iterable &$discoveredErrors
     ): bool {
