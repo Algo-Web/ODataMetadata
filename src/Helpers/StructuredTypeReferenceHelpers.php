@@ -33,7 +33,8 @@ trait StructuredTypeReferenceHelpers
      */
     public function IsAbstract(): bool
     {
-        return $this->StructuredDefinition()->isAbstract();
+        $def = $this->StructuredDefinition();
+        return $def ? $def->isAbstract() : false;
     }
 
     /**
@@ -43,17 +44,19 @@ trait StructuredTypeReferenceHelpers
      */
     public function IsOpen(): bool
     {
-        return $this->StructuredDefinition()->isOpen();
+        $def = $this->StructuredDefinition();
+        return $def ? $def->isOpen() : false;
     }
 
     /**
      * Returns the base type of the definition of this reference.
      *
-     * @return IStructuredType the base type of the definition of this reference
+     * @return IStructuredType|null the base type of the definition of this reference
      */
-    public function BaseType(): IStructuredType
+    public function BaseType(): ?IStructuredType
     {
-        return $this->StructuredDefinition()->getBaseType();
+        $def = $this->StructuredDefinition();
+        return $def ? $def->getBaseType() : null;
     }
 
     /**
@@ -63,7 +66,8 @@ trait StructuredTypeReferenceHelpers
      */
     public function DeclaredStructuralProperties(): array
     {
-        return $this->StructuredDefinition()->DeclaredStructuralProperties();
+        $def = $this->StructuredDefinition();
+        return $def ? $def->DeclaredStructuralProperties() : [];
     }
 
     /**
@@ -73,17 +77,19 @@ trait StructuredTypeReferenceHelpers
      */
     public function StructuralProperties(): array
     {
-        return $this->StructuredDefinition()->StructuralProperties();
+        $def = $this->StructuredDefinition();
+        return $def ? $def->StructuralProperties() : [];
     }
 
     /**
      * Finds a property from the definition of this reference.
      *
-     * @param  string    $name name of the property to find
-     * @return IProperty The requested property if it exists. Otherwise, null.
+     * @param  string         $name name of the property to find
+     * @return IProperty|null The requested property if it exists. Otherwise, null.
      */
-    public function FindProperty(string $name): IProperty
+    public function FindProperty(string $name): ?IProperty
     {
-        return $this->StructuredDefinition()->findProperty($name);
+        $def = $this->StructuredDefinition();
+        return $def ? $def->findProperty($name) : null;
     }
 }
