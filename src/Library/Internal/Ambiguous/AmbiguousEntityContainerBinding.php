@@ -15,7 +15,8 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 
 class AmbiguousEntityContainerBinding extends AmbiguousBinding implements IEntityContainer
 {
-    use SchemaElementHelpers, EntityContainerHelpers;
+    use SchemaElementHelpers;
+    use EntityContainerHelpers;
 
     private $namespaceName;
 

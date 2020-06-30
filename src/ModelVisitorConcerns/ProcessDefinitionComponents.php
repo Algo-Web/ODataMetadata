@@ -18,7 +18,7 @@ trait ProcessDefinitionComponents
 {
     protected function ProcessNavigationProperty(INavigationProperty $property): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($property, __METHOD__);
@@ -28,7 +28,7 @@ trait ProcessDefinitionComponents
 
     protected function ProcessStructuralProperty(IStructuralProperty $property): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($property, __METHOD__);
@@ -38,7 +38,7 @@ trait ProcessDefinitionComponents
 
     protected function ProcessProperty(IProperty $property): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($property, __METHOD__);
@@ -50,7 +50,7 @@ trait ProcessDefinitionComponents
 
     protected function ProcessEnumMember(IEnumMember $enumMember): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($enumMember, __METHOD__);

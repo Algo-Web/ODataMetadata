@@ -19,7 +19,7 @@ trait VisitFunctionRelated
      */
     public function VisitFunctionParameters(?array $parameters): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         self::VisitCollection($parameters, [$this, 'ProcessFunctionParameter']);

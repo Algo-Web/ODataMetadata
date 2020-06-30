@@ -20,7 +20,8 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
  */
 class EdmComplexType extends EdmStructuredType implements IComplexType
 {
-    use ComplexTypeHelpers, SchemaElementHelpers;
+    use ComplexTypeHelpers;
+    use SchemaElementHelpers;
     /**
      * @var string
      */

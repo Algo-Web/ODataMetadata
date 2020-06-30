@@ -1,7 +1,8 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
+declare(strict_types=1);
 
+namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
 
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
@@ -45,7 +46,7 @@ interface IEntityTypeHelpers
     /**
      * Checks whether the given entity type has the "property" as one of the key properties.
      *
-     * @param IProperty $property property to be searched for
+     * @param  IProperty $property property to be searched for
      * @return bool      `true` if the type or base types has given property declared as key. `false` otherwise.
      */
     public function HasDeclaredKeyProperty(IProperty $property): bool;

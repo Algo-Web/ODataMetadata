@@ -18,7 +18,8 @@ use AlgoWeb\ODataMetadata\Interfaces\IComplexTypeReference;
  */
 class EdmComplexTypeReference extends EdmTypeReference implements IComplexTypeReference
 {
-    use ComplexTypeReferenceHelpers, StructuredTypeReferenceHelpers;
+    use ComplexTypeReferenceHelpers;
+    use StructuredTypeReferenceHelpers;
 
     /**
      * Initializes a new instance of the EdmComplexTypeReference class.

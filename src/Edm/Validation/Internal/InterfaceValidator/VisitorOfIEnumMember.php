@@ -20,9 +20,9 @@ class VisitorOfIEnumMember extends VisitorOfT
         } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
-                            $member,
-                            'DeclaringType'
-                        ),
+                    $member,
+                    'DeclaringType'
+                ),
                 $errors
             );
         }
@@ -32,9 +32,9 @@ class VisitorOfIEnumMember extends VisitorOfT
         } else {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
-                            $member,
-                            'Value'
-                        ),
+                    $member,
+                    'Value'
+                ),
                 $errors
             );
         }

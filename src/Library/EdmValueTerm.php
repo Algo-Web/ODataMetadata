@@ -16,7 +16,8 @@ use AlgoWeb\ODataMetadata\Library\Core\EdmCoreModel;
 
 class EdmValueTerm extends EdmNamedElement implements IValueTerm
 {
-    use VocabularyAnnotatableHelpers, SchemaElementHelpers;
+    use VocabularyAnnotatableHelpers;
+    use SchemaElementHelpers;
 
     /**
      * @var string

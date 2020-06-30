@@ -39,7 +39,7 @@ trait ProcessExpressions
 {
     protected function processExpression(IExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -48,7 +48,7 @@ trait ProcessExpressions
 
     protected function processStringConstantExpression(IStringConstantExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -58,7 +58,7 @@ trait ProcessExpressions
 
     protected function processBinaryConstantExpression(IBinaryConstantExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -68,7 +68,7 @@ trait ProcessExpressions
 
     protected function processRecordExpression(IRecordExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -83,7 +83,7 @@ trait ProcessExpressions
 
     protected function processPropertyReferenceExpression(IPropertyReferenceExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -96,7 +96,7 @@ trait ProcessExpressions
 
     protected function processPathExpression(IPathExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -106,7 +106,7 @@ trait ProcessExpressions
 
     protected function processParameterReferenceExpression(IParameterReferenceExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -116,7 +116,7 @@ trait ProcessExpressions
 
     protected function processCollectionExpression(ICollectionExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -127,7 +127,7 @@ trait ProcessExpressions
 
     protected function processLabeledExpressionReferenceExpression(ILabeledExpressionReferenceExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -137,7 +137,7 @@ trait ProcessExpressions
 
     protected function processIsTypeExpression(IIsTypeExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -149,7 +149,7 @@ trait ProcessExpressions
 
     protected function processIntegerConstantExpression(IIntegerConstantExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -159,7 +159,7 @@ trait ProcessExpressions
 
     protected function processIfExpression(IIfExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -172,7 +172,7 @@ trait ProcessExpressions
 
     protected function processFunctionReferenceExpression(IFunctionReferenceExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -182,7 +182,7 @@ trait ProcessExpressions
 
     protected function processFunctionApplicationExpression(IApplyExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -194,7 +194,7 @@ trait ProcessExpressions
 
     protected function processFloatingConstantExpression(IFloatingConstantExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -204,7 +204,7 @@ trait ProcessExpressions
 
     protected function processGuidConstantExpression(IGuidConstantExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -214,7 +214,7 @@ trait ProcessExpressions
 
     protected function processEnumMemberReferenceExpression(IEnumMemberReferenceExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -224,7 +224,7 @@ trait ProcessExpressions
 
     protected function processEntitySetReferenceExpression(IEntitySetReferenceExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -234,7 +234,7 @@ trait ProcessExpressions
 
     protected function processDecimalConstantExpression(IDecimalConstantExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -244,7 +244,7 @@ trait ProcessExpressions
 
     protected function processDateTimeConstantExpression(IDateTimeConstantExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -254,7 +254,7 @@ trait ProcessExpressions
 
     protected function processDateTimeOffsetConstantExpression(IDateTimeOffsetConstantExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -264,7 +264,7 @@ trait ProcessExpressions
 
     protected function processTimeConstantExpression(ITimeConstantExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -274,7 +274,7 @@ trait ProcessExpressions
 
     protected function processBooleanConstantExpression(IBooleanConstantExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -284,7 +284,7 @@ trait ProcessExpressions
 
     protected function processAssertTypeExpression(IAssertTypeExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -296,7 +296,7 @@ trait ProcessExpressions
 
     protected function processLabeledExpression(ILabeledExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);
@@ -306,7 +306,7 @@ trait ProcessExpressions
 
     protected function processPropertyConstructor(IPropertyConstructor $constructor): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($constructor, __METHOD__);
@@ -316,7 +316,7 @@ trait ProcessExpressions
 
     protected function processNullConstantExpression(INullExpression $expression): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($expression, __METHOD__);

@@ -21,7 +21,8 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
  */
 class BadEntityContainer extends BadElement implements IEntityContainer
 {
-    use EntityContainerHelpers, SchemaElementHelpers;
+    use EntityContainerHelpers;
+    use SchemaElementHelpers;
 
     private $namespaceName;
     private $name;

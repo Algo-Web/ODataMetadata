@@ -1,7 +1,8 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
+declare(strict_types=1);
 
+namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
 
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
@@ -51,7 +52,7 @@ interface IEntityTypeReferenceHelpers
     /**
      * Finds a navigation property declared in the definition of this reference by name.
      *
-     * @param string $name name of the navigation property to find
+     * @param  string                   $name name of the navigation property to find
      * @return INavigationProperty|null The requested navigation property if it exists. Otherwise, null.
      */
     public function FindNavigationProperty(string $name): ?INavigationProperty;

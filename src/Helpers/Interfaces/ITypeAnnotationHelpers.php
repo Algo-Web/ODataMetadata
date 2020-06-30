@@ -1,7 +1,8 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
+declare(strict_types=1);
 
+namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
 
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IPropertyValueBinding;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
@@ -15,7 +16,7 @@ interface ITypeAnnotationHelpers
     /**
      * Gets the binding of a property of the type term of a type annotation.
      *
-     * @param IProperty|string $property property (Or Property Name) to search for
+     * @param  IProperty|string           $property property (Or Property Name) to search for
      * @return IPropertyValueBinding|null the binding of the property in the type annotation, or null if no binding exists
      */
     public function FindPropertyBinding($property): ?IPropertyValueBinding;

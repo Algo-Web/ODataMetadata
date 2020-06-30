@@ -28,7 +28,7 @@ trait VisitTypeDefinitions
 {
     public function VisitSchemaType(IType $definition): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         switch ($definition->getTypeKind()) {
@@ -59,7 +59,7 @@ trait VisitTypeDefinitions
      */
     public function VisitProperties(array $properties): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         self::VisitCollection($properties, [$this, 'VisitProperty']);
@@ -67,7 +67,7 @@ trait VisitTypeDefinitions
 
     public function VisitProperty(IProperty $property): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         switch ($property->getPropertyKind()) {
@@ -94,7 +94,7 @@ trait VisitTypeDefinitions
      */
     public function VisitEnumMembers(array $enumMembers): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         self::VisitCollection($enumMembers, [$this, 'VisitEnumMember']);
@@ -102,10 +102,9 @@ trait VisitTypeDefinitions
 
     public function VisitEnumMember(IEnumMember $enumMember): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->ProcessEnumMember($enumMember);
     }
-
 }

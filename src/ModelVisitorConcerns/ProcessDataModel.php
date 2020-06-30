@@ -16,7 +16,7 @@ trait ProcessDataModel
 {
     protected function ProcessEntityContainer(IEntityContainer $container): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($container, __METHOD__);
@@ -28,7 +28,7 @@ trait ProcessDataModel
 
     protected function ProcessEntityContainerElement(IEntityContainerElement $element): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($element, __METHOD__);
@@ -38,7 +38,7 @@ trait ProcessDataModel
 
     protected function ProcessEntitySet(IEntitySet $set): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->startElement($set, __METHOD__);

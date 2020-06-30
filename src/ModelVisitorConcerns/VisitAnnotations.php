@@ -27,7 +27,7 @@ trait VisitAnnotations
      */
     public function visitAnnotations(iterable $annotations): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         self::visitCollection($annotations, [$this,'visitAnnotation']);
@@ -38,14 +38,14 @@ trait VisitAnnotations
      */
     public function visitVocabularyAnnotations(array $annotations): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         self::visitCollection($annotations, [$this, 'visitVocabularyAnnotation']);
     }
     public function visitAnnotation(IDirectValueAnnotation $annotation): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         $this->processImmediateValueAnnotation($annotation);
@@ -53,7 +53,7 @@ trait VisitAnnotations
 
     public function visitVocabularyAnnotation(IVocabularyAnnotation $annotation): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         if ($annotation->getTerm() != null) {
@@ -82,10 +82,9 @@ trait VisitAnnotations
      */
     public function visitPropertyValueBindings(array $bindings): void
     {
-        /**
+        /*
          * @var EdmModelVisitor $this
          */
         self::visitCollection($bindings, [$this, 'processPropertyValueBinding']);
     }
-
 }

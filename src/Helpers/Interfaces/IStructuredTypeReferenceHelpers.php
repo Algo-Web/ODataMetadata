@@ -1,7 +1,8 @@
 <?php
 
-namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
+declare(strict_types=1);
 
+namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
 
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
@@ -58,7 +59,7 @@ interface IStructuredTypeReferenceHelpers
     /**
      * Finds a property from the definition of this reference.
      *
-     * @param string $name name of the property to find
+     * @param  string    $name name of the property to find
      * @return IProperty The requested property if it exists. Otherwise, null.
      */
     public function FindProperty(string $name): IProperty;
