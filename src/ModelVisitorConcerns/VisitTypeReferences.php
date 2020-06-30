@@ -9,30 +9,21 @@ use AlgoWeb\ODataMetadata\EdmModelVisitor;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
-use AlgoWeb\ODataMetadata\Interfaces\IBinaryTypeReference;
-use AlgoWeb\ODataMetadata\Interfaces\ICollectionTypeReference;
-use AlgoWeb\ODataMetadata\Interfaces\IComplexTypeReference;
-use AlgoWeb\ODataMetadata\Interfaces\IDecimalTypeReference;
-use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceTypeReference;
-use AlgoWeb\ODataMetadata\Interfaces\IEntityTypeReference;
-use AlgoWeb\ODataMetadata\Interfaces\IEnumTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
-use AlgoWeb\ODataMetadata\Interfaces\IRowTypeReference;
-use AlgoWeb\ODataMetadata\Interfaces\ISpatialTypeReference;
-use AlgoWeb\ODataMetadata\Interfaces\IStringTypeReference;
-use AlgoWeb\ODataMetadata\Interfaces\ITemporalTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\StringConst;
 
 /**
  * Trait VisitTypeReferences.
  * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
- * @mixin EdmModelVisitor
  */
 trait VisitTypeReferences
 {
     public function visitTypeReference(ITypeReference $reference): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         if (null === $reference->getDefinition()) {
             throw new InvalidOperationException(StringConst::UnknownEnumVal_TypeKind('null'));
         }
@@ -67,16 +58,12 @@ trait VisitTypeReferences
         }
     }
 
-    abstract public function processCollectionTypeReference(ICollectionTypeReference $reference): void;
-    abstract public function ProcessComplexTypeReference(IComplexTypeReference $reference): void;
-    abstract public function ProcessEntityTypeReference(IEntityTypeReference $reference): void;
-    abstract public function ProcessEntityReferenceTypeReference(IEntityReferenceTypeReference $reference): void;
-    abstract public function ProcessEnumTypeReference(IEnumTypeReference $reference): void;
-    abstract public function ProcessRowTypeReference(IRowTypeReference $reference): void;
-    abstract public function ProcessTypeReference(ITypeReference $reference): void;
 
     public function visitPrimitiveTypeReference(IPrimitiveTypeReference $reference): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         switch ($reference->PrimitiveKind()) {
             case PrimitiveTypeKind::Binary():
                 $this->processBinaryTypeReference($reference->AsBinary());
@@ -127,11 +114,4 @@ trait VisitTypeReferences
                 throw new InvalidOperationException(StringConst::UnknownEnumVal_PrimitiveKind($reference->PrimitiveKind()->getKey()));
         }
     }
-
-    abstract public function processBinaryTypeReference(IBinaryTypeReference $AsBinary): void;
-    abstract public function processDecimalTypeReference(IDecimalTypeReference $AsDecimal): void;
-    abstract public function processPrimitiveTypeReference(IPrimitiveTypeReference $reference): void;
-    abstract public function processSpatialTypeReference(ISpatialTypeReference $AsSpatial): void;
-    abstract public function processTemporalTypeReference(ITemporalTypeReference $AsTemporal): void;
-    abstract public function processStringTypeReference(IStringTypeReference $AsString): void;
 }

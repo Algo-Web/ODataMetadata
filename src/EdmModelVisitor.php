@@ -57,6 +57,9 @@ class EdmModelVisitor
         }
     }
 
+    /**
+     * @var IModel
+     */
     protected $model;
 
     public function __construct(IModel $model)

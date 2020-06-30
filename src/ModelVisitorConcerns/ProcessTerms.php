@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
 
+use AlgoWeb\ODataMetadata\EdmModelVisitor;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\Interfaces\ITerm;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
@@ -19,12 +20,12 @@ trait ProcessTerms
 
     protected function ProcessValueTerm(IValueTerm $term): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         $this->ProcessSchemaElement($term);
         $this->ProcessTerm($term);
         $this->VisitTypeReference($term->getType());
     }
 
-    abstract public function ProcessSchemaElement(ISchemaElement $term): void;
-
-    abstract public function VisitTypeReference(ITypeReference $getType): void;
 }

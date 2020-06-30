@@ -23,12 +23,14 @@ use AlgoWeb\ODataMetadata\StringConst;
 /**
  * Class VisitTypeDefinitions.
  * @package AlgoWeb\ODataMetadata\ModelVisitorConcerns
- * @mixin EdmModelVisitor
  */
 trait VisitTypeDefinitions
 {
     public function VisitSchemaType(IType $definition): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         switch ($definition->getTypeKind()) {
             case TypeKind::Complex():
                 assert($definition instanceof IComplexType);
@@ -52,22 +54,22 @@ trait VisitTypeDefinitions
         }
     }
 
-    abstract public function ProcessComplexType(IComplexType $definition): void;
-
-    abstract public function ProcessEntityType(IEntityType $definition): void;
-
-    abstract public function ProcessEnumType(IEnumType $definition): void;
-
     /**
      * @param IProperty[] $properties
      */
     public function VisitProperties(array $properties): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         self::VisitCollection($properties, [$this, 'VisitProperty']);
     }
 
     public function VisitProperty(IProperty $property): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         switch ($property->getPropertyKind()) {
             case PropertyKind::Navigation():
                 assert($property instanceof INavigationProperty);
@@ -86,24 +88,24 @@ trait VisitTypeDefinitions
         }
     }
 
-    abstract public function ProcessProperty(IProperty $property): void;
-
-    abstract public function ProcessNavigationProperty(INavigationProperty $property): void;
-
-    abstract public function ProcessStructuralProperty(IStructuralProperty $property): void;
 
     /**
      * @param IEnumMember[] $enumMembers
      */
     public function VisitEnumMembers(array $enumMembers): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         self::VisitCollection($enumMembers, [$this, 'VisitEnumMember']);
     }
 
     public function VisitEnumMember(IEnumMember $enumMember): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         $this->ProcessEnumMember($enumMember);
     }
 
-    abstract public function ProcessEnumMember(IEnumMember $enumMember): void;
 }

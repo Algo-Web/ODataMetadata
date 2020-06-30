@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
 
+use AlgoWeb\ODataMetadata\EdmModelVisitor;
 use AlgoWeb\ODataMetadata\Enums\ContainerElementKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainerElement;
@@ -19,6 +20,9 @@ trait VisitDataModel
      */
     public function visitEntityContainerElements(array $elements): void
     {
+        /**
+         * @var EdmModelVisitor $this
+         */
         foreach ($elements as $element) {
             switch ($element->getContainerElementKind()) {
                 case ContainerElementKind::EntitySet():
@@ -38,8 +42,4 @@ trait VisitDataModel
             }
         }
     }
-
-    abstract public function processEntityContainerElement(IEntityContainerElement $element): void;
-    abstract public function processFunctionImport(IFunctionImport $element): void;
-    abstract public function processEntitySet(IEntitySet $element): void;
 }
