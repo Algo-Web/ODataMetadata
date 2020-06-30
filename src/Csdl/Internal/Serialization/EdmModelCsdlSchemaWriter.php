@@ -498,7 +498,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
                 $this->WriteRequiredAttribute(CsdlConstants::Attribute_Time, $expression->getValue(), [EdmValueWriter::class, 'TimeAsXml']);
                 break;
             default:
-                assert(false, 'Attempted to inline an expression that was not one of the expected inlineable types.');
+                throw new InvalidOperationException(StringConst::UnknownEnumVal_ExpressionKind($expression->getExpressionKind()->getKey()));
                 break;
         }
     }
