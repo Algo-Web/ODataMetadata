@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Library;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
@@ -16,6 +17,7 @@ use AlgoWeb\ODataMetadata\Library\Core\EdmCoreModel;
 
 class EdmEnumType extends EdmType implements IEnumType
 {
+    use SchemaElementHelpers;
     /**
      * @var IPrimitiveType
      */

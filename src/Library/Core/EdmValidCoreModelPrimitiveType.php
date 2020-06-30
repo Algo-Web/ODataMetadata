@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Helpers\PrimitiveTypeHelpers;
 use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
+use AlgoWeb\ODataMetadata\Helpers\VocabularyAnnotatableHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmValidCoreModelElement;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Library\EdmType;
@@ -18,6 +19,7 @@ class EdmValidCoreModelPrimitiveType extends EdmType implements IPrimitiveType, 
 {
     use PrimitiveTypeHelpers;
     use SchemaElementHelpers;
+    use VocabularyAnnotatableHelpers;
     /**
      * @var string
      */

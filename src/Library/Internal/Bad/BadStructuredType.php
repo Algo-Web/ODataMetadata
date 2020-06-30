@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
+use AlgoWeb\ODataMetadata\Helpers\StructuredTypeHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\ICheckable;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
@@ -17,6 +18,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
  */
 abstract class BadStructuredType extends BadType implements IStructuredType, ICheckable
 {
+    use StructuredTypeHelpers;
     /**
      * BadStructuredType constructor.
      * @param EdmError[] $errors

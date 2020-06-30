@@ -8,10 +8,12 @@ namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 
 class BadNamedStructuredType extends BadStructuredType implements ISchemaElement
 {
+    use SchemaElementHelpers;
     /**
      * @var string
      */
