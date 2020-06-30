@@ -90,7 +90,8 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
         $type->shouldReceive('TypeKind->IsNone')->andReturn(false)->once();
         $type->shouldReceive('getNullable')->andReturn(false);
 
-        $context = m::mock(IType::class);
+        $context = m::mock(IStructuredType::class);
+        $context->shouldReceive('findProperty')->andReturn(null)->once();
 
         $errors = [];
         $expected = false;
