@@ -73,7 +73,8 @@ abstract class EdmValueWriter
     public static function BinaryAsXml(array $binary): string
     {
         $chars = [];
-        for ($i = 0; $i < count($binary); ++$i) {
+        $numElements = count($binary);
+        for ($i = 0; $i < $numElements; ++$i) {
             $chars[$i << 1]     = self::$Hex[$binary[$i] >> 4];
             $chars[$i << 1 | 1] = self::$Hex[$binary[$i] & 0x0F];
         }

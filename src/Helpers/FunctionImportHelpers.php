@@ -60,7 +60,8 @@ trait FunctionImportHelpers
         }
 
         $pathToResolve = $entitySetPath->getPath();
-        if (0 === count($pathToResolve)) {
+        $numSegments   = count($pathToResolve);
+        if (0 === $numSegments) {
             return false;
         }
 
@@ -70,7 +71,7 @@ trait FunctionImportHelpers
             return false;
         }
 
-        if (1 === count($pathToResolve)) {
+        if (1 === $numSegments) {
             $path = [];
             return true;
         } else {
@@ -84,7 +85,7 @@ trait FunctionImportHelpers
              * @var INavigationProperty[] $pathList
              */
             $pathList = [];
-            for ($i = 1; $i < count($pathToResolve); ++$i) {
+            for ($i = 1; $i < $numSegments; ++$i) {
                 $segment = $pathToResolve[$i];
                 if (EdmUtil::IsQualifiedName($segment)) {
                     if ($i == count($pathToResolve) - 1) {
