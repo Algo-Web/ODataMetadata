@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 use AlgoWeb\ODataMetadata\Helpers\Interfaces\IValueAnnotationHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IValueAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
+use AlgoWeb\ODataMetadata\Interfaces\ITerm;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 /**
@@ -28,6 +29,5 @@ trait ValueAnnotationHelpers
         return $term;
     }
 
-    abstract public function getValue(): IExpression;
-
+    abstract public function getTerm(): ITerm;
 }

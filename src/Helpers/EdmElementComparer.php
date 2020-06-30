@@ -76,7 +76,7 @@ abstract class EdmElementComparer
             return false;
         }
 
-        if ($thisType->getTypeKind() != $otherType->getTypeKind()) {
+        if (!$thisType->getTypeKind()->equals($otherType->getTypeKind())) {
             return false;
         }
 
