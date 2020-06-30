@@ -18,7 +18,7 @@ final class VisitorOfISchemaElement extends VisitorOfT
     protected function VisitT($item, array &$followup, array &$references): iterable
     {
         assert($item instanceof ISchemaElement);
-        $errors =[];
+        $errors = [];
 
         switch ($item->getSchemaElementKind()) {
                     case SchemaElementKind::TypeDefinition():
@@ -84,7 +84,7 @@ final class VisitorOfISchemaElement extends VisitorOfT
                         break;
                 }
 
-        if ($item->getNamespace() == null) {
+        if (null === $item->getNamespace()) {
             InterfaceValidator::CollectErrors(
                 InterfaceValidator::CreatePropertyMustNotBeNullError(
                     $item,
@@ -94,7 +94,7 @@ final class VisitorOfISchemaElement extends VisitorOfT
             );
         }
 
-        return $errors;
+        return $errors ?? [];
     }
 
     public function forType(): string

@@ -11,12 +11,13 @@ use AlgoWeb\ODataMetadata\Interfaces\ISpatialTypeReference;
 
 class VisitorOfISpatialTypeReference extends VisitorOfT
 {
-    protected function VisitT($typeRef, array &$followup, array &$references): iterable
+    protected function VisitT($typeRef, array &$followup, array &$references): ?iterable
     {
         assert($typeRef instanceof ISpatialTypeReference);
         $primitive = $typeRef->getDefinition();
         assert($primitive instanceof IPrimitiveType);
-        return $typeRef->getDefinition() != null && !$primitive->getPrimitiveKind()->IsSpatial() ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
+        return null !== $typeRef->getDefinition() && !$primitive->getPrimitiveKind()->IsSpatial()
+            ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
     }
 
     public function forType(): string

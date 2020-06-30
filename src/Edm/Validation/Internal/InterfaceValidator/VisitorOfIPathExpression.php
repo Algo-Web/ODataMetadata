@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
 
 class VisitorOfIPathExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IPathExpression);
         $errors = null;

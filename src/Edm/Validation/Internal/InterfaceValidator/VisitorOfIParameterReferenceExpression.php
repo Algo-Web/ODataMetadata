@@ -13,7 +13,7 @@ class VisitorOfIParameterReferenceExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): iterable
     {
         assert($expression instanceof IParameterReferenceExpression);
-        if ($expression->getReferencedParameter() != null) {
+        if (null !== $expression->getReferencedParameter()) {
             $references[] = $expression->getReferencedParameter();
             return null;
         } else {

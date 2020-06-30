@@ -11,7 +11,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 
 class VisitorOfIStructuralProperty extends VisitorOfT
 {
-    protected function VisitT($property, array &$followup, array &$references): iterable
+    protected function VisitT($property, array &$followup, array &$references): ?iterable
     {
         assert($property instanceof IStructuralProperty);
         if ($property->getConcurrencyMode()->getValue() < ConcurrencyMode::None()->getValue() ||

@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IModel;
 
 final class VisitorOfIModel extends VisitorOfT
 {
-    protected function VisitT($item, array &$followup, array &$references): iterable
+    protected function VisitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IModel);
         $errors = null;
