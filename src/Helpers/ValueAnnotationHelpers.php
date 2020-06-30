@@ -5,13 +5,13 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IValueAnnotationHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IValueAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 /**
  * Trait ValueAnnotationHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
- * @mixin IValueAnnotation
  */
 trait ValueAnnotationHelpers
 {

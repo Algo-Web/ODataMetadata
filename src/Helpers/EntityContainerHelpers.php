@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
-use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainerElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
@@ -13,7 +12,6 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 /**
  * Trait EntityContainerHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
- * @mixin IEntityContainer
  */
 trait EntityContainerHelpers
 {

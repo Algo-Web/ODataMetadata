@@ -6,13 +6,11 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
-use AlgoWeb\ODataMetadata\Interfaces\ICollectionTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 /**
  * Trait CollectionTypeReferenceHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
- * @mixin ICollectionTypeReference
  */
 trait CollectionTypeReferenceHelpers
 {

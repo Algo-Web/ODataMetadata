@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\ITypeAnnotationHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IPropertyValueBinding;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\ITypeAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
@@ -12,7 +13,6 @@ use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 /**
  * Trait TypeAnnotationHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers
- * @mixin ITypeAnnotation
  */
 trait TypeAnnotationHelpers
 {
