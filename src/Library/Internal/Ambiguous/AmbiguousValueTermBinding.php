@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Enums\TermKind;
+use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadType;
@@ -14,6 +15,8 @@ use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadTypeReference;
 
 class AmbiguousValueTermBinding extends AmbiguousBinding implements IValueTerm
 {
+    use SchemaElementHelpers;
+
     /**
      * @var IValueTerm
      */
