@@ -4,38 +4,70 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Tests\MetadataV3\Edmx;
 
-use AlgoWeb\ODataMetadata\MetadataV3\Edm\Schema;
-use AlgoWeb\ODataMetadata\MetadataV3\Edmx\Edmx;
-use AlgoWeb\ODataMetadata\OdataVersions;
-use AlgoWeb\ODataMetadata\Tests\MetadataV3\Edm\EntityContainerTest;
+use AlgoWeb\ODataMetadata\Csdl\EdmxWriter;
+use AlgoWeb\ODataMetadata\Library\EdmEntityContainer;
+use AlgoWeb\ODataMetadata\Library\EdmEntitySet;
+use AlgoWeb\ODataMetadata\Library\EdmEntityType;
+use AlgoWeb\ODataMetadata\Library\EdmModel;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
-use AlgoWeb\ODataMetadata\Writer\WriterContext;
 
 class EdmxTest extends TestCase
 {
     public function testEdmxTestXmlSerialize()
     {
-        $writterContext =  new WriterContext(OdataVersions::THREE());
-
-        $edmx    = new Edmx();
-        $domNode = $writterContext->write($edmx);
-        $writterContext->getBaseDocument()->appendChild($domNode);
-        $xml = $writterContext->getBaseDocument()->saveXML($domNode);
-        $this->assertXmlStringEqualsXmlString('<edmx:Edmx xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:annotations="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:metadata="http://schemas.microsoft.com/ado/2007/08/DataServices/Metadata" Version="1.0"><edmx:DataServices metadata:DataServiceVersion="3.0"><Schema /></edmx:DataServices></edmx:Edmx>', $xml);
+        $model      = new EdmModel();
+        $xmlWritter = new \XMLWriter();
+        $this->assertTrue(EdmxWriter::TryWriteEdmx($model, $xmlWritter));
+        $expected = '<edmx:Edmx xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:annotations="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx" xmlns:metadata="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="3.0">
+<edmx:DataServices metadata:DataServiceVersion="3.0"/> </edmx:Edmx>
+';
+        $this->assertXmlStringEqualsXmlString($expected, $xmlWritter->outputMemory(true));
     }
 
     public function testEdmxSerializePartialSchema()
     {
-        $writterContext =  new WriterContext(OdataVersions::THREE());
-        $edmx           = new Edmx();
-        $schema         = new Schema('ODataWebV3.Northwind.Model');
-        $edmx->addToDataServices($schema);
-        $schema->addToEntityContainer(EntityContainerTest::getEntityContainer());
-        $domNode = $writterContext->write($edmx);
-        $writterContext->getBaseDocument()->appendChild($domNode);
-        $xml = $writterContext->getBaseDocument()->saveXML($domNode);
+        $entitySetarray = [
+            ['Categories','Category'],
+            ['CustomerDemographics','CustomerDemographic'],
+            ['Customers','Customer'],
+            ['Employees','Employee'],
+            ['Order_Details','Order_Detail'],
+            ['Orders','Order'],
+            ['Products','Product'],
+            ['Regions','Region'],
+            ['Shippers','Shipper'],
+            ['Suppliers','Supplier'],
+            ['Territories','Territory'],
+            ['Alphabetical_list_of_products','Alphabetical_list_of_product'],
+            ['Category_Sales_for_1997','Category_Sales_for_1997'],
+            ['Current_Product_Lists','Current_Product_List'],
+            ['Customer_and_Suppliers_by_Cities','Customer_and_Suppliers_by_City'],
+            ['Invoices','Invoice'],
+            ['Order_Details_Extendeds','Order_Details_Extended'],
+            ['Order_Subtotals','Order_Subtotal'],
+            ['Orders_Qries','Orders_Qry'],
+            ['Product_Sales_for_1997','Product_Sales_for_1997'],
+            ['Products_Above_Average_Prices','Products_Above_Average_Price'],
+            ['Products_by_Categories','Products_by_Category'],
+            ['Sales_by_Categories','Sales_by_Category'],
+            ['Sales_Totals_by_Amounts','Sales_Totals_by_Amount'],
+            ['Summary_of_Sales_by_Quarters','Summary_of_Sales_by_Quarter'],
+            ['Summary_of_Sales_by_Years','Summary_of_Sales_by_Year'],
+        ];
+
+        $model           = new EdmModel();
+        $entityContainer = new EdmEntityContainer('ODataWebV3.Northwind.Model', 'NorthwindEntities', true, true);
+
+        foreach ($entitySetarray as $es) {
+            $entityType = new EdmEntityType('NorthwindModel', $es[1]);
+            $entityContainer->AddEntitySet($es[0], $entityType);
+        }
+        $model->AddElement($entityContainer);
+        $xmlWritter = new \XMLWriter();
+        $this->assertTrue(EdmxWriter::TryWriteEdmx($model, $xmlWritter));
+
         $this->assertXmlStringEqualsXmlString('
-<edmx:Edmx xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:annotations="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:metadata="http://schemas.microsoft.com/ado/2007/08/DataServices/Metadata" Version="1.0">
+<edmx:Edmx xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:annotations="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx" xmlns:metadata="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="3.0">
   <edmx:DataServices metadata:DataServiceVersion="3.0">
    <Schema Namespace="ODataWebV3.Northwind.Model">
 <EntityContainer xmlns:annotations="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Name="NorthwindEntities" metadata:IsDefaultEntityContainer="true"
@@ -69,50 +101,6 @@ class EdmxTest extends TestCase
                 <EntitySet Name="Sales_Totals_by_Amounts" EntityType="NorthwindModel.Sales_Totals_by_Amount"/>
                 <EntitySet Name="Summary_of_Sales_by_Quarters" EntityType="NorthwindModel.Summary_of_Sales_by_Quarter"/>
                 <EntitySet Name="Summary_of_Sales_by_Years" EntityType="NorthwindModel.Summary_of_Sales_by_Year"/>
-                <AssociationSet Name="FK_Products_Categories" Association="NorthwindModel.FK_Products_Categories">
-                    <End Role="Categories" EntitySet="Categories"/>
-                    <End Role="Products" EntitySet="Products"/>
-                </AssociationSet>
-                <AssociationSet Name="CustomerCustomerDemo" Association="NorthwindModel.CustomerCustomerDemo">
-                    <End Role="CustomerDemographics" EntitySet="CustomerDemographics"/>
-                    <End Role="Customers" EntitySet="Customers"/>
-                </AssociationSet>
-                <AssociationSet Name="FK_Orders_Customers" Association="NorthwindModel.FK_Orders_Customers">
-                    <End Role="Customers" EntitySet="Customers"/>
-                    <End Role="Orders" EntitySet="Orders"/>
-                </AssociationSet>
-                <AssociationSet Name="FK_Employees_Employees" Association="NorthwindModel.FK_Employees_Employees">
-                    <End Role="Employees" EntitySet="Employees"/>
-                    <End Role="Employees1" EntitySet="Employees"/>
-                </AssociationSet>
-                <AssociationSet Name="FK_Orders_Employees" Association="NorthwindModel.FK_Orders_Employees">
-                    <End Role="Employees" EntitySet="Employees"/>
-                    <End Role="Orders" EntitySet="Orders"/>
-                </AssociationSet>
-                <AssociationSet Name="EmployeeTerritories" Association="NorthwindModel.EmployeeTerritories">
-                    <End Role="Employees" EntitySet="Employees"/>
-                    <End Role="Territories" EntitySet="Territories"/>
-                </AssociationSet>
-                <AssociationSet Name="FK_Order_Details_Orders" Association="NorthwindModel.FK_Order_Details_Orders">
-                    <End Role="Order_Details" EntitySet="Order_Details"/>
-                    <End Role="Orders" EntitySet="Orders"/>
-                </AssociationSet>
-                <AssociationSet Name="FK_Order_Details_Products" Association="NorthwindModel.FK_Order_Details_Products">
-                    <End Role="Order_Details" EntitySet="Order_Details"/>
-                    <End Role="Products" EntitySet="Products"/>
-                </AssociationSet>
-                <AssociationSet Name="FK_Orders_Shippers" Association="NorthwindModel.FK_Orders_Shippers">
-                    <End Role="Orders" EntitySet="Orders"/>
-                    <End Role="Shippers" EntitySet="Shippers"/>
-                </AssociationSet>
-                <AssociationSet Name="FK_Products_Suppliers" Association="NorthwindModel.FK_Products_Suppliers">
-                    <End Role="Products" EntitySet="Products"/>
-                    <End Role="Suppliers" EntitySet="Suppliers"/>
-                </AssociationSet>
-                <AssociationSet Name="FK_Territories_Region" Association="NorthwindModel.FK_Territories_Region">
-                    <End Role="Region" EntitySet="Regions"/>
-                    <End Role="Territories" EntitySet="Territories"/>
-                </AssociationSet>
-            </EntityContainer></Schema></edmx:DataServices></edmx:Edmx>', $xml);
+            </EntityContainer></Schema></edmx:DataServices></edmx:Edmx>', $xmlWritter->outputMemory());
     }
 }

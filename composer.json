@@ -26,7 +26,8 @@
   "require": {
     "php": "^7.1",
     "myclabs/php-enum": "dev-master",
-    "ext-dom": "*"
+    "ext-xmlwriter": "*",
+    "ext-xmlreader": "*"
   },
   "require-dev": {
     "phpspec/phpspec": "^3.0",
@@ -45,12 +46,13 @@
     "psr-4": {
       "AlgoWeb\\ODataMetadata\\": "src/"
     },
+    "files": ["src/polyfill.php"]
+
+  },
+  "autoload-dev": {
     "classmap": [
       "tests/"
     ]
-  },
-  "autoload-dev": {
-
   },
   "config": {
     "sort-packages": true

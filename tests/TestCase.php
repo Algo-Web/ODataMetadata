@@ -2,56 +2,41 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Tests;
-
-use AlgoWeb\ODataMetadata\MetadataV3\edm\EdmBase;
-use AlgoWeb\ODataMetadata\OdataVersions;
-use AlgoWeb\ODataMetadata\Writer\WriterContext;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var WriterContext
+     * @param $object
+     * @param $methodName
+     * @param  mixed                ...$args
+     * @throws \ReflectionException
+     * @return mixed
      */
-    protected $writerContext = null;
-    /**
-     * @var null|\DOMElement
-     */
-    protected $TESTNODE = null;
-
-    protected function setUp(): void
+    public function callPrivateMethod($object, $methodName, ...$args)
     {
-        parent::setUp();
-        $this->writerContext =  new WriterContext(OdataVersions::THREE());
-        $this->setContext($this->writerContext);
+        $reflectionClass  = new \ReflectionClass($object);
+        $reflectionMethod = $reflectionClass->getMethod($methodName);
+        $reflectionMethod->setAccessible(true);
+
+        //$params = array_slice(func_get_args(), 2); //get all the parameters after $methodName
+        return $reflectionMethod->invokeArgs($object, $args);
     }
 
-    protected function tearDown(): void
+    public function getPrivateProperty($object, $propertyName)
     {
-        parent::tearDown();
+        $closure = \Closure::bind(function ($class) use ($propertyName) {
+            return $class->propertyName;
+        }, null, get_class($object));
+        return $closure($object);
     }
 
-    protected function setContext(WriterContext $context)
+    public function setPrivateProperty($object, $propertyName, $newValue)
     {
-        $domDocument = $context->getBaseDocument();
-        $baseElement = $domDocument->createElement('BASE');
-        $baseElement->setAttributeNS(
-            'http://www.w3.org/2000/xmlns/', // xmlns namespace URI
-            'xmlns:edmx',
-            $context->getEdmxNamespace()
-        );
-        $baseElement->setAttributeNS(
-            'http://www.w3.org/2000/xmlns/', // xmlns namespace URI
-            'xmlns:metadata',
-            $context->getMetadataNamespace()
-        );
-        $baseElement->setAttributeNS(
-            'http://www.w3.org/2000/xmlns/', // xmlns namespace URI
-            'xmlns',
-            $context->getEdmNamespace()
-        );
-        $domDocument->appendChild($baseElement);
-        $this->TESTNODE = $baseElement;
+        $closure = \Closure::bind(function ($class) use ($propertyName) {
+            return $class->{$propertyName};
+        }, null, get_class($object));
+        $propertyValue = &$closure($object);
+        $propertyValue = $newValue;
     }
 }
