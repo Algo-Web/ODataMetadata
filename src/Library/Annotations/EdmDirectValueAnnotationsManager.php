@@ -213,7 +213,8 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
                 assert(is_array(
                     $annotationsList
                 ));
-                for ($index = 0; $index < count($annotationsList); $index++) {
+                $numAnnotations = count($annotationsList);
+                for ($index = 0; $index < $numAnnotations; $index++) {
                     $existingAnnotation = $annotationsList[$index];
                     assert($existingAnnotation instanceof IDirectValueAnnotation);
                     if ($existingAnnotation->getNamespaceUri() == $namespaceName && $existingAnnotation->getName() == $localName) {
@@ -314,7 +315,8 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
 
         $annotationsList = $transientAnnotations;
         assert(is_countable($annotationsList));
-        for ($index = 0; $index < count($annotationsList); $index++) {
+        $numAnnotations = count($annotationsList);
+        for ($index = 0; $index < $numAnnotations; $index++) {
             /**
              * @var IDirectValueAnnotation $existingAnnotation
              */
