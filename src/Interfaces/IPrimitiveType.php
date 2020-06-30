@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IPrimitiveTypeHelpers;
 
 /**
  * Interface IEdmPrimitiveType.
@@ -14,7 +15,7 @@ use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
  */
-interface IPrimitiveType extends ISchemaType
+interface IPrimitiveType extends ISchemaType, IPrimitiveTypeHelpers
 {
     /**
      * @return PrimitiveTypeKind gets the primitive kind of this type

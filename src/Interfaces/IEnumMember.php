@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\EnumMemberHelpers;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IEnumMemberHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IPrimitiveValue;
 
 /**
@@ -14,9 +15,8 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IPrimitiveValue;
  * Represents a definition of an EDM enumeration type member.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin EnumMemberHelpers
  */
-interface IEnumMember extends INamedElement
+interface IEnumMember extends INamedElement, IEnumMemberHelpers
 {
     /**
      * @return IPrimitiveValue gets the value of this enumeration type member

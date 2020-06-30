@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\CollectionTypeReferenceHelpers;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\ICollectionTypeReferenceHelpers;
 
 /**
  * Interface IEdmCollectionTypeReference.
@@ -13,8 +14,7 @@ use AlgoWeb\ODataMetadata\Helpers\CollectionTypeReferenceHelpers;
  * Represents references to EDM Collection types.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin CollectionTypeReferenceHelpers
  */
-interface ICollectionTypeReference extends ITypeReference
+interface ICollectionTypeReference extends ITypeReference, ICollectionTypeReferenceHelpers
 {
 }

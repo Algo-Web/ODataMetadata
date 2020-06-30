@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\FunctionImportHelpers;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IFunctionImportHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 
 /**
@@ -14,9 +15,8 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
  * Represents an EDM function import.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin FunctionImportHelpers
  */
-interface IFunctionImport extends IFunctionBase, IEntityContainerElement
+interface IFunctionImport extends IFunctionBase, IEntityContainerElement, IFunctionImportHelpers
 {
     /**
      * @return bool Gets a value indicating whether this function import has side-effects.

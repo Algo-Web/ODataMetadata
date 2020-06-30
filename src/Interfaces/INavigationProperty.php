@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Enums\OnDeleteAction;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\INavigationPropertyHelpers;
 use AlgoWeb\ODataMetadata\Helpers\NavigationPropertyHelpers;
 
 /**
@@ -14,9 +15,8 @@ use AlgoWeb\ODataMetadata\Helpers\NavigationPropertyHelpers;
  * Represents an EDM navigation property.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
- * @mixin NavigationPropertyHelpers
  */
-interface INavigationProperty extends IProperty
+interface INavigationProperty extends IProperty, INavigationPropertyHelpers
 {
     /**
      * @return INavigationProperty gets the partner of this navigation property

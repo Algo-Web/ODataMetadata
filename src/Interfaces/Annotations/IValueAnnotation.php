@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Interfaces\Annotations;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IValueAnnotationHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 
 /**
@@ -14,7 +15,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
  *
  * @package AlgoWeb\ODataMetadata\Interfaces\Annotations
  */
-interface IValueAnnotation extends IVocabularyAnnotation
+interface IValueAnnotation extends IVocabularyAnnotation, IValueAnnotationHelpers
 {
     /**
      * @return IExpression gets the expression producing the value of the annotation
