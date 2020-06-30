@@ -35,7 +35,7 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
     /**
      *  Gets the container that contains this element.
      *
-     * @return IEntityContainer
+     * @return IEntityContainer|null
      */
     public function getContainer(): ?IEntityContainer
     {
@@ -51,7 +51,7 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
      *
      * @return ITypeReference
      */
-    public function getReturnType(): ITypeReference
+    public function getReturnType(): ?ITypeReference
     {
         return null;
     }
@@ -119,9 +119,9 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
     /**
      * Gets the entity set containing entities returned by this function import.
      *
-     * @return IExpression
+     * @return IExpression|null
      */
-    public function getEntitySet(): IExpression
+    public function getEntitySet(): ?IExpression
     {
         return null;
     }
