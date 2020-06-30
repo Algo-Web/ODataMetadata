@@ -391,7 +391,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $checkType = m::mock(ITypeReference::class);
         $checkType->shouldReceive('getNullable')->andReturn(true);
         $checkType->shouldReceive('FullName')->andReturn('CheckType');
-
+//TODO: this needs to mock two things. IExpression AND IPrimitiveValue
         $expression = m::mock(IExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::StringConstant());
         $expression->shouldReceive('getType')->andReturn($checkType)->atLeast(1);

@@ -164,7 +164,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $result[] = [ExpressionKind::Path(), ['all', 'your', 'base', 'are', 'belong', 'to', 'us'], '<?xml version="1.0"?>'.PHP_EOL.'<Test Path="all/your/base/are/belong/to/us"/>'.PHP_EOL, false, IPathExpression::class];
         $result[] = [ExpressionKind::StringConstant(), 'string', '<?xml version="1.0"?>'.PHP_EOL.'<Test String="string"/>'.PHP_EOL, false, IStringConstantExpression::class];
         $result[] = [ExpressionKind::TimeConstant(), new \DateTime('2000-01-01 01:02:03'), '<?xml version="1.0"?>'.PHP_EOL.'<Test Time="01:02:03.000000"/>'.PHP_EOL, false, ITimeConstantExpression::class];
-        $result[] = [ExpressionKind::EntitySetReference(), null, '<?xml version="1.0"?>'.PHP_EOL.'<Test/>'.PHP_EOL, false, IEntitySetReferenceExpression::class];
+      // TODO: sandi this type is not inlinable.  $result[] = [ExpressionKind::EntitySetReference(), null, '<?xml version="1.0" >'.PHP_EOL.'<Test/>'.PHP_EOL, false, IEntitySetReferenceExpression::class];
 
         return $result;
     }
