@@ -78,7 +78,7 @@ class InterfaceValidator
         $modelValidator = new InterfaceValidator(null, $model, true);
 
         // Perform structural validation of the root object.
-        $errors = $modelValidator->ValidateStructure($model);
+        $errors = iterable_to_array($modelValidator->ValidateStructure($model));
 
         // Then check references for structural integrity using separate validator (in order to avoid adding referenced objects to the this.visited).
         $referencesValidator              = new InterfaceValidator($modelValidator->visited, $model, false);
@@ -138,7 +138,9 @@ class InterfaceValidator
         $map = [];
         if ($handle = opendir('.')) {
             while (false !== ($entry = readdir($handle))) {
-                if ($entry === '.' || $entry === '..' || is_dir($entry) || $name = substr($entry, -4) !== '.php') {
+                /** @var string $name */
+                $name = substr($entry, -4);
+                if ($entry === '.' || $entry === '..' || is_dir($entry) || $name !== '.php') {
                     continue;
                 }
                 if ($name === 'VisitorBase' || $name === 'VisitorOfT') {
@@ -374,7 +376,10 @@ class InterfaceValidator
                 $element = $item;
                 foreach ($this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element) as $annotation) {
                     assert($annotation instanceof IDirectValueAnnotation);
-                    $followupErrors = array_merge(iterable_to_array($followupErrors), $this->ValidateStructure($annotation));
+                    $followupErrors = array_merge(
+                        iterable_to_array($followupErrors),
+                        iterable_to_array($this->ValidateStructure($annotation))
+                    );
                 }
             }
         }
