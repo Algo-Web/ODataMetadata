@@ -546,14 +546,15 @@ abstract class ExpressionTypeChecker
         $errors                = [];
         $recursiveErrors       = [];
         foreach ($expression->getElements() as $element) {
-            $success &= self::TryAssertType(
+            $result = self::TryAssertType(
                 $element,
                 $collectionElementType,
                 $context,
                 $matchExactly,
                 $recursiveErrors
             );
-            $errors = array_merge($recursiveErrors);
+            $success &= boolval($result);
+            $errors = array_merge($errors, $recursiveErrors);
         }
 
         $discoveredErrors = $errors;
