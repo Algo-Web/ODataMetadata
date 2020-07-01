@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
+use AlgoWeb\ODataMetadata\Interfaces\IType;
 
 /**
  * Class EntityTypeReferenceHelpers.
@@ -85,4 +86,6 @@ trait EntityTypeReferenceHelpers
         $prop = $this->EntityDefinition()->findProperty($name);
         return $prop instanceof INavigationProperty ? $prop : null;
     }
+
+    abstract public function getDefinition(): ?IType;
 }

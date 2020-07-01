@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
+use AlgoWeb\ODataMetadata\Interfaces\IType;
 
 /**
  * Trait StructuredTypeReferenceHelpers.
@@ -92,4 +93,6 @@ trait StructuredTypeReferenceHelpers
         $def = $this->StructuredDefinition();
         return $def ? $def->findProperty($name) : null;
     }
+
+    abstract public function getDefinition(): ?IType;
 }

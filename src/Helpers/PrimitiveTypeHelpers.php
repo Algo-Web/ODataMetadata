@@ -72,4 +72,11 @@ trait PrimitiveTypeHelpers
                 throw new InvalidOperationException(StringConst::EdmPrimitive_UnexpectedKind());
         }
     }
+
+    /**
+     * Gets the primitive kind of this type.
+     *
+     * @return PrimitiveTypeKind
+     */
+    abstract public function getPrimitiveKind(): PrimitiveTypeKind;
 }

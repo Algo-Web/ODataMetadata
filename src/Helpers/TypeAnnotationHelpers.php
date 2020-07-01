@@ -33,6 +33,7 @@ trait TypeAnnotationHelpers
         }
         return null;
     }
+
     /**
      * @return IPropertyValueBinding[] gets the value annotations for the properties of the type
      */
