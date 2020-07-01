@@ -904,5 +904,4 @@ trait TypeReferenceHelpers
         ];
     }
     abstract public function getDefinition(): ?IType;
-
 }

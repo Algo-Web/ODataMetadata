@@ -29,7 +29,7 @@ trait EdmElementHelpers
 
     public function getErrors(): iterable
     {
-        /**
+        /*
          * @var IEdmElement $this
          */
         return InterfaceValidator::GetStructuralErrors($this);

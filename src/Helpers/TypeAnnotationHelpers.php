@@ -36,5 +36,5 @@ trait TypeAnnotationHelpers
     /**
      * @return IPropertyValueBinding[] gets the value annotations for the properties of the type
      */
-   abstract public function getPropertyValueBindings(): array;
+    abstract public function getPropertyValueBindings(): array;
 }

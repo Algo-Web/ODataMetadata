@@ -48,21 +48,26 @@ if (!function_exists('mb_ord')) {
         return $code;
     }
 }
-if(!function_exists('iterable_to_array')) {
+if (!function_exists('iterable_to_array')) {
     function iterable_to_array(?iterable $it): array
     {
-        if(null === $it) return [];
-        if (is_array($it)) return $it;
+        if (null === $it) {
+            return [];
+        }
+        if (is_array($it)) {
+            return $it;
+        }
         $ret = [];
         array_push($ret, ...$it);
         return $ret;
     }
 }
-if(!function_exists('iterable_to_traversable')) {
-
+if (!function_exists('iterable_to_traversable')) {
     function iterable_to_traversable(?iterable $it): Traversable
     {
-        if(null === $it) $it = [];
+        if (null === $it) {
+            $it = [];
+        }
         yield from $it;
     }
 }
