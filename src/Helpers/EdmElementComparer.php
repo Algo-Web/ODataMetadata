@@ -47,6 +47,7 @@ abstract class EdmElementComparer
         $interfaces = array_filter($interfaces, function ($value) {
             return false !== strpos($value, 'AlgoWeb\\ODataMetadata');
         });
+
         foreach ($interfaces as $rawInterface) {
             $bitz       = explode('\\', $rawInterface);
             $interface  = end($bitz);
@@ -119,18 +120,18 @@ abstract class EdmElementComparer
      * Returns true if function signatures are semantically equivalent.
      * Signature includes function name (INamedElement) and its parameter types.
      *
-     * @param  IFunctionBase $thisFunction  reference to the calling object
-     * @param  IFunctionBase $otherFunction function being compared to
-     * @return bool          equivalence of signatures of the two functions
+     * @param  IFunctionBase|null $thisFunction  reference to the calling object
+     * @param  IFunctionBase|null $otherFunction function being compared to
+     * @return bool               equivalence of signatures of the two functions
      */
-    public static function isFunctionSignatureEquivalentTo(IFunctionBase $thisFunction, IFunctionBase $otherFunction): bool
+    public static function isFunctionSignatureEquivalentTo(?IFunctionBase $thisFunction, ?IFunctionBase $otherFunction): bool
     {
-        if ($thisFunction === $otherFunction) {
-            return true;
-        }
-
         if (null === $thisFunction || null === $otherFunction) {
             return false;
+        }
+
+        if ($thisFunction === $otherFunction) {
+            return true;
         }
 
         if ($thisFunction->getName() != $otherFunction->getName()) {
@@ -235,20 +236,18 @@ abstract class EdmElementComparer
     protected static function isIPrimitiveTypeReferenceEquivalentTo(IPrimitiveTypeReference $thisType, IPrimitiveTypeReference $otherType): bool
     {
         $thisTypePrimitiveKind = $thisType->PrimitiveKind();
-        if ($thisTypePrimitiveKind->equals($otherType->PrimitiveKind())) {
+        if (!$thisTypePrimitiveKind->equals($otherType->PrimitiveKind())) {
             return false;
         }
 
         if (
             $thisTypePrimitiveKind->isAnyOf(
-                [
-                    PrimitiveTypeKind::Binary(),
-                    PrimitiveTypeKind::Decimal(),
-                    PrimitiveTypeKind::String(),
-                    PrimitiveTypeKind::Time(),
-                    PrimitiveTypeKind::DateTime(),
-                    PrimitiveTypeKind::DateTimeOffset()
-                ]
+                PrimitiveTypeKind::Binary(),
+                PrimitiveTypeKind::Decimal(),
+                PrimitiveTypeKind::String(),
+                PrimitiveTypeKind::Time(),
+                PrimitiveTypeKind::DateTime(),
+                PrimitiveTypeKind::DateTimeOffset()
             ) ||
             $thisTypePrimitiveKind->IsSpatial()) {
             return $thisType->getNullable() === $otherType->getNullable() &&
