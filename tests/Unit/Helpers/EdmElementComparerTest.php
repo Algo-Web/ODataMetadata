@@ -8,6 +8,7 @@
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Helpers;
 
+use AlgoWeb\ODataMetadata\Enums\FunctionParameterMode;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Helpers\EdmElementComparer;
@@ -83,6 +84,33 @@ class EdmElementComparerTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    /**
+     * @dataProvider identityProvider
+     *
+     * @param string $class
+     */
+    public function testIsEquivalentUnderEquivalence2(string $class)
+    {
+        $rawDef = m::mock(IType::class);
+        $def = m::mock(ITypeReference::class);
+
+        $element = m::mock(IEdmElement::class . ', ' . $class)->makePartial();
+        $element->shouldReceive('getName')->andReturn('Name');
+        $element->shouldReceive('getTypeKind')->andReturn(TypeKind::Entity());
+        $element->shouldReceive('TypeKind')->andReturn(TypeKind::Entity());
+        $element->shouldReceive('getMode')->andReturn(FunctionParameterMode::InOut());
+        $element->shouldReceive('getType')->andReturn($def);
+        $element->shouldReceive('getNullable')->andReturn(false);
+        $element->shouldReceive('getDefinition')->andReturn($rawDef);
+
+        $newElement = clone $element;
+
+        // if we have two equivalent-but-not-identical schema types, whole schema is out to lunch
+        $expected = (ISchemaType::class !== $class);
+        $actual = EdmElementComparer::isEquivalentTo($element, $newElement);
+        $this->assertEquals($expected, $actual);
+    }
+
     public function identityPrimitiveProvider(): array
     {
         $result = [];
@@ -131,6 +159,43 @@ class EdmElementComparerTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
+    /**
+     * @dataProvider identityPrimitiveProvider
+     *
+     * @param string $class
+     * @param PrimitiveTypeKind $primKind
+     */
+    public function testIsEquivalentUnderEquivalencePrimitive(string $class, PrimitiveTypeKind $primKind)
+    {
+        $def = m::mock(IType::class);
+
+        $element = m::mock(IEdmElement::class . ', ' . $class)->makePartial();
+        $element->shouldReceive('getNullable')->andReturn(false);
+        $element->shouldReceive('getIsFixedLength')->andReturn(true);
+        $element->shouldReceive('isFixedLength')->andReturn(true);
+        $element->shouldReceive('getIsUnbounded')->andReturn(false);
+        $element->shouldReceive('isUnbounded')->andReturn(false);
+        $element->shouldReceive('getIsUnicode')->andReturn(false);
+        $element->shouldReceive('isUnicode')->andReturn(false);
+        $element->shouldReceive('getPrecision')->andReturn(6);
+        $element->shouldReceive('getScale')->andReturn(2);
+        $element->shouldReceive('getMaxLength')->andReturn(10);
+        $element->shouldReceive('PrimitiveKind')->andReturn($primKind);
+        $element->shouldReceive('getPrimitiveKind')->andReturn($primKind);
+        $element->shouldReceive('getTypeKind')->andReturn(TypeKind::Primitive());
+        $element->shouldReceive('TypeKind')->andReturn(TypeKind::Primitive());
+        $element->shouldReceive('getDefinition')->andReturn($def);
+        $element->shouldReceive('getCollation')->andReturn(null);
+        $element->shouldReceive('getSpatialReferenceIdentifier')->andReturn(null);
+        $element->shouldReceive('FullName')->andReturn('FullName');
+
+        $newElement = clone $element;
+        // if we have two equivalent-but-not-identical schema types, whole schema is out to lunch
+        $expected = (IPrimitiveType::class !== $class);
+        $actual = EdmElementComparer::isEquivalentTo($element, $newElement);
+        $this->assertEquals($expected, $actual);
+    }
+
     public function testIsEquivalentToRowTypeUnderIdentityNoProperties()
     {
         $class = IRowType::class;
@@ -163,6 +228,25 @@ class EdmElementComparerTest extends TestCase
 
         $expected = true;
         $actual = EdmElementComparer::isFunctionSignatureEquivalentTo($element, $element);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testIsFunctionSignatureEquivalentUnderEquivalence()
+    {
+        $def = m::mock(ITypeReference::class);
+
+        $funcParm = m::mock(IFunctionParameter::class)->makePartial();
+
+        $class = IFunctionBase::class;
+        $element = m::mock(IEdmElement::class . ', ' . $class)->makePartial();
+        $element->shouldReceive('getName')->andReturn('Name');
+        $element->shouldReceive('getReturnType')->andReturn($def);
+        $element->shouldReceive('getParameters')->andReturn([$funcParm]);
+
+        $newElement = clone $element;
+
+        $expected = true;
+        $actual = EdmElementComparer::isFunctionSignatureEquivalentTo($element, $newElement);
         $this->assertEquals($expected, $actual);
     }
 
