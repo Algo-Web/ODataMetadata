@@ -325,7 +325,7 @@ trait ModelHelpers
         /** @var string|null $result */
         $result = $this->GetAnnotationValue('string', $property, EdmConstants::InternalUri, CsdlConstants::AssociationEndNameAnnotation);
 
-        return $result ?? $property->getPartner()->getName();
+        return $result ?? ($property->getPartner()->getName() ?? '');
     }
 
     /**
