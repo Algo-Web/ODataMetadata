@@ -459,6 +459,7 @@ trait TypeReferenceHelpers
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
         //if (count($errors) == 0)
         {
@@ -496,6 +497,7 @@ trait TypeReferenceHelpers
         $errors = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -537,6 +539,7 @@ trait TypeReferenceHelpers
         $errors = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -605,6 +608,7 @@ trait TypeReferenceHelpers
         $errors = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -641,6 +645,7 @@ trait TypeReferenceHelpers
         $errors = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -678,6 +683,7 @@ trait TypeReferenceHelpers
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -714,6 +720,7 @@ trait TypeReferenceHelpers
         $errors = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -745,6 +752,7 @@ trait TypeReferenceHelpers
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -776,6 +784,7 @@ trait TypeReferenceHelpers
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -807,6 +816,7 @@ trait TypeReferenceHelpers
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -838,6 +848,7 @@ trait TypeReferenceHelpers
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -868,6 +879,7 @@ trait TypeReferenceHelpers
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
