@@ -5,9 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\ITypeAnnotationHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IPropertyValueBinding;
-use AlgoWeb\ODataMetadata\Interfaces\Annotations\ITypeAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 
 /**
@@ -35,4 +33,8 @@ trait TypeAnnotationHelpers
         }
         return null;
     }
+    /**
+     * @return IPropertyValueBinding[] gets the value annotations for the properties of the type
+     */
+    abstract public function getPropertyValueBindings(): array;
 }

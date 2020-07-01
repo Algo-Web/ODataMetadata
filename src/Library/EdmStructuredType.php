@@ -117,11 +117,6 @@ abstract class EdmStructuredType extends EdmType implements IStructuredType
     }
 
     /**
-     * @return TypeKind gets the kind of this type
-     */
-    abstract public function getTypeKind(): TypeKind;
-
-    /**
      * Adds the property to this type.
      * @see IProperty::getDeclaringType() of the 'property' must be this type.
      * @param IProperty $property the property being added

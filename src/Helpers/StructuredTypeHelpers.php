@@ -69,4 +69,6 @@ trait StructuredTypeHelpers
         } while ($type !== null);
         return false;
     }
+
+    abstract public function getBaseType(): ?IStructuredType;
 }

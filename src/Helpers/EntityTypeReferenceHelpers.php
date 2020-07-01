@@ -5,7 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\IEntityTypeReferenceHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;

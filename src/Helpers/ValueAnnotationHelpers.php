@@ -5,8 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\IValueAnnotationHelpers;
-use AlgoWeb\ODataMetadata\Interfaces\Annotations\IValueAnnotation;
+use AlgoWeb\ODataMetadata\Interfaces\ITerm;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 /**
@@ -26,4 +25,6 @@ trait ValueAnnotationHelpers
         assert($term instanceof IValueTerm, 'Value Annotations should always use value terms');
         return $term;
     }
+
+    abstract public function getTerm(): ITerm;
 }

@@ -72,8 +72,8 @@ class EdmError
     public function __toString(): string
     {
         if (null !== $this->location && !$this->location instanceof ObjectLocation) {
-            return $this->code->getKey() . '=' . $this->code->getValue() . ':' . $this->message . ':' . strval($this->location);
+            return strval($this->code->getKey()) . '=' . $this->code->getValue() . ':' . $this->message . ':' . strval($this->location);
         }
-        return $this->code->getKey() . '=' . $this->code->getValue() . ':' . $this->message;
+        return strval($this->code->getKey()) . '=' . $this->code->getValue() . ':' . $this->message;
     }
 }

@@ -6,7 +6,6 @@ namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
 
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
-use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 
 /**
  * Trait EntityContainerHelpers.

@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\ISchemaElementHelpers;
-
 /**
  * Trait SchemaElementHelpers.
  * @package AlgoWeb\ODataMetadata\Helpers

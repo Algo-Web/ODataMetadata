@@ -24,7 +24,6 @@ use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\StringConst;
-use AlgoWeb\ODataMetadata\Structure\HashSetInternal;
 
 class InterfaceValidator
 {
@@ -58,13 +57,13 @@ class InterfaceValidator
      */
     private $validateDirectValueAnnotations;
     /**
-     * @var IModel
+     * @var IModel|null
      */
     private $model;
 
-    private function __construct(?iterable $skipVisitation, IModel $model, bool $validateDirectValueAnnotations)
+    private function __construct(?iterable $skipVisitation, ?IModel $model, bool $validateDirectValueAnnotations)
     {
-        $this->skipVisitation                 = $skipVisitation;
+        $this->skipVisitation                 = iterable_to_array($skipVisitation);
         $this->model                          = $model;
         $this->validateDirectValueAnnotations = $validateDirectValueAnnotations;
     }
@@ -86,7 +85,7 @@ class InterfaceValidator
         $referencesToStructurallyValidate = $modelValidator->danglingReferences;
         while (count($referencesToStructurallyValidate) !== 0) {
             foreach ($referencesToStructurallyValidate as $reference) {
-                $errors = array_merge($errors, $referencesValidator->ValidateStructure($reference));
+                $errors = array_merge(iterable_to_array($errors), $referencesValidator->ValidateStructure($reference));
             }
 
             $referencesToStructurallyValidate = $referencesValidator->danglingReferences;
@@ -111,7 +110,7 @@ class InterfaceValidator
                  * @var ValidationRule $rule
                  */
                 foreach (self::GetSemanticInterfaceVisitorsForObject(get_class($item), $semanticRuleSet, $concreteTypeSemanticInterfaceVisitors) as $rule) {
-                    $rule->Evaluate($semanticValidationContext, $item);
+                    $rule($semanticValidationContext, $item);
                 }
             }
         }
@@ -203,7 +202,7 @@ class InterfaceValidator
         );
     }
 
-    public static function CheckForInterfaceKindValueMismatchError($item, $kind, string $propertyName, string $interface): EdmError
+    public static function CheckForInterfaceKindValueMismatchError($item, $kind, string $propertyName, string $interface): ?EdmError
     {
         // If object implements an expected interface, return no error.
         if (in_array($interface, class_implements($item))) {
@@ -232,7 +231,7 @@ class InterfaceValidator
         return new EdmError(
             self::GetLocation($item),
             EdmErrorCode::InterfaceCriticalKindValueMismatch(),
-            StringConst::EdmModel_Validator_Syntactic_TypeRefInterfaceTypeKindValueMismatch(get_class($item), $item->getDefinition()->getTypeKind())
+            StringConst::EdmModel_Validator_Syntactic_TypeRefInterfaceTypeKindValueMismatch(get_class($item), $item->getDefinition()->getTypeKind()->getKey())
         );
     }
 
@@ -243,7 +242,7 @@ class InterfaceValidator
         return new EdmError(
             self::GetLocation($item),
             EdmErrorCode::InterfaceCriticalKindValueMismatch(),
-            StringConst::EdmModel_Validator_Syntactic_TypeRefInterfaceTypeKindValueMismatch(get_class($item), $definition->getPrimitiveKind())
+            StringConst::EdmModel_Validator_Syntactic_TypeRefInterfaceTypeKindValueMismatch(get_class($item), $definition->getPrimitiveKind()->getKey())
         );
     }
 
@@ -375,7 +374,7 @@ class InterfaceValidator
                 $element = $item;
                 foreach ($this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element) as $annotation) {
                     assert($annotation instanceof IDirectValueAnnotation);
-                    $followupErrors = array_merge($followupErrors, $this->ValidateStructure($annotation));
+                    $followupErrors = array_merge(iterable_to_array($followupErrors), $this->ValidateStructure($annotation));
                 }
             }
         }

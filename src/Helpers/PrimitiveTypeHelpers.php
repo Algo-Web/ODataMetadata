@@ -7,7 +7,6 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\IPrimitiveTypeHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmBinaryTypeReference;
@@ -26,6 +25,9 @@ trait PrimitiveTypeHelpers
 {
     public function GetPrimitiveTypeReference(bool $isNullable): IPrimitiveTypeReference
     {
+        /**
+         * @var IPrimitiveType $this
+         */
         switch ($this->getPrimitiveKind()) {
             case PrimitiveTypeKind::Boolean():
             case PrimitiveTypeKind::Byte():
@@ -37,6 +39,7 @@ trait PrimitiveTypeHelpers
             case PrimitiveTypeKind::SByte():
             case PrimitiveTypeKind::Single():
             case PrimitiveTypeKind::Stream():
+
                 return new EdmPrimitiveTypeReference($this, $isNullable);
             case PrimitiveTypeKind::Binary():
                 return new EdmBinaryTypeReference($this, $isNullable);

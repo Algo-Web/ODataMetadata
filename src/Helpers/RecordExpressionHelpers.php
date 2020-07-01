@@ -5,8 +5,6 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
-use AlgoWeb\ODataMetadata\Helpers\Interfaces\IRecordExpressionHelpers;
-use AlgoWeb\ODataMetadata\Interfaces\Expressions\IRecordExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\RecordExpression\IPropertyConstructor;
 
 /**
@@ -30,4 +28,8 @@ trait RecordExpressionHelpers
         }
         return null;
     }
+    /**
+     * @return IPropertyConstructor[] gets the constructed property values
+     */
+    abstract public function getProperties(): array;
 }
