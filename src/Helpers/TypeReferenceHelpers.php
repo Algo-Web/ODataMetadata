@@ -34,6 +34,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IStringTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ITemporalTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
+use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmCollectionTypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmComplexTypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmEntityReferenceTypeReference;
@@ -903,5 +904,10 @@ trait TypeReferenceHelpers
             )
         ];
     }
+
     abstract public function getDefinition(): ?IType;
+
+    abstract public function getNullable(): bool;
+
+    abstract public function Location(): ?ILocation;
 }
