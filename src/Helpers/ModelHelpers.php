@@ -42,7 +42,7 @@ trait ModelHelpers
     // Otherwise, changes to the dictionary durring serialization would result in an invalid or inconsistent output.
     public function GetNamespaceAliases(): array
     {
-        /**
+        /*
          * @var IModel $this
          */
         return $this->GetAnnotationValue('array', $this, EdmConstants::InternalUri, CsdlConstants::NamespaceAliasAnnotation) ??[];
@@ -161,7 +161,7 @@ trait ModelHelpers
      */
     public function GetEdmVersion(): ?Version
     {
-        /**
+        /*
          * @var IModel $this
          */
         return $this->GetAnnotationValue(Version::class, $this, EdmConstants::InternalUri, EdmConstants::EdmVersionAnnotation);
@@ -174,7 +174,7 @@ trait ModelHelpers
      */
     public function SetEdmVersion(Version $version)
     {
-        /**
+        /*
          * @var IModel $this
          */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::EdmVersionAnnotation, $version);
@@ -187,7 +187,7 @@ trait ModelHelpers
      */
     public function GetEdmxVersion(): ?Version
     {
-        /**
+        /*
          * @var IModel $this
          */
         return $this->GetAnnotationValue(Version::class, $this, EdmConstants::InternalUri, CsdlConstants::EdmxVersionAnnotation);
@@ -200,7 +200,7 @@ trait ModelHelpers
      */
     public function SetEdmxVersion(Version $version): void
     {
-        /**
+        /*
          * @var IModel $this
          */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, CsdlConstants::EdmxVersionAnnotation, $version);
@@ -213,7 +213,7 @@ trait ModelHelpers
      */
     public function SetDataServiceVersion(Version $version): void
     {
-        /**
+        /*
          * @var IModel $this
          */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::DataServiceVersion, $version);
@@ -226,7 +226,7 @@ trait ModelHelpers
      */
     public function GetDataServiceVersion(): ?Version
     {
-        /**
+        /*
          * @var IModel $this
          */
         return $this->GetAnnotationValue(Version::class, $this, EdmConstants::InternalUri, EdmConstants::DataServiceVersion);
@@ -239,7 +239,7 @@ trait ModelHelpers
      */
     public function SetMaxDataServiceVersion(Version $version): void
     {
-        /**
+        /*
          * @var IModel $this
          */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::MaxDataServiceVersion, $version);
@@ -252,7 +252,7 @@ trait ModelHelpers
      */
     public function GetMaxDataServiceVersion(): ?Version
     {
-        /**
+        /*
          * @var IModel $this
          */
         return $this->GetAnnotationValue(Version::class, $this, EdmConstants::InternalUri, EdmConstants::MaxDataServiceVersion);
@@ -264,7 +264,7 @@ trait ModelHelpers
      */
     public function SetNamespacePrefixMappings(array $mappings): void
     {
-        /**
+        /*
          * @var IModel $this
          */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, CsdlConstants::NamespacePrefixAnnotation, $mappings);
@@ -277,7 +277,7 @@ trait ModelHelpers
      */
     public function GetNamespacePrefixMappings(): array
     {
-        /**
+        /*
          * @var IModel $this
          */
         return $this->GetAnnotationValue('array', $this, EdmConstants::InternalUri, CsdlConstants::NamespacePrefixAnnotation)??[];
@@ -321,7 +321,7 @@ trait ModelHelpers
     public function FindType(string $qualifiedName): ?ISchemaType
     {
         $findTypeMethod = self::findTypec();
-        /**
+        /*
          * @var IModel $this
          */
         return Helpers::FindAcrossModels($this, $qualifiedName, $findTypeMethod, [RegistrationHelper::class, 'CreateAmbiguousTypeBinding']);
