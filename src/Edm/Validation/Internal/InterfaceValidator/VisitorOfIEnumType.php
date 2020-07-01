@@ -13,7 +13,7 @@ class VisitorOfIEnumType extends VisitorOfT
     protected function VisitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof IEnumType);
-        $errors = null;
+        $errors = [];
 
         InterfaceValidator::ProcessEnumerable($type, $type->getMembers(), 'Members', $followup, $errors);
 

@@ -13,7 +13,7 @@ class VisitorOfIRecordExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IRecordExpression);
-        $errors = null;
+        $errors = [];
 
         InterfaceValidator::ProcessEnumerable($expression, $expression->getProperties(), 'Properties', $followup, $errors);
 

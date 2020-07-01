@@ -15,7 +15,7 @@ class VisitorOfIFunctionParameter extends VisitorOfT
     {
         assert($parameter instanceof IFunctionParameter);
 
-        $errors = null;
+        $errors = [];
 
         if (null !== $parameter->getType()) {
             // Parameter owns its type reference, so it goes as a followup.

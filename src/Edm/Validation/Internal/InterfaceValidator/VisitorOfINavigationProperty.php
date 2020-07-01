@@ -17,7 +17,7 @@ class VisitorOfINavigationProperty extends VisitorOfT
     protected function VisitT($property, array &$followup, array &$references): ?iterable
     {
         assert($property instanceof INavigationProperty);
-        $errors = null;
+        $errors = [];
 
         if (null !== $property->getPartner()) {
             // If the declaring type of the partner does not contain the partner, it is a silent partner, and belongs to this property.

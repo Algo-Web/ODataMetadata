@@ -13,7 +13,7 @@ final class VisitorOfIEntityType extends VisitorOfT
     protected function VisitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof IEntityType);
-        $errors = null;
+        $errors = [];
         if (null !== $type->getDeclaredKey()) {
             InterfaceValidator::ProcessEnumerable($type, $type->getDeclaredKey(), 'DeclaredKey', $references, $errors);
         }

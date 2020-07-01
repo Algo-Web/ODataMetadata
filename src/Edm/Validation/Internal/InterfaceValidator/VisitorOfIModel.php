@@ -13,7 +13,7 @@ final class VisitorOfIModel extends VisitorOfT
     protected function VisitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IModel);
-        $errors = null;
+        $errors = [];
         InterfaceValidator::ProcessEnumerable($item, $item->getSchemaElements(), 'SchemaElements', $followup, $errors);
         InterfaceValidator::ProcessEnumerable($item, $item->getVocabularyAnnotations(), 'VocabularyAnnotations', $followup, $errors);
         return $errors;

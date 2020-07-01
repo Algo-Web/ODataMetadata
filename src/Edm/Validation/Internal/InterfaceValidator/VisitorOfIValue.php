@@ -28,7 +28,7 @@ class VisitorOfIValue extends VisitorOfT
     protected function VisitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof IValue);
-        $errors = null;
+        $errors = [];
         if (null !== $value->getType()) {
             // Value owns its type reference, so it goes as a followup.
             $followup[] = $value->getType();

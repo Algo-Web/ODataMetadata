@@ -16,7 +16,7 @@ class VisitorOfIProperty extends VisitorOfT
     protected function VisitT($property, array &$followup, array &$references): ?iterable
     {
         assert($property instanceof IProperty);
-        $errors = null;
+        $errors = [];
 
         switch ($property->getPropertyKind()) {
             case PropertyKind::Structural():

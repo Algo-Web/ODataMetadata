@@ -13,7 +13,7 @@ class VisitorOfIPropertyValueBinding extends VisitorOfT
     protected function VisitT($binding, array &$followup, array &$references): ?iterable
     {
         assert($binding instanceof IPropertyValueBinding);
-        $errors = null;
+        $errors = [];
 
         if (null !== $binding->getValue()) {
             $followup[] = $binding->getValue();

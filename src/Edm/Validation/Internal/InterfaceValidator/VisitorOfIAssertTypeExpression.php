@@ -13,7 +13,7 @@ class VisitorOfIAssertTypeExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IAssertTypeExpression);
-        $errors = null;
+        $errors = [];
 
         if (null !== $expression->getOperand()) {
             $followup[] = $expression->getOperand();

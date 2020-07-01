@@ -17,7 +17,7 @@ class VisitorOfIApplyExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IApplyExpression);
-        $errors = null;
+        $errors = [];
 
         if (null !== $expression->getAppliedFunction()) {
             $followup[] = $expression->getAppliedFunction();

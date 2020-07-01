@@ -13,7 +13,7 @@ class VisitorOfICollectionExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof ICollectionExpression);
-        $errors = null;
+        $errors = [];
 
         InterfaceValidator::ProcessEnumerable($expression, $expression->getElements(), 'Elements', $followup, $errors);
 
