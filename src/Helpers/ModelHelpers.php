@@ -11,6 +11,7 @@ use AlgoWeb\ODataMetadata\Csdl\Internal\Serialization\Helpers\AssociationSetAnno
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\EdmUtil;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IModelHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotationsManager;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
@@ -565,8 +566,17 @@ trait ModelHelpers
     }
 
     abstract public function getDirectValueAnnotationsManager(): IDirectValueAnnotationsManager;
+
     /**
      * @return IModel[] gets the collection of models referred to by this model
      */
     abstract public function getReferencedModels(): array;
+
+    /**
+     * Finds a list of types that derive directly from the supplied type.
+     *
+     * @param  IStructuredType   $baseType the base type that derived types are being searched for
+     * @return IStructuredType[] a list of types from this model that derive directly from the given type
+     */
+    abstract public function findDirectlyDerivedTypes(IStructuredType $baseType): array;
 }

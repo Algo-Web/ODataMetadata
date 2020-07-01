@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
+use AlgoWeb\ODataMetadata\Interfaces\IType;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 /**
@@ -35,4 +36,6 @@ trait CollectionTypeReferenceHelpers
     {
         return $this->CollectionDefinition()->getElementType();
     }
+
+    abstract public function getDefinition(): ?IType;
 }

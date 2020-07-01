@@ -5,6 +5,8 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Helpers;
 
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IValueAnnotationHelpers;
+use AlgoWeb\ODataMetadata\Interfaces\Annotations\IValueAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\ITerm;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
@@ -26,5 +28,8 @@ trait ValueAnnotationHelpers
         return $term;
     }
 
+    /**
+     * @return ITerm gets the term bound by the annotation
+     */
     abstract public function getTerm(): ITerm;
 }

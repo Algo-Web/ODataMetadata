@@ -70,5 +70,10 @@ trait StructuredTypeHelpers
         return false;
     }
 
+    /**
+     * Gets the base type of this type.
+     *
+     * @return IStructuredType|null
+     */
     abstract public function getBaseType(): ?IStructuredType;
 }

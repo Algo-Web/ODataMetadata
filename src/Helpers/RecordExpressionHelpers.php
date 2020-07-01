@@ -28,6 +28,7 @@ trait RecordExpressionHelpers
         }
         return null;
     }
+
     /**
      * @return IPropertyConstructor[] gets the constructed property values
      */
