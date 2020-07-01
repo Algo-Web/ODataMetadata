@@ -32,12 +32,16 @@ abstract class EdmElementComparer
     /**
      * Returns true if the compared type is semantically equivalent to this type.
      *
-     * @param  IEdmElement $thisType  type being compared
-     * @param  IEdmElement $otherType type being compared to
-     * @return bool        equivalence of the two types
+     * @param  IEdmElement|null $thisType  type being compared
+     * @param  IEdmElement|null $otherType type being compared to
+     * @return bool             equivalence of the two types
      */
-    public static function isEquivalentTo(IEdmElement $thisType, IEdmElement $otherType): bool
+    public static function isEquivalentTo(?IEdmElement $thisType, ?IEdmElement $otherType): bool
     {
+        if (null === $thisType || null === $otherType) {
+            return false;
+        }
+
         $equivalent = true;
         $interfaces = class_implements($thisType);
         $interfaces = array_filter($interfaces, function ($value) {
@@ -72,10 +76,6 @@ abstract class EdmElementComparer
             return true;
         }
 
-        if ($thisType === null || $otherType === null) {
-            return false;
-        }
-
         if (!$thisType->getTypeKind()->equals($otherType->getTypeKind())) {
             return false;
         }
@@ -103,10 +103,6 @@ abstract class EdmElementComparer
             return true;
         }
 
-        if ($thisType === null || $otherType === null) {
-            return false;
-        }
-
         $typeKind = $thisType->TypeKind();
         if (!$typeKind->equals($otherType->TypeKind())) {
             return false;
@@ -131,6 +127,10 @@ abstract class EdmElementComparer
     {
         if ($thisFunction === $otherFunction) {
             return true;
+        }
+
+        if (null === $thisFunction || null === $otherFunction) {
+            return false;
         }
 
         if ($thisFunction->getName() != $otherFunction->getName()) {
@@ -169,10 +169,6 @@ abstract class EdmElementComparer
     {
         if ($thisParameter === $otherParameter) {
             return true;
-        }
-
-        if ($thisParameter === null || $otherParameter === null) {
-            return false;
         }
 
         return $thisParameter->getName() == $otherParameter->getName() &&
@@ -229,10 +225,6 @@ abstract class EdmElementComparer
     {
         if ($thisProp === $otherProp) {
             return true;
-        }
-
-        if ($thisProp == null || $otherProp == null) {
-            return false;
         }
 
         return $thisProp->getName() == $otherProp->getName() &&
