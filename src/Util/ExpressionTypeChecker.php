@@ -162,13 +162,14 @@ abstract class ExpressionTypeChecker
             case ExpressionKind::FloatingConstant():
             case ExpressionKind::GuidConstant():
             case ExpressionKind::TimeConstant():
+                /** @var IPrimitiveValue $primitiveValue */
                 $primitiveValue = $expression;
                 assert($primitiveValue instanceof IPrimitiveValue);
                 if (null !== $primitiveValue->getType()) {
                     return self::TestTypeReferenceMatch(
                         $primitiveValue->getType(),
                         $type,
-                        $expression->Location(),
+                        $expression->/** @scrutinizer ignore-call */ Location(),
                         $matchExactly,
                         $discoveredErrors
                     );
@@ -181,6 +182,7 @@ abstract class ExpressionTypeChecker
                 assert($expression instanceof IPathExpression);
                 return self::TryAssertPathAsType($expression, $type, $context, $matchExactly, $discoveredErrors);
             case ExpressionKind::FunctionApplication():
+                /** @var IApplyExpression $applyExpression */
                 $applyExpression = $expression;
                 assert($applyExpression instanceof IApplyExpression);
                 if (null !== $applyExpression->getAppliedFunction()) {
@@ -213,6 +215,7 @@ abstract class ExpressionTypeChecker
                     $discoveredErrors
                 );
             case ExpressionKind::Record():
+                /** @var IRecordExpression $recordExpression */
                 $recordExpression = $expression;
                 assert($recordExpression instanceof IRecordExpression);
                 if (null !== $recordExpression->getDeclaredType()) {
@@ -233,6 +236,7 @@ abstract class ExpressionTypeChecker
                     $discoveredErrors
                 );
             case ExpressionKind::Collection():
+                /** @var ICollectionExpression $collectionExpression */
                 $collectionExpression = $expression;
                 assert($collectionExpression instanceof ICollectionExpression);
                 if (null !== $collectionExpression->getDeclaredType()) {
