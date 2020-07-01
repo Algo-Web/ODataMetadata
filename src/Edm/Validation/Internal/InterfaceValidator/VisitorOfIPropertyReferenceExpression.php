@@ -13,7 +13,7 @@ class VisitorOfIPropertyReferenceExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IPropertyReferenceExpression);
-        $errors = null;
+        $errors = [];
 
         if (null !== $expression->getBase()) {
             $followup[] = $expression->getBase();

@@ -13,7 +13,7 @@ class VisitorOfIIfExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IIfExpression);
-        $errors = null;
+        $errors = [];
 
         if (null !== $expression->getTestExpression()) {
             $followup[] = $expression->getTestExpression();

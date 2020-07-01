@@ -13,7 +13,7 @@ class VisitorOfIVocabularyAnnotation extends VisitorOfT
     protected function VisitT($annotation, array &$followup, array &$references): ?iterable
     {
         assert($annotation instanceof IVocabularyAnnotation);
-        $errors = null;
+        $errors = [];
 
         if (null !== $annotation->getTerm()) {
             $references[] = $annotation->getTerm();

@@ -13,7 +13,7 @@ final class VisitorOfIEntityContainer extends VisitorOfT
     protected function VisitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IEntityContainer);
-        $errors = null;
+        $errors = [];
         InterfaceValidator::ProcessEnumerable($item, $item->getElements(), 'Elements', $followup, $errors);
         return $errors;
     }

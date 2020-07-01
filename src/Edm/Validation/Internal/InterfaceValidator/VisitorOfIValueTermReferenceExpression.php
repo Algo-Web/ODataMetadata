@@ -13,7 +13,7 @@ class VisitorOfIValueTermReferenceExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IValueTermReferenceExpression);
-        $errors = null;
+        $errors = [];
 
         if (null !== $expression->getBase()) {
             $followup[] = $expression->getBase();

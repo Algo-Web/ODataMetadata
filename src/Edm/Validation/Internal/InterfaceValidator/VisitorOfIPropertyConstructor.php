@@ -13,7 +13,7 @@ class VisitorOfIPropertyConstructor extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IPropertyConstructor);
-        $errors = null;
+        $errors = [];
 
         if (null === $expression->getName()) {
             InterfaceValidator::CollectErrors(

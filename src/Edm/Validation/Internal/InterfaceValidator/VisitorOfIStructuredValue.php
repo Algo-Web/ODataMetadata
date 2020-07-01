@@ -13,7 +13,7 @@ class VisitorOfIStructuredValue extends VisitorOfT
     protected function VisitT($value, array &$followup, array &$references): iterable
     {
         assert($value instanceof IStructuredValue);
-        $errors = null;
+        $errors = [];
         InterfaceValidator::ProcessEnumerable(
             $value,
             $value->getPropertyValues(),

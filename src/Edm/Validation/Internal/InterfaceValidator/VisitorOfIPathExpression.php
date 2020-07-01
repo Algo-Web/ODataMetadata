@@ -13,7 +13,7 @@ class VisitorOfIPathExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IPathExpression);
-        $errors = null;
+        $errors = [];
 
         $segments = [];
         InterfaceValidator::ProcessEnumerable($expression, $expression->getPath(), 'Path', $segments, $errors);

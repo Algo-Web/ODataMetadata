@@ -13,7 +13,7 @@ class VisitorOfIFunctionBase extends VisitorOfT
     protected function VisitT($function, array &$followup, array &$references): ?iterable
     {
         assert($function instanceof IFunctionBase);
-        $errors = null;
+        $errors = [];
 
         InterfaceValidator::ProcessEnumerable($function, $function->getParameters(), 'Parameters', $followup, $errors);
 

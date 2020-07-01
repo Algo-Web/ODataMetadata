@@ -13,7 +13,7 @@ class VisitorOfIIsTypeExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IIsTypeExpression);
-        $errors = null;
+        $errors = [];
 
         if (null !== $expression->getOperand()) {
             $followup[] = $expression->getOperand();

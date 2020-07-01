@@ -13,7 +13,7 @@ class VisitorOfIDirectValueAnnotation extends VisitorOfT
     protected function VisitT($annotation, array &$followup, array &$references): ?iterable
     {
         assert($annotation instanceof IDirectValueAnnotation);
-        $errors = null;
+        $errors = [];
 
         if (empty($annotation->getNamespaceUri())) {
             InterfaceValidator::CollectErrors(

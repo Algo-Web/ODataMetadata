@@ -17,7 +17,7 @@ class VisitorOfIStructuredType extends VisitorOfT
     protected function VisitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof IStructuredType);
-        $errors = null;
+        $errors = [];
         InterfaceValidator::ProcessEnumerable($type, $type->getDeclaredProperties(), 'DeclaredProperties', $followup, $errors);
 
         if (null !== $type->getBaseType()) {

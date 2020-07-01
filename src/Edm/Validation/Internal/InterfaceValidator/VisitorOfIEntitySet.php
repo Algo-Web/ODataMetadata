@@ -14,7 +14,7 @@ class VisitorOfIEntitySet extends VisitorOfT
     protected function VisitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IEntitySet);
-        $errors = null;
+        $errors = [];
 
         if (null !== $item->getElementType()) {
             $references[] = $item->getElementType();
