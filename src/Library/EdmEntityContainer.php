@@ -149,7 +149,15 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
     public function AddFunctionImport(string $name, ITypeReference $returnType, ?IExpression $entitySet, ?bool $sideEffecting, ?bool $composable, ?bool $bindable): EdmFunctionImport
     {
         assert($entitySet instanceof IEntitySetReferenceExpression || $entitySet instanceof IPathExpression, 'The two expression kinds supported are IEntitySetReferenceExpression and IPathExpression.');
-        $functionImport = new EdmFunctionImport($this, $name, $returnType, $entitySet, $sideEffecting, $composable, $bindable);
+        $functionImport = new EdmFunctionImport(
+            $this,
+            $name,
+            $returnType,
+            $entitySet,
+            true === $sideEffecting,
+            true === $composable,
+            true === $bindable
+        );
         $this->AddElement($functionImport);
         return $functionImport;
     }

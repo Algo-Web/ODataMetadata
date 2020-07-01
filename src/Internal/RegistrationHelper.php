@@ -91,7 +91,7 @@ abstract class RegistrationHelper
      * @param array<string, IEdmElement>                    $elementDictionary
      * @param callable(IEdmElement,IEdmElement):IEdmElement $ambiguityCreator
      */
-    public static function AddElement($element, string $name, array $elementDictionary, callable $ambiguityCreator)
+    public static function AddElement($element, string $name, array &$elementDictionary, callable $ambiguityCreator)
     {
         if (array_key_exists($name, $elementDictionary)) {
             $preexisting              = $elementDictionary[$name];
@@ -106,7 +106,7 @@ abstract class RegistrationHelper
      * @param string                $name
      * @param array<string, object> $functionListDictionary
      */
-    public static function AddFunction(IFunctionBase $function, string $name, array $functionListDictionary)
+    public static function AddFunction(IFunctionBase $function, string $name, array &$functionListDictionary)
     {
         if (array_key_exists($name, $functionListDictionary)) {
             $functionList = $functionListDictionary[$name];
