@@ -157,15 +157,18 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteDocumentationElement(IDocumentation $documentation): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Documentation);
-        if ($documentation->getSummary() != null) {
+
+        $summary = $documentation->getSummary();
+        if (null !== $summary && !empty($summary)) {
             $this->xmlWriter->startElement(CsdlConstants::Element_Summary);
-            $this->xmlWriter->text($documentation->getSummary());
+            $this->xmlWriter->text($summary);
             $this->WriteEndElement();
         }
 
-        if ($documentation->getDescription() != null) {
+        $descript = $documentation->getDescription();
+        if (null !== $descript && !empty($descript)) {
             $this->xmlWriter->startElement(CsdlConstants::Element_LongDescription);
-            $this->xmlWriter->text($documentation->getDescription());
+            $this->xmlWriter->text($descript);
             $this->WriteEndElement();
         }
 
