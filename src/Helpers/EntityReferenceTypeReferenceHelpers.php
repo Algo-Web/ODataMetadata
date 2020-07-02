@@ -8,6 +8,8 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
+use AlgoWeb\ODataMetadata\Interfaces\IType;
+use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 /**
  * Trait EntityReferenceTypeReferenceHelpers.
@@ -39,4 +41,6 @@ trait EntityReferenceTypeReferenceHelpers
     {
         return $this->EntityReferenceDefinition()->getEntityType();
     }
+
+    abstract public function getDefinition(): ?IType;
 }
