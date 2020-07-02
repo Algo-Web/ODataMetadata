@@ -10,6 +10,9 @@ use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
+use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
+use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
+use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 /**
  * Trait NavigationPropertyHelpers.
@@ -117,4 +120,35 @@ trait NavigationPropertyHelpers
 
         return $nameComparison > 0 ? $property : $partner;
     }
+
+    /**
+     * @return ITypeReference|null gets the type of this term
+     */
+    abstract public function getType(): ?ITypeReference;
+
+    /**
+     * @return INavigationProperty gets the partner of this navigation property
+     */
+    abstract public function getPartner(): INavigationProperty;
+
+    /**
+     * @return IStructuralProperty[]|null gets the dependent properties of this navigation property, returning null if
+     *                                    this is the principal end or if there is no referential constraint
+     */
+    abstract public function getDependentProperties(): ?array;
+
+    /**
+     * @return string|null gets the name of this element
+     */
+    abstract public function getName(): ?string;
+
+    /**
+     * @return bool gets whether this navigation property originates at the principal end of an association
+     */
+    abstract public function isPrincipal(): bool;
+
+    /**
+     * @return IStructuredType gets the type that this property belongs to
+     */
+    abstract public function getDeclaringType(): IStructuredType;
 }
