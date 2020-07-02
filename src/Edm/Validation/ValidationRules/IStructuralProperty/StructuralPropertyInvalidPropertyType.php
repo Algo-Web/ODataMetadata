@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuralProper
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -23,14 +24,15 @@ class StructuralPropertyInvalidPropertyType extends StructuralPropertyRule
         assert($property instanceof IStructuralProperty);
         if ($property->getDeclaringType()->getTypeKind()->isRow()) {
             $validatedType = $property->getType()->IsCollection() ?
-                $property->getType()->AsCollection()->ElementType()->getDefinition()
-                :
+                $property->getType()->AsCollection()->ElementType()->getDefinition() :
                 $property->getType()->getDefinition();
 
+            EdmUtil::checkArgumentNull($validatedType, 'validatedType');
             if (!$validatedType->getTypeKind()->isPrimitive() &&
                 !$validatedType->getTypeKind()->isEnum() &&
                 !$validatedType->getTypeKind()->isComplex() &&
                 !$context->checkIsBad($validatedType)) {
+                EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
                 $context->AddError(
                     $property->Location(),
                     EdmErrorCode::InvalidPropertyType(),

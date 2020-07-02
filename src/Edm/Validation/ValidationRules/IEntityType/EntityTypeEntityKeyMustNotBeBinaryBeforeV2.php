@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
@@ -25,6 +26,7 @@ class EntityTypeEntityKeyMustNotBeBinaryBeforeV2 extends EntityTypeRule
             foreach ($entityType->Key() as $key) {
                 assert($key instanceof IStructuralProperty);
                 if ($key->getType()->IsBinary() && !$context->checkIsBad($key->getType()->getDefinition())) {
+                    EdmUtil::checkArgumentNull($key->Location(), 'key->Location');
                     $context->AddError(
                         $key->Location(),
                         EdmErrorCode::EntityKeyMustNotBeBinary(),

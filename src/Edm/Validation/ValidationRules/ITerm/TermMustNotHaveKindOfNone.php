@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\ITerm;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\ITerm;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class TermMustNotHaveKindOfNone extends TermRule
     {
         assert($term instanceof ITerm);
         if ($term->getTermKind()->isNone() && !$context->checkIsBad($term)) {
+            EdmUtil::checkArgumentNull($term->Location(), 'term->Location');
             $context->AddError(
                 $term->Location(),
                 EdmErrorCode::TermMustNotHaveKindOfNone(),

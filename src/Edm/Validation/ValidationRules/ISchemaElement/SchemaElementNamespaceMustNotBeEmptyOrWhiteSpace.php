@@ -23,6 +23,7 @@ class SchemaElementNamespaceMustNotBeEmptyOrWhiteSpace extends SchemaElementRule
     {
         assert($item instanceof ISchemaElement);
         if (EdmUtil::IsNullOrWhiteSpaceInternal($item->getNamespace()) || strlen($item->getNamespace()) === 0) {
+            EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
             $context->AddError(
                 $item->Location(),
                 EdmErrorCode::InvalidNamespaceName(),

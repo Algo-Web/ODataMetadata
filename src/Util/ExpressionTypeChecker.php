@@ -180,6 +180,7 @@ abstract class ExpressionTypeChecker
                 return self::TryAssertNullAsType($expression, $type, $discoveredErrors);
             case ExpressionKind::Path():
                 assert($expression instanceof IPathExpression);
+                EdmUtil::checkArgumentNull($context, 'context');
                 return self::TryAssertPathAsType($expression, $type, $context, $matchExactly, $discoveredErrors);
             case ExpressionKind::FunctionApplication():
                 /** @var IApplyExpression $applyExpression */
@@ -188,6 +189,8 @@ abstract class ExpressionTypeChecker
                 if (null !== $applyExpression->getAppliedFunction()) {
                     $function = $applyExpression->getAppliedFunction();
                     if (null !== $function && $function instanceof IFunctionBase) {
+                        EdmUtil::checkArgumentNull($function->getReturnType(), 'function->getReturnType');
+                        EdmUtil::checkArgumentNull($expression->Location(), 'expression->Location');
                         return self::TestTypeReferenceMatch(
                             $function->getReturnType(),
                             $type,
@@ -207,6 +210,7 @@ abstract class ExpressionTypeChecker
             case ExpressionKind::IsType():
                 $coreModel = EdmCoreModel::getInstance();
                 $boolean   = $coreModel->GetBoolean(false);
+                EdmUtil::checkArgumentNull($expression->Location(), 'expression->Location');
                 return self::TestTypeReferenceMatch(
                     $boolean,
                     $type,
@@ -238,6 +242,7 @@ abstract class ExpressionTypeChecker
             case ExpressionKind::Collection():
                 /** @var ICollectionExpression $collectionExpression */
                 $collectionExpression = $expression;
+                EdmUtil::checkArgumentNull($context, 'context');
                 assert($collectionExpression instanceof ICollectionExpression);
                 if (null !== $collectionExpression->getDeclaredType()) {
                     return self::TestTypeReferenceMatch(
@@ -385,13 +390,16 @@ abstract class ExpressionTypeChecker
         assert($structuredContext instanceof IStructuredType);
 
         $result = $context;
+        $loc    = $expression->Location();
+        EdmUtil::checkArgumentNull($loc, 'expression->Location');
+        EdmUtil::checkArgumentNull($type->getDefinition(), 'type->getDefinition');
 
         foreach ($expression->getPath() as $segment) {
             $structuredResult = $result;
             if (!$structuredResult instanceof IStructuredType) {
                 $discoveredErrors = [
                     new EdmError(
-                        $expression->Location(),
+                        $loc,
                         EdmErrorCode::PathIsNotValidForTheGivenContext(),
                         StringConst::EdmModel_Validator_Semantic_PathIsNotValidForTheGivenContext($segment)
                     )
@@ -412,7 +420,7 @@ abstract class ExpressionTypeChecker
         return self::TestTypeMatch(
             $result,
             $type->getDefinition(),
-            $expression->Location(),
+            $loc,
             $matchExactly,
             $discoveredErrors
         );
@@ -562,7 +570,7 @@ abstract class ExpressionTypeChecker
         }
 
         $discoveredErrors = $errors;
-        return $success;
+        return boolval($success);
     }
 
     private static function TryAssertGuidConstantAsType(
@@ -877,6 +885,9 @@ abstract class ExpressionTypeChecker
             $discoveredErrors = [];
             return true;
         }
+
+        EdmUtil::checkArgumentNull($expressionType->getDefinition(), 'expressionType->getDefinition');
+        EdmUtil::checkArgumentNull($assertedType->getDefinition(), 'assertedType->getDefinition');
 
         return self::TestTypeMatch(
             $expressionType->getDefinition(),

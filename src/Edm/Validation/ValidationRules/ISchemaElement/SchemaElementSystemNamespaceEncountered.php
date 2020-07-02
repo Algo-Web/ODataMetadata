@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\ISchemaElement;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\ValidationHelper;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -23,6 +24,7 @@ class SchemaElementSystemNamespaceEncountered extends SchemaElementRule
     {
         assert($element instanceof ISchemaElement);
         if (ValidationHelper::IsEdmSystemNamespace($element->getNamespace())) {
+            EdmUtil::checkArgumentNull($element->Location(), 'element->Location');
             $context->AddError(
                 $element->Location(),
                 EdmErrorCode::SystemNamespaceEncountered(),

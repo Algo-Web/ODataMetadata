@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IRowType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IRowType;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class RowTypeBaseTypeMustBeNull extends RowTypeRule
     {
         assert($rowType instanceof IRowType);
         if ($rowType->getBaseType() != null) {
+            EdmUtil::checkArgumentNull($rowType->Location(), 'rowType->Location');
             $context->AddError(
                 $rowType->Location(),
                 EdmErrorCode::RowTypeMustNotHaveBaseType(),

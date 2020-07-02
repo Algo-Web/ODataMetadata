@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -28,6 +29,7 @@ class FunctionImportReturnEntitiesButDoesNotSpecifyEntitySet extends FunctionImp
                 :
                 $functionImport->getReturnType();
             if ($elementType->IsEntity() && !$context->checkIsBad($elementType->getDefinition())) {
+                EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
                 $context->AddError(
                     $functionImport->Location(),
                     EdmErrorCode::FunctionImportReturnsEntitiesButDoesNotSpecifyEntitySet(),

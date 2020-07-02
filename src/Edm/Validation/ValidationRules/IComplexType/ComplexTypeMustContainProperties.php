@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IComplexType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class ComplexTypeMustContainProperties extends ComplexTypeRule
     {
         assert($complexType instanceof IComplexType);
         if (!(count($complexType->Properties()) == 0)) {
+            EdmUtil::checkArgumentNull($complexType->Location(), 'complexType->Location');
             $context->AddError(
                 $complexType->Location(),
                 EdmErrorCode::ComplexTypeMustHaveProperties(),

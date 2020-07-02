@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\ISchemaElement;
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -23,6 +24,7 @@ class SchemaElementNamespaceIsTooLong extends SchemaElementRule
     {
         assert($item instanceof ISchemaElement);
         if (strlen($item->getNamespace()) > CsdlConstants::Max_NamespaceLength) {
+            EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
             $context->AddError(
                 $item->Location(),
                 EdmErrorCode::InvalidNamespaceName(),

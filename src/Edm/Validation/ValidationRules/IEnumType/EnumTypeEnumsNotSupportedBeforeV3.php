@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEnumType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -21,6 +22,7 @@ class EnumTypeEnumsNotSupportedBeforeV3 extends EnumTypeRule
     public function __invoke(ValidationContext $context, ?IEdmElement $enumType)
     {
         assert($enumType instanceof IEnumType);
+        EdmUtil::checkArgumentNull($enumType->Location(), 'enumType->Location');
         $context->AddError(
             $enumType->Location(),
             EdmErrorCode::EnumsNotSupportedBeforeV3(),

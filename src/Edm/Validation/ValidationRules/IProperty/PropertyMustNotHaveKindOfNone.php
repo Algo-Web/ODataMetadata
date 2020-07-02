@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IProperty;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class PropertyMustNotHaveKindOfNone extends PropertyRule
     {
         assert($property instanceof IProperty);
         if ($property->getPropertyKind()->isNone() && !$context->checkIsBad($property)) {
+            EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
             $context->AddError(
                 $property->Location(),
                 EdmErrorCode::PropertyMustNotHaveKindOfNone(),

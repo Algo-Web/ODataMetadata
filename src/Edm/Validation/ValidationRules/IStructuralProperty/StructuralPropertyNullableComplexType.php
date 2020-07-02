@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuralProper
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class StructuralPropertyNullableComplexType extends StructuralPropertyRule
     {
         assert($property instanceof IStructuralProperty);
         if ($property->getType()->IsComplex() && $property->getType()->getNullable()) {
+            EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
             $context->AddError(
                 $property->Location(),
                 EdmErrorCode::NullableComplexTypeProperty(),

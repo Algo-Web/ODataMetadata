@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -23,6 +24,7 @@ class FunctionImportParametersCannotHaveModeOfNone extends FunctionImportRule
         assert($function instanceof IFunctionImport);
         foreach ($function->getParameters() as $parameter) {
             if ($parameter->getMode()->isNone() && !$context->checkIsBad($function)) {
+                EdmUtil::checkArgumentNull($parameter->Location(), 'parameter->Location');
                 $context->AddError(
                     $parameter->Location(),
                     EdmErrorCode::InvalidFunctionImportParameterMode(),

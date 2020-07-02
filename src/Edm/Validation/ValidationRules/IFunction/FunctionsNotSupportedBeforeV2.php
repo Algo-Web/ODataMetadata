@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunction;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -21,6 +22,7 @@ class FunctionsNotSupportedBeforeV2 extends FunctionRule
     public function __invoke(ValidationContext $context, ?IEdmElement $function)
     {
         assert($function instanceof IFunction);
+        EdmUtil::checkArgumentNull($function->Location(), 'function->Location');
         $context->AddError(
             $function->Location(),
             EdmErrorCode::FunctionsNotSupportedBeforeV2(),

@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProper
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\ValidationHelper;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -24,6 +25,7 @@ class NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2 extend
         assert($navigationProperty instanceof INavigationProperty);
         $dependentProperties = $navigationProperty->getDependentProperties();
         if ($dependentProperties != null && !ValidationHelper::PropertySetIsSubset($navigationProperty->DeclaringEntityType()->Key(), $dependentProperties)) {
+            EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
             $context->AddError(
                 $navigationProperty->Location(),
                 EdmErrorCode::InvalidPropertyInRelationshipConstraint(),

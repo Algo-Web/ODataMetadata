@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
@@ -24,6 +25,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
+        EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
         if ($functionImport->getEntitySet() != null && $functionImport->getReturnType() != null) {
             $elementType = $functionImport->getReturnType()->IsCollection() ?
                 $functionImport->getReturnType()->AsCollection()->ElementType() :

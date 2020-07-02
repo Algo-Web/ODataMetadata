@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEnumType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class EnumMustHaveIntegerUnderlyingType extends EnumTypeRule
     {
         assert($enumType instanceof IEnumType);
         if (!$enumType->getUnderlyingType()->getPrimitiveKind()->isIntegral() && !$context->checkIsBad($enumType->getUnderlyingType())) {
+            EdmUtil::checkArgumentNull($enumType->Location(), 'enumType->Location');
             $context->AddError(
                 $enumType->Location(),
                 EdmErrorCode::EnumMustHaveIntegerUnderlyingType(),

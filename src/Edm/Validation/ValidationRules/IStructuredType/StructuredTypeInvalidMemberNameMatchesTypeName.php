@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaType;
@@ -32,6 +33,7 @@ class StructuredTypeInvalidMemberNameMatchesTypeName extends StructuredTypeRule
                 if ($property != null) {
                     assert($property instanceof IProperty);
                     if ($property->getName() === $schemaType->getName()) {
+                        EdmUtil::checkArgumentNull($structuredType->Location(), 'structuredType->Location');
                         $context->AddError(
                             $property->Location(),
                             EdmErrorCode::BadProperty(),

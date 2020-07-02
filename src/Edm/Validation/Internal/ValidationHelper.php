@@ -39,6 +39,7 @@ abstract class ValidationHelper
         $name = $item instanceof ISchemaElement ? $item->FullName() : $item->getName();
         if ($memberNameList->add($name)) {
             if (!$suppressError) {
+                EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
                 $context->AddError($item->Location(), $errorCode, $errorString);
             }
             return false;
