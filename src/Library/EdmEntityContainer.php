@@ -185,13 +185,18 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
     {
         $this->containerElements[] = $element;
 
+        $name = $element->getName();
+        if (null === $name) {
+            throw new InvalidOperationException(StringConst::EdmModel_Validator_Syntactic_MissingName());
+        }
+
         switch ($element->getContainerElementKind()) {
             case ContainerElementKind::EntitySet():
-                RegistrationHelper::AddElement($element, $element->getName(), $this->entitySetDictionary, [RegistrationHelper::class, 'CreateAmbiguousEntitySetBinding']);
+                RegistrationHelper::AddElement($element, $name, $this->entitySetDictionary, [RegistrationHelper::class, 'CreateAmbiguousEntitySetBinding']);
                 break;
             case ContainerElementKind::FunctionImport():
                 assert($element instanceof IFunctionBase);
-                RegistrationHelper::AddFunction($element, $element->getName(), $this->functionImportDictionary);
+                RegistrationHelper::AddFunction($element, $name, $this->functionImportDictionary);
                 break;
             case ContainerElementKind::None():
                 throw new InvalidOperationException(StringConst::EdmEntityContainer_CannotUseElementWithTypeNone());
