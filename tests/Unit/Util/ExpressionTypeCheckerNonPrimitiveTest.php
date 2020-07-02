@@ -23,6 +23,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\INullExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionBase;
+use AlgoWeb\ODataMetadata\Interfaces\ILocation;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
@@ -83,9 +84,11 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
 
     public function testTryAssertTypePathOfBadType()
     {
+        $loc = m::mock(ILocation::class);
+
         $expression = m::mock(IPathExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::Path());
-        $expression->shouldReceive('Location')->andReturn(null);
+        $expression->shouldReceive('Location')->andReturn($loc);
         $expression->shouldReceive('getPath')->andReturn(['foo', 'bar']);
 
         $type = m::mock(ITypeReference::class);
@@ -115,9 +118,11 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
 
     public function testTryAssertTypePathOfNullType()
     {
+        $loc = m::mock(ILocation::class);
+
         $expression = m::mock(IPathExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::Path());
-        $expression->shouldReceive('Location')->andReturn(null);
+        $expression->shouldReceive('Location')->andReturn($loc);
         $expression->shouldReceive('getPath')->andReturn(['foo']);
 
         $type = m::mock(ITypeReference::class);
@@ -136,9 +141,11 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
 
     public function testTryAssertTypePathOfNonNullButUndefinedType()
     {
+        $loc = m::mock(ILocation::class);
+
         $expression = m::mock(IPathExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::Path());
-        $expression->shouldReceive('Location')->andReturn(null);
+        $expression->shouldReceive('Location')->andReturn($loc);
         $expression->shouldReceive('getPath')->andReturn(['foo']);
 
         $type = m::mock(ITypeReference::class);
@@ -160,9 +167,11 @@ class ExpressionTypeCheckerNonPrimitiveTest extends TestCase
 
     public function testTryAssertTypePathOfNonNullDefinedType()
     {
+        $loc = m::mock(ILocation::class);
+
         $expression = m::mock(IPathExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::Path());
-        $expression->shouldReceive('Location')->andReturn(null);
+        $expression->shouldReceive('Location')->andReturn($loc);
         $expression->shouldReceive('getPath')->andReturn(['foo']);
 
         $defType = m::mock(IType::class);

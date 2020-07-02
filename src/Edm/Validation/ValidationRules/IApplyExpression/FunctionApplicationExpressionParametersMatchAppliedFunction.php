@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IApplyExpression;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IApplyExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IFunctionReferenceExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
@@ -30,6 +31,7 @@ class FunctionApplicationExpressionParametersMatchAppliedFunction extends ApplyE
             !$context->checkIsBad($functionReference->getReferencedFunction())) {
             if (
                 count($functionReference->getReferencedFunction()->getParameters()) != count($expression->getArguments())) {
+                EdmUtil::checkArgumentNull($expression->Location(), 'expression->Location');
                 $context->AddError(
                     $expression->Location(),
                     EdmErrorCode::IncorrectNumberOfArguments(),

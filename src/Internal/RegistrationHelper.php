@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Internal;
 
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
@@ -61,7 +62,8 @@ abstract class RegistrationHelper
                 break;
             case SchemaElementKind::EntityContainer():
                 assert($element instanceof IEntityContainer);
-                // Add EntityContainers to the dictionary twice to maintian backwards compat with Edms that did not consider EntityContainers to be schema elements.
+                EdmUtil::checkArgumentNull($element->getName(), 'element->getName');
+                // Add EntityContainers to the dictionary twice to maintain backwards compat with Edms that did not consider EntityContainers to be schema elements.
                 self::AddElement($element, $qualifiedName, $containerDictionary, [self::class, 'CreateAmbiguousEntityContainerBinding']);
                 self::AddElement($element, $element->getName(), $containerDictionary, [self::class, 'CreateAmbiguousEntityContainerBinding']);
                 break;

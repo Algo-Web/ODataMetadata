@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
@@ -27,6 +28,7 @@ class EntityTypeKeyPropertyMustBelongToEntity extends EntityTypeRule
                 assert($key instanceof IStructuralProperty);
                 // Key must be one of the declared properties.
                 if ($key->getDeclaringType() !== $entityType && !$context->checkIsBad($key)) {
+                    EdmUtil::checkArgumentNull($entityType->Location(), 'entityType->Location');
                     $context->AddError(
                         $entityType->Location(),
                         EdmErrorCode::KeyPropertyMustBelongToEntity(),

@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProper
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
@@ -31,6 +32,7 @@ class NavigationPropertyDependentPropertiesMustBelongToDependentEntity extends N
                     $property = $dependentEntity->findProperty($dependantProperty->getName());
                     // If we can't find the property by name, or we find a good property but it's not our dependent property
                     if ($property !== $dependantProperty) {
+                        EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
                         $context->AddError(
                             $navigationProperty->Location(),
                             EdmErrorCode::DependentPropertiesMustBelongToDependentEntity(),

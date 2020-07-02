@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEnumMember;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Helpers\EdmTypeSemantics;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
@@ -32,6 +33,7 @@ class EnumMemberValueMustHaveSameTypeAsUnderlyingType extends EnumMemberRule
                            EdmTypeSemantics::GetPrimitiveTypeReference($enumMember->getDeclaringType()->getUnderlyingType(), false),
                            $discoveredErrors
                        )) {
+            EdmUtil::checkArgumentNull($enumMember->Location(), 'enumMember->Location');
             $context->AddError(
                 $enumMember->Location(),
                 EdmErrorCode::EnumMemberTypeMustMatchEnumUnderlyingType(),

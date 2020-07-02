@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\ITypeAnnotation;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\ITypeAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
@@ -28,6 +29,7 @@ class TypeAnnotationAssertMatchesTermType extends TypeAnnotationRule
         assert($type instanceof IStructuredType);
 
         $foundProperties = new HashSetInternal();
+        EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
 
         foreach ($type->Properties() as  $typeProperty) {
             $annotationProperty = $annotation->FindPropertyBinding($typeProperty);
@@ -48,7 +50,8 @@ class TypeAnnotationAssertMatchesTermType extends TypeAnnotationRule
 
         if (!$type->isOpen()) {
             foreach ($annotation->getPropertyValueBindings() as $property) {
-                if (!$foundProperties . contains($property->getBoundProperty()) && !$context->checkIsBad($property)) {
+                if (!$foundProperties->contains($property->getBoundProperty()) && !$context->checkIsBad($property)) {
+                    EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
                     $context->AddError(
                         $property->Location(),
                         EdmErrorCode::TypeAnnotationHasExtraProperties(),

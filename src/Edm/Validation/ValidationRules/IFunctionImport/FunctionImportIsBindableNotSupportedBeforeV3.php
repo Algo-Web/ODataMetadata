@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class FunctionImportIsBindableNotSupportedBeforeV3 extends FunctionImportRule
     {
         assert($functionImport instanceof  IFunctionImport);
         if ($functionImport->isBindable() != CsdlConstants::Default_IsBindable) {
+            EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
             $context->AddError(
                 $functionImport->Location(),
                 EdmErrorCode::FunctionImportBindableNotSupportedBeforeV3(),

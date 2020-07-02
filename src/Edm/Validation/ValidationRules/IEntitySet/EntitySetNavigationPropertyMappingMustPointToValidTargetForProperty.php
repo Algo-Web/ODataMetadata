@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntitySet;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -32,6 +33,7 @@ class EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty extend
                     )
                 ) &&
                 !$context->checkIsBad($mapping->getTargetEntitySet())) {
+                EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
                 $context->AddError(
                     $set->Location(),
                     EdmErrorCode::EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty(),

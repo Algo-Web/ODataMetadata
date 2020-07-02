@@ -58,6 +58,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
                             $foundTarget = count($context->getModel()->FindFunctions($function->FullName())) > 0;
                         } else {
                             $functionImport = $target;
+                            EdmUtil::checkArgumentNull($functionImport->getName(), 'functionImport->getName');
                             if ($functionImport != null && $functionImport instanceof IFunctionImport) {
                                 $foundTarget = count($functionImport->getContainer()->findFunctionImports($functionImport->getName())) > 0;
                             } else {
@@ -66,8 +67,10 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
                                     $declaringType = $typeProperty->getDeclaringType();
                                     assert($declaringType instanceof ISchemaType);
                                     $declaringTypeFullName = EdmUtil::FullyQualifiedName($declaringType);
+                                    EdmUtil::checkArgumentNull($declaringTypeFullName, 'declaringTypeFullName');
+                                    EdmUtil::checkArgumentNull($typeProperty->getName(), 'typeProperty->getName');
                                     $modelType             = $context->getModel()->FindType($declaringTypeFullName);
-                                    if ($modelType != null && $modelType instanceof IStructuredType) {
+                                    if ($modelType !== null && $modelType instanceof IStructuredType) {
                                         // If we can find a structured type with this name in the model check if it has a property with this name
                                         $foundTarget = ($modelType->findProperty($typeProperty->getName()) != null);
                                     }
@@ -110,6 +113,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         }
 
         if (!$foundTarget) {
+            EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
             $context->AddError(
                 $annotation->Location(),
                 EdmErrorCode::BadUnresolvedTarget(),

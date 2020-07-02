@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class EntityTypeKeyMissingOnEntityType extends EntityTypeRule
     {
         assert($entityType instanceof IEntityType);
         if (($entityType->Key() == null || count($entityType->Key()) == 0) && $entityType->getBaseType() === null) {
+            EdmUtil::checkArgumentNull($entityType->Location(), 'entityType->Location');
             $context->AddError(
                 $entityType->Location(),
                 EdmErrorCode::KeyMissingOnEntityType(),

@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntitySet;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -27,6 +28,7 @@ class EntitySetRecursiveNavigationPropertyMappingsMustPointBackToSourceEntitySet
                 $mapping->getNavigationProperty()->containsTarget() &&
                 $mapping->getNavigationProperty()->getDeclaringType()->IsOrInheritsFrom($mapping->getNavigationProperty()->ToEntityType()) &&
                 $mapping->getTargetEntitySet() !== $set) {
+                EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
                 $context->AddError(
                     $set->Location(),
                     EdmErrorCode::EntitySetRecursiveNavigationPropertyMappingsMustPointBackToSourceEntitySet(),

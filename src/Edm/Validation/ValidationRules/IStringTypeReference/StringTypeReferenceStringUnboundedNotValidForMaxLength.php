@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStringTypeRefere
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IStringTypeReference;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class StringTypeReferenceStringUnboundedNotValidForMaxLength extends StringTypeR
     {
         assert($type instanceof IStringTypeReference);
         if ($type->getMaxLength() != null && $type->isUnbounded()) {
+            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::IsUnboundedCannotBeTrueWhileMaxLengthIsNotNull(),

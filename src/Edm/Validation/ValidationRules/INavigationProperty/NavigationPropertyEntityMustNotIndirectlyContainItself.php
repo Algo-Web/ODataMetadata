@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProper
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\ValidationHelper;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -26,6 +27,7 @@ class NavigationPropertyEntityMustNotIndirectlyContainItself extends NavigationP
         if ($property->containsTarget() &&
             !$property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType())) {
             if (ValidationHelper::TypeIndirectlyContainsTarget($property->ToEntityType(), $property->DeclaringEntityType(), new SplObjectStorage()/*new HashSetInternal()*/, $context->getModel())) {
+                EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
                 $context->AddError(
                     $property->Location(),
                     EdmErrorCode::NavigationPropertyEntityMustNotIndirectlyContainItself(),

@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IValueAnnotation;
 use AlgoWeb\ODataMetadata\Csdl\Internal\Semantics\BadElements\IUnresolvedElement;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IValueAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -25,6 +26,7 @@ class ValueAnnotationInaccessibleTerm extends ValueAnnotationRule
         // An unbound term is not treated as a semantic error, and looking up its name would fail.
         $term = $annotation->getTerm();
         if (!($term instanceof IUnresolvedElement) && $context->getModel()->FindValueTerm($term->FullName()) == null) {
+            EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
             $context->AddError(
                 $annotation->Location(),
                 EdmErrorCode::BadUnresolvedTerm(),

@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunction;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
@@ -25,6 +26,7 @@ class FunctionOnlyInputParametersAllowedInFunctions extends FunctionRule
         foreach ($function->getParameters() as $parameter) {
             assert($parameter instanceof IFunctionParameter);
             if (!$parameter->getMode()->isIn()) {
+                EdmUtil::checkArgumentNull($parameter->Location(), 'parameter->Location');
                 $context->AddError(
                     $parameter->Location(),
                     EdmErrorCode::OnlyInputParametersAllowedInFunctions(),

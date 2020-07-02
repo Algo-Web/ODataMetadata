@@ -22,6 +22,7 @@ class OpenTypesNotSupported extends StructuredTypeRule
     {
         assert($structuredType instanceof IStructuredType);
         if ($structuredType->isOpen()) {
+            EdmUtil::checkArgumentNull($structuredType->Location(), 'structuredType->Location');
             $context->AddError(
                 $structuredType->Location(),
                 EdmErrorCode::OpenTypeNotSupported(),

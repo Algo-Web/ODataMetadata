@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -30,6 +31,7 @@ class FunctionImportUnsupportedReturnTypeV1 extends FunctionImportRule
             }
 
             if ($reportError && !$context->checkIsBad($functionImport->getReturnType()->getDefinition())) {
+                EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
                 $context->AddError(
                     $functionImport->Location(),
                     EdmErrorCode::FunctionImportUnsupportedReturnType(),

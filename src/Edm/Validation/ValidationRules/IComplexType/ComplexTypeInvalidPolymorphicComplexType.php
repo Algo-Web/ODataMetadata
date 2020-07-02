@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IComplexType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class ComplexTypeInvalidPolymorphicComplexType extends ComplexTypeRule
     {
         assert($edmComplexType instanceof IComplexType);
         if ($edmComplexType->getBaseType() != null) {
+            EdmUtil::checkArgumentNull($edmComplexType->Location(), 'edmComplexType->Location');
             $context->AddError(
                 $edmComplexType->Location(),
                 EdmErrorCode::InvalidPolymorphicComplexType(),

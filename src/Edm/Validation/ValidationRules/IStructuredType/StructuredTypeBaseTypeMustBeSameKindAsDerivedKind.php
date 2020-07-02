@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
@@ -28,6 +29,7 @@ class StructuredTypeBaseTypeMustBeSameKindAsDerivedKind extends StructuredTypeRu
                 $structuredType->getBaseType() != null &&
                 $structuredType->getBaseType()->getTypeKind() !== $structuredType->getTypeKind()
             ) {
+                EdmUtil::checkArgumentNull($structuredType->Location(), 'structuredType->Location');
                 $context->AddError(
                     $structuredType->Location(),
                     (

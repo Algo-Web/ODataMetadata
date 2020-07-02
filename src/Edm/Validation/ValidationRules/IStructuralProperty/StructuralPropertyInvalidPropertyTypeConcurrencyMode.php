@@ -8,7 +8,9 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuralProper
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
 use AlgoWeb\ODataMetadata\EdmConstants;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
+use AlgoWeb\ODataMetadata\Interfaces\IStringTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 use AlgoWeb\ODataMetadata\StringConst;
 
@@ -21,18 +23,26 @@ class StructuralPropertyInvalidPropertyTypeConcurrencyMode extends StructuralPro
 {
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
+        /** @var IStructuralProperty $property */
         assert($property instanceof IStructuralProperty);
+
+        $propType = $property->getType();
+        EdmUtil::checkArgumentNull($propType, 'property->getType');
+        $def      = $propType->getDefinition();
+        EdmUtil::checkArgumentNull($def, 'property->getType->getDefinition');
+        $loc      = $propType->getLocation();
+        EdmUtil::checkArgumentNull($loc, 'property->Location');
         if ($property->getConcurrencyMode()->isFixed() &&
-            !$property->getType()->IsPrimitive() &&
-            !$context->checkIsBad($property->getType()->getDefinition())) {
+            !$propType->IsPrimitive() &&
+            !$context->checkIsBad($def)) {
             $context->AddError(
-                $property->Location(),
+                $loc,
                 EdmErrorCode::InvalidPropertyType(),
                 StringConst::EdmModel_Validator_Semantic_InvalidPropertyTypeConcurrencyMode(
                     (
-                        $property->getType()->IsCollection() ?
+                        $propType->IsCollection() ?
                         EdmConstants::Type_Collection :
-                        $property->getType()->TypeKind()->getKey()
+                        $propType->TypeKind()->getKey()
                     )
                 )
             );

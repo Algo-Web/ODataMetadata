@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -24,6 +25,7 @@ class StructuredTypePropertiesDeclaringTypeMustBeCorrect extends StructuredTypeR
         foreach ($structuredType->getDeclaredProperties() as $property) {
             if ($property != null) {
                 if ($property->getDeclaringType() !== $structuredType) {
+                    EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
                     $context->AddError(
                         $property->Location(),
                         EdmErrorCode::DeclaringTypeMustBeCorrect(),

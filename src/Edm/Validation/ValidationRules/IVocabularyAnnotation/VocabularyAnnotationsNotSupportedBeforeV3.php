@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IVocabularyAnnota
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -21,6 +22,7 @@ class VocabularyAnnotationsNotSupportedBeforeV3 extends VocabularyAnnotationRule
     public function __invoke(ValidationContext $context, ?IEdmElement $vocabularyAnnotation)
     {
         assert($vocabularyAnnotation instanceof IVocabularyAnnotation);
+        EdmUtil::checkArgumentNull($vocabularyAnnotation->Location(), 'vocabularyAnnotation->Location');
         $context->AddError(
             $vocabularyAnnotation->Location(),
             EdmErrorCode::VocabularyAnnotationsNotSupportedBeforeV3(),

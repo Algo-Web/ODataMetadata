@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\EdmConstants;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Interfaces\IBinaryTypeReference;
@@ -535,6 +536,7 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors = [];
         if ($this instanceof ICheckable) {
@@ -604,6 +606,7 @@ trait TypeReferenceHelpers
             return new EdmEntityTypeReference($typeDefinition, $this->getNullable());
         }
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors = [];
         if ($this instanceof ICheckable) {
@@ -680,6 +683,8 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
@@ -749,6 +754,8 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
@@ -781,6 +788,8 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
@@ -813,6 +822,8 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
@@ -845,6 +856,8 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
@@ -876,6 +889,8 @@ trait TypeReferenceHelpers
             return $this;
         }
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();

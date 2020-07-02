@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Csdl\Internal\Serialization;
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\EdmModelVisitor;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\OnDeleteAction;
 use AlgoWeb\ODataMetadata\Enums\TermKind;
@@ -265,10 +266,12 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     protected function ProcessStructuralProperty(IStructuralProperty $element): void
     {
+        EdmUtil::checkArgumentNull($element->getType(), 'element->getType');
         $inlineType = self::IsInlineType($element->getType());
         $this->BeginElement($element, function (IStructuralProperty $t) use ($inlineType) {
             $this->schemaWriter->WriteStructuralPropertyElementHeader($t, $inlineType);
         }, function (IStructuralProperty $e) use ($inlineType) {
+            EdmUtil::checkArgumentNull($e->getType(), 'e->getType');
             $this->ProcessFacets($e->getType(), $inlineType);
         });
         if (!$inlineType) {
@@ -372,14 +375,15 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     protected function ProcessValueTerm(IValueTerm $term): void
     {
-        $inlineType = $term->getType() != null && self::IsInlineType($term->getType());
+        $inlineType = null !== $term->getType() && self::IsInlineType($term->getType());
         $this->BeginElement($term, function (IValueTerm $t) use ($inlineType) {
             $this->schemaWriter->WriteValueTermElementHeader($t, $inlineType);
         }, function (IValueTerm $e) use ($inlineType) {
+            EdmUtil::checkArgumentNull($e->getType(), 'e->getType');
             $this->ProcessFacets($e->getType(), $inlineType);
         });
         if (!$inlineType) {
-            if ($term->getType() != null) {
+            if (null !== $term->getType()) {
                 $this->VisitTypeReference($term->getType());
             }
         }
@@ -398,6 +402,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->BeginElement($element, function (IFunction $f) use ($inlineReturnType) {
                 $this->schemaWriter->WriteFunctionElementHeader($f, $inlineReturnType);
             }, function (IFunction $f) use ($inlineReturnType) {
+                EdmUtil::checkArgumentNull($f->getReturnType(), 'f->getReturnType');
                 $this->ProcessFacets($f->getReturnType(), $inlineReturnType);
             });
             if (!$inlineReturnType) {
@@ -448,6 +453,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     protected function ProcessCollectionType(ICollectionType $element): void
     {
+        EdmUtil::checkArgumentNull($element->getElementType(), 'element->getElementType');
         $inlineType = self::IsInlineType($element->getElementType());
         $this->BeginElement(
             $element,
@@ -455,6 +461,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                 $this->schemaWriter->WriteCollectionTypeElementHeader($t, $inlineType);
             },
             function (ICollectionType $e) use ($inlineType) {
+                EdmUtil::checkArgumentNull($e->getElementType(), 'e->getElementType');
                 $this->ProcessFacets($e->getElementType(), $inlineType);
             }
         );
@@ -693,6 +700,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->schemaWriter->WriteFunctionApplicationElementHeader($e, $isFunction);
         });
         if (!$isFunction) {
+            EdmUtil::checkArgumentNull($expression->getAppliedFunction(), 'expression->getAppliedFunction');
             $this->VisitExpression($expression->getAppliedFunction());
         }
 
@@ -908,6 +916,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->VisitPropertyRefs($dType->Key());
         $this->schemaWriter->WriteEndElement();
         $this->schemaWriter->WriteReferentialConstraintDependentEndElementHeader($principalElement->getPartner());
+        EdmUtil::checkArgumentNull(
+            $principalElement->getPartner()->getDependentProperties(),
+            'principalElement->getPartner->getDependentProperties'
+        );
         $this->VisitPropertyRefs($principalElement->getPartner()->getDependentProperties());
         $this->schemaWriter->WriteEndElement();
         $this->VisitPrimitiveElementAnnotations($annotations);
@@ -991,6 +1003,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                 if ($element->TypeKind()->isCollection()) {
                     $collectionElement = $element->AsCollection();
                     $type              = $collectionElement->CollectionDefinition()->getElementType();
+                    EdmUtil::checkArgumentNull($type, 'ProcessFacets - $type');
                     $this->schemaWriter->WriteNullableAttribute($type);
                     $this->VisitTypeReference($type);
                 } else {
