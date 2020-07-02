@@ -40,7 +40,7 @@ class EdmUtil
 
     public static function IsNullOrWhiteSpaceInternal(?string $value): bool
     {
-        return $value == null || trim($value) === '';
+        return null === $value || '' === trim($value);
     }
 
     public static function checkArgumentNull($value, string $parameterName)

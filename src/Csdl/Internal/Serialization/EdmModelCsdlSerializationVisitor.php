@@ -411,7 +411,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             });
         }
 
-        if ($element->getDefiningExpression() != null) {
+        if (null !== $element->getDefiningExpression()) {
             $this->schemaWriter->WriteDefiningExpressionElement($element->getDefiningExpression());
         }
 
@@ -569,7 +569,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     protected function ProcessLabeledExpression(ILabeledExpression $element): void
     {
-        if ($element->getName() == null) {
+        if (null === $element->getName()) {
             parent::processLabeledExpression($element);
         } else {
             $this->BeginElement($element, [$this->schemaWriter, 'WriteLabeledElementHeader']);
