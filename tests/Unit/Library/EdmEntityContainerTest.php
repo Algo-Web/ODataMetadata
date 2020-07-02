@@ -63,6 +63,7 @@ class EdmEntityContainerTest extends TestCase
         $kind = ContainerElementKind::None();
         $element = m::mock(IEntityContainerElement::class)->makePartial();
         $element->shouldReceive('getContainerElementKind')->andReturn($kind);
+        $element->shouldReceive('getName')->andReturn('Name');
 
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('An element with type \'None\' cannot be used in an entity container.');
@@ -78,9 +79,26 @@ class EdmEntityContainerTest extends TestCase
         $kind->shouldReceive('getKey')->andReturn('key');
         $element = m::mock(IEntityContainerElement::class)->makePartial();
         $element->shouldReceive('getContainerElementKind')->andReturn($kind);
+        $element->shouldReceive('getName')->andReturn('Name');
 
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('Invalid container element kind: \'key\'');
+
+        $foo->AddElement($element);
+    }
+
+    public function testAddElementWithElementNameNull()
+    {
+        $foo = new EdmEntityContainer('Full', 'Name');
+
+        $kind = m::mock(ContainerElementKind::class);
+        $kind->shouldReceive('getKey')->andReturn('key');
+        $element = m::mock(IEntityContainerElement::class)->makePartial();
+        $element->shouldReceive('getContainerElementKind')->andReturn($kind);
+        $element->shouldReceive('getName')->andReturn(null);
+
+        $this->expectException(InvalidOperationException::class);
+        $this->expectExceptionMessage('The name is missing or not valid.');
 
         $foo->AddElement($element);
     }
