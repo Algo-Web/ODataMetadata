@@ -18,6 +18,12 @@ abstract class SerializationValidator
     {
         return new ValidationRuleSet([]);
     }
+
+    /**
+     * @param IModel $root
+     * @return array
+     * @throws \ReflectionException
+     */
     public static function GetSerializationErrors(IModel $root): array
     {
         $errors = [];
