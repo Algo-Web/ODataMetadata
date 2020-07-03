@@ -22,6 +22,7 @@ abstract class EdmValidator
      * @param  IModel                    $root             the root of the model to be validated
      * @param  Version|ValidationRuleSet $versionOrRuleset Version of Edm to validate against. OR Custom rule set to validate against.
      * @param  array                     $errors           errors encountered while validating the model
+     * @throws \ReflectionException
      * @return bool                      true if model is valid, otherwise false
      */
     public static function Validate(IModel $root, $versionOrRuleset, array &$errors): bool

@@ -71,6 +71,7 @@ class InterfaceValidator
     /**
      * @param  IModel              $model
      * @param  ValidationRuleSet   $semanticRuleSet
+     * @throws \ReflectionException
      * @return iterable|EdmError[]
      */
     public static function ValidateModelStructureAndSemantics(IModel $model, ValidationRuleSet $semanticRuleSet): iterable
@@ -109,7 +110,11 @@ class InterfaceValidator
                 /**
                  * @var ValidationRule $rule
                  */
-                foreach (self::GetSemanticInterfaceVisitorsForObject(get_class($item), $semanticRuleSet, $concreteTypeSemanticInterfaceVisitors) as $rule) {
+                foreach (self::GetSemanticInterfaceVisitorsForObject(
+                    get_class($item),
+                    $semanticRuleSet,
+                    $concreteTypeSemanticInterfaceVisitors
+                ) as $rule) {
                     $rule($semanticValidationContext, $item);
                 }
             }
