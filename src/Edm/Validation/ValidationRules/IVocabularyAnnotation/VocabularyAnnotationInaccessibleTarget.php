@@ -62,7 +62,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         $entitySet = $target;
         if ($entitySet instanceof IEntitySet) {
             $container = $entitySet->getContainer();
-            if ($container != null && $context instanceof IEntityContainer) {
+            if ($container != null && $container instanceof IEntityContainer) {
                 $foundTarget = ($container->findEntitySet($entitySet->getName()) != null);
                 return $foundTarget;
             }
