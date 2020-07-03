@@ -105,10 +105,12 @@ class EdmUtil
             }
         } else {
             if ($element instanceof IEntityContainerElement) {
+                $container = $element->getContainer();
+                $fullName = (null !== $container) ? $container->FullName() : '';
                 if ($element instanceof IFunctionImport) {
-                    return $element->getContainer()->FullName() . '/' . self::ParameterizedName($element);
+                    return $fullName . '/' . self::ParameterizedName($element);
                 } else {
-                    return $element->getContainer()->FullName() . '/' . $element->getName();
+                    return $fullName . '/' . $element->getName();
                 }
             } else {
                 if ($element instanceof IProperty) {
