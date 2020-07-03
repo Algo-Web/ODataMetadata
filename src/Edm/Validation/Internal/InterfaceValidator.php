@@ -141,7 +141,8 @@ class InterfaceValidator
     private static function CreateInterfaceVisitorsMap(): iterable
     {
         $map = [];
-        if ($handle = opendir('.')) {
+        $handle = opendir('.');
+        if (false !== $handle) {
             while (false !== ($entry = readdir($handle))) {
                 /** @var string $name */
                 $name = substr($entry, -4);
