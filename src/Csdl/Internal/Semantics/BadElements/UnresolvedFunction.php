@@ -49,9 +49,9 @@ class UnresolvedFunction extends BadElement implements IFunction, IUnresolvedEle
     }
 
     /**
-     * @return string gets the defining expression of this function
+     * @return string|null gets the defining expression of this function
      */
-    public function getDefiningExpression(): string
+    public function getDefiningExpression(): ?string
     {
         return null;
     }
