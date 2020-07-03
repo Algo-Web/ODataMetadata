@@ -21,8 +21,7 @@ class PropertyValueBindingValueIsCorrectType extends PropertyValueBindingRule
     {
         assert($binding instanceof IPropertyValueBinding);
         $errors = null;
-        if (
-            !ExpressionTypeChecker::tryAssertType($binding->getValue(), $binding->getBoundProperty()->getType(), $errors) &&
+        if (!ExpressionTypeChecker::tryAssertType($binding->getValue(), $binding->getBoundProperty()->getType(), $errors) &&
             !$context->checkIsBad($binding) &&
             !$context->checkIsBad($binding->getBoundProperty())
         ) {

@@ -28,8 +28,7 @@ trait TypeHelpers
         }
 
         $thisKind = $thisType->getTypeKind();
-        if (
-                !$thisKind->equals($otherType->getTypeKind()) ||
+        if (!$thisKind->equals($otherType->getTypeKind()) ||
                 !(
                     $thisKind->isEntity() ||
                     $thisKind->isComplex() ||

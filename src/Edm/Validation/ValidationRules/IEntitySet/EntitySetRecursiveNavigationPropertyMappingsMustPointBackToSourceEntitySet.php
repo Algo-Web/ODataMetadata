@@ -24,8 +24,7 @@ class EntitySetRecursiveNavigationPropertyMappingsMustPointBackToSourceEntitySet
     {
         assert($set instanceof IEntitySet);
         foreach ($set->getNavigationTargets() as $mapping) {
-            if (
-                $mapping->getNavigationProperty()->containsTarget() &&
+            if ($mapping->getNavigationProperty()->containsTarget() &&
                 $mapping->getNavigationProperty()->getDeclaringType()->IsOrInheritsFrom($mapping->getNavigationProperty()->ToEntityType()) &&
                 $mapping->getTargetEntitySet() !== $set) {
                 EdmUtil::checkArgumentNull($set->Location(), 'set->Location');

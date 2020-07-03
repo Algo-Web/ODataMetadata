@@ -27,8 +27,7 @@ class FunctionImportEntitySetExpressionIsInvalid extends FunctionImportRule
         assert($functionImport instanceof IFunctionImport);
         EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
         if ($functionImport->getEntitySet() != null) {
-            if (
-                !$functionImport->getEntitySet()->getExpressionKind()->isEntitySetReference() &&
+            if (!$functionImport->getEntitySet()->getExpressionKind()->isEntitySetReference() &&
                 !$functionImport->getEntitySet()->getExpressionKind()->isPath()
             ) {
                 $context->AddError(
@@ -52,8 +51,7 @@ class FunctionImportEntitySetExpressionIsInvalid extends FunctionImportRule
                  * @var INavigationProperty[] $path
                  */
                 $path = null;
-                if (
-                    !$functionImport->TryGetStaticEntitySet($entitySet) &&
+                if (!$functionImport->TryGetStaticEntitySet($entitySet) &&
                     !$functionImport->TryGetRelativeEntitySetPath($context->getModel(), $parameter, $path)
                 ) {
                     $context->AddError(

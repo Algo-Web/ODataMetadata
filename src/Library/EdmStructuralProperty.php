@@ -38,7 +38,7 @@ class EdmStructuralProperty extends EdmProperty implements IStructuralProperty
      * @param string|null          $defaultValueString the default value of this property
      * @param ConcurrencyMode|null $concurrencyMode    the concurrency mode of this property
      */
-    public function __construct(IStructuredType $declaringType, string $name, ITypeReference $type, string $defaultValueString = null, ConcurrencyMode $concurrencyMode= null)
+    public function __construct(IStructuredType $declaringType, string $name, ITypeReference $type, string $defaultValueString = null, ConcurrencyMode $concurrencyMode = null)
     {
         parent::__construct($declaringType, $name, $type);
         $this->defaultValueString = $defaultValueString;

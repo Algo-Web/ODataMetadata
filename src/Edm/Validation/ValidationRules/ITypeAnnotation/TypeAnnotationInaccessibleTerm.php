@@ -25,8 +25,7 @@ class TypeAnnotationInaccessibleTerm extends TypeAnnotationRule
     {
         assert($annotation instanceof ITypeAnnotation);
         $term = $annotation->getTerm();
-        if (
-            !($term instanceof IUnresolvedElement) &&
+        if (!($term instanceof IUnresolvedElement) &&
             $context->getModel()->FindType($term->FullName()) instanceof IStructuredType) {
             EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
             $context->AddError(

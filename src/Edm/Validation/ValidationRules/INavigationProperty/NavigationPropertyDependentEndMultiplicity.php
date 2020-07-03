@@ -30,8 +30,7 @@ class NavigationPropertyDependentEndMultiplicity extends NavigationPropertyRule
         $dependentProperties = $navigationProperty->getDependentProperties();
         if ($dependentProperties != null) {
             if (ValidationHelper::PropertySetsAreEquivalent($navigationProperty->DeclaringEntityType()->Key(), $dependentProperties)) {
-                if (
-                    !$navigationProperty->Multiplicity()->isZeroOrOne() &&
+                if (!$navigationProperty->Multiplicity()->isZeroOrOne() &&
                     !$navigationProperty->Multiplicity()->isOne()
                 ) {
                     $context->AddError(

@@ -25,8 +25,7 @@ class EnumMemberValueMustHaveSameTypeAsUnderlyingType extends EnumMemberRule
     {
         assert($enumMember instanceof IEnumMember);
         $discoveredErrors = [];
-        if (
-                       !$context->checkIsBad($enumMember->getDeclaringType()) &&
+        if (!$context->checkIsBad($enumMember->getDeclaringType()) &&
                        !$context->checkIsBad($enumMember->getDeclaringType()->getUnderlyingType()) &&
                        !ExpressionTypeChecker::TryAssertPrimitiveAsType(
                            $enumMember->getValue(),

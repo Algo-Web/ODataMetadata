@@ -22,8 +22,7 @@ class EntitySetTypeHasNoKeys extends EntitySetRule
     public function __invoke(ValidationContext $context, ?IEdmElement $entitySet)
     {
         assert($entitySet instanceof IEntitySet);
-        if (
-            (
+        if ((
                 $entitySet->getElementType()->Key() === null ||
                 count($entitySet->getElementType()->Key()) !== 0
             ) &&

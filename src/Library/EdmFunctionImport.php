@@ -36,7 +36,7 @@ class EdmFunctionImport extends EdmFunctionBase implements IFunctionImport
      */
     private $isBindable;
 
-    public function __construct(IEntityContainer $container, string $name, ?ITypeReference $returnType, IExpression $entitySet = null, bool $isSideEffecting = true, bool $isComposable = false, bool $isBindable= false)
+    public function __construct(IEntityContainer $container, string $name, ?ITypeReference $returnType, IExpression $entitySet = null, bool $isSideEffecting = true, bool $isComposable = false, bool $isBindable = false)
     {
         parent::__construct($name, $returnType);
         $this->container       = $container;
