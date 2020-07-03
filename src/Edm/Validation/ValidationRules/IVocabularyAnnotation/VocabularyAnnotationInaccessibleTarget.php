@@ -13,6 +13,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
+use AlgoWeb\ODataMetadata\Interfaces\IFunctionBase;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
@@ -62,36 +63,36 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         $entitySet = $target;
         if ($entitySet instanceof IEntitySet) {
             $container = $entitySet->getContainer();
-            if ($container != null && $container instanceof IEntityContainer) {
+            if ($container instanceof IEntityContainer) {
                 $foundTarget = ($container->findEntitySet($entitySet->getName()) != null);
                 return $foundTarget;
             }
             return false;
         }
         $schemaType = $target;
-        if ($schemaType != null && $schemaType instanceof ISchemaType) {
+        if ($schemaType instanceof ISchemaType) {
             $foundTarget = ($context->getModel()->FindType($schemaType->FullName()) != null);
             return $foundTarget;
         }
         $term = $target;
-        if ($term != null && $term instanceof ITerm) {
+        if ($term instanceof ITerm) {
             $foundTarget = ($context->getModel()->FindValueTerm($term->FullName()) != null);
             return $foundTarget;
         }
         $function = $target;
-        if ($function != null && $function instanceof IFunction) {
+        if ($function instanceof IFunction) {
             $foundTarget = count($context->getModel()->FindFunctions($function->FullName())) > 0;
             return $foundTarget;
         }
         $functionImport = $target;
-        EdmUtil::checkArgumentNull($functionImport->getName(), 'functionImport->getName');
-        if ($functionImport != null && $functionImport instanceof IFunctionImport) {
+        if ($functionImport instanceof IFunctionImport) {
+            EdmUtil::checkArgumentNull($functionImport->getName(), 'functionImport->getName');
             $funcName = $functionImport->getName();
             $foundTarget = count($functionImport->getContainer()->findFunctionImports($funcName)) > 0;
             return $foundTarget;
         }
         $typeProperty = $target;
-        if ($typeProperty != null && $typeProperty instanceof IProperty) {
+        if ($typeProperty instanceof IProperty) {
             $declaringType = $typeProperty->getDeclaringType();
             assert($declaringType instanceof ISchemaType);
             $declaringTypeFullName = EdmUtil::FullyQualifiedName($declaringType);
@@ -104,40 +105,36 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
                 $foundTarget = ($modelType->findProperty($typeProperty->getName()) != null);
                 return $foundTarget;
             }
-        } else {
-            $functionParameter = $target;
-            if ($functionParameter != null && $functionParameter instanceof IFunctionParameter) {
-                $declaringFunction = $functionParameter->getDeclaringFunction();
-                if ($declaringFunction != null && $declaringFunction instanceof IFunction) {
-                    // For all functions with this name declared in the model check if it has
-                    // a parameter with this name
-                    foreach ($context->getModel()->FindFunctions($declaringFunction->FullName()) as $func) {
-                        if ($func->findParameter($functionParameter->getName()) != null) {
-                            $foundTarget = true;
-                            break;
-                        }
-                    }
-                } else {
-                    $declaringFunctionImport = $functionParameter->getDeclaringFunction();
-                    if ($declaringFunctionImport != null && $declaringFunctionImport instanceof IFunctionImport) {
-                        $container = $declaringFunctionImport->getContainer();
-                        assert($container instanceof IEntityContainer);
-                        foreach ($container->findFunctionImports(
-                            $declaringFunctionImport->getName()
-                        ) as $currentFunction) {
-                            if ($currentFunction->findParameter($functionParameter->getName()) != null) {
-                                $foundTarget = true;
-                                break;
-                            }
-                        }
-                    }
-                }
-            } else {
-                // Only validate annotations targeting elements that can be found via the
-                // model API.
-                // E.g. annotations targeting annotations will not be valid without this branch.
-                $foundTarget = true;
+            return false;
+        }
+        $functionParameter = $target;
+        if ($functionParameter instanceof IFunctionParameter) {
+            $paramName = $functionParameter->getName();
+            EdmUtil::checkArgumentNull($paramName, 'functionParameter->getName');
+            $declaringFunction = $functionParameter->getDeclaringFunction();
+            switch (true) {
+                case $declaringFunction instanceof IFunction:
+                    $functions = $context->getModel()->FindFunctions($declaringFunction->FullName());
+                    break;
+                case $declaringFunction instanceof IFunctionImport:
+                    $container = $declaringFunction->getContainer();
+                    assert($container instanceof IEntityContainer);
+                    $functions = $container->findFunctionImports($declaringFunction->getName());
+                    break;
+                default:
+                    return false;
             }
+
+            // For all functions with this name declared in the model check if it has
+            // a parameter with this name
+            return 0 < count(array_filter($functions, function (IFunctionBase $func) use ($paramName) {
+                return null !== $func->findParameter($paramName);
+            }));
+        } else {
+            // Only validate annotations targeting elements that can be found via the
+            // model API.
+            // E.g. annotations targeting annotations will not be valid without this branch.
+            $foundTarget = true;
         }
         return $foundTarget;
     }
