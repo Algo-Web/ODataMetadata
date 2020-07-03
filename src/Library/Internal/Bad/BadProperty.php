@@ -85,9 +85,9 @@ class BadProperty extends BadElement implements IStructuralProperty
     }
 
     /**
-     * @return string gets the default value of this property
+     * @return string|null gets the default value of this property
      */
-    public function getDefaultValueString(): string
+    public function getDefaultValueString(): ?string
     {
         return null;
     }
