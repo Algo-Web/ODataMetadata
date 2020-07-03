@@ -731,13 +731,13 @@ abstract class ExpressionTypeChecker
 
 
         $stringType = $type->AsString();
-        if (null !== $stringType->getMaxLength() && strlen($expression->getValue()) > $stringType->getMaxLength()) {
+        if (null !== $stringType->getMaxLength() && mb_strlen($expression->getValue()) > $stringType->getMaxLength()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
                     EdmErrorCode::StringConstantLengthOutOfRange(),
                     StringConst::EdmModel_Validator_Semantic_StringConstantLengthOutOfRange(
-                        strlen($expression->getValue()),
+                        mb_strlen($expression->getValue()),
                         $stringType->getMaxLength()
                     )
                 )

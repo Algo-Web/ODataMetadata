@@ -54,7 +54,7 @@ class XmlConvert
 
     public static function VerifyNCName(string $name): bool
     {
-        $length = strlen($name);
+        $length = mb_strlen($name);
         for ($i = 1; $i < $length; $i++) {
             if (!self::IsNCNameChar($name[$i])) {
                 return false;
