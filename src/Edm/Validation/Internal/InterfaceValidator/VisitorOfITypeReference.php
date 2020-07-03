@@ -16,7 +16,8 @@ final class VisitorOfITypeReference extends VisitorOfT
         assert($type instanceof ITypeReference);
 
         if (null !== $type->getDefinition()) {
-            // Transient types, such as collections, rows and entity refs are considered to be owned by the type reference, so they go as followups.
+            // Transient types, such as collections, rows and entity refs are considered to be owned by the type
+            // reference, so they go as followups.
             // Schema types are owned by their model, so they go as references.
             if ($type->getDefinition() instanceof ISchemaType) {
                 $references[] = $type->getDefinition();

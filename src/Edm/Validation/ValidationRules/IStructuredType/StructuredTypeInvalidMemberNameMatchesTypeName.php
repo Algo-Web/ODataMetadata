@@ -37,7 +37,9 @@ class StructuredTypeInvalidMemberNameMatchesTypeName extends StructuredTypeRule
                         $context->AddError(
                             $property->Location(),
                             EdmErrorCode::BadProperty(),
-                            StringConst::EdmModel_Validator_Semantic_InvalidMemberNameMatchesTypeName($property->getName())
+                            StringConst::EdmModel_Validator_Semantic_InvalidMemberNameMatchesTypeName(
+                                $property->getName()
+                            )
                         );
                     }
                 }

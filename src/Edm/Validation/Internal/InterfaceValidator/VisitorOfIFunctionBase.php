@@ -17,8 +17,9 @@ class VisitorOfIFunctionBase extends VisitorOfT
 
         InterfaceValidator::ProcessEnumerable($function, $function->getParameters(), 'Parameters', $followup, $errors);
 
-        // Return type is optional for function imports and is required for MDFs. Both cases are derived interfaces (IEdmFunctionImport and IEdmFunction).
-        // So, from the point of view of this interface, we consider return type as optional and it is expected that IEdmFunction visitor will have
+        // Return type is optional for function imports and is required for MDFs. Both cases are derived interfaces
+        // (IEdmFunctionImport and IEdmFunction). So, from the point of view of this interface, we consider return
+        // type as optional and it is expected that IEdmFunction visitor will have
         // an additional null check for the return type.
         if (null !== $function->getReturnType()) {
             // Function owns its return type reference, so it goes as a followup.

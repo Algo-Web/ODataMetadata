@@ -19,17 +19,31 @@ final class VisitorOfIEntityContainerElement extends VisitorOfT
         $termKindError = null;
         switch ($item->getContainerElementKind()) {
             case ContainerElementKind::EntitySet():
-                $termKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($item, $item->getContainerElementKind(), 'ContainerElementKind', IEntitySet::class);
+                $termKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                    $item,
+                    $item->getContainerElementKind(),
+                    'ContainerElementKind',
+                    IEntitySet::class
+                );
                 break;
 
             case ContainerElementKind::FunctionImport():
-                $termKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($item, $item->getContainerElementKind(), 'ContainerElementKind', IFunctionImport::class);
+                $termKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                    $item,
+                    $item->getContainerElementKind(),
+                    'ContainerElementKind',
+                    IFunctionImport::class
+                );
                 break;
 
             case ContainerElementKind::None():
                 break;
             default:
-                $termKindError = InterfaceValidator::CreateEnumPropertyOutOfRangeError($item, $item->getContainerElementKind(), 'ContainerElementKind');
+                $termKindError = InterfaceValidator::CreateEnumPropertyOutOfRangeError(
+                    $item,
+                    $item->getContainerElementKind(),
+                    'ContainerElementKind'
+                );
                 break;
         }
 

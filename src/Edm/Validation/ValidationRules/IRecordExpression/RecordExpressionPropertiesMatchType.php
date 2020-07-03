@@ -24,7 +24,13 @@ class RecordExpressionPropertiesMatchType extends RecordExpressionRule
             !$context->checkIsBad($expression) &&
             !$context->checkIsBad($expression->getDeclaredType())) {
             $discoveredErrors = null;
-            ExpressionTypeChecker::TryAssertRecordAsType($expression, $expression->getDeclaredType(), null, false, $discoveredErrors);
+            ExpressionTypeChecker::TryAssertRecordAsType(
+                $expression,
+                $expression->getDeclaredType(),
+                null,
+                false,
+                $discoveredErrors
+            );
             foreach ($discoveredErrors as $error) {
                 $context->AddRawError($error);
             }

@@ -74,7 +74,8 @@ trait StructuredTypeReferenceHelpers
     /**
      * Gets all structural properties declared in the definition of this reference and all its base types.
      *
-     * @return IStructuralProperty[] all structural properties declared in the definition of this reference and all its base types
+     * @return IStructuralProperty[] all structural properties declared in the definition of this reference and
+     * all its base types
      */
     public function StructuralProperties(): array
     {

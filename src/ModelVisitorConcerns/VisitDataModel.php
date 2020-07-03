@@ -38,7 +38,9 @@ trait VisitDataModel
                     $this->processEntityContainerElement($element);
                     break;
                 default:
-                    throw new InvalidOperationException(StringConst::UnknownEnumVal_ContainerElementKind($element->getContainerElementKind()->getKey()));
+                    throw new InvalidOperationException(
+                        StringConst::UnknownEnumVal_ContainerElementKind($element->getContainerElementKind()->getKey())
+                    );
             }
         }
     }

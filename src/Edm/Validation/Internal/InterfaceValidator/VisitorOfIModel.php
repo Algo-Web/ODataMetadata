@@ -15,7 +15,13 @@ final class VisitorOfIModel extends VisitorOfT
         assert($item instanceof IModel);
         $errors = [];
         InterfaceValidator::ProcessEnumerable($item, $item->getSchemaElements(), 'SchemaElements', $followup, $errors);
-        InterfaceValidator::ProcessEnumerable($item, $item->getVocabularyAnnotations(), 'VocabularyAnnotations', $followup, $errors);
+        InterfaceValidator::ProcessEnumerable(
+            $item,
+            $item->getVocabularyAnnotations(),
+            'VocabularyAnnotations',
+            $followup,
+            $errors
+        );
         return $errors;
     }
 

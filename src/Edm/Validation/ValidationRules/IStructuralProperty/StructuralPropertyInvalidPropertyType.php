@@ -36,7 +36,9 @@ class StructuralPropertyInvalidPropertyType extends StructuralPropertyRule
                 $context->AddError(
                     $property->Location(),
                     EdmErrorCode::InvalidPropertyType(),
-                    StringConst::EdmModel_Validator_Semantic_InvalidPropertyType($property->getType()->TypeKind()->getKey())
+                    StringConst::EdmModel_Validator_Semantic_InvalidPropertyType(
+                        $property->getType()->TypeKind()->getKey()
+                    )
                 );
             }
         }

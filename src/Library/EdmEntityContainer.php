@@ -66,8 +66,12 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
      * @param bool|null $isDefault
      * @param bool|null $isLazyLoadEnabled
      */
-    public function __construct(string $namespaceName, string $name, bool $isDefault = null, bool $isLazyLoadEnabled = null)
-    {
+    public function __construct(
+        string $namespaceName,
+        string $name,
+        bool $isDefault = null,
+        bool $isLazyLoadEnabled = null
+    ) {
         $this->namespaceName     = $namespaceName;
         $this->name              = $name;
         $this->isDefault         = $isDefault;
@@ -100,7 +104,8 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
      * such function import exists.
      *
      * @param  string                  $functionName the name of the function import being found
-     * @return array|IFunctionImport[] a group of the requested function imports, or an empty enumerable if no such function import exists
+     * @return array|IFunctionImport[] a group of the requested function imports, or an empty enumerable if no
+     *                                 such function import exists
      */
     public function findFunctionImports(string $functionName): array
     {
@@ -140,15 +145,26 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
      * @param  string            $name          name of the function import
      * @param  ITypeReference    $returnType    return type of the function import
      * @param  IExpression|null  $entitySet     An entity set containing entities returned by this function import.
-     *                                          The two expression kinds supported are IEntitySetReferenceExpression and IPathExpression.
+     *                                          The two expression kinds supported are IEntitySetReferenceExpression
+     *                                          and IPathExpression.
      * @param  bool|null         $sideEffecting a value indicating whether this function import has side-effects
-     * @param  bool|null         $composable    a value indicating whether this function import can be composed inside expressions
-     * @param  bool|null         $bindable      a value indicating whether this function import can be used as an extension method for the type of the first parameter of this function import
+     * @param  bool|null         $composable    can this function import be composed inside expressions
+     * @param  bool|null         $bindable      can this function import be used as an extension method for the type
+     *                                          of the first parameter of this function import
      * @return EdmFunctionImport created function import
      */
-    public function AddFunctionImport(string $name, ITypeReference $returnType, ?IExpression $entitySet, ?bool $sideEffecting, ?bool $composable, ?bool $bindable): EdmFunctionImport
-    {
-        assert($entitySet instanceof IEntitySetReferenceExpression || $entitySet instanceof IPathExpression, 'The two expression kinds supported are IEntitySetReferenceExpression and IPathExpression.');
+    public function AddFunctionImport(
+        string $name,
+        ITypeReference $returnType,
+        ?IExpression $entitySet,
+        ?bool $sideEffecting,
+        ?bool $composable,
+        ?bool $bindable
+    ): EdmFunctionImport {
+        assert(
+            $entitySet instanceof IEntitySetReferenceExpression || $entitySet instanceof IPathExpression,
+            'The two expression kinds supported are IEntitySetReferenceExpression and IPathExpression.'
+        );
         $functionImport = new EdmFunctionImport(
             $this,
             $name,
@@ -192,7 +208,12 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
 
         switch ($element->getContainerElementKind()) {
             case ContainerElementKind::EntitySet():
-                RegistrationHelper::AddElement($element, $name, $this->entitySetDictionary, [RegistrationHelper::class, 'CreateAmbiguousEntitySetBinding']);
+                RegistrationHelper::AddElement(
+                    $element,
+                    $name,
+                    $this->entitySetDictionary,
+                    [RegistrationHelper::class, 'CreateAmbiguousEntitySetBinding']
+                );
                 break;
             case ContainerElementKind::FunctionImport():
                 assert($element instanceof IFunctionBase);
@@ -201,7 +222,11 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
             case ContainerElementKind::None():
                 throw new InvalidOperationException(StringConst::EdmEntityContainer_CannotUseElementWithTypeNone());
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_ContainerElementKind($element->getContainerElementKind()->getKey()));
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_ContainerElementKind(
+                        $element->getContainerElementKind()->getKey()
+                    )
+                );
         }
     }
 

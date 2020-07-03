@@ -50,7 +50,9 @@ trait VisitTypeDefinitions
                 $this->VisitSchemaType($definition);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_TypeKind($definition->getTypeKind()->getKey()));
+                throw new InvalidOperationException(StringConst::UnknownEnumVal_TypeKind(
+                    $definition->getTypeKind()->getKey())
+                );
         }
     }
 
@@ -84,7 +86,9 @@ trait VisitTypeDefinitions
                 $this->ProcessProperty($property);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_PropertyKind($property->getPropertyKind()->getKey()));
+                throw new InvalidOperationException(StringConst::UnknownEnumVal_PropertyKind(
+                    $property->getPropertyKind()->getKey())
+                );
         }
     }
 

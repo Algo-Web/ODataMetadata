@@ -24,7 +24,11 @@ class NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2 extend
     {
         assert($navigationProperty instanceof INavigationProperty);
         $dependentProperties = $navigationProperty->getDependentProperties();
-        if ($dependentProperties != null && !ValidationHelper::PropertySetIsSubset($navigationProperty->DeclaringEntityType()->Key(), $dependentProperties)) {
+        if ($dependentProperties != null &&
+            !ValidationHelper::PropertySetIsSubset(
+                $navigationProperty->DeclaringEntityType()->Key(),
+                $dependentProperties
+            )) {
             EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
             $context->AddError(
                 $navigationProperty->Location(),

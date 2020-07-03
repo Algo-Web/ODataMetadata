@@ -22,7 +22,8 @@ class NavigationPropertyInvalidOperationMultipleEndsInAssociation extends Naviga
     public function __invoke(ValidationContext $context, ?IEdmElement $navigationProperty)
     {
         assert($navigationProperty instanceof INavigationProperty);
-        if (!$navigationProperty->getOnDelete()->isNone() && !$navigationProperty->getPartner()->getOnDelete()->isNone()) {
+        if (!$navigationProperty->getOnDelete()->isNone() &&
+            !$navigationProperty->getPartner()->getOnDelete()->isNone()) {
             EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
             $context->AddError(
                 $navigationProperty->Location(),

@@ -28,7 +28,10 @@ class EdmPrimitiveTypeReference extends EdmTypeReference implements IPrimitiveTy
     public function getDefinition(): ?IType
     {
         $def = parent::getDefinition();
-        assert(null === $def || $def instanceof IPrimitiveType, 'All primitive type reference should reference primate types');
+        assert(
+            null === $def || $def instanceof IPrimitiveType,
+            'All primitive type reference should reference primate types'
+        );
         return $def;
     }
 }

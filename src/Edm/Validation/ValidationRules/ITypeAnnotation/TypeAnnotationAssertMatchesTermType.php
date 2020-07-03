@@ -55,7 +55,9 @@ class TypeAnnotationAssertMatchesTermType extends TypeAnnotationRule
                     $context->AddError(
                         $property->Location(),
                         EdmErrorCode::TypeAnnotationHasExtraProperties(),
-                        StringConst::EdmModel_Validator_Semantic_TypeAnnotationHasExtraProperties($property->getBoundProperty()->getName())
+                        StringConst::EdmModel_Validator_Semantic_TypeAnnotationHasExtraProperties(
+                            $property->getBoundProperty()->getName()
+                        )
                     );
                 }
             }

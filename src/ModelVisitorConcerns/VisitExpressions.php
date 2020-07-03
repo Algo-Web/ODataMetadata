@@ -166,7 +166,9 @@ trait VisitExpressions
                 $this->processExpression($expression);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_TermKind($expression->getExpressionKind()->getKey()));
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_TermKind($expression->getExpressionKind()->getKey())
+                );
         }
     }
     /**

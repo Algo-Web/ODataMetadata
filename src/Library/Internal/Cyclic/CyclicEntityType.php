@@ -20,6 +20,11 @@ class CyclicEntityType extends BadEntityType
 {
     public function __construct(?string $qualifiedName, ILocation $location)
     {
-        parent::__construct($qualifiedName, [new EdmError($location, EdmErrorCode::BadCyclicEntity(), StringConst::Bad_CyclicEntity($qualifiedName)) ]);
+        $error = new EdmError(
+            $location,
+            EdmErrorCode::BadCyclicEntity(),
+            StringConst::Bad_CyclicEntity($qualifiedName)
+        );
+        parent::__construct($qualifiedName, [$error]);
     }
 }

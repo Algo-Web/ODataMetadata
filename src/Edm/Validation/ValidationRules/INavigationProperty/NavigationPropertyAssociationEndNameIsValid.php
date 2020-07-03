@@ -20,6 +20,10 @@ class NavigationPropertyAssociationEndNameIsValid extends NavigationPropertyRule
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
         assert($property instanceof INavigationProperty);
-        Helpers::CheckForNameError($context, $context->getModel()->GetAssociationEndName($property), $property->Location());
+        Helpers::CheckForNameError(
+            $context,
+            $context->getModel()->GetAssociationEndName($property),
+            $property->Location()
+        );
     }
 }

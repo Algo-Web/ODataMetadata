@@ -58,7 +58,9 @@ trait VisitElements
                 $this->processSchemaElement($element);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_SchemaElementKind($element->getSchemaElementKind()->getKey()));
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_SchemaElementKind($element->getSchemaElementKind()->getKey())
+                );
         }
     }
 }
