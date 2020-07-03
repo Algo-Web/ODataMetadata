@@ -108,8 +108,10 @@ trait ModelHelpers
     private function FindAcrossModels(string $qualifiedName, callable $finder, callable $ambiguousCreator)
     {
         $model = $this;
-        Asserts::assertSignatureMatches(function (IModel $model, string $qualifiedName) {}, $finder, '$finder');
-        Asserts::assertSignatureMatches(function ($candidate, $fromReference) {}, $ambiguousCreator, '$ambiguousCreator');
+        Asserts::assertSignatureMatches(function (IModel $model, string $qualifiedName) {
+        }, $finder, '$finder');
+        Asserts::assertSignatureMatches(function ($candidate, $fromReference) {
+        }, $ambiguousCreator, '$ambiguousCreator');
         $candidate = $finder($model, $qualifiedName);
         foreach ($model->getReferencedModels() as $reference) {
             $fromReference = $finder($reference, $qualifiedName);

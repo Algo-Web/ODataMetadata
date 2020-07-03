@@ -24,7 +24,7 @@ class VocabularyAnnotatableNoDuplicateAnnotations extends VocabularyAnnotatableR
     {
         assert($annotatable instanceof IVocabularyAnnotatable);
         $annotationSet = new HashSetInternal();
-        foreach ($annotatable->VocabularyAnnotations($context->getModel()) as  $annotation) {
+        foreach ($annotatable->VocabularyAnnotations($context->getModel()) as $annotation) {
             if (!$annotationSet->add($annotation->getTerm()->FullName() . ':' . $annotation->getQualifier())) {
                 EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
                 $context->AddError(

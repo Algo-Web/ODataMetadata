@@ -46,7 +46,7 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
                     /**
                      * @var IFunctionImport $existingFunction
                      */
-                    foreach ($functionList as  $existingFunction) {
+                    foreach ($functionList as $existingFunction) {
                         if (EdmElementComparer::isFunctionSignatureEquivalentTo($function, $existingFunction)) {
                             $context->AddError(
                                 $item->Location(),

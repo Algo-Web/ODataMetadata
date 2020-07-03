@@ -26,8 +26,7 @@ class NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne extend
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
         assert($property instanceof INavigationProperty);
-        if (
-            $property->containsTarget() &&
+        if ($property->containsTarget() &&
             $property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType()) &&
             !$property->Multiplicity()->isZeroOrOne()
         ) {

@@ -39,7 +39,6 @@ trait PrimitiveTypeHelpers
             case PrimitiveTypeKind::SByte():
             case PrimitiveTypeKind::Single():
             case PrimitiveTypeKind::Stream():
-
                 return new EdmPrimitiveTypeReference($this, $isNullable);
             case PrimitiveTypeKind::Binary():
                 return new EdmBinaryTypeReference($this, $isNullable);

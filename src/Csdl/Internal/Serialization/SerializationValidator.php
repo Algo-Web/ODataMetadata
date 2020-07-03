@@ -43,27 +43,27 @@ abstract class SerializationValidator
         }
 
         switch ($error->getErrorCode()) {
-                case EdmErrorCode::InvalidName():
-                case EdmErrorCode::NameTooLong():
-                case EdmErrorCode::InvalidNamespaceName():
-                case EdmErrorCode::SystemNamespaceEncountered():
-                case EdmErrorCode::RowTypeMustNotHaveBaseType():
-                case EdmErrorCode::ReferencedTypeMustHaveValidName():
-                case EdmErrorCode::FunctionImportEntitySetExpressionIsInvalid():
-                case EdmErrorCode::FunctionImportParameterIncorrectType():
-                case EdmErrorCode::OnlyInputParametersAllowedInFunctions():
-                case EdmErrorCode::InvalidFunctionImportParameterMode():
-                case EdmErrorCode::TypeMustNotHaveKindOfNone():
-                case EdmErrorCode::PrimitiveTypeMustNotHaveKindOfNone():
-                case EdmErrorCode::PropertyMustNotHaveKindOfNone():
-                case EdmErrorCode::TermMustNotHaveKindOfNone():
-                case EdmErrorCode::SchemaElementMustNotHaveKindOfNone():
-                case EdmErrorCode::EntityContainerElementMustNotHaveKindOfNone():
-                case EdmErrorCode::BinaryValueCannotHaveEmptyValue():
-                case EdmErrorCode::EnumMustHaveIntegerUnderlyingType():
-                case EdmErrorCode::EnumMemberTypeMustMatchEnumUnderlyingType():
-                    return true;
-            }
+            case EdmErrorCode::InvalidName():
+            case EdmErrorCode::NameTooLong():
+            case EdmErrorCode::InvalidNamespaceName():
+            case EdmErrorCode::SystemNamespaceEncountered():
+            case EdmErrorCode::RowTypeMustNotHaveBaseType():
+            case EdmErrorCode::ReferencedTypeMustHaveValidName():
+            case EdmErrorCode::FunctionImportEntitySetExpressionIsInvalid():
+            case EdmErrorCode::FunctionImportParameterIncorrectType():
+            case EdmErrorCode::OnlyInputParametersAllowedInFunctions():
+            case EdmErrorCode::InvalidFunctionImportParameterMode():
+            case EdmErrorCode::TypeMustNotHaveKindOfNone():
+            case EdmErrorCode::PrimitiveTypeMustNotHaveKindOfNone():
+            case EdmErrorCode::PropertyMustNotHaveKindOfNone():
+            case EdmErrorCode::TermMustNotHaveKindOfNone():
+            case EdmErrorCode::SchemaElementMustNotHaveKindOfNone():
+            case EdmErrorCode::EntityContainerElementMustNotHaveKindOfNone():
+            case EdmErrorCode::BinaryValueCannotHaveEmptyValue():
+            case EdmErrorCode::EnumMustHaveIntegerUnderlyingType():
+            case EdmErrorCode::EnumMemberTypeMustMatchEnumUnderlyingType():
+                return true;
+        }
 
         return false;
     }

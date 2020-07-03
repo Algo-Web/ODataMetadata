@@ -24,8 +24,7 @@ class SchemaElementNamespaceIsNotAllowed extends SchemaElementRule
     {
         assert($item instanceof ISchemaElement);
         // max length is hard coded in the xsd
-        if (
-            mb_strlen($item->getNamespace()) <= CsdlConstants::Max_NamespaceLength &&
+        if (mb_strlen($item->getNamespace()) <= CsdlConstants::Max_NamespaceLength &&
             mb_strlen($item->getNamespace()) > 0 &&
             !EdmUtil::IsNullOrWhiteSpaceInternal($item->getNamespace())
         ) {

@@ -45,7 +45,7 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
      * @param bool        $isOpen             denotes if the type is open
      * @param IEntityType $baseStructuredType the base type of this entity type
      */
-    public function __construct(string $namespaceName, string $name, bool $isAbstract =false, bool $isOpen= true, IEntityType $baseStructuredType = null)
+    public function __construct(string $namespaceName, string $name, bool $isAbstract = false, bool $isOpen = true, IEntityType $baseStructuredType = null)
     {
         parent::__construct($isAbstract, $isOpen, $baseStructuredType);
         $this->namespaceName = $namespaceName;

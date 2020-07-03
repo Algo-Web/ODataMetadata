@@ -26,8 +26,7 @@ class FunctionImportUnsupportedReturnTypeAfterV1 extends FunctionImportRule
             $elementType = $functionImport->getReturnType()->IsCollection() ?
                 $functionImport->getReturnType()->AsCollection()->ElementType() :
                 $functionImport->getReturnType();
-            if (
-                !$elementType->IsPrimitive() &&
+            if (!$elementType->IsPrimitive() &&
                 !$elementType->IsEntity() &&
                 !$elementType->IsComplex() &&
                 !$elementType->IsEnum() &&

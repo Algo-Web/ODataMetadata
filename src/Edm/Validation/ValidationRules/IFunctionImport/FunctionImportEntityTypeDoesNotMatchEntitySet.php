@@ -53,8 +53,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                     );
 
                     $entitySetElementType = $entitySet->getElementType();
-                    if (
-                        !$returnedEntityType->IsOrInheritsFrom($entitySetElementType) &&
+                    if (!$returnedEntityType->IsOrInheritsFrom($entitySetElementType) &&
                         !$context->checkIsBad($returnedEntityType) &&
                         !$context->checkIsBad($entitySet) &&
                         !$context->checkIsBad($entitySetElementType)
@@ -68,8 +67,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                 } elseif ($functionImport->TryGetRelativeEntitySetPath($context->getModel(), $parameter, $path)) {
                     $relativePathType        = count($path) == 0 ? $parameter->getType() : end($path)->getType();
                     $relativePathElementType = $relativePathType->IsCollection() ? $relativePathType->AsCollection()->ElementType() : $relativePathType;
-                    if (
-                        !$returnedEntityType->IsOrInheritsFrom($relativePathElementType->getDefinition()) &&
+                    if (!$returnedEntityType->IsOrInheritsFrom($relativePathElementType->getDefinition()) &&
                         !$context->checkIsBad($returnedEntityType) && !$context->checkIsBad($relativePathElementType->getDefinition())) {
                         $context->AddError(
                             $functionImport->Location(),

@@ -150,7 +150,8 @@ abstract class ValidationHelper
 
             // Parse the entire fragment to determine if the XML is valid
             /* @noinspection PhpStatementHasEmptyBodyInspection */
-            while ($reader->read());
+            while ($reader->read()) {
+            }
 
 
             $error = null;

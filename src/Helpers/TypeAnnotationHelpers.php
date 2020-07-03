@@ -24,8 +24,7 @@ trait TypeAnnotationHelpers
     {
         assert($property instanceof IProperty || is_string($property), 'The Propert to search for must either be a string representing the name or IProperty Representing the property');
         foreach ($this->getPropertyValueBindings() as $propertyBinding) {
-            if (
-                ($property instanceof IProperty && $propertyBinding->getBoundProperty() === $property)
+            if (($property instanceof IProperty && $propertyBinding->getBoundProperty() === $property)
                 || (is_string($property) && $propertyBinding->getBoundProperty()->getName() == $property)
             ) {
                 return $propertyBinding;

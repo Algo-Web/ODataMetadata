@@ -146,8 +146,7 @@ abstract class EdmElementComparer
         $otherTypeKeys = array_keys($otherFunction->getParameters());
         $keyCount      =  count($thisTypeKeys);
         for ($i = 0; $i < $keyCount; ++$i) {
-            if (
-            !self::isEquivalentTo(
+            if (!self::isEquivalentTo(
                 $thisFunction->getParameters()[$thisTypeKeys[$i]],
                 $otherFunction->getParameters()[$otherTypeKeys[$i]]
             )
@@ -210,8 +209,7 @@ abstract class EdmElementComparer
         $otherTypeKeys = array_keys($otherType->getDeclaredProperties());
         $keyCount      =  count($thisTypeKeys);
         for ($i = 0; $i < $keyCount; ++$i) {
-            if (
-            !self::isEquivalentTo(
+            if (!self::isEquivalentTo(
                 $thisType->getDeclaredProperties()[$thisTypeKeys[$i]],
                 $thisType->getDeclaredProperties()[$otherTypeKeys[$i]]
             )
@@ -240,15 +238,14 @@ abstract class EdmElementComparer
             return false;
         }
 
-        if (
-            $thisTypePrimitiveKind->isAnyOf(
-                PrimitiveTypeKind::Binary(),
-                PrimitiveTypeKind::Decimal(),
-                PrimitiveTypeKind::String(),
-                PrimitiveTypeKind::Time(),
-                PrimitiveTypeKind::DateTime(),
-                PrimitiveTypeKind::DateTimeOffset()
-            ) ||
+        if ($thisTypePrimitiveKind->isAnyOf(
+            PrimitiveTypeKind::Binary(),
+            PrimitiveTypeKind::Decimal(),
+            PrimitiveTypeKind::String(),
+            PrimitiveTypeKind::Time(),
+            PrimitiveTypeKind::DateTime(),
+            PrimitiveTypeKind::DateTimeOffset()
+        ) ||
             $thisTypePrimitiveKind->IsSpatial()) {
             return $thisType->getNullable() === $otherType->getNullable() &&
                 self::isEquivalentTo($thisType->getDefinition(), $otherType->getDefinition());

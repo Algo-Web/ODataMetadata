@@ -31,7 +31,7 @@ class TypeAnnotationAssertMatchesTermType extends TypeAnnotationRule
         $foundProperties = new HashSetInternal();
         EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
 
-        foreach ($type->Properties() as  $typeProperty) {
+        foreach ($type->Properties() as $typeProperty) {
             $annotationProperty = $annotation->FindPropertyBinding($typeProperty);
             if ($annotationProperty == null) {
                 $context->AddRawError(
