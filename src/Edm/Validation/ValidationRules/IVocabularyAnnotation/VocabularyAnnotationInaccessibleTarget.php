@@ -60,7 +60,9 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
                             $functionImport = $target;
                             EdmUtil::checkArgumentNull($functionImport->getName(), 'functionImport->getName');
                             if ($functionImport != null && $functionImport instanceof IFunctionImport) {
-                                $foundTarget = count($functionImport->getContainer()->findFunctionImports($functionImport->getName())) > 0;
+                                $foundTarget = count(
+                                    $functionImport->getContainer()->findFunctionImports($functionImport->getName())
+                                ) > 0;
                             } else {
                                 $typeProperty = $target;
                                 if ($typeProperty != null && $typeProperty instanceof IProperty) {
@@ -71,7 +73,8 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
                                     EdmUtil::checkArgumentNull($typeProperty->getName(), 'typeProperty->getName');
                                     $modelType             = $context->getModel()->FindType($declaringTypeFullName);
                                     if ($modelType !== null && $modelType instanceof IStructuredType) {
-                                        // If we can find a structured type with this name in the model check if it has a property with this name
+                                        // If we can find a structured type with this name in the model check if it
+                                        // has a property with this name
                                         $foundTarget = ($modelType->findProperty($typeProperty->getName()) != null);
                                     }
                                 } else {
@@ -79,7 +82,8 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
                                     if ($functionParameter != null && $functionParameter instanceof IFunctionParameter) {
                                         $declaringFunction = $functionParameter->getDeclaringFunction();
                                         if ($declaringFunction != null && $declaringFunction instanceof  IFunction) {
-                                            // For all functions with this name declared in the model check if it has a parameter with this name
+                                            // For all functions with this name declared in the model check if it has
+                                            // a parameter with this name
                                             foreach ($context->getModel()->FindFunctions($declaringFunction->FullName()) as $func) {
                                                 if ($func->findParameter($functionParameter->getName()) != null) {
                                                     $foundTarget = true;
@@ -100,7 +104,8 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
                                             }
                                         }
                                     } else {
-                                        // Only validate annotations targeting elements that can be found via the model API.
+                                        // Only validate annotations targeting elements that can be found via the
+                                        // model API.
                                         // E.g. annotations targeting annotations will not be valid without this branch.
                                         $foundTarget = true;
                                     }

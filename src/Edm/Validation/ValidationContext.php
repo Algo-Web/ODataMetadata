@@ -41,17 +41,23 @@ final class ValidationContext
     public function __construct(IModel $model, callable $isBad)
     {
         assert(
-            Asserts::assertSignatureMatches(function (IEdmElement $one): bool {
-            }, $isBad, '$isBad')
+            Asserts::assertSignatureMatches(
+                function (IEdmElement $one): bool {
+                },
+                $isBad,
+                '$isBad'
+            )
         );
-        /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
+        /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts. */
         assert(
-            (is_array($isBad) ? new ReflectionMethod(...$isBad) : new ReflectionFunction($isBad))->getParameters()[0]->getType()->getName() === IEdmElement::class,
+            (is_array($isBad) ? new ReflectionMethod(...$isBad) :
+                new ReflectionFunction($isBad))->getParameters()[0]->getType()->getName() === IEdmElement::class,
             '$isBad should be a callable taking one parameter of Type IEdmElement'
         );
-        /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
+        /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts. */
         assert(
-            (is_array($isBad) ? new ReflectionMethod(...$isBad) : new ReflectionFunction($isBad))->getReturnType()->getName() === 'bool',
+            (is_array($isBad) ? new ReflectionMethod(...$isBad) :
+                new ReflectionFunction($isBad))->getReturnType()->getName() === 'bool',
             '$isBad should be a callable returning a boolean'
         );
         $this->model = $model;

@@ -21,7 +21,11 @@ class NavigationPropertyAssociationNameIsValid extends NavigationPropertyRule
     {
         assert($property instanceof INavigationProperty);
         if ($property->isPrincipal()) {
-            Helpers::CheckForNameError($context, $context->getModel()->GetAssociationName($property), $property->Location());
+            Helpers::CheckForNameError(
+                $context,
+                $context->getModel()->GetAssociationName($property),
+                $property->Location()
+            );
         }
     }
 }

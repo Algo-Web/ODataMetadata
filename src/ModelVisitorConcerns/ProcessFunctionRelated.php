@@ -50,7 +50,8 @@ trait ProcessFunctionRelated
             $this->VisitTypeReference($functionBase->getReturnType());
         }
 
-        // Do not visit vocabularyAnnotatable because functions and function imports are always going to be either a schema element or a container element and will be visited through those paths.
+        // Do not visit vocabularyAnnotatable because functions and function imports are always going to be either a
+        // schema element or a container element and will be visited through those paths.
         $this->VisitFunctionParameters($functionBase->getParameters());
         $this->endElement($functionBase, __METHOD__);
     }

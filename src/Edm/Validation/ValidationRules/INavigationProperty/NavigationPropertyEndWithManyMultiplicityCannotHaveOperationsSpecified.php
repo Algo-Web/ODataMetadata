@@ -30,7 +30,9 @@ class NavigationPropertyEndWithManyMultiplicityCannotHaveOperationsSpecified ext
             $context->AddError(
                 $end->Location(),
                 EdmErrorCode::EndWithManyMultiplicityCannotHaveOperationsSpecified(),
-                StringConst::EdmModel_Validator_Semantic_EndWithManyMultiplicityCannotHaveOperationsSpecified($end->getName())
+                StringConst::EdmModel_Validator_Semantic_EndWithManyMultiplicityCannotHaveOperationsSpecified(
+                    $end->getName()
+                )
             );
         }
     }

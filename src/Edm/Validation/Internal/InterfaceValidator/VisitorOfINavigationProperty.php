@@ -20,8 +20,10 @@ class VisitorOfINavigationProperty extends VisitorOfT
         $errors = [];
 
         if (null !== $property->getPartner()) {
-            // If the declaring type of the partner does not contain the partner, it is a silent partner, and belongs to this property.
-            if (!in_array($property->getPartner(), $property->getPartner()->getDeclaringType()->getDeclaredProperties())) {
+            // If the declaring type of the partner does not contain the partner, it is a silent partner, and belongs
+            // to this property.
+            $prop = $property->getPartner()->getDeclaringType()->getDeclaredProperties();
+            if (!in_array($property->getPartner(), $prop)) {
                 $followup[] = $property->getPartner();
             } else {
                 $references[] =$property->getPartner();

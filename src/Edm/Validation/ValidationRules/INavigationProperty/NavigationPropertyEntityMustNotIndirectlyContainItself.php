@@ -26,12 +26,20 @@ class NavigationPropertyEntityMustNotIndirectlyContainItself extends NavigationP
         assert($property instanceof INavigationProperty);
         if ($property->containsTarget() &&
             !$property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType())) {
-            if (ValidationHelper::TypeIndirectlyContainsTarget($property->ToEntityType(), $property->DeclaringEntityType(), new SplObjectStorage()/*new HashSetInternal()*/, $context->getModel())) {
+            if (ValidationHelper::TypeIndirectlyContainsTarget(
+                $property->ToEntityType(),
+                $property->DeclaringEntityType(),
+                new SplObjectStorage()
+                /*new HashSetInternal()*/,
+                $context->getModel()
+            )) {
                 EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
                 $context->AddError(
                     $property->Location(),
                     EdmErrorCode::NavigationPropertyEntityMustNotIndirectlyContainItself(),
-                    StringConst::EdmModel_Validator_Semantic_NavigationPropertyEntityMustNotIndirectlyContainItself($property->getName())
+                    StringConst::EdmModel_Validator_Semantic_NavigationPropertyEntityMustNotIndirectlyContainItself(
+                        $property->getName()
+                    )
                 );
             }
         }

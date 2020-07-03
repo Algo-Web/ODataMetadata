@@ -28,7 +28,8 @@ class VisitorOfIEntitySet extends VisitorOfT
             );
         }
 
-        // Navigation targets are not EDM elements, so we expand and process them here instead of adding them as followups.
+        // Navigation targets are not EDM elements, so we expand and process them here instead of adding them as
+        // followups.
         $navTargetMappings = [];
         InterfaceValidator::ProcessEnumerable(
             $item,

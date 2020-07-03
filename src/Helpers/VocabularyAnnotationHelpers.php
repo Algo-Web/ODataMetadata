@@ -20,7 +20,8 @@ trait VocabularyAnnotationHelpers
          * @var IVocabularyAnnotation $annotation
          */
         $annotation = $this;
-        return $annotation->GetSerializationLocation($model) == EdmVocabularyAnnotationSerializationLocation::Inline || $annotation->TargetString() == null;
+        return $annotation->GetSerializationLocation($model) ==
+               EdmVocabularyAnnotationSerializationLocation::Inline || $annotation->TargetString() == null;
     }
 
     public function TargetString(): string
@@ -38,13 +39,20 @@ trait VocabularyAnnotationHelpers
      * @param IModel                                            $model    model containing the annotation
      * @param EdmVocabularyAnnotationSerializationLocation|null $location the location the annotation should appear
      */
-    public function SetSerializationLocation(IModel $model, ?EdmVocabularyAnnotationSerializationLocation $location): void
-    {
+    public function SetSerializationLocation(
+        IModel $model,
+        ?EdmVocabularyAnnotationSerializationLocation $location
+    ): void {
         /**
          * @var IVocabularyAnnotation $annotation
          */
         $annotation = $this;
-        $model->SetAnnotationValue($annotation, EdmConstants::InternalUri, CsdlConstants::AnnotationSerializationLocationAnnotation, (object)$location);
+        $model->SetAnnotationValue(
+            $annotation,
+            EdmConstants::InternalUri,
+            CsdlConstants::AnnotationSerializationLocationAnnotation,
+            (object)$location
+        );
     }
 
     /**
@@ -59,7 +67,12 @@ trait VocabularyAnnotationHelpers
          * @var IVocabularyAnnotation $annotation
          */
         $annotation = $this;
-        $location   = $model->GetAnnotationValue(EdmVocabularyAnnotationSerializationLocation::class, $annotation, EdmConstants::InternalUri, CsdlConstants::AnnotationSerializationLocationAnnotation);
+        $location   = $model->GetAnnotationValue(
+            EdmVocabularyAnnotationSerializationLocation::class,
+            $annotation,
+            EdmConstants::InternalUri,
+            CsdlConstants::AnnotationSerializationLocationAnnotation
+        );
         return $location instanceof EdmVocabularyAnnotationSerializationLocation ? $location : null;
     }
 
@@ -75,7 +88,12 @@ trait VocabularyAnnotationHelpers
          * @var IVocabularyAnnotation $annotation
          */
         $annotation = $this;
-        $model->SetAnnotationValue($annotation, EdmConstants::InternalUri, CsdlConstants::SchemaNamespaceAnnotation, $schemaNamespace);
+        $model->SetAnnotationValue(
+            $annotation,
+            EdmConstants::InternalUri,
+            CsdlConstants::SchemaNamespaceAnnotation,
+            $schemaNamespace
+        );
     }
     /**
      * Gets the schema an annotation should be serialized in.
@@ -89,6 +107,11 @@ trait VocabularyAnnotationHelpers
          * @var IVocabularyAnnotation $annotation
          */
         $annotation = $this;
-        return $model->GetAnnotationValue('string', $annotation, EdmConstants::InternalUri, CsdlConstants::SchemaNamespaceAnnotation);
+        return $model->GetAnnotationValue(
+            'string',
+            $annotation,
+            EdmConstants::InternalUri,
+            CsdlConstants::SchemaNamespaceAnnotation
+        );
     }
 }

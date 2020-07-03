@@ -33,11 +33,17 @@ class DirectValueAnnotationHasXmlSerializableName extends DirectValueAnnotationR
             mb_strlen($name) <= CsdlConstants::Max_NameLength &&
             mb_strlen($name) > 0
         ) {
-            // Note: this check can be done without the try/catch block, but we need XmlConvert.IsStartNCNameChar and XmlConvert.IsNCNameChar, which are not available in 3.5.
+            // Note: this check can be done without the try/catch block, but we need XmlConvert.IsStartNCNameChar and
+            // XmlConvert.IsNCNameChar, which are not available in 3.5.
             if (!XmlConvert::VerifyNCName($annotation->getName())) {
                 $value         = $annotation->getValue() ;
                 $errorLocation = ($value === null || !($value instanceof IValue)) ? null : $value->Location();
-                $context->AddRawError(new EdmError($errorLocation, EdmErrorCode::InvalidName(), StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsNotAllowed($annotation->getName())));
+                $error         = new EdmError(
+                    $errorLocation,
+                    EdmErrorCode::InvalidName(),
+                    StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsNotAllowed($annotation->getName())
+                );
+                $context->AddRawError($error);
             }
         }
     }

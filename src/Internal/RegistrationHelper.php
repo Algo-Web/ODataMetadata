@@ -54,18 +54,39 @@ abstract class RegistrationHelper
                 break;
             case SchemaElementKind::TypeDefinition():
                 assert($element instanceof ISchemaType);
-                self::AddElement($element, $qualifiedName, $schemaTypeDictionary, [self::class, 'CreateAmbiguousTypeBinding']);
+                self::AddElement(
+                    $element,
+                    $qualifiedName,
+                    $schemaTypeDictionary,
+                    [self::class, 'CreateAmbiguousTypeBinding']
+                );
                 break;
             case SchemaElementKind::ValueTerm():
                 assert($element instanceof IValueTerm);
-                self::AddElement($element, $qualifiedName, $valueTermDictionary, [self::class, 'CreateAmbiguousValueTermBinding()']);
+                self::AddElement(
+                    $element,
+                    $qualifiedName,
+                    $valueTermDictionary,
+                    [self::class, 'CreateAmbiguousValueTermBinding()']
+                );
                 break;
             case SchemaElementKind::EntityContainer():
                 assert($element instanceof IEntityContainer);
                 EdmUtil::checkArgumentNull($element->getName(), 'element->getName');
-                // Add EntityContainers to the dictionary twice to maintain backwards compat with Edms that did not consider EntityContainers to be schema elements.
-                self::AddElement($element, $qualifiedName, $containerDictionary, [self::class, 'CreateAmbiguousEntityContainerBinding']);
-                self::AddElement($element, $element->getName(), $containerDictionary, [self::class, 'CreateAmbiguousEntityContainerBinding']);
+                // Add EntityContainers to the dictionary twice to maintain backwards compat with Edms that did not
+                // consider EntityContainers to be schema elements.
+                self::AddElement(
+                    $element,
+                    $qualifiedName,
+                    $containerDictionary,
+                    [self::class, 'CreateAmbiguousEntityContainerBinding']
+                );
+                self::AddElement(
+                    $element,
+                    $element->getName(),
+                    $containerDictionary,
+                    [self::class, 'CreateAmbiguousEntityContainerBinding']
+                );
                 break;
             case SchemaElementKind::None():
                 throw new InvalidOperationException(StringConst::EdmModel_CannotUseElementWithTypeNone());
@@ -150,8 +171,10 @@ abstract class RegistrationHelper
         return new AmbiguousEntitySetBinding($first, $second);
     }
 
-    public static function CreateAmbiguousEntityContainerBinding(IEntityContainer $first, IEntityContainer $second): IEntityContainer
-    {
+    public static function CreateAmbiguousEntityContainerBinding(
+        IEntityContainer $first,
+        IEntityContainer $second
+    ): IEntityContainer {
         if ($first instanceof AmbiguousEntityContainerBinding) {
             $first->AddBinding($second);
             return $first;

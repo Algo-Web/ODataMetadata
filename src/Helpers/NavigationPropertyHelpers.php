@@ -21,7 +21,8 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 trait NavigationPropertyHelpers
 {
     /**
-     * Gets the multiplicity of this end of a bidirectional relationship between this navigation property and its partner.
+     * Gets the multiplicity of this end of a bidirectional relationship between this navigation property and
+     * its partner.
      *
      * @return Multiplicity the multiplicity of this end of the relationship
      */
@@ -92,7 +93,8 @@ trait NavigationPropertyHelpers
     }
 
     /**
-     * Gets the primary end of a pair of partnered navigation properties, selecting the principal end if there is one and making a stable, arbitrary choice otherwise.
+     * Gets the primary end of a pair of partnered navigation properties, selecting the principal end if there is one
+     * and making a stable, arbitrary choice otherwise.
      *
      * @return INavigationProperty the primary end between the navigation property and its partner
      */
@@ -115,7 +117,10 @@ trait NavigationPropertyHelpers
         // so break the tie with an arbitrary, stable comparision.
         $nameComparison = strcmp($property->getName(), $partner->getName());
         if ($nameComparison == 0) {
-            $nameComparison = strcmp($property->DeclaringEntityType()->FullName(), $partner->DeclaringEntityType()->FullName());
+            $nameComparison = strcmp(
+                $property->DeclaringEntityType()->FullName(),
+                $partner->DeclaringEntityType()->FullName()
+            );
         }
 
         return $nameComparison > 0 ? $property : $partner;

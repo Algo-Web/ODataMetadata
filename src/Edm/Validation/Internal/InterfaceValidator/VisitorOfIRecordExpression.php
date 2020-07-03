@@ -15,7 +15,13 @@ class VisitorOfIRecordExpression extends VisitorOfT
         assert($expression instanceof IRecordExpression);
         $errors = [];
 
-        InterfaceValidator::ProcessEnumerable($expression, $expression->getProperties(), 'Properties', $followup, $errors);
+        InterfaceValidator::ProcessEnumerable(
+            $expression,
+            $expression->getProperties(),
+            'Properties',
+            $followup,
+            $errors
+        );
 
         if (null !== $expression->getDeclaredType()) {
             // Record constructor owns its type reference, so it goes as a followup.

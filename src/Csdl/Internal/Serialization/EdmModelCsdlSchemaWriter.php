@@ -120,9 +120,17 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteValueTermElementHeader(IValueTerm $term, bool $inlineType): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_ValueTerm);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $term->getName(), [EdmValueWriter::class, 'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $term->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         if ($inlineType && $term->getType() != null) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_Type, $term->getType(), [$this, 'TypeReferenceAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_Type,
+                $term->getType(),
+                [$this, 'TypeReferenceAsXml']
+            );
         }
     }
 
@@ -133,7 +141,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteAssociationElementHeader(INavigationProperty $navigationProperty): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Association);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $this->model->GetAssociationName($navigationProperty), [EdmValueWriter::class, 'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $this->model->GetAssociationName($navigationProperty),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
     }
 
     /**
@@ -141,11 +153,21 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      * @param INavigationProperty $navigationProperty
      * @throws \ReflectionException
      */
-    public function WriteAssociationSetElementHeader(IEntitySet $entitySet, INavigationProperty $navigationProperty): void
-    {
+    public function WriteAssociationSetElementHeader(
+        IEntitySet $entitySet,
+        INavigationProperty $navigationProperty
+    ): void {
         $this->xmlWriter->startElement(CsdlConstants::Element_AssociationSet);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $this->model->GetAssociationSetName($entitySet, $navigationProperty), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Association, $this->model->GetAssociationFullName($navigationProperty), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $this->model->GetAssociationSetName($entitySet, $navigationProperty),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Association,
+            $this->model->GetAssociationFullName($navigationProperty),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
     }
 
     /**
@@ -155,9 +177,23 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteComplexTypeElementHeader(IComplexType $complexType): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_ComplexType);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $complexType->getName(), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_BaseType, $complexType->BaseComplexType(), null, [$this, 'TypeDefinitionAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Abstract, $complexType->isAbstract(), CsdlConstants::Default_Abstract, [EdmValueWriter::class,'BooleanAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $complexType->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_BaseType,
+            $complexType->BaseComplexType(),
+            null,
+            [$this, 'TypeDefinitionAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Abstract,
+            $complexType->isAbstract(),
+            CsdlConstants::Default_Abstract,
+            [EdmValueWriter::class, 'BooleanAsXml']
+        );
     }
 
     /**
@@ -167,12 +203,25 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteEnumTypeElementHeader(IEnumType $enumType): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_EnumType);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $enumType->getName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $enumType->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         if ($enumType->getUnderlyingType()->getPrimitiveKind() != PrimitiveTypeKind::Int32()) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_UnderlyingType, $enumType->getUnderlyingType(), [$this, 'TypeDefinitionAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_UnderlyingType,
+                $enumType->getUnderlyingType(),
+                [$this, 'TypeDefinitionAsXml']
+            );
         }
 
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_IsFlags, $enumType->isFlags(), CsdlConstants::Default_IsFlags, [EdmValueWriter::class,'BooleanAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_IsFlags,
+            $enumType->isFlags(),
+            CsdlConstants::Default_IsFlags,
+            [EdmValueWriter::class, 'BooleanAsXml']
+        );
     }
 
     public function WriteDocumentationElement(IDocumentation $documentation): void
@@ -204,8 +253,16 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteAssociationSetEndElementHeader(IEntitySet $entitySet, INavigationProperty $property): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_End);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Role, $this->model->GetAssociationEndName($property), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_EntitySet, $entitySet->getName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Role,
+            $this->model->GetAssociationEndName($property),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_EntitySet,
+            $entitySet->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
     }
 
     /**
@@ -217,9 +274,21 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->xmlWriter->startElement(CsdlConstants::Element_End);
         $declaringType = $associationEnd->getDeclaringType();
         assert($declaringType instanceof IEntityType);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Type, $declaringType->FullName(), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Role, $this->model->GetAssociationEndName($associationEnd), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Multiplicity, $associationEnd->Multiplicity(), [self::class, 'MultiplicityAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Type,
+            $declaringType->FullName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Role,
+            $this->model->GetAssociationEndName($associationEnd),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Multiplicity,
+            $associationEnd->Multiplicity(),
+            [self::class, 'MultiplicityAsXml']
+        );
     }
 
     /**
@@ -229,12 +298,26 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteEntityContainerElementHeader(IEntityContainer $container): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_EntityContainer);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $container->getName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $container->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         if ($container->isDefault()) {
-            $this->xmlWriter->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_IsDefaultEntityContainer, null, 'true');
+            $this->xmlWriter->writeAttributeNs(
+                CsdlConstants::Prefix_ODataMetadata,
+                CsdlConstants::Attribute_IsDefaultEntityContainer,
+                null,
+                'true'
+            );
         }
         if ($container->isLazyLoadEnabled()) {
-            $this->xmlWriter->writeAttributeNs(CsdlConstants::Prefix_Annotations, CsdlConstants::Attribute_LazyLoadingEnabled, null, 'true');
+            $this->xmlWriter->writeAttributeNs(
+                CsdlConstants::Prefix_Annotations,
+                CsdlConstants::Attribute_LazyLoadingEnabled,
+                null,
+                'true'
+            );
         }
     }
 
@@ -245,8 +328,16 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteEntitySetElementHeader(IEntitySet $entitySet): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_EntitySet);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $entitySet->getName(), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_EntityType, $entitySet->getElementType()->FullName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $entitySet->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_EntityType,
+            $entitySet->getElementType()->FullName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
     }
 
     /**
@@ -256,10 +347,29 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteEntityTypeElementHeader(IEntityType $entityType): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_EntityType);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $entityType->getName(), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_BaseType, $entityType->BaseEntityType(), null, [$this, 'TypeDefinitionAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Abstract, $entityType->isAbstract(), CsdlConstants::Default_Abstract, [EdmValueWriter::class, 'BooleanAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_OpenType, $entityType->isOpen(), CsdlConstants::Default_OpenType, [EdmValueWriter::class,'BooleanAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $entityType->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_BaseType,
+            $entityType->BaseEntityType(),
+            null,
+            [$this, 'TypeDefinitionAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Abstract,
+            $entityType->isAbstract(),
+            CsdlConstants::Default_Abstract,
+            [EdmValueWriter::class, 'BooleanAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_OpenType,
+            $entityType->isOpen(),
+            CsdlConstants::Default_OpenType,
+            [EdmValueWriter::class, 'BooleanAsXml']
+        );
     }
 
     public function WriteDeclaredKeyPropertiesElementHeader(): void
@@ -274,7 +384,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WritePropertyRefElement(IStructuralProperty $property): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_PropertyRef);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $property->getName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $property->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         $this->WriteEndElement();
     }
 
@@ -285,11 +399,32 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteNavigationPropertyElementHeader(INavigationProperty $member): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_NavigationProperty);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $member->getName(), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Relationship, $this->model->GetAssociationFullName($member), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_ToRole, $this->model->GetAssociationEndName($member->getPartner()), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_FromRole, $this->model->GetAssociationEndName($member), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_ContainsTarget, $member->containsTarget(), CsdlConstants::Default_ContainsTarget, [EdmValueWriter::class,'BooleanAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $member->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Relationship,
+            $this->model->GetAssociationFullName($member),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_ToRole,
+            $this->model->GetAssociationEndName($member->getPartner()),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_FromRole,
+            $this->model->GetAssociationEndName($member),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_ContainsTarget,
+            $member->containsTarget(),
+            CsdlConstants::Default_ContainsTarget,
+            [EdmValueWriter::class, 'BooleanAsXml']
+        );
     }
 
     /**
@@ -300,7 +435,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteOperationActionElement(string $elementName, OnDeleteAction $operationAction): void
     {
         $this->xmlWriter->startElement($elementName);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Action, strval($operationAction), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Action,
+            strval($operationAction),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         $this->WriteEndElement();
     }
 
@@ -314,8 +453,18 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     {
         $xmlNamespace = self::GetCsdlNamespace($this->version);
         $this->xmlWriter->startElement(CsdlConstants::Element_Schema);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Namespace, $schema->getNamespace(), '', [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Alias, $alias, null, [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Namespace,
+            $schema->getNamespace(),
+            '',
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Alias,
+            $alias,
+            null,
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         foreach ($mappings as $mappingKey => $mappingValue) {
             $this->xmlWriter->writeAttributeNs(EdmConstants::XmlNamespacePrefix, $mappingKey, null, $mappingValue);
         }
@@ -328,7 +477,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteAnnotationsElementHeader(string $annotationsTarget): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Annotations);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Target, $annotationsTarget, [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Target,
+            $annotationsTarget,
+            [EdmValueWriter::class, 'StringAsXml']
+        );
     }
 
     /**
@@ -339,13 +492,31 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteStructuralPropertyElementHeader(IStructuralProperty $property, bool $inlineType): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Property);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $property->getName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $property->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         if ($inlineType) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_Type, $property->getType(), [$this, 'TypeReferenceAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_Type,
+                $property->getType(),
+                [$this, 'TypeReferenceAsXml']
+            );
         }
 
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_ConcurrencyMode, $property->getConcurrencyMode(), CsdlConstants::$Default_ConcurrencyMode, [self::class, 'ConcurrencyModeAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_DefaultValue, $property->getDefaultValueString(), null, [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_ConcurrencyMode,
+            $property->getConcurrencyMode(),
+            CsdlConstants::$Default_ConcurrencyMode,
+            [self::class, 'ConcurrencyModeAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_DefaultValue,
+            $property->getDefaultValueString(),
+            null,
+            [EdmValueWriter::class, 'StringAsXml']
+        );
     }
 
     /**
@@ -355,10 +526,18 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteEnumMemberElementHeader(IEnumMember $member): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Member);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $member->getName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $member->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         $isExplicit = $member->IsValueExplicit($this->model);
         if (null === $isExplicit || $isExplicit) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_Value, $member->getValue(), [EdmValueWriter::class, 'PrimitiveValueAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_Value,
+                $member->getValue(),
+                [EdmValueWriter::class, 'PrimitiveValueAsXml']
+            );
         }
     }
 
@@ -368,7 +547,12 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      */
     public function WriteNullableAttribute(ITypeReference $reference): void
     {
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Nullable, $reference->getNullable(), CsdlConstants::Default_Nullable, [EdmValueWriter::class,'BooleanAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Nullable,
+            $reference->getNullable(),
+            CsdlConstants::Default_Nullable,
+            [EdmValueWriter::class, 'BooleanAsXml']
+        );
     }
 
     /**
@@ -378,12 +562,26 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteBinaryTypeAttributes(IBinaryTypeReference $reference): void
     {
         if ($reference->isUnBounded()) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_MaxLength, CsdlConstants::Value_Max, [EdmValueWriter::class,'StringAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_MaxLength,
+                CsdlConstants::Value_Max,
+                [EdmValueWriter::class, 'StringAsXml']
+            );
         } else {
-            $this->WriteOptionalAttribute(CsdlConstants::Attribute_MaxLength, $reference->getMaxLength(), null, [EdmValueWriter::class, 'IntAsXml']);
+            $this->WriteOptionalAttribute(
+                CsdlConstants::Attribute_MaxLength,
+                $reference->getMaxLength(),
+                null,
+                [EdmValueWriter::class, 'IntAsXml']
+            );
         }
 
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_FixedLength, $reference->isFixedLength(), null, [EdmValueWriter::class,'BooleanAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_FixedLength,
+            $reference->isFixedLength(),
+            null,
+            [EdmValueWriter::class, 'BooleanAsXml']
+        );
     }
 
     /**
@@ -392,8 +590,18 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      */
     public function WriteDecimalTypeAttributes(IDecimalTypeReference $reference): void
     {
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Precision, $reference->getPrecision(), null, [EdmValueWriter::class,'IntAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Scale, $reference->getScale(), null, [EdmValueWriter::class,'IntAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Precision,
+            $reference->getPrecision(),
+            null,
+            [EdmValueWriter::class, 'IntAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Scale,
+            $reference->getScale(),
+            null,
+            [EdmValueWriter::class, 'IntAsXml']
+        );
     }
 
     /**
@@ -402,7 +610,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      */
     public function WriteSpatialTypeAttributes(ISpatialTypeReference $reference): void
     {
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Srid, $reference->getSpatialReferenceIdentifier(), [self::class, 'SridAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Srid,
+            $reference->getSpatialReferenceIdentifier(),
+            [self::class, 'SridAsXml']
+        );
     }
 
     /**
@@ -411,15 +623,39 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      */
     public function WriteStringTypeAttributes(IStringTypeReference $reference): void
     {
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Collation, $reference->getCollation(), null, [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Collation,
+            $reference->getCollation(),
+            null,
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         if ($reference->isUnbounded()) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_MaxLength, CsdlConstants::Value_Max, [EdmValueWriter::class,'StringAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_MaxLength,
+                CsdlConstants::Value_Max,
+                [EdmValueWriter::class, 'StringAsXml']
+            );
         } else {
-            $this->WriteOptionalAttribute(CsdlConstants::Attribute_MaxLength, $reference->getMaxLength(), null, [EdmValueWriter::class,'IntAsXml']);
+            $this->WriteOptionalAttribute(
+                CsdlConstants::Attribute_MaxLength,
+                $reference->getMaxLength(),
+                null,
+                [EdmValueWriter::class, 'IntAsXml']
+            );
         }
 
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_FixedLength, $reference->isFixedLength(), null, [EdmValueWriter::class,'BooleanAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Unicode, $reference->isUnicode(), null, [EdmValueWriter::class,'BooleanAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_FixedLength,
+            $reference->isFixedLength(),
+            null,
+            [EdmValueWriter::class, 'BooleanAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Unicode,
+            $reference->isUnicode(),
+            null,
+            [EdmValueWriter::class, 'BooleanAsXml']
+        );
     }
 
     /**
@@ -428,7 +664,12 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      */
     public function WriteTemporalTypeAttributes(ITemporalTypeReference $reference): void
     {
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Precision, $reference->getPrecision(), null, [EdmValueWriter::class,'IntAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Precision,
+            $reference->getPrecision(),
+            null,
+            [EdmValueWriter::class, 'IntAsXml']
+        );
     }
 
     public function WriteReferentialConstraintElementHeader(INavigationProperty $constraint): void
@@ -443,7 +684,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteReferentialConstraintPrincipalEndElementHeader(INavigationProperty $end): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Principal);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Role, $this->model->GetAssociationEndName($end), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Role,
+            $this->model->GetAssociationEndName($end),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
     }
 
     /**
@@ -453,7 +698,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteReferentialConstraintDependentEndElementHeader(INavigationProperty $end): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Dependent);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Role, $this->model->GetAssociationEndName($end), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Role,
+            $this->model->GetAssociationEndName($end),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
     }
 
     /**
@@ -464,8 +713,12 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteNamespaceUsingElement(string $usingNamespace, string $alias): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Using);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Namespace, $usingNamespace, [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Alias, $alias, [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Namespace,
+            $usingNamespace,
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Alias, $alias, [EdmValueWriter::class, 'StringAsXml']);
         $this->WriteEndElement();
     }
 
@@ -477,7 +730,12 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     {
         $edmValue = $annotation->getValue();
         if ($annotation->getValue() instanceof IPrimitiveValue) {
-            $this->xmlWriter->writeAttributeNs('', $annotation->getName(), $annotation->getNamespaceUri(), EdmValueWriter::PrimitiveValueAsXml($edmValue));
+            $this->xmlWriter->writeAttributeNs(
+                '',
+                $annotation->getName(),
+                $annotation->getNamespaceUri(),
+                EdmValueWriter::PrimitiveValueAsXml($edmValue)
+            );
         }
     }
 
@@ -497,9 +755,17 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteFunctionElementHeader(IFunction $function, bool $inlineReturnType): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Function);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $function->getName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $function->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         if ($inlineReturnType) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_ReturnType, $function->getReturnType(), [$this, 'TypeReferenceAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_ReturnType,
+                $function->getReturnType(),
+                [$this, 'TypeReferenceAsXml']
+            );
         }
     }
 
@@ -523,31 +789,73 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     {
         // functionImport can't be Composable and sideEffecting at the same time.
         if ($functionImport->isComposable() && $functionImport->isSideEffecting()) {
-            throw new InvalidOperationException(StringConst::EdmModel_Validator_Semantic_ComposableFunctionImportCannotBeSideEffecting($functionImport->getName()));
+            throw new InvalidOperationException(
+                StringConst::EdmModel_Validator_Semantic_ComposableFunctionImportCannotBeSideEffecting(
+                    $functionImport->getName()
+                )
+            );
         }
 
         $this->xmlWriter->startElement(CsdlConstants::Element_FunctionImport);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $functionImport->getName(), [EdmValueWriter::class,'StringAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_ReturnType, $functionImport->getReturnType(), null, [$this,'TypeReferenceAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $functionImport->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_ReturnType,
+            $functionImport->getReturnType(),
+            null,
+            [$this, 'TypeReferenceAsXml']
+        );
 
         // IsSideEffecting is optional, however its default applies to non-composable function imports only.
         // Composable function imports can't be side-effecting, so we don't emit false.
-        if (!$functionImport->isComposable() && $functionImport->isSideEffecting() != CsdlConstants::Default_IsSideEffecting) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_IsSideEffecting, $functionImport->isSideEffecting(), [EdmValueWriter::class,'BooleanAsXml']);
+        if (!$functionImport->isComposable() &&
+            $functionImport->isSideEffecting() != CsdlConstants::Default_IsSideEffecting) {
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_IsSideEffecting,
+                $functionImport->isSideEffecting(),
+                [EdmValueWriter::class, 'BooleanAsXml']
+            );
         }
 
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_IsComposable, $functionImport->isComposable(), CsdlConstants::Default_IsComposable, [EdmValueWriter::class,'BooleanAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_IsBindable, $functionImport->isBindable(), CsdlConstants::Default_IsBindable, [EdmValueWriter::class,'BooleanAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_IsComposable,
+            $functionImport->isComposable(),
+            CsdlConstants::Default_IsComposable,
+            [EdmValueWriter::class, 'BooleanAsXml']
+        );
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_IsBindable,
+            $functionImport->isBindable(),
+            CsdlConstants::Default_IsBindable,
+            [EdmValueWriter::class, 'BooleanAsXml']
+        );
         $entitySetReference = $functionImport->getEntitySet();
         if ($functionImport->getEntitySet() != null) {
             if ($entitySetReference instanceof IEntitySetReferenceExpression) {
-                $this->WriteOptionalAttribute(CsdlConstants::Attribute_EntitySet, $entitySetReference->getReferencedEntitySet()->getName(), null, [EdmValueWriter::class,'StringAsXml']);
+                $this->WriteOptionalAttribute(
+                    CsdlConstants::Attribute_EntitySet,
+                    $entitySetReference->getReferencedEntitySet()->getName(),
+                    null,
+                    [EdmValueWriter::class, 'StringAsXml']
+                );
             } else {
                 $pathExpression = $functionImport->getEntitySet();
                 if ($pathExpression instanceof IPathExpression) {
-                    $this->WriteOptionalAttribute(CsdlConstants::Attribute_EntitySetPath, $pathExpression->getPath(), null, [self::class, 'PathAsXml']);
+                    $this->WriteOptionalAttribute(
+                        CsdlConstants::Attribute_EntitySetPath,
+                        $pathExpression->getPath(),
+                        null,
+                        [self::class, 'PathAsXml']
+                    );
                 } else {
-                    throw new InvalidOperationException(StringConst::EdmModel_Validator_Semantic_FunctionImportEntitySetExpressionIsInvalid($functionImport->getName()));
+                    throw new InvalidOperationException(
+                        StringConst::EdmModel_Validator_Semantic_FunctionImportEntitySetExpressionIsInvalid(
+                            $functionImport->getName()
+                        )
+                    );
                 }
             }
         }
@@ -561,12 +869,25 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteFunctionParameterElementHeader(IFunctionParameter $parameter, bool $inlineType): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Parameter);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $parameter->getName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $parameter->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         if ($inlineType) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_Type, $parameter->getType(), [$this,'TypeReferenceAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_Type,
+                $parameter->getType(),
+                [$this, 'TypeReferenceAsXml']
+            );
         }
 
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Mode, $parameter->getMode(), CsdlConstants::$Default_FunctionParameterMode, [self::class, 'FunctionParameterModeAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Mode,
+            $parameter->getMode(),
+            CsdlConstants::$Default_FunctionParameterMode,
+            [self::class, 'FunctionParameterModeAsXml']
+        );
     }
 
     /**
@@ -578,7 +899,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_CollectionType);
         if ($inlineType) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_ElementType, $collectionType->getElementType(), [$this,'TypeReferenceAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_ElementType,
+                $collectionType->getElementType(),
+                [$this, 'TypeReferenceAsXml']
+            );
         }
     }
 
@@ -596,50 +921,96 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         switch ($expression->getExpressionKind()) {
             case ExpressionKind::BinaryConstant():
                 assert($expression instanceof IBinaryConstantExpression);
-                $this->WriteRequiredAttribute(CsdlConstants::Attribute_Binary, $expression->getValue(), [EdmValueWriter::class, 'BinaryAsXml']);
+                $this->WriteRequiredAttribute(
+                    CsdlConstants::Attribute_Binary,
+                    $expression->getValue(),
+                    [EdmValueWriter::class, 'BinaryAsXml']
+                );
                 break;
             case ExpressionKind::BooleanConstant():
                 assert($expression instanceof IBooleanConstantExpression);
-                $this->WriteRequiredAttribute(CsdlConstants::Attribute_Bool, $expression->getValue(), [EdmValueWriter::class,'BooleanAsXml']);
+                $this->WriteRequiredAttribute(
+                    CsdlConstants::Attribute_Bool,
+                    $expression->getValue(),
+                    [EdmValueWriter::class, 'BooleanAsXml']
+                );
                 break;
             case ExpressionKind::DateTimeConstant():
                 assert($expression instanceof IDateTimeConstantExpression);
-                $this->WriteRequiredAttribute(CsdlConstants::Attribute_DateTime, $expression->getValue(), [EdmValueWriter::class, 'DateTimeAsXml']);
+                $this->WriteRequiredAttribute(
+                    CsdlConstants::Attribute_DateTime,
+                    $expression->getValue(),
+                    [EdmValueWriter::class, 'DateTimeAsXml']
+                );
                 break;
             case ExpressionKind::DateTimeOffsetConstant():
                 assert($expression instanceof IDateTimeOffsetConstantExpression);
-                $this->WriteRequiredAttribute(CsdlConstants::Attribute_DateTimeOffset, $expression->getValue(), [EdmValueWriter::class, 'DateTimeOffsetAsXml']);
+                $this->WriteRequiredAttribute(
+                    CsdlConstants::Attribute_DateTimeOffset,
+                    $expression->getValue(),
+                    [EdmValueWriter::class, 'DateTimeOffsetAsXml']
+                );
                 break;
             case ExpressionKind::DecimalConstant():
                 assert($expression instanceof IDecimalConstantExpression);
-                $this->WriteRequiredAttribute(CsdlConstants::Attribute_Decimal, $expression->getValue(), [EdmValueWriter::class, 'DecimalAsXml']);
+                $this->WriteRequiredAttribute(
+                    CsdlConstants::Attribute_Decimal,
+                    $expression->getValue(),
+                    [EdmValueWriter::class, 'DecimalAsXml']
+                );
                 break;
             case ExpressionKind::FloatingConstant():
                 assert($expression instanceof IFloatingConstantExpression);
-                $this->WriteRequiredAttribute(CsdlConstants::Attribute_Float, $expression->getValue(), [EdmValueWriter::class,  'FloatAsXml']);
+                $this->WriteRequiredAttribute(
+                    CsdlConstants::Attribute_Float,
+                    $expression->getValue(),
+                    [EdmValueWriter::class, 'FloatAsXml']
+                );
                 break;
             case ExpressionKind::GuidConstant():
                 assert($expression instanceof IGuidConstantExpression);
-                $this->WriteRequiredAttribute(CsdlConstants::Attribute_Guid, $expression->getValue(), [EdmValueWriter::class, 'GuidAsXml']);
+                $this->WriteRequiredAttribute(
+                    CsdlConstants::Attribute_Guid,
+                    $expression->getValue(),
+                    [EdmValueWriter::class, 'GuidAsXml']
+                );
                 break;
             case ExpressionKind::IntegerConstant():
                 assert($expression instanceof IIntegerConstantExpression);
-                $this->WriteRequiredAttribute(CsdlConstants::Attribute_Int, $expression->getValue(), [EdmValueWriter::class, 'LongAsXml']);
+                $this->WriteRequiredAttribute(
+                    CsdlConstants::Attribute_Int,
+                    $expression->getValue(),
+                    [EdmValueWriter::class, 'LongAsXml']
+                );
                 break;
             case ExpressionKind::Path():
                 assert($expression instanceof IPathExpression);
-                $this->WriteRequiredAttribute(CsdlConstants::Attribute_Path, $expression->getPath(), [self::class, 'PathAsXml']);
+                $this->WriteRequiredAttribute(
+                    CsdlConstants::Attribute_Path,
+                    $expression->getPath(),
+                    [self::class, 'PathAsXml']
+                );
                 break;
             case ExpressionKind::StringConstant():
                 assert($expression instanceof IStringConstantExpression);
-                $this->WriteRequiredAttribute(CsdlConstants::Attribute_String, $expression->getValue(), [EdmValueWriter::class,'StringAsXml']);
+                $this->WriteRequiredAttribute(
+                    CsdlConstants::Attribute_String,
+                    $expression->getValue(),
+                    [EdmValueWriter::class, 'StringAsXml']
+                );
                 break;
             case ExpressionKind::TimeConstant():
                 assert($expression instanceof ITimeConstantExpression);
-                $this->WriteRequiredAttribute(CsdlConstants::Attribute_Time, $expression->getValue(), [EdmValueWriter::class, 'TimeAsXml']);
+                $this->WriteRequiredAttribute(
+                    CsdlConstants::Attribute_Time,
+                    $expression->getValue(),
+                    [EdmValueWriter::class, 'TimeAsXml']
+                );
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_ExpressionKind($expression->getExpressionKind()->getKey()));
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_ExpressionKind($expression->getExpressionKind()->getKey())
+                );
                 break;
         }
     }
@@ -653,7 +1024,12 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_ValueAnnotation);
         $this->WriteRequiredAttribute(CsdlConstants::Attribute_Term, $annotation->getTerm(), [$this, 'TermAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Qualifier, $annotation->getQualifier(), null, [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Qualifier,
+            $annotation->getQualifier(),
+            null,
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         if ($isInline) {
             $this->WriteInlineExpression($annotation->getValue());
         }
@@ -667,7 +1043,12 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_TypeAnnotation);
         $this->WriteRequiredAttribute(CsdlConstants::Attribute_Term, $annotation->getTerm(), [$this, 'TermAsXml']);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Qualifier, $annotation->getQualifier(), null, [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Qualifier,
+            $annotation->getQualifier(),
+            null,
+            [EdmValueWriter::class, 'StringAsXml']
+        );
     }
 
     /**
@@ -678,7 +1059,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WritePropertyValueElementHeader(IPropertyValueBinding $value, bool $isInline): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_PropertyValue);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Property, $value->getBoundProperty()->getName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Property,
+            $value->getBoundProperty()->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         if ($isInline) {
             $this->WriteInlineExpression($value->getValue());
         }
@@ -691,7 +1076,12 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteRecordExpressionElementHeader(IRecordExpression $expression)
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_Record);
-        $this->WriteOptionalAttribute(CsdlConstants::Attribute_Type, $expression->getDeclaredType(), null, [$this,'TypeReferenceAsXml']);
+        $this->WriteOptionalAttribute(
+            CsdlConstants::Attribute_Type,
+            $expression->getDeclaredType(),
+            null,
+            [$this, 'TypeReferenceAsXml']
+        );
     }
 
     /**
@@ -702,7 +1092,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WritePropertyConstructorElementHeader(IPropertyConstructor $constructor, bool $isInline): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_PropertyValue);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Property, $constructor->getName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Property,
+            $constructor->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
         if ($isInline) {
             $this->WriteInlineExpression($constructor->getValue());
         }
@@ -774,7 +1168,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         if ($isFunction) {
             $appliedFunction = $expression->getAppliedFunction();
             assert($appliedFunction instanceof IFunctionReferenceExpression);
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_Function, $appliedFunction->getReferencedFunction(), [$this, 'FunctionAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_Function,
+                $appliedFunction->getReferencedFunction(),
+                [$this, 'FunctionAsXml']
+            );
         }
     }
 
@@ -816,7 +1214,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteLabeledElementHeader(ILabeledExpression $labeledElement): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_LabeledElement);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $labeledElement->getName(), [EdmValueWriter::class,'StringAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $labeledElement->getName(),
+            [EdmValueWriter::class, 'StringAsXml']
+        );
     }
 
     /**
@@ -828,7 +1230,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_IsType);
         if ($inlineType) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_Type, $expression->getType(), [$this,'TypeReferenceAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_Type,
+                $expression->getType(),
+                [$this, 'TypeReferenceAsXml']
+            );
         }
     }
 
@@ -841,7 +1247,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_AssertType);
         if ($inlineType) {
-            $this->WriteRequiredAttribute(CsdlConstants::Attribute_Type, $expression->getType(), [$this,'TypeReferenceAsXml']);
+            $this->WriteRequiredAttribute(
+                CsdlConstants::Attribute_Type,
+                $expression->getType(),
+                [$this, 'TypeReferenceAsXml']
+            );
         }
     }
 
@@ -852,7 +1262,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteEntitySetReferenceExpressionElement(IEntitySetReferenceExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_EntitySetReference);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $expression->getReferencedEntitySet(), [self::class, 'EntitySetAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $expression->getReferencedEntitySet(),
+            [self::class, 'EntitySetAsXml']
+        );
         $this->WriteEndElement();
     }
 
@@ -863,7 +1277,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteParameterReferenceExpressionElement(IParameterReferenceExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_ParameterReference);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $expression->getReferencedParameter(), [self::class, 'ParameterAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $expression->getReferencedParameter(),
+            [self::class, 'ParameterAsXml']
+        );
         $this->WriteEndElement();
     }
 
@@ -874,7 +1292,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteFunctionReferenceExpressionElement(IFunctionReferenceExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_FunctionReference);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $expression->getReferencedFunction(), [$this, 'FunctionAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $expression->getReferencedFunction(),
+            [$this, 'FunctionAsXml']
+        );
         $this->WriteEndElement();
     }
 
@@ -885,7 +1307,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteEnumMemberReferenceExpressionElement(IEnumMemberReferenceExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_EnumMemberReference);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $expression->getReferencedEnumMember(), [self::class, 'EnumMemberAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $expression->getReferencedEnumMember(),
+            [self::class, 'EnumMemberAsXml']
+        );
         $this->WriteEndElement();
     }
 
@@ -896,7 +1322,11 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WritePropertyReferenceExpressionElementHeader(IPropertyReferenceExpression $expression): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_PropertyReference);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Name, $expression->getReferencedProperty(), [self::class, 'PropertyAsXml']);
+        $this->WriteRequiredAttribute(
+            CsdlConstants::Attribute_Name,
+            $expression->getReferencedProperty(),
+            [self::class, 'PropertyAsXml']
+        );
     }
 
     public function WriteEndElement(): void
@@ -908,12 +1338,14 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     {
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            count((is_array($toXml) ? new ReflectionMethod(...$toXml) : new ReflectionFunction($toXml))->getParameters()) === 1,
+            count((is_array($toXml) ? new ReflectionMethod(...$toXml) :
+                new ReflectionFunction($toXml))->getParameters()) === 1,
             '$toXml should be a callable takeing one paramater of mixed type'
         );
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            (is_array($toXml) ? new ReflectionMethod(...$toXml) : new ReflectionFunction($toXml))->getReturnType()->getName() === 'string',
+            (is_array($toXml) ? new ReflectionMethod(...$toXml) :
+                new ReflectionFunction($toXml))->getReturnType()->getName() === 'string',
             '$toXml should be a callable returning a string'
         );
         if ($value !== $defaultValue) {
@@ -931,12 +1363,14 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     {
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            count((is_array($toXml) ? new ReflectionMethod(...$toXml) : new ReflectionFunction($toXml))->getParameters()) === 1,
+            count((is_array($toXml) ? new ReflectionMethod(...$toXml) :
+                new ReflectionFunction($toXml))->getParameters()) === 1,
             '$toXml should be a callable takeing one paramater of mixed type'
         );
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            (is_array($toXml) ? new ReflectionMethod(...$toXml) : new ReflectionFunction($toXml))->getReturnType()->getName() === 'string',
+            (is_array($toXml) ? new ReflectionMethod(...$toXml) :
+                new ReflectionFunction($toXml))->getReturnType()->getName() === 'string',
             '$toXml should be a callable returning a string'
         );
         $this->xmlWriter->writeAttribute($attribute, $toXml($value));
@@ -1064,14 +1498,20 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         if ($type->IsCollection()) {
             $collectionReference   = $type->AsCollection();
             $elementTypeDefinition = $collectionReference->ElementType()->getDefinition();
-            assert($elementTypeDefinition instanceof ISchemaElement, 'Cannot inline parameter type if not a named element or collection of named elements');
+            assert(
+                $elementTypeDefinition instanceof ISchemaElement,
+                'Cannot inline parameter type if not a named element or collection of named elements'
+            );
             return CsdlConstants::Value_Collection . '(' . $this->SerializationName($elementTypeDefinition) . ')';
         } elseif ($type->IsEntityReference()) {
             $entityReferenceDefinitionType = $type->AsEntityReference()->EntityReferenceDefinition()->getEntityType();
             return CsdlConstants::Value_Ref . '(' . $this->SerializationName($entityReferenceDefinitionType) . ')';
         }
         $typeDefinition = $type->getDefinition();
-        Assert($typeDefinition instanceof ISchemaElement, 'Cannot inline parameter type if not a named element or collection of named elements');
+        Assert(
+            $typeDefinition instanceof ISchemaElement,
+            'Cannot inline parameter type if not a named element or collection of named elements'
+        );
         return $this->SerializationName($typeDefinition);
     }
 

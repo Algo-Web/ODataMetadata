@@ -70,7 +70,9 @@ trait VisitAnnotations
                     $this->processVocabularyAnnotation($annotation);
                     break;
                 default:
-                    throw new InvalidOperationException(StringConst::UnknownEnumVal_TermKind($annotation->getTerm()->getTermKind()->getKey()));
+                    throw new InvalidOperationException(
+                        StringConst::UnknownEnumVal_TermKind($annotation->getTerm()->getTermKind()->getKey())
+                    );
             }
         } else {
             $this->processVocabularyAnnotation($annotation);

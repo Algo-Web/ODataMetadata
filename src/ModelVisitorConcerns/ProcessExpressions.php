@@ -125,8 +125,9 @@ trait ProcessExpressions
         $this->endElement($expression, __METHOD__);
     }
 
-    protected function processLabeledExpressionReferenceExpression(ILabeledExpressionReferenceExpression $expression): void
-    {
+    protected function processLabeledExpressionReferenceExpression(
+        ILabeledExpressionReferenceExpression $expression
+    ): void {
         /*
          * @var EdmModelVisitor $this
          */

@@ -36,10 +36,15 @@ class EdmBinaryTypeReference extends EdmPrimitiveTypeReference implements IBinar
      * @param int|null       $maxLength     maximum length of a value of this type
      * @param bool|null      $isFixedLength denotes whether the length can vary
      */
-    public function __construct(IPrimitiveType $definition, bool $isNullable, bool $isUnbounded = false, ?int $maxLength = null, ?bool $isFixedLength = null)
-    {
+    public function __construct(
+        IPrimitiveType $definition,
+        bool $isNullable,
+        bool $isUnbounded = false,
+        ?int $maxLength = null,
+        ?bool $isFixedLength = null
+    ) {
         parent::__construct($definition, $isNullable);
-        $this->isUnbounded   =$isUnbounded;
+        $this->isUnbounded   = $isUnbounded;
         $this->maxLength     = $maxLength;
         $this->isFixedLength = $isFixedLength;
     }

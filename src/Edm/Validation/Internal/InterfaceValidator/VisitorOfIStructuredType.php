@@ -18,7 +18,13 @@ class VisitorOfIStructuredType extends VisitorOfT
     {
         assert($type instanceof IStructuredType);
         $errors = [];
-        InterfaceValidator::ProcessEnumerable($type, $type->getDeclaredProperties(), 'DeclaredProperties', $followup, $errors);
+        InterfaceValidator::ProcessEnumerable(
+            $type,
+            $type->getDeclaredProperties(),
+            'DeclaredProperties',
+            $followup,
+            $errors
+        );
 
         if (null !== $type->getBaseType()) {
             $visitedTypes   = [];
@@ -26,7 +32,8 @@ class VisitorOfIStructuredType extends VisitorOfT
             /**
              * @var IStructuredType|null $currentBaseType
              */
-            for ($currentBaseType = $type->getBaseType(); null !== $currentBaseType; $currentBaseType = $currentBaseType->getBaseType()) {
+            for ($currentBaseType = $type->getBaseType(); null !== $currentBaseType; $currentBaseType = $currentBaseType->getBaseType()
+            ) {
                 if (in_array($currentBaseType, $visitedTypes)) {
                     $typeName = $type instanceof ISchemaType ? $type->FullName() : get_class($type);
                     InterfaceValidator::CollectErrors(

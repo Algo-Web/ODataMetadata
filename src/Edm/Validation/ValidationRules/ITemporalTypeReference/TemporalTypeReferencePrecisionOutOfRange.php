@@ -23,7 +23,8 @@ class TemporalTypeReferencePrecisionOutOfRange extends TemporalTypeReferenceRule
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof ITemporalTypeReference);
-        if ($type->getPrecision() > EdmConstants::Max_Precision || $type->getPrecision() < EdmConstants::Min_Precision) {
+        if ($type->getPrecision() > EdmConstants::Max_Precision ||
+            $type->getPrecision() < EdmConstants::Min_Precision) {
             EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
             $context->AddError(
                 $type->Location(),

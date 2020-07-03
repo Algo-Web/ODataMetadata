@@ -35,13 +35,19 @@ class ModelDuplicateSchemaElementNameBeforeV3 extends ModelRule
             if (!$item->getSchemaElementKind()->isEntityContainer()) {
                 $function = $item;
                 if ($function instanceof IFunction) {
-                    // If a non-function already exists with the same name, stop processing as a function, as it is irrelevant it will always be an error.
+                    // If a non-function already exists with the same name, stop processing as a function, as it is
+                    // irrelevant it will always be an error.
                     if ($nonFunctionNameList->contains($fullName)) {
                         $duplicate = true;
                     } else {
                         $functionList = null;
                         if (isset($function[$fullName])) {
-                            if (count(array_filter($function[$fullName], [EdmElementComparer::class, 'isFunctionSignatureEquivalentTo'])) !== 0) {
+                            if (count(
+                                array_filter(
+                                    $function[$fullName],
+                                    [EdmElementComparer::class, 'isFunctionSignatureEquivalentTo']
+                                )
+                            ) !== 0) {
                                 $duplicate = true;
                             }
                         } else {
@@ -51,7 +57,12 @@ class ModelDuplicateSchemaElementNameBeforeV3 extends ModelRule
                     }
 
                     if (!$duplicate) {
-                        $duplicate = ValidationHelper::FunctionOrNameExistsInReferencedModel($model, $function, $fullName, false);
+                        $duplicate = ValidationHelper::FunctionOrNameExistsInReferencedModel(
+                            $model,
+                            $function,
+                            $fullName,
+                            false
+                        );
                     }
                 } else {
                     if (!$nonFunctionNameList->add($fullName)) {
