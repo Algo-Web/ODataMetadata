@@ -68,6 +68,7 @@ class VisitorOfIExpressionTest extends TestCase
 
         $exprKind = m::mock(ExpressionKind::class);
         $exprKind->shouldReceive('getKey')->andReturn(null);
+        $exprKind->shouldReceive('getValue')->andReturn(null);
         $item = m::mock(IExpression::class);
         $item->shouldReceive('getExpressionKind')->andReturn($exprKind);
 
