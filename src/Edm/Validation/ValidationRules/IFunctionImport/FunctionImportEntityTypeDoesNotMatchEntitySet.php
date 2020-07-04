@@ -33,17 +33,11 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
             if ($elementType->IsEntity()) {
                 $returnedEntityType = $elementType->AsEntity()->EntityDefinition();
 
-                /**
-                 * @var IEntitySet $entitySet;
-                 */
+                /** @var IEntitySet $entitySet */
                 $entitySet = null;
-                /**
-                 * @var IFunctionParameter $parameter
-                 */
+                /** @var IFunctionParameter $parameter */
                 $parameter = null;
-                /**
-                 * @var INavigationProperty[] $path
-                 */
+                /** @var INavigationProperty[]|null $path */
                 $path = null;
                 if ($functionImport->TryGetStaticEntitySet($entitySet)) {
                     $errorMessage = StringConst::EdmModel_Validator_Semantic_FunctionImportEntityTypeDoesNotMatchEntitySet(

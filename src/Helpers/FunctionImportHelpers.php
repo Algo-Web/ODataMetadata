@@ -28,9 +28,7 @@ trait FunctionImportHelpers
      */
     public function TryGetStaticEntitySet(IEntitySet &$entitySet): bool
     {
-        /**
-         * @var IFunctionImport $this
-         */
+        /** @var IFunctionImport $this */
         $entitySetReference = $this->getEntitySet();
         $entitySet          = ($entitySetReference !== null && $entitySetReference instanceof IEntitySet) ? $entitySetReference : null;
         return $entitySet !== null;

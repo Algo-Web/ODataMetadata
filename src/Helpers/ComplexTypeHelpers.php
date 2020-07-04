@@ -21,9 +21,7 @@ trait ComplexTypeHelpers
      */
     public function BaseComplexType(): ?IComplexType
     {
-        /**
-         * @var IComplexType $this;
-         */
+        /** @var IComplexType $this */
         $base = $this->getBaseType();
         assert(null === $base || $base instanceof IComplexType, 'the base type of a complex type should always be another complex type');
         return $base;

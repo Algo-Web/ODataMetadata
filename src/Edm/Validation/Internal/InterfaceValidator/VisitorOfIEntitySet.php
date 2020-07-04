@@ -38,9 +38,7 @@ class VisitorOfIEntitySet extends VisitorOfT
             $navTargetMappings,
             $errors
         );
-        /**
-         * @var INavigationTargetMapping $navTargetMapping
-         */
+        /** @var INavigationTargetMapping $navTargetMapping */
         foreach ($navTargetMappings as $navTargetMapping) {
             if (null !== $navTargetMapping->getNavigationProperty()) {
                 $references[] = $navTargetMapping->getNavigationProperty();

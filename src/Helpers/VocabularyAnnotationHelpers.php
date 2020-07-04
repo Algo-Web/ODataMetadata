@@ -16,9 +16,7 @@ trait VocabularyAnnotationHelpers
 {
     public function IsInline(IModel $model): bool
     {
-        /**
-         * @var IVocabularyAnnotation $annotation
-         */
+        /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
         return $annotation->GetSerializationLocation($model) ==
                EdmVocabularyAnnotationSerializationLocation::Inline || $annotation->TargetString() == null;
@@ -26,9 +24,7 @@ trait VocabularyAnnotationHelpers
 
     public function TargetString(): string
     {
-        /**
-         * @var IVocabularyAnnotation $annotation
-         */
+        /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
         return EdmUtil::FullyQualifiedName($annotation->getTarget());
     }
@@ -43,9 +39,7 @@ trait VocabularyAnnotationHelpers
         IModel $model,
         ?EdmVocabularyAnnotationSerializationLocation $location
     ): void {
-        /**
-         * @var IVocabularyAnnotation $annotation
-         */
+        /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
         $model->SetAnnotationValue(
             $annotation,
@@ -63,9 +57,7 @@ trait VocabularyAnnotationHelpers
      */
     public function GetSerializationLocation(IModel $model): ?EdmVocabularyAnnotationSerializationLocation
     {
-        /**
-         * @var IVocabularyAnnotation $annotation
-         */
+        /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
         $location   = $model->GetAnnotationValue(
             EdmVocabularyAnnotationSerializationLocation::class,
@@ -84,9 +76,7 @@ trait VocabularyAnnotationHelpers
      */
     public function SetSchemaNamespace(IModel $model, string $schemaNamespace): void
     {
-        /**
-         * @var IVocabularyAnnotation $annotation
-         */
+        /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
         $model->SetAnnotationValue(
             $annotation,
@@ -103,9 +93,7 @@ trait VocabularyAnnotationHelpers
      */
     public function GetSchemaNamespace(IModel $model): string
     {
-        /**
-         * @var IVocabularyAnnotation $annotation
-         */
+        /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
         return $model->GetAnnotationValue(
             'string',

@@ -24,9 +24,7 @@ trait EntityReferenceTypeReferenceHelpers
      */
     public function EntityReferenceDefinition(): IEntityReferenceType
     {
-        /**
-         * @var IEntityReferenceTypeReference $this;
-         */
+        /** @var IEntityReferenceTypeReference $this */
         $definition = $this->getDefinition();
         assert($definition instanceof IEntityReferenceType, 'IEntityReferenceTypeReference should always wrap a defined IEntityReferenceType');
         return $definition;

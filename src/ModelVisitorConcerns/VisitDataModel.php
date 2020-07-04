@@ -20,9 +20,7 @@ trait VisitDataModel
      */
     public function visitEntityContainerElements(array $elements): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         foreach ($elements as $element) {
             switch ($element->getContainerElementKind()) {
                 case ContainerElementKind::EntitySet():

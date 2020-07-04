@@ -39,17 +39,11 @@ class FunctionImportEntitySetExpressionIsInvalid extends FunctionImportRule
                     )
                 );
             } else {
-                /**
-                 * @var IEntitySet $entitySet;
-                 */
+                /** @var IEntitySet $entitySet */
                 $entitySet = null;
-                /**
-                 * @var IFunctionParameter $parameter
-                 */
+                /** @var IFunctionParameter $parameter */
                 $parameter = null;
-                /**
-                 * @var INavigationProperty[] $path
-                 */
+                /** @var INavigationProperty[] $path */
                 $path = null;
                 if (!$functionImport->TryGetStaticEntitySet($entitySet) &&
                     !$functionImport->TryGetRelativeEntitySetPath($context->getModel(), $parameter, $path)

@@ -107,9 +107,7 @@ class InterfaceValidator
         $concreteTypeSemanticInterfaceVisitors = [];
         foreach ($modelValidator->visited as $item) {
             if (!in_array($item, $modelValidator->visitedBad)) {
-                /**
-                 * @var ValidationRule $rule
-                 */
+                /** * @var ValidationRule $rule */
                 foreach (self::GetSemanticInterfaceVisitorsForObject(
                     get_class($item),
                     $semanticRuleSet,
@@ -153,9 +151,7 @@ class InterfaceValidator
                     continue;
                 }
                 $class = __CLASS__ . '\\' . $name;
-                /**
-                 * @var VisitorOfT $instance
-                 */
+                /** @var VisitorOfT $instance */
                 $instance                  = new $class();
                 $map[$instance->forType()] = $instance;
             }
@@ -344,17 +340,13 @@ class InterfaceValidator
         $references      = [];
         $visitors        = null;
         $visitors        = $this->GetInterfaceVisitorsForObject(get_class($item));
-        /**
-         * @var VisitorBase $visitor
-         */
+        /** @var VisitorBase $visitor */
         foreach ($visitors as $visitor) {
             $errors = $visitor->Visit($item, $followup, $references);
 
             // For performance reasons some visitors may return null errors enumerator.
             if ($errors != null) {
-                /**
-                 * @var EdmError $error
-                 */
+                /** @var EdmError $error */
                 foreach ($errors as $error) {
                     if ($immediateErrors == null) {
                         $immediateErrors = [];

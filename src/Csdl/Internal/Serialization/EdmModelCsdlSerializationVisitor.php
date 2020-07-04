@@ -191,9 +191,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteEntityContainerElementHeader']);
         parent::ProcessEntityContainer($element);
-        /**
-         * @var IEntitySet $entitySet
-         */
+
+        /** @var IEntitySet $entitySet */
         foreach ($element->EntitySets() as $entitySet) {
             foreach ($entitySet->getNavigationTargets() as $mapping) {
                 $associationSetName = $this->model->GetAssociationFullName($mapping->getNavigationProperty());
@@ -838,21 +837,13 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     {
         $end1 = $element->GetPrimary();
         $end2 = $end1->getPartner();
-        /**
-         * @var IDirectValueAnnotation[] $associationAnnotations
-         */
+        /** @var IDirectValueAnnotation[] $associationAnnotations */
         $associationAnnotations = [];
-        /**
-         * @var IDirectValueAnnotation[] $end1Annotations
-         */
+        /** @var IDirectValueAnnotation[] $end1Annotations */
         $end1Annotations = [];
-        /**
-         * @var IDirectValueAnnotation[] $end2Annotations
-         */
+        /** @var IDirectValueAnnotation[] $end2Annotations */
         $end2Annotations = [];
-        /**
-         * @var IDirectValueAnnotation[] $constraintAnnotations
-         */
+        /** @var IDirectValueAnnotation[] $constraintAnnotations */
         $constraintAnnotations = [];
         $this->model->GetAssociationAnnotations(
             $element,
@@ -934,18 +925,12 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     private function ProcessAssociationSet(IEntitySet $entitySet, INavigationProperty $property): void
     {
-        /**
-         * @var IDirectValueAnnotation[] $associationSetAnnotations
-         */
+        /** @var IDirectValueAnnotation[] $associationSetAnnotations */
         $associationSetAnnotations = [];
-        /**
-         * @var IDirectValueAnnotation[] $end1Annotations
-         */
+        /** @var IDirectValueAnnotation[] $end1Annotations */
         $end1Annotations = [];
-        /**
-         * @var IDirectValueAnnotation[] $end2Annotations
-         */
-        $end2Annotations =[];
+        /** @var IDirectValueAnnotation[] $end2Annotations */
+        $end2Annotations = [];
         $this->model->GetAssociationSetAnnotations(
             $entitySet,
             $property,

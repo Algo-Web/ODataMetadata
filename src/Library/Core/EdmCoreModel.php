@@ -153,9 +153,7 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
             $primitiveGeometryMultiLineString,
             $primitiveGeometryMultiPoint
         ];
-        /**
-         * @var EdmValidCoreModelPrimitiveType $primitive
-         */
+        /** @var EdmValidCoreModelPrimitiveType $primitive */
         foreach ($this->primitiveTypes as $primitive) {
             $this->primitiveTypeKinds[$primitive->getName()]                                     = $primitive->getPrimitiveKind();
             $this->primitiveTypeKinds[$primitive->getNamespace() . '.' . $primitive->getName()]  = $primitive->getPrimitiveKind();
