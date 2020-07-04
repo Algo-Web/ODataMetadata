@@ -18,7 +18,7 @@ trait SimpleBaseToString
         $error = $self->errors[0];
         assert($error !== null, 'error != null');
         $prefix = $error != null ?
-            $error->getErrorCode()->getKey() . ':' . $error->getErrorCode()->getValue() . ':' : '';
+            strval($error->getErrorCode()->getKey()) . ':' . $error->getErrorCode()->getValue() . ':' : '';
         return $prefix . ToTraceString::ToTraceString($self);
     }
 }

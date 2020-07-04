@@ -17,5 +17,5 @@ interface IBinaryValue extends IPrimitiveValue
     /**
      * @return string[] gets the definition of this binary value
      */
-    public function getValue(): array ;
+    public function getValue(): array;
 }
