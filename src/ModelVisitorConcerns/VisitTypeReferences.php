@@ -54,8 +54,10 @@ trait VisitTypeReferences
                 $this->ProcessTypeReference($reference);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_TypeKind(
-                    $reference->getDefinition()->getTypeKind()->getKey())
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_TypeKind(
+                    $reference->getDefinition()->getTypeKind()->getKey()
+                )
                 );
         }
     }
@@ -113,8 +115,10 @@ trait VisitTypeReferences
                 $this->processPrimitiveTypeReference($reference);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_PrimitiveKind(
-                    $reference->PrimitiveKind()->getKey())
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_PrimitiveKind(
+                    $reference->PrimitiveKind()->getKey()
+                )
                 );
         }
     }

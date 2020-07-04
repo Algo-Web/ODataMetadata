@@ -940,9 +940,9 @@ trait TypeReferenceHelpers
 
 
     /**
-     * @param  ILocation|null  $location
-     * @param  string          $typeName
-     * @param  string          $typeKindName
+     * @param  ILocation|null $location
+     * @param  string         $typeName
+     * @param  string         $typeKindName
      * @return EdmError[]
      */
     private static function ConversionError(?ILocation $location, ?string $typeName, string $typeKindName): array

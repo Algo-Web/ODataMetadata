@@ -105,7 +105,7 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
      *
      * @param  string                  $functionName the name of the function import being found
      * @return array|IFunctionImport[] a group of the requested function imports, or an empty enumerable if no
-     *                                 such function import exists
+     *                                              such function import exists
      */
     public function findFunctionImports(string $functionName): array
     {

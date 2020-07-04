@@ -46,15 +46,15 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
     }
 
     /**
-     * @param ValidationContext $context
-     * @param \AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable $target
+     * @param  ValidationContext                                        $context
+     * @param  \AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable $target
      * @return bool
      */
     protected function findTarget(
         ValidationContext $context,
         \AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable $target
     ): bool {
-        $foundTarget = false;
+        $foundTarget     = false;
         $entityContainer = $target;
         if ($entityContainer instanceof IEntityContainer) {
             $foundTarget = ($context->getModel()->findEntityContainer($entityContainer->FullName()) != null);
@@ -87,7 +87,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         $functionImport = $target;
         if ($functionImport instanceof IFunctionImport) {
             EdmUtil::checkArgumentNull($functionImport->getName(), 'functionImport->getName');
-            $funcName = $functionImport->getName();
+            $funcName    = $functionImport->getName();
             $foundTarget = count($functionImport->getContainer()->findFunctionImports($funcName)) > 0;
             return $foundTarget;
         }

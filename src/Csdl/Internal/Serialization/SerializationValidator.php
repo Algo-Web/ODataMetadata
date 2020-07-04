@@ -20,9 +20,9 @@ abstract class SerializationValidator
     }
 
     /**
-     * @param IModel $root
-     * @return array
+     * @param  IModel               $root
      * @throws \ReflectionException
+     * @return array
      */
     public static function GetSerializationErrors(IModel $root): array
     {

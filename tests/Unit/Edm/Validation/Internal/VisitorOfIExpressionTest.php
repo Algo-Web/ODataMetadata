@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 4/07/20
- * Time: 4:29 PM
+ * Time: 4:29 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\Internal;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
@@ -50,14 +51,14 @@ class VisitorOfIExpressionTest extends TestCase
     public function testVisitBadType()
     {
         $error = m::mock(EdmError::class);
-        $item = m::mock(IExpression::class . ', ' . ICheckable::class);
+        $item  = m::mock(IExpression::class . ', ' . ICheckable::class);
         $item->shouldReceive('getErrors')->andReturn([$error])->atLeast(1);
-        $followUp = [];
+        $followUp   = [];
         $references = [];
 
         $this->assertTrue(InterfaceValidator::IsCheckableBad($item));
 
-        $foo = new VisitorOfIExpression();
+        $foo    = new VisitorOfIExpression();
         $result = $foo->Visit($item, $followUp, $references);
         $this->assertNull($result);
     }
@@ -72,12 +73,12 @@ class VisitorOfIExpressionTest extends TestCase
         $item = m::mock(IExpression::class);
         $item->shouldReceive('getExpressionKind')->andReturn($exprKind);
 
-        $followUp = [];
+        $followUp   = [];
         $references = [];
 
         $this->assertFalse(InterfaceValidator::IsCheckableBad($item));
 
-        $foo = new VisitorOfIExpression();
+        $foo    = new VisitorOfIExpression();
         $result = $foo->Visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));
@@ -86,7 +87,7 @@ class VisitorOfIExpressionTest extends TestCase
         $error = $result[0];
         $this->assertEquals(EdmErrorCode::InterfaceCriticalKindValueUnexpected(), $error->getErrorCode());
 
-        $expected = 'AlgoWeb_ODataMetadata_Interfaces_Expressions_IExpression.ExpressionKind\' is not'.
+        $expected = 'AlgoWeb_ODataMetadata_Interfaces_Expressions_IExpression.ExpressionKind\' is not' .
                     ' semantically valid. A semantically valid model must not contain elements of kind \'\'.';
         $actual = $error->getErrorMessage();
         $this->assertContains($expected, $actual);
@@ -94,7 +95,7 @@ class VisitorOfIExpressionTest extends TestCase
 
     public function expressionKindProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [ExpressionKind::IntegerConstant(), IIntegerConstantExpression::class];
         $result[] = [ExpressionKind::StringConstant(), IStringConstantExpression::class];
         $result[] = [ExpressionKind::BinaryConstant(), IBinaryConstantExpression::class];
@@ -130,19 +131,19 @@ class VisitorOfIExpressionTest extends TestCase
      * @dataProvider expressionKindProvider
      *
      * @param ExpressionKind $kind
-     * @param string $mustImplement
+     * @param string         $mustImplement
      */
     public function testVisitWithGoodExpressionKind(ExpressionKind $kind, string $mustImplement)
     {
         $item = m::mock(IExpression::class);
         $item->shouldReceive('getExpressionKind')->andReturn($kind);
 
-        $followUp = [];
+        $followUp   = [];
         $references = [];
 
         $this->assertFalse(InterfaceValidator::IsCheckableBad($item));
 
-        $foo = new VisitorOfIExpression();
+        $foo    = new VisitorOfIExpression();
         $result = $foo->Visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));
@@ -152,7 +153,7 @@ class VisitorOfIExpressionTest extends TestCase
         $this->assertEquals(EdmErrorCode::InterfaceCriticalKindValueMismatch(), $error->getErrorCode());
 
         $expected = 'IExpression.ExpressionKind\' property must implement \'' . $mustImplement . '\' interface.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertContains($expected, $actual);
     }
 }

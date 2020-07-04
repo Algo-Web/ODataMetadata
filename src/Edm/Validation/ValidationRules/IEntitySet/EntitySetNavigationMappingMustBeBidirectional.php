@@ -30,9 +30,9 @@ class EntitySetNavigationMappingMustBeBidirectional extends EntitySetRule
 
             // If the navigation property is not silent, or if it is silent but is still mapped, it must be mapped correctly.
             if ((
-                    $opposingTarget != null ||
+                $opposingTarget != null ||
                     $property->getPartner()->DeclaringEntityType()->findProperty($property->getPartner()->getName()) === $property->getPartner()
-                ) &&
+            ) &&
                 $opposingTarget !== $set) {
                 EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
                 $context->AddError(

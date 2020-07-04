@@ -41,8 +41,7 @@ abstract class ValidationHelper
         EdmErrorCode $errorCode,
         string $errorString,
         bool $suppressError
-    )
-    {
+    ) {
         $name = $item instanceof ISchemaElement ? $item->FullName() : $item->getName();
         if ($memberNameList->add($name)) {
             if (!$suppressError) {

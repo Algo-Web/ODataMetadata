@@ -12,7 +12,7 @@ class CsdlConstants
 {
     /**
      * @return Version Version 1.0 of EDMX. Corresponds to EDMX namespace
-     *                                      "http://schemas.microsoft.com/ado/2007/06/edmx".
+     *                 "http://schemas.microsoft.com/ado/2007/06/edmx".
      */
     public static function getEdmVersion1(): Version
     {
@@ -21,7 +21,7 @@ class CsdlConstants
 
     /**
      * @return Version Version 2.0 of EDMX. Corresponds to EDMX namespace
-     *                                      "http://schemas.microsoft.com/ado/2008/10/edmx".
+     *                 "http://schemas.microsoft.com/ado/2008/10/edmx".
      */
     public static function getEdmxVersion2(): Version
     {
@@ -30,7 +30,7 @@ class CsdlConstants
 
     /**
      * @return Version Version 3.0 of EDMX. Corresponds to EDMX namespace
-     *                                      "http://schemas.microsoft.com/ado/2009/11/edmx".
+     *                 "http://schemas.microsoft.com/ado/2009/11/edmx".
      */
     public static function getEdmxVersion3(): Version
     {

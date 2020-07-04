@@ -23,9 +23,9 @@ class EntitySetTypeHasNoKeys extends EntitySetRule
     {
         assert($entitySet instanceof IEntitySet);
         if ((
-                $entitySet->getElementType()->Key() === null ||
+            $entitySet->getElementType()->Key() === null ||
                 count($entitySet->getElementType()->Key()) !== 0
-            ) &&
+        ) &&
             !$context->checkIsBad($entitySet->getElementType())) {
             EdmUtil::checkArgumentNull($entitySet->Location(), 'entitySet->Location');
             $context->AddError(

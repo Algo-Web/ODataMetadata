@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: alex
  * Date: 4/07/20
- * Time: 12:11 AM
+ * Time: 12:11 AM.
  */
 
 declare(strict_types=1);
@@ -50,7 +50,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('FullName')->andReturn('FullName');
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -63,7 +63,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'FullName\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -85,7 +85,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('FullName')->andReturn('FullName');
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -110,7 +110,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('FullName')->andReturn('FullName');
         $target->shouldReceive('getName')->andReturn('Name');
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -123,7 +123,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'/Name\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -144,7 +144,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('FullName')->andReturn('FullName');
         $target->shouldReceive('getName')->andReturn('Name');
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -157,7 +157,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'TNMN/Name\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -180,7 +180,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('FullName')->andReturn('FullName');
         $target->shouldReceive('getName')->andReturn('Name');
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -207,7 +207,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('FullName')->andReturn('FullName');
         $target->shouldReceive('getName')->andReturn('Name');
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -218,7 +218,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'FullName\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -239,7 +239,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('FullName')->andReturn('FullName');
         $target->shouldReceive('getName')->andReturn('Name');
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -264,7 +264,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('FullName')->andReturn('FullName');
         $target->shouldReceive('getName')->andReturn('Name');
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -275,7 +275,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'FullName\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -296,7 +296,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('FullName')->andReturn('FullName');
         $target->shouldReceive('getName')->andReturn('Name');
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -323,7 +323,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getParameters')->andReturn([])->once();
         $target->shouldReceive('getNamespace')->andReturn('Namespace');
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -334,7 +334,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'Namespace.Name()\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -356,7 +356,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('FullName')->andReturn('FullName');
         $target->shouldReceive('getName')->andReturn('Name');
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -386,7 +386,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getContainer')->andReturn($cont)->atLeast(1);
         $target->shouldReceive('getParameters')->andReturn([])->once();
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -398,7 +398,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'TNMN/Name()\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -420,7 +420,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('getContainer->findFunctionImports')->andReturn([$type])->once();
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -452,7 +452,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('getDeclaringType')->andReturn($decType);
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -463,7 +463,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'TNMN/Name\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -492,7 +492,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('getDeclaringType')->andReturn($decType);
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -503,7 +503,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'TNMN/Name\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -534,7 +534,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('getDeclaringType')->andReturn($decType);
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -561,7 +561,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('getDeclaringFunction')->andReturn($funcImport);
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -572,7 +572,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -598,7 +598,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('getDeclaringFunction')->andReturn($funcImport);
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -609,7 +609,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'TNMN.FuncName()/Name\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -638,7 +638,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('getDeclaringFunction')->andReturn($funcImport);
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -649,7 +649,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'TNMN.FuncName()/Name\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -680,7 +680,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('getDeclaringFunction')->andReturn($funcImport);
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -717,7 +717,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('getDeclaringFunction')->andReturn($funcImport);
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -728,7 +728,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'Container/FuncName()/Name\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -762,7 +762,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('getDeclaringFunction')->andReturn($funcImport);
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -773,7 +773,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $error = $errors[0];
 
         $expected = 'The target \'Container/FuncName()/Name\' could not be found from the model being validated.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 
@@ -809,7 +809,7 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
         $target->shouldReceive('getName')->andReturn('Name');
         $target->shouldReceive('getDeclaringFunction')->andReturn($funcImport);
 
-        $annotation = m::mock(IEdmElement::class . ', '. IVocabularyAnnotation::class);
+        $annotation = m::mock(IEdmElement::class . ', ' . IVocabularyAnnotation::class);
         $annotation->shouldReceive('getTarget')->andReturn($target);
         $annotation->shouldReceive('Location')->andReturn($loc);
 
@@ -821,8 +821,8 @@ class VocabularyAnnotationInaccessibleTargetTest extends TestCase
 
     /**
      * @param $model
-     * @return ValidationContext
      * @throws \ReflectionException
+     * @return ValidationContext
      */
     protected function getContext($model): ValidationContext
     {

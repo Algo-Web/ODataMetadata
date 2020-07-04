@@ -113,8 +113,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IValueTerm $term
-     * @param bool $inlineType
+     * @param  IValueTerm           $term
+     * @param  bool                 $inlineType
      * @throws \ReflectionException
      */
     public function WriteValueTermElementHeader(IValueTerm $term, bool $inlineType): void
@@ -135,7 +135,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param INavigationProperty $navigationProperty
+     * @param  INavigationProperty  $navigationProperty
      * @throws \ReflectionException
      */
     public function WriteAssociationElementHeader(INavigationProperty $navigationProperty): void
@@ -149,8 +149,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IEntitySet $entitySet
-     * @param INavigationProperty $navigationProperty
+     * @param  IEntitySet           $entitySet
+     * @param  INavigationProperty  $navigationProperty
      * @throws \ReflectionException
      */
     public function WriteAssociationSetElementHeader(
@@ -171,7 +171,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IComplexType $complexType
+     * @param  IComplexType         $complexType
      * @throws \ReflectionException
      */
     public function WriteComplexTypeElementHeader(IComplexType $complexType): void
@@ -197,7 +197,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IEnumType $enumType
+     * @param  IEnumType            $enumType
      * @throws \ReflectionException
      */
     public function WriteEnumTypeElementHeader(IEnumType $enumType): void
@@ -246,8 +246,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IEntitySet $entitySet
-     * @param INavigationProperty $property
+     * @param  IEntitySet           $entitySet
+     * @param  INavigationProperty  $property
      * @throws \ReflectionException
      */
     public function WriteAssociationSetEndElementHeader(IEntitySet $entitySet, INavigationProperty $property): void
@@ -266,7 +266,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param INavigationProperty $associationEnd
+     * @param  INavigationProperty  $associationEnd
      * @throws \ReflectionException
      */
     public function WriteAssociationEndElementHeader(INavigationProperty $associationEnd): void
@@ -292,7 +292,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IEntityContainer $container
+     * @param  IEntityContainer     $container
      * @throws \ReflectionException
      */
     public function WriteEntityContainerElementHeader(IEntityContainer $container): void
@@ -322,7 +322,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IEntitySet $entitySet
+     * @param  IEntitySet           $entitySet
      * @throws \ReflectionException
      */
     public function WriteEntitySetElementHeader(IEntitySet $entitySet): void
@@ -341,7 +341,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IEntityType $entityType
+     * @param  IEntityType          $entityType
      * @throws \ReflectionException
      */
     public function WriteEntityTypeElementHeader(IEntityType $entityType): void
@@ -378,7 +378,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IStructuralProperty $property
+     * @param  IStructuralProperty  $property
      * @throws \ReflectionException
      */
     public function WritePropertyRefElement(IStructuralProperty $property): void
@@ -393,7 +393,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param INavigationProperty $member
+     * @param  INavigationProperty  $member
      * @throws \ReflectionException
      */
     public function WriteNavigationPropertyElementHeader(INavigationProperty $member): void
@@ -428,8 +428,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param string $elementName
-     * @param OnDeleteAction $operationAction
+     * @param  string               $elementName
+     * @param  OnDeleteAction       $operationAction
      * @throws \ReflectionException
      */
     public function WriteOperationActionElement(string $elementName, OnDeleteAction $operationAction): void
@@ -444,9 +444,9 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param EdmSchema $schema
-     * @param string|null $alias
-     * @param array $mappings
+     * @param  EdmSchema            $schema
+     * @param  string|null          $alias
+     * @param  array                $mappings
      * @throws \ReflectionException
      */
     public function WriteSchemaElementHeader(EdmSchema $schema, ?string $alias, array $mappings): void
@@ -471,7 +471,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param string $annotationsTarget
+     * @param  string               $annotationsTarget
      * @throws \ReflectionException
      */
     public function WriteAnnotationsElementHeader(string $annotationsTarget): void
@@ -485,8 +485,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IStructuralProperty $property
-     * @param bool $inlineType
+     * @param  IStructuralProperty  $property
+     * @param  bool                 $inlineType
      * @throws \ReflectionException
      */
     public function WriteStructuralPropertyElementHeader(IStructuralProperty $property, bool $inlineType): void
@@ -520,7 +520,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IEnumMember $member
+     * @param  IEnumMember          $member
      * @throws \ReflectionException
      */
     public function WriteEnumMemberElementHeader(IEnumMember $member): void
@@ -542,7 +542,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param ITypeReference $reference
+     * @param  ITypeReference       $reference
      * @throws \ReflectionException
      */
     public function WriteNullableAttribute(ITypeReference $reference): void
@@ -556,7 +556,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IBinaryTypeReference $reference
+     * @param  IBinaryTypeReference $reference
      * @throws \ReflectionException
      */
     public function WriteBinaryTypeAttributes(IBinaryTypeReference $reference): void
@@ -585,7 +585,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IDecimalTypeReference $reference
+     * @param  IDecimalTypeReference $reference
      * @throws \ReflectionException
      */
     public function WriteDecimalTypeAttributes(IDecimalTypeReference $reference): void
@@ -605,7 +605,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param ISpatialTypeReference $reference
+     * @param  ISpatialTypeReference $reference
      * @throws \ReflectionException
      */
     public function WriteSpatialTypeAttributes(ISpatialTypeReference $reference): void
@@ -618,7 +618,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IStringTypeReference $reference
+     * @param  IStringTypeReference $reference
      * @throws \ReflectionException
      */
     public function WriteStringTypeAttributes(IStringTypeReference $reference): void
@@ -659,7 +659,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param ITemporalTypeReference $reference
+     * @param  ITemporalTypeReference $reference
      * @throws \ReflectionException
      */
     public function WriteTemporalTypeAttributes(ITemporalTypeReference $reference): void
@@ -678,7 +678,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param INavigationProperty $end
+     * @param  INavigationProperty  $end
      * @throws \ReflectionException
      */
     public function WriteReferentialConstraintPrincipalEndElementHeader(INavigationProperty $end): void
@@ -692,7 +692,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param INavigationProperty $end
+     * @param  INavigationProperty  $end
      * @throws \ReflectionException
      */
     public function WriteReferentialConstraintDependentEndElementHeader(INavigationProperty $end): void
@@ -706,8 +706,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param string $usingNamespace
-     * @param string $alias
+     * @param  string               $usingNamespace
+     * @param  string               $alias
      * @throws \ReflectionException
      */
     public function WriteNamespaceUsingElement(string $usingNamespace, string $alias): void
@@ -723,7 +723,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IDirectValueAnnotation $annotation
+     * @param  IDirectValueAnnotation                                 $annotation
      * @throws \AlgoWeb\ODataMetadata\Exception\NotSupportedException
      */
     public function WriteAnnotationStringAttribute(IDirectValueAnnotation $annotation): void
@@ -748,8 +748,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IFunction $function
-     * @param bool $inlineReturnType
+     * @param  IFunction            $function
+     * @param  bool                 $inlineReturnType
      * @throws \ReflectionException
      */
     public function WriteFunctionElementHeader(IFunction $function, bool $inlineReturnType): void
@@ -782,7 +782,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IFunctionImport $functionImport
+     * @param  IFunctionImport      $functionImport
      * @throws \ReflectionException
      */
     public function WriteFunctionImportElementHeader(IFunctionImport $functionImport): void
@@ -862,8 +862,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IFunctionParameter $parameter
-     * @param bool $inlineType
+     * @param  IFunctionParameter   $parameter
+     * @param  bool                 $inlineType
      * @throws \ReflectionException
      */
     public function WriteFunctionParameterElementHeader(IFunctionParameter $parameter, bool $inlineType): void
@@ -891,8 +891,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param ICollectionType $collectionType
-     * @param bool $inlineType
+     * @param  ICollectionType      $collectionType
+     * @param  bool                 $inlineType
      * @throws \ReflectionException
      */
     public function WriteCollectionTypeElementHeader(ICollectionType $collectionType, bool $inlineType): void
@@ -913,7 +913,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IExpression $expression
+     * @param  IExpression          $expression
      * @throws \ReflectionException
      */
     public function WriteInlineExpression(IExpression $expression): void
@@ -1016,8 +1016,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IValueAnnotation $annotation
-     * @param bool $isInline
+     * @param  IValueAnnotation     $annotation
+     * @param  bool                 $isInline
      * @throws \ReflectionException
      */
     public function WriteValueAnnotationElementHeader(IValueAnnotation $annotation, bool $isInline): void
@@ -1036,7 +1036,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param ITypeAnnotation $annotation
+     * @param  ITypeAnnotation      $annotation
      * @throws \ReflectionException
      */
     public function WriteTypeAnnotationElementHeader(ITypeAnnotation $annotation): void
@@ -1052,8 +1052,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IPropertyValueBinding $value
-     * @param bool $isInline
+     * @param  IPropertyValueBinding $value
+     * @param  bool                  $isInline
      * @throws \ReflectionException
      */
     public function WritePropertyValueElementHeader(IPropertyValueBinding $value, bool $isInline): void
@@ -1070,7 +1070,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IRecordExpression $expression
+     * @param  IRecordExpression    $expression
      * @throws \ReflectionException
      */
     public function WriteRecordExpressionElementHeader(IRecordExpression $expression)
@@ -1085,8 +1085,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IPropertyConstructor $constructor
-     * @param bool $isInline
+     * @param  IPropertyConstructor $constructor
+     * @param  bool                 $isInline
      * @throws \ReflectionException
      */
     public function WritePropertyConstructorElementHeader(IPropertyConstructor $constructor, bool $isInline): void
@@ -1158,8 +1158,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IApplyExpression $expression
-     * @param bool $isFunction
+     * @param  IApplyExpression     $expression
+     * @param  bool                 $isFunction
      * @throws \ReflectionException
      */
     public function WriteFunctionApplicationElementHeader(IApplyExpression $expression, bool $isFunction): void
@@ -1208,7 +1208,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param ILabeledExpression $labeledElement
+     * @param  ILabeledExpression   $labeledElement
      * @throws \ReflectionException
      */
     public function WriteLabeledElementHeader(ILabeledExpression $labeledElement): void
@@ -1222,8 +1222,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IIsTypeExpression $expression
-     * @param bool $inlineType
+     * @param  IIsTypeExpression    $expression
+     * @param  bool                 $inlineType
      * @throws \ReflectionException
      */
     public function WriteIsTypeExpressionElementHeader(IIsTypeExpression $expression, bool $inlineType): void
@@ -1239,8 +1239,8 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IAssertTypeExpression $expression
-     * @param bool $inlineType
+     * @param  IAssertTypeExpression $expression
+     * @param  bool                  $inlineType
      * @throws \ReflectionException
      */
     public function WriteAssertTypeExpressionElementHeader(IAssertTypeExpression $expression, bool $inlineType): void
@@ -1256,7 +1256,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IEntitySetReferenceExpression $expression
+     * @param  IEntitySetReferenceExpression $expression
      * @throws \ReflectionException
      */
     public function WriteEntitySetReferenceExpressionElement(IEntitySetReferenceExpression $expression): void
@@ -1271,7 +1271,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IParameterReferenceExpression $expression
+     * @param  IParameterReferenceExpression $expression
      * @throws \ReflectionException
      */
     public function WriteParameterReferenceExpressionElement(IParameterReferenceExpression $expression): void
@@ -1286,7 +1286,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IFunctionReferenceExpression $expression
+     * @param  IFunctionReferenceExpression $expression
      * @throws \ReflectionException
      */
     public function WriteFunctionReferenceExpressionElement(IFunctionReferenceExpression $expression): void
@@ -1301,7 +1301,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IEnumMemberReferenceExpression $expression
+     * @param  IEnumMemberReferenceExpression $expression
      * @throws \ReflectionException
      */
     public function WriteEnumMemberReferenceExpressionElement(IEnumMemberReferenceExpression $expression): void
@@ -1316,7 +1316,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param IPropertyReferenceExpression $expression
+     * @param  IPropertyReferenceExpression $expression
      * @throws \ReflectionException
      */
     public function WritePropertyReferenceExpressionElementHeader(IPropertyReferenceExpression $expression): void
@@ -1354,9 +1354,9 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param string   $attribute
-     * @param mixed    $value
-     * @param callable $toXml
+     * @param  string               $attribute
+     * @param  mixed                $value
+     * @param  callable             $toXml
      * @throws \ReflectionException
      */
     public function WriteRequiredAttribute(string $attribute, $value, callable $toXml): void
@@ -1377,7 +1377,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param Multiplicity $endKind
+     * @param  Multiplicity              $endKind
      * @throws InvalidOperationException
      * @return string
      */
@@ -1396,7 +1396,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param FunctionParameterMode $mode
+     * @param  FunctionParameterMode     $mode
      * @throws InvalidOperationException
      * @return string
      */
@@ -1415,7 +1415,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param ConcurrencyMode $mode
+     * @param  ConcurrencyMode           $mode
      * @throws InvalidOperationException
      * @return string
      */
@@ -1468,7 +1468,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param Version $edmVersion
+     * @param  Version                   $edmVersion
      * @throws InvalidOperationException
      * @return string
      */
