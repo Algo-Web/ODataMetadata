@@ -62,7 +62,7 @@ class BadEntitySet extends BadElement implements IEntitySet
      */
     public function getElementType(): IEntityType
     {
-        return new BadEntityType('', $this->getErrors());
+        return new BadEntityType('', iterable_to_array($this->getErrors()));
     }
 
     /**
