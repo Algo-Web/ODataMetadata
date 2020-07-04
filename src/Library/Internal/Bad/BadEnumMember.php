@@ -53,7 +53,7 @@ class BadEnumMember extends BadElement implements IEnumMember
                 $this->declaringType->getUnderlyingType(),
                 false
             ),
-            $this->getErrors()
+            iterable_to_array($this->getErrors())
         );
     }
 

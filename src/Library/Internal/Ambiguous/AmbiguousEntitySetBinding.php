@@ -47,7 +47,7 @@ class AmbiguousEntitySetBinding extends AmbiguousBinding implements IEntitySet
      */
     public function getElementType(): IEntityType
     {
-        return new BadEntityType('', $this->getErrors());
+        return new BadEntityType('', iterable_to_array($this->getErrors()));
     }
 
     /**
