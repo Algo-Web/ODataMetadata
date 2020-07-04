@@ -30,7 +30,7 @@ class StructuralPropertyInvalidPropertyTypeConcurrencyMode extends StructuralPro
         EdmUtil::checkArgumentNull($propType, 'property->getType');
         $def      = $propType->getDefinition();
         EdmUtil::checkArgumentNull($def, 'property->getType->getDefinition');
-        $loc      = $propType->getLocation();
+        $loc      = $propType->Location();
         EdmUtil::checkArgumentNull($loc, 'property->Location');
         if ($property->getConcurrencyMode()->isFixed() &&
             !$propType->IsPrimitive() &&
