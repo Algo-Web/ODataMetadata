@@ -47,11 +47,12 @@ class VisitorOfIExpression extends VisitorOfT
         }
 
         $expressionKindError = null;
+        $kind = $expression->getExpressionKind();
         switch ($expression->getExpressionKind()) {
             case ExpressionKind::IntegerConstant():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IIntegerConstantExpression::class
                 );
@@ -60,7 +61,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::StringConstant():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IStringConstantExpression::class
                 );
@@ -69,7 +70,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::BinaryConstant():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IBinaryConstantExpression::class
                 );
@@ -78,7 +79,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::BooleanConstant():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IBooleanConstantExpression::class
                 );
@@ -87,7 +88,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::DateTimeConstant():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IDateTimeConstantExpression::class
                 );
@@ -96,7 +97,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::DateTimeOffsetConstant():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IDateTimeOffsetConstantExpression::class
                 );
@@ -105,7 +106,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::TimeConstant():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     ITimeConstantExpression::class
                 );
@@ -114,7 +115,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::DecimalConstant():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IDecimalConstantExpression::class
                 );
@@ -123,7 +124,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::FloatingConstant():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IFloatingConstantExpression::class
                 );
@@ -132,7 +133,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::GuidConstant():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IGuidConstantExpression::class
                 );
@@ -141,7 +142,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::Null():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     INullExpression::class
                 );
@@ -150,7 +151,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::Record():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IRecordExpression::class
                 );
@@ -159,7 +160,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::Collection():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     ICollectionExpression::class
                 );
@@ -168,7 +169,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::Path():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IPathExpression::class
                 );
@@ -177,7 +178,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::ParameterReference():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IParameterReferenceExpression::class
                 );
@@ -186,7 +187,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::FunctionReference():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IFunctionReferenceExpression::class
                 );
@@ -195,7 +196,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::PropertyReference():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IPropertyReferenceExpression::class
                 );
@@ -204,7 +205,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::ValueTermReference():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IValueTermReferenceExpression::class
                 );
@@ -213,7 +214,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::EntitySetReference():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IEntitySetReferenceExpression::class
                 );
@@ -222,7 +223,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::EnumMemberReference():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IEnumMemberReferenceExpression::class
                 );
@@ -231,7 +232,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::If():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IIfExpression::class
                 );
@@ -240,7 +241,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::AssertType():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IAssertTypeExpression::class
                 );
@@ -249,7 +250,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::IsType():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IIsTypeExpression::class
                 );
@@ -258,7 +259,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::FunctionApplication():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     IApplyExpression::class
                 );
@@ -267,7 +268,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::Labeled():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     ILabeledExpression::class
                 );
@@ -276,7 +277,7 @@ class VisitorOfIExpression extends VisitorOfT
             case ExpressionKind::LabeledExpressionReference():
                 $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                     $expression,
-                    $expression->getExpressionKind(),
+                    $kind,
                     'ExpressionKind',
                     ILabeledExpressionReferenceExpression::class
                 );
