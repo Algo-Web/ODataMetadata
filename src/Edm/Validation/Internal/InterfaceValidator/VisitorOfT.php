@@ -11,7 +11,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
  */
 abstract class VisitorOfT
 {
-    public function Visit($item, array &$followup, array &$references): iterable
+    public function Visit($item, array &$followup, array &$references): ?iterable
     {
         assert(is_a($item, $this->forType()));
         return $this->VisitT($item, $followup, $references);
