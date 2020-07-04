@@ -13,7 +13,7 @@ class VisitorOfIBinaryValue extends VisitorOfT
     protected function VisitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof IBinaryValue);
-        return null !== $value->getValue() ?
+        return null === $value->getValue() ?
             [InterfaceValidator::CreatePropertyMustNotBeNullError($value, 'Value') ]
             :
             null;
