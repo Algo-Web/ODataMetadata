@@ -62,18 +62,14 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
         $transientAnnotations = self::getTransientAnnotations($element, $annotationsDictionary);
 
         if ($immutableAnnotations != null) {
-            /**
-             * @var IDirectValueAnnotation $existingAnnotation
-             */
+            /** @var IDirectValueAnnotation $existingAnnotation */
             foreach ($immutableAnnotations as $existingAnnotation) {
                 if (!self::isDead($existingAnnotation->getNamespaceUri(), $existingAnnotation->getName(), $transientAnnotations)) {
                     yield $existingAnnotation;
                 }
             }
         }
-        /**
-         * @var IDirectValueAnnotation $existingAnnotation
-         */
+        /** @var IDirectValueAnnotation $existingAnnotation */
         foreach (self::transientAnnotations($transientAnnotations) as $existingAnnotation) {
             yield  $existingAnnotation;
         }
@@ -113,9 +109,7 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
      */
     public function setAnnotationValues(array $annotations): IDirectValueAnnotationsManager
     {
-        /**
-         * @var IDirectValueAnnotationBinding $annotation
-         */
+        /** @var IDirectValueAnnotationBinding $annotation */
         foreach ($annotations as $annotation) {
             $this->SetAnnotationValue($annotation->getElement(), $annotation->getNamespaceUri(), $annotation->getName(), $annotation->getValue());
         }
@@ -139,9 +133,7 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
 
         $immutableAnnotations = $this->getAttachedAnnotations($element);
         if ($immutableAnnotations != null) {
-            /**
-             * @var IDirectValueAnnotation $existingAnnotation
-             */
+            /** @var IDirectValueAnnotation $existingAnnotation */
             foreach ($immutableAnnotations as $existingAnnotation) {
                 if ($existingAnnotation->getNamespaceUri() == $namespaceName && $existingAnnotation->getName() == $localName) {
                     // No need to check that the immutable annotation isn't Dead, because if it were
@@ -248,9 +240,7 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
 
         $annotationsList = $transientAnnotations;
         assert(is_iterable($annotationsList));
-        /**
-         * @var IDirectValueAnnotation $existingAnnotation
-         */
+        /** @var IDirectValueAnnotation $existingAnnotation */
         foreach ($annotationsList as $existingAnnotation) {
             if ($existingAnnotation->getValue() != null) {
                 yield $existingAnnotation;
@@ -317,9 +307,7 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
         assert(is_countable($annotationsList));
         $numAnnotations = count($annotationsList);
         for ($index = 0; $index < $numAnnotations; $index++) {
-            /**
-             * @var IDirectValueAnnotation $existingAnnotation
-             */
+            /** @var IDirectValueAnnotation $existingAnnotation */
             $existingAnnotation = $annotationsList[$index];
             if ($existingAnnotation->getNamespaceUri() == $namespaceName && $existingAnnotation->getName() == $localName) {
                 unset($annotationsList[$index]);

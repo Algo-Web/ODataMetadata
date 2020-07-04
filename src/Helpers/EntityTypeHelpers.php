@@ -23,9 +23,7 @@ trait EntityTypeHelpers
      */
     public function BaseEntityType(): ?IEntityType
     {
-        /**
-         * @var IEntityType $self
-         */
+        /** @var IEntityType $self */
         $self = $this;
         $base = $self->getBaseType();
         return $base instanceof IEntityType ? $base : null;
@@ -38,9 +36,7 @@ trait EntityTypeHelpers
      */
     public function DeclaredNavigationProperties(): array
     {
-        /**
-         * @var IEntityType $self
-         */
+        /** @var IEntityType $self */
         $self = $this;
         return array_filter($self->getDeclaredProperties(), function (IProperty $value) {
             return $value instanceof INavigationProperty;
@@ -54,9 +50,7 @@ trait EntityTypeHelpers
      */
     public function NavigationProperties(): array
     {
-        /**
-         * @var IEntityType $self
-         */
+        /** @var IEntityType $self */
         $self  = $this;
         $props = iterator_to_array($self->Properties());
         return array_filter($props, function (IProperty $value) {
@@ -71,9 +65,7 @@ trait EntityTypeHelpers
      */
     public function Key(): array
     {
-        /**
-         * @var IEntityType $checkingType
-         */
+        /** @var IEntityType $checkingType */
         $checkingType = $this;
         while ($checkingType !== null) {
             if ($checkingType->getDeclaredKey() !== null) {
@@ -92,9 +84,7 @@ trait EntityTypeHelpers
      */
     public function HasDeclaredKeyProperty(IProperty $property): bool
     {
-        /**
-         * @var IEntityType $entityType
-         */
+        /** @var IEntityType $entityType */
         $entityType = $this;
         while ($entityType !== null) {
             if ($entityType->getDeclaredKey() !== null && in_array($property, $entityType->getDeclaredKey())) {

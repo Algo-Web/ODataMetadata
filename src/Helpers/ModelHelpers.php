@@ -34,9 +34,7 @@ trait ModelHelpers
 {
     public function GetNamespaceAliases(): array
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         /** @var array|null $result */
         $result = $this->GetAnnotationValue(
             'array',
@@ -186,9 +184,7 @@ trait ModelHelpers
      */
     public function GetEdmVersion(): ?Version
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         return $this->GetAnnotationValue(
             Version::class,
             $this,
@@ -204,9 +200,7 @@ trait ModelHelpers
      */
     public function SetEdmVersion(Version $version)
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::EdmVersionAnnotation, $version);
     }
 
@@ -231,9 +225,7 @@ trait ModelHelpers
      */
     public function GetEdmxVersion(): ?Version
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         return $this->GetAnnotationValue(
             Version::class,
             $this,
@@ -249,9 +241,7 @@ trait ModelHelpers
      */
     public function SetEdmxVersion(Version $version): void
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, CsdlConstants::EdmxVersionAnnotation, $version);
     }
 
@@ -262,9 +252,7 @@ trait ModelHelpers
      */
     public function SetDataServiceVersion(Version $version): void
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::DataServiceVersion, $version);
     }
 
@@ -275,9 +263,7 @@ trait ModelHelpers
      */
     public function GetDataServiceVersion(): ?Version
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         return $this->GetAnnotationValue(
             Version::class,
             $this,
@@ -293,9 +279,7 @@ trait ModelHelpers
      */
     public function SetMaxDataServiceVersion(Version $version): void
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::MaxDataServiceVersion, $version);
     }
 
@@ -306,9 +290,7 @@ trait ModelHelpers
      */
     public function GetMaxDataServiceVersion(): ?Version
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         return $this->GetAnnotationValue(
             Version::class,
             $this,
@@ -324,9 +306,7 @@ trait ModelHelpers
      */
     public function SetNamespacePrefixMappings(array $mappings): void
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         $this->SetAnnotationValue(
             $this,
             EdmConstants::InternalUri,
@@ -342,9 +322,7 @@ trait ModelHelpers
      */
     public function GetNamespacePrefixMappings(): array
     {
-        /**
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         /** @var array|null $result */
         $result = $this->GetAnnotationValue(
             'array',
@@ -463,9 +441,7 @@ trait ModelHelpers
     public function FindType(string $qualifiedName): ?ISchemaType
     {
         $findTypeMethod = self::findTypec();
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         return Helpers::FindAcrossModels(
             $this,
             $qualifiedName,
@@ -596,9 +572,7 @@ trait ModelHelpers
         iterable &$end1Annotations = [],
         iterable &$end2Annotations = []
     ): void {
-        /**
-         * @var SplObjectStorage $navigationPropertyMappings ;
-         */
+        /** @var SplObjectStorage $navigationPropertyMappings */
         $navigationPropertyMappings = $this->GetAnnotationValue(
             SplObjectStorage::class,
             $entitySet,
@@ -606,9 +580,7 @@ trait ModelHelpers
             CsdlConstants::AssociationSetAnnotationsAnnotation
         );
         if ($navigationPropertyMappings != null && $navigationPropertyMappings->offsetExists($property)) {
-            /**
-             * @var AssociationSetAnnotations $associationSetAnnotations
-             */
+            /** @var AssociationSetAnnotations $associationSetAnnotations */
             $associationSetAnnotations = $navigationPropertyMappings[$property];
             $annotations               = $associationSetAnnotations->Annotations ?? [];
             $end1Annotations           = $associationSetAnnotations->End1Annotations ?? [];

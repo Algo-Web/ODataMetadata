@@ -21,9 +21,7 @@ trait ComplexTypeReferenceHelpers
      */
     public function ComplexDefinition(): IComplexType
     {
-        /**
-         * @var IComplexTypeReference $this
-         */
+        /** @var IComplexTypeReference $this */
         $definition = $this->getDefinition();
         assert($definition instanceof IComplexType, 'ComplexType References should always wrap a complex type');
         return $definition;

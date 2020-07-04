@@ -39,9 +39,7 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
      */
     public function getContainer(): ?IEntityContainer
     {
-        /**
-         * @var IFunctionImport[] $bindings
-         */
+        /** @var IFunctionImport[] $bindings */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? null : $bindings[0]->getContainer();
     }
@@ -63,9 +61,7 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
      */
     public function getParameters(): ?array
     {
-        /**
-         * @var IFunctionImport[] $bindings
-         */
+        /** @var IFunctionImport[] $bindings */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? null : $bindings[0]->getParameters();
     }
@@ -78,9 +74,7 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
      */
     public function findParameter(string $name): ?IFunctionParameter
     {
-        /**
-         * @var IFunctionImport[] $bindings
-         */
+        /** @var IFunctionImport[] $bindings */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? null : $bindings[0]->findParameter($name);
     }

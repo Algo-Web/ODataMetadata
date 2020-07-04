@@ -28,9 +28,7 @@ trait NavigationPropertyHelpers
      */
     public function Multiplicity(): Multiplicity
     {
-        /**
-         * @var INavigationProperty $this ;
-         */
+        /** @var INavigationProperty $this */
         $partner = $this->getPartner();
         if ($partner !== null) {
             $partnerType = $partner->getType();
@@ -49,9 +47,7 @@ trait NavigationPropertyHelpers
      */
     public function ToEntityType(): IEntityType
     {
-        /**
-         * @var INavigationProperty $this;
-         */
+        /** @var INavigationProperty $this */
         $target = $this->getType()->getDefinition();
         if ($target->getTypeKind()->isCollection()) {
             assert($target instanceof ICollectionType);
@@ -73,18 +69,14 @@ trait NavigationPropertyHelpers
      */
     public function DeclaringEntityType(): IEntityType
     {
-        /**
-         * @var INavigationProperty $this;
-         */
+        /** @var INavigationProperty $this */
         $declaringType = $this->getDeclaringType();
         assert($declaringType instanceof IEntityType, 'navigation prperties should always be delcared on a Entity');
         return $declaringType;
     }
     public function PopulateCaches(): void
     {
-        /**
-         * @var INavigationProperty $property;
-         */
+        /** @var INavigationProperty $property */
         $property = $this;
         // Force computation that can apply annotations to the navigation property.
         $property->getPartner();
@@ -100,9 +92,7 @@ trait NavigationPropertyHelpers
      */
     public function GetPrimary(): INavigationProperty
     {
-        /**
-         * @var INavigationProperty $property;
-         */
+        /** @var INavigationProperty $property */
         $property = $this;
         if ($property->isPrincipal()) {
             return $property;

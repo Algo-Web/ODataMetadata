@@ -43,9 +43,7 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
                 $functionList = null;
                 if (isset($functionDictionary[$function->getName()])) {
                     $functionList = $functionDictionary[$function->getName()];
-                    /**
-                     * @var IFunctionImport $existingFunction
-                     */
+                    /** @var IFunctionImport $existingFunction */
                     foreach ($functionList as $existingFunction) {
                         if (EdmElementComparer::isFunctionSignatureEquivalentTo($function, $existingFunction)) {
                             $context->AddError(

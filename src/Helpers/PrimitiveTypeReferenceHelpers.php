@@ -22,9 +22,7 @@ trait PrimitiveTypeReferenceHelpers
      */
     public function PrimitiveDefinition(): ?IPrimitiveType
     {
-        /**
-         * @var IPrimitiveTypeReference $this
-         */
+        /** @var IPrimitiveTypeReference $this */
         $pType = $this->getDefinition();
         assert($pType instanceof IPrimitiveType);
         return $pType;

@@ -29,9 +29,7 @@ class VisitorOfIStructuredType extends VisitorOfT
         if (null !== $type->getBaseType()) {
             $visitedTypes   = [];
             $visitedTypes[] = $type;
-            /**
-             * @var IStructuredType|null $currentBaseType
-             */
+            /** @var IStructuredType|null $currentBaseType */
             for ($currentBaseType = $type->getBaseType(); null !== $currentBaseType; $currentBaseType = $currentBaseType->getBaseType()
             ) {
                 if (in_array($currentBaseType, $visitedTypes)) {

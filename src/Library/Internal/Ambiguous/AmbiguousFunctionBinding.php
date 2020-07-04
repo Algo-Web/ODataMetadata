@@ -50,9 +50,7 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
      */
     public function getParameters(): ?array
     {
-        /**
-         * @var IFunction[] $bindings
-         */
+        /** @var IFunction[] $bindings */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? [] : $bindings[0]->getParameters();
     }
@@ -65,9 +63,7 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
      */
     public function findParameter(string $name): ?IFunctionParameter
     {
-        /**
-         * @var IFunction[] $bindings
-         */
+        /** @var IFunction[] $bindings */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? null : $bindings[0]->findParameter($name);
     }
@@ -89,9 +85,7 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
      */
     public function getNamespace(): string
     {
-        /**
-         * @var IFunction[] $bindings
-         */
+        /** @var IFunction[] $bindings */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? '' : $bindings[0]->getNamespace();
     }

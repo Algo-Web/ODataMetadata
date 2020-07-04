@@ -22,9 +22,7 @@ trait EnumTypeReferenceHelpers
      */
     public function EnumDefinition(): IEnumType
     {
-        /**
-         * @var IEnumTypeReference $this;
-         */
+        /** @var IEnumTypeReference $this */
         $definition = $this->getDefinition();
         assert($definition instanceof IEnumType, 'Enum Type Reference should always wrap a IEnumType');
         return $definition;

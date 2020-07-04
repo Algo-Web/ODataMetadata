@@ -25,9 +25,7 @@ trait PrimitiveTypeHelpers
 {
     public function GetPrimitiveTypeReference(bool $isNullable): IPrimitiveTypeReference
     {
-        /**
-         * @var IPrimitiveType $this
-         */
+        /** @var IPrimitiveType $this */
         switch ($this->getPrimitiveKind()) {
             case PrimitiveTypeKind::Boolean():
             case PrimitiveTypeKind::Byte():

@@ -12,9 +12,7 @@ trait SimpleBaseToString
 {
     public function __toString(): string
     {
-        /**
-         * @var SimpleICheckable|IEdmElement $self;
-         */
+        /** @var SimpleICheckable|IEdmElement $self */
         $self = $this;
         assert(count($self->errors) !== 0);
         $error = $self->errors[0];

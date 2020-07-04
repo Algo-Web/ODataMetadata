@@ -88,9 +88,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
         if (EdmUtil::IsNullOrWhiteSpaceInternal($namespaceName)) {
             $namespaceName = '';
         }
-        /**
-         * @var EdmSchema $schema
-         */
+        /** @var EdmSchema|null $schema */
         $schema = null;
         if (!array_key_exists($namespaceName, $this->modelSchemas)) {
             $schema                             = new EdmSchema($namespaceName);

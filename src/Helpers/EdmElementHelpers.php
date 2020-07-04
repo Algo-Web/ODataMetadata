@@ -30,9 +30,7 @@ trait EdmElementHelpers
 
     public function getErrors(): iterable
     {
-        /*
-         * @var IEdmElement $this
-         */
+        /** @var IEdmElement $this */
         return InterfaceValidator::GetStructuralErrors($this);
     }
 }

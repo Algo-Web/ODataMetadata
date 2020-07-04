@@ -20,9 +20,7 @@ trait ProcessFunctionRelated
 {
     protected function ProcessFunction(IFunction $function): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         $this->startElement($function, __METHOD__);
         $this->ProcessSchemaElement($function);
         $this->ProcessFunctionBase($function);
@@ -31,9 +29,7 @@ trait ProcessFunctionRelated
 
     protected function ProcessFunctionImport(IFunctionImport $functionImport): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         $this->startElement($functionImport, __METHOD__);
         $this->ProcessEntityContainerElement($functionImport);
         $this->ProcessFunctionBase($functionImport);
@@ -42,9 +38,7 @@ trait ProcessFunctionRelated
 
     protected function ProcessFunctionBase(IFunctionBase $functionBase): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         $this->startElement($functionBase, __METHOD__);
         if ($functionBase->getReturnType() != null) {
             $this->VisitTypeReference($functionBase->getReturnType());
@@ -58,9 +52,7 @@ trait ProcessFunctionRelated
 
     protected function ProcessFunctionParameter(IFunctionParameter $parameter): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         $this->startElement($parameter, __METHOD__);
         $this->ProcessVocabularyAnnotatable($parameter);
         $this->ProcessNamedElement($parameter);
