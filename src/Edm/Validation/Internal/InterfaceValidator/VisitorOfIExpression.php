@@ -41,31 +41,31 @@ class VisitorOfIExpression extends VisitorOfT
 
     public function __construct()
     {
-        $this->lookup[ExpressionKind::IntegerConstant()->getValue()] = IIntegerConstantExpression::class;
-        $this->lookup[ExpressionKind::StringConstant()->getValue()] = IStringConstantExpression::class;
-        $this->lookup[ExpressionKind::BinaryConstant()->getValue()] = IBinaryConstantExpression::class;
-        $this->lookup[ExpressionKind::BooleanConstant()->getValue()] = IBooleanConstantExpression::class;
-        $this->lookup[ExpressionKind::DateTimeConstant()->getValue()] = IDateTimeConstantExpression::class;
-        $this->lookup[ExpressionKind::DateTimeOffsetConstant()->getValue()] = IDateTimeOffsetConstantExpression::class;
-        $this->lookup[ExpressionKind::TimeConstant()->getValue()] = ITimeConstantExpression::class;
-        $this->lookup[ExpressionKind::DecimalConstant()->getValue()] = IDecimalConstantExpression::class;
-        $this->lookup[ExpressionKind::FloatingConstant()->getValue()] = IFloatingConstantExpression::class;
-        $this->lookup[ExpressionKind::GuidConstant()->getValue()] = IGuidConstantExpression::class;
-        $this->lookup[ExpressionKind::Null()->getValue()] = INullExpression::class;
-        $this->lookup[ExpressionKind::Record()->getValue()] = IRecordExpression::class;
-        $this->lookup[ExpressionKind::Collection()->getValue()] = ICollectionExpression::class;
-        $this->lookup[ExpressionKind::Path()->getValue()] = IPathExpression::class;
-        $this->lookup[ExpressionKind::ParameterReference()->getValue()] = IParameterReferenceExpression::class;
-        $this->lookup[ExpressionKind::FunctionReference()->getValue()] = IFunctionReferenceExpression::class;
-        $this->lookup[ExpressionKind::PropertyReference()->getValue()] = IPropertyReferenceExpression::class;
-        $this->lookup[ExpressionKind::ValueTermReference()->getValue()] = IValueTermReferenceExpression::class;
-        $this->lookup[ExpressionKind::EntitySetReference()->getValue()] = IEntitySetReferenceExpression::class;
-        $this->lookup[ExpressionKind::EnumMemberReference()->getValue()] = IEnumMemberReferenceExpression::class;
-        $this->lookup[ExpressionKind::If()->getValue()] = IIfExpression::class;
-        $this->lookup[ExpressionKind::AssertType()->getValue()] = IAssertTypeExpression::class;
-        $this->lookup[ExpressionKind::IsType()->getValue()] = IIsTypeExpression::class;
-        $this->lookup[ExpressionKind::FunctionApplication()->getValue()] = IApplyExpression::class;
-        $this->lookup[ExpressionKind::Labeled()->getValue()] = ILabeledExpression::class;
+        $this->lookup[ExpressionKind::IntegerConstant()->getValue()]            = IIntegerConstantExpression::class;
+        $this->lookup[ExpressionKind::StringConstant()->getValue()]             = IStringConstantExpression::class;
+        $this->lookup[ExpressionKind::BinaryConstant()->getValue()]             = IBinaryConstantExpression::class;
+        $this->lookup[ExpressionKind::BooleanConstant()->getValue()]            = IBooleanConstantExpression::class;
+        $this->lookup[ExpressionKind::DateTimeConstant()->getValue()]           = IDateTimeConstantExpression::class;
+        $this->lookup[ExpressionKind::DateTimeOffsetConstant()->getValue()]     = IDateTimeOffsetConstantExpression::class;
+        $this->lookup[ExpressionKind::TimeConstant()->getValue()]               = ITimeConstantExpression::class;
+        $this->lookup[ExpressionKind::DecimalConstant()->getValue()]            = IDecimalConstantExpression::class;
+        $this->lookup[ExpressionKind::FloatingConstant()->getValue()]           = IFloatingConstantExpression::class;
+        $this->lookup[ExpressionKind::GuidConstant()->getValue()]               = IGuidConstantExpression::class;
+        $this->lookup[ExpressionKind::Null()->getValue()]                       = INullExpression::class;
+        $this->lookup[ExpressionKind::Record()->getValue()]                     = IRecordExpression::class;
+        $this->lookup[ExpressionKind::Collection()->getValue()]                 = ICollectionExpression::class;
+        $this->lookup[ExpressionKind::Path()->getValue()]                       = IPathExpression::class;
+        $this->lookup[ExpressionKind::ParameterReference()->getValue()]         = IParameterReferenceExpression::class;
+        $this->lookup[ExpressionKind::FunctionReference()->getValue()]          = IFunctionReferenceExpression::class;
+        $this->lookup[ExpressionKind::PropertyReference()->getValue()]          = IPropertyReferenceExpression::class;
+        $this->lookup[ExpressionKind::ValueTermReference()->getValue()]         = IValueTermReferenceExpression::class;
+        $this->lookup[ExpressionKind::EntitySetReference()->getValue()]         = IEntitySetReferenceExpression::class;
+        $this->lookup[ExpressionKind::EnumMemberReference()->getValue()]        = IEnumMemberReferenceExpression::class;
+        $this->lookup[ExpressionKind::If()->getValue()]                         = IIfExpression::class;
+        $this->lookup[ExpressionKind::AssertType()->getValue()]                 = IAssertTypeExpression::class;
+        $this->lookup[ExpressionKind::IsType()->getValue()]                     = IIsTypeExpression::class;
+        $this->lookup[ExpressionKind::FunctionApplication()->getValue()]        = IApplyExpression::class;
+        $this->lookup[ExpressionKind::Labeled()->getValue()]                    = ILabeledExpression::class;
         $this->lookup[ExpressionKind::LabeledExpressionReference()->getValue()] = ILabeledExpressionReferenceExpression::class;
     }
 
@@ -79,7 +79,7 @@ class VisitorOfIExpression extends VisitorOfT
         }
 
         $expressionKindError = null;
-        $kind = $expression->getExpressionKind();
+        $kind                = $expression->getExpressionKind();
 
         if (!array_key_exists($kind->getValue(), $this->lookup)) {
             $expressionKindError = InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
@@ -88,7 +88,7 @@ class VisitorOfIExpression extends VisitorOfT
                 'ExpressionKind'
             );
         } else {
-            $interface = $this->lookup[$kind->getValue()];
+            $interface           = $this->lookup[$kind->getValue()];
             $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
                 $expression,
                 $kind,

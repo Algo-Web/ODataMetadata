@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 1/07/20
- * Time: 9:23 PM
+ * Time: 9:23 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\FunctionParameterMode;
@@ -36,7 +37,7 @@ class EdmElementComparerTest extends TestCase
     public function testNotEquivalentWhenBothNull()
     {
         $expected = false;
-        $actual = EdmElementComparer::isEquivalentTo(null, null);
+        $actual   = EdmElementComparer::isEquivalentTo(null, null);
         $this->assertEquals($expected, $actual);
     }
 
@@ -45,7 +46,7 @@ class EdmElementComparerTest extends TestCase
         $element = m::mock(IEdmElement::class);
 
         $expected = false;
-        $actual = EdmElementComparer::isEquivalentTo(null, $element);
+        $actual   = EdmElementComparer::isEquivalentTo(null, $element);
         $this->assertEquals($expected, $actual);
     }
 
@@ -54,13 +55,13 @@ class EdmElementComparerTest extends TestCase
         $element = m::mock(IEdmElement::class);
 
         $expected = false;
-        $actual = EdmElementComparer::isEquivalentTo($element, null);
+        $actual   = EdmElementComparer::isEquivalentTo($element, null);
         $this->assertEquals($expected, $actual);
     }
 
     public function identityProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [IType::class];
         $result[] = [ITypeReference::class];
         $result[] = [IFunctionParameter::class];
@@ -80,7 +81,7 @@ class EdmElementComparerTest extends TestCase
         $element = m::mock(IEdmElement::class . ', ' . $class)->makePartial();
 
         $expected = true;
-        $actual = EdmElementComparer::isEquivalentTo($element, $element);
+        $actual   = EdmElementComparer::isEquivalentTo($element, $element);
         $this->assertEquals($expected, $actual);
     }
 
@@ -92,7 +93,7 @@ class EdmElementComparerTest extends TestCase
     public function testIsEquivalentUnderEquivalence2(string $class)
     {
         $rawDef = m::mock(IType::class);
-        $def = m::mock(ITypeReference::class);
+        $def    = m::mock(ITypeReference::class);
 
         $element = m::mock(IEdmElement::class . ', ' . $class)->makePartial();
         $element->shouldReceive('getName')->andReturn('Name');
@@ -107,13 +108,13 @@ class EdmElementComparerTest extends TestCase
 
         // if we have two equivalent-but-not-identical schema types, whole schema is out to lunch
         $expected = (ISchemaType::class !== $class);
-        $actual = EdmElementComparer::isEquivalentTo($element, $newElement);
+        $actual   = EdmElementComparer::isEquivalentTo($element, $newElement);
         $this->assertEquals($expected, $actual);
     }
 
     public function identityPrimitiveProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [IPrimitiveType::class, PrimitiveTypeKind::Int32()];
         $result[] = [IPrimitiveTypeReference::class, PrimitiveTypeKind::Int32()];
         $result[] = [IBinaryTypeReference::class, PrimitiveTypeKind::Binary()];
@@ -128,7 +129,7 @@ class EdmElementComparerTest extends TestCase
     /**
      * @dataProvider identityPrimitiveProvider
      *
-     * @param string $class
+     * @param string            $class
      * @param PrimitiveTypeKind $primKind
      */
     public function testIsEquivalentUnderIdentityPrimitive(string $class, PrimitiveTypeKind $primKind)
@@ -155,14 +156,14 @@ class EdmElementComparerTest extends TestCase
         $element->shouldReceive('FullName')->andReturn('FullName');
 
         $expected = true;
-        $actual = EdmElementComparer::isEquivalentTo($element, $element);
+        $actual   = EdmElementComparer::isEquivalentTo($element, $element);
         $this->assertEquals($expected, $actual);
     }
 
     /**
      * @dataProvider identityPrimitiveProvider
      *
-     * @param string $class
+     * @param string            $class
      * @param PrimitiveTypeKind $primKind
      */
     public function testIsEquivalentUnderEquivalencePrimitive(string $class, PrimitiveTypeKind $primKind)
@@ -192,18 +193,18 @@ class EdmElementComparerTest extends TestCase
         $newElement = clone $element;
         // if we have two equivalent-but-not-identical schema types, whole schema is out to lunch
         $expected = (IPrimitiveType::class !== $class);
-        $actual = EdmElementComparer::isEquivalentTo($element, $newElement);
+        $actual   = EdmElementComparer::isEquivalentTo($element, $newElement);
         $this->assertEquals($expected, $actual);
     }
 
     public function testIsEquivalentToRowTypeUnderIdentityNoProperties()
     {
-        $class = IRowType::class;
+        $class   = IRowType::class;
         $element = m::mock(IEdmElement::class . ', ' . $class)->makePartial();
         $element->shouldReceive('getDeclaredProperties')->andReturn([]);
 
         $expected = true;
-        $actual = EdmElementComparer::isEquivalentTo($element, $element);
+        $actual   = EdmElementComparer::isEquivalentTo($element, $element);
         $this->assertEquals($expected, $actual);
     }
 
@@ -212,22 +213,22 @@ class EdmElementComparerTest extends TestCase
         $prop1 = m::mock(IProperty::class)->makePartial();
         $prop2 = m::mock(IProperty::class)->makePartial();
 
-        $class = IRowType::class;
+        $class   = IRowType::class;
         $element = m::mock(IEdmElement::class . ', ' . $class)->makePartial();
         $element->shouldReceive('getDeclaredProperties')->andReturn([$prop1, $prop2]);
 
         $expected = true;
-        $actual = EdmElementComparer::isEquivalentTo($element, $element);
+        $actual   = EdmElementComparer::isEquivalentTo($element, $element);
         $this->assertEquals($expected, $actual);
     }
 
     public function testIsFunctionSignatureEquivalentUnderIdentity()
     {
-        $class = IFunctionBase::class;
+        $class   = IFunctionBase::class;
         $element = m::mock(IEdmElement::class . ', ' . $class)->makePartial();
 
         $expected = true;
-        $actual = EdmElementComparer::isFunctionSignatureEquivalentTo($element, $element);
+        $actual   = EdmElementComparer::isFunctionSignatureEquivalentTo($element, $element);
         $this->assertEquals($expected, $actual);
     }
 
@@ -237,7 +238,7 @@ class EdmElementComparerTest extends TestCase
 
         $funcParm = m::mock(IFunctionParameter::class)->makePartial();
 
-        $class = IFunctionBase::class;
+        $class   = IFunctionBase::class;
         $element = m::mock(IEdmElement::class . ', ' . $class)->makePartial();
         $element->shouldReceive('getName')->andReturn('Name');
         $element->shouldReceive('getReturnType')->andReturn($def);
@@ -246,34 +247,34 @@ class EdmElementComparerTest extends TestCase
         $newElement = clone $element;
 
         $expected = true;
-        $actual = EdmElementComparer::isFunctionSignatureEquivalentTo($element, $newElement);
+        $actual   = EdmElementComparer::isFunctionSignatureEquivalentTo($element, $newElement);
         $this->assertEquals($expected, $actual);
     }
 
     public function testIsFunctionSignatureNotEquivalentWhenBothNull()
     {
         $expected = false;
-        $actual = EdmElementComparer::isFunctionSignatureEquivalentTo(null, null);
+        $actual   = EdmElementComparer::isFunctionSignatureEquivalentTo(null, null);
         $this->assertEquals($expected, $actual);
     }
 
     public function testIsFunctionSignatureNotEquivalentWhenFirstNull()
     {
-        $class = IFunctionBase::class;
+        $class   = IFunctionBase::class;
         $element = m::mock(IEdmElement::class . ', ' . $class)->makePartial();
 
         $expected = false;
-        $actual = EdmElementComparer::isFunctionSignatureEquivalentTo(null, $element);
+        $actual   = EdmElementComparer::isFunctionSignatureEquivalentTo(null, $element);
         $this->assertEquals($expected, $actual);
     }
 
     public function testIsFunctionSignatureNotEquivalentWhenSecondNull()
     {
-        $class = IFunctionBase::class;
+        $class   = IFunctionBase::class;
         $element = m::mock(IEdmElement::class . ', ' . $class)->makePartial();
 
         $expected = false;
-        $actual = EdmElementComparer::isFunctionSignatureEquivalentTo($element, null);
+        $actual   = EdmElementComparer::isFunctionSignatureEquivalentTo($element, null);
         $this->assertEquals($expected, $actual);
     }
 }

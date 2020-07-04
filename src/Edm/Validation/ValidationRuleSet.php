@@ -154,8 +154,8 @@ class ValidationRuleSet implements \IteratorAggregate
     /**
      * Gets the default validation ruleset for the given version.
      *
-     * @param  Version $version          $versionOrRuleset the EDM version being validated
-     * @return ValidationRuleSet         the set of rules to validate that the model conforms to the given version
+     * @param  Version           $version $versionOrRuleset the EDM version being validated
+     * @return ValidationRuleSet the set of rules to validate that the model conforms to the given version
      */
     public static function getEdmModelRuleSet(Version $version): self
     {

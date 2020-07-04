@@ -58,7 +58,7 @@ trait ModelHelpers
         string $localName = null
     ) {
         $namespaceName = $namespaceName ?? EdmConstants::InternalUri;
-        $localName = $localName ?? Helpers::classNameToLocalName($typeof);
+        $localName     = $localName ?? Helpers::classNameToLocalName($typeof);
         return Helpers::AnnotationValue(
             $typeof,
             $this->getDirectValueAnnotationsManager()->getAnnotationValue(
@@ -75,7 +75,7 @@ trait ModelHelpers
      * Searches for an entity container with the given name in this model and all referenced models and returns null
      * if no such entity container exists.
      *
-     * @param  string $qualifiedName the qualified name of the entity container being found
+     * @param  string           $qualifiedName the qualified name of the entity container being found
      * @return IEntityContainer the requested entity container, or null if no such entity container exists
      */
     public function FindEntityContainer(string $qualifiedName): ?IEntityContainer
@@ -130,7 +130,7 @@ trait ModelHelpers
      * Searches for a value term with the given name in this model and all referenced models and returns null if no
      * such value term exists.
      *
-     * @param  string $qualifiedName the qualified name of the value term being found
+     * @param  string     $qualifiedName the qualified name of the value term being found
      * @return IValueTerm the requested value term, or null if no such value term exists
      */
     public function FindValueTerm(string $qualifiedName): ?IValueTerm
@@ -214,10 +214,10 @@ trait ModelHelpers
      * Sets an annotation value for an EDM element. If the value is null, no annotation is added and an existing
      * annotation with the same name is removed.
      *
-     * @param IEdmElement $element the annotated element
-     * @param string $namespaceName namespace that the annotation belongs to
-     * @param string $localName name of the annotation within the namespace
-     * @param mixed|object $value value of the new annotation
+     * @param IEdmElement  $element       the annotated element
+     * @param string       $namespaceName namespace that the annotation belongs to
+     * @param string       $localName     name of the annotation within the namespace
+     * @param mixed|object $value         value of the new annotation
      */
     public function SetAnnotationValue(IEdmElement $element, string $namespaceName, string $localName, $value)
     {
@@ -359,8 +359,8 @@ trait ModelHelpers
     /**
      * Sets the name used for the association end serialized for a navigation property.
      *
-     * @param INavigationProperty $property the navigation property
-     * @param string $association the association end name
+     * @param INavigationProperty $property    the navigation property
+     * @param string              $association the association end name
      */
     public function SetAssociationEndName(INavigationProperty $property, string $association): void
     {
@@ -449,7 +449,7 @@ trait ModelHelpers
         );
         if ($associationName == null) {
             $fromPrincipal = $property->GetPrimary();
-            $toPrincipal = $fromPrincipal->getPartner();
+            $toPrincipal   = $fromPrincipal->getPartner();
 
             $associationName =
                 Helpers::GetQualifiedAndEscapedPropertyName($toPrincipal) .
@@ -484,8 +484,8 @@ trait ModelHelpers
     /**
      * Sets the name used for the association serialized for a navigation property.
      *
-     * @param INavigationProperty $property the navigation property
-     * @param string $associationName the association name
+     * @param INavigationProperty $property        the navigation property
+     * @param string              $associationName the association name
      */
     public function SetAssociationName(INavigationProperty $property, string $associationName): void
     {
@@ -503,8 +503,8 @@ trait ModelHelpers
     /**
      * Sets the namespace used for the association serialized for a navigation property.
      *
-     * @param INavigationProperty $property the navigation property
-     * @param string $associationNamespace the association namespace
+     * @param INavigationProperty $property             the navigation property
+     * @param string              $associationNamespace the association namespace
      */
     public function SetAssociationNamespace(INavigationProperty $property, string $associationNamespace): void
     {
@@ -522,9 +522,9 @@ trait ModelHelpers
     /**
      * Sets the name used for the association set serialized for a navigation property of an entity set.
      *
-     * @param IEntitySet $entitySet The entity set
-     * @param INavigationProperty $property the navigation property
-     * @param string $associationSet the association set name
+     * @param IEntitySet          $entitySet      The entity set
+     * @param INavigationProperty $property       the navigation property
+     * @param string              $associationSet the association set name
      */
     public function SetAssociationSetName(
         IEntitySet $entitySet,
@@ -555,8 +555,8 @@ trait ModelHelpers
     /**
      * Gets the name used for the association set serialized for a navigation property of an entity set.
      *
-     * @param  IEntitySet $entitySet the entity set
-     * @param  INavigationProperty $property the navigation property
+     * @param  IEntitySet          $entitySet the entity set
+     * @param  INavigationProperty $property  the navigation property
      * @return string              the association set name
      */
     public function GetAssociationSetName(IEntitySet $entitySet, INavigationProperty $property): string
@@ -583,11 +583,11 @@ trait ModelHelpers
     /**
      * Gets the annotations associated with the association serialized for a navigation target of an entity set.
      *
-     * @param IEntitySet $entitySet the entity set
-     * @param INavigationProperty $property the navigation property
-     * @param iterable $annotations the association set annotations
-     * @param iterable $end1Annotations the annotations for association set end 1
-     * @param iterable $end2Annotations the annotations for association set end 2
+     * @param IEntitySet          $entitySet       the entity set
+     * @param INavigationProperty $property        the navigation property
+     * @param iterable            $annotations     the association set annotations
+     * @param iterable            $end1Annotations the annotations for association set end 1
+     * @param iterable            $end2Annotations the annotations for association set end 2
      */
     public function GetAssociationSetAnnotations(
         IEntitySet $entitySet,
@@ -610,12 +610,12 @@ trait ModelHelpers
              * @var AssociationSetAnnotations $associationSetAnnotations
              */
             $associationSetAnnotations = $navigationPropertyMappings[$property];
-            $annotations = $associationSetAnnotations->Annotations ?? [];
-            $end1Annotations = $associationSetAnnotations->End1Annotations ?? [];
-            $end2Annotations = $associationSetAnnotations->End2Annotations ?? [];
+            $annotations               = $associationSetAnnotations->Annotations ?? [];
+            $end1Annotations           = $associationSetAnnotations->End1Annotations ?? [];
+            $end2Annotations           = $associationSetAnnotations->End2Annotations ?? [];
         } else {
-            $empty = [];
-            $annotations = $empty;
+            $empty           = [];
+            $annotations     = $empty;
             $end1Annotations = $empty;
             $end2Annotations = $empty;
         }
@@ -624,11 +624,11 @@ trait ModelHelpers
     /**
      * Gets the annotations associated with the association serialized for a navigation property.
      *
-     * @param INavigationProperty $property the navigation property
-     * @param iterable $annotations the association annotations
-     * @param iterable $end1Annotations the annotations for association end 1
-     * @param iterable $end2Annotations the annotations for association end 2
-     * @param iterable $constraintAnnotations the annotations for the referential constraint
+     * @param INavigationProperty $property              the navigation property
+     * @param iterable            $annotations           the association annotations
+     * @param iterable            $end1Annotations       the annotations for association end 1
+     * @param iterable            $end2Annotations       the annotations for association end 2
+     * @param iterable            $constraintAnnotations the annotations for the referential constraint
      */
     public function GetAssociationAnnotations(
         INavigationProperty $property,
@@ -645,15 +645,15 @@ trait ModelHelpers
             CsdlConstants::AssociationAnnotationsAnnotation
         );
         if ($associationAnnotations != null) {
-            $annotations = $associationAnnotations->Annotations ?? [];
-            $end1Annotations = $associationAnnotations->End1Annotations ?? [];
-            $end2Annotations = $associationAnnotations->End2Annotations ?? [];
+            $annotations           = $associationAnnotations->Annotations ?? [];
+            $end1Annotations       = $associationAnnotations->End1Annotations ?? [];
+            $end2Annotations       = $associationAnnotations->End2Annotations ?? [];
             $constraintAnnotations = $associationAnnotations->ConstraintAnnotations ?? [];
         } else {
-            $empty = [];
-            $annotations = $empty;
-            $end1Annotations = $empty;
-            $end2Annotations = $empty;
+            $empty                 = [];
+            $annotations           = $empty;
+            $end1Annotations       = $empty;
+            $end2Annotations       = $empty;
             $constraintAnnotations = $empty;
         }
     }
@@ -701,7 +701,7 @@ trait ModelHelpers
     /**
      * Finds a list of types that derive directly from the supplied type.
      *
-     * @param  IStructuredType $baseType the base type that derived types are being searched for
+     * @param  IStructuredType   $baseType the base type that derived types are being searched for
      * @return IStructuredType[] a list of types from this model that derive directly from the given type
      */
     abstract public function findDirectlyDerivedTypes(IStructuredType $baseType): array;

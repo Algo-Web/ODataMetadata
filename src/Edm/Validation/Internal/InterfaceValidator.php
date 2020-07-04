@@ -69,8 +69,8 @@ class InterfaceValidator
     }
 
     /**
-     * @param  IModel              $model
-     * @param  ValidationRuleSet   $semanticRuleSet
+     * @param  IModel               $model
+     * @param  ValidationRuleSet    $semanticRuleSet
      * @throws \ReflectionException
      * @return iterable|EdmError[]
      */
@@ -140,7 +140,7 @@ class InterfaceValidator
      */
     private static function CreateInterfaceVisitorsMap(): iterable
     {
-        $map = [];
+        $map    = [];
         $handle = opendir('.');
         if (false !== $handle) {
             while (false !== ($entry = readdir($handle))) {

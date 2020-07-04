@@ -106,7 +106,7 @@ class EdmUtil
         } else {
             if ($element instanceof IEntityContainerElement) {
                 $container = $element->getContainer();
-                $fullName = (null !== $container) ? $container->FullName() : '';
+                $fullName  = (null !== $container) ? $container->FullName() : '';
                 if ($element instanceof IFunctionImport) {
                     return $fullName . '/' . self::ParameterizedName($element);
                 } else {

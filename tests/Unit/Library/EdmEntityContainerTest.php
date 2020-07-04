@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Library;
 
@@ -20,7 +22,7 @@ class EdmEntityContainerTest extends TestCase
         $foo = new EdmEntityContainer('Full', 'Name');
 
         $expected = null;
-        $actual = $foo->findEntitySet('set');
+        $actual   = $foo->findEntitySet('set');
         $this->assertEquals($expected, $actual);
     }
 
@@ -28,9 +30,9 @@ class EdmEntityContainerTest extends TestCase
     {
         $foo = new EdmEntityContainer('Full', 'Name');
 
-        $type = m::mock(IEntityType::class)->makePartial();
+        $type     = m::mock(IEntityType::class)->makePartial();
         $expected = $foo->AddEntitySet('set', $type);
-        $actual = $foo->findEntitySet('set');
+        $actual   = $foo->findEntitySet('set');
         $this->assertEquals($expected, $actual);
     }
 
@@ -39,7 +41,7 @@ class EdmEntityContainerTest extends TestCase
         $foo = new EdmEntityContainer('Full', 'Name');
 
         $expected = [];
-        $actual = $foo->findFunctionImports('function');
+        $actual   = $foo->findFunctionImports('function');
         $this->assertEquals($expected, $actual);
     }
 
@@ -47,7 +49,7 @@ class EdmEntityContainerTest extends TestCase
     {
         $foo = new EdmEntityContainer('Full', 'Name');
 
-        $typeRef = m::mock(ITypeReference::class)->makePartial();
+        $typeRef   = m::mock(ITypeReference::class)->makePartial();
         $entitySet = m::mock(IEntitySetReferenceExpression::class)->makePartial();
 
         $expected = $foo->AddFunctionImport('function', $typeRef, $entitySet, null, null, null);
@@ -60,7 +62,7 @@ class EdmEntityContainerTest extends TestCase
     {
         $foo = new EdmEntityContainer('Full', 'Name');
 
-        $kind = ContainerElementKind::None();
+        $kind    = ContainerElementKind::None();
         $element = m::mock(IEntityContainerElement::class)->makePartial();
         $element->shouldReceive('getContainerElementKind')->andReturn($kind);
         $element->shouldReceive('getName')->andReturn('Name');

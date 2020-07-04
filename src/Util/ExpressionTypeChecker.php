@@ -151,7 +151,7 @@ abstract class ExpressionTypeChecker
             return true;
         }
 
-        switch ($expression->/** @scrutinizer ignore-call */getExpressionKind()) {
+        switch ($expression->/* @scrutinizer ignore-call */getExpressionKind()) {
             case ExpressionKind::IntegerConstant():
             case ExpressionKind::StringConstant():
             case ExpressionKind::BinaryConstant():
@@ -169,7 +169,7 @@ abstract class ExpressionTypeChecker
                     return self::TestTypeReferenceMatch(
                         $primitiveValue->getType(),
                         $type,
-                        $expression->/** @scrutinizer ignore-call */ Location(),
+                        $expression->/* @scrutinizer ignore-call */ Location(),
                         $matchExactly,
                         $discoveredErrors
                     );

@@ -71,13 +71,13 @@ class EdmxWriter
     /**
      * Outputs an EDMX artifact to the provided XmlWriter.
      *
-     * @param  IModel     $model  model to be written
-     * @param  XMLWriter  $writer xmlWriter the generated EDMX will be written to
-     * @param  EdmxTarget $target target implementation of the EDMX being generated
-     * @param  array      $errors errors that prevented successful serialization, or no errors if serialization was successful
+     * @param  IModel                                                 $model  model to be written
+     * @param  XMLWriter                                              $writer xmlWriter the generated EDMX will be written to
+     * @param  EdmxTarget                                             $target target implementation of the EDMX being generated
+     * @param  array                                                  $errors errors that prevented successful serialization, or no errors if serialization was successful
      * @throws \ReflectionException
      * @throws \AlgoWeb\ODataMetadata\Exception\NotSupportedException
-     * @return bool       a value indicating whether serialization was successful
+     * @return bool                                                   a value indicating whether serialization was successful
      */
     public static function TryWriteEdmx(IModel $model, XmlWriter $writer, EdmxTarget $target = null, array &$errors = []): bool
     {

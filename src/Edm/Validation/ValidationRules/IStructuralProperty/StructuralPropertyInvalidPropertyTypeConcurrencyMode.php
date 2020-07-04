@@ -23,7 +23,7 @@ class StructuralPropertyInvalidPropertyTypeConcurrencyMode extends StructuralPro
 {
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
-        /** @var IStructuralProperty $property */
+        /* @var IStructuralProperty $property */
         assert($property instanceof IStructuralProperty);
 
         $propType = $property->getType();
