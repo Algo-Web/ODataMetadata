@@ -45,4 +45,14 @@ abstract class Enum extends \MyCLabs\Enum\Enum
         }
         return false;
     }
+
+    /**
+     * Returns the enum key (i.e. the constant name).
+     *
+     * @return string
+     */
+    public function getKey()
+    {
+        return strval(parent::getKey());
+    }
 }
