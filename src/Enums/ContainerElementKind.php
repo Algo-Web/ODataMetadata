@@ -23,4 +23,5 @@ class ContainerElementKind extends Enum
     protected const None           = 1;
     protected const EntitySet      = 2;
     protected const FunctionImport = 3;
+
 }
