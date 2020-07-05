@@ -23,4 +23,14 @@ class TermKind extends Enum
     protected const None  = 1;
     protected const Type  = 2;
     protected const Value = 3;
+
+    /**
+     * Returns the enum key (i.e. the constant name).
+     *
+     * @return string
+     */
+    public function getKey()
+    {
+        return strval(parent::getKey());
+    }
 }
