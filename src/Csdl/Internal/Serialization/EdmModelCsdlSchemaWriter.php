@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Csdl\Internal\Serialization;
 use AlgoWeb\ODataMetadata\Csdl\Internal\EdmValueWriter;
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\EdmConstants;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\ConcurrencyMode;
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\FunctionParameterMode;
@@ -918,6 +919,9 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      */
     public function WriteInlineExpression(IExpression $expression): void
     {
+        if (method_exists($expression, 'getValue')) {
+            EdmUtil::checkArgumentNull($expression->getValue(), 'expression->getValue');
+        }
         switch ($expression->getExpressionKind()) {
             case ExpressionKind::BinaryConstant():
                 assert($expression instanceof IBinaryConstantExpression);
@@ -1091,6 +1095,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      */
     public function WritePropertyConstructorElementHeader(IPropertyConstructor $constructor, bool $isInline): void
     {
+        EdmUtil::checkArgumentNull($constructor->getName(), 'constructor->getName');
         $this->xmlWriter->startElement(CsdlConstants::Element_PropertyValue);
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Property,
@@ -1098,12 +1103,14 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             [EdmValueWriter::class, 'StringAsXml']
         );
         if ($isInline) {
+            EdmUtil::checkArgumentNull($constructor->getValue(), 'constructor->getValue()');
             $this->WriteInlineExpression($constructor->getValue());
         }
     }
 
     public function WriteStringConstantExpressionElement(IStringConstantExpression $expression): void
     {
+        EdmUtil::checkArgumentNull($expression->getValue(), 'expression->getValue');
         $this->xmlWriter->startElement(CsdlConstants::Element_String);
         $this->xmlWriter->text(EdmValueWriter::StringAsXml($expression->getValue()));
         $this->WriteEndElement();
@@ -1111,6 +1118,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
 
     public function WriteBinaryConstantExpressionElement(IBinaryConstantExpression $expression): void
     {
+        EdmUtil::checkArgumentNull($expression->getValue(), 'expression->getValue');
         $this->xmlWriter->startElement(CsdlConstants::Element_String);
         $this->xmlWriter->text(EdmValueWriter::BinaryAsXml($expression->getValue()));
         $this->WriteEndElement();

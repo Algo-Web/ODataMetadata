@@ -74,15 +74,15 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
     {
         $result = [];
 
-        $result[] = [ExpressionKind::BinaryConstant(), ValueKind::Binary(), IBinaryConstantExpression::class, 'IsBinary', 'AsBinary'];
+        $result[] = [ExpressionKind::BinaryConstant(), ValueKind::Binary(), IBinaryConstantExpression::class, 'IsBinary', 'AsBinary', PrimitiveTypeKind::Binary(), []];
         $result[] = [ExpressionKind::BooleanConstant(), ValueKind::Boolean(), IBooleanConstantExpression::class, 'IsBoolean'];
         $result[] = [ExpressionKind::DateTimeConstant(), ValueKind::DateTime(), IDateTimeConstantExpression::class, 'IsDateTime'];
         $result[] = [ExpressionKind::DateTimeOffsetConstant(), ValueKind::DateTimeOffset(), IDateTimeOffsetConstantExpression::class, 'IsDateTimeOffset'];
         $result[] = [ExpressionKind::DecimalConstant(), ValueKind::Decimal(), IDecimalConstantExpression::class, 'IsDecimal'];
         $result[] = [ExpressionKind::FloatingConstant(), ValueKind::Floating(), IFloatingConstantExpression::class, 'IsFloating'];
         $result[] = [ExpressionKind::GuidConstant(), ValueKind::Guid(), IGuidConstantExpression::class, 'IsGuid'];
-        $result[] = [ExpressionKind::IntegerConstant(), ValueKind::Integer(), IIntegerConstantExpression::class, 'IsIntegral', null, PrimitiveTypeKind::Int32()];
-        $result[] = [ExpressionKind::StringConstant(), ValueKind::String(), IStringConstantExpression::class, 'IsString', 'AsString'];
+        $result[] = [ExpressionKind::IntegerConstant(), ValueKind::Integer(), IIntegerConstantExpression::class, 'IsIntegral', null, PrimitiveTypeKind::Int32(), 0];
+        $result[] = [ExpressionKind::StringConstant(), ValueKind::String(), IStringConstantExpression::class, 'IsString', 'AsString', PrimitiveTypeKind::String(), ''];
         $result[] = [ExpressionKind::TimeConstant(), ValueKind::Time(), ITimeConstantExpression::class, 'IsTime'];
 
         return $result;
@@ -97,6 +97,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
      * @param string                 $checkMethod
      * @param string|null            $asMethod
      * @param PrimitiveTypeKind|null $primKind
+     * @param mixed|null             $primVal
      */
     public function testTryAssertTypeWithPrimitiveTypeDirectlyAsserted(
         ExpressionKind $kind,
@@ -104,7 +105,8 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         string $expressionType,
         string $checkMethod,
         string $asMethod = null,
-        PrimitiveTypeKind $primKind = null
+        PrimitiveTypeKind $primKind = null,
+        $primVal = null
     ) {
         $expression = m::mock(IExpression::class . ', ' . IPrimitiveValue::class . ', ' . $expressionType);
         $expression->shouldReceive('getExpressionKind')->andReturn($kind);
@@ -133,7 +135,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
 
         if (null !== $primKind) {
             $type->shouldReceive('PrimitiveKind')->andReturn($primKind);
-            $expression->shouldReceive('getValue')->andReturn(0);
+            $expression->shouldReceive('getValue')->andReturn($primVal);
         }
 
         $errors = ['foo'];

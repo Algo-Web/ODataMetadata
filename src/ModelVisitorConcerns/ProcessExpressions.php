@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
 
 use AlgoWeb\ODataMetadata\EdmModelVisitor;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IApplyExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IAssertTypeExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IBinaryConstantExpression;
@@ -257,6 +258,7 @@ trait ProcessExpressions
 
     protected function processPropertyConstructor(IPropertyConstructor $constructor): void
     {
+        EdmUtil::checkArgumentNull($constructor->getValue(), 'constructor->getValue');
         /** @var EdmModelVisitor $this */
         $this->startElement($constructor, __METHOD__);
         $this->VisitExpression($constructor->getValue());

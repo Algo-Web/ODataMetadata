@@ -590,6 +590,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     protected function ProcessPropertyConstructor(IPropertyConstructor $constructor): void
     {
+        EdmUtil::checkArgumentNull($constructor->getValue(), 'constructor->getValue');
         $isInline = self::IsInlineExpression($constructor->getValue());
         $this->BeginElement($constructor, function ($t) use ($isInline) {
             $this->schemaWriter->WritePropertyConstructorElementHeader($t, $isInline);
