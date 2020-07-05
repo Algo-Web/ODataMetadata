@@ -40,4 +40,40 @@ class EdmUtilTest extends TestCase
         $actual   = EdmUtil::IsNullOrWhiteSpaceInternal($value);
         $this->assertEquals($expected, $actual);
     }
+
+    public function testIsValidUndottedName()
+    {
+        $string = 'Foobar';
+
+        $expected = true;
+        $actual   = EdmUtil::IsValidUndottedName($string);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testIsInvalidUndottedNameLeadingUnderscore()
+    {
+        $string = '_Foo_bar';
+
+        $expected = false;
+        $actual   = EdmUtil::IsValidUndottedName($string);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testIsValidDottedNameSingleSegment()
+    {
+        $string = 'foobar';
+
+        $expected = true;
+        $actual   = EdmUtil::IsValidDottedName($string);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testIsValidDottedNameMultipleSegment()
+    {
+        $string = 'foo.bar.baz';
+
+        $expected = true;
+        $actual   = EdmUtil::IsValidDottedName($string);
+        $this->assertEquals($expected, $actual);
+    }
 }
