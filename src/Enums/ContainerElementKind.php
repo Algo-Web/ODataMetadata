@@ -23,4 +23,14 @@ class ContainerElementKind extends Enum
     protected const None           = 1;
     protected const EntitySet      = 2;
     protected const FunctionImport = 3;
+
+    /**
+     * Returns the enum key (i.e. the constant name).
+     *
+     * @return string
+     */
+    public function getKey()
+    {
+        return strval(parent::getKey());
+    }
 }
