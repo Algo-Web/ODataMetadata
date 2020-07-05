@@ -117,14 +117,14 @@ class EdmUtil
                     $declaringSchemaType = $element->getDeclaringType();
                     if ($declaringSchemaType instanceof ISchemaType) {
                         $propertyOwnerName = self::FullyQualifiedName($declaringSchemaType);
-                        if ($propertyOwnerName != null) {
+                        if (null !== $propertyOwnerName) {
                             return $propertyOwnerName . '/' . $element->getName();
                         }
                     }
                 } else {
                     if ($element instanceof IFunctionParameter) {
                         $parameterOwnerName = self::FullyQualifiedName($element->getDeclaringFunction());
-                        if ($parameterOwnerName != null) {
+                        if (null !== $parameterOwnerName) {
                             return $parameterOwnerName . '/' . $element->getName();
                         }
                     }
