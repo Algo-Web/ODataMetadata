@@ -22,7 +22,7 @@ use ReflectionException;
  * @method static EdmEntityContainer_CannotUseElementWithTypeNone()
  * @method static Constructable_TargetMustBeStock(string $get_class)
  * @method static Constructable_EntityTypeOrCollectionOfEntityTypeExpected(string $string)
- * @method static UnknownEnumVal_Multiplicity(Enums\Multiplicity $multiplicity)
+ * @method static UnknownEnumVal_Multiplicity(string $multiplicity)
  * @method static Constructable_VocabularyAnnotationMustHaveTarget()
  * @method static UnknownEnumVal_PrimitiveKind($getKey)
  * @method static TypeSemantics_CouldNotConvertTypeReference(string|null $param, string $typeKindName)
