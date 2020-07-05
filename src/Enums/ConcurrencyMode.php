@@ -21,4 +21,14 @@ class ConcurrencyMode extends Enum
 {
     protected const None  = 0;
     protected const Fixed = 1;
+
+    /**
+     * Returns the enum key (i.e. the constant name).
+     *
+     * @return string
+     */
+    public function getKey()
+    {
+        return strval(parent::getKey());
+    }
 }
