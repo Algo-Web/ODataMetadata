@@ -104,9 +104,9 @@ class UnresolvedFunction extends BadElement implements IFunction, IUnresolvedEle
     }
 
     /**
-     * @return string gets the namespace this schema element belongs to
+     * @return string|null gets the namespace this schema element belongs to
      */
-    public function getNamespace(): string
+    public function getNamespace(): ?string
     {
         return $this->namespaceName;
     }
