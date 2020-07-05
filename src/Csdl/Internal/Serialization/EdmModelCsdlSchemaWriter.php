@@ -1492,6 +1492,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
 
     private function SerializationName(ISchemaElement $element): string
     {
+        EdmUtil::checkArgumentNull($element->getNamespace(), 'element->getNamespace');
         if ($this->namespaceAliasMappings != null) {
             if (array_key_exists($element->getNamespace(), $this->namespaceAliasMappings)) {
                 return $this->namespaceAliasMappings[$element->getNamespace()] . '.' . $element->getName();

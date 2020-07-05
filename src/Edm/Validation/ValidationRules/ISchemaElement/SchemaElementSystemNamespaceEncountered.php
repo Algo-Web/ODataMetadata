@@ -23,6 +23,7 @@ class SchemaElementSystemNamespaceEncountered extends SchemaElementRule
     public function __invoke(ValidationContext $context, ?IEdmElement $element)
     {
         assert($element instanceof ISchemaElement);
+        EdmUtil::checkArgumentNull($element->getNamespace(), 'element->getNamespace');
         if (ValidationHelper::IsEdmSystemNamespace($element->getNamespace())) {
             EdmUtil::checkArgumentNull($element->Location(), 'element->Location');
             $context->AddError(

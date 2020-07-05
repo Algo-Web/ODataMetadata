@@ -23,6 +23,7 @@ class SchemaElementNamespaceIsTooLong extends SchemaElementRule
     public function __invoke(ValidationContext $context, ?IEdmElement $item)
     {
         assert($item instanceof ISchemaElement);
+        EdmUtil::checkArgumentNull($item->getNamespace(), 'item->getNamespace');
         if (mb_strlen($item->getNamespace()) > CsdlConstants::Max_NamespaceLength) {
             EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
             $context->AddError(

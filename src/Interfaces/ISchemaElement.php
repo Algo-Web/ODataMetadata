@@ -24,7 +24,7 @@ interface ISchemaElement extends INamedElement, IVocabularyAnnotatable, ISchemaE
     public function getSchemaElementKind(): SchemaElementKind;
 
     /**
-     * @return string gets the namespace this schema element belongs to
+     * @return string|null gets the namespace this schema element belongs to
      */
-    public function getNamespace(): string;
+    public function getNamespace(): ?string;
 }
