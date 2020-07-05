@@ -61,7 +61,7 @@ class BadEntityContainer extends BadElement implements IEntityContainer
      */
     public function findFunctionImports(string $functionName): array
     {
-        return null;
+        return [];
     }
 
     /**
