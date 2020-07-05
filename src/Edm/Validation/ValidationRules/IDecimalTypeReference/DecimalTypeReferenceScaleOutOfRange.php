@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IDecimalTypeRefer
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IDecimalTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class DecimalTypeReferenceScaleOutOfRange extends DecimalTypeReferenceRule
     {
         assert($type instanceof IDecimalTypeReference);
         if ($type->getScale() > $type->getPrecision() || $type->getScale() < 0) {
+            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::ScaleOutOfRange(),

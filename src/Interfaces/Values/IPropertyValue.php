@@ -15,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 interface IPropertyValue extends IDelayedValue
 {
     /**
-     * @return string gets the name of the property this value is associated with
+     * @return string|null gets the name of the property this value is associated with
      */
-    public function getName(): string;
+    public function getName(): ?string;
 }

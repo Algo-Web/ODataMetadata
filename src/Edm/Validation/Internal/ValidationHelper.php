@@ -34,11 +34,18 @@ abstract class ValidationHelper
         $namespaceName == EdmConstants::EdmNamespace);
     }
 
-    public static function AddMemberNameToHashSet(INamedElement $item, HashSetInternal $memberNameList, ValidationContext $context, EdmErrorCode $errorCode, string $errorString, bool $suppressError)
-    {
+    public static function AddMemberNameToHashSet(
+        INamedElement $item,
+        HashSetInternal $memberNameList,
+        ValidationContext $context,
+        EdmErrorCode $errorCode,
+        string $errorString,
+        bool $suppressError
+    ) {
         $name = $item instanceof ISchemaElement ? $item->FullName() : $item->getName();
         if ($memberNameList->add($name)) {
             if (!$suppressError) {
+                EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
                 $context->AddError($item->Location(), $errorCode, $errorString);
             }
             return false;
@@ -105,10 +112,18 @@ abstract class ValidationHelper
         return true;
     }
 
-    public static function ValidateValueCanBeWrittenAsXmlElementAnnotation(IValue $value, string $annotationNamespace, string $annotationName, EdmError &$error): bool
-    {
+    public static function ValidateValueCanBeWrittenAsXmlElementAnnotation(
+        IValue $value,
+        string $annotationNamespace,
+        string $annotationName,
+        EdmError &$error
+    ): bool {
         if (!($value instanceof IStringValue)) {
-            $error = new EdmError($value->Location(), EdmErrorCode::InvalidElementAnnotation(), StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationNotIEdmStringValue());
+            $error = new EdmError(
+                $value->Location(),
+                EdmErrorCode::InvalidElementAnnotation(),
+                StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationNotIEdmStringValue()
+            );
             return false;
         }
 
@@ -129,7 +144,11 @@ abstract class ValidationHelper
 
             // The annotation must be an element.
             if ($eof) {
-                $error = new EdmError($value->Location(), EdmErrorCode::InvalidElementAnnotation(), StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationValueInvalidXml());
+                $error = new EdmError(
+                    $value->Location(),
+                    EdmErrorCode::InvalidElementAnnotation(),
+                    StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationValueInvalidXml()
+                );
                 return false;
             }
 
@@ -137,36 +156,57 @@ abstract class ValidationHelper
             $elementNamespace = $reader->namespaceURI;
             $elementName      = $reader->localName;
 
-            if (EdmUtil::IsNullOrWhiteSpaceInternal($elementNamespace) || EdmUtil::IsNullOrWhiteSpaceInternal($elementName)) {
-                $error = new EdmError($value->Location(), EdmErrorCode::InvalidElementAnnotation(), StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationNullNamespaceOrName());
+            if (EdmUtil::IsNullOrWhiteSpaceInternal($elementNamespace) ||
+                EdmUtil::IsNullOrWhiteSpaceInternal($elementName)) {
+                $error = new EdmError(
+                    $value->Location(),
+                    EdmErrorCode::InvalidElementAnnotation(),
+                    StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationNullNamespaceOrName()
+                );
                 return false;
             }
 
-            if (!(($annotationNamespace == null || $elementNamespace == $annotationNamespace) && ($annotationName == null || $elementName == $annotationName))) {
-                $error = new EdmError($value->Location(), EdmErrorCode::InvalidElementAnnotation(), StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationMismatchedTerm());
+            if (!(($annotationNamespace == null || $elementNamespace == $annotationNamespace) &&
+                  ($annotationName == null || $elementName == $annotationName))) {
+                $error = new EdmError(
+                    $value->Location(),
+                    EdmErrorCode::InvalidElementAnnotation(),
+                    StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationMismatchedTerm()
+                );
                 return false;
             }
 
             // Parse the entire fragment to determine if the XML is valid
             /* @noinspection PhpStatementHasEmptyBodyInspection */
-            while ($reader->read());
+            while ($reader->read()) {
+            }
 
 
             $error = null;
             return true;
         } catch (Exception $e) {
-            $error = new EdmError($value->Location(), EdmErrorCode::InvalidElementAnnotation(), StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationValueInvalidXml());
+            $error = new EdmError(
+                $value->Location(),
+                EdmErrorCode::InvalidElementAnnotation(),
+                StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationValueInvalidXml()
+            );
             return false;
         }
     }
 
     public static function IsInterfaceCritical(EdmError $error): bool
     {
-        return $error->getErrorCode()->getValue() >= EdmErrorCode::InterfaceCriticalPropertyValueMustNotBeNull()->getValue() && $error->getErrorCode()->getValue() <= EdmErrorCode::InterfaceCriticalCycleInTypeHierarchy()->getValue();
+        $errVal = $error->getErrorCode()->getValue();
+
+        return $errVal >= EdmErrorCode::InterfaceCriticalPropertyValueMustNotBeNull()->getValue() &&
+               $errVal <= EdmErrorCode::InterfaceCriticalCycleInTypeHierarchy()->getValue();
     }
 
-    public static function ItemExistsInReferencedModel(IModel $model, string $fullName, bool $checkEntityContainer): bool
-    {
+    public static function ItemExistsInReferencedModel(
+        IModel $model,
+        string $fullName,
+        bool $checkEntityContainer
+    ): bool {
         foreach ($model->getReferencedModels() as $referenced) {
             if (self::checkItemReference($fullName, $checkEntityContainer, $referenced)) {
                 return true;
@@ -177,8 +217,12 @@ abstract class ValidationHelper
     }
 
     // Take function name to avoid recomputing it
-    public static function FunctionOrNameExistsInReferencedModel(IModel $model, IFunction $function, string $functionFullName, bool $checkEntityContainer): bool
-    {
+    public static function FunctionOrNameExistsInReferencedModel(
+        IModel $model,
+        IFunction $function,
+        string $functionFullName,
+        bool $checkEntityContainer
+    ): bool {
         foreach ($model->getReferencedModels() as $referenced) {
             if (self::checkFunctionOrNameReference($function, $functionFullName, $checkEntityContainer, $referenced)) {
                 return true;
@@ -188,8 +232,12 @@ abstract class ValidationHelper
         return false;
     }
 
-    public static function TypeIndirectlyContainsTarget(IEntityType $source, IEntityType $target, SplObjectStorage $visited, IModel $context): bool
-    {
+    public static function TypeIndirectlyContainsTarget(
+        IEntityType $source,
+        IEntityType $target,
+        SplObjectStorage $visited,
+        IModel $context
+    ): bool {
         if (!$visited->offsetExists($source)) {
             $visited->offsetSet($source, true);
             $visited[$source] = true;
@@ -198,13 +246,23 @@ abstract class ValidationHelper
             }
 
             foreach ($source->NavigationProperties() as $navProp) {
-                if ($navProp->containsTarget() && self::TypeIndirectlyContainsTarget($navProp->ToEntityType(), $target, $visited, $context)) {
+                if ($navProp->containsTarget() && self::TypeIndirectlyContainsTarget(
+                    $navProp->ToEntityType(),
+                    $target,
+                    $visited,
+                    $context
+                )) {
                     return true;
                 }
             }
 
             foreach ($context->FindAllDerivedTypes($source) as $derived) {
-                if ($derived instanceof IEntityType && self::TypeIndirectlyContainsTarget($derived, $target, $visited, $context)) {
+                if ($derived instanceof IEntityType && self::TypeIndirectlyContainsTarget(
+                    $derived,
+                    $target,
+                    $visited,
+                    $context
+                )) {
                     return true;
                 }
             }

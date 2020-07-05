@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProper
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -21,7 +22,9 @@ class NavigationPropertyInvalidOperationMultipleEndsInAssociation extends Naviga
     public function __invoke(ValidationContext $context, ?IEdmElement $navigationProperty)
     {
         assert($navigationProperty instanceof INavigationProperty);
-        if (!$navigationProperty->getOnDelete()->isNone() && !$navigationProperty->getPartner()->getOnDelete()->isNone()) {
+        if (!$navigationProperty->getOnDelete()->isNone() &&
+            !$navigationProperty->getPartner()->getOnDelete()->isNone()) {
+            EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
             $context->AddError(
                 $navigationProperty->Location(),
                 EdmErrorCode::InvalidAction(),

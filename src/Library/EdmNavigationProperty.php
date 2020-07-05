@@ -76,7 +76,8 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
      */
     public function isPrincipal(): bool
     {
-        return $this->dependentProperties === null && $this->partner !== null && $this->partner->dependentProperties !== null;
+        return $this->dependentProperties === null && $this->partner !== null &&
+               $this->partner->dependentProperties !== null;
     }
 
     /**
@@ -123,7 +124,11 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         $end1 = new EdmNavigationProperty(
             $partnerInfo->target,
             $propertyInfo->name,
-            self::CreateNavigationPropertyType($propertyInfo->target, $propertyInfo->targetMultiplicity, 'propertyInfo.TargetMultiplicity'),
+            self::CreateNavigationPropertyType(
+                $propertyInfo->target,
+                $propertyInfo->targetMultiplicity,
+                'propertyInfo.TargetMultiplicity'
+            ),
             $propertyInfo->dependentProperties,
             $propertyInfo->containsTarget,
             $propertyInfo->onDelete
@@ -132,7 +137,11 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         $end2 = new EdmNavigationProperty(
             $propertyInfo->target,
             $partnerInfo->name,
-            self::CreateNavigationPropertyType($partnerInfo->target, $partnerInfo->targetMultiplicity, 'partnerInfo.TargetMultiplicity'),
+            self::CreateNavigationPropertyType(
+                $partnerInfo->target,
+                $partnerInfo->targetMultiplicity,
+                'partnerInfo.TargetMultiplicity'
+            ),
             $partnerInfo->dependentProperties,
             $partnerInfo->containsTarget,
             $partnerInfo->onDelete
@@ -173,12 +182,16 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
     ): EdmNavigationProperty {
         $declaringType = self::GetEntityType($partnerPropertyType);
         if ($declaringType == null) {
-            throw new ArgumentException(StringConst::Constructable_EntityTypeOrCollectionOfEntityTypeExpected('partnerPropertyType'));
+            throw new ArgumentException(
+                StringConst::Constructable_EntityTypeOrCollectionOfEntityTypeExpected('partnerPropertyType')
+            );
         }
 
         $partnerDeclaringType = self::GetEntityType($propertyType);
         if ($partnerDeclaringType == null) {
-            throw new ArgumentException(StringConst::Constructable_EntityTypeOrCollectionOfEntityTypeExpected('propertyType'));
+            throw new ArgumentException(
+                StringConst::Constructable_EntityTypeOrCollectionOfEntityTypeExpected('propertyType')
+            );
         }
 
         $end1 = new EdmNavigationProperty(
@@ -238,7 +251,10 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
                 return EdmCoreModel::GetCollection(new EdmEntityTypeReference($entityType, false));
 
             default:
-                throw new ArgumentOutOfRangeException($multiplicityParameterName, StringConst::UnknownEnumVal_Multiplicity($multiplicity->getKey()));
+                throw new ArgumentOutOfRangeException(
+                    $multiplicityParameterName,
+                    StringConst::UnknownEnumVal_Multiplicity($multiplicity->getKey())
+                );
         }
     }
 }

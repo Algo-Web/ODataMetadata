@@ -14,14 +14,16 @@ use AlgoWeb\ODataMetadata\StringConst;
 
 class VisitorOfINavigationProperty extends VisitorOfT
 {
-    protected function VisitT($property, array &$followup, array &$references): iterable
+    protected function VisitT($property, array &$followup, array &$references): ?iterable
     {
         assert($property instanceof INavigationProperty);
-        $errors = null;
+        $errors = [];
 
-        if ($property->getPartner() != null) {
-            // If the declaring type of the partner does not contain the partner, it is a silent partner, and belongs to this property.
-            if (!in_array($property->getPartner(), $property->getPartner()->getDeclaringType()->getDeclaredProperties())) {
+        if (null !== $property->getPartner()) {
+            // If the declaring type of the partner does not contain the partner, it is a silent partner, and belongs
+            // to this property.
+            $prop = $property->getPartner()->getDeclaringType()->getDeclaredProperties();
+            if (!in_array($property->getPartner(), $prop)) {
                 $followup[] = $property->getPartner();
             } else {
                 $references[] =$property->getPartner();
@@ -47,7 +49,7 @@ class VisitorOfINavigationProperty extends VisitorOfT
             );
         }
 
-        if ($property->getDependentProperties() != null) {
+        if (null !== $property->getDependentProperties()) {
             InterfaceValidator::ProcessEnumerable(
                 $property,
                 $property->getDependentProperties(),

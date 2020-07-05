@@ -25,9 +25,7 @@ trait PrimitiveTypeHelpers
 {
     public function GetPrimitiveTypeReference(bool $isNullable): IPrimitiveTypeReference
     {
-        /**
-         * @var IPrimitiveType $this
-         */
+        /** @var IPrimitiveType $this */
         switch ($this->getPrimitiveKind()) {
             case PrimitiveTypeKind::Boolean():
             case PrimitiveTypeKind::Byte():
@@ -39,7 +37,6 @@ trait PrimitiveTypeHelpers
             case PrimitiveTypeKind::SByte():
             case PrimitiveTypeKind::Single():
             case PrimitiveTypeKind::Stream():
-
                 return new EdmPrimitiveTypeReference($this, $isNullable);
             case PrimitiveTypeKind::Binary():
                 return new EdmBinaryTypeReference($this, $isNullable);
@@ -72,4 +69,11 @@ trait PrimitiveTypeHelpers
                 throw new InvalidOperationException(StringConst::EdmPrimitive_UnexpectedKind());
         }
     }
+
+    /**
+     * Gets the primitive kind of this type.
+     *
+     * @return PrimitiveTypeKind
+     */
+    abstract public function getPrimitiveKind(): PrimitiveTypeKind;
 }

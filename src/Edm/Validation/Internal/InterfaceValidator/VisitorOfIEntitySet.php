@@ -11,12 +11,12 @@ use AlgoWeb\ODataMetadata\Interfaces\INavigationTargetMapping;
 
 class VisitorOfIEntitySet extends VisitorOfT
 {
-    protected function VisitT($item, array &$followup, array &$references): iterable
+    protected function VisitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IEntitySet);
-        $errors = null;
+        $errors = [];
 
-        if ($item->getElementType() != null) {
+        if (null !== $item->getElementType()) {
             $references[] = $item->getElementType();
         } else {
             InterfaceValidator::CollectErrors(
@@ -28,7 +28,8 @@ class VisitorOfIEntitySet extends VisitorOfT
             );
         }
 
-        // Navigation targets are not EDM elements, so we expand and process them here instead of adding them as followups.
+        // Navigation targets are not EDM elements, so we expand and process them here instead of adding them as
+        // followups.
         $navTargetMappings = [];
         InterfaceValidator::ProcessEnumerable(
             $item,
@@ -37,11 +38,9 @@ class VisitorOfIEntitySet extends VisitorOfT
             $navTargetMappings,
             $errors
         );
-        /**
-         * @var INavigationTargetMapping $navTargetMapping
-         */
+        /** @var INavigationTargetMapping $navTargetMapping */
         foreach ($navTargetMappings as $navTargetMapping) {
-            if ($navTargetMapping->getNavigationProperty() != null) {
+            if (null !== $navTargetMapping->getNavigationProperty()) {
                 $references[] = $navTargetMapping->getNavigationProperty();
             } else {
                 InterfaceValidator::CollectErrors(
@@ -53,7 +52,7 @@ class VisitorOfIEntitySet extends VisitorOfT
                 );
             }
 
-            if ($navTargetMapping->getTargetEntitySet() != null) {
+            if (null !== $navTargetMapping->getTargetEntitySet()) {
                 $references[] = $navTargetMapping->getTargetEntitySet();
             } else {
                 InterfaceValidator::CollectErrors(

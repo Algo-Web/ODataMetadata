@@ -14,12 +14,12 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IApplyExpression;
  */
 class VisitorOfIApplyExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IApplyExpression);
-        $errors = null;
+        $errors = [];
 
-        if ($expression->getAppliedFunction() != null) {
+        if (null !== $expression->getAppliedFunction()) {
             $followup[] = $expression->getAppliedFunction();
         } else {
             InterfaceValidator::CollectErrors(

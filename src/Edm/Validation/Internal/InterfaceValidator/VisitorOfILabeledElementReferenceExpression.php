@@ -10,10 +10,10 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\ILabeledExpressionReferenceExpr
 
 class VisitorOfILabeledElementReferenceExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof ILabeledExpressionReferenceExpression);
-        if ($expression->getReferencedLabeledExpression() != null) {
+        if (null !== $expression->getReferencedLabeledExpression()) {
             $references[] = $expression->getReferencedLabeledExpression();
             return null;
         } else {

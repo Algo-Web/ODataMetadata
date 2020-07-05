@@ -148,9 +148,7 @@ abstract class EdmStructuredType extends EdmType implements IStructuredType
     private function ComputePropertiesDictionary(): array
     {
         $properties = [];
-        /**
-         * @var IProperty $property ;
-         */
+        /** @var IProperty $property */
         foreach ($this->Properties() as $property) {
             RegistrationHelper::RegisterProperty($property, $property->getName(), $properties);
         }

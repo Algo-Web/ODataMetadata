@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Asserts;
@@ -11,6 +10,7 @@ use AlgoWeb\ODataMetadata\Csdl\Internal\Serialization\Helpers\AssociationSetAnno
 use AlgoWeb\ODataMetadata\CsdlConstants;
 use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\EdmUtil;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IModelHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotationsManager;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
@@ -32,83 +32,42 @@ use SplObjectStorage;
  */
 trait ModelHelpers
 {
-    public function GetAnnotationValue(string $typeof, IEdmElement $element, string $namespaceName = null, string $localName = null)
-    {
-        $namespaceName = $namespaceName ?? EdmConstants::InternalUri;
-        $localName     = $localName ?? Helpers::classNameToLocalName($typeof);
-        return Helpers::AnnotationValue($typeof, $this->getDirectValueAnnotationsManager()->getAnnotationValue($element, $namespaceName, $localName));
-    }
-    // This internal method exists so we can get a consistent view of the mappings through the entire serialization process.
-    // Otherwise, changes to the dictionary durring serialization would result in an invalid or inconsistent output.
     public function GetNamespaceAliases(): array
     {
-        /*
-         * @var IModel $this
-         */
-        return $this->GetAnnotationValue('array', $this, EdmConstants::InternalUri, CsdlConstants::NamespaceAliasAnnotation) ??[];
-    }
-    /**
-     * Sets an annotation value for an EDM element. If the value is null, no annotation is added and an existing
-     * annotation with the same name is removed.
-     *
-     * @param IEdmElement  $element       the annotated element
-     * @param string       $namespaceName namespace that the annotation belongs to
-     * @param string       $localName     name of the annotation within the namespace
-     * @param mixed|object $value         value of the new annotation
-     */
-    public function SetAnnotationValue(IEdmElement $element, string $namespaceName, string $localName, $value)
-    {
-        $this->getDirectValueAnnotationsManager()->setAnnotationValue($element, $namespaceName, $localName, $value);
+        /** @var IModel $this */
+        /** @var array|null $result */
+        $result = $this->GetAnnotationValue(
+            'array',
+            $this,
+            EdmConstants::InternalUri,
+            CsdlConstants::NamespaceAliasAnnotation
+        );
+        return $result ?? [];
     }
 
-    public static function EntityContainerFinder(): callable
-    {
-        return function (IModel $model, string $qualifiedName): IEntityContainer {
-            return $model->findDeclaredEntityContainer($qualifiedName);
-        };
+    // This internal method exists so we can get a consistent view of the mappings through the entire serialization
+    // process. Otherwise, changes to the dictionary during serialization would result in an invalid or inconsistent
+    // output.
+
+    public function GetAnnotationValue(
+        string $typeof,
+        IEdmElement $element,
+        string $namespaceName = null,
+        string $localName = null
+    ) {
+        $namespaceName = $namespaceName ?? EdmConstants::InternalUri;
+        $localName     = $localName ?? Helpers::classNameToLocalName($typeof);
+        return Helpers::AnnotationValue(
+            $typeof,
+            $this->getDirectValueAnnotationsManager()->getAnnotationValue(
+                $element,
+                $namespaceName,
+                $localName
+            )
+        );
     }
 
-    private static function findTypec(): callable
-    {
-        return function (IModel $model, string $qualifiedName): ISchemaType {
-            return $model->findDeclaredType($qualifiedName);
-        };
-    }
-
-    private static function FunctionsFinder(): callable
-    {
-        return function (IModel $model, string $qualifiedName): array {
-            return $model->findDeclaredFunctions($qualifiedName);
-        };
-    }
-    private static function ValueTermFinder(): callable
-    {
-        return function (IModel $model, string $qualifiedName): IValueTerm {
-            return $model->findDeclaredValueTerm($qualifiedName);
-        };
-    }
-
-    private static function mergeFunctions(): callable
-    {
-        return function (array $f1, array $f2): array {
-            return array_merge($f1, $f2);
-        };
-    }
-
-    private function FindAcrossModels(string $qualifiedName, callable $finder, callable $ambiguousCreator)
-    {
-        $model = $this;
-        Asserts::assertSignatureMatches(function (IModel $model, string $qualifiedName) {}, $finder, '$finder');
-        Asserts::assertSignatureMatches(function ($candidate, $fromReference) {}, $ambiguousCreator, '$ambiguousCreator');
-        $candidate = $finder($model, $qualifiedName);
-        foreach ($model->getReferencedModels() as $reference) {
-            $fromReference = $finder($reference, $qualifiedName);
-            if ($fromReference !== null) {
-                $candidate = $candidate === null ? $fromReference : $ambiguousCreator($candidate, $fromReference);
-            }
-        }
-        return $candidate;
-    }
+    abstract public function getDirectValueAnnotationsManager(): IDirectValueAnnotationsManager;
 
     /**
      * Searches for an entity container with the given name in this model and all referenced models and returns null
@@ -121,9 +80,49 @@ trait ModelHelpers
     {
         EdmUtil::CheckArgumentNull($qualifiedName, "$qualifiedName");
 
-        return $this->FindAcrossModels($qualifiedName, self::EntityContainerFinder(), [RegistrationHelper::class, 'CreateAmbiguousEntityContainerBinding']);
+        return $this->FindAcrossModels(
+            $qualifiedName,
+            self::EntityContainerFinder(),
+            [RegistrationHelper::class, 'CreateAmbiguousEntityContainerBinding']
+        );
     }
 
+    private function FindAcrossModels(string $qualifiedName, callable $finder, callable $ambiguousCreator)
+    {
+        $model = $this;
+        Asserts::assertSignatureMatches(
+            function (/** @scrutinizer ignore-unused */IModel $model, /** @scrutinizer ignore-unused */string $qualifiedName) {
+            },
+            $finder,
+            '$finder'
+        );
+        Asserts::assertSignatureMatches(
+            function (/** @scrutinizer ignore-unused */$candidate, /** @scrutinizer ignore-unused */$fromReference) {
+            },
+            $ambiguousCreator,
+            '$ambiguousCreator'
+        );
+        $candidate = $finder($model, $qualifiedName);
+        foreach ($model->getReferencedModels() as $reference) {
+            $fromReference = $finder($reference, $qualifiedName);
+            if ($fromReference !== null) {
+                $candidate = $candidate === null ? $fromReference : $ambiguousCreator($candidate, $fromReference);
+            }
+        }
+        return $candidate;
+    }
+
+    /**
+     * @return IModel[] gets the collection of models referred to by this model
+     */
+    abstract public function getReferencedModels(): array;
+
+    public static function EntityContainerFinder(): callable
+    {
+        return function (IModel $model, string $qualifiedName): ?IEntityContainer {
+            return $model->findDeclaredEntityContainer($qualifiedName);
+        };
+    }
 
     /**
      * Searches for a value term with the given name in this model and all referenced models and returns null if no
@@ -136,9 +135,19 @@ trait ModelHelpers
     {
         EdmUtil::CheckArgumentNull($qualifiedName, 'qualifiedName');
 
-        return $this->FindAcrossModels($qualifiedName, self::ValueTermFinder(), [RegistrationHelper::class, 'CreateAmbiguousValueTermBinding']);
+        return $this->FindAcrossModels(
+            $qualifiedName,
+            self::ValueTermFinder(),
+            [RegistrationHelper::class, 'CreateAmbiguousValueTermBinding']
+        );
     }
 
+    private static function ValueTermFinder(): callable
+    {
+        return function (IModel $model, string $qualifiedName): ?IValueTerm {
+            return $model->findDeclaredValueTerm($qualifiedName);
+        };
+    }
 
     /***
      * Searches for functions with the given name in this model and all referenced models and returns an empty
@@ -154,6 +163,20 @@ trait ModelHelpers
         return $this->FindAcrossModels($qualifiedName, self::FunctionsFinder(), self::mergeFunctions()) ?? [];
     }
 
+    private static function FunctionsFinder(): callable
+    {
+        return function (IModel $model, string $qualifiedName): array {
+            return $model->findDeclaredFunctions($qualifiedName);
+        };
+    }
+
+    private static function mergeFunctions(): callable
+    {
+        return function (array $f1, array $f2): array {
+            return array_merge($f1, $f2);
+        };
+    }
+
     /**
      * Gets the value for the EDM version of the Model.
      *
@@ -161,10 +184,13 @@ trait ModelHelpers
      */
     public function GetEdmVersion(): ?Version
     {
-        /*
-         * @var IModel $this
-         */
-        return $this->GetAnnotationValue(Version::class, $this, EdmConstants::InternalUri, EdmConstants::EdmVersionAnnotation);
+        /** @var IModel $this */
+        return $this->GetAnnotationValue(
+            Version::class,
+            $this,
+            EdmConstants::InternalUri,
+            EdmConstants::EdmVersionAnnotation
+        );
     }
 
     /**
@@ -174,10 +200,22 @@ trait ModelHelpers
      */
     public function SetEdmVersion(Version $version)
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::EdmVersionAnnotation, $version);
+    }
+
+    /**
+     * Sets an annotation value for an EDM element. If the value is null, no annotation is added and an existing
+     * annotation with the same name is removed.
+     *
+     * @param IEdmElement  $element       the annotated element
+     * @param string       $namespaceName namespace that the annotation belongs to
+     * @param string       $localName     name of the annotation within the namespace
+     * @param mixed|object $value         value of the new annotation
+     */
+    public function SetAnnotationValue(IEdmElement $element, string $namespaceName, string $localName, $value)
+    {
+        $this->getDirectValueAnnotationsManager()->setAnnotationValue($element, $namespaceName, $localName, $value);
     }
 
     /**
@@ -187,10 +225,13 @@ trait ModelHelpers
      */
     public function GetEdmxVersion(): ?Version
     {
-        /*
-         * @var IModel $this
-         */
-        return $this->GetAnnotationValue(Version::class, $this, EdmConstants::InternalUri, CsdlConstants::EdmxVersionAnnotation);
+        /** @var IModel $this */
+        return $this->GetAnnotationValue(
+            Version::class,
+            $this,
+            EdmConstants::InternalUri,
+            CsdlConstants::EdmxVersionAnnotation
+        );
     }
 
     /**
@@ -200,9 +241,7 @@ trait ModelHelpers
      */
     public function SetEdmxVersion(Version $version): void
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, CsdlConstants::EdmxVersionAnnotation, $version);
     }
 
@@ -213,9 +252,7 @@ trait ModelHelpers
      */
     public function SetDataServiceVersion(Version $version): void
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::DataServiceVersion, $version);
     }
 
@@ -226,10 +263,13 @@ trait ModelHelpers
      */
     public function GetDataServiceVersion(): ?Version
     {
-        /*
-         * @var IModel $this
-         */
-        return $this->GetAnnotationValue(Version::class, $this, EdmConstants::InternalUri, EdmConstants::DataServiceVersion);
+        /** @var IModel $this */
+        return $this->GetAnnotationValue(
+            Version::class,
+            $this,
+            EdmConstants::InternalUri,
+            EdmConstants::DataServiceVersion
+        );
     }
 
     /**
@@ -239,9 +279,7 @@ trait ModelHelpers
      */
     public function SetMaxDataServiceVersion(Version $version): void
     {
-        /*
-         * @var IModel $this
-         */
+        /** @var IModel $this */
         $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::MaxDataServiceVersion, $version);
     }
 
@@ -252,11 +290,15 @@ trait ModelHelpers
      */
     public function GetMaxDataServiceVersion(): ?Version
     {
-        /*
-         * @var IModel $this
-         */
-        return $this->GetAnnotationValue(Version::class, $this, EdmConstants::InternalUri, EdmConstants::MaxDataServiceVersion);
+        /** @var IModel $this */
+        return $this->GetAnnotationValue(
+            Version::class,
+            $this,
+            EdmConstants::InternalUri,
+            EdmConstants::MaxDataServiceVersion
+        );
     }
+
     /**
      * Sets an annotation on the IEdmModel to notify the serializer of preferred prefix mappings for xml namespaces.
      *
@@ -264,10 +306,13 @@ trait ModelHelpers
      */
     public function SetNamespacePrefixMappings(array $mappings): void
     {
-        /*
-         * @var IModel $this
-         */
-        $this->SetAnnotationValue($this, EdmConstants::InternalUri, CsdlConstants::NamespacePrefixAnnotation, $mappings);
+        /** @var IModel $this */
+        $this->SetAnnotationValue(
+            $this,
+            EdmConstants::InternalUri,
+            CsdlConstants::NamespacePrefixAnnotation,
+            $mappings
+        );
     }
 
     /**
@@ -277,12 +322,17 @@ trait ModelHelpers
      */
     public function GetNamespacePrefixMappings(): array
     {
-        /*
-         * @var IModel $this
-         */
-        return $this->GetAnnotationValue('array', $this, EdmConstants::InternalUri, CsdlConstants::NamespacePrefixAnnotation)??[];
-    }
+        /** @var IModel $this */
+        /** @var array|null $result */
+        $result = $this->GetAnnotationValue(
+            'array',
+            $this,
+            EdmConstants::InternalUri,
+            CsdlConstants::NamespacePrefixAnnotation
+        );
 
+        return $result ?? [];
+    }
 
     /**
      * Sets the name used for the association end serialized for a navigation property.
@@ -292,7 +342,12 @@ trait ModelHelpers
      */
     public function SetAssociationEndName(INavigationProperty $property, string $association): void
     {
-        $this->SetAnnotationValue($property, EdmConstants::InternalUri, CsdlConstants::AssociationEndNameAnnotation, $association);
+        $this->SetAnnotationValue(
+            $property,
+            EdmConstants::InternalUri,
+            CsdlConstants::AssociationEndNameAnnotation,
+            $association
+        );
     }
 
     /**
@@ -304,7 +359,15 @@ trait ModelHelpers
     public function GetAssociationEndName(INavigationProperty $property): string
     {
         $property->PopulateCaches();
-        return $this->GetAnnotationValue('string', $property, EdmConstants::InternalUri, CsdlConstants::AssociationEndNameAnnotation) ?? $property->getPartner()->getName();
+        /** @var string|null $result */
+        $result = $this->GetAnnotationValue(
+            'string',
+            $property,
+            EdmConstants::InternalUri,
+            CsdlConstants::AssociationEndNameAnnotation
+        );
+
+        return $result ?? ($property->getPartner()->getName() ?? '');
     }
 
     /**
@@ -317,68 +380,6 @@ trait ModelHelpers
     {
         $property->PopulateCaches();
         return $this->GetAssociationNamespace($property) . '.' . $this->GetAssociationName($property);
-    }
-    public function FindType(string $qualifiedName): ?ISchemaType
-    {
-        $findTypeMethod = self::findTypec();
-        /*
-         * @var IModel $this
-         */
-        return Helpers::FindAcrossModels($this, $qualifiedName, $findTypeMethod, [RegistrationHelper::class, 'CreateAmbiguousTypeBinding']);
-    }
-
-    /**
-     * Sets the name used for the association serialized for a navigation property.
-     *
-     * @param INavigationProperty $property        the navigation property
-     * @param string              $associationName the association name
-     */
-    public function SetAssociationName(INavigationProperty $property, string $associationName): void
-    {
-        $model = $this;
-        assert($model instanceof IModel);
-
-        $model->SetAnnotationValue($property, EdmConstants::InternalUri, CsdlConstants::AssociationNameAnnotation, $associationName);
-    }
-
-    /**
-     * Gets the name used for the association serialized for a navigation property.
-     *
-     * @param  INavigationProperty $property the navigation property
-     * @return string              the association name
-     */
-    public function GetAssociationName(INavigationProperty $property): string
-    {
-        $model = $this;
-        assert($model instanceof IModel);
-
-        $property->PopulateCaches();
-        $associationName = $model->GetAnnotationValue('?string', $property, EdmConstants::InternalUri, CsdlConstants::AssociationNameAnnotation);
-        if ($associationName == null) {
-            $fromPrincipal = $property->GetPrimary();
-            $toPrincipal   = $fromPrincipal->getPartner();
-
-            $associationName =
-                Helpers::GetQualifiedAndEscapedPropertyName($toPrincipal) .
-                Helpers::AssociationNameEscapeChar .
-                Helpers::GetQualifiedAndEscapedPropertyName($fromPrincipal);
-        }
-
-        return $associationName;
-    }
-
-    /**
-     * Sets the namespace used for the association serialized for a navigation property.
-     *
-     * @param INavigationProperty $property             the navigation property
-     * @param string              $associationNamespace the association namespace
-     */
-    public function SetAssociationNamespace(INavigationProperty $property, string $associationNamespace): void
-    {
-        $model = $this;
-        assert($model instanceof IModel);
-
-        $model->SetAnnotationValue($property, EdmConstants::InternalUri, CsdlConstants::AssociationNamespaceAnnotation, $associationNamespace);
     }
 
     /**
@@ -393,12 +394,105 @@ trait ModelHelpers
         assert($model instanceof IModel);
 
         $property->PopulateCaches();
-        $associationNamespace = $model->GetAnnotationValue('?string', $property, EdmConstants::InternalUri, CsdlConstants::AssociationNamespaceAnnotation);
+        $associationNamespace = $model->GetAnnotationValue(
+            '?string',
+            $property,
+            EdmConstants::InternalUri,
+            CsdlConstants::AssociationNamespaceAnnotation
+        );
         if ($associationNamespace == null) {
             $associationNamespace = $property->GetPrimary()->DeclaringEntityType()->getNamespace();
         }
 
         return $associationNamespace;
+    }
+
+    /**
+     * Gets the name used for the association serialized for a navigation property.
+     *
+     * @param  INavigationProperty $property the navigation property
+     * @return string              the association name
+     */
+    public function GetAssociationName(INavigationProperty $property): string
+    {
+        $model = $this;
+        assert($model instanceof IModel);
+
+        $property->PopulateCaches();
+        $associationName = $model->GetAnnotationValue(
+            '?string',
+            $property,
+            EdmConstants::InternalUri,
+            CsdlConstants::AssociationNameAnnotation
+        );
+        if ($associationName == null) {
+            $fromPrincipal = $property->GetPrimary();
+            $toPrincipal   = $fromPrincipal->getPartner();
+
+            $associationName =
+                Helpers::GetQualifiedAndEscapedPropertyName($toPrincipal) .
+                Helpers::AssociationNameEscapeChar .
+                Helpers::GetQualifiedAndEscapedPropertyName($fromPrincipal);
+        }
+
+        return $associationName;
+    }
+
+    public function FindType(string $qualifiedName): ?ISchemaType
+    {
+        $findTypeMethod = self::findTypec();
+        /** @var IModel $this */
+        return Helpers::FindAcrossModels(
+            $this,
+            $qualifiedName,
+            $findTypeMethod,
+            [RegistrationHelper::class, 'CreateAmbiguousTypeBinding']
+        );
+    }
+
+    private static function findTypec(): callable
+    {
+        return function (IModel $model, string $qualifiedName): ?ISchemaType {
+            return $model->findDeclaredType($qualifiedName);
+        };
+    }
+
+    /**
+     * Sets the name used for the association serialized for a navigation property.
+     *
+     * @param INavigationProperty $property        the navigation property
+     * @param string              $associationName the association name
+     */
+    public function SetAssociationName(INavigationProperty $property, string $associationName): void
+    {
+        $model = $this;
+        assert($model instanceof IModel);
+
+        $model->SetAnnotationValue(
+            $property,
+            EdmConstants::InternalUri,
+            CsdlConstants::AssociationNameAnnotation,
+            $associationName
+        );
+    }
+
+    /**
+     * Sets the namespace used for the association serialized for a navigation property.
+     *
+     * @param INavigationProperty $property             the navigation property
+     * @param string              $associationNamespace the association namespace
+     */
+    public function SetAssociationNamespace(INavigationProperty $property, string $associationNamespace): void
+    {
+        $model = $this;
+        assert($model instanceof IModel);
+
+        $model->SetAnnotationValue(
+            $property,
+            EdmConstants::InternalUri,
+            CsdlConstants::AssociationNamespaceAnnotation,
+            $associationNamespace
+        );
     }
 
     /**
@@ -408,14 +502,27 @@ trait ModelHelpers
      * @param INavigationProperty $property       the navigation property
      * @param string              $associationSet the association set name
      */
-    public function SetAssociationSetName(IEntitySet $entitySet, INavigationProperty $property, string $associationSet): void
-    {
+    public function SetAssociationSetName(
+        IEntitySet $entitySet,
+        INavigationProperty $property,
+        string $associationSet
+    ): void {
         $model = $this;
         assert($model instanceof IModel);
-        $navigationPropertyMappings = $model->GetAnnotationValue('SplObjectStorage', $entitySet, EdmConstants::InternalUri, CsdlConstants::AssociationSetNameAnnotation);
+        $navigationPropertyMappings = $model->GetAnnotationValue(
+            'SplObjectStorage',
+            $entitySet,
+            EdmConstants::InternalUri,
+            CsdlConstants::AssociationSetNameAnnotation
+        );
         if ($navigationPropertyMappings == null) {
             $navigationPropertyMappings = new SplObjectStorage();
-            $model->SetAnnotationValue($entitySet, EdmConstants::InternalUri, CsdlConstants::AssociationSetNameAnnotation, $navigationPropertyMappings);
+            $model->SetAnnotationValue(
+                $entitySet,
+                EdmConstants::InternalUri,
+                CsdlConstants::AssociationSetNameAnnotation,
+                $navigationPropertyMappings
+            );
         }
 
         $navigationPropertyMappings->offsetSet($property, $associationSet);
@@ -433,17 +540,21 @@ trait ModelHelpers
         $model = $this;
         assert($model instanceof IModel);
 
-        $navigationPropertyMappings = $model->GetAnnotationValue(SplObjectStorage::class, $entitySet, EdmConstants::InternalUri, CsdlConstants::AssociationSetNameAnnotation);
+        $navigationPropertyMappings = $model->GetAnnotationValue(
+            SplObjectStorage::class,
+            $entitySet,
+            EdmConstants::InternalUri,
+            CsdlConstants::AssociationSetNameAnnotation
+        );
         assert($navigationPropertyMappings instanceof SplObjectStorage || $navigationPropertyMappings === null);
         if ($navigationPropertyMappings !== null && $navigationPropertyMappings->offsetExists($property)) {
-            $associationSetName = $navigationPropertyMappings->offsetGet($property) ;
+            $associationSetName = $navigationPropertyMappings->offsetGet($property);
         } else {
             $associationSetName = $model->GetAssociationName($property) . 'Set';
         }
 
         return $associationSetName;
     }
-
 
     /**
      * Gets the annotations associated with the association serialized for a navigation target of an entity set.
@@ -454,16 +565,22 @@ trait ModelHelpers
      * @param iterable            $end1Annotations the annotations for association set end 1
      * @param iterable            $end2Annotations the annotations for association set end 2
      */
-    public function GetAssociationSetAnnotations(IEntitySet $entitySet, INavigationProperty $property, iterable &$annotations = [], iterable &$end1Annotations = [], iterable &$end2Annotations = []): void
-    {
-        /**
-         * @var SplObjectStorage $navigationPropertyMappings;
-         */
-        $navigationPropertyMappings = $this->GetAnnotationValue(SplObjectStorage::class, $entitySet, EdmConstants::InternalUri, CsdlConstants::AssociationSetAnnotationsAnnotation);
+    public function GetAssociationSetAnnotations(
+        IEntitySet $entitySet,
+        INavigationProperty $property,
+        iterable &$annotations = [],
+        iterable &$end1Annotations = [],
+        iterable &$end2Annotations = []
+    ): void {
+        /** @var SplObjectStorage $navigationPropertyMappings */
+        $navigationPropertyMappings = $this->GetAnnotationValue(
+            SplObjectStorage::class,
+            $entitySet,
+            EdmConstants::InternalUri,
+            CsdlConstants::AssociationSetAnnotationsAnnotation
+        );
         if ($navigationPropertyMappings != null && $navigationPropertyMappings->offsetExists($property)) {
-            /**
-             * @var AssociationSetAnnotations $associationSetAnnotations
-             */
+            /** @var AssociationSetAnnotations $associationSetAnnotations */
             $associationSetAnnotations = $navigationPropertyMappings[$property];
             $annotations               = $associationSetAnnotations->Annotations ?? [];
             $end1Annotations           = $associationSetAnnotations->End1Annotations ?? [];
@@ -485,10 +602,20 @@ trait ModelHelpers
      * @param iterable            $end2Annotations       the annotations for association end 2
      * @param iterable            $constraintAnnotations the annotations for the referential constraint
      */
-    public function GetAssociationAnnotations(INavigationProperty $property, iterable &$annotations = [], iterable &$end1Annotations = [], iterable &$end2Annotations = [], iterable &$constraintAnnotations = [])
-    {
+    public function GetAssociationAnnotations(
+        INavigationProperty $property,
+        iterable &$annotations = [],
+        iterable &$end1Annotations = [],
+        iterable &$end2Annotations = [],
+        iterable &$constraintAnnotations = []
+    ) {
         $property->PopulateCaches();
-        $associationAnnotations = $this->GetAnnotationValue(AssociationAnnotations::class, $property, EdmConstants::InternalUri, CsdlConstants::AssociationAnnotationsAnnotation);
+        $associationAnnotations = $this->GetAnnotationValue(
+            AssociationAnnotations::class,
+            $property,
+            EdmConstants::InternalUri,
+            CsdlConstants::AssociationAnnotationsAnnotation
+        );
         if ($associationAnnotations != null) {
             $annotations           = $associationAnnotations->Annotations ?? [];
             $end1Annotations       = $associationAnnotations->End1Annotations ?? [];
@@ -502,6 +629,7 @@ trait ModelHelpers
             $constraintAnnotations = $empty;
         }
     }
+
     /**
      * Finds a list of types that derive from the supplied type directly or indirectly, and across models.
      *
@@ -517,7 +645,6 @@ trait ModelHelpers
 
         return $result;
     }
-
 
     private function DerivedFrom(IStructuredType $baseType, SplObjectStorage $visited, array &$derivedTypes): void
     {
@@ -543,9 +670,11 @@ trait ModelHelpers
         }
     }
 
-    abstract public function getDirectValueAnnotationsManager(): IDirectValueAnnotationsManager;
     /**
-     * @return IModel[] gets the collection of models referred to by this model
+     * Finds a list of types that derive directly from the supplied type.
+     *
+     * @param  IStructuredType   $baseType the base type that derived types are being searched for
+     * @return IStructuredType[] a list of types from this model that derive directly from the given type
      */
-    abstract public function getReferencedModels(): array;
+    abstract public function findDirectlyDerivedTypes(IStructuredType $baseType): array;
 }

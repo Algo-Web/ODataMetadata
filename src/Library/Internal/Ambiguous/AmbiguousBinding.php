@@ -37,7 +37,7 @@ class AmbiguousBinding extends BadElement
         $this->addBinding($second);
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         if (isset($this->bindings[0])) {
             return $this->bindings[0]->getName();

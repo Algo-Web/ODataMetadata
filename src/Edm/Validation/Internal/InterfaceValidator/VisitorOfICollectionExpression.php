@@ -10,14 +10,14 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\ICollectionExpression;
 
 class VisitorOfICollectionExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof ICollectionExpression);
-        $errors = null;
+        $errors = [];
 
         InterfaceValidator::ProcessEnumerable($expression, $expression->getElements(), 'Elements', $followup, $errors);
 
-        if ($expression->getDeclaredType() != null) {
+        if (null !== $expression->getDeclaredType()) {
             // Collection constructor owns its type reference, so it goes as a followup.
             $followup[] = $expression->getDeclaredType();
         }

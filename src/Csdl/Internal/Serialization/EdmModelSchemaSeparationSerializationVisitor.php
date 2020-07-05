@@ -57,18 +57,26 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
     {
         $this->ProcessElement($model);
         $this->visitSchemaElements($model->getSchemaElements());
-        $this->VisitVocabularyAnnotations(array_filter($model->getVocabularyAnnotations(), function (IVocabularyAnnotation $value) {
-            $value->IsInline($this->model);
-        }));
+        $this->VisitVocabularyAnnotations(
+            array_filter(
+                $model->getVocabularyAnnotations(),
+                function (IVocabularyAnnotation $value) {
+                    $value->IsInline($this->model);
+                }
+            )
+        );
     }
 
     protected function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $element): void
     {
         $this->VisitAnnotations($this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element));
         $this->VisitVocabularyAnnotations(
-            array_filter($this->model->findDeclaredVocabularyAnnotations($element), function (IVocabularyAnnotation $value) {
-                $value->IsInline($this->model);
-            })
+            array_filter(
+                $this->model->findDeclaredVocabularyAnnotations($element),
+                function (IVocabularyAnnotation $value) {
+                    $value->IsInline($this->model);
+                }
+            )
         );
     }
 
@@ -80,13 +88,11 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
         if (EdmUtil::IsNullOrWhiteSpaceInternal($namespaceName)) {
             $namespaceName = '';
         }
-        /**
-         * @var EdmSchema $schema
-         */
+        /** @var EdmSchema|null $schema */
         $schema = null;
         if (!array_key_exists($namespaceName, $this->modelSchemas)) {
-            $schema                             = new EdmSchema($namespaceName);
-            $this->modelSchemas[$namespaceName] =  $schema;
+            $schema                             = new EdmSchema(/** @scrutinizer ignore-type */$namespaceName);
+            $this->modelSchemas[$namespaceName] = $schema;
         }
 
         $this->modelSchemas[$namespaceName]->addSchemaElement($element);
@@ -125,6 +131,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
      */
     protected function ProcessEntityContainer(IEntityContainer $element): void
     {
+        EdmUtil::checkArgumentNull($element->getNamespace(), 'element->getNamespace');
         $containerSchemaNamespace = $element->getNamespace();
 
         if (!array_key_exists($containerSchemaNamespace, $this->modelSchemas)) {
@@ -184,6 +191,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
     protected function ProcessNavigationProperty(INavigationProperty $property): void
     {
         $associationNamespace = Helpers::GetAssociationNamespace($this->model, $property);
+        EdmUtil::checkArgumentNull($associationNamespace, 'associationNamespace');
 
         if (!array_key_exists($associationNamespace, $this->modelSchemas)) {
             $associationSchema                         = new EdmSchema($associationNamespace);
@@ -191,9 +199,16 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
             $this->modelSchemas[$associationNamespace] = $associationSchema;
         }
 
+        $entityTypeNamespace = $property->DeclaringEntityType()->getNamespace();
+        EdmUtil::checkArgumentNull($entityTypeNamespace, 'property->DeclaringEntityType->getNamespace');
+        $partnerEntityTypeNamespace = $property->getPartner()->DeclaringEntityType()->getNamespace();
+        EdmUtil::checkArgumentNull(
+            $partnerEntityTypeNamespace,
+            'property->getPartner->DeclaringEntityType->getNamespace'
+        );
         $this->modelSchemas[$associationNamespace]->AddAssociatedNavigationProperty($property);
-        $this->modelSchemas[$associationNamespace]->AddNamespaceUsing($property->DeclaringEntityType()->getNamespace());
-        $this->modelSchemas[$associationNamespace]->AddNamespaceUsing($property->getPartner()->DeclaringEntityType()->getNamespace());
+        $this->modelSchemas[$associationNamespace]->AddNamespaceUsing($entityTypeNamespace);
+        $this->modelSchemas[$associationNamespace]->AddNamespaceUsing($partnerEntityTypeNamespace);
         $this->activeSchema->AddNamespaceUsing($associationNamespace);
 
         parent::ProcessNavigationProperty($property);
@@ -203,7 +218,8 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
      */
     private function CheckSchemaElementReference($elementOrNamespaceName): void
     {
-        $namespaceName = $elementOrNamespaceName instanceof ISchemaElement ? $elementOrNamespaceName->getNamespace() : $elementOrNamespaceName;
+        $namespaceName = $elementOrNamespaceName instanceof ISchemaElement ?
+            $elementOrNamespaceName->getNamespace() : $elementOrNamespaceName;
         assert(is_string($namespaceName));
         if ($this->activeSchema != null) {
             $this->activeSchema->addNamespaceUsing($namespaceName);

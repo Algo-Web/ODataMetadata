@@ -16,7 +16,8 @@ class VisitorOfIDecimalTypeReference extends VisitorOfT
         assert($typeRef instanceof IDecimalTypeReference);
         $primitive = $typeRef->getDefinition();
         assert($primitive instanceof IPrimitiveType);
-        return $typeRef->getDefinition() != null && !$primitive->getPrimitiveKind()->isDecimal() ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
+        return null !== $typeRef->getDefinition() && !$primitive->getPrimitiveKind()->isDecimal()
+            ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
     }
 
     public function forType(): string

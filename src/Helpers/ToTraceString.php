@@ -40,7 +40,11 @@ abstract class ToTraceString
                 assert($element instanceof ITypeReference);
                 $s = '[';
                 $s .= self::ToTraceString($element->getDefinition());
-                $s = self::AppendKeyValue($s, EdmConstants::FacetName_Nullable, $element->getNullable() ? 'TRUE' : 'FALSE');
+                $s = self::AppendKeyValue(
+                    $s,
+                    EdmConstants::FacetName_Nullable,
+                    $element->getNullable() ? 'TRUE' : 'FALSE'
+                );
                 if ($element->isPrimitive()) {
                     $s = self::AppendFacets($s, $element->AsPrimitive());
                 }
@@ -52,16 +56,18 @@ abstract class ToTraceString
                 return $element->getName() ?? '' . ':' . ($type !== null ? self::ToTraceString($type) :'');
             case $element instanceof IEntityReferenceType:
                 assert($element instanceof IEntityReferenceType);
-                return TypeKind::EntityReference()->getKey() . '(' . ($element->getEntityType() !== null ? self::ToTraceString($element->getEntityType()) : '') . ')';
+                return strval(TypeKind::EntityReference()->getKey()) . '(' . ($element->getEntityType() !== null ?
+                        self::ToTraceString($element->getEntityType()) : '') . ')';
             case $element instanceof ICollectionType:
                 assert($element instanceof ICollectionType);
-                return TypeKind::Collection()->getKey() . '(' . ($element->getElementType() != null ? self::ToTraceString($element->getElementType()) : '') . ')';
+                return strval(TypeKind::Collection()->getKey()) . '(' . ($element->getElementType() != null ?
+                        self::ToTraceString($element->getElementType()) : '') . ')';
             case $element instanceof IRowType:
                 assert($element instanceof IRowType);
                 $s = TypeKind::Row()->getKey();
                 $s .= '(';
                 foreach ($element->Properties() as $prop) {
-                    if ($prop === null) {
+                    if (null === $prop) {
                         continue;
                     }
                     $s .= self::ToTraceString($prop);
@@ -118,27 +124,39 @@ abstract class ToTraceString
     private static function AppendBinaryFacets(string $sb, IBinaryTypeReference $type): string
     {
         self::AppendKeyValue($sb, EdmConstants::FacetName_FixedLength, $type->isFixedLength() ? 'TRUE' : 'FALSE');
-        if ($type->isUnBounded() || $type->getMaxLength() != null) {
-            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_MaxLength, ($type->isUnBounded()) ? EdmConstants::Value_Max : strval($type->getMaxLength()));
+        if ($type->isUnBounded() || null !== $type->getMaxLength()) {
+            $sb = self::AppendKeyValue(
+                $sb,
+                EdmConstants::FacetName_MaxLength,
+                ($type->isUnBounded()) ? EdmConstants::Value_Max : strval($type->getMaxLength())
+            );
         }
         return $sb;
     }
 
     private static function AppendStringFacets(string $sb, IStringTypeReference $type): string
     {
-        if ($type->isFixedLength() != null) {
-            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_FixedLength, $type->isFixedLength() ? 'TRUE' : 'FALSE');
+        if (true === $type->isFixedLength()) {
+            $sb = self::AppendKeyValue(
+                $sb,
+                EdmConstants::FacetName_FixedLength,
+                $type->isFixedLength() ? 'TRUE' : 'FALSE'
+            );
         }
 
-        if ($type->isUnbounded() == true || $type->getMaxLength() != null) {
-            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_MaxLength, $type->isUnbounded() ? EdmConstants::Value_Max : $type->getMaxLength());
+        if (true === $type->isUnbounded() || null !== $type->getMaxLength()) {
+            $sb = self::AppendKeyValue(
+                $sb,
+                EdmConstants::FacetName_MaxLength,
+                $type->isUnbounded() ? EdmConstants::Value_Max : $type->getMaxLength()
+            );
         }
 
-        if ($type->isUnicode() != null) {
+        if (true === $type->isUnicode()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Unicode, $type->isUnicode() ? 'TRUE' : 'FALSE');
         }
 
-        if ($type->getCollation() != null) {
+        if (null !== $type->getCollation()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Collation, $type->getCollation());
         }
         return $sb;
@@ -146,7 +164,7 @@ abstract class ToTraceString
 
     private static function AppendTemporalFacets(string $sb, ITemporalTypeReference $type): string
     {
-        if ($type->getPrecision() != null) {
+        if (null !== $type->getPrecision()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Precision, $type->getPrecision());
         }
         return $sb;
@@ -154,11 +172,11 @@ abstract class ToTraceString
 
     private static function AppendDecimalFacets(string $sb, IDecimalTypeReference $type): string
     {
-        if ($type->getPrecision() != null) {
+        if (null !== $type->getPrecision()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Precision, $type->getPrecision());
         }
 
-        if ($type->getScale() != null) {
+        if (null !== $type->getScale()) {
             $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Scale, $type->getScale());
         }
         return $sb;
@@ -166,7 +184,12 @@ abstract class ToTraceString
 
     private static function AppendSpatialFacets(string $sb, ISpatialTypeReference $type): string
     {
-        $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Srid, $type->getSpatialReferenceIdentifier() != null ? $type->getSpatialReferenceIdentifier(): EdmConstants::Value_SridVariable);
+        $sb = self::AppendKeyValue(
+            $sb,
+            EdmConstants::FacetName_Srid,
+            null !== $type->getSpatialReferenceIdentifier()
+                ? $type->getSpatialReferenceIdentifier(): EdmConstants::Value_SridVariable
+        );
         return $sb;
     }
 

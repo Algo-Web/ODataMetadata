@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
+use AlgoWeb\ODataMetadata\Interfaces\IType;
 
 /**
  * Class EntityTypeReferenceHelpers.
@@ -23,9 +24,7 @@ trait EntityTypeReferenceHelpers
      */
     public function EntityDefinition(): IEntityType
     {
-        /**
-         * @var $this IEntityTypeReference
-         */
+        /** @var $this IEntityTypeReference */
         $def = $this->getDefinition();
         assert($def instanceof IEntityType);
         return $def;
@@ -38,9 +37,7 @@ trait EntityTypeReferenceHelpers
      */
     public function BaseEntityType(): ?IEntityType
     {
-        /*
-         * @var $this IEntityTypeReference
-         */
+        /** @var $this IEntityTypeReference */
         return $this->EntityDefinition()->BaseEntityType();
     }
 
@@ -85,4 +82,6 @@ trait EntityTypeReferenceHelpers
         $prop = $this->EntityDefinition()->findProperty($name);
         return $prop instanceof INavigationProperty ? $prop : null;
     }
+
+    abstract public function getDefinition(): ?IType;
 }

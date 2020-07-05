@@ -20,9 +20,7 @@ trait VisitDataModel
      */
     public function visitEntityContainerElements(array $elements): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         foreach ($elements as $element) {
             switch ($element->getContainerElementKind()) {
                 case ContainerElementKind::EntitySet():
@@ -38,7 +36,9 @@ trait VisitDataModel
                     $this->processEntityContainerElement($element);
                     break;
                 default:
-                    throw new InvalidOperationException(StringConst::UnknownEnumVal_ContainerElementKind($element->getContainerElementKind()->getKey()));
+                    throw new InvalidOperationException(
+                        StringConst::UnknownEnumVal_ContainerElementKind($element->getContainerElementKind()->getKey())
+                    );
             }
         }
     }

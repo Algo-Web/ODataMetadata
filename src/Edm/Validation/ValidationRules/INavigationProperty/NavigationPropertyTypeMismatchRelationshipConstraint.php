@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProper
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Helpers\EdmElementComparer;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
@@ -42,6 +43,7 @@ class NavigationPropertyTypeMismatchRelationshipConstraint extends NavigationPro
                             'Dingus'
                         );
 
+                        EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
                         $context->AddError(
                             $navigationProperty->Location(),
                             EdmErrorCode::TypeMismatchRelationshipConstraint(),

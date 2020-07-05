@@ -10,12 +10,12 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IIfExpression;
 
 class VisitorOfIIfExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IIfExpression);
-        $errors = null;
+        $errors = [];
 
-        if ($expression->getTestExpression() != null) {
+        if (null !== $expression->getTestExpression()) {
             $followup[] = $expression->getTestExpression();
         } else {
             InterfaceValidator::CollectErrors(
@@ -27,7 +27,7 @@ class VisitorOfIIfExpression extends VisitorOfT
             );
         }
 
-        if ($expression->getTrueExpression() != null) {
+        if (null !== $expression->getTrueExpression()) {
             $followup[] = $expression->getTrueExpression();
         } else {
             InterfaceValidator::CollectErrors(
@@ -39,7 +39,7 @@ class VisitorOfIIfExpression extends VisitorOfT
             );
         }
 
-        if ($expression->getFalseExpression() != null) {
+        if (null !== $expression->getFalseExpression()) {
             $followup[] = $expression->getFalseExpression();
         } else {
             InterfaceValidator::CollectErrors(

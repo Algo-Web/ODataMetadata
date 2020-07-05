@@ -93,6 +93,7 @@ abstract class Asserts
                 try {
                     $parameterString .= ' = ' . strval($parameter->getDefaultValue());
                 } catch (ReflectionException $e) {
+                    // Keep on trucking
                 }
             }
             $parameters[] = $parameterString;

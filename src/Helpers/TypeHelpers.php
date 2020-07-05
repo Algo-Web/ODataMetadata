@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\ITypeHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
 
@@ -27,8 +28,7 @@ trait TypeHelpers
         }
 
         $thisKind = $thisType->getTypeKind();
-        if (
-                !$thisKind->equals($otherType->getTypeKind()) ||
+        if (!$thisKind->equals($otherType->getTypeKind()) ||
                 !(
                     $thisKind->isEntity() ||
                     $thisKind->isComplex() ||
@@ -43,5 +43,8 @@ trait TypeHelpers
         return $thisType->InheritsFrom($otherType);
     }
 
+    /**
+     * @return TypeKind gets the kind of this type
+     */
     abstract public function getTypeKind(): TypeKind;
 }

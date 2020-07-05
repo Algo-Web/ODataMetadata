@@ -271,6 +271,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
         $schemaElement = m::mock(BadNamedStructuredType::class)->makePartial();
         $schemaElement->shouldReceive('fullName')->andReturn('fullName');
+        $schemaElement->shouldReceive('getNamespace')->andReturn('namespace');
 
         $typeRef = m::mock(ITypeReference::class);
         $typeRef->shouldReceive('isCollection')->andReturn(false);
@@ -431,6 +432,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         if ($type) {
             $def = m::mock(EdmEnumType::class)->makePartial();
             $def->shouldReceive('FullName')->andReturn('fullName');
+            $def->shouldReceive('getNamespace')->andReturn('namespace');
 
             $typeRef = m::mock($type);
             $typeRef->shouldReceive('isCollection')->andReturn(false);
@@ -477,6 +479,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $prim = m::mock(IPrimitiveType::class)->makePartial();
         $prim->shouldReceive('getPrimitiveKind')->andReturn($type);
         $prim->shouldReceive('FullName')->andReturn('FullName');
+        $prim->shouldReceive('getNamespace')->andReturn('namespace');
 
         $enum = m::mock(IEnumType::class)->makePartial();
         $enum->shouldReceive('getUnderlyingType')->andReturn($prim);

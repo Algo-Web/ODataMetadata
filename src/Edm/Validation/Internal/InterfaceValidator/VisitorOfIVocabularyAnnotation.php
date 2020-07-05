@@ -10,12 +10,12 @@ use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
 
 class VisitorOfIVocabularyAnnotation extends VisitorOfT
 {
-    protected function VisitT($annotation, array &$followup, array &$references): iterable
+    protected function VisitT($annotation, array &$followup, array &$references): ?iterable
     {
         assert($annotation instanceof IVocabularyAnnotation);
-        $errors = null;
+        $errors = [];
 
-        if ($annotation->getTerm() != null) {
+        if (null !== $annotation->getTerm()) {
             $references[] = $annotation->getTerm();
         } else {
             InterfaceValidator::CollectErrors(
@@ -27,7 +27,7 @@ class VisitorOfIVocabularyAnnotation extends VisitorOfT
             );
         }
 
-        if ($annotation->getTarget() != null) {
+        if (null !== $annotation->getTarget()) {
             $references[] = $annotation->getTarget();
         } else {
             InterfaceValidator::CollectErrors(

@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IPrimitiveType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class PrimitiveTypeMustNotHaveKindOfNone extends PrimitiveTypeRule
     {
         assert($type instanceof IPrimitiveType);
         if ($type->getPrimitiveKind()->isNone() && !$context->checkIsBad($type)) {
+            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::PrimitiveTypeMustNotHaveKindOfNone(),

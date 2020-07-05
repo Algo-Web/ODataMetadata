@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Library\Core;
 
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Helpers\ModelHelpers;
@@ -153,10 +154,9 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
             $primitiveGeometryMultiLineString,
             $primitiveGeometryMultiPoint
         ];
-        /**
-         * @var EdmValidCoreModelPrimitiveType $primitive
-         */
+        /** @var EdmValidCoreModelPrimitiveType $primitive */
         foreach ($this->primitiveTypes as $primitive) {
+            EdmUtil::checkArgumentNull($primitive->getNamespace(), 'primitive->getNamespace');
             $this->primitiveTypeKinds[$primitive->getName()]                                     = $primitive->getPrimitiveKind();
             $this->primitiveTypeKinds[$primitive->getNamespace() . '.' . $primitive->getName()]  = $primitive->getPrimitiveKind();
             $this->primitiveTypesByKind[strval($primitive->getPrimitiveKind())]                  = $primitive;

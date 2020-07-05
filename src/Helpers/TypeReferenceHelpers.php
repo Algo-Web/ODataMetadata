@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\EdmConstants;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Interfaces\IBinaryTypeReference;
@@ -34,6 +35,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IStringTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ITemporalTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
+use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmCollectionTypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmComplexTypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmEntityReferenceTypeReference;
@@ -393,12 +395,15 @@ trait TypeReferenceHelpers
         return null === $primitiveTypeKind ? false : $primitiveTypeKind->IsSpatial();
     }
 
-    // The As*** functions never return null -- if the supplied type does not have the appropriate shape, an encoding of a bad type is returned.
+    // The As*** functions never return null -- if the supplied type does not have the appropriate shape, an encoding
+    // of a bad type is returned.
 
     /**
-     * If this reference is of a primitive type, this will return a valid primitive type reference to the type definition. Otherwise, it will return a bad primitive type reference.
+     * If this reference is of a primitive type, this will return a valid primitive type reference to the type
+     * definition. Otherwise, it will return a bad primitive type reference.
      *
-     * @return IPrimitiveTypeReference A valid primitive type reference if the definition of the reference is of a primitive type. Otherwise a bad primitive type reference.
+     * @return IPrimitiveTypeReference A valid primitive type reference if the definition of the reference is of a
+     *                                 primitive type. Otherwise a bad primitive type reference.
      */
     public function AsPrimitive(): IPrimitiveTypeReference
     {
@@ -458,6 +463,7 @@ trait TypeReferenceHelpers
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
         //if (count($errors) == 0)
         {
@@ -478,7 +484,8 @@ trait TypeReferenceHelpers
      * If this reference is of a collection type, this will return a valid collection type reference to the type
      * definition. Otherwise, it will return a bad collection type reference.
      *
-     * @return ICollectionTypeReference A valid collection type reference if the definition of the reference is of a collection type. Otherwise a bad collection type reference.
+     * @return ICollectionTypeReference A valid collection type reference if the definition of the reference is of a
+     *                                  collection type. Otherwise a bad collection type reference.
      */
     public function AsCollection(): ICollectionTypeReference
     {
@@ -495,6 +502,7 @@ trait TypeReferenceHelpers
         $errors = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -512,9 +520,11 @@ trait TypeReferenceHelpers
     }
 
     /**
-     * If this reference is of a structured type, this will return a valid structured type reference to the type definition. Otherwise, it will return a bad structured type reference.
+     * If this reference is of a structured type, this will return a valid structured type reference to the type
+     * definition. Otherwise, it will return a bad structured type reference.
      *
-     * @return IStructuredTypeReference A valid structured type reference if the definition of the reference is of a structured type. Otherwise a bad structured type reference.
+     * @return IStructuredTypeReference A valid structured type reference if the definition of the reference is of a
+     *                                  structured type. Otherwise a bad structured type reference.
      */
     public function AsStructured(): IStructuredTypeReference
     {
@@ -532,10 +542,12 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -553,9 +565,11 @@ trait TypeReferenceHelpers
     }
 
     /**
-     * If this reference is of an enumeration type, this will return a valid enumeration type reference to the type definition. Otherwise, it will return a bad enumeration type reference.
+     * If this reference is of an enumeration type, this will return a valid enumeration type reference to the type
+     * definition. Otherwise, it will return a bad enumeration type reference.
      *
-     * @return IEnumTypeReference A valid enumeration type reference if the definition of the reference is of an enumeration type. Otherwise a bad enumeration type reference.
+     * @return IEnumTypeReference A valid enumeration type reference if the definition of the reference is of an
+     *                            enumeration type. Otherwise a bad enumeration type reference.
      */
     public function AsEnum(): IEnumTypeReference
     {
@@ -584,9 +598,11 @@ trait TypeReferenceHelpers
     }
 
     /**
-     * If this reference is of an entity type, this will return a valid entity type reference to the type definition. Otherwise, it will return a bad entity type reference.
+     * If this reference is of an entity type, this will return a valid entity type reference to the type definition.
+     * Otherwise, it will return a bad entity type reference.
      *
-     * @return IEntityTypeReference A valid entity type reference if the definition of the reference is of an entity type. Otherwise a bad entity type reference.
+     * @return IEntityTypeReference A valid entity type reference if the definition of the reference is of an entity
+     *                              type. Otherwise a bad entity type reference.
      */
     public function AsEntity(): IEntityTypeReference
     {
@@ -600,10 +616,12 @@ trait TypeReferenceHelpers
             return new EdmEntityTypeReference($typeDefinition, $this->getNullable());
         }
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -621,9 +639,12 @@ trait TypeReferenceHelpers
     }
 
     /**
-     * If this reference is of an entity reference type, this will return a valid entity reference type reference to the type definition. Otherwise, it will return a bad entity reference type reference.
+     * If this reference is of an entity reference type, this will return a valid entity reference type reference to
+     * the type definition. Otherwise, it will return a bad entity reference type reference.
      *
-     * @return IEntityReferenceTypeReference A valid entity reference type reference if the definition of the reference is of an entity reference type. Otherwise a bad entity reference type reference.
+     * @return IEntityReferenceTypeReference A valid entity reference type reference if the definition of the reference
+     *                                       is of an entity reference type. Otherwise a bad entity reference type
+     *                                       reference.
      */
     public function AsEntityReference(): IEntityReferenceTypeReference
     {
@@ -640,6 +661,7 @@ trait TypeReferenceHelpers
         $errors = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -657,9 +679,11 @@ trait TypeReferenceHelpers
     }
 
     /**
-     * If this reference is of a complex type, this will return a valid complex type reference to the type definition. Otherwise, it will return a bad complex type reference.
+     * If this reference is of a complex type, this will return a valid complex type reference to the type definition.
+     * Otherwise, it will return a bad complex type reference.
      *
-     * @return IComplexTypeReference A valid complex type reference if the definition of the reference is of a complex type. Otherwise a bad complex type reference.
+     * @return IComplexTypeReference A valid complex type reference if the definition of the reference is of a complex
+     *                               type. Otherwise a bad complex type reference.
      */
     public function AsComplex(): IComplexTypeReference
     {
@@ -674,9 +698,12 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -694,9 +721,11 @@ trait TypeReferenceHelpers
     }
 
     /**
-     * If this reference is of a row type, this will return a valid row type reference to the type definition. Otherwise, it will return a bad row type reference.
+     * If this reference is of a row type, this will return a valid row type reference to the type definition.
+     * Otherwise, it will return a bad row type reference.
      *
-     * @return IRowTypeReference A valid row type reference if the definition of the reference is of a row type. Otherwise a bad row type reference.
+     * @return IRowTypeReference A valid row type reference if the definition of the reference is of a row type.
+     *                           Otherwise a bad row type reference.
      */
     public function AsRow(): IRowTypeReference
     {
@@ -713,6 +742,7 @@ trait TypeReferenceHelpers
         $errors = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -730,9 +760,11 @@ trait TypeReferenceHelpers
     }
 
     /**
-     * If this reference is of a spatial type, this will return a valid spatial type reference to the type definition. Otherwise, it will return a bad spatial type reference.
+     * If this reference is of a spatial type, this will return a valid spatial type reference to the type definition.
+     * Otherwise, it will return a bad spatial type reference.
      *
-     * @return ISpatialTypeReference A valid spatial type reference if the definition of the reference is of a spatial type. Otherwise a bad spatial type reference.
+     * @return ISpatialTypeReference A valid spatial type reference if the definition of the reference is of a spatial
+     *                               type. Otherwise a bad spatial type reference.
      */
     public function AsSpatial(): ISpatialTypeReference
     {
@@ -741,9 +773,12 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -761,9 +796,11 @@ trait TypeReferenceHelpers
     }
 
     /**
-     * If this reference is of a temporal type, this will return a valid temporal type reference to the type definition. Otherwise, it will return a bad temporal type reference.
+     * If this reference is of a temporal type, this will return a valid temporal type reference to the type definition.
+     * Otherwise, it will return a bad temporal type reference.
      *
-     * @return ITemporalTypeReference A valid temporal type reference if the definition of the reference is of a temporal type. Otherwise a bad temporal type reference.
+     * @return ITemporalTypeReference A valid temporal type reference if the definition of the reference is of a
+     *                                temporal type. Otherwise a bad temporal type reference.
      */
     public function AsTemporal(): ITemporalTypeReference
     {
@@ -772,9 +809,12 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -792,9 +832,11 @@ trait TypeReferenceHelpers
     }
 
     /**
-     * If this reference is of a decimal type, this will return a valid decimal type reference to the type definition. Otherwise, it will return a bad decimal type reference.
+     * If this reference is of a decimal type, this will return a valid decimal type reference to the type definition.
+     * Otherwise, it will return a bad decimal type reference.
      *
-     * @return IDecimalTypeReference A valid decimal type reference if the definition of the reference is of a decimal type. Otherwise a bad decimal type reference.</returns>
+     * @return IDecimalTypeReference A valid decimal type reference if the definition of the reference is of a decimal
+     *                               type. Otherwise a bad decimal type reference.</returns>
      */
     public function AsDecimal(): IDecimalTypeReference
     {
@@ -803,9 +845,12 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -823,9 +868,11 @@ trait TypeReferenceHelpers
     }
 
     /**
-     * If this reference is of a string type, this will return a valid string type reference to the type definition. Otherwise, it will return a bad string type reference.
+     * If this reference is of a string type, this will return a valid string type reference to the type definition.
+     * Otherwise, it will return a bad string type reference.
      *
-     * @return IStringTypeReference A valid string type reference if the definition of the reference is of a string type. Otherwise a bad string type reference.
+     * @return IStringTypeReference A valid string type reference if the definition of the reference is of a string
+     *                              type. Otherwise a bad string type reference.
      */
     public function AsString(): IStringTypeReference
     {
@@ -834,9 +881,12 @@ trait TypeReferenceHelpers
         }
 
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -854,9 +904,11 @@ trait TypeReferenceHelpers
     }
 
     /**
-     * If this reference is of a binary type, this will return a valid binary type reference to the type definition. Otherwise, it will return a bad binary type reference.
+     * If this reference is of a binary type, this will return a valid binary type reference to the type definition.
+     * Otherwise, it will return a bad binary type reference.
      *
-     * @return IBinaryTypeReference A valid binary type reference if the definition of the reference is of a binary type. Otherwise a bad binary type reference.
+     * @return IBinaryTypeReference A valid binary type reference if the definition of the reference is of a binary
+     *                              type. Otherwise a bad binary type reference.
      */
     public function AsBinary(): IBinaryTypeReference
     {
@@ -864,9 +916,12 @@ trait TypeReferenceHelpers
             return $this;
         }
         $typeFullName = $this->FullName();
+        EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
+
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
+            $errors = iterable_to_array($errors);
         }
 
         if (count($errors) == 0) {
@@ -885,12 +940,12 @@ trait TypeReferenceHelpers
 
 
     /**
-     * @param  ILocation  $location
-     * @param  string     $typeName
-     * @param  string     $typeKindName
+     * @param  ILocation|null $location
+     * @param  string         $typeName
+     * @param  string         $typeKindName
      * @return EdmError[]
      */
-    private static function ConversionError(ILocation $location, ?string $typeName, string $typeKindName): array
+    private static function ConversionError(?ILocation $location, ?string $typeName, string $typeKindName): array
     {
         return [
             new EdmError(
@@ -903,5 +958,10 @@ trait TypeReferenceHelpers
             )
         ];
     }
+
     abstract public function getDefinition(): ?IType;
+
+    abstract public function getNullable(): bool;
+
+    abstract public function Location(): ?ILocation;
 }

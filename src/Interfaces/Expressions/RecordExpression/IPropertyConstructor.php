@@ -18,12 +18,12 @@ use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 interface IPropertyConstructor extends IEdmElement
 {
     /**
-     * @return string gets the name of the property
+     * @return string|null gets the name of the property
      */
-    public function getName(): string;
+    public function getName(): ?string;
 
     /**
-     * @return IExpression gets the expression for the value of the property
+     * @return IExpression|null gets the expression for the value of the property
      */
-    public function getValue(): IExpression;
+    public function getValue(): ?IExpression;
 }

@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -25,6 +26,7 @@ class EntityTypeInvalidKeyNullablePart extends EntityTypeRule
             foreach ($entityType->Key() as $key) {
                 if ($key->getType()->IsPrimitive()) {
                     if ($key->getType()->getNullable()) {
+                        EdmUtil::checkArgumentNull($key->Location(), 'key->Location');
                         $context->AddError(
                             $key->Location(),
                             EdmErrorCode::InvalidKey(),

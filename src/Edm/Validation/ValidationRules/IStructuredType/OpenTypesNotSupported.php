@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class OpenTypesNotSupported extends StructuredTypeRule
     {
         assert($structuredType instanceof IStructuredType);
         if ($structuredType->isOpen()) {
+            EdmUtil::checkArgumentNull($structuredType->Location(), 'structuredType->Location');
             $context->AddError(
                 $structuredType->Location(),
                 EdmErrorCode::OpenTypeNotSupported(),

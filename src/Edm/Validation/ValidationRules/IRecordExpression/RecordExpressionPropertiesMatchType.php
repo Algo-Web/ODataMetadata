@@ -20,12 +20,17 @@ class RecordExpressionPropertiesMatchType extends RecordExpressionRule
     public function __invoke(ValidationContext $context, ?IEdmElement $expression)
     {
         assert($expression instanceof IRecordExpression);
-        if (
-            $expression->getDeclaredType() != null &&
+        if ($expression->getDeclaredType() != null &&
             !$context->checkIsBad($expression) &&
             !$context->checkIsBad($expression->getDeclaredType())) {
             $discoveredErrors = null;
-            ExpressionTypeChecker::TryAssertRecordAsType($expression, $expression->getDeclaredType(), null, false, $discoveredErrors);
+            ExpressionTypeChecker::TryAssertRecordAsType(
+                $expression,
+                $expression->getDeclaredType(),
+                null,
+                false,
+                $discoveredErrors
+            );
             foreach ($discoveredErrors as $error) {
                 $context->AddRawError($error);
             }

@@ -28,9 +28,7 @@ trait VisitTypeDefinitions
 {
     public function VisitSchemaType(IType $definition): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         switch ($definition->getTypeKind()) {
             case TypeKind::Complex():
                 assert($definition instanceof IComplexType);
@@ -50,7 +48,11 @@ trait VisitTypeDefinitions
                 $this->VisitSchemaType($definition);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_TypeKind($definition->getTypeKind()->getKey()));
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_TypeKind(
+                    $definition->getTypeKind()->getKey()
+                )
+                );
         }
     }
 
@@ -59,17 +61,13 @@ trait VisitTypeDefinitions
      */
     public function VisitProperties(array $properties): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         self::VisitCollection($properties, [$this, 'VisitProperty']);
     }
 
     public function VisitProperty(IProperty $property): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         switch ($property->getPropertyKind()) {
             case PropertyKind::Navigation():
                 assert($property instanceof INavigationProperty);
@@ -84,7 +82,11 @@ trait VisitTypeDefinitions
                 $this->ProcessProperty($property);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_PropertyKind($property->getPropertyKind()->getKey()));
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_PropertyKind(
+                    $property->getPropertyKind()->getKey()
+                )
+                );
         }
     }
 
@@ -94,17 +96,13 @@ trait VisitTypeDefinitions
      */
     public function VisitEnumMembers(array $enumMembers): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         self::VisitCollection($enumMembers, [$this, 'VisitEnumMember']);
     }
 
     public function VisitEnumMember(IEnumMember $enumMember): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         $this->ProcessEnumMember($enumMember);
     }
 }

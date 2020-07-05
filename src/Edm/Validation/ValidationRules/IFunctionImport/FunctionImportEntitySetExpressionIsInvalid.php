@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
@@ -24,9 +25,9 @@ class FunctionImportEntitySetExpressionIsInvalid extends FunctionImportRule
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
+        EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
         if ($functionImport->getEntitySet() != null) {
-            if (
-                !$functionImport->getEntitySet()->getExpressionKind()->isEntitySetReference() &&
+            if (!$functionImport->getEntitySet()->getExpressionKind()->isEntitySetReference() &&
                 !$functionImport->getEntitySet()->getExpressionKind()->isPath()
             ) {
                 $context->AddError(
@@ -38,20 +39,13 @@ class FunctionImportEntitySetExpressionIsInvalid extends FunctionImportRule
                     )
                 );
             } else {
-                /**
-                 * @var IEntitySet $entitySet;
-                 */
+                /** @var IEntitySet $entitySet */
                 $entitySet = null;
-                /**
-                 * @var IFunctionParameter $parameter
-                 */
+                /** @var IFunctionParameter $parameter */
                 $parameter = null;
-                /**
-                 * @var INavigationProperty[] $path
-                 */
+                /** @var INavigationProperty[] $path */
                 $path = null;
-                if (
-                    !$functionImport->TryGetStaticEntitySet($entitySet) &&
+                if (!$functionImport->TryGetStaticEntitySet($entitySet) &&
                     !$functionImport->TryGetRelativeEntitySetPath($context->getModel(), $parameter, $path)
                 ) {
                     $context->AddError(

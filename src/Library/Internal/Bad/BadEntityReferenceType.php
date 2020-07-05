@@ -24,7 +24,7 @@ class BadEntityReferenceType extends BadType implements IEntityReferenceType
     public function __construct(array $errors)
     {
         parent::__construct($errors);
-        $this->entityType = new BadEntityType('', $this->getErrors());
+        $this->entityType = new BadEntityType('', iterable_to_array($this->getErrors()));
     }
 
     /**

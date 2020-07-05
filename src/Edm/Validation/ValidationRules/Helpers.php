@@ -37,13 +37,13 @@ abstract class Helpers
 
     public static function CheckForNameError(ValidationContext $context, string $name, ILocation $location): void
     {
-        if (EdmUtil::IsNullOrWhiteSpaceInternal($name) || strlen($name) === 0) {
+        if (EdmUtil::IsNullOrWhiteSpaceInternal($name) || mb_strlen($name) === 0) {
             $context->AddError(
                 $location,
                 EdmErrorCode::InvalidName(),
                 StringConst::EdmModel_Validator_Syntactic_MissingName()
             );
-        } elseif (strlen($name) > CsdlConstants::Max_NameLength) {
+        } elseif (mb_strlen($name) > CsdlConstants::Max_NameLength) {
             $context->AddError(
                 $location,
                 EdmErrorCode::NameTooLong(),

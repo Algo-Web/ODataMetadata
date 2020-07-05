@@ -10,14 +10,20 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IRecordExpression;
 
 class VisitorOfIRecordExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IRecordExpression);
-        $errors = null;
+        $errors = [];
 
-        InterfaceValidator::ProcessEnumerable($expression, $expression->getProperties(), 'Properties', $followup, $errors);
+        InterfaceValidator::ProcessEnumerable(
+            $expression,
+            $expression->getProperties(),
+            'Properties',
+            $followup,
+            $errors
+        );
 
-        if ($expression->getDeclaredType() != null) {
+        if (null !== $expression->getDeclaredType()) {
             // Record constructor owns its type reference, so it goes as a followup.
             $followup[] = $expression->getDeclaredType();
         }

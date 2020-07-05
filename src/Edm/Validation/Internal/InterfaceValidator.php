@@ -69,8 +69,9 @@ class InterfaceValidator
     }
 
     /**
-     * @param  IModel              $model
-     * @param  ValidationRuleSet   $semanticRuleSet
+     * @param  IModel               $model
+     * @param  ValidationRuleSet    $semanticRuleSet
+     * @throws \ReflectionException
      * @return iterable|EdmError[]
      */
     public static function ValidateModelStructureAndSemantics(IModel $model, ValidationRuleSet $semanticRuleSet): iterable
@@ -78,7 +79,7 @@ class InterfaceValidator
         $modelValidator = new InterfaceValidator(null, $model, true);
 
         // Perform structural validation of the root object.
-        $errors = $modelValidator->ValidateStructure($model);
+        $errors = iterable_to_array($modelValidator->ValidateStructure($model));
 
         // Then check references for structural integrity using separate validator (in order to avoid adding referenced objects to the this.visited).
         $referencesValidator              = new InterfaceValidator($modelValidator->visited, $model, false);
@@ -106,10 +107,12 @@ class InterfaceValidator
         $concreteTypeSemanticInterfaceVisitors = [];
         foreach ($modelValidator->visited as $item) {
             if (!in_array($item, $modelValidator->visitedBad)) {
-                /**
-                 * @var ValidationRule $rule
-                 */
-                foreach (self::GetSemanticInterfaceVisitorsForObject(get_class($item), $semanticRuleSet, $concreteTypeSemanticInterfaceVisitors) as $rule) {
+                /** * @var ValidationRule $rule */
+                foreach (self::GetSemanticInterfaceVisitorsForObject(
+                    get_class($item),
+                    $semanticRuleSet,
+                    $concreteTypeSemanticInterfaceVisitors
+                ) as $rule) {
                     $rule($semanticValidationContext, $item);
                 }
             }
@@ -135,19 +138,20 @@ class InterfaceValidator
      */
     private static function CreateInterfaceVisitorsMap(): iterable
     {
-        $map = [];
-        if ($handle = opendir('.')) {
+        $map    = [];
+        $handle = opendir('.');
+        if (false !== $handle) {
             while (false !== ($entry = readdir($handle))) {
-                if ($entry === '.' || $entry === '..' || is_dir($entry) || $name = substr($entry, -4) !== '.php') {
+                /** @var string $name */
+                $name = substr($entry, -4);
+                if ($entry === '.' || $entry === '..' || is_dir($entry) || $name !== '.php') {
                     continue;
                 }
                 if ($name === 'VisitorBase' || $name === 'VisitorOfT') {
                     continue;
                 }
                 $class = __CLASS__ . '\\' . $name;
-                /**
-                 * @var VisitorOfT $instance
-                 */
+                /** @var VisitorOfT $instance */
                 $instance                  = new $class();
                 $map[$instance->forType()] = $instance;
             }
@@ -336,17 +340,13 @@ class InterfaceValidator
         $references      = [];
         $visitors        = null;
         $visitors        = $this->GetInterfaceVisitorsForObject(get_class($item));
-        /**
-         * @var VisitorBase $visitor
-         */
+        /** @var VisitorBase $visitor */
         foreach ($visitors as $visitor) {
             $errors = $visitor->Visit($item, $followup, $references);
 
             // For performance reasons some visitors may return null errors enumerator.
             if ($errors != null) {
-                /**
-                 * @var EdmError $error
-                 */
+                /** @var EdmError $error */
                 foreach ($errors as $error) {
                     if ($immediateErrors == null) {
                         $immediateErrors = [];
@@ -374,7 +374,10 @@ class InterfaceValidator
                 $element = $item;
                 foreach ($this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element) as $annotation) {
                     assert($annotation instanceof IDirectValueAnnotation);
-                    $followupErrors = array_merge(iterable_to_array($followupErrors), $this->ValidateStructure($annotation));
+                    $followupErrors = array_merge(
+                        iterable_to_array($followupErrors),
+                        iterable_to_array($this->ValidateStructure($annotation))
+                    );
                 }
             }
         }

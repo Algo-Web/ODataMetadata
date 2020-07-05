@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProper
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -25,6 +26,7 @@ class NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOne extends N
         if ($property->containsTarget() &&
             !$property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType()) &&
             !$property->Multiplicity()->isOne()) {
+            EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
             $context->AddError(
                 $property->Location(),
                 EdmErrorCode::NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOne(),

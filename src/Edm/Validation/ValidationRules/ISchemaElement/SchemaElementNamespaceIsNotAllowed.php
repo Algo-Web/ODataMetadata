@@ -23,13 +23,14 @@ class SchemaElementNamespaceIsNotAllowed extends SchemaElementRule
     public function __invoke(ValidationContext $context, ?IEdmElement $item)
     {
         assert($item instanceof ISchemaElement);
+        EdmUtil::checkArgumentNull($item->getNamespace(), 'item->getNamespace');
         // max length is hard coded in the xsd
-        if (
-            strlen($item->getNamespace()) <= CsdlConstants::Max_NamespaceLength &&
-            strlen($item->getNamespace()) > 0 &&
+        if (mb_strlen($item->getNamespace()) <= CsdlConstants::Max_NamespaceLength &&
+            mb_strlen($item->getNamespace()) > 0 &&
             !EdmUtil::IsNullOrWhiteSpaceInternal($item->getNamespace())
         ) {
             if (!EdmUtil::IsValidDottedName($item->getNamespace())) {
+                EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
                 $context->AddError(
                     $item->Location(),
                     EdmErrorCode::InvalidNamespaceName(),

@@ -22,7 +22,9 @@ class NamedElementNameIsTooLong extends NamedElementRule
     public function __invoke(ValidationContext $context, ?IEdmElement $item)
     {
         assert($item instanceof INamedElement);
-        if (!EdmUtil::IsNullOrWhiteSpaceInternal($item->getName()) && strlen($item->getName()) > CsdlConstants::Max_NameLength) {
+        if (!EdmUtil::IsNullOrWhiteSpaceInternal($item->getName()) &&
+            mb_strlen($item->getName()) > CsdlConstants::Max_NameLength) {
+            EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
             $context->AddError(
                 $item->Location(),
                 EdmErrorCode::NameTooLong(),

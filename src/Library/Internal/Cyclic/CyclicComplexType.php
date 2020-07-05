@@ -25,6 +25,11 @@ class CyclicComplexType extends BadComplexType
      */
     public function __construct(?string $qualifiedName, ILocation $location)
     {
-        parent::__construct($qualifiedName, [new EdmError($location, EdmErrorCode::BadCyclicComplex(), StringConst::Bad_CyclicComplex($qualifiedName)) ]);
+        $error = new EdmError(
+            $location,
+            EdmErrorCode::BadCyclicComplex(),
+            StringConst::Bad_CyclicComplex($qualifiedName)
+        );
+        parent::__construct($qualifiedName, [$error]);
     }
 }

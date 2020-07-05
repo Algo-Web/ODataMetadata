@@ -26,17 +26,13 @@ trait VisitElements
      */
     public function visitSchemaElements(array $elements): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         self::visitCollection($elements, [$this, 'VisitSchemaElement']);
     }
 
     public function visitSchemaElement(ISchemaElement $element): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         switch ($element->getSchemaElementKind()) {
             case SchemaElementKind::Function():
                 assert($element instanceof IFunction);
@@ -58,7 +54,9 @@ trait VisitElements
                 $this->processSchemaElement($element);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_SchemaElementKind($element->getSchemaElementKind()->getKey()));
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_SchemaElementKind($element->getSchemaElementKind()->getKey())
+                );
         }
     }
 }

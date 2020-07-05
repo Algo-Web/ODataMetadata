@@ -10,10 +10,11 @@ use AlgoWeb\ODataMetadata\Interfaces\IComplexTypeReference;
 
 class VisitorOfIComplexTypeReference extends VisitorOfT
 {
-    protected function VisitT($typeRef, array &$followup, array &$references): iterable
+    protected function VisitT($typeRef, array &$followup, array &$references): ?iterable
     {
         assert($typeRef instanceof IComplexTypeReference);
-        return $typeRef->getDefinition() != null && !$typeRef->getDefinition()->getTypeKind()->isComplex() ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
+        return null !== $typeRef->getDefinition() && !$typeRef->getDefinition()->getTypeKind()->isComplex()
+            ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
     }
 
     public function forType(): string

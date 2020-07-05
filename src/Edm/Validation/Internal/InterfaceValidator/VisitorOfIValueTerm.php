@@ -10,10 +10,10 @@ use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 class VisitorOfIValueTerm extends VisitorOfT
 {
-    protected function VisitT($term, array &$followup, array &$references): iterable
+    protected function VisitT($term, array &$followup, array &$references): ?iterable
     {
         assert($term instanceof IValueTerm);
-        if ($term->getType() != null) {
+        if (null !== $term->getType()) {
             // Value term owns its element type reference, so it goes as a followup.
             $followup[] = $term->getType();
             return null;

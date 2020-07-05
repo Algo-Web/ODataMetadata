@@ -40,7 +40,7 @@ class EdmUtil
 
     public static function IsNullOrWhiteSpaceInternal(?string $value): bool
     {
-        return $value == null || trim($value) === '';
+        return null === $value || '' === trim($value);
     }
 
     public static function checkArgumentNull($value, string $parameterName)
@@ -105,10 +105,12 @@ class EdmUtil
             }
         } else {
             if ($element instanceof IEntityContainerElement) {
+                $container = $element->getContainer();
+                $fullName  = (null !== $container) ? $container->FullName() : '';
                 if ($element instanceof IFunctionImport) {
-                    return $element->getContainer()->FullName() . '/' . self::ParameterizedName($element);
+                    return $fullName . '/' . self::ParameterizedName($element);
                 } else {
-                    return $element->getContainer()->FullName() . '/' . $element->getName();
+                    return $fullName . '/' . $element->getName();
                 }
             } else {
                 if ($element instanceof IProperty) {
@@ -140,6 +142,7 @@ class EdmUtil
         $parameterCount = count($function->getParameters());
         $s              = '';
         if ($function instanceof UnresolvedFunction) {
+            EdmUtil::checkArgumentNull($function->getNamespace(), 'function->getNamespace');
             $s .= $function->getNamespace();
             $s .= '/';
             $s .= $function->getName();
@@ -149,6 +152,7 @@ class EdmUtil
 
         // If we have a function (rather than a function import), we want the parameterized name to include the namespace
         if ($function instanceof ISchemaElement) {
+            EdmUtil::checkArgumentNull($function->getNamespace(), 'function->getNamespace');
             $s .= $function->getNamespace();
             $s .= '.';
         }

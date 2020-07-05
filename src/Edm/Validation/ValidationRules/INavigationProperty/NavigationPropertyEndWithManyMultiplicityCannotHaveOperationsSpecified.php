@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProper
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,14 +23,16 @@ class NavigationPropertyEndWithManyMultiplicityCannotHaveOperationsSpecified ext
     {
         assert($end instanceof INavigationProperty);
         // If an end has a multiplicity of many, it cannot have any operation behaviour
-        if (
-            $end->Multiplicity()->isMany() &&
+        if ($end->Multiplicity()->isMany() &&
             !$end->getOnDelete()->isNone()
         ) {
+            EdmUtil::checkArgumentNull($end->Location(), 'end->Location');
             $context->AddError(
                 $end->Location(),
                 EdmErrorCode::EndWithManyMultiplicityCannotHaveOperationsSpecified(),
-                StringConst::EdmModel_Validator_Semantic_EndWithManyMultiplicityCannotHaveOperationsSpecified($end->getName())
+                StringConst::EdmModel_Validator_Semantic_EndWithManyMultiplicityCannotHaveOperationsSpecified(
+                    $end->getName()
+                )
             );
         }
     }

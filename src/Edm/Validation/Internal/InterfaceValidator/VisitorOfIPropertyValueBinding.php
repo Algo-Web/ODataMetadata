@@ -10,12 +10,12 @@ use AlgoWeb\ODataMetadata\Interfaces\Annotations\IPropertyValueBinding;
 
 class VisitorOfIPropertyValueBinding extends VisitorOfT
 {
-    protected function VisitT($binding, array &$followup, array &$references): iterable
+    protected function VisitT($binding, array &$followup, array &$references): ?iterable
     {
         assert($binding instanceof IPropertyValueBinding);
-        $errors = null;
+        $errors = [];
 
-        if ($binding->getValue() != null) {
+        if (null !== $binding->getValue()) {
             $followup[] = $binding->getValue();
         } else {
             InterfaceValidator::CollectErrors(
@@ -27,7 +27,7 @@ class VisitorOfIPropertyValueBinding extends VisitorOfT
             );
         }
 
-        if ($binding->getBoundProperty() != null) {
+        if (null !== $binding->getBoundProperty()) {
             $references[] = $binding->getBoundProperty();
         } else {
             InterfaceValidator::CollectErrors(

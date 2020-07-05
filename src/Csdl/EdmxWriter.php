@@ -71,11 +71,13 @@ class EdmxWriter
     /**
      * Outputs an EDMX artifact to the provided XmlWriter.
      *
-     * @param  IModel     $model  model to be written
-     * @param  XMLWriter  $writer xmlWriter the generated EDMX will be written to
-     * @param  EdmxTarget $target target implementation of the EDMX being generated
-     * @param  array      $errors errors that prevented successful serialization, or no errors if serialization was successfull
-     * @return bool       a value indicating whether serialization was successful
+     * @param  IModel                                                 $model  model to be written
+     * @param  XMLWriter                                              $writer xmlWriter the generated EDMX will be written to
+     * @param  EdmxTarget                                             $target target implementation of the EDMX being generated
+     * @param  array                                                  $errors errors that prevented successful serialization, or no errors if serialization was successful
+     * @throws \ReflectionException
+     * @throws \AlgoWeb\ODataMetadata\Exception\NotSupportedException
+     * @return bool                                                   a value indicating whether serialization was successful
      */
     public static function TryWriteEdmx(IModel $model, XmlWriter $writer, EdmxTarget $target = null, array &$errors = []): bool
     {
@@ -109,6 +111,10 @@ class EdmxWriter
         return true;
     }
 
+    /**
+     * @throws \AlgoWeb\ODataMetadata\Exception\NotSupportedException
+     * @throws \ReflectionException
+     */
     private function WriteEdmx(): void
     {
         switch ($this->target) {
@@ -120,6 +126,10 @@ class EdmxWriter
         }
     }
 
+    /**
+     * @throws \AlgoWeb\ODataMetadata\Exception\NotSupportedException
+     * @throws \ReflectionException
+     */
     private function WriteODataEdmx(): void
     {
         $this->WriteEdmxElement();
@@ -155,7 +165,10 @@ class EdmxWriter
         }
     }
 
-
+    /**
+     * @throws \AlgoWeb\ODataMetadata\Exception\NotSupportedException
+     * @throws \ReflectionException
+     */
     private function WriteSchemas(): void
     {
         $edmVersion = $this->model->GetEdmVersion() ?? Version::v3();

@@ -30,7 +30,7 @@ if (!function_exists('mb_ord')) {
             $s = mb_convert_encoding($s, 'UTF-8', $encoding);
         }
 
-        if (1 === \strlen($s)) {
+        if (1 === mb_strlen($s)) {
             return \ord($s);
         }
 

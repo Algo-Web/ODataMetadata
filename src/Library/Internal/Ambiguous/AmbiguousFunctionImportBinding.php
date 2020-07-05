@@ -35,13 +35,11 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
     /**
      *  Gets the container that contains this element.
      *
-     * @return IEntityContainer
+     * @return IEntityContainer|null
      */
     public function getContainer(): ?IEntityContainer
     {
-        /**
-         * @var IFunctionImport[] $bindings
-         */
+        /** @var IFunctionImport[] $bindings */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? null : $bindings[0]->getContainer();
     }
@@ -51,7 +49,7 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
      *
      * @return ITypeReference
      */
-    public function getReturnType(): ITypeReference
+    public function getReturnType(): ?ITypeReference
     {
         return null;
     }
@@ -63,9 +61,7 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
      */
     public function getParameters(): ?array
     {
-        /**
-         * @var IFunctionImport[] $bindings
-         */
+        /** @var IFunctionImport[] $bindings */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? null : $bindings[0]->getParameters();
     }
@@ -78,9 +74,7 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
      */
     public function findParameter(string $name): ?IFunctionParameter
     {
-        /**
-         * @var IFunctionImport[] $bindings
-         */
+        /** @var IFunctionImport[] $bindings */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? null : $bindings[0]->findParameter($name);
     }
@@ -119,9 +113,9 @@ class AmbiguousFunctionImportBinding extends AmbiguousBinding implements IFuncti
     /**
      * Gets the entity set containing entities returned by this function import.
      *
-     * @return IExpression
+     * @return IExpression|null
      */
-    public function getEntitySet(): IExpression
+    public function getEntitySet(): ?IExpression
     {
         return null;
     }

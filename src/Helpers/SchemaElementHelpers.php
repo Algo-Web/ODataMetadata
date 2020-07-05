@@ -11,8 +11,18 @@ namespace AlgoWeb\ODataMetadata\Helpers;
  */
 trait SchemaElementHelpers
 {
-    public function FullName()
+    public function FullName(): string
     {
         return ($this->getNamespace() ?? '') . ('.' . $this->getName() ?? '');
     }
+
+    /**
+     * @return string|null gets the name of this element
+     */
+    abstract public function getName(): ?string;
+
+    /**
+     * @return string gets the namespace this schema element belongs to
+     */
+    abstract public function getNamespace(): string;
 }

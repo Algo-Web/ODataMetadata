@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IModel;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\ValidationHelper;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Helpers\EdmElementComparer;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
@@ -63,6 +64,7 @@ class ModelDuplicateSchemaElementName extends ModelRule
             }
 
             if ($duplicate) {
+                EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
                 $context->AddError(
                     $item->Location(),
                     EdmErrorCode::AlreadyDefined(),

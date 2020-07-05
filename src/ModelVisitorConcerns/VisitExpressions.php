@@ -46,17 +46,13 @@ trait VisitExpressions
 {
     public function VisitExpressions(array $expressions): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         self::VisitCollection($expressions, [$this, 'VisitExpression']);
     }
 
     public function VisitExpression(IExpression $expression): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         switch ($expression->getExpressionKind()) {
             case ExpressionKind::AssertType():
                 assert($expression instanceof  IAssertTypeExpression);
@@ -166,7 +162,9 @@ trait VisitExpressions
                 $this->processExpression($expression);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_TermKind($expression->getExpressionKind()->getKey()));
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_TermKind($expression->getExpressionKind()->getKey())
+                );
         }
     }
     /**
@@ -174,9 +172,7 @@ trait VisitExpressions
      */
     public function visitPropertyConstructors(array $constructor): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         self::VisitCollection($constructor, [$this, 'processPropertyConstructor']);
     }
 }

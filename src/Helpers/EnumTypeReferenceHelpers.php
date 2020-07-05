@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumTypeReference;
+use AlgoWeb\ODataMetadata\Interfaces\IType;
 
 /**
  * Trait EnumTypeReferenceHelpers.
@@ -21,11 +22,11 @@ trait EnumTypeReferenceHelpers
      */
     public function EnumDefinition(): IEnumType
     {
-        /**
-         * @var IEnumTypeReference $this;
-         */
+        /** @var IEnumTypeReference $this */
         $definition = $this->getDefinition();
         assert($definition instanceof IEnumType, 'Enum Type Reference should always wrap a IEnumType');
         return $definition;
     }
+
+    abstract public function getDefinition(): ?IType;
 }

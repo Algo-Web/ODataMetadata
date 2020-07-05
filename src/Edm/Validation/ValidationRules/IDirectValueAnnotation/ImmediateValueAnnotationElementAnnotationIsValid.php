@@ -27,22 +27,21 @@ class ImmediateValueAnnotationElementAnnotationIsValid extends DirectValueAnnota
         assert($annotation instanceof IDirectValueAnnotation);
         $stringValue = $annotation->getValue();
         if ($stringValue != null && $stringValue instanceof IStringValue) {
-            if (
-                            boolval(
-                                $context
-                                    ->getModel()
-                                    ->getDirectValueAnnotationsManager()
-                                    ->getAnnotationValue(
-                                        $stringValue,
-                                        EdmConstants::InternalUri,
-                                        CsdlConstants::IsSerializedAsElementAnnotation
-                                    ) ?? false
-                            )
-                        ) {
-                if (
-                                EdmUtil::IsNullOrWhiteSpaceInternal($annotation->getNamespaceUri()) ||
-                                EdmUtil::IsNullOrWhiteSpaceInternal($annotation->getName())
-                            ) {
+            if (boolval(
+                $context
+                    ->getModel()
+                    ->getDirectValueAnnotationsManager()
+                    ->getAnnotationValue(
+                        $stringValue,
+                        EdmConstants::InternalUri,
+                        CsdlConstants::IsSerializedAsElementAnnotation
+                    ) ?? false
+            )
+            ) {
+                if (EdmUtil::IsNullOrWhiteSpaceInternal($annotation->getNamespaceUri()) ||
+                    EdmUtil::IsNullOrWhiteSpaceInternal($annotation->getName())
+                ) {
+                    EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
                     $context->AddError(
                         $annotation->Location(),
                         EdmErrorCode::InvalidElementAnnotation(),

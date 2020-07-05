@@ -394,6 +394,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $schema = m::mock(ISchemaElement::class . ', ' . IEntityType::class);
         $schema->shouldReceive('FullName')->andReturn('FullName');
+        $schema->shouldReceive('getNamespace')->andReturn('namespace');
 
         $eType = m::mock(IEntityReferenceType::class)->makePartial();
         $eType->shouldReceive('getEntityType')->andReturn($schema);
@@ -444,6 +445,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $term = m::mock(ITerm::class);
         $term->shouldReceive('FullName')->andReturn('FullName');
+        $term->shouldReceive('getNamespace')->andReturn('namespace');
 
         $element = m::mock(IValueAnnotation::class)->makePartial();
         $element->shouldReceive('getValue')->andReturn($expr);
@@ -477,6 +479,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $term = m::mock(ITerm::class);
         $term->shouldReceive('FullName')->andReturn('FullName');
+        $term->shouldReceive('getNamespace')->andReturn('namespace');
 
         $element = m::mock(ITypeAnnotation::class)->makePartial();
         $element->shouldReceive('getPropertyValueBindings')->andReturn([]);

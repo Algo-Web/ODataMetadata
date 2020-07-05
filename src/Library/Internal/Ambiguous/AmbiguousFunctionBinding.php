@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
 
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Helpers\FunctionImportHelpers;
 use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
@@ -26,9 +27,9 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
     /**
      * Gets the defining expression of this function.
      *
-     * @return string
+     * @return string|null
      */
-    public function getDefiningExpression(): string
+    public function getDefiningExpression(): ?string
     {
         return null;
     }
@@ -36,9 +37,9 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
     /**
      * Gets the return type of this function.
      *
-     * @return ITypeReference
+     * @return ITypeReference|null
      */
-    public function getReturnType(): ITypeReference
+    public function getReturnType(): ?ITypeReference
     {
         return null;
     }
@@ -46,13 +47,11 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
     /**
      * Gets the collection of parameters for this function.
      *
-     * @return IFunctionParameter[]
+     * @return IFunctionParameter[]|null
      */
-    public function getParameters(): array
+    public function getParameters(): ?array
     {
-        /**
-         * @var IFunction[] $bindings
-         */
+        /** @var IFunction[] $bindings */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? [] : $bindings[0]->getParameters();
     }
@@ -65,9 +64,7 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
      */
     public function findParameter(string $name): ?IFunctionParameter
     {
-        /**
-         * @var IFunction[] $bindings
-         */
+        /** @var IFunction[] $bindings */
         $bindings = $this->getBindings();
         return count($bindings) === 0 ? null : $bindings[0]->findParameter($name);
     }
@@ -89,10 +86,13 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
      */
     public function getNamespace(): string
     {
-        /**
-         * @var IFunction[] $bindings
-         */
+        /** @var IFunction[] $bindings */
         $bindings = $this->getBindings();
-        return count($bindings) === 0 ? '' : $bindings[0]->getNamespace();
+        if (0 === count($bindings)) {
+            return '';
+        }
+        EdmUtil::checkArgumentNull($bindings[0]->getNamespace(), 'bindings[0]->getNamespace');
+
+        return $bindings[0]->getNamespace();
     }
 }

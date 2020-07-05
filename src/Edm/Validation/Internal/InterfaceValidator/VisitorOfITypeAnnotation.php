@@ -13,7 +13,7 @@ class VisitorOfITypeAnnotation extends VisitorOfT
     protected function VisitT($annotation, array &$followup, array &$references): iterable
     {
         assert($annotation instanceof ITypeAnnotation);
-        $errors = null;
+        $errors = [];
         InterfaceValidator::ProcessEnumerable(
             $annotation,
             $annotation->getPropertyValueBindings(),

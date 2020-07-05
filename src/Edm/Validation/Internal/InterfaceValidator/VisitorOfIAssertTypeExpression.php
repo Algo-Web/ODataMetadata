@@ -10,12 +10,12 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IAssertTypeExpression;
 
 class VisitorOfIAssertTypeExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IAssertTypeExpression);
-        $errors = null;
+        $errors = [];
 
-        if ($expression->getOperand() != null) {
+        if (null !== $expression->getOperand()) {
             $followup[] = $expression->getOperand();
         } else {
             InterfaceValidator::CollectErrors(
@@ -27,7 +27,7 @@ class VisitorOfIAssertTypeExpression extends VisitorOfT
             );
         }
 
-        if ($expression->getType() != null) {
+        if (null !== $expression->getType()) {
             // Assert owns its type reference, so it goes as a followup.
             $followup[] = $expression->getType();
         } else {

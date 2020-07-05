@@ -13,9 +13,11 @@ abstract class Enum extends \MyCLabs\Enum\Enum
     {
         return $this->value === $flag;
     }
+
     /**
      * @param $name
      * @param $arguments
+     * @throws \ReflectionException
      * @return bool
      */
     public function __call($name, $arguments)

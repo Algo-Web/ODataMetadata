@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProper
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -25,11 +26,11 @@ class NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne extend
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
         assert($property instanceof INavigationProperty);
-        if (
-            $property->containsTarget() &&
+        if ($property->containsTarget() &&
             $property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType()) &&
             !$property->Multiplicity()->isZeroOrOne()
         ) {
+            EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
             $context->AddError(
                 $property->Location(),
                 EdmErrorCode::NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne(),

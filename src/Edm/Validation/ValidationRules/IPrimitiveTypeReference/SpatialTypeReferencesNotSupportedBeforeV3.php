@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IPrimitiveTypeRef
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class SpatialTypeReferencesNotSupportedBeforeV3 extends PrimitiveTypeReferenceRu
     {
         assert($type instanceof IPrimitiveTypeReference);
         if ($type->IsSpatial()) {
+            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
             $context->AddError(
                 $type->Location(),
                 EdmErrorCode::SpatialTypeReferencesNotSupportedBeforeV3(),

@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IFunctionImport;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class FunctionImportBindableFunctionImportMustHaveParameters extends FunctionImp
     {
         assert($functionImport instanceof IFunctionImport);
         if ($functionImport->isBindable() && count($functionImport->getParameters()) === 0) {
+            EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
             $context->AddError(
                 $functionImport->Location(),
                 EdmErrorCode::BindableFunctionImportMustHaveParameters(),

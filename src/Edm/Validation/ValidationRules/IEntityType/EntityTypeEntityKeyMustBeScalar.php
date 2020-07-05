@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityType;
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntitySet\EntitySetRule;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
@@ -26,6 +27,7 @@ class EntityTypeEntityKeyMustBeScalar extends EntitySetRule
             foreach ($entityType->Key() as $key) {
                 assert($key instanceof IStructuralProperty);
                 if (!$key->getType()->IsPrimitive() && !$context->checkIsBad($key)) {
+                    EdmUtil::checkArgumentNull($key->Location(), 'key->Location');
                     $context->AddError(
                         $key->Location(),
                         EdmErrorCode::EntityKeyMustBeScalar(),

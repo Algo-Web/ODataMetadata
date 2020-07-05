@@ -13,10 +13,10 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 
 class VisitorOfIProperty extends VisitorOfT
 {
-    protected function VisitT($property, array &$followup, array &$references): iterable
+    protected function VisitT($property, array &$followup, array &$references): ?iterable
     {
         assert($property instanceof IProperty);
-        $errors = null;
+        $errors = [];
 
         switch ($property->getPropertyKind()) {
             case PropertyKind::Structural():
@@ -58,7 +58,7 @@ class VisitorOfIProperty extends VisitorOfT
                 break;
         }
 
-        if ($property->getType() != null) {
+        if (null !== $property->getType()) {
             // Property owns its type reference, so it goes as a followup.
             $followup[] = $property->getType();
         } else {
@@ -71,7 +71,7 @@ class VisitorOfIProperty extends VisitorOfT
             );
         }
 
-        if ($property->getDeclaringType() != null) {
+        if (null !== $property->getDeclaringType()) {
             $references[] = $property->getDeclaringType();
         } else {
             InterfaceValidator::CollectErrors(

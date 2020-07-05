@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntitySet;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -21,12 +22,12 @@ class EntitySetTypeHasNoKeys extends EntitySetRule
     public function __invoke(ValidationContext $context, ?IEdmElement $entitySet)
     {
         assert($entitySet instanceof IEntitySet);
-        if (
-            (
-                $entitySet->getElementType()->Key() === null ||
+        if ((
+            $entitySet->getElementType()->Key() === null ||
                 count($entitySet->getElementType()->Key()) !== 0
-            ) &&
+        ) &&
             !$context->checkIsBad($entitySet->getElementType())) {
+            EdmUtil::checkArgumentNull($entitySet->Location(), 'entitySet->Location');
             $context->AddError(
                 $entitySet->Location(),
                 EdmErrorCode::EntitySetTypeHasNoKeys(),

@@ -13,7 +13,7 @@ class VisitorOfILabeledElement extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): iterable
     {
         assert($expression instanceof ILabeledExpression);
-        if ($expression->getExpressionKind() != null) {
+        if (null !== $expression->getExpressionKind()) {
             $followup[] = $expression->getExpressionKind();
             return null;
         } else {

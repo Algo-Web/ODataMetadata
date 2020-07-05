@@ -13,27 +13,41 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 
 final class VisitorOfIEntityContainerElement extends VisitorOfT
 {
-    protected function VisitT($item, array &$followup, array &$references): iterable
+    protected function VisitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IEntityContainerElement);
         $termKindError = null;
         switch ($item->getContainerElementKind()) {
             case ContainerElementKind::EntitySet():
-                $termKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($item, $item->getContainerElementKind(), 'ContainerElementKind', IEntitySet::class);
+                $termKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                    $item,
+                    $item->getContainerElementKind(),
+                    'ContainerElementKind',
+                    IEntitySet::class
+                );
                 break;
 
             case ContainerElementKind::FunctionImport():
-                $termKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($item, $item->getContainerElementKind(), 'ContainerElementKind', IFunctionImport::class);
+                $termKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                    $item,
+                    $item->getContainerElementKind(),
+                    'ContainerElementKind',
+                    IFunctionImport::class
+                );
                 break;
 
             case ContainerElementKind::None():
                 break;
             default:
-                $termKindError = InterfaceValidator::CreateEnumPropertyOutOfRangeError($item, $item->getContainerElementKind(), 'ContainerElementKind');
+                $termKindError = InterfaceValidator::CreateEnumPropertyOutOfRangeError(
+                    $item,
+                    $item->getContainerElementKind(),
+                    'ContainerElementKind'
+                );
                 break;
         }
 
-        return $termKindError != null ? [ $termKindError ] : null;
+        return null !== $termKindError ? [ $termKindError ] : null;
     }
 
     public function forType(): string

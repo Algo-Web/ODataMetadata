@@ -10,10 +10,10 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IEntitySetReferenceExpression;
 
 class VisitorOfIEntitySetReferenceExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IEntitySetReferenceExpression);
-        if ($expression->getReferencedEntitySet() != null) {
+        if (null !== $expression->getReferencedEntitySet()) {
             $references[] = $expression->getReferencedEntitySet();
             return null;
         } else {

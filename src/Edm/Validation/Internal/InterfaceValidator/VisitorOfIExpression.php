@@ -37,124 +37,67 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IValueTermReferenceExpression;
 
 class VisitorOfIExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected $lookup = [];
+
+    public function __construct()
+    {
+        $this->lookup[ExpressionKind::IntegerConstant()->getValue()]            = IIntegerConstantExpression::class;
+        $this->lookup[ExpressionKind::StringConstant()->getValue()]             = IStringConstantExpression::class;
+        $this->lookup[ExpressionKind::BinaryConstant()->getValue()]             = IBinaryConstantExpression::class;
+        $this->lookup[ExpressionKind::BooleanConstant()->getValue()]            = IBooleanConstantExpression::class;
+        $this->lookup[ExpressionKind::DateTimeConstant()->getValue()]           = IDateTimeConstantExpression::class;
+        $this->lookup[ExpressionKind::DateTimeOffsetConstant()->getValue()]     = IDateTimeOffsetConstantExpression::class;
+        $this->lookup[ExpressionKind::TimeConstant()->getValue()]               = ITimeConstantExpression::class;
+        $this->lookup[ExpressionKind::DecimalConstant()->getValue()]            = IDecimalConstantExpression::class;
+        $this->lookup[ExpressionKind::FloatingConstant()->getValue()]           = IFloatingConstantExpression::class;
+        $this->lookup[ExpressionKind::GuidConstant()->getValue()]               = IGuidConstantExpression::class;
+        $this->lookup[ExpressionKind::Null()->getValue()]                       = INullExpression::class;
+        $this->lookup[ExpressionKind::Record()->getValue()]                     = IRecordExpression::class;
+        $this->lookup[ExpressionKind::Collection()->getValue()]                 = ICollectionExpression::class;
+        $this->lookup[ExpressionKind::Path()->getValue()]                       = IPathExpression::class;
+        $this->lookup[ExpressionKind::ParameterReference()->getValue()]         = IParameterReferenceExpression::class;
+        $this->lookup[ExpressionKind::FunctionReference()->getValue()]          = IFunctionReferenceExpression::class;
+        $this->lookup[ExpressionKind::PropertyReference()->getValue()]          = IPropertyReferenceExpression::class;
+        $this->lookup[ExpressionKind::ValueTermReference()->getValue()]         = IValueTermReferenceExpression::class;
+        $this->lookup[ExpressionKind::EntitySetReference()->getValue()]         = IEntitySetReferenceExpression::class;
+        $this->lookup[ExpressionKind::EnumMemberReference()->getValue()]        = IEnumMemberReferenceExpression::class;
+        $this->lookup[ExpressionKind::If()->getValue()]                         = IIfExpression::class;
+        $this->lookup[ExpressionKind::AssertType()->getValue()]                 = IAssertTypeExpression::class;
+        $this->lookup[ExpressionKind::IsType()->getValue()]                     = IIsTypeExpression::class;
+        $this->lookup[ExpressionKind::FunctionApplication()->getValue()]        = IApplyExpression::class;
+        $this->lookup[ExpressionKind::Labeled()->getValue()]                    = ILabeledExpression::class;
+        $this->lookup[ExpressionKind::LabeledExpressionReference()->getValue()] = ILabeledExpressionReferenceExpression::class;
+    }
+
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IExpression);
-        // Trying to reduce amount of noise in errors - if this expression is bad, then most likely it will have an unacceptable kind, no need to report it.
-        $expressionKindError = null;
-        if (!InterfaceValidator::IsCheckableBad($expression)) {
-            switch ($expression->getExpressionKind()) {
-                case ExpressionKind::IntegerConstant():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IIntegerConstantExpression::class);
-                    break;
-
-                case ExpressionKind::StringConstant():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IStringConstantExpression::class);
-                    break;
-
-                case ExpressionKind::BinaryConstant():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IBinaryConstantExpression::class);
-                    break;
-
-                case ExpressionKind::BooleanConstant():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IBooleanConstantExpression::class);
-                    break;
-
-                case ExpressionKind::DateTimeConstant():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IDateTimeConstantExpression::class);
-                    break;
-
-                case ExpressionKind::DateTimeOffsetConstant():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IDateTimeOffsetConstantExpression::class);
-                    break;
-
-                case ExpressionKind::TimeConstant():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', ITimeConstantExpression::class);
-                    break;
-
-                case ExpressionKind::DecimalConstant():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IDecimalConstantExpression::class);
-                    break;
-
-                case ExpressionKind::FloatingConstant():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IFloatingConstantExpression::class);
-                    break;
-
-                case ExpressionKind::GuidConstant():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IGuidConstantExpression::class);
-                    break;
-
-                case ExpressionKind::Null():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', INullExpression::class);
-                    break;
-
-                case ExpressionKind::Record():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IRecordExpression::class);
-                    break;
-
-                case ExpressionKind::Collection():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', ICollectionExpression::class);
-                    break;
-
-                case ExpressionKind::Path():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IPathExpression::class);
-                    break;
-
-                case ExpressionKind::ParameterReference():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IParameterReferenceExpression::class);
-                    break;
-
-                case ExpressionKind::FunctionReference():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IFunctionReferenceExpression::class);
-                    break;
-
-                case ExpressionKind::PropertyReference():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IPropertyReferenceExpression::class);
-                    break;
-
-                case ExpressionKind::ValueTermReference():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IValueTermReferenceExpression::class);
-                    break;
-
-                case ExpressionKind::EntitySetReference():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IEntitySetReferenceExpression::class);
-                    break;
-
-                case ExpressionKind::EnumMemberReference():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IEnumMemberReferenceExpression::class);
-                    break;
-
-                case ExpressionKind::If():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IIfExpression::class);
-                    break;
-
-                case ExpressionKind::AssertType():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IAssertTypeExpression::class);
-                    break;
-
-                case ExpressionKind::IsType():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IIsTypeExpression::class);
-                    break;
-
-                case ExpressionKind::FunctionApplication():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', IApplyExpression::class);
-                    break;
-
-                case ExpressionKind::Labeled():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', ILabeledExpression::class);
-                    break;
-
-                case ExpressionKind::LabeledExpressionReference():
-                    $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError($expression, $expression->getExpressionKind(), 'ExpressionKind', ILabeledExpressionReferenceExpression::class);
-                    break;
-
-                default:
-                    $expressionKindError = InterfaceValidator::CreateInterfaceKindValueUnexpectedError($expression, $expression->getExpressionKind()->getKey(), 'ExpressionKind');
-                    break;
-            }
+        // Trying to reduce amount of noise in errors - if this expression is bad, then most likely it will have an
+        // unacceptable kind, no need to report it.
+        if (InterfaceValidator::IsCheckableBad($expression)) {
+            return null;
         }
 
-        return $expressionKindError != null ? [ $expressionKindError ] : null;
+        $expressionKindError = null;
+        $kind                = $expression->getExpressionKind();
+
+        if (!array_key_exists($kind->getValue(), $this->lookup)) {
+            $expressionKindError = InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
+                $expression,
+                $expression->getExpressionKind()->getKey(),
+                'ExpressionKind'
+            );
+        } else {
+            $interface           = $this->lookup[$kind->getValue()];
+            $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                $expression,
+                $kind,
+                'ExpressionKind',
+                $interface
+            );
+        }
+
+        return [$expressionKindError];
     }
 
     public function forType(): string

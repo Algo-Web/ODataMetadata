@@ -67,8 +67,14 @@ class Version
 
     private static function fillVersions()
     {
-        if (null == self::$fixedVersion) {
-            self::$fixedVersion = [1 => new self(1, 0), 11 => new self(1, 1), 12 => new self(1, 2),2 => new self(2, 0), 3 => new self(3, 0)];
+        if (null === self::$fixedVersion) {
+            self::$fixedVersion = [
+                1 => new self(1, 0),
+                11 => new self(1, 1),
+                12 => new self(1, 2),
+                2 => new self(2, 0),
+                3 => new self(3, 0)
+            ];
         }
     }
 

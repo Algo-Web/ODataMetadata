@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityContainerE
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainerElement;
 use AlgoWeb\ODataMetadata\StringConst;
@@ -22,6 +23,7 @@ class EntityContainerElementMustNotHaveKindOfNone extends EntityContainerRule
     {
         assert($element instanceof IEntityContainerElement);
         if ($element->getContainerElementKind()->isNone() && !$context->checkIsBad($element)) {
+            EdmUtil::checkArgumentNull($element->Location(), 'element->Location');
             $context->AddError(
                 $element->Location(),
                 EdmErrorCode::EntityContainerElementMustNotHaveKindOfNone(),

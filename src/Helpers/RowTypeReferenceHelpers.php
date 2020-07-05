@@ -21,9 +21,7 @@ trait RowTypeReferenceHelpers
      */
     public function RowDefinition(): IRowType
     {
-        /**
-         * @var IRowTypeReference $this
-         */
+        /** @var IRowTypeReference $this */
         $definition = $this->getDefinition();
         assert($definition instanceof IRowType, 'Row Type Referenes should always wrap a Row Type');
         return $definition;

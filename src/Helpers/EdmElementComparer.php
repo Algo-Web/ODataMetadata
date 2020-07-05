@@ -32,17 +32,22 @@ abstract class EdmElementComparer
     /**
      * Returns true if the compared type is semantically equivalent to this type.
      *
-     * @param  IEdmElement $thisType  type being compared
-     * @param  IEdmElement $otherType type being compared to
-     * @return bool        equivalence of the two types
+     * @param  IEdmElement|null $thisType  type being compared
+     * @param  IEdmElement|null $otherType type being compared to
+     * @return bool             equivalence of the two types
      */
-    public static function isEquivalentTo(IEdmElement $thisType, IEdmElement $otherType): bool
+    public static function isEquivalentTo(?IEdmElement $thisType, ?IEdmElement $otherType): bool
     {
+        if (null === $thisType || null === $otherType) {
+            return false;
+        }
+
         $equivalent = true;
         $interfaces = class_implements($thisType);
         $interfaces = array_filter($interfaces, function ($value) {
             return false !== strpos($value, 'AlgoWeb\\ODataMetadata');
         });
+
         foreach ($interfaces as $rawInterface) {
             $bitz       = explode('\\', $rawInterface);
             $interface  = end($bitz);
@@ -72,10 +77,6 @@ abstract class EdmElementComparer
             return true;
         }
 
-        if ($thisType === null || $otherType === null) {
-            return false;
-        }
-
         if (!$thisType->getTypeKind()->equals($otherType->getTypeKind())) {
             return false;
         }
@@ -103,10 +104,6 @@ abstract class EdmElementComparer
             return true;
         }
 
-        if ($thisType === null || $otherType === null) {
-            return false;
-        }
-
         $typeKind = $thisType->TypeKind();
         if (!$typeKind->equals($otherType->TypeKind())) {
             return false;
@@ -123,12 +120,16 @@ abstract class EdmElementComparer
      * Returns true if function signatures are semantically equivalent.
      * Signature includes function name (INamedElement) and its parameter types.
      *
-     * @param  IFunctionBase $thisFunction  reference to the calling object
-     * @param  IFunctionBase $otherFunction function being compared to
-     * @return bool          equivalence of signatures of the two functions
+     * @param  IFunctionBase|null $thisFunction  reference to the calling object
+     * @param  IFunctionBase|null $otherFunction function being compared to
+     * @return bool               equivalence of signatures of the two functions
      */
-    public static function isFunctionSignatureEquivalentTo(IFunctionBase $thisFunction, IFunctionBase $otherFunction): bool
+    public static function isFunctionSignatureEquivalentTo(?IFunctionBase $thisFunction, ?IFunctionBase $otherFunction): bool
     {
+        if (null === $thisFunction || null === $otherFunction) {
+            return false;
+        }
+
         if ($thisFunction === $otherFunction) {
             return true;
         }
@@ -145,8 +146,7 @@ abstract class EdmElementComparer
         $otherTypeKeys = array_keys($otherFunction->getParameters());
         $keyCount      =  count($thisTypeKeys);
         for ($i = 0; $i < $keyCount; ++$i) {
-            if (
-            !self::isEquivalentTo(
+            if (!self::isEquivalentTo(
                 $thisFunction->getParameters()[$thisTypeKeys[$i]],
                 $otherFunction->getParameters()[$otherTypeKeys[$i]]
             )
@@ -169,10 +169,6 @@ abstract class EdmElementComparer
     {
         if ($thisParameter === $otherParameter) {
             return true;
-        }
-
-        if ($thisParameter === null || $otherParameter === null) {
-            return false;
         }
 
         return $thisParameter->getName() == $otherParameter->getName() &&
@@ -213,8 +209,7 @@ abstract class EdmElementComparer
         $otherTypeKeys = array_keys($otherType->getDeclaredProperties());
         $keyCount      =  count($thisTypeKeys);
         for ($i = 0; $i < $keyCount; ++$i) {
-            if (
-            !self::isEquivalentTo(
+            if (!self::isEquivalentTo(
                 $thisType->getDeclaredProperties()[$thisTypeKeys[$i]],
                 $thisType->getDeclaredProperties()[$otherTypeKeys[$i]]
             )
@@ -231,10 +226,6 @@ abstract class EdmElementComparer
             return true;
         }
 
-        if ($thisProp == null || $otherProp == null) {
-            return false;
-        }
-
         return $thisProp->getName() == $otherProp->getName() &&
             self::isEquivalentTo($thisProp->getType(), $otherProp->getType());
     }
@@ -243,21 +234,18 @@ abstract class EdmElementComparer
     protected static function isIPrimitiveTypeReferenceEquivalentTo(IPrimitiveTypeReference $thisType, IPrimitiveTypeReference $otherType): bool
     {
         $thisTypePrimitiveKind = $thisType->PrimitiveKind();
-        if ($thisTypePrimitiveKind->equals($otherType->PrimitiveKind())) {
+        if (!$thisTypePrimitiveKind->equals($otherType->PrimitiveKind())) {
             return false;
         }
 
-        if (
-            $thisTypePrimitiveKind->isAnyOf(
-                [
-                    PrimitiveTypeKind::Binary(),
-                    PrimitiveTypeKind::Decimal(),
-                    PrimitiveTypeKind::String(),
-                    PrimitiveTypeKind::Time(),
-                    PrimitiveTypeKind::DateTime(),
-                    PrimitiveTypeKind::DateTimeOffset()
-                ]
-            ) ||
+        if ($thisTypePrimitiveKind->isAnyOf(
+            PrimitiveTypeKind::Binary(),
+            PrimitiveTypeKind::Decimal(),
+            PrimitiveTypeKind::String(),
+            PrimitiveTypeKind::Time(),
+            PrimitiveTypeKind::DateTime(),
+            PrimitiveTypeKind::DateTimeOffset()
+        ) ||
             $thisTypePrimitiveKind->IsSpatial()) {
             return $thisType->getNullable() === $otherType->getNullable() &&
                 self::isEquivalentTo($thisType->getDefinition(), $otherType->getDefinition());

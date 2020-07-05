@@ -10,10 +10,10 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IPropertyValue;
 
 class VisitorOfIPropertyValue extends VisitorOfT
 {
-    protected function VisitT($value, array &$followup, array &$references): iterable
+    protected function VisitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof IPropertyValue);
-        return $value->getName() == null ?
+        return null === $value->getName() ?
             [ InterfaceValidator::CreatePropertyMustNotBeNullError($value, 'Name') ]
             :
             null;

@@ -21,9 +21,7 @@ trait VisitTypeReferences
 {
     public function visitTypeReference(ITypeReference $reference): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         if (null === $reference->getDefinition()) {
             throw new InvalidOperationException(StringConst::UnknownEnumVal_TypeKind('null'));
         }
@@ -54,16 +52,18 @@ trait VisitTypeReferences
                 $this->ProcessTypeReference($reference);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_TypeKind($reference->getDefinition()->getTypeKind()->getKey()));
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_TypeKind(
+                    $reference->getDefinition()->getTypeKind()->getKey()
+                )
+                );
         }
     }
 
 
     public function visitPrimitiveTypeReference(IPrimitiveTypeReference $reference): void
     {
-        /*
-         * @var EdmModelVisitor $this
-         */
+        /** @var EdmModelVisitor $this */
         switch ($reference->PrimitiveKind()) {
             case PrimitiveTypeKind::Binary():
                 $this->processBinaryTypeReference($reference->AsBinary());
@@ -111,7 +111,11 @@ trait VisitTypeReferences
                 $this->processPrimitiveTypeReference($reference);
                 break;
             default:
-                throw new InvalidOperationException(StringConst::UnknownEnumVal_PrimitiveKind($reference->PrimitiveKind()->getKey()));
+                throw new InvalidOperationException(
+                    StringConst::UnknownEnumVal_PrimitiveKind(
+                    $reference->PrimitiveKind()->getKey()
+                )
+                );
         }
     }
 }

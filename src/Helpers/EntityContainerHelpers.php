@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainerElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
+use AlgoWeb\ODataMetadata\Interfaces\Values\IDelayedValue;
 
 /**
  * Trait EntityContainerHelpers.
@@ -38,4 +39,9 @@ trait EntityContainerHelpers
             return $item instanceof IFunctionImport;
         });
     }
+
+    /**
+     * @return IDelayedValue[] gets the values stored in this collection
+     */
+    abstract public function getElements(): array;
 }

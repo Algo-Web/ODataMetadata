@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Internal;
 
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
@@ -53,17 +54,39 @@ abstract class RegistrationHelper
                 break;
             case SchemaElementKind::TypeDefinition():
                 assert($element instanceof ISchemaType);
-                self::AddElement($element, $qualifiedName, $schemaTypeDictionary, [self::class, 'CreateAmbiguousTypeBinding']);
+                self::AddElement(
+                    $element,
+                    $qualifiedName,
+                    $schemaTypeDictionary,
+                    [self::class, 'CreateAmbiguousTypeBinding']
+                );
                 break;
             case SchemaElementKind::ValueTerm():
                 assert($element instanceof IValueTerm);
-                self::AddElement($element, $qualifiedName, $valueTermDictionary, [self::class, 'CreateAmbiguousValueTermBinding()']);
+                self::AddElement(
+                    $element,
+                    $qualifiedName,
+                    $valueTermDictionary,
+                    [self::class, 'CreateAmbiguousValueTermBinding()']
+                );
                 break;
             case SchemaElementKind::EntityContainer():
                 assert($element instanceof IEntityContainer);
-                // Add EntityContainers to the dictionary twice to maintian backwards compat with Edms that did not consider EntityContainers to be schema elements.
-                self::AddElement($element, $qualifiedName, $containerDictionary, [self::class, 'CreateAmbiguousEntityContainerBinding']);
-                self::AddElement($element, $element->getName(), $containerDictionary, [self::class, 'CreateAmbiguousEntityContainerBinding']);
+                EdmUtil::checkArgumentNull($element->getName(), 'element->getName');
+                // Add EntityContainers to the dictionary twice to maintain backwards compat with Edms that did not
+                // consider EntityContainers to be schema elements.
+                self::AddElement(
+                    $element,
+                    $qualifiedName,
+                    $containerDictionary,
+                    [self::class, 'CreateAmbiguousEntityContainerBinding']
+                );
+                self::AddElement(
+                    $element,
+                    $element->getName(),
+                    $containerDictionary,
+                    [self::class, 'CreateAmbiguousEntityContainerBinding']
+                );
                 break;
             case SchemaElementKind::None():
                 throw new InvalidOperationException(StringConst::EdmModel_CannotUseElementWithTypeNone());
@@ -91,7 +114,7 @@ abstract class RegistrationHelper
      * @param array<string, IEdmElement>                    $elementDictionary
      * @param callable(IEdmElement,IEdmElement):IEdmElement $ambiguityCreator
      */
-    public static function AddElement($element, string $name, array $elementDictionary, callable $ambiguityCreator)
+    public static function AddElement($element, string $name, array &$elementDictionary, callable $ambiguityCreator)
     {
         if (array_key_exists($name, $elementDictionary)) {
             $preexisting              = $elementDictionary[$name];
@@ -106,7 +129,7 @@ abstract class RegistrationHelper
      * @param string                $name
      * @param array<string, object> $functionListDictionary
      */
-    public static function AddFunction(IFunctionBase $function, string $name, array $functionListDictionary)
+    public static function AddFunction(IFunctionBase $function, string $name, array &$functionListDictionary)
     {
         if (array_key_exists($name, $functionListDictionary)) {
             $functionList = $functionListDictionary[$name];
@@ -148,8 +171,10 @@ abstract class RegistrationHelper
         return new AmbiguousEntitySetBinding($first, $second);
     }
 
-    public static function CreateAmbiguousEntityContainerBinding(IEntityContainer $first, IEntityContainer $second): IEntityContainer
-    {
+    public static function CreateAmbiguousEntityContainerBinding(
+        IEntityContainer $first,
+        IEntityContainer $second
+    ): IEntityContainer {
         if ($first instanceof AmbiguousEntityContainerBinding) {
             $first->AddBinding($second);
             return $first;

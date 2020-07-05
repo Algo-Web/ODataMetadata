@@ -24,14 +24,13 @@ trait EdmElementHelpers
      */
     public function Location(): ?ILocation
     {
-        return $this instanceof ILocatable && $this->getLocation() !== null ? $this->getLocation() : new ObjectLocation($this);
+        return $this instanceof ILocatable && null !== $this->getLocation()
+            ? $this->getLocation() : new ObjectLocation($this);
     }
 
     public function getErrors(): iterable
     {
-        /*
-         * @var IEdmElement $this
-         */
+        /** @var IEdmElement $this */
         return InterfaceValidator::GetStructuralErrors($this);
     }
 }
