@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
 
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Helpers\FunctionImportHelpers;
 use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
@@ -87,6 +88,11 @@ class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
     {
         /** @var IFunction[] $bindings */
         $bindings = $this->getBindings();
-        return count($bindings) === 0 ? '' : $bindings[0]->getNamespace();
+        if (0 === count($bindings)) {
+            return '';
+        }
+        EdmUtil::checkArgumentNull($bindings[0]->getNamespace(), 'bindings[0]->getNamespace');
+
+        return $bindings[0]->getNamespace();
     }
 }

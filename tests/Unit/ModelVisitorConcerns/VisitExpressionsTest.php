@@ -429,6 +429,7 @@ class VisitExpressionsTest extends TestCase
         $func = m::mock(IFunction::class)->makePartial();
         $func->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::None());
         $func->shouldReceive('FullName')->andReturn('FullName');
+        $func->shouldReceive('getNamespace')->andReturn('namespace');
 
         $expression = m::mock(IExpression::class . ', ' . IFunctionReferenceExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::FunctionReference());

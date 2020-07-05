@@ -142,6 +142,7 @@ class EdmUtil
         $parameterCount = count($function->getParameters());
         $s              = '';
         if ($function instanceof UnresolvedFunction) {
+            EdmUtil::checkArgumentNull($function->getNamespace(), 'function->getNamespace');
             $s .= $function->getNamespace();
             $s .= '/';
             $s .= $function->getName();
@@ -151,6 +152,7 @@ class EdmUtil
 
         // If we have a function (rather than a function import), we want the parameterized name to include the namespace
         if ($function instanceof ISchemaElement) {
+            EdmUtil::checkArgumentNull($function->getNamespace(), 'function->getNamespace');
             $s .= $function->getNamespace();
             $s .= '.';
         }
