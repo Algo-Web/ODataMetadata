@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library\Values;
 
 use AlgoWeb\ODataMetadata\Edm\Internal\Cache;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IPropertyValue;
@@ -82,6 +83,7 @@ class EdmStructuredValue extends EdmValue implements IStructuredValue
         $propertiesDictionary = [];
 
         foreach ($this->propertyValues as $propertyValue) {
+            EdmUtil::checkArgumentNull($propertyValue->getName(), 'propertyValue->getName');
             $propertiesDictionary[$propertyValue->getName()] = $propertyValue;
         }
 

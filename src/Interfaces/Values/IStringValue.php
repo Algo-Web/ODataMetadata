@@ -15,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 interface IStringValue extends IPrimitiveValue
 {
     /**
-     * @return string gets the definition of this string value
+     * @return string|null gets the definition of this string value
      */
-    public function getValue(): string;
+    public function getValue(): ?string;
 }

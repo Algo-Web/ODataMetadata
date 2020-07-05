@@ -5,6 +5,7 @@ declare(strict_types=1);
 
 namespace AlgoWeb\ODataMetadata\Csdl\Internal;
 
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
 use AlgoWeb\ODataMetadata\Exception\NotSupportedException;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IBinaryValue;
@@ -28,6 +29,10 @@ abstract class EdmValueWriter
 
     public static function PrimitiveValueAsXml(IPrimitiveValue $v): string
     {
+        if (method_exists($v, 'getValue')) {
+            EdmUtil::checkArgumentNull($v->getValue(), 'v->getValue');
+        }
+
         switch ($v->getValueKind()) {
             case ValueKind::Boolean():
                 assert($v instanceof IBooleanValue);
@@ -43,13 +48,13 @@ abstract class EdmValueWriter
                 return self::GuidAsXml($v->getValue());
             case ValueKind::Binary():
                 assert($v instanceof IBinaryValue);
-                return self::BinaryAsXml($v->getValue());
+                return self::BinaryAsXml(/** @scrutinizer ignore-type */$v->getValue());
             case ValueKind::Decimal():
                 assert($v instanceof IDecimalValue);
                 return self::DecimalAsXml($v->getValue());
             case ValueKind::String():
                 assert($v instanceof IStringValue);
-                return self::StringAsXml($v->getValue());
+                return self::StringAsXml(/** @scrutinizer ignore-type */$v->getValue());
             case ValueKind::DateTime():
                 assert($v instanceof IDateTimeValue);
                 return self::DateTimeAsXml($v->getValue());

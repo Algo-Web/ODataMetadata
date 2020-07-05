@@ -729,7 +729,7 @@ abstract class ExpressionTypeChecker
             return false;
         }
 
-
+        EdmUtil::checkArgumentNull($expression->getValue(), 'expression->getValue');
         $stringType = $type->AsString();
         if (null !== $stringType->getMaxLength() && mb_strlen($expression->getValue()) > $stringType->getMaxLength()) {
             $discoveredErrors = [
@@ -850,6 +850,7 @@ abstract class ExpressionTypeChecker
             return false;
         }
 
+        EdmUtil::checkArgumentNull($expression->getValue(), 'expression->getValue');
         $binaryType = $type->AsBinary();
         if (null !== $binaryType->getMaxLength() && count($expression->getValue()) > $binaryType->getMaxLength()) {
             $discoveredErrors = [
