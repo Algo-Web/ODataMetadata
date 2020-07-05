@@ -998,7 +998,7 @@ abstract class ExpressionTypeChecker
             (
                 isset($promotionMap[$startingKind->getValue()]) &&
                 isset($promotionMap[$startingKind->getValue()][$target->getValue()]) &&
-                $promotionMap[$startingKind->geCreateInterfaceKindValueUnexpectedErrortValue()][$target->getValue()]
+                $promotionMap[$startingKind->getValue()][$target->getValue()]
             );
     }
 }
