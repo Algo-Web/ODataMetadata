@@ -124,10 +124,9 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         $end1 = new EdmNavigationProperty(
             $partnerInfo->target,
             $propertyInfo->name,
-            self::CreateNavigationPropertyType(
+            self::createNavigationPropertyType(
                 $propertyInfo->target,
-                $propertyInfo->targetMultiplicity,
-                'propertyInfo.TargetMultiplicity'
+                $propertyInfo->targetMultiplicity
             ),
             $propertyInfo->dependentProperties,
             $propertyInfo->containsTarget,
@@ -137,10 +136,9 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         $end2 = new EdmNavigationProperty(
             $propertyInfo->target,
             $partnerInfo->name,
-            self::CreateNavigationPropertyType(
+            self::createNavigationPropertyType(
                 $partnerInfo->target,
-                $partnerInfo->targetMultiplicity,
-                'partnerInfo.TargetMultiplicity'
+                $partnerInfo->targetMultiplicity
             ),
             $partnerInfo->dependentProperties,
             $partnerInfo->containsTarget,
@@ -217,16 +215,18 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         return $end1;
     }
 
-    private static function GetEntityType(ITypeReference $type): IEntityType
+    private static function GetEntityType(ITypeReference $type): ?IEntityType
     {
         $entityType = null;
         if ($type->IsEntity()) {
+            /** @var IEntityType $entityType */
             $entityType = $type->getDefinition();
         } elseif ($type->IsCollection()) {
             $collectionDef = $type->getDefinition();
             assert($collectionDef instanceof ICollectionType);
             $type = $collectionDef->getElementType();
             if ($type->IsEntity()) {
+                /** @var IEntityType $entityType */
                 $entityType = $type->getDefinition();
                 assert($entityType instanceof IEntityType);
             }
@@ -235,10 +235,9 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         return $entityType;
     }
 
-    private static function CreateNavigationPropertyType(
+    private static function createNavigationPropertyType(
         IEntityType $entityType,
-        Multiplicity $multiplicity,
-        string $multiplicityParameterName
+        Multiplicity $multiplicity
     ): ITypeReference {
         switch ($multiplicity) {
             case Multiplicity::ZeroOrOne():
@@ -252,7 +251,6 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
 
             default:
                 throw new ArgumentOutOfRangeException(
-                    $multiplicityParameterName,
                     StringConst::UnknownEnumVal_Multiplicity($multiplicity->getKey())
                 );
         }
