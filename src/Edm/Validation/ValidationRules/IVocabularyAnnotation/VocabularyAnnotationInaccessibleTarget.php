@@ -62,6 +62,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         }
         $entitySet = $target;
         if ($entitySet instanceof IEntitySet) {
+            EdmUtil::checkArgumentNull($entitySet->getName(), 'entitySet->getName');
             $container = $entitySet->getContainer();
             if ($container instanceof IEntityContainer) {
                 $foundTarget = ($container->findEntitySet($entitySet->getName()) != null);
@@ -119,6 +120,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
                 case $declaringFunction instanceof IFunctionImport:
                     $container = $declaringFunction->getContainer();
                     assert($container instanceof IEntityContainer);
+                    EdmUtil::checkArgumentNull($declaringFunction->getName(), 'declaringFunction->getName');
                     $functions = $container->findFunctionImports($declaringFunction->getName());
                     break;
                 default:
