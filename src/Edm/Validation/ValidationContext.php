@@ -42,7 +42,8 @@ final class ValidationContext
     {
         assert(
             Asserts::assertSignatureMatches(
-                function (IEdmElement $one): bool {
+                function (/** @scrutinizer ignore-unused */IEdmElement $one): bool {
+                    return false;
                 },
                 $isBad,
                 '$isBad'

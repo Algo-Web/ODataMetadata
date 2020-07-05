@@ -91,13 +91,13 @@ trait ModelHelpers
     {
         $model = $this;
         Asserts::assertSignatureMatches(
-            function (IModel $model, string $qualifiedName) {
+            function (/** @scrutinizer ignore-unused */IModel $model, /** @scrutinizer ignore-unused */string $qualifiedName) {
             },
             $finder,
             '$finder'
         );
         Asserts::assertSignatureMatches(
-            function ($candidate, $fromReference) {
+            function (/** @scrutinizer ignore-unused */$candidate, /** @scrutinizer ignore-unused */$fromReference) {
             },
             $ambiguousCreator,
             '$ambiguousCreator'
