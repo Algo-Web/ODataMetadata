@@ -21,6 +21,9 @@ class BadElement implements IEdmElement, ICheckable, IVocabularyAnnotatable
     use EdmElementHelpers;
     use VocabularyAnnotatableHelpers;
 
+    /** @var EdmError[]|iterable */
+    private $errors;
+
     /**
      * BadElement constructor.
      * @param EdmError[] $errors

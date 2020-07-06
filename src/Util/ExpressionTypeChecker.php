@@ -190,11 +190,11 @@ abstract class ExpressionTypeChecker
                     $function = $applyExpression->getAppliedFunction();
                     if (null !== $function && $function instanceof IFunctionBase) {
                         EdmUtil::checkArgumentNull($function->getReturnType(), 'function->getReturnType');
-                        EdmUtil::checkArgumentNull($expression->Location(), 'expression->Location');
+                        EdmUtil::checkArgumentNull($applyExpression->Location(), 'expression->Location');
                         return self::TestTypeReferenceMatch(
                             $function->getReturnType(),
                             $type,
-                            $expression->Location(),
+                            $applyExpression->Location(),
                             $matchExactly,
                             $discoveredErrors
                         );
@@ -998,7 +998,7 @@ abstract class ExpressionTypeChecker
             (
                 isset($promotionMap[$startingKind->getValue()]) &&
                 isset($promotionMap[$startingKind->getValue()][$target->getValue()]) &&
-                $promotionMap[$startingKind->geCreateInterfaceKindValueUnexpectedErrortValue()][$target->getValue()]
+                $promotionMap[$startingKind->getValue()][$target->getValue()]
             );
     }
 }

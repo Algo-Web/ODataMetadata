@@ -15,74 +15,20 @@ use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 final class VisitorOfISchemaElement extends VisitorOfT
 {
+    protected $lookup = [];
+
+    public function __construct()
+    {
+        $this->lookup[SchemaElementKind::TypeDefinition()->getKey()] = ISchemaType::class;
+        $this->lookup[SchemaElementKind::Function()->getKey()] = IFunction::class;
+        $this->lookup[SchemaElementKind::ValueTerm()->getKey()] = IValueTerm::class;
+        $this->lookup[SchemaElementKind::EntityContainer()->getKey()] = IEntityContainer::class;
+    }
+
     protected function VisitT($item, array &$followup, array &$references): iterable
     {
         assert($item instanceof ISchemaElement);
         $errors = [];
-
-        switch ($item->getSchemaElementKind()) {
-            case SchemaElementKind::TypeDefinition():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $item,
-                        $item->getSchemaElementKind(),
-                        'SchemaElementKind',
-                        ISchemaType::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case SchemaElementKind::Function():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $item,
-                        $item->getSchemaElementKind(),
-                        'SchemaElementKind',
-                        IFunction::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case SchemaElementKind::ValueTerm():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $item,
-                        $item->getSchemaElementKind(),
-                        'SchemaElementKind',
-                        IValueTerm::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case SchemaElementKind::EntityContainer():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $item,
-                        $item->getSchemaElementKind(),
-                        'SchemaElementKind',
-                        IEntityContainer::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case SchemaElementKind::None():
-                break;
-
-            default:
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CreateEnumPropertyOutOfRangeError(
-                        $item,
-                        $item->getSchemaElementKind(),
-                        'SchemaElementKind'
-                    ),
-                    $errors
-                );
-                break;
-        }
 
         if (null === $item->getNamespace()) {
             InterfaceValidator::CollectErrors(
@@ -92,6 +38,37 @@ final class VisitorOfISchemaElement extends VisitorOfT
                 ),
                 $errors
             );
+        }
+
+        $kind = $item->getSchemaElementKind();
+        $key = $kind->getKey();
+
+        if (array_key_exists($key, $this->lookup)) {
+            InterfaceValidator::CollectErrors(
+                InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                    $item,
+                    $item->getSchemaElementKind(),
+                    'SchemaElementKind',
+                    $this->lookup[$key]
+                ),
+                $errors
+            );
+        } else {
+            switch ($kind) {
+                case SchemaElementKind::None():
+                    break;
+
+                default:
+                    InterfaceValidator::CollectErrors(
+                        InterfaceValidator::CreateEnumPropertyOutOfRangeError(
+                            $item,
+                            $item->getSchemaElementKind(),
+                            'SchemaElementKind'
+                        ),
+                        $errors
+                    );
+                    break;
+            }
         }
 
         return $errors ?? [];

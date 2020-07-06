@@ -33,8 +33,9 @@ class EdmUtil
     //    characters that Char.GetUnicodeCategory says are in Nl and Cf but which the RegEx does not accept (and which C# does allow).
     //
     // we could create the StartCharacterExp and OtherCharacterExp dynamically to force inclusion of the missing Nl and Cf characters...
-    private const StartCharacterExp = "[\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Lm}\p{Nl}]";
-    private const OtherCharacterExp = "[\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Lm}\p{Nl}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Cf}]";
+    // initial character must be a unicode char - lowercase, uppercase, titlecase, other, modifier, or letter number
+    private const StartCharacterExp = '[\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Lm}\p{Nl}]';
+    private const OtherCharacterExp = '[\p{Ll}\p{Lu}\p{Lt}\p{Lo}\p{Lm}\p{Nl}\p{Mn}\p{Mc}\p{Nd}\p{Pc}\p{Cf}]';
 
     //private const NameExp = self::StartCharacterExp . self::OtherCharacterExp . "{0,}";
 
@@ -117,14 +118,14 @@ class EdmUtil
                     $declaringSchemaType = $element->getDeclaringType();
                     if ($declaringSchemaType instanceof ISchemaType) {
                         $propertyOwnerName = self::FullyQualifiedName($declaringSchemaType);
-                        if ($propertyOwnerName != null) {
+                        if (null !== $propertyOwnerName) {
                             return $propertyOwnerName . '/' . $element->getName();
                         }
                     }
                 } else {
                     if ($element instanceof IFunctionParameter) {
                         $parameterOwnerName = self::FullyQualifiedName($element->getDeclaringFunction());
-                        if ($parameterOwnerName != null) {
+                        if (null !== $parameterOwnerName) {
                             return $parameterOwnerName . '/' . $element->getName();
                         }
                     }
@@ -178,17 +179,19 @@ class EdmUtil
         $s .= ')';
         return $s;
     }
+
     public static function IsValidDottedName(string $name): bool
     {
         // Each part of the dotted name needs to be a valid name.
         return array_reduce(explode('.', $name), function (bool $carry, string $part): bool {
             $carry &= self::IsValidUndottedName($part);
-            return $carry;
+            return boolval($carry);
         }, true);
     }
+
     public static function IsValidUndottedName(string $name): bool
     {
-        $nameExp = '^' . self::StartCharacterExp . self::OtherCharacterExp . '{0,}';
+        $nameExp = '/^' . self::StartCharacterExp . self::OtherCharacterExp . '{0,}/';
         return !empty($name) && preg_match($nameExp, $name);
     }
 }

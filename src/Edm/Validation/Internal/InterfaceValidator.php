@@ -13,6 +13,7 @@ use AlgoWeb\ODataMetadata\Edm\Validation\ObjectLocation;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRule;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRuleSet;
+use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\ICheckable;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
@@ -372,6 +373,7 @@ class InterfaceValidator
         if ($this->validateDirectValueAnnotations) {
             if ($item instanceof IEdmElement) {
                 $element = $item;
+                EdmUtil::checkArgumentNull($this->model, 'this->model');
                 foreach ($this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element) as $annotation) {
                     assert($annotation instanceof IDirectValueAnnotation);
                     $followupErrors = array_merge(
