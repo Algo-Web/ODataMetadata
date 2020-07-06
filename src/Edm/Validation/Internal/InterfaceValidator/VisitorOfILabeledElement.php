@@ -10,15 +10,11 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\ILabeledExpression;
 
 class VisitorOfILabeledElement extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): iterable
+    protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof ILabeledExpression);
-        if (null !== $expression->getExpressionKind()) {
-            $followup[] = $expression->getExpressionKind();
-            return null;
-        } else {
-            return [InterfaceValidator::CreatePropertyMustNotBeNullError($expression, 'Expression') ];
-        }
+        $followup[] = $expression->getExpressionKind();
+        return null;
     }
 
     public function forType(): string
