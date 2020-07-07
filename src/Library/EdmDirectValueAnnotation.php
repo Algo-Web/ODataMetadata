@@ -51,6 +51,6 @@ class EdmDirectValueAnnotation extends EdmNamedElement implements IDirectValueAn
 
     public function getErrors(): iterable
     {
-        // TODO: Implement getErrors() method.
+        return [];
     }
 }
