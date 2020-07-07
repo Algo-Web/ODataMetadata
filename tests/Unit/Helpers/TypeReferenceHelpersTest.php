@@ -5,16 +5,28 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Helpers;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
+use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
+use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Interfaces\ICheckable;
+use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
+use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\IRowType;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
+use AlgoWeb\ODataMetadata\Library\EdmCollectionTypeReference;
+use AlgoWeb\ODataMetadata\Library\EdmComplexTypeReference;
+use AlgoWeb\ODataMetadata\Library\EdmEntityReferenceTypeReference;
+use AlgoWeb\ODataMetadata\Library\EdmEntityTypeReference;
+use AlgoWeb\ODataMetadata\Library\EdmEnumTypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmPrimitiveTypeReference;
 use AlgoWeb\ODataMetadata\Library\EdmRowTypeReference;
+use AlgoWeb\ODataMetadata\Library\EdmStringTypeReference;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadBinaryTypeReference;
+use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadComplexTypeReference;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadDecimalTypeReference;
+use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadEntityTypeReference;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadNamedStructuredType;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadPrimitiveTypeReference;
 use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadSpatialTypeReference;
@@ -398,5 +410,216 @@ class TypeReferenceHelpersTest extends TestCase
         $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
         $this->assertEquals(230, $error->getErrorCode()->getValue());
+    }
+
+    public function testAsComplexBad()
+    {
+        $type = PrimitiveTypeKind::DateTime();
+
+        $typeKind = TypeKind::Primitive();
+
+        $def = m::mock(IRowType::class . ', ' . IPrimitiveType::class);
+        $def->shouldReceive('getTypeKind')->andReturn($typeKind);
+        $def->shouldReceive('getPrimitiveKind')->andReturn($type);
+        $def->shouldReceive('getErrors')->andReturn([])->once();
+        $def->shouldReceive('FullName')->andReturn('FullName');
+
+        $foo = new EdmRowTypeReference($def, false);
+
+        $actual = $foo->AsComplex();
+        $this->assertTrue($actual instanceof BadComplexTypeReference);
+        $errors = $actual->getErrors();
+        $this->assertEquals(1, count($errors));
+
+        $errorCode = EdmErrorCode::TypeSemanticsCouldNotConvertTypeReference();
+        $expected = 'The type \'FullName\' could not be converted to be a \'Complex\' type.';
+
+        /** @var EdmError $error */
+        $error = $errors[0];
+        $this->assertEquals($errorCode, $error->getErrorCode());
+        $this->assertEquals($expected, $error->getErrorMessage());
+    }
+
+    public function testAsCollectionBad()
+    {
+        $type = PrimitiveTypeKind::DateTime();
+
+        $typeKind = TypeKind::Primitive();
+
+        $def = m::mock(IRowType::class . ', ' . IPrimitiveType::class);
+        $def->shouldReceive('getTypeKind')->andReturn($typeKind);
+        $def->shouldReceive('getPrimitiveKind')->andReturn($type);
+        $def->shouldReceive('getErrors')->andReturn([])->once();
+        $def->shouldReceive('FullName')->andReturn('FullName');
+
+        $foo = new EdmRowTypeReference($def, false);
+
+        $actual = $foo->AsCollection();
+        $this->assertTrue($actual instanceof EdmCollectionTypeReference, get_class($actual));
+        $errors = $actual->getErrors();
+        $this->assertEquals(0, count($errors));
+    }
+
+    public function testAsRowGood()
+    {
+        $type = PrimitiveTypeKind::DateTime();
+
+        $typeKind = TypeKind::Primitive();
+
+        $def = m::mock(IRowType::class . ', ' . IPrimitiveType::class);
+        $def->shouldReceive('getTypeKind')->andReturn($typeKind);
+        $def->shouldReceive('getPrimitiveKind')->andReturn($type);
+        $def->shouldReceive('getErrors')->andReturn([])->once();
+        $def->shouldReceive('FullName')->andReturn('FullName');
+
+        $foo = new EdmRowTypeReference($def, false);
+
+        $actual = $foo->AsRow();
+        $this->assertTrue($actual instanceof EdmRowTypeReference, get_class($actual));
+        $errors = $actual->getErrors();
+        $this->assertEquals(0, count($errors));
+    }
+
+    public function testAsRowBad()
+    {
+        $type = PrimitiveTypeKind::DateTime();
+
+        $typeKind = TypeKind::Complex();
+
+        $def = m::mock(IRowType::class . ', ' . IComplexType::class);
+        $def->shouldReceive('getTypeKind')->andReturn($typeKind);
+        $def->shouldReceive('getPrimitiveKind')->andReturn($type);
+        $def->shouldReceive('getErrors')->andReturn([])->once();
+        $def->shouldReceive('FullName')->andReturn('FullName');
+
+        $foo = new EdmComplexTypeReference($def, false);
+
+        $actual = $foo->AsRow();
+        $this->assertTrue($actual instanceof EdmRowTypeReference, get_class($actual));
+        $errors = $actual->getErrors();
+        $this->assertEquals(0, count($errors));
+    }
+
+    public function testAsEntityWonky()
+    {
+        $type = PrimitiveTypeKind::DateTime();
+
+        $typeKind = TypeKind::Complex();
+
+        $def = m::mock(IRowType::class . ', ' . IComplexType::class);
+        $def->shouldReceive('getTypeKind')->andReturn($typeKind);
+        $def->shouldReceive('getPrimitiveKind')->andReturn($type);
+        $def->shouldReceive('getErrors')->andReturn([])->once();
+        $def->shouldReceive('FullName')->andReturn('FullName');
+
+        $foo = new EdmComplexTypeReference($def, false);
+
+        $actual = $foo->AsEntity();
+        $this->assertTrue($actual instanceof BadEntityTypeReference, get_class($actual));
+        $errors = $actual->getErrors();
+        $this->assertEquals(1, count($errors));
+
+        $errorCode = EdmErrorCode::TypeSemanticsCouldNotConvertTypeReference();
+        $expected = 'The type \'FullName\' could not be converted to be a \'Entity\' type.';
+
+        /** @var EdmError $error */
+        $error = $errors[0];
+        $this->assertEquals($errorCode, $error->getErrorCode());
+        $this->assertEquals($expected, $error->getErrorMessage());
+    }
+
+    public function testAsEntityReferenceBad()
+    {
+        $type = PrimitiveTypeKind::DateTime();
+
+        $typeKind = TypeKind::Complex();
+
+        $def = m::mock(IRowType::class . ', ' . IComplexType::class);
+        $def->shouldReceive('getTypeKind')->andReturn($typeKind);
+        $def->shouldReceive('getPrimitiveKind')->andReturn($type);
+        $def->shouldReceive('getErrors')->andReturn([])->once();
+        $def->shouldReceive('FullName')->andReturn('FullName');
+
+        $foo = new EdmComplexTypeReference($def, false);
+
+        $actual = $foo->AsEntityReference();
+        $this->assertTrue($actual instanceof EdmEntityReferenceTypeReference, get_class($actual));
+        $errors = $actual->getErrors();
+        $this->assertEquals(0, count($errors));
+    }
+
+    public function testAsEnumBad()
+    {
+        $type = PrimitiveTypeKind::DateTime();
+
+        $typeKind = TypeKind::Complex();
+
+        $def = m::mock(IRowType::class . ', ' . IComplexType::class);
+        $def->shouldReceive('getTypeKind')->andReturn($typeKind);
+        $def->shouldReceive('getPrimitiveKind')->andReturn($type);
+        $def->shouldReceive('getErrors')->andReturn([])->once();
+        $def->shouldReceive('FullName')->andReturn('FullName');
+
+        $foo = new EdmComplexTypeReference($def, false);
+
+        $actual = $foo->AsEnum();
+        $this->assertTrue($actual instanceof EdmEnumTypeReference, get_class($actual));
+        $errors = $actual->getErrors();
+        $this->assertEquals(0, count($errors));
+    }
+
+    public function testAsRowIsActualRow()
+    {
+        $type = PrimitiveTypeKind::DateTime();
+
+        $typeKind = TypeKind::Row();
+
+        $def = m::mock(IRowType::class . ', ' . IComplexType::class);
+        $def->shouldReceive('getTypeKind')->andReturn($typeKind);
+        $def->shouldReceive('getPrimitiveKind')->andReturn($type);
+        $def->shouldReceive('getErrors')->andReturn([])->once();
+        $def->shouldReceive('FullName')->andReturn('FullName');
+
+        $foo = new EdmComplexTypeReference($def, false);
+
+        $actual = $foo->AsRow();
+        $this->assertTrue($actual instanceof EdmRowTypeReference, get_class($actual));
+        $errors = $actual->getErrors();
+        $this->assertEquals(0, count($errors));
+    }
+
+    public function asEntityProvider(): array
+    {
+        $result = [];
+        $result[] = [TypeKind::Entity(), '', EdmEntityTypeReference::class];
+        $result[] = [TypeKind::Complex(), '', EdmComplexTypeReference::class];
+        $result[] = [TypeKind::Row(), '', EdmRowTypeReference::class];
+        $result[] = [TypeKind::Primitive(), '', BadEntityTypeReference::class];
+
+        return $result;
+    }
+
+    /**
+     * @dataProvider asEntityProvider
+     *
+     * @param TypeKind $kind
+     * @param string $expected
+     * @param string $expType
+     */
+    public function testAsEntityBad(TypeKind $kind, string $expected, string $expType)
+    {
+        $def = m::mock(IRowType::class . ', ' . IComplexType::class . ', ' . IPrimitiveType::class . ', ' . IEntityType::class);
+        $def->shouldReceive('getTypeKind')->andReturn($kind);
+        $def->shouldReceive('getErrors')->andReturn([])->once();
+        $def->shouldReceive('FullName')->andReturn('FullName');
+
+        $foo = new EdmStringTypeReference($def, false);
+
+        $actual = $foo->AsStructured();
+        $this->assertTrue($actual instanceof $expType, get_class($actual));
+        if (BadEntityTypeReference::class === $expType) {
+            $errors = $actual->getErrors();
+            $this->assertEquals(1, count($errors));
+        }
     }
 }
