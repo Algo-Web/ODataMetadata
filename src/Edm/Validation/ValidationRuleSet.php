@@ -171,7 +171,8 @@ class ValidationRuleSet implements \IteratorAggregate
             case Version::v3():
                 return self::getV3RuleSet();
         }
-        throw new InvalidOperationException(StringConst::Serializer_UnknownEdmVersion());
+        $msg = StringConst::Serializer_UnknownEdmVersion();
+        throw new InvalidOperationException($msg);
     }
 
     /**
