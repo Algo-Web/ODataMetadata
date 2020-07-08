@@ -33,12 +33,14 @@ class EdmModel extends EdmModelBase
     /**
      * @var SplObjectStorage|array<IStructuredType, IStructuredType[]>
      */
-    private $derivedTypeMappings ;
+    private $derivedTypeMappings;
+
     public function __construct(array $referencedModels = [], EdmDirectValueAnnotationsManager $annotationsManager = null)
     {
         $annotationsManager = $annotationsManager ?? new EdmDirectValueAnnotationsManager();
         parent::__construct($referencedModels, $annotationsManager);
         $this->vocabularyAnnotationsDictionary = new SplObjectStorage();
+        $this->derivedTypeMappings = new SplObjectStorage();
     }
 
     /**
