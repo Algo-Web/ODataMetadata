@@ -892,9 +892,9 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     private function ProcessReferentialConstraint(INavigationProperty $element, iterable $annotations): void
     {
-        if ($element->getDependentProperties() != null) {
+        if ($element->getDependentProperties() !== null) {
             $principalElement = $element->getPartner();
-        } elseif ($element->getPartner()->getDependentProperties() != null) {
+        } elseif ($element->getPartner()->getDependentProperties() !== null) {
             $principalElement = $element;
         } else {
             return;
@@ -1264,15 +1264,17 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     private function SharesReferentialConstraintEnd(array $theseProperties, array $thoseProperties): bool
     {
-        if (count($theseProperties) != count($thoseProperties)) {
+        $numProp   = count($theseProperties);
+        if ($numProp != count($thoseProperties)) {
             return false;
         }
-        $obj                       = new ArrayObject($theseProperties);
-        $thesePropertiesEnumerator = $obj->getIterator();
+        $theseKeys = array_keys($theseProperties);
+        $thoseKeys = array_keys($thoseProperties);
 
-        foreach ($thoseProperties as $thatProperty) {
-            $thesePropertiesEnumerator->next();
-            if (!($thesePropertiesEnumerator->current()->getName() == $thatProperty->getName())) {
+        for ($i = 0; $i < $numProp; $i++) {
+            $these = $theseProperties[$theseKeys[$i]];
+            $those = $thoseProperties[$thoseKeys[$i]];
+            if ($these->getName() != $those->getName()) {
                 return false;
             }
         }
@@ -1307,18 +1309,15 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $thisOtherEntitySet = $thisEntitySet->findNavigationTarget($thisNavprop);
         $thatOtherEntitySet = $thatEntitySet->findNavigationTarget($thatNavprop);
 
-        if ($thisOtherEntitySet == null) {
-            if ($thatOtherEntitySet != null) {
-                return false;
-            }
-        } else {
-            if ($thatOtherEntitySet == null) {
-                return false;
-            }
+        $nullityMismatch    = (null === $thisOtherEntitySet) !== (null === $thatOtherEntitySet);
+        if ($nullityMismatch) {
+            return false;
+        }
 
+        if (null !== $thisOtherEntitySet) {
             if (!($this->model->GetAssociationEndName($thisNavprop->getPartner()) ==
                   $this->model->GetAssociationEndName($thatNavprop->getPartner()) &&
-                $thisOtherEntitySet->getName() == $thatOtherEntitySet->getName())) {
+                  $thisOtherEntitySet->getName() == $thatOtherEntitySet->getName())) {
                 return false;
             }
         }
