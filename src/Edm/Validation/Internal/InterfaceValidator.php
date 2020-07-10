@@ -14,6 +14,7 @@ use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRule;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRuleSet;
 use AlgoWeb\ODataMetadata\EdmUtil;
+use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\ICheckable;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
@@ -232,7 +233,7 @@ class InterfaceValidator
 
     public static function CreateTypeRefInterfaceTypeKindValueMismatchError(ITypeReference $item): EdmError
     {
-        assert($item->getDefinition() != null, 'item.Definition != null');
+        EdmUtil::checkArgumentNull($item->getDefinition(), 'item.Definition');
         return new EdmError(
             self::GetLocation($item),
             EdmErrorCode::InterfaceCriticalKindValueMismatch(),
@@ -243,7 +244,9 @@ class InterfaceValidator
     public static function CreatePrimitiveTypeRefInterfaceTypeKindValueMismatchError(IPrimitiveTypeReference $item): EdmError
     {
         $definition = $item->getDefinition();
-        assert($definition instanceof IPrimitiveType, 'item.Definition is IEdmPrimitiveType');
+        if (!$definition instanceof IPrimitiveType) {
+            throw new InvalidOperationException('item.Definition is IEdmPrimitiveType');
+        }
         return new EdmError(
             self::GetLocation($item),
             EdmErrorCode::InterfaceCriticalKindValueMismatch(),
@@ -253,11 +256,11 @@ class InterfaceValidator
 
     public static function ProcessEnumerable($item, ?iterable $enumerable, string $propertyName, array &$targetList, array &$errors): void
     {
-        if ($enumerable == null) {
+        if (null === $enumerable) {
             self::CollectErrors(self::CreatePropertyMustNotBeNullError($item, $propertyName), $errors);
         } else {
             foreach ($enumerable as $enumMember) {
-                if ($enumMember != null) {
+                if (null !== $enumMember) {
                     $targetList[] = $enumMember;
                 } else {
                     self::CollectErrors(
