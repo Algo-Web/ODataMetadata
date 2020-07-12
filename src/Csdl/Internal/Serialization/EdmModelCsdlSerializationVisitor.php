@@ -905,6 +905,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter->WriteReferentialConstraintPrincipalEndElementHeader($principalElement);
         $dType = $principalElement->getDeclaringType();
         assert($dType instanceof IEntityType);
+        EdmUtil::checkArgumentNull($dType->Key(), 'principalElement->getDeclaringType->Key');
         $this->VisitPropertyRefs($dType->Key());
         $this->schemaWriter->WriteEndElement();
         $this->schemaWriter->WriteReferentialConstraintDependentEndElementHeader($principalElement->getPartner());
@@ -1262,8 +1263,11 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  array|IStructuralProperty[] $thoseProperties
      * @return bool
      */
-    private function SharesReferentialConstraintEnd(array $theseProperties, array $thoseProperties): bool
+    private function SharesReferentialConstraintEnd(?array $theseProperties, ?array $thoseProperties): bool
     {
+        if (null === $theseProperties || null === $thoseProperties) {
+            return false;
+        }
         $numProp   = count($theseProperties);
         if ($numProp != count($thoseProperties)) {
             return false;

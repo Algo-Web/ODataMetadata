@@ -48,7 +48,7 @@ trait EntityTypeReferenceHelpers
      */
     public function Key(): array
     {
-        return $this->EntityDefinition()->Key();
+        return $this->EntityDefinition()->Key() ?? [];
     }
 
     /**

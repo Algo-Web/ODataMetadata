@@ -33,6 +33,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
     {
         assert($annotation instanceof IVocabularyAnnotation);
         $target      = $annotation->getTarget();
+        EdmUtil::checkArgumentNull($target, 'annotation->getTarget');
         $foundTarget = $this->findTarget($context, $target);
 
         if (!$foundTarget) {
