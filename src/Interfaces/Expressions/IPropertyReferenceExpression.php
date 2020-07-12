@@ -17,9 +17,9 @@ use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 interface IPropertyReferenceExpression extends IExpression
 {
     /**
-     * @return IExpression gets the expression for the structured value containing the referenced property
+     * @return IExpression|null gets the expression for the structured value containing the referenced property
      */
-    public function getBase(): IExpression;
+    public function getBase(): ?IExpression;
 
     /**
      * @return IProperty gets the referenced property
