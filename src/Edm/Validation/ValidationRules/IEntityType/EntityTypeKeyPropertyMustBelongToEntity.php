@@ -23,7 +23,7 @@ class EntityTypeKeyPropertyMustBelongToEntity extends EntityTypeRule
     public function __invoke(ValidationContext $context, ?IEdmElement $entityType)
     {
         assert($entityType instanceof IEntityType);
-        if ($entityType->getDeclaredKey() != null) {
+        if (null !== $entityType->getDeclaredKey()) {
             foreach ($entityType->getDeclaredKey() as $key) {
                 assert($key instanceof IStructuralProperty);
                 // Key must be one of the declared properties.

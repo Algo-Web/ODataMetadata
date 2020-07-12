@@ -17,7 +17,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunction;
 interface IFunctionReferenceExpression extends IExpression
 {
     /**
-     * @return IFunction gets the referenced function
+     * @return IFunction|null gets the referenced function
      */
-    public function getReferencedFunction(): IFunction;
+    public function getReferencedFunction(): ?IFunction;
 }

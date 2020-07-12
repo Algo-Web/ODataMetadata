@@ -48,7 +48,7 @@ trait VisitAnnotations
     public function visitVocabularyAnnotation(IVocabularyAnnotation $annotation): void
     {
         /** @var EdmModelVisitor $this */
-        if ($annotation->getTerm() != null) {
+        if (null !== $annotation->getTerm()) {
             switch ($annotation->getTerm()->getTermKind()) {
                 case TermKind::Type():
                     assert($annotation instanceof ITypeAnnotation);

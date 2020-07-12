@@ -234,7 +234,7 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
 
         $singleAnnotation = $transientAnnotations;
         if ($singleAnnotation instanceof IDirectValueAnnotation) {
-            if ($singleAnnotation->getValue() != null) {
+            if (null !== $singleAnnotation->getValue()) {
                 yield $singleAnnotation;
             }
 
@@ -245,7 +245,7 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
         assert(is_iterable($annotationsList));
         /** @var IDirectValueAnnotation $existingAnnotation */
         foreach ($annotationsList as $existingAnnotation) {
-            if ($existingAnnotation->getValue() != null) {
+            if (null !== $existingAnnotation->getValue()) {
                 yield $existingAnnotation;
             }
         }

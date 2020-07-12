@@ -22,7 +22,7 @@ class RowTypeBaseTypeMustBeNull extends RowTypeRule
     public function __invoke(ValidationContext $context, ?IEdmElement $rowType)
     {
         assert($rowType instanceof IRowType);
-        if ($rowType->getBaseType() != null) {
+        if (null !== $rowType->getBaseType()) {
             EdmUtil::checkArgumentNull($rowType->Location(), 'rowType->Location');
             $context->AddError(
                 $rowType->Location(),

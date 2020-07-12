@@ -22,7 +22,7 @@ interface IDirectValueAnnotation extends INamedElement
     public function getNamespaceUri(): string;
 
     /**
-     * @return mixed gets the value of this annotation
+     * @return mixed|null gets the value of this annotation
      */
     public function getValue();
 }

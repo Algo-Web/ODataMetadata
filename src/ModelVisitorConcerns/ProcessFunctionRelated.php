@@ -40,7 +40,7 @@ trait ProcessFunctionRelated
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($functionBase, __METHOD__);
-        if ($functionBase->getReturnType() != null) {
+        if (null !== $functionBase->getReturnType()) {
             $this->VisitTypeReference($functionBase->getReturnType());
         }
 

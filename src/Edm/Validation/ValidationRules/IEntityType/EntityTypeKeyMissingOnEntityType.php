@@ -22,7 +22,7 @@ class EntityTypeKeyMissingOnEntityType extends EntityTypeRule
     public function __invoke(ValidationContext $context, ?IEdmElement $entityType)
     {
         assert($entityType instanceof IEntityType);
-        if (($entityType->Key() == null || count($entityType->Key()) == 0) && $entityType->getBaseType() === null) {
+        if ((null === $entityType->Key() || count($entityType->Key()) == 0) && null === $entityType->getBaseType()) {
             EdmUtil::checkArgumentNull($entityType->Location(), 'entityType->Location');
             $context->AddError(
                 $entityType->Location(),

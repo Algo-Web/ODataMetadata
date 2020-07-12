@@ -126,7 +126,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $term->getName(),
             [EdmValueWriter::class, 'StringAsXml']
         );
-        if ($inlineType && $term->getType() != null) {
+        if ($inlineType && null !== $term->getType()) {
             $this->WriteRequiredAttribute(
                 CsdlConstants::Attribute_Type,
                 $term->getType(),
@@ -834,7 +834,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             [EdmValueWriter::class, 'BooleanAsXml']
         );
         $entitySetReference = $functionImport->getEntitySet();
-        if ($functionImport->getEntitySet() != null) {
+        if (null !== $functionImport->getEntitySet()) {
             if ($entitySetReference instanceof IEntitySetReferenceExpression) {
                 $this->WriteOptionalAttribute(
                     CsdlConstants::Attribute_EntitySet,

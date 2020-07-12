@@ -121,7 +121,7 @@ class EdmModel extends EdmModelBase
      */
     public function AddVocabularyAnnotation(IVocabularyAnnotation $annotation)
     {
-        if ($annotation->getTarget() == null) {
+        if (null === $annotation->getTarget()) {
             throw new InvalidOperationException(StringConst::Constructable_VocabularyAnnotationMustHaveTarget());
         }
 

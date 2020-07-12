@@ -56,11 +56,11 @@ abstract class ToTraceString
                 return $element->getName() ?? '' . ':' . ($type !== null ? self::ToTraceString($type) :'');
             case $element instanceof IEntityReferenceType:
                 assert($element instanceof IEntityReferenceType);
-                return strval(TypeKind::EntityReference()->getKey()) . '(' . ($element->getEntityType() !== null ?
+                return strval(TypeKind::EntityReference()->getKey()) . '(' . (null !== $element->getEntityType() ?
                         self::ToTraceString($element->getEntityType()) : '') . ')';
             case $element instanceof ICollectionType:
                 assert($element instanceof ICollectionType);
-                return strval(TypeKind::Collection()->getKey()) . '(' . ($element->getElementType() != null ?
+                return strval(TypeKind::Collection()->getKey()) . '(' . (null !== $element->getElementType() ?
                         self::ToTraceString($element->getElementType()) : '') . ')';
             case $element instanceof IRowType:
                 assert($element instanceof IRowType);

@@ -23,7 +23,7 @@ class FunctionImportReturnEntitiesButDoesNotSpecifyEntitySet extends FunctionImp
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        if ($functionImport->getReturnType() != null && $functionImport->getEntitySet() == null) {
+        if (null !== $functionImport->getReturnType() && null === $functionImport->getEntitySet()) {
             $elementType = $functionImport->getReturnType()->IsCollection() ?
                 $functionImport->getReturnType()->AsCollection()->ElementType()
                 :

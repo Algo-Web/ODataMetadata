@@ -22,7 +22,7 @@ class FunctionImportUnsupportedReturnTypeV1 extends FunctionImportRule
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        if ($functionImport->getReturnType() != null) {
+        if (null !== $functionImport->getReturnType()) {
             if ($functionImport->getReturnType()->IsCollection()) {
                 $elementType = $functionImport->getReturnType()->AsCollection()->ElementType();
                 $reportError = !$elementType->IsPrimitive() && !$elementType->IsEntity() && !$context->checkIsBad($elementType->getDefinition());

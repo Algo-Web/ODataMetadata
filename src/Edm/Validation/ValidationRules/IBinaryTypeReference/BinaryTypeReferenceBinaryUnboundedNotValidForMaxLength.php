@@ -22,7 +22,7 @@ class BinaryTypeReferenceBinaryUnboundedNotValidForMaxLength extends BinaryTypeR
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IBinaryTypeReference);
-        if ($type->getMaxLength() != null && $type->isUnBounded()) {
+        if (null !== $type->getMaxLength() && $type->isUnBounded()) {
             EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
             $context->AddError(
                 $type->Location(),
