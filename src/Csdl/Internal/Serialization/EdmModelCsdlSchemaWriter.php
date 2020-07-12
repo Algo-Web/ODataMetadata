@@ -730,7 +730,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteAnnotationStringAttribute(IDirectValueAnnotation $annotation): void
     {
         $edmValue = $annotation->getValue();
-        if ($annotation->getValue() instanceof IPrimitiveValue) {
+        if ($edmValue instanceof IPrimitiveValue) {
             $this->xmlWriter->writeAttributeNs(
                 '',
                 $annotation->getName(),

@@ -22,22 +22,28 @@ class NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2 extend
 {
     public function __invoke(ValidationContext $context, ?IEdmElement $navigationProperty)
     {
+
         assert($navigationProperty instanceof INavigationProperty);
         $dependentProperties = $navigationProperty->getDependentProperties();
-        if ($dependentProperties != null &&
-            !ValidationHelper::PropertySetIsSubset(
+        if (null !== $dependentProperties) {
+            EdmUtil::checkArgumentNull(
+                $navigationProperty->DeclaringEntityType()->Key(),
+                'navigationProperty->DeclaringEntityType->Key'
+            );
+            if (!ValidationHelper::PropertySetIsSubset(
                 $navigationProperty->DeclaringEntityType()->Key(),
                 $dependentProperties
             )) {
-            EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
-            $context->AddError(
-                $navigationProperty->Location(),
-                EdmErrorCode::InvalidPropertyInRelationshipConstraint(),
-                StringConst::EdmModel_Validator_Semantic_InvalidToPropertyInRelationshipConstraint(
-                    $navigationProperty->getName(),
-                    $navigationProperty->DeclaringEntityType()->FullName()
-                )
-            );
+                EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
+                $context->AddError(
+                    $navigationProperty->Location(),
+                    EdmErrorCode::InvalidPropertyInRelationshipConstraint(),
+                    StringConst::EdmModel_Validator_Semantic_InvalidToPropertyInRelationshipConstraint(
+                        $navigationProperty->getName(),
+                        $navigationProperty->DeclaringEntityType()->FullName()
+                    )
+                );
+            }
         }
     }
 }

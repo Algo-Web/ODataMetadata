@@ -26,6 +26,7 @@ trait VocabularyAnnotationHelpers
     {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
+        EdmUtil::checkArgumentNull($annotation->getTarget(), 'annotation->getTarget');
         return EdmUtil::FullyQualifiedName($annotation->getTarget());
     }
 
