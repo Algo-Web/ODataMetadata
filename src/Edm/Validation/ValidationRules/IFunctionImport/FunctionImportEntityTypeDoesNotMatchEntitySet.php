@@ -26,7 +26,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
     {
         assert($functionImport instanceof IFunctionImport);
         EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
-        if ($functionImport->getEntitySet() != null && $functionImport->getReturnType() != null) {
+        if (null !== $functionImport->getEntitySet() && null !== $functionImport->getReturnType()) {
             $elementType = $functionImport->getReturnType()->IsCollection() ?
                 $functionImport->getReturnType()->AsCollection()->ElementType() :
                 $functionImport->getReturnType();

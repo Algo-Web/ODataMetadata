@@ -290,12 +290,12 @@ class InterfaceValidator
 
     public static function IsCheckableBad($element): bool
     {
-        return $element instanceof ICheckable && $element->getErrors() != null && count($element->getErrors()) > 0;
+        return $element instanceof ICheckable && null !== $element->getErrors() && count($element->getErrors()) > 0;
     }
 
     public static function GetLocation($item): ILocation
     {
-        return $item instanceof ILocatable && $item->getLocation() != null ? $item->getLocation() : new ObjectLocation($item);
+        return $item instanceof ILocatable && null !== $item->getLocation() ? $item->getLocation() : new ObjectLocation($item);
     }
 
     /**

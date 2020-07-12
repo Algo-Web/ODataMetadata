@@ -26,7 +26,7 @@ class FunctionApplicationExpressionParametersMatchAppliedFunction extends ApplyE
         assert($expression instanceof IApplyExpression);
         $functionReference = $expression->getAppliedFunction();
         assert($functionReference instanceof IFunctionReferenceExpression);
-        if ($functionReference->getReferencedFunction() != null &&
+        if (null !== $functionReference->getReferencedFunction() &&
             !$context->checkIsBad($functionReference->getReferencedFunction())) {
             if (count($functionReference->getReferencedFunction()->getParameters()) != count($expression->getArguments())) {
                 EdmUtil::checkArgumentNull($expression->Location(), 'expression->Location');

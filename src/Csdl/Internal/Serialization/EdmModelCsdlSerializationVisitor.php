@@ -248,9 +248,9 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     protected function ProcessEntityType(IEntityType $element): void
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteEntityTypeElementHeader']);
-        if ($element->getDeclaredKey() != null &&
+        if (null !== $element->getDeclaredKey() &&
             count($element->getDeclaredKey()) > 0 &&
-            $element->getBaseType() == null) {
+            null === $element->getBaseType()) {
             $this->VisitEntityTypeDeclaredKey($element->getDeclaredKey());
         }
 
@@ -396,7 +396,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     protected function ProcessFunction(IFunction $element): void
     {
-        if ($element->getReturnType() != null) {
+        if (null !== $element->getReturnType()) {
             $inlineReturnType = self::IsInlineType($element->getReturnType());
             $this->BeginElement($element, function (IFunction $f) use ($inlineReturnType) {
                 $this->schemaWriter->WriteFunctionElementHeader($f, $inlineReturnType);
@@ -484,7 +484,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     protected function ProcessFunctionImport(IFunctionImport $functionImport): void
     {
-        if ($functionImport->getReturnType() != null && !self::IsInlineType($functionImport->getReturnType())) {
+        if (null !== $functionImport->getReturnType() && !self::IsInlineType($functionImport->getReturnType())) {
             throw new InvalidOperationException(
                 StringConst::Serializer_NonInlineFunctionImportReturnType(
                     $functionImport->getContainer()->FullName() . '/' . $functionImport->getName()

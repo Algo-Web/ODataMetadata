@@ -20,7 +20,7 @@ class CollectionExpressionAllElementsCorrectType extends CollectionExpressionRul
     public function __invoke(ValidationContext $context, ?IEdmElement $expression)
     {
         assert($expression instanceof ICollectionExpression);
-        if ($expression->getDeclaredType() != null &&
+        if (null !== $expression->getDeclaredType() &&
             !$context->checkIsBad($expression) &&
             !$context->checkIsBad($expression->getDeclaredType())) {
             $discoveredErrors = null;

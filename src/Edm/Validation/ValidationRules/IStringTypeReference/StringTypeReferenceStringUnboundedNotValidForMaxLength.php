@@ -22,7 +22,7 @@ class StringTypeReferenceStringUnboundedNotValidForMaxLength extends StringTypeR
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IStringTypeReference);
-        if ($type->getMaxLength() != null && $type->isUnbounded()) {
+        if (null !== $type->getMaxLength() && $type->isUnbounded()) {
             EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
             $context->AddError(
                 $type->Location(),

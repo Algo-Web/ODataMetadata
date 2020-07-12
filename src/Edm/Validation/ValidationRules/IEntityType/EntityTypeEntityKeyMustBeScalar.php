@@ -23,8 +23,9 @@ class EntityTypeEntityKeyMustBeScalar extends EntitySetRule
     public function __invoke(ValidationContext $context, ?IEdmElement $entityType)
     {
         assert($entityType instanceof IEntityType);
-        if ($entityType->Key() != null) {
-            foreach ($entityType->Key() as $key) {
+        $rawKey = $entityType->Key();
+        if (null !== $rawKey) {
+            foreach ($rawKey as $key) {
                 assert($key instanceof IStructuralProperty);
                 if (!$key->getType()->IsPrimitive() && !$context->checkIsBad($key)) {
                     EdmUtil::checkArgumentNull($key->Location(), 'key->Location');

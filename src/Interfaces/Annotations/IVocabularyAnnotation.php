@@ -23,12 +23,12 @@ interface IVocabularyAnnotation extends IEdmElement, IVocabularyAnnotationHelper
     public function getQualifier(): ?string;
 
     /**
-     * @return ITerm gets the term bound by the annotation
+     * @return ITerm|null gets the term bound by the annotation
      */
-    public function getTerm(): ITerm;
+    public function getTerm(): ?ITerm;
 
     /**
-     * @return IVocabularyAnnotatable gets the element the annotation applies to
+     * @return IVocabularyAnnotatable|null gets the element the annotation applies to
      */
-    public function getTarget(): IVocabularyAnnotatable;
+    public function getTarget(): ?IVocabularyAnnotatable;
 }

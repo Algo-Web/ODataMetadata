@@ -17,9 +17,9 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 interface ICollectionExpression extends IExpression
 {
     /**
-     * @return ITypeReference gets the declared type of the collection, or null if there is no declared type
+     * @return ITypeReference|null gets the declared type of the collection, or null if there is no declared type
      */
-    public function getDeclaredType(): ITypeReference;
+    public function getDeclaredType(): ?ITypeReference;
 
     /**
      * @return IExpression[] gets the constructed element values

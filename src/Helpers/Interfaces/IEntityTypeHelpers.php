@@ -39,9 +39,9 @@ interface IEntityTypeHelpers
     /**
      * Gets the declared key of the most defined entity with a declared key present.
      *
-     * @return IStructuralProperty[] key of this type
+     * @return IStructuralProperty[]|null key of this type
      */
-    public function Key(): array;
+    public function Key(): ?array;
 
     /**
      * Checks whether the given entity type has the "property" as one of the key properties.
