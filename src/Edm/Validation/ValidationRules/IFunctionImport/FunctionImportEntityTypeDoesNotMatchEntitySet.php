@@ -13,6 +13,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
+use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\StringConst;
 
 /**
@@ -26,10 +27,14 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
     {
         assert($functionImport instanceof IFunctionImport);
         EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
-        if (null !== $functionImport->getEntitySet() && null !== $functionImport->getReturnType()) {
-            $elementType = $functionImport->getReturnType()->IsCollection() ?
-                $functionImport->getReturnType()->AsCollection()->ElementType() :
-                $functionImport->getReturnType();
+
+        $returnType = $functionImport->getReturnType();
+        if (null !== $functionImport->getEntitySet() && null !== $returnType) {
+            /** @var ITypeReference $elementType */
+            $elementType = $returnType->IsCollection() ?
+                $returnType->AsCollection()->ElementType() :
+                $returnType;
+            EdmUtil::checkArgumentNull($elementType->getDefinition(), 'elementType->getDefinition');
             if ($elementType->IsEntity()) {
                 $returnedEntityType = $elementType->AsEntity()->EntityDefinition();
 
@@ -40,18 +45,18 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                 /** @var INavigationProperty[]|null $path */
                 $path = null;
                 if ($functionImport->TryGetStaticEntitySet($entitySet)) {
-                    $errorMessage = StringConst::EdmModel_Validator_Semantic_FunctionImportEntityTypeDoesNotMatchEntitySet(
-                        $functionImport->getName(),
-                        $returnedEntityType->FullName(),
-                        $entitySet->getName()
-                    );
-
                     $entitySetElementType = $entitySet->getElementType();
-                    if (!$returnedEntityType->IsOrInheritsFrom($entitySetElementType) &&
-                        !$context->checkIsBad($returnedEntityType) &&
-                        !$context->checkIsBad($entitySet) &&
-                        !$context->checkIsBad($entitySetElementType)
-                    ) {
+                    $isBad = $returnedEntityType->IsOrInheritsFrom($entitySetElementType) ||
+                             $context->checkIsBad($returnedEntityType) ||
+                             $context->checkIsBad($entitySet) ||
+                             $context->checkIsBad($entitySetElementType);
+                    if ($isBad) {
+                        $errorMessage = StringConst::EdmModel_Validator_Semantic_FunctionImportEntityTypeDoesNotMatchEntitySet(
+                            $functionImport->getName(),
+                            $returnedEntityType->FullName(),
+                            $entitySet->getName()
+                        );
+
                         $context->AddError(
                             $functionImport->Location(),
                             EdmErrorCode::FunctionImportEntityTypeDoesNotMatchEntitySet(),
@@ -59,14 +64,23 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                         );
                     }
                 } elseif ($functionImport->TryGetRelativeEntitySetPath($context->getModel(), $parameter, $path)) {
-                    $relativePathType        = count($path) == 0 ? $parameter->getType() : end($path)->getType();
-                    $relativePathElementType = $relativePathType->IsCollection() ? $relativePathType->AsCollection()->ElementType() : $relativePathType;
-                    if (!$returnedEntityType->IsOrInheritsFrom($relativePathElementType->getDefinition()) &&
-                        !$context->checkIsBad($returnedEntityType) && !$context->checkIsBad($relativePathElementType->getDefinition())) {
+                    EdmUtil::checkArgumentNull($parameter, 'parameter');
+                    EdmUtil::checkArgumentNull($path, 'path');
+                    $relativePathType        = 0 === count($path) ? $parameter->getType() : end($path)->getType();
+                    $relativePathElementType = $relativePathType->IsCollection() ?
+                        $relativePathType->AsCollection()->ElementType() : $relativePathType;
+                    $definition = $relativePathElementType->getDefinition();
+                    $isBad = !$returnedEntityType->IsOrInheritsFrom($definition) &&
+                             !$context->checkIsBad($returnedEntityType) &&
+                             !$context->checkIsBad($definition);
+                    if ($isBad) {
                         $context->AddError(
                             $functionImport->Location(),
                             EdmErrorCode::FunctionImportEntityTypeDoesNotMatchEntitySet(),
-                            StringConst::EdmModel_Validator_Semantic_FunctionImportEntityTypeDoesNotMatchEntitySet2($functionImport->getName(), $elementType->FullName())
+                            StringConst::EdmModel_Validator_Semantic_FunctionImportEntityTypeDoesNotMatchEntitySet2(
+                                $functionImport->getName(),
+                                $elementType->FullName()
+                            )
                         );
                     }
                 }
@@ -76,7 +90,9 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                 $context->AddError(
                     $functionImport->Location(),
                     EdmErrorCode::FunctionImportSpecifiesEntitySetButDoesNotReturnEntityType(),
-                    StringConst::EdmModel_Validator_Semantic_FunctionImportSpecifiesEntitySetButNotEntityType($functionImport->getName())
+                    StringConst::EdmModel_Validator_Semantic_FunctionImportSpecifiesEntitySetButNotEntityType(
+                        $functionImport->getName()
+                    )
                 );
             }
         }
