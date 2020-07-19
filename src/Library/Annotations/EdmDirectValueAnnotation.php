@@ -14,20 +14,26 @@ use AlgoWeb\ODataMetadata\Library\EdmNamedElement;
  */
 class EdmDirectValueAnnotation extends EdmNamedElement implements IDirectValueAnnotation
 {
+    /**
+     * @var mixed
+     */
 private $value;
+    /**
+     * @var string
+     */
 private $namespaceUri;
 
     /**
      * Initializes a new instance of the EdmDirectValueAnnotation class.
-     * @param string $namespaceUri
-     * @param string $name
-     * @param $value
+     * @param string $namespaceUri Namespace URI of the annotation.
+     * @param string $name Name of the annotation within the namespace.
+     * @param mixed $value Value of the annotation
      */
 public function __construct(string $namespaceUri, string $name, $value)
 {
     parent::__construct($name);
     $this->namespaceUri = $namespaceUri;
-    EdmUtil::checkArgumentNull($value, 'value');
+    //EdmUtil::checkArgumentNull($value, 'value'); TODO: idealy they should be able to provide a null value, but the value should be optional.
     $this->value = $value;
 }
 
