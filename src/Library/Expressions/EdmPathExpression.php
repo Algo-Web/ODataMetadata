@@ -27,7 +27,7 @@ class EdmPathExpression extends EdmElement implements IPathExpression
     public function __construct(string ...$path)
     {
         if(count($path) === 1){
-            $path = explode('/', $path);
+            $path = explode('/', $path[]);
         }
         $this->path = $path;
     }
