@@ -36,7 +36,7 @@ abstract class EdmVocabularyAnnotation extends EdmElement implements IVocabulary
      * @param ITerm $term Term bound by the annotation.
      * @param string $qualifier Qualifier used to discriminate between multiple bindings of the same property or type.
      */
-        protected function __construct(IVocabularyAnnotatable $target, ITerm $term, string $qualifier)
+        protected function __construct(IVocabularyAnnotatable $target, ITerm $term, ?string $qualifier)
         {
             $this->target = $target;
             $this->term = $term;
