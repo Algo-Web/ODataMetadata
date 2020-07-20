@@ -11,21 +11,21 @@ namespace AlgoWeb\ODataMetadata\Enums;
  * Defines Edm values
  *
  * @package AlgoWeb\ODataMetadata\Enums
- * @method static None(): self Represents a value with an unknown or error kind.
- * @method static Binary(): self Represents a value implementing @see IEdmBinaryValue.
- * @method static Boolean(): self Represents a value implementing @see IEdmBooleanValue.
- * @method static Collection(): self Represents a value implementing @see IEdmCollectionValue.
- * @method static DateTimeOffset(): self Represents a value implementing @see IEdmDateTimeOffsetValue.
- * @method static DateTime(): self Represents a value implementing @see IEdmDateTimeValue.
- * @method static Decimal(): self Represents a value implementing @see IEdmDecimalValue.
- * @method static Enum(): self Represents a value implementing @see IEdmEnumValue.
- * @method static Floating(): self Represents a value implementing @see IEdmFloatingValue.
- * @method static Guid(): self Represents a value implementing @see IEdmGuidValue.
- * @method static Integer(): self Represents a value implementing @see IEdmIntegerValue.
- * @method static Null(): self Represents a value implementing @see IEdmNullValue.
- * @method static String(): self Represents a value implementing @see IEdmStringValue.
- * @method static Structured(): self Represents a value implementing @see IEdmStructuredValue.
- * @method static Time(): self Represents a value implementing @see IEdmTimeValue.
+ * @method static self None(): self Represents a value with an unknown or error kind.
+ * @method static self Binary(): self Represents a value implementing @see IEdmBinaryValue.
+ * @method static self Boolean(): self Represents a value implementing @see IEdmBooleanValue.
+ * @method static self Collection(): self Represents a value implementing @see IEdmCollectionValue.
+ * @method static self DateTimeOffset(): self Represents a value implementing @see IEdmDateTimeOffsetValue.
+ * @method static self DateTime(): self Represents a value implementing @see IEdmDateTimeValue.
+ * @method static self Decimal(): self Represents a value implementing @see IEdmDecimalValue.
+ * @method static self Enum(): self Represents a value implementing @see IEdmEnumValue.
+ * @method static self Floating(): self Represents a value implementing @see IEdmFloatingValue.
+ * @method static self Guid(): self Represents a value implementing @see IEdmGuidValue.
+ * @method static self Integer(): self Represents a value implementing @see IEdmIntegerValue.
+ * @method static self Null(): self Represents a value implementing @see IEdmNullValue.
+ * @method static self String(): self Represents a value implementing @see IEdmStringValue.
+ * @method static self Structured(): self Represents a value implementing @see IEdmStructuredValue.
+ * @method static self Time(): self Represents a value implementing @see IEdmTimeValue.
  */
 class ValueKind extends Enum
 {

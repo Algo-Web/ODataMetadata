@@ -11,13 +11,13 @@ namespace AlgoWeb\ODataMetadata\Enums;
  * Enumerates the multiplicities of EDM navigation properties.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Enums
- * @method static Unknown(): self The Multiplicity of the association end is unknown.
+ * @method static self Unknown(): self The Multiplicity of the association end is unknown.
  * @method bool isUnknown()
- * @method static ZeroOrOne(): self The Multiplicity of the association end is zero or one.
+ * @method static self ZeroOrOne(): self The Multiplicity of the association end is zero or one.
  * @method bool isZeroOrOne()
- * @method static One(): self The Multiplicity of the association end is one.
+ * @method static self One(): self The Multiplicity of the association end is one.
  * @method bool isOne()
- * @method static Many(): self The Multiplicity of the association end is many.
+ * @method static self Many(): self The Multiplicity of the association end is many.
  * @method bool isMany()
  */
 class Multiplicity extends Enum
