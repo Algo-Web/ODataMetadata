@@ -9,6 +9,7 @@ use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
 use AlgoWeb\ODataMetadata\Helpers\FunctionImportHelpers;
 use AlgoWeb\ODataMetadata\Helpers\SchemaElementHelpers;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
@@ -16,7 +17,6 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 class AmbiguousFunctionBinding extends AmbiguousBinding implements IFunction
 {
     use SchemaElementHelpers;
-    use FunctionImportHelpers;
 
     public function __construct(IFunction $first, IFunction $second)
     {

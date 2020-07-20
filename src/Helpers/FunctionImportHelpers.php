@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\EdmUtil;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
@@ -121,4 +122,9 @@ trait FunctionImportHelpers
             return true;
         }
     }
+
+    /**
+     * @return IExpression|null gets the entity set containing entities returned by this function import
+     */
+    abstract public function getEntitySet(): ?IExpression;
 }
