@@ -25,8 +25,8 @@ class EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty extend
         foreach ($set->getNavigationTargets() as $mapping) {
             if (!(
                 $mapping->getTargetEntitySet()->getElementType()->IsOrInheritsFrom(
-                        $mapping->getNavigationProperty()->ToEntityType()
-                    ) ||
+                    $mapping->getNavigationProperty()->ToEntityType()
+                ) ||
                     $mapping->getNavigationProperty()->ToEntityType()->IsOrInheritsFrom(
                         $mapping->getTargetEntitySet()->getElementType()
                     )

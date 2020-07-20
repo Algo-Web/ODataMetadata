@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 5/07/20
- * Time: 1:59 PM
+ * Time: 1:59 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\Internal;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator\VisitorOfIStringValue;
@@ -22,7 +23,7 @@ class VisitorOfIStringValueTest extends TestCase
         $followUp   = [];
         $references = [];
 
-        $foo = new VisitorOfIStringValue();
+        $foo    = new VisitorOfIStringValue();
         $result = $foo->Visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));

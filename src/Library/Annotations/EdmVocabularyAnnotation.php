@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Annotations;
 
@@ -24,27 +26,27 @@ abstract class EdmVocabularyAnnotation extends EdmElement implements IVocabulary
     /**
      * @var ITerm
      */
-        private $term;
+    private $term;
     /**
      * @var string
      */
-        private $qualifier;
+    private $qualifier;
 
     /**
      * Initializes a new instance of the EdmVocabularyAnnotation class.
-     * @param IVocabularyAnnotatable $target Element the annotation applies to.
-     * @param ITerm $term Term bound by the annotation.
-     * @param string $qualifier Qualifier used to discriminate between multiple bindings of the same property or type.
+     * @param IVocabularyAnnotatable $target    element the annotation applies to
+     * @param ITerm                  $term      term bound by the annotation
+     * @param string                 $qualifier qualifier used to discriminate between multiple bindings of the same property or type
      */
-        protected function __construct(IVocabularyAnnotatable $target, ITerm $term, ?string $qualifier)
-        {
-            $this->target = $target;
-            $this->term = $term;
-            $this->qualifier = $qualifier;
-        }
+    protected function __construct(IVocabularyAnnotatable $target, ITerm $term, ?string $qualifier)
+    {
+        $this->target    = $target;
+        $this->term      = $term;
+        $this->qualifier = $qualifier;
+    }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getQualifier(): ?string
     {
@@ -52,7 +54,7 @@ abstract class EdmVocabularyAnnotation extends EdmElement implements IVocabulary
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getTerm(): ITerm
     {
@@ -60,11 +62,10 @@ abstract class EdmVocabularyAnnotation extends EdmElement implements IVocabulary
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getTarget(): IVocabularyAnnotatable
     {
         return $this->target;
     }
-
 }

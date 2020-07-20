@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 6/07/20
- * Time: 2:31 PM
+ * Time: 2:31 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\Internal;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator\VisitorOfILabeledElement;

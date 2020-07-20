@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Annotations;
 
@@ -17,27 +19,27 @@ class EdmDirectValueAnnotation extends EdmNamedElement implements IDirectValueAn
     /**
      * @var mixed
      */
-private $value;
+    private $value;
     /**
      * @var string
      */
-private $namespaceUri;
+    private $namespaceUri;
 
     /**
      * Initializes a new instance of the EdmDirectValueAnnotation class.
-     * @param string $namespaceUri Namespace URI of the annotation.
-     * @param string $name Name of the annotation within the namespace.
-     * @param mixed $value Value of the annotation
+     * @param string $namespaceUri namespace URI of the annotation
+     * @param string $name         name of the annotation within the namespace
+     * @param mixed  $value        Value of the annotation
      */
-public function __construct(string $namespaceUri, string $name, $value = null)
-{
-    parent::__construct($name);
-    $this->namespaceUri = $namespaceUri;
-    $this->value = $value;
-}
+    public function __construct(string $namespaceUri, string $name, $value = null)
+    {
+        parent::__construct($name);
+        $this->namespaceUri = $namespaceUri;
+        $this->value        = $value;
+    }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getNamespaceUri(): string
     {
@@ -45,7 +47,7 @@ public function __construct(string $namespaceUri, string $name, $value = null)
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getValue()
     {

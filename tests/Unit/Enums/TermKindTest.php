@@ -11,7 +11,7 @@ class TermKindTest extends TestCase
 {
     public function keyStringProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [TermKind::None(), 'None'];
         $result[] = [TermKind::Type(), 'Type'];
         $result[] = [TermKind::Value(), 'Value'];
@@ -23,7 +23,7 @@ class TermKindTest extends TestCase
      * @dataProvider keyStringProvider
      *
      * @param TermKind $kind
-     * @param string $expected
+     * @param string   $expected
      */
     public function testGetKey(TermKind $kind, string $expected)
     {

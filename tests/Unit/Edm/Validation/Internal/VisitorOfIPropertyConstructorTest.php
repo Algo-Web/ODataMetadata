@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 5/07/20
- * Time: 2:04 PM
+ * Time: 2:04 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\Internal;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator\VisitorOfIPropertyConstructor;
@@ -23,7 +24,7 @@ class VisitorOfIPropertyConstructorTest extends TestCase
         $followUp   = [];
         $references = [];
 
-        $foo = new VisitorOfIPropertyConstructor();
+        $foo    = new VisitorOfIPropertyConstructor();
         $result = $foo->Visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(2, count($result));

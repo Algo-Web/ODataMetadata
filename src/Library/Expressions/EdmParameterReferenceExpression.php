@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
 
@@ -29,7 +31,7 @@ class EdmParameterReferenceExpression extends EdmElement implements IParameterRe
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -37,7 +39,7 @@ class EdmParameterReferenceExpression extends EdmElement implements IParameterRe
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getReferencedParameter(): ?IFunctionParameter
     {

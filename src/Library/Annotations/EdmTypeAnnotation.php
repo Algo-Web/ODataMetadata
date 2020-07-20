@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Annotations;
 
@@ -23,24 +25,22 @@ class EdmTypeAnnotation extends EdmVocabularyAnnotation implements ITypeAnnotati
 
     /**
      * Initializes a new instance of the EdmTypeAnnotation class.
-     * @param IVocabularyAnnotatable $target Element the annotation applies to.
-     * @param ITerm $term Term bound by the annotation.
-     * @param string|null $qualifier Qualifier used to discriminate between multiple bindings of the same property or type.
-     * @param IPropertyValueBinding ...$propertyValueBindings Value annotations for the properties of the type.
+     * @param IVocabularyAnnotatable $target                   element the annotation applies to
+     * @param ITerm                  $term                     term bound by the annotation
+     * @param string|null            $qualifier                qualifier used to discriminate between multiple bindings of the same property or type
+     * @param IPropertyValueBinding  ...$propertyValueBindings Value annotations for the properties of the type.
      */
     public function __construct(IVocabularyAnnotatable $target, ITerm $term, string $qualifier = null, IPropertyValueBinding ...$propertyValueBindings)
     {
         parent::__construct($target, $term, $qualifier);
         $this->propertyValueBindings = $propertyValueBindings;
-
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getPropertyValueBindings(): array
     {
         return $this->propertyValueBindings;
     }
-
 }

@@ -86,7 +86,7 @@ class EdmUtilTest extends TestCase
 
     public function qualifiedNameProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = ['foo', false];
         $result[] = ['foo.bar', true];
         $result[] = ['foo..', false];
@@ -99,7 +99,7 @@ class EdmUtilTest extends TestCase
      * @dataProvider qualifiedNameProvider
      *
      * @param string $string
-     * @param bool $expected
+     * @param bool   $expected
      */
     public function testIsQualifiedName(string $string, bool $expected)
     {
@@ -109,7 +109,7 @@ class EdmUtilTest extends TestCase
 
     public function tryGetNamespaceProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = ['foo/bar', 'foo', 'bar', true];
         $result[] = ['foo.bar', 'foo', 'bar', true];
 
@@ -122,7 +122,7 @@ class EdmUtilTest extends TestCase
      * @param string $qualName
      * @param string $expectedNamepace
      * @param string $expectedName
-     * @param bool $expected
+     * @param bool   $expected
      */
     public function testTryGetNamespaceNameFromQualifiedName(
         string $qualName,
@@ -158,7 +158,7 @@ class EdmUtilTest extends TestCase
         $function->shouldReceive('getName')->andReturn('name');
 
         $expected = 'namespace/name';
-        $actual = EdmUtil::ParameterizedName($function);
+        $actual   = EdmUtil::ParameterizedName($function);
         $this->assertEquals($expected, $actual);
     }
 
@@ -207,7 +207,7 @@ class EdmUtilTest extends TestCase
         $function->shouldReceive('getParameters')->andReturn([$parm1, $parm2, $parm3]);
 
         $expected = 'namespace.name(FullName, Collection(CollectionFullName), Ref(EntityFullName))';
-        $actual = EdmUtil::ParameterizedName($function);
+        $actual   = EdmUtil::ParameterizedName($function);
         $this->assertEquals($expected, $actual);
     }
 }

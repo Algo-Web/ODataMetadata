@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IEnumMemberReferenceExpression;
@@ -22,7 +23,7 @@ class EdmEnumMemberReferenceExpression extends EdmElement implements IEnumMember
 
     /**
      * Initializes a new instance of the EdmEnumMemberReferenceExpression class.
-     * @param IEnumMember $referencedEnumMember Referenced enum member.
+     * @param IEnumMember $referencedEnumMember referenced enum member
      */
     public function __construct(IEnumMember $referencedEnumMember)
     {
@@ -30,7 +31,7 @@ class EdmEnumMemberReferenceExpression extends EdmElement implements IEnumMember
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getReferencedEnumMember(): IEnumMember
     {
@@ -38,7 +39,7 @@ class EdmEnumMemberReferenceExpression extends EdmElement implements IEnumMember
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {

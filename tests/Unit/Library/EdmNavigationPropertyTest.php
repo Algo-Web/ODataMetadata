@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 6/07/20
- * Time: 3:39 AM
+ * Time: 3:39 AM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Library;
 
 use AlgoWeb\ODataMetadata\Enums\Multiplicity;
@@ -25,11 +26,11 @@ class EdmNavigationPropertyTest extends TestCase
 {
     public function testCreateNavigationPropertyWithPartnerBadPartnerType()
     {
-        $propertyName = 'propName';
-        $propType = m::mock(ITypeReference::class);
-        $onDelete = OnDeleteAction::None();
+        $propertyName        = 'propName';
+        $propType            = m::mock(ITypeReference::class);
+        $onDelete            = OnDeleteAction::None();
         $partnerPropertyName = 'partnerPropName';
-        $partnerPropType = m::mock(ITypeReference::class);
+        $partnerPropType     = m::mock(ITypeReference::class);
         $partnerPropType->shouldReceive('IsEntity')->andReturn(false);
         $partnerPropType->shouldReceive('IsCollection')->andReturn(false);
         $partnerOnDelete = OnDeleteAction::None();
@@ -54,13 +55,13 @@ class EdmNavigationPropertyTest extends TestCase
     public function testCreateNavigationPropertyWithPartnerBadMainType()
     {
         $propertyName = 'propName';
-        $propType = m::mock(ITypeReference::class);
+        $propType     = m::mock(ITypeReference::class);
         $propType->shouldReceive('IsEntity')->andReturn(false);
         $propType->shouldReceive('IsCollection')->andReturn(false);
-        $onDelete = OnDeleteAction::None();
+        $onDelete            = OnDeleteAction::None();
         $partnerPropertyName = 'partnerPropName';
 
-        $def = m::mock(IEntityType::class);
+        $def             = m::mock(IEntityType::class);
         $partnerPropType = m::mock(ITypeReference::class);
         $partnerPropType->shouldReceive('IsEntity')->andReturn(true);
         $partnerPropType->shouldReceive('IsCollection')->andReturn(false)->never();
@@ -88,7 +89,7 @@ class EdmNavigationPropertyTest extends TestCase
     {
         $propertyName = 'propName';
 
-        $eDef = m::mock(IEntityType::class);
+        $eDef  = m::mock(IEntityType::class);
         $eType = m::mock(ITypeReference::class);
         $eType->shouldReceive('IsEntity')->andReturn(true);
         $eType->shouldReceive('getDefinition')->andReturn($eDef);
@@ -100,10 +101,10 @@ class EdmNavigationPropertyTest extends TestCase
         $propType->shouldReceive('IsEntity')->andReturn(false);
         $propType->shouldReceive('IsCollection')->andReturn(true);
         $propType->shouldReceive('getDefinition')->andReturn($def);
-        $onDelete = OnDeleteAction::None();
+        $onDelete            = OnDeleteAction::None();
         $partnerPropertyName = 'partnerPropName';
 
-        $def = m::mock(IEntityType::class);
+        $def             = m::mock(IEntityType::class);
         $partnerPropType = m::mock(ITypeReference::class);
         $partnerPropType->shouldReceive('IsEntity')->andReturn(true);
         $partnerPropType->shouldReceive('IsCollection')->andReturn(false)->never();
@@ -133,8 +134,8 @@ class EdmNavigationPropertyTest extends TestCase
     public function testCreateNavigationPropertyType()
     {
         $eType = m::mock(IEntityType::class);
-        $mult = Multiplicity::ZeroOrOne();
-        $name = 'name';
+        $mult  = Multiplicity::ZeroOrOne();
+        $name  = 'name';
 
         $reflec = new \ReflectionClass(EdmNavigationProperty::class);
 
@@ -154,8 +155,8 @@ class EdmNavigationPropertyTest extends TestCase
     public function testCreateNavigationPropertyTypeBadMult()
     {
         $eType = m::mock(IEntityType::class);
-        $mult = Multiplicity::Unknown();
-        $name = 'name';
+        $mult  = Multiplicity::Unknown();
+        $name  = 'name';
 
         $reflec = new \ReflectionClass(EdmNavigationProperty::class);
 
