@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
@@ -27,23 +28,23 @@ class EdmIfExpression extends EdmElement implements IIfExpression
     /**
      * @var IExpression
      */
-    private  $falseExpression;
+    private $falseExpression;
 
     /**
      * Initializes a new instance of the EdmIfExpression class.
-     * @param IExpression $testExpression Test expression
-     * @param IExpression $trueExpression Expression to evaluate if testExpression evaluates to true.
-     * @param IExpression $falseExpression Expression to evaluate if testExpression evaluates to false.
+     * @param IExpression $testExpression  Test expression
+     * @param IExpression $trueExpression  expression to evaluate if testExpression evaluates to true
+     * @param IExpression $falseExpression expression to evaluate if testExpression evaluates to false
      */
     public function __construct(IExpression $testExpression, IExpression $trueExpression, IExpression $falseExpression)
     {
-        $this->testExpression = $testExpression;
-        $this->trueExpression = $trueExpression;
+        $this->testExpression  = $testExpression;
+        $this->trueExpression  = $trueExpression;
         $this->falseExpression = $falseExpression;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -51,7 +52,7 @@ class EdmIfExpression extends EdmElement implements IIfExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getTestExpression(): IExpression
     {
@@ -59,7 +60,7 @@ class EdmIfExpression extends EdmElement implements IIfExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getTrueExpression(): IExpression
     {
@@ -67,7 +68,7 @@ class EdmIfExpression extends EdmElement implements IIfExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getFalseExpression(): IExpression
     {

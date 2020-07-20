@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
@@ -25,26 +26,26 @@ class EdmValueTermReferenceExpression extends EdmElement implements IValueTermRe
     /**
      * @var IValueTerm
      */
-        private $term;
+    private $term;
     /**
      * @var string
      */
-        private $qualifier;
+    private $qualifier;
 
     /**
      * Initializes a new instance of the EdmValueTermReferenceExpression class.
-     * @param IExpression $baseExpression Expression for the structured value containing the referenced term property.
-     * @param IValueTerm $term Referenced value term.
-     * @param string $qualifier Qualifier
+     * @param IExpression $baseExpression expression for the structured value containing the referenced term property
+     * @param IValueTerm  $term           referenced value term
+     * @param string      $qualifier      Qualifier
      */
     public function __construct(IExpression $baseExpression, IValueTerm $term, string $qualifier = null)
     {
         $this->baseExpression = $baseExpression;
-        $this->term = $term;
-        $this->qualifier = $qualifier;
+        $this->term           = $term;
+        $this->qualifier      = $qualifier;
     }
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBase(): IExpression
     {
@@ -52,7 +53,7 @@ class EdmValueTermReferenceExpression extends EdmElement implements IValueTermRe
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getTerm(): IValueTerm
     {
@@ -60,7 +61,7 @@ class EdmValueTermReferenceExpression extends EdmElement implements IValueTermRe
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getQualifier(): string
     {
@@ -68,11 +69,10 @@ class EdmValueTermReferenceExpression extends EdmElement implements IValueTermRe
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {
         return ExpressionKind::ValueTermReference();
     }
-
 }

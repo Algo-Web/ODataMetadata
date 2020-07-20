@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IPathExpression;
@@ -26,14 +27,14 @@ class EdmPathExpression extends EdmElement implements IPathExpression
      */
     public function __construct(string ...$path)
     {
-        if(count($path) === 1){
+        if (count($path) === 1) {
             $path = explode('/', $path[]);
         }
         $this->path = $path;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -41,7 +42,7 @@ class EdmPathExpression extends EdmElement implements IPathExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getPath(): array
     {

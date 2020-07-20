@@ -12,7 +12,7 @@ class MultiplicityTest extends TestCase
 {
     public function keyStringProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [Multiplicity::Unknown(), 'Unknown'];
         $result[] = [Multiplicity::ZeroOrOne(), 'ZeroOrOne'];
         $result[] = [Multiplicity::One(), 'One'];
@@ -25,7 +25,7 @@ class MultiplicityTest extends TestCase
      * @dataProvider keyStringProvider
      *
      * @param Multiplicity $kind
-     * @param string $expected
+     * @param string       $expected
      */
     public function testGetKey(Multiplicity $kind, string $expected)
     {
@@ -38,7 +38,7 @@ class MultiplicityTest extends TestCase
         $multiplicity = Multiplicity::Unknown();
 
         $expected = 'Invalid multiplicity: \'Unknown\'';
-        $actual = StringConst::UnknownEnumVal_Multiplicity($multiplicity->getKey());
+        $actual   = StringConst::UnknownEnumVal_Multiplicity($multiplicity->getKey());
 
         $this->assertEquals($expected, $actual);
     }

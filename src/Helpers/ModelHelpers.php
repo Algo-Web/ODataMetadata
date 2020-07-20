@@ -149,12 +149,12 @@ trait ModelHelpers
         };
     }
 
-    /***
+    /**
      * Searches for functions with the given name in this model and all referenced models and returns an empty
      * enumerable if no such functions exist.
      *
-     * @param string $qualifiedName The qualified name of the functions being found.
-     * @return IFunction[] The requested functions.
+     * @param  string      $qualifiedName the qualified name of the functions being found
+     * @return IFunction[] the requested functions
      */
     public function FindFunctions(string $qualifiedName): array
     {

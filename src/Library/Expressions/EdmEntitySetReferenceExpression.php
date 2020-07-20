@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
 
@@ -22,7 +24,7 @@ class EdmEntitySetReferenceExpression extends EdmElement implements IEntitySetRe
 
     /**
      * Initializes a new instance of the EdmEntitySetReferenceExpression class.
-     * @param IEntitySet $referencedEntitySet Referenced entity set.
+     * @param IEntitySet $referencedEntitySet referenced entity set
      */
     public function __construct(IEntitySet $referencedEntitySet)
     {
@@ -30,7 +32,7 @@ class EdmEntitySetReferenceExpression extends EdmElement implements IEntitySetRe
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getReferencedEntitySet(): IEntitySet
     {
@@ -38,7 +40,7 @@ class EdmEntitySetReferenceExpression extends EdmElement implements IEntitySetRe
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {

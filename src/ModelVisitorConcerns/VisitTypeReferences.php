@@ -54,8 +54,8 @@ trait VisitTypeReferences
             default:
                 throw new InvalidOperationException(
                     StringConst::UnknownEnumVal_TypeKind(
-                    $reference->getDefinition()->getTypeKind()->getKey()
-                )
+                        $reference->getDefinition()->getTypeKind()->getKey()
+                    )
                 );
         }
     }
@@ -113,8 +113,8 @@ trait VisitTypeReferences
             default:
                 throw new InvalidOperationException(
                     StringConst::UnknownEnumVal_PrimitiveKind(
-                    $reference->PrimitiveKind()->getKey()
-                )
+                        $reference->PrimitiveKind()->getKey()
+                    )
                 );
         }
     }

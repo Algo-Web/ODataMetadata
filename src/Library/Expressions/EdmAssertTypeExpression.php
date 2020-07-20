@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
 
@@ -27,17 +29,17 @@ class EdmAssertTypeExpression extends EdmElement implements IAssertTypeExpressio
 
     /**
      * Initializes a new instance of the EdmAssertTypeExpression class.
-     * @param IExpression $operand Expression for which the type is asserted.
-     * @param ITypeReference $type Type to assert.
+     * @param IExpression    $operand expression for which the type is asserted
+     * @param ITypeReference $type    type to assert
      */
     public function __construct(IExpression $operand, ITypeReference $type)
     {
         $this->operand = $operand;
-        $this->type = $type;
+        $this->type    = $type;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getOperand(): IExpression
     {
@@ -45,7 +47,7 @@ class EdmAssertTypeExpression extends EdmElement implements IAssertTypeExpressio
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getType(): ITypeReference
     {
@@ -53,7 +55,7 @@ class EdmAssertTypeExpression extends EdmElement implements IAssertTypeExpressio
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {

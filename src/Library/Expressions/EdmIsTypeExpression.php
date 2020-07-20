@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
@@ -24,21 +25,21 @@ class EdmIsTypeExpression extends EdmElement implements IIsTypeExpression
     /**
      * @var ITypeReference
      */
-        private $type;
+    private $type;
 
     /**
      * Initializes a new instance of the EdmIsTypeExpression class.
-     * @param IExpression $operand Expression whose type is to be tested.
-     * @param ITypeReference $type Type to test.
+     * @param IExpression    $operand expression whose type is to be tested
+     * @param ITypeReference $type    type to test
      */
     public function __construct(IExpression $operand, ITypeReference $type)
     {
         $this->operand = $operand;
-        $this->type = $type;
+        $this->type    = $type;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -46,7 +47,7 @@ class EdmIsTypeExpression extends EdmElement implements IIsTypeExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getOperand(): IExpression
     {
@@ -54,7 +55,7 @@ class EdmIsTypeExpression extends EdmElement implements IIsTypeExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getType(): ITypeReference
     {

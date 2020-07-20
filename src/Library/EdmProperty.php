@@ -22,7 +22,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 abstract class EdmProperty extends EdmNamedElement implements IProperty
 {
     use VocabularyAnnotatableHelpers;
-    /***
+    /**
      * @var IStructuredType
      */
     private $declaringType;

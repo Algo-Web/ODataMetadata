@@ -11,7 +11,7 @@ class ConcurrencyModeTest extends TestCase
 {
     public function keyStringProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [ConcurrencyMode::None(), 'None'];
         $result[] = [ConcurrencyMode::Fixed(), 'Fixed'];
 
@@ -22,7 +22,7 @@ class ConcurrencyModeTest extends TestCase
      * @dataProvider keyStringProvider
      *
      * @param ConcurrencyMode $kind
-     * @param string $expected
+     * @param string          $expected
      */
     public function testGetKey(ConcurrencyMode $kind, string $expected)
     {
