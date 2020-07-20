@@ -145,8 +145,9 @@ class InterfaceValidator
         if (false !== $handle) {
             while (false !== ($entry = readdir($handle))) {
                 /** @var string $name */
-                $name = substr($entry, -4);
-                if ($entry === '.' || $entry === '..' || is_dir($entry) || $name !== '.php') {
+                $name = substr($entry, 0, -4);
+                $ext = substr($entry, -4);
+                if ($entry === '.' || $entry === '..' || is_dir($entry) || $ext !== '.php' || empty($ext)) {
                     continue;
                 }
                 if ($name === 'VisitorBase' || $name === 'VisitorOfT') {
