@@ -328,5 +328,5 @@ class CsdlConstants
 // Basically using it as a static constructor.
 (function () {
     CsdlConstants::$Default_ConcurrencyMode = ConcurrencyMode::None();
-    CsdlConstants::$Default_FunctionParameterMode = FunctionParameterMode::IN();
+    CsdlConstants::$Default_FunctionParameterMode = FunctionParameterMode::In();
 });
