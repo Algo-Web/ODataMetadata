@@ -432,7 +432,7 @@ class TypeReferenceHelpersTest extends TestCase
         $this->assertEquals(1, count($errors));
 
         $errorCode = EdmErrorCode::TypeSemanticsCouldNotConvertTypeReference();
-        $expected = 'The type \'FullName\' could not be converted to be a \'Complex\' type.';
+        $expected  = 'The type \'FullName\' could not be converted to be a \'Complex\' type.';
 
         /** @var EdmError $error */
         $error = $errors[0];
@@ -520,7 +520,7 @@ class TypeReferenceHelpersTest extends TestCase
         $this->assertEquals(1, count($errors));
 
         $errorCode = EdmErrorCode::TypeSemanticsCouldNotConvertTypeReference();
-        $expected = 'The type \'FullName\' could not be converted to be a \'Entity\' type.';
+        $expected  = 'The type \'FullName\' could not be converted to be a \'Entity\' type.';
 
         /** @var EdmError $error */
         $error = $errors[0];
@@ -590,7 +590,7 @@ class TypeReferenceHelpersTest extends TestCase
 
     public function asEntityProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [TypeKind::Entity(), '', EdmEntityTypeReference::class];
         $result[] = [TypeKind::Complex(), '', EdmComplexTypeReference::class];
         $result[] = [TypeKind::Row(), '', EdmRowTypeReference::class];
@@ -603,8 +603,8 @@ class TypeReferenceHelpersTest extends TestCase
      * @dataProvider asEntityProvider
      *
      * @param TypeKind $kind
-     * @param string $expected
-     * @param string $expType
+     * @param string   $expected
+     * @param string   $expType
      */
     public function testAsEntityBad(TypeKind $kind, string $expected, string $expType)
     {

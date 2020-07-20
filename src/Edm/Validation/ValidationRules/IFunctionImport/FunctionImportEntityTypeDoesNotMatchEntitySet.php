@@ -46,7 +46,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                 $path = null;
                 if ($functionImport->TryGetStaticEntitySet($entitySet)) {
                     $entitySetElementType = $entitySet->getElementType();
-                    $isBad = $returnedEntityType->IsOrInheritsFrom($entitySetElementType) ||
+                    $isBad                = $returnedEntityType->IsOrInheritsFrom($entitySetElementType) ||
                              $context->checkIsBad($returnedEntityType) ||
                              $context->checkIsBad($entitySet) ||
                              $context->checkIsBad($entitySetElementType);
@@ -70,7 +70,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                     $relativePathElementType = $relativePathType->IsCollection() ?
                         $relativePathType->AsCollection()->ElementType() : $relativePathType;
                     $definition = $relativePathElementType->getDefinition();
-                    $isBad = !$returnedEntityType->IsOrInheritsFrom($definition) &&
+                    $isBad      = !$returnedEntityType->IsOrInheritsFrom($definition) &&
                              !$context->checkIsBad($returnedEntityType) &&
                              !$context->checkIsBad($definition);
                     if ($isBad) {
