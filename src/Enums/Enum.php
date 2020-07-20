@@ -15,12 +15,12 @@ abstract class Enum extends \MyCLabs\Enum\Enum
     }
 
     /**
-     * @param $name
-     * @param $arguments
+     * @param string $name
+     * @param mixed $arguments
      * @throws \ReflectionException
      * @return bool
      */
-    public function __call($name, $arguments)
+    public function __call(string $name, $arguments)
     {
         $array     = static::toArray();
         $regexBase = '/(is)(%s)/m';
