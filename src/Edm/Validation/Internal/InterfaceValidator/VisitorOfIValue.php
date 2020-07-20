@@ -29,20 +29,20 @@ class VisitorOfIValue extends VisitorOfT
 
     public function __construct()
     {
-        $this->lookup[ValueKind::Binary()->getValue()] = IBinaryValue::class;
-        $this->lookup[ValueKind::Boolean()->getValue()] = IBooleanValue::class;
-        $this->lookup[ValueKind::Collection()->getValue()] = ICollectionValue::class;
-        $this->lookup[ValueKind::DateTime()->getValue()] = IDateTimeValue::class;
+        $this->lookup[ValueKind::Binary()->getValue()]         = IBinaryValue::class;
+        $this->lookup[ValueKind::Boolean()->getValue()]        = IBooleanValue::class;
+        $this->lookup[ValueKind::Collection()->getValue()]     = ICollectionValue::class;
+        $this->lookup[ValueKind::DateTime()->getValue()]       = IDateTimeValue::class;
         $this->lookup[ValueKind::DateTimeOffset()->getValue()] = IDateTimeOffsetValue::class;
-        $this->lookup[ValueKind::Decimal()->getValue()] = IDecimalValue::class;
-        $this->lookup[ValueKind::Enum()->getValue()] = IEnumValue::class;
-        $this->lookup[ValueKind::Floating()->getValue()] = IFloatingValue::class;
-        $this->lookup[ValueKind::Guid()->getValue()] = IGuidValue::class;
-        $this->lookup[ValueKind::Integer()->getValue()] = IIntegerValue::class;
-        $this->lookup[ValueKind::Null()->getValue()] = INullValue::class;
-        $this->lookup[ValueKind::String()->getValue()] = IStringValue::class;
-        $this->lookup[ValueKind::Structured()->getValue()] = IStructuredValue::class;
-        $this->lookup[ValueKind::Time()->getValue()] = ITimeValue::class;
+        $this->lookup[ValueKind::Decimal()->getValue()]        = IDecimalValue::class;
+        $this->lookup[ValueKind::Enum()->getValue()]           = IEnumValue::class;
+        $this->lookup[ValueKind::Floating()->getValue()]       = IFloatingValue::class;
+        $this->lookup[ValueKind::Guid()->getValue()]           = IGuidValue::class;
+        $this->lookup[ValueKind::Integer()->getValue()]        = IIntegerValue::class;
+        $this->lookup[ValueKind::Null()->getValue()]           = INullValue::class;
+        $this->lookup[ValueKind::String()->getValue()]         = IStringValue::class;
+        $this->lookup[ValueKind::Structured()->getValue()]     = IStructuredValue::class;
+        $this->lookup[ValueKind::Time()->getValue()]           = ITimeValue::class;
     }
 
     protected function VisitT($value, array &$followup, array &$references): ?iterable

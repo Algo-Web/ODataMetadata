@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\Tests\Unit\ModelVisitorConcerns;
 
 use AlgoWeb\ODataMetadata\Csdl\Internal\Serialization\EdmModelCsdlSerializationVisitor;
@@ -42,7 +44,7 @@ class ProcessExpressionsTest extends TestCase
 {
     public function testProcessNullExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $writer  = $this->getWriter();
@@ -56,19 +58,19 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
         $this->assertEquals(1, $payload->count());
-        $result = iterable_to_array($payload);
+        $result  = iterable_to_array($payload);
         $current = $result[0];
         $this->assertEquals($expression, $current);
     }
 
     public function testProcessStringConstantExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $writer  = $this->getWriter();
@@ -82,7 +84,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -95,7 +97,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessBinaryConstantExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $writer  = $this->getWriter();
@@ -109,7 +111,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -122,7 +124,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessPathConstantExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $writer  = $this->getWriter();
@@ -136,7 +138,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -149,7 +151,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessParameterReferenceExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -160,7 +162,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -173,7 +175,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessIntegerConstantExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -184,7 +186,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -197,7 +199,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessFunctionReferenceExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -208,7 +210,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -221,7 +223,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessFloatingConstantExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -232,7 +234,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -245,7 +247,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessGuidConstantExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -256,7 +258,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -269,7 +271,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessEnumMemberReferenceExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -280,7 +282,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -293,7 +295,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessEntitySetReferenceExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -304,7 +306,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -317,7 +319,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessDecimalConstantExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -328,7 +330,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -341,7 +343,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessDateTimeConstantExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -352,7 +354,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -365,7 +367,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessDateTimeOffsetConstantExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -376,7 +378,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -389,7 +391,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessBooleanConstantExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -400,7 +402,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -413,7 +415,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessRecordExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -438,7 +440,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -452,7 +454,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessPropertyReferenceExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -467,7 +469,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -479,7 +481,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessCollectionExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -494,7 +496,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -506,7 +508,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessIsTypeExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -528,7 +530,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -541,7 +543,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessAssertTypeExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -563,7 +565,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);
@@ -576,7 +578,7 @@ class ProcessExpressionsTest extends TestCase
 
     public function testProcessFunctionApplicationExpression()
     {
-        $doc = $this->getMockDocumentation();
+        $doc   = $this->getMockDocumentation();
         $model = $this->getMockModel($doc);
 
         $foo = new EdmModelVisitor($model);
@@ -593,7 +595,7 @@ class ProcessExpressionsTest extends TestCase
         $foo->VisitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
-        $prop = $reflec->getProperty('cloneElementContainer');
+        $prop   = $reflec->getProperty('cloneElementContainer');
         $prop->setAccessible(true);
         /** @var \SplObjectStorage $payload */
         $payload = $prop->getValue($foo);

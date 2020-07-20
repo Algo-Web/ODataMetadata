@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 10/07/20
- * Time: 3:43 PM
+ * Time: 3:43 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\Internal;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -25,10 +26,10 @@ class InterfaceValidatorTest extends TestCase
     public function testCheckInterfaceMismatchWithActualImplement()
     {
         $interface = IExpression::class;
-        $item = m::mock(IExpression::class)->makePartial();
+        $item      = m::mock(IExpression::class)->makePartial();
 
         $expected = null;
-        $actual = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+        $actual   = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
             $item,
             PrimitiveTypeKind::None(),
             'propertyName',
@@ -62,7 +63,7 @@ class InterfaceValidatorTest extends TestCase
         $this->assertEquals($errorCode, $result->getErrorCode());
 
         $expected = 'interface has type definition of kind \'42\'. The type reference interface must match to the kind of the  definition.';
-        $actual = $result->getErrorMessage();
+        $actual   = $result->getErrorMessage();
         $this->assertContains($expected, $actual);
     }
 
@@ -83,22 +84,22 @@ class InterfaceValidatorTest extends TestCase
         $item = m::mock(IPrimitiveTypeReference::class);
         $item->shouldReceive('getDefinition')->andReturn($def)->atLeast(1);
 
-        $result = InterfaceValidator::CreatePrimitiveTypeRefInterfaceTypeKindValueMismatchError($item);
+        $result    = InterfaceValidator::CreatePrimitiveTypeRefInterfaceTypeKindValueMismatchError($item);
         $errorCode = EdmErrorCode::InterfaceCriticalKindValueMismatch();
         $this->assertEquals($errorCode, $result->getErrorCode());
 
         $expected = 'interface has type definition of kind \'None\'. The type reference interface must match to the kind of the  definition.';
-        $actual = $result->getErrorMessage();
+        $actual   = $result->getErrorMessage();
         $this->assertContains($expected, $actual);
     }
 
     public function testProcessEnumerableWithNullEnumerable()
     {
-        $enum = null;
-        $item = m::mock(IExpression::class);
+        $enum     = null;
+        $item     = m::mock(IExpression::class);
         $propName = 'property';
         $targList = [];
-        $errors = [];
+        $errors   = [];
 
         InterfaceValidator::ProcessEnumerable($item, $enum, $propName, $targList, $errors);
 
@@ -109,17 +110,17 @@ class InterfaceValidatorTest extends TestCase
         $this->assertEquals($errorCode, $result->getErrorCode());
 
         $expected = 'must not be null.';
-        $actual = $result->getErrorMessage();
+        $actual   = $result->getErrorMessage();
         $this->assertContains($expected, $actual);
     }
 
     public function testProcessEnumerableWithEmptyEnumerable()
     {
-        $enum = [];
-        $item = m::mock(IExpression::class);
+        $enum     = [];
+        $item     = m::mock(IExpression::class);
         $propName = 'property';
         $targList = [];
-        $errors = [];
+        $errors   = [];
 
         InterfaceValidator::ProcessEnumerable($item, $enum, $propName, $targList, $errors);
 
@@ -129,11 +130,11 @@ class InterfaceValidatorTest extends TestCase
 
     public function testProcessEnumerableWithTwoChoicesNullFirst()
     {
-        $enum = [null, m::mock(IExpression::class)];
-        $item = m::mock(IExpression::class);
+        $enum     = [null, m::mock(IExpression::class)];
+        $item     = m::mock(IExpression::class);
         $propName = 'property';
         $targList = [];
-        $errors = [];
+        $errors   = [];
 
         InterfaceValidator::ProcessEnumerable($item, $enum, $propName, $targList, $errors);
 
@@ -143,11 +144,11 @@ class InterfaceValidatorTest extends TestCase
 
     public function testProcessEnumerableWithTwoChoicesNullSecond()
     {
-        $enum = [m::mock(IExpression::class), null];
-        $item = m::mock(IExpression::class);
+        $enum     = [m::mock(IExpression::class), null];
+        $item     = m::mock(IExpression::class);
         $propName = 'property';
         $targList = [];
-        $errors = [];
+        $errors   = [];
 
         InterfaceValidator::ProcessEnumerable($item, $enum, $propName, $targList, $errors);
 

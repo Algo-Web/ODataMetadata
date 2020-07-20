@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 10/07/20
- * Time: 6:37 PM
+ * Time: 6:37 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Library\Internal\Bad;
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
@@ -33,7 +34,7 @@ class BadEntityContainerTest extends TestCase
         $foo = new BadEntityContainer('name', []);
 
         $expected = [];
-        $actual = $foo->getElements();
+        $actual   = $foo->getElements();
         $this->assertEquals($expected, $actual);
     }
 
@@ -42,7 +43,7 @@ class BadEntityContainerTest extends TestCase
         $foo = new BadEntityContainer('name', []);
 
         $expected = null;
-        $actual = $foo->findEntitySet('');
+        $actual   = $foo->findEntitySet('');
         $this->assertEquals($expected, $actual);
     }
 
@@ -51,7 +52,7 @@ class BadEntityContainerTest extends TestCase
         $foo = new BadEntityContainer('name', []);
 
         $expected = [];
-        $actual = $foo->findFunctionImports('');
+        $actual   = $foo->findFunctionImports('');
         $this->assertEquals($expected, $actual);
     }
 
@@ -60,7 +61,7 @@ class BadEntityContainerTest extends TestCase
         $foo = new BadEntityContainer('name', []);
 
         $expected = null;
-        $actual = $foo->isDefault();
+        $actual   = $foo->isDefault();
         $this->assertEquals($expected, $actual);
     }
 
@@ -69,7 +70,7 @@ class BadEntityContainerTest extends TestCase
         $foo = new BadEntityContainer('name', []);
 
         $expected = null;
-        $actual = $foo->isLazyLoadEnabled();
+        $actual   = $foo->isLazyLoadEnabled();
         $this->assertEquals($expected, $actual);
     }
 
@@ -78,7 +79,7 @@ class BadEntityContainerTest extends TestCase
         $foo = new BadEntityContainer('name', []);
 
         $expected = SchemaElementKind::EntityContainer();
-        $actual = $foo->getSchemaElementKind();
+        $actual   = $foo->getSchemaElementKind();
         $this->assertEquals($expected, $actual);
     }
 }

@@ -40,7 +40,7 @@ class EdmModel extends EdmModelBase
         $annotationsManager = $annotationsManager ?? new EdmDirectValueAnnotationsManager();
         parent::__construct($referencedModels, $annotationsManager);
         $this->vocabularyAnnotationsDictionary = new SplObjectStorage();
-        $this->derivedTypeMappings = new SplObjectStorage();
+        $this->derivedTypeMappings             = new SplObjectStorage();
     }
 
     /**

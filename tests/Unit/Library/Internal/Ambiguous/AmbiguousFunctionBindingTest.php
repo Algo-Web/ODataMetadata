@@ -22,7 +22,7 @@ class AmbiguousFunctionBindingTest extends TestCase
         $foo = new AmbiguousFunctionBinding($func1, $func2);
 
         $expected = null;
-        $actual = $foo->getDefiningExpression();
+        $actual   = $foo->getDefiningExpression();
         $this->assertEquals($expected, $actual);
     }
 
@@ -36,7 +36,7 @@ class AmbiguousFunctionBindingTest extends TestCase
         $foo = new AmbiguousFunctionBinding($func1, $func2);
 
         $expected = null;
-        $actual = $foo->getReturnType();
+        $actual   = $foo->getReturnType();
         $this->assertEquals($expected, $actual);
     }
 
@@ -51,7 +51,7 @@ class AmbiguousFunctionBindingTest extends TestCase
         $foo = new AmbiguousFunctionBinding($func1, $func2);
 
         $expected = 'LARGEHAM';
-        $actual = $foo->getNamespace();
+        $actual   = $foo->getNamespace();
         $this->assertEquals($expected, $actual);
     }
 
@@ -82,7 +82,7 @@ class AmbiguousFunctionBindingTest extends TestCase
         $foo = new AmbiguousFunctionBinding($func1, $func2);
 
         $expected = [];
-        $actual = $foo->getParameters();
+        $actual   = $foo->getParameters();
         $this->assertEquals($expected, $actual);
     }
 
@@ -97,7 +97,7 @@ class AmbiguousFunctionBindingTest extends TestCase
         $foo = new AmbiguousFunctionBinding($func1, $func2);
 
         $expected = null;
-        $actual = $foo->findParameter('foo');
+        $actual   = $foo->findParameter('foo');
         $this->assertEquals($expected, $actual);
     }
 }

@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: alex
  * Date: 17/07/20
- * Time: 4:49 PM
+ * Time: 4:49 PM.
  */
 
 declare(strict_types=1);
@@ -36,9 +36,9 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
      */
     public function testInvokeWithNullLocation()
     {
-        $model = m::mock(IModel::class);
-        $context = new ValidationContext($model, function(IEdmElement $one): bool { return false; });
-        $import = m::mock(IFunctionImport::class);
+        $model   = m::mock(IModel::class);
+        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $import  = m::mock(IFunctionImport::class);
         $import->shouldReceive('Location')->andReturn(null);
 
         $foo = new FunctionImportEntityTypeDoesNotMatchEntitySet();
@@ -50,7 +50,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
 
     public function nullSetAndOrTypeProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [true, true];
         $result[] = [true, false];
         $result[] = [false, true];
@@ -61,16 +61,16 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
     /**
      * @dataProvider nullSetAndOrTypeProvider
      *
-     * @param bool $nullSet
-     * @param bool $nullType
+     * @param  bool                 $nullSet
+     * @param  bool                 $nullType
      * @throws \ReflectionException
      */
     public function testInvokeWithIncompleteEntitySetAndOrType(bool $nullSet, bool $nullType)
     {
-        $model = m::mock(IModel::class);
-        $context = new ValidationContext($model, function(IEdmElement $one): bool { return false; });
+        $model   = m::mock(IModel::class);
+        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
 
-        $loc = m::mock(ILocation::class);
+        $loc    = m::mock(ILocation::class);
         $import = m::mock(IFunctionImport::class);
         $import->shouldReceive('Location')->andReturn($loc);
         if ($nullSet) {
@@ -96,10 +96,10 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
 
     public function testInvokeWithFunctionImportReturnTypeNotCollectionNotEntity()
     {
-        $model = m::mock(IModel::class);
-        $context = new ValidationContext($model, function(IEdmElement $one): bool { return false; });
+        $model   = m::mock(IModel::class);
+        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
 
-        $loc = m::mock(ILocation::class);
+        $loc    = m::mock(ILocation::class);
         $import = m::mock(IFunctionImport::class);
         $import->shouldReceive('Location')->andReturn($loc);
         $import->shouldReceive('getName')->andReturn('name');
@@ -107,7 +107,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
         $expr = m::mock(IExpression::class);
         $import->shouldReceive('getEntitySet')->andReturn($expr);
 
-        $rType = m::mock(IType::class);
+        $rType   = m::mock(IType::class);
         $typeRef = m::mock(ITypeReference::class);
         $typeRef->shouldReceive('IsCollection')->andReturn(false);
         $typeRef->shouldReceive('IsEntity')->andReturn(false);
@@ -133,10 +133,10 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
 
     public function testInvokeWithFunctionImportReturnTypeNotCollectionNotEntityCheckedIsBad()
     {
-        $model = m::mock(IModel::class);
-        $context = new ValidationContext($model, function(IEdmElement $one): bool { return true; });
+        $model   = m::mock(IModel::class);
+        $context = new ValidationContext($model, function (IEdmElement $one): bool { return true; });
 
-        $loc = m::mock(ILocation::class);
+        $loc    = m::mock(ILocation::class);
         $import = m::mock(IFunctionImport::class);
         $import->shouldReceive('Location')->andReturn($loc);
         $import->shouldReceive('getName')->andReturn('name');
@@ -144,7 +144,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
         $expr = m::mock(IExpression::class);
         $import->shouldReceive('getEntitySet')->andReturn($expr);
 
-        $rType = m::mock(IType::class);
+        $rType   = m::mock(IType::class);
         $typeRef = m::mock(ITypeReference::class);
         $typeRef->shouldReceive('IsCollection')->andReturn(false);
         $typeRef->shouldReceive('IsEntity')->andReturn(false);
@@ -164,10 +164,10 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
 
     public function testInvokeWithFunctionImportReturnTypeNotCollectionNotEntityCheckedIsBadNullDefinition()
     {
-        $model = m::mock(IModel::class);
-        $context = new ValidationContext($model, function(IEdmElement $one): bool { return true; });
+        $model   = m::mock(IModel::class);
+        $context = new ValidationContext($model, function (IEdmElement $one): bool { return true; });
 
-        $loc = m::mock(ILocation::class);
+        $loc    = m::mock(ILocation::class);
         $import = m::mock(IFunctionImport::class);
         $import->shouldReceive('Location')->andReturn($loc);
         $import->shouldReceive('getName')->andReturn('name');
@@ -193,7 +193,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
 
     public function isStaticEntitySetProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [false, false, false, false, 0];
         $result[] = [true, false, false, false, 1];
         $result[] = [false, true, false, false, 1];
@@ -217,16 +217,16 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
     /**
      * @dataProvider isStaticEntitySetProvider
      *
-     * @param bool $isOrInherits
-     * @param bool $entityTypeBad
-     * @param bool $entitySetBad
-     * @param bool $entitySetElementTypeBad
-     * @param int $numErrors
+     * @param  bool                 $isOrInherits
+     * @param  bool                 $entityTypeBad
+     * @param  bool                 $entitySetBad
+     * @param  bool                 $entitySetElementTypeBad
+     * @param  int                  $numErrors
      * @throws \ReflectionException
      */
     public function testInvokeIsCollectionIsEntityIsStaticEntitySet(bool $isOrInherits, bool $entityTypeBad, bool $entitySetBad, bool $entitySetElementTypeBad, int $numErrors)
     {
-        $model = m::mock(IModel::class);
+        $model   = m::mock(IModel::class);
         $context = new ValidationContext($model, function (IEdmElement $one) use ($entityTypeBad, $entitySetBad, $entitySetElementTypeBad): bool {
             if ($one instanceof IEntityType) {
                 if (null !== $one->getDeclaredKey()) {
@@ -247,7 +247,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
         $expr = m::mock(IExpression::class);
         $expr->shouldReceive('getElementType')->andReturn($elementType);
         $expr->shouldReceive('getName')->andReturn('exprName');
-        $loc = m::mock(ILocation::class);
+        $loc    = m::mock(ILocation::class);
         $import = m::mock(IFunctionImport::class);
         $import->shouldReceive('Location')->andReturn($loc);
         $import->shouldReceive('getName')->andReturn('name');
@@ -266,7 +266,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
         $eType->shouldReceive('IsOrInheritsFrom')->andReturn($isOrInherits);
         $eType->shouldReceive('getDeclaredKey')->andReturn(null);
 
-        $sType = m::mock(IType::class);
+        $sType  = m::mock(IType::class);
         $nuType = m::mock(ITypeReference::class);
         $nuType->shouldReceive('getDefinition')->andReturn($sType);
         $nuType->shouldReceive('IsEntity')->andReturn(true);
@@ -274,7 +274,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
         $collection = m::mock(ICollectionTypeReference::class);
         $collection->shouldReceive('ElementType')->andReturn($nuType);
 
-        $rType = m::mock(IType::class);
+        $rType   = m::mock(IType::class);
         $typeRef = m::mock(ITypeReference::class);
         $typeRef->shouldReceive('IsCollection')->andReturn(true);
         $typeRef->shouldReceive('IsEntity')->andReturn(true);
@@ -323,12 +323,12 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
     /**
      * @dataProvider isEntityAsPathProvider
      *
-     * @param bool $isPathEmpty
-     * @param bool $isCollection
-     * @param bool $isOrInherits
-     * @param bool $entityTypeBad
-     * @param bool $isDefinitionBad
-     * @param int $numErrors
+     * @param  bool                 $isPathEmpty
+     * @param  bool                 $isCollection
+     * @param  bool                 $isOrInherits
+     * @param  bool                 $entityTypeBad
+     * @param  bool                 $isDefinitionBad
+     * @param  int                  $numErrors
      * @throws \ReflectionException
      */
     public function testInvokeIsEntityAsPath(
@@ -339,7 +339,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
         bool $isDefinitionBad,
         int $numErrors
     ) {
-        $model = m::mock(IModel::class);
+        $model         = m::mock(IModel::class);
         $isBadFunction = function (IEdmElement $one) use ($entityTypeBad, $isDefinitionBad): bool {
             if ($one instanceof IEntityType) {
                 return $entityTypeBad;
@@ -352,14 +352,14 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
 
         $context = new ValidationContext($model, $isBadFunction);
 
-        $nuExpr = m::mock(IExpression::class);
+        $nuExpr  = m::mock(IExpression::class);
         $typeRef = m::mock(ITypeReference::class);
         $typeRef->shouldReceive('IsCollection')->andReturn($isCollection);
         $typeRef->shouldReceive('FullName')->andReturn('typeRef');
         $typeRef->shouldReceive('getNullable')->andReturn(false)->never();
         $entityType = m::mock(IEntityType::class);
         if ($isCollection) {
-            $rType = m::mock(IType::class);
+            $rType       = m::mock(IType::class);
             $elementType = m::mock(ITypeReference::class);
             $elementType->shouldReceive('getDefinition')->andReturn($rType);
             $elementType->shouldReceive('IsEntity')->andReturn(true);
@@ -382,7 +382,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
 
         $entityType->shouldReceive('IsOrInheritsFrom')->andReturn($isOrInherits);
 
-        $loc = m::mock(ILocation::class);
+        $loc    = m::mock(ILocation::class);
         $import = m::mock(IFunctionImport::class);
         $import->shouldReceive('Location')->andReturn($loc);
         $import->shouldReceive('getName')->andReturn('name');
