@@ -10,6 +10,7 @@ use ReflectionException;
 use ReflectionFunction;
 use ReflectionFunctionAbstract;
 use ReflectionMethod;
+use ReflectionNamedType;
 
 abstract class Asserts
 {
@@ -44,32 +45,52 @@ abstract class Asserts
                 $messageBuilder('Missing Return Type')
             );
             //TODO: improve this to check that the actual type does not return a childType;
+            $expectedReturnType = $expectedReflection->getReturnType();
+            $actualReturnType   = $actualReflection->getReturnType();
+            $name = $expectedReturnType instanceof ReflectionNamedType ?
+                $expectedReturnType->getName() :
+                strval($expectedReturnType);
+            $actName = $actualReturnType instanceof ReflectionNamedType ?
+                $actualReturnType->getName() :
+                strval($actualReturnType);
+
             assert(
-                $expectedReflection->getReturnType()->getName() === $actualReflection->getReturnType()->getName(),
+                $name === $actName,
                 $messageBuilder('IncorrectOrInvalid ReturnType')
             );
-            if (!$expectedReflection->getReturnType()->allowsNull()) {
+            if (!$expectedReturnType->allowsNull()) {
                 assert(
-                    !$actualReflection->getReturnType()->allowsNull(),
+                    !$actualReturnType->allowsNull(),
                     $messageBuilder('Nullable ReturnType Not allowed')
                 );
             }
         }
 
         for ($i = 0; $i < $expectedReflection->getNumberOfParameters(); $i++) {
-            if ($expectedReflection->getParameters()[$i]->hasType()) {
+            $expectedParm = $expectedReflection->getParameters()[$i];
+            if ($expectedParm->hasType()) {
+                $actualParm = $actualReflection->getParameters()[$i];
                 assert(
-                    $actualReflection->getParameters()[$i]->hasType(),
+                    $actualParm->hasType(),
                     $messageBuilder(sprintf('Parameter %s Is missing TypeHint', $i))
                 );
+                $expectedParmType = $expectedParm->getType();
+                $actualParmType   = $actualParm->getType();
+                $name = $expectedParmType instanceof ReflectionNamedType ?
+                    $expectedParmType->getName() :
+                    strval($expectedParmType);
+                $actName = $actualParmType instanceof ReflectionNamedType ?
+                    $actualParmType->getName() :
+                    strval($actualParmType);
+
                 //TODO: improve this to check that the actual type does not return a childType;
                 assert(
-                    $expectedReflection->getParameters()[$i]->getType()->getName() === $actualReflection->getParameters()[$i]->getType()->getName(),
+                    $name === $actName,
                     $messageBuilder(sprintf('Parameter %s has Incorrect Type', $i))
                 );
-                if (!$expectedReflection->getParameters()[$i]->allowsNull()) {
+                if (!$expectedParm->allowsNull()) {
                     assert(
-                        !$actualReflection->getParameters()[$i]->allowsNull(),
+                        !$actualParm->allowsNull(),
                         $messageBuilder(sprintf('Parameter %s should disallow Nulls', $i))
                     );
                 }
@@ -84,8 +105,12 @@ abstract class Asserts
         foreach ($reflection->getParameters() as $parameter) {
             $parameterString = '';
             if ($parameter->hasType()) {
-                $parameterString .= $parameter->getType()->allowsNull() ? '?' : '';
-                $parameterString .=$parameter->getType()->getName() . ' ';
+                $parmType        = $parameter->getType();
+                $parmName        = $parmType instanceof ReflectionNamedType ?
+                                    $parmType->getName() :
+                                    strval($parmType);
+                $parameterString .= $parmType->allowsNull() ? '?' : '';
+                $parameterString .= $parmName . ' ';
             }
             $parameterString .= $parameter->isVariadic() ? '...$' : '$';
             $parameterString .= $parameter->getName();
@@ -100,7 +125,11 @@ abstract class Asserts
         }
         $return = '';
         if ($reflection->hasReturnType()) {
-            $return .= ': ' . $reflection->getReturnType()->getName();
+            $returnType = $reflection->getReturnType();
+            $name = $returnType instanceof ReflectionNamedType ?
+                $returnType->getName() :
+                strval($returnType);
+            $return .= ': ' . $name;
         }
         return sprintf('function(%s)%s', implode(',', $parameters), $return);
     }
