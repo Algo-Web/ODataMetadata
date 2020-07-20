@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IFunctionReferenceExpression;
@@ -25,13 +26,13 @@ class EdmFunctionReferenceExpression extends EdmElement implements IFunctionRefe
      * Initializes a new instance of the EdmFunctionReferenceExpression class.
      * @param IFunction $referencedFunction Referenced function
      */
-    public  function __construct(IFunction $referencedFunction)
+    public function __construct(IFunction $referencedFunction)
     {
         $this->referencedFunction = $referencedFunction;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -39,7 +40,7 @@ class EdmFunctionReferenceExpression extends EdmElement implements IFunctionRefe
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getReferencedFunction(): IFunction
     {

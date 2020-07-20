@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
 
@@ -21,21 +23,21 @@ class EdmLabeledExpression extends EdmElement implements ILabeledExpression
     /**
      * @var IExpression
      */
-        private $expression;
+    private $expression;
 
     /**
      * Initializes a new instance of the EdmLabeledExpression class.
-     * @param string $name Label of the expression.
-     * @param IExpression $expression Underlying expression.
+     * @param string      $name       label of the expression
+     * @param IExpression $expression underlying expression
      */
     public function __construct(string $name, IExpression $expression)
     {
-        $this->name = $name;
+        $this->name       = $name;
         $this->expression = $expression;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -43,7 +45,7 @@ class EdmLabeledExpression extends EdmElement implements ILabeledExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpression(): IExpression
     {
@@ -51,7 +53,7 @@ class EdmLabeledExpression extends EdmElement implements ILabeledExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getName(): string
     {

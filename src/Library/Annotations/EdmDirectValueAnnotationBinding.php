@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Annotations;
 
@@ -10,7 +12,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
  * Represents the combination of an EDM annotation with an immediate value and the element to which it is attached.
  * @package AlgoWeb\ODataMetadata\Library\Annotations
  */
-class EdmDirectValueAnnotationBinding implements  IDirectValueAnnotationBinding
+class EdmDirectValueAnnotationBinding implements IDirectValueAnnotationBinding
 {
     /**
      * @var IEdmElement
@@ -19,34 +21,34 @@ class EdmDirectValueAnnotationBinding implements  IDirectValueAnnotationBinding
     /**
      * @var string
      */
-        private $namespaceUri;
+    private $namespaceUri;
     /**
      * @var string
      */
-        private $name;
+    private $name;
     /**
      * @var mixed
      */
-        private  $value;
+    private $value;
 
     /**
      * Initializes a new instance of the EdmDirectValueAnnotationBinding class.
-     * @param IEdmElement $element Element to which the annotation is attached.
-     * @param string $namespaceUri Namespace URI of the annotation.
-     * @param string $name Name of the annotation within the namespace.
-     * @param mixed $value Value of the annotation
+     * @param IEdmElement $element      element to which the annotation is attached
+     * @param string      $namespaceUri namespace URI of the annotation
+     * @param string      $name         name of the annotation within the namespace
+     * @param mixed       $value        Value of the annotation
      */
     public function __construct(IEdmElement $element, string $namespaceUri, string $name, $value)
     {
-        $this->element = $element;
+        $this->element      = $element;
         $this->namespaceUri = $namespaceUri;
-        $this->name = $name;
-        $this->value = $value;
+        $this->name         = $name;
+        $this->value        = $value;
     }
 
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getElement(): IEdmElement
     {
@@ -54,7 +56,7 @@ class EdmDirectValueAnnotationBinding implements  IDirectValueAnnotationBinding
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getNamespaceUri(): string
     {
@@ -62,7 +64,7 @@ class EdmDirectValueAnnotationBinding implements  IDirectValueAnnotationBinding
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getName(): string
     {
@@ -70,7 +72,7 @@ class EdmDirectValueAnnotationBinding implements  IDirectValueAnnotationBinding
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function value()
     {

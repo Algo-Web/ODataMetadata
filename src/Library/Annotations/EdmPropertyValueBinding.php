@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Annotations;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IPropertyValueBinding;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
@@ -27,17 +28,17 @@ class EdmPropertyValueBinding extends EdmElement implements IPropertyValueBindin
 
     /**
      * Initializes a new instance of the EdmPropertyValueBinding class.
-     * @param IProperty $boundProperty Property that is given a value by the annotation.
-     * @param IExpression $value Expression producing the value of the annotation.
+     * @param IProperty   $boundProperty property that is given a value by the annotation
+     * @param IExpression $value         expression producing the value of the annotation
      */
     public function __construct(IProperty $boundProperty, IExpression $value)
     {
         $this->boundProperty = $boundProperty;
-        $this->value = $value;
+        $this->value         = $value;
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBoundProperty(): IProperty
     {
@@ -45,7 +46,7 @@ class EdmPropertyValueBinding extends EdmElement implements IPropertyValueBindin
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getValue(): IExpression
     {

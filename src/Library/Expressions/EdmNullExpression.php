@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
@@ -14,9 +15,10 @@ class EdmNullExpression extends EdmValue implements INullExpression
     private static $instance = null;
 
     /**
-     * @return EdmNullExpression Singleton EdmNullExpression instance.
+     * @return EdmNullExpression singleton EdmNullExpression instance
      */
-    public static function getEdmNullExpression(): EdmNullExpression{
+    public static function getEdmNullExpression(): EdmNullExpression
+    {
         return self::$instance ?? self::$instance = new self();
     }
 
@@ -26,7 +28,7 @@ class EdmNullExpression extends EdmValue implements INullExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getValueKind(): ValueKind
     {
@@ -34,7 +36,7 @@ class EdmNullExpression extends EdmValue implements INullExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {

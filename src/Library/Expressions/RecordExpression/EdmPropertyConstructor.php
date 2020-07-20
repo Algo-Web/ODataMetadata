@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions\RecordExpression;
-
 
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\RecordExpression\IPropertyConstructor;
@@ -15,7 +16,7 @@ use AlgoWeb\ODataMetadata\Library\EdmElement;
 class EdmPropertyConstructor extends EdmElement implements IPropertyConstructor
 {
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getName(): string
     {
@@ -23,7 +24,7 @@ class EdmPropertyConstructor extends EdmElement implements IPropertyConstructor
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getValue(): IExpression
     {
@@ -36,17 +37,16 @@ class EdmPropertyConstructor extends EdmElement implements IPropertyConstructor
     /**
      * @var IExpression
      */
-        private $value;
+    private $value;
 
     /**
      * Initializes a new instance of the EdmPropertyConstructor class.
-     * @param string $name Property name.
-     * @param IExpression $value Property value.
+     * @param string      $name  property name
+     * @param IExpression $value property value
      */
     public function __construct(string $name, IExpression $value)
     {
-        $this->name = $name;
+        $this->name  = $name;
         $this->value = $value;
     }
-
 }

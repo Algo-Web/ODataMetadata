@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Annotations;
-
 
 use AlgoWeb\ODataMetadata\Helpers\ValueAnnotationHelpers;
 use AlgoWeb\ODataMetadata\Helpers\VocabularyAnnotationHelpers;
@@ -26,20 +27,19 @@ class EdmValueAnnotation extends EdmVocabularyAnnotation implements IValueAnnota
 
     /**
      * Initializes a new instance of the EdmValueAnnotation class.
-     * @param IVocabularyAnnotatable $target Element the annotation applies to.
-     * @param ITerm $term Term bound by the annotation.
-     * @param string $qualifier Qualifier used to discriminate between multiple bindings of the same property or type.
-     * @param IExpression $value Expression producing the value of the annotation.
+     * @param IVocabularyAnnotatable $target    element the annotation applies to
+     * @param ITerm                  $term      term bound by the annotation
+     * @param string                 $qualifier qualifier used to discriminate between multiple bindings of the same property or type
+     * @param IExpression            $value     expression producing the value of the annotation
      */
     public function __construct(IVocabularyAnnotatable $target, ITerm $term, string $qualifier, IExpression $value)
     {
         parent::__construct($target, $term, $qualifier);
         $this->value = $value;
-
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getValue(): IExpression
     {

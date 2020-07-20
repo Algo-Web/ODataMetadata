@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Helpers\RecordExpressionHelpers;
@@ -18,7 +19,6 @@ use AlgoWeb\ODataMetadata\Library\EdmElement;
  */
 class EdmRecordExpression extends EdmElement implements IRecordExpression
 {
-
     use RecordExpressionHelpers;
     /**
      * @var IStructuredTypeReference
@@ -27,20 +27,20 @@ class EdmRecordExpression extends EdmElement implements IRecordExpression
     /**
      * @var IPropertyConstructor[]
      */
-        private $properties;
+    private $properties;
 
     /**
      * Initializes a new instance of the EdmRecordExpression class.
-     * @param IStructuredTypeReference $declaredType Optional declared type of the record.
-     * @param IPropertyConstructor ...$properties Property constructors.
+     * @param IStructuredTypeReference $declaredType  optional declared type of the record
+     * @param IPropertyConstructor     ...$properties Property constructors.
      */
     public function __construct(IStructuredTypeReference $declaredType = null, IPropertyConstructor ...$properties)
     {
         $this->declaredType = $declaredType;
-        $this->properties = $properties;
+        $this->properties   = $properties;
     }
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getDeclaredType(): IStructuredTypeReference
     {
@@ -48,7 +48,7 @@ class EdmRecordExpression extends EdmElement implements IRecordExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getProperties(): array
     {
@@ -56,7 +56,7 @@ class EdmRecordExpression extends EdmElement implements IRecordExpression
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {

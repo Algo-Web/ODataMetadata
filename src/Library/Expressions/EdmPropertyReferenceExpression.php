@@ -1,8 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
-
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
@@ -29,12 +30,12 @@ class EdmPropertyReferenceExpression extends EdmElement implements IPropertyRefe
 
     /**
      * Initializes a new instance of the EdmPropertyReferenceExpression class.
-     * @param IExpression $baseExpression Expression for the structured value containing the referenced property.
-     * @param IProperty $referencedProperty Referenced property.
+     * @param IExpression $baseExpression     expression for the structured value containing the referenced property
+     * @param IProperty   $referencedProperty referenced property
      */
     public function __construct(IExpression $baseExpression, IProperty $referencedProperty)
     {
-        $this->baseExpression = $baseExpression;
+        $this->baseExpression     = $baseExpression;
         $this->referencedProperty = $referencedProperty;
     }
 
@@ -47,7 +48,7 @@ class EdmPropertyReferenceExpression extends EdmElement implements IPropertyRefe
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getExpressionKind(): ExpressionKind
     {
@@ -55,7 +56,7 @@ class EdmPropertyReferenceExpression extends EdmElement implements IPropertyRefe
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function getBase(): IExpression
     {

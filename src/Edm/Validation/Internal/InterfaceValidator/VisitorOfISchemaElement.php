@@ -19,9 +19,9 @@ final class VisitorOfISchemaElement extends VisitorOfT
 
     public function __construct()
     {
-        $this->lookup[SchemaElementKind::TypeDefinition()->getKey()] = ISchemaType::class;
-        $this->lookup[SchemaElementKind::Function()->getKey()] = IFunction::class;
-        $this->lookup[SchemaElementKind::ValueTerm()->getKey()] = IValueTerm::class;
+        $this->lookup[SchemaElementKind::TypeDefinition()->getKey()]  = ISchemaType::class;
+        $this->lookup[SchemaElementKind::Function()->getKey()]        = IFunction::class;
+        $this->lookup[SchemaElementKind::ValueTerm()->getKey()]       = IValueTerm::class;
         $this->lookup[SchemaElementKind::EntityContainer()->getKey()] = IEntityContainer::class;
     }
 
@@ -41,7 +41,7 @@ final class VisitorOfISchemaElement extends VisitorOfT
         }
 
         $kind = $item->getSchemaElementKind();
-        $key = $kind->getKey();
+        $key  = $kind->getKey();
 
         if (array_key_exists($key, $this->lookup)) {
             InterfaceValidator::CollectErrors(

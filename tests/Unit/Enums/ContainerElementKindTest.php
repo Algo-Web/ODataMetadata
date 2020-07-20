@@ -11,7 +11,7 @@ class ContainerElementKindTest extends TestCase
 {
     public function keyStringProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [ContainerElementKind::None(), 'None'];
         $result[] = [ContainerElementKind::EntitySet(), 'EntitySet'];
         $result[] = [ContainerElementKind::FunctionImport(), 'FunctionImport'];
@@ -23,7 +23,7 @@ class ContainerElementKindTest extends TestCase
      * @dataProvider keyStringProvider
      *
      * @param ContainerElementKind $kind
-     * @param string $expected
+     * @param string               $expected
      */
     public function testGetKey(ContainerElementKind $kind, string $expected)
     {

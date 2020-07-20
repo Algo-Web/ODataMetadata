@@ -7,8 +7,8 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 
-/*
- * Defines an Edm component who is invalid or whose validity is unknown at construction
+/**
+ * Defines an Edm component who is invalid or whose validity is unknown at construction.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Interfaces
  */
