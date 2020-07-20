@@ -77,6 +77,7 @@ use AlgoWeb\ODataMetadata\StringConst;
 use AlgoWeb\ODataMetadata\Version;
 use ReflectionFunction;
 use ReflectionMethod;
+use ReflectionNamedType;
 use XMLWriter;
 
 class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
@@ -1342,18 +1343,29 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->xmlWriter->endElement();
     }
 
+    /**
+     * @param string $attribute
+     * @param mixed $value
+     * @param mixed $defaultValue
+     * @param callable $toXml
+     * @throws \ReflectionException
+     */
     public function WriteOptionalAttribute(string $attribute, $value, $defaultValue, callable $toXml): void
     {
+        $stem = is_array($toXml) ? new ReflectionMethod(...$toXml) :
+            new ReflectionFunction($toXml);
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            count((is_array($toXml) ? new ReflectionMethod(...$toXml) :
-                new ReflectionFunction($toXml))->getParameters()) === 1,
-            '$toXml should be a callable takeing one paramater of mixed type'
+            1 === count(($stem)->getParameters()),
+            '$toXml should be a callable taking one parameter of mixed type'
         );
+        $stemType = $stem->getReturnType();
+        $name = $stemType instanceof ReflectionNamedType ?
+            $stemType->getName() :
+            strval($stemType);
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            (is_array($toXml) ? new ReflectionMethod(...$toXml) :
-                new ReflectionFunction($toXml))->getReturnType()->getName() === 'string',
+            'string' === $name,
             '$toXml should be a callable returning a string'
         );
         if ($value !== $defaultValue) {
@@ -1369,16 +1381,20 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      */
     public function WriteRequiredAttribute(string $attribute, $value, callable $toXml): void
     {
+        $stem = is_array($toXml) ? new ReflectionMethod(...$toXml) :
+            new ReflectionFunction($toXml);
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            count((is_array($toXml) ? new ReflectionMethod(...$toXml) :
-                new ReflectionFunction($toXml))->getParameters()) === 1,
-            '$toXml should be a callable takeing one paramater of mixed type'
+            1 === count($stem->getParameters()),
+            '$toXml should be a callable taking one parameter of mixed type'
         );
+        $stemType = $stem->getReturnType();
+        $name = $stemType instanceof ReflectionNamedType ?
+            $stemType->getName() :
+            strval($stemType);
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            (is_array($toXml) ? new ReflectionMethod(...$toXml) :
-                new ReflectionFunction($toXml))->getReturnType()->getName() === 'string',
+            'string' === $name,
             '$toXml should be a callable returning a string'
         );
         $this->xmlWriter->writeAttribute($attribute, $toXml($value));

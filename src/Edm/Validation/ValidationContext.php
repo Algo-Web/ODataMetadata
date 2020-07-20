@@ -11,6 +11,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ILocation;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use ReflectionFunction;
 use ReflectionMethod;
+use ReflectionNamedType;
 
 /**
  * Context that records errors reported by validation rules.
@@ -37,6 +38,8 @@ final class ValidationContext
      * ValidationContext constructor.
      * @param IModel                      $model
      * @param callable(IEdmElement): bool $isBad
+     *
+     * @throws \ReflectionException
      */
     public function __construct(IModel $model, callable $isBad)
     {
@@ -49,16 +52,25 @@ final class ValidationContext
                 '$isBad'
             )
         );
+
+        $stem = is_array($isBad) ? new ReflectionMethod(...$isBad) : new ReflectionFunction($isBad);
+        $stemReturnType = $stem->getReturnType();
+        $stemName = $stemReturnType instanceof ReflectionNamedType ?
+            $stemReturnType->getName() :
+            strval($stemReturnType);
+        $stemParmType = $stem->getParameters()[0]->getType();
+        $stemParmName = $stemParmType instanceof ReflectionNamedType ?
+            $stemParmType->getName() :
+            strval($stemParmType);
+
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts. */
         assert(
-            (is_array($isBad) ? new ReflectionMethod(...$isBad) :
-                new ReflectionFunction($isBad))->getParameters()[0]->getType()->getName() === IEdmElement::class,
+            IEdmElement::class === $stemParmName,
             '$isBad should be a callable taking one parameter of Type IEdmElement'
         );
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts. */
         assert(
-            (is_array($isBad) ? new ReflectionMethod(...$isBad) :
-                new ReflectionFunction($isBad))->getReturnType()->getName() === 'bool',
+            'bool' === $stemName,
             '$isBad should be a callable returning a boolean'
         );
         $this->model = $model;
