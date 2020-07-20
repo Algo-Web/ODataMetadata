@@ -321,7 +321,7 @@ class InterfaceValidator
     }
 
     /**
-     * @param $item
+     * @param mixed $item
      * @return iterable|EdmError[]
      */
     private function ValidateStructure($item): iterable

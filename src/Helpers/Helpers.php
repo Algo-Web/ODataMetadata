@@ -41,7 +41,7 @@ abstract class Helpers
 
     /**
      * @param string $typeOf type of the annotation being returned
-     * @param $annotation
+     * @param mixed $annotation
      * @return mixed|null
      */
     public static function AnnotationValue(string $typeOf, $annotation)
