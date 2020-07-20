@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: alex
  * Date: 7/07/20
- * Time: 11:04 PM
+ * Time: 11:04 PM.
  */
 
 declare(strict_types=1);
@@ -26,8 +26,8 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $foo = new EdmDirectValueAnnotationsManager();
 
         $expected = 42;
-        $inter = $foo->setAnnotationValue($element, 'namespace', 'name', $expected);
-        $actual = $foo->getAnnotationValue($element, 'namespace', 'name');
+        $inter    = $foo->setAnnotationValue($element, 'namespace', 'name', $expected);
+        $actual   = $foo->getAnnotationValue($element, 'namespace', 'name');
         $this->assertEquals($expected, $actual);
     }
 
@@ -60,11 +60,11 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $method->setAccessible(true);
 
         $namespace = 'namespace';
-        $name = 'name';
-        $annotate = [];
+        $name      = 'name';
+        $annotate  = [];
 
         $expected = false;
-        $actual = $method->invoke(null, $namespace, $name, $annotate);
+        $actual   = $method->invoke(null, $namespace, $name, $annotate);
         $this->assertEquals($expected, $actual);
     }
 
@@ -76,7 +76,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $method->setAccessible(true);
 
         $namespace = 'namespace';
-        $name = 'name';
+        $name      = 'name';
 
         $element = m::mock(IDirectValueAnnotation::class);
         $element->shouldReceive('getNamespaceUri')->andReturn('namespace');
@@ -84,7 +84,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $annotate = [$element];
 
         $expected = true;
-        $actual = $method->invoke(null, $namespace, $name, $annotate);
+        $actual   = $method->invoke(null, $namespace, $name, $annotate);
         $this->assertEquals($expected, $actual);
     }
 
@@ -96,7 +96,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $method->setAccessible(true);
 
         $namespace = 'namespace';
-        $name = 'name';
+        $name      = 'name';
 
         $element = m::mock(IDirectValueAnnotation::class);
         $element->shouldReceive('getNamespaceUri')->andReturn('name');
@@ -104,7 +104,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $annotate = [$element];
 
         $expected = false;
-        $actual = $method->invoke(null, $namespace, $name, $annotate);
+        $actual   = $method->invoke(null, $namespace, $name, $annotate);
         $this->assertEquals($expected, $actual);
     }
 
@@ -116,7 +116,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $method->setAccessible(true);
 
         $namespace = 'namespace';
-        $name = 'name';
+        $name      = 'name';
 
         $annotate = null;
 
@@ -132,7 +132,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $method->setAccessible(true);
 
         $namespace = 'namespace';
-        $name = 'name';
+        $name      = 'name';
 
         $annotate = [];
 
@@ -148,7 +148,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $method->setAccessible(true);
 
         $namespace = 'namespace';
-        $name = 'name';
+        $name      = 'name';
 
         $element = m::mock(IDirectValueAnnotation::class);
         $element->shouldReceive('getNamespaceUri')->andReturn('namespace');
@@ -168,7 +168,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $method->setAccessible(true);
 
         $namespace = 'namespace';
-        $name = 'name';
+        $name      = 'name';
 
         $element = m::mock(IDirectValueAnnotation::class);
         $element->shouldReceive('getNamespaceUri')->andReturn('name');
@@ -188,7 +188,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $method->setAccessible(true);
 
         $namespace = 'namespace';
-        $name = 'name';
+        $name      = 'name';
 
         $element = m::mock(IDirectValueAnnotation::class);
         $element->shouldReceive('getNamespaceUri')->andReturn('namespace');
@@ -197,7 +197,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $annotate = [$element];
 
         $expected = [];
-        $actual = $method->invokeArgs(null, [&$annotate, $namespace, $name]);
+        $actual   = $method->invokeArgs(null, [&$annotate, $namespace, $name]);
         $this->assertEquals($expected, $annotate);
     }
 
@@ -209,7 +209,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $method->setAccessible(true);
 
         $namespace = 'namespace';
-        $name = 'name';
+        $name      = 'name';
 
         $element = m::mock(IDirectValueAnnotation::class);
         $element->shouldReceive('getNamespaceUri')->andReturn('namespace');
@@ -218,7 +218,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $annotate = [$element];
 
         $expected = [];
-        $actual = $method->invokeArgs(null, [&$annotate, $namespace, $name]);
+        $actual   = $method->invokeArgs(null, [&$annotate, $namespace, $name]);
         $this->assertEquals($expected, $annotate);
     }
 
@@ -230,7 +230,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $method->setAccessible(true);
 
         $namespace = 'namespace';
-        $name = 'name';
+        $name      = 'name';
 
         $element = m::mock(IDirectValueAnnotation::class);
         $element->shouldReceive('getNamespaceUri')->andReturn('name');
@@ -239,7 +239,7 @@ class EdmDirectValueAnnotationsManagerTest extends TestCase
         $annotate = [$element];
 
         $expected = [$element];
-        $actual = $method->invokeArgs(null, [&$annotate, $namespace, $name]);
+        $actual   = $method->invokeArgs(null, [&$annotate, $namespace, $name]);
         $this->assertEquals($expected, $annotate);
     }
 }

@@ -22,7 +22,6 @@ class NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2 extend
 {
     public function __invoke(ValidationContext $context, ?IEdmElement $navigationProperty)
     {
-
         assert($navigationProperty instanceof INavigationProperty);
         $dependentProperties = $navigationProperty->getDependentProperties();
         if (null !== $dependentProperties) {

@@ -20,7 +20,7 @@ interface IFunctionImportHelpers
      *
      * @param  IEntitySet|null $entitySet the static entity set of the function import
      * @return bool            true if the entity set expression of the functionImport contains a static reference to
-     *                         an IEntitySet, otherwise false
+     *                                   an IEntitySet, otherwise false
      */
     public function TryGetStaticEntitySet(IEntitySet &$entitySet = null): bool;
 
@@ -33,7 +33,7 @@ interface IFunctionImportHelpers
      *                                               path starts
      * @param  INavigationProperty[]|null $path      the optional sequence of navigation properties
      * @return bool                       true if the entity set expression of the functionImport contains a relative
-     *                                    path an IEntitySet, otherwise false
+     *                                              path an IEntitySet, otherwise false
      */
     public function TryGetRelativeEntitySetPath(
         IModel $model,

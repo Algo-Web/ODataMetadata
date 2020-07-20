@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 9/07/20
- * Time: 12:55 AM
+ * Time: 12:55 AM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\Internal;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
@@ -36,7 +37,7 @@ class VisitorOfIValueTest extends TestCase
 {
     public function schemaElementKindProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [ValueKind::Binary(), IBinaryValue::class];
         $result[] = [ValueKind::Boolean(), IBooleanValue::class];
         $result[] = [ValueKind::Collection(), ICollectionValue::class];
@@ -58,7 +59,7 @@ class VisitorOfIValueTest extends TestCase
      * @dataProvider schemaElementKindProvider
      *
      * @param ValueKind $kind
-     * @param string $mustImplement
+     * @param string    $mustImplement
      */
     public function testVisitGoodValueKindNonNullNamespace(ValueKind $kind, string $mustImplement)
     {
@@ -69,7 +70,7 @@ class VisitorOfIValueTest extends TestCase
         $item->shouldReceive('getValueKind')->andReturn($kind)->atLeast(1);
         $item->shouldReceive('getType')->andReturn($type);
 
-        $foo = new VisitorOfIValue();
+        $foo        = new VisitorOfIValue();
         $followUp   = [];
         $references = [];
 
@@ -81,7 +82,7 @@ class VisitorOfIValueTest extends TestCase
 
         $errorCode = EdmErrorCode::InterfaceCriticalKindValueMismatch();
         $this->assertEquals($errorCode, $error->getErrorCode());
-        $expected = 'property must implement \''. $mustImplement. '\' interface.';
+        $expected = 'property must implement \'' . $mustImplement . '\' interface.';
         $this->assertContains($expected, $error->getErrorMessage());
         $this->assertEquals(1, count($followUp));
     }
@@ -98,7 +99,7 @@ class VisitorOfIValueTest extends TestCase
         $item->shouldReceive('getValueKind')->andReturn($kind)->atLeast(1);
         $item->shouldReceive('getType')->andReturn($type);
 
-        $foo = new VisitorOfIValue();
+        $foo        = new VisitorOfIValue();
         $followUp   = [];
         $references = [];
 
@@ -125,7 +126,7 @@ class VisitorOfIValueTest extends TestCase
         $item->shouldReceive('getValueKind')->andReturn($kind)->atLeast(1);
         $item->shouldReceive('getType')->andReturn($type);
 
-        $foo = new VisitorOfIValue();
+        $foo        = new VisitorOfIValue();
         $followUp   = [];
         $references = [];
 

@@ -549,17 +549,17 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesAssociationSet');
         $method->setAccessible(true);
 
-        $thisSet = m::mock(IEntitySet::class);
+        $thisSet  = m::mock(IEntitySet::class);
         $thisProp = m::mock(INavigationProperty::class);
 
         $expected = true;
-        $actual = $method->invoke($foo, $thisSet, $thisProp, $thisSet, $thisProp);
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thisSet, $thisProp);
         $this->assertEquals($expected, $actual);
     }
 
@@ -570,20 +570,20 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesAssociationSet');
         $method->setAccessible(true);
 
-        $thisSet = m::mock(IEntitySet::class);
+        $thisSet  = m::mock(IEntitySet::class);
         $thisProp = m::mock(INavigationProperty::class);
 
-        $thatSet = m::mock(IEntitySet::class);
+        $thatSet  = m::mock(IEntitySet::class);
         $thatProp = m::mock(INavigationProperty::class);
 
         $expected = false;
-        $actual = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
@@ -595,20 +595,20 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesAssociationSet');
         $method->setAccessible(true);
 
-        $thisSet = m::mock(IEntitySet::class);
+        $thisSet  = m::mock(IEntitySet::class);
         $thisProp = m::mock(INavigationProperty::class);
 
-        $thatSet = m::mock(IEntitySet::class);
+        $thatSet  = m::mock(IEntitySet::class);
         $thatProp = m::mock(INavigationProperty::class);
 
         $expected = false;
-        $actual = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
@@ -621,20 +621,20 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesAssociationSet');
         $method->setAccessible(true);
 
-        $thisSet = m::mock(IEntitySet::class);
+        $thisSet  = m::mock(IEntitySet::class);
         $thisProp = m::mock(INavigationProperty::class);
 
-        $thatSet = m::mock(IEntitySet::class);
+        $thatSet  = m::mock(IEntitySet::class);
         $thatProp = m::mock(INavigationProperty::class);
 
         $expected = false;
-        $actual = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
@@ -647,7 +647,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesAssociationSet');
@@ -662,7 +662,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $thatProp = m::mock(INavigationProperty::class);
 
         $expected = false;
-        $actual = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
@@ -676,7 +676,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesAssociationSet');
@@ -693,7 +693,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $thatProp = m::mock(INavigationProperty::class);
 
         $expected = true;
-        $actual = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
@@ -707,7 +707,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesAssociationSet');
@@ -726,7 +726,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $thatProp = m::mock(INavigationProperty::class);
 
         $expected = false;
-        $actual = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
@@ -740,7 +740,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesAssociationSet');
@@ -759,7 +759,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $thatProp = m::mock(INavigationProperty::class);
 
         $expected = false;
-        $actual = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
@@ -773,7 +773,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesAssociationSet');
@@ -794,16 +794,16 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $thatProp->shouldReceive('getPartner')->andReturn($thatProp);
 
         $expected = false;
-        $actual = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
     public function testSharesReferentialConstraintEndCountMismatch()
     {
-        $model = $this->getModel();
+        $model   = $this->getModel();
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesReferentialConstraintEnd');
@@ -811,20 +811,20 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $theseProp = [];
 
-        $struct2 = m::mock(IStructuralProperty::class);
+        $struct2  = m::mock(IStructuralProperty::class);
         $thatProp = [$struct2];
 
         $expected = false;
-        $actual = $method->invoke($foo, $theseProp, $thatProp);
+        $actual   = $method->invoke($foo, $theseProp, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
     public function testSharesReferentialConstraintEndNameMismatch()
     {
-        $model = $this->getModel();
+        $model   = $this->getModel();
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesReferentialConstraintEnd');
@@ -839,16 +839,16 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $thatProp = [$struct2];
 
         $expected = false;
-        $actual = $method->invoke($foo, $theseProp, $thatProp);
+        $actual   = $method->invoke($foo, $theseProp, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
     public function testSharesReferentialConstraintEndNameMatch()
     {
-        $model = $this->getModel();
+        $model   = $this->getModel();
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('SharesReferentialConstraintEnd');
@@ -863,16 +863,16 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $thatProp = [$struct2];
 
         $expected = true;
-        $actual = $method->invoke($foo, $theseProp, $thatProp);
+        $actual   = $method->invoke($foo, $theseProp, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
     public function testVisitElementVocabularyAnnotationsBadKind()
     {
-        $model = $this->getModel();
+        $model   = $this->getModel();
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('VisitElementVocabularyAnnotations');
@@ -893,10 +893,10 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
     public function testVisitElementVocabularyAnnotations()
     {
-        $model = $this->getModel();
+        $model   = $this->getModel();
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('VisitElementVocabularyAnnotations');
@@ -931,10 +931,10 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, [$vocab, $vocab1, $vocab2]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL.'<TypeAnnotation Term="FullName" Qualifier="qual">'.PHP_EOL;
-        $expected .= '    <Documentation/>'.PHP_EOL . '</TypeAnnotation>'.PHP_EOL;
-        $expected .= '<ValueAnnotation Term="FullName" Qualifier="qual">'.PHP_EOL;
-        $expected .= '    <Documentation/>'.PHP_EOL . '</ValueAnnotation>' . PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<TypeAnnotation Term="FullName" Qualifier="qual">' . PHP_EOL;
+        $expected .= '    <Documentation/>' . PHP_EOL . '</TypeAnnotation>' . PHP_EOL;
+        $expected .= '<ValueAnnotation Term="FullName" Qualifier="qual">' . PHP_EOL;
+        $expected .= '    <Documentation/>' . PHP_EOL . '</ValueAnnotation>' . PHP_EOL;
         $writer->endDocument();
         $actual = $writer->outputMemory(true);
         $this->assertEquals($expected, $actual);
@@ -942,10 +942,10 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
     public function testProcessAnnotationsNameMismatch()
     {
-        $model = $this->getModel();
+        $model   = $this->getModel();
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('ProcessAnnotations');
@@ -961,7 +961,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, [$annotate]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL;
         $writer->endDocument();
         $actual = $writer->outputMemory(true);
         $this->assertEquals($expected, $actual);
@@ -969,10 +969,10 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
     public function testProcessAnnotationsNameMatch()
     {
-        $model = $this->getModel();
+        $model   = $this->getModel();
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('ProcessAnnotations');
@@ -990,7 +990,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, [$annotate]);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL . '<Documentation/>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Documentation/>' . PHP_EOL;
         $writer->endDocument();
         $actual = $writer->outputMemory(true);
         $this->assertEquals($expected, $actual);
@@ -1003,7 +1003,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('ProcessReferentialConstraint');
@@ -1022,10 +1022,10 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element, $annotations);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL . '<ReferentialConstraint>'.PHP_EOL;
-        $expected .= '    <Principal Role="endName">'.PHP_EOL.'        <PropertyRef Name="id"/>'.PHP_EOL;
-        $expected .= '    </Principal>'.PHP_EOL.'    <Dependent Role="endName"/>'.PHP_EOL;
-        $expected .= '</ReferentialConstraint>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<ReferentialConstraint>' . PHP_EOL;
+        $expected .= '    <Principal Role="endName">' . PHP_EOL . '        <PropertyRef Name="id"/>' . PHP_EOL;
+        $expected .= '    </Principal>' . PHP_EOL . '    <Dependent Role="endName"/>' . PHP_EOL;
+        $expected .= '</ReferentialConstraint>' . PHP_EOL;
         $writer->endDocument();
         $actual = $writer->outputMemory(true);
         $this->assertEquals($expected, $actual);
@@ -1037,7 +1037,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $reflec = new \ReflectionClass($foo);
         $method = $reflec->getMethod('ProcessPropertyConstructor');
@@ -1059,9 +1059,9 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $method->invoke($foo, $element);
 
-        $expected = '<?xml version="1.0"?>'.PHP_EOL . '<PropertyValue Property="name">' . PHP_EOL;
-        $expected .= '    <Documentation/>'.PHP_EOL . '    <FunctionReference Name="TNMN"/>'.PHP_EOL;
-        $expected .= '</PropertyValue>'.PHP_EOL;
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<PropertyValue Property="name">' . PHP_EOL;
+        $expected .= '    <Documentation/>' . PHP_EOL . '    <FunctionReference Name="TNMN"/>' . PHP_EOL;
+        $expected .= '</PropertyValue>' . PHP_EOL;
         $writer->endDocument();
         $actual = $writer->outputMemory(true);
         $this->assertEquals($expected, $actual);

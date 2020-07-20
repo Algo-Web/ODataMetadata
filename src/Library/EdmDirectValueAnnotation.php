@@ -1,11 +1,12 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 7/07/20
- * Time: 11:33 PM
+ * Time: 11:33 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Library;
 
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotation;
@@ -20,7 +21,7 @@ class EdmDirectValueAnnotation extends EdmNamedElement implements IDirectValueAn
     {
         parent::__construct($name);
         $this->namespaceUri = $namespaceUri;
-        $this->value = $value;
+        $this->value        = $value;
     }
 
     /**

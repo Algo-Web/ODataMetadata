@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: alex
  * Date: 8/07/20
- * Time: 5:25 PM
+ * Time: 5:25 PM.
  */
 
 declare(strict_types=1);
@@ -31,7 +31,7 @@ class ValidationRuleSetTest extends TestCase
 
     public function ruleSetProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [Version::v1(), 110];
         $result[] = [Version::v1_1(), 107];
         $result[] = [Version::v1_2(), 106];
@@ -45,7 +45,7 @@ class ValidationRuleSetTest extends TestCase
      * @dataProvider ruleSetProvider
      *
      * @param Version $version
-     * @param int $expected
+     * @param int     $expected
      */
     public function testGetRuleSetGoodModel(Version $version, int $expected)
     {
@@ -70,5 +70,4 @@ class ValidationRuleSetTest extends TestCase
 
         new ValidationRuleSet($result, [$rule]);
     }
-
 }

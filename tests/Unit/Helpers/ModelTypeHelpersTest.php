@@ -1,12 +1,12 @@
 <?php
+
 declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 8/07/20
- * Time: 3:49 PM
+ * Time: 3:49 PM.
  */
-
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;
@@ -27,7 +27,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = null;
-        $actual = $foo->FindEntityContainer('name');
+        $actual   = $foo->FindEntityContainer('name');
         $this->assertEquals($expected, $actual);
     }
 
@@ -36,7 +36,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = null;
-        $actual = $foo->FindValueTerm('name');
+        $actual   = $foo->FindValueTerm('name');
         $this->assertEquals($expected, $actual);
     }
 
@@ -45,7 +45,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = [];
-        $actual = $foo->FindFunctions('name');
+        $actual   = $foo->FindFunctions('name');
         $this->assertEquals($expected, $actual);
     }
 
@@ -54,7 +54,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = null;
-        $actual = $foo->FindType('name');
+        $actual   = $foo->FindType('name');
         $this->assertEquals($expected, $actual);
     }
 
@@ -101,8 +101,8 @@ class ModelTypeHelpersTest extends TestCase
     public function testSetNamespacePrefixMappings()
     {
         $expected = [];
-        $foo = new EdmModel();
-        $actual = $foo->GetNamespacePrefixMappings();
+        $foo      = new EdmModel();
+        $actual   = $foo->GetNamespacePrefixMappings();
         $this->assertEquals($expected, $actual);
 
         $expected = ['foo'];
@@ -122,7 +122,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo->SetAssociationEndName($prop, $assoc);
 
         $expected = 'assoc';
-        $actual = $foo->GetAssociationEndName($prop);
+        $actual   = $foo->GetAssociationEndName($prop);
         $this->assertEquals($expected, $actual);
     }
 
@@ -137,7 +137,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo->SetAssociationName($prop, $assoc);
 
         $expected = 'assoc';
-        $actual = $foo->GetAssociationName($prop);
+        $actual   = $foo->GetAssociationName($prop);
         $this->assertEquals($expected, $actual);
     }
 
@@ -152,13 +152,13 @@ class ModelTypeHelpersTest extends TestCase
         $foo->SetAssociationNamespace($prop, $assoc);
 
         $expected = 'assoc';
-        $actual = $foo->GetAssociationNamespace($prop);
+        $actual   = $foo->GetAssociationNamespace($prop);
         $this->assertEquals($expected, $actual);
     }
 
     public function testSetAssociationSetNameRoundTrip()
     {
-        $set = m::mock(IEntitySet::class);
+        $set  = m::mock(IEntitySet::class);
         $prop = m::mock(INavigationProperty::class);
         $prop->shouldReceive('PopulateCaches')->once();
         $foo = new EdmModel();
@@ -168,7 +168,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo->SetAssociationSetName($set, $prop, $assoc);
 
         $expected = 'assoc';
-        $actual = $foo->GetAssociationSetName($set, $prop);
+        $actual   = $foo->GetAssociationSetName($set, $prop);
         $this->assertEquals($expected, $actual);
     }
 
@@ -179,7 +179,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = [];
-        $actual = $foo->FindAllDerivedTypes($baseType);
+        $actual   = $foo->FindAllDerivedTypes($baseType);
         $this->assertEquals($expected, $actual);
     }
 
@@ -190,7 +190,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = [];
-        $actual = $foo->FindAllDerivedTypes($baseType);
+        $actual   = $foo->FindAllDerivedTypes($baseType);
         $this->assertEquals($expected, $actual);
     }
 
@@ -220,7 +220,7 @@ class ModelTypeHelpersTest extends TestCase
         $this->assertEquals(0, count($res));
 
         $expected = [];
-        $actual = $foo->FindAllDerivedTypes($derived);
+        $actual   = $foo->FindAllDerivedTypes($derived);
         $this->assertEquals($expected, $actual);
     }
 }
