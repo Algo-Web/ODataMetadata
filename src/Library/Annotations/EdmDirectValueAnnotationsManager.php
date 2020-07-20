@@ -12,7 +12,6 @@ use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotationBinding;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotationsManager;
 use AlgoWeb\ODataMetadata\Interfaces\IDocumentation;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
-use AlgoWeb\ODataMetadata\Library\EdmDirectValueAnnotation;
 use AlgoWeb\ODataMetadata\StringConst;
 use SplObjectStorage;
 
