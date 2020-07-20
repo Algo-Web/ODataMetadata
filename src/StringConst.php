@@ -166,6 +166,7 @@ use ReflectionException;
  * @method static string EdmModel_Validator_Semantic_DuplicateAnnotation(string|null $FullyQualifiedName, string $FullName, string $getQualifier)
  * @method static string RuleSet_DuplicateRulesExistInRuleSet()
  * @method static string UnknownEnumVal_ExpressionKind($getKey)
+ * @method static string EdmModel_Validator_Semantic_IntegerConstantValueOutOfRange()
  */
 class StringConst
 {
