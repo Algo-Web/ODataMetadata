@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\ValueHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IEnumValue;
@@ -13,6 +14,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IPrimitiveValue;
 
 class EdmEnumValue extends EdmValue implements IEnumValue
 {
+    use ValueHelpers;
     private $value;
 
     /**

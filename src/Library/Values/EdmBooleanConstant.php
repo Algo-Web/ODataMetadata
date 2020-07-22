@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\ValueHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IBooleanConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
 
@@ -17,6 +18,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
  */
 class EdmBooleanConstant extends EdmValue implements IBooleanConstantExpression
 {
+    use ValueHelpers;
     private $value;
 
     /**

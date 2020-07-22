@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\Interfaces\IValueHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
@@ -16,7 +17,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
  *
  * @package AlgoWeb\ODataMetadata\Interfaces\Values
  */
-interface IValue extends IEdmElement
+interface IValue extends IEdmElement, IValueHelpers
 {
     /**
      * @return ITypeReference|null gets the type of this value
@@ -27,4 +28,6 @@ interface IValue extends IEdmElement
      * @return ValueKind gets the kind of this value
      */
     public function getValueKind(): ValueKind;
+
+
 }

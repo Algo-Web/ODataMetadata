@@ -6,12 +6,14 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad;
 
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\ValueHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IPrimitiveValue;
 
 class BadPrimitiveValue extends BadElement implements IPrimitiveValue
 {
+    use ValueHelpers;
     /**
      * @var IPrimitiveTypeReference
      */

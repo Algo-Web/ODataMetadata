@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\ValueHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IBinaryConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IBinaryTypeReference;
 
@@ -17,6 +18,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IBinaryTypeReference;
  */
 class EdmBinaryConstant extends EdmValue implements IBinaryConstantExpression
 {
+    use ValueHelpers;
     private $value;
 
     /**
