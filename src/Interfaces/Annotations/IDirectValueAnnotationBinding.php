@@ -34,5 +34,5 @@ interface IDirectValueAnnotationBinding
     /**
      * @return mixed gets the value of this annotation
      */
-    public function value();
+    public function getValue();
 }

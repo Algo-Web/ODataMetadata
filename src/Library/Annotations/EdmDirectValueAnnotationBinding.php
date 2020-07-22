@@ -74,7 +74,7 @@ class EdmDirectValueAnnotationBinding implements IDirectValueAnnotationBinding
     /**
      * {@inheritdoc}
      */
-    public function value()
+    public function getValue()
     {
         return $this->value;
     }
