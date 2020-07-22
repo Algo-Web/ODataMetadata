@@ -422,7 +422,7 @@ class ValidationRuleSet implements \IteratorAggregate
     }
     /**
      * Retrieve an external iterator.
-     * @return Traversable|ValidationRule An instance of an object implementing <b>Iterator</b> or
+     * @return Traversable An instance of an object implementing <b>Iterator</b> or
      */
     public function getIterator(): Traversable
     {
