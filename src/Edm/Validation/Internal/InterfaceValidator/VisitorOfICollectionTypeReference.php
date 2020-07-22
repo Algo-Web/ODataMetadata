@@ -14,7 +14,7 @@ class VisitorOfICollectionTypeReference extends VisitorOfT
     {
         assert($typeRef instanceof ICollectionTypeReference);
         return null !== $typeRef->getDefinition() &&
-               !$typeRef->getDefinition()->getTypeKind()->IsCollection() ?
+               !$typeRef->getDefinition()->getTypeKind()->isCollection() ?
             [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef)]: null;
     }
 
