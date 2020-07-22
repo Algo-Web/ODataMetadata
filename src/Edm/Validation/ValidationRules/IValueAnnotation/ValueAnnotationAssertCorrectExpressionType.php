@@ -21,10 +21,16 @@ class ValueAnnotationAssertCorrectExpressionType extends ValueAnnotationRule
     public function __invoke(ValidationContext $context, ?IEdmElement $annotation)
     {
         assert($annotation instanceof IValueAnnotation);
-        $errors = null;
+        $errors = [];
         $term   = $annotation->getTerm();
         assert($term instanceof IValueTerm);
-        if (!ExpressionTypeChecker::tryAssertType($annotation->getValue(), $term->getType(), $errors)) {
+        if (!ExpressionTypeChecker::tryAssertType(
+            $annotation->getValue(),
+            $term->getType(),
+            null,
+            false,
+            $errors
+        )) {
             foreach ($errors as $error) {
                 $context->AddRawError($error);
             }
