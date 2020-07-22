@@ -7,11 +7,13 @@ namespace AlgoWeb\ODataMetadata\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\ValueHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IFloatingConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
 
 class EdmFloatingConstant extends EdmValue implements IFloatingConstantExpression
 {
+    use ValueHelpers;
     private $value;
 
     /**

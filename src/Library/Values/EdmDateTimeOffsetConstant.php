@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\ValueHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IDateTimeOffsetConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\ITemporalTypeReference;
 use DateTime;
@@ -18,6 +19,7 @@ use DateTime;
  */
 class EdmDateTimeOffsetConstant extends EdmValue implements IDateTimeOffsetConstantExpression
 {
+    use ValueHelpers;
     private $value;
 
     /**
