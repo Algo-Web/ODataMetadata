@@ -87,7 +87,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     private $schemaWriter;
     /**
-     * @var INavigationProperty
+     * @var INavigationProperty[]
      */
     private $navigationProperties = [];
     /**

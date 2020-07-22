@@ -48,6 +48,9 @@ abstract class EdmValue implements IValue, IDelayedValue
      */
     abstract public function getValueKind(): ValueKind;
 
+    /**
+     * @return mixed
+     */
     public function getValue()
     {
         return $this;
