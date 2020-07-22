@@ -275,7 +275,7 @@ abstract class ValidationHelper
      * @param  string    $fullName
      * @param  bool      $checkEntityContainer
      * @param  IModel    $referenced
-     * @return bool|null
+     * @return bool
      */
     protected static function checkItemReference(string $fullName, bool $checkEntityContainer, IModel $referenced): bool
     {
@@ -291,7 +291,7 @@ abstract class ValidationHelper
      * @param  string    $functionFullName
      * @param  bool      $checkEntityContainer
      * @param  IModel    $referenced
-     * @return bool|null
+     * @return bool
      */
     protected static function checkFunctionOrNameReference(
         IFunction $function,

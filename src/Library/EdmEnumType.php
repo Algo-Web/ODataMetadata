@@ -46,7 +46,7 @@ class EdmEnumType extends EdmType implements IEnumType
      * @param PrimitiveTypeKind|IPrimitiveType|null $underlyingType
      * @param bool|null                             $isFlags
      */
-    public function __construct(string $namespaceName, string $name, $underlyingType = null, bool $isFlags = false)
+    public function __construct(string $namespaceName, string $name, $underlyingType = null, ?bool $isFlags = false)
     {
         $underlyingType = $underlyingType ?? PrimitiveTypeKind::Int32();
         if ($underlyingType instanceof PrimitiveTypeKind) {

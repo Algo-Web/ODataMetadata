@@ -30,12 +30,12 @@ class EdmCollectionExpression extends EdmElement implements ICollectionExpressio
 
     /**
      * Initializes a new instance of the EdmCollectionExpression class.
-     * @param ITypeReference $declaredType declared type of the collection
-     * @param IExpression[]  $elements     the constructed element values
+     * @param ITypeReference             $declaredType declared type of the collection
+     * @param IExpression[]              $elements     the constructed element values
      */
     public function __construct(ITypeReference $declaredType, IExpression ...$elements)
     {
-        EdmUtil::CheckArgumentNull($elements, 'elements');
+        EdmUtil::checkArgumentNull($elements, 'elements');
         $this->declaredType = $declaredType;
         $this->elements     = $elements;
     }
