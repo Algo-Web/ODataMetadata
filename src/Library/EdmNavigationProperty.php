@@ -116,10 +116,10 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         EdmNavigationPropertyInfo $propertyInfo,
         EdmNavigationPropertyInfo $partnerInfo
     ): EdmNavigationProperty {
-        EdmUtil::CheckArgumentNull($propertyInfo->name, 'propertyInfo.Name');
-        EdmUtil::CheckArgumentNull($propertyInfo->target, 'propertyInfo.Target');
-        EdmUtil::CheckArgumentNull($partnerInfo->name, 'partnerInfo.Name');
-        EdmUtil::CheckArgumentNull($partnerInfo->target, 'partnerInfo.Target');
+        EdmUtil::checkArgumentNull($propertyInfo->name, 'propertyInfo.Name');
+        EdmUtil::checkArgumentNull($propertyInfo->target, 'propertyInfo.Target');
+        EdmUtil::checkArgumentNull($partnerInfo->name, 'partnerInfo.Name');
+        EdmUtil::checkArgumentNull($partnerInfo->target, 'partnerInfo.Target');
 
         $end1 = new EdmNavigationProperty(
             $partnerInfo->target,

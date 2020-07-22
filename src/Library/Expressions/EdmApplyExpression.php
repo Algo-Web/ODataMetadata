@@ -37,11 +37,12 @@ class EdmApplyExpression extends EdmElement implements IApplyExpression
     {
         assert($appliedFunction instanceof IFunction || $appliedFunction instanceof IExpression);
         if ($appliedFunction instanceof IFunction) {
-            $appliedFunction = new EdmFunctionReferenceExpression(EdmUtil::CheckArgumentNull($appliedFunction, 'appliedFunction'));
+            // TODO: Wha...?
+            $appliedFunction = new EdmFunctionReferenceExpression(EdmUtil::checkArgumentNull($appliedFunction, 'appliedFunction'));
         }
         assert($appliedFunction instanceof IExpression);
-        EdmUtil::CheckArgumentNull($appliedFunction, 'appliedFunction');
-        EdmUtil::CheckArgumentNull($arguments, 'arguments');
+        EdmUtil::checkArgumentNull($appliedFunction, 'appliedFunction');
+        EdmUtil::checkArgumentNull($arguments, 'arguments');
 
         $this->appliedFunction = $appliedFunction;
         $this->arguments       = $arguments;

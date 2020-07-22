@@ -78,7 +78,7 @@ trait ModelHelpers
      */
     public function FindEntityContainer(string $qualifiedName): ?IEntityContainer
     {
-        EdmUtil::CheckArgumentNull($qualifiedName, "$qualifiedName");
+        EdmUtil::checkArgumentNull($qualifiedName, "$qualifiedName");
 
         return $this->FindAcrossModels(
             $qualifiedName,
@@ -133,7 +133,7 @@ trait ModelHelpers
      */
     public function FindValueTerm(string $qualifiedName): ?IValueTerm
     {
-        EdmUtil::CheckArgumentNull($qualifiedName, 'qualifiedName');
+        EdmUtil::checkArgumentNull($qualifiedName, 'qualifiedName');
 
         return $this->FindAcrossModels(
             $qualifiedName,
@@ -158,7 +158,7 @@ trait ModelHelpers
      */
     public function FindFunctions(string $qualifiedName): array
     {
-        EdmUtil::CheckArgumentNull($qualifiedName, 'qualifiedName');
+        EdmUtil::checkArgumentNull($qualifiedName, 'qualifiedName');
 
         return $this->FindAcrossModels($qualifiedName, self::FunctionsFinder(), self::mergeFunctions()) ?? [];
     }
