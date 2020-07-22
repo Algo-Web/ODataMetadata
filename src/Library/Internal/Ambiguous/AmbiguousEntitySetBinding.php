@@ -37,7 +37,7 @@ class AmbiguousEntitySetBinding extends AmbiguousBinding implements IEntitySet
      */
     public function getContainer(): IEntityContainer
     {
-        return count($this->getBindings()) === 0 ? $this->getBindings()[0] : null;
+        return 0 !== count($this->getBindings()) ? $this->getBindings()[0] : null;
     }
 
     /**
