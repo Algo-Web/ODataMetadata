@@ -45,7 +45,7 @@ class EdmModelVisitor
     use ProcessTypeDefinitions;
     use ProcessTypeReferences;
     /**
-     * @var SplObjectStorage|IVisitor[]
+     * @var SplObjectStorage
      */
     private $visitors;
 
@@ -85,7 +85,7 @@ class EdmModelVisitor
 
     public function addVisitor(IVisitor $visitor): self
     {
-        $this->visitors[] = $visitor;
+        $this->visitors->attach($visitor);
         return $this;
     }
     public function removeVisitor(IVisitor $visitor): self

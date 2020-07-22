@@ -214,9 +214,9 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                 );
                 // This prevents us from losing association sets if they share the same name.
                 if (!count($any) > 0) {
-                    $this->associationSets[$associationSetName] =
+                    $this->associationSets[$associationSetName][] =
                         new Tuple($entitySet, $mapping->getNavigationProperty());
-                    $this->associationSets[$associationSetName] =
+                    $this->associationSets[$associationSetName][] =
                         new Tuple($mapping->getTargetEntitySet(), $mapping->getNavigationProperty()->getPartner());
 
                     $this->ProcessAssociationSet($entitySet, $mapping->getNavigationProperty());
