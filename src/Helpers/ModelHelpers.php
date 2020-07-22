@@ -12,6 +12,7 @@ use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Helpers\Interfaces\IModelHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotationsManager;
+use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
@@ -21,7 +22,9 @@ use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
+use AlgoWeb\ODataMetadata\Interfaces\ITerm;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
+use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 use AlgoWeb\ODataMetadata\Internal\RegistrationHelper;
 use AlgoWeb\ODataMetadata\Version;
 use SplObjectStorage;
@@ -668,6 +671,116 @@ trait ModelHelpers
                 }
             }
         }
+    }
+
+    /**
+     * Gets an annotatable element's vocabulary annotations that bind a particular term.
+     *
+     * @param IVocabularyAnnotatable $element  Element to check for annotations.
+     * @param ITerm|string $term Term to search for. OR Name of the term to search for.
+     * @param string|null $qualifier Qualifier to apply.
+     * @param string|null $type Type of the annotation being returned.
+     * @return iterable|IVocabularyAnnotation[] Annotations attached to the element by this model or by models
+     * referenced by this model that bind the term with the given qualifier.
+     */
+    public function FindVocabularyAnnotations(IVocabularyAnnotatable $element, $term = null, string $qualifier = null, string $type = null): iterable
+    {
+        assert($term instanceof ITerm || is_string($term), '$term should be a string or instanceof iTerm');
+        if (null === $term) {
+            assert(null === $qualifier);
+            assert(null === $type);
+            $result = $this->FindVocabularyAnnotationsIncludingInheritedAnnotations($element);
+            foreach ($this->getReferencedModels() as $referencedModel) {
+                $result = array_merge(
+                    $result,
+                    $referencedModel->FindVocabularyAnnotationsIncludingInheritedAnnotations($element)
+                );
+            }
+            return $result;
+        } elseif (is_string($term)) {
+            $termName = $term;
+            // Look up annotations on the element by name. There's no particular advantage in searching for a term first.
+            $name = null;
+            $namespaceName = null;
+
+            if (EdmUtil::TryGetNamespaceNameFromQualifiedName($termName, $namespaceName, $name)) {
+                /**
+                 * @var IVocabularyAnnotation $annotation
+                 */
+                foreach ($this->FindVocabularyAnnotations($element) as $annotation) {
+                    if (null !== $type && !is_a($annotation, $type)) {
+                        continue;
+                    }
+                    $annotationTerm = $annotation->getTerm();
+                    if ($annotationTerm->getNamespace() === $namespaceName &&
+                        $annotationTerm->getName() === $name &&
+                        (
+                            $qualifier == null ||
+                            $qualifier == $annotation->getQualifier()
+                        )
+                    ) {
+                        yield $annotation;
+                    }
+                }
+            }
+        } else {
+            assert($term instanceof ITerm);
+
+            $result = [];
+            /**
+             * @var IVocabularyAnnotation $annotation
+             */
+            foreach ($this->FindVocabularyAnnotations($element) as $annotation) {
+                if (null !== $type && !is_a($annotation, $type)) {
+                    continue;
+                }
+
+                if ($annotation->getTerm() == $term &&
+                    (
+                        $qualifier == null ||
+                        $qualifier == $annotation->getQualifier()
+                    )
+                ) {
+                    if ($result == null) {
+                        $result = [];
+                    }
+
+                    $result[] = $annotation;
+                }
+            }
+
+            return $result;
+        }
+    }
+
+    /**
+     * Gets an annotatable element's vocabulary annotations defined in a specific model and models referenced by
+     * that model.
+     * @param IVocabularyAnnotatable $element Element to check for annotations.
+     * @return IVocabularyAnnotation[] Annotations attached to the element (or, if the element is a type, to its base
+     * types) by this model or by models referenced by this model.
+     */
+    public function FindVocabularyAnnotationsIncludingInheritedAnnotations(IVocabularyAnnotatable $element): array
+    {
+        /**
+         * @var IVocabularyAnnotation[] $result
+         */
+        $result = $this->FindDeclaredVocabularyAnnotations($element);
+
+        if ($element instanceof IStructuredType) {
+            $typeElement = $element;
+            assert($typeElement instanceof IStructuredType);
+            $typeElement = $typeElement->getBaseType();
+            while (null !== $typeElement) {
+                if ($typeElement instanceof IVocabularyAnnotatable) {
+                    $result = array_merge($result, $this->FindDeclaredVocabularyAnnotations($typeElement));
+                }
+
+                $typeElement = $typeElement->getBaseType();
+            }
+        }
+
+        return $result;
     }
 
     /**

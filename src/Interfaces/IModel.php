@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces;
 
 use AlgoWeb\ODataMetadata\Helpers\Interfaces\IModelHelpers;
 use AlgoWeb\ODataMetadata\Helpers\ModelHelpers;
+use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
 
 /**
  * Interface IEdmModel.
@@ -82,6 +83,33 @@ interface IModel extends IEdmElement, IModelHelpers
      * @return Annotations\IVocabularyAnnotation[] the vocabulary annotations for the element
      */
     public function findDeclaredVocabularyAnnotations(IVocabularyAnnotatable $element): array;
+
+    /**
+     * Gets an annotatable element's vocabulary annotations that bind a particular term.
+     *
+     * @param IVocabularyAnnotatable $element  Element to check for annotations.
+     * @param ITerm|string $term Term to search for. OR Name of the term to search for.
+     * @param string|null $qualifier Qualifier to apply.
+     * @param string|null $type Type of the annotation being returned.
+     * @return iterable|IVocabularyAnnotation[] Annotations attached to the element by this model or by models
+     * referenced by this model that bind the term with the given qualifier.
+     */
+    public function FindVocabularyAnnotations(
+        IVocabularyAnnotatable $element,
+        $term = null,
+        string $qualifier = null,
+        string $type = null
+    ): iterable;
+
+    /**
+     * Gets an annotatable element's vocabulary annotations defined in a specific model and models referenced by
+     * that model.
+     * @param IVocabularyAnnotatable $element Element to check for annotations.
+     * @return IVocabularyAnnotation[] Annotations attached to the element (or, if the element is a type, to its base
+     * types) by this model or by models referenced by this model.
+     */
+    public function FindVocabularyAnnotationsIncludingInheritedAnnotations(IVocabularyAnnotatable $element): array;
+
 
     /**
      * Finds a list of types that derive directly from the supplied type.
