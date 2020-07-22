@@ -122,7 +122,7 @@ trait ModelHelpersVocabularyAnnotation
 
     /**
      * @param IVocabularyAnnotatable $element
-     * @param $term
+     * @param ITerm $term
      * @param string $qualifier
      * @param string $type
      * @return array
