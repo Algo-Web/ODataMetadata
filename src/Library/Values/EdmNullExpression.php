@@ -56,7 +56,7 @@ class EdmNullExpression extends EdmValue implements INullExpression
     }
 
     /**
-     * @return IValue gets the data stored in this value
+     * @return null gets the data stored in this value
      */
     public function getValue()
     {
