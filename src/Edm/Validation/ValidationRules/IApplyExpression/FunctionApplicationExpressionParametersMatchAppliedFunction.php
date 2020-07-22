@@ -44,8 +44,14 @@ class FunctionApplicationExpressionParametersMatchAppliedFunction extends ApplyE
             $arguments  = $expression->getArguments();
             reset($arguments);
             foreach ($parameters as $parameter) {
-                $recursiveErrors = null;
-                if (!ExpressionTypeChecker::tryAssertType(current($arguments), $parameter->getType(), $recursiveErrors)) {
+                $recursiveErrors = [];
+                if (!ExpressionTypeChecker::tryAssertType(
+                    current($arguments),
+                    $parameter->getType(),
+                    null,
+                    false,
+                    $recursiveErrors
+                )) {
                     foreach ($recursiveErrors as $error) {
                         $context->AddRawError($error);
                     }

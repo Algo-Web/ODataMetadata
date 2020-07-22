@@ -22,10 +22,12 @@ class IfExpressionAssertCorrectTestType extends IfExpressionRule
     {
         assert($expression instanceof IIfExpression);
 
-        $errors = null;
+        $errors = [];
         if (!ExpressionTypeChecker::tryAssertType(
             $expression->getTestExpression(),
             EdmCoreModel::getInstance()->GetBoolean(false),
+            null,
+            false,
             $errors
         )) {
             foreach ($errors as $error) {
