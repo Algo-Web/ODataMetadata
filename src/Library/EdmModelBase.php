@@ -128,7 +128,7 @@ abstract class EdmModelBase extends EdmElement implements IModel
     {
         if (array_key_exists($qualifiedName, $this->functionDictionary)) {
             $element = $this->functionDictionary[$qualifiedName];
-            if ($element instanceof  IFunction) {
+            if ($element instanceof IFunction) {
                 return [$element];
             }
 

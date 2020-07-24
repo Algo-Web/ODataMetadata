@@ -159,7 +159,7 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
             EdmUtil::checkArgumentNull($primitive->getNamespace(), 'primitive->getNamespace');
             $this->primitiveTypeKinds[$primitive->getName()]                                     = $primitive->getPrimitiveKind();
             $this->primitiveTypeKinds[$primitive->getNamespace() . '.' . $primitive->getName()]  = $primitive->getPrimitiveKind();
-            $this->primitiveTypesByKind[strval($primitive->getPrimitiveKind())]                  = $primitive;
+            $this->primitiveTypesByKind[$primitive->getPrimitiveKind()->getValue()]              = $primitive;
             $this->primitiveTypeByName[$primitive->getNamespace() . '.' . $primitive->getName()] = $primitive;
         }
     }
@@ -292,9 +292,10 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
         return new EdmCollectionTypeReference(new EdmCollectionType($elementType), false);
     }
 
-    private function GetCoreModelPrimitiveType(PrimitiveTypeKind $kind): EdmValidCoreModelPrimitiveType
+    private function GetCoreModelPrimitiveType(PrimitiveTypeKind $kind): ?EdmValidCoreModelPrimitiveType
     {
-        return array_key_exists(strval($kind), $this->primitiveTypesByKind) ? $this->primitiveTypesByKind[strval($kind)] : null;
+        return array_key_exists(strval($kind), $this->primitiveTypesByKind) ?
+            $this->primitiveTypesByKind[strval($kind)] : null;
     }
 
     /**
