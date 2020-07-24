@@ -1016,7 +1016,6 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
                 throw new InvalidOperationException(
                     StringConst::UnknownEnumVal_ExpressionKind($expression->getExpressionKind()->getKey())
                 );
-                break;
         }
     }
 
