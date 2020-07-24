@@ -15,41 +15,11 @@ class VisitorOfIIfExpression extends VisitorOfT
         assert($expression instanceof IIfExpression);
         $errors = [];
 
-        if (null !== $expression->getTestExpression()) {
-            $followup[] = $expression->getTestExpression();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $expression,
-                    'TestExpression'
-                ),
-                $errors
-            );
-        }
+        $followup[] = $expression->getTestExpression();
 
-        if (null !== $expression->getTrueExpression()) {
-            $followup[] = $expression->getTrueExpression();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $expression,
-                    'TrueExpression'
-                ),
-                $errors
-            );
-        }
+        $followup[] = $expression->getTrueExpression();
 
-        if (null !== $expression->getFalseExpression()) {
-            $followup[] = $expression->getFalseExpression();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $expression,
-                    'FalseExpression'
-                ),
-                $errors
-            );
-        }
+        $followup[] = $expression->getFalseExpression();
 
         return $errors;
     }

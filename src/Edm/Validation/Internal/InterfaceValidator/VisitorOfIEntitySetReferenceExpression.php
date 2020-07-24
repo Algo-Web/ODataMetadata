@@ -13,12 +13,8 @@ class VisitorOfIEntitySetReferenceExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IEntitySetReferenceExpression);
-        if (null !== $expression->getReferencedEntitySet()) {
-            $references[] = $expression->getReferencedEntitySet();
-            return null;
-        } else {
-            return [ InterfaceValidator::CreatePropertyMustNotBeNullError($expression, 'ReferencedEntitySet') ];
-        }
+        $references[] = $expression->getReferencedEntitySet();
+        return null;
     }
 
     public function forType(): string

@@ -17,17 +17,7 @@ class VisitorOfIEnumType extends VisitorOfT
 
         InterfaceValidator::ProcessEnumerable($type, $type->getMembers(), 'Members', $followup, $errors);
 
-        if (null !== $type->getUnderlyingType()) {
-            $references[] = $type->getUnderlyingType();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $type,
-                    'UnderlyingType'
-                ),
-                $errors
-            );
-        }
+        $references[] = $type->getUnderlyingType();
 
         return $errors;
     }
