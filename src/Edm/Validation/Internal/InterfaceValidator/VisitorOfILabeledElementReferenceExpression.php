@@ -13,17 +13,8 @@ class VisitorOfILabeledElementReferenceExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof ILabeledExpressionReferenceExpression);
-        if (null !== $expression->getReferencedLabeledExpression()) {
-            $references[] = $expression->getReferencedLabeledExpression();
-            return null;
-        } else {
-            return [
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $expression,
-                    'ReferencedLabeledExpression'
-                )
-            ];
-        }
+        $references[] = $expression->getReferencedLabeledExpression();
+        return null;
     }
 
     public function forType(): string
