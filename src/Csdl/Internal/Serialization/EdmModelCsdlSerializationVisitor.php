@@ -383,7 +383,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         });
         if (!$inlineType) {
             if (null !== $term->getType()) {
-                $this->VisitTypeReference($term->getType());
+                $this->visitTypeReference($term->getType());
             }
         }
 
@@ -406,7 +406,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             });
             if (!$inlineReturnType) {
                 $this->schemaWriter->WriteReturnTypeElementHeader();
-                $this->VisitTypeReference($element->getReturnType());
+                $this->visitTypeReference($element->getReturnType());
                 $this->schemaWriter->WriteEndElement();
             }
         } else {
@@ -440,7 +440,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             }
         );
         if (!$inlineType) {
-            $this->VisitTypeReference($element->getType());
+            $this->visitTypeReference($element->getType());
         }
 
         $this->FinishElement($element);
@@ -465,7 +465,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             }
         );
         if (!$inlineType) {
-            $this->VisitTypeReference($element->getElementType());
+            $this->visitTypeReference($element->getElementType());
         }
 
         $this->FinishElement($element);
@@ -565,7 +565,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     protected function ProcessRecordExpression(IRecordExpression $expression): void
     {
         $this->BeginElement($expression, [$this->schemaWriter, 'WriteRecordExpressionElementHeader']);
-        $this->VisitPropertyConstructors($expression->getProperties());
+        $this->visitPropertyConstructors($expression->getProperties());
         $this->FinishElement($expression);
     }
 
@@ -657,7 +657,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->ProcessFacets($e->getType(), $inlineType);
         });
         if (!$inlineType) {
-            $this->VisitTypeReference($expression->getType());
+            $this->visitTypeReference($expression->getType());
         }
 
         $this->VisitExpression($expression->getOperand());
@@ -774,7 +774,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->ProcessFacets($e->getType(), $inlineType);
         });
         if (!$inlineType) {
-            $this->VisitTypeReference($expression->getType());
+            $this->visitTypeReference($expression->getType());
         }
 
         $this->VisitExpression($expression->getOperand());
@@ -992,10 +992,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                     $type              = $collectionElement->CollectionDefinition()->getElementType();
                     EdmUtil::checkArgumentNull($type, 'ProcessFacets - $type');
                     $this->schemaWriter->WriteNullableAttribute($type);
-                    $this->VisitTypeReference($type);
+                    $this->visitTypeReference($type);
                 } else {
                     $this->schemaWriter->WriteNullableAttribute($element);
-                    $this->VisitTypeReference($element);
+                    $this->visitTypeReference($element);
                 }
             }
         }
@@ -1125,7 +1125,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         }
 
         $this->VisitAttributeAnnotations(
-            $this->model->getDirectValueAnnotationsManager()->GetDirectValueAnnotations($element)
+            $this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element)
         );
         $documentation = $this->model->getAnnotationValue(
             IDocumentation::class,
@@ -1146,7 +1146,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     private function FinishElement(IEdmElement $element): void
     {
         $this->VisitPrimitiveElementAnnotations(
-            $this->model->getDirectValueAnnotationsManager()->GetDirectValueAnnotations($element)
+            $this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element)
         );
         $vocabularyAnnotatableElement = $element;
         if ($vocabularyAnnotatableElement instanceof IVocabularyAnnotatable) {

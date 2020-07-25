@@ -41,7 +41,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
     public function GetSchemas(): array
     {
         if (!$this->visitCompleted) {
-            $this->Visit();
+            $this->visit();
         }
 
         return array_values($this->modelSchemas);
@@ -57,7 +57,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
     {
         $this->ProcessElement($model);
         $this->visitSchemaElements($model->getSchemaElements());
-        $this->VisitVocabularyAnnotations(
+        $this->visitVocabularyAnnotations(
             array_filter(
                 $model->getVocabularyAnnotations(),
                 function (IVocabularyAnnotation $value) {
@@ -69,8 +69,8 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
 
     protected function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $element): void
     {
-        $this->VisitAnnotations($this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element));
-        $this->VisitVocabularyAnnotations(
+        $this->visitAnnotations($this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element));
+        $this->visitVocabularyAnnotations(
             array_filter(
                 $this->model->findDeclaredVocabularyAnnotations($element),
                 function (IVocabularyAnnotation $value) {
@@ -209,7 +209,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
         $this->modelSchemas[$associationNamespace]->AddAssociatedNavigationProperty($property);
         $this->modelSchemas[$associationNamespace]->AddNamespaceUsing($entityTypeNamespace);
         $this->modelSchemas[$associationNamespace]->AddNamespaceUsing($partnerEntityTypeNamespace);
-        $this->activeSchema->AddNamespaceUsing($associationNamespace);
+        $this->activeSchema->addNamespaceUsing($associationNamespace);
 
         parent::ProcessNavigationProperty($property);
     }

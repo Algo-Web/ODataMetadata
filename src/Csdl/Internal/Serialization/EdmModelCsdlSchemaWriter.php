@@ -131,7 +131,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $this->WriteRequiredAttribute(
                 CsdlConstants::Attribute_Type,
                 $term->getType(),
-                [$this, 'TypeReferenceAsXml']
+                [$this, 'typeReferenceAsXml']
             );
         }
     }
@@ -188,7 +188,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             CsdlConstants::Attribute_BaseType,
             $complexType->BaseComplexType(),
             null,
-            [$this, 'TypeDefinitionAsXml']
+            [$this, 'typeDefinitionAsXml']
         );
         $this->WriteOptionalAttribute(
             CsdlConstants::Attribute_Abstract,
@@ -214,7 +214,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $this->WriteRequiredAttribute(
                 CsdlConstants::Attribute_UnderlyingType,
                 $enumType->getUnderlyingType(),
-                [$this, 'TypeDefinitionAsXml']
+                [$this, 'typeDefinitionAsXml']
             );
         }
 
@@ -358,7 +358,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             CsdlConstants::Attribute_BaseType,
             $entityType->BaseEntityType(),
             null,
-            [$this, 'TypeDefinitionAsXml']
+            [$this, 'typeDefinitionAsXml']
         );
         $this->WriteOptionalAttribute(
             CsdlConstants::Attribute_Abstract,
@@ -453,7 +453,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      */
     public function WriteSchemaElementHeader(EdmSchema $schema, ?string $alias, array $mappings): void
     {
-        $xmlNamespace = self::GetCsdlNamespace($this->version);
+        $xmlNamespace = self::getCsdlNamespace($this->version);
         $this->xmlWriter->startElement(CsdlConstants::Element_Schema);
         $this->WriteOptionalAttribute(
             CsdlConstants::Attribute_Namespace,
@@ -503,7 +503,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $this->WriteRequiredAttribute(
                 CsdlConstants::Attribute_Type,
                 $property->getType(),
-                [$this, 'TypeReferenceAsXml']
+                [$this, 'typeReferenceAsXml']
             );
         }
 
@@ -615,7 +615,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Srid,
             $reference->getSpatialReferenceIdentifier(),
-            [self::class, 'SridAsXml']
+            [self::class, 'sridAsXml']
         );
     }
 
@@ -766,7 +766,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $this->WriteRequiredAttribute(
                 CsdlConstants::Attribute_ReturnType,
                 $function->getReturnType(),
-                [$this, 'TypeReferenceAsXml']
+                [$this, 'typeReferenceAsXml']
             );
         }
     }
@@ -808,7 +808,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             CsdlConstants::Attribute_ReturnType,
             $functionImport->getReturnType(),
             null,
-            [$this, 'TypeReferenceAsXml']
+            [$this, 'typeReferenceAsXml']
         );
 
         // IsSideEffecting is optional, however its default applies to non-composable function imports only.
@@ -880,7 +880,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $this->WriteRequiredAttribute(
                 CsdlConstants::Attribute_Type,
                 $parameter->getType(),
-                [$this, 'TypeReferenceAsXml']
+                [$this, 'typeReferenceAsXml']
             );
         }
 
@@ -904,7 +904,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $this->WriteRequiredAttribute(
                 CsdlConstants::Attribute_ElementType,
                 $collectionType->getElementType(),
-                [$this, 'TypeReferenceAsXml']
+                [$this, 'typeReferenceAsXml']
             );
         }
     }
@@ -1027,7 +1027,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteValueAnnotationElementHeader(IValueAnnotation $annotation, bool $isInline): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_ValueAnnotation);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Term, $annotation->getTerm(), [$this, 'TermAsXml']);
+        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Term, $annotation->getTerm(), [$this, 'termAsXml']);
         $this->WriteOptionalAttribute(
             CsdlConstants::Attribute_Qualifier,
             $annotation->getQualifier(),
@@ -1046,7 +1046,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteTypeAnnotationElementHeader(ITypeAnnotation $annotation): void
     {
         $this->xmlWriter->startElement(CsdlConstants::Element_TypeAnnotation);
-        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Term, $annotation->getTerm(), [$this, 'TermAsXml']);
+        $this->WriteRequiredAttribute(CsdlConstants::Attribute_Term, $annotation->getTerm(), [$this, 'termAsXml']);
         $this->WriteOptionalAttribute(
             CsdlConstants::Attribute_Qualifier,
             $annotation->getQualifier(),
@@ -1084,7 +1084,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             CsdlConstants::Attribute_Type,
             $expression->getDeclaredType(),
             null,
-            [$this, 'TypeReferenceAsXml']
+            [$this, 'typeReferenceAsXml']
         );
     }
 
@@ -1179,7 +1179,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $this->WriteRequiredAttribute(
                 CsdlConstants::Attribute_Function,
                 $appliedFunction->getReferencedFunction(),
-                [$this, 'FunctionAsXml']
+                [$this, 'functionAsXml']
             );
         }
     }
@@ -1241,7 +1241,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $this->WriteRequiredAttribute(
                 CsdlConstants::Attribute_Type,
                 $expression->getType(),
-                [$this, 'TypeReferenceAsXml']
+                [$this, 'typeReferenceAsXml']
             );
         }
     }
@@ -1258,7 +1258,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $this->WriteRequiredAttribute(
                 CsdlConstants::Attribute_Type,
                 $expression->getType(),
-                [$this, 'TypeReferenceAsXml']
+                [$this, 'typeReferenceAsXml']
             );
         }
     }
@@ -1273,7 +1273,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Name,
             $expression->getReferencedEntitySet(),
-            [self::class, 'EntitySetAsXml']
+            [self::class, 'entitySetAsXml']
         );
         $this->WriteEndElement();
     }
@@ -1303,7 +1303,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Name,
             $expression->getReferencedFunction(),
-            [$this, 'FunctionAsXml']
+            [$this, 'functionAsXml']
         );
         $this->WriteEndElement();
     }
@@ -1478,14 +1478,14 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         return $member->getDeclaringType()->FullName() . '/' . $member->getName();
     }
 
-    private static function EntitySetAsXml(IEntitySet $set): string
+    private static function entitySetAsXml(IEntitySet $set): string
     {
         $stem = $set->getContainer() ? $set->getContainer()->FullName() : '';
 
         return $stem . '/' . $set->getName();
     }
 
-    private static function SridAsXml(?int $i): string
+    private static function sridAsXml(?int $i): string
     {
         return $i !== null ? strval($i) :  CsdlConstants::Value_SridVariable;
     }
@@ -1495,7 +1495,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      * @throws InvalidOperationException
      * @return string
      */
-    private static function GetCsdlNamespace(Version $edmVersion): string
+    private static function getCsdlNamespace(Version $edmVersion): string
     {
         $namespaces = CsdlConstants::versionToEdmNamespace($edmVersion);
         if ($namespaces !== null) {
@@ -1505,7 +1505,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         throw new InvalidOperationException(StringConst::Serializer_UnknownEdmVersion());
     }
 
-    private function SerializationName(ISchemaElement $element): string
+    private function serializationName(ISchemaElement $element): string
     {
         EdmUtil::checkArgumentNull($element->getNamespace(), 'element->getNamespace');
         if ($this->namespaceAliasMappings != null) {
@@ -1517,7 +1517,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         return $element->FullName();
     }
 
-    private function TypeReferenceAsXml(ITypeReference $type): string
+    private function typeReferenceAsXml(ITypeReference $type): string
     {
         if ($type->IsCollection()) {
             $collectionReference   = $type->AsCollection();
@@ -1526,35 +1526,35 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
                 $elementTypeDefinition instanceof ISchemaElement,
                 'Cannot inline parameter type if not a named element or collection of named elements'
             );
-            return CsdlConstants::Value_Collection . '(' . $this->SerializationName($elementTypeDefinition) . ')';
+            return CsdlConstants::Value_Collection . '(' . $this->serializationName($elementTypeDefinition) . ')';
         } elseif ($type->IsEntityReference()) {
             $entityReferenceDefinitionType = $type->AsEntityReference()->EntityReferenceDefinition()->getEntityType();
-            return CsdlConstants::Value_Ref . '(' . $this->SerializationName($entityReferenceDefinitionType) . ')';
+            return CsdlConstants::Value_Ref . '(' . $this->serializationName($entityReferenceDefinitionType) . ')';
         }
         $typeDefinition = $type->getDefinition();
-        Assert(
+        assert(
             $typeDefinition instanceof ISchemaElement,
             'Cannot inline parameter type if not a named element or collection of named elements'
         );
-        return $this->SerializationName($typeDefinition);
+        return $this->serializationName($typeDefinition);
     }
 
-    private function TypeDefinitionAsXml(ISchemaType $type): string
+    private function typeDefinitionAsXml(ISchemaType $type): string
     {
-        return $this->SerializationName($type);
+        return $this->serializationName($type);
     }
 
-    private function FunctionAsXml(IFunction $function): string
+    private function functionAsXml(IFunction $function): string
     {
-        return $this->SerializationName($function);
+        return $this->serializationName($function);
     }
 
-    private function TermAsXml(?ITerm $term): string
+    private function termAsXml(?ITerm $term): string
     {
         if ($term == null) {
             return '';
         }
 
-        return $this->SerializationName($term);
+        return $this->serializationName($term);
     }
 }
