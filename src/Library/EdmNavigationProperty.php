@@ -112,7 +112,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
      * @param  EdmNavigationPropertyInfo $partnerInfo  information to create the partner navigation property
      * @return EdmNavigationProperty     created navigation property
      */
-    public static function CreateNavigationPropertyWithPartnerFromInfo(
+    public static function createNavigationPropertyWithPartnerFromInfo(
         EdmNavigationPropertyInfo $propertyInfo,
         EdmNavigationPropertyInfo $partnerInfo
     ): EdmNavigationProperty {
@@ -166,7 +166,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
      * @param  OnDeleteAction        $partnerOnDelete            action to take upon deletion of an instance of the navigation target
      * @return EdmNavigationProperty navigation property
      */
-    public static function CreateNavigationPropertyWithPartner(
+    public static function createNavigationPropertyWithPartner(
         string $propertyName,
         ITypeReference $propertyType,
         array $dependentProperties,
@@ -178,14 +178,14 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         bool $partnerContainsTarget,
         OnDeleteAction $partnerOnDelete
     ): EdmNavigationProperty {
-        $declaringType = self::GetEntityType($partnerPropertyType);
+        $declaringType = self::getEntityType($partnerPropertyType);
         if ($declaringType == null) {
             throw new ArgumentException(
                 StringConst::Constructable_EntityTypeOrCollectionOfEntityTypeExpected('partnerPropertyType')
             );
         }
 
-        $partnerDeclaringType = self::GetEntityType($propertyType);
+        $partnerDeclaringType = self::getEntityType($propertyType);
         if ($partnerDeclaringType == null) {
             throw new ArgumentException(
                 StringConst::Constructable_EntityTypeOrCollectionOfEntityTypeExpected('propertyType')
@@ -215,7 +215,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
         return $end1;
     }
 
-    private static function GetEntityType(ITypeReference $type): ?IEntityType
+    private static function getEntityType(ITypeReference $type): ?IEntityType
     {
         $entityType = null;
         if ($type->isEntity()) {
@@ -247,7 +247,7 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
                 return new EdmEntityTypeReference($entityType, false);
 
             case Multiplicity::Many():
-                return EdmCoreModel::GetCollection(new EdmEntityTypeReference($entityType, false));
+                return EdmCoreModel::getCollection(new EdmEntityTypeReference($entityType, false));
 
             default:
                 throw new ArgumentOutOfRangeException(

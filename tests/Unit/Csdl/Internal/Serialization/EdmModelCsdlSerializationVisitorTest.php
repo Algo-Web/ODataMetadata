@@ -56,7 +56,7 @@ class EdmModelCsdlSerializationVisitorTest extends TestCase
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
         $entityType = new EdmEntityType('namespace', 'any');
-        $entityType->AddStructuralProperty('employee_id', $type, false);
+        $entityType->addStructuralProperty('employee_id', $type, false);
         $schema = new EdmSchema('namespace');
         $schema->addSchemaElement($entityType);
 

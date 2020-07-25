@@ -50,7 +50,7 @@ class EdmEnumType extends EdmType implements IEnumType
     {
         $underlyingType = $underlyingType ?? PrimitiveTypeKind::Int32();
         if ($underlyingType instanceof PrimitiveTypeKind) {
-            $underlyingType = EdmCoreModel::getInstance()->GetPrimitive($underlyingType, false);
+            $underlyingType = EdmCoreModel::getInstance()->getPrimitive($underlyingType, false);
         }
         assert($underlyingType instanceof IPrimitiveType);
         $this->namespaceName  = $namespaceName;
@@ -121,7 +121,7 @@ class EdmEnumType extends EdmType implements IEnumType
      *
      * @param IEnumMember $member the member to add
      */
-    public function AddRawMember(IEnumMember $member): void
+    public function addRawMember(IEnumMember $member): void
     {
         $this->members[] = $member;
     }
@@ -133,10 +133,10 @@ class EdmEnumType extends EdmType implements IEnumType
      * @param  IPrimitiveValue $value value of the member
      * @return EdmEnumMember   created member
      */
-    public function AddMember(string $name, IPrimitiveValue $value): EdmEnumMember
+    public function addMember(string $name, IPrimitiveValue $value): EdmEnumMember
     {
         $member = new EdmEnumMember($this, $name, $value);
-        $this->AddRawMember($member);
+        $this->addRawMember($member);
         return $member;
     }
 }

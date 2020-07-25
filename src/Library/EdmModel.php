@@ -66,9 +66,9 @@ class EdmModel extends EdmModelBase
      *
      * @param IModel $model the model to reference
      */
-    public function AddReferencedModel(IModel $model): void
+    public function addReferencedModel(IModel $model): void
     {
-        parent::AddReferencedModel($model);
+        parent::addReferencedModel($model);
     }
     /**
      * Finds a list of types that derive directly from the supplied type.
@@ -89,7 +89,7 @@ class EdmModel extends EdmModelBase
      *
      * @param ISchemaElement $element element to be added
      */
-    public function AddElement(ISchemaElement $element): void
+    public function addElement(ISchemaElement $element): void
     {
         $this->elements[] = $element;
         if ($element instanceof IStructuredType && $element->getBaseType() !== null) {
@@ -99,7 +99,7 @@ class EdmModel extends EdmModelBase
             $derivedTypes = $this->derivedTypeMappings->offsetGet($element);
             $this->derivedTypeMappings->offsetSet($element, $derivedTypes);
         }
-        $this->RegisterElement($element);
+        $this->registerElement($element);
     }
 
     /**
@@ -107,10 +107,10 @@ class EdmModel extends EdmModelBase
      *
      * @param ISchemaElement[] $newElements elements to be added
      */
-    public function AddElements(array $newElements): void
+    public function addElements(array $newElements): void
     {
         foreach ($newElements as $element) {
-            $this->AddElement($element);
+            $this->addElement($element);
         }
     }
 
@@ -119,7 +119,7 @@ class EdmModel extends EdmModelBase
      *
      * @param IVocabularyAnnotation $annotation the annotation to be added
      */
-    public function AddVocabularyAnnotation(IVocabularyAnnotation $annotation)
+    public function addVocabularyAnnotation(IVocabularyAnnotation $annotation)
     {
         if (null === $annotation->getTarget()) {
             throw new InvalidOperationException(StringConst::Constructable_VocabularyAnnotationMustHaveTarget());

@@ -44,7 +44,7 @@ class BadEnumType extends BadType implements IEnumType
      */
     public function getUnderlyingType(): IPrimitiveType
     {
-        $type = EdmCoreModel::getInstance()->GetPrimitiveType(PrimitiveTypeKind::Int32());
+        $type = EdmCoreModel::getInstance()->getPrimitiveType(PrimitiveTypeKind::Int32());
         EdmUtil::checkArgumentNull($type, 'BadEnumType->getUnderlyingType');
         return $type;
     }

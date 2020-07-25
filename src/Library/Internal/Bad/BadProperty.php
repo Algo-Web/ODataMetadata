@@ -73,7 +73,7 @@ class BadProperty extends BadElement implements IStructuralProperty
      */
     public function getType(): ?ITypeReference
     {
-        return $this->type->getValue($this, [$this,'ComputeType']);
+        return $this->type->getValue($this, [$this, 'computeType']);
     }
 
     /**
@@ -100,7 +100,7 @@ class BadProperty extends BadElement implements IStructuralProperty
         return ConcurrencyMode::None();
     }
 
-    private function ComputeType(): ITypeReference
+    private function computeType(): ITypeReference
     {
         return new BadTypeReference(new BadType($this->getErrors()), true);
     }

@@ -213,8 +213,8 @@ class ModelTypeHelpersTest extends TestCase
             ->andReturn(SchemaElementKind::EntityContainer());
 
         $foo = new EdmModel();
-        $foo->AddElement($baseType);
-        $foo->AddElement($derived);
+        $foo->addElement($baseType);
+        $foo->addElement($derived);
 
         $res = $foo->findDirectlyDerivedTypes($baseType);
         $this->assertEquals(0, count($res));

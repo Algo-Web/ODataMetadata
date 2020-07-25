@@ -25,7 +25,7 @@ class IfExpressionAssertCorrectTestType extends IfExpressionRule
         $errors = [];
         if (!ExpressionTypeChecker::tryAssertType(
             $expression->getTestExpression(),
-            EdmCoreModel::getInstance()->GetBoolean(false),
+            EdmCoreModel::getInstance()->getBoolean(false),
             null,
             false,
             $errors

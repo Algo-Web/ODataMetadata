@@ -60,9 +60,9 @@ class EdmxTest extends TestCase
 
         foreach ($entitySetarray as $es) {
             $entityType = new EdmEntityType('NorthwindModel', $es[1]);
-            $entityContainer->AddEntitySet($es[0], $entityType);
+            $entityContainer->addEntitySet($es[0], $entityType);
         }
-        $model->AddElement($entityContainer);
+        $model->addElement($entityContainer);
         $xmlWritter = new \XMLWriter();
         $this->assertTrue(EdmxWriter::tryWriteEdmx($model, $xmlWritter));
 

@@ -121,7 +121,7 @@ abstract class EdmStructuredType extends EdmType implements IStructuredType
      * @see IProperty::getDeclaringType() of the 'property' must be this type.
      * @param IProperty $property the property being added
      */
-    public function AddProperty(IProperty $property): void
+    public function addProperty(IProperty $property): void
     {
         if ($this !== $property->getDeclaringType()) {
             throw new InvalidOperationException(StringConst::EdmModel_Validator_Semantic_DeclaringTypeMustBeCorrect($property->getName()));
@@ -137,7 +137,7 @@ abstract class EdmStructuredType extends EdmType implements IStructuredType
      */
     protected function getPropertiesDictionary(): array
     {
-        return $this->propertiesDictionary->getValue($this, [$this, 'ComputePropertiesDictionary']);
+        return $this->propertiesDictionary->getValue($this, [$this, 'computePropertiesDictionary']);
     }
 
     /**
@@ -145,7 +145,7 @@ abstract class EdmStructuredType extends EdmType implements IStructuredType
      *
      * @return array<string, IProperty> dictionary of properties keyed by their name
      */
-    private function ComputePropertiesDictionary(): array
+    private function computePropertiesDictionary(): array
     {
         $properties = [];
         /** @var IProperty $property */
@@ -164,10 +164,10 @@ abstract class EdmStructuredType extends EdmType implements IStructuredType
      * @param  bool                  $isNullable flag specifying if the property is nullable
      * @return EdmStructuralProperty created structural property
      */
-    public function AddStructuralProperty(string $name, PrimitiveTypeKind $type, bool $isNullable = true): EdmStructuralProperty
+    public function addStructuralProperty(string $name, PrimitiveTypeKind $type, bool $isNullable = true): EdmStructuralProperty
     {
-        $property = new EdmStructuralProperty($this, $name, EdmCoreModel::getInstance()->GetPrimitive($type, $isNullable));
-        $this->AddProperty($property);
+        $property = new EdmStructuralProperty($this, $name, EdmCoreModel::getInstance()->getPrimitive($type, $isNullable));
+        $this->addProperty($property);
         return $property;
     }
 
@@ -180,10 +180,10 @@ abstract class EdmStructuredType extends EdmType implements IStructuredType
      * @param  ConcurrencyMode|null  $concurrencyMode the concurrency mode of this property
      * @return EdmStructuralProperty created structural property
      */
-    public function AddStructuralPropertyReferenceReference(string $name, ITypeReference $type, ?string $defaultValue = null, ?ConcurrencyMode $concurrencyMode = null): EdmStructuralProperty
+    public function addStructuralPropertyReferenceReference(string $name, ITypeReference $type, ?string $defaultValue = null, ?ConcurrencyMode $concurrencyMode = null): EdmStructuralProperty
     {
         $property = new EdmStructuralProperty($this, $name, $type, $defaultValue, $concurrencyMode);
-        $this->AddProperty($property);
+        $this->addProperty($property);
         return $property;
     }
 }

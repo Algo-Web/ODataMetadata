@@ -15,7 +15,7 @@ use AlgoWeb\ODataMetadata\Library\Internal\Bad\BadEntityType;
 
 class AmbiguousEntitySetBinding extends AmbiguousBinding implements IEntitySet
 {
-    public function AmbiguousEntitySetBinding(IEntitySet $first, IEntitySet $second)
+    public function ambiguousEntitySetBinding(IEntitySet $first, IEntitySet $second)
     {
         parent::__construct($first, $second);
     }

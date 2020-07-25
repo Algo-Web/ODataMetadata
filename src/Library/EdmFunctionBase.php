@@ -84,7 +84,7 @@ class EdmFunctionBase extends EdmNamedElement implements IFunctionBase
      * @param  FunctionParameterMode|null $mode mode of the parameter
      * @return EdmFunctionParameter       created parameter
      */
-    public function AddParameter(string $name, ITypeReference $type, ?FunctionParameterMode $mode = null): EdmFunctionParameter
+    public function addParameter(string $name, ITypeReference $type, ?FunctionParameterMode $mode = null): EdmFunctionParameter
     {
         $parameter          = new EdmFunctionParameter($this, $name, $type, $mode);
         $this->parameters[] = $parameter;
@@ -96,7 +96,7 @@ class EdmFunctionBase extends EdmNamedElement implements IFunctionBase
      *
      * @param IFunctionParameter $parameter the parameter being added
      */
-    public function AddRawParameter(IFunctionParameter $parameter): void
+    public function addRawParameter(IFunctionParameter $parameter): void
     {
         $this->parameters[] = $parameter;
     }
