@@ -29,12 +29,12 @@ class EnumMemberValueMustHaveSameTypeAsUnderlyingType extends EnumMemberRule
                        !$context->checkIsBad($enumMember->getDeclaringType()->getUnderlyingType()) &&
                        !ExpressionTypeChecker::tryAssertPrimitiveAsType(
                            $enumMember->getValue(),
-                           EdmTypeSemantics::GetPrimitiveTypeReference($enumMember->getDeclaringType()->getUnderlyingType(), false),
+                           EdmTypeSemantics::getPrimitiveTypeReference($enumMember->getDeclaringType()->getUnderlyingType(), false),
                            $discoveredErrors
                        )) {
-            EdmUtil::checkArgumentNull($enumMember->Location(), 'enumMember->Location');
+            EdmUtil::checkArgumentNull($enumMember->location(), 'enumMember->Location');
             $context->addError(
-                $enumMember->Location(),
+                $enumMember->location(),
                 EdmErrorCode::EnumMemberTypeMustMatchEnumUnderlyingType(),
                 StringConst::EdmModel_Validator_Semantic_EnumMemberTypeMustMatchEnumUnderlyingType($enumMember->getName())
             );

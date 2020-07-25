@@ -21,7 +21,7 @@ trait ValueAnnotationHelpers
      *
      * @return IValueTerm The value term of this value annotation
      */
-    public function ValueTerm(): IValueTerm
+    public function valueTerm(): IValueTerm
     {
         $term = $this->getTerm();
         assert($term instanceof IValueTerm, 'Value Annotations should always use value terms');

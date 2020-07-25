@@ -120,10 +120,10 @@ class EdmSchema
 
     public function addVocabularyAnnotation(IVocabularyAnnotation $annotation)
     {
-        if (!array_key_exists($annotation->TargetString(), $this->annotations)) {
-            $this->annotations[$annotation->TargetString()] = [];
+        if (!array_key_exists($annotation->targetString(), $this->annotations)) {
+            $this->annotations[$annotation->targetString()] = [];
         }
-        $this->annotations[$annotation->TargetString()][] = $annotation;
+        $this->annotations[$annotation->targetString()][] = $annotation;
         return $this;
     }
 

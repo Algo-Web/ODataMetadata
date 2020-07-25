@@ -30,7 +30,7 @@ class ModelDuplicateSchemaElementName extends ModelRule
         $functionDictionary  = [];
         foreach ($model->getSchemaElements() as $item) {
             $duplicate = false;
-            $fullName  = $item->FullName();
+            $fullName  = $item->fullName();
             $function  = $item;
             if ($function instanceof IFunction) {
                 // If a non-function already exists with the same name, stop processing as a function, as it is irrelevant it will always be an error.
@@ -64,9 +64,9 @@ class ModelDuplicateSchemaElementName extends ModelRule
             }
 
             if ($duplicate) {
-                EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
+                EdmUtil::checkArgumentNull($item->location(), 'item->Location');
                 $context->addError(
-                    $item->Location(),
+                    $item->location(),
                     EdmErrorCode::AlreadyDefined(),
                     StringConst::EdmModel_Validator_Semantic_SchemaElementNameAlreadyDefined($fullName)
                 );

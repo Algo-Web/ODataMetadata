@@ -21,7 +21,7 @@ trait StructuredTypeReferenceHelpers
      *
      * @return IStructuredType|null the definition of this structured type reference
      */
-    public function StructuredDefinition(): ?IStructuredType
+    public function structuredDefinition(): ?IStructuredType
     {
         $def = $this->getDefinition();
         return $def instanceof IStructuredType ? $def : null;
@@ -32,9 +32,9 @@ trait StructuredTypeReferenceHelpers
      *
      * @return bool If the definition of this reference is abstract
      */
-    public function IsAbstract(): bool
+    public function isAbstract(): bool
     {
-        $def = $this->StructuredDefinition();
+        $def = $this->structuredDefinition();
         return $def ? $def->isAbstract() : false;
     }
 
@@ -43,9 +43,9 @@ trait StructuredTypeReferenceHelpers
      *
      * @return bool If the definition of this reference is open
      */
-    public function IsOpen(): bool
+    public function isOpen(): bool
     {
-        $def = $this->StructuredDefinition();
+        $def = $this->structuredDefinition();
         return $def ? $def->isOpen() : false;
     }
 
@@ -54,9 +54,9 @@ trait StructuredTypeReferenceHelpers
      *
      * @return IStructuredType|null the base type of the definition of this reference
      */
-    public function BaseType(): ?IStructuredType
+    public function baseType(): ?IStructuredType
     {
-        $def = $this->StructuredDefinition();
+        $def = $this->structuredDefinition();
         return $def ? $def->getBaseType() : null;
     }
 
@@ -65,10 +65,10 @@ trait StructuredTypeReferenceHelpers
      *
      * @return IStructuralProperty[] all structural properties declared in the definition of this reference
      */
-    public function DeclaredStructuralProperties(): array
+    public function declaredStructuralProperties(): array
     {
-        $def = $this->StructuredDefinition();
-        return $def ? $def->DeclaredStructuralProperties() : [];
+        $def = $this->structuredDefinition();
+        return $def ? $def->declaredStructuralProperties() : [];
     }
 
     /**
@@ -77,10 +77,10 @@ trait StructuredTypeReferenceHelpers
      * @return IStructuralProperty[] all structural properties declared in the definition of this reference and
      *                               all its base types
      */
-    public function StructuralProperties(): array
+    public function structuralProperties(): array
     {
-        $def = $this->StructuredDefinition();
-        return $def ? $def->StructuralProperties() : [];
+        $def = $this->structuredDefinition();
+        return $def ? $def->structuralProperties() : [];
     }
 
     /**
@@ -89,9 +89,9 @@ trait StructuredTypeReferenceHelpers
      * @param  string         $name name of the property to find
      * @return IProperty|null The requested property if it exists. Otherwise, null.
      */
-    public function FindProperty(string $name): ?IProperty
+    public function findProperty(string $name): ?IProperty
     {
-        $def = $this->StructuredDefinition();
+        $def = $this->structuredDefinition();
         return $def ? $def->findProperty($name) : null;
     }
 

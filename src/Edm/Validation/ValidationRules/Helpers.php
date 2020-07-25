@@ -19,18 +19,18 @@ abstract class Helpers
 {
     public static function checkForUnreachableTypeError(ValidationContext $context, ISchemaType $type, ILocation $location): void
     {
-        $foundType = $context->getModel()->findType($type->FullName());
+        $foundType = $context->getModel()->findType($type->fullName());
         if ($foundType instanceof AmbiguousTypeBinding) {
             $context->addError(
                 $location,
                 EdmErrorCode::BadAmbiguousElementBinding(),
-                StringConst::EdmModel_Validator_Semantic_AmbiguousType($type->FullName())
+                StringConst::EdmModel_Validator_Semantic_AmbiguousType($type->fullName())
             );
         } elseif (!EdmElementComparer::isEquivalentTo($foundType, $type)) {
             $context->addError(
                 $location,
                 EdmErrorCode::BadUnresolvedType(),
-                StringConst::EdmModel_Validator_Semantic_InaccessibleType($type->FullName())
+                StringConst::EdmModel_Validator_Semantic_InaccessibleType($type->fullName())
             );
         }
     }

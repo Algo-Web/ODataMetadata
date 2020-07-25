@@ -12,5 +12,5 @@ use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
  */
 interface IPrimitiveTypeHelpers
 {
-    public function GetPrimitiveTypeReference(bool $isNullable): IPrimitiveTypeReference;
+    public function getPrimitiveTypeReference(bool $isNullable): IPrimitiveTypeReference;
 }

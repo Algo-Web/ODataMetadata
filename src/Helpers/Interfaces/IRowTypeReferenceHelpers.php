@@ -17,5 +17,5 @@ interface IRowTypeReferenceHelpers
      *
      * @return IRowType the definition of this row type reference
      */
-    public function RowDefinition(): IRowType;
+    public function rowDefinition(): IRowType;
 }

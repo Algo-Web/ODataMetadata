@@ -149,7 +149,7 @@ abstract class EdmStructuredType extends EdmType implements IStructuredType
     {
         $properties = [];
         /** @var IProperty $property */
-        foreach ($this->Properties() as $property) {
+        foreach ($this->properties() as $property) {
             RegistrationHelper::registerProperty($property, $property->getName(), $properties);
         }
 

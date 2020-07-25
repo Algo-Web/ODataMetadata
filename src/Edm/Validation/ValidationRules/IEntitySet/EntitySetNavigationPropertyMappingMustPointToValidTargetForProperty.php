@@ -24,17 +24,17 @@ class EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty extend
         assert($set instanceof IEntitySet);
         foreach ($set->getNavigationTargets() as $mapping) {
             if (!(
-                $mapping->getTargetEntitySet()->getElementType()->IsOrInheritsFrom(
-                    $mapping->getNavigationProperty()->ToEntityType()
+                $mapping->getTargetEntitySet()->getElementType()->isOrInheritsFrom(
+                    $mapping->getNavigationProperty()->toEntityType()
                 ) ||
-                    $mapping->getNavigationProperty()->ToEntityType()->IsOrInheritsFrom(
+                    $mapping->getNavigationProperty()->toEntityType()->isOrInheritsFrom(
                         $mapping->getTargetEntitySet()->getElementType()
                     )
             ) &&
                 !$context->checkIsBad($mapping->getTargetEntitySet())) {
-                EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
+                EdmUtil::checkArgumentNull($set->location(), 'set->Location');
                 $context->addError(
-                    $set->Location(),
+                    $set->location(),
                     EdmErrorCode::EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty(),
                     StringConst::EdmModel_Validator_Semantic_EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty($mapping->getNavigationProperty()->getName(), $mapping->getTargetEntitySet()->getName())
                 );

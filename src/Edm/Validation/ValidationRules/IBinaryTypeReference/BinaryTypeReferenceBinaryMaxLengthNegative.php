@@ -23,9 +23,9 @@ class BinaryTypeReferenceBinaryMaxLengthNegative extends BinaryTypeReferenceRule
     {
         assert($type instanceof IBinaryTypeReference);
         if ($type->getMaxLength() < 0) {
-            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
+            EdmUtil::checkArgumentNull($type->location(), 'type->Location');
             $context->addError(
-                $type->Location(),
+                $type->location(),
                 EdmErrorCode::MaxLengthOutOfRange(),
                 StringConst::EdmModel_Validator_Semantic_MaxLengthOutOfRange()
             );

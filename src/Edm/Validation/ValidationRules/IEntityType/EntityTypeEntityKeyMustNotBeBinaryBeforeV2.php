@@ -22,14 +22,14 @@ class EntityTypeEntityKeyMustNotBeBinaryBeforeV2 extends EntityTypeRule
     public function __invoke(ValidationContext $context, ?IEdmElement $entityType)
     {
         assert($entityType instanceof IEntityType);
-        $rawKey = $entityType->Key();
+        $rawKey = $entityType->key();
         if (null !== $rawKey) {
             foreach ($rawKey as $key) {
                 assert($key instanceof IStructuralProperty);
                 if ($key->getType()->isBinary() && !$context->checkIsBad($key->getType()->getDefinition())) {
-                    EdmUtil::checkArgumentNull($key->Location(), 'key->Location');
+                    EdmUtil::checkArgumentNull($key->location(), 'key->Location');
                     $context->addError(
-                        $key->Location(),
+                        $key->location(),
                         EdmErrorCode::EntityKeyMustNotBeBinary(),
                         StringConst::EdmModel_Validator_Semantic_EntityKeyMustNotBeBinaryBeforeV2($key->getName(), $entityType->getName())
                     );

@@ -22,9 +22,9 @@ class NamedElementNameMustNotBeEmptyOrWhiteSpace extends NamedElementRule
     {
         assert($item instanceof INamedElement);
         if (EdmUtil::isNullOrWhiteSpaceInternal($item->getName()) || mb_strlen($item->getName()) === 0) {
-            EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
+            EdmUtil::checkArgumentNull($item->location(), 'item->Location');
             $context->addError(
-                $item->Location(),
+                $item->location(),
                 EdmErrorCode::InvalidName(),
                 StringConst::EdmModel_Validator_Syntactic_MissingName()
             );

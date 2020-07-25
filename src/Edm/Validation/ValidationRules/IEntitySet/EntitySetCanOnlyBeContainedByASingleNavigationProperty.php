@@ -23,17 +23,17 @@ class EntitySetCanOnlyBeContainedByASingleNavigationProperty extends EntitySetRu
     {
         assert($set instanceof IEntitySet);
         $containmentFound = false;
-        foreach ($set->getContainer()->EntitySets() as $otherSet) {
+        foreach ($set->getContainer()->entitySets() as $otherSet) {
             foreach ($otherSet->getNavigationTargets() as $mapping) {
                 $property = $mapping->getNavigationProperty();
 
                 if ($mapping->getTargetEntitySet() === $set && $property->containsTarget()) {
                     if ($containmentFound) {
-                        EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
+                        EdmUtil::checkArgumentNull($set->location(), 'set->Location');
                         $context->addError(
-                            $set->Location(),
+                            $set->location(),
                             EdmErrorCode::EntitySetCanOnlyBeContainedByASingleNavigationProperty(),
-                            StringConst::EdmModel_Validator_Semantic_EntitySetCanOnlyBeContainedByASingleNavigationProperty($set->getContainer()->FullName() . '.' . $set->getName())
+                            StringConst::EdmModel_Validator_Semantic_EntitySetCanOnlyBeContainedByASingleNavigationProperty($set->getContainer()->fullName() . '.' . $set->getName())
                         );
                     }
 

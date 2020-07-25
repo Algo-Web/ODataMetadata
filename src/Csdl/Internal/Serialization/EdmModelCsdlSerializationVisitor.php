@@ -193,7 +193,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         parent::processEntityContainer($element);
 
         /** @var IEntitySet $entitySet */
-        foreach ($element->EntitySets() as $entitySet) {
+        foreach ($element->entitySets() as $entitySet) {
             foreach ($entitySet->getNavigationTargets() as $mapping) {
                 $associationSetName = $this->model->getAssociationFullName($mapping->getNavigationProperty());
                 if (!isset($this->associationSets[$associationSetName])) {
@@ -254,8 +254,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->visitEntityTypeDeclaredKey($element->getDeclaredKey());
         }
 
-        $this->VisitProperties($element->DeclaredStructuralProperties());
-        $this->VisitProperties($element->DeclaredNavigationProperties());
+        $this->VisitProperties($element->declaredStructuralProperties());
+        $this->VisitProperties($element->declaredNavigationProperties());
         $this->finishElement($element);
     }
 
@@ -487,7 +487,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         if (null !== $functionImport->getReturnType() && !self::isInlineType($functionImport->getReturnType())) {
             throw new InvalidOperationException(
                 StringConst::Serializer_NonInlineFunctionImportReturnType(
-                    $functionImport->getContainer()->FullName() . '/' . $functionImport->getName()
+                    $functionImport->getContainer()->fullName() . '/' . $functionImport->getName()
                 )
             );
         }
@@ -788,7 +788,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         if ($reference->getDefinition() instanceof ISchemaElement || $reference->isEntityReference()) {
             return true;
         } elseif ($reference->isCollection()) {
-            $def = $reference->asCollection()->CollectionDefinition()->getElementType()->getDefinition();
+            $def = $reference->asCollection()->collectionDefinition()->getElementType()->getDefinition();
             return $def instanceof ISchemaElement;
         }
 
@@ -836,7 +836,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     private function processAssociation(INavigationProperty $element): void
     {
-        $end1 = $element->GetPrimary();
+        $end1 = $element->getPrimary();
         $end2 = $end1->getPartner();
         /** @var IDirectValueAnnotation[] $associationAnnotations */
         $associationAnnotations = [];
@@ -905,8 +905,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter->writeReferentialConstraintPrincipalEndElementHeader($principalElement);
         $dType = $principalElement->getDeclaringType();
         assert($dType instanceof IEntityType);
-        EdmUtil::checkArgumentNull($dType->Key(), 'principalElement->getDeclaringType->Key');
-        $this->visitPropertyRefs($dType->Key());
+        EdmUtil::checkArgumentNull($dType->key(), 'principalElement->getDeclaringType->Key');
+        $this->visitPropertyRefs($dType->key());
         $this->schemaWriter->writeEndElement();
         $this->schemaWriter->writeReferentialConstraintDependentEndElementHeader($principalElement->getPartner());
         EdmUtil::checkArgumentNull(
@@ -989,7 +989,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             if ($inlineType) {
                 if ($element->typeKind()->isCollection()) {
                     $collectionElement = $element->asCollection();
-                    $type              = $collectionElement->CollectionDefinition()->getElementType();
+                    $type              = $collectionElement->collectionDefinition()->getElementType();
                     EdmUtil::checkArgumentNull($type, 'ProcessFacets - $type');
                     $this->schemaWriter->writeNullableAttribute($type);
                     $this->visitTypeReference($type);
@@ -1033,7 +1033,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             if ($annotation->getNamespaceUri() != EdmConstants::InternalUri) {
                 $edmValue = $annotation->getValue();
                 if ($edmValue instanceof IValue) {
-                    if (!$edmValue->IsSerializedAsElement($this->model)) {
+                    if (!$edmValue->isSerializedAsElement($this->model)) {
                         if ($edmValue->getType()->typeKind()->isPrimitive()) {
                             $this->processAttributeAnnotation($annotation);
                         }
@@ -1051,7 +1051,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             if ($annotation->getNamespaceUri() != EdmConstants::InternalUri) {
                 $edmValue = $annotation->getValue();
                 if ($edmValue instanceof IValue) {
-                    if (!$edmValue->IsSerializedAsElement($this->model)) {
+                    if (!$edmValue->isSerializedAsElement($this->model)) {
                         if ($edmValue->getType()->typeKind()->isPrimitive()) {
                             $this->processElementAnnotation($annotation);
                         }
@@ -1155,7 +1155,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                 array_filter(
                     $this->model->findDeclaredVocabularyAnnotations($vocabularyAnnotatableElement),
                     function (IVocabularyAnnotation $a) use ($self) {
-                        return $a->IsInline($self->model);
+                        return $a->isInline($self->model);
                     }
                 )
             );
@@ -1179,8 +1179,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             return false;
         }
 
-        $thisPrimary = $thisNavprop->GetPrimary();
-        $thatPrimary = $thatNavprop->GetPrimary();
+        $thisPrimary = $thisNavprop->getPrimary();
+        $thatPrimary = $thatNavprop->getPrimary();
         if (!$this->sharesEnd($thisPrimary, $thatPrimary)) {
             return false;
         }
@@ -1194,8 +1194,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $thatDeclaringType = $thisPrimary->getDeclaringType();
         assert($thisDeclaringType instanceof IEntityType);
         assert($thatDeclaringType instanceof IEntityType);
-        $thisPrincipalProperties = $thisDeclaringType->Key();
-        $thatPrincipalProperties = $thatDeclaringType->Key();
+        $thisPrincipalProperties = $thisDeclaringType->key();
+        $thatPrincipalProperties = $thatDeclaringType->key();
         if (!$this->sharesReferentialConstraintEnd($thisPrincipalProperties, $thatPrincipalProperties)) {
             return false;
         }
@@ -1248,10 +1248,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $end2DeclaringType = $end2->getDeclaringType();
         assert($end1DeclaringType instanceof IEntityType);
         assert($end2DeclaringType instanceof IEntityType);
-        if (!($end1DeclaringType->FullName() == $end2DeclaringType->FullName() &&
+        if (!($end1DeclaringType->fullName() == $end2DeclaringType->fullName() &&
               $this->model->getAssociationEndName($end1) == $this->model->getAssociationEndName($end2) &&
-              $end1->Multiplicity()->equals($end2->Multiplicity()) &&
-            $end1->getOnDelete()->equals($end2->getOnDelete()))) {
+              $end1->multiplicity()->equals($end2->multiplicity()) &&
+              $end1->getOnDelete()->equals($end2->getOnDelete()))) {
             return false;
         }
 

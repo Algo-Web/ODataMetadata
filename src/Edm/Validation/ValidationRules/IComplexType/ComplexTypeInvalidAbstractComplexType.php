@@ -23,11 +23,11 @@ class ComplexTypeInvalidAbstractComplexType extends ComplexTypeRule
     {
         assert($complexType instanceof IComplexType);
         if ($complexType->isAbstract()) {
-            EdmUtil::checkArgumentNull($complexType->Location(), 'complexType->Location');
+            EdmUtil::checkArgumentNull($complexType->location(), 'complexType->Location');
             $context->addError(
-                $complexType->Location(),
+                $complexType->location(),
                 EdmErrorCode::InvalidAbstractComplexType(),
-                StringConst::EdmModel_Validator_Semantic_InvalidComplexTypeAbstract($complexType->FullName())
+                StringConst::EdmModel_Validator_Semantic_InvalidComplexTypeAbstract($complexType->fullName())
             );
         }
     }

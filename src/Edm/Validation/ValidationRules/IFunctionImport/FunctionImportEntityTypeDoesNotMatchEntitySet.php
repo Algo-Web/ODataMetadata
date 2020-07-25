@@ -26,17 +26,17 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
+        EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
 
         $returnType = $functionImport->getReturnType();
         if (null !== $functionImport->getEntitySet() && null !== $returnType) {
             /** @var ITypeReference $elementType */
             $elementType = $returnType->isCollection() ?
-                $returnType->asCollection()->ElementType() :
+                $returnType->asCollection()->elementType() :
                 $returnType;
             EdmUtil::checkArgumentNull($elementType->getDefinition(), 'elementType->getDefinition');
             if ($elementType->isEntity()) {
-                $returnedEntityType = $elementType->asEntity()->EntityDefinition();
+                $returnedEntityType = $elementType->asEntity()->entityDefinition();
 
                 /** @var IEntitySet $entitySet */
                 $entitySet = null;
@@ -44,38 +44,38 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                 $parameter = null;
                 /** @var INavigationProperty[]|null $path */
                 $path = null;
-                if ($functionImport->TryGetStaticEntitySet($entitySet)) {
+                if ($functionImport->tryGetStaticEntitySet($entitySet)) {
                     $entitySetElementType = $entitySet->getElementType();
-                    $isBad                = $returnedEntityType->IsOrInheritsFrom($entitySetElementType) ||
-                             $context->checkIsBad($returnedEntityType) ||
+                    $isBad                = $returnedEntityType->isOrInheritsFrom($entitySetElementType) ||
+                                            $context->checkIsBad($returnedEntityType) ||
                              $context->checkIsBad($entitySet) ||
                              $context->checkIsBad($entitySetElementType);
                     if ($isBad) {
                         $errorMessage = StringConst::EdmModel_Validator_Semantic_FunctionImportEntityTypeDoesNotMatchEntitySet(
                             $functionImport->getName(),
-                            $returnedEntityType->FullName(),
+                            $returnedEntityType->fullName(),
                             $entitySet->getName()
                         );
 
                         $context->addError(
-                            $functionImport->Location(),
+                            $functionImport->location(),
                             EdmErrorCode::FunctionImportEntityTypeDoesNotMatchEntitySet(),
                             $errorMessage
                         );
                     }
-                } elseif ($functionImport->TryGetRelativeEntitySetPath($context->getModel(), $parameter, $path)) {
+                } elseif ($functionImport->tryGetRelativeEntitySetPath($context->getModel(), $parameter, $path)) {
                     EdmUtil::checkArgumentNull($parameter, 'parameter');
                     EdmUtil::checkArgumentNull($path, 'path');
                     $relativePathType        = 0 === count($path) ? $parameter->getType() : end($path)->getType();
                     $relativePathElementType = $relativePathType->isCollection() ?
-                        $relativePathType->asCollection()->ElementType() : $relativePathType;
+                        $relativePathType->asCollection()->elementType() : $relativePathType;
                     $definition = $relativePathElementType->getDefinition();
-                    $isBad      = !$returnedEntityType->IsOrInheritsFrom($definition) &&
-                             !$context->checkIsBad($returnedEntityType) &&
+                    $isBad      = !$returnedEntityType->isOrInheritsFrom($definition) &&
+                                  !$context->checkIsBad($returnedEntityType) &&
                              !$context->checkIsBad($definition);
                     if ($isBad) {
                         $context->addError(
-                            $functionImport->Location(),
+                            $functionImport->location(),
                             EdmErrorCode::FunctionImportEntityTypeDoesNotMatchEntitySet(),
                             StringConst::EdmModel_Validator_Semantic_FunctionImportEntityTypeDoesNotMatchEntitySet2(
                                 $functionImport->getName(),
@@ -88,7 +88,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                 // The case when all try gets fail is caught by the FunctionImportEntitySetExpressionIsInvalid rule.
             } elseif (!$context->checkIsBad($elementType->getDefinition())) {
                 $context->addError(
-                    $functionImport->Location(),
+                    $functionImport->location(),
                     EdmErrorCode::FunctionImportSpecifiesEntitySetButDoesNotReturnEntityType(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportSpecifiesEntitySetButNotEntityType(
                         $functionImport->getName()

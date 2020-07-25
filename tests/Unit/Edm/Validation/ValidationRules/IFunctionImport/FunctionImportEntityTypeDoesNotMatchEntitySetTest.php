@@ -285,7 +285,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
         $import->shouldReceive('getReturnType')->andReturn($typeRef);
 
         // pre-check individual components of $isBad check
-        $this->assertEquals($isOrInherits, $eType->IsOrInheritsFrom($sType));
+        $this->assertEquals($isOrInherits, $eType->isOrInheritsFrom($sType));
         $this->assertEquals($entitySetBad, $context->checkIsBad($expr));
         $this->assertEquals($entityTypeBad, $context->checkIsBad($eType));
         $this->assertEquals($entitySetElementTypeBad, $context->checkIsBad($elementType));

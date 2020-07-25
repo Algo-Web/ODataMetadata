@@ -29,12 +29,12 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
         $nonFunctionNameList = new HashSetInternal();
         $functionDictionary  = [];
         foreach ($entityContainer->getElements() as $item) {
-            EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
+            EdmUtil::checkArgumentNull($item->location(), 'item->Location');
             if ($item instanceof IFunctionImport) {
                 $function = $item;
                 if ($nonFunctionNameList->contains($item->getName())) {
                     $context->addError(
-                        $item->Location(),
+                        $item->location(),
                         EdmErrorCode::DuplicateEntityContainerMemberName(),
                         StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName())
                     );
@@ -47,7 +47,7 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
                     foreach ($functionList as $existingFunction) {
                         if (EdmElementComparer::isFunctionSignatureEquivalentTo($function, $existingFunction)) {
                             $context->addError(
-                                $item->Location(),
+                                $item->location(),
                                 EdmErrorCode::DuplicateEntityContainerMemberName(),
                                 StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName())
                             );
@@ -71,7 +71,7 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
                 )) {
                     if (isset($functionDictionary[$item->getName()])) {
                         $context->addError(
-                            $item->Location(),
+                            $item->location(),
                             EdmErrorCode::DuplicateEntityContainerMemberName(),
                             StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName())
                         );

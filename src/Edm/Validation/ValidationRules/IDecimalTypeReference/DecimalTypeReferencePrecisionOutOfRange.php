@@ -25,9 +25,9 @@ class DecimalTypeReferencePrecisionOutOfRange extends DecimalTypeReferenceRule
         assert($type instanceof IDecimalTypeReference);
         if ($type->getPrecision() > EdmConstants::Max_Precision ||
             $type->getPrecision() < EdmConstants::Min_Precision) {
-            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
+            EdmUtil::checkArgumentNull($type->location(), 'type->Location');
             $context->addError(
-                $type->Location(),
+                $type->location(),
                 EdmErrorCode::PrecisionOutOfRange(),
                 StringConst::EdmModel_Validator_Semantic_PrecisionOutOfRange()
             );

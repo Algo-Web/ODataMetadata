@@ -17,7 +17,7 @@ interface IEdmElementHelpers
      *
      * @return ILocation|null the location of the element
      */
-    public function Location(): ?ILocation;
+    public function location(): ?ILocation;
 
     public function getErrors(): iterable;
 }

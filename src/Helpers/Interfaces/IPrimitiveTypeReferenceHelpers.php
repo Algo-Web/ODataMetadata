@@ -18,12 +18,12 @@ interface IPrimitiveTypeReferenceHelpers
      *
      * @return IPrimitiveType definition of this primitive type reference
      */
-    public function PrimitiveDefinition(): ?IPrimitiveType;
+    public function primitiveDefinition(): ?IPrimitiveType;
 
     /**
      * Gets the primitive kind of the definition referred to by this type reference.
      *
      * @return PrimitiveTypeKind primitive kind of the definition of this reference
      */
-    public function PrimitiveKind(): PrimitiveTypeKind;
+    public function primitiveKind(): PrimitiveTypeKind;
 }

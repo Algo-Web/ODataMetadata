@@ -37,7 +37,7 @@ class DirectValueAnnotationHasXmlSerializableName extends DirectValueAnnotationR
             // XmlConvert.IsNCNameChar, which are not available in 3.5.
             if (!XmlConvert::VerifyNCName($annotation->getName())) {
                 $value         = $annotation->getValue() ;
-                $errorLocation = ($value === null || !($value instanceof IValue)) ? null : $value->Location();
+                $errorLocation = ($value === null || !($value instanceof IValue)) ? null : $value->location();
                 $error         = new EdmError(
                     $errorLocation,
                     EdmErrorCode::InvalidName(),

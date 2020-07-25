@@ -61,7 +61,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
             array_filter(
                 $model->getVocabularyAnnotations(),
                 function (IVocabularyAnnotation $value) {
-                    $value->IsInline($this->model);
+                    $value->isInline($this->model);
                 }
             )
         );
@@ -74,7 +74,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
             array_filter(
                 $this->model->findDeclaredVocabularyAnnotations($element),
                 function (IVocabularyAnnotation $value) {
-                    $value->IsInline($this->model);
+                    $value->isInline($this->model);
                 }
             )
         );
@@ -102,8 +102,8 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
 
     protected function processVocabularyAnnotation(IVocabularyAnnotation $annotation): void
     {
-        if (!$annotation->IsInline($this->model)) {
-            $annotationSchemaNamespace = $annotation->GetSchemaNamespace($this->model) ??
+        if (!$annotation->isInline($this->model)) {
+            $annotationSchemaNamespace = $annotation->getSchemaNamespace($this->model) ??
                 count($this->modelSchemas) === 0 ? '' : array_keys($this->modelSchemas)[0];
             if (!array_key_exists($annotationSchemaNamespace, $this->modelSchemas)) {
                 $annotationSchema                               = new EdmSchema($annotationSchemaNamespace);
@@ -148,37 +148,37 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
 
     protected function processComplexTypeReference(IComplexTypeReference $element): void
     {
-        $this->checkSchemaElementReference($element->ComplexDefinition());
+        $this->checkSchemaElementReference($element->complexDefinition());
     }
 
     protected function processEntityTypeReference(IEntityTypeReference $element): void
     {
-        $this->checkSchemaElementReference($element->EntityDefinition());
+        $this->checkSchemaElementReference($element->entityDefinition());
     }
 
     protected function processEntityReferenceTypeReference(IEntityReferenceTypeReference $element): void
     {
-        $this->checkSchemaElementReference($element->EntityType());
+        $this->checkSchemaElementReference($element->entityType());
     }
 
     protected function processEnumTypeReference(IEnumTypeReference $element): void
     {
-        $this->checkSchemaElementReference($element->EnumDefinition());
+        $this->checkSchemaElementReference($element->enumDefinition());
     }
 
     protected function processEntityType(IEntityType $element): void
     {
         parent::processEntityType($element);
-        if (null !== $element->BaseEntityType()) {
-            $this->checkSchemaElementReference($element->BaseEntityType());
+        if (null !== $element->baseEntityType()) {
+            $this->checkSchemaElementReference($element->baseEntityType());
         }
     }
 
     protected function processComplexType(IComplexType $element): void
     {
         parent::processComplexType($element);
-        if (null !== $element->BaseComplexType()) {
-            $this->checkSchemaElementReference($element->BaseComplexType());
+        if (null !== $element->baseComplexType()) {
+            $this->checkSchemaElementReference($element->baseComplexType());
         }
     }
 
@@ -190,7 +190,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
 
     protected function processNavigationProperty(INavigationProperty $property): void
     {
-        $associationNamespace = Helpers::GetAssociationNamespace($this->model, $property);
+        $associationNamespace = Helpers::getAssociationNamespace($this->model, $property);
         EdmUtil::checkArgumentNull($associationNamespace, 'associationNamespace');
 
         if (!array_key_exists($associationNamespace, $this->modelSchemas)) {
@@ -199,9 +199,9 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
             $this->modelSchemas[$associationNamespace] = $associationSchema;
         }
 
-        $entityTypeNamespace = $property->DeclaringEntityType()->getNamespace();
+        $entityTypeNamespace = $property->declaringEntityType()->getNamespace();
         EdmUtil::checkArgumentNull($entityTypeNamespace, 'property->DeclaringEntityType->getNamespace');
-        $partnerEntityTypeNamespace = $property->getPartner()->DeclaringEntityType()->getNamespace();
+        $partnerEntityTypeNamespace = $property->getPartner()->declaringEntityType()->getNamespace();
         EdmUtil::checkArgumentNull(
             $partnerEntityTypeNamespace,
             'property->getPartner->DeclaringEntityType->getNamespace'

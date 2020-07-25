@@ -21,7 +21,7 @@ trait EntityTypeHelpers
      *
      * @return IEntityType|null The base type of this entity type definition
      */
-    public function BaseEntityType(): ?IEntityType
+    public function baseEntityType(): ?IEntityType
     {
         /** @var IEntityType $self */
         $self = $this;
@@ -34,7 +34,7 @@ trait EntityTypeHelpers
      *
      * @return INavigationProperty[] The navigation properties declared in this entity definition
      */
-    public function DeclaredNavigationProperties(): array
+    public function declaredNavigationProperties(): array
     {
         /** @var IEntityType $self */
         $self = $this;
@@ -48,11 +48,11 @@ trait EntityTypeHelpers
      *
      * @return INavigationProperty[] the navigation properties declared in this entity type and all base types
      */
-    public function NavigationProperties(): array
+    public function navigationProperties(): array
     {
         /** @var IEntityType $self */
         $self  = $this;
-        $props = iterator_to_array($self->Properties());
+        $props = iterator_to_array($self->properties());
         return array_filter($props, function (IProperty $value) {
             return $value instanceof INavigationProperty;
         });
@@ -63,7 +63,7 @@ trait EntityTypeHelpers
      *
      * @return IStructuralProperty[] key of this type
      */
-    public function Key(): array
+    public function key(): array
     {
         /** @var IEntityType $checkingType */
         $checkingType = $this;
@@ -71,7 +71,7 @@ trait EntityTypeHelpers
             if ($checkingType->getDeclaredKey() !== null) {
                 return $checkingType->getDeclaredKey();
             }
-            $checkingType = $checkingType->BaseEntityType();
+            $checkingType = $checkingType->baseEntityType();
         }
         return [];
     }
@@ -82,7 +82,7 @@ trait EntityTypeHelpers
      * @param  IProperty $property property to be searched for
      * @return bool      `true` if the type or base types has given property declared as key. `false` otherwise.
      */
-    public function HasDeclaredKeyProperty(IProperty $property): bool
+    public function hasDeclaredKeyProperty(IProperty $property): bool
     {
         /** @var IEntityType $entityType */
         $entityType = $this;
@@ -91,7 +91,7 @@ trait EntityTypeHelpers
                 return true;
             }
 
-            $entityType = $entityType->BaseEntityType();
+            $entityType = $entityType->baseEntityType();
         }
         return false;
     }

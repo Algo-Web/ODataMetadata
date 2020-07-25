@@ -20,7 +20,7 @@ trait CollectionTypeReferenceHelpers
      *
      * @return ICollectionType the definition of this collection reference
      */
-    public function CollectionDefinition(): ICollectionType
+    public function collectionDefinition(): ICollectionType
     {
         $definition = $this->getDefinition();
         assert($definition instanceof ICollectionType, 'Collection Type Reference should always wrap a Collection Type');
@@ -32,9 +32,9 @@ trait CollectionTypeReferenceHelpers
      *
      * @return ITypeReference The element type of the definition of this collection reference
      */
-    public function ElementType(): ITypeReference
+    public function elementType(): ITypeReference
     {
-        return $this->CollectionDefinition()->getElementType();
+        return $this->collectionDefinition()->getElementType();
     }
 
     abstract public function getDefinition(): ?IType;

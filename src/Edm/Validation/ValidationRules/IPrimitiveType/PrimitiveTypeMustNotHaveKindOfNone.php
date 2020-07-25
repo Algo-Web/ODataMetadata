@@ -23,11 +23,11 @@ class PrimitiveTypeMustNotHaveKindOfNone extends PrimitiveTypeRule
     {
         assert($type instanceof IPrimitiveType);
         if ($type->getPrimitiveKind()->isNone() && !$context->checkIsBad($type)) {
-            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
+            EdmUtil::checkArgumentNull($type->location(), 'type->Location');
             $context->addError(
-                $type->Location(),
+                $type->location(),
                 EdmErrorCode::PrimitiveTypeMustNotHaveKindOfNone(),
-                StringConst::EdmModel_Validator_Semantic_PrimitiveTypeMustNotHaveKindOfNone($type->FullName())
+                StringConst::EdmModel_Validator_Semantic_PrimitiveTypeMustNotHaveKindOfNone($type->fullName())
             );
         }
     }

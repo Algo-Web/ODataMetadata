@@ -165,7 +165,7 @@ abstract class EdmElementComparer
      * @param  IFunctionParameter $otherParameter function parameter being compared to
      * @return bool               equivalence of the two function parameters
      */
-    protected static function IsIFunctionParameterEquivalentTo(IFunctionParameter $thisParameter, IFunctionParameter $otherParameter): bool
+    protected static function isIFunctionParameterEquivalentTo(IFunctionParameter $thisParameter, IFunctionParameter $otherParameter): bool
     {
         if ($thisParameter === $otherParameter) {
             return true;
@@ -181,7 +181,7 @@ abstract class EdmElementComparer
         // OdataMetadata creates one-off instances of primitive type definitions that match by name and kind, but have
         // different object refs. So we can't use object ref comparison here like for other ISchemaType objects.
         return $thisType->getPrimitiveKind() === $otherType->getPrimitiveKind() &&
-            $thisType->FullName() === $otherType->FullName();
+               $thisType->fullName() === $otherType->fullName();
     }
 
     protected static function isISchemaTypeEquivalentTo(ISchemaType $thisType, ISchemaType $otherType): bool
@@ -233,8 +233,8 @@ abstract class EdmElementComparer
 
     protected static function isIPrimitiveTypeReferenceEquivalentTo(IPrimitiveTypeReference $thisType, IPrimitiveTypeReference $otherType): bool
     {
-        $thisTypePrimitiveKind = $thisType->PrimitiveKind();
-        if (!$thisTypePrimitiveKind->equals($otherType->PrimitiveKind())) {
+        $thisTypePrimitiveKind = $thisType->primitiveKind();
+        if (!$thisTypePrimitiveKind->equals($otherType->primitiveKind())) {
             return false;
         }
 

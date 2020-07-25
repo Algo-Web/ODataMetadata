@@ -74,7 +74,7 @@ class EdmTypeSemanticsTest extends TestCase
         $primType = m::mock(IPrimitiveType::class);
         $primType->shouldReceive('getPrimitiveKind')->andReturn($kind);
 
-        $result = EdmTypeSemantics::GetPrimitiveTypeReference($primType, false);
+        $result = EdmTypeSemantics::getPrimitiveTypeReference($primType, false);
         $this->assertTrue($result instanceof $expectedClass);
     }
 
@@ -86,6 +86,6 @@ class EdmTypeSemanticsTest extends TestCase
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('Unexpected primitive type kind.');
 
-        EdmTypeSemantics::GetPrimitiveTypeReference($primType, false);
+        EdmTypeSemantics::getPrimitiveTypeReference($primType, false);
     }
 }

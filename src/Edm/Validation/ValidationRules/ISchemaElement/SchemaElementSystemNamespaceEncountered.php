@@ -25,9 +25,9 @@ class SchemaElementSystemNamespaceEncountered extends SchemaElementRule
         assert($element instanceof ISchemaElement);
         EdmUtil::checkArgumentNull($element->getNamespace(), 'element->getNamespace');
         if (ValidationHelper::isEdmSystemNamespace($element->getNamespace())) {
-            EdmUtil::checkArgumentNull($element->Location(), 'element->Location');
+            EdmUtil::checkArgumentNull($element->location(), 'element->Location');
             $context->addError(
-                $element->Location(),
+                $element->location(),
                 EdmErrorCode::SystemNamespaceEncountered(),
                 StringConst::EdmModel_Validator_Semantic_SystemNamespaceEncountered($element->getNamespace())
             );

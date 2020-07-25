@@ -17,12 +17,12 @@ interface IComplexTypeReferenceHelpers
      *
      * @return IComplexType The definition of this reference
      */
-    public function ComplexDefinition(): IComplexType;
+    public function complexDefinition(): IComplexType;
 
     /**
      * Gets the base type of this reference.
      *
      * @return IComplexType the base type of this reference
      */
-    public function BaseComplexType(): IComplexType;
+    public function baseComplexType(): IComplexType;
 }

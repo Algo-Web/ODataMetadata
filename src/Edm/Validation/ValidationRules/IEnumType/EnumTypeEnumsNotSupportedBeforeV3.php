@@ -22,9 +22,9 @@ class EnumTypeEnumsNotSupportedBeforeV3 extends EnumTypeRule
     public function __invoke(ValidationContext $context, ?IEdmElement $enumType)
     {
         assert($enumType instanceof IEnumType);
-        EdmUtil::checkArgumentNull($enumType->Location(), 'enumType->Location');
+        EdmUtil::checkArgumentNull($enumType->location(), 'enumType->Location');
         $context->addError(
-            $enumType->Location(),
+            $enumType->location(),
             EdmErrorCode::EnumsNotSupportedBeforeV3(),
             StringConst::EdmModel_Validator_Semantic_EnumsNotSupportedBeforeV3()
         );

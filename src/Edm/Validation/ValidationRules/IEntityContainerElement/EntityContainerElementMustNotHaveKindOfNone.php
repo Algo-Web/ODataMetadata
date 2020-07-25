@@ -23,11 +23,11 @@ class EntityContainerElementMustNotHaveKindOfNone extends EntityContainerRule
     {
         assert($element instanceof IEntityContainerElement);
         if ($element->getContainerElementKind()->isNone() && !$context->checkIsBad($element)) {
-            EdmUtil::checkArgumentNull($element->Location(), 'element->Location');
+            EdmUtil::checkArgumentNull($element->location(), 'element->Location');
             $context->addError(
-                $element->Location(),
+                $element->location(),
                 EdmErrorCode::EntityContainerElementMustNotHaveKindOfNone(),
-                StringConst::EdmModel_Validator_Semantic_EntityContainerElementMustNotHaveKindOfNone($element->getContainer()->FullName() . '/' . $element->getName())
+                StringConst::EdmModel_Validator_Semantic_EntityContainerElementMustNotHaveKindOfNone($element->getContainer()->fullName() . '/' . $element->getName())
             );
         }
     }

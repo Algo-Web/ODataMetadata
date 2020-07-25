@@ -25,12 +25,12 @@ class EntityTypeInvalidKeyKeyDefinedInBaseClass extends EntityTypeRule
         if (null !== $entityType->getBaseType() &&
             null !== $entityType->getDeclaredKey() &&
             $entityType->getBaseType()->getTypeKind()->isEntity() &&
-            null !== $entityType->BaseEntityType()->getDeclaredKey()) {
-            EdmUtil::checkArgumentNull($entityType->Location(), 'entityType->Location');
+            null !== $entityType->baseEntityType()->getDeclaredKey()) {
+            EdmUtil::checkArgumentNull($entityType->location(), 'entityType->Location');
             $context->addError(
-                $entityType->Location(),
+                $entityType->location(),
                 EdmErrorCode::InvalidKey(),
-                StringConst::EdmModel_Validator_Semantic_InvalidKeyKeyDefinedInBaseClass($entityType->getName(), $entityType->BaseEntityType()->getName())
+                StringConst::EdmModel_Validator_Semantic_InvalidKeyKeyDefinedInBaseClass($entityType->getName(), $entityType->baseEntityType()->getName())
             );
         }
     }

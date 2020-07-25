@@ -109,8 +109,8 @@ trait NavigationPropertyHelpers
         $nameComparison = strcmp($property->getName(), $partner->getName());
         if ($nameComparison == 0) {
             $nameComparison = strcmp(
-                $property->DeclaringEntityType()->FullName(),
-                $partner->DeclaringEntityType()->FullName()
+                $property->declaringEntityType()->fullName(),
+                $partner->declaringEntityType()->fullName()
             );
         }
 

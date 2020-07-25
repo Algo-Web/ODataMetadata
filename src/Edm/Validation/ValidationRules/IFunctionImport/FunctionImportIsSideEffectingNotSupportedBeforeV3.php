@@ -24,9 +24,9 @@ class FunctionImportIsSideEffectingNotSupportedBeforeV3 extends FunctionImportRu
     {
         assert($functionImport instanceof IFunctionImport);
         if ($functionImport->isSideEffecting() != CsdlConstants::Default_IsSideEffecting) {
-            EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
+            EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
             $context->addError(
-                $functionImport->Location(),
+                $functionImport->location(),
                 EdmErrorCode::FunctionImportSideEffectingNotSupportedBeforeV3(),
                 StringConst::EdmModel_Validator_Semantic_FunctionImportSideEffectingNotSupportedBeforeV3()
             );

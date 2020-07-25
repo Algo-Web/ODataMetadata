@@ -16,7 +16,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IType;
  */
 trait TypeHelpers
 {
-    public function IsOrInheritsFrom(IType $otherType): bool
+    public function isOrInheritsFrom(IType $otherType): bool
     {
         $thisType = $this;
         if ($thisType == null || $otherType == null) {
@@ -40,7 +40,7 @@ trait TypeHelpers
 
         assert($thisType instanceof IStructuredType, 'by this point types should be structures');
         assert($otherType instanceof IStructuredType, 'by this point types should be structures');
-        return $thisType->InheritsFrom($otherType);
+        return $thisType->inheritsFrom($otherType);
     }
 
     /**

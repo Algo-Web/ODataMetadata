@@ -23,7 +23,7 @@ trait ValueHelpers
      * @param IModel $model                 model containing the value
      * @param bool   $isSerializedAsElement value indicating if the value should be serialized as an element
      */
-    public function SetIsSerializedAsElement(IModel $model, bool $isSerializedAsElement): void
+    public function setIsSerializedAsElement(IModel $model, bool $isSerializedAsElement): void
     {
         /** @var IEdmElement $self */
         $self = $this;
@@ -54,7 +54,7 @@ trait ValueHelpers
      * @param  IModel $model model containing the value
      * @return bool   value indicating if the string should be serialized as an element
      */
-    public function IsSerializedAsElement(IModel $model): bool
+    public function isSerializedAsElement(IModel $model): bool
     {
         $self = $this;
         assert($self instanceof IEdmElement);

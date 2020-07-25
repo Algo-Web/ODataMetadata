@@ -23,11 +23,11 @@ class ComplexTypeInvalidPolymorphicComplexType extends ComplexTypeRule
     {
         assert($edmComplexType instanceof IComplexType);
         if (null !== $edmComplexType->getBaseType()) {
-            EdmUtil::checkArgumentNull($edmComplexType->Location(), 'edmComplexType->Location');
+            EdmUtil::checkArgumentNull($edmComplexType->location(), 'edmComplexType->Location');
             $context->addError(
-                $edmComplexType->Location(),
+                $edmComplexType->location(),
                 EdmErrorCode::InvalidPolymorphicComplexType(),
-                StringConst::EdmModel_Validator_Semantic_InvalidComplexTypePolymorphic($edmComplexType->FullName())
+                StringConst::EdmModel_Validator_Semantic_InvalidComplexTypePolymorphic($edmComplexType->fullName())
             );
         }
     }

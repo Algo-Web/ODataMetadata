@@ -24,11 +24,11 @@ class NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOne extends N
     {
         assert($property instanceof INavigationProperty);
         if ($property->containsTarget() &&
-            !$property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType()) &&
-            !$property->Multiplicity()->isOne()) {
-            EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
+            !$property->getDeclaringType()->isOrInheritsFrom($property->toEntityType()) &&
+            !$property->multiplicity()->isOne()) {
+            EdmUtil::checkArgumentNull($property->location(), 'property->Location');
             $context->addError(
-                $property->Location(),
+                $property->location(),
                 EdmErrorCode::NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOne(),
                 StringConst::EdmModel_Validator_Semantic_NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOne($property->getName())
             );
