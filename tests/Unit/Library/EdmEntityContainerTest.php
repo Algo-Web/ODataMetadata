@@ -31,7 +31,7 @@ class EdmEntityContainerTest extends TestCase
         $foo = new EdmEntityContainer('Full', 'Name');
 
         $type     = m::mock(IEntityType::class)->makePartial();
-        $expected = $foo->AddEntitySet('set', $type);
+        $expected = $foo->addEntitySet('set', $type);
         $actual   = $foo->findEntitySet('set');
         $this->assertEquals($expected, $actual);
     }
@@ -52,7 +52,7 @@ class EdmEntityContainerTest extends TestCase
         $typeRef   = m::mock(ITypeReference::class)->makePartial();
         $entitySet = m::mock(IEntitySetReferenceExpression::class)->makePartial();
 
-        $expected = $foo->AddFunctionImport('function', $typeRef, $entitySet, null, null, null);
+        $expected = $foo->addFunctionImport('function', $typeRef, $entitySet, null, null, null);
         $this->assertTrue($expected instanceof EdmFunctionImport);
         $actual = $foo->findFunctionImports('function');
         $this->assertEquals([$expected], $actual);
@@ -70,7 +70,7 @@ class EdmEntityContainerTest extends TestCase
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('An element with type \'None\' cannot be used in an entity container.');
 
-        $foo->AddElement($element);
+        $foo->addElement($element);
     }
 
     public function testAddElementWithElementKindBad()
@@ -86,7 +86,7 @@ class EdmEntityContainerTest extends TestCase
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('Invalid container element kind: \'key\'');
 
-        $foo->AddElement($element);
+        $foo->addElement($element);
     }
 
     public function testAddElementWithElementNameNull()
@@ -102,6 +102,6 @@ class EdmEntityContainerTest extends TestCase
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('The name is missing or not valid.');
 
-        $foo->AddElement($element);
+        $foo->addElement($element);
     }
 }

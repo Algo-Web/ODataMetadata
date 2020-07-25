@@ -38,7 +38,7 @@ class EdmNavigationPropertyTest extends TestCase
         $this->expectException(ArgumentException::class);
         $this->expectExceptionMessage('An entity type or a collection of an entity type is expected.');
 
-        EdmNavigationProperty::CreateNavigationPropertyWithPartner(
+        EdmNavigationProperty::createNavigationPropertyWithPartner(
             $propertyName,
             $propType,
             [],
@@ -71,7 +71,7 @@ class EdmNavigationPropertyTest extends TestCase
         $this->expectException(ArgumentException::class);
         $this->expectExceptionMessage('An entity type or a collection of an entity type is expected.');
 
-        EdmNavigationProperty::CreateNavigationPropertyWithPartner(
+        EdmNavigationProperty::createNavigationPropertyWithPartner(
             $propertyName,
             $propType,
             [],
@@ -111,7 +111,7 @@ class EdmNavigationPropertyTest extends TestCase
         $partnerPropType->shouldReceive('getDefinition')->andReturn($def);
         $partnerOnDelete = OnDeleteAction::None();
 
-        $result = EdmNavigationProperty::CreateNavigationPropertyWithPartner(
+        $result = EdmNavigationProperty::createNavigationPropertyWithPartner(
             $propertyName,
             $propType,
             [],

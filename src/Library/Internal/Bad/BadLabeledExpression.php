@@ -42,7 +42,7 @@ class BadLabeledExpression extends BadElement implements ILabeledExpression
      */
     public function getExpression(): IExpression
     {
-        $expression = $this->expressionCache->getValue($this, [$this,'ComputeExpression']);
+        $expression = $this->expressionCache->getValue($this, [$this, 'computeExpression']);
         assert($expression instanceof IExpression);
         return $expression;
     }
@@ -55,7 +55,7 @@ class BadLabeledExpression extends BadElement implements ILabeledExpression
         return $this->name;
     }
 
-    private function ComputeExpression(): IExpression
+    private function computeExpression(): IExpression
     {
         return EdmNullExpression::getInstance();
     }

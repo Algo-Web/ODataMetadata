@@ -209,7 +209,7 @@ abstract class ExpressionTypeChecker
                 return self::tryAssertIfAsType($expression, $type, $context, $matchExactly, $discoveredErrors);
             case ExpressionKind::IsType():
                 $coreModel = EdmCoreModel::getInstance();
-                $boolean   = $coreModel->GetBoolean(false);
+                $boolean   = $coreModel->getBoolean(false);
                 EdmUtil::checkArgumentNull($expression->location(), 'expression->Location');
                 return self::testTypeReferenceMatch(
                     $boolean,

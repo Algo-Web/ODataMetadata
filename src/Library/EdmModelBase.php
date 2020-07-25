@@ -173,7 +173,7 @@ abstract class EdmModelBase extends EdmElement implements IModel
      *
      * @param ISchemaElement $element the element to register
      */
-    protected function RegisterElement(ISchemaElement $element): void
+    protected function registerElement(ISchemaElement $element): void
     {
         RegistrationHelper::registerSchemaElement($element, $this->schemaTypeDictionary, $this->valueTermDictionary, $this->functionDictionary, $this->containersDictionary);
     }
@@ -183,7 +183,7 @@ abstract class EdmModelBase extends EdmElement implements IModel
      *
      * @param IModel $model the model to reference
      */
-    protected function AddReferencedModel(IModel $model): void
+    protected function addReferencedModel(IModel $model): void
     {
         $this->referencedModels[] = $model;
     }

@@ -107,7 +107,7 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
      *
      * @param array ...$keyProperties
      */
-    public function AddKeys(array ...$keyProperties): void
+    public function addKeys(array ...$keyProperties): void
     {
         foreach ($keyProperties as $property) {
             if ($this->declaredKey === null) {
@@ -126,13 +126,13 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
      * @param  EdmNavigationPropertyInfo|null $partnerInfo  information to create the partner navigation property
      * @return EdmNavigationProperty          created navigation property
      */
-    public function AddUnidirectionalNavigation(EdmNavigationPropertyInfo $propertyInfo, EdmNavigationPropertyInfo $partnerInfo = null): EdmNavigationProperty
+    public function addUnidirectionalNavigation(EdmNavigationPropertyInfo $propertyInfo, EdmNavigationPropertyInfo $partnerInfo = null): EdmNavigationProperty
     {
-        $partnerInfo = $partnerInfo ?? $this->FixUpDefaultPartnerInfo($propertyInfo, null);
+        $partnerInfo = $partnerInfo ?? $this->fixUpDefaultPartnerInfo($propertyInfo, null);
 
-        $property = EdmNavigationProperty::CreateNavigationPropertyWithPartnerFromInfo($propertyInfo, $this->FixUpDefaultPartnerInfo($propertyInfo, $partnerInfo));
+        $property = EdmNavigationProperty::createNavigationPropertyWithPartnerFromInfo($propertyInfo, $this->fixUpDefaultPartnerInfo($propertyInfo, $partnerInfo));
 
-        $this->AddProperty($property);
+        $this->addProperty($property);
         return $property;
     }
 
@@ -143,7 +143,7 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
      * @param  EdmNavigationPropertyInfo $partnerInfo  information to create the partner navigation property
      * @return EdmNavigationProperty     created navigation property
      */
-    public function AddBidirectionalNavigation(EdmNavigationPropertyInfo $propertyInfo, EdmNavigationPropertyInfo $partnerInfo): EdmNavigationProperty
+    public function addBidirectionalNavigation(EdmNavigationPropertyInfo $propertyInfo, EdmNavigationPropertyInfo $partnerInfo): EdmNavigationProperty
     {
         EdmUtil::checkArgumentNull($propertyInfo->target, 'propertyInfo.Target');
 
@@ -151,10 +151,10 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
             throw new ArgumentException(StringConst::Constructable_TargetMustBeStock(EdmEntityType::class));
         }
 
-        $property = EdmNavigationProperty::CreateNavigationPropertyWithPartnerFromInfo($propertyInfo, $this->FixUpDefaultPartnerInfo($propertyInfo, $partnerInfo));
+        $property = EdmNavigationProperty::createNavigationPropertyWithPartnerFromInfo($propertyInfo, $this->fixUpDefaultPartnerInfo($propertyInfo, $partnerInfo));
 
-        $this->AddProperty($property);
-        $propertyInfo->target->AddProperty($property->getPartner());
+        $this->addProperty($property);
+        $propertyInfo->target->addProperty($property->getPartner());
         return $property;
     }
 
@@ -170,7 +170,7 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
      * @param  EdmNavigationPropertyInfo $partnerInfo  Partner navigation property info. May be null.
      * @return EdmNavigationPropertyInfo Partner info
      */
-    private function FixUpDefaultPartnerInfo(EdmNavigationPropertyInfo $propertyInfo, EdmNavigationPropertyInfo $partnerInfo): EdmNavigationPropertyInfo
+    private function fixUpDefaultPartnerInfo(EdmNavigationPropertyInfo $propertyInfo, EdmNavigationPropertyInfo $partnerInfo): EdmNavigationPropertyInfo
     {
         $partnerInfoOverride = null;
 

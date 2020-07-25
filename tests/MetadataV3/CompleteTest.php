@@ -23,13 +23,13 @@ class CompleteTest extends TestCase
         $employ          = Structure::getEmployees();
         $model           = new EdmModel();
         $entityContainer = new EdmEntityContainer('Northwind', 'NorthwindEntities', true, true);
-        $model->AddElement(array_values($customer)[0]);
-        $customerSet = $entityContainer->AddEntitySet(array_keys($customer)[0], array_values($customer)[0]);
-        $model->AddElement(array_values($employPriv)[0]);
-        $EmployPrivSet = $entityContainer->AddEntitySet(array_keys($employPriv)[0], array_values($employPriv)[0]);
-        $model->AddElement(array_values($employ)[0]);
-        $employSet = $entityContainer->AddEntitySet(array_keys($employ)[0], array_values($employ)[0]);
-        $model->AddElement($entityContainer);
+        $model->addElement(array_values($customer)[0]);
+        $customerSet = $entityContainer->addEntitySet(array_keys($customer)[0], array_values($customer)[0]);
+        $model->addElement(array_values($employPriv)[0]);
+        $EmployPrivSet = $entityContainer->addEntitySet(array_keys($employPriv)[0], array_values($employPriv)[0]);
+        $model->addElement(array_values($employ)[0]);
+        $employSet = $entityContainer->addEntitySet(array_keys($employ)[0], array_values($employ)[0]);
+        $model->addElement($entityContainer);
         /**
          * @var EdmEntityType $employee
          */
@@ -41,7 +41,7 @@ class CompleteTest extends TestCase
         $navPropInfo1                     = new EdmNavigationPropertyInfo();
         $navPropInfo1->name               = 'employee';
         $navPropInfo1->targetMultiplicity = Multiplicity::One();
-        $navProp                          = $employee->AddBidirectionalNavigation($navPropInfo, $navPropInfo1);
+        $navProp                          = $employee->addBidirectionalNavigation($navPropInfo, $navPropInfo1);
         $employSet->addNavigationTarget($navProp, $EmployPrivSet);
         $xmlWritter = new XMLWriter();
         $this->assertTrue(EdmxWriter::tryWriteEdmx($model, $xmlWritter));
