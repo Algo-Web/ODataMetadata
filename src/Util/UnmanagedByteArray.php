@@ -65,8 +65,10 @@ class UnmanagedByteArray implements \ArrayAccess, \IteratorAggregate, \Countable
         if ($this->readonly) {
             throw new InvalidOperationException('attempt to write to read only array');
         }
-        if ($offset !== null || $offset < 0 || $offset > $this->length) {
-            throw new \InvalidArgumentException('allowable offsets are between 0 and full legnth or null');
+        if (null !== $offset) {
+            if ($offset < 0 || $offset > $this->length) {
+                throw new \InvalidArgumentException('allowable offsets are between 0 and full length or null');
+            }
         }
         if (null === $offset) {
             fseek($this->memoryStream, 0, SEEK_END);

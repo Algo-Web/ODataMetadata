@@ -97,7 +97,7 @@ trait FunctionImportHelpers
                         return false;
                     }
                     /**
-                     * @var IEntityType $subType ;
+                     * @var IEntityType|null $subType ;
                      */
                     $subType = $model->findDeclaredType($segment);
                     $subType = $subType instanceof IEntityType ? $subType : null;
