@@ -23,12 +23,12 @@ class NavigationPropertyEndWithManyMultiplicityCannotHaveOperationsSpecified ext
     {
         assert($end instanceof INavigationProperty);
         // If an end has a multiplicity of many, it cannot have any operation behaviour
-        if ($end->Multiplicity()->isMany() &&
+        if ($end->multiplicity()->isMany() &&
             !$end->getOnDelete()->isNone()
         ) {
-            EdmUtil::checkArgumentNull($end->Location(), 'end->Location');
+            EdmUtil::checkArgumentNull($end->location(), 'end->Location');
             $context->addError(
-                $end->Location(),
+                $end->location(),
                 EdmErrorCode::EndWithManyMultiplicityCannotHaveOperationsSpecified(),
                 StringConst::EdmModel_Validator_Semantic_EndWithManyMultiplicityCannotHaveOperationsSpecified(
                     $end->getName()

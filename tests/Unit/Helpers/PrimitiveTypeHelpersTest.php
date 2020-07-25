@@ -48,7 +48,7 @@ class PrimitiveTypeHelpersTest extends TestCase
     {
         $foo = new EdmValidCoreModelPrimitiveType('', '', $type);
 
-        $actual = $foo->GetPrimitiveTypeReference(true);
+        $actual = $foo->getPrimitiveTypeReference(true);
         $this->assertTrue($actual instanceof EdmPrimitiveTypeReference);
         $def = $actual->getDefinition();
         $this->assertEquals($type, $def->getPrimitiveKind());
@@ -86,7 +86,7 @@ class PrimitiveTypeHelpersTest extends TestCase
     {
         $foo = new EdmValidCoreModelPrimitiveType('', '', $type);
 
-        $actual = $foo->GetPrimitiveTypeReference(true);
+        $actual = $foo->getPrimitiveTypeReference(true);
         $this->assertTrue($actual instanceof EdmSpatialTypeReference);
         $def = $actual->getDefinition();
         $this->assertEquals($type, $def->getPrimitiveKind());
@@ -111,7 +111,7 @@ class PrimitiveTypeHelpersTest extends TestCase
     {
         $foo = new EdmValidCoreModelPrimitiveType('', '', $type);
 
-        $actual = $foo->GetPrimitiveTypeReference(true);
+        $actual = $foo->getPrimitiveTypeReference(true);
         $this->assertTrue($actual instanceof EdmTemporalTypeReference);
         $def = $actual->getDefinition();
         $this->assertEquals($type, $def->getPrimitiveKind());
@@ -136,7 +136,7 @@ class PrimitiveTypeHelpersTest extends TestCase
     {
         $foo = new EdmValidCoreModelPrimitiveType('', '', $type);
 
-        $actual = $foo->GetPrimitiveTypeReference(true);
+        $actual = $foo->getPrimitiveTypeReference(true);
         $this->assertTrue($actual instanceof $expType);
         $def = $actual->getDefinition();
         $this->assertEquals($type, $def->getPrimitiveKind());
@@ -150,6 +150,6 @@ class PrimitiveTypeHelpersTest extends TestCase
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('Unexpected primitive type kind.');
 
-        $foo->GetPrimitiveTypeReference(true);
+        $foo->getPrimitiveTypeReference(true);
     }
 }

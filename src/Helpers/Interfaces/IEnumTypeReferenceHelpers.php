@@ -17,5 +17,5 @@ interface IEnumTypeReferenceHelpers
      *
      * @return IEnumType the definition of this enumeration reference
      */
-    public function EnumDefinition(): IEnumType;
+    public function enumDefinition(): IEnumType;
 }

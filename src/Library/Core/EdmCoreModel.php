@@ -331,7 +331,7 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     {
         $primitiveDefinition = $this->GetCoreModelPrimitiveType($kind);
         if ($primitiveDefinition !== null) {
-            return $primitiveDefinition->GetPrimitiveTypeReference($isNullable);
+            return $primitiveDefinition->getPrimitiveTypeReference($isNullable);
         } else {
             throw new InvalidOperationException(StringConst::EdmPrimitive_UnexpectedKind());
         }

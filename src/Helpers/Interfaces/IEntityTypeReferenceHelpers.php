@@ -19,35 +19,35 @@ interface IEntityTypeReferenceHelpers
      *
      * @return IEntityType the definition of this entity reference
      */
-    public function EntityDefinition(): IEntityType;
+    public function entityDefinition(): IEntityType;
 
     /**
      * Gets the base type of the definition of this reference.
      *
      * @return IEntityType|null the base type of the definition of this reference
      */
-    public function BaseEntityType(): ?IEntityType;
+    public function baseEntityType(): ?IEntityType;
 
     /**
      * Gets the entity key of the definition of this reference.
      *
      * @return IStructuralProperty[] the entity key of the definition of this reference
      */
-    public function Key(): array;
+    public function key(): array;
 
     /**
      * Gets the navigation properties declared in the definition of this reference and its base types.
      *
      * @return INavigationProperty[] The navigation properties declared in the definition of this reference and its base types
      */
-    public function NavigationProperties(): array;
+    public function navigationProperties(): array;
 
     /**
      * Gets the navigation properties declared in the definition of this reference.
      *
      * @return INavigationProperty[] the navigation properties declared in the definition of this reference
      */
-    public function DeclaredNavigationProperties(): array;
+    public function declaredNavigationProperties(): array;
 
     /**
      * Finds a navigation property declared in the definition of this reference by name.
@@ -55,5 +55,5 @@ interface IEntityTypeReferenceHelpers
      * @param  string                   $name name of the navigation property to find
      * @return INavigationProperty|null The requested navigation property if it exists. Otherwise, null.
      */
-    public function FindNavigationProperty(string $name): ?INavigationProperty;
+    public function findNavigationProperty(string $name): ?INavigationProperty;
 }

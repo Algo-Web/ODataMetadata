@@ -29,14 +29,14 @@ class TypeAnnotationAssertMatchesTermType extends TypeAnnotationRule
         assert($type instanceof IStructuredType);
 
         $foundProperties = new HashSetInternal();
-        EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
+        EdmUtil::checkArgumentNull($annotation->location(), 'annotation->Location');
 
-        foreach ($type->Properties() as $typeProperty) {
-            $annotationProperty = $annotation->FindPropertyBinding($typeProperty);
+        foreach ($type->properties() as $typeProperty) {
+            $annotationProperty = $annotation->findPropertyBinding($typeProperty);
             if ($annotationProperty == null) {
                 $context->addRawError(
                     new EdmError(
-                        $annotation->Location(),
+                        $annotation->location(),
                         EdmErrorCode::TypeAnnotationMissingRequiredProperty(),
                         StringConst::EdmModel_Validator_Semantic_TypeAnnotationMissingRequiredProperty(
                             $typeProperty->getName()
@@ -51,9 +51,9 @@ class TypeAnnotationAssertMatchesTermType extends TypeAnnotationRule
         if (!$type->isOpen()) {
             foreach ($annotation->getPropertyValueBindings() as $property) {
                 if (!$foundProperties->contains($property->getBoundProperty()) && !$context->checkIsBad($property)) {
-                    EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
+                    EdmUtil::checkArgumentNull($property->location(), 'property->Location');
                     $context->addError(
-                        $property->Location(),
+                        $property->location(),
                         EdmErrorCode::TypeAnnotationHasExtraProperties(),
                         StringConst::EdmModel_Validator_Semantic_TypeAnnotationHasExtraProperties(
                             $property->getBoundProperty()->getName()

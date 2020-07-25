@@ -10,5 +10,5 @@ namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
  */
 interface ISchemaElementHelpers
 {
-    public function FullName();
+    public function fullName();
 }

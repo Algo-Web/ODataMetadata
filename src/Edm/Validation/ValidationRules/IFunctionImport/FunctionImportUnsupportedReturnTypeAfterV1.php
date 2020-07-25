@@ -24,7 +24,7 @@ class FunctionImportUnsupportedReturnTypeAfterV1 extends FunctionImportRule
         assert($functionImport instanceof IFunctionImport);
         if (null !== $functionImport->getReturnType()) {
             $elementType = $functionImport->getReturnType()->isCollection() ?
-                $functionImport->getReturnType()->asCollection()->ElementType() :
+                $functionImport->getReturnType()->asCollection()->elementType() :
                 $functionImport->getReturnType();
             if (!$elementType->isPrimitive() &&
                 !$elementType->isEntity() &&
@@ -32,9 +32,9 @@ class FunctionImportUnsupportedReturnTypeAfterV1 extends FunctionImportRule
                 !$elementType->isEnum() &&
                 !$context->checkIsBad($elementType->getDefinition())
             ) {
-                EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
+                EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
                 $context->addError(
-                    $functionImport->Location(),
+                    $functionImport->location(),
                     EdmErrorCode::FunctionImportUnsupportedReturnType(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportWithUnsupportedReturnTypeAfterV1(
                         $functionImport->getName()

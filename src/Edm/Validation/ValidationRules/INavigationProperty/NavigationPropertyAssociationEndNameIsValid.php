@@ -23,7 +23,7 @@ class NavigationPropertyAssociationEndNameIsValid extends NavigationPropertyRule
         Helpers::checkForNameError(
             $context,
             $context->getModel()->getAssociationEndName($property),
-            $property->Location()
+            $property->location()
         );
     }
 }

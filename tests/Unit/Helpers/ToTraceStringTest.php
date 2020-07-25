@@ -35,7 +35,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('FullName')->andReturn('FullName');
 
         $expected = 'FullName';
-        $actual   = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -46,7 +46,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('FullName')->andReturn('FullName');
 
         $expected = 'UnknownType';
-        $actual   = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -58,7 +58,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getName')->andReturn('Name');
 
         $expected = 'Name';
-        $actual   = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -75,7 +75,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getName')->andReturn(null);
 
         $expected = ':[UnknownType Nullable=FALSE]';
-        $actual   = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -86,7 +86,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getEntityType')->andReturn(null);
 
         $expected = 'EntityReference()';
-        $actual   = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -100,7 +100,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getEntityType')->andReturn($eType);
 
         $expected = 'EntityReference(FullName)';
-        $actual   = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -111,7 +111,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getElementType')->andReturn(null);
 
         $expected = 'Collection()';
-        $actual   = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -128,7 +128,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getElementType')->andReturn($eType);
 
         $expected = 'Collection([UnknownType Nullable=TRUE])';
-        $actual   = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -142,7 +142,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('Properties')->andReturn([$prop1, null]);
 
         $expected = 'Row(FullName)';
-        $actual   = ToTraceString::ToTraceString($element);
+        $actual   = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -195,7 +195,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getDefinition')->andReturn(null);
         $element->shouldReceive('getNullable')->andReturn($isNullable);
 
-        $actual = ToTraceString::ToTraceString($element);
+        $actual = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -234,7 +234,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getDefinition')->andReturn(null);
         $element->shouldReceive('getNullable')->andReturn($isNullable);
 
-        $actual = ToTraceString::ToTraceString($element);
+        $actual = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -273,7 +273,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getDefinition')->andReturn(null);
         $element->shouldReceive('getNullable')->andReturn(true);
 
-        $actual = ToTraceString::ToTraceString($element);
+        $actual = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -325,7 +325,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getDefinition')->andReturn(null);
         $element->shouldReceive('getNullable')->andReturn(true);
 
-        $actual = ToTraceString::ToTraceString($element);
+        $actual = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }
@@ -392,7 +392,7 @@ class ToTraceStringTest extends TestCase
         $element->shouldReceive('getDefinition')->andReturn(null);
         $element->shouldReceive('getNullable')->andReturn(true);
 
-        $actual = ToTraceString::ToTraceString($element);
+        $actual = ToTraceString::toTraceString($element);
 
         $this->assertEquals($expected, $actual);
     }

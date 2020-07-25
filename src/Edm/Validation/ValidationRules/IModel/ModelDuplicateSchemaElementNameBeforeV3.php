@@ -31,7 +31,7 @@ class ModelDuplicateSchemaElementNameBeforeV3 extends ModelRule
         $functionDictionary  = [];
         foreach ($model->getSchemaElements() as $item) {
             $duplicate = false;
-            $fullName  = $item->FullName();
+            $fullName  = $item->fullName();
             if (!$item->getSchemaElementKind()->isEntityContainer()) {
                 $function = $item;
                 if ($function instanceof IFunction) {
@@ -77,9 +77,9 @@ class ModelDuplicateSchemaElementNameBeforeV3 extends ModelRule
                 }
 
                 if ($duplicate) {
-                    EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
+                    EdmUtil::checkArgumentNull($item->location(), 'item->Location');
                     $context->addError(
-                        $item->Location(),
+                        $item->location(),
                         EdmErrorCode::AlreadyDefined(),
                         StringConst::EdmModel_Validator_Semantic_SchemaElementNameAlreadyDefined($fullName)
                     );

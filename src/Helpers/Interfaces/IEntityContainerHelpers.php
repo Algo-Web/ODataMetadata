@@ -18,12 +18,12 @@ interface IEntityContainerHelpers
      *
      * @return IEntitySet[] entity sets belonging to an IEdmEntityContainer
      */
-    public function EntitySets(): array;
+    public function entitySets(): array;
 
     /**
      * Returns function imports belonging to an IEdmEntityContainer.
      *
      * @return IFunctionImport[] function imports belonging to an IEdmEntityContainer
      */
-    public function FunctionImports(): array;
+    public function functionImports(): array;
 }

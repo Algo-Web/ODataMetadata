@@ -46,7 +46,7 @@ abstract class RegistrationHelper
         array $functionGroupDictionary,
         array $containerDictionary
     ) {
-        $qualifiedName = $element->FullName();
+        $qualifiedName = $element->fullName();
         switch ($element->getSchemaElementKind()) {
             case SchemaElementKind::Function():
                 assert($element instanceof IFunction);

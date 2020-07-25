@@ -19,5 +19,5 @@ interface ITypeAnnotationHelpers
      * @param  IProperty|string           $property property (Or Property Name) to search for
      * @return IPropertyValueBinding|null the binding of the property in the type annotation, or null if no binding exists
      */
-    public function FindPropertyBinding($property): ?IPropertyValueBinding;
+    public function findPropertyBinding($property): ?IPropertyValueBinding;
 }

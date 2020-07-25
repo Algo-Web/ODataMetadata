@@ -25,7 +25,7 @@ class NavigationPropertyDependentPropertiesMustBelongToDependentEntity extends N
         assert($navigationProperty instanceof INavigationProperty);
         $dependentProperties = $navigationProperty->getDependentProperties();
         if ($dependentProperties != null) {
-            $dependentEntity = $navigationProperty->DeclaringEntityType();
+            $dependentEntity = $navigationProperty->declaringEntityType();
             foreach ($dependentProperties as $dependantProperty) {
                 assert($dependantProperty instanceof IStructuralProperty);
                 if (!$context->checkIsBad($dependantProperty)) {
@@ -33,9 +33,9 @@ class NavigationPropertyDependentPropertiesMustBelongToDependentEntity extends N
                     // If we can't find the property by name, or we find a good property but it's not our
                     // dependent property
                     if ($property !== $dependantProperty) {
-                        EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
+                        EdmUtil::checkArgumentNull($navigationProperty->location(), 'navigationProperty->Location');
                         $context->addError(
-                            $navigationProperty->Location(),
+                            $navigationProperty->location(),
                             EdmErrorCode::DependentPropertiesMustBelongToDependentEntity(),
                             StringConst::EdmModel_Validator_Semantic_DependentPropertiesMustBelongToDependentEntity(
                                 $dependantProperty->getName(),

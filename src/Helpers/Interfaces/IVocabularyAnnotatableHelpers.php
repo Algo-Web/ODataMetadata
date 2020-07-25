@@ -19,5 +19,5 @@ interface IVocabularyAnnotatableHelpers
      * @param  IModel                  $model model to check for annotations
      * @return IVocabularyAnnotation[] annotations attached to the element by the model or by models referenced by the model
      */
-    public function VocabularyAnnotations(IModel $model): array;
+    public function vocabularyAnnotations(IModel $model): array;
 }

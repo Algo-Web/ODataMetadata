@@ -22,7 +22,7 @@ trait EntityReferenceTypeReferenceHelpers
      *
      * @return IEntityReferenceType the definition of this entity reference type reference
      */
-    public function EntityReferenceDefinition(): IEntityReferenceType
+    public function entityReferenceDefinition(): IEntityReferenceType
     {
         /** @var IEntityReferenceTypeReference $this */
         $definition = $this->getDefinition();
@@ -35,9 +35,9 @@ trait EntityReferenceTypeReferenceHelpers
      *
      * @return IEntityType the entity type referred to by the definition of this entity reference type reference
      */
-    public function EntityType(): IEntityType
+    public function entityType(): IEntityType
     {
-        return $this->EntityReferenceDefinition()->getEntityType();
+        return $this->entityReferenceDefinition()->getEntityType();
     }
 
     abstract public function getDefinition(): ?IType;

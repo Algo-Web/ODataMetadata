@@ -17,5 +17,5 @@ interface IValueAnnotationHelpers
      *
      * @return IValueTerm The value term of this value annotation
      */
-    public function ValueTerm(): IValueTerm;
+    public function valueTerm(): IValueTerm;
 }

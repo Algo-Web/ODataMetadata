@@ -25,13 +25,13 @@ class FunctionImportEntitySetExpressionIsInvalid extends FunctionImportRule
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
+        EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
         if (null !== $functionImport->getEntitySet()) {
             if (!$functionImport->getEntitySet()->getExpressionKind()->isEntitySetReference() &&
                 !$functionImport->getEntitySet()->getExpressionKind()->isPath()
             ) {
                 $context->addError(
-                    $functionImport->Location(),
+                    $functionImport->location(),
                     EdmErrorCode::FunctionImportEntitySetExpressionIsInvalid(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportEntitySetExpressionKindIsInvalid(
                         $functionImport->getName(),
@@ -45,11 +45,11 @@ class FunctionImportEntitySetExpressionIsInvalid extends FunctionImportRule
                 $parameter = null;
                 /** @var INavigationProperty[] $path */
                 $path = null;
-                if (!$functionImport->TryGetStaticEntitySet($entitySet) &&
-                    !$functionImport->TryGetRelativeEntitySetPath($context->getModel(), $parameter, $path)
+                if (!$functionImport->tryGetStaticEntitySet($entitySet) &&
+                    !$functionImport->tryGetRelativeEntitySetPath($context->getModel(), $parameter, $path)
                 ) {
                     $context->addError(
-                        $functionImport->Location(),
+                        $functionImport->location(),
                         EdmErrorCode::FunctionImportEntitySetExpressionIsInvalid(),
                         StringConst::EdmModel_Validator_Semantic_FunctionImportEntitySetExpressionIsInvalid($functionImport->getName())
                     );

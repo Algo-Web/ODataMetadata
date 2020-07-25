@@ -22,7 +22,7 @@ trait EdmElementHelpers
      *
      * @return ILocation|null the location of the element
      */
-    public function Location(): ?ILocation
+    public function location(): ?ILocation
     {
         return $this instanceof ILocatable && null !== $this->getLocation()
             ? $this->getLocation() : new ObjectLocation($this);

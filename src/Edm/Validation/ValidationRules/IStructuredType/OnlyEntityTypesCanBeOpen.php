@@ -23,9 +23,9 @@ class OnlyEntityTypesCanBeOpen extends StructuredTypeRule
     {
         assert($structuredType instanceof IStructuredType);
         if ($structuredType->isOpen() && !$structuredType->getTypeKind()->isEntity()) {
-            EdmUtil::checkArgumentNull($structuredType->Location(), 'structuredType->Location');
+            EdmUtil::checkArgumentNull($structuredType->location(), 'structuredType->Location');
             $context->addError(
-                $structuredType->Location(),
+                $structuredType->location(),
                 EdmErrorCode::OpenTypeNotSupported(),
                 StringConst::EdmModel_Validator_Semantic_OpenTypesSupportedForEntityTypesOnly()
             );

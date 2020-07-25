@@ -24,11 +24,11 @@ class ElementDirectValueAnnotationFullNameMustBeUnique extends EdmElementRule
         $annotationNameSet = [];
         foreach ($context->getModel()->getDirectValueAnnotationsManager()->getDirectValueAnnotations($item) as $annotation) {
             assert($annotation instanceof IDirectValueAnnotation);
-            EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
+            EdmUtil::checkArgumentNull($annotation->location(), 'annotation->Location');
             if (in_array($annotation->getNamespaceUri() . ':' . $annotation->getName(), $annotationNameSet)) {
-                EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
+                EdmUtil::checkArgumentNull($annotation->location(), 'annotation->Location');
                 $context->addError(
-                    $annotation->Location(),
+                    $annotation->location(),
                     EdmErrorCode::DuplicateDirectValueAnnotationFullName(),
                     StringConst::EdmModel_Validator_Semantic_ElementDirectValueAnnotationFullNameMustBeUnique($annotation->getNamespaceUri(), $annotation->getName())
                 );

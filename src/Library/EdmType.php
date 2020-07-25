@@ -17,6 +17,6 @@ abstract class EdmType extends EdmElement implements IType
 
     public function __toString(): string
     {
-        return ToTraceString::ToTraceString($this);
+        return ToTraceString::toTraceString($this);
     }
 }

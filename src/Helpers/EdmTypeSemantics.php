@@ -19,7 +19,7 @@ use AlgoWeb\ODataMetadata\StringConst;
 
 abstract class EdmTypeSemantics
 {
-    public static function GetPrimitiveTypeReference(IPrimitiveType $type, bool $isNullable): IPrimitiveTypeReference
+    public static function getPrimitiveTypeReference(IPrimitiveType $type, bool $isNullable): IPrimitiveTypeReference
     {
         switch ($type->getPrimitiveKind()) {
             case PrimitiveTypeKind::Boolean():

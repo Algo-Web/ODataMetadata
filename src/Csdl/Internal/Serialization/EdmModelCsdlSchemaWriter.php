@@ -186,7 +186,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         );
         $this->writeOptionalAttribute(
             CsdlConstants::Attribute_BaseType,
-            $complexType->BaseComplexType(),
+            $complexType->baseComplexType(),
             null,
             [$this, 'typeDefinitionAsXml']
         );
@@ -278,7 +278,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         assert($declaringType instanceof IEntityType);
         $this->writeRequiredAttribute(
             CsdlConstants::Attribute_Type,
-            $declaringType->FullName(),
+            $declaringType->fullName(),
             [EdmValueWriter::class, 'stringAsXml']
         );
         $this->writeRequiredAttribute(
@@ -288,7 +288,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         );
         $this->writeRequiredAttribute(
             CsdlConstants::Attribute_Multiplicity,
-            $associationEnd->Multiplicity(),
+            $associationEnd->multiplicity(),
             [self::class, 'multiplicityAsXml']
         );
     }
@@ -337,7 +337,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         );
         $this->writeRequiredAttribute(
             CsdlConstants::Attribute_EntityType,
-            $entitySet->getElementType()->FullName(),
+            $entitySet->getElementType()->fullName(),
             [EdmValueWriter::class, 'stringAsXml']
         );
     }
@@ -356,7 +356,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         );
         $this->writeOptionalAttribute(
             CsdlConstants::Attribute_BaseType,
-            $entityType->BaseEntityType(),
+            $entityType->baseEntityType(),
             null,
             [$this, 'typeDefinitionAsXml']
         );
@@ -533,7 +533,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $member->getName(),
             [EdmValueWriter::class, 'stringAsXml']
         );
-        $isExplicit = $member->IsValueExplicit($this->model);
+        $isExplicit = $member->isValueExplicit($this->model);
         if (null === $isExplicit || $isExplicit) {
             $this->writeRequiredAttribute(
                 CsdlConstants::Attribute_Value,
@@ -1475,12 +1475,12 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
 
     private static function enumMemberAsXml(IEnumMember $member): string
     {
-        return $member->getDeclaringType()->FullName() . '/' . $member->getName();
+        return $member->getDeclaringType()->fullName() . '/' . $member->getName();
     }
 
     private static function entitySetAsXml(IEntitySet $set): string
     {
-        $stem = $set->getContainer() ? $set->getContainer()->FullName() : '';
+        $stem = $set->getContainer() ? $set->getContainer()->fullName() : '';
 
         return $stem . '/' . $set->getName();
     }
@@ -1514,21 +1514,21 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             }
         }
 
-        return $element->FullName();
+        return $element->fullName();
     }
 
     private function typeReferenceAsXml(ITypeReference $type): string
     {
         if ($type->isCollection()) {
             $collectionReference   = $type->asCollection();
-            $elementTypeDefinition = $collectionReference->ElementType()->getDefinition();
+            $elementTypeDefinition = $collectionReference->elementType()->getDefinition();
             assert(
                 $elementTypeDefinition instanceof ISchemaElement,
                 'Cannot inline parameter type if not a named element or collection of named elements'
             );
             return CsdlConstants::Value_Collection . '(' . $this->serializationName($elementTypeDefinition) . ')';
         } elseif ($type->isEntityReference()) {
-            $entityReferenceDefinitionType = $type->asEntityReference()->EntityReferenceDefinition()->getEntityType();
+            $entityReferenceDefinitionType = $type->asEntityReference()->entityReferenceDefinition()->getEntityType();
             return CsdlConstants::Value_Ref . '(' . $this->serializationName($entityReferenceDefinitionType) . ')';
         }
         $typeDefinition = $type->getDefinition();

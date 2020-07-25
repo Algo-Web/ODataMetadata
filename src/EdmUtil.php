@@ -102,12 +102,12 @@ class EdmUtil
             if ($element instanceof IFunction) {
                 return self::parameterizedName($element);
             } else {
-                return $element->FullName();
+                return $element->fullName();
             }
         } else {
             if ($element instanceof IEntityContainerElement) {
                 $container = $element->getContainer();
-                $fullName  = (null !== $container) ? $container->FullName() : '';
+                $fullName  = (null !== $container) ? $container->fullName() : '';
                 if ($element instanceof IFunctionImport) {
                     return $fullName . '/' . self::parameterizedName($element);
                 } else {
@@ -162,9 +162,9 @@ class EdmUtil
         $s .= '(';
         foreach ($function->getParameters() as $parameter) {
             if ($parameter->getType()->isCollection()) {
-                $typeName = CsdlConstants::Value_Collection . '(' . $parameter->getType()->asCollection()->ElementType()->fullName() . ')';
+                $typeName = CsdlConstants::Value_Collection . '(' . $parameter->getType()->asCollection()->elementType()->fullName() . ')';
             } elseif ($parameter->getType()->isEntityReference()) {
-                $typeName = CsdlConstants::Value_Ref . '(' . $parameter->getType()->asEntityReference()->EntityType()->FullName() . ')';
+                $typeName = CsdlConstants::Value_Ref . '(' . $parameter->getType()->asEntityReference()->entityType()->fullName() . ')';
             } else {
                 $typeName = $parameter->getType()->fullName();
             }

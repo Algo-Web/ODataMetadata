@@ -23,11 +23,11 @@ class SchemaElementMustNotHaveKindOfNone extends SchemaElementRule
     {
         assert($element instanceof ISchemaElement);
         if ($element->getSchemaElementKind()->isNone() && !$context->checkIsBad($element)) {
-            EdmUtil::checkArgumentNull($element->Location(), 'element->Location');
+            EdmUtil::checkArgumentNull($element->location(), 'element->Location');
             $context->addError(
-                $element->Location(),
+                $element->location(),
                 EdmErrorCode::SchemaElementMustNotHaveKindOfNone(),
-                StringConst::EdmModel_Validator_Semantic_SchemaElementMustNotHaveKindOfNone($element->FullName())
+                StringConst::EdmModel_Validator_Semantic_SchemaElementMustNotHaveKindOfNone($element->fullName())
             );
         }
     }

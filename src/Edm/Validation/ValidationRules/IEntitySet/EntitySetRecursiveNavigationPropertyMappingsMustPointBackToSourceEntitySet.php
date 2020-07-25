@@ -25,11 +25,11 @@ class EntitySetRecursiveNavigationPropertyMappingsMustPointBackToSourceEntitySet
         assert($set instanceof IEntitySet);
         foreach ($set->getNavigationTargets() as $mapping) {
             if ($mapping->getNavigationProperty()->containsTarget() &&
-                $mapping->getNavigationProperty()->getDeclaringType()->IsOrInheritsFrom($mapping->getNavigationProperty()->ToEntityType()) &&
+                $mapping->getNavigationProperty()->getDeclaringType()->isOrInheritsFrom($mapping->getNavigationProperty()->toEntityType()) &&
                 $mapping->getTargetEntitySet() !== $set) {
-                EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
+                EdmUtil::checkArgumentNull($set->location(), 'set->Location');
                 $context->addError(
-                    $set->Location(),
+                    $set->location(),
                     EdmErrorCode::EntitySetRecursiveNavigationPropertyMappingsMustPointBackToSourceEntitySet(),
                     StringConst::EdmModel_Validator_Semantic_EntitySetRecursiveNavigationPropertyMappingsMustPointBackToSourceEntitySet($mapping->getNavigationProperty(), $set->getName())
                 );

@@ -24,16 +24,16 @@ class FunctionImportUnsupportedReturnTypeV1 extends FunctionImportRule
         assert($functionImport instanceof IFunctionImport);
         if (null !== $functionImport->getReturnType()) {
             if ($functionImport->getReturnType()->isCollection()) {
-                $elementType = $functionImport->getReturnType()->asCollection()->ElementType();
+                $elementType = $functionImport->getReturnType()->asCollection()->elementType();
                 $reportError = !$elementType->isPrimitive() && !$elementType->isEntity() && !$context->checkIsBad($elementType->getDefinition());
             } else {
                 $reportError = true;
             }
 
             if ($reportError && !$context->checkIsBad($functionImport->getReturnType()->getDefinition())) {
-                EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
+                EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
                 $context->addError(
-                    $functionImport->Location(),
+                    $functionImport->location(),
                     EdmErrorCode::FunctionImportUnsupportedReturnType(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportWithUnsupportedReturnTypeV1($functionImport->getName())
                 );

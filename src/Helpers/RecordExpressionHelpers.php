@@ -19,7 +19,7 @@ trait RecordExpressionHelpers
      * @param  string                    $propertyName name of the property to find
      * @return IPropertyConstructor|null the property, if found, otherwise null
      */
-    public function FindProperty(string $propertyName): ?IPropertyConstructor
+    public function findProperty(string $propertyName): ?IPropertyConstructor
     {
         foreach ($this->getProperties() as $propertyConstructor) {
             if ($propertyConstructor->getName() === $propertyName) {

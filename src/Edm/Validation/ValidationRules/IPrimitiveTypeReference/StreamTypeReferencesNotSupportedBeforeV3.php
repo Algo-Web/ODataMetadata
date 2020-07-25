@@ -23,9 +23,9 @@ class StreamTypeReferencesNotSupportedBeforeV3 extends PrimitiveTypeReferenceRul
     {
         assert($type instanceof IPrimitiveTypeReference);
         if ($type->isStream()) {
-            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
+            EdmUtil::checkArgumentNull($type->location(), 'type->Location');
             $context->addError(
-                $type->Location(),
+                $type->location(),
                 EdmErrorCode::StreamTypeReferencesNotSupportedBeforeV3(),
                 StringConst::EdmModel_Validator_Semantic_StreamTypeReferencesNotSupportedBeforeV3()
             );

@@ -24,7 +24,7 @@ class StructuredTypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($type, true);
 
-        $this->assertNotNull($foo->StructuredDefinition());
+        $this->assertNotNull($foo->structuredDefinition());
     }
 
     public function testIsAbstractNullStructuredDefinition()
@@ -42,7 +42,7 @@ class StructuredTypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($type, true);
 
-        $this->assertEquals(false, $foo->IsAbstract());
+        $this->assertEquals(false, $foo->isAbstract());
     }
 
     public function testIsAbstractStructuredDefinitionIsAbstract()
@@ -52,7 +52,7 @@ class StructuredTypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($type, true);
 
-        $this->assertEquals(true, $foo->IsAbstract());
+        $this->assertEquals(true, $foo->isAbstract());
     }
 
     public function testIsOpenNullStructuredDefinition()
@@ -70,7 +70,7 @@ class StructuredTypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($type, true);
 
-        $this->assertEquals(false, $foo->IsOpen());
+        $this->assertEquals(false, $foo->isOpen());
     }
 
     public function testIsOpenStructuredDefinitionIsOpen()
@@ -80,7 +80,7 @@ class StructuredTypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($type, true);
 
-        $this->assertEquals(true, $foo->IsOpen());
+        $this->assertEquals(true, $foo->isOpen());
     }
 
     public function testBaseTypeNullStructuredDefinition()
@@ -98,7 +98,7 @@ class StructuredTypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($type, true);
 
-        $this->assertEquals(null, $foo->BaseType());
+        $this->assertEquals(null, $foo->baseType());
     }
 
     public function testBaseTypeStructuredDefinitionHasNotNullBaseType()
@@ -108,7 +108,7 @@ class StructuredTypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($type, true);
 
-        $this->assertEquals($type, $foo->BaseType());
+        $this->assertEquals($type, $foo->baseType());
     }
 
     public function testDeclaredStructuralPropertiesNullStructuredDefinition()
@@ -126,7 +126,7 @@ class StructuredTypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($type, true);
 
-        $this->assertEquals([], $foo->DeclaredStructuralProperties());
+        $this->assertEquals([], $foo->declaredStructuralProperties());
     }
 
     public function testDeclaredStructuralPropertiesStructuredDefinitionHasOneProperty()
@@ -138,7 +138,7 @@ class StructuredTypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($type, true);
 
-        $this->assertEquals([$prop], $foo->DeclaredStructuralProperties());
+        $this->assertEquals([$prop], $foo->declaredStructuralProperties());
     }
 
     public function testStructuralPropertiesNullStructuredDefinition()
@@ -156,7 +156,7 @@ class StructuredTypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($type, true);
 
-        $this->assertEquals([], $foo->StructuralProperties());
+        $this->assertEquals([], $foo->structuralProperties());
     }
 
     public function testStructuralPropertiesStructuredDefinitionHasOneProperty()
@@ -168,7 +168,7 @@ class StructuredTypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($type, true);
 
-        $this->assertEquals([$prop], $foo->StructuralProperties());
+        $this->assertEquals([$prop], $foo->structuralProperties());
     }
 
     public function testFindPropertyNullStructuredDefinition()

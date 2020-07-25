@@ -22,7 +22,7 @@ trait EntityTypeReferenceHelpers
      *
      * @return IEntityType the definition of this entity reference
      */
-    public function EntityDefinition(): IEntityType
+    public function entityDefinition(): IEntityType
     {
         /** @var $this IEntityTypeReference */
         $def = $this->getDefinition();
@@ -35,10 +35,10 @@ trait EntityTypeReferenceHelpers
      *
      * @return IEntityType|null the base type of the definition of this reference
      */
-    public function BaseEntityType(): ?IEntityType
+    public function baseEntityType(): ?IEntityType
     {
         /** @var $this IEntityTypeReference */
-        return $this->EntityDefinition()->BaseEntityType();
+        return $this->entityDefinition()->baseEntityType();
     }
 
     /**
@@ -46,9 +46,9 @@ trait EntityTypeReferenceHelpers
      *
      * @return IStructuralProperty[] the entity key of the definition of this reference
      */
-    public function Key(): array
+    public function key(): array
     {
-        return $this->EntityDefinition()->Key() ?? [];
+        return $this->entityDefinition()->key() ?? [];
     }
 
     /**
@@ -56,9 +56,9 @@ trait EntityTypeReferenceHelpers
      *
      * @return INavigationProperty[] The navigation properties declared in the definition of this reference and its base types
      */
-    public function NavigationProperties(): array
+    public function navigationProperties(): array
     {
-        return $this->EntityDefinition()->NavigationProperties();
+        return $this->entityDefinition()->navigationProperties();
     }
 
     /**
@@ -66,9 +66,9 @@ trait EntityTypeReferenceHelpers
      *
      * @return INavigationProperty[] the navigation properties declared in the definition of this reference
      */
-    public function DeclaredNavigationProperties(): array
+    public function declaredNavigationProperties(): array
     {
-        return $this->EntityDefinition()->DeclaredNavigationProperties();
+        return $this->entityDefinition()->declaredNavigationProperties();
     }
 
     /**
@@ -77,9 +77,9 @@ trait EntityTypeReferenceHelpers
      * @param  string                   $name name of the navigation property to find
      * @return INavigationProperty|null The requested navigation property if it exists. Otherwise, null.
      */
-    public function FindNavigationProperty(string $name): ?INavigationProperty
+    public function findNavigationProperty(string $name): ?INavigationProperty
     {
-        $prop = $this->EntityDefinition()->findProperty($name);
+        $prop = $this->entityDefinition()->findProperty($name);
         return $prop instanceof INavigationProperty ? $prop : null;
     }
 

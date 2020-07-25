@@ -37,9 +37,9 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         $foundTarget = $this->findTarget($context, $target);
 
         if (!$foundTarget) {
-            EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
+            EdmUtil::checkArgumentNull($annotation->location(), 'annotation->Location');
             $context->addError(
-                $annotation->Location(),
+                $annotation->location(),
                 EdmErrorCode::BadUnresolvedTarget(),
                 StringConst::EdmModel_Validator_Semantic_InaccessibleTarget(EdmUtil::fullyQualifiedName($target))
             );
@@ -58,7 +58,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         $foundTarget     = false;
         $entityContainer = $target;
         if ($entityContainer instanceof IEntityContainer) {
-            $foundTarget = ($context->getModel()->findEntityContainer($entityContainer->FullName()) != null);
+            $foundTarget = ($context->getModel()->findEntityContainer($entityContainer->fullName()) != null);
             return $foundTarget;
         }
         $entitySet = $target;
@@ -73,17 +73,17 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         }
         $schemaType = $target;
         if ($schemaType instanceof ISchemaType) {
-            $foundTarget = ($context->getModel()->findType($schemaType->FullName()) != null);
+            $foundTarget = ($context->getModel()->findType($schemaType->fullName()) != null);
             return $foundTarget;
         }
         $term = $target;
         if ($term instanceof ITerm) {
-            $foundTarget = ($context->getModel()->findValueTerm($term->FullName()) != null);
+            $foundTarget = ($context->getModel()->findValueTerm($term->fullName()) != null);
             return $foundTarget;
         }
         $function = $target;
         if ($function instanceof IFunction) {
-            $foundTarget = count($context->getModel()->findFunctions($function->FullName())) > 0;
+            $foundTarget = count($context->getModel()->findFunctions($function->fullName())) > 0;
             return $foundTarget;
         }
         $functionImport = $target;
@@ -116,7 +116,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
             $declaringFunction = $functionParameter->getDeclaringFunction();
             switch (true) {
                 case $declaringFunction instanceof IFunction:
-                    $functions = $context->getModel()->findFunctions($declaringFunction->FullName());
+                    $functions = $context->getModel()->findFunctions($declaringFunction->fullName());
                     break;
                 case $declaringFunction instanceof IFunctionImport:
                     $container = $declaringFunction->getContainer();

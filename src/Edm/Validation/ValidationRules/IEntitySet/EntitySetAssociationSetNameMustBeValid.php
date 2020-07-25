@@ -21,14 +21,14 @@ class EntitySetAssociationSetNameMustBeValid extends EntitySetRule
     {
         assert($set instanceof IEntitySet);
         foreach ($set->getNavigationTargets() as $mapping) {
-            if ($mapping->getNavigationProperty()->GetPrimary() === $mapping->getNavigationProperty()) {
+            if ($mapping->getNavigationProperty()->getPrimary() === $mapping->getNavigationProperty()) {
                 Helpers::checkForNameError(
                     $context,
                     $context->getModel()->getAssociationSetName(
                         $set,
                         $mapping->getNavigationProperty()
                     ),
-                    $set->Location()
+                    $set->location()
                 );
             }
         }

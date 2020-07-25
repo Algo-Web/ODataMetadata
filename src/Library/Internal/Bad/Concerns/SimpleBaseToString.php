@@ -21,6 +21,6 @@ trait SimpleBaseToString
         $error = $errors[0];
         EdmUtil::checkArgumentNull($error, 'error');
         $prefix = strval($error->getErrorCode()->getKey()) . ':' . $error->getErrorCode()->getValue() . ':';
-        return $prefix . ToTraceString::ToTraceString($self);
+        return $prefix . ToTraceString::toTraceString($self);
     }
 }

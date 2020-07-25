@@ -24,9 +24,9 @@ class FunctionImportIsComposableNotSupportedBeforeV3 extends FunctionImportRule
     {
         assert($functionImport instanceof IFunctionImport);
         if ($functionImport->isComposable() != CsdlConstants::Default_IsComposable) {
-            EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
+            EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
             $context->addError(
-                $functionImport->Location(),
+                $functionImport->location(),
                 EdmErrorCode::FunctionImportComposableNotSupportedBeforeV3(),
                 StringConst::EdmModel_Validator_Semantic_FunctionImportComposableNotSupportedBeforeV3()
             );

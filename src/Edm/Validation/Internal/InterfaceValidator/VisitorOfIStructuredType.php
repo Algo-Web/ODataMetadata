@@ -33,7 +33,7 @@ class VisitorOfIStructuredType extends VisitorOfT
             for ($currentBaseType = $type->getBaseType(); null !== $currentBaseType; $currentBaseType = $currentBaseType->getBaseType()
             ) {
                 if (in_array($currentBaseType, $visitedTypes)) {
-                    $typeName = $type instanceof ISchemaType ? $type->FullName() : get_class($type);
+                    $typeName = $type instanceof ISchemaType ? $type->fullName() : get_class($type);
                     InterfaceValidator::collectErrors(
                         new EdmError(
                             InterfaceValidator::getLocation($type),

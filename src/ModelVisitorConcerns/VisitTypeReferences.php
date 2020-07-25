@@ -64,7 +64,7 @@ trait VisitTypeReferences
     public function visitPrimitiveTypeReference(IPrimitiveTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
-        switch ($reference->PrimitiveKind()) {
+        switch ($reference->primitiveKind()) {
             case PrimitiveTypeKind::Binary():
                 $this->processBinaryTypeReference($reference->asBinary());
                 break;
@@ -113,7 +113,7 @@ trait VisitTypeReferences
             default:
                 throw new InvalidOperationException(
                     StringConst::UnknownEnumVal_PrimitiveKind(
-                        $reference->PrimitiveKind()->getKey()
+                        $reference->primitiveKind()->getKey()
                     )
                 );
         }

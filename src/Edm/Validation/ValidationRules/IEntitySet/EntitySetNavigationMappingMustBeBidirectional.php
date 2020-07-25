@@ -31,14 +31,14 @@ class EntitySetNavigationMappingMustBeBidirectional extends EntitySetRule
             // If the navigation property is not silent, or if it is silent but is still mapped, it must be mapped correctly.
             if ((
                 $opposingTarget != null ||
-                    $property->getPartner()->DeclaringEntityType()->findProperty($property->getPartner()->getName()) === $property->getPartner()
+                $property->getPartner()->declaringEntityType()->findProperty($property->getPartner()->getName()) === $property->getPartner()
             ) &&
                 $opposingTarget !== $set) {
-                EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
+                EdmUtil::checkArgumentNull($set->location(), 'set->Location');
                 $context->addError(
-                    $set->Location(),
+                    $set->location(),
                     EdmErrorCode::EntitySetNavigationMappingMustBeBidirectional(),
-                    StringConst::EdmModel_Validator_Semantic_EntitySetNavigationMappingMustBeBidirectional($set->getContainer()->FullName() . '.' . $set->getName(), $property->getName())
+                    StringConst::EdmModel_Validator_Semantic_EntitySetNavigationMappingMustBeBidirectional($set->getContainer()->fullName() . '.' . $set->getName(), $property->getName())
                 );
             }
         }

@@ -42,11 +42,11 @@ abstract class ValidationHelper
         string $errorString,
         bool $suppressError
     ) {
-        $name = $item instanceof ISchemaElement ? $item->FullName() : $item->getName();
+        $name = $item instanceof ISchemaElement ? $item->fullName() : $item->getName();
         if ($memberNameList->add($name)) {
             if (!$suppressError) {
-                EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
-                $context->addError($item->Location(), $errorCode, $errorString);
+                EdmUtil::checkArgumentNull($item->location(), 'item->Location');
+                $context->addError($item->location(), $errorCode, $errorString);
             }
             return false;
         }
@@ -120,7 +120,7 @@ abstract class ValidationHelper
     ): bool {
         if (!($value instanceof IStringValue)) {
             $error = new EdmError(
-                $value->Location(),
+                $value->location(),
                 EdmErrorCode::InvalidElementAnnotation(),
                 StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationNotIEdmStringValue()
             );
@@ -145,7 +145,7 @@ abstract class ValidationHelper
             // The annotation must be an element.
             if ($eof) {
                 $error = new EdmError(
-                    $value->Location(),
+                    $value->location(),
                     EdmErrorCode::InvalidElementAnnotation(),
                     StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationValueInvalidXml()
                 );
@@ -159,7 +159,7 @@ abstract class ValidationHelper
             if (EdmUtil::isNullOrWhiteSpaceInternal($elementNamespace) ||
                 EdmUtil::isNullOrWhiteSpaceInternal($elementName)) {
                 $error = new EdmError(
-                    $value->Location(),
+                    $value->location(),
                     EdmErrorCode::InvalidElementAnnotation(),
                     StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationNullNamespaceOrName()
                 );
@@ -169,7 +169,7 @@ abstract class ValidationHelper
             if (!((null === $annotationNamespace || $elementNamespace == $annotationNamespace) &&
                   (null === $annotationName || $elementName == $annotationName))) {
                 $error = new EdmError(
-                    $value->Location(),
+                    $value->location(),
                     EdmErrorCode::InvalidElementAnnotation(),
                     StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationMismatchedTerm()
                 );
@@ -185,7 +185,7 @@ abstract class ValidationHelper
             return true;
         } catch (Exception $e) {
             $error = new EdmError(
-                $value->Location(),
+                $value->location(),
                 EdmErrorCode::InvalidElementAnnotation(),
                 StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationValueInvalidXml()
             );
@@ -240,13 +240,13 @@ abstract class ValidationHelper
         if (!$visited->offsetExists($source)) {
             $visited->offsetSet($source, true);
             $visited[$source] = true;
-            if ($source->IsOrInheritsFrom($target)) {
+            if ($source->isOrInheritsFrom($target)) {
                 return true;
             }
 
-            foreach ($source->NavigationProperties() as $navProp) {
+            foreach ($source->navigationProperties() as $navProp) {
                 if ($navProp->containsTarget() && self::typeIndirectlyContainsTarget(
-                    $navProp->ToEntityType(),
+                    $navProp->toEntityType(),
                     $target,
                     $visited,
                     $context
