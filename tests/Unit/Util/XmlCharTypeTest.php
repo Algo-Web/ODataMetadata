@@ -21,8 +21,8 @@ class XmlCharTypeTest extends TestCase
      */
     public function testIsStartNCNameChar($char, $startChar, $withCache)
     {
-        $charType = XmlCharType::Instance();
-        $this->assertEquals($startChar, $charType->IsStartNCNameChar($char));
+        $charType = XmlCharType::instance();
+        $this->assertEquals($startChar, $charType->isStartNCNameChar($char));
     }
 
     public function IsStartNcNameCharProvider()
