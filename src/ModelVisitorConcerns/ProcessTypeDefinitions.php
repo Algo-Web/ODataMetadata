@@ -27,8 +27,8 @@ trait ProcessTypeDefinitions
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
         $this->processSchemaElement($definition);
-        $this->ProcessStructuredType($definition);
-        $this->ProcessSchemaType($definition);
+        $this->processStructuredType($definition);
+        $this->processSchemaType($definition);
         $this->endElement($definition, __METHOD__);
     }
 
@@ -38,8 +38,8 @@ trait ProcessTypeDefinitions
         $this->startElement($definition, __METHOD__);
         $this->processSchemaElement($definition);
         $this->processTerm($definition);
-        $this->ProcessStructuredType($definition);
-        $this->ProcessSchemaType($definition);
+        $this->processStructuredType($definition);
+        $this->processSchemaType($definition);
         $this->endElement($definition, __METHOD__);
     }
 
@@ -48,7 +48,7 @@ trait ProcessTypeDefinitions
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
         $this->processElement($definition);
-        $this->ProcessStructuredType($definition);
+        $this->processStructuredType($definition);
         $this->endElement($definition, __METHOD__);
     }
 
@@ -57,7 +57,7 @@ trait ProcessTypeDefinitions
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
         $this->processElement($definition);
-        $this->ProcessType($definition);
+        $this->processType($definition);
         $this->visitTypeReference($definition->getElementType());
         $this->endElement($definition, __METHOD__);
     }
@@ -67,31 +67,31 @@ trait ProcessTypeDefinitions
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
         $this->processSchemaElement($definition);
-        $this->ProcessType($definition);
-        $this->ProcessSchemaType($definition);
-        $this->VisitEnumMembers($definition->getMembers());
+        $this->processType($definition);
+        $this->processSchemaType($definition);
+        $this->visitEnumMembers($definition->getMembers());
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessEntityReferenceType(IEntityReferenceType $definition): void
+    protected function processEntityReferenceType(IEntityReferenceType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
         $this->processElement($definition);
-        $this->ProcessType($definition);
+        $this->processType($definition);
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessStructuredType(IStructuredType $definition): void
+    protected function processStructuredType(IStructuredType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
-        $this->ProcessType($definition);
-        $this->VisitProperties($definition->getDeclaredProperties());
+        $this->processType($definition);
+        $this->visitProperties($definition->getDeclaredProperties());
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessSchemaType(ISchemaType $type): void
+    protected function processSchemaType(ISchemaType $type): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($type, __METHOD__);
@@ -99,7 +99,7 @@ trait ProcessTypeDefinitions
         $this->endElement($type, __METHOD__);
     }
 
-    protected function ProcessType(IType $definition): void
+    protected function processType(IType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);

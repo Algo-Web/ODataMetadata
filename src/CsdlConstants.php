@@ -314,7 +314,7 @@ class CsdlConstants
         }
         return null;
     }
-    public static function EdmToEdmxVersions(Version $edm)
+    public static function edmToEdmxVersions(Version $edm)
     {
         switch ($edm) {
             case Version::v1():

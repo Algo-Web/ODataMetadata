@@ -35,7 +35,7 @@ class XmlConvert
      * @param  string $ch
      * @return bool
      */
-    public static function IsStartNCNameChar(string $ch): bool
+    public static function isStartNCNameChar(string $ch): bool
     {
         return XmlCharType::instance()->isStartNCNameChar($ch);
     }
@@ -47,19 +47,19 @@ class XmlConvert
      * @param  string $ch
      * @return bool
      */
-    public static function IsNCNameChar(string $ch)
+    public static function isNCNameChar(string $ch)
     {
         return XmlCharType::instance()->isNCNameChar($ch);
     }
 
-    public static function VerifyNCName(string $name): bool
+    public static function verifyNCName(string $name): bool
     {
         $length = mb_strlen($name);
         for ($i = 1; $i < $length; $i++) {
-            if (!self::IsNCNameChar($name[$i])) {
+            if (!self::isNCNameChar($name[$i])) {
                 return false;
             }
         }
-        return self::IsStartNCNameChar($name[0]);
+        return self::isStartNCNameChar($name[0]);
     }
 }

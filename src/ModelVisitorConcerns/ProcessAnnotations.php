@@ -38,7 +38,7 @@ trait ProcessAnnotations
         /** @var EdmModelVisitor $this */
         $this->startElement($annotation, __METHOD__);
         $this->processVocabularyAnnotation($annotation);
-        $this->VisitExpression($annotation->getValue());
+        $this->visitExpression($annotation->getValue());
         $this->endElement($annotation, __METHOD__);
     }
 
@@ -55,7 +55,7 @@ trait ProcessAnnotations
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($binding, __METHOD__);
-        $this->VisitExpression($binding->getValue());
+        $this->visitExpression($binding->getValue());
         $this->endElement($binding, __METHOD__);
     }
 }

@@ -48,7 +48,7 @@ trait ProcessTypeReferences
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
         $this->processTypeReference($reference);
-        $this->ProcessEntityReferenceType($reference->entityReferenceDefinition());
+        $this->processEntityReferenceType($reference->entityReferenceDefinition());
         $this->endElement($reference, __METHOD__);
     }
 

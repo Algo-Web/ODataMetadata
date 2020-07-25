@@ -17,7 +17,7 @@ trait VisitFunctionRelated
     /**
      * @param IFunctionParameter[] $parameters
      */
-    public function VisitFunctionParameters(?array $parameters): void
+    public function visitFunctionParameters(?array $parameters): void
     {
         /** @var EdmModelVisitor $this */
         self::visitCollection($parameters, [$this, 'ProcessFunctionParameter']);

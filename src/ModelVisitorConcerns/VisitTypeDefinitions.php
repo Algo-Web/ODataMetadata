@@ -59,13 +59,13 @@ trait VisitTypeDefinitions
     /**
      * @param IProperty[] $properties
      */
-    public function VisitProperties(array $properties): void
+    public function visitProperties(array $properties): void
     {
         /** @var EdmModelVisitor $this */
-        self::visitCollection($properties, [$this, 'VisitProperty']);
+        self::visitCollection($properties, [$this, 'visitProperty']);
     }
 
-    public function VisitProperty(IProperty $property): void
+    public function visitProperty(IProperty $property): void
     {
         /** @var EdmModelVisitor $this */
         switch ($property->getPropertyKind()) {
@@ -79,7 +79,7 @@ trait VisitTypeDefinitions
                 $this->processStructuralProperty($property);
                 break;
             case PropertyKind::None():
-                $this->ProcessProperty($property);
+                $this->processProperty($property);
                 break;
             default:
                 throw new InvalidOperationException(
@@ -94,13 +94,13 @@ trait VisitTypeDefinitions
     /**
      * @param IEnumMember[] $enumMembers
      */
-    public function VisitEnumMembers(array $enumMembers): void
+    public function visitEnumMembers(array $enumMembers): void
     {
         /** @var EdmModelVisitor $this */
-        self::visitCollection($enumMembers, [$this, 'VisitEnumMember']);
+        self::visitCollection($enumMembers, [$this, 'visitEnumMember']);
     }
 
-    public function VisitEnumMember(IEnumMember $enumMember): void
+    public function visitEnumMember(IEnumMember $enumMember): void
     {
         /** @var EdmModelVisitor $this */
         $this->processEnumMember($enumMember);

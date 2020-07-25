@@ -254,8 +254,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->visitEntityTypeDeclaredKey($element->getDeclaredKey());
         }
 
-        $this->VisitProperties($element->declaredStructuralProperties());
-        $this->VisitProperties($element->declaredNavigationProperties());
+        $this->visitProperties($element->declaredStructuralProperties());
+        $this->visitProperties($element->declaredNavigationProperties());
         $this->finishElement($element);
     }
 
@@ -419,7 +419,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->schemaWriter->writeDefiningExpressionElement($element->getDefiningExpression());
         }
 
-        $this->VisitFunctionParameters($element->getParameters());
+        $this->visitFunctionParameters($element->getParameters());
         $this->finishElement($element);
     }
 
@@ -493,7 +493,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         }
 
         $this->beginElement($functionImport, [$this->schemaWriter, 'writeFunctionImportElementHeader']);
-        $this->VisitFunctionParameters($functionImport->getParameters());
+        $this->visitFunctionParameters($functionImport->getParameters());
         $this->finishElement($functionImport);
     }
 
@@ -610,7 +610,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     {
         $this->beginElement($expression, [$this->schemaWriter, 'writePropertyReferenceExpressionElementHeader']);
         if ($expression->getBase()!= null) {
-            $this->VisitExpression($expression->getBase());
+            $this->visitExpression($expression->getBase());
         }
 
         $this->finishElement($expression);
@@ -640,7 +640,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     protected function processCollectionExpression(ICollectionExpression $expression): void
     {
         $this->beginElement($expression, [$this->schemaWriter, 'writeCollectionExpressionElementHeader']);
-        $this->VisitExpressions($expression->getElements());
+        $this->visitExpressions($expression->getElements());
         $this->finishElement($expression);
     }
 
@@ -660,7 +660,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->visitTypeReference($expression->getType());
         }
 
-        $this->VisitExpression($expression->getOperand());
+        $this->visitExpression($expression->getOperand());
         $this->finishElement($expression);
     }
 
@@ -701,10 +701,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         });
         if (!$isFunction) {
             EdmUtil::checkArgumentNull($expression->getAppliedFunction(), 'expression->getAppliedFunction');
-            $this->VisitExpression($expression->getAppliedFunction());
+            $this->visitExpression($expression->getAppliedFunction());
         }
 
-        $this->VisitExpressions($expression->getArguments());
+        $this->visitExpressions($expression->getArguments());
         $this->finishElement($expression);
     }
 
@@ -777,7 +777,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->visitTypeReference($expression->getType());
         }
 
-        $this->VisitExpression($expression->getOperand());
+        $this->visitExpression($expression->getOperand());
         $this->finishElement($expression);
     }
 
