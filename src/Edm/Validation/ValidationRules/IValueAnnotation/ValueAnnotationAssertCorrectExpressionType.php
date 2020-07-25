@@ -32,7 +32,7 @@ class ValueAnnotationAssertCorrectExpressionType extends ValueAnnotationRule
             $errors
         )) {
             foreach ($errors as $error) {
-                $context->AddRawError($error);
+                $context->addRawError($error);
             }
         }
     }

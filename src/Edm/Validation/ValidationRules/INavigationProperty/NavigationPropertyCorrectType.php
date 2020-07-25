@@ -26,24 +26,24 @@ class NavigationPropertyCorrectType extends NavigationPropertyRule
         assert($property instanceof INavigationProperty);
         $isBad = false;
 
-        if ($property->ToEntityType() !== $property->getPartner()->DeclaringEntityType()) {
+        if ($property->toEntityType() !== $property->getPartner()->declaringEntityType()) {
             $isBad = true;
         } else {
-            switch ($property->getPartner()->Multiplicity()) {
+            switch ($property->getPartner()->multiplicity()) {
                 case Multiplicity::Many():
-                    if (!$property->getType()->IsCollection()) {
+                    if (!$property->getType()->isCollection()) {
                         $isBad = true;
                     }
 
                     break;
                 case Multiplicity::ZeroOrOne():
-                    if ($property->getType()->IsCollection() || !$property->getType()->getNullable()) {
+                    if ($property->getType()->isCollection() || !$property->getType()->getNullable()) {
                         $isBad = true;
                     }
 
                     break;
                 case Multiplicity::One():
-                    if ($property->getType()->IsCollection() || $property->getType()->getNullable()) {
+                    if ($property->getType()->isCollection() || $property->getType()->getNullable()) {
                         $isBad = true;
                     }
 
@@ -52,9 +52,9 @@ class NavigationPropertyCorrectType extends NavigationPropertyRule
         }
 
         if ($isBad) {
-            EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
-            $context->AddError(
-                $property->Location(),
+            EdmUtil::checkArgumentNull($property->location(), 'property->Location');
+            $context->addError(
+                $property->location(),
                 EdmErrorCode::InvalidNavigationPropertyType(),
                 StringConst::EdmModel_Validator_Semantic_InvalidNavigationPropertyType($property->getName())
             );

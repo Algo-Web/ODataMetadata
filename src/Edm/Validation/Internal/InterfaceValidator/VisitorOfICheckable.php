@@ -16,11 +16,11 @@ final class VisitorOfICheckable extends VisitorOfT
      * @param  array      $references
      * @return iterable
      */
-    protected function VisitT($item, array &$followup, array &$references): iterable
+    protected function visitT($item, array &$followup, array &$references): iterable
     {
         $checkableErrors = [];
         $errors          = [];
-        InterfaceValidator::ProcessEnumerable($item, $item->getErrors(), 'Errors', $checkableErrors, $errors);
+        InterfaceValidator::processEnumerable($item, $item->getErrors(), 'Errors', $checkableErrors, $errors);
         return $errors ?? $checkableErrors;
     }
 

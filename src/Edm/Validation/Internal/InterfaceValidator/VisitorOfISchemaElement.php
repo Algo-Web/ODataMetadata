@@ -25,14 +25,14 @@ final class VisitorOfISchemaElement extends VisitorOfT
         $this->lookup[SchemaElementKind::EntityContainer()->getKey()] = IEntityContainer::class;
     }
 
-    protected function VisitT($item, array &$followup, array &$references): iterable
+    protected function visitT($item, array &$followup, array &$references): iterable
     {
         assert($item instanceof ISchemaElement);
         $errors = [];
 
         if (null === $item->getNamespace()) {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createPropertyMustNotBeNullError(
                     $item,
                     'Namespace'
                 ),
@@ -44,8 +44,8 @@ final class VisitorOfISchemaElement extends VisitorOfT
         $key  = $kind->getKey();
 
         if (array_key_exists($key, $this->lookup)) {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::checkForInterfaceKindValueMismatchError(
                     $item,
                     $item->getSchemaElementKind(),
                     'SchemaElementKind',
@@ -59,8 +59,8 @@ final class VisitorOfISchemaElement extends VisitorOfT
                     break;
 
                 default:
-                    InterfaceValidator::CollectErrors(
-                        InterfaceValidator::CreateEnumPropertyOutOfRangeError(
+                    InterfaceValidator::collectErrors(
+                        InterfaceValidator::createEnumPropertyOutOfRangeError(
                             $item,
                             $item->getSchemaElementKind(),
                             'SchemaElementKind'

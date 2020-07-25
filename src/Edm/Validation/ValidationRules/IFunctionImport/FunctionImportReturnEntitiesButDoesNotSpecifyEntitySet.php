@@ -24,14 +24,14 @@ class FunctionImportReturnEntitiesButDoesNotSpecifyEntitySet extends FunctionImp
     {
         assert($functionImport instanceof IFunctionImport);
         if (null !== $functionImport->getReturnType() && null === $functionImport->getEntitySet()) {
-            $elementType = $functionImport->getReturnType()->IsCollection() ?
-                $functionImport->getReturnType()->AsCollection()->ElementType()
+            $elementType = $functionImport->getReturnType()->isCollection() ?
+                $functionImport->getReturnType()->asCollection()->elementType()
                 :
                 $functionImport->getReturnType();
-            if ($elementType->IsEntity() && !$context->checkIsBad($elementType->getDefinition())) {
-                EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
-                $context->AddError(
-                    $functionImport->Location(),
+            if ($elementType->isEntity() && !$context->checkIsBad($elementType->getDefinition())) {
+                EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
+                $context->addError(
+                    $functionImport->location(),
                     EdmErrorCode::FunctionImportReturnsEntitiesButDoesNotSpecifyEntitySet(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportReturnEntitiesButDoesNotSpecifyEntitySet($functionImport->getName())
                 );

@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
 
 class VisitorOfICollectionType extends VisitorOfT
 {
-    protected function VisitT($type, array &$followup, array &$references): ?iterable
+    protected function visitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof ICollectionType);
         if (null !== $type->getElementType()) {
@@ -18,7 +18,7 @@ class VisitorOfICollectionType extends VisitorOfT
             $followup[] = $type->getElementType();
             return null;
         } else {
-            return[ InterfaceValidator::CreatePropertyMustNotBeNullError($type, 'ElementType')];
+            return[ InterfaceValidator::createPropertyMustNotBeNullError($type, 'ElementType')];
         }
     }
 

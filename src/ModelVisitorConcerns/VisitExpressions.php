@@ -44,13 +44,13 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 trait VisitExpressions
 {
-    public function VisitExpressions(array $expressions): void
+    public function visitExpressions(array $expressions): void
     {
         /** @var EdmModelVisitor $this */
-        self::VisitCollection($expressions, [$this, 'VisitExpression']);
+        self::visitCollection($expressions, [$this, 'visitExpression']);
     }
 
-    public function VisitExpression(IExpression $expression): void
+    public function visitExpression(IExpression $expression): void
     {
         /** @var EdmModelVisitor $this */
         switch ($expression->getExpressionKind()) {
@@ -173,6 +173,6 @@ trait VisitExpressions
     public function visitPropertyConstructors(array $constructor): void
     {
         /** @var EdmModelVisitor $this */
-        self::VisitCollection($constructor, [$this, 'processPropertyConstructor']);
+        self::visitCollection($constructor, [$this, 'processPropertyConstructor']);
     }
 }

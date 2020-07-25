@@ -23,9 +23,9 @@ class StringTypeReferenceStringUnboundedNotValidForMaxLength extends StringTypeR
     {
         assert($type instanceof IStringTypeReference);
         if (null !== $type->getMaxLength() && $type->isUnbounded()) {
-            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
-            $context->AddError(
-                $type->Location(),
+            EdmUtil::checkArgumentNull($type->location(), 'type->Location');
+            $context->addError(
+                $type->location(),
                 EdmErrorCode::IsUnboundedCannotBeTrueWhileMaxLengthIsNotNull(),
                 StringConst::EdmModel_Validator_Semantic_IsUnboundedCannotBeTrueWhileMaxLengthIsNotNull()
             );

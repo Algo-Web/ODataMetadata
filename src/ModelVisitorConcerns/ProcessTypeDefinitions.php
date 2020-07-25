@@ -22,76 +22,76 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 trait ProcessTypeDefinitions
 {
-    protected function ProcessComplexType(IComplexType $definition): void
+    protected function processComplexType(IComplexType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
-        $this->ProcessSchemaElement($definition);
-        $this->ProcessStructuredType($definition);
-        $this->ProcessSchemaType($definition);
+        $this->processSchemaElement($definition);
+        $this->processStructuredType($definition);
+        $this->processSchemaType($definition);
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessEntityType(IEntityType $definition): void
+    protected function processEntityType(IEntityType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
-        $this->ProcessSchemaElement($definition);
-        $this->ProcessTerm($definition);
-        $this->ProcessStructuredType($definition);
-        $this->ProcessSchemaType($definition);
+        $this->processSchemaElement($definition);
+        $this->processTerm($definition);
+        $this->processStructuredType($definition);
+        $this->processSchemaType($definition);
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessRowType(IRowType $definition): void
+    protected function processRowType(IRowType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
-        $this->ProcessElement($definition);
-        $this->ProcessStructuredType($definition);
+        $this->processElement($definition);
+        $this->processStructuredType($definition);
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessCollectionType(ICollectionType $definition): void
+    protected function processCollectionType(ICollectionType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
-        $this->ProcessElement($definition);
-        $this->ProcessType($definition);
-        $this->VisitTypeReference($definition->getElementType());
+        $this->processElement($definition);
+        $this->processType($definition);
+        $this->visitTypeReference($definition->getElementType());
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessEnumType(IEnumType $definition): void
+    protected function processEnumType(IEnumType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
-        $this->ProcessSchemaElement($definition);
-        $this->ProcessType($definition);
-        $this->ProcessSchemaType($definition);
-        $this->VisitEnumMembers($definition->getMembers());
+        $this->processSchemaElement($definition);
+        $this->processType($definition);
+        $this->processSchemaType($definition);
+        $this->visitEnumMembers($definition->getMembers());
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessEntityReferenceType(IEntityReferenceType $definition): void
+    protected function processEntityReferenceType(IEntityReferenceType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
-        $this->ProcessElement($definition);
-        $this->ProcessType($definition);
+        $this->processElement($definition);
+        $this->processType($definition);
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessStructuredType(IStructuredType $definition): void
+    protected function processStructuredType(IStructuredType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
-        $this->ProcessType($definition);
-        $this->VisitProperties($definition->getDeclaredProperties());
+        $this->processType($definition);
+        $this->visitProperties($definition->getDeclaredProperties());
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessSchemaType(ISchemaType $type): void
+    protected function processSchemaType(ISchemaType $type): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($type, __METHOD__);
@@ -99,7 +99,7 @@ trait ProcessTypeDefinitions
         $this->endElement($type, __METHOD__);
     }
 
-    protected function ProcessType(IType $definition): void
+    protected function processType(IType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);

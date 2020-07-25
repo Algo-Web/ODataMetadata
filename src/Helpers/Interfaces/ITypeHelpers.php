@@ -12,5 +12,5 @@ use AlgoWeb\ODataMetadata\Interfaces\IType;
  */
 interface ITypeHelpers
 {
-    public function IsOrInheritsFrom(IType $otherType): bool;
+    public function isOrInheritsFrom(IType $otherType): bool;
 }

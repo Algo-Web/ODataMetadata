@@ -26,26 +26,26 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 trait VisitTypeDefinitions
 {
-    public function VisitSchemaType(IType $definition): void
+    public function visitSchemaType(IType $definition): void
     {
         /** @var EdmModelVisitor $this */
         switch ($definition->getTypeKind()) {
             case TypeKind::Complex():
                 assert($definition instanceof IComplexType);
-                $this->ProcessComplexType($definition);
+                $this->processComplexType($definition);
                 break;
             case TypeKind::Entity():
                 assert($definition instanceof IEntityType);
 
-                $this->ProcessEntityType($definition);
+                $this->processEntityType($definition);
                 break;
             case TypeKind::Enum():
                 assert($definition instanceof IEnumType);
 
-                $this->ProcessEnumType($definition);
+                $this->processEnumType($definition);
                 break;
             case TypeKind::None():
-                $this->VisitSchemaType($definition);
+                $this->visitSchemaType($definition);
                 break;
             default:
                 throw new InvalidOperationException(
@@ -59,27 +59,27 @@ trait VisitTypeDefinitions
     /**
      * @param IProperty[] $properties
      */
-    public function VisitProperties(array $properties): void
+    public function visitProperties(array $properties): void
     {
         /** @var EdmModelVisitor $this */
-        self::VisitCollection($properties, [$this, 'VisitProperty']);
+        self::visitCollection($properties, [$this, 'visitProperty']);
     }
 
-    public function VisitProperty(IProperty $property): void
+    public function visitProperty(IProperty $property): void
     {
         /** @var EdmModelVisitor $this */
         switch ($property->getPropertyKind()) {
             case PropertyKind::Navigation():
                 assert($property instanceof INavigationProperty);
-                $this->ProcessNavigationProperty($property);
+                $this->processNavigationProperty($property);
                 break;
             case PropertyKind::Structural():
                 assert($property instanceof IStructuralProperty);
 
-                $this->ProcessStructuralProperty($property);
+                $this->processStructuralProperty($property);
                 break;
             case PropertyKind::None():
-                $this->ProcessProperty($property);
+                $this->processProperty($property);
                 break;
             default:
                 throw new InvalidOperationException(
@@ -94,15 +94,15 @@ trait VisitTypeDefinitions
     /**
      * @param IEnumMember[] $enumMembers
      */
-    public function VisitEnumMembers(array $enumMembers): void
+    public function visitEnumMembers(array $enumMembers): void
     {
         /** @var EdmModelVisitor $this */
-        self::VisitCollection($enumMembers, [$this, 'VisitEnumMember']);
+        self::visitCollection($enumMembers, [$this, 'visitEnumMember']);
     }
 
-    public function VisitEnumMember(IEnumMember $enumMember): void
+    public function visitEnumMember(IEnumMember $enumMember): void
     {
         /** @var EdmModelVisitor $this */
-        $this->ProcessEnumMember($enumMember);
+        $this->processEnumMember($enumMember);
     }
 }

@@ -43,13 +43,13 @@ class NavigationPropertyPrincipalEndMultiplicity extends NavigationPropertyRule
             return;
         }
         EdmUtil::checkArgumentNull(
-            $navigationProperty->getPartner()->Location(),
+            $navigationProperty->getPartner()->location(),
             'navigationProperty->getPartner->Location'
         );
-        if (ValidationHelper::AllPropertiesAreNullable($dependentProperties)) {
-            if (!$navigationProperty->getPartner()->Multiplicity()->isZeroOrOne()) {
-                $context->AddError(
-                    $navigationProperty->getPartner()->Location(),
+        if (ValidationHelper::allPropertiesAreNullable($dependentProperties)) {
+            if (!$navigationProperty->getPartner()->multiplicity()->isZeroOrOne()) {
+                $context->addError(
+                    $navigationProperty->getPartner()->location(),
                     EdmErrorCode::InvalidMultiplicityOfPrincipalEnd(),
                     StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfPrincipalEndDependentPropertiesAllNullable(
                         $navigationProperty->getPartner()->getName(),
@@ -57,10 +57,10 @@ class NavigationPropertyPrincipalEndMultiplicity extends NavigationPropertyRule
                     )
                 );
             }
-        } elseif (!ValidationHelper::HasNullableProperty($dependentProperties)) {
-            if (!$navigationProperty->getPartner()->Multiplicity()->isOne()) {
-                $context->AddError(
-                    $navigationProperty->getPartner()->Location(),
+        } elseif (!ValidationHelper::hasNullableProperty($dependentProperties)) {
+            if (!$navigationProperty->getPartner()->multiplicity()->isOne()) {
+                $context->addError(
+                    $navigationProperty->getPartner()->location(),
                     EdmErrorCode::InvalidMultiplicityOfPrincipalEnd(),
                     StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfPrincipalEndDependentPropertiesAllNonnullable(
                         $navigationProperty->getPartner()->getName(),
@@ -69,10 +69,10 @@ class NavigationPropertyPrincipalEndMultiplicity extends NavigationPropertyRule
                 );
             }
         } else {
-            if (!$navigationProperty->getPartner()->Multiplicity()->isOne() &&
-                !$navigationProperty->getPartner()->Multiplicity()->isZeroOrOne()) {
-                $context->AddError(
-                    $navigationProperty->getPartner()->Location(),
+            if (!$navigationProperty->getPartner()->multiplicity()->isOne() &&
+                !$navigationProperty->getPartner()->multiplicity()->isZeroOrOne()) {
+                $context->addError(
+                    $navigationProperty->getPartner()->location(),
                     EdmErrorCode::InvalidMultiplicityOfPrincipalEnd(),
                     StringConst::EdmModel_Validator_Semantic_NavigationPropertyPrincipalEndMultiplicityUpperBoundMustBeOne(
                         $navigationProperty->getName()

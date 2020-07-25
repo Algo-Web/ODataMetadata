@@ -27,7 +27,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = null;
-        $actual   = $foo->FindEntityContainer('name');
+        $actual   = $foo->findEntityContainer('name');
         $this->assertEquals($expected, $actual);
     }
 
@@ -36,7 +36,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = null;
-        $actual   = $foo->FindValueTerm('name');
+        $actual   = $foo->findValueTerm('name');
         $this->assertEquals($expected, $actual);
     }
 
@@ -45,7 +45,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = [];
-        $actual   = $foo->FindFunctions('name');
+        $actual   = $foo->findFunctions('name');
         $this->assertEquals($expected, $actual);
     }
 
@@ -54,7 +54,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = null;
-        $actual   = $foo->FindType('name');
+        $actual   = $foo->findType('name');
         $this->assertEquals($expected, $actual);
     }
 
@@ -63,8 +63,8 @@ class ModelTypeHelpersTest extends TestCase
         $expected = Version::v2();
 
         $foo = new EdmModel();
-        $foo->SetEdmVersion($expected);
-        $actual = $foo->GetEdmVersion();
+        $foo->setEdmVersion($expected);
+        $actual = $foo->getEdmVersion();
         $this->assertEquals($expected, $actual);
     }
 
@@ -73,8 +73,8 @@ class ModelTypeHelpersTest extends TestCase
         $expected = Version::v2();
 
         $foo = new EdmModel();
-        $foo->SetEdmxVersion($expected);
-        $actual = $foo->GetEdmxVersion();
+        $foo->setEdmxVersion($expected);
+        $actual = $foo->getEdmxVersion();
         $this->assertEquals($expected, $actual);
     }
 
@@ -83,8 +83,8 @@ class ModelTypeHelpersTest extends TestCase
         $expected = Version::v2();
 
         $foo = new EdmModel();
-        $foo->SetDataServiceVersion($expected);
-        $actual = $foo->GetDataServiceVersion();
+        $foo->setDataServiceVersion($expected);
+        $actual = $foo->getDataServiceVersion();
         $this->assertEquals($expected, $actual);
     }
 
@@ -93,8 +93,8 @@ class ModelTypeHelpersTest extends TestCase
         $expected = Version::v2();
 
         $foo = new EdmModel();
-        $foo->SetMaxDataServiceVersion($expected);
-        $actual = $foo->GetMaxDataServiceVersion();
+        $foo->setMaxDataServiceVersion($expected);
+        $actual = $foo->getMaxDataServiceVersion();
         $this->assertEquals($expected, $actual);
     }
 
@@ -102,12 +102,12 @@ class ModelTypeHelpersTest extends TestCase
     {
         $expected = [];
         $foo      = new EdmModel();
-        $actual   = $foo->GetNamespacePrefixMappings();
+        $actual   = $foo->getNamespacePrefixMappings();
         $this->assertEquals($expected, $actual);
 
         $expected = ['foo'];
-        $foo->SetNamespacePrefixMappings($expected);
-        $actual = $foo->GetNamespacePrefixMappings();
+        $foo->setNamespacePrefixMappings($expected);
+        $actual = $foo->getNamespacePrefixMappings();
         $this->assertEquals($expected, $actual);
     }
 
@@ -119,10 +119,10 @@ class ModelTypeHelpersTest extends TestCase
 
         $assoc = 'assoc';
 
-        $foo->SetAssociationEndName($prop, $assoc);
+        $foo->setAssociationEndName($prop, $assoc);
 
         $expected = 'assoc';
-        $actual   = $foo->GetAssociationEndName($prop);
+        $actual   = $foo->getAssociationEndName($prop);
         $this->assertEquals($expected, $actual);
     }
 
@@ -134,10 +134,10 @@ class ModelTypeHelpersTest extends TestCase
 
         $assoc = 'assoc';
 
-        $foo->SetAssociationName($prop, $assoc);
+        $foo->setAssociationName($prop, $assoc);
 
         $expected = 'assoc';
-        $actual   = $foo->GetAssociationName($prop);
+        $actual   = $foo->getAssociationName($prop);
         $this->assertEquals($expected, $actual);
     }
 
@@ -149,10 +149,10 @@ class ModelTypeHelpersTest extends TestCase
 
         $assoc = 'assoc';
 
-        $foo->SetAssociationNamespace($prop, $assoc);
+        $foo->setAssociationNamespace($prop, $assoc);
 
         $expected = 'assoc';
-        $actual   = $foo->GetAssociationNamespace($prop);
+        $actual   = $foo->getAssociationNamespace($prop);
         $this->assertEquals($expected, $actual);
     }
 
@@ -165,10 +165,10 @@ class ModelTypeHelpersTest extends TestCase
 
         $assoc = 'assoc';
 
-        $foo->SetAssociationSetName($set, $prop, $assoc);
+        $foo->setAssociationSetName($set, $prop, $assoc);
 
         $expected = 'assoc';
-        $actual   = $foo->GetAssociationSetName($set, $prop);
+        $actual   = $foo->getAssociationSetName($set, $prop);
         $this->assertEquals($expected, $actual);
     }
 
@@ -179,7 +179,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = [];
-        $actual   = $foo->FindAllDerivedTypes($baseType);
+        $actual   = $foo->findAllDerivedTypes($baseType);
         $this->assertEquals($expected, $actual);
     }
 
@@ -190,7 +190,7 @@ class ModelTypeHelpersTest extends TestCase
         $foo = new EdmModel();
 
         $expected = [];
-        $actual   = $foo->FindAllDerivedTypes($baseType);
+        $actual   = $foo->findAllDerivedTypes($baseType);
         $this->assertEquals($expected, $actual);
     }
 
@@ -213,14 +213,14 @@ class ModelTypeHelpersTest extends TestCase
             ->andReturn(SchemaElementKind::EntityContainer());
 
         $foo = new EdmModel();
-        $foo->AddElement($baseType);
-        $foo->AddElement($derived);
+        $foo->addElement($baseType);
+        $foo->addElement($derived);
 
         $res = $foo->findDirectlyDerivedTypes($baseType);
         $this->assertEquals(0, count($res));
 
         $expected = [];
-        $actual   = $foo->FindAllDerivedTypes($derived);
+        $actual   = $foo->findAllDerivedTypes($derived);
         $this->assertEquals($expected, $actual);
     }
 }

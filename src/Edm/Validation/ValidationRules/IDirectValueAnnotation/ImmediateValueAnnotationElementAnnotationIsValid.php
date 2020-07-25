@@ -38,12 +38,12 @@ class ImmediateValueAnnotationElementAnnotationIsValid extends DirectValueAnnota
                     ) ?? false
             )
             ) {
-                if (EdmUtil::IsNullOrWhiteSpaceInternal($annotation->getNamespaceUri()) ||
-                    EdmUtil::IsNullOrWhiteSpaceInternal($annotation->getName())
+                if (EdmUtil::isNullOrWhiteSpaceInternal($annotation->getNamespaceUri()) ||
+                    EdmUtil::isNullOrWhiteSpaceInternal($annotation->getName())
                 ) {
-                    EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
-                    $context->AddError(
-                        $annotation->Location(),
+                    EdmUtil::checkArgumentNull($annotation->location(), 'annotation->Location');
+                    $context->addError(
+                        $annotation->location(),
                         EdmErrorCode::InvalidElementAnnotation(),
                         StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationMismatchedTerm()
                     );

@@ -25,7 +25,7 @@ interface IFunctionImport extends IFunctionBase, IEntityContainerElement, IFunct
     public function isSideEffecting(): bool;
 
     /**
-     * @return bool gets a value indicating whether this functon import can be composed inside expressions
+     * @return bool gets a value indicating whether this function import can be composed inside expressions
      */
     public function isComposable(): bool;
 

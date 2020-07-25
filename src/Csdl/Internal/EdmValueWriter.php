@@ -27,7 +27,7 @@ abstract class EdmValueWriter
 {
     private static $Hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
 
-    public static function PrimitiveValueAsXml(IPrimitiveValue $v): string
+    public static function primitiveValueAsXml(IPrimitiveValue $v): string
     {
         if (method_exists($v, 'getValue')) {
             EdmUtil::checkArgumentNull($v->getValue(), 'v->getValue');
@@ -36,46 +36,46 @@ abstract class EdmValueWriter
         switch ($v->getValueKind()) {
             case ValueKind::Boolean():
                 assert($v instanceof IBooleanValue);
-                return self::BooleanAsXml($v->getValue());
+                return self::booleanAsXml($v->getValue());
             case ValueKind::Integer():
                 assert($v instanceof IIntegerValue);
-                return self::LongAsXml($v->getValue());
+                return self::longAsXml($v->getValue());
             case ValueKind::Floating():
                 assert($v instanceof IFloatingValue);
-                return self::FloatAsXml($v->getValue());
+                return self::floatAsXml($v->getValue());
             case ValueKind::Guid():
                 assert($v instanceof IGuidValue);
-                return self::GuidAsXml($v->getValue());
+                return self::guidAsXml($v->getValue());
             case ValueKind::Binary():
                 assert($v instanceof IBinaryValue);
-                return self::BinaryAsXml(/** @scrutinizer ignore-type */$v->getValue());
+                return self::binaryAsXml(/** @scrutinizer ignore-type */$v->getValue());
             case ValueKind::Decimal():
                 assert($v instanceof IDecimalValue);
-                return self::DecimalAsXml($v->getValue());
+                return self::decimalAsXml($v->getValue());
             case ValueKind::String():
                 assert($v instanceof IStringValue);
-                return self::StringAsXml(/** @scrutinizer ignore-type */$v->getValue());
+                return self::stringAsXml(/** @scrutinizer ignore-type */$v->getValue());
             case ValueKind::DateTime():
                 assert($v instanceof IDateTimeValue);
-                return self::DateTimeAsXml($v->getValue());
+                return self::dateTimeAsXml($v->getValue());
             case ValueKind::DateTimeOffset():
                 assert($v instanceof IDateTimeOffsetValue);
-                return self::DateTimeOffsetAsXml($v->getValue());
+                return self::dateTimeOffsetAsXml($v->getValue());
             case ValueKind::Time():
                 assert($v instanceof ITimeValue);
-                return self::TimeAsXml($v->getValue());
+                return self::timeAsXml($v->getValue());
             default:
                 /* @noinspection PhpUnhandledExceptionInspection */
                 throw new NotSupportedException(StringConst::ValueWriter_NonSerializableValue($v->getValueKind()->getKey()));
         }
     }
 
-    public static function StringAsXml(string $s): string
+    public static function stringAsXml(string $s): string
     {
         return $s;
     }
 
-    public static function BinaryAsXml(array $binary): string
+    public static function binaryAsXml(array $binary): string
     {
         $chars       = [];
         $numElements = count($binary);
@@ -87,49 +87,49 @@ abstract class EdmValueWriter
         return implode('', $chars);
     }
 
-    public static function BooleanAsXml(bool $b): string
+    public static function booleanAsXml(bool $b): string
     {
         return XmlConvert::boolToString($b);
     }
 
 
-    public static function IntAsXml(int $i): string
+    public static function intAsXml(int $i): string
     {
         return XmlConvert::intToString($i);
     }
 
 
-    public static function LongAsXml(int $l): string
+    public static function longAsXml(int $l): string
     {
         return XmlConvert::intToString($l);
     }
 
-    public static function FloatAsXml(float $f): string
+    public static function floatAsXml(float $f): string
     {
         return XmlConvert::floatToString($f) . 'F';
     }
 
-    public static function DecimalAsXml(float $d): string
+    public static function decimalAsXml(float $d): string
     {
         return XmlConvert::floatToString($d) . 'M';
     }
 
-    public static function DateTimeAsXml(DateTime $d): string
+    public static function dateTimeAsXml(DateTime $d): string
     {
         return $d->format('Y-m-d\TH:i:s.u') . '000';
     }
 
-    public static function TimeAsXml(DateTime $d): string
+    public static function timeAsXml(DateTime $d): string
     {
         return $d->format("h\:i\:s\.u");
     }
 
-    public static function DateTimeOffsetAsXml(DateTime $d): string
+    public static function dateTimeOffsetAsXml(DateTime $d): string
     {
         return $d->format('Y-m-d\TH:i:s.v\ZP');
     }
 
-    public static function GuidAsXml(string $g): string
+    public static function guidAsXml(string $g): string
     {
         return $g;
     }

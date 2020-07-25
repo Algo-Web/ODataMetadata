@@ -30,19 +30,19 @@ class StructuralPropertyInvalidPropertyTypeConcurrencyMode extends StructuralPro
         EdmUtil::checkArgumentNull($propType, 'property->getType');
         $def      = $propType->getDefinition();
         EdmUtil::checkArgumentNull($def, 'property->getType->getDefinition');
-        $loc      = $propType->Location();
+        $loc      = $propType->location();
         EdmUtil::checkArgumentNull($loc, 'property->Location');
 
-        $key      = strval($propType->TypeKind()->getKey());
+        $key      = strval($propType->typeKind()->getKey());
         if ($property->getConcurrencyMode()->isFixed() &&
-            !$propType->IsPrimitive() &&
+            !$propType->isPrimitive() &&
             !$context->checkIsBad($def)) {
-            $context->AddError(
+            $context->addError(
                 $loc,
                 EdmErrorCode::InvalidPropertyType(),
                 StringConst::EdmModel_Validator_Semantic_InvalidPropertyTypeConcurrencyMode(
                     (
-                        $propType->IsCollection() ?
+                        $propType->isCollection() ?
                         EdmConstants::Type_Collection :
                         $key
                     )

@@ -27,118 +27,118 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 trait ProcessTypeReferences
 {
-    protected function ProcessComplexTypeReference(IComplexTypeReference $reference): void
+    protected function processComplexTypeReference(IComplexTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessStructuredTypeReference($reference);
+        $this->processStructuredTypeReference($reference);
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessEntityTypeReference(IEntityTypeReference $reference): void
+    protected function processEntityTypeReference(IEntityTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessStructuredTypeReference($reference);
+        $this->processStructuredTypeReference($reference);
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessEntityReferenceTypeReference(IEntityReferenceTypeReference $reference): void
+    protected function processEntityReferenceTypeReference(IEntityReferenceTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessTypeReference($reference);
-        $this->ProcessEntityReferenceType($reference->EntityReferenceDefinition());
+        $this->processTypeReference($reference);
+        $this->processEntityReferenceType($reference->entityReferenceDefinition());
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessRowTypeReference(IRowTypeReference $reference): void
+    protected function processRowTypeReference(IRowTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessStructuredTypeReference($reference);
-        $this->ProcessRowType($reference->RowDefinition());
+        $this->processStructuredTypeReference($reference);
+        $this->processRowType($reference->rowDefinition());
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessCollectionTypeReference(ICollectionTypeReference $reference): void
+    protected function processCollectionTypeReference(ICollectionTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessTypeReference($reference);
-        $this->ProcessCollectionType($reference->CollectionDefinition());
+        $this->processTypeReference($reference);
+        $this->processCollectionType($reference->collectionDefinition());
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessEnumTypeReference(IEnumTypeReference $reference): void
+    protected function processEnumTypeReference(IEnumTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessTypeReference($reference);
+        $this->processTypeReference($reference);
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessBinaryTypeReference(IBinaryTypeReference $reference): void
+    protected function processBinaryTypeReference(IBinaryTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessPrimitiveTypeReference($reference);
+        $this->processPrimitiveTypeReference($reference);
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessDecimalTypeReference(IDecimalTypeReference $reference): void
+    protected function processDecimalTypeReference(IDecimalTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessPrimitiveTypeReference($reference);
+        $this->processPrimitiveTypeReference($reference);
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessSpatialTypeReference(ISpatialTypeReference $reference): void
+    protected function processSpatialTypeReference(ISpatialTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessPrimitiveTypeReference($reference);
+        $this->processPrimitiveTypeReference($reference);
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessStringTypeReference(IStringTypeReference $reference): void
+    protected function processStringTypeReference(IStringTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessPrimitiveTypeReference($reference);
+        $this->processPrimitiveTypeReference($reference);
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessTemporalTypeReference(ITemporalTypeReference $reference): void
+    protected function processTemporalTypeReference(ITemporalTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessPrimitiveTypeReference($reference);
+        $this->processPrimitiveTypeReference($reference);
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessPrimitiveTypeReference(IPrimitiveTypeReference $reference): void
+    protected function processPrimitiveTypeReference(IPrimitiveTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessTypeReference($reference);
+        $this->processTypeReference($reference);
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessStructuredTypeReference(IStructuredTypeReference $reference): void
+    protected function processStructuredTypeReference(IStructuredTypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessTypeReference($reference);
+        $this->processTypeReference($reference);
         $this->endElement($reference, __METHOD__);
     }
 
-    protected function ProcessTypeReference(ITypeReference $reference): void
+    protected function processTypeReference(ITypeReference $reference): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
-        $this->ProcessElement($reference);
+        $this->processElement($reference);
         $this->endElement($reference, __METHOD__);
     }
 }

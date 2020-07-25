@@ -23,13 +23,13 @@ class EntitySetTypeHasNoKeys extends EntitySetRule
     {
         assert($entitySet instanceof IEntitySet);
         if ((
-            $entitySet->getElementType()->Key() === null ||
-                count($entitySet->getElementType()->Key()) !== 0
+            $entitySet->getElementType()->key() === null ||
+                count($entitySet->getElementType()->key()) !== 0
         ) &&
             !$context->checkIsBad($entitySet->getElementType())) {
-            EdmUtil::checkArgumentNull($entitySet->Location(), 'entitySet->Location');
-            $context->AddError(
-                $entitySet->Location(),
+            EdmUtil::checkArgumentNull($entitySet->location(), 'entitySet->Location');
+            $context->addError(
+                $entitySet->location(),
                 EdmErrorCode::EntitySetTypeHasNoKeys(),
                 StringConst::EdmModel_Validator_Semantic_EntitySetTypeHasNoKeys(
                     $entitySet->getName(),

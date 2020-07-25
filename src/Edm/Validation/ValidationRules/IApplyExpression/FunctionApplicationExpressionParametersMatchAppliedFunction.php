@@ -29,13 +29,13 @@ class FunctionApplicationExpressionParametersMatchAppliedFunction extends ApplyE
         if (null !== $functionReference->getReferencedFunction() &&
             !$context->checkIsBad($functionReference->getReferencedFunction())) {
             if (count($functionReference->getReferencedFunction()->getParameters()) != count($expression->getArguments())) {
-                EdmUtil::checkArgumentNull($expression->Location(), 'expression->Location');
-                $context->AddError(
-                    $expression->Location(),
+                EdmUtil::checkArgumentNull($expression->location(), 'expression->Location');
+                $context->addError(
+                    $expression->location(),
                     EdmErrorCode::IncorrectNumberOfArguments(),
                     StringConst::EdmModel_Validator_Semantic_IncorrectNumberOfArguments(
                         count($expression->getArguments()),
-                        $functionReference->getReferencedFunction()->FullName(),
+                        $functionReference->getReferencedFunction()->fullName(),
                         count($functionReference->getReferencedFunction()->getParameters())
                     )
                 );
@@ -53,7 +53,7 @@ class FunctionApplicationExpressionParametersMatchAppliedFunction extends ApplyE
                     $recursiveErrors
                 )) {
                     foreach ($recursiveErrors as $error) {
-                        $context->AddRawError($error);
+                        $context->addRawError($error);
                     }
                 }
                 next($arguments);

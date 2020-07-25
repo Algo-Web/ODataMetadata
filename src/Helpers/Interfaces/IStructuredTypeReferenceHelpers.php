@@ -19,42 +19,42 @@ interface IStructuredTypeReferenceHelpers
      *
      * @return IStructuredType|null the definition of this structured type reference
      */
-    public function StructuredDefinition(): ?IStructuredType;
+    public function structuredDefinition(): ?IStructuredType;
 
     /**
      * Returns true if the definition of this reference is abstract.
      *
      * @return bool If the definition of this reference is abstract
      */
-    public function IsAbstract(): bool;
+    public function isAbstract(): bool;
 
     /**
      * Returns true if the definition of this reference is open.
      *
      * @return bool If the definition of this reference is open
      */
-    public function IsOpen(): bool;
+    public function isOpen(): bool;
 
     /**
      * Returns the base type of the definition of this reference.
      *
      * @return IStructuredType|null the base type of the definition of this reference
      */
-    public function BaseType(): ?IStructuredType;
+    public function baseType(): ?IStructuredType;
 
     /**
      * Gets all structural properties declared in the definition of this reference.
      *
      * @return IStructuralProperty[] all structural properties declared in the definition of this reference
      */
-    public function DeclaredStructuralProperties(): array;
+    public function declaredStructuralProperties(): array;
 
     /**
      * Gets all structural properties declared in the definition of this reference and all its base types.
      *
      * @return IStructuralProperty[] all structural properties declared in the definition of this reference and all its base types
      */
-    public function StructuralProperties(): array;
+    public function structuralProperties(): array;
 
     /**
      * Finds a property from the definition of this reference.
@@ -62,5 +62,5 @@ interface IStructuredTypeReferenceHelpers
      * @param  string         $name name of the property to find
      * @return IProperty|null The requested property if it exists. Otherwise, null.
      */
-    public function FindProperty(string $name): ?IProperty;
+    public function findProperty(string $name): ?IProperty;
 }

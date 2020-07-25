@@ -21,7 +21,7 @@ trait EntityContainerHelpers
      *
      * @return IEntitySet[] entity sets belonging to an IEdmEntityContainer
      */
-    public function EntitySets(): array
+    public function entitySets(): array
     {
         return array_filter($this->getElements(), function (IEntityContainerElement $item) {
             return $item instanceof IEntitySet;
@@ -33,7 +33,7 @@ trait EntityContainerHelpers
      *
      * @return IFunctionImport[] function imports belonging to an IEdmEntityContainer
      */
-    public function FunctionImports(): array
+    public function functionImports(): array
     {
         return array_filter($this->getElements(), function (IEntityContainerElement $item) {
             return $item instanceof IFunctionImport;

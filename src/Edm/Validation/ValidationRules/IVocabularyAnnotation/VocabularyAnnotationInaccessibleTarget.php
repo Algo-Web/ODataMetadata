@@ -37,11 +37,11 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         $foundTarget = $this->findTarget($context, $target);
 
         if (!$foundTarget) {
-            EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
-            $context->AddError(
-                $annotation->Location(),
+            EdmUtil::checkArgumentNull($annotation->location(), 'annotation->Location');
+            $context->addError(
+                $annotation->location(),
                 EdmErrorCode::BadUnresolvedTarget(),
-                StringConst::EdmModel_Validator_Semantic_InaccessibleTarget(EdmUtil::FullyQualifiedName($target))
+                StringConst::EdmModel_Validator_Semantic_InaccessibleTarget(EdmUtil::fullyQualifiedName($target))
             );
         }
     }
@@ -58,7 +58,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         $foundTarget     = false;
         $entityContainer = $target;
         if ($entityContainer instanceof IEntityContainer) {
-            $foundTarget = ($context->getModel()->findEntityContainer($entityContainer->FullName()) != null);
+            $foundTarget = ($context->getModel()->findEntityContainer($entityContainer->fullName()) != null);
             return $foundTarget;
         }
         $entitySet = $target;
@@ -73,17 +73,17 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         }
         $schemaType = $target;
         if ($schemaType instanceof ISchemaType) {
-            $foundTarget = ($context->getModel()->FindType($schemaType->FullName()) != null);
+            $foundTarget = ($context->getModel()->findType($schemaType->fullName()) != null);
             return $foundTarget;
         }
         $term = $target;
         if ($term instanceof ITerm) {
-            $foundTarget = ($context->getModel()->FindValueTerm($term->FullName()) != null);
+            $foundTarget = ($context->getModel()->findValueTerm($term->fullName()) != null);
             return $foundTarget;
         }
         $function = $target;
         if ($function instanceof IFunction) {
-            $foundTarget = count($context->getModel()->FindFunctions($function->FullName())) > 0;
+            $foundTarget = count($context->getModel()->findFunctions($function->fullName())) > 0;
             return $foundTarget;
         }
         $functionImport = $target;
@@ -97,10 +97,10 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         if ($typeProperty instanceof IProperty) {
             $declaringType = $typeProperty->getDeclaringType();
             assert($declaringType instanceof ISchemaType);
-            $declaringTypeFullName = EdmUtil::FullyQualifiedName($declaringType);
+            $declaringTypeFullName = EdmUtil::fullyQualifiedName($declaringType);
             EdmUtil::checkArgumentNull($declaringTypeFullName, 'declaringTypeFullName');
             EdmUtil::checkArgumentNull($typeProperty->getName(), 'typeProperty->getName');
-            $modelType = $context->getModel()->FindType($declaringTypeFullName);
+            $modelType = $context->getModel()->findType($declaringTypeFullName);
             if ($modelType !== null && $modelType instanceof IStructuredType) {
                 // If we can find a structured type with this name in the model check if it
                 // has a property with this name
@@ -116,7 +116,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
             $declaringFunction = $functionParameter->getDeclaringFunction();
             switch (true) {
                 case $declaringFunction instanceof IFunction:
-                    $functions = $context->getModel()->FindFunctions($declaringFunction->FullName());
+                    $functions = $context->getModel()->findFunctions($declaringFunction->fullName());
                     break;
                 case $declaringFunction instanceof IFunctionImport:
                     $container = $declaringFunction->getContainer();

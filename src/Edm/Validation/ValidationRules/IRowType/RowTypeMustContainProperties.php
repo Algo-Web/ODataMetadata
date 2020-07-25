@@ -22,10 +22,10 @@ class RowTypeMustContainProperties extends RowTypeRule
     public function __invoke(ValidationContext $context, ?IEdmElement $rowType)
     {
         assert($rowType instanceof IRowType);
-        if (count($rowType->Properties()) === 0) {
-            EdmUtil::checkArgumentNull($rowType->Location(), 'rowType->Location');
-            $context->AddError(
-                $rowType->Location(),
+        if (count($rowType->properties()) === 0) {
+            EdmUtil::checkArgumentNull($rowType->location(), 'rowType->Location');
+            $context->addError(
+                $rowType->location(),
                 EdmErrorCode::RowTypeMustHaveProperties(),
                 StringConst::EdmModel_Validator_Semantic_RowTypeMustHaveProperties()
             );

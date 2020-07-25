@@ -52,6 +52,6 @@ abstract class EdmTypeReference extends EdmElement implements ITypeReference
 
     public function __toString(): string
     {
-        return ToTraceString::ToTraceString($this);
+        return ToTraceString::toTraceString($this);
     }
 }

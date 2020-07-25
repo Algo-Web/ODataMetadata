@@ -146,7 +146,7 @@ abstract class ExpressionTypeChecker
         EdmUtil::checkArgumentNull($expression, 'expression');
 
         // If we don't have a type to assert this passes vacuously.
-        if (null === $type || $type->TypeKind()->isNone()) {
+        if (null === $type || $type->typeKind()->isNone()) {
             $discoveredErrors = [];
             return true;
         }
@@ -166,22 +166,22 @@ abstract class ExpressionTypeChecker
                 $primitiveValue = $expression;
                 assert($primitiveValue instanceof IPrimitiveValue);
                 if (null !== $primitiveValue->getType()) {
-                    return self::TestTypeReferenceMatch(
+                    return self::testTypeReferenceMatch(
                         $primitiveValue->getType(),
                         $type,
-                        $expression->/* @scrutinizer ignore-call */ Location(),
+                        $expression->/* @scrutinizer ignore-call */ location(),
                         $matchExactly,
                         $discoveredErrors
                     );
                 }
-                return self::TryAssertPrimitiveAsType($primitiveValue, $type, $discoveredErrors);
+                return self::tryAssertPrimitiveAsType($primitiveValue, $type, $discoveredErrors);
             case ExpressionKind::Null():
                 assert($expression instanceof INullExpression);
-                return self::TryAssertNullAsType($expression, $type, $discoveredErrors);
+                return self::tryAssertNullAsType($expression, $type, $discoveredErrors);
             case ExpressionKind::Path():
                 assert($expression instanceof IPathExpression);
                 EdmUtil::checkArgumentNull($context, 'context');
-                return self::TryAssertPathAsType($expression, $type, $context, $matchExactly, $discoveredErrors);
+                return self::tryAssertPathAsType($expression, $type, $context, $matchExactly, $discoveredErrors);
             case ExpressionKind::FunctionApplication():
                 /** @var IApplyExpression $applyExpression */
                 $applyExpression = $expression;
@@ -190,11 +190,11 @@ abstract class ExpressionTypeChecker
                     $function = $applyExpression->getAppliedFunction();
                     if (null !== $function && $function instanceof IFunctionBase) {
                         EdmUtil::checkArgumentNull($function->getReturnType(), 'function->getReturnType');
-                        EdmUtil::checkArgumentNull($applyExpression->Location(), 'expression->Location');
-                        return self::TestTypeReferenceMatch(
+                        EdmUtil::checkArgumentNull($applyExpression->location(), 'expression->Location');
+                        return self::testTypeReferenceMatch(
                             $function->getReturnType(),
                             $type,
-                            $applyExpression->Location(),
+                            $applyExpression->location(),
                             $matchExactly,
                             $discoveredErrors
                         );
@@ -206,15 +206,15 @@ abstract class ExpressionTypeChecker
                 return true;
             case ExpressionKind::If():
                 assert($expression instanceof IIfExpression);
-                return self::TryAssertIfAsType($expression, $type, $context, $matchExactly, $discoveredErrors);
+                return self::tryAssertIfAsType($expression, $type, $context, $matchExactly, $discoveredErrors);
             case ExpressionKind::IsType():
                 $coreModel = EdmCoreModel::getInstance();
-                $boolean   = $coreModel->GetBoolean(false);
-                EdmUtil::checkArgumentNull($expression->Location(), 'expression->Location');
-                return self::TestTypeReferenceMatch(
+                $boolean   = $coreModel->getBoolean(false);
+                EdmUtil::checkArgumentNull($expression->location(), 'expression->Location');
+                return self::testTypeReferenceMatch(
                     $boolean,
                     $type,
-                    $expression->Location(),
+                    $expression->location(),
                     $matchExactly,
                     $discoveredErrors
                 );
@@ -223,16 +223,16 @@ abstract class ExpressionTypeChecker
                 $recordExpression = $expression;
                 assert($recordExpression instanceof IRecordExpression);
                 if (null !== $recordExpression->getDeclaredType()) {
-                    return self::TestTypeReferenceMatch(
+                    return self::testTypeReferenceMatch(
                         $recordExpression->getDeclaredType(),
                         $type,
-                        $expression->Location(),
+                        $expression->location(),
                         $matchExactly,
                         $discoveredErrors
                     );
                 }
 
-                return self::TryAssertRecordAsType(
+                return self::tryAssertRecordAsType(
                     $recordExpression,
                     $type,
                     $context,
@@ -245,16 +245,16 @@ abstract class ExpressionTypeChecker
                 EdmUtil::checkArgumentNull($context, 'context');
                 assert($collectionExpression instanceof ICollectionExpression);
                 if (null !== $collectionExpression->getDeclaredType()) {
-                    return self::TestTypeReferenceMatch(
+                    return self::testTypeReferenceMatch(
                         $collectionExpression->getDeclaredType(),
                         $type,
-                        $expression->Location(),
+                        $expression->location(),
                         $matchExactly,
                         $discoveredErrors
                     );
                 }
 
-                return self::TryAssertCollectionAsType(
+                return self::tryAssertCollectionAsType(
                     $collectionExpression,
                     $type,
                     $context,
@@ -263,7 +263,7 @@ abstract class ExpressionTypeChecker
                 );
             case ExpressionKind::Labeled():
                 assert($expression instanceof ILabeledExpression);
-                return self::TryAssertType(
+                return self::tryAssertType(
                     $expression->getExpression(),
                     $type,
                     $context,
@@ -272,16 +272,16 @@ abstract class ExpressionTypeChecker
                 );
             case ExpressionKind::AssertType():
                 assert($expression instanceof IAssertTypeExpression);
-                return self::TestTypeReferenceMatch(
+                return self::testTypeReferenceMatch(
                     $expression->getType(),
                     $type,
-                    $expression->Location(),
+                    $expression->location(),
                     $matchExactly,
                     $discoveredErrors
                 );
             case ExpressionKind::LabeledExpressionReference():
                 assert($expression instanceof ILabeledExpressionReferenceExpression);
-                return self::TryAssertType(
+                return self::tryAssertType(
                     $expression->getReferencedLabeledExpression(),
                     $type,
                     null,
@@ -291,7 +291,7 @@ abstract class ExpressionTypeChecker
             default:
                 $discoveredErrors = [
                     new EdmError(
-                        $expression->Location(),
+                        $expression->location(),
                         EdmErrorCode::ExpressionNotValidForTheAssertedType(),
                         StringConst::EdmModel_Validator_Semantic_ExpressionNotValidForTheAssertedType()
                     )
@@ -300,15 +300,15 @@ abstract class ExpressionTypeChecker
         }
     }
 
-    public static function TryAssertPrimitiveAsType(
+    public static function tryAssertPrimitiveAsType(
         IPrimitiveValue $expression,
         ITypeReference $type,
         iterable &$discoveredErrors
     ): bool {
-        if (!$type->IsPrimitive()) {
+        if (!$type->isPrimitive()) {
             $discoveredErrors =  [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::PrimitiveConstantExpressionNotValidForNonPrimitiveType(),
                     StringConst::EdmModel_Validator_Semantic_PrimitiveConstantExpressionNotValidForNonPrimitiveType()
                 )
@@ -319,38 +319,38 @@ abstract class ExpressionTypeChecker
         switch ($expression->getValueKind()) {
             case ValueKind::Binary():
                 assert($expression instanceof IBinaryConstantExpression);
-                return self::TryAssertBinaryConstantAsType($expression, $type, $discoveredErrors);
+                return self::tryAssertBinaryConstantAsType($expression, $type, $discoveredErrors);
             case ValueKind::Boolean():
                 assert($expression instanceof IBooleanConstantExpression);
-                return self::TryAssertBooleanConstantAsType($expression, $type, $discoveredErrors);
+                return self::tryAssertBooleanConstantAsType($expression, $type, $discoveredErrors);
             case ValueKind::DateTime():
                 assert($expression instanceof IDateTimeConstantExpression);
-                return self::TryAssertDateTimeConstantAsType($expression, $type, $discoveredErrors);
+                return self::tryAssertDateTimeConstantAsType($expression, $type, $discoveredErrors);
             case ValueKind::DateTimeOffset():
                 assert($expression instanceof IDateTimeOffsetConstantExpression);
-                return self::TryAssertDateTimeOffsetConstantAsType($expression, $type, $discoveredErrors);
+                return self::tryAssertDateTimeOffsetConstantAsType($expression, $type, $discoveredErrors);
             case ValueKind::Decimal():
                 assert($expression instanceof IDecimalConstantExpression);
-                return self::TryAssertDecimalConstantAsType($expression, $type, $discoveredErrors);
+                return self::tryAssertDecimalConstantAsType($expression, $type, $discoveredErrors);
             case ValueKind::Floating():
                 assert($expression instanceof IFloatingConstantExpression);
-                return self::TryAssertFloatingConstantAsType($expression, $type, $discoveredErrors);
+                return self::tryAssertFloatingConstantAsType($expression, $type, $discoveredErrors);
             case ValueKind::Guid():
                 assert($expression instanceof IGuidConstantExpression);
-                return self::TryAssertGuidConstantAsType($expression, $type, $discoveredErrors);
+                return self::tryAssertGuidConstantAsType($expression, $type, $discoveredErrors);
             case ValueKind::Integer():
                 assert($expression instanceof IIntegerConstantExpression);
-                return self::TryAssertIntegerConstantAsType($expression, $type, $discoveredErrors);
+                return self::tryAssertIntegerConstantAsType($expression, $type, $discoveredErrors);
             case ValueKind::String():
                 assert($expression instanceof IStringConstantExpression);
-                return self::TryAssertStringConstantAsType($expression, $type, $discoveredErrors);
+                return self::tryAssertStringConstantAsType($expression, $type, $discoveredErrors);
             case ValueKind::Time():
                 assert($expression instanceof ITimeConstantExpression);
-                return self::TryAssertTimeConstantAsType($expression, $type, $discoveredErrors);
+                return self::tryAssertTimeConstantAsType($expression, $type, $discoveredErrors);
             default:
                 $discoveredErrors = [
                     new EdmError(
-                        $expression->Location(),
+                        $expression->location(),
                         EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                         StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                     )
@@ -359,7 +359,7 @@ abstract class ExpressionTypeChecker
         }
     }
 
-    protected static function TryAssertNullAsType(
+    protected static function tryAssertNullAsType(
         INullExpression $expression,
         ITypeReference $type,
         iterable &$discoveredErrors
@@ -367,7 +367,7 @@ abstract class ExpressionTypeChecker
         if (!$type->getNullable()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::NullCannotBeAssertedToBeANonNullableType(),
                     StringConst::EdmModel_Validator_Semantic_NullCannotBeAssertedToBeANonNullableType()
                 )
@@ -379,7 +379,7 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    protected static function TryAssertPathAsType(
+    protected static function tryAssertPathAsType(
         IPathExpression $expression,
         ITypeReference $type,
         IType $context,
@@ -390,7 +390,7 @@ abstract class ExpressionTypeChecker
         assert($structuredContext instanceof IStructuredType);
 
         $result = $context;
-        $loc    = $expression->Location();
+        $loc    = $expression->location();
         EdmUtil::checkArgumentNull($loc, 'expression->Location');
         EdmUtil::checkArgumentNull($type->getDefinition(), 'type->getDefinition');
 
@@ -417,7 +417,7 @@ abstract class ExpressionTypeChecker
             }
         }
 
-        return self::TestTypeMatch(
+        return self::testTypeMatch(
             $result,
             $type->getDefinition(),
             $loc,
@@ -426,7 +426,7 @@ abstract class ExpressionTypeChecker
         );
     }
 
-    protected static function TryAssertIfAsType(
+    protected static function tryAssertIfAsType(
         IIfExpression $expression,
         ITypeReference $type,
         IType $context,
@@ -435,8 +435,8 @@ abstract class ExpressionTypeChecker
     ): bool {
         $ifTrueErrors  = [];
         $ifFalseErrors = [];
-        $success       = self::TryAssertType($expression->getTrueExpression(), $type, $context, $matchExactly, $ifTrueErrors);
-        $success &= self::TryAssertType(
+        $success       = self::tryAssertType($expression->getTrueExpression(), $type, $context, $matchExactly, $ifTrueErrors);
+        $success &= self::tryAssertType(
             $expression->getFalseExpression(),
             $type,
             $context,
@@ -452,7 +452,7 @@ abstract class ExpressionTypeChecker
         return boolval($success);
     }
 
-    public static function TryAssertRecordAsType(
+    public static function tryAssertRecordAsType(
         IRecordExpression $expression,
         ITypeReference $type,
         ?IType $context,
@@ -462,10 +462,10 @@ abstract class ExpressionTypeChecker
         EdmUtil::checkArgumentNull($expression, 'expression');
         EdmUtil::checkArgumentNull($type, 'type');
 
-        if (!$type->IsStructured()) {
+        if (!$type->isStructured()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::RecordExpressionNotValidForNonStructuredType(),
                     StringConst::EdmModel_Validator_Semantic_RecordExpressionNotValidForNonStructuredType()
                 )
@@ -476,10 +476,10 @@ abstract class ExpressionTypeChecker
         $foundProperties = new HashSetInternal();
         $errors          = [];
 
-        $structuredType = $type->AsStructured();
+        $structuredType = $type->asStructured();
         $definition     = $structuredType->getDefinition();
         assert($definition instanceof IStructuredType);
-        foreach ($definition->Properties() as $typeProperty) {
+        foreach ($definition->properties() as $typeProperty) {
             $expressionProperty = null;
             foreach ($expression->getProperties() as $p) {
                 if ($p->getName() === $typeProperty->getName()) {
@@ -489,13 +489,13 @@ abstract class ExpressionTypeChecker
             }
             if (null === $expressionProperty) {
                 $errors[] = new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::RecordExpressionMissingRequiredProperty(),
                     StringConst::EdmModel_Validator_Semantic_RecordExpressionMissingProperty($typeProperty->getName())
                 );
             } else {
                 $recursiveErrors = [];
-                if (!self::TryAssertType(
+                if (!self::tryAssertType(
                     $expressionProperty->getValue(),
                     $typeProperty->getType(),
                     $context,
@@ -516,7 +516,7 @@ abstract class ExpressionTypeChecker
             foreach ($expression->getProperties() as $property) {
                 if (!$foundProperties->contains($property->getName())) {
                     $errors[] = new EdmError(
-                        $expression->Location(),
+                        $expression->location(),
                         EdmErrorCode::RecordExpressionHasExtraProperties(),
                         StringConst::EdmModel_Validator_Semantic_RecordExpressionHasExtraProperties(
                             $property->getName()
@@ -535,17 +535,17 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    public static function TryAssertCollectionAsType(
+    public static function tryAssertCollectionAsType(
         ICollectionExpression $expression,
         ITypeReference $type,
         IType $context,
         bool $matchExactly,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsCollection()) {
+        if (!$type->isCollection()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::CollectionExpressionNotValidForNonCollectionType(),
                     StringConst::EdmModel_Validator_Semantic_CollectionExpressionNotValidForNonCollectionType()
                 )
@@ -553,12 +553,12 @@ abstract class ExpressionTypeChecker
             return false;
         }
 
-        $collectionElementType = $type->AsCollection()->ElementType();
+        $collectionElementType = $type->asCollection()->elementType();
         $success               = true;
         $errors                = [];
         $recursiveErrors       = [];
         foreach ($expression->getElements() as $element) {
-            $result = self::TryAssertType(
+            $result = self::tryAssertType(
                 $element,
                 $collectionElementType,
                 $context,
@@ -573,15 +573,15 @@ abstract class ExpressionTypeChecker
         return boolval($success);
     }
 
-    private static function TryAssertGuidConstantAsType(
+    private static function tryAssertGuidConstantAsType(
         IGuidConstantExpression $expression,
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsGuid()) {
+        if (!$type->isGuid()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                     StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                 )
@@ -593,15 +593,15 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertFloatingConstantAsType(
+    private static function tryAssertFloatingConstantAsType(
         IFloatingConstantExpression $expression,
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsFloating()) {
+        if (!$type->isFloating()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                     StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                 )
@@ -613,15 +613,15 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertDecimalConstantAsType(
+    private static function tryAssertDecimalConstantAsType(
         IDecimalConstantExpression $expression,
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsDecimal()) {
+        if (!$type->isDecimal()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                     StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                 )
@@ -633,15 +633,15 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertDateTimeOffsetConstantAsType(
+    private static function tryAssertDateTimeOffsetConstantAsType(
         IDateTimeOffsetConstantExpression $expression,
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsDateTimeOffset()) {
+        if (!$type->isDateTimeOffset()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                     StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                 )
@@ -653,15 +653,15 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertDateTimeConstantAsType(
+    private static function tryAssertDateTimeConstantAsType(
         IDateTimeConstantExpression $expression,
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsDateTime()) {
+        if (!$type->isDateTime()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                     StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                 )
@@ -673,15 +673,15 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertTimeConstantAsType(
+    private static function tryAssertTimeConstantAsType(
         ITimeConstantExpression $expression,
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsTime()) {
+        if (!$type->isTime()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                     StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                 )
@@ -693,15 +693,15 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertBooleanConstantAsType(
+    private static function tryAssertBooleanConstantAsType(
         IBooleanConstantExpression $expression,
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsBoolean()) {
+        if (!$type->isBoolean()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                     StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                 )
@@ -713,15 +713,15 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertStringConstantAsType(
+    private static function tryAssertStringConstantAsType(
         IStringConstantExpression $expression,
         ITypeReference $type,
         &$discoveredErrors
     ) {
-        if (!$type->IsString()) {
+        if (!$type->isString()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                     StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                 )
@@ -730,11 +730,11 @@ abstract class ExpressionTypeChecker
         }
 
         EdmUtil::checkArgumentNull($expression->getValue(), 'expression->getValue');
-        $stringType = $type->AsString();
+        $stringType = $type->asString();
         if (null !== $stringType->getMaxLength() && mb_strlen($expression->getValue()) > $stringType->getMaxLength()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::StringConstantLengthOutOfRange(),
                     StringConst::EdmModel_Validator_Semantic_StringConstantLengthOutOfRange(
                         mb_strlen($expression->getValue()),
@@ -749,15 +749,15 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertIntegerConstantAsType(
+    private static function tryAssertIntegerConstantAsType(
         IIntegerConstantExpression $expression,
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsIntegral()) {
+        if (!$type->isIntegral()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                     StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                 )
@@ -765,37 +765,37 @@ abstract class ExpressionTypeChecker
             return false;
         }
 
-        switch ($type->PrimitiveKind()) {
+        switch ($type->primitiveKind()) {
             case PrimitiveTypeKind::Int64():
-                return self::TryAssertIntegerConstantInRange(
+                return self::tryAssertIntegerConstantInRange(
                     $expression,
                     (int)-9223372036854775808,
                     (int)9223372036854775807,
                     $discoveredErrors
                 );
             case PrimitiveTypeKind::Int32():
-                return self::TryAssertIntegerConstantInRange(
+                return self::tryAssertIntegerConstantInRange(
                     $expression,
                     -2147483648,
                     2147483647,
                     $discoveredErrors
                 );
             case PrimitiveTypeKind::Int16():
-                return self::TryAssertIntegerConstantInRange(
+                return self::tryAssertIntegerConstantInRange(
                     $expression,
                     -32768,
                     32767,
                     $discoveredErrors
                 );
             case PrimitiveTypeKind::Byte():
-                return self::TryAssertIntegerConstantInRange(
+                return self::tryAssertIntegerConstantInRange(
                     $expression,
                     0,
                     255,
                     $discoveredErrors
                 );
             case PrimitiveTypeKind::SByte():
-                return self::TryAssertIntegerConstantInRange(
+                return self::tryAssertIntegerConstantInRange(
                     $expression,
                     -128,
                     127,
@@ -804,7 +804,7 @@ abstract class ExpressionTypeChecker
             default:
                 $discoveredErrors =  [
                     new EdmError(
-                        $expression->Location(),
+                        $expression->location(),
                         EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                         StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                     )
@@ -813,7 +813,7 @@ abstract class ExpressionTypeChecker
         }
     }
 
-    private static function TryAssertIntegerConstantInRange(
+    private static function tryAssertIntegerConstantInRange(
         IIntegerConstantExpression $expression,
         int $min,
         int $max,
@@ -822,7 +822,7 @@ abstract class ExpressionTypeChecker
         if ($expression->getValue() < $min || $expression->getValue() > $max) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::IntegerConstantValueOutOfRange(),
                     StringConst::EdmModel_Validator_Semantic_IntegerConstantValueOutOfRange()
                 )
@@ -834,15 +834,15 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TryAssertBinaryConstantAsType(
+    private static function tryAssertBinaryConstantAsType(
         IBinaryConstantExpression $expression,
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsBinary()) {
+        if (!$type->isBinary()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                     StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindNotValidForAssertedType()
                 )
@@ -851,11 +851,11 @@ abstract class ExpressionTypeChecker
         }
 
         EdmUtil::checkArgumentNull($expression->getValue(), 'expression->getValue');
-        $binaryType = $type->AsBinary();
+        $binaryType = $type->asBinary();
         if (null !== $binaryType->getMaxLength() && count($expression->getValue()) > $binaryType->getMaxLength()) {
             $discoveredErrors = [
                 new EdmError(
-                    $expression->Location(),
+                    $expression->location(),
                     EdmErrorCode::BinaryConstantLengthOutOfRange(),
                     StringConst::EdmModel_Validator_Semantic_BinaryConstantLengthOutOfRange(
                         implode('', $expression->getValue()),
@@ -870,14 +870,14 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TestTypeReferenceMatch(
+    private static function testTypeReferenceMatch(
         ITypeReference $expressionType,
         ITypeReference $assertedType,
         ?ILocation $location,
         bool $matchExactly,
         &$discoveredErrors
     ): bool {
-        if (!self::TestNullabilityMatch($expressionType, $assertedType, $location, $discoveredErrors)) {
+        if (!self::testNullabilityMatch($expressionType, $assertedType, $location, $discoveredErrors)) {
             return false;
         }
 
@@ -890,7 +890,7 @@ abstract class ExpressionTypeChecker
         EdmUtil::checkArgumentNull($expressionType->getDefinition(), 'expressionType->getDefinition');
         EdmUtil::checkArgumentNull($assertedType->getDefinition(), 'assertedType->getDefinition');
 
-        return self::TestTypeMatch(
+        return self::testTypeMatch(
             $expressionType->getDefinition(),
             $assertedType->getDefinition(),
             $location,
@@ -899,7 +899,7 @@ abstract class ExpressionTypeChecker
         );
     }
 
-    private static function TestTypeMatch(
+    private static function testTypeMatch(
         IType $expressionType,
         IType $assertedType,
         ?ILocation $location,
@@ -929,7 +929,7 @@ abstract class ExpressionTypeChecker
                 $primitiveAssertedType   = $assertedType ;
                 assert($primitiveExpressionType instanceof IPrimitiveType);
                 assert($primitiveAssertedType instanceof IPrimitiveType);
-                if (!self::PromotesTo(
+                if (!self::promotesTo(
                     $primitiveExpressionType->getPrimitiveKind(),
                     $primitiveAssertedType->getPrimitiveKind()
                 )) {
@@ -938,10 +938,10 @@ abstract class ExpressionTypeChecker
                             $location,
                             EdmErrorCode::ExpressionPrimitiveKindNotValidForAssertedType(),
                             StringConst::EdmModel_Validator_Semantic_ExpressionPrimitiveKindCannotPromoteToAssertedType(
-                                ToTraceString::ToTraceString(
+                                ToTraceString::toTraceString(
                                     $expressionType
                                 ),
-                                ToTraceString::ToTraceString(
+                                ToTraceString::toTraceString(
                                     $assertedType
                                 )
                             )
@@ -951,7 +951,7 @@ abstract class ExpressionTypeChecker
                 }
             } else {
                 assert($expressionType instanceof IType);
-                if (!$expressionType->IsOrInheritsFrom($assertedType)) {
+                if (!$expressionType->isOrInheritsFrom($assertedType)) {
                     $discoveredErrors = [
                         new EdmError(
                             $location,
@@ -968,7 +968,7 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function TestNullabilityMatch(
+    private static function testNullabilityMatch(
         ITypeReference $expressionType,
         ITypeReference $assertedType,
         ?ILocation $location,
@@ -980,7 +980,7 @@ abstract class ExpressionTypeChecker
                     $location,
                     EdmErrorCode::CannotAssertNullableTypeAsNonNullableType(),
                     StringConst::EdmModel_Validator_Semantic_CannotAssertNullableTypeAsNonNullableType(
-                        $expressionType->FullName()
+                        $expressionType->fullName()
                     )
                 )
             ];
@@ -991,7 +991,7 @@ abstract class ExpressionTypeChecker
         return true;
     }
 
-    private static function PromotesTo(PrimitiveTypeKind $startingKind, PrimitiveTypeKind $target): bool
+    private static function promotesTo(PrimitiveTypeKind $startingKind, PrimitiveTypeKind $target): bool
     {
         $promotionMap = self::getPromotionMap();
         return $startingKind === $target ||

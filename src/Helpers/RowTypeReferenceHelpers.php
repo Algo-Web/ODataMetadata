@@ -19,7 +19,7 @@ trait RowTypeReferenceHelpers
      *
      * @return IRowType the definition of this row type reference
      */
-    public function RowDefinition(): IRowType
+    public function rowDefinition(): IRowType
     {
         /** @var IRowTypeReference $this */
         $definition = $this->getDefinition();

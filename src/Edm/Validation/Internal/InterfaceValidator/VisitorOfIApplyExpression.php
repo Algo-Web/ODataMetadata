@@ -14,7 +14,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IApplyExpression;
  */
 class VisitorOfIApplyExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): ?iterable
+    protected function visitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IApplyExpression);
         $errors = [];
@@ -22,8 +22,8 @@ class VisitorOfIApplyExpression extends VisitorOfT
         if (null !== $expression->getAppliedFunction()) {
             $followup[] = $expression->getAppliedFunction();
         } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createPropertyMustNotBeNullError(
                     $expression,
                     'AppliedFunction'
                 ),
@@ -31,7 +31,7 @@ class VisitorOfIApplyExpression extends VisitorOfT
             );
         }
 
-        InterfaceValidator::ProcessEnumerable(
+        InterfaceValidator::processEnumerable(
             $expression,
             $expression->getArguments(),
             'Arguments',

@@ -18,45 +18,45 @@ use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 
 trait ProcessFunctionRelated
 {
-    protected function ProcessFunction(IFunction $function): void
+    protected function processFunction(IFunction $function): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($function, __METHOD__);
-        $this->ProcessSchemaElement($function);
-        $this->ProcessFunctionBase($function);
+        $this->processSchemaElement($function);
+        $this->processFunctionBase($function);
         $this->endElement($function, __METHOD__);
     }
 
-    protected function ProcessFunctionImport(IFunctionImport $functionImport): void
+    protected function processFunctionImport(IFunctionImport $functionImport): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($functionImport, __METHOD__);
-        $this->ProcessEntityContainerElement($functionImport);
-        $this->ProcessFunctionBase($functionImport);
+        $this->processEntityContainerElement($functionImport);
+        $this->processFunctionBase($functionImport);
         $this->endElement($functionImport, __METHOD__);
     }
 
-    protected function ProcessFunctionBase(IFunctionBase $functionBase): void
+    protected function processFunctionBase(IFunctionBase $functionBase): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($functionBase, __METHOD__);
         if (null !== $functionBase->getReturnType()) {
-            $this->VisitTypeReference($functionBase->getReturnType());
+            $this->visitTypeReference($functionBase->getReturnType());
         }
 
         // Do not visit vocabularyAnnotatable because functions and function imports are always going to be either a
         // schema element or a container element and will be visited through those paths.
-        $this->VisitFunctionParameters($functionBase->getParameters());
+        $this->visitFunctionParameters($functionBase->getParameters());
         $this->endElement($functionBase, __METHOD__);
     }
 
-    protected function ProcessFunctionParameter(IFunctionParameter $parameter): void
+    protected function processFunctionParameter(IFunctionParameter $parameter): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($parameter, __METHOD__);
-        $this->ProcessVocabularyAnnotatable($parameter);
-        $this->ProcessNamedElement($parameter);
-        $this->VisitTypeReference($parameter->getType());
+        $this->processVocabularyAnnotatable($parameter);
+        $this->processNamedElement($parameter);
+        $this->visitTypeReference($parameter->getType());
         $this->endElement($parameter, __METHOD__);
     }
 }

@@ -37,7 +37,7 @@ class EdmValueTerm extends EdmNamedElement implements IValueTerm
      */
     public function __construct(string $namespaceName, string $name, $type)
     {
-        $type = ($type instanceof PrimitiveTypeKind) ? EdmCoreModel::getInstance()->GetPrimitive($type, true): $type;
+        $type = ($type instanceof PrimitiveTypeKind) ? EdmCoreModel::getInstance()->getPrimitive($type, true): $type;
         assert($type instanceof ITypeReference);
         parent::__construct($name);
         $this->type          = $type;

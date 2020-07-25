@@ -36,7 +36,7 @@ class BadEnumType extends BadType implements IEnumType
     {
         parent::__construct($errors);
         $qualifiedName = $qualifiedName ?? '';
-        EdmUtil::TryGetNamespaceNameFromQualifiedName($qualifiedName, $this->namespaceName, $this->name);
+        EdmUtil::tryGetNamespaceNameFromQualifiedName($qualifiedName, $this->namespaceName, $this->name);
     }
 
     /**
@@ -44,7 +44,7 @@ class BadEnumType extends BadType implements IEnumType
      */
     public function getUnderlyingType(): IPrimitiveType
     {
-        $type = EdmCoreModel::getInstance()->GetPrimitiveType(PrimitiveTypeKind::Int32());
+        $type = EdmCoreModel::getInstance()->getPrimitiveType(PrimitiveTypeKind::Int32());
         EdmUtil::checkArgumentNull($type, 'BadEnumType->getUnderlyingType');
         return $type;
     }

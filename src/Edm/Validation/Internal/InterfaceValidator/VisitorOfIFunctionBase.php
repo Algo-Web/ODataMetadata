@@ -10,12 +10,12 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionBase;
 
 class VisitorOfIFunctionBase extends VisitorOfT
 {
-    protected function VisitT($function, array &$followup, array &$references): ?iterable
+    protected function visitT($function, array &$followup, array &$references): ?iterable
     {
         assert($function instanceof IFunctionBase);
         $errors = [];
 
-        InterfaceValidator::ProcessEnumerable($function, $function->getParameters(), 'Parameters', $followup, $errors);
+        InterfaceValidator::processEnumerable($function, $function->getParameters(), 'Parameters', $followup, $errors);
 
         // Return type is optional for function imports and is required for MDFs. Both cases are derived interfaces
         // (IEdmFunctionImport and IEdmFunction). So, from the point of view of this interface, we consider return

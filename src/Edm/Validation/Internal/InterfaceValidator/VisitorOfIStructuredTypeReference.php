@@ -10,11 +10,11 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 
 class VisitorOfIStructuredTypeReference extends VisitorOfT
 {
-    protected function VisitT($typeRef, array &$followup, array &$references): ?iterable
+    protected function visitT($typeRef, array &$followup, array &$references): ?iterable
     {
         assert($typeRef instanceof IStructuredTypeReference);
         return null !== $typeRef->getDefinition() && !$typeRef->getDefinition()->getTypeKind()->IsStructured()
-            ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
+            ? [ InterfaceValidator::createTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
     }
 
     public function forType(): string

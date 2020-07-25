@@ -29,7 +29,7 @@ class ModelDuplicateEntityContainerName extends ModelRule
             if (!$item instanceof IEntityContainer) {
                 continue;
             }
-            ValidationHelper::AddMemberNameToHashSet(
+            ValidationHelper::addMemberNameToHashSet(
                 $item,
                 $entityContainerNameList,
                 $context,

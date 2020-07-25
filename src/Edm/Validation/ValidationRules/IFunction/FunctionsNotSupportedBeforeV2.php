@@ -22,9 +22,9 @@ class FunctionsNotSupportedBeforeV2 extends FunctionRule
     public function __invoke(ValidationContext $context, ?IEdmElement $function)
     {
         assert($function instanceof IFunction);
-        EdmUtil::checkArgumentNull($function->Location(), 'function->Location');
-        $context->AddError(
-            $function->Location(),
+        EdmUtil::checkArgumentNull($function->location(), 'function->Location');
+        $context->addError(
+            $function->location(),
             EdmErrorCode::FunctionsNotSupportedBeforeV2(),
             StringConst::EdmModel_Validator_Semantic_FunctionsNotSupportedBeforeV2()
         );

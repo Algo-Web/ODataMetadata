@@ -39,7 +39,7 @@ class EdmUtil
 
     //private const NameExp = self::StartCharacterExp . self::OtherCharacterExp . "{0,}";
 
-    public static function IsNullOrWhiteSpaceInternal(?string $value): bool
+    public static function isNullOrWhiteSpaceInternal(?string $value): bool
     {
         return null === $value || '' === trim($value);
     }
@@ -54,7 +54,7 @@ class EdmUtil
     }
 
     // This is testing if the name can be parsed and serialized, not if it is valid.
-    public static function IsQualifiedName(string $name): bool
+    public static function isQualifiedName(string $name): bool
     {
         $nameTokens = explode('.', $name);
         if (count($nameTokens) < 2) {
@@ -70,7 +70,7 @@ class EdmUtil
         return true;
     }
 
-    public static function TryGetNamespaceNameFromQualifiedName(
+    public static function tryGetNamespaceNameFromQualifiedName(
         string $qualifiedName,
         ?string &$namespaceName,
         ?string &$name
@@ -96,20 +96,20 @@ class EdmUtil
         return true;
     }
 
-    public static function FullyQualifiedName(IVocabularyAnnotatable $element): ?string
+    public static function fullyQualifiedName(IVocabularyAnnotatable $element): ?string
     {
         if ($element instanceof ISchemaElement) {
             if ($element instanceof IFunction) {
-                return self::ParameterizedName($element);
+                return self::parameterizedName($element);
             } else {
-                return $element->FullName();
+                return $element->fullName();
             }
         } else {
             if ($element instanceof IEntityContainerElement) {
                 $container = $element->getContainer();
-                $fullName  = (null !== $container) ? $container->FullName() : '';
+                $fullName  = (null !== $container) ? $container->fullName() : '';
                 if ($element instanceof IFunctionImport) {
-                    return $fullName . '/' . self::ParameterizedName($element);
+                    return $fullName . '/' . self::parameterizedName($element);
                 } else {
                     return $fullName . '/' . $element->getName();
                 }
@@ -117,14 +117,14 @@ class EdmUtil
                 if ($element instanceof IProperty) {
                     $declaringSchemaType = $element->getDeclaringType();
                     if ($declaringSchemaType instanceof ISchemaType) {
-                        $propertyOwnerName = self::FullyQualifiedName($declaringSchemaType);
+                        $propertyOwnerName = self::fullyQualifiedName($declaringSchemaType);
                         if (null !== $propertyOwnerName) {
                             return $propertyOwnerName . '/' . $element->getName();
                         }
                     }
                 } else {
                     if ($element instanceof IFunctionParameter) {
-                        $parameterOwnerName = self::FullyQualifiedName($element->getDeclaringFunction());
+                        $parameterOwnerName = self::fullyQualifiedName($element->getDeclaringFunction());
                         if (null !== $parameterOwnerName) {
                             return $parameterOwnerName . '/' . $element->getName();
                         }
@@ -137,7 +137,7 @@ class EdmUtil
     }
 
 
-    public static function ParameterizedName(IFunctionBase $function): string
+    public static function parameterizedName(IFunctionBase $function): string
     {
         $index          = 0;
         $parameterCount = count($function->getParameters());
@@ -161,12 +161,12 @@ class EdmUtil
         $s .= $function->getName();
         $s .= '(';
         foreach ($function->getParameters() as $parameter) {
-            if ($parameter->getType()->IsCollection()) {
-                $typeName = CsdlConstants::Value_Collection . '(' . $parameter->getType()->AsCollection()->ElementType()->FullName() . ')';
-            } elseif ($parameter->getType()->IsEntityReference()) {
-                $typeName = CsdlConstants::Value_Ref . '(' . $parameter->getType()->AsEntityReference()->EntityType()->FullName() . ')';
+            if ($parameter->getType()->isCollection()) {
+                $typeName = CsdlConstants::Value_Collection . '(' . $parameter->getType()->asCollection()->elementType()->fullName() . ')';
+            } elseif ($parameter->getType()->isEntityReference()) {
+                $typeName = CsdlConstants::Value_Ref . '(' . $parameter->getType()->asEntityReference()->entityType()->fullName() . ')';
             } else {
-                $typeName = $parameter->getType()->FullName();
+                $typeName = $parameter->getType()->fullName();
             }
 
             $s .= $typeName;
@@ -180,16 +180,16 @@ class EdmUtil
         return $s;
     }
 
-    public static function IsValidDottedName(string $name): bool
+    public static function isValidDottedName(string $name): bool
     {
         // Each part of the dotted name needs to be a valid name.
         return array_reduce(explode('.', $name), function (bool $carry, string $part): bool {
-            $carry &= self::IsValidUndottedName($part);
+            $carry &= self::isValidUndottedName($part);
             return boolval($carry);
         }, true);
     }
 
-    public static function IsValidUndottedName(string $name): bool
+    public static function isValidUndottedName(string $name): bool
     {
         $nameExp = '/^' . self::StartCharacterExp . self::OtherCharacterExp . '{0,}/';
         return !empty($name) && preg_match($nameExp, $name);

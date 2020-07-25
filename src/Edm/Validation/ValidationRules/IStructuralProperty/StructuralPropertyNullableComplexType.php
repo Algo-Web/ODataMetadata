@@ -22,10 +22,10 @@ class StructuralPropertyNullableComplexType extends StructuralPropertyRule
     public function __invoke(ValidationContext $context, ?IEdmElement $property)
     {
         assert($property instanceof IStructuralProperty);
-        if ($property->getType()->IsComplex() && $property->getType()->getNullable()) {
-            EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
-            $context->AddError(
-                $property->Location(),
+        if ($property->getType()->isComplex() && $property->getType()->getNullable()) {
+            EdmUtil::checkArgumentNull($property->location(), 'property->Location');
+            $context->addError(
+                $property->location(),
                 EdmErrorCode::NullableComplexTypeProperty(),
                 StringConst::EdmModel_Validator_Semantic_NullableComplexTypeProperty($property->getName())
             );

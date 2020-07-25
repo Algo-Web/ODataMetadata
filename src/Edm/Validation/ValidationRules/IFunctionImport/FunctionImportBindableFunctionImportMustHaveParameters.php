@@ -23,9 +23,9 @@ class FunctionImportBindableFunctionImportMustHaveParameters extends FunctionImp
     {
         assert($functionImport instanceof IFunctionImport);
         if ($functionImport->isBindable() && count($functionImport->getParameters()) === 0) {
-            EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
-            $context->AddError(
-                $functionImport->Location(),
+            EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
+            $context->addError(
+                $functionImport->location(),
                 EdmErrorCode::BindableFunctionImportMustHaveParameters(),
                 StringConst::EdmModel_Validator_Semantic_BindableFunctionImportMustHaveParameters($functionImport->getName())
             );

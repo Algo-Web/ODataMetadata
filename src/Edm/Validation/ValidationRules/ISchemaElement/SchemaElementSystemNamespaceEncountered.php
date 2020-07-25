@@ -24,10 +24,10 @@ class SchemaElementSystemNamespaceEncountered extends SchemaElementRule
     {
         assert($element instanceof ISchemaElement);
         EdmUtil::checkArgumentNull($element->getNamespace(), 'element->getNamespace');
-        if (ValidationHelper::IsEdmSystemNamespace($element->getNamespace())) {
-            EdmUtil::checkArgumentNull($element->Location(), 'element->Location');
-            $context->AddError(
-                $element->Location(),
+        if (ValidationHelper::isEdmSystemNamespace($element->getNamespace())) {
+            EdmUtil::checkArgumentNull($element->location(), 'element->Location');
+            $context->addError(
+                $element->location(),
                 EdmErrorCode::SystemNamespaceEncountered(),
                 StringConst::EdmModel_Validator_Semantic_SystemNamespaceEncountered($element->getNamespace())
             );

@@ -21,10 +21,10 @@ trait StructuredTypeHelpers
      *
      * @return Generator|IProperty[] properties of this type
      */
-    public function Properties(): iterable
+    public function properties(): iterable
     {
         if ($this->getBaseType() !== null) {
-            foreach ($this->getBaseType()->Properties() as $baseProperty) {
+            foreach ($this->getBaseType()->properties() as $baseProperty) {
                 yield $baseProperty;
             }
         }
@@ -38,7 +38,7 @@ trait StructuredTypeHelpers
      *
      * @return IStructuralProperty[] all structural properties declared in the IStructuredTypeDefinition
      */
-    public function DeclaredStructuralProperties()
+    public function declaredStructuralProperties()
     {
         return array_filter($this->getDeclaredProperties(), function (IProperty $value) {
             return $value instanceof IStructuralProperty;
@@ -50,15 +50,15 @@ trait StructuredTypeHelpers
      *
      * @return IStructuralProperty[] the structural properties declared in this type definition and all base types
      */
-    public function StructuralProperties()
+    public function structuralProperties()
     {
-        $props = iterator_to_array($this->Properties());
+        $props = iterator_to_array($this->properties());
         return array_filter($props, function (IProperty $value) {
             return $value instanceof IStructuralProperty;
         });
     }
 
-    public function InheritsFrom(IStructuredType $potentialBaseType)
+    public function inheritsFrom(IStructuredType $potentialBaseType)
     {
         $type = $this;
         do {

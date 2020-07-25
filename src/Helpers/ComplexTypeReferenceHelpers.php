@@ -19,7 +19,7 @@ trait ComplexTypeReferenceHelpers
      *
      * @return IComplexType The definition of this reference
      */
-    public function ComplexDefinition(): IComplexType
+    public function complexDefinition(): IComplexType
     {
         /** @var IComplexTypeReference $this */
         $definition = $this->getDefinition();
@@ -32,8 +32,8 @@ trait ComplexTypeReferenceHelpers
      *
      * @return IComplexType the base type of this reference
      */
-    public function BaseComplexType(): IComplexType
+    public function baseComplexType(): IComplexType
     {
-        return $this->ComplexDefinition()->BaseComplexType();
+        return $this->complexDefinition()->baseComplexType();
     }
 }

@@ -25,11 +25,11 @@ class EntitySetNavigationPropertyMappingsMustBeUnique extends EntitySetRule
         foreach ($set->getNavigationTargets() as $mapping) {
             $mappedPropertySet = [];
             if (in_array($mapping->getNavigationProperty(), $mappedPropertySet)) {
-                EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
-                $context->AddError(
-                    $set->Location(),
+                EdmUtil::checkArgumentNull($set->location(), 'set->Location');
+                $context->addError(
+                    $set->location(),
                     EdmErrorCode::DuplicateNavigationPropertyMapping(),
-                    StringConst::EdmModel_Validator_Semantic_DuplicateNavigationPropertyMapping($set->getContainer()->FullName() . '.' . $set->getName(), $mapping->getNavigationProperty()->getName())
+                    StringConst::EdmModel_Validator_Semantic_DuplicateNavigationPropertyMapping($set->getContainer()->fullName() . '.' . $set->getName(), $mapping->getNavigationProperty()->getName())
                 );
             } else {
                 $mappedPropertySet[] = $mapping->getNavigationProperty();

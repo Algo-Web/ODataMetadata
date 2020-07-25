@@ -74,7 +74,7 @@ class VisitorOfIValueTest extends TestCase
         $followUp   = [];
         $references = [];
 
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));
         /** @var EdmError $error */
@@ -103,7 +103,7 @@ class VisitorOfIValueTest extends TestCase
         $followUp   = [];
         $references = [];
 
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));
         /** @var EdmError $error */
@@ -130,7 +130,7 @@ class VisitorOfIValueTest extends TestCase
         $followUp   = [];
         $references = [];
 
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(0, count($result));
 

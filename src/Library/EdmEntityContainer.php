@@ -153,7 +153,7 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
      *                                          of the first parameter of this function import
      * @return EdmFunctionImport created function import
      */
-    public function AddFunctionImport(
+    public function addFunctionImport(
         string $name,
         ITypeReference $returnType,
         ?IExpression $entitySet,
@@ -174,7 +174,7 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
             true === $composable,
             true === $bindable
         );
-        $this->AddElement($functionImport);
+        $this->addElement($functionImport);
         return $functionImport;
     }
 
@@ -186,10 +186,10 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
      * @param  IEntityType  $elementType the entity type of the elements in this entity set
      * @return EdmEntitySet created entity set
      */
-    public function AddEntitySet(string $name, IEntityType $elementType): EdmEntitySet
+    public function addEntitySet(string $name, IEntityType $elementType): EdmEntitySet
     {
         $entitySet = new EdmEntitySet($this, $name, $elementType);
-        $this->AddElement($entitySet);
+        $this->addElement($entitySet);
         return $entitySet;
     }
 
@@ -197,7 +197,7 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
      * Adds an entity container element to this entity container.
      * @param IEntityContainerElement $element the element to add
      */
-    public function AddElement(IEntityContainerElement $element): void
+    public function addElement(IEntityContainerElement $element): void
     {
         $this->containerElements[] = $element;
 
@@ -208,16 +208,16 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
 
         switch ($element->getContainerElementKind()) {
             case ContainerElementKind::EntitySet():
-                RegistrationHelper::AddElement(
+                RegistrationHelper::addElement(
                     $element,
                     $name,
                     $this->entitySetDictionary,
-                    [RegistrationHelper::class, 'CreateAmbiguousEntitySetBinding']
+                    [RegistrationHelper::class, 'createAmbiguousEntitySetBinding']
                 );
                 break;
             case ContainerElementKind::FunctionImport():
                 assert($element instanceof IFunctionBase);
-                RegistrationHelper::AddFunction($element, $name, $this->functionImportDictionary);
+                RegistrationHelper::addFunction($element, $name, $this->functionImportDictionary);
                 break;
             case ContainerElementKind::None():
                 throw new InvalidOperationException(StringConst::EdmEntityContainer_CannotUseElementWithTypeNone());

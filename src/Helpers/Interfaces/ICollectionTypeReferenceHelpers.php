@@ -18,12 +18,12 @@ interface ICollectionTypeReferenceHelpers
      *
      * @return ICollectionType the definition of this collection reference
      */
-    public function CollectionDefinition(): ICollectionType;
+    public function collectionDefinition(): ICollectionType;
 
     /**
      * Gets the element type of the definition of this collection reference.
      *
      * @return ITypeReference The element type of the definition of this collection reference
      */
-    public function ElementType(): ITypeReference;
+    public function elementType(): ITypeReference;
 }

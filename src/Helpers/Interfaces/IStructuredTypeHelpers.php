@@ -20,21 +20,21 @@ interface IStructuredTypeHelpers
      *
      * @return Generator|IProperty[] properties of this type
      */
-    public function Properties(): iterable;
+    public function properties(): iterable;
 
     /**
      * Gets all structural properties declared in the IStructuredTypeDefinition.
      *
      * @return IStructuralProperty[] all structural properties declared in the IStructuredTypeDefinition
      */
-    public function DeclaredStructuralProperties();
+    public function declaredStructuralProperties();
 
     /**
      * Gets the structural properties declared in this type definition and all base types.
      *
      * @return IStructuralProperty[] the structural properties declared in this type definition and all base types
      */
-    public function StructuralProperties();
+    public function structuralProperties();
 
-    public function InheritsFrom(IStructuredType $potentialBaseType);
+    public function inheritsFrom(IStructuredType $potentialBaseType);
 }

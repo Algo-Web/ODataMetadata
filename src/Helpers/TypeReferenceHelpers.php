@@ -68,7 +68,7 @@ trait TypeReferenceHelpers
      *
      * @return TypeKind the type kind of the reference
      */
-    public function TypeKind(): TypeKind
+    public function typeKind(): TypeKind
     {
         $typeDefinition = $this->getDefinition();
         return $typeDefinition !== null ? $typeDefinition->getTypeKind() : TypeKind::None();
@@ -79,10 +79,10 @@ trait TypeReferenceHelpers
      *
      * @return string|null the full name of this references definition
      */
-    public function FullName(): ?string
+    public function fullName(): ?string
     {
         $namedDefinition = $this->getDefinition();
-        return $namedDefinition instanceof ISchemaElement ? $namedDefinition->FullName() : null;
+        return $namedDefinition instanceof ISchemaElement ? $namedDefinition->fullName() : null;
     }
 
     /**
@@ -90,7 +90,7 @@ trait TypeReferenceHelpers
      *
      * @return PrimitiveTypeKind the primitive kind of the definition of this reference
      */
-    public function PrimitiveKind(): PrimitiveTypeKind
+    public function primitiveKind(): PrimitiveTypeKind
     {
         $typeDefinition = $this->getDefinition();
         if (null === $typeDefinition || !$typeDefinition->getTypeKind()->isPrimitive()) {
@@ -105,9 +105,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a collection
      */
-    public function IsCollection(): bool
+    public function isCollection(): bool
     {
-        return $this->TypeKind()->isCollection();
+        return $this->typeKind()->isCollection();
     }
 
     /**
@@ -115,9 +115,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to an entity type
      */
-    public function IsEntity(): bool
+    public function isEntity(): bool
     {
-        return $this->TypeKind()->isEntity();
+        return $this->typeKind()->isEntity();
     }
 
     /**
@@ -125,9 +125,9 @@ trait TypeReferenceHelpers
      *
      * @return bool This reference refers to an entity type.<
      */
-    public function IsEntityReference(): bool
+    public function isEntityReference(): bool
     {
-        return $this->TypeKind()->isEntityReference();
+        return $this->typeKind()->isEntityReference();
     }
 
     /**
@@ -135,9 +135,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a complex type
      */
-    public function IsComplex(): bool
+    public function isComplex(): bool
     {
-        return $this->TypeKind()->isComplex();
+        return $this->typeKind()->isComplex();
     }
 
     /**
@@ -145,9 +145,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to an enumeration type
      */
-    public function IsEnum(): bool
+    public function isEnum(): bool
     {
-        return $this->TypeKind()->isEnum();
+        return $this->typeKind()->isEnum();
     }
 
     /**
@@ -155,9 +155,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a row type
      */
-    public function IsRow(): bool
+    public function isRow(): bool
     {
-        return $this->TypeKind()->isRow();
+        return $this->typeKind()->isRow();
     }
 
     /**
@@ -165,9 +165,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a structured type
      */
-    public function IsStructured(): bool
+    public function isStructured(): bool
     {
-        return $this->TypeKind()->IsStructured();
+        return $this->typeKind()->IsStructured();
         /*switch ($this->TypeKind()) {
             case TypeKind::Entity():
             case TypeKind::Complex():
@@ -182,27 +182,27 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a primitive type
      */
-    public function IsPrimitive(): bool
+    public function isPrimitive(): bool
     {
-        return $this->TypeKind()->isPrimitive();
+        return $this->typeKind()->isPrimitive();
     }
     /**
      * Returns true if this reference refers to a binary type.
      *
      * @return bool this reference refers to a binary type
      */
-    public function IsBinary(): bool
+    public function isBinary(): bool
     {
-        return $this->PrimitiveKind()->isBinary();
+        return $this->primitiveKind()->isBinary();
     }
     /**
      * Returns true if this reference refers to a boolean type.
      *
      * @return bool this reference refers to a boolean type
      */
-    public function IsBoolean(): bool
+    public function isBoolean(): bool
     {
-        return $this->PrimitiveKind()->equals(PrimitiveTypeKind::Boolean());
+        return $this->primitiveKind()->equals(PrimitiveTypeKind::Boolean());
     }
 
     /**
@@ -210,18 +210,18 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a temporal type
      */
-    public function IsTemporal(): bool
+    public function isTemporal(): bool
     {
-        return $this->PrimitiveKind()->IsTemporal();
+        return $this->primitiveKind()->isTemporal();
     }
     /**
      * Returns true if this reference refers to a DateTime type.
      *
      * @return bool this reference refers to a DateTime type
      */
-    public function IsDateTime(): bool
+    public function isDateTime(): bool
     {
-        return $this->PrimitiveKind()->isDateTime();
+        return $this->primitiveKind()->isDateTime();
     }
 
     /**
@@ -229,9 +229,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a time type
      */
-    public function IsTime(): bool
+    public function isTime(): bool
     {
-        return $this->PrimitiveKind()->isTime();
+        return $this->primitiveKind()->isTime();
     }
 
     /**
@@ -239,9 +239,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a DateTimeOffset type
      */
-    public function IsDateTimeOffset(): bool
+    public function isDateTimeOffset(): bool
     {
-        return $this->PrimitiveKind()->isDateTimeOffset();
+        return $this->primitiveKind()->isDateTimeOffset();
     }
 
     /**
@@ -249,9 +249,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a decimal type
      */
-    public function IsDecimal(): bool
+    public function isDecimal(): bool
     {
-        return $this->PrimitiveKind()->isDecimal();
+        return $this->primitiveKind()->isDecimal();
     }
 
     /**
@@ -259,9 +259,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a floating type
      */
-    public function IsFloating(): bool
+    public function isFloating(): bool
     {
-        return $this->PrimitiveKind()->isAnyOf(
+        return $this->primitiveKind()->isAnyOf(
             PrimitiveTypeKind::Double(),
             PrimitiveTypeKind::Single()
         );
@@ -271,18 +271,18 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a single type
      */
-    public function IsSingle(): bool
+    public function isSingle(): bool
     {
-        return $this->PrimitiveKind()->isSingle();
+        return $this->primitiveKind()->isSingle();
     }
     /**
      * Returns true if this reference refers to a double type.
      *
      * @return bool this reference refers to a double type
      */
-    public function IsDouble(): bool
+    public function isDouble(): bool
     {
-        return $this->PrimitiveKind()->isDouble();
+        return $this->primitiveKind()->isDouble();
     }
 
     /**
@@ -290,9 +290,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a GUID type
      */
-    public function IsGuid(): bool
+    public function isGuid(): bool
     {
-        return $this->PrimitiveKind()->isGuid();
+        return $this->primitiveKind()->isGuid();
     }
 
     /**
@@ -300,9 +300,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a signed integral type
      */
-    public function IsSignedIntegral(): bool
+    public function isSignedIntegral(): bool
     {
-        return $this->PrimitiveKind()->isSignedIntegral();
+        return $this->primitiveKind()->isSignedIntegral();
     }
 
     /**
@@ -310,9 +310,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a SByte type
      */
-    public function IsSByte(): bool
+    public function isSByte(): bool
     {
-        return $this->PrimitiveKind()->isSByte();
+        return $this->primitiveKind()->isSByte();
     }
 
 
@@ -321,18 +321,18 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a Int16 type
      */
-    public function IsInt16(): bool
+    public function isInt16(): bool
     {
-        return $this->PrimitiveKind()->isInt16();
+        return $this->primitiveKind()->isInt16();
     }
     /**
      * Returns true if this reference refers to a Int32 type.
      *
      * @return bool this reference refers to a Int32 type
      */
-    public function IsInt32(): bool
+    public function isInt32(): bool
     {
-        return $this->PrimitiveKind()->isInt32();
+        return $this->primitiveKind()->isInt32();
     }
 
     /**
@@ -340,9 +340,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a Int64 type
      */
-    public function IsInt64(): bool
+    public function isInt64(): bool
     {
-        return $this->PrimitiveKind()->isInt64();
+        return $this->primitiveKind()->isInt64();
     }
 
     /**
@@ -350,9 +350,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to an integer type
      */
-    public function IsIntegral(): bool
+    public function isIntegral(): bool
     {
-        return $this->PrimitiveKind()->IsIntegral();
+        return $this->primitiveKind()->isIntegral();
     }
 
     /**
@@ -360,18 +360,18 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a byte type
      */
-    public function IsByte(): bool
+    public function isByte(): bool
     {
-        return $this->PrimitiveKind()->isByte();
+        return $this->primitiveKind()->isByte();
     }
     /**
      * Returns true if this reference refers to a string type.
      *
      * @return bool this reference refers to a string type
      */
-    public function IsString(): bool
+    public function isString(): bool
     {
-        return $this->PrimitiveKind()->isString();
+        return $this->primitiveKind()->isString();
     }
 
     /**
@@ -379,9 +379,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a stream type
      */
-    public function IsStream(): bool
+    public function isStream(): bool
     {
-        return $this->PrimitiveKind()->isStream();
+        return $this->primitiveKind()->isStream();
     }
 
     /**
@@ -389,9 +389,9 @@ trait TypeReferenceHelpers
      *
      * @return bool this reference refers to a spatial type
      */
-    public function IsSpatial(): bool
+    public function isSpatial(): bool
     {
-        $primitiveTypeKind = $this->PrimitiveKind();
+        $primitiveTypeKind = $this->primitiveKind();
         return null === $primitiveTypeKind ? false : $primitiveTypeKind->IsSpatial();
     }
 
@@ -405,7 +405,7 @@ trait TypeReferenceHelpers
      * @return IPrimitiveTypeReference A valid primitive type reference if the definition of the reference is of a
      *                                 primitive type. Otherwise a bad primitive type reference.
      */
-    public function AsPrimitive(): IPrimitiveTypeReference
+    public function asPrimitive(): IPrimitiveTypeReference
     {
         if ($this instanceof IPrimitiveTypeReference) {
             return $this;
@@ -427,15 +427,15 @@ trait TypeReferenceHelpers
                     case PrimitiveTypeKind::Stream():
                         return new EdmPrimitiveTypeReference($typeDefinition, $this->getNullable());
                     case PrimitiveTypeKind::Binary():
-                        return $this->AsBinary();
+                        return $this->asBinary();
                     case PrimitiveTypeKind::Decimal():
-                        return $this->AsDecimal();
+                        return $this->asDecimal();
                     case PrimitiveTypeKind::String():
-                        return $this->AsString();
+                        return $this->asString();
                     case PrimitiveTypeKind::Time():
                     case PrimitiveTypeKind::DateTime():
                     case PrimitiveTypeKind::DateTimeOffset():
-                        return $this->AsTemporal();
+                        return $this->asTemporal();
                     case PrimitiveTypeKind::Geography():
                     case PrimitiveTypeKind::GeographyPoint():
                     case PrimitiveTypeKind::GeographyLineString():
@@ -452,14 +452,14 @@ trait TypeReferenceHelpers
                     case PrimitiveTypeKind::GeometryMultiPolygon():
                     case PrimitiveTypeKind::GeometryMultiLineString():
                     case PrimitiveTypeKind::GeometryMultiPoint():
-                        return $this->AsSpatial();
+                        return $this->asSpatial();
                     case PrimitiveTypeKind::None():
                         break;
                 }
             }
         }
 
-        $typeFullName = $this->FullName();
+        $typeFullName = $this->fullName();
         $errors       = [];
         if ($this instanceof ICheckable) {
             $errors = $this->getErrors();
@@ -469,8 +469,8 @@ trait TypeReferenceHelpers
         {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $this->Location(),
+                self::conversionError(
+                    $this->location(),
                     $typeFullName,
                     EdmConstants::Type_Primitive
                 )
@@ -487,7 +487,7 @@ trait TypeReferenceHelpers
      * @return ICollectionTypeReference A valid collection type reference if the definition of the reference is of a
      *                                  collection type. Otherwise a bad collection type reference.
      */
-    public function AsCollection(): ICollectionTypeReference
+    public function asCollection(): ICollectionTypeReference
     {
         if ($this instanceof ICollectionTypeReference) {
             return $this;
@@ -508,9 +508,9 @@ trait TypeReferenceHelpers
         if (count($errors) == 0) {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $type->Location(),
-                    $type->FullName(),
+                self::conversionError(
+                    $type->location(),
+                    $type->fullName(),
                     EdmConstants::Type_Collection
                 )
             );
@@ -526,22 +526,22 @@ trait TypeReferenceHelpers
      * @return IStructuredTypeReference A valid structured type reference if the definition of the reference is of a
      *                                  structured type. Otherwise a bad structured type reference.
      */
-    public function AsStructured(): IStructuredTypeReference
+    public function asStructured(): IStructuredTypeReference
     {
         if ($this instanceof IStructuredTypeReference) {
             return $this;
         }
 
-        switch ($this->TypeKind()) {
+        switch ($this->typeKind()) {
             case TypeKind::Entity():
-                return $this->AsEntity();
+                return $this->asEntity();
             case TypeKind::Complex():
-                return $this->AsComplex();
+                return $this->asComplex();
             case TypeKind::Row():
-                return $this->AsRow();
+                return $this->asRow();
         }
 
-        $typeFullName = $this->FullName();
+        $typeFullName = $this->fullName();
         EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors = [];
@@ -553,8 +553,8 @@ trait TypeReferenceHelpers
         if (count($errors) == 0) {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $this->Location(),
+                self::conversionError(
+                    $this->location(),
                     $typeFullName,
                     EdmConstants::Type_Structured
                 )
@@ -571,7 +571,7 @@ trait TypeReferenceHelpers
      * @return IEnumTypeReference A valid enumeration type reference if the definition of the reference is of an
      *                            enumeration type. Otherwise a bad enumeration type reference.
      */
-    public function AsEnum(): IEnumTypeReference
+    public function asEnum(): IEnumTypeReference
     {
         if ($this instanceof IEnumTypeReference) {
             return $this;
@@ -583,12 +583,12 @@ trait TypeReferenceHelpers
             return new EdmEnumTypeReference($typeDefinition, $this->getNullable());
         }
 
-        $typeFullName = $this->FullName();
+        $typeFullName = $this->fullName();
         return new EdmEnumTypeReference(
             new BadEnumType(
                 $typeFullName,
-                self::ConversionError(
-                    $this->Location(),
+                self::conversionError(
+                    $this->location(),
                     $typeFullName,
                     EdmConstants::Type_Enum
                 )
@@ -604,7 +604,7 @@ trait TypeReferenceHelpers
      * @return IEntityTypeReference A valid entity type reference if the definition of the reference is of an entity
      *                              type. Otherwise a bad entity type reference.
      */
-    public function AsEntity(): IEntityTypeReference
+    public function asEntity(): IEntityTypeReference
     {
         if ($this instanceof IEntityTypeReference) {
             return $this;
@@ -615,7 +615,7 @@ trait TypeReferenceHelpers
             assert($typeDefinition instanceof IEntityType);
             return new EdmEntityTypeReference($typeDefinition, $this->getNullable());
         }
-        $typeFullName = $this->FullName();
+        $typeFullName = $this->fullName();
         EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors = [];
@@ -627,8 +627,8 @@ trait TypeReferenceHelpers
         if (count($errors) == 0) {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $this->Location(),
+                self::conversionError(
+                    $this->location(),
                     $typeFullName,
                     EdmConstants::Type_Entity
                 )
@@ -646,7 +646,7 @@ trait TypeReferenceHelpers
      *                                       is of an entity reference type. Otherwise a bad entity reference type
      *                                       reference.
      */
-    public function AsEntityReference(): IEntityReferenceTypeReference
+    public function asEntityReference(): IEntityReferenceTypeReference
     {
         if ($this instanceof IEntityReferenceTypeReference) {
             return $this;
@@ -667,9 +667,9 @@ trait TypeReferenceHelpers
         if (count($errors) == 0) {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $this->Location(),
-                    $this->FullName(),
+                self::conversionError(
+                    $this->location(),
+                    $this->fullName(),
                     EdmConstants::Type_EntityReference
                 )
             );
@@ -685,7 +685,7 @@ trait TypeReferenceHelpers
      * @return IComplexTypeReference A valid complex type reference if the definition of the reference is of a complex
      *                               type. Otherwise a bad complex type reference.
      */
-    public function AsComplex(): IComplexTypeReference
+    public function asComplex(): IComplexTypeReference
     {
         if ($this instanceof IComplexTypeReference) {
             return $this;
@@ -697,7 +697,7 @@ trait TypeReferenceHelpers
             return new EdmComplexTypeReference($typeDefinition, $this->getNullable());
         }
 
-        $typeFullName = $this->FullName();
+        $typeFullName = $this->fullName();
         EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors       = [];
@@ -709,9 +709,9 @@ trait TypeReferenceHelpers
         if (count($errors) == 0) {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $this->Location(),
-                    $this->FullName(),
+                self::conversionError(
+                    $this->location(),
+                    $this->fullName(),
                     EdmConstants::Type_Complex
                 )
             );
@@ -727,7 +727,7 @@ trait TypeReferenceHelpers
      * @return IRowTypeReference A valid row type reference if the definition of the reference is of a row type.
      *                           Otherwise a bad row type reference.
      */
-    public function AsRow(): IRowTypeReference
+    public function asRow(): IRowTypeReference
     {
         if ($this instanceof IRowTypeReference) {
             return $this;
@@ -748,9 +748,9 @@ trait TypeReferenceHelpers
         if (count($errors) == 0) {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $this->Location(),
-                    $this->FullName(),
+                self::conversionError(
+                    $this->location(),
+                    $this->fullName(),
                     EdmConstants::Type_Row
                 )
             );
@@ -766,13 +766,13 @@ trait TypeReferenceHelpers
      * @return ISpatialTypeReference A valid spatial type reference if the definition of the reference is of a spatial
      *                               type. Otherwise a bad spatial type reference.
      */
-    public function AsSpatial(): ISpatialTypeReference
+    public function asSpatial(): ISpatialTypeReference
     {
         if ($this instanceof ISpatialTypeReference) {
             return $this;
         }
 
-        $typeFullName = $this->FullName();
+        $typeFullName = $this->fullName();
         EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors       = [];
@@ -784,9 +784,9 @@ trait TypeReferenceHelpers
         if (count($errors) == 0) {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $this->Location(),
-                    $this->FullName(),
+                self::conversionError(
+                    $this->location(),
+                    $this->fullName(),
                     EdmConstants::Type_Spatial
                 )
             );
@@ -802,13 +802,13 @@ trait TypeReferenceHelpers
      * @return ITemporalTypeReference A valid temporal type reference if the definition of the reference is of a
      *                                temporal type. Otherwise a bad temporal type reference.
      */
-    public function AsTemporal(): ITemporalTypeReference
+    public function asTemporal(): ITemporalTypeReference
     {
         if ($this instanceof ITemporalTypeReference) {
             return $this;
         }
 
-        $typeFullName = $this->FullName();
+        $typeFullName = $this->fullName();
         EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors       = [];
@@ -820,9 +820,9 @@ trait TypeReferenceHelpers
         if (count($errors) == 0) {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $this->Location(),
-                    $this->FullName(),
+                self::conversionError(
+                    $this->location(),
+                    $this->fullName(),
                     EdmConstants::Type_Temporal
                 )
             );
@@ -838,13 +838,13 @@ trait TypeReferenceHelpers
      * @return IDecimalTypeReference A valid decimal type reference if the definition of the reference is of a decimal
      *                               type. Otherwise a bad decimal type reference.</returns>
      */
-    public function AsDecimal(): IDecimalTypeReference
+    public function asDecimal(): IDecimalTypeReference
     {
         if ($this instanceof IDecimalTypeReference) {
             return $this;
         }
 
-        $typeFullName = $this->FullName();
+        $typeFullName = $this->fullName();
         EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors       = [];
@@ -856,8 +856,8 @@ trait TypeReferenceHelpers
         if (count($errors) == 0) {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $this->Location(),
+                self::conversionError(
+                    $this->location(),
                     $typeFullName,
                     EdmConstants::Type_Decimal
                 )
@@ -874,13 +874,13 @@ trait TypeReferenceHelpers
      * @return IStringTypeReference A valid string type reference if the definition of the reference is of a string
      *                              type. Otherwise a bad string type reference.
      */
-    public function AsString(): IStringTypeReference
+    public function asString(): IStringTypeReference
     {
         if ($this instanceof IStringTypeReference) {
             return $this;
         }
 
-        $typeFullName = $this->FullName();
+        $typeFullName = $this->fullName();
         EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors       = [];
@@ -892,8 +892,8 @@ trait TypeReferenceHelpers
         if (count($errors) == 0) {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $this->Location(),
+                self::conversionError(
+                    $this->location(),
                     $typeFullName,
                     EdmConstants::Type_String
                 )
@@ -910,12 +910,12 @@ trait TypeReferenceHelpers
      * @return IBinaryTypeReference A valid binary type reference if the definition of the reference is of a binary
      *                              type. Otherwise a bad binary type reference.
      */
-    public function AsBinary(): IBinaryTypeReference
+    public function asBinary(): IBinaryTypeReference
     {
         if ($this instanceof IBinaryTypeReference) {
             return $this;
         }
-        $typeFullName = $this->FullName();
+        $typeFullName = $this->fullName();
         EdmUtil::checkArgumentNull($typeFullName, 'typeFullName');
 
         $errors       = [];
@@ -927,8 +927,8 @@ trait TypeReferenceHelpers
         if (count($errors) == 0) {
             $errors = array_merge(
                 $errors,
-                self::ConversionError(
-                    $this->Location(),
+                self::conversionError(
+                    $this->location(),
                     $typeFullName,
                     EdmConstants::Type_Binary
                 )
@@ -945,7 +945,7 @@ trait TypeReferenceHelpers
      * @param  string         $typeKindName
      * @return EdmError[]
      */
-    private static function ConversionError(?ILocation $location, ?string $typeName, string $typeKindName): array
+    private static function conversionError(?ILocation $location, ?string $typeName, string $typeKindName): array
     {
         return [
             new EdmError(
@@ -963,5 +963,5 @@ trait TypeReferenceHelpers
 
     abstract public function getNullable(): bool;
 
-    abstract public function Location(): ?ILocation;
+    abstract public function location(): ?ILocation;
 }

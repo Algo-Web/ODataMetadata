@@ -28,13 +28,13 @@ use XMLReader;
 
 abstract class ValidationHelper
 {
-    public static function IsEdmSystemNamespace(string $namespaceName): bool
+    public static function isEdmSystemNamespace(string $namespaceName): bool
     {
         return ($namespaceName == EdmConstants::TransientNamespace ||
         $namespaceName == EdmConstants::EdmNamespace);
     }
 
-    public static function AddMemberNameToHashSet(
+    public static function addMemberNameToHashSet(
         INamedElement $item,
         HashSetInternal $memberNameList,
         ValidationContext $context,
@@ -42,11 +42,11 @@ abstract class ValidationHelper
         string $errorString,
         bool $suppressError
     ) {
-        $name = $item instanceof ISchemaElement ? $item->FullName() : $item->getName();
+        $name = $item instanceof ISchemaElement ? $item->fullName() : $item->getName();
         if ($memberNameList->add($name)) {
             if (!$suppressError) {
-                EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
-                $context->AddError($item->Location(), $errorCode, $errorString);
+                EdmUtil::checkArgumentNull($item->location(), 'item->Location');
+                $context->addError($item->location(), $errorCode, $errorString);
             }
             return false;
         }
@@ -58,7 +58,7 @@ abstract class ValidationHelper
      * @param  IStructuralProperty[] $properties
      * @return bool
      */
-    public static function AllPropertiesAreNullable(array $properties): bool
+    public static function allPropertiesAreNullable(array $properties): bool
     {
         return count(array_filter($properties, function (IStructuralProperty $item) {
             try {
@@ -73,7 +73,7 @@ abstract class ValidationHelper
      * @param  IStructuralProperty[] $properties
      * @return bool
      */
-    public static function HasNullableProperty(array $properties): bool
+    public static function hasNullableProperty(array $properties): bool
     {
         return count(array_filter($properties, function (IStructuralProperty $item) {
             try {
@@ -89,7 +89,7 @@ abstract class ValidationHelper
      * @param  IStructuralProperty[] $subset
      * @return bool
      */
-    public static function PropertySetIsSubset(array $set, array $subset): bool
+    public static function propertySetIsSubset(array $set, array $subset): bool
     {
         return count(array_diff($subset, $set)) === 0;
     }
@@ -99,7 +99,7 @@ abstract class ValidationHelper
      * @param  IStructuralProperty[] $set2
      * @return bool
      */
-    public static function PropertySetsAreEquivalent(array $set1, array $set2): bool
+    public static function propertySetsAreEquivalent(array $set1, array $set2): bool
     {
         if (count($set1) != count($set2)) {
             return false;
@@ -112,7 +112,7 @@ abstract class ValidationHelper
         return true;
     }
 
-    public static function ValidateValueCanBeWrittenAsXmlElementAnnotation(
+    public static function validateValueCanBeWrittenAsXmlElementAnnotation(
         IValue $value,
         ?string $annotationNamespace,
         ?string $annotationName,
@@ -120,7 +120,7 @@ abstract class ValidationHelper
     ): bool {
         if (!($value instanceof IStringValue)) {
             $error = new EdmError(
-                $value->Location(),
+                $value->location(),
                 EdmErrorCode::InvalidElementAnnotation(),
                 StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationNotIEdmStringValue()
             );
@@ -145,7 +145,7 @@ abstract class ValidationHelper
             // The annotation must be an element.
             if ($eof) {
                 $error = new EdmError(
-                    $value->Location(),
+                    $value->location(),
                     EdmErrorCode::InvalidElementAnnotation(),
                     StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationValueInvalidXml()
                 );
@@ -156,10 +156,10 @@ abstract class ValidationHelper
             $elementNamespace = $reader->namespaceURI;
             $elementName      = $reader->localName;
 
-            if (EdmUtil::IsNullOrWhiteSpaceInternal($elementNamespace) ||
-                EdmUtil::IsNullOrWhiteSpaceInternal($elementName)) {
+            if (EdmUtil::isNullOrWhiteSpaceInternal($elementNamespace) ||
+                EdmUtil::isNullOrWhiteSpaceInternal($elementName)) {
                 $error = new EdmError(
-                    $value->Location(),
+                    $value->location(),
                     EdmErrorCode::InvalidElementAnnotation(),
                     StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationNullNamespaceOrName()
                 );
@@ -169,7 +169,7 @@ abstract class ValidationHelper
             if (!((null === $annotationNamespace || $elementNamespace == $annotationNamespace) &&
                   (null === $annotationName || $elementName == $annotationName))) {
                 $error = new EdmError(
-                    $value->Location(),
+                    $value->location(),
                     EdmErrorCode::InvalidElementAnnotation(),
                     StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationMismatchedTerm()
                 );
@@ -185,7 +185,7 @@ abstract class ValidationHelper
             return true;
         } catch (Exception $e) {
             $error = new EdmError(
-                $value->Location(),
+                $value->location(),
                 EdmErrorCode::InvalidElementAnnotation(),
                 StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationValueInvalidXml()
             );
@@ -193,7 +193,7 @@ abstract class ValidationHelper
         }
     }
 
-    public static function IsInterfaceCritical(EdmError $error): bool
+    public static function isInterfaceCritical(EdmError $error): bool
     {
         $errVal = $error->getErrorCode()->getValue();
 
@@ -201,7 +201,7 @@ abstract class ValidationHelper
                $errVal <= EdmErrorCode::InterfaceCriticalCycleInTypeHierarchy()->getValue();
     }
 
-    public static function ItemExistsInReferencedModel(
+    public static function itemExistsInReferencedModel(
         IModel $model,
         string $fullName,
         bool $checkEntityContainer
@@ -216,7 +216,7 @@ abstract class ValidationHelper
     }
 
     // Take function name to avoid recomputing it
-    public static function FunctionOrNameExistsInReferencedModel(
+    public static function functionOrNameExistsInReferencedModel(
         IModel $model,
         IFunction $function,
         string $functionFullName,
@@ -231,7 +231,7 @@ abstract class ValidationHelper
         return false;
     }
 
-    public static function TypeIndirectlyContainsTarget(
+    public static function typeIndirectlyContainsTarget(
         IEntityType $source,
         IEntityType $target,
         SplObjectStorage $visited,
@@ -240,13 +240,13 @@ abstract class ValidationHelper
         if (!$visited->offsetExists($source)) {
             $visited->offsetSet($source, true);
             $visited[$source] = true;
-            if ($source->IsOrInheritsFrom($target)) {
+            if ($source->isOrInheritsFrom($target)) {
                 return true;
             }
 
-            foreach ($source->NavigationProperties() as $navProp) {
-                if ($navProp->containsTarget() && self::TypeIndirectlyContainsTarget(
-                    $navProp->ToEntityType(),
+            foreach ($source->navigationProperties() as $navProp) {
+                if ($navProp->containsTarget() && self::typeIndirectlyContainsTarget(
+                    $navProp->toEntityType(),
                     $target,
                     $visited,
                     $context
@@ -255,8 +255,8 @@ abstract class ValidationHelper
                 }
             }
 
-            foreach ($context->FindAllDerivedTypes($source) as $derived) {
-                if ($derived instanceof IEntityType && self::TypeIndirectlyContainsTarget(
+            foreach ($context->findAllDerivedTypes($source) as $derived) {
+                if ($derived instanceof IEntityType && self::typeIndirectlyContainsTarget(
                     $derived,
                     $target,
                     $visited,

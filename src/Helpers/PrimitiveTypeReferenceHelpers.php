@@ -20,7 +20,7 @@ trait PrimitiveTypeReferenceHelpers
      *
      * @return IPrimitiveType definition of this primitive type reference
      */
-    public function PrimitiveDefinition(): ?IPrimitiveType
+    public function primitiveDefinition(): ?IPrimitiveType
     {
         /** @var IPrimitiveTypeReference $this */
         $pType = $this->getDefinition();
@@ -33,9 +33,9 @@ trait PrimitiveTypeReferenceHelpers
      *
      * @return PrimitiveTypeKind primitive kind of the definition of this reference
      */
-    public function PrimitiveKind(): PrimitiveTypeKind
+    public function primitiveKind(): PrimitiveTypeKind
     {
-        $primitive = $this->PrimitiveDefinition();
+        $primitive = $this->primitiveDefinition();
         return $primitive !== null ? $primitive->getPrimitiveKind(): PrimitiveTypeKind::None();
     }
 }

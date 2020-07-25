@@ -29,12 +29,12 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
         $nonFunctionNameList = new HashSetInternal();
         $functionDictionary  = [];
         foreach ($entityContainer->getElements() as $item) {
-            EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
+            EdmUtil::checkArgumentNull($item->location(), 'item->Location');
             if ($item instanceof IFunctionImport) {
                 $function = $item;
                 if ($nonFunctionNameList->contains($item->getName())) {
-                    $context->AddError(
-                        $item->Location(),
+                    $context->addError(
+                        $item->location(),
                         EdmErrorCode::DuplicateEntityContainerMemberName(),
                         StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName())
                     );
@@ -46,8 +46,8 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
                     /** @var IFunctionImport $existingFunction */
                     foreach ($functionList as $existingFunction) {
                         if (EdmElementComparer::isFunctionSignatureEquivalentTo($function, $existingFunction)) {
-                            $context->AddError(
-                                $item->Location(),
+                            $context->addError(
+                                $item->location(),
                                 EdmErrorCode::DuplicateEntityContainerMemberName(),
                                 StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName())
                             );
@@ -61,7 +61,7 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
                 $functionList[]                           = $function;
                 $functionDictionary[$function->getName()] = $functionList;
             } else {
-                if (ValidationHelper::AddMemberNameToHashSet(
+                if (ValidationHelper::addMemberNameToHashSet(
                     $item,
                     $nonFunctionNameList,
                     $context,
@@ -70,8 +70,8 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
                     false
                 )) {
                     if (isset($functionDictionary[$item->getName()])) {
-                        $context->AddError(
-                            $item->Location(),
+                        $context->addError(
+                            $item->location(),
                             EdmErrorCode::DuplicateEntityContainerMemberName(),
                             StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName())
                         );

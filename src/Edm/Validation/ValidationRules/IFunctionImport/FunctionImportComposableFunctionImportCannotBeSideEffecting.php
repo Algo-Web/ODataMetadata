@@ -23,9 +23,9 @@ class FunctionImportComposableFunctionImportCannotBeSideEffecting extends Functi
     {
         assert($functionImport instanceof IFunctionImport);
         if ($functionImport->isComposable() && $functionImport->isSideEffecting()) {
-            EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
-            $context->AddError(
-                $functionImport->Location(),
+            EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
+            $context->addError(
+                $functionImport->location(),
                 EdmErrorCode::ComposableFunctionImportCannotBeSideEffecting(),
                 StringConst::EdmModel_Validator_Semantic_ComposableFunctionImportCannotBeSideEffecting($functionImport->getName())
             );

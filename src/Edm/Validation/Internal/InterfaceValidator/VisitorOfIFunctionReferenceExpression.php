@@ -12,7 +12,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 
 class VisitorOfIFunctionReferenceExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): ?iterable
+    protected function visitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IFunctionReferenceExpression);
         if (null !== $expression->getReferencedFunction()) {
@@ -24,7 +24,7 @@ class VisitorOfIFunctionReferenceExpression extends VisitorOfT
             $references[] = $expression->getReferencedFunction();
             return null;
         } else {
-            return [ InterfaceValidator::CreatePropertyMustNotBeNullError($expression, 'ReferencedFunction') ];
+            return [ InterfaceValidator::createPropertyMustNotBeNullError($expression, 'ReferencedFunction') ];
         }
     }
 

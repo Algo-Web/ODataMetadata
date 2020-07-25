@@ -22,10 +22,10 @@ class SpatialTypeReferencesNotSupportedBeforeV3 extends PrimitiveTypeReferenceRu
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IPrimitiveTypeReference);
-        if ($type->IsSpatial()) {
-            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
-            $context->AddError(
-                $type->Location(),
+        if ($type->isSpatial()) {
+            EdmUtil::checkArgumentNull($type->location(), 'type->Location');
+            $context->addError(
+                $type->location(),
                 EdmErrorCode::SpatialTypeReferencesNotSupportedBeforeV3(),
                 StringConst::EdmModel_Validator_Semantic_SpatialTypeReferencesNotSupportedBeforeV3()
             );

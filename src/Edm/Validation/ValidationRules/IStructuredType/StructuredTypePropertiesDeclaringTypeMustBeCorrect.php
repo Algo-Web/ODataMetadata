@@ -25,9 +25,9 @@ class StructuredTypePropertiesDeclaringTypeMustBeCorrect extends StructuredTypeR
         foreach ($structuredType->getDeclaredProperties() as $property) {
             if ($property != null) {
                 if ($property->getDeclaringType() !== $structuredType) {
-                    EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
-                    $context->AddError(
-                        $property->Location(),
+                    EdmUtil::checkArgumentNull($property->location(), 'property->Location');
+                    $context->addError(
+                        $property->location(),
                         EdmErrorCode::DeclaringTypeMustBeCorrect(),
                         StringConst::EdmModel_Validator_Semantic_DeclaringTypeMustBeCorrect($property->getName())
                     );

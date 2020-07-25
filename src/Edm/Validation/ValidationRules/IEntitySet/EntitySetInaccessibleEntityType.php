@@ -21,7 +21,7 @@ class EntitySetInaccessibleEntityType extends EntitySetRule
     {
         assert($entitySet instanceof IEntitySet);
         if (!$context->checkIsBad($entitySet->getElementType())) {
-            Helpers::CheckForUnreachableTypeError($context, $entitySet->getElementType(), $entitySet->Location());
+            Helpers::checkForUnreachableTypeError($context, $entitySet->getElementType(), $entitySet->location());
         }
     }
 }

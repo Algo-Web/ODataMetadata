@@ -27,7 +27,7 @@ trait FunctionImportHelpers
      * @param  IEntitySet $entitySet the static entity set of the function import
      * @return bool       true if the entity set expression of the functionImport contains a static reference to an IEntitySet, otherwise false
      */
-    public function TryGetStaticEntitySet(IEntitySet &$entitySet = null): bool
+    public function tryGetStaticEntitySet(IEntitySet &$entitySet = null): bool
     {
         /** @var IFunctionImport $this */
         $entitySetReference = $this->getEntitySet();
@@ -46,7 +46,7 @@ trait FunctionImportHelpers
      * @return bool                       true if the entity set expression of the functionImport contains a relative
      *                                              path an IEntitySet, otherwise false
      */
-    public function TryGetRelativeEntitySetPath(
+    public function tryGetRelativeEntitySetPath(
         IModel $model,
         IFunctionParameter &$parameter = null,
         array &$path = null
@@ -84,14 +84,14 @@ trait FunctionImportHelpers
             /**
              * @var IEntityType $entityType
              */
-            $entityType = Helpers::GetPathSegmentEntityType($parameter->getType());
+            $entityType = Helpers::getPathSegmentEntityType($parameter->getType());
             /**
              * @var INavigationProperty[] $pathList
              */
             $pathList = [];
             for ($i = 1; $i < $numSegments; ++$i) {
                 $segment = $pathToResolve[$i];
-                if (EdmUtil::IsQualifiedName($segment)) {
+                if (EdmUtil::isQualifiedName($segment)) {
                     if ($i == count($pathToResolve) - 1) {
                         // The last segment must not be type cast.
                         return false;
@@ -101,7 +101,7 @@ trait FunctionImportHelpers
                      */
                     $subType = $model->findDeclaredType($segment);
                     $subType = $subType instanceof IEntityType ? $subType : null;
-                    if ($subType == null || !$subType->IsOrInheritsFrom($entityType)) {
+                    if ($subType == null || !$subType->isOrInheritsFrom($entityType)) {
                         return false;
                     }
 
@@ -114,7 +114,7 @@ trait FunctionImportHelpers
                     }
 
                     $pathList[] = $navProp;
-                    $entityType = Helpers::GetPathSegmentEntityType($navProp->getType());
+                    $entityType = Helpers::getPathSegmentEntityType($navProp->getType());
                 }
             }
 

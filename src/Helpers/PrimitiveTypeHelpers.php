@@ -23,7 +23,7 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 trait PrimitiveTypeHelpers
 {
-    public function GetPrimitiveTypeReference(bool $isNullable): IPrimitiveTypeReference
+    public function getPrimitiveTypeReference(bool $isNullable): IPrimitiveTypeReference
     {
         /** @var IPrimitiveType $this */
         switch ($this->getPrimitiveKind()) {

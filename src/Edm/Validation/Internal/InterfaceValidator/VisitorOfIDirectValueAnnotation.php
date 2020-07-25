@@ -10,14 +10,14 @@ use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotation;
 
 class VisitorOfIDirectValueAnnotation extends VisitorOfT
 {
-    protected function VisitT($annotation, array &$followup, array &$references): ?iterable
+    protected function visitT($annotation, array &$followup, array &$references): ?iterable
     {
         assert($annotation instanceof IDirectValueAnnotation);
         $errors = [];
 
         if (empty($annotation->getNamespaceUri())) {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createPropertyMustNotBeNullError(
                     $annotation,
                     'NamespaceUri'
                 ),
@@ -26,8 +26,8 @@ class VisitorOfIDirectValueAnnotation extends VisitorOfT
         }
 
         if (null === $annotation->getValue()) {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createPropertyMustNotBeNullError(
                     $annotation,
                     'Value'
                 ),

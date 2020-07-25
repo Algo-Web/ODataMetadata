@@ -28,7 +28,7 @@ trait ModelHelpersVocabularyAnnotation
      * @return iterable|IVocabularyAnnotation[] annotations attached to the element by this model or by models
      *                                                    referenced by this model that bind the term with the given qualifier
      */
-    public function FindVocabularyAnnotations(
+    public function findVocabularyAnnotations(
         IVocabularyAnnotatable $element,
         $term = null,
         string $qualifier = null,
@@ -47,11 +47,11 @@ trait ModelHelpersVocabularyAnnotation
             $name          = null;
             $namespaceName = null;
 
-            if (EdmUtil::TryGetNamespaceNameFromQualifiedName($termName, $namespaceName, $name)) {
+            if (EdmUtil::tryGetNamespaceNameFromQualifiedName($termName, $namespaceName, $name)) {
                 /**
                  * @var IVocabularyAnnotation $annotation
                  */
-                foreach ($this->FindVocabularyAnnotations($element) as $annotation) {
+                foreach ($this->findVocabularyAnnotations($element) as $annotation) {
                     if (null !== $type && !is_a($annotation, $type)) {
                         continue;
                     }
@@ -79,7 +79,7 @@ trait ModelHelpersVocabularyAnnotation
      * @return IVocabularyAnnotation[] annotations attached to the element (or, if the element is a type, to its base
      *                                         types) by this model or by models referenced by this model
      */
-    public function FindVocabularyAnnotationsIncludingInheritedAnnotations(IVocabularyAnnotatable $element): array
+    public function findVocabularyAnnotationsIncludingInheritedAnnotations(IVocabularyAnnotatable $element): array
     {
         /**
          * @var IVocabularyAnnotation[] $result
@@ -109,11 +109,11 @@ trait ModelHelpersVocabularyAnnotation
     protected function processNullVocabularyAnnotationTerm(
         IVocabularyAnnotatable $element
     ): array {
-        $result = $this->FindVocabularyAnnotationsIncludingInheritedAnnotations($element);
+        $result = $this->findVocabularyAnnotationsIncludingInheritedAnnotations($element);
         foreach ($this->getReferencedModels() as $referencedModel) {
             $result = array_merge(
                 $result,
-                $referencedModel->FindVocabularyAnnotationsIncludingInheritedAnnotations($element)
+                $referencedModel->findVocabularyAnnotationsIncludingInheritedAnnotations($element)
             );
         }
         return $result;
@@ -136,7 +136,7 @@ trait ModelHelpersVocabularyAnnotation
         /**
          * @var IVocabularyAnnotation $annotation
          */
-        foreach ($this->FindVocabularyAnnotations($element) as $annotation) {
+        foreach ($this->findVocabularyAnnotations($element) as $annotation) {
             if (null !== $type && !is_a($annotation, $type)) {
                 continue;
             }

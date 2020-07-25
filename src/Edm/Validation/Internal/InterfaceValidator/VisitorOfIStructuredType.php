@@ -14,11 +14,11 @@ use AlgoWeb\ODataMetadata\StringConst;
 
 class VisitorOfIStructuredType extends VisitorOfT
 {
-    protected function VisitT($type, array &$followup, array &$references): ?iterable
+    protected function visitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof IStructuredType);
         $errors = [];
-        InterfaceValidator::ProcessEnumerable(
+        InterfaceValidator::processEnumerable(
             $type,
             $type->getDeclaredProperties(),
             'DeclaredProperties',
@@ -33,10 +33,10 @@ class VisitorOfIStructuredType extends VisitorOfT
             for ($currentBaseType = $type->getBaseType(); null !== $currentBaseType; $currentBaseType = $currentBaseType->getBaseType()
             ) {
                 if (in_array($currentBaseType, $visitedTypes)) {
-                    $typeName = $type instanceof ISchemaType ? $type->FullName() : get_class($type);
-                    InterfaceValidator::CollectErrors(
+                    $typeName = $type instanceof ISchemaType ? $type->fullName() : get_class($type);
+                    InterfaceValidator::collectErrors(
                         new EdmError(
-                            InterfaceValidator::GetLocation($type),
+                            InterfaceValidator::getLocation($type),
                             EdmErrorCode::InterfaceCriticalCycleInTypeHierarchy(),
                             StringConst::EdmModel_Validator_Syntactic_InterfaceCriticalCycleInTypeHierarchy($typeName)
                         ),

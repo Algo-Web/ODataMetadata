@@ -22,10 +22,10 @@ class SchemaElementNamespaceMustNotBeEmptyOrWhiteSpace extends SchemaElementRule
     public function __invoke(ValidationContext $context, ?IEdmElement $item)
     {
         assert($item instanceof ISchemaElement);
-        if (EdmUtil::IsNullOrWhiteSpaceInternal($item->getNamespace()) || mb_strlen($item->getNamespace()) === 0) {
-            EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
-            $context->AddError(
-                $item->Location(),
+        if (EdmUtil::isNullOrWhiteSpaceInternal($item->getNamespace()) || mb_strlen($item->getNamespace()) === 0) {
+            EdmUtil::checkArgumentNull($item->location(), 'item->Location');
+            $context->addError(
+                $item->location(),
                 EdmErrorCode::InvalidNamespaceName(),
                 StringConst::EdmModel_Validator_Syntactic_MissingNamespaceName()
             );

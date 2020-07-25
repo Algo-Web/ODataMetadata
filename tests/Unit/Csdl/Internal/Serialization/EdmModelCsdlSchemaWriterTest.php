@@ -199,7 +199,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         }
 
         $writer->startElement('Test');
-        $foo->WriteInlineExpression($expr);
+        $foo->writeInlineExpression($expr);
         $writer->endElement();
 
         $actual = $writer->outputMemory(true);
@@ -223,7 +223,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage($msg);
 
-        $foo->WriteFunctionImportElementHeader($import);
+        $foo->writeFunctionImportElementHeader($import);
     }
 
     public function functionImportElementHeaderProvider(): array
@@ -288,7 +288,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $import->shouldReceive('getEntitySet')->andReturn($entitySet)->atLeast(1);
         $import->shouldReceive('isBindable')->andReturn(false)->once();
 
-        $foo->WriteFunctionImportElementHeader($import);
+        $foo->writeFunctionImportElementHeader($import);
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
@@ -322,7 +322,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $doc->shouldReceive('getSummary')->andReturn($summary);
         $doc->shouldReceive('getDescription')->andReturn($description);
 
-        $foo->WriteDocumentationElement($doc);
+        $foo->writeDocumentationElement($doc);
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
     }
@@ -357,7 +357,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $enum->shouldReceive('getName')->andReturn('name');
         $enum->shouldReceive('getValue')->andReturn($prim);
 
-        $foo->WriteEnumMemberElementHeader($enum);
+        $foo->writeEnumMemberElementHeader($enum);
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
@@ -379,7 +379,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $complex->shouldReceive('isAbstract')->andReturn(false);
         $complex->shouldReceive('BaseComplexType')->andReturn(null);
 
-        $foo->WriteComplexTypeElementHeader($complex);
+        $foo->writeComplexTypeElementHeader($complex);
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
@@ -399,7 +399,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $prop = m::mock(IStructuralProperty::class);
         $prop->shouldReceive('getName')->andReturn('name');
 
-        $foo->WritePropertyRefElement($prop);
+        $foo->writePropertyRefElement($prop);
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
@@ -446,7 +446,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $term->shouldReceive('getType')->andReturn($typeRef);
         $term->shouldReceive('getName')->andReturn('name');
 
-        $foo->WriteValueTermElementHeader($term, $isInline);
+        $foo->writeValueTermElementHeader($term, $isInline);
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);
@@ -488,7 +488,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
         $enum->shouldReceive('getName')->andReturn('name');
         $enum->shouldReceive('isFlags')->andReturn($isFlags);
 
-        $foo->WriteEnumTypeElementHeader($enum);
+        $foo->writeEnumTypeElementHeader($enum);
         $writer->endElement();
         $actual = $writer->outputMemory(true);
         $this->assertXmlStringEqualsXmlString($expected, $actual);
@@ -501,7 +501,7 @@ class EdmModelCsdlSchemaWriterTest extends TestCase
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Key/>' . PHP_EOL;
 
-        $foo->WriteDeclaredKeyPropertiesElementHeader();
+        $foo->writeDeclaredKeyPropertiesElementHeader();
 
         $writer->endElement();
         $actual = $writer->outputMemory(true);

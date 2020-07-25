@@ -23,14 +23,14 @@ trait ValueHelpers
      * @param IModel $model                 model containing the value
      * @param bool   $isSerializedAsElement value indicating if the value should be serialized as an element
      */
-    public function SetIsSerializedAsElement(IModel $model, bool $isSerializedAsElement): void
+    public function setIsSerializedAsElement(IModel $model, bool $isSerializedAsElement): void
     {
         /** @var IEdmElement $self */
         $self = $this;
         assert($self instanceof IEdmElement);
         if ($isSerializedAsElement) {
             $error = null;
-            if (!ValidationHelper::ValidateValueCanBeWrittenAsXmlElementAnnotation(
+            if (!ValidationHelper::validateValueCanBeWrittenAsXmlElementAnnotation(
                 $self,
                 null,
                 null,
@@ -41,7 +41,7 @@ trait ValueHelpers
             }
         }
 
-        $model->SetAnnotationValue(
+        $model->setAnnotationValue(
             $self,
             EdmConstants::InternalUri,
             CsdlConstants::IsSerializedAsElementAnnotation,
@@ -54,11 +54,11 @@ trait ValueHelpers
      * @param  IModel $model model containing the value
      * @return bool   value indicating if the string should be serialized as an element
      */
-    public function IsSerializedAsElement(IModel $model): bool
+    public function isSerializedAsElement(IModel $model): bool
     {
         $self = $this;
         assert($self instanceof IEdmElement);
-        $value = $model->GetAnnotationValue(
+        $value = $model->getAnnotationValue(
             'boolean',
             $self,
             EdmConstants::InternalUri,

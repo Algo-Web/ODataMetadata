@@ -111,9 +111,9 @@ final class ValidationContext
      * @param EdmErrorCode $errorCode    value representing the error
      * @param string       $errorMessage message text describing the error
      */
-    public function AddError(ILocation $location, EdmErrorCode $errorCode, string $errorMessage): void
+    public function addError(ILocation $location, EdmErrorCode $errorCode, string $errorMessage): void
     {
-        $this->AddRawError(new EdmError($location, $errorCode, $errorMessage));
+        $this->addRawError(new EdmError($location, $errorCode, $errorMessage));
     }
 
     /**
@@ -121,7 +121,7 @@ final class ValidationContext
      *
      * @param EdmError $error error to register
      */
-    public function AddRawError(EdmError $error): void
+    public function addRawError(EdmError $error): void
     {
         $this->errors[] = $error;
     }

@@ -27,31 +27,31 @@ class NavigationPropertyDependentEndMultiplicity extends NavigationPropertyRule
     public function __invoke(ValidationContext $context, ?IEdmElement $navigationProperty)
     {
         assert($navigationProperty instanceof INavigationProperty);
-        EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
+        EdmUtil::checkArgumentNull($navigationProperty->location(), 'navigationProperty->Location');
         $dependentProperties = $navigationProperty->getDependentProperties();
         if ($dependentProperties != null) {
             EdmUtil::checkArgumentNull(
-                $navigationProperty->DeclaringEntityType()->Key(),
+                $navigationProperty->declaringEntityType()->key(),
                 'navigationProperty->DeclaringEntityType->Key'
             );
-            if (ValidationHelper::PropertySetsAreEquivalent(
-                $navigationProperty->DeclaringEntityType()->Key(),
+            if (ValidationHelper::propertySetsAreEquivalent(
+                $navigationProperty->declaringEntityType()->key(),
                 $dependentProperties
             )) {
-                if (!$navigationProperty->Multiplicity()->isZeroOrOne() &&
-                    !$navigationProperty->Multiplicity()->isOne()
+                if (!$navigationProperty->multiplicity()->isZeroOrOne() &&
+                    !$navigationProperty->multiplicity()->isOne()
                 ) {
-                    $context->AddError(
-                        $navigationProperty->Location(),
+                    $context->addError(
+                        $navigationProperty->location(),
                         EdmErrorCode::InvalidMultiplicityOfDependentEnd(),
                         StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfDependentEndMustBeZeroOneOrOne(
                             $navigationProperty->getName()
                         )
                     );
                 }
-            } elseif ($navigationProperty->Multiplicity()->isMany()) {
-                $context->AddError(
-                    $navigationProperty->Location(),
+            } elseif ($navigationProperty->multiplicity()->isMany()) {
+                $context->addError(
+                    $navigationProperty->location(),
                     EdmErrorCode::InvalidMultiplicityOfDependentEnd(),
                     StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfDependentEndMustBeMany(
                         $navigationProperty->getName()

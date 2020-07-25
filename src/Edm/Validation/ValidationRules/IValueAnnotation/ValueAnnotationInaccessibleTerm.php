@@ -25,12 +25,12 @@ class ValueAnnotationInaccessibleTerm extends ValueAnnotationRule
         assert($annotation instanceof IValueAnnotation);
         // An unbound term is not treated as a semantic error, and looking up its name would fail.
         $term = $annotation->getTerm();
-        if (!($term instanceof IUnresolvedElement) && $context->getModel()->FindValueTerm($term->FullName()) == null) {
-            EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
-            $context->AddError(
-                $annotation->Location(),
+        if (!($term instanceof IUnresolvedElement) && $context->getModel()->findValueTerm($term->fullName()) == null) {
+            EdmUtil::checkArgumentNull($annotation->location(), 'annotation->Location');
+            $context->addError(
+                $annotation->location(),
                 EdmErrorCode::BadUnresolvedTerm(),
-                StringConst::EdmModel_Validator_Semantic_InaccessibleTerm($annotation->getTerm()->FullName())
+                StringConst::EdmModel_Validator_Semantic_InaccessibleTerm($annotation->getTerm()->fullName())
             );
         }
     }

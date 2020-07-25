@@ -22,10 +22,10 @@ class StreamTypeReferencesNotSupportedBeforeV3 extends PrimitiveTypeReferenceRul
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IPrimitiveTypeReference);
-        if ($type->IsStream()) {
-            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
-            $context->AddError(
-                $type->Location(),
+        if ($type->isStream()) {
+            EdmUtil::checkArgumentNull($type->location(), 'type->Location');
+            $context->addError(
+                $type->location(),
                 EdmErrorCode::StreamTypeReferencesNotSupportedBeforeV3(),
                 StringConst::EdmModel_Validator_Semantic_StreamTypeReferencesNotSupportedBeforeV3()
             );

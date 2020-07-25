@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IEnumValue;
 
 class VisitorOfIEnumValue extends VisitorOfT
 {
-    protected function VisitT($value, array &$followup, array &$references): ?iterable
+    protected function visitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof IEnumValue);
         $followup[] = $value->getValue();

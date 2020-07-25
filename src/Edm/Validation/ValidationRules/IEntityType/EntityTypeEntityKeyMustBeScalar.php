@@ -23,14 +23,14 @@ class EntityTypeEntityKeyMustBeScalar extends EntitySetRule
     public function __invoke(ValidationContext $context, ?IEdmElement $entityType)
     {
         assert($entityType instanceof IEntityType);
-        $rawKey = $entityType->Key();
+        $rawKey = $entityType->key();
         if (null !== $rawKey) {
             foreach ($rawKey as $key) {
                 assert($key instanceof IStructuralProperty);
-                if (!$key->getType()->IsPrimitive() && !$context->checkIsBad($key)) {
-                    EdmUtil::checkArgumentNull($key->Location(), 'key->Location');
-                    $context->AddError(
-                        $key->Location(),
+                if (!$key->getType()->isPrimitive() && !$context->checkIsBad($key)) {
+                    EdmUtil::checkArgumentNull($key->location(), 'key->Location');
+                    $context->addError(
+                        $key->location(),
                         EdmErrorCode::EntityKeyMustBeScalar(),
                         StringConst::EdmModel_Validator_Semantic_EntityKeyMustBeScalar($key->getName(), $entityType->getName())
                     );

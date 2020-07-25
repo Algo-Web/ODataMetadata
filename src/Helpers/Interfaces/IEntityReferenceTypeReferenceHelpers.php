@@ -18,12 +18,12 @@ interface IEntityReferenceTypeReferenceHelpers
      *
      * @return IEntityReferenceType the definition of this entity reference type reference
      */
-    public function EntityReferenceDefinition(): IEntityReferenceType;
+    public function entityReferenceDefinition(): IEntityReferenceType;
 
     /**
      * Gets the entity type referred to by the definition of this entity reference type reference.
      *
      * @return IEntityType the entity type referred to by the definition of this entity reference type reference
      */
-    public function EntityType(): IEntityType;
+    public function entityType(): IEntityType;
 }

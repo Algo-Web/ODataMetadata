@@ -26,7 +26,7 @@ class EdmUtilTest extends TestCase
         $value = null;
 
         $expected = true;
-        $actual   = EdmUtil::IsNullOrWhiteSpaceInternal($value);
+        $actual   = EdmUtil::isNullOrWhiteSpaceInternal($value);
         $this->assertEquals($expected, $actual);
     }
 
@@ -35,7 +35,7 @@ class EdmUtilTest extends TestCase
         $value = '';
 
         $expected = true;
-        $actual   = EdmUtil::IsNullOrWhiteSpaceInternal($value);
+        $actual   = EdmUtil::isNullOrWhiteSpaceInternal($value);
         $this->assertEquals($expected, $actual);
     }
 
@@ -44,7 +44,7 @@ class EdmUtilTest extends TestCase
         $value = " \t\n\r\0\x0B";
 
         $expected = true;
-        $actual   = EdmUtil::IsNullOrWhiteSpaceInternal($value);
+        $actual   = EdmUtil::isNullOrWhiteSpaceInternal($value);
         $this->assertEquals($expected, $actual);
     }
 
@@ -53,7 +53,7 @@ class EdmUtilTest extends TestCase
         $string = 'Foobar';
 
         $expected = true;
-        $actual   = EdmUtil::IsValidUndottedName($string);
+        $actual   = EdmUtil::isValidUndottedName($string);
         $this->assertEquals($expected, $actual);
     }
 
@@ -62,7 +62,7 @@ class EdmUtilTest extends TestCase
         $string = '_Foo_bar';
 
         $expected = false;
-        $actual   = EdmUtil::IsValidUndottedName($string);
+        $actual   = EdmUtil::isValidUndottedName($string);
         $this->assertEquals($expected, $actual);
     }
 
@@ -71,7 +71,7 @@ class EdmUtilTest extends TestCase
         $string = 'foobar';
 
         $expected = true;
-        $actual   = EdmUtil::IsValidDottedName($string);
+        $actual   = EdmUtil::isValidDottedName($string);
         $this->assertEquals($expected, $actual);
     }
 
@@ -80,7 +80,7 @@ class EdmUtilTest extends TestCase
         $string = 'foo.bar.baz';
 
         $expected = true;
-        $actual   = EdmUtil::IsValidDottedName($string);
+        $actual   = EdmUtil::isValidDottedName($string);
         $this->assertEquals($expected, $actual);
     }
 
@@ -103,7 +103,7 @@ class EdmUtilTest extends TestCase
      */
     public function testIsQualifiedName(string $string, bool $expected)
     {
-        $actual   = EdmUtil::IsQualifiedName($string);
+        $actual   = EdmUtil::isQualifiedName($string);
         $this->assertEquals($expected, $actual);
     }
 
@@ -133,7 +133,7 @@ class EdmUtilTest extends TestCase
         $actualNamespace = null;
         $actualName      = null;
 
-        $actual = EdmUtil::TryGetNamespaceNameFromQualifiedName($qualName, $actualNamespace, $actualName);
+        $actual = EdmUtil::tryGetNamespaceNameFromQualifiedName($qualName, $actualNamespace, $actualName);
 
         $this->assertEquals($expected, $actual);
         $this->assertEquals($expectedNamepace, $actualNamespace);
@@ -148,7 +148,7 @@ class EdmUtilTest extends TestCase
         $this->expectException(ArgumentNullException::class);
         $this->expectExceptionMessage('Value for parameter function->getNamespace cannot be null.');
 
-        EdmUtil::ParameterizedName($function);
+        EdmUtil::parameterizedName($function);
     }
 
     public function testParameterisedNameFromUnresolvedFunctionNonNullNamespace()
@@ -158,7 +158,7 @@ class EdmUtilTest extends TestCase
         $function->shouldReceive('getName')->andReturn('name');
 
         $expected = 'namespace/name';
-        $actual   = EdmUtil::ParameterizedName($function);
+        $actual   = EdmUtil::parameterizedName($function);
         $this->assertEquals($expected, $actual);
     }
 
@@ -173,7 +173,7 @@ class EdmUtilTest extends TestCase
         $this->expectException(ArgumentNullException::class);
         $this->expectExceptionMessage('Value for parameter function->getNamespace cannot be null.');
 
-        EdmUtil::ParameterizedName($function);
+        EdmUtil::parameterizedName($function);
     }
 
     public function testParameterisedNameSchemaElementWithNonNullNamespaceThreeParms()
@@ -207,7 +207,7 @@ class EdmUtilTest extends TestCase
         $function->shouldReceive('getParameters')->andReturn([$parm1, $parm2, $parm3]);
 
         $expected = 'namespace.name(FullName, Collection(CollectionFullName), Ref(EntityFullName))';
-        $actual   = EdmUtil::ParameterizedName($function);
+        $actual   = EdmUtil::parameterizedName($function);
         $this->assertEquals($expected, $actual);
     }
 }

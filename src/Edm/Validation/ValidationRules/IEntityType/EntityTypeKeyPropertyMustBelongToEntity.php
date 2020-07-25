@@ -28,9 +28,9 @@ class EntityTypeKeyPropertyMustBelongToEntity extends EntityTypeRule
                 assert($key instanceof IStructuralProperty);
                 // Key must be one of the declared properties.
                 if ($key->getDeclaringType() !== $entityType && !$context->checkIsBad($key)) {
-                    EdmUtil::checkArgumentNull($entityType->Location(), 'entityType->Location');
-                    $context->AddError(
-                        $entityType->Location(),
+                    EdmUtil::checkArgumentNull($entityType->location(), 'entityType->Location');
+                    $context->addError(
+                        $entityType->location(),
                         EdmErrorCode::KeyPropertyMustBelongToEntity(),
                         StringConst::EdmModel_Validator_Semantic_KeyPropertyMustBelongToEntity($key->getName(), $entityType->getName())
                     );

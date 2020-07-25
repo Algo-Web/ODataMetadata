@@ -28,7 +28,7 @@ class NavigationPropertyDuplicateDependentProperty extends NavigationPropertyRul
             $propertyNames = new HashSetInternal();
             foreach ($navigationProperty->getDependentProperties() as $property) {
                 if ($property != null) {
-                    ValidationHelper::AddMemberNameToHashSet(
+                    ValidationHelper::addMemberNameToHashSet(
                         $property,
                         $propertyNames,
                         $context,

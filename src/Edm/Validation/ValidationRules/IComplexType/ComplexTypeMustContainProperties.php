@@ -22,12 +22,12 @@ class ComplexTypeMustContainProperties extends ComplexTypeRule
     public function __invoke(ValidationContext $context, ?IEdmElement $complexType)
     {
         assert($complexType instanceof IComplexType);
-        if (!(count($complexType->Properties()) == 0)) {
-            EdmUtil::checkArgumentNull($complexType->Location(), 'complexType->Location');
-            $context->AddError(
-                $complexType->Location(),
+        if (!(count($complexType->properties()) == 0)) {
+            EdmUtil::checkArgumentNull($complexType->location(), 'complexType->Location');
+            $context->addError(
+                $complexType->location(),
                 EdmErrorCode::ComplexTypeMustHaveProperties(),
-                StringConst::EdmModel_Validator_Semantic_ComplexTypeMustHaveProperties($complexType->FullName())
+                StringConst::EdmModel_Validator_Semantic_ComplexTypeMustHaveProperties($complexType->fullName())
             );
         }
     }

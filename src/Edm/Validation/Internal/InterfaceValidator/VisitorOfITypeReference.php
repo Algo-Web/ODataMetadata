@@ -11,7 +11,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 final class VisitorOfITypeReference extends VisitorOfT
 {
-    protected function VisitT($type, array &$followup, array &$references): ?iterable
+    protected function visitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof ITypeReference);
 
@@ -27,7 +27,7 @@ final class VisitorOfITypeReference extends VisitorOfT
 
             return null;
         } else {
-            return [ InterfaceValidator::CreatePropertyMustNotBeNullError($type, 'Definition')];
+            return [ InterfaceValidator::createPropertyMustNotBeNullError($type, 'Definition')];
         }
     }
 

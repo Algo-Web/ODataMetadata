@@ -27,8 +27,8 @@ class NavigationPropertyTypeMismatchRelationshipConstraint extends NavigationPro
         $dependentProperties = $navigationProperty->getDependentProperties();
         if ($dependentProperties != null) {
             $dependentPropertiesCount = count($dependentProperties);
-            $principalEntityType      = $navigationProperty->getPartner()->DeclaringEntityType();
-            $principalKey             = $principalEntityType->Key();
+            $principalEntityType      = $navigationProperty->getPartner()->declaringEntityType();
+            $principalKey             = $principalEntityType->key();
             if ($dependentPropertiesCount == count($principalKey)) {
                 for ($i = 0; $i < $dependentPropertiesCount; $i++) {
                     if (!EdmElementComparer::isEquivalentTo(
@@ -37,15 +37,15 @@ class NavigationPropertyTypeMismatchRelationshipConstraint extends NavigationPro
                     )) {
                         $errorMessage = StringConst::EdmModel_Validator_Semantic_TypeMismatchRelationshipConstraint(
                             $navigationProperty->getDependentProperties()[$i]->getName(),
-                            $navigationProperty->DeclaringEntityType()->FullName(),
+                            $navigationProperty->declaringEntityType()->fullName(),
                             $principalKey[$i]->getName(),
                             $principalEntityType->getName(),
                             'Dingus'
                         );
 
-                        EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
-                        $context->AddError(
-                            $navigationProperty->Location(),
+                        EdmUtil::checkArgumentNull($navigationProperty->location(), 'navigationProperty->Location');
+                        $context->addError(
+                            $navigationProperty->location(),
                             EdmErrorCode::TypeMismatchRelationshipConstraint(),
                             $errorMessage
                         );

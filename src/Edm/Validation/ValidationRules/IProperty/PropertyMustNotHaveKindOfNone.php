@@ -23,9 +23,9 @@ class PropertyMustNotHaveKindOfNone extends PropertyRule
     {
         assert($property instanceof IProperty);
         if ($property->getPropertyKind()->isNone() && !$context->checkIsBad($property)) {
-            EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
-            $context->AddError(
-                $property->Location(),
+            EdmUtil::checkArgumentNull($property->location(), 'property->Location');
+            $context->addError(
+                $property->location(),
                 EdmErrorCode::PropertyMustNotHaveKindOfNone(),
                 StringConst::EdmModel_Validator_Semantic_PropertyMustNotHaveKindOfNone($property->getName())
             );

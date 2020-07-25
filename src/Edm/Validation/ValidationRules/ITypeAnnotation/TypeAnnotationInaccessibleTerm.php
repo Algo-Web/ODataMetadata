@@ -26,12 +26,12 @@ class TypeAnnotationInaccessibleTerm extends TypeAnnotationRule
         assert($annotation instanceof ITypeAnnotation);
         $term = $annotation->getTerm();
         if (!($term instanceof IUnresolvedElement) &&
-            $context->getModel()->FindType($term->FullName()) instanceof IStructuredType) {
-            EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
-            $context->AddError(
-                $annotation->Location(),
+            $context->getModel()->findType($term->fullName()) instanceof IStructuredType) {
+            EdmUtil::checkArgumentNull($annotation->location(), 'annotation->Location');
+            $context->addError(
+                $annotation->location(),
                 EdmErrorCode::BadUnresolvedTerm(),
-                StringConst::EdmModel_Validator_Semantic_InaccessibleTerm($term->FullName())
+                StringConst::EdmModel_Validator_Semantic_InaccessibleTerm($term->fullName())
             );
         }
     }

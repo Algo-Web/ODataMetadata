@@ -25,13 +25,13 @@ class IfExpressionAssertCorrectTestType extends IfExpressionRule
         $errors = [];
         if (!ExpressionTypeChecker::tryAssertType(
             $expression->getTestExpression(),
-            EdmCoreModel::getInstance()->GetBoolean(false),
+            EdmCoreModel::getInstance()->getBoolean(false),
             null,
             false,
             $errors
         )) {
             foreach ($errors as $error) {
-                $context->AddRawError($error);
+                $context->addRawError($error);
             }
         }
     }

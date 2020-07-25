@@ -10,11 +10,11 @@ use AlgoWeb\ODataMetadata\Interfaces\INamedElement;
 
 final class VisitorOfINamedElement extends VisitorOfT
 {
-    protected function VisitT($item, array &$followup, array &$references): ?iterable
+    protected function visitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof INamedElement);
         return null !== $item->getName()
-            ? null : [ InterfaceValidator::CreatePropertyMustNotBeNullError($item, 'Name') ];
+            ? null : [ InterfaceValidator::createPropertyMustNotBeNullError($item, 'Name') ];
     }
 
     public function forType(): string

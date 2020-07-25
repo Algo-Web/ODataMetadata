@@ -26,7 +26,7 @@ class CacheHelper
     {
         return (object)[];
     }
-    public static function GetBoxed(bool $value)
+    public static function getBoxed(bool $value)
     {
         return $value;
     }

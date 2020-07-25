@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\ILabeledExpressionReferenceExpr
 
 class VisitorOfILabeledElementReferenceExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): ?iterable
+    protected function visitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof ILabeledExpressionReferenceExpression);
         $references[] = $expression->getReferencedLabeledExpression();

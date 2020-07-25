@@ -284,7 +284,7 @@ class CsdlConstants
 
     public static function getSupportedVersions(): array
     {
-        return [Version::v1(), Version::v1_1(), Version::v2(), Version::v3()];
+        return [Version::v1(), Version::v1point1(), Version::v2(), Version::v3()];
     }
     public static function versionToEdmxNamespace(Version $version): ?string
     {
@@ -303,9 +303,9 @@ class CsdlConstants
         switch ($version) {
             case Version::v1():
                 return self::Version1Namespace;
-            case Version::v1_1():
+            case Version::v1point1():
                 return self::Version1_1Namespace;
-            case Version::v1_2():
+            case Version::v1point2():
                 return self::Version1_2Namespace;
             case Version::v2():
                 return self::Version2Namespace;
@@ -314,12 +314,12 @@ class CsdlConstants
         }
         return null;
     }
-    public static function EdmToEdmxVersions(Version $edm)
+    public static function edmToEdmxVersions(Version $edm)
     {
         switch ($edm) {
             case Version::v1():
-            case Version::v1_1():
-            case Version::v1_2():
+            case Version::v1point1():
+            case Version::v1point2():
                 return Version::v1();
         }
         return $edm;

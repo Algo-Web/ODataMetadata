@@ -23,13 +23,13 @@ class CompleteTest extends TestCase
         $employ          = Structure::getEmployees();
         $model           = new EdmModel();
         $entityContainer = new EdmEntityContainer('Northwind', 'NorthwindEntities', true, true);
-        $model->AddElement(array_values($customer)[0]);
-        $customerSet = $entityContainer->AddEntitySet(array_keys($customer)[0], array_values($customer)[0]);
-        $model->AddElement(array_values($employPriv)[0]);
-        $EmployPrivSet = $entityContainer->AddEntitySet(array_keys($employPriv)[0], array_values($employPriv)[0]);
-        $model->AddElement(array_values($employ)[0]);
-        $employSet = $entityContainer->AddEntitySet(array_keys($employ)[0], array_values($employ)[0]);
-        $model->AddElement($entityContainer);
+        $model->addElement(array_values($customer)[0]);
+        $customerSet = $entityContainer->addEntitySet(array_keys($customer)[0], array_values($customer)[0]);
+        $model->addElement(array_values($employPriv)[0]);
+        $EmployPrivSet = $entityContainer->addEntitySet(array_keys($employPriv)[0], array_values($employPriv)[0]);
+        $model->addElement(array_values($employ)[0]);
+        $employSet = $entityContainer->addEntitySet(array_keys($employ)[0], array_values($employ)[0]);
+        $model->addElement($entityContainer);
         /**
          * @var EdmEntityType $employee
          */
@@ -41,10 +41,10 @@ class CompleteTest extends TestCase
         $navPropInfo1                     = new EdmNavigationPropertyInfo();
         $navPropInfo1->name               = 'employee';
         $navPropInfo1->targetMultiplicity = Multiplicity::One();
-        $navProp                          = $employee->AddBidirectionalNavigation($navPropInfo, $navPropInfo1);
-        $employSet->AddNavigationTarget($navProp, $EmployPrivSet);
+        $navProp                          = $employee->addBidirectionalNavigation($navPropInfo, $navPropInfo1);
+        $employSet->addNavigationTarget($navProp, $EmployPrivSet);
         $xmlWritter = new XMLWriter();
-        $this->assertTrue(EdmxWriter::TryWriteEdmx($model, $xmlWritter));
+        $this->assertTrue(EdmxWriter::tryWriteEdmx($model, $xmlWritter));
         $this->assertXmlStringEqualsXmlString('<?xml version="1.0"?>
 <edmx:Edmx xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:metadata="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:annotations="http://schemas.microsoft.com/ado/2009/02/edm/annotation" Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
    <edmx:DataServices metadata:DataServiceVersion="3.0" xmlns:metadata="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata">

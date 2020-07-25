@@ -29,7 +29,7 @@ class InterfaceValidatorTest extends TestCase
         $item      = m::mock(IExpression::class)->makePartial();
 
         $expected = null;
-        $actual   = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+        $actual   = InterfaceValidator::checkForInterfaceKindValueMismatchError(
             $item,
             PrimitiveTypeKind::None(),
             'propertyName',
@@ -46,7 +46,7 @@ class InterfaceValidatorTest extends TestCase
 
         $this->expectException(ArgumentNullException::class);
         $this->expectExceptionMessage('Value for parameter item.Definition cannot be null.');
-        InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($item);
+        InterfaceValidator::createTypeRefInterfaceTypeKindValueMismatchError($item);
     }
 
     public function testCreateTypeRefInterfaceTypeKindValueMismatchErrorWithNonNullDefinition()
@@ -57,7 +57,7 @@ class InterfaceValidatorTest extends TestCase
         $item = m::mock(ITypeReference::class);
         $item->shouldReceive('getDefinition')->andReturn($def)->atLeast(1);
 
-        $result = InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($item);
+        $result = InterfaceValidator::createTypeRefInterfaceTypeKindValueMismatchError($item);
 
         $errorCode = EdmErrorCode::InterfaceCriticalKindValueMismatch();
         $this->assertEquals($errorCode, $result->getErrorCode());
@@ -73,7 +73,7 @@ class InterfaceValidatorTest extends TestCase
         $item->shouldReceive('getDefinition')->andReturn(null)->atLeast(1);
 
         $this->expectExceptionMessage('item.Definition is IEdmPrimitiveType');
-        InterfaceValidator::CreatePrimitiveTypeRefInterfaceTypeKindValueMismatchError($item);
+        InterfaceValidator::createPrimitiveTypeRefInterfaceTypeKindValueMismatchError($item);
     }
 
     public function testCreatePrimitiveTypeRefInterfaceTypeKindValueMismatchErrorWithGoodDefinition()
@@ -84,7 +84,7 @@ class InterfaceValidatorTest extends TestCase
         $item = m::mock(IPrimitiveTypeReference::class);
         $item->shouldReceive('getDefinition')->andReturn($def)->atLeast(1);
 
-        $result    = InterfaceValidator::CreatePrimitiveTypeRefInterfaceTypeKindValueMismatchError($item);
+        $result    = InterfaceValidator::createPrimitiveTypeRefInterfaceTypeKindValueMismatchError($item);
         $errorCode = EdmErrorCode::InterfaceCriticalKindValueMismatch();
         $this->assertEquals($errorCode, $result->getErrorCode());
 
@@ -101,7 +101,7 @@ class InterfaceValidatorTest extends TestCase
         $targList = [];
         $errors   = [];
 
-        InterfaceValidator::ProcessEnumerable($item, $enum, $propName, $targList, $errors);
+        InterfaceValidator::processEnumerable($item, $enum, $propName, $targList, $errors);
 
         $this->assertEquals(1, count($errors));
         $result = $errors[0];
@@ -122,7 +122,7 @@ class InterfaceValidatorTest extends TestCase
         $targList = [];
         $errors   = [];
 
-        InterfaceValidator::ProcessEnumerable($item, $enum, $propName, $targList, $errors);
+        InterfaceValidator::processEnumerable($item, $enum, $propName, $targList, $errors);
 
         $this->assertEquals(0, count($errors));
         $this->assertEquals(0, count($targList));
@@ -136,7 +136,7 @@ class InterfaceValidatorTest extends TestCase
         $targList = [];
         $errors   = [];
 
-        InterfaceValidator::ProcessEnumerable($item, $enum, $propName, $targList, $errors);
+        InterfaceValidator::processEnumerable($item, $enum, $propName, $targList, $errors);
 
         $this->assertEquals(1, count($errors));
         $this->assertEquals(0, count($targList));
@@ -150,7 +150,7 @@ class InterfaceValidatorTest extends TestCase
         $targList = [];
         $errors   = [];
 
-        InterfaceValidator::ProcessEnumerable($item, $enum, $propName, $targList, $errors);
+        InterfaceValidator::processEnumerable($item, $enum, $propName, $targList, $errors);
 
         $this->assertEquals(1, count($errors));
         $this->assertEquals(1, count($targList));

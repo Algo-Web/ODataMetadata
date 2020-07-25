@@ -20,11 +20,11 @@ abstract class Helpers
     public const AssociationNameEscapeString        = '_';
     public const AssociationNameEscapeStringEscaped = '__';
 
-    public static function GetPathSegmentEntityType(ITypeReference $segmentType): IEntityType
+    public static function getPathSegmentEntityType(ITypeReference $segmentType): IEntityType
     {
-        return ($segmentType->IsCollection() ? $segmentType->AsCollection()->ElementType() : $segmentType)->AsEntity()->EntityDefinition();
+        return ($segmentType->isCollection() ? $segmentType->asCollection()->elementType() : $segmentType)->asEntity()->entityDefinition();
     }
-    public static function FindAcrossModels(IModel $model, string $qualifiedName, callable $finder, $ambiguousCreator)
+    public static function findAcrossModels(IModel $model, string $qualifiedName, callable $finder, $ambiguousCreator)
     {
         $candidate = $finder($model, $qualifiedName);
 
@@ -44,7 +44,7 @@ abstract class Helpers
      * @param  mixed      $annotation
      * @return mixed|null
      */
-    public static function AnnotationValue(string $typeOf, $annotation)
+    public static function annotationValue(string $typeOf, $annotation)
     {
         if ($annotation != null) {
             if ('array' === $typeOf) {
@@ -116,29 +116,29 @@ abstract class Helpers
      * @param  INavigationProperty $property the navigation property
      * @return string              the association namespace
      */
-    public static function GetAssociationNamespace(IModel $model, INavigationProperty $property): string
+    public static function getAssociationNamespace(IModel $model, INavigationProperty $property): string
     {
-        $property->PopulateCaches();
-        $associationNamespace = $model->GetAnnotationValue('string', $property, EdmConstants::InternalUri, CsdlConstants::AssociationNamespaceAnnotation);
+        $property->populateCaches();
+        $associationNamespace = $model->getAnnotationValue('string', $property, EdmConstants::InternalUri, CsdlConstants::AssociationNamespaceAnnotation);
         if ($associationNamespace == null) {
-            $associationNamespace = $property->GetPrimary()->DeclaringEntityType()->getNamespace();
+            $associationNamespace = $property->getPrimary()->declaringEntityType()->getNamespace();
         }
 
         return $associationNamespace;
     }
 
 
-    public static function GetQualifiedAndEscapedPropertyName(INavigationProperty $property): string
+    public static function getQualifiedAndEscapedPropertyName(INavigationProperty $property): string
     {
         return
-            str_replace('.', self::AssociationNameEscapeChar, self::EscapeName($property->DeclaringEntityType()->getNamespace())) .
+            str_replace('.', self::AssociationNameEscapeChar, self::escapeName($property->declaringEntityType()->getNamespace())) .
             self::AssociationNameEscapeChar .
-            self::EscapeName($property->DeclaringEntityType()->getNamespace()) .
+            self::escapeName($property->declaringEntityType()->getNamespace()) .
             self::AssociationNameEscapeChar .
-            self::EscapeName($property->getName());
+            self::escapeName($property->getName());
     }
 
-    private static function EscapeName(string $name): string
+    private static function escapeName(string $name): string
     {
         return str_replace(self::AssociationNameEscapeString, self::AssociationNameEscapeStringEscaped, $name);
     }

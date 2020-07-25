@@ -23,9 +23,9 @@ class DecimalTypeReferenceScaleOutOfRange extends DecimalTypeReferenceRule
     {
         assert($type instanceof IDecimalTypeReference);
         if ($type->getScale() > $type->getPrecision() || $type->getScale() < 0) {
-            EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
-            $context->AddError(
-                $type->Location(),
+            EdmUtil::checkArgumentNull($type->location(), 'type->Location');
+            $context->addError(
+                $type->location(),
                 EdmErrorCode::ScaleOutOfRange(),
                 StringConst::EdmModel_Validator_Semantic_ScaleOutOfRange()
             );

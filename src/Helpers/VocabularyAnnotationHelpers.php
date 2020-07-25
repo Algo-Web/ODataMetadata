@@ -14,20 +14,20 @@ use AlgoWeb\ODataMetadata\Interfaces\IModel;
 
 trait VocabularyAnnotationHelpers
 {
-    public function IsInline(IModel $model): bool
+    public function isInline(IModel $model): bool
     {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
-        return $annotation->GetSerializationLocation($model) ==
-               EdmVocabularyAnnotationSerializationLocation::Inline() || null === $annotation->TargetString();
+        return $annotation->getSerializationLocation($model) ==
+               EdmVocabularyAnnotationSerializationLocation::Inline() || null === $annotation->targetString();
     }
 
-    public function TargetString(): string
+    public function targetString(): string
     {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
         EdmUtil::checkArgumentNull($annotation->getTarget(), 'annotation->getTarget');
-        return EdmUtil::FullyQualifiedName($annotation->getTarget());
+        return EdmUtil::fullyQualifiedName($annotation->getTarget());
     }
 
     /**
@@ -36,13 +36,13 @@ trait VocabularyAnnotationHelpers
      * @param IModel                                            $model    model containing the annotation
      * @param EdmVocabularyAnnotationSerializationLocation|null $location the location the annotation should appear
      */
-    public function SetSerializationLocation(
+    public function setSerializationLocation(
         IModel $model,
         ?EdmVocabularyAnnotationSerializationLocation $location
     ): void {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
-        $model->SetAnnotationValue(
+        $model->setAnnotationValue(
             $annotation,
             EdmConstants::InternalUri,
             CsdlConstants::AnnotationSerializationLocationAnnotation,
@@ -56,11 +56,11 @@ trait VocabularyAnnotationHelpers
      * @param  IModel                                            $model model containing the annotation
      * @return EdmVocabularyAnnotationSerializationLocation|null the location the annotation should be serialized at
      */
-    public function GetSerializationLocation(IModel $model): ?EdmVocabularyAnnotationSerializationLocation
+    public function getSerializationLocation(IModel $model): ?EdmVocabularyAnnotationSerializationLocation
     {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
-        $location   = $model->GetAnnotationValue(
+        $location   = $model->getAnnotationValue(
             EdmVocabularyAnnotationSerializationLocation::class,
             $annotation,
             EdmConstants::InternalUri,
@@ -75,11 +75,11 @@ trait VocabularyAnnotationHelpers
      * @param IModel $model           model containing the annotation
      * @param string $schemaNamespace the schema the annotation belongs in
      */
-    public function SetSchemaNamespace(IModel $model, string $schemaNamespace): void
+    public function setSchemaNamespace(IModel $model, string $schemaNamespace): void
     {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
-        $model->SetAnnotationValue(
+        $model->setAnnotationValue(
             $annotation,
             EdmConstants::InternalUri,
             CsdlConstants::SchemaNamespaceAnnotation,
@@ -92,11 +92,11 @@ trait VocabularyAnnotationHelpers
      * @param  IModel $model model containing the annotation
      * @return string name of the schema the annotation belongs to
      */
-    public function GetSchemaNamespace(IModel $model): string
+    public function getSchemaNamespace(IModel $model): string
     {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
-        return $model->GetAnnotationValue(
+        return $model->getAnnotationValue(
             'string',
             $annotation,
             EdmConstants::InternalUri,

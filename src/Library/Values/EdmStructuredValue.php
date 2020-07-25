@@ -66,7 +66,7 @@ class EdmStructuredValue extends EdmValue implements IStructuredValue
     private function getPropertiesDictionary(): array
     {
         $call = [$this, 'computePropertiesDictionary'];
-        return $this->propertiesDictionaryCache->GetValue($this, \Closure::fromCallable($call));
+        return $this->propertiesDictionaryCache->getValue($this, \Closure::fromCallable($call));
     }
     /**
      * Finds the value corresponding to the provided property name.

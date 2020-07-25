@@ -33,8 +33,8 @@ class ValidationRuleSetTest extends TestCase
     {
         $result   = [];
         $result[] = [Version::v1(), 110];
-        $result[] = [Version::v1_1(), 107];
-        $result[] = [Version::v1_2(), 106];
+        $result[] = [Version::v1point1(), 107];
+        $result[] = [Version::v1point2(), 106];
         $result[] = [Version::v2(), 107];
         $result[] = [Version::v3(), 95];
 

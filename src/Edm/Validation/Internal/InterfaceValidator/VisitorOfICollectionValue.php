@@ -10,11 +10,11 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\ICollectionValue;
 
 class VisitorOfICollectionValue extends VisitorOfT
 {
-    protected function VisitT($value, array &$followup, array &$references): ?iterable
+    protected function visitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof ICollectionValue);
         $errors = [];
-        InterfaceValidator::ProcessEnumerable(
+        InterfaceValidator::processEnumerable(
             $value,
             $value->getElements(),
             'Elements',

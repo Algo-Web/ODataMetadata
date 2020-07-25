@@ -26,13 +26,13 @@ trait NavigationPropertyHelpers
      *
      * @return Multiplicity the multiplicity of this end of the relationship
      */
-    public function Multiplicity(): Multiplicity
+    public function multiplicity(): Multiplicity
     {
         /** @var INavigationProperty $this */
         $partner = $this->getPartner();
         if ($partner !== null) {
             $partnerType = $partner->getType();
-            if ($partnerType->IsCollection()) {
+            if ($partnerType->isCollection()) {
                 return Multiplicity::Many();
             }
             return $partnerType->getNullable() ? Multiplicity::ZeroOrOne() : Multiplicity::One();
@@ -45,7 +45,7 @@ trait NavigationPropertyHelpers
      *
      * @return IEntityType the entity type targeted by this navigation property
      */
-    public function ToEntityType(): IEntityType
+    public function toEntityType(): IEntityType
     {
         /** @var INavigationProperty $this */
         $target = $this->getType()->getDefinition();
@@ -67,14 +67,15 @@ trait NavigationPropertyHelpers
      *
      * @return IEntityType the entity type that declares this navigation property
      */
-    public function DeclaringEntityType(): IEntityType
+    public function declaringEntityType(): IEntityType
     {
         /** @var INavigationProperty $this */
         $declaringType = $this->getDeclaringType();
         assert($declaringType instanceof IEntityType, 'navigation prperties should always be delcared on a Entity');
         return $declaringType;
     }
-    public function PopulateCaches(): void
+
+    public function populateCaches(): void
     {
         /** @var INavigationProperty $property */
         $property = $this;
@@ -90,7 +91,7 @@ trait NavigationPropertyHelpers
      *
      * @return INavigationProperty the primary end between the navigation property and its partner
      */
-    public function GetPrimary(): INavigationProperty
+    public function getPrimary(): INavigationProperty
     {
         /** @var INavigationProperty $property */
         $property = $this;
@@ -108,8 +109,8 @@ trait NavigationPropertyHelpers
         $nameComparison = strcmp($property->getName(), $partner->getName());
         if ($nameComparison == 0) {
             $nameComparison = strcmp(
-                $property->DeclaringEntityType()->FullName(),
-                $partner->DeclaringEntityType()->FullName()
+                $property->declaringEntityType()->fullName(),
+                $partner->declaringEntityType()->fullName()
             );
         }
 

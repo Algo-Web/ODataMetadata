@@ -26,20 +26,20 @@ class NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2 extend
         $dependentProperties = $navigationProperty->getDependentProperties();
         if (null !== $dependentProperties) {
             EdmUtil::checkArgumentNull(
-                $navigationProperty->DeclaringEntityType()->Key(),
+                $navigationProperty->declaringEntityType()->key(),
                 'navigationProperty->DeclaringEntityType->Key'
             );
-            if (!ValidationHelper::PropertySetIsSubset(
-                $navigationProperty->DeclaringEntityType()->Key(),
+            if (!ValidationHelper::propertySetIsSubset(
+                $navigationProperty->declaringEntityType()->key(),
                 $dependentProperties
             )) {
-                EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
-                $context->AddError(
-                    $navigationProperty->Location(),
+                EdmUtil::checkArgumentNull($navigationProperty->location(), 'navigationProperty->Location');
+                $context->addError(
+                    $navigationProperty->location(),
                     EdmErrorCode::InvalidPropertyInRelationshipConstraint(),
                     StringConst::EdmModel_Validator_Semantic_InvalidToPropertyInRelationshipConstraint(
                         $navigationProperty->getName(),
-                        $navigationProperty->DeclaringEntityType()->FullName()
+                        $navigationProperty->declaringEntityType()->fullName()
                     )
                 );
             }

@@ -27,12 +27,12 @@ class NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne extend
     {
         assert($property instanceof INavigationProperty);
         if ($property->containsTarget() &&
-            $property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType()) &&
-            !$property->Multiplicity()->isZeroOrOne()
+            $property->getDeclaringType()->isOrInheritsFrom($property->toEntityType()) &&
+            !$property->multiplicity()->isZeroOrOne()
         ) {
-            EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
-            $context->AddError(
-                $property->Location(),
+            EdmUtil::checkArgumentNull($property->location(), 'property->Location');
+            $context->addError(
+                $property->location(),
                 EdmErrorCode::NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne(),
                 StringConst::EdmModel_Validator_Semantic_NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne($property->getName())
             );

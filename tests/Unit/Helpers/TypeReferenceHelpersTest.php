@@ -41,7 +41,7 @@ class TypeReferenceHelpersTest extends TestCase
     {
         $foo = new EdmRowTypeReference(null, false);
 
-        $this->assertNull($foo->FullName());
+        $this->assertNull($foo->fullName());
     }
 
     public function testFullNameDefinitionNotISchemaElement()
@@ -50,7 +50,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmRowTypeReference($def, false);
 
-        $this->assertNull($foo->FullName());
+        $this->assertNull($foo->fullName());
     }
 
     public function testFullNameDefinitionISchemaElement()
@@ -65,7 +65,7 @@ class TypeReferenceHelpersTest extends TestCase
         $foo = new EdmRowTypeReference($def, false);
 
         $expected = 'FullName';
-        $actual   = $foo->FullName();
+        $actual   = $foo->fullName();
 
         $this->assertEquals($expected, $actual);
     }
@@ -76,7 +76,7 @@ class TypeReferenceHelpersTest extends TestCase
         $foo = new EdmRowTypeReference($def, false);
 
         $expected = PrimitiveTypeKind::None();
-        $actual   = $foo->PrimitiveKind();
+        $actual   = $foo->primitiveKind();
 
         $this->assertEquals($expected, $actual);
     }
@@ -89,7 +89,7 @@ class TypeReferenceHelpersTest extends TestCase
         $foo = new EdmRowTypeReference($def, false);
 
         $expected = PrimitiveTypeKind::None();
-        $actual   = $foo->PrimitiveKind();
+        $actual   = $foo->primitiveKind();
 
         $this->assertEquals($expected, $actual);
     }
@@ -103,7 +103,7 @@ class TypeReferenceHelpersTest extends TestCase
         $foo = new EdmRowTypeReference($def, false);
 
         $expected = PrimitiveTypeKind::Boolean();
-        $actual   = $foo->PrimitiveKind();
+        $actual   = $foo->primitiveKind();
 
         $this->assertEquals($expected, $actual);
     }
@@ -188,7 +188,7 @@ class TypeReferenceHelpersTest extends TestCase
     {
         $foo = new EdmRowTypeReference(null, false);
 
-        $actual = $foo->AsPrimitive();
+        $actual = $foo->asPrimitive();
         $this->assertTrue($actual instanceof BadPrimitiveTypeReference);
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
@@ -210,7 +210,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmRowTypeReference($def, false);
 
-        $actual = $foo->AsPrimitive();
+        $actual = $foo->asPrimitive();
         $this->assertTrue($actual instanceof BadPrimitiveTypeReference);
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
@@ -232,7 +232,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmRowTypeReference($def, false);
 
-        $actual = $foo->AsPrimitive();
+        $actual = $foo->asPrimitive();
         $this->assertTrue($actual instanceof BadBinaryTypeReference);
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
@@ -254,7 +254,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmRowTypeReference($def, false);
 
-        $actual = $foo->AsPrimitive();
+        $actual = $foo->asPrimitive();
         $this->assertTrue($actual instanceof BadDecimalTypeReference);
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
@@ -276,7 +276,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmRowTypeReference($def, false);
 
-        $actual = $foo->AsPrimitive();
+        $actual = $foo->asPrimitive();
         $this->assertTrue($actual instanceof BadStringTypeReference);
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
@@ -319,7 +319,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmRowTypeReference($def, false);
 
-        $actual = $foo->AsPrimitive();
+        $actual = $foo->asPrimitive();
         $this->assertTrue($actual instanceof EdmPrimitiveTypeReference);
         $def  = $actual->getDefinition();
         $kind = $def->getPrimitiveKind();
@@ -364,7 +364,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmRowTypeReference($def, false);
 
-        $actual = $foo->AsPrimitive();
+        $actual = $foo->asPrimitive();
         $this->assertTrue($actual instanceof BadSpatialTypeReference);
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
@@ -400,7 +400,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmRowTypeReference($def, false);
 
-        $actual = $foo->AsPrimitive();
+        $actual = $foo->asPrimitive();
         $this->assertTrue($actual instanceof BadTemporalTypeReference);
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
@@ -426,7 +426,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmRowTypeReference($def, false);
 
-        $actual = $foo->AsComplex();
+        $actual = $foo->asComplex();
         $this->assertTrue($actual instanceof BadComplexTypeReference);
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
@@ -454,7 +454,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmRowTypeReference($def, false);
 
-        $actual = $foo->AsCollection();
+        $actual = $foo->asCollection();
         $this->assertTrue($actual instanceof EdmCollectionTypeReference, get_class($actual));
         $errors = $actual->getErrors();
         $this->assertEquals(0, count($errors));
@@ -474,7 +474,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmRowTypeReference($def, false);
 
-        $actual = $foo->AsRow();
+        $actual = $foo->asRow();
         $this->assertTrue($actual instanceof EdmRowTypeReference, get_class($actual));
         $errors = $actual->getErrors();
         $this->assertEquals(0, count($errors));
@@ -494,7 +494,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($def, false);
 
-        $actual = $foo->AsRow();
+        $actual = $foo->asRow();
         $this->assertTrue($actual instanceof EdmRowTypeReference, get_class($actual));
         $errors = $actual->getErrors();
         $this->assertEquals(0, count($errors));
@@ -514,7 +514,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($def, false);
 
-        $actual = $foo->AsEntity();
+        $actual = $foo->asEntity();
         $this->assertTrue($actual instanceof BadEntityTypeReference, get_class($actual));
         $errors = $actual->getErrors();
         $this->assertEquals(1, count($errors));
@@ -542,7 +542,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($def, false);
 
-        $actual = $foo->AsEntityReference();
+        $actual = $foo->asEntityReference();
         $this->assertTrue($actual instanceof EdmEntityReferenceTypeReference, get_class($actual));
         $errors = $actual->getErrors();
         $this->assertEquals(0, count($errors));
@@ -562,7 +562,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($def, false);
 
-        $actual = $foo->AsEnum();
+        $actual = $foo->asEnum();
         $this->assertTrue($actual instanceof EdmEnumTypeReference, get_class($actual));
         $errors = $actual->getErrors();
         $this->assertEquals(0, count($errors));
@@ -582,7 +582,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmComplexTypeReference($def, false);
 
-        $actual = $foo->AsRow();
+        $actual = $foo->asRow();
         $this->assertTrue($actual instanceof EdmRowTypeReference, get_class($actual));
         $errors = $actual->getErrors();
         $this->assertEquals(0, count($errors));
@@ -615,7 +615,7 @@ class TypeReferenceHelpersTest extends TestCase
 
         $foo = new EdmStringTypeReference($def, false);
 
-        $actual = $foo->AsStructured();
+        $actual = $foo->asStructured();
         $this->assertTrue($actual instanceof $expType, get_class($actual));
         if (BadEntityTypeReference::class === $expType) {
             $errors = $actual->getErrors();

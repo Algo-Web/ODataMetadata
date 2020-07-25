@@ -23,9 +23,9 @@ class FunctionImportIsBindableNotSupportedBeforeV3 extends FunctionImportRule
     {
         assert($functionImport instanceof  IFunctionImport);
         if ($functionImport->isBindable() != CsdlConstants::Default_IsBindable) {
-            EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
-            $context->AddError(
-                $functionImport->Location(),
+            EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
+            $context->addError(
+                $functionImport->location(),
                 EdmErrorCode::FunctionImportBindableNotSupportedBeforeV3(),
                 StringConst::EdmModel_Validator_Semantic_FunctionImportBindableNotSupportedBeforeV3()
             );
