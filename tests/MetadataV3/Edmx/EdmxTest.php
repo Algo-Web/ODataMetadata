@@ -17,7 +17,7 @@ class EdmxTest extends TestCase
     {
         $model      = new EdmModel();
         $xmlWritter = new \XMLWriter();
-        $this->assertTrue(EdmxWriter::TryWriteEdmx($model, $xmlWritter));
+        $this->assertTrue(EdmxWriter::tryWriteEdmx($model, $xmlWritter));
         $expected = '<edmx:Edmx xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:annotations="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx" xmlns:metadata="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="3.0">
 <edmx:DataServices metadata:DataServiceVersion="3.0"/> </edmx:Edmx>
 ';
@@ -64,7 +64,7 @@ class EdmxTest extends TestCase
         }
         $model->AddElement($entityContainer);
         $xmlWritter = new \XMLWriter();
-        $this->assertTrue(EdmxWriter::TryWriteEdmx($model, $xmlWritter));
+        $this->assertTrue(EdmxWriter::tryWriteEdmx($model, $xmlWritter));
 
         $this->assertXmlStringEqualsXmlString('
 <edmx:Edmx xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:annotations="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx" xmlns:metadata="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" Version="3.0">

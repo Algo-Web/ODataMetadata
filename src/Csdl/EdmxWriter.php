@@ -51,6 +51,7 @@ class EdmxWriter
     private $target;
 
     private $namespacesWritten = [];
+
     private function getEdmxNamespace(): ?string
     {
         return isset($this->namespacesWritten[$this->edmxNamespace]) ? null : $this->namespacesWritten[$this->edmxNamespace] = $this->edmxNamespace;
@@ -79,7 +80,7 @@ class EdmxWriter
      * @throws \AlgoWeb\ODataMetadata\Exception\NotSupportedException
      * @return bool                                                   a value indicating whether serialization was successful
      */
-    public static function TryWriteEdmx(IModel $model, XmlWriter $writer, EdmxTarget $target = null, array &$errors = []): bool
+    public static function tryWriteEdmx(IModel $model, XmlWriter $writer, EdmxTarget $target = null, array &$errors = []): bool
     {
         $target = $target ?? EdmxTarget::OData();
         $errors = SerializationValidator::GetSerializationErrors($model);
@@ -104,7 +105,7 @@ class EdmxWriter
         $writer->setIndent(true);
         $writer->setIndentString('   ');
         $edmxWriter = new EdmxWriter($model, $schemas, $writer, $edmxVersion, $target);
-        $edmxWriter->WriteEdmx();
+        $edmxWriter->writeEdmx();
         $writer->endDocument();
 
         $errors = [];
@@ -115,11 +116,11 @@ class EdmxWriter
      * @throws \AlgoWeb\ODataMetadata\Exception\NotSupportedException
      * @throws \ReflectionException
      */
-    private function WriteEdmx(): void
+    private function writeEdmx(): void
     {
         switch ($this->target) {
             case EdmxTarget::OData():
-                $this->WriteODataEdmx();
+                $this->writeODataEdmx();
                 break;
             default:
                 throw new InvalidOperationException(StringConst::UnknownEnumVal_EdmxTarget($this->target->getKey()));
@@ -130,16 +131,16 @@ class EdmxWriter
      * @throws \AlgoWeb\ODataMetadata\Exception\NotSupportedException
      * @throws \ReflectionException
      */
-    private function WriteODataEdmx(): void
+    private function writeODataEdmx(): void
     {
-        $this->WriteEdmxElement();
-        $this->WriteDataServicesElement();
-        $this->WriteSchemas();
-        $this->EndElement(); // </DataServices>
-        $this->EndElement(); // </Edmx>
+        $this->writeEdmxElement();
+        $this->writeDataServicesElement();
+        $this->writeSchemas();
+        $this->endElement(); // </DataServices>
+        $this->endElement(); // </Edmx>
     }
 
-    private function WriteEdmxElement(): void
+    private function writeEdmxElement(): void
     {
         $this->writer->startElementNs(CsdlConstants::Prefix_Edmx, CsdlConstants::Element_Edmx, $this->getEdmxNamespace());
         $this->writer->writeAttribute(CsdlConstants::Prefix_Xml_Namespace, CsdlConstants::versionToEdmNamespace($this->edmxVersion));
@@ -149,19 +150,19 @@ class EdmxWriter
         $this->writer->writeAttribute(CsdlConstants::Attribute_Version, /*Version::v1()->toString());*/ $this->edmxVersion->toString());
     }
 
-    private function WriteDataServicesElement(): void
+    private function writeDataServicesElement(): void
     {
         $this->writer->startElementNs(CsdlConstants::Prefix_Edmx, CsdlConstants::Element_DataServices, $this->getEdmxNamespace());
         $dataServiceVersion = $this->model->getDataServiceVersion();
         if ($dataServiceVersion != null) {
-            $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_DataServiceVersion, CsdlConstants::ODataMetadataNamespace, $dataServiceVersion->ToString());
+            $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_DataServiceVersion, CsdlConstants::ODataMetadataNamespace, $dataServiceVersion->toString());
         } else {
-            $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_DataServiceVersion, CsdlConstants::ODataMetadataNamespace, $this->edmxVersion->ToString());
+            $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_DataServiceVersion, CsdlConstants::ODataMetadataNamespace, $this->edmxVersion->toString());
         }
 
         $dataServiceMaxVersion = $this->model->getMaxDataServiceVersion();
         if ($dataServiceMaxVersion != null) {
-            $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_MaxDataServiceVersion, CsdlConstants::ODataMetadataNamespace, $dataServiceMaxVersion->ToString());
+            $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_MaxDataServiceVersion, CsdlConstants::ODataMetadataNamespace, $dataServiceMaxVersion->toString());
         }
     }
 
@@ -169,7 +170,7 @@ class EdmxWriter
      * @throws \AlgoWeb\ODataMetadata\Exception\NotSupportedException
      * @throws \ReflectionException
      */
-    private function WriteSchemas(): void
+    private function writeSchemas(): void
     {
         $edmVersion = $this->model->getEdmVersion() ?? Version::v3();
         foreach ($this->schemas as $schema) {
@@ -178,7 +179,7 @@ class EdmxWriter
         }
     }
 
-    private function EndElement(): void
+    private function endElement(): void
     {
         $this->writer->endElement();
     }
