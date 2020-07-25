@@ -21,7 +21,7 @@ class NamedElementNameMustNotBeEmptyOrWhiteSpace extends NamedElementRule
     public function __invoke(ValidationContext $context, ?IEdmElement $item)
     {
         assert($item instanceof INamedElement);
-        if (EdmUtil::IsNullOrWhiteSpaceInternal($item->getName()) || mb_strlen($item->getName()) === 0) {
+        if (EdmUtil::isNullOrWhiteSpaceInternal($item->getName()) || mb_strlen($item->getName()) === 0) {
             EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
             $context->AddError(
                 $item->Location(),

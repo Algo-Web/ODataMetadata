@@ -85,7 +85,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
         $namespaceName = $element->getNamespace();
 
         // Put all of the namespaceless stuff into one schema.
-        if (EdmUtil::IsNullOrWhiteSpaceInternal($namespaceName)) {
+        if (EdmUtil::isNullOrWhiteSpaceInternal($namespaceName)) {
             $namespaceName = '';
         }
         /** @var EdmSchema|null $schema */

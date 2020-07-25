@@ -36,7 +36,7 @@ class BadEnumType extends BadType implements IEnumType
     {
         parent::__construct($errors);
         $qualifiedName = $qualifiedName ?? '';
-        EdmUtil::TryGetNamespaceNameFromQualifiedName($qualifiedName, $this->namespaceName, $this->name);
+        EdmUtil::tryGetNamespaceNameFromQualifiedName($qualifiedName, $this->namespaceName, $this->name);
     }
 
     /**

@@ -29,7 +29,7 @@ class DirectValueAnnotationHasXmlSerializableName extends DirectValueAnnotationR
         $name = $annotation->getName();
 
         // We check for null, whitespace, and length in separate IEdmNamedElement validation rules.
-        if (!EdmUtil::IsNullOrWhiteSpaceInternal($name) &&
+        if (!EdmUtil::isNullOrWhiteSpaceInternal($name) &&
             mb_strlen($name) <= CsdlConstants::Max_NameLength &&
             mb_strlen($name) > 0
         ) {

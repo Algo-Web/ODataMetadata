@@ -52,7 +52,7 @@ class BadPrimitiveType extends BadType implements IPrimitiveType
         $qualifiedName       = $qualifiedName ?? '';
         $name                = null;
         $namespaceName       = null;
-        EdmUtil::TryGetNamespaceNameFromQualifiedName($qualifiedName, $namespaceName, $name);
+        EdmUtil::tryGetNamespaceNameFromQualifiedName($qualifiedName, $namespaceName, $name);
         $this->namespaceName = $namespaceName;
         $this->name          = $name;
     }
