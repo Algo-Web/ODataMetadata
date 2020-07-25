@@ -88,7 +88,7 @@ trait ModelHelpers
         return $this->FindAcrossModels(
             $qualifiedName,
             self::EntityContainerFinder(),
-            [RegistrationHelper::class, 'CreateAmbiguousEntityContainerBinding']
+            [RegistrationHelper::class, 'createAmbiguousEntityContainerBinding']
         );
     }
 
@@ -143,7 +143,7 @@ trait ModelHelpers
         return $this->FindAcrossModels(
             $qualifiedName,
             self::ValueTermFinder(),
-            [RegistrationHelper::class, 'CreateAmbiguousValueTermBinding']
+            [RegistrationHelper::class, 'createAmbiguousValueTermBinding']
         );
     }
 

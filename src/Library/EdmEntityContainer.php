@@ -208,16 +208,16 @@ class EdmEntityContainer extends EdmElement implements IEntityContainer
 
         switch ($element->getContainerElementKind()) {
             case ContainerElementKind::EntitySet():
-                RegistrationHelper::AddElement(
+                RegistrationHelper::addElement(
                     $element,
                     $name,
                     $this->entitySetDictionary,
-                    [RegistrationHelper::class, 'CreateAmbiguousEntitySetBinding']
+                    [RegistrationHelper::class, 'createAmbiguousEntitySetBinding']
                 );
                 break;
             case ContainerElementKind::FunctionImport():
                 assert($element instanceof IFunctionBase);
-                RegistrationHelper::AddFunction($element, $name, $this->functionImportDictionary);
+                RegistrationHelper::addFunction($element, $name, $this->functionImportDictionary);
                 break;
             case ContainerElementKind::None():
                 throw new InvalidOperationException(StringConst::EdmEntityContainer_CannotUseElementWithTypeNone());
