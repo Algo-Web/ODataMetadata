@@ -32,17 +32,17 @@ trait VisitTypeDefinitions
         switch ($definition->getTypeKind()) {
             case TypeKind::Complex():
                 assert($definition instanceof IComplexType);
-                $this->ProcessComplexType($definition);
+                $this->processComplexType($definition);
                 break;
             case TypeKind::Entity():
                 assert($definition instanceof IEntityType);
 
-                $this->ProcessEntityType($definition);
+                $this->processEntityType($definition);
                 break;
             case TypeKind::Enum():
                 assert($definition instanceof IEnumType);
 
-                $this->ProcessEnumType($definition);
+                $this->processEnumType($definition);
                 break;
             case TypeKind::None():
                 $this->visitSchemaType($definition);
@@ -71,12 +71,12 @@ trait VisitTypeDefinitions
         switch ($property->getPropertyKind()) {
             case PropertyKind::Navigation():
                 assert($property instanceof INavigationProperty);
-                $this->ProcessNavigationProperty($property);
+                $this->processNavigationProperty($property);
                 break;
             case PropertyKind::Structural():
                 assert($property instanceof IStructuralProperty);
 
-                $this->ProcessStructuralProperty($property);
+                $this->processStructuralProperty($property);
                 break;
             case PropertyKind::None():
                 $this->ProcessProperty($property);
@@ -103,6 +103,6 @@ trait VisitTypeDefinitions
     public function VisitEnumMember(IEnumMember $enumMember): void
     {
         /** @var EdmModelVisitor $this */
-        $this->ProcessEnumMember($enumMember);
+        $this->processEnumMember($enumMember);
     }
 }

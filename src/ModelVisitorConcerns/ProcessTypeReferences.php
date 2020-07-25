@@ -57,7 +57,7 @@ trait ProcessTypeReferences
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
         $this->processStructuredTypeReference($reference);
-        $this->ProcessRowType($reference->RowDefinition());
+        $this->processRowType($reference->RowDefinition());
         $this->endElement($reference, __METHOD__);
     }
 
@@ -66,7 +66,7 @@ trait ProcessTypeReferences
         /** @var EdmModelVisitor $this */
         $this->startElement($reference, __METHOD__);
         $this->processTypeReference($reference);
-        $this->ProcessCollectionType($reference->CollectionDefinition());
+        $this->processCollectionType($reference->CollectionDefinition());
         $this->endElement($reference, __METHOD__);
     }
 

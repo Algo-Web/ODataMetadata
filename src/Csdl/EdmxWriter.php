@@ -83,7 +83,7 @@ class EdmxWriter
     public static function tryWriteEdmx(IModel $model, XmlWriter $writer, EdmxTarget $target = null, array &$errors = []): bool
     {
         $target = $target ?? EdmxTarget::OData();
-        $errors = SerializationValidator::GetSerializationErrors($model);
+        $errors = SerializationValidator::getSerializationErrors($model);
         if (count($errors) > 0) {
             return false;
         }
@@ -99,7 +99,7 @@ class EdmxWriter
             return false;
         }
 
-        $schemas = (new EdmModelSchemaSeparationSerializationVisitor($model))->GetSchemas();
+        $schemas = (new EdmModelSchemaSeparationSerializationVisitor($model))->getSchemas();
         $writer->openMemory();
         $writer->startDocument();
         $writer->setIndent(true);
@@ -175,7 +175,7 @@ class EdmxWriter
         $edmVersion = $this->model->getEdmVersion() ?? Version::v3();
         foreach ($this->schemas as $schema) {
             $visitor = new EdmModelCsdlSerializationVisitor($this->model, $this->writer, $edmVersion);
-            $visitor->VisitEdmSchema($schema, $this->model->getNamespacePrefixMappings());
+            $visitor->visitEdmSchema($schema, $this->model->getNamespacePrefixMappings());
         }
     }
 

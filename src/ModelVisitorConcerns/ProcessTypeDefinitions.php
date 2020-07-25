@@ -22,7 +22,7 @@ use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 
 trait ProcessTypeDefinitions
 {
-    protected function ProcessComplexType(IComplexType $definition): void
+    protected function processComplexType(IComplexType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
@@ -32,7 +32,7 @@ trait ProcessTypeDefinitions
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessEntityType(IEntityType $definition): void
+    protected function processEntityType(IEntityType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
@@ -43,7 +43,7 @@ trait ProcessTypeDefinitions
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessRowType(IRowType $definition): void
+    protected function processRowType(IRowType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
@@ -52,7 +52,7 @@ trait ProcessTypeDefinitions
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessCollectionType(ICollectionType $definition): void
+    protected function processCollectionType(ICollectionType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);
@@ -62,7 +62,7 @@ trait ProcessTypeDefinitions
         $this->endElement($definition, __METHOD__);
     }
 
-    protected function ProcessEnumType(IEnumType $definition): void
+    protected function processEnumType(IEnumType $definition): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($definition, __METHOD__);

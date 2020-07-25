@@ -57,141 +57,141 @@ use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 interface IEdmModelCsdlSchemaWriter
 {
-    public function WriteValueTermElementHeader(IValueTerm $term, bool $inlineType): void;
+    public function writeValueTermElementHeader(IValueTerm $term, bool $inlineType): void;
 
-    public function WriteAssociationElementHeader(INavigationProperty $navigationProperty): void;
+    public function writeAssociationElementHeader(INavigationProperty $navigationProperty): void;
 
-    public function WriteAssociationSetElementHeader(IEntitySet $entitySet, INavigationProperty $navigationProperty): void;
+    public function writeAssociationSetElementHeader(IEntitySet $entitySet, INavigationProperty $navigationProperty): void;
 
-    public function WriteComplexTypeElementHeader(IComplexType $complexType): void;
+    public function writeComplexTypeElementHeader(IComplexType $complexType): void;
 
-    public function WriteEnumTypeElementHeader(IEnumType $enumType): void;
+    public function writeEnumTypeElementHeader(IEnumType $enumType): void;
 
-    public function WriteDocumentationElement(IDocumentation $documentation): void;
+    public function writeDocumentationElement(IDocumentation $documentation): void;
 
-    public function WriteAssociationSetEndElementHeader(IEntitySet $entitySet, INavigationProperty $property): void;
+    public function writeAssociationSetEndElementHeader(IEntitySet $entitySet, INavigationProperty $property): void;
 
-    public function WriteAssociationEndElementHeader(INavigationProperty $associationEnd): void;
+    public function writeAssociationEndElementHeader(INavigationProperty $associationEnd): void;
 
-    public function WriteEntityContainerElementHeader(IEntityContainer $container): void;
+    public function writeEntityContainerElementHeader(IEntityContainer $container): void;
 
-    public function WriteEntitySetElementHeader(IEntitySet $entitySet): void;
+    public function writeEntitySetElementHeader(IEntitySet $entitySet): void;
 
-    public function WriteEntityTypeElementHeader(IEntityType $entityType): void;
+    public function writeEntityTypeElementHeader(IEntityType $entityType): void;
 
-    public function WriteDeclaredKeyPropertiesElementHeader(): void;
+    public function writeDeclaredKeyPropertiesElementHeader(): void;
 
-    public function WritePropertyRefElement(IStructuralProperty $property): void;
+    public function writePropertyRefElement(IStructuralProperty $property): void;
 
-    public function WriteNavigationPropertyElementHeader(INavigationProperty $member): void;
+    public function writeNavigationPropertyElementHeader(INavigationProperty $member): void;
 
-    public function WriteOperationActionElement(string $elementName, OnDeleteAction $operationAction): void;
+    public function writeOperationActionElement(string $elementName, OnDeleteAction $operationAction): void;
 
-    public function WriteSchemaElementHeader(EdmSchema $schema, ?string $alias, array $mappings): void;
+    public function writeSchemaElementHeader(EdmSchema $schema, ?string $alias, array $mappings): void;
 
-    public function WriteAnnotationsElementHeader(string $annotationsTarget): void;
+    public function writeAnnotationsElementHeader(string $annotationsTarget): void;
 
-    public function WriteStructuralPropertyElementHeader(IStructuralProperty $property, bool $inlineType): void;
+    public function writeStructuralPropertyElementHeader(IStructuralProperty $property, bool $inlineType): void;
 
-    public function WriteEnumMemberElementHeader(IEnumMember $member): void;
+    public function writeEnumMemberElementHeader(IEnumMember $member): void;
 
-    public function WriteNullableAttribute(ITypeReference $reference): void;
+    public function writeNullableAttribute(ITypeReference $reference): void;
 
-    public function WriteBinaryTypeAttributes(IBinaryTypeReference $reference): void;
+    public function writeBinaryTypeAttributes(IBinaryTypeReference $reference): void;
 
-    public function WriteDecimalTypeAttributes(IDecimalTypeReference $reference): void;
+    public function writeDecimalTypeAttributes(IDecimalTypeReference $reference): void;
 
-    public function WriteSpatialTypeAttributes(ISpatialTypeReference $reference): void;
+    public function writeSpatialTypeAttributes(ISpatialTypeReference $reference): void;
 
-    public function WriteStringTypeAttributes(IStringTypeReference $reference): void;
+    public function writeStringTypeAttributes(IStringTypeReference $reference): void;
 
-    public function WriteTemporalTypeAttributes(ITemporalTypeReference $reference): void;
+    public function writeTemporalTypeAttributes(ITemporalTypeReference $reference): void;
 
-    public function WriteReferentialConstraintElementHeader(INavigationProperty $constraint): void;
+    public function writeReferentialConstraintElementHeader(INavigationProperty $constraint): void;
 
-    public function WriteReferentialConstraintPrincipalEndElementHeader(INavigationProperty $end): void;
+    public function writeReferentialConstraintPrincipalEndElementHeader(INavigationProperty $end): void;
 
-    public function WriteReferentialConstraintDependentEndElementHeader(INavigationProperty $end): void;
+    public function writeReferentialConstraintDependentEndElementHeader(INavigationProperty $end): void;
 
-    public function WriteNamespaceUsingElement(string $usingNamespace, string $alias): void;
+    public function writeNamespaceUsingElement(string $usingNamespace, string $alias): void;
 
-    public function WriteAnnotationStringAttribute(IDirectValueAnnotation $annotation): void;
+    public function writeAnnotationStringAttribute(IDirectValueAnnotation $annotation): void;
 
-    public function WriteAnnotationStringElement(IDirectValueAnnotation $annotation): void;
+    public function writeAnnotationStringElement(IDirectValueAnnotation $annotation): void;
 
-    public function WriteFunctionElementHeader(IFunction $function, bool $inlineReturnType): void;
+    public function writeFunctionElementHeader(IFunction $function, bool $inlineReturnType): void;
 
-    public function WriteDefiningExpressionElement(string $expression): void;
+    public function writeDefiningExpressionElement(string $expression): void;
 
-    public function WriteReturnTypeElementHeader();
+    public function writeReturnTypeElementHeader();
 
-    public function WriteFunctionImportElementHeader(IFunctionImport $functionImport): void;
+    public function writeFunctionImportElementHeader(IFunctionImport $functionImport): void;
 
-    public function WriteFunctionParameterElementHeader(IFunctionParameter $parameter, bool $inlineType): void;
+    public function writeFunctionParameterElementHeader(IFunctionParameter $parameter, bool $inlineType): void;
 
-    public function WriteCollectionTypeElementHeader(ICollectionType $collectionType, bool $inlineType): void;
+    public function writeCollectionTypeElementHeader(ICollectionType $collectionType, bool $inlineType): void;
 
-    public function WriteRowTypeElementHeader(): void;
+    public function writeRowTypeElementHeader(): void;
 
-    public function WriteInlineExpression(IExpression $expression): void;
+    public function writeInlineExpression(IExpression $expression): void;
 
-    public function WriteValueAnnotationElementHeader(IValueAnnotation $annotation, bool $isInline): void;
+    public function writeValueAnnotationElementHeader(IValueAnnotation $annotation, bool $isInline): void;
 
-    public function WriteTypeAnnotationElementHeader(ITypeAnnotation $annotation): void;
+    public function writeTypeAnnotationElementHeader(ITypeAnnotation $annotation): void;
 
-    public function WritePropertyValueElementHeader(IPropertyValueBinding $value, bool $isInline): void;
+    public function writePropertyValueElementHeader(IPropertyValueBinding $value, bool $isInline): void;
 
-    public function WriteRecordExpressionElementHeader(IRecordExpression $expression);
+    public function writeRecordExpressionElementHeader(IRecordExpression $expression);
 
-    public function WritePropertyConstructorElementHeader(IPropertyConstructor $constructor, bool $isInline): void;
+    public function writePropertyConstructorElementHeader(IPropertyConstructor $constructor, bool $isInline): void;
 
-    public function WriteStringConstantExpressionElement(IStringConstantExpression $expression): void;
+    public function writeStringConstantExpressionElement(IStringConstantExpression $expression): void;
 
-    public function WriteBinaryConstantExpressionElement(IBinaryConstantExpression $expression): void;
+    public function writeBinaryConstantExpressionElement(IBinaryConstantExpression $expression): void;
 
-    public function WriteBooleanConstantExpressionElement(IBooleanConstantExpression $expression): void;
+    public function writeBooleanConstantExpressionElement(IBooleanConstantExpression $expression): void;
 
-    public function WriteNullConstantExpressionElement(INullExpression $expression): void;
+    public function writeNullConstantExpressionElement(INullExpression $expression): void;
 
-    public function WriteDateTimeConstantExpressionElement(IDateTimeConstantExpression $expression): void;
+    public function writeDateTimeConstantExpressionElement(IDateTimeConstantExpression $expression): void;
 
-    public function WriteDateTimeOffsetConstantExpressionElement(IDateTimeOffsetConstantExpression $expression): void;
+    public function writeDateTimeOffsetConstantExpressionElement(IDateTimeOffsetConstantExpression $expression): void;
 
-    public function WriteDecimalConstantExpressionElement(IDecimalConstantExpression $expression): void;
+    public function writeDecimalConstantExpressionElement(IDecimalConstantExpression $expression): void;
 
-    public function WriteFloatingConstantExpressionElement(IFloatingConstantExpression $expression): void;
+    public function writeFloatingConstantExpressionElement(IFloatingConstantExpression $expression): void;
 
-    public function WriteFunctionApplicationElementHeader(IApplyExpression $expression, bool $isFunction): void;
+    public function writeFunctionApplicationElementHeader(IApplyExpression $expression, bool $isFunction): void;
 
-    public function WriteGuidConstantExpressionElement(IGuidConstantExpression $expression): void;
+    public function writeGuidConstantExpressionElement(IGuidConstantExpression $expression): void;
 
-    public function WriteIntegerConstantExpressionElement(IIntegerConstantExpression $expression): void;
+    public function writeIntegerConstantExpressionElement(IIntegerConstantExpression $expression): void;
 
-    public function WritePathExpressionElement(IPathExpression $expression): void;
+    public function writePathExpressionElement(IPathExpression $expression): void;
 
-    public function WriteIfExpressionElementHeader(IIfExpression $expression): void;
+    public function writeIfExpressionElementHeader(IIfExpression $expression): void;
 
-    public function WriteCollectionExpressionElementHeader(ICollectionExpression $expression): void;
+    public function writeCollectionExpressionElementHeader(ICollectionExpression $expression): void;
 
-    public function WriteLabeledElementHeader(ILabeledExpression $labeledElement): void;
+    public function writeLabeledElementHeader(ILabeledExpression $labeledElement): void;
 
-    public function WriteIsTypeExpressionElementHeader(IIsTypeExpression $expression, bool $inlineType): void;
+    public function writeIsTypeExpressionElementHeader(IIsTypeExpression $expression, bool $inlineType): void;
 
-    public function WriteAssertTypeExpressionElementHeader(IAssertTypeExpression $expression, bool $inlineType): void;
+    public function writeAssertTypeExpressionElementHeader(IAssertTypeExpression $expression, bool $inlineType): void;
 
-    public function WriteEntitySetReferenceExpressionElement(IEntitySetReferenceExpression $expression): void;
+    public function writeEntitySetReferenceExpressionElement(IEntitySetReferenceExpression $expression): void;
 
-    public function WriteParameterReferenceExpressionElement(IParameterReferenceExpression $expression): void;
+    public function writeParameterReferenceExpressionElement(IParameterReferenceExpression $expression): void;
 
-    public function WriteFunctionReferenceExpressionElement(IFunctionReferenceExpression $expression): void;
+    public function writeFunctionReferenceExpressionElement(IFunctionReferenceExpression $expression): void;
 
-    public function WriteEnumMemberReferenceExpressionElement(IEnumMemberReferenceExpression $expression): void;
+    public function writeEnumMemberReferenceExpressionElement(IEnumMemberReferenceExpression $expression): void;
 
-    public function WritePropertyReferenceExpressionElementHeader(IPropertyReferenceExpression $expression): void;
+    public function writePropertyReferenceExpressionElementHeader(IPropertyReferenceExpression $expression): void;
 
-    public function WriteEndElement(): void;
+    public function writeEndElement(): void;
 
-    public function WriteOptionalAttribute(string $attribute, $value, $defaultValue, callable $toXml): void;
+    public function writeOptionalAttribute(string $attribute, $value, $defaultValue, callable $toXml): void;
 
-    public function WriteRequiredAttribute(string $attribute, $value, callable $toXml): void;
+    public function writeRequiredAttribute(string $attribute, $value, callable $toXml): void;
 }
