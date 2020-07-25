@@ -17,32 +17,32 @@ use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
  */
 trait ProcessBaseElementTypes
 {
-    protected function ProcessElement(IEdmElement $element): void
+    protected function processElement(IEdmElement $element): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($element, __METHOD__);
-        $this->VisitAnnotations($this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element));
+        $this->visitAnnotations($this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element));
         $this->endElement($element, __METHOD__);
     }
 
-    protected function ProcessNamedElement(INamedElement $element): void
+    protected function processNamedElement(INamedElement $element): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($element, __METHOD__);
-        $this->ProcessElement($element);
+        $this->processElement($element);
         $this->endElement($element, __METHOD__);
     }
 
-    protected function ProcessSchemaElement(ISchemaElement $element): void
+    protected function processSchemaElement(ISchemaElement $element): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($element, __METHOD__);
-        $this->ProcessVocabularyAnnotatable($element);
-        $this->ProcessNamedElement($element);
+        $this->processVocabularyAnnotatable($element);
+        $this->processNamedElement($element);
         $this->endElement($element, __METHOD__);
     }
 
-    protected function ProcessVocabularyAnnotatable(IVocabularyAnnotatable $annotatable): void
+    protected function processVocabularyAnnotatable(IVocabularyAnnotatable $annotatable): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($annotatable, __METHOD__);

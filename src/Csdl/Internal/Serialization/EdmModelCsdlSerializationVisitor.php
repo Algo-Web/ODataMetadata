@@ -190,7 +190,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     protected function ProcessEntityContainer(IEntityContainer $element): void
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteEntityContainerElementHeader']);
-        parent::ProcessEntityContainer($element);
+        parent::processEntityContainer($element);
 
         /** @var IEntitySet $entitySet */
         foreach ($element->EntitySets() as $entitySet) {
@@ -236,7 +236,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     protected function ProcessEntitySet(IEntitySet $element): void
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteEntitySetElementHeader']);
-        parent::ProcessEntitySet($element);
+        parent::processEntitySet($element);
         $this->FinishElement($element);
     }
 
@@ -510,7 +510,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->schemaWriter->WriteValueAnnotationElementHeader($t, $isInline);
         });
         if (!$isInline) {
-            parent::ProcessValueAnnotation($annotation);
+            parent::processValueAnnotation($annotation);
         }
 
         $this->FinishElement($annotation);
@@ -523,7 +523,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     protected function ProcessTypeAnnotation(ITypeAnnotation $annotation): void
     {
         $this->BeginElement($annotation, [$this->schemaWriter, 'WriteTypeAnnotationElementHeader']);
-        parent::ProcessTypeAnnotation($annotation);
+        parent::processTypeAnnotation($annotation);
         $this->FinishElement($annotation);
     }
 
@@ -538,7 +538,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $this->schemaWriter->WritePropertyValueElementHeader($t, $isInline);
         });
         if (!$isInline) {
-            parent::ProcessPropertyValueBinding($binding);
+            parent::processPropertyValueBinding($binding);
         }
 
         $this->FinishElement($binding);
@@ -1096,7 +1096,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                     $this->ProcessValueAnnotation($annotation);
                     break;
                 case TermKind::None():
-                    $this->ProcessVocabularyAnnotation($annotation);
+                    $this->processVocabularyAnnotation($annotation);
                     break;
                 default:
                     throw new InvalidOperationException(

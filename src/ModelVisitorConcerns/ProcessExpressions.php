@@ -67,10 +67,10 @@ trait ProcessExpressions
         $this->startElement($expression, __METHOD__);
         $this->processExpression($expression);
         if (null !== $expression->getDeclaredType()) {
-            $this->VisitTypeReference($expression->getDeclaredType());
+            $this->visitTypeReference($expression->getDeclaredType());
         }
 
-        $this->VisitPropertyConstructors($expression->getProperties());
+        $this->visitPropertyConstructors($expression->getProperties());
         $this->endElement($expression, __METHOD__);
     }
 
@@ -124,7 +124,7 @@ trait ProcessExpressions
         /** @var EdmModelVisitor $this */
         $this->startElement($expression, __METHOD__);
         $this->processExpression($expression);
-        $this->VisitTypeReference($expression->getType());
+        $this->visitTypeReference($expression->getType());
         $this->VisitExpression($expression->getOperand());
         $this->endElement($expression, __METHOD__);
     }
@@ -243,7 +243,7 @@ trait ProcessExpressions
         /** @var EdmModelVisitor $this */
         $this->startElement($expression, __METHOD__);
         $this->processExpression($expression);
-        $this->VisitTypeReference($expression->getType());
+        $this->visitTypeReference($expression->getType());
         $this->VisitExpression($expression->getOperand());
         $this->endElement($expression, __METHOD__);
     }

@@ -13,16 +13,16 @@ use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 trait ProcessTerms
 {
-    protected function ProcessTerm(ITerm $term): void
+    protected function processTerm(ITerm $term): void
     {
         // Do not visit NamedElement as that gets visited by other means.
     }
 
-    protected function ProcessValueTerm(IValueTerm $term): void
+    protected function processValueTerm(IValueTerm $term): void
     {
         /** @var EdmModelVisitor $this */
-        $this->ProcessSchemaElement($term);
-        $this->ProcessTerm($term);
-        $this->VisitTypeReference($term->getType());
+        $this->processSchemaElement($term);
+        $this->processTerm($term);
+        $this->visitTypeReference($term->getType());
     }
 }
