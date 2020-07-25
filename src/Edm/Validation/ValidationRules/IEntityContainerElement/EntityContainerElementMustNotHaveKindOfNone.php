@@ -24,7 +24,7 @@ class EntityContainerElementMustNotHaveKindOfNone extends EntityContainerRule
         assert($element instanceof IEntityContainerElement);
         if ($element->getContainerElementKind()->isNone() && !$context->checkIsBad($element)) {
             EdmUtil::checkArgumentNull($element->Location(), 'element->Location');
-            $context->AddError(
+            $context->addError(
                 $element->Location(),
                 EdmErrorCode::EntityContainerElementMustNotHaveKindOfNone(),
                 StringConst::EdmModel_Validator_Semantic_EntityContainerElementMustNotHaveKindOfNone($element->getContainer()->FullName() . '/' . $element->getName())

@@ -10,12 +10,12 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IStringValue;
 
 class VisitorOfIStringValue extends VisitorOfT
 {
-    protected function VisitT($value, array &$followup, array &$references): ?iterable
+    protected function visitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof IStringValue);
         return null === $value->getValue() ?
             [
-                InterfaceValidator::CreatePropertyMustNotBeNullError($value, 'Value')
+                InterfaceValidator::createPropertyMustNotBeNullError($value, 'Value')
             ]
             :
             null;

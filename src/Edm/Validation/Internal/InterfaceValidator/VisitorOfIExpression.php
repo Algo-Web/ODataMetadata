@@ -69,12 +69,12 @@ class VisitorOfIExpression extends VisitorOfT
         $this->lookup[ExpressionKind::LabeledExpressionReference()->getValue()] = ILabeledExpressionReferenceExpression::class;
     }
 
-    protected function VisitT($expression, array &$followup, array &$references): ?iterable
+    protected function visitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IExpression);
         // Trying to reduce amount of noise in errors - if this expression is bad, then most likely it will have an
         // unacceptable kind, no need to report it.
-        if (InterfaceValidator::IsCheckableBad($expression)) {
+        if (InterfaceValidator::isCheckableBad($expression)) {
             return null;
         }
 
@@ -82,14 +82,14 @@ class VisitorOfIExpression extends VisitorOfT
         $kind                = $expression->getExpressionKind();
 
         if (!array_key_exists($kind->getValue(), $this->lookup)) {
-            $expressionKindError = InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
+            $expressionKindError = InterfaceValidator::createInterfaceKindValueUnexpectedError(
                 $expression,
                 $expression->getExpressionKind()->getKey(),
                 'ExpressionKind'
             );
         } else {
             $interface           = $this->lookup[$kind->getValue()];
-            $expressionKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+            $expressionKindError = InterfaceValidator::checkForInterfaceKindValueMismatchError(
                 $expression,
                 $kind,
                 'ExpressionKind',

@@ -30,7 +30,7 @@ class FunctionApplicationExpressionParametersMatchAppliedFunction extends ApplyE
             !$context->checkIsBad($functionReference->getReferencedFunction())) {
             if (count($functionReference->getReferencedFunction()->getParameters()) != count($expression->getArguments())) {
                 EdmUtil::checkArgumentNull($expression->Location(), 'expression->Location');
-                $context->AddError(
+                $context->addError(
                     $expression->Location(),
                     EdmErrorCode::IncorrectNumberOfArguments(),
                     StringConst::EdmModel_Validator_Semantic_IncorrectNumberOfArguments(
@@ -53,7 +53,7 @@ class FunctionApplicationExpressionParametersMatchAppliedFunction extends ApplyE
                     $recursiveErrors
                 )) {
                     foreach ($recursiveErrors as $error) {
-                        $context->AddRawError($error);
+                        $context->addRawError($error);
                     }
                 }
                 next($arguments);

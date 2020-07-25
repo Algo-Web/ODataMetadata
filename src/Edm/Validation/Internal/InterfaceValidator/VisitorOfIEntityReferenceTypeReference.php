@@ -10,14 +10,14 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceTypeReference;
 
 class VisitorOfIEntityReferenceTypeReference extends VisitorOfT
 {
-    protected function VisitT($typeRef, array &$followup, array &$references): ?iterable
+    protected function visitT($typeRef, array &$followup, array &$references): ?iterable
     {
         assert($typeRef instanceof IEntityReferenceTypeReference);
         return (
             null !== $typeRef->getDefinition() &&
             !$typeRef->getDefinition()->getTypeKind()->isEntityReference()
         ) ?
-            [InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef)]
+            [InterfaceValidator::createTypeRefInterfaceTypeKindValueMismatchError($typeRef)]
             :
             null;
     }

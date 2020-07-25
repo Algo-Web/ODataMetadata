@@ -14,7 +14,7 @@ use AlgoWeb\ODataMetadata\StringConst;
 
 class VisitorOfINavigationProperty extends VisitorOfT
 {
-    protected function VisitT($property, array &$followup, array &$references): ?iterable
+    protected function visitT($property, array &$followup, array &$references): ?iterable
     {
         assert($property instanceof INavigationProperty);
         $errors = [];
@@ -29,9 +29,9 @@ class VisitorOfINavigationProperty extends VisitorOfT
         }
 
         if ($property->getPartner()->getPartner() !== $property || $property->getPartner() === $property) {
-            InterfaceValidator::CollectErrors(
+            InterfaceValidator::collectErrors(
                 new EdmError(
-                    InterfaceValidator::GetLocation($property),
+                    InterfaceValidator::getLocation($property),
                     EdmErrorCode::InterfaceCriticalNavigationPartnerInvalid(),
                     StringConst::EdmModel_Validator_Syntactic_NavigationPartnerInvalid($property->getName())
                 ),
@@ -40,7 +40,7 @@ class VisitorOfINavigationProperty extends VisitorOfT
         }
 
         if (null !== $property->getDependentProperties()) {
-            InterfaceValidator::ProcessEnumerable(
+            InterfaceValidator::processEnumerable(
                 $property,
                 $property->getDependentProperties(),
                 'DependentProperties',
@@ -51,8 +51,8 @@ class VisitorOfINavigationProperty extends VisitorOfT
 
         if ($property->getOnDelete()->getValue() < OnDeleteAction::None()->getValue() ||
                     $property->getOnDelete() > OnDeleteAction::Cascade()->getValue()) {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreateEnumPropertyOutOfRangeError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createEnumPropertyOutOfRangeError(
                     $property,
                     $property->getOnDelete(),
                     'OnDelete'

@@ -42,7 +42,7 @@ class ImmediateValueAnnotationElementAnnotationIsValid extends DirectValueAnnota
                     EdmUtil::isNullOrWhiteSpaceInternal($annotation->getName())
                 ) {
                     EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
-                    $context->AddError(
+                    $context->addError(
                         $annotation->Location(),
                         EdmErrorCode::InvalidElementAnnotation(),
                         StringConst::EdmModel_Validator_Semantic_InvalidElementAnnotationMismatchedTerm()

@@ -46,9 +46,9 @@ class NavigationPropertyPrincipalEndMultiplicity extends NavigationPropertyRule
             $navigationProperty->getPartner()->Location(),
             'navigationProperty->getPartner->Location'
         );
-        if (ValidationHelper::AllPropertiesAreNullable($dependentProperties)) {
+        if (ValidationHelper::allPropertiesAreNullable($dependentProperties)) {
             if (!$navigationProperty->getPartner()->Multiplicity()->isZeroOrOne()) {
-                $context->AddError(
+                $context->addError(
                     $navigationProperty->getPartner()->Location(),
                     EdmErrorCode::InvalidMultiplicityOfPrincipalEnd(),
                     StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfPrincipalEndDependentPropertiesAllNullable(
@@ -57,9 +57,9 @@ class NavigationPropertyPrincipalEndMultiplicity extends NavigationPropertyRule
                     )
                 );
             }
-        } elseif (!ValidationHelper::HasNullableProperty($dependentProperties)) {
+        } elseif (!ValidationHelper::hasNullableProperty($dependentProperties)) {
             if (!$navigationProperty->getPartner()->Multiplicity()->isOne()) {
-                $context->AddError(
+                $context->addError(
                     $navigationProperty->getPartner()->Location(),
                     EdmErrorCode::InvalidMultiplicityOfPrincipalEnd(),
                     StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfPrincipalEndDependentPropertiesAllNonnullable(
@@ -71,7 +71,7 @@ class NavigationPropertyPrincipalEndMultiplicity extends NavigationPropertyRule
         } else {
             if (!$navigationProperty->getPartner()->Multiplicity()->isOne() &&
                 !$navigationProperty->getPartner()->Multiplicity()->isZeroOrOne()) {
-                $context->AddError(
+                $context->addError(
                     $navigationProperty->getPartner()->Location(),
                     EdmErrorCode::InvalidMultiplicityOfPrincipalEnd(),
                     StringConst::EdmModel_Validator_Semantic_NavigationPropertyPrincipalEndMultiplicityUpperBoundMustBeOne(

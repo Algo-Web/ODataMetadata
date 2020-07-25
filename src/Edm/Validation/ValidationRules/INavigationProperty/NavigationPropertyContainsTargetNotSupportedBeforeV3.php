@@ -25,7 +25,7 @@ class NavigationPropertyContainsTargetNotSupportedBeforeV3 extends NavigationPro
         assert($property instanceof INavigationProperty);
         if ($property->containsTarget() != CsdlConstants::Default_ContainsTarget) {
             EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
-            $context->AddError(
+            $context->addError(
                 $property->Location(),
                 EdmErrorCode::NavigationPropertyContainsTargetNotSupportedBeforeV3(),
                 StringConst::EdmModel_Validator_Semantic_NavigationPropertyContainsTargetNotSupportedBeforeV3()

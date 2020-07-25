@@ -29,12 +29,12 @@ class NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2 extend
                 $navigationProperty->DeclaringEntityType()->Key(),
                 'navigationProperty->DeclaringEntityType->Key'
             );
-            if (!ValidationHelper::PropertySetIsSubset(
+            if (!ValidationHelper::propertySetIsSubset(
                 $navigationProperty->DeclaringEntityType()->Key(),
                 $dependentProperties
             )) {
                 EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
-                $context->AddError(
+                $context->addError(
                     $navigationProperty->Location(),
                     EdmErrorCode::InvalidPropertyInRelationshipConstraint(),
                     StringConst::EdmModel_Validator_Semantic_InvalidToPropertyInRelationshipConstraint(

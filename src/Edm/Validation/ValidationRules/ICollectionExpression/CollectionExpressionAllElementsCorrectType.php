@@ -26,7 +26,7 @@ class CollectionExpressionAllElementsCorrectType extends CollectionExpressionRul
             $discoveredErrors = null;
             ExpressionTypeChecker::tryAssertCollectionAsType($expression, $expression->getDeclaredType(), null, false, $discoveredErrors);
             foreach ($discoveredErrors as $error) {
-                $context->AddRawError($error);
+                $context->addRawError($error);
             }
         }
     }

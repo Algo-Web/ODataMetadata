@@ -14,5 +14,5 @@ namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
  */
 abstract class VisitorBase
 {
-    abstract public function Visit($item, array &$followup, array &$references): iterable;
+    abstract public function visit($item, array &$followup, array &$references): iterable;
 }

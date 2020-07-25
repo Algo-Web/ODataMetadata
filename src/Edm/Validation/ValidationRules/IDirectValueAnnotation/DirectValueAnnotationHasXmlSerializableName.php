@@ -43,7 +43,7 @@ class DirectValueAnnotationHasXmlSerializableName extends DirectValueAnnotationR
                     EdmErrorCode::InvalidName(),
                     StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsNotAllowed($annotation->getName())
                 );
-                $context->AddRawError($error);
+                $context->addRawError($error);
             }
         }
     }

@@ -49,7 +49,7 @@ class ModelDuplicateSchemaElementName extends ModelRule
                 }
 
                 if (!$duplicate) {
-                    $duplicate = ValidationHelper::FunctionOrNameExistsInReferencedModel($model, $function, $fullName, true);
+                    $duplicate = ValidationHelper::functionOrNameExistsInReferencedModel($model, $function, $fullName, true);
                 }
             } else {
                 if (!$nonFunctionNameList->add($fullName)) {
@@ -58,14 +58,14 @@ class ModelDuplicateSchemaElementName extends ModelRule
                     if (isset($functionDictionary[$fullName])) {
                         $duplicate = true;
                     } else {
-                        $duplicate = ValidationHelper::ItemExistsInReferencedModel($model, $fullName, true);
+                        $duplicate = ValidationHelper::itemExistsInReferencedModel($model, $fullName, true);
                     }
                 }
             }
 
             if ($duplicate) {
                 EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
-                $context->AddError(
+                $context->addError(
                     $item->Location(),
                     EdmErrorCode::AlreadyDefined(),
                     StringConst::EdmModel_Validator_Semantic_SchemaElementNameAlreadyDefined($fullName)

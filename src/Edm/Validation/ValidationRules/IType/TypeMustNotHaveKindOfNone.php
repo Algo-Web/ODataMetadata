@@ -24,7 +24,7 @@ class TypeMustNotHaveKindOfNone extends TypeRule
         assert($type instanceof IType);
         if ($type->getTypeKind()->isNone() && !$context->checkIsBad($type)) {
             EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
-            $context->AddError(
+            $context->addError(
                 $type->Location(),
                 EdmErrorCode::TypeMustNotHaveKindOfNone(),
                 StringConst::EdmModel_Validator_Semantic_TypeMustNotHaveKindOfNone()

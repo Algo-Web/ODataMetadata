@@ -45,7 +45,7 @@ class VisitorOfIValue extends VisitorOfT
         $this->lookup[ValueKind::Time()->getValue()]           = ITimeValue::class;
     }
 
-    protected function VisitT($value, array &$followup, array &$references): ?iterable
+    protected function visitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof IValue);
         $errors = [];
@@ -60,8 +60,8 @@ class VisitorOfIValue extends VisitorOfT
         }
 
         if (!array_key_exists($kind->getValue(), $this->lookup)) {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createInterfaceKindValueUnexpectedError(
                     $value,
                     $value->getValueKind()->getKey(),
                     'ValueKind'
@@ -72,8 +72,8 @@ class VisitorOfIValue extends VisitorOfT
             return $errors;
         }
 
-        InterfaceValidator::CollectErrors(
-            InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+        InterfaceValidator::collectErrors(
+            InterfaceValidator::checkForInterfaceKindValueMismatchError(
                 $value,
                 $value->getValueKind(),
                 'ValueKind',

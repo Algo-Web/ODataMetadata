@@ -13,15 +13,15 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 
 class VisitorOfIProperty extends VisitorOfT
 {
-    protected function VisitT($property, array &$followup, array &$references): ?iterable
+    protected function visitT($property, array &$followup, array &$references): ?iterable
     {
         assert($property instanceof IProperty);
         $errors = [];
 
         switch ($property->getPropertyKind()) {
             case PropertyKind::Structural():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                InterfaceValidator::collectErrors(
+                    InterfaceValidator::checkForInterfaceKindValueMismatchError(
                         $property,
                         $property->getPropertyKind(),
                         'PropertyKind',
@@ -32,8 +32,8 @@ class VisitorOfIProperty extends VisitorOfT
                 break;
 
             case PropertyKind::Navigation():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                InterfaceValidator::collectErrors(
+                    InterfaceValidator::checkForInterfaceKindValueMismatchError(
                         $property,
                         $property->getPropertyKind(),
                         'PropertyKind',
@@ -47,8 +47,8 @@ class VisitorOfIProperty extends VisitorOfT
                 break;
 
             default:
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
+                InterfaceValidator::collectErrors(
+                    InterfaceValidator::createInterfaceKindValueUnexpectedError(
                         $property,
                         $property->getPropertyKind()->getKey(),
                         'PropertyKind'
@@ -62,8 +62,8 @@ class VisitorOfIProperty extends VisitorOfT
             // Property owns its type reference, so it goes as a followup.
             $followup[] = $property->getType();
         } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createPropertyMustNotBeNullError(
                     $property,
                     'Type'
                 ),

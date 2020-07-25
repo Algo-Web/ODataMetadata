@@ -18,13 +18,13 @@ use AlgoWeb\ODataMetadata\Interfaces\IType;
 
 final class VisitorOfIType extends VisitorOfT
 {
-    protected function VisitT($type, array &$followup, array &$references): ?iterable
+    protected function visitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof IType);
         $typeKindError = null;
         switch ($type->getTypeKind()) {
             case TypeKind::Primitive():
-                $typeKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                $typeKindError = InterfaceValidator::checkForInterfaceKindValueMismatchError(
                     $type,
                     $type->getTypeKind(),
                     'TypeKind',
@@ -33,7 +33,7 @@ final class VisitorOfIType extends VisitorOfT
                 break;
 
             case TypeKind::Entity():
-                $typeKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                $typeKindError = InterfaceValidator::checkForInterfaceKindValueMismatchError(
                     $type,
                     $type->getTypeKind(),
                     'TypeKind',
@@ -42,7 +42,7 @@ final class VisitorOfIType extends VisitorOfT
                 break;
 
             case TypeKind::Complex():
-                $typeKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                $typeKindError = InterfaceValidator::checkForInterfaceKindValueMismatchError(
                     $type,
                     $type->getTypeKind(),
                     'TypeKind',
@@ -51,7 +51,7 @@ final class VisitorOfIType extends VisitorOfT
                 break;
 
             case TypeKind::Row():
-                $typeKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                $typeKindError = InterfaceValidator::checkForInterfaceKindValueMismatchError(
                     $type,
                     $type->getTypeKind(),
                     'TypeKind',
@@ -60,7 +60,7 @@ final class VisitorOfIType extends VisitorOfT
                 break;
 
             case TypeKind::Collection():
-                $typeKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                $typeKindError = InterfaceValidator::checkForInterfaceKindValueMismatchError(
                     $type,
                     $type->getTypeKind(),
                     'TypeKind',
@@ -69,7 +69,7 @@ final class VisitorOfIType extends VisitorOfT
                 break;
 
             case TypeKind::EntityReference():
-                $typeKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                $typeKindError = InterfaceValidator::checkForInterfaceKindValueMismatchError(
                     $type,
                     $type->getTypeKind(),
                     'TypeKind',
@@ -78,7 +78,7 @@ final class VisitorOfIType extends VisitorOfT
                 break;
 
             case TypeKind::Enum():
-                $typeKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                $typeKindError = InterfaceValidator::checkForInterfaceKindValueMismatchError(
                     $type,
                     $type->getTypeKind(),
                     'TypeKind',
@@ -90,7 +90,7 @@ final class VisitorOfIType extends VisitorOfT
                 break;
 
             default:
-                $typeKindError = InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
+                $typeKindError = InterfaceValidator::createInterfaceKindValueUnexpectedError(
                     $type,
                     $type->getTypeKind()->getKey(),
                     'TypeKind'

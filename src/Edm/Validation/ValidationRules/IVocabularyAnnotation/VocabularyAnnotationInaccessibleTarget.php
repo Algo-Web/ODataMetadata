@@ -38,7 +38,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
 
         if (!$foundTarget) {
             EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
-            $context->AddError(
+            $context->addError(
                 $annotation->Location(),
                 EdmErrorCode::BadUnresolvedTarget(),
                 StringConst::EdmModel_Validator_Semantic_InaccessibleTarget(EdmUtil::fullyQualifiedName($target))

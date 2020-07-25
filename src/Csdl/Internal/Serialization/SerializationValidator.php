@@ -27,7 +27,7 @@ abstract class SerializationValidator
     public static function getSerializationErrors(IModel $root): array
     {
         $errors = [];
-        EdmValidator::Validate($root, self::getSerializationRuleSet(), $errors);
+        EdmValidator::validate($root, self::getSerializationRuleSet(), $errors);
         $errors = array_filter($errors, [self::class, 'significantToSerialization']);
         return $errors;
     }
@@ -38,7 +38,7 @@ abstract class SerializationValidator
      */
     private static function significantToSerialization(EdmError $error)
     {
-        if (ValidationHelper::IsInterfaceCritical($error)) {
+        if (ValidationHelper::isInterfaceCritical($error)) {
             return true;
         }
 

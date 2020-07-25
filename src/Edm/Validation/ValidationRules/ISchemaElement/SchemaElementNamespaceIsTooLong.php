@@ -26,7 +26,7 @@ class SchemaElementNamespaceIsTooLong extends SchemaElementRule
         EdmUtil::checkArgumentNull($item->getNamespace(), 'item->getNamespace');
         if (mb_strlen($item->getNamespace()) > CsdlConstants::Max_NamespaceLength) {
             EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
-            $context->AddError(
+            $context->addError(
                 $item->Location(),
                 EdmErrorCode::InvalidNamespaceName(),
                 StringConst::EdmModel_Validator_Syntactic_EdmModel_NamespaceNameIsTooLong($item->getNamespace())

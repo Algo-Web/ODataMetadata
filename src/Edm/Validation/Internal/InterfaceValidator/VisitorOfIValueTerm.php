@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 class VisitorOfIValueTerm extends VisitorOfT
 {
-    protected function VisitT($term, array &$followup, array &$references): ?iterable
+    protected function visitT($term, array &$followup, array &$references): ?iterable
     {
         assert($term instanceof IValueTerm);
         if (null !== $term->getType()) {
@@ -18,7 +18,7 @@ class VisitorOfIValueTerm extends VisitorOfT
             $followup[] = $term->getType();
             return null;
         } else {
-            return [InterfaceValidator::CreatePropertyMustNotBeNullError($term, 'Type')];
+            return [InterfaceValidator::createPropertyMustNotBeNullError($term, 'Type')];
         }
     }
 

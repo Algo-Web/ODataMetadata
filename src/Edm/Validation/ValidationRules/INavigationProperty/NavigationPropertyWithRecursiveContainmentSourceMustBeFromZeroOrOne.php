@@ -31,7 +31,7 @@ class NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne extend
             !$property->Multiplicity()->isZeroOrOne()
         ) {
             EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
-            $context->AddError(
+            $context->addError(
                 $property->Location(),
                 EdmErrorCode::NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne(),
                 StringConst::EdmModel_Validator_Semantic_NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne($property->getName())

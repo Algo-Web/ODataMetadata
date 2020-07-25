@@ -24,7 +24,7 @@ class EntityTypeKeyMissingOnEntityType extends EntityTypeRule
         assert($entityType instanceof IEntityType);
         if ((null === $entityType->Key() || count($entityType->Key()) == 0) && null === $entityType->getBaseType()) {
             EdmUtil::checkArgumentNull($entityType->Location(), 'entityType->Location');
-            $context->AddError(
+            $context->addError(
                 $entityType->Location(),
                 EdmErrorCode::KeyMissingOnEntityType(),
                 StringConst::EdmModel_Validator_Semantic_KeyMissingOnEntityType($entityType->getName())

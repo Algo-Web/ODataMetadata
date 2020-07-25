@@ -28,7 +28,7 @@ class EntitySetTypeHasNoKeys extends EntitySetRule
         ) &&
             !$context->checkIsBad($entitySet->getElementType())) {
             EdmUtil::checkArgumentNull($entitySet->Location(), 'entitySet->Location');
-            $context->AddError(
+            $context->addError(
                 $entitySet->Location(),
                 EdmErrorCode::EntitySetTypeHasNoKeys(),
                 StringConst::EdmModel_Validator_Semantic_EntitySetTypeHasNoKeys(

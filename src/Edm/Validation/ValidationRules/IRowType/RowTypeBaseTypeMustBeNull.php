@@ -24,7 +24,7 @@ class RowTypeBaseTypeMustBeNull extends RowTypeRule
         assert($rowType instanceof IRowType);
         if (null !== $rowType->getBaseType()) {
             EdmUtil::checkArgumentNull($rowType->Location(), 'rowType->Location');
-            $context->AddError(
+            $context->addError(
                 $rowType->Location(),
                 EdmErrorCode::RowTypeMustNotHaveBaseType(),
                 StringConst::EdmModel_Validator_Semantic_RowTypeMustNotHaveBaseType()

@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Annotations\IPropertyValueBinding;
 
 class VisitorOfIPropertyValueBinding extends VisitorOfT
 {
-    protected function VisitT($binding, array &$followup, array &$references): ?iterable
+    protected function visitT($binding, array &$followup, array &$references): ?iterable
     {
         assert($binding instanceof IPropertyValueBinding);
         $errors = [];

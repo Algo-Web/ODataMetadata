@@ -24,7 +24,7 @@ class EnumMustHaveIntegerUnderlyingType extends EnumTypeRule
         assert($enumType instanceof IEnumType);
         if (!$enumType->getUnderlyingType()->getPrimitiveKind()->isIntegral() && !$context->checkIsBad($enumType->getUnderlyingType())) {
             EdmUtil::checkArgumentNull($enumType->Location(), 'enumType->Location');
-            $context->AddError(
+            $context->addError(
                 $enumType->Location(),
                 EdmErrorCode::EnumMustHaveIntegerUnderlyingType(),
                 StringConst::EdmModel_Validator_Semantic_EnumMustHaveIntegralUnderlyingType($enumType->FullName())

@@ -27,7 +27,7 @@ class FunctionImportParametersIncorrectTypeBeforeV3 extends FunctionImportRule
             if (!$type->isPrimitive() && !$type->isComplex() && !$context->checkIsBad($type->getDefinition())
             ) {
                 EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
-                $context->AddError(
+                $context->addError(
                     $functionParameter->Location(),
                     EdmErrorCode::FunctionImportParameterIncorrectType(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportParameterIncorrectType(

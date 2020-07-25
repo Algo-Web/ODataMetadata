@@ -23,7 +23,7 @@ class ValueTermsNotSupportedBeforeV3 extends ValueTermsRule
     {
         assert($valueTerm instanceof IValueTerm);
         EdmUtil::checkArgumentNull($valueTerm->Location(), 'valueTerm->Location');
-        $context->AddError(
+        $context->addError(
             $valueTerm->Location(),
             EdmErrorCode::ValueTermsNotSupportedBeforeV3(),
             StringConst::EdmModel_Validator_Semantic_ValueTermsNotSupportedBeforeV3()

@@ -24,7 +24,7 @@ class PrimitiveValueValidForType extends PrimitiveValueRule
             $discoveredErrors = null;
             ExpressionTypeChecker::tryAssertPrimitiveAsType($value, $value->getType(), $discoveredErrors);
             foreach ($discoveredErrors as $error) {
-                $context->AddRawError($error);
+                $context->addRawError($error);
             }
         }
     }

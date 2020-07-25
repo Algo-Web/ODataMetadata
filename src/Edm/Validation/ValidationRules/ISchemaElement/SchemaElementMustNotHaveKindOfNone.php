@@ -24,7 +24,7 @@ class SchemaElementMustNotHaveKindOfNone extends SchemaElementRule
         assert($element instanceof ISchemaElement);
         if ($element->getSchemaElementKind()->isNone() && !$context->checkIsBad($element)) {
             EdmUtil::checkArgumentNull($element->Location(), 'element->Location');
-            $context->AddError(
+            $context->addError(
                 $element->Location(),
                 EdmErrorCode::SchemaElementMustNotHaveKindOfNone(),
                 StringConst::EdmModel_Validator_Semantic_SchemaElementMustNotHaveKindOfNone($element->FullName())

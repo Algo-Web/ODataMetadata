@@ -27,7 +27,7 @@ class VocabularyAnnotatableNoDuplicateAnnotations extends VocabularyAnnotatableR
         foreach ($annotatable->VocabularyAnnotations($context->getModel()) as $annotation) {
             if (!$annotationSet->add($annotation->getTerm()->FullName() . ':' . $annotation->getQualifier())) {
                 EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
-                $context->AddError(
+                $context->addError(
                     $annotation->Location(),
                     EdmErrorCode::DuplicateAnnotation(),
                     StringConst::EdmModel_Validator_Semantic_DuplicateAnnotation(

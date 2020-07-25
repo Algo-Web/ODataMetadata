@@ -28,7 +28,7 @@ class StructuredTypePropertyNameAlreadyDefined extends StructuredTypeRule
             // We only want to report the properties that are declared in this type. Otherwise properties will get
             // reported multiple times due to inheritance.
             if ($property != null) {
-                ValidationHelper::AddMemberNameToHashSet(
+                ValidationHelper::addMemberNameToHashSet(
                     $property,
                     $propertyNames,
                     $context,

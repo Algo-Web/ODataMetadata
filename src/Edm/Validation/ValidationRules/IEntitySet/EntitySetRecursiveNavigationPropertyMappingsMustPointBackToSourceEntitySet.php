@@ -28,7 +28,7 @@ class EntitySetRecursiveNavigationPropertyMappingsMustPointBackToSourceEntitySet
                 $mapping->getNavigationProperty()->getDeclaringType()->IsOrInheritsFrom($mapping->getNavigationProperty()->ToEntityType()) &&
                 $mapping->getTargetEntitySet() !== $set) {
                 EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
-                $context->AddError(
+                $context->addError(
                     $set->Location(),
                     EdmErrorCode::EntitySetRecursiveNavigationPropertyMappingsMustPointBackToSourceEntitySet(),
                     StringConst::EdmModel_Validator_Semantic_EntitySetRecursiveNavigationPropertyMappingsMustPointBackToSourceEntitySet($mapping->getNavigationProperty(), $set->getName())

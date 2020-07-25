@@ -35,7 +35,7 @@ class NamedElementNameIsNotAllowed extends NamedElementRule
             mb_strlen($item->getName()) <= CsdlConstants::Max_NameLength && mb_strlen($item->getName()) > 0) {
             if (!EdmUtil::isValidUndottedName($item->getName())) {
                 EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
-                $context->AddError(
+                $context->addError(
                     $item->Location(),
                     EdmErrorCode::InvalidName(),
                     StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsNotAllowed($item->getName())

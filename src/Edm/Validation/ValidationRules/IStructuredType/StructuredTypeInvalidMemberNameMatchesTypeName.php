@@ -34,7 +34,7 @@ class StructuredTypeInvalidMemberNameMatchesTypeName extends StructuredTypeRule
                     assert($property instanceof IProperty);
                     if ($property->getName() === $schemaType->getName()) {
                         EdmUtil::checkArgumentNull($structuredType->Location(), 'structuredType->Location');
-                        $context->AddError(
+                        $context->addError(
                             $property->Location(),
                             EdmErrorCode::BadProperty(),
                             StringConst::EdmModel_Validator_Semantic_InvalidMemberNameMatchesTypeName(

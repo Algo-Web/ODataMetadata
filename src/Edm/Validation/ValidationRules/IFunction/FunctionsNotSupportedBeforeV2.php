@@ -23,7 +23,7 @@ class FunctionsNotSupportedBeforeV2 extends FunctionRule
     {
         assert($function instanceof IFunction);
         EdmUtil::checkArgumentNull($function->Location(), 'function->Location');
-        $context->AddError(
+        $context->addError(
             $function->Location(),
             EdmErrorCode::FunctionsNotSupportedBeforeV2(),
             StringConst::EdmModel_Validator_Semantic_FunctionsNotSupportedBeforeV2()

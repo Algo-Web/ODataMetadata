@@ -34,7 +34,7 @@ class NavigationPropertyDependentPropertiesMustBelongToDependentEntity extends N
                     // dependent property
                     if ($property !== $dependantProperty) {
                         EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
-                        $context->AddError(
+                        $context->addError(
                             $navigationProperty->Location(),
                             EdmErrorCode::DependentPropertiesMustBelongToDependentEntity(),
                             StringConst::EdmModel_Validator_Semantic_DependentPropertiesMustBelongToDependentEntity(

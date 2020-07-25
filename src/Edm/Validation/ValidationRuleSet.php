@@ -146,7 +146,7 @@ class ValidationRuleSet implements \IteratorAggregate
             assert(is_iterable($ruleSet));
             foreach ($ruleSet as $rule) {
                 assert($rule instanceof ValidationRule);
-                $this->AddRule($rule);
+                $this->addRule($rule);
             }
         }
     }
@@ -163,9 +163,9 @@ class ValidationRuleSet implements \IteratorAggregate
             case Version::v1():
                 return self::getV1RuleSet();
             case Version::v1point1():
-                return self::getV1_1RuleSet();
+                return self::getV1point1RuleSet();
             case Version::v1point2():
-                return self::getV1_2RuleSet();
+                return self::getV1point2RuleSet();
             case Version::v2():
                 return self::getV2RuleSet();
             case Version::v3():
@@ -179,12 +179,12 @@ class ValidationRuleSet implements \IteratorAggregate
      * @param  string           $type the interfaces or class name for which we are seeking rules
      * @return ValidationRule[]
      */
-    public function GetRules(string $type): array
+    public function getRules(string $type): array
     {
         return $this->rules[$type] ?? [];
     }
 
-    private function AddRule(ValidationRule $rule): void
+    private function addRule(ValidationRule $rule): void
     {
         $typeName = $rule->getValidatedType();
         if (!isset($this->rules[$typeName])) {
@@ -321,7 +321,7 @@ class ValidationRuleSet implements \IteratorAggregate
         );
     }
 
-    private static function getV1_1RuleSet(): self
+    private static function getV1point1RuleSet(): self
     {
         $filteredBase = [];
         foreach (self::getBaseRuleSet() as $baseRule) {
@@ -355,7 +355,7 @@ class ValidationRuleSet implements \IteratorAggregate
         );
     }
 
-    private static function getV1_2RuleSet(): self
+    private static function getV1point2RuleSet(): self
     {
         $filteredBase = [];
         foreach (self::getBaseRuleSet() as $baseRule) {

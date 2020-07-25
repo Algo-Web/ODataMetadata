@@ -27,7 +27,7 @@ class FunctionOnlyInputParametersAllowedInFunctions extends FunctionRule
             assert($parameter instanceof IFunctionParameter);
             if (!$parameter->getMode()->isIn()) {
                 EdmUtil::checkArgumentNull($parameter->Location(), 'parameter->Location');
-                $context->AddError(
+                $context->addError(
                     $parameter->Location(),
                     EdmErrorCode::OnlyInputParametersAllowedInFunctions(),
                     StringConst::EdmModel_Validator_Semantic_OnlyInputParametersAllowedInFunctions($parameter->getName(), $function->getName())

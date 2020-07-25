@@ -10,12 +10,12 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 
 final class VisitorOfIEntityType extends VisitorOfT
 {
-    protected function VisitT($type, array &$followup, array &$references): ?iterable
+    protected function visitT($type, array &$followup, array &$references): ?iterable
     {
         assert($type instanceof IEntityType);
         $errors = [];
         if (null !== $type->getDeclaredKey()) {
-            InterfaceValidator::ProcessEnumerable($type, $type->getDeclaredKey(), 'DeclaredKey', $references, $errors);
+            InterfaceValidator::processEnumerable($type, $type->getDeclaredKey(), 'DeclaredKey', $references, $errors);
         }
 
         return $errors;

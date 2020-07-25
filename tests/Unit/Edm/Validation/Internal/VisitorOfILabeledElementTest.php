@@ -27,7 +27,7 @@ class VisitorOfILabeledElementTest extends TestCase
 
         $foo = new VisitorOfILabeledElement();
 
-        $foo->Visit($item, $followUp, $references);
+        $foo->visit($item, $followUp, $references);
         $this->assertEquals(1, count($followUp));
     }
 }

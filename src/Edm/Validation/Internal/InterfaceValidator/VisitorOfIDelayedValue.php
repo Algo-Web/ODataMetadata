@@ -10,14 +10,14 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IDelayedValue;
 
 class VisitorOfIDelayedValue extends VisitorOfT
 {
-    protected function VisitT($value, array &$followup, array &$references): ?iterable
+    protected function visitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof IDelayedValue);
         if (null !== $value->getValue()) {
             $followup[] = $value->getValue();
             return null;
         } else {
-            return [ InterfaceValidator::CreatePropertyMustNotBeNullError($value, 'Value') ];
+            return [ InterfaceValidator::createPropertyMustNotBeNullError($value, 'Value') ];
         }
     }
 

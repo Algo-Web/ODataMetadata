@@ -24,7 +24,7 @@ class ComposableFunctionImportMustHaveReturnType extends FunctionImportRule
         assert($functionImport instanceof IFunctionImport);
         if ($functionImport->isComposable() && null === $functionImport->getReturnType()) {
             EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
-            $context->AddError(
+            $context->addError(
                 $functionImport->Location(),
                 EdmErrorCode::ComposableFunctionImportMustHaveReturnType(),
                 StringConst::EdmModel_Validator_Semantic_ComposableFunctionImportMustHaveReturnType($functionImport->getName())

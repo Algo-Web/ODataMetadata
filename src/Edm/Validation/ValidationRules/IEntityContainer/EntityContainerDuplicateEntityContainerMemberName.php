@@ -33,7 +33,7 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
             if ($item instanceof IFunctionImport) {
                 $function = $item;
                 if ($nonFunctionNameList->contains($item->getName())) {
-                    $context->AddError(
+                    $context->addError(
                         $item->Location(),
                         EdmErrorCode::DuplicateEntityContainerMemberName(),
                         StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName())
@@ -46,7 +46,7 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
                     /** @var IFunctionImport $existingFunction */
                     foreach ($functionList as $existingFunction) {
                         if (EdmElementComparer::isFunctionSignatureEquivalentTo($function, $existingFunction)) {
-                            $context->AddError(
+                            $context->addError(
                                 $item->Location(),
                                 EdmErrorCode::DuplicateEntityContainerMemberName(),
                                 StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName())
@@ -61,7 +61,7 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
                 $functionList[]                           = $function;
                 $functionDictionary[$function->getName()] = $functionList;
             } else {
-                if (ValidationHelper::AddMemberNameToHashSet(
+                if (ValidationHelper::addMemberNameToHashSet(
                     $item,
                     $nonFunctionNameList,
                     $context,
@@ -70,7 +70,7 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
                     false
                 )) {
                     if (isset($functionDictionary[$item->getName()])) {
-                        $context->AddError(
+                        $context->addError(
                             $item->Location(),
                             EdmErrorCode::DuplicateEntityContainerMemberName(),
                             StringConst::EdmModel_Validator_Semantic_DuplicateEntityContainerMemberName($item->getName())

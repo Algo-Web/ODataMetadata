@@ -10,11 +10,11 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IStructuredValue;
 
 class VisitorOfIStructuredValue extends VisitorOfT
 {
-    protected function VisitT($value, array &$followup, array &$references): iterable
+    protected function visitT($value, array &$followup, array &$references): iterable
     {
         assert($value instanceof IStructuredValue);
         $errors = [];
-        InterfaceValidator::ProcessEnumerable(
+        InterfaceValidator::processEnumerable(
             $value,
             $value->getPropertyValues(),
             'PropertyValues',

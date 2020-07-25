@@ -24,7 +24,7 @@ class ComplexTypeMustContainProperties extends ComplexTypeRule
         assert($complexType instanceof IComplexType);
         if (!(count($complexType->Properties()) == 0)) {
             EdmUtil::checkArgumentNull($complexType->Location(), 'complexType->Location');
-            $context->AddError(
+            $context->addError(
                 $complexType->Location(),
                 EdmErrorCode::ComplexTypeMustHaveProperties(),
                 StringConst::EdmModel_Validator_Semantic_ComplexTypeMustHaveProperties($complexType->FullName())

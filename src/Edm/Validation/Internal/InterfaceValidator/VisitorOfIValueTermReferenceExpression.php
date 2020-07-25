@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IValueTermReferenceExpression;
 
 class VisitorOfIValueTermReferenceExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): ?iterable
+    protected function visitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IValueTermReferenceExpression);
         $errors = [];
@@ -19,8 +19,8 @@ class VisitorOfIValueTermReferenceExpression extends VisitorOfT
         if (null !== $expression->getBase()) {
             $followup[] = $expression->getBase();
         } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createPropertyMustNotBeNullError(
                     $expression,
                     'Base'
                 ),
@@ -32,8 +32,8 @@ class VisitorOfIValueTermReferenceExpression extends VisitorOfT
         if (null !== $expression->getTerm()) {
             $references[] = $expression->getTerm();
         } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createPropertyMustNotBeNullError(
                     $expression,
                     'Term'
                 ),

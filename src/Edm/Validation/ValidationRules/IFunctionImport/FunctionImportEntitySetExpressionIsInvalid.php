@@ -30,7 +30,7 @@ class FunctionImportEntitySetExpressionIsInvalid extends FunctionImportRule
             if (!$functionImport->getEntitySet()->getExpressionKind()->isEntitySetReference() &&
                 !$functionImport->getEntitySet()->getExpressionKind()->isPath()
             ) {
-                $context->AddError(
+                $context->addError(
                     $functionImport->Location(),
                     EdmErrorCode::FunctionImportEntitySetExpressionIsInvalid(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportEntitySetExpressionKindIsInvalid(
@@ -48,7 +48,7 @@ class FunctionImportEntitySetExpressionIsInvalid extends FunctionImportRule
                 if (!$functionImport->TryGetStaticEntitySet($entitySet) &&
                     !$functionImport->TryGetRelativeEntitySetPath($context->getModel(), $parameter, $path)
                 ) {
-                    $context->AddError(
+                    $context->addError(
                         $functionImport->Location(),
                         EdmErrorCode::FunctionImportEntitySetExpressionIsInvalid(),
                         StringConst::EdmModel_Validator_Semantic_FunctionImportEntitySetExpressionIsInvalid($functionImport->getName())

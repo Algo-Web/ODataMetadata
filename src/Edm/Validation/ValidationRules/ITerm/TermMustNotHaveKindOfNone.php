@@ -24,7 +24,7 @@ class TermMustNotHaveKindOfNone extends TermRule
         assert($term instanceof ITerm);
         if ($term->getTermKind()->isNone() && !$context->checkIsBad($term)) {
             EdmUtil::checkArgumentNull($term->Location(), 'term->Location');
-            $context->AddError(
+            $context->addError(
                 $term->Location(),
                 EdmErrorCode::TermMustNotHaveKindOfNone(),
                 StringConst::EdmModel_Validator_Semantic_TermMustNotHaveKindOfNone($term->FullName())

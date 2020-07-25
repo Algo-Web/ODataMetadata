@@ -25,7 +25,7 @@ class NamedElementNameIsTooLong extends NamedElementRule
         if (!EdmUtil::isNullOrWhiteSpaceInternal($item->getName()) &&
             mb_strlen($item->getName()) > CsdlConstants::Max_NameLength) {
             EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
-            $context->AddError(
+            $context->addError(
                 $item->Location(),
                 EdmErrorCode::NameTooLong(),
                 StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsTooLong($item->getName())

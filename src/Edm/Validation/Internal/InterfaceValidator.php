@@ -35,7 +35,7 @@ class InterfaceValidator
 
     private static function getInterfaceVisitors(): iterable
     {
-        return self::$interfaceVisitors ?? self::$interfaceVisitors = self::CreateInterfaceVisitorsMap();
+        return self::$interfaceVisitors ?? self::$interfaceVisitors = self::createInterfaceVisitorsMap();
     }
 
     /**
@@ -76,24 +76,24 @@ class InterfaceValidator
      * @throws \ReflectionException
      * @return iterable|EdmError[]
      */
-    public static function ValidateModelStructureAndSemantics(IModel $model, ValidationRuleSet $semanticRuleSet): iterable
+    public static function validateModelStructureAndSemantics(IModel $model, ValidationRuleSet $semanticRuleSet): iterable
     {
         $modelValidator = new InterfaceValidator(null, $model, true);
 
         // Perform structural validation of the root object.
-        $errors = iterable_to_array($modelValidator->ValidateStructure($model));
+        $errors = iterable_to_array($modelValidator->validateStructure($model));
 
         // Then check references for structural integrity using separate validator (in order to avoid adding referenced objects to the this.visited).
         $referencesValidator              = new InterfaceValidator($modelValidator->visited, $model, false);
         $referencesToStructurallyValidate = $modelValidator->danglingReferences;
         while (count($referencesToStructurallyValidate) !== 0) {
             foreach ($referencesToStructurallyValidate as $reference) {
-                $errors = array_merge(iterable_to_array($errors), $referencesValidator->ValidateStructure($reference));
+                $errors = array_merge(iterable_to_array($errors), $referencesValidator->validateStructure($reference));
             }
 
             $referencesToStructurallyValidate = $referencesValidator->danglingReferences;
         }
-        $critical = array_filter($errors, [ValidationHelper::class, 'IsInterfaceCritical']);
+        $critical = array_filter($errors, [ValidationHelper::class, 'isInterfaceCritical']);
         // If there are any critical structural errors detected, then it is not safe to traverse the root object, so return the errors without further processing.
         if (count($critical) > 0) {
             return $errors;
@@ -110,7 +110,7 @@ class InterfaceValidator
         foreach ($modelValidator->visited as $item) {
             if (!in_array($item, $modelValidator->visitedBad)) {
                 /** * @var ValidationRule $rule */
-                foreach (self::GetSemanticInterfaceVisitorsForObject(
+                foreach (self::getSemanticInterfaceVisitorsForObject(
                     get_class($item),
                     $semanticRuleSet,
                     $concreteTypeSemanticInterfaceVisitors
@@ -128,17 +128,17 @@ class InterfaceValidator
      * @param  IEdmElement         $item
      * @return iterable|EdmError[]
      */
-    public static function GetStructuralErrors(IEdmElement $item): iterable
+    public static function getStructuralErrors(IEdmElement $item): iterable
     {
         $model               = $item instanceof IModel ? $item : null;
         $structuralValidator = new InterfaceValidator(null, $model, $model !== null);
-        return $structuralValidator->ValidateStructure($item);
+        return $structuralValidator->validateStructure($item);
     }
 
     /**
      * @return iterable|array<string, VisitorBase>
      */
-    private static function CreateInterfaceVisitorsMap(): iterable
+    private static function createInterfaceVisitorsMap(): iterable
     {
         $map    = [];
         $handle = opendir('.');
@@ -166,7 +166,7 @@ class InterfaceValidator
      * @param  string                 $objectType
      * @return iterable|VisitorBase[]
      */
-    private static function ComputeInterfaceVisitorsForObject(string $objectType): iterable
+    private static function computeInterfaceVisitorsForObject(string $objectType): iterable
     {
         $visitors = [];
         foreach (class_implements($objectType) as $type) {
@@ -180,36 +180,36 @@ class InterfaceValidator
         return $visitors;
     }
 
-    private function GetInterfaceVisitorsForObject(string $objectType): iterable
+    private function getInterfaceVisitorsForObject(string $objectType): iterable
     {
         $visitors = [];
         if (!isset(self::$concreteTypeInterfaceVisitors[$objectType])) {
-            $visitors                                         = self::ComputeInterfaceVisitorsForObject($objectType);
+            $visitors                                         = self::computeInterfaceVisitorsForObject($objectType);
             self::$concreteTypeInterfaceVisitors[$objectType] = $visitors;
         }
 
         return $visitors;
     }
 
-    public static function CreatePropertyMustNotBeNullError($item, string $propertyName): EdmError
+    public static function createPropertyMustNotBeNullError($item, string $propertyName): EdmError
     {
         return new EdmError(
-            self::GetLocation($item),
+            self::getLocation($item),
             EdmErrorCode::InterfaceCriticalPropertyValueMustNotBeNull(),
             StringConst::EdmModel_Validator_Syntactic_PropertyMustNotBeNull(get_class($item), $propertyName)
         );
     }
 
-    public static function CreateEnumPropertyOutOfRangeError($item, $enumValue, string $propertyName): EdmError
+    public static function createEnumPropertyOutOfRangeError($item, $enumValue, string $propertyName): EdmError
     {
         return new EdmError(
-            self::GetLocation($item),
+            self::getLocation($item),
             EdmErrorCode::InterfaceCriticalEnumPropertyValueOutOfRange(),
             StringConst::EdmModel_Validator_Syntactic_EnumPropertyValueOutOfRange(get_class($item), $propertyName, get_class($enumValue), $enumValue)
         );
     }
 
-    public static function CheckForInterfaceKindValueMismatchError($item, $kind, string $propertyName, string $interface): ?EdmError
+    public static function checkForInterfaceKindValueMismatchError($item, $kind, string $propertyName, string $interface): ?EdmError
     {
         // If object implements an expected interface, return no error.
         if (in_array($interface, class_implements($item))) {
@@ -217,56 +217,56 @@ class InterfaceValidator
         }
 
         return new EdmError(
-            self::GetLocation($item),
+            self::getLocation($item),
             EdmErrorCode::InterfaceCriticalKindValueMismatch(),
             StringConst::EdmModel_Validator_Syntactic_InterfaceKindValueMismatch($kind, get_class($item), $propertyName, $interface)
         );
     }
 
-    public static function CreateInterfaceKindValueUnexpectedError($item, $kind, string $propertyName): EdmError
+    public static function createInterfaceKindValueUnexpectedError($item, $kind, string $propertyName): EdmError
     {
         return new EdmError(
-            self::GetLocation($item),
+            self::getLocation($item),
             EdmErrorCode::InterfaceCriticalKindValueUnexpected(),
             StringConst::EdmModel_Validator_Syntactic_InterfaceKindValueUnexpected($kind, get_class($item), $propertyName)
         );
     }
 
-    public static function CreateTypeRefInterfaceTypeKindValueMismatchError(ITypeReference $item): EdmError
+    public static function createTypeRefInterfaceTypeKindValueMismatchError(ITypeReference $item): EdmError
     {
         EdmUtil::checkArgumentNull($item->getDefinition(), 'item.Definition');
         return new EdmError(
-            self::GetLocation($item),
+            self::getLocation($item),
             EdmErrorCode::InterfaceCriticalKindValueMismatch(),
             StringConst::EdmModel_Validator_Syntactic_TypeRefInterfaceTypeKindValueMismatch(get_class($item), $item->getDefinition()->getTypeKind()->getKey())
         );
     }
 
-    public static function CreatePrimitiveTypeRefInterfaceTypeKindValueMismatchError(IPrimitiveTypeReference $item): EdmError
+    public static function createPrimitiveTypeRefInterfaceTypeKindValueMismatchError(IPrimitiveTypeReference $item): EdmError
     {
         $definition = $item->getDefinition();
         if (!$definition instanceof IPrimitiveType) {
             throw new InvalidOperationException('item.Definition is IEdmPrimitiveType');
         }
         return new EdmError(
-            self::GetLocation($item),
+            self::getLocation($item),
             EdmErrorCode::InterfaceCriticalKindValueMismatch(),
             StringConst::EdmModel_Validator_Syntactic_TypeRefInterfaceTypeKindValueMismatch(get_class($item), $definition->getPrimitiveKind()->getKey())
         );
     }
 
-    public static function ProcessEnumerable($item, ?iterable $enumerable, string $propertyName, array &$targetList, array &$errors): void
+    public static function processEnumerable($item, ?iterable $enumerable, string $propertyName, array &$targetList, array &$errors): void
     {
         if (null === $enumerable) {
-            self::CollectErrors(self::CreatePropertyMustNotBeNullError($item, $propertyName), $errors);
+            self::collectErrors(self::createPropertyMustNotBeNullError($item, $propertyName), $errors);
         } else {
             foreach ($enumerable as $enumMember) {
                 if (null !== $enumMember) {
                     $targetList[] = $enumMember;
                 } else {
-                    self::CollectErrors(
+                    self::collectErrors(
                         new EdmError(
-                            self::GetLocation($item),
+                            self::getLocation($item),
                             EdmErrorCode::InterfaceCriticalEnumerableMustNotHaveNullElements(),
                             StringConst::EdmModel_Validator_Syntactic_EnumerableMustNotHaveNullElements(get_class($item), $propertyName)
                         ),
@@ -278,7 +278,7 @@ class InterfaceValidator
         }
     }
 
-    public static function CollectErrors(?EdmError $newError, ?array &$errors): void
+    public static function collectErrors(?EdmError $newError, ?array &$errors): void
     {
         if ($newError != null) {
             if ($errors == null) {
@@ -289,12 +289,12 @@ class InterfaceValidator
         }
     }
 
-    public static function IsCheckableBad($element): bool
+    public static function isCheckableBad($element): bool
     {
         return $element instanceof ICheckable && null !== $element->getErrors() && count($element->getErrors()) > 0;
     }
 
-    public static function GetLocation($item): ILocation
+    public static function getLocation($item): ILocation
     {
         return $item instanceof ILocatable && null !== $item->getLocation() ? $item->getLocation() : new ObjectLocation($item);
     }
@@ -305,13 +305,13 @@ class InterfaceValidator
      * @param  array                     $concreteTypeSemanticInterfaceVisitors
      * @return iterable|ValidationRule[]
      */
-    private static function GetSemanticInterfaceVisitorsForObject(string $objectType, ValidationRuleSet $ruleSet, array &$concreteTypeSemanticInterfaceVisitors): iterable
+    private static function getSemanticInterfaceVisitorsForObject(string $objectType, ValidationRuleSet $ruleSet, array &$concreteTypeSemanticInterfaceVisitors): iterable
     {
         $visitors = null;
         if (!isset($concreteTypeSemanticInterfaceVisitors[$objectType])) {
             $visitors = [];
             foreach (class_implements($objectType) as $type) {
-                $visitors = array_merge($visitors, $ruleSet->GetRules($type));
+                $visitors = array_merge($visitors, $ruleSet->getRules($type));
             }
 
             $concreteTypeSemanticInterfaceVisitors[$objectType] = $visitors;
@@ -324,7 +324,7 @@ class InterfaceValidator
      * @param  mixed               $item
      * @return iterable|EdmError[]
      */
-    private function ValidateStructure($item): iterable
+    private function validateStructure($item): iterable
     {
         if ($item instanceof IEdmValidCoreModelElement || in_array($item, $this->visited) || ($this->skipVisitation != null && in_array($item, $this->skipVisitation))) {
             // If we already visited this object, then errors (if any) have already been reported.
@@ -344,10 +344,10 @@ class InterfaceValidator
         $followup        = [];
         $references      = [];
         $visitors        = null;
-        $visitors        = $this->GetInterfaceVisitorsForObject(get_class($item));
+        $visitors        = $this->getInterfaceVisitorsForObject(get_class($item));
         /** @var VisitorBase $visitor */
         foreach ($visitors as $visitor) {
-            $errors = $visitor->Visit($item, $followup, $references);
+            $errors = $visitor->visit($item, $followup, $references);
 
             // For performance reasons some visitors may return null errors enumerator.
             if ($errors != null) {
@@ -382,24 +382,24 @@ class InterfaceValidator
                     assert($annotation instanceof IDirectValueAnnotation);
                     $followupErrors = array_merge(
                         iterable_to_array($followupErrors),
-                        iterable_to_array($this->ValidateStructure($annotation))
+                        iterable_to_array($this->validateStructure($annotation))
                     );
                 }
             }
         }
 
         foreach ($followup as $followupItem) {
-            $followupErrors = array_merge($followupErrors, $this->ValidateStructure($followupItem));
+            $followupErrors = array_merge($followupErrors, $this->validateStructure($followupItem));
         }
 
         foreach ($references as $referencedItem) {
-            $this->CollectReference($referencedItem);
+            $this->collectReference($referencedItem);
         }
 
         return $followupErrors;
     }
 
-    private function CollectReference($reference): void
+    private function collectReference($reference): void
     {
         if (!($reference instanceof IEdmValidCoreModelElement) &&
             !in_array($reference, $this->visited) &&

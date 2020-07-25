@@ -32,7 +32,7 @@ class RecordExpressionPropertiesMatchType extends RecordExpressionRule
                 $discoveredErrors
             );
             foreach ($discoveredErrors as $error) {
-                $context->AddRawError($error);
+                $context->addRawError($error);
             }
         }
     }

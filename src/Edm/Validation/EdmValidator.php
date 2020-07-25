@@ -25,13 +25,13 @@ abstract class EdmValidator
      * @throws \ReflectionException
      * @return bool                      true if model is valid, otherwise false
      */
-    public static function Validate(IModel $root, $versionOrRuleset, array &$errors): bool
+    public static function validate(IModel $root, $versionOrRuleset, array &$errors): bool
     {
         $ruleSet = $versionOrRuleset instanceof Version ?
             ValidationRuleSet::getEdmModelRuleSet($versionOrRuleset) :
             $versionOrRuleset;
         assert($ruleSet instanceof ValidationRuleSet);
-        $errors = InterfaceValidator::ValidateModelStructureAndSemantics($root, $ruleSet);
+        $errors = InterfaceValidator::validateModelStructureAndSemantics($root, $ruleSet);
         return count($errors) === 0;
     }
 }

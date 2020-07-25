@@ -33,7 +33,7 @@ class FunctionImportUnsupportedReturnTypeAfterV1 extends FunctionImportRule
                 !$context->checkIsBad($elementType->getDefinition())
             ) {
                 EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
-                $context->AddError(
+                $context->addError(
                     $functionImport->Location(),
                     EdmErrorCode::FunctionImportUnsupportedReturnType(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportWithUnsupportedReturnTypeAfterV1(

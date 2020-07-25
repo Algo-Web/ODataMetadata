@@ -29,7 +29,7 @@ class VisitorOfIParameterReferenceExpressionTest extends TestCase
 
         $foo = new VisitorOfIParameterReferenceExpression();
 
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));
         /** @var EdmError $error */
@@ -53,7 +53,7 @@ class VisitorOfIParameterReferenceExpressionTest extends TestCase
 
         $foo = new VisitorOfIParameterReferenceExpression();
 
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertNull($result);
         $this->assertEquals(1, count($references));
     }

@@ -28,7 +28,7 @@ class EntityTypeInvalidKeyNullablePart extends EntityTypeRule
                 if ($key->getType()->isPrimitive()) {
                     if ($key->getType()->getNullable()) {
                         EdmUtil::checkArgumentNull($key->Location(), 'key->Location');
-                        $context->AddError(
+                        $context->addError(
                             $key->Location(),
                             EdmErrorCode::InvalidKey(),
                             StringConst::EdmModel_Validator_Semantic_InvalidKeyNullablePart($key->getName(), $entityType->getName())

@@ -23,7 +23,7 @@ class VocabularyAnnotationsNotSupportedBeforeV3 extends VocabularyAnnotationRule
     {
         assert($vocabularyAnnotation instanceof IVocabularyAnnotation);
         EdmUtil::checkArgumentNull($vocabularyAnnotation->Location(), 'vocabularyAnnotation->Location');
-        $context->AddError(
+        $context->addError(
             $vocabularyAnnotation->Location(),
             EdmErrorCode::VocabularyAnnotationsNotSupportedBeforeV3(),
             StringConst::EdmModel_Validator_Semantic_VocabularyAnnotationsNotSupportedBeforeV3()
