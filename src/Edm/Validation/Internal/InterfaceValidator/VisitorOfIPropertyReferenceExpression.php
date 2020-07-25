@@ -27,6 +27,7 @@ class VisitorOfIPropertyReferenceExpression extends VisitorOfT
             );
         }
 
+        // TODO: Whether if condition is always true is ambiguous
         if (null !== $expression->getReferencedProperty()) {
             $references[] = $expression->getReferencedProperty();
         } else {

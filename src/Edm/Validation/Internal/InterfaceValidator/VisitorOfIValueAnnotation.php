@@ -13,12 +13,8 @@ class VisitorOfIValueAnnotation extends VisitorOfT
     protected function VisitT($annotation, array &$followup, array &$references): ?iterable
     {
         assert($annotation instanceof IValueAnnotation);
-        if (null !== $annotation->getValue()) {
-            $followup[] = $annotation->getValue();
-            return null;
-        } else {
-            return [InterfaceValidator::CreatePropertyMustNotBeNullError($annotation, 'Value') ];
-        }
+        $followup[] = $annotation->getValue();
+        return null;
     }
 
     public function forType(): string

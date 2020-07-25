@@ -14,7 +14,8 @@ class VisitorOfIRowTypeReference extends VisitorOfT
     protected function VisitT($typeRef, array &$followup, array &$references): ?iterable
     {
         assert($typeRef instanceof IRowTypeReference);
-        return null !== $typeRef->getDefinition() && !$typeRef->getDefinition()->getTypeKind() != TypeKind::Row()
+        return null !== $typeRef->getDefinition() &&
+               $typeRef->getDefinition()->getTypeKind() != TypeKind::Row()
             ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
     }
 

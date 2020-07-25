@@ -19,31 +19,21 @@ class VisitorOfINavigationProperty extends VisitorOfT
         assert($property instanceof INavigationProperty);
         $errors = [];
 
-        if (null !== $property->getPartner()) {
-            // If the declaring type of the partner does not contain the partner, it is a silent partner, and belongs
-            // to this property.
-            $prop = $property->getPartner()->getDeclaringType()->getDeclaredProperties();
-            if (!in_array($property->getPartner(), $prop)) {
-                $followup[] = $property->getPartner();
-            } else {
-                $references[] =$property->getPartner();
-            }
-
-            if ($property->getPartner()->getPartner() !== $property || $property->getPartner() === $property) {
-                InterfaceValidator::CollectErrors(
-                    new EdmError(
-                        InterfaceValidator::GetLocation($property),
-                        EdmErrorCode::InterfaceCriticalNavigationPartnerInvalid(),
-                        StringConst::EdmModel_Validator_Syntactic_NavigationPartnerInvalid($property->getName())
-                    ),
-                    $errors
-                );
-            }
+        // If the declaring type of the partner does not contain the partner, it is a silent partner, and belongs
+        // to this property.
+        $prop = $property->getPartner()->getDeclaringType()->getDeclaredProperties();
+        if (!in_array($property->getPartner(), $prop)) {
+            $followup[] = $property->getPartner();
         } else {
+            $references[] = $property->getPartner();
+        }
+
+        if ($property->getPartner()->getPartner() !== $property || $property->getPartner() === $property) {
             InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $property,
-                    'Partner'
+                new EdmError(
+                    InterfaceValidator::GetLocation($property),
+                    EdmErrorCode::InterfaceCriticalNavigationPartnerInvalid(),
+                    StringConst::EdmModel_Validator_Syntactic_NavigationPartnerInvalid($property->getName())
                 ),
                 $errors
             );
