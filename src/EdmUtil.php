@@ -161,12 +161,12 @@ class EdmUtil
         $s .= $function->getName();
         $s .= '(';
         foreach ($function->getParameters() as $parameter) {
-            if ($parameter->getType()->IsCollection()) {
-                $typeName = CsdlConstants::Value_Collection . '(' . $parameter->getType()->AsCollection()->ElementType()->FullName() . ')';
-            } elseif ($parameter->getType()->IsEntityReference()) {
-                $typeName = CsdlConstants::Value_Ref . '(' . $parameter->getType()->AsEntityReference()->EntityType()->FullName() . ')';
+            if ($parameter->getType()->isCollection()) {
+                $typeName = CsdlConstants::Value_Collection . '(' . $parameter->getType()->asCollection()->ElementType()->fullName() . ')';
+            } elseif ($parameter->getType()->isEntityReference()) {
+                $typeName = CsdlConstants::Value_Ref . '(' . $parameter->getType()->asEntityReference()->EntityType()->FullName() . ')';
             } else {
-                $typeName = $parameter->getType()->FullName();
+                $typeName = $parameter->getType()->fullName();
             }
 
             $s .= $typeName;

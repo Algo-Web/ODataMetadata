@@ -218,14 +218,14 @@ class EdmNavigationProperty extends EdmProperty implements INavigationProperty
     private static function GetEntityType(ITypeReference $type): ?IEntityType
     {
         $entityType = null;
-        if ($type->IsEntity()) {
+        if ($type->isEntity()) {
             /** @var IEntityType $entityType */
             $entityType = $type->getDefinition();
-        } elseif ($type->IsCollection()) {
+        } elseif ($type->isCollection()) {
             $collectionDef = $type->getDefinition();
             assert($collectionDef instanceof ICollectionType);
             $type = $collectionDef->getElementType();
-            if ($type->IsEntity()) {
+            if ($type->isEntity()) {
                 /** @var IEntityType $entityType */
                 $entityType = $type->getDefinition();
                 assert($entityType instanceof IEntityType);

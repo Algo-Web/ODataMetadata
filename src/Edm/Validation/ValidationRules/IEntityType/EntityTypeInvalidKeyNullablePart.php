@@ -25,7 +25,7 @@ class EntityTypeInvalidKeyNullablePart extends EntityTypeRule
         $rawKey = $entityType->Key();
         if (null !== $rawKey) {
             foreach ($rawKey as $key) {
-                if ($key->getType()->IsPrimitive()) {
+                if ($key->getType()->isPrimitive()) {
                     if ($key->getType()->getNullable()) {
                         EdmUtil::checkArgumentNull($key->Location(), 'key->Location');
                         $context->AddError(

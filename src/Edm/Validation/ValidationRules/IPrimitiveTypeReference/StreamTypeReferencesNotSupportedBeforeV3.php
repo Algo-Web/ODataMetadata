@@ -22,7 +22,7 @@ class StreamTypeReferencesNotSupportedBeforeV3 extends PrimitiveTypeReferenceRul
     public function __invoke(ValidationContext $context, ?IEdmElement $type)
     {
         assert($type instanceof IPrimitiveTypeReference);
-        if ($type->IsStream()) {
+        if ($type->isStream()) {
             EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
             $context->AddError(
                 $type->Location(),

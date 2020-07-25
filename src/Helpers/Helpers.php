@@ -22,7 +22,7 @@ abstract class Helpers
 
     public static function GetPathSegmentEntityType(ITypeReference $segmentType): IEntityType
     {
-        return ($segmentType->IsCollection() ? $segmentType->AsCollection()->ElementType() : $segmentType)->AsEntity()->EntityDefinition();
+        return ($segmentType->isCollection() ? $segmentType->asCollection()->ElementType() : $segmentType)->asEntity()->EntityDefinition();
     }
     public static function FindAcrossModels(IModel $model, string $qualifiedName, callable $finder, $ambiguousCreator)
     {

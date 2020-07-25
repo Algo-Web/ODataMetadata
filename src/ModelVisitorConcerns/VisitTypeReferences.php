@@ -28,25 +28,25 @@ trait VisitTypeReferences
 
         switch ($reference->getDefinition()->getTypeKind()) {
             case TypeKind::Collection():
-                $this->processCollectionTypeReference($reference->AsCollection());
+                $this->processCollectionTypeReference($reference->asCollection());
                 break;
             case TypeKind::Complex():
-                $this->processComplexTypeReference($reference->AsComplex());
+                $this->processComplexTypeReference($reference->asComplex());
                 break;
             case TypeKind::Entity():
-                $this->processEntityTypeReference($reference->AsEntity());
+                $this->processEntityTypeReference($reference->asEntity());
                 break;
             case TypeKind::EntityReference():
-                $this->processEntityReferenceTypeReference($reference->AsEntityReference());
+                $this->processEntityReferenceTypeReference($reference->asEntityReference());
                 break;
             case TypeKind::Enum():
-                $this->processEnumTypeReference($reference->AsEnum());
+                $this->processEnumTypeReference($reference->asEnum());
                 break;
             case TypeKind::Primitive():
-                $this->visitPrimitiveTypeReference($reference->AsPrimitive());
+                $this->visitPrimitiveTypeReference($reference->asPrimitive());
                 break;
             case TypeKind::Row():
-                $this->processRowTypeReference($reference->AsRow());
+                $this->processRowTypeReference($reference->asRow());
                 break;
             case TypeKind::None():
                 $this->processTypeReference($reference);
@@ -66,18 +66,18 @@ trait VisitTypeReferences
         /** @var EdmModelVisitor $this */
         switch ($reference->PrimitiveKind()) {
             case PrimitiveTypeKind::Binary():
-                $this->processBinaryTypeReference($reference->AsBinary());
+                $this->processBinaryTypeReference($reference->asBinary());
                 break;
             case PrimitiveTypeKind::Decimal():
-                $this->processDecimalTypeReference($reference->AsDecimal());
+                $this->processDecimalTypeReference($reference->asDecimal());
                 break;
             case PrimitiveTypeKind::String():
-                $this->processStringTypeReference($reference->AsString());
+                $this->processStringTypeReference($reference->asString());
                 break;
             case PrimitiveTypeKind::DateTime():
             case PrimitiveTypeKind::DateTimeOffset():
             case PrimitiveTypeKind::Time():
-                $this->processTemporalTypeReference($reference->AsTemporal());
+                $this->processTemporalTypeReference($reference->asTemporal());
                 break;
             case PrimitiveTypeKind::Geography():
             case PrimitiveTypeKind::GeographyPoint():
@@ -95,7 +95,7 @@ trait VisitTypeReferences
             case PrimitiveTypeKind::GeometryMultiPolygon():
             case PrimitiveTypeKind::GeometryMultiLineString():
             case PrimitiveTypeKind::GeometryMultiPoint():
-                $this->processSpatialTypeReference($reference->AsSpatial());
+                $this->processSpatialTypeReference($reference->asSpatial());
                 break;
             case PrimitiveTypeKind::Boolean():
             case PrimitiveTypeKind::Byte():

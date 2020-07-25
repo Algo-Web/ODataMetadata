@@ -31,19 +31,19 @@ class NavigationPropertyCorrectType extends NavigationPropertyRule
         } else {
             switch ($property->getPartner()->Multiplicity()) {
                 case Multiplicity::Many():
-                    if (!$property->getType()->IsCollection()) {
+                    if (!$property->getType()->isCollection()) {
                         $isBad = true;
                     }
 
                     break;
                 case Multiplicity::ZeroOrOne():
-                    if ($property->getType()->IsCollection() || !$property->getType()->getNullable()) {
+                    if ($property->getType()->isCollection() || !$property->getType()->getNullable()) {
                         $isBad = true;
                     }
 
                     break;
                 case Multiplicity::One():
-                    if ($property->getType()->IsCollection() || $property->getType()->getNullable()) {
+                    if ($property->getType()->isCollection() || $property->getType()->getNullable()) {
                         $isBad = true;
                     }
 

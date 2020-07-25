@@ -24,14 +24,14 @@ class FunctionImportParametersIncorrectTypeBeforeV3 extends FunctionImportRule
         assert($functionImport instanceof IFunctionImport);
         foreach ($functionImport->getParameters() as $functionParameter) {
             $type = $functionParameter->getType();
-            if (!$type->IsPrimitive() && !$type->IsComplex() && !$context->checkIsBad($type->getDefinition())
+            if (!$type->isPrimitive() && !$type->isComplex() && !$context->checkIsBad($type->getDefinition())
             ) {
                 EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
                 $context->AddError(
                     $functionParameter->Location(),
                     EdmErrorCode::FunctionImportParameterIncorrectType(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportParameterIncorrectType(
-                        $type->FullName(),
+                        $type->fullName(),
                         $functionParameter->getName()
                     )
                 );

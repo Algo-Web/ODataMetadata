@@ -23,9 +23,9 @@ class FunctionImportUnsupportedReturnTypeV1 extends FunctionImportRule
     {
         assert($functionImport instanceof IFunctionImport);
         if (null !== $functionImport->getReturnType()) {
-            if ($functionImport->getReturnType()->IsCollection()) {
-                $elementType = $functionImport->getReturnType()->AsCollection()->ElementType();
-                $reportError = !$elementType->IsPrimitive() && !$elementType->IsEntity() && !$context->checkIsBad($elementType->getDefinition());
+            if ($functionImport->getReturnType()->isCollection()) {
+                $elementType = $functionImport->getReturnType()->asCollection()->ElementType();
+                $reportError = !$elementType->isPrimitive() && !$elementType->isEntity() && !$context->checkIsBad($elementType->getDefinition());
             } else {
                 $reportError = true;
             }

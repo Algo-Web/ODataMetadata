@@ -23,8 +23,8 @@ class StructuralPropertyInvalidPropertyType extends StructuralPropertyRule
     {
         assert($property instanceof IStructuralProperty);
         if ($property->getDeclaringType()->getTypeKind()->isRow()) {
-            $validatedType = $property->getType()->IsCollection() ?
-                $property->getType()->AsCollection()->ElementType()->getDefinition() :
+            $validatedType = $property->getType()->isCollection() ?
+                $property->getType()->asCollection()->ElementType()->getDefinition() :
                 $property->getType()->getDefinition();
 
             EdmUtil::checkArgumentNull($validatedType, 'validatedType');
@@ -37,7 +37,7 @@ class StructuralPropertyInvalidPropertyType extends StructuralPropertyRule
                     $property->Location(),
                     EdmErrorCode::InvalidPropertyType(),
                     StringConst::EdmModel_Validator_Semantic_InvalidPropertyType(
-                        $property->getType()->TypeKind()->getKey()
+                        $property->getType()->typeKind()->getKey()
                     )
                 );
             }

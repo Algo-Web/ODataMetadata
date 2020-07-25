@@ -115,7 +115,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
 
         $import->shouldReceive('getReturnType')->andReturn($typeRef);
 
-        $isColl = $import->getReturnType()->IsCollection();
+        $isColl = $import->getReturnType()->isCollection();
         $this->assertFalse($isColl);
 
         $foo = new FunctionImportEntityTypeDoesNotMatchEntitySet();
@@ -152,7 +152,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
 
         $import->shouldReceive('getReturnType')->andReturn($typeRef);
 
-        $isColl = $import->getReturnType()->IsCollection();
+        $isColl = $import->getReturnType()->isCollection();
         $this->assertFalse($isColl);
 
         $foo = new FunctionImportEntityTypeDoesNotMatchEntitySet();
@@ -182,7 +182,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
 
         $import->shouldReceive('getReturnType')->andReturn($typeRef);
 
-        $isColl = $import->getReturnType()->IsCollection();
+        $isColl = $import->getReturnType()->isCollection();
         $this->assertFalse($isColl);
 
         $foo = new FunctionImportEntityTypeDoesNotMatchEntitySet();
