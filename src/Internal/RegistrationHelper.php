@@ -39,7 +39,7 @@ abstract class RegistrationHelper
      * @param array<string, object>           $functionGroupDictionary
      * @param array<string, IEntityContainer> $containerDictionary
      */
-    public static function RegisterSchemaElement(
+    public static function registerSchemaElement(
         ISchemaElement $element,
         array $schemaTypeDictionary,
         array $valueTermDictionary,
@@ -50,20 +50,20 @@ abstract class RegistrationHelper
         switch ($element->getSchemaElementKind()) {
             case SchemaElementKind::Function():
                 assert($element instanceof IFunction);
-                self::AddFunction($element, $qualifiedName, $functionGroupDictionary);
+                self::addFunction($element, $qualifiedName, $functionGroupDictionary);
                 break;
             case SchemaElementKind::TypeDefinition():
                 assert($element instanceof ISchemaType);
-                self::AddElement(
+                self::addElement(
                     $element,
                     $qualifiedName,
                     $schemaTypeDictionary,
-                    [self::class, 'CreateAmbiguousTypeBinding']
+                    [self::class, 'createAmbiguousTypeBinding']
                 );
                 break;
             case SchemaElementKind::ValueTerm():
                 assert($element instanceof IValueTerm);
-                self::AddElement(
+                self::addElement(
                     $element,
                     $qualifiedName,
                     $valueTermDictionary,
@@ -75,17 +75,17 @@ abstract class RegistrationHelper
                 EdmUtil::checkArgumentNull($element->getName(), 'element->getName');
                 // Add EntityContainers to the dictionary twice to maintain backwards compat with Edms that did not
                 // consider EntityContainers to be schema elements.
-                self::AddElement(
+                self::addElement(
                     $element,
                     $qualifiedName,
                     $containerDictionary,
-                    [self::class, 'CreateAmbiguousEntityContainerBinding']
+                    [self::class, 'createAmbiguousEntityContainerBinding']
                 );
-                self::AddElement(
+                self::addElement(
                     $element,
                     $element->getName(),
                     $containerDictionary,
-                    [self::class, 'CreateAmbiguousEntityContainerBinding']
+                    [self::class, 'createAmbiguousEntityContainerBinding']
                 );
                 break;
             case SchemaElementKind::None():
@@ -102,9 +102,9 @@ abstract class RegistrationHelper
      * @param string                   $name
      * @param array<string, IProperty> $dictionary
      */
-    public static function RegisterProperty(IProperty $element, string $name, array $dictionary)
+    public static function registerProperty(IProperty $element, string $name, array $dictionary)
     {
-        self::AddElement($element, $name, $dictionary, [self::class, 'CreateAmbiguousPropertyBinding']);
+        self::addElement($element, $name, $dictionary, [self::class, 'createAmbiguousPropertyBinding']);
     }
     //Dictionary
     // Func<T, T, T>
@@ -114,7 +114,7 @@ abstract class RegistrationHelper
      * @param array<string, IEdmElement>                    $elementDictionary
      * @param callable(IEdmElement,IEdmElement):IEdmElement $ambiguityCreator
      */
-    public static function AddElement($element, string $name, array &$elementDictionary, callable $ambiguityCreator)
+    public static function addElement($element, string $name, array &$elementDictionary, callable $ambiguityCreator)
     {
         if (array_key_exists($name, $elementDictionary)) {
             $preexisting              = $elementDictionary[$name];
@@ -129,7 +129,7 @@ abstract class RegistrationHelper
      * @param string                $name
      * @param array<string, object> $functionListDictionary
      */
-    public static function AddFunction(IFunctionBase $function, string $name, array &$functionListDictionary)
+    public static function addFunction(IFunctionBase $function, string $name, array &$functionListDictionary)
     {
         if (array_key_exists($name, $functionListDictionary)) {
             $functionList = $functionListDictionary[$name];
@@ -142,7 +142,7 @@ abstract class RegistrationHelper
         }
     }
 
-    public static function CreateAmbiguousTypeBinding(ISchemaType $first, ISchemaType $second): ISchemaType
+    public static function createAmbiguousTypeBinding(ISchemaType $first, ISchemaType $second): ISchemaType
     {
         if ($first instanceof AmbiguousTypeBinding) {
             $first->addBinding($second);
@@ -151,42 +151,42 @@ abstract class RegistrationHelper
         return new AmbiguousTypeBinding($first, $second);
     }
 
-    public static function CreateAmbiguousValueTermBinding(IValueTerm $first, IValueTerm $second): IValueTerm
+    public static function createAmbiguousValueTermBinding(IValueTerm $first, IValueTerm $second): IValueTerm
     {
         if ($first instanceof AmbiguousValueTermBinding) {
-            $first->AddBinding($second);
+            $first->addBinding($second);
             return $first;
         }
 
         return new AmbiguousValueTermBinding($first, $second);
     }
 
-    public static function CreateAmbiguousEntitySetBinding(IEntitySet $first, IEntitySet $second): IEntitySet
+    public static function createAmbiguousEntitySetBinding(IEntitySet $first, IEntitySet $second): IEntitySet
     {
         if ($first instanceof AmbiguousEntitySetBinding) {
-            $first->AddBinding($second);
+            $first->addBinding($second);
             return $first;
         }
 
         return new AmbiguousEntitySetBinding($first, $second);
     }
 
-    public static function CreateAmbiguousEntityContainerBinding(
+    public static function createAmbiguousEntityContainerBinding(
         IEntityContainer $first,
         IEntityContainer $second
     ): IEntityContainer {
         if ($first instanceof AmbiguousEntityContainerBinding) {
-            $first->AddBinding($second);
+            $first->addBinding($second);
             return $first;
         }
 
         return new AmbiguousEntityContainerBinding($first, $second);
     }
 
-    public static function CreateAmbiguousPropertyBinding(IProperty $first, IProperty $second): IProperty
+    public static function createAmbiguousPropertyBinding(IProperty $first, IProperty $second): IProperty
     {
         if ($first instanceof AmbiguousPropertyBinding) {
-            $first->AddBinding($second);
+            $first->addBinding($second);
             return $first;
         }
 
