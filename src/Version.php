@@ -48,7 +48,7 @@ class Version
     /**
      * @return Version
      */
-    public static function v1_1()
+    public static function v1point1()
     {
         self::fillVersions();
 
@@ -58,7 +58,7 @@ class Version
     /**
      * @return Version
      */
-    public static function v1_2()
+    public static function v1point2()
     {
         self::fillVersions();
 
