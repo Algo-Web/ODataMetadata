@@ -16,17 +16,7 @@ class VisitorOfIEntitySet extends VisitorOfT
         assert($item instanceof IEntitySet);
         $errors = [];
 
-        if (null !== $item->getElementType()) {
-            $references[] = $item->getElementType();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $item,
-                    'ElementType'
-                ),
-                $errors
-            );
-        }
+        $references[] = $item->getElementType();
 
         // Navigation targets are not EDM elements, so we expand and process them here instead of adding them as
         // followups.
@@ -40,29 +30,9 @@ class VisitorOfIEntitySet extends VisitorOfT
         );
         /** @var INavigationTargetMapping $navTargetMapping */
         foreach ($navTargetMappings as $navTargetMapping) {
-            if (null !== $navTargetMapping->getNavigationProperty()) {
-                $references[] = $navTargetMapping->getNavigationProperty();
-            } else {
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CreatePropertyMustNotBeNullError(
-                        $navTargetMapping,
-                        'NavigationProperty'
-                    ),
-                    $errors
-                );
-            }
+            $references[] = $navTargetMapping->getNavigationProperty();
 
-            if (null !== $navTargetMapping->getTargetEntitySet()) {
-                $references[] = $navTargetMapping->getTargetEntitySet();
-            } else {
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CreatePropertyMustNotBeNullError(
-                        $navTargetMapping,
-                        'TargetEntitySet'
-                    ),
-                    $errors
-                );
-            }
+            $references[] = $navTargetMapping->getTargetEntitySet();
         }
 
         return $errors;

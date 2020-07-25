@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\ValueHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\Values\ICollectionValue;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IDelayedValue;
@@ -18,6 +19,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IValue;
  */
 class EdmCollectionValue extends EdmValue implements ICollectionValue
 {
+    use ValueHelpers;
     /**
      * @var IDelayedValue[]
      */

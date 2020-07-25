@@ -22,8 +22,9 @@ class EntityTypeInvalidKeyNullablePart extends EntityTypeRule
     public function __invoke(ValidationContext $context, ?IEdmElement $entityType)
     {
         assert($entityType instanceof IEntityType);
-        if ($entityType->Key() != null) {
-            foreach ($entityType->Key() as $key) {
+        $rawKey = $entityType->Key();
+        if (null !== $rawKey) {
+            foreach ($rawKey as $key) {
                 if ($key->getType()->IsPrimitive()) {
                     if ($key->getType()->getNullable()) {
                         EdmUtil::checkArgumentNull($key->Location(), 'key->Location');

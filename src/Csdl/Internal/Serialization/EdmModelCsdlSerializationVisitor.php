@@ -87,7 +87,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     private $schemaWriter;
     /**
-     * @var INavigationProperty
+     * @var INavigationProperty[]
      */
     private $navigationProperties = [];
     /**
@@ -214,9 +214,9 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                 );
                 // This prevents us from losing association sets if they share the same name.
                 if (!count($any) > 0) {
-                    $this->associationSets[$associationSetName] =
+                    $this->associationSets[$associationSetName][] =
                         new Tuple($entitySet, $mapping->getNavigationProperty());
-                    $this->associationSets[$associationSetName] =
+                    $this->associationSets[$associationSetName][] =
                         new Tuple($mapping->getTargetEntitySet(), $mapping->getNavigationProperty()->getPartner());
 
                     $this->ProcessAssociationSet($entitySet, $mapping->getNavigationProperty());
@@ -248,9 +248,9 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     protected function ProcessEntityType(IEntityType $element): void
     {
         $this->BeginElement($element, [$this->schemaWriter, 'WriteEntityTypeElementHeader']);
-        if ($element->getDeclaredKey() != null &&
+        if (null !== $element->getDeclaredKey() &&
             count($element->getDeclaredKey()) > 0 &&
-            $element->getBaseType() == null) {
+            null === $element->getBaseType()) {
             $this->VisitEntityTypeDeclaredKey($element->getDeclaredKey());
         }
 
@@ -396,7 +396,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     protected function ProcessFunction(IFunction $element): void
     {
-        if ($element->getReturnType() != null) {
+        if (null !== $element->getReturnType()) {
             $inlineReturnType = self::IsInlineType($element->getReturnType());
             $this->BeginElement($element, function (IFunction $f) use ($inlineReturnType) {
                 $this->schemaWriter->WriteFunctionElementHeader($f, $inlineReturnType);
@@ -484,7 +484,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     protected function ProcessFunctionImport(IFunctionImport $functionImport): void
     {
-        if ($functionImport->getReturnType() != null && !self::IsInlineType($functionImport->getReturnType())) {
+        if (null !== $functionImport->getReturnType() && !self::IsInlineType($functionImport->getReturnType())) {
             throw new InvalidOperationException(
                 StringConst::Serializer_NonInlineFunctionImportReturnType(
                     $functionImport->getContainer()->FullName() . '/' . $functionImport->getName()
@@ -892,9 +892,9 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      */
     private function ProcessReferentialConstraint(INavigationProperty $element, iterable $annotations): void
     {
-        if ($element->getDependentProperties() != null) {
+        if ($element->getDependentProperties() !== null) {
             $principalElement = $element->getPartner();
-        } elseif ($element->getPartner()->getDependentProperties() != null) {
+        } elseif ($element->getPartner()->getDependentProperties() !== null) {
             $principalElement = $element;
         } else {
             return;
@@ -905,6 +905,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->schemaWriter->WriteReferentialConstraintPrincipalEndElementHeader($principalElement);
         $dType = $principalElement->getDeclaringType();
         assert($dType instanceof IEntityType);
+        EdmUtil::checkArgumentNull($dType->Key(), 'principalElement->getDeclaringType->Key');
         $this->VisitPropertyRefs($dType->Key());
         $this->schemaWriter->WriteEndElement();
         $this->schemaWriter->WriteReferentialConstraintDependentEndElementHeader($principalElement->getPartner());
@@ -1262,17 +1263,22 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  array|IStructuralProperty[] $thoseProperties
      * @return bool
      */
-    private function SharesReferentialConstraintEnd(array $theseProperties, array $thoseProperties): bool
+    private function SharesReferentialConstraintEnd(?array $theseProperties, ?array $thoseProperties): bool
     {
-        if (count($theseProperties) != count($thoseProperties)) {
+        if (null === $theseProperties || null === $thoseProperties) {
             return false;
         }
-        $obj                       = new ArrayObject($theseProperties);
-        $thesePropertiesEnumerator = $obj->getIterator();
+        $numProp   = count($theseProperties);
+        if ($numProp != count($thoseProperties)) {
+            return false;
+        }
+        $theseKeys = array_keys($theseProperties);
+        $thoseKeys = array_keys($thoseProperties);
 
-        foreach ($thoseProperties as $thatProperty) {
-            $thesePropertiesEnumerator->next();
-            if (!($thesePropertiesEnumerator->current()->getName() == $thatProperty->getName())) {
+        for ($i = 0; $i < $numProp; $i++) {
+            $these = $theseProperties[$theseKeys[$i]];
+            $those = $thoseProperties[$thoseKeys[$i]];
+            if ($these->getName() != $those->getName()) {
                 return false;
             }
         }
@@ -1307,18 +1313,15 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $thisOtherEntitySet = $thisEntitySet->findNavigationTarget($thisNavprop);
         $thatOtherEntitySet = $thatEntitySet->findNavigationTarget($thatNavprop);
 
-        if ($thisOtherEntitySet == null) {
-            if ($thatOtherEntitySet != null) {
-                return false;
-            }
-        } else {
-            if ($thatOtherEntitySet == null) {
-                return false;
-            }
+        $nullityMismatch    = (null === $thisOtherEntitySet) !== (null === $thatOtherEntitySet);
+        if ($nullityMismatch) {
+            return false;
+        }
 
+        if (null !== $thisOtherEntitySet) {
             if (!($this->model->GetAssociationEndName($thisNavprop->getPartner()) ==
                   $this->model->GetAssociationEndName($thatNavprop->getPartner()) &&
-                $thisOtherEntitySet->getName() == $thatOtherEntitySet->getName())) {
+                  $thisOtherEntitySet->getName() == $thatOtherEntitySet->getName())) {
                 return false;
             }
         }

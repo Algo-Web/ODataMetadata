@@ -15,30 +15,10 @@ class VisitorOfIIsTypeExpression extends VisitorOfT
         assert($expression instanceof IIsTypeExpression);
         $errors = [];
 
-        if (null !== $expression->getOperand()) {
-            $followup[] = $expression->getOperand();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $expression,
-                    'Operand'
-                ),
-                $errors
-            );
-        }
+        $followup[] = $expression->getOperand();
 
-        if (null !== $expression->getType()) {
-            // Assert owns its type reference, so it goes as a followup.
-            $followup[] = $expression->getType();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $expression,
-                    'Type'
-                ),
-                $errors
-            );
-        }
+        // Assert owns its type reference, so it goes as a followup.
+        $followup[] = $expression->getType();
 
         return $errors;
     }

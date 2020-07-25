@@ -22,10 +22,10 @@ class EntityTypeInvalidKeyKeyDefinedInBaseClass extends EntityTypeRule
     public function __invoke(ValidationContext $context, ?IEdmElement $entityType)
     {
         assert($entityType instanceof IEntityType);
-        if ($entityType->getBaseType() != null &&
-            $entityType->getDeclaredKey() != null &&
+        if (null !== $entityType->getBaseType() &&
+            null !== $entityType->getDeclaredKey() &&
             $entityType->getBaseType()->getTypeKind()->isEntity() &&
-            $entityType->BaseEntityType()->getDeclaredKey() != null) {
+            null !== $entityType->BaseEntityType()->getDeclaredKey()) {
             EdmUtil::checkArgumentNull($entityType->Location(), 'entityType->Location');
             $context->AddError(
                 $entityType->Location(),

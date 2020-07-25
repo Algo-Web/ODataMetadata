@@ -15,29 +15,9 @@ class VisitorOfIEnumMember extends VisitorOfT
         assert($member instanceof IEnumMember);
         $errors = [];
 
-        if (null !== $member->getDeclaringType()) {
-            $references[] = $member->getDeclaringType();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $member,
-                    'DeclaringType'
-                ),
-                $errors
-            );
-        }
+        $references[] = $member->getDeclaringType();
 
-        if (null !== $member->getValue()) {
-            $followup[] = $member->getValue();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $member,
-                    'Value'
-                ),
-                $errors
-            );
-        }
+        $followup[] = $member->getValue();
 
         return $errors;
     }

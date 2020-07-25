@@ -66,7 +66,7 @@ trait ProcessExpressions
         /** @var EdmModelVisitor $this */
         $this->startElement($expression, __METHOD__);
         $this->processExpression($expression);
-        if ($expression->getDeclaredType() != null) {
+        if (null !== $expression->getDeclaredType()) {
             $this->VisitTypeReference($expression->getDeclaredType());
         }
 
@@ -79,7 +79,7 @@ trait ProcessExpressions
         /** @var EdmModelVisitor $this */
         $this->startElement($expression, __METHOD__);
         $this->processExpression($expression);
-        if ($expression->getBase() != null) {
+        if (null !== $expression->getBase()) {
             $this->VisitExpression($expression->getBase());
         }
         $this->endElement($expression, __METHOD__);

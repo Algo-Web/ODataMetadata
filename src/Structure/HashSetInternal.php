@@ -63,7 +63,7 @@ class HashSetInternal implements Iterator
      */
     public function next()
     {
-        return next($this->wrappedDictionary);
+        next($this->wrappedDictionary);
     }
 
     /**
@@ -97,6 +97,6 @@ class HashSetInternal implements Iterator
      */
     public function rewind()
     {
-        return reset($this->wrappedDictionary);
+        reset($this->wrappedDictionary);
     }
 }

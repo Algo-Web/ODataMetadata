@@ -12,6 +12,7 @@ use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Helpers\Interfaces\IModelHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotationsManager;
+use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityContainer;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
@@ -21,7 +22,9 @@ use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
+use AlgoWeb\ODataMetadata\Interfaces\ITerm;
 use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
+use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 use AlgoWeb\ODataMetadata\Internal\RegistrationHelper;
 use AlgoWeb\ODataMetadata\Version;
 use SplObjectStorage;
@@ -32,6 +35,8 @@ use SplObjectStorage;
  */
 trait ModelHelpers
 {
+    use ModelHelpersVocabularyAnnotation;
+
     public function GetNamespaceAliases(): array
     {
         /** @var IModel $this */
@@ -78,7 +83,7 @@ trait ModelHelpers
      */
     public function FindEntityContainer(string $qualifiedName): ?IEntityContainer
     {
-        EdmUtil::CheckArgumentNull($qualifiedName, "$qualifiedName");
+        EdmUtil::checkArgumentNull($qualifiedName, "$qualifiedName");
 
         return $this->FindAcrossModels(
             $qualifiedName,
@@ -133,7 +138,7 @@ trait ModelHelpers
      */
     public function FindValueTerm(string $qualifiedName): ?IValueTerm
     {
-        EdmUtil::CheckArgumentNull($qualifiedName, 'qualifiedName');
+        EdmUtil::checkArgumentNull($qualifiedName, 'qualifiedName');
 
         return $this->FindAcrossModels(
             $qualifiedName,
@@ -158,7 +163,7 @@ trait ModelHelpers
      */
     public function FindFunctions(string $qualifiedName): array
     {
-        EdmUtil::CheckArgumentNull($qualifiedName, 'qualifiedName');
+        EdmUtil::checkArgumentNull($qualifiedName, 'qualifiedName');
 
         return $this->FindAcrossModels($qualifiedName, self::FunctionsFinder(), self::mergeFunctions()) ?? [];
     }

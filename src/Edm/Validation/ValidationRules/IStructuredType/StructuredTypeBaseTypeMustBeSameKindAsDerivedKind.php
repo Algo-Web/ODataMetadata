@@ -26,7 +26,7 @@ class StructuredTypeBaseTypeMustBeSameKindAsDerivedKind extends StructuredTypeRu
         // We can either have 2 rules (entity and complex) or have one rule and exclude row type. I'm choosing
         // the latter.
         if ($structuredType instanceof ISchemaType) {
-            if ($structuredType->getBaseType() != null &&
+            if (null !== $structuredType->getBaseType() &&
                 $structuredType->getBaseType()->getTypeKind() !== $structuredType->getTypeKind()
             ) {
                 EdmUtil::checkArgumentNull($structuredType->Location(), 'structuredType->Location');

@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\ValueHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IDateTimeConstantExpression;
 use AlgoWeb\ODataMetadata\Interfaces\ITemporalTypeReference;
 use DateTime;
@@ -17,6 +18,7 @@ use DateTime;
  */
 class EdmDateTimeConstant extends EdmValue implements IDateTimeConstantExpression
 {
+    use ValueHelpers;
     private $value;
 
     /**

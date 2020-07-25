@@ -10,6 +10,8 @@ namespace AlgoWeb\ODataMetadata\Enums;
  * separate section of the CSDL.
  *
  * @package AlgoWeb\ODataMetadata\Enums
+ * @method static self Inline()
+ * @method static self OutOfLine()
  */
 class EdmVocabularyAnnotationSerializationLocation extends Enum
 {

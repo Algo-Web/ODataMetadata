@@ -13,12 +13,8 @@ class VisitorOfIEnumValue extends VisitorOfT
     protected function VisitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof IEnumValue);
-        if (null !== $value->getValue()) {
-            $followup[] = $value->getValue();
-            return null;
-        } else {
-            return [InterfaceValidator::CreatePropertyMustNotBeNullError($value, 'Value')];
-        }
+        $followup[] = $value->getValue();
+        return null;
     }
 
     public function forType(): string

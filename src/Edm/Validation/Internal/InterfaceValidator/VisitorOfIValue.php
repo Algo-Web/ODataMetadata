@@ -25,6 +25,26 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IValue;
 
 class VisitorOfIValue extends VisitorOfT
 {
+    protected $lookup = [];
+
+    public function __construct()
+    {
+        $this->lookup[ValueKind::Binary()->getValue()]         = IBinaryValue::class;
+        $this->lookup[ValueKind::Boolean()->getValue()]        = IBooleanValue::class;
+        $this->lookup[ValueKind::Collection()->getValue()]     = ICollectionValue::class;
+        $this->lookup[ValueKind::DateTime()->getValue()]       = IDateTimeValue::class;
+        $this->lookup[ValueKind::DateTimeOffset()->getValue()] = IDateTimeOffsetValue::class;
+        $this->lookup[ValueKind::Decimal()->getValue()]        = IDecimalValue::class;
+        $this->lookup[ValueKind::Enum()->getValue()]           = IEnumValue::class;
+        $this->lookup[ValueKind::Floating()->getValue()]       = IFloatingValue::class;
+        $this->lookup[ValueKind::Guid()->getValue()]           = IGuidValue::class;
+        $this->lookup[ValueKind::Integer()->getValue()]        = IIntegerValue::class;
+        $this->lookup[ValueKind::Null()->getValue()]           = INullValue::class;
+        $this->lookup[ValueKind::String()->getValue()]         = IStringValue::class;
+        $this->lookup[ValueKind::Structured()->getValue()]     = IStructuredValue::class;
+        $this->lookup[ValueKind::Time()->getValue()]           = ITimeValue::class;
+    }
+
     protected function VisitT($value, array &$followup, array &$references): ?iterable
     {
         assert($value instanceof IValue);
@@ -34,190 +54,33 @@ class VisitorOfIValue extends VisitorOfT
             $followup[] = $value->getType();
         }
 
-        switch ($value->getValueKind()) {
-            case ValueKind::Binary():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        IBinaryValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::Boolean():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        IBooleanValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::Collection():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        ICollectionValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::DateTime():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        IDateTimeValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::DateTimeOffset():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        IDateTimeOffsetValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::Decimal():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        IDecimalValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::Enum():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        IEnumValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::Floating():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        IFloatingValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::Guid():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        IGuidValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::Integer():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        IIntegerValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::Null():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        INullValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::String():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        IStringValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::Structured():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        IStructuredValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::Time():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
-                        $value,
-                        $value->getValueKind(),
-                        'ValueKind',
-                        ITimeValue::class
-                    ),
-                    $errors
-                );
-                break;
-
-            case ValueKind::None():
-                break;
-
-            default:
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
-                        $value,
-                        $value->getValueKind()->getKey(),
-                        'ValueKind'
-                    ),
-                    $errors
-                );
-                break;
+        $kind = $value->getValueKind();
+        if (ValueKind::None()->getValue() === $kind->getValue()) {
+            return $errors;
         }
 
+        if (!array_key_exists($kind->getValue(), $this->lookup)) {
+            InterfaceValidator::CollectErrors(
+                InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
+                    $value,
+                    $value->getValueKind()->getKey(),
+                    'ValueKind'
+                ),
+                $errors
+            );
+
+            return $errors;
+        }
+
+        InterfaceValidator::CollectErrors(
+            InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                $value,
+                $value->getValueKind(),
+                'ValueKind',
+                $this->lookup[$kind->getValue()]
+            ),
+            $errors
+        );
         return $errors;
     }
 

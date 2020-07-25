@@ -11,11 +11,11 @@ namespace AlgoWeb\ODataMetadata\Enums;
  * Defines EDM property types.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Enums
- * @method static None(): self Represents a property with an unknown or error kind.
+ * @method static self None(): self Represents a property with an unknown or error kind.
  * @method bool isNone()
- * @method static Structural(): self Represents a property implementing @see IStructuralProperty
+ * @method static self Structural(): self Represents a property implementing @see IStructuralProperty
  * @method bool isStructural()
- * @method static Navigation(): self Represents a property implementing @see IEdmNavigationProperty
+ * @method static self Navigation(): self Represents a property implementing @see IEdmNavigationProperty
  * @method bool isNavigation()
  */
 class PropertyKind extends Enum

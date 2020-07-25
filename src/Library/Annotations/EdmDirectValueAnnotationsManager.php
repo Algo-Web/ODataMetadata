@@ -87,16 +87,17 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
      */
     public function setAnnotationValue(IEdmElement $element, string $namespaceName, string $localName, $value): IDirectValueAnnotationsManager
     {
-        $annotationsDictionary         = $this->annotationsDictionary;
+        $annotationsDictionary         = $this->getAnnotationsDictionary();
         $transientAnnotations          = self::getTransientAnnotations($element, $annotationsDictionary);
-        $transientAnnotationsBeforeSet = clone $transientAnnotations;
+        $transientAnnotationsBeforeSet = null !== $transientAnnotations ? clone $transientAnnotations : new SplObjectStorage();
         self::setAnnotation($this->getAttachedAnnotations($element), $transientAnnotations, $namespaceName, $localName, $value);
 
         // There is at least one case (removing an annotation that was not present to begin with) where the transient annotations are not changed,
         // so test to see if updating the dictionary is necessary.
         if ($transientAnnotations != $transientAnnotationsBeforeSet) {
-            $annotationsDictionary = $annotationsDictionary->offsetSet($element, $transientAnnotations);
+            $annotationsDictionary->offsetSet($element, $transientAnnotations);
         }
+
         $this->annotationsDictionary = $annotationsDictionary;
         return $this;
     }
@@ -111,7 +112,12 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
     {
         /** @var IDirectValueAnnotationBinding $annotation */
         foreach ($annotations as $annotation) {
-            $this->SetAnnotationValue($annotation->getElement(), $annotation->getNamespaceUri(), $annotation->getName(), $annotation->getValue());
+            $this->SetAnnotationValue(
+                $annotation->getElement(),
+                $annotation->getNamespaceUri(),
+                $annotation->getName(),
+                $annotation->getValue()
+            );
         }
         return $this;
     }
@@ -125,8 +131,9 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
      */
     public function getAnnotationValue(IEdmElement $element, string $namespaceName, string $localName)
     {
-        $annotationsDictionary = $this->annotationsDictionary;
-        $annotation            = self::findTransientAnnotation(self::getTransientAnnotations($element, $annotationsDictionary), $namespaceName, $localName);
+        $annotationsDictionary = $this->getAnnotationsDictionary();
+        $transients            = self::getTransientAnnotations($element, $annotationsDictionary);
+        $annotation            = self::findTransientAnnotation($transients, $namespaceName, $localName);
         if ($annotation != null) {
             return $annotation->getValue();
         }
@@ -184,7 +191,7 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
      * @param  IEdmElement      $element               the annotated element
      * @param  SplObjectStorage $annotationsDictionary the dictionary for looking up the element's annotations
      * @return mixed|null       The transient annotations for the element, in a form managed by the annotations manager.
-     *                                                This method is static to guarantee that the annotati ons dictionary is not fetched more than once per lookup operation.
+     *                                                This method is static to guarantee that the annotations dictionary is not fetched more than once per lookup operation.
      */
     private static function getTransientAnnotations(IEdmElement $element, SplObjectStorage $annotationsDictionary)
     {
@@ -193,7 +200,7 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
 
     private static function removeTransientAnnotation(&$transientAnnotations, $namespaceName, string $localName)
     {
-        if ($transientAnnotations != null) {
+        if (null !== $transientAnnotations) {
             $singleAnnotation = $transientAnnotations;
             if ($singleAnnotation instanceof IDirectValueAnnotation) {
                 if ($singleAnnotation->getNamespaceUri() == $namespaceName && $singleAnnotation->getName() == $localName) {
@@ -231,7 +238,7 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
 
         $singleAnnotation = $transientAnnotations;
         if ($singleAnnotation instanceof IDirectValueAnnotation) {
-            if ($singleAnnotation->getValue() != null) {
+            if (null !== $singleAnnotation->getValue()) {
                 yield $singleAnnotation;
             }
 
@@ -242,7 +249,7 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
         assert(is_iterable($annotationsList));
         /** @var IDirectValueAnnotation $existingAnnotation */
         foreach ($annotationsList as $existingAnnotation) {
-            if ($existingAnnotation->getValue() != null) {
+            if (null !== $existingAnnotation->getValue()) {
                 yield $existingAnnotation;
             }
         }
@@ -321,16 +328,16 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
 
     private static function findTransientAnnotation($transientAnnotations, string $namespaceName, string $localName): ?IDirectValueAnnotation
     {
-        if ($transientAnnotations != null) {
+        if (null !== $transientAnnotations) {
             if ($transientAnnotations instanceof IDirectValueAnnotation) {
                 if ($transientAnnotations->getNamespaceUri() == $namespaceName && $transientAnnotations->getName() == $localName) {
-                    return ${$transientAnnotations};
+                    return $transientAnnotations;
                 }
             } else {
                 $annotationsList = $transientAnnotations;
                 assert(is_array($annotationsList));
                 $filtered = array_filter($annotationsList, function (IDirectValueAnnotation $existingAnnotation) use ($namespaceName, $localName) {
-                    return $existingAnnotation->getNamespaceUri() == $namespaceName && $existingAnnotation->getNamespaceUri() == $localName;
+                    return $existingAnnotation->getNamespaceUri() == $namespaceName && $existingAnnotation->getName() == $localName;
                 });
                 if (count($filtered) === 0) {
                     return null;
@@ -340,5 +347,13 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
         }
 
         return null;
+    }
+
+    /**
+     * @return SplObjectStorage
+     */
+    private function getAnnotationsDictionary(): SplObjectStorage
+    {
+        return $this->annotationsDictionary;
     }
 }

@@ -20,10 +20,12 @@ class PropertyValueBindingValueIsCorrectType extends PropertyValueBindingRule
     public function __invoke(ValidationContext $context, ?IEdmElement $binding)
     {
         assert($binding instanceof IPropertyValueBinding);
-        $errors = null;
+        $errors = [];
         if (!ExpressionTypeChecker::tryAssertType(
             $binding->getValue(),
             $binding->getBoundProperty()->getType(),
+            null,
+            false,
             $errors
         ) &&
             !$context->checkIsBad($binding) &&

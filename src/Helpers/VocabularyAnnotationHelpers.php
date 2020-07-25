@@ -19,13 +19,14 @@ trait VocabularyAnnotationHelpers
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
         return $annotation->GetSerializationLocation($model) ==
-               EdmVocabularyAnnotationSerializationLocation::Inline || $annotation->TargetString() == null;
+               EdmVocabularyAnnotationSerializationLocation::Inline() || null === $annotation->TargetString();
     }
 
     public function TargetString(): string
     {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
+        EdmUtil::checkArgumentNull($annotation->getTarget(), 'annotation->getTarget');
         return EdmUtil::FullyQualifiedName($annotation->getTarget());
     }
 

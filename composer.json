@@ -30,13 +30,13 @@
     "ext-xmlreader": "*"
   },
   "require-dev": {
-    "phpspec/phpspec": "^3.0",
-    "squizlabs/php_codesniffer": "~2.3",
-    "phpunit/phpunit": "^7.0",
-    "php-coveralls/php-coveralls": ">=v2.1",
     "mockery/mockery": "^1.2|dev-master",
+    "php-coveralls/php-coveralls": ">=v2.1",
+    "phpspec/phpspec": "^3.0",
+    "phpstan/phpstan": "^0.12",
+    "phpunit/phpunit": "^7.0",
+    "squizlabs/php_codesniffer": "~2.3",
     "symfony/var-dumper": ">=4.0.0"
-
   },
   "scripts": {
     "test": "phpunit",

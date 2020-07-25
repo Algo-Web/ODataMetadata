@@ -17,30 +17,10 @@ class VisitorOfIFunctionParameter extends VisitorOfT
 
         $errors = [];
 
-        if (null !== $parameter->getType()) {
-            // Parameter owns its type reference, so it goes as a followup.
-            $followup[] = $parameter->getType();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $parameter,
-                    'Type'
-                ),
-                $errors
-            );
-        }
+        // Parameter owns its type reference, so it goes as a followup.
+        $followup[] = $parameter->getType();
 
-        if (null !== $parameter->getDeclaringFunction()) {
-            $references[] = $parameter->getDeclaringFunction();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $parameter,
-                    'DeclaringFunction'
-                ),
-                $errors
-            );
-        }
+        $references[] = $parameter->getDeclaringFunction();
 
         if ($parameter->getMode()->getValue() < FunctionParameterMode::None()->getValue() ||
                     $parameter->getMode()->getValue() > FunctionParameterMode::InOut()->getValue()) {

@@ -171,7 +171,8 @@ class ValidationRuleSet implements \IteratorAggregate
             case Version::v3():
                 return self::getV3RuleSet();
         }
-        throw new InvalidOperationException(StringConst::Serializer_UnknownEdmVersion());
+        $msg = StringConst::Serializer_UnknownEdmVersion();
+        throw new InvalidOperationException($msg);
     }
 
     /**
@@ -421,7 +422,7 @@ class ValidationRuleSet implements \IteratorAggregate
     }
     /**
      * Retrieve an external iterator.
-     * @return Traversable|ValidationRule An instance of an object implementing <b>Iterator</b> or
+     * @return Traversable An instance of an object implementing <b>Iterator</b> or
      */
     public function getIterator(): Traversable
     {

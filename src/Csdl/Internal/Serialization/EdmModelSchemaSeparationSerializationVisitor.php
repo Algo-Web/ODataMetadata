@@ -115,7 +115,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
             $this->activeSchema = $this->modelSchemas[$annotationSchemaNamespace];
         }
 
-        if ($annotation->getTerm() != null) {
+        if (null !== $annotation->getTerm()) {
             $this->CheckSchemaElementReference($annotation->getTerm());
         }
 
@@ -169,7 +169,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
     protected function ProcessEntityType(IEntityType $element): void
     {
         parent::ProcessEntityType($element);
-        if ($element->BaseEntityType() != null) {
+        if (null !== $element->BaseEntityType()) {
             $this->CheckSchemaElementReference($element->BaseEntityType());
         }
     }
@@ -177,7 +177,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
     protected function ProcessComplexType(IComplexType $element): void
     {
         parent::ProcessComplexType($element);
-        if ($element->BaseComplexType() != null) {
+        if (null !== $element->BaseComplexType()) {
             $this->CheckSchemaElementReference($element->BaseComplexType());
         }
     }

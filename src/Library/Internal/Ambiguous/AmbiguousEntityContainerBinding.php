@@ -58,7 +58,7 @@ class AmbiguousEntityContainerBinding extends AmbiguousBinding implements IEntit
      */
     public function findFunctionImports(string $functionName): array
     {
-        return null;
+        return [];
     }
 
     /**

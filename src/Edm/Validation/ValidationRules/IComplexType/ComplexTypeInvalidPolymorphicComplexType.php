@@ -22,7 +22,7 @@ class ComplexTypeInvalidPolymorphicComplexType extends ComplexTypeRule
     public function __invoke(ValidationContext $context, ?IEdmElement $edmComplexType)
     {
         assert($edmComplexType instanceof IComplexType);
-        if ($edmComplexType->getBaseType() != null) {
+        if (null !== $edmComplexType->getBaseType()) {
             EdmUtil::checkArgumentNull($edmComplexType->Location(), 'edmComplexType->Location');
             $context->AddError(
                 $edmComplexType->Location(),

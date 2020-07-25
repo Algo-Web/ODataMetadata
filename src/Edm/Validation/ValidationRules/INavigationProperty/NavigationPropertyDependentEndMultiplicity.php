@@ -30,6 +30,10 @@ class NavigationPropertyDependentEndMultiplicity extends NavigationPropertyRule
         EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
         $dependentProperties = $navigationProperty->getDependentProperties();
         if ($dependentProperties != null) {
+            EdmUtil::checkArgumentNull(
+                $navigationProperty->DeclaringEntityType()->Key(),
+                'navigationProperty->DeclaringEntityType->Key'
+            );
             if (ValidationHelper::PropertySetsAreEquivalent(
                 $navigationProperty->DeclaringEntityType()->Key(),
                 $dependentProperties

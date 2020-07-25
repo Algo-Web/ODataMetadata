@@ -159,7 +159,7 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
             EdmUtil::checkArgumentNull($primitive->getNamespace(), 'primitive->getNamespace');
             $this->primitiveTypeKinds[$primitive->getName()]                                     = $primitive->getPrimitiveKind();
             $this->primitiveTypeKinds[$primitive->getNamespace() . '.' . $primitive->getName()]  = $primitive->getPrimitiveKind();
-            $this->primitiveTypesByKind[strval($primitive->getPrimitiveKind())]                  = $primitive;
+            $this->primitiveTypesByKind[$primitive->getPrimitiveKind()->getValue()]              = $primitive;
             $this->primitiveTypeByName[$primitive->getNamespace() . '.' . $primitive->getName()] = $primitive;
         }
     }
@@ -292,18 +292,19 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
         return new EdmCollectionTypeReference(new EdmCollectionType($elementType), false);
     }
 
-    private function GetCoreModelPrimitiveType(PrimitiveTypeKind $kind): EdmValidCoreModelPrimitiveType
+    private function GetCoreModelPrimitiveType(PrimitiveTypeKind $kind): ?EdmValidCoreModelPrimitiveType
     {
-        return array_key_exists(strval($kind), $this->primitiveTypesByKind) ? $this->primitiveTypesByKind[strval($kind)] : null;
+        return array_key_exists(strval($kind), $this->primitiveTypesByKind) ?
+            $this->primitiveTypesByKind[strval($kind)] : null;
     }
 
     /**
      * Gets primitive type by kind.
      *
-     * @param  PrimitiveTypeKind $kind kind of the primitive type
-     * @return IPrimitiveType    primitive type definition
+     * @param  PrimitiveTypeKind   $kind kind of the primitive type
+     * @return IPrimitiveType|null primitive type definition
      */
-    public function GetPrimitiveType(PrimitiveTypeKind $kind): IPrimitiveType
+    public function GetPrimitiveType(PrimitiveTypeKind $kind): ?IPrimitiveType
     {
         return $this->GetCoreModelPrimitiveType($kind);
     }

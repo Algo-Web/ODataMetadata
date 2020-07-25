@@ -15,29 +15,9 @@ class VisitorOfIPropertyValueBinding extends VisitorOfT
         assert($binding instanceof IPropertyValueBinding);
         $errors = [];
 
-        if (null !== $binding->getValue()) {
-            $followup[] = $binding->getValue();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $binding,
-                    'Value'
-                ),
-                $errors
-            );
-        }
+        $followup[] = $binding->getValue();
 
-        if (null !== $binding->getBoundProperty()) {
-            $references[] = $binding->getBoundProperty();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $binding,
-                    'BoundProperty'
-                ),
-                $errors
-            );
-        }
+        $references[] = $binding->getBoundProperty();
 
         return $errors;
     }

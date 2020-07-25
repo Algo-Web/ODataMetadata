@@ -20,7 +20,7 @@ use AlgoWeb\ODataMetadata\Helpers\TypeHelpers;
 interface IEntityType extends IStructuredType, ISchemaType, ITerm, IEntityTypeHelpers
 {
     /**
-     * @return array|IStructuralProperty[] gets the structural properties of the entity type that make up the entity key
+     * @return array|IStructuralProperty[]|null gets the structural properties of the entity type that make up the entity key
      */
     public function getDeclaredKey(): ?array;
 }

@@ -15,7 +15,7 @@ namespace AlgoWeb\ODataMetadata\Interfaces\Values;
 interface IDelayedValue
 {
     /**
-     * @return IValue gets the data stored in this value
+     * @return mixed gets the data stored in this value
      */
     public function getValue();
 }

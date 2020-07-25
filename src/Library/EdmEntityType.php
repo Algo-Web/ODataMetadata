@@ -145,7 +145,7 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
      */
     public function AddBidirectionalNavigation(EdmNavigationPropertyInfo $propertyInfo, EdmNavigationPropertyInfo $partnerInfo): EdmNavigationProperty
     {
-        EdmUtil::CheckArgumentNull($propertyInfo->target, 'propertyInfo.Target');
+        EdmUtil::checkArgumentNull($propertyInfo->target, 'propertyInfo.Target');
 
         if (!$propertyInfo->target instanceof EdmEntityType) {
             throw new ArgumentException(StringConst::Constructable_TargetMustBeStock(EdmEntityType::class));

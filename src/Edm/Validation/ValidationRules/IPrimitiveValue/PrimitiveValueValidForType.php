@@ -20,7 +20,7 @@ class PrimitiveValueValidForType extends PrimitiveValueRule
     public function __invoke(ValidationContext $context, ?IEdmElement $value)
     {
         assert($value instanceof IPrimitiveValue);
-        if ($value->getType() != null && !$context->checkIsBad($value) && !$context->checkIsBad($value->getType())) {
+        if (null !== $value->getType() && !$context->checkIsBad($value) && !$context->checkIsBad($value->getType())) {
             $discoveredErrors = null;
             ExpressionTypeChecker::TryAssertPrimitiveAsType($value, $value->getType(), $discoveredErrors);
             foreach ($discoveredErrors as $error) {

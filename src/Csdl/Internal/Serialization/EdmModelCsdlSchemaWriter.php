@@ -77,6 +77,7 @@ use AlgoWeb\ODataMetadata\StringConst;
 use AlgoWeb\ODataMetadata\Version;
 use ReflectionFunction;
 use ReflectionMethod;
+use ReflectionNamedType;
 use XMLWriter;
 
 class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
@@ -126,7 +127,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             $term->getName(),
             [EdmValueWriter::class, 'StringAsXml']
         );
-        if ($inlineType && $term->getType() != null) {
+        if ($inlineType && null !== $term->getType()) {
             $this->WriteRequiredAttribute(
                 CsdlConstants::Attribute_Type,
                 $term->getType(),
@@ -730,7 +731,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     public function WriteAnnotationStringAttribute(IDirectValueAnnotation $annotation): void
     {
         $edmValue = $annotation->getValue();
-        if ($annotation->getValue() instanceof IPrimitiveValue) {
+        if ($edmValue instanceof IPrimitiveValue) {
             $this->xmlWriter->writeAttributeNs(
                 '',
                 $annotation->getName(),
@@ -834,7 +835,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             [EdmValueWriter::class, 'BooleanAsXml']
         );
         $entitySetReference = $functionImport->getEntitySet();
-        if ($functionImport->getEntitySet() != null) {
+        if (null !== $functionImport->getEntitySet()) {
             if ($entitySetReference instanceof IEntitySetReferenceExpression) {
                 $this->WriteOptionalAttribute(
                     CsdlConstants::Attribute_EntitySet,
@@ -1015,7 +1016,6 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
                 throw new InvalidOperationException(
                     StringConst::UnknownEnumVal_ExpressionKind($expression->getExpressionKind()->getKey())
                 );
-                break;
         }
     }
 
@@ -1342,18 +1342,29 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->xmlWriter->endElement();
     }
 
+    /**
+     * @param  string               $attribute
+     * @param  mixed                $value
+     * @param  mixed                $defaultValue
+     * @param  callable             $toXml
+     * @throws \ReflectionException
+     */
     public function WriteOptionalAttribute(string $attribute, $value, $defaultValue, callable $toXml): void
     {
+        $stem = is_array($toXml) ? new ReflectionMethod(...$toXml) :
+            new ReflectionFunction($toXml);
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            count((is_array($toXml) ? new ReflectionMethod(...$toXml) :
-                new ReflectionFunction($toXml))->getParameters()) === 1,
-            '$toXml should be a callable takeing one paramater of mixed type'
+            1 === count(($stem)->getParameters()),
+            '$toXml should be a callable taking one parameter of mixed type'
         );
+        $stemType = $stem->getReturnType();
+        $name     = $stemType instanceof ReflectionNamedType ?
+            $stemType->getName() :
+            strval($stemType);
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            (is_array($toXml) ? new ReflectionMethod(...$toXml) :
-                new ReflectionFunction($toXml))->getReturnType()->getName() === 'string',
+            'string' === $name,
             '$toXml should be a callable returning a string'
         );
         if ($value !== $defaultValue) {
@@ -1369,16 +1380,20 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
      */
     public function WriteRequiredAttribute(string $attribute, $value, callable $toXml): void
     {
+        $stem = is_array($toXml) ? new ReflectionMethod(...$toXml) :
+            new ReflectionFunction($toXml);
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            count((is_array($toXml) ? new ReflectionMethod(...$toXml) :
-                new ReflectionFunction($toXml))->getParameters()) === 1,
-            '$toXml should be a callable takeing one paramater of mixed type'
+            1 === count($stem->getParameters()),
+            '$toXml should be a callable taking one parameter of mixed type'
         );
+        $stemType = $stem->getReturnType();
+        $name     = $stemType instanceof ReflectionNamedType ?
+            $stemType->getName() :
+            strval($stemType);
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
         assert(
-            (is_array($toXml) ? new ReflectionMethod(...$toXml) :
-                new ReflectionFunction($toXml))->getReturnType()->getName() === 'string',
+            'string' === $name,
             '$toXml should be a callable returning a string'
         );
         $this->xmlWriter->writeAttribute($attribute, $toXml($value));

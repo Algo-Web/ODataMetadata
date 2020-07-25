@@ -8,6 +8,7 @@ namespace AlgoWeb\ODataMetadata\Library\Values;
 use AlgoWeb\ODataMetadata\Edm\Internal\Cache;
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\ValueHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IPropertyValue;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IStructuredValue;
@@ -20,6 +21,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IValue;
  */
 class EdmStructuredValue extends EdmValue implements IStructuredValue
 {
+    use ValueHelpers;
     /**
      * @var IPropertyValue[]
      */

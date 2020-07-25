@@ -15,7 +15,7 @@ use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;
 interface ICheckable
 {
     /**
-     * @return EdmError[] gets an error if one exists with the current object
+     * @return EdmError[]|null gets an error if one exists with the current object
      */
-    public function getErrors(): iterable;
+    public function getErrors(): ?iterable;
 }

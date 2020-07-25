@@ -7,6 +7,7 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
+use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 
 /**
  * Trait VocabularyAnnotatableHelpers.
@@ -23,6 +24,8 @@ trait VocabularyAnnotatableHelpers
      */
     public function VocabularyAnnotations(IModel $model): array
     {
-        return $model->findVocabularyAnnotations($this);
+        /** @var IVocabularyAnnotatable $self */
+        $self = $this;
+        return iterable_to_array($model->findVocabularyAnnotations($self));
     }
 }

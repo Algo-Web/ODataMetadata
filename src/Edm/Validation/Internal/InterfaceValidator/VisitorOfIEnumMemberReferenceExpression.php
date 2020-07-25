@@ -13,12 +13,8 @@ class VisitorOfIEnumMemberReferenceExpression extends VisitorOfT
     protected function VisitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IEnumMemberReferenceExpression);
-        if (null !== $expression->getReferencedEnumMember()) {
-            $references[] = $expression->getReferencedEnumMember();
-            return null;
-        } else {
-            return [ InterfaceValidator::CreatePropertyMustNotBeNullError($expression, 'ReferencedEnumMember') ];
-        }
+        $references[] = $expression->getReferencedEnumMember();
+        return null;
     }
 
     public function forType(): string

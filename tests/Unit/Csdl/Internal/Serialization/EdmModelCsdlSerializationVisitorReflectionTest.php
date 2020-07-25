@@ -10,21 +10,28 @@ declare(strict_types=1);
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Csdl\Internal\Serialization;
 
 use AlgoWeb\ODataMetadata\Csdl\Internal\Serialization\EdmModelCsdlSerializationVisitor;
+use AlgoWeb\ODataMetadata\EdmConstants;
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\FunctionParameterMode;
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
+use AlgoWeb\ODataMetadata\Enums\TermKind;
 use AlgoWeb\ODataMetadata\Enums\TypeKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
 use AlgoWeb\ODataMetadata\Exception\InvalidOperationException;
+use AlgoWeb\ODataMetadata\Interfaces\Annotations\IDirectValueAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IPropertyValueBinding;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\ITypeAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IValueAnnotation;
+use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\IFunctionReferenceExpression;
+use AlgoWeb\ODataMetadata\Interfaces\Expressions\RecordExpression\IPropertyConstructor;
 use AlgoWeb\ODataMetadata\Interfaces\ICollectionType;
 use AlgoWeb\ODataMetadata\Interfaces\IComplexType;
 use AlgoWeb\ODataMetadata\Interfaces\IDocumentation;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceTypeReference;
+use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
@@ -33,11 +40,13 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunction;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
+use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IRowType;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
+use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 use AlgoWeb\ODataMetadata\Interfaces\ITerm;
 use AlgoWeb\ODataMetadata\Interfaces\IType;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
@@ -532,6 +541,530 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $actual = $writer->outputMemory(true);
 
         $this->assertXmlStringEqualsXmlString($expected, $actual);
+    }
+
+    public function testSharesAssociationSetIdentity()
+    {
+        $model = $this->getModel();
+
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesAssociationSet');
+        $method->setAccessible(true);
+
+        $thisSet  = m::mock(IEntitySet::class);
+        $thisProp = m::mock(INavigationProperty::class);
+
+        $expected = true;
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thisSet, $thisProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSharesAssociationSetAssociationSetNameDifferent()
+    {
+        $model = $this->getModel();
+        $model->shouldReceive('GetAssociationSetName')->andReturn('foo', 'bar')->times(2);
+
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesAssociationSet');
+        $method->setAccessible(true);
+
+        $thisSet  = m::mock(IEntitySet::class);
+        $thisProp = m::mock(INavigationProperty::class);
+
+        $thatSet  = m::mock(IEntitySet::class);
+        $thatProp = m::mock(INavigationProperty::class);
+
+        $expected = false;
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSharesAssociationSetAssociationFullNameDifferent()
+    {
+        $model = $this->getModel();
+        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $model->shouldReceive('GetAssociationFullName')->andReturn('foo', 'bar')->times(2);
+
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesAssociationSet');
+        $method->setAccessible(true);
+
+        $thisSet  = m::mock(IEntitySet::class);
+        $thisProp = m::mock(INavigationProperty::class);
+
+        $thatSet  = m::mock(IEntitySet::class);
+        $thatProp = m::mock(INavigationProperty::class);
+
+        $expected = false;
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSharesAssociationSetAssociationEndNameDifferent()
+    {
+        $model = $this->getModel();
+        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $model->shouldReceive('GetAssociationEndName')->andReturn('foo', 'bar')->times(2);
+
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesAssociationSet');
+        $method->setAccessible(true);
+
+        $thisSet  = m::mock(IEntitySet::class);
+        $thisProp = m::mock(INavigationProperty::class);
+
+        $thatSet  = m::mock(IEntitySet::class);
+        $thatProp = m::mock(INavigationProperty::class);
+
+        $expected = false;
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSharesAssociationSetAssociationEndNameSameSetNameDifferent()
+    {
+        $model = $this->getModel();
+        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $model->shouldReceive('GetAssociationEndName')->andReturn('foo', 'bar')->times(2);
+
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesAssociationSet');
+        $method->setAccessible(true);
+
+        $thisSet = m::mock(IEntitySet::class);
+        $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $thisProp = m::mock(INavigationProperty::class);
+
+        $thatSet = m::mock(IEntitySet::class);
+        $thatSet->shouldReceive('getName')->andReturn('bar')->times(1);
+        $thatProp = m::mock(INavigationProperty::class);
+
+        $expected = false;
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSharesAssociationSetAssociationBothOtherSetsNull()
+    {
+        $model = $this->getModel();
+        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $model->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
+        $model->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
+
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesAssociationSet');
+        $method->setAccessible(true);
+
+        $thisSet = m::mock(IEntitySet::class);
+        $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $thisSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
+        $thisProp = m::mock(INavigationProperty::class);
+
+        $thatSet = m::mock(IEntitySet::class);
+        $thatSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $thatSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
+        $thatProp = m::mock(INavigationProperty::class);
+
+        $expected = true;
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSharesAssociationSetAssociationOtherSetsNullityMismatch()
+    {
+        $model = $this->getModel();
+        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $model->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
+        $model->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
+
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesAssociationSet');
+        $method->setAccessible(true);
+
+        $nuSet = m::mock(IEntitySet::class);
+
+        $thisSet = m::mock(IEntitySet::class);
+        $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $thisSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
+        $thisProp = m::mock(INavigationProperty::class);
+
+        $thatSet = m::mock(IEntitySet::class);
+        $thatSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $thatSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
+        $thatProp = m::mock(INavigationProperty::class);
+
+        $expected = false;
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSharesAssociationSetAssociationOtherSetsNullityMismatchReverse()
+    {
+        $model = $this->getModel();
+        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $model->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
+        $model->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
+
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesAssociationSet');
+        $method->setAccessible(true);
+
+        $nuSet = m::mock(IEntitySet::class);
+
+        $thisSet = m::mock(IEntitySet::class);
+        $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $thisSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
+        $thisProp = m::mock(INavigationProperty::class);
+
+        $thatSet = m::mock(IEntitySet::class);
+        $thatSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $thatSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
+        $thatProp = m::mock(INavigationProperty::class);
+
+        $expected = false;
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSharesAssociationSetAssociationOtherSetsNotNullEndNamesDifferent()
+    {
+        $model = $this->getModel();
+        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $model->shouldReceive('GetAssociationEndName')->andReturn('foobar', 'foobar', 'foo', 'bar')->times(4);
+        $model->shouldReceive('GetAssociationSetANnotations')->andReturn(null)->times(2);
+
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesAssociationSet');
+        $method->setAccessible(true);
+
+        $nuSet = m::mock(IEntitySet::class);
+
+        $thisSet = m::mock(IEntitySet::class);
+        $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $thisSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
+        $thisProp = m::mock(INavigationProperty::class);
+        $thisProp->shouldReceive('getPartner')->andReturn($thisProp);
+
+        $thatSet = m::mock(IEntitySet::class);
+        $thatSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $thatSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
+        $thatProp = m::mock(INavigationProperty::class);
+        $thatProp->shouldReceive('getPartner')->andReturn($thatProp);
+
+        $expected = false;
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSharesReferentialConstraintEndCountMismatch()
+    {
+        $model   = $this->getModel();
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesReferentialConstraintEnd');
+        $method->setAccessible(true);
+
+        $theseProp = [];
+
+        $struct2  = m::mock(IStructuralProperty::class);
+        $thatProp = [$struct2];
+
+        $expected = false;
+        $actual   = $method->invoke($foo, $theseProp, $thatProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSharesReferentialConstraintEndNameMismatch()
+    {
+        $model   = $this->getModel();
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesReferentialConstraintEnd');
+        $method->setAccessible(true);
+
+        $struct1 = m::mock(IStructuralProperty::class);
+        $struct1->shouldReceive('getName')->andReturn('foo');
+        $theseProp = [$struct1];
+
+        $struct2 = m::mock(IStructuralProperty::class);
+        $struct2->shouldReceive('getName')->andReturn('bar');
+        $thatProp = [$struct2];
+
+        $expected = false;
+        $actual   = $method->invoke($foo, $theseProp, $thatProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testSharesReferentialConstraintEndNameMatch()
+    {
+        $model   = $this->getModel();
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('SharesReferentialConstraintEnd');
+        $method->setAccessible(true);
+
+        $struct1 = m::mock(IStructuralProperty::class);
+        $struct1->shouldReceive('getName')->andReturn('foo');
+        $theseProp = [$struct1];
+
+        $struct2 = m::mock(IStructuralProperty::class);
+        $struct2->shouldReceive('getName')->andReturn('foo');
+        $thatProp = [$struct2];
+
+        $expected = true;
+        $actual   = $method->invoke($foo, $theseProp, $thatProp);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testVisitElementVocabularyAnnotationsBadKind()
+    {
+        $model   = $this->getModel();
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('VisitElementVocabularyAnnotations');
+        $method->setAccessible(true);
+
+        $termKind = m::mock(TermKind::class);
+        $termKind->shouldReceive('getKey')->andReturn(null);
+
+        $vocab = m::mock(IVocabularyAnnotation::class);
+        $vocab->shouldReceive('getTerm->getTermKind')->andReturn($termKind);
+
+
+        $this->expectException(InvalidOperationException::class);
+        $this->expectExceptionMessage('Invalid term kind: \'\'');
+
+        $method->invoke($foo, [$vocab]);
+    }
+
+    public function testVisitElementVocabularyAnnotations()
+    {
+        $model   = $this->getModel();
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('VisitElementVocabularyAnnotations');
+        $method->setAccessible(true);
+
+        $term = m::mock(ITerm::class);
+        $term->shouldReceive('getTermKind')->andReturn(TermKind::None());
+        $term->shouldReceive('getNamespace')->andReturn('namespace');
+        $term->shouldReceive('FullName')->andReturn('FullName');
+        $vocab = m::mock(IVocabularyAnnotation::class);
+        $vocab->shouldReceive('getTerm')->andReturn($term);
+
+        $term1 = m::mock(ITerm::class);
+        $term1->shouldReceive('getTermKind')->andReturn(TermKind::Type());
+        $term1->shouldReceive('getNamespace')->andReturn('namespace');
+        $term1->shouldReceive('FullName')->andReturn('FullName');
+        $vocab1 = m::mock(IVocabularyAnnotation::class . ', ' . ITypeAnnotation::class);
+        $vocab1->shouldReceive('getTerm')->andReturn($term1);
+        $vocab1->shouldReceive('getQualifier')->andReturn('qual');
+        $vocab1->shouldReceive('getPropertyValueBindings')->andReturn([]);
+
+        $expr = m::mock(IExpression::class);
+        $expr->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::None());
+        $term2 = m::mock(ITerm::class);
+        $term2->shouldReceive('getTermKind')->andReturn(TermKind::Value());
+        $term2->shouldReceive('getNamespace')->andReturn('namespace');
+        $term2->shouldReceive('FullName')->andReturn('FullName');
+        $vocab2 = m::mock(IVocabularyAnnotation::class . ', ' . IValueAnnotation::class);
+        $vocab2->shouldReceive('getTerm')->andReturn($term2);
+        $vocab2->shouldReceive('getValue')->andReturn($expr);
+        $vocab2->shouldReceive('getQualifier')->andReturn('qual');
+
+        $method->invoke($foo, [$vocab, $vocab1, $vocab2]);
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<TypeAnnotation Term="FullName" Qualifier="qual">' . PHP_EOL;
+        $expected .= '    <Documentation/>' . PHP_EOL . '</TypeAnnotation>' . PHP_EOL;
+        $expected .= '<ValueAnnotation Term="FullName" Qualifier="qual">' . PHP_EOL;
+        $expected .= '    <Documentation/>' . PHP_EOL . '</ValueAnnotation>' . PHP_EOL;
+        $writer->endDocument();
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testProcessAnnotationsNameMismatch()
+    {
+        $model   = $this->getModel();
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('ProcessAnnotations');
+        $method->setAccessible(true);
+
+        $expr = m::mock(IExpression::class);
+        $expr->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::None());
+
+        $annotate = m::mock(IDirectValueAnnotation::class);
+        $annotate->shouldReceive('getNamespaceUri')->andReturn(EdmConstants::DocumentationUri);
+        $annotate->shouldReceive('getValue')->andReturn($expr);
+        $annotate->shouldReceive('getName')->andReturn('name');
+
+        $method->invoke($foo, [$annotate]);
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL;
+        $writer->endDocument();
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testProcessAnnotationsNameMatch()
+    {
+        $model   = $this->getModel();
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('ProcessAnnotations');
+        $method->setAccessible(true);
+
+        $expr = m::mock(IExpression::class . ', ' . IDocumentation::class);
+        $expr->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::None());
+        $expr->shouldReceive('getSummary')->andReturn(null);
+        $expr->shouldReceive('getDescription')->andReturn(null);
+
+        $annotate = m::mock(IDirectValueAnnotation::class);
+        $annotate->shouldReceive('getNamespaceUri')->andReturn(EdmConstants::DocumentationUri);
+        $annotate->shouldReceive('getValue')->andReturn($expr);
+        $annotate->shouldReceive('getName')->andReturn(EdmConstants::DocumentationAnnotation);
+
+        $method->invoke($foo, [$annotate]);
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Documentation/>' . PHP_EOL;
+        $writer->endDocument();
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testProcessReferentialConstraintWithDependentProperties()
+    {
+        $model = $this->getModel();
+        $model->shouldReceive('GetAssociationEndName')->andReturn('endName');
+
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('ProcessReferentialConstraint');
+        $method->setAccessible(true);
+
+        $keyStruct = m::mock(IStructuralProperty::class);
+        $keyStruct->shouldReceive('getName')->andReturn('id');
+        $declareType = m::mock(IEntityType::class);
+        $declareType->shouldReceive('Key')->andReturn([$keyStruct]);
+
+        $element = m::mock(INavigationProperty::class);
+        $element->shouldReceive('getDependentProperties')->andReturn([]);
+        $element->shouldReceive('getPartner')->andReturn($element);
+        $element->shouldReceive('getDeclaringType')->andReturn($declareType);
+        $annotations = [];
+
+        $method->invoke($foo, $element, $annotations);
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<ReferentialConstraint>' . PHP_EOL;
+        $expected .= '    <Principal Role="endName">' . PHP_EOL . '        <PropertyRef Name="id"/>' . PHP_EOL;
+        $expected .= '    </Principal>' . PHP_EOL . '    <Dependent Role="endName"/>' . PHP_EOL;
+        $expected .= '</ReferentialConstraint>' . PHP_EOL;
+        $writer->endDocument();
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
+    }
+
+    public function testProcessPropertyConstructor()
+    {
+        $model = $this->getModel();
+
+        $writer  = $this->getWriter();
+        $version = Version::v3();
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod('ProcessPropertyConstructor');
+        $method->setAccessible(true);
+
+        $kind = ExpressionKind::FunctionReference();
+
+        $func = m::mock(IFunction::class);
+        $func->shouldReceive('getNamespace')->andReturn('theNamespaceWithNoName');
+        $func->shouldReceive('FullName')->andReturn('TNMN');
+
+        $expr = m::mock(IExpression::class . ', ' . IFunctionReferenceExpression::class);
+        $expr->shouldReceive('getExpressionKind')->andReturn($kind);
+        $expr->shouldReceive('getReferencedFunction')->andReturn($func);
+
+        $element = m::mock(IPropertyConstructor::class);
+        $element->shouldReceive('getValue')->andReturn($expr);
+        $element->shouldReceive('getName')->andReturn('name');
+
+        $method->invoke($foo, $element);
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<PropertyValue Property="name">' . PHP_EOL;
+        $expected .= '    <Documentation/>' . PHP_EOL . '    <FunctionReference Name="TNMN"/>' . PHP_EOL;
+        $expected .= '</PropertyValue>' . PHP_EOL;
+        $writer->endDocument();
+        $actual = $writer->outputMemory(true);
+        $this->assertEquals($expected, $actual);
     }
 
     /**

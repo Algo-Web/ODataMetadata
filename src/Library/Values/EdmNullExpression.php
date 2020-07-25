@@ -7,12 +7,14 @@ namespace AlgoWeb\ODataMetadata\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
+use AlgoWeb\ODataMetadata\Helpers\ValueHelpers;
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\INullExpression;
 use AlgoWeb\ODataMetadata\Interfaces\Values\IValue;
 use InvalidArgumentException;
 
 class EdmNullExpression extends EdmValue implements INullExpression
 {
+    use ValueHelpers;
     private static $instance       = null;
     private static $allowConstruct = false;
     /**
@@ -54,7 +56,7 @@ class EdmNullExpression extends EdmValue implements INullExpression
     }
 
     /**
-     * @return IValue gets the data stored in this value
+     * @return null gets the data stored in this value
      */
     public function getValue()
     {

@@ -20,20 +20,21 @@ trait VisitDataModel
      */
     public function visitEntityContainerElements(array $elements): void
     {
-        /** @var EdmModelVisitor $this */
+        /** @var EdmModelVisitor $self */
+        $self = $this;
         foreach ($elements as $element) {
             switch ($element->getContainerElementKind()) {
                 case ContainerElementKind::EntitySet():
                     assert($element instanceof IEntitySet);
-                    $this->processEntitySet($element);
+                    $self->processEntitySet($element);
                     break;
                 case ContainerElementKind::FunctionImport():
                     assert($element instanceof IFunctionImport);
-                    $this->processFunctionImport($element);
+                    $self->processFunctionImport($element);
                     break;
                 case ContainerElementKind::None():
                     assert($element instanceof IEntityContainerElement);
-                    $this->processEntityContainerElement($element);
+                    $self->processEntityContainerElement($element);
                     break;
                 default:
                     throw new InvalidOperationException(

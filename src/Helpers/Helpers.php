@@ -40,14 +40,23 @@ abstract class Helpers
 
 
     /**
-     * @param string $typeOf type of the annotation being returned
-     * @param $annotation
+     * @param  string     $typeOf     type of the annotation being returned
+     * @param  mixed      $annotation
      * @return mixed|null
      */
     public static function AnnotationValue(string $typeOf, $annotation)
     {
         if ($annotation != null) {
-            $isSpecificAnnotation = is_a($annotation, $typeOf);
+            if ('array' === $typeOf) {
+                $isSpecificAnnotation = is_array($annotation);
+            } elseif ('string' === $typeOf) {
+                $isSpecificAnnotation = is_string($annotation);
+            } elseif ('?string' === $typeOf) {
+                $isSpecificAnnotation = (null !== $annotation) || is_string($annotation);
+            } else {
+                $isSpecificAnnotation = is_a($annotation, $typeOf);
+            }
+
             if ($isSpecificAnnotation) {
                 return $annotation;
             }

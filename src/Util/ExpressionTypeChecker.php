@@ -143,7 +143,7 @@ abstract class ExpressionTypeChecker
         bool $matchExactly = false,
         iterable &$discoveredErrors = []
     ): bool {
-        EdmUtil::CheckArgumentNull($expression, 'expression');
+        EdmUtil::checkArgumentNull($expression, 'expression');
 
         // If we don't have a type to assert this passes vacuously.
         if (null === $type || $type->TypeKind()->isNone()) {
@@ -459,8 +459,8 @@ abstract class ExpressionTypeChecker
         bool $matchExactly,
         iterable &$discoveredErrors
     ): bool {
-        EdmUtil::CheckArgumentNull($expression, 'expression');
-        EdmUtil::CheckArgumentNull($type, 'type');
+        EdmUtil::checkArgumentNull($expression, 'expression');
+        EdmUtil::checkArgumentNull($type, 'type');
 
         if (!$type->IsStructured()) {
             $discoveredErrors = [
