@@ -44,7 +44,7 @@ class UnresolvedFunction extends BadElement implements IFunction, IUnresolvedEle
     {
         parent::__construct([new EdmError($location, EdmErrorCode::BadUnresolvedFunction(), $errorMessage)]);
         //$this->qualifiedName = $qualifiedName ?? '';
-        EdmUtil::TryGetNamespaceNameFromQualifiedName($qualifiedName, $this->namespaceName, $this->name);
+        EdmUtil::tryGetNamespaceNameFromQualifiedName($qualifiedName, $this->namespaceName, $this->name);
         $this->returnType = new BadTypeReference(new BadType($this->getErrors()), true);
     }
 

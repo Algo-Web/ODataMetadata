@@ -31,7 +31,7 @@ class VocabularyAnnotatableNoDuplicateAnnotations extends VocabularyAnnotatableR
                     $annotation->Location(),
                     EdmErrorCode::DuplicateAnnotation(),
                     StringConst::EdmModel_Validator_Semantic_DuplicateAnnotation(
-                        EdmUtil::FullyQualifiedName(
+                        EdmUtil::fullyQualifiedName(
                             $annotatable
                         ),
                         $annotation->getTerm()->FullName(),

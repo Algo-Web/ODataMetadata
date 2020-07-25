@@ -41,7 +41,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
             $context->AddError(
                 $annotation->Location(),
                 EdmErrorCode::BadUnresolvedTarget(),
-                StringConst::EdmModel_Validator_Semantic_InaccessibleTarget(EdmUtil::FullyQualifiedName($target))
+                StringConst::EdmModel_Validator_Semantic_InaccessibleTarget(EdmUtil::fullyQualifiedName($target))
             );
         }
     }
@@ -97,7 +97,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         if ($typeProperty instanceof IProperty) {
             $declaringType = $typeProperty->getDeclaringType();
             assert($declaringType instanceof ISchemaType);
-            $declaringTypeFullName = EdmUtil::FullyQualifiedName($declaringType);
+            $declaringTypeFullName = EdmUtil::fullyQualifiedName($declaringType);
             EdmUtil::checkArgumentNull($declaringTypeFullName, 'declaringTypeFullName');
             EdmUtil::checkArgumentNull($typeProperty->getName(), 'typeProperty->getName');
             $modelType = $context->getModel()->findType($declaringTypeFullName);

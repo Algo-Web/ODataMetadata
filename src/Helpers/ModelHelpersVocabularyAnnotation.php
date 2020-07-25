@@ -47,7 +47,7 @@ trait ModelHelpersVocabularyAnnotation
             $name          = null;
             $namespaceName = null;
 
-            if (EdmUtil::TryGetNamespaceNameFromQualifiedName($termName, $namespaceName, $name)) {
+            if (EdmUtil::tryGetNamespaceNameFromQualifiedName($termName, $namespaceName, $name)) {
                 /**
                  * @var IVocabularyAnnotation $annotation
                  */

@@ -31,9 +31,9 @@ class NamedElementNameIsNotAllowed extends NamedElementRule
             return;
         }
 
-        if (!EdmUtil::IsNullOrWhiteSpaceInternal($item->getName()) &&
+        if (!EdmUtil::isNullOrWhiteSpaceInternal($item->getName()) &&
             mb_strlen($item->getName()) <= CsdlConstants::Max_NameLength && mb_strlen($item->getName()) > 0) {
-            if (!EdmUtil::IsValidUndottedName($item->getName())) {
+            if (!EdmUtil::isValidUndottedName($item->getName())) {
                 EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
                 $context->AddError(
                     $item->Location(),

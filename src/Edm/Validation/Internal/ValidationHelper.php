@@ -156,8 +156,8 @@ abstract class ValidationHelper
             $elementNamespace = $reader->namespaceURI;
             $elementName      = $reader->localName;
 
-            if (EdmUtil::IsNullOrWhiteSpaceInternal($elementNamespace) ||
-                EdmUtil::IsNullOrWhiteSpaceInternal($elementName)) {
+            if (EdmUtil::isNullOrWhiteSpaceInternal($elementNamespace) ||
+                EdmUtil::isNullOrWhiteSpaceInternal($elementName)) {
                 $error = new EdmError(
                     $value->Location(),
                     EdmErrorCode::InvalidElementAnnotation(),

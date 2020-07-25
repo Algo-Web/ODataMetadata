@@ -32,7 +32,7 @@ class BadNamedStructuredType extends BadStructuredType implements ISchemaElement
     {
         parent::__construct($errors);
         $qualifiedName = $qualifiedName ?? '';
-        EdmUtil::TryGetNamespaceNameFromQualifiedName($qualifiedName, $this->namespaceName, $this->name);
+        EdmUtil::tryGetNamespaceNameFromQualifiedName($qualifiedName, $this->namespaceName, $this->name);
     }
 
     /**

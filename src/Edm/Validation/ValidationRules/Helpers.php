@@ -37,7 +37,7 @@ abstract class Helpers
 
     public static function CheckForNameError(ValidationContext $context, string $name, ILocation $location): void
     {
-        if (EdmUtil::IsNullOrWhiteSpaceInternal($name) || mb_strlen($name) === 0) {
+        if (EdmUtil::isNullOrWhiteSpaceInternal($name) || mb_strlen($name) === 0) {
             $context->AddError(
                 $location,
                 EdmErrorCode::InvalidName(),
@@ -49,7 +49,7 @@ abstract class Helpers
                 EdmErrorCode::NameTooLong(),
                 StringConst::EdmModel_Validator_Syntactic_EdmModel_NameIsTooLong($name)
             );
-        } elseif (!EdmUtil::IsValidUndottedName($name)) {
+        } elseif (!EdmUtil::isValidUndottedName($name)) {
             $context->AddError(
                 $location,
                 EdmErrorCode::InvalidName(),

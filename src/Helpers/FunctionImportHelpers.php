@@ -91,7 +91,7 @@ trait FunctionImportHelpers
             $pathList = [];
             for ($i = 1; $i < $numSegments; ++$i) {
                 $segment = $pathToResolve[$i];
-                if (EdmUtil::IsQualifiedName($segment)) {
+                if (EdmUtil::isQualifiedName($segment)) {
                     if ($i == count($pathToResolve) - 1) {
                         // The last segment must not be type cast.
                         return false;
