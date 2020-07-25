@@ -42,7 +42,7 @@ class CompleteTest extends TestCase
         $navPropInfo1->name               = 'employee';
         $navPropInfo1->targetMultiplicity = Multiplicity::One();
         $navProp                          = $employee->AddBidirectionalNavigation($navPropInfo, $navPropInfo1);
-        $employSet->AddNavigationTarget($navProp, $EmployPrivSet);
+        $employSet->addNavigationTarget($navProp, $EmployPrivSet);
         $xmlWritter = new XMLWriter();
         $this->assertTrue(EdmxWriter::TryWriteEdmx($model, $xmlWritter));
         $this->assertXmlStringEqualsXmlString('<?xml version="1.0"?>

@@ -112,7 +112,7 @@ class EdmDirectValueAnnotationsManager implements IDirectValueAnnotationsManager
     {
         /** @var IDirectValueAnnotationBinding $annotation */
         foreach ($annotations as $annotation) {
-            $this->SetAnnotationValue(
+            $this->setAnnotationValue(
                 $annotation->getElement(),
                 $annotation->getNamespaceUri(),
                 $annotation->getName(),
