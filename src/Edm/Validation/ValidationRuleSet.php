@@ -162,9 +162,9 @@ class ValidationRuleSet implements \IteratorAggregate
         switch ($version) {
             case Version::v1():
                 return self::getV1RuleSet();
-            case Version::v1_1():
+            case Version::v1point1():
                 return self::getV1_1RuleSet();
-            case Version::v1_2():
+            case Version::v1point2():
                 return self::getV1_2RuleSet();
             case Version::v2():
                 return self::getV2RuleSet();
