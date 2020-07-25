@@ -105,7 +105,7 @@ class EdmEntitySet extends EdmNamedElement implements IEntitySet
     public function addNavigationTarget(INavigationProperty $property, IEntitySet $target): void
     {
         $this->navigationPropertyMappings->attach($property, $target);
-        $this->navigationTargetsCache->Clear();
+        $this->navigationTargetsCache->clear();
     }
     /** @noinspection PhpUnusedPrivateMethodInspection Invoked as callable.*/
     /**

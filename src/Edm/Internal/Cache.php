@@ -48,7 +48,7 @@ class Cache
         return $this->value;
     }
 
-    public function Clear(): void
+    public function clear(): void
     {
         if ($this->value !== CacheHelper::getCycleSentinel() && $this->value !== CacheHelper::getSecondPassCycleSentinel()) {
             $this->value = CacheHelper::getUnknown();
