@@ -73,17 +73,17 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
         }
         $schemaType = $target;
         if ($schemaType instanceof ISchemaType) {
-            $foundTarget = ($context->getModel()->FindType($schemaType->FullName()) != null);
+            $foundTarget = ($context->getModel()->findType($schemaType->FullName()) != null);
             return $foundTarget;
         }
         $term = $target;
         if ($term instanceof ITerm) {
-            $foundTarget = ($context->getModel()->FindValueTerm($term->FullName()) != null);
+            $foundTarget = ($context->getModel()->findValueTerm($term->FullName()) != null);
             return $foundTarget;
         }
         $function = $target;
         if ($function instanceof IFunction) {
-            $foundTarget = count($context->getModel()->FindFunctions($function->FullName())) > 0;
+            $foundTarget = count($context->getModel()->findFunctions($function->FullName())) > 0;
             return $foundTarget;
         }
         $functionImport = $target;
@@ -100,7 +100,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
             $declaringTypeFullName = EdmUtil::FullyQualifiedName($declaringType);
             EdmUtil::checkArgumentNull($declaringTypeFullName, 'declaringTypeFullName');
             EdmUtil::checkArgumentNull($typeProperty->getName(), 'typeProperty->getName');
-            $modelType = $context->getModel()->FindType($declaringTypeFullName);
+            $modelType = $context->getModel()->findType($declaringTypeFullName);
             if ($modelType !== null && $modelType instanceof IStructuredType) {
                 // If we can find a structured type with this name in the model check if it
                 // has a property with this name
@@ -116,7 +116,7 @@ class VocabularyAnnotationInaccessibleTarget extends VocabularyAnnotationRule
             $declaringFunction = $functionParameter->getDeclaringFunction();
             switch (true) {
                 case $declaringFunction instanceof IFunction:
-                    $functions = $context->getModel()->FindFunctions($declaringFunction->FullName());
+                    $functions = $context->getModel()->findFunctions($declaringFunction->FullName());
                     break;
                 case $declaringFunction instanceof IFunctionImport:
                     $container = $declaringFunction->getContainer();

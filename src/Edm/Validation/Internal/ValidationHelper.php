@@ -255,7 +255,7 @@ abstract class ValidationHelper
                 }
             }
 
-            foreach ($context->FindAllDerivedTypes($source) as $derived) {
+            foreach ($context->findAllDerivedTypes($source) as $derived) {
                 if ($derived instanceof IEntityType && self::TypeIndirectlyContainsTarget(
                     $derived,
                     $target,

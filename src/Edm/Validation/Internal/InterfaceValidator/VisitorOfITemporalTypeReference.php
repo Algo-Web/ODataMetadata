@@ -16,7 +16,7 @@ class VisitorOfITemporalTypeReference extends VisitorOfT
         assert($typeRef instanceof ITemporalTypeReference);
         $primitive = $typeRef->getDefinition();
         assert($primitive instanceof IPrimitiveType);
-        return null !== $typeRef->getDefinition() && !$primitive->getPrimitiveKind()->IsTemporal()
+        return null !== $typeRef->getDefinition() && !$primitive->getPrimitiveKind()->isTemporal()
             ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
     }
 
