@@ -28,6 +28,4 @@ interface IValue extends IEdmElement, IValueHelpers
      * @return ValueKind gets the kind of this value
      */
     public function getValueKind(): ValueKind;
-
-
 }

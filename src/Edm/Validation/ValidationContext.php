@@ -53,9 +53,9 @@ final class ValidationContext
             )
         );
 
-        $stem = is_array($isBad) ? new ReflectionMethod(...$isBad) : new ReflectionFunction($isBad);
+        $stem           = is_array($isBad) ? new ReflectionMethod(...$isBad) : new ReflectionFunction($isBad);
         $stemReturnType = $stem->getReturnType();
-        $stemName = $stemReturnType instanceof ReflectionNamedType ?
+        $stemName       = $stemReturnType instanceof ReflectionNamedType ?
             $stemReturnType->getName() :
             strval($stemReturnType);
         $stemParmType = $stem->getParameters()[0]->getType();

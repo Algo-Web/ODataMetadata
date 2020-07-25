@@ -15,7 +15,7 @@ trait SimpleBaseToString
     public function __toString(): string
     {
         /** @var ICheckable|IEdmElement $self */
-        $self = $this;
+        $self   = $this;
         $errors = $self->getErrors();
         assert(count($errors) !== 0);
         $error = $errors[0];

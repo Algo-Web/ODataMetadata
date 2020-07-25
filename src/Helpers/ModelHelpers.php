@@ -682,5 +682,4 @@ trait ModelHelpers
      * @return IStructuredType[] a list of types from this model that derive directly from the given type
      */
     abstract public function findDirectlyDerivedTypes(IStructuredType $baseType): array;
-
 }

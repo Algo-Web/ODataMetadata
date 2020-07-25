@@ -271,9 +271,9 @@ abstract class ValidationHelper
     }
 
     /**
-     * @param  string    $fullName
-     * @param  bool      $checkEntityContainer
-     * @param  IModel    $referenced
+     * @param  string $fullName
+     * @param  bool   $checkEntityContainer
+     * @param  IModel $referenced
      * @return bool
      */
     protected static function checkItemReference(string $fullName, bool $checkEntityContainer, IModel $referenced): bool
