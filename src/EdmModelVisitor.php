@@ -76,11 +76,11 @@ class EdmModelVisitor
         $this->processModel($this->model);
     }
 
-    protected function ProcessModel(IModel $model): void
+    protected function processModel(IModel $model): void
     {
         $this->processElement($model);
-        $this->VisitSchemaElements($model->getSchemaElements());
-        $this->VisitVocabularyAnnotations($model->getVocabularyAnnotations());
+        $this->visitSchemaElements($model->getSchemaElements());
+        $this->visitVocabularyAnnotations($model->getVocabularyAnnotations());
     }
 
     public function addVisitor(IVisitor $visitor): self

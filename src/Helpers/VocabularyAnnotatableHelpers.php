@@ -22,7 +22,7 @@ trait VocabularyAnnotatableHelpers
      * @return IVocabularyAnnotation[] annotations attached to the element by the model or by models referenced
      *                                       by the model
      */
-    public function VocabularyAnnotations(IModel $model): array
+    public function vocabularyAnnotations(IModel $model): array
     {
         /** @var IVocabularyAnnotatable $self */
         $self = $this;
