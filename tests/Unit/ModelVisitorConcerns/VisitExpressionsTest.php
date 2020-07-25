@@ -75,7 +75,7 @@ class VisitExpressionsTest extends TestCase
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('Invalid type kind: \'null\'');
 
-        $foo->VisitExpression($expression);
+        $foo->visitExpression($expression);
     }
 
     public function testVisitAssertTypeExpressionHasEmptyDefinition()
@@ -96,7 +96,7 @@ class VisitExpressionsTest extends TestCase
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('Invalid type kind: \'\'');
 
-        $foo->VisitExpression($expression);
+        $foo->visitExpression($expression);
     }
 
     public function testVisitBinaryTypeExpressionHasNonEmptyDefinition()
@@ -120,7 +120,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL . '<String><![CDATA[]]></String>' . PHP_EOL;
         $actual   = $writer->outputMemory(true);
@@ -148,7 +148,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Bool><![CDATA[true]]></Bool>' . PHP_EOL;
         $actual   = $writer->outputMemory(true);
@@ -177,7 +177,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Collection>' . PHP_EOL . '    <Documentation/>' . PHP_EOL . '</Collection>' . PHP_EOL;
         $actual   = $writer->outputMemory(true);
@@ -207,7 +207,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL . '<DateTime><![CDATA[2000-01-01T00:00:00.000000000]]></DateTime>' . PHP_EOL;
         $actual   = $writer->outputMemory(true);
@@ -238,7 +238,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<DateTimeOffset><![CDATA[2000-01-01T00:00:00.000Z+10:00]]></DateTimeOffset>' . PHP_EOL;
@@ -268,7 +268,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<Decimal><![CDATA[0.1M]]></Decimal>' . PHP_EOL;
@@ -302,7 +302,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<EntitySetReference Name="/Name"/>' . PHP_EOL;
@@ -339,7 +339,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<EnumMemberReference Name="FullName/Name"/>' . PHP_EOL;
@@ -369,7 +369,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<Float><![CDATA[0.1F]]></Float>' . PHP_EOL;
@@ -403,7 +403,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<Apply>' . PHP_EOL . '    <Documentation/>' . PHP_EOL . '</Apply>' . PHP_EOL;
@@ -439,7 +439,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<FunctionReference Name="FullName"/>' . PHP_EOL;
@@ -469,7 +469,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<Guid><![CDATA[059d1a1e-11bc-4951-88f7-940cf1d1a66a]]></Guid>' . PHP_EOL;
@@ -510,7 +510,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<If>' . PHP_EOL . '    <Documentation/>' . PHP_EOL . '</If>' . PHP_EOL;
@@ -540,7 +540,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<Int><![CDATA[1]]></Int>' . PHP_EOL;
@@ -579,7 +579,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<IsType>' . PHP_EOL . '    <Documentation/>' . PHP_EOL . '</IsType>' . PHP_EOL;
@@ -615,7 +615,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<ParameterReference Name="Name"/>' . PHP_EOL;
@@ -651,7 +651,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         // This chucks a wobbly when using assertXmlStringEqualsXmlString
         $expected = '<?xml version="1.0"?>' . PHP_EOL;
@@ -688,7 +688,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<LabeledElement Name="Name">' . PHP_EOL .
@@ -726,7 +726,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<Null/>' . PHP_EOL;
@@ -761,7 +761,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<Path><![CDATA[]]></Path>' . PHP_EOL;
@@ -801,7 +801,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<PropertyReference Name="Name">' . PHP_EOL . '    <Documentation/>' . PHP_EOL .
@@ -837,7 +837,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<Record>' . PHP_EOL . '    <Documentation/>' . PHP_EOL . '</Record>' . PHP_EOL;
@@ -867,7 +867,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<String><![CDATA[foo]]></String>' . PHP_EOL;
@@ -899,7 +899,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         // This chucks a wobbly when using assertXmlStringEqualsXmlString
         $expected = '<?xml version="1.0"?>' . PHP_EOL;
@@ -941,7 +941,7 @@ class VisitExpressionsTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $expected = '<?xml version="1.0"?>' . PHP_EOL .
                     '<PropertyReference Name="Name">' . PHP_EOL . '    <Documentation/>' . PHP_EOL .

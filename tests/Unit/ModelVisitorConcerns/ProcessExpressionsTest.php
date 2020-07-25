@@ -55,7 +55,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . INullExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::Null());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -81,7 +81,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IStringConstantExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::StringConstant());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -108,7 +108,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IBinaryConstantExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::BinaryConstant());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -135,7 +135,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IPathExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::Path());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -159,7 +159,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IParameterReferenceExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::ParameterReference());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -183,7 +183,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IIntegerConstantExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::IntegerConstant());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -207,7 +207,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IFunctionReferenceExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::FunctionReference());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -231,7 +231,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IFloatingConstantExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::FloatingConstant());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -255,7 +255,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IGuidConstantExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::GuidConstant());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -279,7 +279,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IEnumMemberReferenceExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::EnumMemberReference());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -303,7 +303,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IEntitySetReferenceExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::EntitySetReference());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -327,7 +327,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IDecimalConstantExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::DecimalConstant());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -351,7 +351,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IDateTimeConstantExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::DateTimeConstant());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -375,7 +375,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IDateTimeOffsetConstantExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::DateTimeOffsetConstant());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -399,7 +399,7 @@ class ProcessExpressionsTest extends TestCase
         $expression = m::mock(IExpression::class . ', ' . IBooleanConstantExpression::class);
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::BooleanConstant());
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -437,7 +437,7 @@ class ProcessExpressionsTest extends TestCase
         $expression->shouldReceive('getDeclaredType')->andReturn($decType)->atLeast(1);
         $expression->shouldReceive('getProperties')->andReturn([$propCon])->atLeast(1);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -466,7 +466,7 @@ class ProcessExpressionsTest extends TestCase
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::PropertyReference());
         $expression->shouldReceive('getBase')->andReturn($expr);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -493,7 +493,7 @@ class ProcessExpressionsTest extends TestCase
         $expression->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::Collection());
         $expression->shouldReceive('getElements')->andReturn([$expr]);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -527,7 +527,7 @@ class ProcessExpressionsTest extends TestCase
         $expression->shouldReceive('getType')->andReturn($typeRef)->atLeast(1);
         $expression->shouldReceive('getOperand')->andReturn($expr)->atLeast(1);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -562,7 +562,7 @@ class ProcessExpressionsTest extends TestCase
         $expression->shouldReceive('getType')->andReturn($typeRef)->atLeast(1);
         $expression->shouldReceive('getOperand')->andReturn($expr)->atLeast(1);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
@@ -592,7 +592,7 @@ class ProcessExpressionsTest extends TestCase
         $expression->shouldReceive('getAppliedFunction')->andReturn($expr)->atLeast(1);
         $expression->shouldReceive('getArguments')->andReturn([])->atLeast(1);
 
-        $foo->VisitExpressions([$expression]);
+        $foo->visitExpressions([$expression]);
 
         $reflec = new \ReflectionClass($foo);
         $prop   = $reflec->getProperty('cloneElementContainer');
