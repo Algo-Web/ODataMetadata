@@ -15,6 +15,7 @@ class VisitorOfIValueTermReferenceExpression extends VisitorOfT
         assert($expression instanceof IValueTermReferenceExpression);
         $errors = [];
 
+        // TODO: Ambiguous whether this is actually always non-null
         if (null !== $expression->getBase()) {
             $followup[] = $expression->getBase();
         } else {
@@ -27,6 +28,7 @@ class VisitorOfIValueTermReferenceExpression extends VisitorOfT
             );
         }
 
+        // TODO: Ambiguous whether this is actually always non-null
         if (null !== $expression->getTerm()) {
             $references[] = $expression->getTerm();
         } else {

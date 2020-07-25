@@ -71,17 +71,7 @@ class VisitorOfIProperty extends VisitorOfT
             );
         }
 
-        if (null !== $property->getDeclaringType()) {
-            $references[] = $property->getDeclaringType();
-        } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
-                    $property,
-                    'DeclaringType'
-                ),
-                $errors
-            );
-        }
+        $references[] = $property->getDeclaringType();
 
         return $errors;
     }
