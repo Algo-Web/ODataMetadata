@@ -41,7 +41,7 @@ trait ValueHelpers
             }
         }
 
-        $model->SetAnnotationValue(
+        $model->setAnnotationValue(
             $self,
             EdmConstants::InternalUri,
             CsdlConstants::IsSerializedAsElementAnnotation,
@@ -58,7 +58,7 @@ trait ValueHelpers
     {
         $self = $this;
         assert($self instanceof IEdmElement);
-        $value = $model->GetAnnotationValue(
+        $value = $model->getAnnotationValue(
             'boolean',
             $self,
             EdmConstants::InternalUri,

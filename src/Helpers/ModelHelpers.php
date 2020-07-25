@@ -190,7 +190,7 @@ trait ModelHelpers
     public function GetEdmVersion(): ?Version
     {
         /** @var IModel $this */
-        return $this->GetAnnotationValue(
+        return $this->getAnnotationValue(
             Version::class,
             $this,
             EdmConstants::InternalUri,
@@ -206,7 +206,7 @@ trait ModelHelpers
     public function SetEdmVersion(Version $version)
     {
         /** @var IModel $this */
-        $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::EdmVersionAnnotation, $version);
+        $this->setAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::EdmVersionAnnotation, $version);
     }
 
     /**
@@ -231,7 +231,7 @@ trait ModelHelpers
     public function GetEdmxVersion(): ?Version
     {
         /** @var IModel $this */
-        return $this->GetAnnotationValue(
+        return $this->getAnnotationValue(
             Version::class,
             $this,
             EdmConstants::InternalUri,
@@ -247,7 +247,7 @@ trait ModelHelpers
     public function SetEdmxVersion(Version $version): void
     {
         /** @var IModel $this */
-        $this->SetAnnotationValue($this, EdmConstants::InternalUri, CsdlConstants::EdmxVersionAnnotation, $version);
+        $this->setAnnotationValue($this, EdmConstants::InternalUri, CsdlConstants::EdmxVersionAnnotation, $version);
     }
 
     /**
@@ -258,7 +258,7 @@ trait ModelHelpers
     public function SetDataServiceVersion(Version $version): void
     {
         /** @var IModel $this */
-        $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::DataServiceVersion, $version);
+        $this->setAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::DataServiceVersion, $version);
     }
 
     /**
@@ -269,7 +269,7 @@ trait ModelHelpers
     public function GetDataServiceVersion(): ?Version
     {
         /** @var IModel $this */
-        return $this->GetAnnotationValue(
+        return $this->getAnnotationValue(
             Version::class,
             $this,
             EdmConstants::InternalUri,
@@ -285,7 +285,7 @@ trait ModelHelpers
     public function SetMaxDataServiceVersion(Version $version): void
     {
         /** @var IModel $this */
-        $this->SetAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::MaxDataServiceVersion, $version);
+        $this->setAnnotationValue($this, EdmConstants::InternalUri, EdmConstants::MaxDataServiceVersion, $version);
     }
 
     /**
@@ -296,7 +296,7 @@ trait ModelHelpers
     public function GetMaxDataServiceVersion(): ?Version
     {
         /** @var IModel $this */
-        return $this->GetAnnotationValue(
+        return $this->getAnnotationValue(
             Version::class,
             $this,
             EdmConstants::InternalUri,
@@ -312,7 +312,7 @@ trait ModelHelpers
     public function SetNamespacePrefixMappings(array $mappings): void
     {
         /** @var IModel $this */
-        $this->SetAnnotationValue(
+        $this->setAnnotationValue(
             $this,
             EdmConstants::InternalUri,
             CsdlConstants::NamespacePrefixAnnotation,
@@ -399,7 +399,7 @@ trait ModelHelpers
         assert($model instanceof IModel);
 
         $property->PopulateCaches();
-        $associationNamespace = $model->GetAnnotationValue(
+        $associationNamespace = $model->getAnnotationValue(
             '?string',
             $property,
             EdmConstants::InternalUri,
@@ -424,7 +424,7 @@ trait ModelHelpers
         assert($model instanceof IModel);
 
         $property->PopulateCaches();
-        $associationName = $model->GetAnnotationValue(
+        $associationName = $model->getAnnotationValue(
             '?string',
             $property,
             EdmConstants::InternalUri,
@@ -473,7 +473,7 @@ trait ModelHelpers
         $model = $this;
         assert($model instanceof IModel);
 
-        $model->SetAnnotationValue(
+        $model->setAnnotationValue(
             $property,
             EdmConstants::InternalUri,
             CsdlConstants::AssociationNameAnnotation,
@@ -492,7 +492,7 @@ trait ModelHelpers
         $model = $this;
         assert($model instanceof IModel);
 
-        $model->SetAnnotationValue(
+        $model->setAnnotationValue(
             $property,
             EdmConstants::InternalUri,
             CsdlConstants::AssociationNamespaceAnnotation,
@@ -514,7 +514,7 @@ trait ModelHelpers
     ): void {
         $model = $this;
         assert($model instanceof IModel);
-        $navigationPropertyMappings = $model->GetAnnotationValue(
+        $navigationPropertyMappings = $model->getAnnotationValue(
             'SplObjectStorage',
             $entitySet,
             EdmConstants::InternalUri,
@@ -522,7 +522,7 @@ trait ModelHelpers
         );
         if ($navigationPropertyMappings == null) {
             $navigationPropertyMappings = new SplObjectStorage();
-            $model->SetAnnotationValue(
+            $model->setAnnotationValue(
                 $entitySet,
                 EdmConstants::InternalUri,
                 CsdlConstants::AssociationSetNameAnnotation,
@@ -545,7 +545,7 @@ trait ModelHelpers
         $model = $this;
         assert($model instanceof IModel);
 
-        $navigationPropertyMappings = $model->GetAnnotationValue(
+        $navigationPropertyMappings = $model->getAnnotationValue(
             SplObjectStorage::class,
             $entitySet,
             EdmConstants::InternalUri,
@@ -555,7 +555,7 @@ trait ModelHelpers
         if ($navigationPropertyMappings !== null && $navigationPropertyMappings->offsetExists($property)) {
             $associationSetName = $navigationPropertyMappings->offsetGet($property);
         } else {
-            $associationSetName = $model->GetAssociationName($property) . 'Set';
+            $associationSetName = $model->getAssociationName($property) . 'Set';
         }
 
         return $associationSetName;

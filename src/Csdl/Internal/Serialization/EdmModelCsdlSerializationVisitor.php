@@ -111,7 +111,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     ) {
         parent::__construct($model);
         $this->edmVersion             = $edmVersion;
-        $this->namespaceAliasMappings = $model->GetNamespaceAliases();
+        $this->namespaceAliasMappings = $model->getNamespaceAliases();
         $this->schemaWriter           = $schemaWriter ??
                                         new EdmModelCsdlSchemaWriter(
                                             $model,
@@ -151,7 +151,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
 
         $this->visitSchemaElements($element->getSchemaElements());
         foreach ($element->getAssociationNavigationProperties() as $navigationProperty) {
-            $associationName = $this->model->GetAssociationFullName($navigationProperty);
+            $associationName = $this->model->getAssociationFullName($navigationProperty);
             if (!array_key_exists($associationName, $this->associations)) {
                 $handledNavigationProperties          = [];
                 $this->associations[$associationName] = $handledNavigationProperties;
@@ -195,7 +195,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         /** @var IEntitySet $entitySet */
         foreach ($element->EntitySets() as $entitySet) {
             foreach ($entitySet->getNavigationTargets() as $mapping) {
-                $associationSetName = $this->model->GetAssociationFullName($mapping->getNavigationProperty());
+                $associationSetName = $this->model->getAssociationFullName($mapping->getNavigationProperty());
                 if (!isset($this->associationSets[$associationSetName])) {
                     $handledAssociationSets                     = [];
                     $this->associationSets[$associationSetName] = $handledAssociationSets;
@@ -846,7 +846,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $end2Annotations = [];
         /** @var IDirectValueAnnotation[] $constraintAnnotations */
         $constraintAnnotations = [];
-        $this->model->GetAssociationAnnotations(
+        $this->model->getAssociationAnnotations(
             $element,
             $associationAnnotations,
             $end1Annotations,
@@ -933,7 +933,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $end1Annotations = [];
         /** @var IDirectValueAnnotation[] $end2Annotations */
         $end2Annotations = [];
-        $this->model->GetAssociationSetAnnotations(
+        $this->model->getAssociationSetAnnotations(
             $entitySet,
             $property,
             $associationSetAnnotations,
@@ -1127,7 +1127,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $this->VisitAttributeAnnotations(
             $this->model->getDirectValueAnnotationsManager()->GetDirectValueAnnotations($element)
         );
-        $documentation = $this->model->GetAnnotationValue(
+        $documentation = $this->model->getAnnotationValue(
             IDocumentation::class,
             $element,
             EdmConstants::DocumentationUri,
@@ -1175,7 +1175,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             return true;
         }
 
-        if ($this->model->GetAssociationName($thisNavprop) != $this->model->GetAssociationName($thatNavprop)) {
+        if ($this->model->getAssociationName($thisNavprop) != $this->model->getAssociationName($thatNavprop)) {
             return false;
         }
 
@@ -1212,7 +1212,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $thisEnd1Annotations        = [];
         $thisEnd2Annotations        =[];
         $thisConstraintAnnotations  =[];
-        $this->model->GetAssociationAnnotations(
+        $this->model->getAssociationAnnotations(
             $thisPrimary,
             $thisAssociationAnnotations,
             $thisEnd1Annotations,
@@ -1224,7 +1224,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $thatEnd1Annotations        = [];
         $thatEnd2Annotations        = [];
         $thatConstraintAnnotations  =[];
-        $this->model->GetAssociationAnnotations(
+        $this->model->getAssociationAnnotations(
             $thatPrimary,
             $thatAssociationAnnotations,
             $thatEnd1Annotations,
@@ -1249,8 +1249,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         assert($end1DeclaringType instanceof IEntityType);
         assert($end2DeclaringType instanceof IEntityType);
         if (!($end1DeclaringType->FullName() == $end2DeclaringType->FullName() &&
-            $this->model->GetAssociationEndName($end1) == $this->model->GetAssociationEndName($end2) &&
-            $end1->Multiplicity()->equals($end2->Multiplicity()) &&
+              $this->model->getAssociationEndName($end1) == $this->model->getAssociationEndName($end2) &&
+              $end1->Multiplicity()->equals($end2->Multiplicity()) &&
             $end1->getOnDelete()->equals($end2->getOnDelete()))) {
             return false;
         }
@@ -1297,14 +1297,14 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         }
 
         // Association Set
-        if (!($this->model->GetAssociationSetName($thisEntitySet, $thisNavprop) ==
-              $this->model->GetAssociationSetName($thatEntitySet, $thatNavprop) &&
-            $this->model->GetAssociationFullName($thisNavprop) == $this->model->GetAssociationFullName($thatNavprop))) {
+        if (!($this->model->getAssociationSetName($thisEntitySet, $thisNavprop) ==
+              $this->model->getAssociationSetName($thatEntitySet, $thatNavprop) &&
+              $this->model->getAssociationFullName($thisNavprop) == $this->model->getAssociationFullName($thatNavprop))) {
             return false;
         }
 
         // End 1
-        if (!($this->model->GetAssociationEndName($thisNavprop) == $this->model->GetAssociationEndName($thatNavprop) &&
+        if (!($this->model->getAssociationEndName($thisNavprop) == $this->model->getAssociationEndName($thatNavprop) &&
             $thisEntitySet->getName() == $thatEntitySet->getName())) {
             return false;
         }
@@ -1319,8 +1319,8 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         }
 
         if (null !== $thisOtherEntitySet) {
-            if (!($this->model->GetAssociationEndName($thisNavprop->getPartner()) ==
-                  $this->model->GetAssociationEndName($thatNavprop->getPartner()) &&
+            if (!($this->model->getAssociationEndName($thisNavprop->getPartner()) ==
+                  $this->model->getAssociationEndName($thatNavprop->getPartner()) &&
                   $thisOtherEntitySet->getName() == $thatOtherEntitySet->getName())) {
                 return false;
             }
@@ -1330,7 +1330,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $thisAssociationSetAnnotations = [];
         $thisEnd1Annotations           = [];
         $thisEnd2Annotations           = [];
-        $this->model->GetAssociationSetAnnotations(
+        $this->model->getAssociationSetAnnotations(
             $thisEntitySet,
             $thisNavprop,
             $thisAssociationSetAnnotations,
@@ -1341,7 +1341,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $thatAssociationSetAnnotations = [];
         $thatEnd1Annotations           =[];
         $thatEnd2Annotations           =[];
-        $this->model->GetAssociationSetAnnotations(
+        $this->model->getAssociationSetAnnotations(
             $thatEntitySet,
             $thatNavprop,
             $thatAssociationSetAnnotations,

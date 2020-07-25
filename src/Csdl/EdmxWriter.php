@@ -87,13 +87,13 @@ class EdmxWriter
             return false;
         }
 
-        $edmxVersion = $model->GetEdmxVersion();
+        $edmxVersion = $model->getEdmxVersion();
         if ($edmxVersion != null) {
             if (!in_array($edmxVersion, CsdlConstants::getSupportedVersions())) {
                 $errors = [new EdmError(new CsdlLocation(0, 0), EdmErrorCode::UnknownEdmxVersion(), StringConst::Serializer_UnknownEdmxVersion())];
                 return false;
             }
-        } elseif (! $edmxVersion = CsdlConstants::EdmToEdmxVersions($model->GetEdmVersion() ?? Version::v3())) {
+        } elseif (! $edmxVersion = CsdlConstants::EdmToEdmxVersions($model->getEdmVersion() ?? Version::v3())) {
             $errors = [new EdmError(new CsdlLocation(0, 0), EdmErrorCode::UnknownEdmVersion(), StringConst::Serializer_UnknownEdmVersion()) ];
             return false;
         }
@@ -152,14 +152,14 @@ class EdmxWriter
     private function WriteDataServicesElement(): void
     {
         $this->writer->startElementNs(CsdlConstants::Prefix_Edmx, CsdlConstants::Element_DataServices, $this->getEdmxNamespace());
-        $dataServiceVersion = $this->model->GetDataServiceVersion();
+        $dataServiceVersion = $this->model->getDataServiceVersion();
         if ($dataServiceVersion != null) {
             $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_DataServiceVersion, CsdlConstants::ODataMetadataNamespace, $dataServiceVersion->ToString());
         } else {
             $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_DataServiceVersion, CsdlConstants::ODataMetadataNamespace, $this->edmxVersion->ToString());
         }
 
-        $dataServiceMaxVersion = $this->model->GetMaxDataServiceVersion();
+        $dataServiceMaxVersion = $this->model->getMaxDataServiceVersion();
         if ($dataServiceMaxVersion != null) {
             $this->writer->writeAttributeNs(CsdlConstants::Prefix_ODataMetadata, CsdlConstants::Attribute_MaxDataServiceVersion, CsdlConstants::ODataMetadataNamespace, $dataServiceMaxVersion->ToString());
         }
@@ -171,10 +171,10 @@ class EdmxWriter
      */
     private function WriteSchemas(): void
     {
-        $edmVersion = $this->model->GetEdmVersion() ?? Version::v3();
+        $edmVersion = $this->model->getEdmVersion() ?? Version::v3();
         foreach ($this->schemas as $schema) {
             $visitor = new EdmModelCsdlSerializationVisitor($this->model, $this->writer, $edmVersion);
-            $visitor->VisitEdmSchema($schema, $this->model->GetNamespacePrefixMappings());
+            $visitor->VisitEdmSchema($schema, $this->model->getNamespacePrefixMappings());
         }
     }
 

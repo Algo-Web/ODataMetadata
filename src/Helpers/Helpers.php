@@ -119,7 +119,7 @@ abstract class Helpers
     public static function GetAssociationNamespace(IModel $model, INavigationProperty $property): string
     {
         $property->PopulateCaches();
-        $associationNamespace = $model->GetAnnotationValue('string', $property, EdmConstants::InternalUri, CsdlConstants::AssociationNamespaceAnnotation);
+        $associationNamespace = $model->getAnnotationValue('string', $property, EdmConstants::InternalUri, CsdlConstants::AssociationNamespaceAnnotation);
         if ($associationNamespace == null) {
             $associationNamespace = $property->GetPrimary()->DeclaringEntityType()->getNamespace();
         }

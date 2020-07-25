@@ -504,7 +504,7 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
      */
     public function GetTemporal(PrimitiveTypeKind $kind, ?int $precision, bool $isNullable): ITemporalTypeReference
     {
-        if ($kind->IsTemporal()) {
+        if ($kind->isTemporal()) {
             return new EdmTemporalTypeReference($this->GetCoreModelPrimitiveType($kind), $isNullable, $precision);
         }
         throw new InvalidOperationException(StringConst::EdmPrimitive_UnexpectedKind());

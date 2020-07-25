@@ -22,7 +22,7 @@ trait EnumMemberHelpers
     {
         $self = $this;
         assert($self instanceof IEnumMember);
-        $model->SetAnnotationValue($self, EdmConstants::InternalUri, CsdlConstants::IsEnumMemberValueExplicitAnnotation, $isExplicit);
+        $model->setAnnotationValue($self, EdmConstants::InternalUri, CsdlConstants::IsEnumMemberValueExplicitAnnotation, $isExplicit);
     }
 
     /**
@@ -35,6 +35,6 @@ trait EnumMemberHelpers
     {
         $self = $this;
         assert($self instanceof IEnumMember);
-        return $model->GetAnnotationValue('?bool', $self, EdmConstants::InternalUri, CsdlConstants::IsEnumMemberValueExplicitAnnotation);
+        return $model->getAnnotationValue('?bool', $self, EdmConstants::InternalUri, CsdlConstants::IsEnumMemberValueExplicitAnnotation);
     }
 }

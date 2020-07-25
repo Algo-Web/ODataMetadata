@@ -19,7 +19,7 @@ abstract class Helpers
 {
     public static function CheckForUnreachableTypeError(ValidationContext $context, ISchemaType $type, ILocation $location): void
     {
-        $foundType = $context->getModel()->FindType($type->FullName());
+        $foundType = $context->getModel()->findType($type->FullName());
         if ($foundType instanceof AmbiguousTypeBinding) {
             $context->AddError(
                 $location,

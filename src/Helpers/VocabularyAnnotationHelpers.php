@@ -42,7 +42,7 @@ trait VocabularyAnnotationHelpers
     ): void {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
-        $model->SetAnnotationValue(
+        $model->setAnnotationValue(
             $annotation,
             EdmConstants::InternalUri,
             CsdlConstants::AnnotationSerializationLocationAnnotation,
@@ -60,7 +60,7 @@ trait VocabularyAnnotationHelpers
     {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
-        $location   = $model->GetAnnotationValue(
+        $location   = $model->getAnnotationValue(
             EdmVocabularyAnnotationSerializationLocation::class,
             $annotation,
             EdmConstants::InternalUri,
@@ -79,7 +79,7 @@ trait VocabularyAnnotationHelpers
     {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
-        $model->SetAnnotationValue(
+        $model->setAnnotationValue(
             $annotation,
             EdmConstants::InternalUri,
             CsdlConstants::SchemaNamespaceAnnotation,
@@ -96,7 +96,7 @@ trait VocabularyAnnotationHelpers
     {
         /** @var IVocabularyAnnotation $annotation */
         $annotation = $this;
-        return $model->GetAnnotationValue(
+        return $model->getAnnotationValue(
             'string',
             $annotation,
             EdmConstants::InternalUri,

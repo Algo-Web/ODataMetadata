@@ -152,7 +152,7 @@ class PrimitiveTypeKind extends Enum
      *
      * @return bool this kind refers to a temporal type
      */
-    public function IsTemporal(): bool
+    public function isTemporal(): bool
     {
         $temporalTypes = [
             self::Time,
@@ -167,7 +167,7 @@ class PrimitiveTypeKind extends Enum
      *
      * @return bool this kind refers to an integer type
      */
-    public function IsIntegral(): bool
+    public function isIntegral(): bool
     {
         $integralTypes = [
             self::Int64,

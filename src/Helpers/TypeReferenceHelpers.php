@@ -212,7 +212,7 @@ trait TypeReferenceHelpers
      */
     public function IsTemporal(): bool
     {
-        return $this->PrimitiveKind()->IsTemporal();
+        return $this->PrimitiveKind()->isTemporal();
     }
     /**
      * Returns true if this reference refers to a DateTime type.
@@ -352,7 +352,7 @@ trait TypeReferenceHelpers
      */
     public function IsIntegral(): bool
     {
-        return $this->PrimitiveKind()->IsIntegral();
+        return $this->PrimitiveKind()->isIntegral();
     }
 
     /**

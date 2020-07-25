@@ -22,7 +22,7 @@ class ComposableFunctionImportMustHaveReturnType extends FunctionImportRule
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        if ($functionImport->IsComposable() && null === $functionImport->getReturnType()) {
+        if ($functionImport->isComposable() && null === $functionImport->getReturnType()) {
             EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');
             $context->AddError(
                 $functionImport->Location(),

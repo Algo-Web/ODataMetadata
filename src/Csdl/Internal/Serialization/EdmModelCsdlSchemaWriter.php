@@ -145,7 +145,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->xmlWriter->startElement(CsdlConstants::Element_Association);
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Name,
-            $this->model->GetAssociationName($navigationProperty),
+            $this->model->getAssociationName($navigationProperty),
             [EdmValueWriter::class, 'StringAsXml']
         );
     }
@@ -162,12 +162,12 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->xmlWriter->startElement(CsdlConstants::Element_AssociationSet);
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Name,
-            $this->model->GetAssociationSetName($entitySet, $navigationProperty),
+            $this->model->getAssociationSetName($entitySet, $navigationProperty),
             [EdmValueWriter::class, 'StringAsXml']
         );
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Association,
-            $this->model->GetAssociationFullName($navigationProperty),
+            $this->model->getAssociationFullName($navigationProperty),
             [EdmValueWriter::class, 'StringAsXml']
         );
     }
@@ -257,7 +257,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->xmlWriter->startElement(CsdlConstants::Element_End);
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Role,
-            $this->model->GetAssociationEndName($property),
+            $this->model->getAssociationEndName($property),
             [EdmValueWriter::class, 'StringAsXml']
         );
         $this->WriteRequiredAttribute(
@@ -283,7 +283,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         );
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Role,
-            $this->model->GetAssociationEndName($associationEnd),
+            $this->model->getAssociationEndName($associationEnd),
             [EdmValueWriter::class, 'StringAsXml']
         );
         $this->WriteRequiredAttribute(
@@ -408,17 +408,17 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         );
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Relationship,
-            $this->model->GetAssociationFullName($member),
+            $this->model->getAssociationFullName($member),
             [EdmValueWriter::class, 'StringAsXml']
         );
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_ToRole,
-            $this->model->GetAssociationEndName($member->getPartner()),
+            $this->model->getAssociationEndName($member->getPartner()),
             [EdmValueWriter::class, 'StringAsXml']
         );
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_FromRole,
-            $this->model->GetAssociationEndName($member),
+            $this->model->getAssociationEndName($member),
             [EdmValueWriter::class, 'StringAsXml']
         );
         $this->WriteOptionalAttribute(
@@ -688,7 +688,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->xmlWriter->startElement(CsdlConstants::Element_Principal);
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Role,
-            $this->model->GetAssociationEndName($end),
+            $this->model->getAssociationEndName($end),
             [EdmValueWriter::class, 'StringAsXml']
         );
     }
@@ -702,7 +702,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
         $this->xmlWriter->startElement(CsdlConstants::Element_Dependent);
         $this->WriteRequiredAttribute(
             CsdlConstants::Attribute_Role,
-            $this->model->GetAssociationEndName($end),
+            $this->model->getAssociationEndName($end),
             [EdmValueWriter::class, 'StringAsXml']
         );
     }
