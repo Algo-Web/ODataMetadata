@@ -113,7 +113,7 @@ trait ModelHelpersVocabularyAnnotation
         foreach ($this->getReferencedModels() as $referencedModel) {
             $result = array_merge(
                 $result,
-                $referencedModel->FindVocabularyAnnotationsIncludingInheritedAnnotations($element)
+                $referencedModel->findVocabularyAnnotationsIncludingInheritedAnnotations($element)
             );
         }
         return $result;

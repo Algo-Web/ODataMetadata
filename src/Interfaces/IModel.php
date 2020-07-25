@@ -94,7 +94,7 @@ interface IModel extends IEdmElement, IModelHelpers
      * @return iterable|IVocabularyAnnotation[] annotations attached to the element by this model or by models
      *                                                    referenced by this model that bind the term with the given qualifier
      */
-    public function FindVocabularyAnnotations(
+    public function findVocabularyAnnotations(
         IVocabularyAnnotatable $element,
         $term = null,
         string $qualifier = null,
@@ -108,7 +108,7 @@ interface IModel extends IEdmElement, IModelHelpers
      * @return IVocabularyAnnotation[] annotations attached to the element (or, if the element is a type, to its base
      *                                         types) by this model or by models referenced by this model
      */
-    public function FindVocabularyAnnotationsIncludingInheritedAnnotations(IVocabularyAnnotatable $element): array;
+    public function findVocabularyAnnotationsIncludingInheritedAnnotations(IVocabularyAnnotatable $element): array;
 
 
     /**
