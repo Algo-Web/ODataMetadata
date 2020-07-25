@@ -78,7 +78,7 @@ class EdmEntitySet extends EdmNamedElement implements IEntitySet
      */
     public function getNavigationTargets(): array
     {
-        return $this->navigationTargetsCache->GetValue($this, \Closure::fromCallable([$this, 'ComputeNavigationTargets']));
+        return $this->navigationTargetsCache->getValue($this, \Closure::fromCallable([$this, 'computeNavigationTargets']));
     }
 
     /**
@@ -102,7 +102,7 @@ class EdmEntitySet extends EdmNamedElement implements IEntitySet
      * @param INavigationProperty $property the navigation property the target is being set for
      * @param IEntitySet          $target   the destination entity set of the specified navigation property
      */
-    public function AddNavigationTarget(INavigationProperty $property, IEntitySet $target): void
+    public function addNavigationTarget(INavigationProperty $property, IEntitySet $target): void
     {
         $this->navigationPropertyMappings->attach($property, $target);
         $this->navigationTargetsCache->Clear();
@@ -111,7 +111,7 @@ class EdmEntitySet extends EdmNamedElement implements IEntitySet
     /**
      * @return INavigationTargetMapping[]
      */
-    private function ComputeNavigationTargets(): array
+    private function computeNavigationTargets(): array
     {
         $result = [];
         /**
