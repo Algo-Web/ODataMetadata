@@ -190,7 +190,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $errors   = [];
 
         $expected = false;
-        $actual   = ExpressionTypeChecker::TryAssertPrimitiveAsType($expression, $type, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertPrimitiveAsType($expression, $type, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(1, count($errors));
         /** @var EdmError $error */
@@ -214,7 +214,7 @@ class ExpressionTypeCheckerPrimitiveTest extends TestCase
         $errors   = [];
 
         $expected = false;
-        $actual   = ExpressionTypeChecker::TryAssertPrimitiveAsType($expression, $type, $errors);
+        $actual   = ExpressionTypeChecker::tryAssertPrimitiveAsType($expression, $type, $errors);
         $this->assertEquals($expected, $actual);
         $this->assertEquals(1, count($errors));
         /** @var EdmError $error */

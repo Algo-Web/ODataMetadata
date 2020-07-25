@@ -301,7 +301,7 @@ class XmlCharType
 
     protected static $m_CharProperties = null;
 
-    public static function InitInstance(): void
+    public static function initInstance(): void
     {
         if (self::$m_CharProperties != null) {
             return;
@@ -316,18 +316,18 @@ class XmlCharType
 
         $chProps                = [];
         self::$s_CharProperties = $chProps;
-        self::SetProperties(self::s_Whitespace, self::fWhitespace);
-        self::SetProperties(self::s_LetterXml4e, self::fLetter);
-        self::SetProperties(self::s_NCStartName, self::fNCStartNameSC);
-        self::SetProperties(self::s_NCName, self::fNCNameSC);
-        self::SetProperties(self::s_CharData, self::fCharData);
-        self::SetProperties(self::s_NCNameXml4e, self::fNCNameXml4e);
-        self::SetProperties(self::s_Text, self::fText);
-        self::SetProperties(self::s_AttrValue, self::fAttrValue);
+        self::setProperties(self::s_Whitespace, self::fWhitespace);
+        self::setProperties(self::s_LetterXml4e, self::fLetter);
+        self::setProperties(self::s_NCStartName, self::fNCStartNameSC);
+        self::setProperties(self::s_NCName, self::fNCNameSC);
+        self::setProperties(self::s_CharData, self::fCharData);
+        self::setProperties(self::s_NCNameXml4e, self::fNCNameXml4e);
+        self::setProperties(self::s_Text, self::fText);
+        self::setProperties(self::s_AttrValue, self::fAttrValue);
         self::generateFile();
     }
 
-    private static function SetProperties(string $ranges, int $value): void
+    private static function setProperties(string $ranges, int $value): void
     {
         assert(mb_strlen($ranges, 'UTF-8') % 2 === 0);
         for ($p = 0; $p < mb_strlen($ranges, 'UTF-8'); $p +=2) {
@@ -359,9 +359,10 @@ class XmlCharType
     #endregion
 
     private static $instance = null;
-    public static function Instance()
+
+    public static function instance()
     {
-        self::InitInstance();
+        self::initInstance();
         $umArray                                  = new UnmanagedByteArray(self::$m_CharProperties);
         return self::$instance ?? self::$instance = new self($umArray);
     }
@@ -374,13 +375,13 @@ class XmlCharType
         $this->charProperties = $charProperties;
     }
 
-    public function IsStartNCNameChar(string $ch): bool
+    public function isStartNCNameChar(string $ch): bool
     {
         assert(mb_strlen($ch, 'UTF-8') === 1);
         return ($this->charProperties[mb_ord($ch, 'UTF-8')] & self::fNCStartNameSC) !== 0;
     }
 
-    public function IsNCNameChar(string $ch): bool
+    public function isNCNameChar(string $ch): bool
     {
         return ($this->charProperties[mb_ord($ch, 'UTF-8')] & self::fNCNameSC) !== 0;
     }

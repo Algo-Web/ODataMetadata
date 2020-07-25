@@ -37,7 +37,7 @@ class XmlConvert
      */
     public static function IsStartNCNameChar(string $ch): bool
     {
-        return XmlCharType::Instance()->IsStartNCNameChar($ch);
+        return XmlCharType::instance()->isStartNCNameChar($ch);
     }
 
     /**
@@ -49,7 +49,7 @@ class XmlConvert
      */
     public static function IsNCNameChar(string $ch)
     {
-        return XmlCharType::Instance()->IsNCNameChar($ch);
+        return XmlCharType::instance()->isNCNameChar($ch);
     }
 
     public static function VerifyNCName(string $name): bool
