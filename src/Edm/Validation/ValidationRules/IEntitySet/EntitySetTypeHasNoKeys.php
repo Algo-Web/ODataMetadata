@@ -23,7 +23,7 @@ class EntitySetTypeHasNoKeys extends EntitySetRule
     {
         assert($entitySet instanceof IEntitySet);
         if ((
-                $entitySet->getElementType()->key() === null ||
+            $entitySet->getElementType()->key() === null ||
                 count($entitySet->getElementType()->key()) !== 0
         ) &&
             !$context->checkIsBad($entitySet->getElementType())) {
