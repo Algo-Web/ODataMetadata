@@ -47,7 +47,7 @@ abstract class Asserts
             //TODO: improve this to check that the actual type does not return a childType;
             $expectedReturnType = $expectedReflection->getReturnType();
             $actualReturnType   = $actualReflection->getReturnType();
-            $name = $expectedReturnType instanceof ReflectionNamedType ?
+            $name               = $expectedReturnType instanceof ReflectionNamedType ?
                 $expectedReturnType->getName() :
                 strval($expectedReturnType);
             $actName = $actualReturnType instanceof ReflectionNamedType ?
@@ -76,7 +76,7 @@ abstract class Asserts
                 );
                 $expectedParmType = $expectedParm->getType();
                 $actualParmType   = $actualParm->getType();
-                $name = $expectedParmType instanceof ReflectionNamedType ?
+                $name             = $expectedParmType instanceof ReflectionNamedType ?
                     $expectedParmType->getName() :
                     strval($expectedParmType);
                 $actName = $actualParmType instanceof ReflectionNamedType ?
@@ -126,7 +126,7 @@ abstract class Asserts
         $return = '';
         if ($reflection->hasReturnType()) {
             $returnType = $reflection->getReturnType();
-            $name = $returnType instanceof ReflectionNamedType ?
+            $name       = $returnType instanceof ReflectionNamedType ?
                 $returnType->getName() :
                 strval($returnType);
             $return .= ': ' . $name;

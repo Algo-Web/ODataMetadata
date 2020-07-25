@@ -1343,10 +1343,10 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
     }
 
     /**
-     * @param string $attribute
-     * @param mixed $value
-     * @param mixed $defaultValue
-     * @param callable $toXml
+     * @param  string               $attribute
+     * @param  mixed                $value
+     * @param  mixed                $defaultValue
+     * @param  callable             $toXml
      * @throws \ReflectionException
      */
     public function WriteOptionalAttribute(string $attribute, $value, $defaultValue, callable $toXml): void
@@ -1359,7 +1359,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             '$toXml should be a callable taking one parameter of mixed type'
         );
         $stemType = $stem->getReturnType();
-        $name = $stemType instanceof ReflectionNamedType ?
+        $name     = $stemType instanceof ReflectionNamedType ?
             $stemType->getName() :
             strval($stemType);
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/
@@ -1388,7 +1388,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
             '$toXml should be a callable taking one parameter of mixed type'
         );
         $stemType = $stem->getReturnType();
-        $name = $stemType instanceof ReflectionNamedType ?
+        $name     = $stemType instanceof ReflectionNamedType ?
             $stemType->getName() :
             strval($stemType);
         /* @noinspection PhpUnhandledExceptionInspection suppressing exceptions for asserts.*/

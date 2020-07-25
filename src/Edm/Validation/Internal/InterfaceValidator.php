@@ -146,7 +146,7 @@ class InterfaceValidator
             while (false !== ($entry = readdir($handle))) {
                 /** @var string $name */
                 $name = substr($entry, 0, -4);
-                $ext = substr($entry, -4);
+                $ext  = substr($entry, -4);
                 if ($entry === '.' || $entry === '..' || is_dir($entry) || $ext !== '.php' || empty($ext)) {
                     continue;
                 }
@@ -321,7 +321,7 @@ class InterfaceValidator
     }
 
     /**
-     * @param mixed $item
+     * @param  mixed               $item
      * @return iterable|EdmError[]
      */
     private function ValidateStructure($item): iterable

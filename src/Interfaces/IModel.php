@@ -87,12 +87,12 @@ interface IModel extends IEdmElement, IModelHelpers
     /**
      * Gets an annotatable element's vocabulary annotations that bind a particular term.
      *
-     * @param IVocabularyAnnotatable $element  Element to check for annotations.
-     * @param ITerm|string $term Term to search for. OR Name of the term to search for.
-     * @param string|null $qualifier Qualifier to apply.
-     * @param string|null $type Type of the annotation being returned.
-     * @return iterable|IVocabularyAnnotation[] Annotations attached to the element by this model or by models
-     * referenced by this model that bind the term with the given qualifier.
+     * @param  IVocabularyAnnotatable           $element   element to check for annotations
+     * @param  ITerm|string                     $term      Term to search for. OR Name of the term to search for.
+     * @param  string|null                      $qualifier qualifier to apply
+     * @param  string|null                      $type      type of the annotation being returned
+     * @return iterable|IVocabularyAnnotation[] annotations attached to the element by this model or by models
+     *                                                    referenced by this model that bind the term with the given qualifier
      */
     public function FindVocabularyAnnotations(
         IVocabularyAnnotatable $element,
@@ -104,9 +104,9 @@ interface IModel extends IEdmElement, IModelHelpers
     /**
      * Gets an annotatable element's vocabulary annotations defined in a specific model and models referenced by
      * that model.
-     * @param IVocabularyAnnotatable $element Element to check for annotations.
-     * @return IVocabularyAnnotation[] Annotations attached to the element (or, if the element is a type, to its base
-     * types) by this model or by models referenced by this model.
+     * @param  IVocabularyAnnotatable  $element element to check for annotations
+     * @return IVocabularyAnnotation[] annotations attached to the element (or, if the element is a type, to its base
+     *                                         types) by this model or by models referenced by this model
      */
     public function FindVocabularyAnnotationsIncludingInheritedAnnotations(IVocabularyAnnotatable $element): array;
 

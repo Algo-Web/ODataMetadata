@@ -15,8 +15,8 @@ abstract class Enum extends \MyCLabs\Enum\Enum
     }
 
     /**
-     * @param string $name
-     * @param mixed $arguments
+     * @param  string               $name
+     * @param  mixed                $arguments
      * @throws \ReflectionException
      * @return bool
      */
