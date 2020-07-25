@@ -55,7 +55,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
 
     protected function processModel(IModel $model): void
     {
-        $this->ProcessElement($model);
+        $this->processElement($model);
         $this->visitSchemaElements($model->getSchemaElements());
         $this->visitVocabularyAnnotations(
             array_filter(
@@ -97,7 +97,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
 
         $this->modelSchemas[$namespaceName]->addSchemaElement($element);
         $this->activeSchema = $this->modelSchemas[$namespaceName];
-        parent::ProcessSchemaElement($element);
+        parent::processSchemaElement($element);
     }
 
     protected function ProcessVocabularyAnnotation(IVocabularyAnnotation $annotation): void
@@ -119,7 +119,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
             $this->CheckSchemaElementReference($annotation->getTerm());
         }
 
-        parent::ProcessVocabularyAnnotation($annotation);
+        parent::processVocabularyAnnotation($annotation);
     }
 
     /**
@@ -143,7 +143,7 @@ class EdmModelSchemaSeparationSerializationVisitor extends EdmModelVisitor
         $this->modelSchemas[$containerSchemaNamespace]->addEntityContainer($element);
         $this->activeSchema = $this->modelSchemas[$containerSchemaNamespace];
 
-        parent::ProcessEntityContainer($element);
+        parent::processEntityContainer($element);
     }
 
     protected function ProcessComplexTypeReference(IComplexTypeReference $element): void

@@ -36,9 +36,9 @@ trait ProcessDefinitionComponents
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($property, __METHOD__);
-        $this->ProcessVocabularyAnnotatable($property);
-        $this->ProcessNamedElement($property);
-        $this->VisitTypeReference($property->getType());
+        $this->processVocabularyAnnotatable($property);
+        $this->processNamedElement($property);
+        $this->visitTypeReference($property->getType());
         $this->endElement($property, __METHOD__);
     }
 
@@ -46,7 +46,7 @@ trait ProcessDefinitionComponents
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($enumMember, __METHOD__);
-        $this->ProcessNamedElement($enumMember);
+        $this->processNamedElement($enumMember);
         $this->endElement($enumMember, __METHOD__);
     }
 }

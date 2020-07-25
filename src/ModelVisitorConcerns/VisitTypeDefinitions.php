@@ -26,7 +26,7 @@ use AlgoWeb\ODataMetadata\StringConst;
  */
 trait VisitTypeDefinitions
 {
-    public function VisitSchemaType(IType $definition): void
+    public function visitSchemaType(IType $definition): void
     {
         /** @var EdmModelVisitor $this */
         switch ($definition->getTypeKind()) {
@@ -45,7 +45,7 @@ trait VisitTypeDefinitions
                 $this->ProcessEnumType($definition);
                 break;
             case TypeKind::None():
-                $this->VisitSchemaType($definition);
+                $this->visitSchemaType($definition);
                 break;
             default:
                 throw new InvalidOperationException(
@@ -62,7 +62,7 @@ trait VisitTypeDefinitions
     public function VisitProperties(array $properties): void
     {
         /** @var EdmModelVisitor $this */
-        self::VisitCollection($properties, [$this, 'VisitProperty']);
+        self::visitCollection($properties, [$this, 'VisitProperty']);
     }
 
     public function VisitProperty(IProperty $property): void
@@ -97,7 +97,7 @@ trait VisitTypeDefinitions
     public function VisitEnumMembers(array $enumMembers): void
     {
         /** @var EdmModelVisitor $this */
-        self::VisitCollection($enumMembers, [$this, 'VisitEnumMember']);
+        self::visitCollection($enumMembers, [$this, 'VisitEnumMember']);
     }
 
     public function VisitEnumMember(IEnumMember $enumMember): void

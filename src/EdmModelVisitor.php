@@ -78,7 +78,7 @@ class EdmModelVisitor
 
     protected function ProcessModel(IModel $model): void
     {
-        $this->ProcessElement($model);
+        $this->processElement($model);
         $this->VisitSchemaElements($model->getSchemaElements());
         $this->VisitVocabularyAnnotations($model->getVocabularyAnnotations());
     }

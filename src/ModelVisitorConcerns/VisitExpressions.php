@@ -47,7 +47,7 @@ trait VisitExpressions
     public function VisitExpressions(array $expressions): void
     {
         /** @var EdmModelVisitor $this */
-        self::VisitCollection($expressions, [$this, 'VisitExpression']);
+        self::visitCollection($expressions, [$this, 'VisitExpression']);
     }
 
     public function VisitExpression(IExpression $expression): void
@@ -173,6 +173,6 @@ trait VisitExpressions
     public function visitPropertyConstructors(array $constructor): void
     {
         /** @var EdmModelVisitor $this */
-        self::VisitCollection($constructor, [$this, 'processPropertyConstructor']);
+        self::visitCollection($constructor, [$this, 'processPropertyConstructor']);
     }
 }

@@ -31,25 +31,25 @@ trait VisitTypeReferences
                 $this->processCollectionTypeReference($reference->AsCollection());
                 break;
             case TypeKind::Complex():
-                $this->ProcessComplexTypeReference($reference->AsComplex());
+                $this->processComplexTypeReference($reference->AsComplex());
                 break;
             case TypeKind::Entity():
-                $this->ProcessEntityTypeReference($reference->AsEntity());
+                $this->processEntityTypeReference($reference->AsEntity());
                 break;
             case TypeKind::EntityReference():
-                $this->ProcessEntityReferenceTypeReference($reference->AsEntityReference());
+                $this->processEntityReferenceTypeReference($reference->AsEntityReference());
                 break;
             case TypeKind::Enum():
-                $this->ProcessEnumTypeReference($reference->AsEnum());
+                $this->processEnumTypeReference($reference->AsEnum());
                 break;
             case TypeKind::Primitive():
-                $this->VisitPrimitiveTypeReference($reference->AsPrimitive());
+                $this->visitPrimitiveTypeReference($reference->AsPrimitive());
                 break;
             case TypeKind::Row():
-                $this->ProcessRowTypeReference($reference->AsRow());
+                $this->processRowTypeReference($reference->AsRow());
                 break;
             case TypeKind::None():
-                $this->ProcessTypeReference($reference);
+                $this->processTypeReference($reference);
                 break;
             default:
                 throw new InvalidOperationException(
