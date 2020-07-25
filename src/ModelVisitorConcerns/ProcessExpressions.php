@@ -80,7 +80,7 @@ trait ProcessExpressions
         $this->startElement($expression, __METHOD__);
         $this->processExpression($expression);
         if (null !== $expression->getBase()) {
-            $this->VisitExpression($expression->getBase());
+            $this->visitExpression($expression->getBase());
         }
         $this->endElement($expression, __METHOD__);
     }
@@ -106,7 +106,7 @@ trait ProcessExpressions
         /** @var EdmModelVisitor $this */
         $this->startElement($expression, __METHOD__);
         $this->processExpression($expression);
-        $this->VisitExpressions($expression->getElements());
+        $this->visitExpressions($expression->getElements());
         $this->endElement($expression, __METHOD__);
     }
 
@@ -125,7 +125,7 @@ trait ProcessExpressions
         $this->startElement($expression, __METHOD__);
         $this->processExpression($expression);
         $this->visitTypeReference($expression->getType());
-        $this->VisitExpression($expression->getOperand());
+        $this->visitExpression($expression->getOperand());
         $this->endElement($expression, __METHOD__);
     }
 
@@ -142,9 +142,9 @@ trait ProcessExpressions
         /** @var EdmModelVisitor $this */
         $this->startElement($expression, __METHOD__);
         $this->processExpression($expression);
-        $this->VisitExpression($expression->getTestExpression());
-        $this->VisitExpression($expression->getTrueExpression());
-        $this->VisitExpression($expression->getFalseExpression());
+        $this->visitExpression($expression->getTestExpression());
+        $this->visitExpression($expression->getTrueExpression());
+        $this->visitExpression($expression->getFalseExpression());
         $this->endElement($expression, __METHOD__);
     }
 
@@ -161,8 +161,8 @@ trait ProcessExpressions
         /** @var EdmModelVisitor $this */
         $this->startElement($expression, __METHOD__);
         $this->processExpression($expression);
-        $this->VisitExpression($expression->getAppliedFunction());
-        $this->VisitExpressions($expression->getArguments());
+        $this->visitExpression($expression->getAppliedFunction());
+        $this->visitExpressions($expression->getArguments());
         $this->endElement($expression, __METHOD__);
     }
 
@@ -244,7 +244,7 @@ trait ProcessExpressions
         $this->startElement($expression, __METHOD__);
         $this->processExpression($expression);
         $this->visitTypeReference($expression->getType());
-        $this->VisitExpression($expression->getOperand());
+        $this->visitExpression($expression->getOperand());
         $this->endElement($expression, __METHOD__);
     }
 
@@ -252,7 +252,7 @@ trait ProcessExpressions
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($expression, __METHOD__);
-        $this->VisitExpression($expression->getExpression());
+        $this->visitExpression($expression->getExpression());
         $this->endElement($expression, __METHOD__);
     }
 
@@ -261,7 +261,7 @@ trait ProcessExpressions
         EdmUtil::checkArgumentNull($constructor->getValue(), 'constructor->getValue');
         /** @var EdmModelVisitor $this */
         $this->startElement($constructor, __METHOD__);
-        $this->VisitExpression($constructor->getValue());
+        $this->visitExpression($constructor->getValue());
         $this->endElement($constructor, __METHOD__);
     }
 

@@ -94,7 +94,7 @@ class EdmxWriter
                 $errors = [new EdmError(new CsdlLocation(0, 0), EdmErrorCode::UnknownEdmxVersion(), StringConst::Serializer_UnknownEdmxVersion())];
                 return false;
             }
-        } elseif (! $edmxVersion = CsdlConstants::EdmToEdmxVersions($model->getEdmVersion() ?? Version::v3())) {
+        } elseif (! $edmxVersion = CsdlConstants::edmToEdmxVersions($model->getEdmVersion() ?? Version::v3())) {
             $errors = [new EdmError(new CsdlLocation(0, 0), EdmErrorCode::UnknownEdmVersion(), StringConst::Serializer_UnknownEdmVersion()) ];
             return false;
         }

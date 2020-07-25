@@ -20,7 +20,7 @@ trait ProcessDefinitionComponents
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($property, __METHOD__);
-        $this->ProcessProperty($property);
+        $this->processProperty($property);
         $this->endElement($property, __METHOD__);
     }
 
@@ -28,11 +28,11 @@ trait ProcessDefinitionComponents
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($property, __METHOD__);
-        $this->ProcessProperty($property);
+        $this->processProperty($property);
         $this->endElement($property, __METHOD__);
     }
 
-    protected function ProcessProperty(IProperty $property): void
+    protected function processProperty(IProperty $property): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($property, __METHOD__);

@@ -35,7 +35,7 @@ class DirectValueAnnotationHasXmlSerializableName extends DirectValueAnnotationR
         ) {
             // Note: this check can be done without the try/catch block, but we need XmlConvert.IsStartNCNameChar and
             // XmlConvert.IsNCNameChar, which are not available in 3.5.
-            if (!XmlConvert::VerifyNCName($annotation->getName())) {
+            if (!XmlConvert::verifyNCName($annotation->getName())) {
                 $value         = $annotation->getValue() ;
                 $errorLocation = ($value === null || !($value instanceof IValue)) ? null : $value->location();
                 $error         = new EdmError(
