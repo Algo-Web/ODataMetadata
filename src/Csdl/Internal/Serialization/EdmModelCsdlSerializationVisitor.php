@@ -127,7 +127,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
-    public function VisitEdmSchema(EdmSchema $element, array $mappings): void
+    public function visitEdmSchema(EdmSchema $element, array $mappings): void
     {
         $alias = null;
         if ($this->namespaceAliasMappings != null) {
@@ -136,12 +136,12 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                 null;
         }
 
-        $this->schemaWriter->WriteSchemaElementHeader($element, $alias, $mappings);
+        $this->schemaWriter->writeSchemaElementHeader($element, $alias, $mappings);
         foreach ($element->getUsedNamespaces() as $usingNamespace) {
             if ($usingNamespace != $element->getUsedNamespaces()) {
                 if ($this->namespaceAliasMappings != null &&
                     array_key_exists($usingNamespace, $this->namespaceAliasMappings)) {
-                    $this->schemaWriter->WriteNamespaceUsingElement(
+                    $this->schemaWriter->writeNamespaceUsingElement(
                         $usingNamespace,
                         $this->namespaceAliasMappings[$usingNamespace]
                     );
@@ -160,26 +160,26 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $shared = array_filter(
                 $this->associations[$associationName],
                 function (INavigationProperty $np) use ($self, $navigationProperty) {
-                    return $self->SharesAssociation($np, $navigationProperty);
+                    return $self->sharesAssociation($np, $navigationProperty);
                 }
             );
             // This prevents us from losing associations if they share the same name.
             if (!count($shared) > 0) {
                 $this->associations[$associationName][] = $navigationProperty;
                 $this->associations[$associationName][] = $navigationProperty->getPartner();
-                $this->ProcessAssociation($navigationProperty);
+                $this->processAssociation($navigationProperty);
             }
         }
 
         // EntityContainers are excluded from the EdmSchema.SchemaElements property so they can be forced to the end.
-        $this->visitCollection($element->getEntityContainers(), [$this, 'ProcessEntityContainer']);
+        $this->visitCollection($element->getEntityContainers(), [$this, 'processEntityContainer']);
         foreach ($element->getAnnotations() as $annotationsForTargetKey => $annotationsForTarget) {
-            $this->schemaWriter->WriteAnnotationsElementHeader($annotationsForTargetKey);
+            $this->schemaWriter->writeAnnotationsElementHeader($annotationsForTargetKey);
             $this->visitVocabularyAnnotations($annotationsForTarget);
-            $this->schemaWriter->WriteEndElement();
+            $this->schemaWriter->writeEndElement();
         }
 
-        $this->schemaWriter->WriteEndElement();
+        $this->schemaWriter->writeEndElement();
     }
 
     /**
@@ -187,9 +187,9 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
-    protected function ProcessEntityContainer(IEntityContainer $element): void
+    protected function processEntityContainer(IEntityContainer $element): void
     {
-        $this->BeginElement($element, [$this->schemaWriter, 'WriteEntityContainerElementHeader']);
+        $this->beginElement($element, [$this->schemaWriter, 'writeEntityContainerElementHeader']);
         parent::processEntityContainer($element);
 
         /** @var IEntitySet $entitySet */
@@ -204,7 +204,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                 $any  = array_filter(
                     $this->associationSets[$associationSetName],
                     function (Tuple $set) use ($self, $entitySet, $mapping) {
-                        return $self->SharesAssociationSet(
+                        return $self->sharesAssociationSet(
                             $set->getItem1(),
                             $set->getItem2(),
                             $entitySet,
@@ -219,25 +219,25 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                     $this->associationSets[$associationSetName][] =
                         new Tuple($mapping->getTargetEntitySet(), $mapping->getNavigationProperty()->getPartner());
 
-                    $this->ProcessAssociationSet($entitySet, $mapping->getNavigationProperty());
+                    $this->processAssociationSet($entitySet, $mapping->getNavigationProperty());
                 }
             }
         }
 
         $this->associationSets = [];
 
-        $this->FinishElement($element);
+        $this->finishElement($element);
     }
 
     /**
      * @param  IEntitySet            $element
      * @throws NotSupportedException
      */
-    protected function ProcessEntitySet(IEntitySet $element): void
+    protected function processEntitySet(IEntitySet $element): void
     {
-        $this->BeginElement($element, [$this->schemaWriter, 'WriteEntitySetElementHeader']);
+        $this->beginElement($element, [$this->schemaWriter, 'writeEntitySetElementHeader']);
         parent::processEntitySet($element);
-        $this->FinishElement($element);
+        $this->finishElement($element);
     }
 
     /**
@@ -245,94 +245,94 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @throws NotSupportedException
      * @throws \ReflectionException
      */
-    protected function ProcessEntityType(IEntityType $element): void
+    protected function processEntityType(IEntityType $element): void
     {
-        $this->BeginElement($element, [$this->schemaWriter, 'WriteEntityTypeElementHeader']);
+        $this->beginElement($element, [$this->schemaWriter, 'writeEntityTypeElementHeader']);
         if (null !== $element->getDeclaredKey() &&
             count($element->getDeclaredKey()) > 0 &&
             null === $element->getBaseType()) {
-            $this->VisitEntityTypeDeclaredKey($element->getDeclaredKey());
+            $this->visitEntityTypeDeclaredKey($element->getDeclaredKey());
         }
 
         $this->VisitProperties($element->DeclaredStructuralProperties());
         $this->VisitProperties($element->DeclaredNavigationProperties());
-        $this->FinishElement($element);
+        $this->finishElement($element);
     }
 
     /**
      * @param  IStructuralProperty   $element
      * @throws NotSupportedException
      */
-    protected function ProcessStructuralProperty(IStructuralProperty $element): void
+    protected function processStructuralProperty(IStructuralProperty $element): void
     {
         EdmUtil::checkArgumentNull($element->getType(), 'element->getType');
-        $inlineType = self::IsInlineType($element->getType());
-        $this->BeginElement($element, function (IStructuralProperty $t) use ($inlineType) {
-            $this->schemaWriter->WriteStructuralPropertyElementHeader($t, $inlineType);
+        $inlineType = self::isInlineType($element->getType());
+        $this->beginElement($element, function (IStructuralProperty $t) use ($inlineType) {
+            $this->schemaWriter->writeStructuralPropertyElementHeader($t, $inlineType);
         }, function (IStructuralProperty $e) use ($inlineType) {
             EdmUtil::checkArgumentNull($e->getType(), 'e->getType');
-            $this->ProcessFacets($e->getType(), $inlineType);
+            $this->processFacets($e->getType(), $inlineType);
         });
         if (!$inlineType) {
             $this->visitTypeReference($element->getType());
         }
 
-        $this->FinishElement($element);
+        $this->finishElement($element);
     }
 
     /**
      * @param  IBinaryTypeReference $element
      * @throws \ReflectionException
      */
-    protected function ProcessBinaryTypeReference(IBinaryTypeReference $element): void
+    protected function processBinaryTypeReference(IBinaryTypeReference $element): void
     {
-        $this->schemaWriter->WriteBinaryTypeAttributes($element);
+        $this->schemaWriter->writeBinaryTypeAttributes($element);
     }
 
     /**
      * @param  IDecimalTypeReference $element
      * @throws \ReflectionException
      */
-    protected function ProcessDecimalTypeReference(IDecimalTypeReference $element): void
+    protected function processDecimalTypeReference(IDecimalTypeReference $element): void
     {
-        $this->schemaWriter->WriteDecimalTypeAttributes($element);
+        $this->schemaWriter->writeDecimalTypeAttributes($element);
     }
 
     /**
      * @param  ISpatialTypeReference $element
      * @throws \ReflectionException
      */
-    protected function ProcessSpatialTypeReference(ISpatialTypeReference $element): void
+    protected function processSpatialTypeReference(ISpatialTypeReference $element): void
     {
-        $this->schemaWriter->WriteSpatialTypeAttributes($element);
+        $this->schemaWriter->writeSpatialTypeAttributes($element);
     }
 
     /**
      * @param  IStringTypeReference $element
      * @throws \ReflectionException
      */
-    protected function ProcessStringTypeReference(IStringTypeReference $element): void
+    protected function processStringTypeReference(IStringTypeReference $element): void
     {
-        $this->schemaWriter->WriteStringTypeAttributes($element);
+        $this->schemaWriter->writeStringTypeAttributes($element);
     }
 
     /**
      * @param  ITemporalTypeReference $element
      * @throws \ReflectionException
      */
-    protected function ProcessTemporalTypeReference(ITemporalTypeReference $element): void
+    protected function processTemporalTypeReference(ITemporalTypeReference $element): void
     {
-        $this->schemaWriter->WriteTemporalTypeAttributes($element);
+        $this->schemaWriter->writeTemporalTypeAttributes($element);
     }
 
     /**
      * @param  INavigationProperty   $element
      * @throws NotSupportedException
      */
-    protected function ProcessNavigationProperty(INavigationProperty $element): void
+    protected function processNavigationProperty(INavigationProperty $element): void
     {
-        $this->BeginElement($element, [$this->schemaWriter, 'WriteNavigationPropertyElementHeader']);
-        $this->FinishElement($element);
+        $this->beginElement($element, [$this->schemaWriter, 'writeNavigationPropertyElementHeader']);
+        $this->finishElement($element);
         $this->navigationProperties[] = $element;
     }
 
@@ -340,46 +340,46 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  IComplexType          $element
      * @throws NotSupportedException
      */
-    protected function ProcessComplexType(IComplexType $element): void
+    protected function processComplexType(IComplexType $element): void
     {
-        $this->BeginElement($element, [$this->schemaWriter, 'WriteComplexTypeElementHeader']);
-        parent::ProcessComplexType($element);
-        $this->FinishElement($element);
+        $this->beginElement($element, [$this->schemaWriter, 'writeComplexTypeElementHeader']);
+        parent::processComplexType($element);
+        $this->finishElement($element);
     }
 
     /**
      * @param  IEnumType             $element
      * @throws NotSupportedException
      */
-    protected function ProcessEnumType(IEnumType $element): void
+    protected function processEnumType(IEnumType $element): void
     {
-        $this->BeginElement($element, [$this->schemaWriter, 'WriteEnumTypeElementHeader']);
-        parent::ProcessEnumType($element);
-        $this->FinishElement($element);
+        $this->beginElement($element, [$this->schemaWriter, 'writeEnumTypeElementHeader']);
+        parent::processEnumType($element);
+        $this->finishElement($element);
     }
 
     /**
      * @param  IEnumMember           $element
      * @throws NotSupportedException
      */
-    protected function ProcessEnumMember(IEnumMember $element): void
+    protected function processEnumMember(IEnumMember $element): void
     {
-        $this->BeginElement($element, [$this->schemaWriter, 'WriteEnumMemberElementHeader']);
-        $this->FinishElement($element);
+        $this->beginElement($element, [$this->schemaWriter, 'writeEnumMemberElementHeader']);
+        $this->finishElement($element);
     }
 
     /**
      * @param  IValueTerm            $term
      * @throws NotSupportedException
      */
-    protected function ProcessValueTerm(IValueTerm $term): void
+    protected function processValueTerm(IValueTerm $term): void
     {
-        $inlineType = null !== $term->getType() && self::IsInlineType($term->getType());
-        $this->BeginElement($term, function (IValueTerm $t) use ($inlineType) {
-            $this->schemaWriter->WriteValueTermElementHeader($t, $inlineType);
+        $inlineType = null !== $term->getType() && self::isInlineType($term->getType());
+        $this->beginElement($term, function (IValueTerm $t) use ($inlineType) {
+            $this->schemaWriter->writeValueTermElementHeader($t, $inlineType);
         }, function (IValueTerm $e) use ($inlineType) {
             EdmUtil::checkArgumentNull($e->getType(), 'e->getType');
-            $this->ProcessFacets($e->getType(), $inlineType);
+            $this->processFacets($e->getType(), $inlineType);
         });
         if (!$inlineType) {
             if (null !== $term->getType()) {
@@ -387,104 +387,104 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             }
         }
 
-        $this->FinishElement($term);
+        $this->finishElement($term);
     }
 
     /**
      * @param  IFunction             $element
      * @throws NotSupportedException
      */
-    protected function ProcessFunction(IFunction $element): void
+    protected function processFunction(IFunction $element): void
     {
         if (null !== $element->getReturnType()) {
-            $inlineReturnType = self::IsInlineType($element->getReturnType());
-            $this->BeginElement($element, function (IFunction $f) use ($inlineReturnType) {
-                $this->schemaWriter->WriteFunctionElementHeader($f, $inlineReturnType);
+            $inlineReturnType = self::isInlineType($element->getReturnType());
+            $this->beginElement($element, function (IFunction $f) use ($inlineReturnType) {
+                $this->schemaWriter->writeFunctionElementHeader($f, $inlineReturnType);
             }, function (IFunction $f) use ($inlineReturnType) {
                 EdmUtil::checkArgumentNull($f->getReturnType(), 'f->getReturnType');
-                $this->ProcessFacets($f->getReturnType(), $inlineReturnType);
+                $this->processFacets($f->getReturnType(), $inlineReturnType);
             });
             if (!$inlineReturnType) {
-                $this->schemaWriter->WriteReturnTypeElementHeader();
+                $this->schemaWriter->writeReturnTypeElementHeader();
                 $this->visitTypeReference($element->getReturnType());
-                $this->schemaWriter->WriteEndElement();
+                $this->schemaWriter->writeEndElement();
             }
         } else {
-            $this->BeginElement($element, function (IFunction $t) {
-                $this->schemaWriter->WriteFunctionElementHeader($t, false /*Inline ReturnType*/);
+            $this->beginElement($element, function (IFunction $t) {
+                $this->schemaWriter->writeFunctionElementHeader($t, false /*Inline ReturnType*/);
             });
         }
 
         if (null !== $element->getDefiningExpression()) {
-            $this->schemaWriter->WriteDefiningExpressionElement($element->getDefiningExpression());
+            $this->schemaWriter->writeDefiningExpressionElement($element->getDefiningExpression());
         }
 
         $this->VisitFunctionParameters($element->getParameters());
-        $this->FinishElement($element);
+        $this->finishElement($element);
     }
 
     /**
      * @param  IFunctionParameter    $element
      * @throws NotSupportedException
      */
-    protected function ProcessFunctionParameter(IFunctionParameter $element): void
+    protected function processFunctionParameter(IFunctionParameter $element): void
     {
-        $inlineType = self::IsInlineType($element->getType());
-        $this->BeginElement(
+        $inlineType = self::isInlineType($element->getType());
+        $this->beginElement(
             $element,
             function (IFunctionParameter $t) use ($inlineType) {
-                $this->schemaWriter->WriteFunctionParameterElementHeader($t, $inlineType);
+                $this->schemaWriter->writeFunctionParameterElementHeader($t, $inlineType);
             },
             function (IFunctionParameter $e) use ($inlineType) {
-                $this->ProcessFacets($e->getType(), $inlineType);
+                $this->processFacets($e->getType(), $inlineType);
             }
         );
         if (!$inlineType) {
             $this->visitTypeReference($element->getType());
         }
 
-        $this->FinishElement($element);
+        $this->finishElement($element);
     }
 
     /**
      * @param  ICollectionType       $element
      * @throws NotSupportedException
      */
-    protected function ProcessCollectionType(ICollectionType $element): void
+    protected function processCollectionType(ICollectionType $element): void
     {
         EdmUtil::checkArgumentNull($element->getElementType(), 'element->getElementType');
-        $inlineType = self::IsInlineType($element->getElementType());
-        $this->BeginElement(
+        $inlineType = self::isInlineType($element->getElementType());
+        $this->beginElement(
             $element,
             function (ICollectionType $t) use ($inlineType) {
-                $this->schemaWriter->WriteCollectionTypeElementHeader($t, $inlineType);
+                $this->schemaWriter->writeCollectionTypeElementHeader($t, $inlineType);
             },
             function (ICollectionType $e) use ($inlineType) {
                 EdmUtil::checkArgumentNull($e->getElementType(), 'e->getElementType');
-                $this->ProcessFacets($e->getElementType(), $inlineType);
+                $this->processFacets($e->getElementType(), $inlineType);
             }
         );
         if (!$inlineType) {
             $this->visitTypeReference($element->getElementType());
         }
 
-        $this->FinishElement($element);
+        $this->finishElement($element);
     }
 
-    protected function ProcessRowType(IRowType $element): void
+    protected function processRowType(IRowType $element): void
     {
-        $this->schemaWriter->WriteRowTypeElementHeader();
-        parent::ProcessRowType($element);
-        $this->schemaWriter->WriteEndElement();
+        $this->schemaWriter->writeRowTypeElementHeader();
+        parent::processRowType($element);
+        $this->schemaWriter->writeEndElement();
     }
 
     /**
      * @param  IFunctionImport       $functionImport
      * @throws NotSupportedException
      */
-    protected function ProcessFunctionImport(IFunctionImport $functionImport): void
+    protected function processFunctionImport(IFunctionImport $functionImport): void
     {
-        if (null !== $functionImport->getReturnType() && !self::IsInlineType($functionImport->getReturnType())) {
+        if (null !== $functionImport->getReturnType() && !self::isInlineType($functionImport->getReturnType())) {
             throw new InvalidOperationException(
                 StringConst::Serializer_NonInlineFunctionImportReturnType(
                     $functionImport->getContainer()->FullName() . '/' . $functionImport->getName()
@@ -492,9 +492,9 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             );
         }
 
-        $this->BeginElement($functionImport, [$this->schemaWriter, 'WriteFunctionImportElementHeader']);
+        $this->beginElement($functionImport, [$this->schemaWriter, 'writeFunctionImportElementHeader']);
         $this->VisitFunctionParameters($functionImport->getParameters());
-        $this->FinishElement($functionImport);
+        $this->finishElement($functionImport);
     }
 
     #region Vocabulary Annotations
@@ -503,84 +503,84 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  IValueAnnotation      $annotation
      * @throws NotSupportedException
      */
-    protected function ProcessValueAnnotation(IValueAnnotation $annotation): void
+    protected function processValueAnnotation(IValueAnnotation $annotation): void
     {
-        $isInline = self::IsInlineExpression($annotation->getValue());
-        $this->BeginElement($annotation, function ($t) use ($isInline) {
-            $this->schemaWriter->WriteValueAnnotationElementHeader($t, $isInline);
+        $isInline = self::isInlineExpression($annotation->getValue());
+        $this->beginElement($annotation, function ($t) use ($isInline) {
+            $this->schemaWriter->writeValueAnnotationElementHeader($t, $isInline);
         });
         if (!$isInline) {
             parent::processValueAnnotation($annotation);
         }
 
-        $this->FinishElement($annotation);
+        $this->finishElement($annotation);
     }
 
     /**
      * @param  ITypeAnnotation       $annotation
      * @throws NotSupportedException
      */
-    protected function ProcessTypeAnnotation(ITypeAnnotation $annotation): void
+    protected function processTypeAnnotation(ITypeAnnotation $annotation): void
     {
-        $this->BeginElement($annotation, [$this->schemaWriter, 'WriteTypeAnnotationElementHeader']);
+        $this->beginElement($annotation, [$this->schemaWriter, 'writeTypeAnnotationElementHeader']);
         parent::processTypeAnnotation($annotation);
-        $this->FinishElement($annotation);
+        $this->finishElement($annotation);
     }
 
     /**
      * @param  IPropertyValueBinding $binding
      * @throws NotSupportedException
      */
-    protected function ProcessPropertyValueBinding(IPropertyValueBinding $binding): void
+    protected function processPropertyValueBinding(IPropertyValueBinding $binding): void
     {
-        $isInline = self::IsInlineExpression($binding->getValue());
-        $this->BeginElement($binding, function ($t) use ($isInline) {
-            $this->schemaWriter->WritePropertyValueElementHeader($t, $isInline);
+        $isInline = self::isInlineExpression($binding->getValue());
+        $this->beginElement($binding, function ($t) use ($isInline) {
+            $this->schemaWriter->writePropertyValueElementHeader($t, $isInline);
         });
         if (!$isInline) {
             parent::processPropertyValueBinding($binding);
         }
 
-        $this->FinishElement($binding);
+        $this->finishElement($binding);
     }
 
     #endregion
 
     #region Expressions
 
-    protected function ProcessStringConstantExpression(IStringConstantExpression $expression): void
+    protected function processStringConstantExpression(IStringConstantExpression $expression): void
     {
-        $this->schemaWriter->WriteStringConstantExpressionElement($expression);
+        $this->schemaWriter->writeStringConstantExpressionElement($expression);
     }
 
-    protected function ProcessBinaryConstantExpression(IBinaryConstantExpression $expression): void
+    protected function processBinaryConstantExpression(IBinaryConstantExpression $expression): void
     {
-        $this->schemaWriter->WriteBinaryConstantExpressionElement($expression);
+        $this->schemaWriter->writeBinaryConstantExpressionElement($expression);
     }
 
     /**
      * @param  IRecordExpression     $expression
      * @throws NotSupportedException
      */
-    protected function ProcessRecordExpression(IRecordExpression $expression): void
+    protected function processRecordExpression(IRecordExpression $expression): void
     {
-        $this->BeginElement($expression, [$this->schemaWriter, 'WriteRecordExpressionElementHeader']);
+        $this->beginElement($expression, [$this->schemaWriter, 'writeRecordExpressionElementHeader']);
         $this->visitPropertyConstructors($expression->getProperties());
-        $this->FinishElement($expression);
+        $this->finishElement($expression);
     }
 
     /**
      * @param  ILabeledExpression    $element
      * @throws NotSupportedException
      */
-    protected function ProcessLabeledExpression(ILabeledExpression $element): void
+    protected function processLabeledExpression(ILabeledExpression $element): void
     {
         if (null === $element->getName()) {
             parent::processLabeledExpression($element);
         } else {
-            $this->BeginElement($element, [$this->schemaWriter, 'WriteLabeledElementHeader']);
+            $this->beginElement($element, [$this->schemaWriter, 'writeLabeledElementHeader']);
             parent::processLabeledExpression($element);
-            $this->FinishElement($element);
+            $this->finishElement($element);
         }
     }
 
@@ -588,116 +588,116 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  IPropertyConstructor  $constructor
      * @throws NotSupportedException
      */
-    protected function ProcessPropertyConstructor(IPropertyConstructor $constructor): void
+    protected function processPropertyConstructor(IPropertyConstructor $constructor): void
     {
         EdmUtil::checkArgumentNull($constructor->getValue(), 'constructor->getValue');
-        $isInline = self::IsInlineExpression($constructor->getValue());
-        $this->BeginElement($constructor, function ($t) use ($isInline) {
-            $this->schemaWriter->WritePropertyConstructorElementHeader($t, $isInline);
+        $isInline = self::isInlineExpression($constructor->getValue());
+        $this->beginElement($constructor, function ($t) use ($isInline) {
+            $this->schemaWriter->writePropertyConstructorElementHeader($t, $isInline);
         });
         if (!$isInline) {
             parent::processPropertyConstructor($constructor);
         }
 
-        $this->FinishElement($constructor);
+        $this->finishElement($constructor);
     }
 
     /**
      * @param  IPropertyReferenceExpression $expression
      * @throws NotSupportedException
      */
-    protected function ProcessPropertyReferenceExpression(IPropertyReferenceExpression $expression): void
+    protected function processPropertyReferenceExpression(IPropertyReferenceExpression $expression): void
     {
-        $this->BeginElement($expression, [$this->schemaWriter, 'WritePropertyReferenceExpressionElementHeader']);
+        $this->beginElement($expression, [$this->schemaWriter, 'writePropertyReferenceExpressionElementHeader']);
         if ($expression->getBase()!= null) {
             $this->VisitExpression($expression->getBase());
         }
 
-        $this->FinishElement($expression);
+        $this->finishElement($expression);
     }
 
     /**
      * @param IPathExpression $expression
      */
-    protected function ProcessPathExpression(IPathExpression $expression): void
+    protected function processPathExpression(IPathExpression $expression): void
     {
-        $this->schemaWriter->WritePathExpressionElement($expression);
+        $this->schemaWriter->writePathExpressionElement($expression);
     }
 
     /**
      * @param  IParameterReferenceExpression $expression
      * @throws \ReflectionException
      */
-    protected function ProcessParameterReferenceExpression(IParameterReferenceExpression $expression): void
+    protected function processParameterReferenceExpression(IParameterReferenceExpression $expression): void
     {
-        $this->schemaWriter->WriteParameterReferenceExpressionElement($expression);
+        $this->schemaWriter->writeParameterReferenceExpressionElement($expression);
     }
 
     /**
      * @param  ICollectionExpression $expression
      * @throws NotSupportedException
      */
-    protected function ProcessCollectionExpression(ICollectionExpression $expression): void
+    protected function processCollectionExpression(ICollectionExpression $expression): void
     {
-        $this->BeginElement($expression, [$this->schemaWriter, 'WriteCollectionExpressionElementHeader']);
+        $this->beginElement($expression, [$this->schemaWriter, 'writeCollectionExpressionElementHeader']);
         $this->VisitExpressions($expression->getElements());
-        $this->FinishElement($expression);
+        $this->finishElement($expression);
     }
 
     /**
      * @param  IIsTypeExpression     $expression
      * @throws NotSupportedException
      */
-    protected function ProcessIsTypeExpression(IIsTypeExpression $expression): void
+    protected function processIsTypeExpression(IIsTypeExpression $expression): void
     {
-        $inlineType = self::IsInlineType($expression->getType());
-        $this->BeginElement($expression, function (IIsTypeExpression $t) use ($inlineType) {
-            $this->schemaWriter->WriteIsTypeExpressionElementHeader($t, $inlineType);
+        $inlineType = self::isInlineType($expression->getType());
+        $this->beginElement($expression, function (IIsTypeExpression $t) use ($inlineType) {
+            $this->schemaWriter->writeIsTypeExpressionElementHeader($t, $inlineType);
         }, function (IIsTypeExpression $e) use ($inlineType) {
-            $this->ProcessFacets($e->getType(), $inlineType);
+            $this->processFacets($e->getType(), $inlineType);
         });
         if (!$inlineType) {
             $this->visitTypeReference($expression->getType());
         }
 
         $this->VisitExpression($expression->getOperand());
-        $this->FinishElement($expression);
+        $this->finishElement($expression);
     }
 
-    protected function ProcessIntegerConstantExpression(IIntegerConstantExpression $expression): void
+    protected function processIntegerConstantExpression(IIntegerConstantExpression $expression): void
     {
-        $this->schemaWriter->WriteIntegerConstantExpressionElement($expression);
+        $this->schemaWriter->writeIntegerConstantExpressionElement($expression);
     }
 
     /**
      * @param  IIfExpression         $expression
      * @throws NotSupportedException
      */
-    protected function ProcessIfExpression(IIfExpression $expression): void
+    protected function processIfExpression(IIfExpression $expression): void
     {
-        $this->BeginElement($expression, [$this->schemaWriter, 'WriteIfExpressionElementHeader']);
+        $this->beginElement($expression, [$this->schemaWriter, 'writeIfExpressionElementHeader']);
         parent::processIfExpression($expression);
-        $this->FinishElement($expression);
+        $this->finishElement($expression);
     }
 
     /**
      * @param  IFunctionReferenceExpression $expression
      * @throws \ReflectionException
      */
-    protected function ProcessFunctionReferenceExpression(IFunctionReferenceExpression $expression): void
+    protected function processFunctionReferenceExpression(IFunctionReferenceExpression $expression): void
     {
-        $this->schemaWriter->WriteFunctionReferenceExpressionElement($expression);
+        $this->schemaWriter->writeFunctionReferenceExpressionElement($expression);
     }
 
     /**
      * @param  IApplyExpression      $expression
      * @throws NotSupportedException
      */
-    protected function ProcessFunctionApplicationExpression(IApplyExpression $expression): void
+    protected function processFunctionApplicationExpression(IApplyExpression $expression): void
     {
         $isFunction = $expression->getAppliedFunction()->getExpressionKind() == ExpressionKind::FunctionReference();
-        $this->BeginElement($expression, function ($e) use ($isFunction) {
-            $this->schemaWriter->WriteFunctionApplicationElementHeader($e, $isFunction);
+        $this->beginElement($expression, function ($e) use ($isFunction) {
+            $this->schemaWriter->writeFunctionApplicationElementHeader($e, $isFunction);
         });
         if (!$isFunction) {
             EdmUtil::checkArgumentNull($expression->getAppliedFunction(), 'expression->getAppliedFunction');
@@ -705,85 +705,85 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         }
 
         $this->VisitExpressions($expression->getArguments());
-        $this->FinishElement($expression);
+        $this->finishElement($expression);
     }
 
-    protected function ProcessFloatingConstantExpression(IFloatingConstantExpression $expression): void
+    protected function processFloatingConstantExpression(IFloatingConstantExpression $expression): void
     {
-        $this->schemaWriter->WriteFloatingConstantExpressionElement($expression);
+        $this->schemaWriter->writeFloatingConstantExpressionElement($expression);
     }
 
-    protected function ProcessGuidConstantExpression(IGuidConstantExpression $expression): void
+    protected function processGuidConstantExpression(IGuidConstantExpression $expression): void
     {
-        $this->schemaWriter->WriteGuidConstantExpressionElement($expression);
+        $this->schemaWriter->writeGuidConstantExpressionElement($expression);
     }
 
     /**
      * @param  IEnumMemberReferenceExpression $expression
      * @throws \ReflectionException
      */
-    protected function ProcessEnumMemberReferenceExpression(IEnumMemberReferenceExpression $expression): void
+    protected function processEnumMemberReferenceExpression(IEnumMemberReferenceExpression $expression): void
     {
-        $this->schemaWriter->WriteEnumMemberReferenceExpressionElement($expression);
+        $this->schemaWriter->writeEnumMemberReferenceExpressionElement($expression);
     }
 
     /**
      * @param  IEntitySetReferenceExpression $expression
      * @throws \ReflectionException
      */
-    protected function ProcessEntitySetReferenceExpression(IEntitySetReferenceExpression $expression): void
+    protected function processEntitySetReferenceExpression(IEntitySetReferenceExpression $expression): void
     {
-        $this->schemaWriter->WriteEntitySetReferenceExpressionElement($expression);
+        $this->schemaWriter->writeEntitySetReferenceExpressionElement($expression);
     }
 
-    protected function ProcessDecimalConstantExpression(IDecimalConstantExpression $expression): void
+    protected function processDecimalConstantExpression(IDecimalConstantExpression $expression): void
     {
-        $this->schemaWriter->WriteDecimalConstantExpressionElement($expression);
+        $this->schemaWriter->writeDecimalConstantExpressionElement($expression);
     }
 
-    protected function ProcessDateTimeConstantExpression(IDateTimeConstantExpression $expression): void
+    protected function processDateTimeConstantExpression(IDateTimeConstantExpression $expression): void
     {
-        $this->schemaWriter->WriteDateTimeConstantExpressionElement($expression);
+        $this->schemaWriter->writeDateTimeConstantExpressionElement($expression);
     }
 
-    protected function ProcessDateTimeOffsetConstantExpression(IDateTimeOffsetConstantExpression $expression): void
+    protected function processDateTimeOffsetConstantExpression(IDateTimeOffsetConstantExpression $expression): void
     {
-        $this->schemaWriter->WriteDateTimeOffsetConstantExpressionElement($expression);
+        $this->schemaWriter->writeDateTimeOffsetConstantExpressionElement($expression);
     }
 
-    protected function ProcessBooleanConstantExpression(IBooleanConstantExpression $expression): void
+    protected function processBooleanConstantExpression(IBooleanConstantExpression $expression): void
     {
-        $this->schemaWriter->WriteBooleanConstantExpressionElement($expression);
+        $this->schemaWriter->writeBooleanConstantExpressionElement($expression);
     }
 
-    protected function ProcessNullConstantExpression(INullExpression $expression): void
+    protected function processNullConstantExpression(INullExpression $expression): void
     {
-        $this->schemaWriter->WriteNullConstantExpressionElement($expression);
+        $this->schemaWriter->writeNullConstantExpressionElement($expression);
     }
 
     /**
      * @param  IAssertTypeExpression $expression
      * @throws NotSupportedException
      */
-    protected function ProcessAssertTypeExpression(IAssertTypeExpression $expression): void
+    protected function processAssertTypeExpression(IAssertTypeExpression $expression): void
     {
-        $inlineType = self::IsInlineType($expression->getType());
-        $this->BeginElement($expression, function (IAssertTypeExpression $t) use ($inlineType) {
-            $this->schemaWriter->WriteAssertTypeExpressionElementHeader($t, $inlineType);
+        $inlineType = self::isInlineType($expression->getType());
+        $this->beginElement($expression, function (IAssertTypeExpression $t) use ($inlineType) {
+            $this->schemaWriter->writeAssertTypeExpressionElementHeader($t, $inlineType);
         }, function (IAssertTypeExpression $e) use ($inlineType) {
-            $this->ProcessFacets($e->getType(), $inlineType);
+            $this->processFacets($e->getType(), $inlineType);
         });
         if (!$inlineType) {
             $this->visitTypeReference($expression->getType());
         }
 
         $this->VisitExpression($expression->getOperand());
-        $this->FinishElement($expression);
+        $this->finishElement($expression);
     }
 
     #endregion
 
-    private static function IsInlineType(ITypeReference $reference): bool
+    private static function isInlineType(ITypeReference $reference): bool
     {
         if ($reference->getDefinition() instanceof ISchemaElement || $reference->isEntityReference()) {
             return true;
@@ -795,7 +795,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         return false;
     }
 
-    private static function IsInlineExpression(IExpression $expression): bool
+    private static function isInlineExpression(IExpression $expression): bool
     {
         return $expression->getExpressionKind()->isAnyOf(
             ExpressionKind::BinaryConstant(),
@@ -816,15 +816,15 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  iterable|IDirectValueAnnotation[] $annotations
      * @throws NotSupportedException
      */
-    private function ProcessAnnotations(iterable $annotations): void
+    private function processAnnotations(iterable $annotations): void
     {
-        $this->VisitAttributeAnnotations($annotations);
+        $this->visitAttributeAnnotations($annotations);
         foreach ($annotations as $annotation) {
             if ($annotation->getNamespaceUri() == EdmConstants::DocumentationUri &&
                 $annotation->getName() == EdmConstants::DocumentationAnnotation) {
                 $value = $annotation->getValue();
                 assert($value instanceof IDocumentation);
-                $this->ProcessEdmDocumentation($value);
+                $this->processEdmDocumentation($value);
             }
         }
     }
@@ -834,7 +834,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
-    private function ProcessAssociation(INavigationProperty $element): void
+    private function processAssociation(INavigationProperty $element): void
     {
         $end1 = $element->GetPrimary();
         $end2 = $end1->getPartner();
@@ -854,15 +854,15 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $constraintAnnotations
         );
 
-        $this->schemaWriter->WriteAssociationElementHeader($end1);
-        $this->ProcessAnnotations($associationAnnotations);
+        $this->schemaWriter->writeAssociationElementHeader($end1);
+        $this->processAnnotations($associationAnnotations);
 
-        $this->ProcessAssociationEnd($end1, $end1 === $element ? $end1Annotations : $end2Annotations);
-        $this->ProcessAssociationEnd($end2, $end1 === $element ? $end2Annotations : $end1Annotations);
-        $this->ProcessReferentialConstraint($end1, $constraintAnnotations);
+        $this->processAssociationEnd($end1, $end1 === $element ? $end1Annotations : $end2Annotations);
+        $this->processAssociationEnd($end2, $end1 === $element ? $end2Annotations : $end1Annotations);
+        $this->processReferentialConstraint($end1, $constraintAnnotations);
 
-        $this->VisitPrimitiveElementAnnotations($associationAnnotations);
-        $this->schemaWriter->WriteEndElement();
+        $this->visitPrimitiveElementAnnotations($associationAnnotations);
+        $this->schemaWriter->writeEndElement();
     }
 
     /**
@@ -871,17 +871,17 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
-    private function ProcessAssociationEnd(INavigationProperty $element, iterable $annotations): void
+    private function processAssociationEnd(INavigationProperty $element, iterable $annotations): void
     {
-        $this->schemaWriter->WriteAssociationEndElementHeader($element);
-        $this->ProcessAnnotations($annotations);
+        $this->schemaWriter->writeAssociationEndElementHeader($element);
+        $this->processAnnotations($annotations);
 
         if ($element->getOnDelete() != OnDeleteAction::None()) {
-            $this->schemaWriter->WriteOperationActionElement(CsdlConstants::Element_OnDelete, $element->getOnDelete());
+            $this->schemaWriter->writeOperationActionElement(CsdlConstants::Element_OnDelete, $element->getOnDelete());
         }
 
-        $this->VisitPrimitiveElementAnnotations($annotations);
-        $this->schemaWriter->WriteEndElement();
+        $this->visitPrimitiveElementAnnotations($annotations);
+        $this->schemaWriter->writeEndElement();
     }
 
     /**
@@ -890,7 +890,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
-    private function ProcessReferentialConstraint(INavigationProperty $element, iterable $annotations): void
+    private function processReferentialConstraint(INavigationProperty $element, iterable $annotations): void
     {
         if ($element->getDependentProperties() !== null) {
             $principalElement = $element->getPartner();
@@ -900,23 +900,23 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             return;
         }
 
-        $this->schemaWriter->WriteReferentialConstraintElementHeader($principalElement);
-        $this->ProcessAnnotations($annotations);
-        $this->schemaWriter->WriteReferentialConstraintPrincipalEndElementHeader($principalElement);
+        $this->schemaWriter->writeReferentialConstraintElementHeader($principalElement);
+        $this->processAnnotations($annotations);
+        $this->schemaWriter->writeReferentialConstraintPrincipalEndElementHeader($principalElement);
         $dType = $principalElement->getDeclaringType();
         assert($dType instanceof IEntityType);
         EdmUtil::checkArgumentNull($dType->Key(), 'principalElement->getDeclaringType->Key');
-        $this->VisitPropertyRefs($dType->Key());
-        $this->schemaWriter->WriteEndElement();
-        $this->schemaWriter->WriteReferentialConstraintDependentEndElementHeader($principalElement->getPartner());
+        $this->visitPropertyRefs($dType->Key());
+        $this->schemaWriter->writeEndElement();
+        $this->schemaWriter->writeReferentialConstraintDependentEndElementHeader($principalElement->getPartner());
         EdmUtil::checkArgumentNull(
             $principalElement->getPartner()->getDependentProperties(),
             'principalElement->getPartner->getDependentProperties'
         );
-        $this->VisitPropertyRefs($principalElement->getPartner()->getDependentProperties());
-        $this->schemaWriter->WriteEndElement();
-        $this->VisitPrimitiveElementAnnotations($annotations);
-        $this->schemaWriter->WriteEndElement();
+        $this->visitPropertyRefs($principalElement->getPartner()->getDependentProperties());
+        $this->schemaWriter->writeEndElement();
+        $this->visitPrimitiveElementAnnotations($annotations);
+        $this->schemaWriter->writeEndElement();
     }
 
     /**
@@ -925,7 +925,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
-    private function ProcessAssociationSet(IEntitySet $entitySet, INavigationProperty $property): void
+    private function processAssociationSet(IEntitySet $entitySet, INavigationProperty $property): void
     {
         /** @var IDirectValueAnnotation[] $associationSetAnnotations */
         $associationSetAnnotations = [];
@@ -941,18 +941,18 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             $end2Annotations
         );
 
-        $this->schemaWriter->WriteAssociationSetElementHeader($entitySet, $property);
-        $this->ProcessAnnotations($associationSetAnnotations);
+        $this->schemaWriter->writeAssociationSetElementHeader($entitySet, $property);
+        $this->processAnnotations($associationSetAnnotations);
 
-        $this->ProcessAssociationSetEnd($entitySet, $property, $end1Annotations);
+        $this->processAssociationSetEnd($entitySet, $property, $end1Annotations);
 
         $otherEntitySet = $entitySet->findNavigationTarget($property);
         if ($otherEntitySet != null) {
-            $this->ProcessAssociationSetEnd($otherEntitySet, $property->getPartner(), $end2Annotations);
+            $this->processAssociationSetEnd($otherEntitySet, $property->getPartner(), $end2Annotations);
         }
 
-        $this->VisitPrimitiveElementAnnotations($associationSetAnnotations);
-        $this->schemaWriter->WriteEndElement();
+        $this->visitPrimitiveElementAnnotations($associationSetAnnotations);
+        $this->schemaWriter->writeEndElement();
     }
 
     /**
@@ -962,15 +962,15 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @throws \ReflectionException
      * @throws NotSupportedException
      */
-    private function ProcessAssociationSetEnd(
+    private function processAssociationSetEnd(
         IEntitySet $entitySet,
         INavigationProperty $property,
         iterable $annotations
     ): void {
-        $this->schemaWriter->WriteAssociationSetEndElementHeader($entitySet, $property);
-        $this->ProcessAnnotations($annotations);
-        $this->VisitPrimitiveElementAnnotations($annotations);
-        $this->schemaWriter->WriteEndElement();
+        $this->schemaWriter->writeAssociationSetEndElementHeader($entitySet, $property);
+        $this->processAnnotations($annotations);
+        $this->visitPrimitiveElementAnnotations($annotations);
+        $this->schemaWriter->writeEndElement();
     }
 
     /**
@@ -978,7 +978,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  bool                 $inlineType
      * @throws \ReflectionException
      */
-    private function ProcessFacets(ITypeReference $element, bool $inlineType): void
+    private function processFacets(ITypeReference $element, bool $inlineType): void
     {
         if ($element != null) {
             if ($element->isEntityReference()) {
@@ -991,10 +991,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                     $collectionElement = $element->asCollection();
                     $type              = $collectionElement->CollectionDefinition()->getElementType();
                     EdmUtil::checkArgumentNull($type, 'ProcessFacets - $type');
-                    $this->schemaWriter->WriteNullableAttribute($type);
+                    $this->schemaWriter->writeNullableAttribute($type);
                     $this->visitTypeReference($type);
                 } else {
-                    $this->schemaWriter->WriteNullableAttribute($element);
+                    $this->schemaWriter->writeNullableAttribute($element);
                     $this->visitTypeReference($element);
                 }
             }
@@ -1005,21 +1005,21 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  iterable|IStructuralProperty[] $keyProperties
      * @throws \ReflectionException
      */
-    private function VisitEntityTypeDeclaredKey(iterable $keyProperties): void
+    private function visitEntityTypeDeclaredKey(iterable $keyProperties): void
     {
-        $this->schemaWriter->WriteDeclaredKeyPropertiesElementHeader();
-        $this->VisitPropertyRefs($keyProperties);
-        $this->schemaWriter->WriteEndElement();
+        $this->schemaWriter->writeDeclaredKeyPropertiesElementHeader();
+        $this->visitPropertyRefs($keyProperties);
+        $this->schemaWriter->writeEndElement();
     }
 
     /**
      * @param  iterable|IStructuralProperty[] $properties
      * @throws \ReflectionException
      */
-    private function VisitPropertyRefs(iterable $properties): void
+    private function visitPropertyRefs(iterable $properties): void
     {
         foreach ($properties as $property) {
-            $this->schemaWriter->WritePropertyRefElement($property);
+            $this->schemaWriter->writePropertyRefElement($property);
         }
     }
 
@@ -1027,7 +1027,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  iterable|IDirectValueAnnotation[] $annotations
      * @throws NotSupportedException
      */
-    private function VisitAttributeAnnotations(iterable $annotations): void
+    private function visitAttributeAnnotations(iterable $annotations): void
     {
         foreach ($annotations as $annotation) {
             if ($annotation->getNamespaceUri() != EdmConstants::InternalUri) {
@@ -1035,7 +1035,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                 if ($edmValue instanceof IValue) {
                     if (!$edmValue->IsSerializedAsElement($this->model)) {
                         if ($edmValue->getType()->typeKind()->isPrimitive()) {
-                            $this->ProcessAttributeAnnotation($annotation);
+                            $this->processAttributeAnnotation($annotation);
                         }
                     }
                 }
@@ -1045,7 +1045,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     /**
      * @param iterable|IDirectValueAnnotation[] $annotations
      */
-    private function VisitPrimitiveElementAnnotations(iterable $annotations): void
+    private function visitPrimitiveElementAnnotations(iterable $annotations): void
     {
         foreach ($annotations as $annotation) {
             if ($annotation->getNamespaceUri() != EdmConstants::InternalUri) {
@@ -1053,7 +1053,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                 if ($edmValue instanceof IValue) {
                     if (!$edmValue->IsSerializedAsElement($this->model)) {
                         if ($edmValue->getType()->typeKind()->isPrimitive()) {
-                            $this->ProcessElementAnnotation($annotation);
+                            $this->processElementAnnotation($annotation);
                         }
                     }
                 }
@@ -1065,35 +1065,35 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  IDirectValueAnnotation $annotation
      * @throws NotSupportedException
      */
-    private function ProcessAttributeAnnotation(IDirectValueAnnotation $annotation): void
+    private function processAttributeAnnotation(IDirectValueAnnotation $annotation): void
     {
-        $this->schemaWriter->WriteAnnotationStringAttribute($annotation);
+        $this->schemaWriter->writeAnnotationStringAttribute($annotation);
     }
 
     /**
      * @param IDirectValueAnnotation $annotation
      */
-    private function ProcessElementAnnotation(IDirectValueAnnotation $annotation): void
+    private function processElementAnnotation(IDirectValueAnnotation $annotation): void
     {
-        $this->schemaWriter->WriteAnnotationStringElement($annotation);
+        $this->schemaWriter->writeAnnotationStringElement($annotation);
     }
 
     /**
      * @param  iterable|IVocabularyAnnotation[] $annotations
      * @throws NotSupportedException
      */
-    private function VisitElementVocabularyAnnotations(iterable $annotations): void
+    private function visitElementVocabularyAnnotations(iterable $annotations): void
     {
         foreach ($annotations as $annotation) {
             switch ($annotation->getTerm()->getTermKind()) {
                 case TermKind::Type():
                     assert($annotation instanceof  ITypeAnnotation);
-                    $this->ProcessTypeAnnotation($annotation);
+                    $this->processTypeAnnotation($annotation);
                     break;
                 case TermKind::Value():
                     assert($annotation instanceof  IValueAnnotation);
 
-                    $this->ProcessValueAnnotation($annotation);
+                    $this->processValueAnnotation($annotation);
                     break;
                 case TermKind::None():
                     $this->processVocabularyAnnotation($annotation);
@@ -1112,7 +1112,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  callable              ...$additionalAttributeWriters
      * @throws NotSupportedException
      */
-    private function BeginElement(
+    private function beginElement(
         IEdmElement $element,
         callable $elementHeaderWriter,
         callable ...$additionalAttributeWriters
@@ -1124,7 +1124,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             }
         }
 
-        $this->VisitAttributeAnnotations(
+        $this->visitAttributeAnnotations(
             $this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element)
         );
         $documentation = $this->model->getAnnotationValue(
@@ -1135,7 +1135,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         );
         if ($documentation != null) {
             assert($documentation instanceof IDocumentation);
-            $this->ProcessEdmDocumentation($documentation);
+            $this->processEdmDocumentation($documentation);
         }
     }
 
@@ -1143,15 +1143,15 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  IEdmElement           $element
      * @throws NotSupportedException
      */
-    private function FinishElement(IEdmElement $element): void
+    private function finishElement(IEdmElement $element): void
     {
-        $this->VisitPrimitiveElementAnnotations(
+        $this->visitPrimitiveElementAnnotations(
             $this->model->getDirectValueAnnotationsManager()->getDirectValueAnnotations($element)
         );
         $vocabularyAnnotatableElement = $element;
         if ($vocabularyAnnotatableElement instanceof IVocabularyAnnotatable) {
             $self = $this;
-            $this->VisitElementVocabularyAnnotations(
+            $this->visitElementVocabularyAnnotations(
                 array_filter(
                     $this->model->findDeclaredVocabularyAnnotations($vocabularyAnnotatableElement),
                     function (IVocabularyAnnotation $a) use ($self) {
@@ -1161,15 +1161,15 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
             );
         }
 
-        $this->schemaWriter->WriteEndElement();
+        $this->schemaWriter->writeEndElement();
     }
 
-    private function ProcessEdmDocumentation(IDocumentation $element): void
+    private function processEdmDocumentation(IDocumentation $element): void
     {
-        $this->schemaWriter->WriteDocumentationElement($element);
+        $this->schemaWriter->writeDocumentationElement($element);
     }
 
-    private function SharesAssociation(INavigationProperty $thisNavprop, INavigationProperty $thatNavprop): bool
+    private function sharesAssociation(INavigationProperty $thisNavprop, INavigationProperty $thatNavprop): bool
     {
         if ($thisNavprop === $thatNavprop) {
             return true;
@@ -1181,13 +1181,13 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
 
         $thisPrimary = $thisNavprop->GetPrimary();
         $thatPrimary = $thatNavprop->GetPrimary();
-        if (!$this->SharesEnd($thisPrimary, $thatPrimary)) {
+        if (!$this->sharesEnd($thisPrimary, $thatPrimary)) {
             return false;
         }
 
         $thisDependent = $thisPrimary->getPartner();
         $thatDependent = $thatPrimary->getPartner();
-        if (!$this->SharesEnd($thisDependent, $thatDependent)) {
+        if (!$this->sharesEnd($thisDependent, $thatDependent)) {
             return false;
         }
         $thisDeclaringType = $thisPrimary->getDeclaringType();
@@ -1196,7 +1196,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         assert($thatDeclaringType instanceof IEntityType);
         $thisPrincipalProperties = $thisDeclaringType->Key();
         $thatPrincipalProperties = $thatDeclaringType->Key();
-        if (!$this->SharesReferentialConstraintEnd($thisPrincipalProperties, $thatPrincipalProperties)) {
+        if (!$this->sharesReferentialConstraintEnd($thisPrincipalProperties, $thatPrincipalProperties)) {
             return false;
         }
 
@@ -1204,7 +1204,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         $thatDependentProperties = $thisDependent->getDependentProperties();
         if ($thisDependentProperties != null &&
             $thatDependentProperties != null &&
-            !$this->SharesReferentialConstraintEnd($thisDependentProperties, $thatDependentProperties)) {
+            !$this->sharesReferentialConstraintEnd($thisDependentProperties, $thatDependentProperties)) {
             return false;
         }
 
@@ -1242,7 +1242,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         return true;
     }
 
-    private function SharesEnd(INavigationProperty $end1, INavigationProperty $end2): bool
+    private function sharesEnd(INavigationProperty $end1, INavigationProperty $end2): bool
     {
         $end1DeclaringType = $end1->getDeclaringType();
         $end2DeclaringType = $end2->getDeclaringType();
@@ -1263,7 +1263,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
      * @param  array|IStructuralProperty[] $thoseProperties
      * @return bool
      */
-    private function SharesReferentialConstraintEnd(?array $theseProperties, ?array $thoseProperties): bool
+    private function sharesReferentialConstraintEnd(?array $theseProperties, ?array $thoseProperties): bool
     {
         if (null === $theseProperties || null === $thoseProperties) {
             return false;
@@ -1286,7 +1286,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
         return true;
     }
 
-    private function SharesAssociationSet(
+    private function sharesAssociationSet(
         IEntitySet $thisEntitySet,
         INavigationProperty $thisNavprop,
         IEntitySet $thatEntitySet,

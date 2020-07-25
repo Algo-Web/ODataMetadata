@@ -16,7 +16,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
 
 trait ProcessDefinitionComponents
 {
-    protected function ProcessNavigationProperty(INavigationProperty $property): void
+    protected function processNavigationProperty(INavigationProperty $property): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($property, __METHOD__);
@@ -24,7 +24,7 @@ trait ProcessDefinitionComponents
         $this->endElement($property, __METHOD__);
     }
 
-    protected function ProcessStructuralProperty(IStructuralProperty $property): void
+    protected function processStructuralProperty(IStructuralProperty $property): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($property, __METHOD__);
@@ -42,7 +42,7 @@ trait ProcessDefinitionComponents
         $this->endElement($property, __METHOD__);
     }
 
-    protected function ProcessEnumMember(IEnumMember $enumMember): void
+    protected function processEnumMember(IEnumMember $enumMember): void
     {
         /** @var EdmModelVisitor $this */
         $this->startElement($enumMember, __METHOD__);

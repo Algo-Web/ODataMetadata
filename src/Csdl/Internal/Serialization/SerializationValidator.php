@@ -24,11 +24,11 @@ abstract class SerializationValidator
      * @throws \ReflectionException
      * @return array
      */
-    public static function GetSerializationErrors(IModel $root): array
+    public static function getSerializationErrors(IModel $root): array
     {
         $errors = [];
         EdmValidator::Validate($root, self::getSerializationRuleSet(), $errors);
-        $errors = array_filter($errors, [self::class, 'SignificantToSerialization']);
+        $errors = array_filter($errors, [self::class, 'significantToSerialization']);
         return $errors;
     }
 
@@ -36,7 +36,7 @@ abstract class SerializationValidator
      * @param  EdmError $error
      * @return bool
      */
-    private static function SignificantToSerialization(EdmError $error)
+    private static function significantToSerialization(EdmError $error)
     {
         if (ValidationHelper::IsInterfaceCritical($error)) {
             return true;

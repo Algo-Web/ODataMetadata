@@ -60,7 +60,7 @@ class EdmModelCsdlSerializationVisitorTest extends TestCase
         $schema = new EdmSchema('namespace');
         $schema->addSchemaElement($entityType);
 
-        $foo->VisitEdmSchema($schema, []);
+        $foo->visitEdmSchema($schema, []);
 
         $tail = '" ConcurrencyMode="None" Nullable="false"';
         if ('Edm.Geometry' == $expType) {
