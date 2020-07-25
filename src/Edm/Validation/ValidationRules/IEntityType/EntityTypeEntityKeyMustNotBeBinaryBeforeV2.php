@@ -26,7 +26,7 @@ class EntityTypeEntityKeyMustNotBeBinaryBeforeV2 extends EntityTypeRule
         if (null !== $rawKey) {
             foreach ($rawKey as $key) {
                 assert($key instanceof IStructuralProperty);
-                if ($key->getType()->IsBinary() && !$context->checkIsBad($key->getType()->getDefinition())) {
+                if ($key->getType()->isBinary() && !$context->checkIsBad($key->getType()->getDefinition())) {
                     EdmUtil::checkArgumentNull($key->Location(), 'key->Location');
                     $context->AddError(
                         $key->Location(),

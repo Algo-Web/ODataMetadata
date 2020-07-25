@@ -31,12 +31,12 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
         $returnType = $functionImport->getReturnType();
         if (null !== $functionImport->getEntitySet() && null !== $returnType) {
             /** @var ITypeReference $elementType */
-            $elementType = $returnType->IsCollection() ?
-                $returnType->AsCollection()->ElementType() :
+            $elementType = $returnType->isCollection() ?
+                $returnType->asCollection()->ElementType() :
                 $returnType;
             EdmUtil::checkArgumentNull($elementType->getDefinition(), 'elementType->getDefinition');
-            if ($elementType->IsEntity()) {
-                $returnedEntityType = $elementType->AsEntity()->EntityDefinition();
+            if ($elementType->isEntity()) {
+                $returnedEntityType = $elementType->asEntity()->EntityDefinition();
 
                 /** @var IEntitySet $entitySet */
                 $entitySet = null;
@@ -67,8 +67,8 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                     EdmUtil::checkArgumentNull($parameter, 'parameter');
                     EdmUtil::checkArgumentNull($path, 'path');
                     $relativePathType        = 0 === count($path) ? $parameter->getType() : end($path)->getType();
-                    $relativePathElementType = $relativePathType->IsCollection() ?
-                        $relativePathType->AsCollection()->ElementType() : $relativePathType;
+                    $relativePathElementType = $relativePathType->isCollection() ?
+                        $relativePathType->asCollection()->ElementType() : $relativePathType;
                     $definition = $relativePathElementType->getDefinition();
                     $isBad      = !$returnedEntityType->IsOrInheritsFrom($definition) &&
                              !$context->checkIsBad($returnedEntityType) &&
@@ -79,7 +79,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                             EdmErrorCode::FunctionImportEntityTypeDoesNotMatchEntitySet(),
                             StringConst::EdmModel_Validator_Semantic_FunctionImportEntityTypeDoesNotMatchEntitySet2(
                                 $functionImport->getName(),
-                                $elementType->FullName()
+                                $elementType->fullName()
                             )
                         );
                     }

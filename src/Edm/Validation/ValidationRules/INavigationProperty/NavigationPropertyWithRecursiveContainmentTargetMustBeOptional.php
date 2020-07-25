@@ -27,7 +27,7 @@ class NavigationPropertyWithRecursiveContainmentTargetMustBeOptional extends Nav
         assert($property instanceof INavigationProperty);
         if ($property->containsTarget() &&
             $property->getDeclaringType()->IsOrInheritsFrom($property->ToEntityType()) &&
-            !($property->getType()->IsCollection() || $property->getType()->getNullable())) {
+            !($property->getType()->isCollection() || $property->getType()->getNullable())) {
             EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
             $context->AddError(
                 $property->Location(),

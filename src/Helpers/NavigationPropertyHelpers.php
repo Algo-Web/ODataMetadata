@@ -32,7 +32,7 @@ trait NavigationPropertyHelpers
         $partner = $this->getPartner();
         if ($partner !== null) {
             $partnerType = $partner->getType();
-            if ($partnerType->IsCollection()) {
+            if ($partnerType->isCollection()) {
                 return Multiplicity::Many();
             }
             return $partnerType->getNullable() ? Multiplicity::ZeroOrOne() : Multiplicity::One();

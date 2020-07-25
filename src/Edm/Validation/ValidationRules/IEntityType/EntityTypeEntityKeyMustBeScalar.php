@@ -27,7 +27,7 @@ class EntityTypeEntityKeyMustBeScalar extends EntitySetRule
         if (null !== $rawKey) {
             foreach ($rawKey as $key) {
                 assert($key instanceof IStructuralProperty);
-                if (!$key->getType()->IsPrimitive() && !$context->checkIsBad($key)) {
+                if (!$key->getType()->isPrimitive() && !$context->checkIsBad($key)) {
                     EdmUtil::checkArgumentNull($key->Location(), 'key->Location');
                     $context->AddError(
                         $key->Location(),

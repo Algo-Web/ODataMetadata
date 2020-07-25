@@ -23,13 +23,13 @@ class FunctionImportUnsupportedReturnTypeAfterV1 extends FunctionImportRule
     {
         assert($functionImport instanceof IFunctionImport);
         if (null !== $functionImport->getReturnType()) {
-            $elementType = $functionImport->getReturnType()->IsCollection() ?
-                $functionImport->getReturnType()->AsCollection()->ElementType() :
+            $elementType = $functionImport->getReturnType()->isCollection() ?
+                $functionImport->getReturnType()->asCollection()->ElementType() :
                 $functionImport->getReturnType();
-            if (!$elementType->IsPrimitive() &&
-                !$elementType->IsEntity() &&
-                !$elementType->IsComplex() &&
-                !$elementType->IsEnum() &&
+            if (!$elementType->isPrimitive() &&
+                !$elementType->isEntity() &&
+                !$elementType->isComplex() &&
+                !$elementType->isEnum() &&
                 !$context->checkIsBad($elementType->getDefinition())
             ) {
                 EdmUtil::checkArgumentNull($functionImport->Location(), 'functionImport->Location');

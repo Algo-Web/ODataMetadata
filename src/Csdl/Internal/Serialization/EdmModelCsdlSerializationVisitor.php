@@ -785,10 +785,10 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
 
     private static function IsInlineType(ITypeReference $reference): bool
     {
-        if ($reference->getDefinition() instanceof ISchemaElement || $reference->IsEntityReference()) {
+        if ($reference->getDefinition() instanceof ISchemaElement || $reference->isEntityReference()) {
             return true;
-        } elseif ($reference->IsCollection()) {
-            $def = $reference->AsCollection()->CollectionDefinition()->getElementType()->getDefinition();
+        } elseif ($reference->isCollection()) {
+            $def = $reference->asCollection()->CollectionDefinition()->getElementType()->getDefinition();
             return $def instanceof ISchemaElement;
         }
 
@@ -981,14 +981,14 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
     private function ProcessFacets(ITypeReference $element, bool $inlineType): void
     {
         if ($element != null) {
-            if ($element->IsEntityReference()) {
+            if ($element->isEntityReference()) {
                 // No facets get serialized for an entity reference.
                 return;
             }
 
             if ($inlineType) {
-                if ($element->TypeKind()->isCollection()) {
-                    $collectionElement = $element->AsCollection();
+                if ($element->typeKind()->isCollection()) {
+                    $collectionElement = $element->asCollection();
                     $type              = $collectionElement->CollectionDefinition()->getElementType();
                     EdmUtil::checkArgumentNull($type, 'ProcessFacets - $type');
                     $this->schemaWriter->WriteNullableAttribute($type);
@@ -1034,7 +1034,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                 $edmValue = $annotation->getValue();
                 if ($edmValue instanceof IValue) {
                     if (!$edmValue->IsSerializedAsElement($this->model)) {
-                        if ($edmValue->getType()->TypeKind()->isPrimitive()) {
+                        if ($edmValue->getType()->typeKind()->isPrimitive()) {
                             $this->ProcessAttributeAnnotation($annotation);
                         }
                     }
@@ -1052,7 +1052,7 @@ class EdmModelCsdlSerializationVisitor extends EdmModelVisitor
                 $edmValue = $annotation->getValue();
                 if ($edmValue instanceof IValue) {
                     if (!$edmValue->IsSerializedAsElement($this->model)) {
-                        if ($edmValue->getType()->TypeKind()->isPrimitive()) {
+                        if ($edmValue->getType()->typeKind()->isPrimitive()) {
                             $this->ProcessElementAnnotation($annotation);
                         }
                     }

@@ -146,7 +146,7 @@ abstract class ExpressionTypeChecker
         EdmUtil::checkArgumentNull($expression, 'expression');
 
         // If we don't have a type to assert this passes vacuously.
-        if (null === $type || $type->TypeKind()->isNone()) {
+        if (null === $type || $type->typeKind()->isNone()) {
             $discoveredErrors = [];
             return true;
         }
@@ -305,7 +305,7 @@ abstract class ExpressionTypeChecker
         ITypeReference $type,
         iterable &$discoveredErrors
     ): bool {
-        if (!$type->IsPrimitive()) {
+        if (!$type->isPrimitive()) {
             $discoveredErrors =  [
                 new EdmError(
                     $expression->Location(),
@@ -462,7 +462,7 @@ abstract class ExpressionTypeChecker
         EdmUtil::checkArgumentNull($expression, 'expression');
         EdmUtil::checkArgumentNull($type, 'type');
 
-        if (!$type->IsStructured()) {
+        if (!$type->isStructured()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -476,7 +476,7 @@ abstract class ExpressionTypeChecker
         $foundProperties = new HashSetInternal();
         $errors          = [];
 
-        $structuredType = $type->AsStructured();
+        $structuredType = $type->asStructured();
         $definition     = $structuredType->getDefinition();
         assert($definition instanceof IStructuredType);
         foreach ($definition->Properties() as $typeProperty) {
@@ -542,7 +542,7 @@ abstract class ExpressionTypeChecker
         bool $matchExactly,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsCollection()) {
+        if (!$type->isCollection()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -553,7 +553,7 @@ abstract class ExpressionTypeChecker
             return false;
         }
 
-        $collectionElementType = $type->AsCollection()->ElementType();
+        $collectionElementType = $type->asCollection()->ElementType();
         $success               = true;
         $errors                = [];
         $recursiveErrors       = [];
@@ -578,7 +578,7 @@ abstract class ExpressionTypeChecker
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsGuid()) {
+        if (!$type->isGuid()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -598,7 +598,7 @@ abstract class ExpressionTypeChecker
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsFloating()) {
+        if (!$type->isFloating()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -618,7 +618,7 @@ abstract class ExpressionTypeChecker
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsDecimal()) {
+        if (!$type->isDecimal()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -638,7 +638,7 @@ abstract class ExpressionTypeChecker
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsDateTimeOffset()) {
+        if (!$type->isDateTimeOffset()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -658,7 +658,7 @@ abstract class ExpressionTypeChecker
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsDateTime()) {
+        if (!$type->isDateTime()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -678,7 +678,7 @@ abstract class ExpressionTypeChecker
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsTime()) {
+        if (!$type->isTime()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -698,7 +698,7 @@ abstract class ExpressionTypeChecker
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsBoolean()) {
+        if (!$type->isBoolean()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -718,7 +718,7 @@ abstract class ExpressionTypeChecker
         ITypeReference $type,
         &$discoveredErrors
     ) {
-        if (!$type->IsString()) {
+        if (!$type->isString()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -730,7 +730,7 @@ abstract class ExpressionTypeChecker
         }
 
         EdmUtil::checkArgumentNull($expression->getValue(), 'expression->getValue');
-        $stringType = $type->AsString();
+        $stringType = $type->asString();
         if (null !== $stringType->getMaxLength() && mb_strlen($expression->getValue()) > $stringType->getMaxLength()) {
             $discoveredErrors = [
                 new EdmError(
@@ -754,7 +754,7 @@ abstract class ExpressionTypeChecker
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsIntegral()) {
+        if (!$type->isIntegral()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -765,7 +765,7 @@ abstract class ExpressionTypeChecker
             return false;
         }
 
-        switch ($type->PrimitiveKind()) {
+        switch ($type->primitiveKind()) {
             case PrimitiveTypeKind::Int64():
                 return self::tryAssertIntegerConstantInRange(
                     $expression,
@@ -839,7 +839,7 @@ abstract class ExpressionTypeChecker
         ITypeReference $type,
         &$discoveredErrors
     ): bool {
-        if (!$type->IsBinary()) {
+        if (!$type->isBinary()) {
             $discoveredErrors = [
                 new EdmError(
                     $expression->Location(),
@@ -851,7 +851,7 @@ abstract class ExpressionTypeChecker
         }
 
         EdmUtil::checkArgumentNull($expression->getValue(), 'expression->getValue');
-        $binaryType = $type->AsBinary();
+        $binaryType = $type->asBinary();
         if (null !== $binaryType->getMaxLength() && count($expression->getValue()) > $binaryType->getMaxLength()) {
             $discoveredErrors = [
                 new EdmError(
@@ -980,7 +980,7 @@ abstract class ExpressionTypeChecker
                     $location,
                     EdmErrorCode::CannotAssertNullableTypeAsNonNullableType(),
                     StringConst::EdmModel_Validator_Semantic_CannotAssertNullableTypeAsNonNullableType(
-                        $expressionType->FullName()
+                        $expressionType->fullName()
                     )
                 )
             ];

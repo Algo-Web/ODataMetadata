@@ -46,7 +46,7 @@ abstract class ToTraceString
                     $element->getNullable() ? 'TRUE' : 'FALSE'
                 );
                 if ($element->isPrimitive()) {
-                    $s = self::AppendFacets($s, $element->AsPrimitive());
+                    $s = self::AppendFacets($s, $element->asPrimitive());
                 }
                 $s .= ']';
                 return $s;
@@ -85,18 +85,18 @@ abstract class ToTraceString
     {
         switch ($type->PrimitiveKind()) {
             case PrimitiveTypeKind::Binary():
-                $s = self::AppendBinaryFacets($s, $type->AsBinary());
+                $s = self::AppendBinaryFacets($s, $type->asBinary());
                 break;
             case PrimitiveTypeKind::Decimal():
-                $s = self::AppendDecimalFacets($s, $type->AsDecimal());
+                $s = self::AppendDecimalFacets($s, $type->asDecimal());
                 break;
             case PrimitiveTypeKind::String():
-                $s = self::AppendStringFacets($s, $type->AsString());
+                $s = self::AppendStringFacets($s, $type->asString());
                 break;
             case PrimitiveTypeKind::Time():
             case PrimitiveTypeKind::DateTime():
             case PrimitiveTypeKind::DateTimeOffset():
-                $s = self::AppendTemporalFacets($s, $type->AsTemporal());
+                $s = self::AppendTemporalFacets($s, $type->asTemporal());
                 break;
             case PrimitiveTypeKind::Geography():
             case PrimitiveTypeKind::GeographyPoint():
@@ -114,7 +114,7 @@ abstract class ToTraceString
             case PrimitiveTypeKind::GeometryMultiPolygon():
             case PrimitiveTypeKind::GeometryMultiLineString():
             case PrimitiveTypeKind::GeometryMultiPoint():
-                $s = self::AppendSpatialFacets($s, $type->AsSpatial());
+                $s = self::AppendSpatialFacets($s, $type->asSpatial());
                 break;
         }
         return $s;

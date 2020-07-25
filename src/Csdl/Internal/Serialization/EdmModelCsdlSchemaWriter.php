@@ -1519,16 +1519,16 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
 
     private function typeReferenceAsXml(ITypeReference $type): string
     {
-        if ($type->IsCollection()) {
-            $collectionReference   = $type->AsCollection();
+        if ($type->isCollection()) {
+            $collectionReference   = $type->asCollection();
             $elementTypeDefinition = $collectionReference->ElementType()->getDefinition();
             assert(
                 $elementTypeDefinition instanceof ISchemaElement,
                 'Cannot inline parameter type if not a named element or collection of named elements'
             );
             return CsdlConstants::Value_Collection . '(' . $this->serializationName($elementTypeDefinition) . ')';
-        } elseif ($type->IsEntityReference()) {
-            $entityReferenceDefinitionType = $type->AsEntityReference()->EntityReferenceDefinition()->getEntityType();
+        } elseif ($type->isEntityReference()) {
+            $entityReferenceDefinitionType = $type->asEntityReference()->EntityReferenceDefinition()->getEntityType();
             return CsdlConstants::Value_Ref . '(' . $this->serializationName($entityReferenceDefinitionType) . ')';
         }
         $typeDefinition = $type->getDefinition();

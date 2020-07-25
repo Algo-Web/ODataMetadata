@@ -104,8 +104,8 @@ abstract class EdmElementComparer
             return true;
         }
 
-        $typeKind = $thisType->TypeKind();
-        if (!$typeKind->equals($otherType->TypeKind())) {
+        $typeKind = $thisType->typeKind();
+        if (!$typeKind->equals($otherType->typeKind())) {
             return false;
         }
 
@@ -257,7 +257,7 @@ abstract class EdmElementComparer
     {
         return $thisType->getNullable() === $otherType->getNullable() &&
             $thisType->isFixedLength() === $otherType->isFixedLength() &&
-            $thisType->isUnbounded() === $otherType->isUnbounded() &&
+            $thisType->isUnBounded() === $otherType->isUnBounded() &&
             $thisType->getMaxLength() === $otherType->getMaxLength();
     }
 
@@ -270,7 +270,7 @@ abstract class EdmElementComparer
 
     protected static function isITemporalTypeReferenceEquivalentTo(ITemporalTypeReference $thisType, ITemporalTypeReference $otherType): bool
     {
-        return $thisType->TypeKind()->equals($otherType->TypeKind()) &&
+        return $thisType->typeKind()->equals($otherType->typeKind()) &&
             $thisType->getNullable() == $otherType->getNullable() &&
             $thisType->getPrecision() == $otherType->getPrecision();
     }
