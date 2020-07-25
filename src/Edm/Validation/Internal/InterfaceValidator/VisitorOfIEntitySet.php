@@ -11,7 +11,7 @@ use AlgoWeb\ODataMetadata\Interfaces\INavigationTargetMapping;
 
 class VisitorOfIEntitySet extends VisitorOfT
 {
-    protected function VisitT($item, array &$followup, array &$references): ?iterable
+    protected function visitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IEntitySet);
         $errors = [];
@@ -21,7 +21,7 @@ class VisitorOfIEntitySet extends VisitorOfT
         // Navigation targets are not EDM elements, so we expand and process them here instead of adding them as
         // followups.
         $navTargetMappings = [];
-        InterfaceValidator::ProcessEnumerable(
+        InterfaceValidator::processEnumerable(
             $item,
             $item->getNavigationTargets(),
             'NavigationTargets',

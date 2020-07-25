@@ -34,7 +34,7 @@ class TypeAnnotationAssertMatchesTermType extends TypeAnnotationRule
         foreach ($type->Properties() as $typeProperty) {
             $annotationProperty = $annotation->FindPropertyBinding($typeProperty);
             if ($annotationProperty == null) {
-                $context->AddRawError(
+                $context->addRawError(
                     new EdmError(
                         $annotation->Location(),
                         EdmErrorCode::TypeAnnotationMissingRequiredProperty(),
@@ -52,7 +52,7 @@ class TypeAnnotationAssertMatchesTermType extends TypeAnnotationRule
             foreach ($annotation->getPropertyValueBindings() as $property) {
                 if (!$foundProperties->contains($property->getBoundProperty()) && !$context->checkIsBad($property)) {
                     EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
-                    $context->AddError(
+                    $context->addError(
                         $property->Location(),
                         EdmErrorCode::TypeAnnotationHasExtraProperties(),
                         StringConst::EdmModel_Validator_Semantic_TypeAnnotationHasExtraProperties(

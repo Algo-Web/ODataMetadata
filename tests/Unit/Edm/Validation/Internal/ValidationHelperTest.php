@@ -51,7 +51,7 @@ class ValidationHelperTest extends TestCase
      */
     public function testIsEdmSystemNamespace(string $namespace, bool $expected)
     {
-        $actual = ValidationHelper::IsEdmSystemNamespace($namespace);
+        $actual = ValidationHelper::isEdmSystemNamespace($namespace);
         $this->assertEquals($expected, $actual);
     }
 
@@ -104,7 +104,7 @@ class ValidationHelperTest extends TestCase
         $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
         $code    = EdmErrorCode::InvalidElementAnnotation();
 
-        $actual = ValidationHelper::AddMemberNameToHashSet($item, $memList, $context, $code, 'errString', $suppressError);
+        $actual = ValidationHelper::addMemberNameToHashSet($item, $memList, $context, $code, 'errString', $suppressError);
         $this->assertEquals($expected, $actual);
 
         $expectedErrors = intval(!$inArray && !$suppressError);
@@ -115,7 +115,7 @@ class ValidationHelperTest extends TestCase
     {
         $properties = [];
 
-        $this->assertTrue(ValidationHelper::AllPropertiesAreNullable($properties));
+        $this->assertTrue(ValidationHelper::allPropertiesAreNullable($properties));
     }
 
     public function testAllPropertiesAreNullableWithAllBitzNullable()
@@ -128,7 +128,7 @@ class ValidationHelperTest extends TestCase
 
         $properties = [$prop1, $prop2];
 
-        $this->assertTrue(ValidationHelper::AllPropertiesAreNullable($properties));
+        $this->assertTrue(ValidationHelper::allPropertiesAreNullable($properties));
     }
 
     public function testAllPropertiesAreNullableWithSomeBitzNullable()
@@ -141,7 +141,7 @@ class ValidationHelperTest extends TestCase
 
         $properties = [$prop1, $prop2];
 
-        $this->assertFalse(ValidationHelper::AllPropertiesAreNullable($properties));
+        $this->assertFalse(ValidationHelper::allPropertiesAreNullable($properties));
     }
 
     public function testAllPropertiesAreNullableWithNullGetType()
@@ -151,14 +151,14 @@ class ValidationHelperTest extends TestCase
 
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('Call to a member function getNullable() on null');
-        $this->assertFalse(ValidationHelper::AllPropertiesAreNullable([$prop1]));
+        $this->assertFalse(ValidationHelper::allPropertiesAreNullable([$prop1]));
     }
 
     public function testHasNullablePropertyEmptyArray()
     {
         $properties = [];
 
-        $this->assertFalse(ValidationHelper::HasNullableProperty($properties));
+        $this->assertFalse(ValidationHelper::hasNullableProperty($properties));
     }
 
     public function testHasNullablePropertyWithAllBitzNullable()
@@ -171,7 +171,7 @@ class ValidationHelperTest extends TestCase
 
         $properties = [$prop1, $prop2];
 
-        $this->assertTrue(ValidationHelper::HasNullableProperty($properties));
+        $this->assertTrue(ValidationHelper::hasNullableProperty($properties));
     }
 
     public function testHasNullablePropertyWithSomeBitzNullable()
@@ -184,7 +184,7 @@ class ValidationHelperTest extends TestCase
 
         $properties = [$prop1, $prop2];
 
-        $this->assertTrue(ValidationHelper::HasNullableProperty($properties));
+        $this->assertTrue(ValidationHelper::hasNullableProperty($properties));
     }
 
     public function testHasNullablePropertyWithNoBitzNullable()
@@ -197,7 +197,7 @@ class ValidationHelperTest extends TestCase
 
         $properties = [$prop1, $prop2];
 
-        $this->assertFalse(ValidationHelper::HasNullableProperty($properties));
+        $this->assertFalse(ValidationHelper::hasNullableProperty($properties));
     }
 
     public function testHasNullablePropertyWithNullGetType()
@@ -207,7 +207,7 @@ class ValidationHelperTest extends TestCase
 
         $this->expectException(InvalidOperationException::class);
         $this->expectExceptionMessage('Call to a member function getNullable() on null');
-        $this->assertFalse(ValidationHelper::HasNullableProperty([$prop1]));
+        $this->assertFalse(ValidationHelper::hasNullableProperty([$prop1]));
     }
 
     public function testPropertySetIsSubsetWithActualSubset()
@@ -221,7 +221,7 @@ class ValidationHelperTest extends TestCase
         $set    = [$prop1, $prop2];
         $subset = [$prop2];
 
-        $this->assertTrue(ValidationHelper::PropertySetIsSubset($set, $subset));
+        $this->assertTrue(ValidationHelper::propertySetIsSubset($set, $subset));
     }
 
     public function testPropertySetIsSubsetWithOverlapSet()
@@ -238,7 +238,7 @@ class ValidationHelperTest extends TestCase
         $set    = [$prop1, $prop2];
         $subset = [$prop2, $prop3];
 
-        $this->assertFalse(ValidationHelper::PropertySetIsSubset($set, $subset));
+        $this->assertFalse(ValidationHelper::propertySetIsSubset($set, $subset));
     }
 
     public function testPropertySetsAreEquivalentActualEquality()
@@ -252,7 +252,7 @@ class ValidationHelperTest extends TestCase
         $set1 = [$prop1, $prop2];
         $set2 = [$prop1, $prop2];
 
-        $this->assertTrue(ValidationHelper::PropertySetsAreEquivalent($set1, $set2));
+        $this->assertTrue(ValidationHelper::propertySetsAreEquivalent($set1, $set2));
     }
 
     public function testPropertySetsAreEquivalentSameCountDifferentElement()
@@ -269,7 +269,7 @@ class ValidationHelperTest extends TestCase
         $set1 = [$prop1, $prop2];
         $set2 = [$prop1, $prop3];
 
-        $this->assertFalse(ValidationHelper::PropertySetsAreEquivalent($set1, $set2));
+        $this->assertFalse(ValidationHelper::propertySetsAreEquivalent($set1, $set2));
     }
 
     public function testPropertySetsAreEquivalentDifferentCountDifferentElement()
@@ -283,7 +283,7 @@ class ValidationHelperTest extends TestCase
         $set1 = [$prop1, $prop2];
         $set2 = [$prop1];
 
-        $this->assertFalse(ValidationHelper::PropertySetsAreEquivalent($set1, $set2));
+        $this->assertFalse(ValidationHelper::propertySetsAreEquivalent($set1, $set2));
     }
 
     public function isInterfaceCriticalProvider(): array
@@ -313,7 +313,7 @@ class ValidationHelperTest extends TestCase
         $error = m::mock(EdmError::class);
         $error->shouldReceive('getErrorCode->getValue')->andReturn($errorCode);
 
-        $actual = ValidationHelper::IsInterfaceCritical($error);
+        $actual = ValidationHelper::isInterfaceCritical($error);
         $this->assertEquals($expected, $actual);
     }
 
@@ -385,7 +385,7 @@ class ValidationHelperTest extends TestCase
         $model = m::mock(IModel::class)->makePartial();
         $model->shouldReceive('getReferencedModels')->andReturn([$refModel]);
 
-        $actual = ValidationHelper::ItemExistsInReferencedModel($model, 'Name', $isEntityContainer);
+        $actual = ValidationHelper::itemExistsInReferencedModel($model, 'Name', $isEntityContainer);
         $this->assertEquals($expected, $actual);
     }
 
@@ -460,7 +460,7 @@ class ValidationHelperTest extends TestCase
         $model = m::mock(IModel::class)->makePartial();
         $model->shouldReceive('getReferencedModels')->andReturn([$refModel]);
 
-        $actual = ValidationHelper::FunctionOrNameExistsInReferencedModel($model, $iFunc, 'Name', $isEntityContainer);
+        $actual = ValidationHelper::functionOrNameExistsInReferencedModel($model, $iFunc, 'Name', $isEntityContainer);
         $this->assertEquals($expected, $actual);
     }
 
@@ -474,11 +474,11 @@ class ValidationHelperTest extends TestCase
         $visited = new \SplObjectStorage();
 
         $expected = true;
-        $actual   = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
+        $actual   = ValidationHelper::typeIndirectlyContainsTarget($source, $target, $visited, $context);
         $this->assertEquals($expected, $actual);
 
         $expected = false;
-        $actual   = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
+        $actual   = ValidationHelper::typeIndirectlyContainsTarget($source, $target, $visited, $context);
         $this->assertEquals($expected, $actual);
     }
 
@@ -508,7 +508,7 @@ class ValidationHelperTest extends TestCase
         $visited = new \SplObjectStorage();
 
         $expected = true;
-        $actual   = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
+        $actual   = ValidationHelper::typeIndirectlyContainsTarget($source, $target, $visited, $context);
         $this->assertEquals($expected, $actual);
     }
 
@@ -532,7 +532,7 @@ class ValidationHelperTest extends TestCase
         $visited = new \SplObjectStorage();
 
         $expected = true;
-        $actual   = ValidationHelper::TypeIndirectlyContainsTarget($source, $target, $visited, $context);
+        $actual   = ValidationHelper::typeIndirectlyContainsTarget($source, $target, $visited, $context);
         $this->assertEquals($expected, $actual);
     }
 }

@@ -25,7 +25,7 @@ class NavigationPropertyInvalidOperationMultipleEndsInAssociation extends Naviga
         if (!$navigationProperty->getOnDelete()->isNone() &&
             !$navigationProperty->getPartner()->getOnDelete()->isNone()) {
             EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
-            $context->AddError(
+            $context->addError(
                 $navigationProperty->Location(),
                 EdmErrorCode::InvalidAction(),
                 StringConst::EdmModel_Validator_Semantic_InvalidOperationMultipleEndsInAssociation()

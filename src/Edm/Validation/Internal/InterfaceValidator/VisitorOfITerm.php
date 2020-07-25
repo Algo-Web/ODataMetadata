@@ -14,15 +14,15 @@ use AlgoWeb\ODataMetadata\Interfaces\IValueTerm;
 
 class VisitorOfITerm extends VisitorOfT
 {
-    protected function VisitT($term, array &$followup, array &$references): iterable
+    protected function visitT($term, array &$followup, array &$references): iterable
     {
         assert($term instanceof ITerm);
         $termKindError = null;
 
         switch ($term->getTermKind()) {
             case TermKind::Type():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                InterfaceValidator::collectErrors(
+                    InterfaceValidator::checkForInterfaceKindValueMismatchError(
                         $term,
                         $term->getTermKind(),
                         'TermKind',
@@ -30,8 +30,8 @@ class VisitorOfITerm extends VisitorOfT
                     ),
                     $termKindError
                 );
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                InterfaceValidator::collectErrors(
+                    InterfaceValidator::checkForInterfaceKindValueMismatchError(
                         $term,
                         $term->getTermKind(),
                         'TermKind',
@@ -42,8 +42,8 @@ class VisitorOfITerm extends VisitorOfT
                 break;
 
             case TermKind::Value():
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                InterfaceValidator::collectErrors(
+                    InterfaceValidator::checkForInterfaceKindValueMismatchError(
                         $term,
                         $term->getTermKind(),
                         'TermKind',
@@ -57,8 +57,8 @@ class VisitorOfITerm extends VisitorOfT
                 break;
 
             default:
-                InterfaceValidator::CollectErrors(
-                    InterfaceValidator::CreateInterfaceKindValueUnexpectedError(
+                InterfaceValidator::collectErrors(
+                    InterfaceValidator::createInterfaceKindValueUnexpectedError(
                         $term,
                         $term->getTermKind()->getKey(),
                         'TermKind'

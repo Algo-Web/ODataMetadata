@@ -56,10 +56,10 @@ class VisitorOfIExpressionTest extends TestCase
         $followUp   = [];
         $references = [];
 
-        $this->assertTrue(InterfaceValidator::IsCheckableBad($item));
+        $this->assertTrue(InterfaceValidator::isCheckableBad($item));
 
         $foo    = new VisitorOfIExpression();
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertNull($result);
     }
 
@@ -76,10 +76,10 @@ class VisitorOfIExpressionTest extends TestCase
         $followUp   = [];
         $references = [];
 
-        $this->assertFalse(InterfaceValidator::IsCheckableBad($item));
+        $this->assertFalse(InterfaceValidator::isCheckableBad($item));
 
         $foo    = new VisitorOfIExpression();
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));
 
@@ -141,10 +141,10 @@ class VisitorOfIExpressionTest extends TestCase
         $followUp   = [];
         $references = [];
 
-        $this->assertFalse(InterfaceValidator::IsCheckableBad($item));
+        $this->assertFalse(InterfaceValidator::isCheckableBad($item));
 
         $foo    = new VisitorOfIExpression();
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));
 

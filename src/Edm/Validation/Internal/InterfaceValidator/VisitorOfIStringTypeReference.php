@@ -11,13 +11,13 @@ use AlgoWeb\ODataMetadata\Interfaces\IStringTypeReference;
 
 class VisitorOfIStringTypeReference extends VisitorOfT
 {
-    protected function VisitT($typeRef, array &$followup, array &$references): ?iterable
+    protected function visitT($typeRef, array &$followup, array &$references): ?iterable
     {
         assert($typeRef instanceof IStringTypeReference);
         $primitive = $typeRef->getDefinition();
         assert($primitive instanceof IPrimitiveType);
         return null !== $typeRef->getDefinition() && !$primitive->getPrimitiveKind()->isString()
-            ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
+            ? [ InterfaceValidator::createTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
     }
 
     public function forType(): string

@@ -9,7 +9,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 
 final class VisitorOfIEdmElement extends VisitorOfT
 {
-    protected function VisitT($item, array &$followup, array &$references): ?iterable
+    protected function visitT($item, array &$followup, array &$references): ?iterable
     {
         return null;
     }

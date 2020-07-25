@@ -30,7 +30,7 @@ trait ValueHelpers
         assert($self instanceof IEdmElement);
         if ($isSerializedAsElement) {
             $error = null;
-            if (!ValidationHelper::ValidateValueCanBeWrittenAsXmlElementAnnotation(
+            if (!ValidationHelper::validateValueCanBeWrittenAsXmlElementAnnotation(
                 $self,
                 null,
                 null,

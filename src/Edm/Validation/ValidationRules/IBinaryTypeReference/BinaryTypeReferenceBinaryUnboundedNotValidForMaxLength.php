@@ -24,7 +24,7 @@ class BinaryTypeReferenceBinaryUnboundedNotValidForMaxLength extends BinaryTypeR
         assert($type instanceof IBinaryTypeReference);
         if (null !== $type->getMaxLength() && $type->isUnBounded()) {
             EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
-            $context->AddError(
+            $context->addError(
                 $type->Location(),
                 EdmErrorCode::IsUnboundedCannotBeTrueWhileMaxLengthIsNotNull(),
                 StringConst::EdmModel_Validator_Semantic_IsUnboundedCannotBeTrueWhileMaxLengthIsNotNull()

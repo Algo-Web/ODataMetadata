@@ -30,7 +30,7 @@ class EntitySetCanOnlyBeContainedByASingleNavigationProperty extends EntitySetRu
                 if ($mapping->getTargetEntitySet() === $set && $property->containsTarget()) {
                     if ($containmentFound) {
                         EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
-                        $context->AddError(
+                        $context->addError(
                             $set->Location(),
                             EdmErrorCode::EntitySetCanOnlyBeContainedByASingleNavigationProperty(),
                             StringConst::EdmModel_Validator_Semantic_EntitySetCanOnlyBeContainedByASingleNavigationProperty($set->getContainer()->FullName() . '.' . $set->getName())

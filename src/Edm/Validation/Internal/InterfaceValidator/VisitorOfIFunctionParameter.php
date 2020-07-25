@@ -11,7 +11,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 
 class VisitorOfIFunctionParameter extends VisitorOfT
 {
-    protected function VisitT($parameter, array &$followup, array &$references): ?iterable
+    protected function visitT($parameter, array &$followup, array &$references): ?iterable
     {
         assert($parameter instanceof IFunctionParameter);
 
@@ -24,8 +24,8 @@ class VisitorOfIFunctionParameter extends VisitorOfT
 
         if ($parameter->getMode()->getValue() < FunctionParameterMode::None()->getValue() ||
                     $parameter->getMode()->getValue() > FunctionParameterMode::InOut()->getValue()) {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreateEnumPropertyOutOfRangeError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createEnumPropertyOutOfRangeError(
                     $parameter,
                     $parameter->getMode(),
                     'Mode'

@@ -33,7 +33,7 @@ class VisitorOfISchemaElementTest extends TestCase
         $followUp   = [];
         $references = [];
 
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));
     }
@@ -48,7 +48,7 @@ class VisitorOfISchemaElementTest extends TestCase
         $followUp   = [];
         $references = [];
 
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));
         /** @var EdmError $error */
@@ -87,7 +87,7 @@ class VisitorOfISchemaElementTest extends TestCase
         $followUp   = [];
         $references = [];
 
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));
         /** @var EdmError $error */

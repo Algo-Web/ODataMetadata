@@ -34,14 +34,14 @@ class NavigationPropertyDependentEndMultiplicity extends NavigationPropertyRule
                 $navigationProperty->DeclaringEntityType()->Key(),
                 'navigationProperty->DeclaringEntityType->Key'
             );
-            if (ValidationHelper::PropertySetsAreEquivalent(
+            if (ValidationHelper::propertySetsAreEquivalent(
                 $navigationProperty->DeclaringEntityType()->Key(),
                 $dependentProperties
             )) {
                 if (!$navigationProperty->Multiplicity()->isZeroOrOne() &&
                     !$navigationProperty->Multiplicity()->isOne()
                 ) {
-                    $context->AddError(
+                    $context->addError(
                         $navigationProperty->Location(),
                         EdmErrorCode::InvalidMultiplicityOfDependentEnd(),
                         StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfDependentEndMustBeZeroOneOrOne(
@@ -50,7 +50,7 @@ class NavigationPropertyDependentEndMultiplicity extends NavigationPropertyRule
                     );
                 }
             } elseif ($navigationProperty->Multiplicity()->isMany()) {
-                $context->AddError(
+                $context->addError(
                     $navigationProperty->Location(),
                     EdmErrorCode::InvalidMultiplicityOfDependentEnd(),
                     StringConst::EdmModel_Validator_Semantic_InvalidMultiplicityOfDependentEndMustBeMany(

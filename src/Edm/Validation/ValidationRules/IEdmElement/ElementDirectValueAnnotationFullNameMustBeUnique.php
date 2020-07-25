@@ -27,7 +27,7 @@ class ElementDirectValueAnnotationFullNameMustBeUnique extends EdmElementRule
             EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
             if (in_array($annotation->getNamespaceUri() . ':' . $annotation->getName(), $annotationNameSet)) {
                 EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
-                $context->AddError(
+                $context->addError(
                     $annotation->Location(),
                     EdmErrorCode::DuplicateDirectValueAnnotationFullName(),
                     StringConst::EdmModel_Validator_Semantic_ElementDirectValueAnnotationFullNameMustBeUnique($annotation->getNamespaceUri(), $annotation->getName())

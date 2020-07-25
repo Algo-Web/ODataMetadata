@@ -26,7 +26,7 @@ class TemporalTypeReferencePrecisionOutOfRange extends TemporalTypeReferenceRule
         if ($type->getPrecision() > EdmConstants::Max_Precision ||
             $type->getPrecision() < EdmConstants::Min_Precision) {
             EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
-            $context->AddError(
+            $context->addError(
                 $type->Location(),
                 EdmErrorCode::PrecisionOutOfRange(),
                 StringConst::EdmModel_Validator_Semantic_PrecisionOutOfRange()

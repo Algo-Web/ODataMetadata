@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IEnumMemberReferenceExpression;
 
 class VisitorOfIEnumMemberReferenceExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): ?iterable
+    protected function visitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IEnumMemberReferenceExpression);
         $references[] = $expression->getReferencedEnumMember();

@@ -57,7 +57,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                             $entitySet->getName()
                         );
 
-                        $context->AddError(
+                        $context->addError(
                             $functionImport->Location(),
                             EdmErrorCode::FunctionImportEntityTypeDoesNotMatchEntitySet(),
                             $errorMessage
@@ -74,7 +74,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
                              !$context->checkIsBad($returnedEntityType) &&
                              !$context->checkIsBad($definition);
                     if ($isBad) {
-                        $context->AddError(
+                        $context->addError(
                             $functionImport->Location(),
                             EdmErrorCode::FunctionImportEntityTypeDoesNotMatchEntitySet(),
                             StringConst::EdmModel_Validator_Semantic_FunctionImportEntityTypeDoesNotMatchEntitySet2(
@@ -87,7 +87,7 @@ class FunctionImportEntityTypeDoesNotMatchEntitySet extends FunctionImportRule
 
                 // The case when all try gets fail is caught by the FunctionImportEntitySetExpressionIsInvalid rule.
             } elseif (!$context->checkIsBad($elementType->getDefinition())) {
-                $context->AddError(
+                $context->addError(
                     $functionImport->Location(),
                     EdmErrorCode::FunctionImportSpecifiesEntitySetButDoesNotReturnEntityType(),
                     StringConst::EdmModel_Validator_Semantic_FunctionImportSpecifiesEntitySetButNotEntityType(

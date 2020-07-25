@@ -28,7 +28,7 @@ class EnumTypeEnumMemberNameAlreadyDefined extends EnumTypeRule
             // We only want to report the properties that are declared in this type. Otherwise properties will get
             // reported multiple times due to inheritance.
             if ($member != null) {
-                ValidationHelper::AddMemberNameToHashSet(
+                ValidationHelper::addMemberNameToHashSet(
                     $member,
                     $memberNames,
                     $context,

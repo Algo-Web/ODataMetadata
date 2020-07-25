@@ -29,7 +29,7 @@ class EntityTypeKeyPropertyMustBelongToEntity extends EntityTypeRule
                 // Key must be one of the declared properties.
                 if ($key->getDeclaringType() !== $entityType && !$context->checkIsBad($key)) {
                     EdmUtil::checkArgumentNull($entityType->Location(), 'entityType->Location');
-                    $context->AddError(
+                    $context->addError(
                         $entityType->Location(),
                         EdmErrorCode::KeyPropertyMustBelongToEntity(),
                         StringConst::EdmModel_Validator_Semantic_KeyPropertyMustBelongToEntity($key->getName(), $entityType->getName())

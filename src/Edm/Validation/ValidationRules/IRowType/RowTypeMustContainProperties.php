@@ -24,7 +24,7 @@ class RowTypeMustContainProperties extends RowTypeRule
         assert($rowType instanceof IRowType);
         if (count($rowType->Properties()) === 0) {
             EdmUtil::checkArgumentNull($rowType->Location(), 'rowType->Location');
-            $context->AddError(
+            $context->addError(
                 $rowType->Location(),
                 EdmErrorCode::RowTypeMustHaveProperties(),
                 StringConst::EdmModel_Validator_Semantic_RowTypeMustHaveProperties()

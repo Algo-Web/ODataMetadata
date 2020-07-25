@@ -24,7 +24,7 @@ class SpatialTypeReferencesNotSupportedBeforeV3 extends PrimitiveTypeReferenceRu
         assert($type instanceof IPrimitiveTypeReference);
         if ($type->isSpatial()) {
             EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
-            $context->AddError(
+            $context->addError(
                 $type->Location(),
                 EdmErrorCode::SpatialTypeReferencesNotSupportedBeforeV3(),
                 StringConst::EdmModel_Validator_Semantic_SpatialTypeReferencesNotSupportedBeforeV3()

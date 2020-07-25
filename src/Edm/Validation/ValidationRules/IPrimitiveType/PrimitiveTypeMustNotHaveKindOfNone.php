@@ -24,7 +24,7 @@ class PrimitiveTypeMustNotHaveKindOfNone extends PrimitiveTypeRule
         assert($type instanceof IPrimitiveType);
         if ($type->getPrimitiveKind()->isNone() && !$context->checkIsBad($type)) {
             EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
-            $context->AddError(
+            $context->addError(
                 $type->Location(),
                 EdmErrorCode::PrimitiveTypeMustNotHaveKindOfNone(),
                 StringConst::EdmModel_Validator_Semantic_PrimitiveTypeMustNotHaveKindOfNone($type->FullName())

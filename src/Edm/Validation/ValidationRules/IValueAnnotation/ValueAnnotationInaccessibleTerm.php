@@ -27,7 +27,7 @@ class ValueAnnotationInaccessibleTerm extends ValueAnnotationRule
         $term = $annotation->getTerm();
         if (!($term instanceof IUnresolvedElement) && $context->getModel()->findValueTerm($term->FullName()) == null) {
             EdmUtil::checkArgumentNull($annotation->Location(), 'annotation->Location');
-            $context->AddError(
+            $context->addError(
                 $annotation->Location(),
                 EdmErrorCode::BadUnresolvedTerm(),
                 StringConst::EdmModel_Validator_Semantic_InaccessibleTerm($annotation->getTerm()->FullName())

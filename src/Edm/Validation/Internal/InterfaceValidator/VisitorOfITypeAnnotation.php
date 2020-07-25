@@ -10,11 +10,11 @@ use AlgoWeb\ODataMetadata\Interfaces\Annotations\ITypeAnnotation;
 
 class VisitorOfITypeAnnotation extends VisitorOfT
 {
-    protected function VisitT($annotation, array &$followup, array &$references): iterable
+    protected function visitT($annotation, array &$followup, array &$references): iterable
     {
         assert($annotation instanceof ITypeAnnotation);
         $errors = [];
-        InterfaceValidator::ProcessEnumerable(
+        InterfaceValidator::processEnumerable(
             $annotation,
             $annotation->getPropertyValueBindings(),
             'PropertyValueBindings',

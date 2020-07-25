@@ -44,7 +44,7 @@ class NavigationPropertyTypeMismatchRelationshipConstraint extends NavigationPro
                         );
 
                         EdmUtil::checkArgumentNull($navigationProperty->Location(), 'navigationProperty->Location');
-                        $context->AddError(
+                        $context->addError(
                             $navigationProperty->Location(),
                             EdmErrorCode::TypeMismatchRelationshipConstraint(),
                             $errorMessage

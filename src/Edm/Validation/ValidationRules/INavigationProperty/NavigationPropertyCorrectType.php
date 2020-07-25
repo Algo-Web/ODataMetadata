@@ -53,7 +53,7 @@ class NavigationPropertyCorrectType extends NavigationPropertyRule
 
         if ($isBad) {
             EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
-            $context->AddError(
+            $context->addError(
                 $property->Location(),
                 EdmErrorCode::InvalidNavigationPropertyType(),
                 StringConst::EdmModel_Validator_Semantic_InvalidNavigationPropertyType($property->getName())

@@ -33,7 +33,7 @@ class EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty extend
             ) &&
                 !$context->checkIsBad($mapping->getTargetEntitySet())) {
                 EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
-                $context->AddError(
+                $context->addError(
                     $set->Location(),
                     EdmErrorCode::EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty(),
                     StringConst::EdmModel_Validator_Semantic_EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty($mapping->getNavigationProperty()->getName(), $mapping->getTargetEntitySet()->getName())

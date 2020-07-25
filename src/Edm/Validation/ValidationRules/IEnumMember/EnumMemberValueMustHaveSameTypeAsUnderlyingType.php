@@ -33,7 +33,7 @@ class EnumMemberValueMustHaveSameTypeAsUnderlyingType extends EnumMemberRule
                            $discoveredErrors
                        )) {
             EdmUtil::checkArgumentNull($enumMember->Location(), 'enumMember->Location');
-            $context->AddError(
+            $context->addError(
                 $enumMember->Location(),
                 EdmErrorCode::EnumMemberTypeMustMatchEnumUnderlyingType(),
                 StringConst::EdmModel_Validator_Semantic_EnumMemberTypeMustMatchEnumUnderlyingType($enumMember->getName())

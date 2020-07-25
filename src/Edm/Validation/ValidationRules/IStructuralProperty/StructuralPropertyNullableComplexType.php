@@ -24,7 +24,7 @@ class StructuralPropertyNullableComplexType extends StructuralPropertyRule
         assert($property instanceof IStructuralProperty);
         if ($property->getType()->isComplex() && $property->getType()->getNullable()) {
             EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
-            $context->AddError(
+            $context->addError(
                 $property->Location(),
                 EdmErrorCode::NullableComplexTypeProperty(),
                 StringConst::EdmModel_Validator_Semantic_NullableComplexTypeProperty($property->getName())

@@ -25,7 +25,7 @@ class VisitorOfIPropertyConstructorTest extends TestCase
         $references = [];
 
         $foo    = new VisitorOfIPropertyConstructor();
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(2, count($result));
     }

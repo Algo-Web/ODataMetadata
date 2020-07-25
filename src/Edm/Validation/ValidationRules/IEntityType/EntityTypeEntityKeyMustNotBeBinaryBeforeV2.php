@@ -28,7 +28,7 @@ class EntityTypeEntityKeyMustNotBeBinaryBeforeV2 extends EntityTypeRule
                 assert($key instanceof IStructuralProperty);
                 if ($key->getType()->isBinary() && !$context->checkIsBad($key->getType()->getDefinition())) {
                     EdmUtil::checkArgumentNull($key->Location(), 'key->Location');
-                    $context->AddError(
+                    $context->addError(
                         $key->Location(),
                         EdmErrorCode::EntityKeyMustNotBeBinary(),
                         StringConst::EdmModel_Validator_Semantic_EntityKeyMustNotBeBinaryBeforeV2($key->getName(), $entityType->getName())

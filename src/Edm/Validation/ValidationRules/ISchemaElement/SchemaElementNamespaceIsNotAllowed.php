@@ -31,7 +31,7 @@ class SchemaElementNamespaceIsNotAllowed extends SchemaElementRule
         ) {
             if (!EdmUtil::isValidDottedName($item->getNamespace())) {
                 EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
-                $context->AddError(
+                $context->addError(
                     $item->Location(),
                     EdmErrorCode::InvalidNamespaceName(),
                     StringConst::EdmModel_Validator_Syntactic_EdmModel_NamespaceNameIsNotAllowed($item->getNamespace())

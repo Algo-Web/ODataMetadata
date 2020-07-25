@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\Annotations\IValueAnnotation;
 
 class VisitorOfIValueAnnotation extends VisitorOfT
 {
-    protected function VisitT($annotation, array &$followup, array &$references): ?iterable
+    protected function visitT($annotation, array &$followup, array &$references): ?iterable
     {
         assert($annotation instanceof IValueAnnotation);
         $followup[] = $annotation->getValue();

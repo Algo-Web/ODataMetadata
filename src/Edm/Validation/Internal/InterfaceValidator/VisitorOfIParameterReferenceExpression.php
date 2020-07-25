@@ -10,14 +10,14 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IParameterReferenceExpression;
 
 class VisitorOfIParameterReferenceExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): ?iterable
+    protected function visitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IParameterReferenceExpression);
         if (null !== $expression->getReferencedParameter()) {
             $references[] = $expression->getReferencedParameter();
             return null;
         } else {
-            return [ InterfaceValidator::CreatePropertyMustNotBeNullError($expression, 'ReferencedParameter') ];
+            return [ InterfaceValidator::createPropertyMustNotBeNullError($expression, 'ReferencedParameter') ];
         }
     }
 

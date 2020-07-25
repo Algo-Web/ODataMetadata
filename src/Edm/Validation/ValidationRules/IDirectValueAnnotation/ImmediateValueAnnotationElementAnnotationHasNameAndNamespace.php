@@ -37,14 +37,14 @@ class ImmediateValueAnnotationElementAnnotationHasNameAndNamespace extends Direc
             )) {
                 $error = null;
                 if (!
-                ValidationHelper::ValidateValueCanBeWrittenAsXmlElementAnnotation(
+                ValidationHelper::validateValueCanBeWrittenAsXmlElementAnnotation(
                     $stringValue,
                     $annotation->getNamespaceUri(),
                     $annotation->getName(),
                     $error
                 )
                 ) {
-                    $context->AddRawError($error);
+                    $context->addRawError($error);
                 }
             }
         }

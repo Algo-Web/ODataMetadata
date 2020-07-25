@@ -24,7 +24,7 @@ class ComplexTypeInvalidPolymorphicComplexType extends ComplexTypeRule
         assert($edmComplexType instanceof IComplexType);
         if (null !== $edmComplexType->getBaseType()) {
             EdmUtil::checkArgumentNull($edmComplexType->Location(), 'edmComplexType->Location');
-            $context->AddError(
+            $context->addError(
                 $edmComplexType->Location(),
                 EdmErrorCode::InvalidPolymorphicComplexType(),
                 StringConst::EdmModel_Validator_Semantic_InvalidComplexTypePolymorphic($edmComplexType->FullName())

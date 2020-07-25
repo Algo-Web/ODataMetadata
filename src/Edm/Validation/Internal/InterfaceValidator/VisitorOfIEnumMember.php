@@ -10,7 +10,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 
 class VisitorOfIEnumMember extends VisitorOfT
 {
-    protected function VisitT($member, array &$followup, array &$references): ?iterable
+    protected function visitT($member, array &$followup, array &$references): ?iterable
     {
         assert($member instanceof IEnumMember);
         $errors = [];

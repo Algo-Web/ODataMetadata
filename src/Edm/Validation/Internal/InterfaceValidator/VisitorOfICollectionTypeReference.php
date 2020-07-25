@@ -10,12 +10,12 @@ use AlgoWeb\ODataMetadata\Interfaces\ICollectionTypeReference;
 
 class VisitorOfICollectionTypeReference extends VisitorOfT
 {
-    protected function VisitT($typeRef, array &$followup, array &$references): ?iterable
+    protected function visitT($typeRef, array &$followup, array &$references): ?iterable
     {
         assert($typeRef instanceof ICollectionTypeReference);
         return null !== $typeRef->getDefinition() &&
                !$typeRef->getDefinition()->getTypeKind()->isCollection() ?
-            [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef)]: null;
+            [ InterfaceValidator::createTypeRefInterfaceTypeKindValueMismatchError($typeRef)]: null;
     }
 
     public function forType(): string

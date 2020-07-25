@@ -27,7 +27,7 @@ class EntityTypeInvalidKeyKeyDefinedInBaseClass extends EntityTypeRule
             $entityType->getBaseType()->getTypeKind()->isEntity() &&
             null !== $entityType->BaseEntityType()->getDeclaredKey()) {
             EdmUtil::checkArgumentNull($entityType->Location(), 'entityType->Location');
-            $context->AddError(
+            $context->addError(
                 $entityType->Location(),
                 EdmErrorCode::InvalidKey(),
                 StringConst::EdmModel_Validator_Semantic_InvalidKeyKeyDefinedInBaseClass($entityType->getName(), $entityType->BaseEntityType()->getName())

@@ -11,13 +11,13 @@ use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 
 class VisitorOfIDecimalTypeReference extends VisitorOfT
 {
-    protected function VisitT($typeRef, array &$followup, array &$references): iterable
+    protected function visitT($typeRef, array &$followup, array &$references): iterable
     {
         assert($typeRef instanceof IDecimalTypeReference);
         $primitive = $typeRef->getDefinition();
         assert($primitive instanceof IPrimitiveType);
         return null !== $typeRef->getDefinition() && !$primitive->getPrimitiveKind()->isDecimal()
-            ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
+            ? [ InterfaceValidator::createTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
     }
 
     public function forType(): string

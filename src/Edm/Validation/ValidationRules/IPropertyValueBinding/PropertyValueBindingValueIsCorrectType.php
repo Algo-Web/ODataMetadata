@@ -32,7 +32,7 @@ class PropertyValueBindingValueIsCorrectType extends PropertyValueBindingRule
             !$context->checkIsBad($binding->getBoundProperty())
         ) {
             foreach ($errors as $error) {
-                $context->AddRawError($error);
+                $context->addRawError($error);
             }
         }
     }

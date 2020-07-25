@@ -13,13 +13,13 @@ use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
 
 final class VisitorOfIEntityContainerElement extends VisitorOfT
 {
-    protected function VisitT($item, array &$followup, array &$references): ?iterable
+    protected function visitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IEntityContainerElement);
         $termKindError = null;
         switch ($item->getContainerElementKind()) {
             case ContainerElementKind::EntitySet():
-                $termKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                $termKindError = InterfaceValidator::checkForInterfaceKindValueMismatchError(
                     $item,
                     $item->getContainerElementKind(),
                     'ContainerElementKind',
@@ -28,7 +28,7 @@ final class VisitorOfIEntityContainerElement extends VisitorOfT
                 break;
 
             case ContainerElementKind::FunctionImport():
-                $termKindError = InterfaceValidator::CheckForInterfaceKindValueMismatchError(
+                $termKindError = InterfaceValidator::checkForInterfaceKindValueMismatchError(
                     $item,
                     $item->getContainerElementKind(),
                     'ContainerElementKind',
@@ -39,7 +39,7 @@ final class VisitorOfIEntityContainerElement extends VisitorOfT
             case ContainerElementKind::None():
                 break;
             default:
-                $termKindError = InterfaceValidator::CreateEnumPropertyOutOfRangeError(
+                $termKindError = InterfaceValidator::createEnumPropertyOutOfRangeError(
                     $item,
                     $item->getContainerElementKind(),
                     'ContainerElementKind'

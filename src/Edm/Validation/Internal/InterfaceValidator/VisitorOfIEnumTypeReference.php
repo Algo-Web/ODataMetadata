@@ -10,11 +10,11 @@ use AlgoWeb\ODataMetadata\Interfaces\IEnumTypeReference;
 
 class VisitorOfIEnumTypeReference extends VisitorOfT
 {
-    protected function VisitT($typeRef, array &$followup, array &$references): ?iterable
+    protected function visitT($typeRef, array &$followup, array &$references): ?iterable
     {
         assert($typeRef instanceof IEnumTypeReference);
         return null !== $typeRef->getDefinition() && !$typeRef->getDefinition()->getTypeKind()->isEnum()
-            ? [ InterfaceValidator::CreateTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
+            ? [ InterfaceValidator::createTypeRefInterfaceTypeKindValueMismatchError($typeRef) ] : null;
     }
 
     public function forType(): string

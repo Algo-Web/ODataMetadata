@@ -37,7 +37,7 @@ class StructuralPropertyInvalidPropertyTypeConcurrencyMode extends StructuralPro
         if ($property->getConcurrencyMode()->isFixed() &&
             !$propType->isPrimitive() &&
             !$context->checkIsBad($def)) {
-            $context->AddError(
+            $context->addError(
                 $loc,
                 EdmErrorCode::InvalidPropertyType(),
                 StringConst::EdmModel_Validator_Semantic_InvalidPropertyTypeConcurrencyMode(

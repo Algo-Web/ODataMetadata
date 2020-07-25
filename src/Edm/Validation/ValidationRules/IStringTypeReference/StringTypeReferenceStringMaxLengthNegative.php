@@ -24,7 +24,7 @@ class StringTypeReferenceStringMaxLengthNegative extends StringTypeReferenceRule
         assert($type instanceof IStringTypeReference);
         if ($type->getMaxLength() < 0) {
             EdmUtil::checkArgumentNull($type->Location(), 'type->Location');
-            $context->AddError(
+            $context->addError(
                 $type->Location(),
                 EdmErrorCode::MaxLengthOutOfRange(),
                 StringConst::EdmModel_Validator_Semantic_StringMaxLengthOutOfRange()

@@ -23,7 +23,7 @@ class TypeReferenceInaccessibleSchemaType extends TypeReferenceRule
         assert($typeReference instanceof ITypeReference);
         $schemaType = $typeReference->getDefinition();
         if ($schemaType !== null && $schemaType instanceof ISchemaType && !$context->checkIsBad($schemaType)) {
-            Helpers::CheckForUnreachableTypeError($context, $schemaType, $typeReference->Location());
+            Helpers::checkForUnreachableTypeError($context, $schemaType, $typeReference->Location());
         }
     }
 }

@@ -29,7 +29,7 @@ class EntityTypeEntityKeyMustBeScalar extends EntitySetRule
                 assert($key instanceof IStructuralProperty);
                 if (!$key->getType()->isPrimitive() && !$context->checkIsBad($key)) {
                     EdmUtil::checkArgumentNull($key->Location(), 'key->Location');
-                    $context->AddError(
+                    $context->addError(
                         $key->Location(),
                         EdmErrorCode::EntityKeyMustBeScalar(),
                         StringConst::EdmModel_Validator_Semantic_EntityKeyMustBeScalar($key->getName(), $entityType->getName())

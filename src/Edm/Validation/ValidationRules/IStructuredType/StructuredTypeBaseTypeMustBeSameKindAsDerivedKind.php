@@ -30,7 +30,7 @@ class StructuredTypeBaseTypeMustBeSameKindAsDerivedKind extends StructuredTypeRu
                 $structuredType->getBaseType()->getTypeKind() !== $structuredType->getTypeKind()
             ) {
                 EdmUtil::checkArgumentNull($structuredType->Location(), 'structuredType->Location');
-                $context->AddError(
+                $context->addError(
                     $structuredType->Location(),
                     (
                         $structuredType->getTypeKind()->isEntity() ?

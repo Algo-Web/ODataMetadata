@@ -28,13 +28,13 @@ use XMLReader;
 
 abstract class ValidationHelper
 {
-    public static function IsEdmSystemNamespace(string $namespaceName): bool
+    public static function isEdmSystemNamespace(string $namespaceName): bool
     {
         return ($namespaceName == EdmConstants::TransientNamespace ||
         $namespaceName == EdmConstants::EdmNamespace);
     }
 
-    public static function AddMemberNameToHashSet(
+    public static function addMemberNameToHashSet(
         INamedElement $item,
         HashSetInternal $memberNameList,
         ValidationContext $context,
@@ -46,7 +46,7 @@ abstract class ValidationHelper
         if ($memberNameList->add($name)) {
             if (!$suppressError) {
                 EdmUtil::checkArgumentNull($item->Location(), 'item->Location');
-                $context->AddError($item->Location(), $errorCode, $errorString);
+                $context->addError($item->Location(), $errorCode, $errorString);
             }
             return false;
         }
@@ -58,7 +58,7 @@ abstract class ValidationHelper
      * @param  IStructuralProperty[] $properties
      * @return bool
      */
-    public static function AllPropertiesAreNullable(array $properties): bool
+    public static function allPropertiesAreNullable(array $properties): bool
     {
         return count(array_filter($properties, function (IStructuralProperty $item) {
             try {
@@ -73,7 +73,7 @@ abstract class ValidationHelper
      * @param  IStructuralProperty[] $properties
      * @return bool
      */
-    public static function HasNullableProperty(array $properties): bool
+    public static function hasNullableProperty(array $properties): bool
     {
         return count(array_filter($properties, function (IStructuralProperty $item) {
             try {
@@ -89,7 +89,7 @@ abstract class ValidationHelper
      * @param  IStructuralProperty[] $subset
      * @return bool
      */
-    public static function PropertySetIsSubset(array $set, array $subset): bool
+    public static function propertySetIsSubset(array $set, array $subset): bool
     {
         return count(array_diff($subset, $set)) === 0;
     }
@@ -99,7 +99,7 @@ abstract class ValidationHelper
      * @param  IStructuralProperty[] $set2
      * @return bool
      */
-    public static function PropertySetsAreEquivalent(array $set1, array $set2): bool
+    public static function propertySetsAreEquivalent(array $set1, array $set2): bool
     {
         if (count($set1) != count($set2)) {
             return false;
@@ -112,7 +112,7 @@ abstract class ValidationHelper
         return true;
     }
 
-    public static function ValidateValueCanBeWrittenAsXmlElementAnnotation(
+    public static function validateValueCanBeWrittenAsXmlElementAnnotation(
         IValue $value,
         ?string $annotationNamespace,
         ?string $annotationName,
@@ -193,7 +193,7 @@ abstract class ValidationHelper
         }
     }
 
-    public static function IsInterfaceCritical(EdmError $error): bool
+    public static function isInterfaceCritical(EdmError $error): bool
     {
         $errVal = $error->getErrorCode()->getValue();
 
@@ -201,7 +201,7 @@ abstract class ValidationHelper
                $errVal <= EdmErrorCode::InterfaceCriticalCycleInTypeHierarchy()->getValue();
     }
 
-    public static function ItemExistsInReferencedModel(
+    public static function itemExistsInReferencedModel(
         IModel $model,
         string $fullName,
         bool $checkEntityContainer
@@ -216,7 +216,7 @@ abstract class ValidationHelper
     }
 
     // Take function name to avoid recomputing it
-    public static function FunctionOrNameExistsInReferencedModel(
+    public static function functionOrNameExistsInReferencedModel(
         IModel $model,
         IFunction $function,
         string $functionFullName,
@@ -231,7 +231,7 @@ abstract class ValidationHelper
         return false;
     }
 
-    public static function TypeIndirectlyContainsTarget(
+    public static function typeIndirectlyContainsTarget(
         IEntityType $source,
         IEntityType $target,
         SplObjectStorage $visited,
@@ -245,7 +245,7 @@ abstract class ValidationHelper
             }
 
             foreach ($source->NavigationProperties() as $navProp) {
-                if ($navProp->containsTarget() && self::TypeIndirectlyContainsTarget(
+                if ($navProp->containsTarget() && self::typeIndirectlyContainsTarget(
                     $navProp->ToEntityType(),
                     $target,
                     $visited,
@@ -256,7 +256,7 @@ abstract class ValidationHelper
             }
 
             foreach ($context->findAllDerivedTypes($source) as $derived) {
-                if ($derived instanceof IEntityType && self::TypeIndirectlyContainsTarget(
+                if ($derived instanceof IEntityType && self::typeIndirectlyContainsTarget(
                     $derived,
                     $target,
                     $visited,

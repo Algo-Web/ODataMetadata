@@ -31,7 +31,7 @@ class IfExpressionAssertCorrectTestType extends IfExpressionRule
             $errors
         )) {
             foreach ($errors as $error) {
-                $context->AddRawError($error);
+                $context->addRawError($error);
             }
         }
     }

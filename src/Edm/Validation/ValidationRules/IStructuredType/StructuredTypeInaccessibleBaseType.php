@@ -22,7 +22,7 @@ class StructuredTypeInaccessibleBaseType extends StructuredTypeRule
     {
         assert($structuredType instanceof IStructuredType);
         if ($structuredType instanceof ISchemaType && !$context->checkIsBad($structuredType)) {
-            Helpers::CheckForUnreachableTypeError($context, $structuredType, $structuredType->Location());
+            Helpers::checkForUnreachableTypeError($context, $structuredType, $structuredType->Location());
         }
     }
 }

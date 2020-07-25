@@ -25,7 +25,7 @@ class EntityReferenceTypeInaccessibleEntityType extends EntityReferenceTypeRule
         EdmUtil::checkArgumentNull($entityType, 'entityReferenceType->getEntityType');
         if ($context->checkIsBad($entityType)) {
             EdmUtil::checkArgumentNull($entityReferenceType->Location(), 'entityReferenceType->Location');
-            Helpers::CheckForUnreachableTypeError($context, $entityType, $entityReferenceType->Location());
+            Helpers::checkForUnreachableTypeError($context, $entityType, $entityReferenceType->Location());
         }
     }
 }

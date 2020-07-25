@@ -24,7 +24,7 @@ class ComplexTypeInvalidAbstractComplexType extends ComplexTypeRule
         assert($complexType instanceof IComplexType);
         if ($complexType->isAbstract()) {
             EdmUtil::checkArgumentNull($complexType->Location(), 'complexType->Location');
-            $context->AddError(
+            $context->addError(
                 $complexType->Location(),
                 EdmErrorCode::InvalidAbstractComplexType(),
                 StringConst::EdmModel_Validator_Semantic_InvalidComplexTypeAbstract($complexType->FullName())

@@ -10,12 +10,12 @@ use AlgoWeb\ODataMetadata\Interfaces\IModel;
 
 final class VisitorOfIModel extends VisitorOfT
 {
-    protected function VisitT($item, array &$followup, array &$references): ?iterable
+    protected function visitT($item, array &$followup, array &$references): ?iterable
     {
         assert($item instanceof IModel);
         $errors = [];
-        InterfaceValidator::ProcessEnumerable($item, $item->getSchemaElements(), 'SchemaElements', $followup, $errors);
-        InterfaceValidator::ProcessEnumerable(
+        InterfaceValidator::processEnumerable($item, $item->getSchemaElements(), 'SchemaElements', $followup, $errors);
+        InterfaceValidator::processEnumerable(
             $item,
             $item->getVocabularyAnnotations(),
             'VocabularyAnnotations',

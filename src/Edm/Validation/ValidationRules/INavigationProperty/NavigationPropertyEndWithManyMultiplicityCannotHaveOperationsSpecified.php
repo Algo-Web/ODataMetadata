@@ -27,7 +27,7 @@ class NavigationPropertyEndWithManyMultiplicityCannotHaveOperationsSpecified ext
             !$end->getOnDelete()->isNone()
         ) {
             EdmUtil::checkArgumentNull($end->Location(), 'end->Location');
-            $context->AddError(
+            $context->addError(
                 $end->Location(),
                 EdmErrorCode::EndWithManyMultiplicityCannotHaveOperationsSpecified(),
                 StringConst::EdmModel_Validator_Semantic_EndWithManyMultiplicityCannotHaveOperationsSpecified(

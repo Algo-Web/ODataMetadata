@@ -27,7 +27,7 @@ class EntityTypeDuplicatePropertyNameSpecifiedInEntityKey extends EntitySetRule
         if (null !== $entityType->getDeclaredKey()) {
             $keyPropertyNameList = new HashSetInternal();
             foreach ($entityType->getDeclaredKey() as $item) {
-                ValidationHelper::AddMemberNameToHashSet(
+                ValidationHelper::addMemberNameToHashSet(
                     $item,
                     $keyPropertyNameList,
                     $context,

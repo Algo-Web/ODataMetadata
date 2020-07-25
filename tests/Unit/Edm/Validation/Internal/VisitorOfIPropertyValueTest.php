@@ -24,7 +24,7 @@ class VisitorOfIPropertyValueTest extends TestCase
         $references = [];
 
         $foo    = new VisitorOfIPropertyValue();
-        $result = $foo->Visit($item, $followUp, $references);
+        $result = $foo->visit($item, $followUp, $references);
         $this->assertTrue(is_array($result));
         $this->assertEquals(1, count($result));
     }

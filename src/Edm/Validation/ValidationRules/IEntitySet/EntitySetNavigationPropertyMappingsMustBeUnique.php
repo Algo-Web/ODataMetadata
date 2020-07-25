@@ -26,7 +26,7 @@ class EntitySetNavigationPropertyMappingsMustBeUnique extends EntitySetRule
             $mappedPropertySet = [];
             if (in_array($mapping->getNavigationProperty(), $mappedPropertySet)) {
                 EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
-                $context->AddError(
+                $context->addError(
                     $set->Location(),
                     EdmErrorCode::DuplicateNavigationPropertyMapping(),
                     StringConst::EdmModel_Validator_Semantic_DuplicateNavigationPropertyMapping($set->getContainer()->FullName() . '.' . $set->getName(), $mapping->getNavigationProperty()->getName())

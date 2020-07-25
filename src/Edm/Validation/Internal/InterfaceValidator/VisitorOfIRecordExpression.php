@@ -10,12 +10,12 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\IRecordExpression;
 
 class VisitorOfIRecordExpression extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): ?iterable
+    protected function visitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IRecordExpression);
         $errors = [];
 
-        InterfaceValidator::ProcessEnumerable(
+        InterfaceValidator::processEnumerable(
             $expression,
             $expression->getProperties(),
             'Properties',

@@ -35,7 +35,7 @@ class EntitySetNavigationMappingMustBeBidirectional extends EntitySetRule
             ) &&
                 $opposingTarget !== $set) {
                 EdmUtil::checkArgumentNull($set->Location(), 'set->Location');
-                $context->AddError(
+                $context->addError(
                     $set->Location(),
                     EdmErrorCode::EntitySetNavigationMappingMustBeBidirectional(),
                     StringConst::EdmModel_Validator_Semantic_EntitySetNavigationMappingMustBeBidirectional($set->getContainer()->FullName() . '.' . $set->getName(), $property->getName())

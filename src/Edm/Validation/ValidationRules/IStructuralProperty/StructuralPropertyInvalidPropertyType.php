@@ -33,7 +33,7 @@ class StructuralPropertyInvalidPropertyType extends StructuralPropertyRule
                 !$validatedType->getTypeKind()->isComplex() &&
                 !$context->checkIsBad($validatedType)) {
                 EdmUtil::checkArgumentNull($property->Location(), 'property->Location');
-                $context->AddError(
+                $context->addError(
                     $property->Location(),
                     EdmErrorCode::InvalidPropertyType(),
                     StringConst::EdmModel_Validator_Semantic_InvalidPropertyType(

@@ -10,14 +10,14 @@ use AlgoWeb\ODataMetadata\Interfaces\Expressions\RecordExpression\IPropertyConst
 
 class VisitorOfIPropertyConstructor extends VisitorOfT
 {
-    protected function VisitT($expression, array &$followup, array &$references): ?iterable
+    protected function visitT($expression, array &$followup, array &$references): ?iterable
     {
         assert($expression instanceof IPropertyConstructor);
         $errors = [];
 
         if (null === $expression->getName()) {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createPropertyMustNotBeNullError(
                     $expression,
                     'Name'
                 ),
@@ -28,8 +28,8 @@ class VisitorOfIPropertyConstructor extends VisitorOfT
         if (null !== $expression->getValue()) {
             $followup[] = $expression->getValue();
         } else {
-            InterfaceValidator::CollectErrors(
-                InterfaceValidator::CreatePropertyMustNotBeNullError(
+            InterfaceValidator::collectErrors(
+                InterfaceValidator::createPropertyMustNotBeNullError(
                     $expression,
                     'Value'
                 ),
