@@ -129,7 +129,7 @@ abstract class EdmStructuredType extends EdmType implements IStructuredType
 
         $this->declaredProperties[] = $property;
 
-        $this->propertiesDictionary->Clear();
+        $this->propertiesDictionary->clear();
     }
 
     /**
