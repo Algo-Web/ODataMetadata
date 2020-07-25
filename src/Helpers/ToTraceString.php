@@ -140,7 +140,7 @@ abstract class ToTraceString
             $sb = self::AppendKeyValue(
                 $sb,
                 EdmConstants::FacetName_FixedLength,
-                $type->isFixedLength() ? 'TRUE' : 'FALSE'
+                'TRUE'
             );
         }
 
@@ -153,7 +153,7 @@ abstract class ToTraceString
         }
 
         if (true === $type->isUnicode()) {
-            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Unicode, $type->isUnicode() ? 'TRUE' : 'FALSE');
+            $sb = self::AppendKeyValue($sb, EdmConstants::FacetName_Unicode, 'TRUE');
         }
 
         if (null !== $type->getCollation()) {

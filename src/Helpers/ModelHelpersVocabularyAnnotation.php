@@ -20,7 +20,7 @@ trait ModelHelpersVocabularyAnnotation
      * Gets an annotatable element's vocabulary annotations that bind a particular term.
      *
      * @param IVocabularyAnnotatable $element  Element to check for annotations.
-     * @param ITerm|string $term Term to search for. OR Name of the term to search for.
+     * @param ITerm|string|null $term Term to search for. OR Name of the term to search for.
      * @param string|null $qualifier Qualifier to apply.
      * @param string|null $type Type of the annotation being returned.
      * @return iterable|IVocabularyAnnotation[] Annotations attached to the element by this model or by models
@@ -32,7 +32,10 @@ trait ModelHelpersVocabularyAnnotation
         string $qualifier = null,
         string $type = null
     ): iterable {
-        assert($term instanceof ITerm || is_string($term), '$term should be a string or instanceof iTerm');
+        assert(
+            null === $term || $term instanceof ITerm || is_string($term),
+               '$term should be a string or instanceof iTerm'
+        );
         if (null === $term) {
             return $this->processNullVocabularyAnnotationTerm($element, $qualifier, $type);
         }
@@ -108,8 +111,6 @@ trait ModelHelpersVocabularyAnnotation
         string $qualifier,
         string $type
     ): array {
-        assert(null === $qualifier);
-        assert(null === $type);
         $result = $this->FindVocabularyAnnotationsIncludingInheritedAnnotations($element);
         foreach ($this->getReferencedModels() as $referencedModel) {
             $result = array_merge(
@@ -142,16 +143,7 @@ trait ModelHelpersVocabularyAnnotation
                 continue;
             }
 
-            if ($annotation->getTerm() == $term &&
-                (
-                    null === $qualifier ||
-                    $qualifier == $annotation->getQualifier()
-                )
-            ) {
-                if (null === $result) {
-                    $result = [];
-                }
-
+            if ($annotation->getTerm() == $term && (null === $qualifier || $qualifier == $annotation->getQualifier())) {
                 $result[] = $annotation;
             }
         }
