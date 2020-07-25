@@ -301,10 +301,10 @@ class EdmCoreModel extends EdmElement implements IModel, IEdmValidCoreModelEleme
     /**
      * Gets primitive type by kind.
      *
-     * @param  PrimitiveTypeKind $kind kind of the primitive type
-     * @return IPrimitiveType    primitive type definition
+     * @param  PrimitiveTypeKind      $kind kind of the primitive type
+     * @return IPrimitiveType|null    primitive type definition
      */
-    public function GetPrimitiveType(PrimitiveTypeKind $kind): IPrimitiveType
+    public function GetPrimitiveType(PrimitiveTypeKind $kind): ?IPrimitiveType
     {
         return $this->GetCoreModelPrimitiveType($kind);
     }

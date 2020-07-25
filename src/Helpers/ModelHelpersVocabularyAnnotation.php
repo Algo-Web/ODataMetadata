@@ -10,6 +10,7 @@ namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\Annotations\IVocabularyAnnotation;
+use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Interfaces\ITerm;
 use AlgoWeb\ODataMetadata\Interfaces\IVocabularyAnnotatable;
@@ -37,7 +38,7 @@ trait ModelHelpersVocabularyAnnotation
                '$term should be a string or instanceof iTerm'
         );
         if (null === $term) {
-            return $this->processNullVocabularyAnnotationTerm($element, $qualifier, $type);
+            return $this->processNullVocabularyAnnotationTerm($element);
         }
         if (is_string($term)) {
             $termName = $term;
@@ -102,14 +103,10 @@ trait ModelHelpersVocabularyAnnotation
 
     /**
      * @param IVocabularyAnnotatable $element
-     * @param string $qualifier
-     * @param string $type
      * @return IVocabularyAnnotation[]|array
      */
     protected function processNullVocabularyAnnotationTerm(
-        IVocabularyAnnotatable $element,
-        string $qualifier,
-        string $type
+        IVocabularyAnnotatable $element
     ): array {
         $result = $this->FindVocabularyAnnotationsIncludingInheritedAnnotations($element);
         foreach ($this->getReferencedModels() as $referencedModel) {
@@ -150,4 +147,9 @@ trait ModelHelpersVocabularyAnnotation
 
         return $result;
     }
+
+    /**
+     * @return IModel[] gets the collection of models referred to by this model
+     */
+    abstract public function getReferencedModels(): array;
 }

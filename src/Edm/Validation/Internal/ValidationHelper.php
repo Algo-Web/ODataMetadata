@@ -114,9 +114,9 @@ abstract class ValidationHelper
 
     public static function ValidateValueCanBeWrittenAsXmlElementAnnotation(
         IValue $value,
-        string $annotationNamespace,
-        string $annotationName,
-        EdmError &$error
+        ?string $annotationNamespace,
+        ?string $annotationName,
+        ?EdmError &$error
     ): bool {
         if (!($value instanceof IStringValue)) {
             $error = new EdmError(
@@ -152,7 +152,7 @@ abstract class ValidationHelper
                 return false;
             }
 
-            // The root element must corespond to the term of the annotation
+            // The root element must correspond to the term of the annotation
             $elementNamespace = $reader->namespaceURI;
             $elementName      = $reader->localName;
 
@@ -166,8 +166,8 @@ abstract class ValidationHelper
                 return false;
             }
 
-            if (!(($annotationNamespace == null || $elementNamespace == $annotationNamespace) &&
-                  ($annotationName == null || $elementName == $annotationName))) {
+            if (!((null === $annotationNamespace || $elementNamespace == $annotationNamespace) &&
+                  (null === $annotationName || $elementName == $annotationName))) {
                 $error = new EdmError(
                     $value->Location(),
                     EdmErrorCode::InvalidElementAnnotation(),
@@ -180,7 +180,6 @@ abstract class ValidationHelper
             /* @noinspection PhpStatementHasEmptyBodyInspection */
             while ($reader->read()) {
             }
-
 
             $error = null;
             return true;
