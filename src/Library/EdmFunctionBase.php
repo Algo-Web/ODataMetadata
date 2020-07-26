@@ -43,9 +43,9 @@ class EdmFunctionBase extends EdmNamedElement implements IFunctionBase
     /**
      * Gets the return type of this function.
      *
-     * @return ITypeReference
+     * @return ITypeReference|null
      */
-    public function getReturnType(): ITypeReference
+    public function getReturnType(): ?ITypeReference
     {
         return $this->returnType;
     }

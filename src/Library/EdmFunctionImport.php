@@ -91,7 +91,7 @@ class EdmFunctionImport extends EdmFunctionBase implements IFunctionImport
     /**
      * @return IExpression gets the entity set containing entities returned by this function import
      */
-    public function getEntitySet(): IExpression
+    public function getEntitySet(): ?IExpression
     {
         return $this->entitySet;
     }

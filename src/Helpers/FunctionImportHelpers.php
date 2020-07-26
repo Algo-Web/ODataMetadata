@@ -31,7 +31,7 @@ trait FunctionImportHelpers
     {
         /** @var IFunctionImport $this */
         $entitySetReference = $this->getEntitySet();
-        $entitySet          = ($entitySetReference !== null && $entitySetReference instanceof IEntitySet) ? $entitySetReference : null;
+        $entitySet          = ($entitySetReference instanceof IEntitySet) ? $entitySetReference : null;
         return $entitySet !== null;
     }
 
