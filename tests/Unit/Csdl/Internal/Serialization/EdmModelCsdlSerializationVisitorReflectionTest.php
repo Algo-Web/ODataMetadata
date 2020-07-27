@@ -417,10 +417,17 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $method->invoke($foo, $element);
     }
 
-
-    public function testSharesAssociationSetIdentity()
-    {
-        $model = $this->getModel();
+    /**
+     * @param $model
+     * @param $thisSet
+     * @param $thisProp
+     * @param $thatSet
+     * @param $thatProp
+     * @param $expected
+     * @throws \ReflectionException
+     * @dataProvider sharesAssociationSetProvider
+     */
+    public function testSharesAssociationSet($model, $thisSet, $thisProp, $thatSet, $thatProp,$expected){
 
         $writer  = $this->getWriter();
         $version = Version::v3();
@@ -430,115 +437,57 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $method = $reflec->getMethod('SharesAssociationSet');
         $method->setAccessible(true);
 
-        $thisSet  = m::mock(IEntitySet::class);
-        $thisProp = m::mock(INavigationProperty::class);
-
-        $expected = true;
-        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thisSet, $thisProp);
+        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
-    public function testSharesAssociationSetAssociationSetNameDifferent()
+
+    public function sharesAssociationSetProvider()
     {
-        $model = $this->getModel();
-        $model->shouldReceive('GetAssociationSetName')->andReturn('foo', 'bar')->times(2);
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('SharesAssociationSet');
-        $method->setAccessible(true);
-
         $thisSet  = m::mock(IEntitySet::class);
         $thisProp = m::mock(INavigationProperty::class);
 
         $thatSet  = m::mock(IEntitySet::class);
         $thatProp = m::mock(INavigationProperty::class);
 
-        $expected = false;
-        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
-        $this->assertEquals($expected, $actual);
-    }
 
-    public function testSharesAssociationSetAssociationFullNameDifferent()
-    {
-        $model = $this->getModel();
-        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $model->shouldReceive('GetAssociationFullName')->andReturn('foo', 'bar')->times(2);
+        $associationSetNameDifferentModel = $this->getModel();
+        $associationSetNameDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo', 'bar')->times(2);
 
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $associationSetNameDifferent = $this->getModel();
+        $associationSetNameDifferent->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $associationSetNameDifferent->shouldReceive('GetAssociationFullName')->andReturn('foo', 'bar')->times(2);
 
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('SharesAssociationSet');
-        $method->setAccessible(true);
+        $associationFullNameDifferentModel = $this->getModel();
+        $associationFullNameDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $associationFullNameDifferentModel->shouldReceive('GetAssociationFullName')->andReturn('foo', 'bar')->times(2);
 
-        $thisSet  = m::mock(IEntitySet::class);
-        $thisProp = m::mock(INavigationProperty::class);
+        $associationEndNameDifferentModel = $this->getModel();
+        $associationEndNameDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $associationEndNameDifferentModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $associationEndNameDifferentModel->shouldReceive('GetAssociationEndName')->andReturn('foo', 'bar')->times(2);
 
-        $thatSet  = m::mock(IEntitySet::class);
-        $thatProp = m::mock(INavigationProperty::class);
+        $associationEndNameSameSetNameDifferentModel = $this->getModel();
+        $associationEndNameSameSetNameDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $associationEndNameSameSetNameDifferentModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $associationEndNameSameSetNameDifferentModel->shouldReceive('GetAssociationEndName')->andReturn('foo', 'bar')->times(2);
 
-        $expected = false;
-        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
-        $this->assertEquals($expected, $actual);
-    }
 
-    public function testSharesAssociationSetAssociationEndNameDifferent()
-    {
-        $model = $this->getModel();
-        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $model->shouldReceive('GetAssociationEndName')->andReturn('foo', 'bar')->times(2);
+        /*$associationBothOtherSetsNullModel = $this->getModel();
+        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
+        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);*/
+        return[
+            'Identity' => [$this->getModel(), $thisSet,$thisProp,$thisSet, $thisProp, true],
+            'Association Set Name Different Model' => [$associationSetNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
+            'AssociationSetNameDifferent' => [$associationSetNameDifferent, $thisSet, $thisProp,$thatSet,$thatProp, false],
+            'Association Full Name Different Model' => [$associationFullNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
+            'Association End Name Different' => [$associationEndNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
+            'Association End Name Same Set Name Different' => [$associationEndNameSameSetNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
+            //'Association Both Other Sets Null' => [$associationBothOtherSetsNullModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
 
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('SharesAssociationSet');
-        $method->setAccessible(true);
-
-        $thisSet  = m::mock(IEntitySet::class);
-        $thisProp = m::mock(INavigationProperty::class);
-
-        $thatSet  = m::mock(IEntitySet::class);
-        $thatProp = m::mock(INavigationProperty::class);
-
-        $expected = false;
-        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
-        $this->assertEquals($expected, $actual);
-    }
-
-    public function testSharesAssociationSetAssociationEndNameSameSetNameDifferent()
-    {
-        $model = $this->getModel();
-        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $model->shouldReceive('GetAssociationEndName')->andReturn('foo', 'bar')->times(2);
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('SharesAssociationSet');
-        $method->setAccessible(true);
-
-        $thisSet = m::mock(IEntitySet::class);
-        $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $thisProp = m::mock(INavigationProperty::class);
-
-        $thatSet = m::mock(IEntitySet::class);
-        $thatSet->shouldReceive('getName')->andReturn('bar')->times(1);
-        $thatProp = m::mock(INavigationProperty::class);
-
-        $expected = false;
-        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
-        $this->assertEquals($expected, $actual);
+        ];
     }
 
     public function testSharesAssociationSetAssociationBothOtherSetsNull()
@@ -971,5 +920,6 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $model->shouldReceive('GetAnnotationValue')->andReturn($doc);
         return $model;
     }
+
 
 }
