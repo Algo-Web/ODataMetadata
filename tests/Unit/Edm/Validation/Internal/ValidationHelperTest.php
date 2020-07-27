@@ -117,9 +117,9 @@ class ValidationHelperTest extends TestCase
     public function testAddMemberNameToHashSetTriplicatedGivesTwoErrors()
     {
         $suppressError = false;
-        $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
-        $code    = EdmErrorCode::InvalidElementAnnotation();
+        $model         = m::mock(IModel::class);
+        $context       = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $code          = EdmErrorCode::InvalidElementAnnotation();
 
         $loc = m::mock(ILocation::class)->makePartial();
 
@@ -127,7 +127,7 @@ class ValidationHelperTest extends TestCase
         $item->shouldReceive('getName')->andReturn('Name');
         $item->shouldReceive('Location')->andReturn($loc);
 
-        $memList = new HashSetInternal();
+        $memList  = new HashSetInternal();
         $expected = [true, false, false];
 
         for ($i = 0; $i < 3; $i++) {
