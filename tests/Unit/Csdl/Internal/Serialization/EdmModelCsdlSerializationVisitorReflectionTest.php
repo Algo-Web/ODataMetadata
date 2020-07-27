@@ -60,41 +60,64 @@ use Mockery as m;
 
 class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 {
-    public function testProcessComplexType()
-    {
+    /**
+     * @param $element
+     * @param string $methodName
+     * @param $expected
+     * @throws \ReflectionException
+     * @dataProvider processElementProvider
+     */
+    public function testProcessElement($element, string $methodName, $expected){
         $model = $this->getModel();
 
         $writer  = $this->getWriter();
         $version = Version::v3();
 
+        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+
+        $reflec = new \ReflectionClass($foo);
+        $method = $reflec->getMethod($methodName);
+        $method->setAccessible(true);
+
+        $method->invoke($foo, $element);
+
+        $actual = $writer->outputMemory(true);
+
+        $this->assertXmlStringEqualsXmlString($expected, $actual);
+    }
+
+    public function processElementProvider()
+    {
+        return[
+            'Complex Type' => $this->complexTypeData(),
+            'Enum Type' => $this->enumTypeData(),
+            'Function No Return Type No Defining Expression' => $this->functionNoReturnTypeNoDefiningExpressionData(),
+            'Function No Return Type With Defining Expression' =>$this->functionNoReturnTypeWithDefiningExpressionData(),
+            'Function Return Type With No Defining Expression' => $this->functionReturnTypeWithNoDefiningExpressionData(),
+            'Function Parameter' => $this->functionParameterData(),
+            'Collection Type' => $this->collectionTypeData(),
+            'Row Type' => $this->rowTypeData(),
+            'Function Import Inlined Type' => $this->functionImportInlinedTypeData(),
+            'Value Annotation' => $this->valueAnnotationData(),
+            'Type Annotation' => $this->typeAnnotationData(),
+            'Property Value Binding' => $this->propertyValueBindingData()
+        ];
+    }
+
+    protected function complexTypeData(){
         $element = m::mock(IComplexType::class)->makePartial();
         $element->shouldReceive('getName')->andReturn('name');
         $element->shouldReceive('BaseComplexType')->andReturn(null);
         $element->shouldReceive('isAbstract')->andReturn(false);
         $element->shouldReceive('getDeclaredProperties')->andReturn([]);
 
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessComplexType');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
         $expected = '<?xml version="1.0"?>' . PHP_EOL . '<ComplexType Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
         $expected .= '</ComplexType>' . PHP_EOL;
-        $actual = $writer->outputMemory(true);
 
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
+        return [$element, 'ProcessComplexType', $expected];
     }
 
-    public function testProcessEnumType()
-    {
-        $model = $this->getModel();
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-
+    protected function enumTypeData(){
         $primType = m::mock(IPrimitiveType::class);
         $primType->shouldReceive('getPrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
 
@@ -115,21 +138,224 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $element->shouldReceive('isFlags')->andReturn(false);
         $element->shouldReceive('getMembers')->andReturn([$mem]);
 
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessEnumType');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
         $expected = '<?xml version="1.0"?>' . PHP_EOL . '<EnumType Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL
-                    . '<Member Name="member" Value="11">' . PHP_EOL;
+            . '<Member Name="member" Value="11">' . PHP_EOL;
         $expected .= '<Documentation/>' . PHP_EOL . '</Member>' . PHP_EOL;
         $expected .= '</EnumType>' . PHP_EOL;
-        $actual = $writer->outputMemory(true);
 
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
+        return [$element, 'ProcessEnumType', $expected];
+    }
+
+    protected function functionNoReturnTypeNoDefiningExpressionData(){
+        $element = m::mock(IFunction::class)->makePartial();
+        $element->shouldReceive('getName')->andReturn('name');
+        $element->shouldReceive('getReturnType')->andReturn(null);
+        $element->shouldReceive('getDefiningExpression')->andReturn(null);
+        $element->shouldReceive('getParameters')->andReturn([]);
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Function Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
+        $expected .= '</Function>' . PHP_EOL;
+
+        return [$element, 'ProcessFunction', $expected];
+    }
+
+    protected function functionNoReturnTypeWithDefiningExpressionData(){
+        $element = m::mock(IFunction::class)->makePartial();
+        $element->shouldReceive('getName')->andReturn('name');
+        $element->shouldReceive('getReturnType')->andReturn(null);
+        $element->shouldReceive('getDefiningExpression')->andReturn('OH NOES!');
+        $element->shouldReceive('getParameters')->andReturn([]);
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Function Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
+        $expected .= '<DefiningExpression>OH NOES!</DefiningExpression>';
+        $expected .= '</Function>' . PHP_EOL;
+
+        return [$element, 'ProcessFunction', $expected];
+    }
+
+    protected function functionReturnTypeWithNoDefiningExpressionData(){
+        $rPrim = m::mock(IPrimitiveTypeReference::class);
+        $rPrim->shouldReceive('PrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
+
+        $rType = m::mock(IType::class);
+        $rType->shouldReceive('getTypeKind')->andReturn(TypeKind::Primitive());
+
+        $typeRef = m::mock(ITypeReference::class);
+        $typeRef->shouldReceive('getDefinition')->andReturn($rType);
+        $typeRef->shouldReceive('IsEntityReference')->andReturn(false);
+        $typeRef->shouldReceive('IsCollection')->andReturn(false);
+        $typeRef->shouldReceive('AsPrimitive')->andReturn($rPrim);
+
+        $element = m::mock(IFunction::class)->makePartial();
+        $element->shouldReceive('getName')->andReturn('name');
+        $element->shouldReceive('getReturnType')->andReturn($typeRef);
+        $element->shouldReceive('getDefiningExpression')->andReturn(null);
+        $element->shouldReceive('getParameters')->andReturn([]);
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Function Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
+        $expected .= '<ReturnType/>' . PHP_EOL;
+        $expected .= '</Function>' . PHP_EOL;
+
+        return [$element, 'ProcessFunction', $expected];
+    }
+
+    protected function functionParameterData(){
+        $rPrim = m::mock(IPrimitiveTypeReference::class);
+        $rPrim->shouldReceive('PrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
+
+        $rType = m::mock(IType::class);
+        $rType->shouldReceive('getTypeKind')->andReturn(TypeKind::Primitive());
+
+        $typeRef = m::mock(ITypeReference::class);
+        $typeRef->shouldReceive('getDefinition')->andReturn($rType);
+        $typeRef->shouldReceive('IsEntityReference')->andReturn(false);
+        $typeRef->shouldReceive('IsCollection')->andReturn(false);
+        $typeRef->shouldReceive('AsPrimitive')->andReturn($rPrim);
+
+        $mode = FunctionParameterMode::InOut();
+
+        $element = m::mock(IFunctionParameter::class)->makePartial();
+        $element->shouldReceive('getName')->andReturn('name');
+        $element->shouldReceive('getType')->andReturn($typeRef);
+        $element->shouldReceive('getMode')->andReturn($mode);
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Parameter Mode="InOut" Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
+        $expected .= '</Parameter>' . PHP_EOL;
+
+        return [$element, 'ProcessFunctionParameter', $expected];
+    }
+
+    protected function collectionTypeData(){
+
+        $rPrim = m::mock(IPrimitiveTypeReference::class);
+        $rPrim->shouldReceive('PrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
+
+        $rType = m::mock(IType::class);
+        $rType->shouldReceive('getTypeKind')->andReturn(TypeKind::Primitive());
+
+        $typeRef = m::mock(ITypeReference::class);
+        $typeRef->shouldReceive('getDefinition')->andReturn($rType);
+        $typeRef->shouldReceive('IsEntityReference')->andReturn(false);
+        $typeRef->shouldReceive('IsCollection')->andReturn(false);
+        $typeRef->shouldReceive('AsPrimitive')->andReturn($rPrim);
+
+        $mode = FunctionParameterMode::InOut();
+
+        $element = m::mock(ICollectionType::class)->makePartial();
+        $element->shouldReceive('getName')->andReturn('name');
+        $element->shouldReceive('getElementType')->andReturn($typeRef);
+        $element->shouldReceive('getMode')->andReturn($mode);
+
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<CollectionType>' . PHP_EOL . '<Documentation/>' . PHP_EOL;
+        $expected .= '</CollectionType>' . PHP_EOL;
+
+        return [$element, 'ProcessCollectionType', $expected];
+    }
+
+    protected function rowTypeData(){
+        $element = m::mock(IRowType::class)->makePartial();
+        $element->shouldReceive('getDeclaredProperties')->andReturn([]);
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<RowType/>' . PHP_EOL;
+
+        return [$element, 'ProcessRowType', $expected];
+    }
+
+    public function functionImportInlinedTypeData()
+    {
+        $schema = m::mock(ISchemaElement::class . ', ' . IEntityType::class);
+        $schema->shouldReceive('FullName')->andReturn('FullName');
+        $schema->shouldReceive('getNamespace')->andReturn('namespace');
+
+        $eType = m::mock(IEntityReferenceType::class)->makePartial();
+        $eType->shouldReceive('getEntityType')->andReturn($schema);
+
+        $entRef = m::mock(IEntityReferenceTypeReference::class)->makePartial();
+        $entRef->shouldReceive('EntityReferenceDefinition')->andReturn($eType);
+
+        $typeRef = m::mock(ITypeReference::class);
+        $typeRef->shouldReceive('getDefinition')->andReturn(null);
+        $typeRef->shouldReceive('IsEntityReference')->andReturn(true);
+        $typeRef->shouldReceive('IsCollection')->andReturn(false);
+        $typeRef->shouldReceive('AsEntityReference')->andReturn($entRef);
+
+        $element = m::mock(IFunctionImport::class)->makePartial();
+        $element->shouldReceive('getReturnType')->andReturn($typeRef);
+        $element->shouldReceive('getContainer->FullName')->andReturn('FullName');
+        $element->shouldReceive('getName')->andReturn('Name');
+        $element->shouldReceive('isComposable')->andReturn(true);
+        $element->shouldReceive('isSideEffecting')->andReturn(false);
+        $element->shouldReceive('isBindable')->andReturn(true);
+        $element->shouldReceive('getEntitySet')->andReturn(null);
+        $element->shouldReceive('getParameters')->andReturn([]);
+
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<FunctionImport IsBindable="true" IsComposable="true" Name="Name" ReturnType="Ref(FullName)">' . PHP_EOL;
+        $expected .= '<Documentation/>' . PHP_EOL . '</FunctionImport>';
+        return [$element, 'ProcessFunctionImport', $expected];
+
+    }
+
+    public function valueAnnotationData()
+    {
+        $expr = m::mock(IExpression::class);
+        $expr->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::None());
+
+        $term = m::mock(ITerm::class);
+        $term->shouldReceive('FullName')->andReturn('FullName');
+        $term->shouldReceive('getNamespace')->andReturn('namespace');
+
+        $element = m::mock(IValueAnnotation::class)->makePartial();
+        $element->shouldReceive('getValue')->andReturn($expr);
+        $element->shouldReceive('getTerm')->andReturn($term);
+        $element->shouldReceive('getQualifier')->andReturn(null);
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<ValueAnnotation Term="FullName">' . PHP_EOL;
+        $expected .= '<Documentation/>' . PHP_EOL . '</ValueAnnotation>';
+
+        return [$element, 'ProcessValueAnnotation', $expected];
+    }
+
+    public function typeAnnotationData()
+    {
+        $expr = m::mock(IExpression::class);
+        $expr->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::None());
+
+        $term = m::mock(ITerm::class);
+        $term->shouldReceive('FullName')->andReturn('FullName');
+        $term->shouldReceive('getNamespace')->andReturn('namespace');
+
+        $element = m::mock(ITypeAnnotation::class)->makePartial();
+        $element->shouldReceive('getPropertyValueBindings')->andReturn([]);
+        $element->shouldReceive('getValue')->andReturn($expr);
+        $element->shouldReceive('getTerm')->andReturn($term);
+        $element->shouldReceive('getQualifier')->andReturn(null);
+
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<TypeAnnotation Term="FullName">' . PHP_EOL;
+        $expected .= '<Documentation/>' . PHP_EOL . '</TypeAnnotation>';
+
+        return [$element, 'ProcessTypeAnnotation', $expected];
+    }
+
+    public function propertyValueBindingData()
+    {
+        $expr = m::mock(IExpression::class);
+        $expr->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::None());
+
+        $prop = m::mock(IProperty::class);
+        $prop->shouldReceive('getName')->andReturn('Name');
+
+        $element = m::mock(IPropertyValueBinding::class)->makePartial();
+        $element->shouldReceive('getValue')->andReturn($expr);
+        $element->shouldReceive('getBoundProperty')->andReturn($prop);
+
+
+        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<PropertyValue Property="Name">' . PHP_EOL;
+        $expected .= '<Documentation/>' . PHP_EOL . '</PropertyValue>';
+
+        return [$element, 'ProcessPropertyValueBinding', $expected];
     }
 
     public function testProcessValueTerm()
@@ -162,210 +388,6 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $method->invoke($foo, $element);
     }
 
-    public function testProcessFunctionNoReturnTypeNoDefiningExpression()
-    {
-        $model = $this->getModel();
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-
-        $element = m::mock(IFunction::class)->makePartial();
-        $element->shouldReceive('getName')->andReturn('name');
-        $element->shouldReceive('getReturnType')->andReturn(null);
-        $element->shouldReceive('getDefiningExpression')->andReturn(null);
-        $element->shouldReceive('getParameters')->andReturn([]);
-
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessFunction');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
-        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Function Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
-        $expected .= '</Function>' . PHP_EOL;
-        $actual = $writer->outputMemory(true);
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
-    }
-
-    public function testProcessFunctionNoReturnTypeWithDefiningExpression()
-    {
-        $model = $this->getModel();
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-
-        $element = m::mock(IFunction::class)->makePartial();
-        $element->shouldReceive('getName')->andReturn('name');
-        $element->shouldReceive('getReturnType')->andReturn(null);
-        $element->shouldReceive('getDefiningExpression')->andReturn('OH NOES!');
-        $element->shouldReceive('getParameters')->andReturn([]);
-
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessFunction');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
-        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Function Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
-        $expected .= '<DefiningExpression>OH NOES!</DefiningExpression>';
-        $expected .= '</Function>' . PHP_EOL;
-        $actual = $writer->outputMemory(true);
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
-    }
-
-    public function testProcessFunctionReturnTypeWithNoDefiningExpression()
-    {
-        $model = $this->getModel();
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-
-        $rPrim = m::mock(IPrimitiveTypeReference::class);
-        $rPrim->shouldReceive('PrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
-
-        $rType = m::mock(IType::class);
-        $rType->shouldReceive('getTypeKind')->andReturn(TypeKind::Primitive());
-
-        $typeRef = m::mock(ITypeReference::class);
-        $typeRef->shouldReceive('getDefinition')->andReturn($rType);
-        $typeRef->shouldReceive('IsEntityReference')->andReturn(false);
-        $typeRef->shouldReceive('IsCollection')->andReturn(false);
-        $typeRef->shouldReceive('AsPrimitive')->andReturn($rPrim);
-
-        $element = m::mock(IFunction::class)->makePartial();
-        $element->shouldReceive('getName')->andReturn('name');
-        $element->shouldReceive('getReturnType')->andReturn($typeRef);
-        $element->shouldReceive('getDefiningExpression')->andReturn(null);
-        $element->shouldReceive('getParameters')->andReturn([]);
-
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessFunction');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
-        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Function Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
-        $expected .= '<ReturnType/>' . PHP_EOL;
-        $expected .= '</Function>' . PHP_EOL;
-        $actual = $writer->outputMemory(true);
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
-    }
-
-    public function testProcessFunctionParameter()
-    {
-        $model = $this->getModel();
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-
-        $rPrim = m::mock(IPrimitiveTypeReference::class);
-        $rPrim->shouldReceive('PrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
-
-        $rType = m::mock(IType::class);
-        $rType->shouldReceive('getTypeKind')->andReturn(TypeKind::Primitive());
-
-        $typeRef = m::mock(ITypeReference::class);
-        $typeRef->shouldReceive('getDefinition')->andReturn($rType);
-        $typeRef->shouldReceive('IsEntityReference')->andReturn(false);
-        $typeRef->shouldReceive('IsCollection')->andReturn(false);
-        $typeRef->shouldReceive('AsPrimitive')->andReturn($rPrim);
-
-        $mode = FunctionParameterMode::InOut();
-
-        $element = m::mock(IFunctionParameter::class)->makePartial();
-        $element->shouldReceive('getName')->andReturn('name');
-        $element->shouldReceive('getType')->andReturn($typeRef);
-        $element->shouldReceive('getMode')->andReturn($mode);
-
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessFunctionParameter');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
-        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Parameter Mode="InOut" Name="name">' . PHP_EOL . '<Documentation/>' . PHP_EOL;
-        $expected .= '</Parameter>' . PHP_EOL;
-        $actual = $writer->outputMemory(true);
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
-    }
-
-    public function testProcessCollectionType()
-    {
-        $model = $this->getModel();
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-
-        $rPrim = m::mock(IPrimitiveTypeReference::class);
-        $rPrim->shouldReceive('PrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
-
-        $rType = m::mock(IType::class);
-        $rType->shouldReceive('getTypeKind')->andReturn(TypeKind::Primitive());
-
-        $typeRef = m::mock(ITypeReference::class);
-        $typeRef->shouldReceive('getDefinition')->andReturn($rType);
-        $typeRef->shouldReceive('IsEntityReference')->andReturn(false);
-        $typeRef->shouldReceive('IsCollection')->andReturn(false);
-        $typeRef->shouldReceive('AsPrimitive')->andReturn($rPrim);
-
-        $mode = FunctionParameterMode::InOut();
-
-        $element = m::mock(ICollectionType::class)->makePartial();
-        $element->shouldReceive('getName')->andReturn('name');
-        $element->shouldReceive('getElementType')->andReturn($typeRef);
-        $element->shouldReceive('getMode')->andReturn($mode);
-
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessCollectionType');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
-        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<CollectionType>' . PHP_EOL . '<Documentation/>' . PHP_EOL;
-        $expected .= '</CollectionType>' . PHP_EOL;
-        $actual = $writer->outputMemory(true);
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
-    }
-
-    public function testProcessRowType()
-    {
-        $model = $this->getModel();
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-
-        $element = m::mock(IRowType::class)->makePartial();
-        $element->shouldReceive('getDeclaredProperties')->andReturn([]);
-
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessRowType');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
-        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<RowType/>' . PHP_EOL;
-        $actual   = $writer->outputMemory(true);
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
-    }
-
     public function testProcessFunctionImportNotInlinedType()
     {
         $model = $this->getModel();
@@ -395,154 +417,6 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $method->invoke($foo, $element);
     }
 
-    public function testProcessFunctionImportInlinedType()
-    {
-        $model = $this->getModel();
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-
-        $schema = m::mock(ISchemaElement::class . ', ' . IEntityType::class);
-        $schema->shouldReceive('FullName')->andReturn('FullName');
-        $schema->shouldReceive('getNamespace')->andReturn('namespace');
-
-        $eType = m::mock(IEntityReferenceType::class)->makePartial();
-        $eType->shouldReceive('getEntityType')->andReturn($schema);
-
-        $entRef = m::mock(IEntityReferenceTypeReference::class)->makePartial();
-        $entRef->shouldReceive('EntityReferenceDefinition')->andReturn($eType);
-
-        $typeRef = m::mock(ITypeReference::class);
-        $typeRef->shouldReceive('getDefinition')->andReturn(null);
-        $typeRef->shouldReceive('IsEntityReference')->andReturn(true);
-        $typeRef->shouldReceive('IsCollection')->andReturn(false);
-        $typeRef->shouldReceive('AsEntityReference')->andReturn($entRef);
-
-        $element = m::mock(IFunctionImport::class)->makePartial();
-        $element->shouldReceive('getReturnType')->andReturn($typeRef);
-        $element->shouldReceive('getContainer->FullName')->andReturn('FullName');
-        $element->shouldReceive('getName')->andReturn('Name');
-        $element->shouldReceive('isComposable')->andReturn(true);
-        $element->shouldReceive('isSideEffecting')->andReturn(false);
-        $element->shouldReceive('isBindable')->andReturn(true);
-        $element->shouldReceive('getEntitySet')->andReturn(null);
-        $element->shouldReceive('getParameters')->andReturn([]);
-
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessFunctionImport');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
-        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<FunctionImport IsBindable="true" IsComposable="true" Name="Name" ReturnType="Ref(FullName)">' . PHP_EOL;
-        $expected .= '<Documentation/>' . PHP_EOL . '</FunctionImport>';
-        $actual = $writer->outputMemory(true);
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
-    }
-
-    public function testProcessValueAnnotation()
-    {
-        $model = $this->getModel();
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-
-        $expr = m::mock(IExpression::class);
-        $expr->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::None());
-
-        $term = m::mock(ITerm::class);
-        $term->shouldReceive('FullName')->andReturn('FullName');
-        $term->shouldReceive('getNamespace')->andReturn('namespace');
-
-        $element = m::mock(IValueAnnotation::class)->makePartial();
-        $element->shouldReceive('getValue')->andReturn($expr);
-        $element->shouldReceive('getTerm')->andReturn($term);
-        $element->shouldReceive('getQualifier')->andReturn(null);
-
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessValueAnnotation');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
-        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<ValueAnnotation Term="FullName">' . PHP_EOL;
-        $expected .= '<Documentation/>' . PHP_EOL . '</ValueAnnotation>';
-        $actual = $writer->outputMemory(true);
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
-    }
-
-    public function testProcessTypeAnnotation()
-    {
-        $model = $this->getModel();
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-
-        $expr = m::mock(IExpression::class);
-        $expr->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::None());
-
-        $term = m::mock(ITerm::class);
-        $term->shouldReceive('FullName')->andReturn('FullName');
-        $term->shouldReceive('getNamespace')->andReturn('namespace');
-
-        $element = m::mock(ITypeAnnotation::class)->makePartial();
-        $element->shouldReceive('getPropertyValueBindings')->andReturn([]);
-        $element->shouldReceive('getValue')->andReturn($expr);
-        $element->shouldReceive('getTerm')->andReturn($term);
-        $element->shouldReceive('getQualifier')->andReturn(null);
-
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessTypeAnnotation');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
-        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<TypeAnnotation Term="FullName">' . PHP_EOL;
-        $expected .= '<Documentation/>' . PHP_EOL . '</TypeAnnotation>';
-        $actual = $writer->outputMemory(true);
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
-    }
-
-    public function testProcessPropertyValueBinding()
-    {
-        $model = $this->getModel();
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-
-        $expr = m::mock(IExpression::class);
-        $expr->shouldReceive('getExpressionKind')->andReturn(ExpressionKind::None());
-
-        $prop = m::mock(IProperty::class);
-        $prop->shouldReceive('getName')->andReturn('Name');
-
-        $element = m::mock(IPropertyValueBinding::class)->makePartial();
-        $element->shouldReceive('getValue')->andReturn($expr);
-        $element->shouldReceive('getBoundProperty')->andReturn($prop);
-
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('ProcessPropertyValueBinding');
-        $method->setAccessible(true);
-
-        $method->invoke($foo, $element);
-
-        $expected = '<?xml version="1.0"?>' . PHP_EOL . '<PropertyValue Property="Name">' . PHP_EOL;
-        $expected .= '<Documentation/>' . PHP_EOL . '</PropertyValue>';
-        $actual = $writer->outputMemory(true);
-
-        $this->assertXmlStringEqualsXmlString($expected, $actual);
-    }
 
     public function testSharesAssociationSetIdentity()
     {
@@ -1097,4 +971,5 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $model->shouldReceive('GetAnnotationValue')->andReturn($doc);
         return $model;
     }
+
 }
