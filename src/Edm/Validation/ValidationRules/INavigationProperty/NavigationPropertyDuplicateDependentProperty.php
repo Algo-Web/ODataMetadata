@@ -24,22 +24,26 @@ class NavigationPropertyDuplicateDependentProperty extends NavigationPropertyRul
     {
         assert($navigationProperty instanceof INavigationProperty);
         $dependentProperties = $navigationProperty->getDependentProperties();
-        if ($dependentProperties != null) {
+        if (null !== $dependentProperties) {
             $propertyNames = new HashSetInternal();
-            foreach ($navigationProperty->getDependentProperties() as $property) {
-                if ($property != null) {
-                    ValidationHelper::addMemberNameToHashSet(
-                        $property,
-                        $propertyNames,
-                        $context,
-                        EdmErrorCode::DuplicateDependentProperty(),
-                        StringConst::EdmModel_Validator_Semantic_DuplicateDependentProperty(
-                            $property->getName(),
-                            $navigationProperty->getName()
-                        ),
-                        false
-                    );
+            $dependentProperties = array_filter(
+                $dependentProperties,
+                function ($property) {
+                    return null !== $property;
                 }
+            );
+            foreach ($dependentProperties as $property) {
+                ValidationHelper::addMemberNameToHashSet(
+                    $property,
+                    $propertyNames,
+                    $context,
+                    EdmErrorCode::DuplicateDependentProperty(),
+                    StringConst::EdmModel_Validator_Semantic_DuplicateDependentProperty(
+                        $property->getName(),
+                        $navigationProperty->getName()
+                    ),
+                    false
+                );
             }
         }
     }
