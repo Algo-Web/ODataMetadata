@@ -937,7 +937,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $expected .= '    <Documentation/>' . PHP_EOL . '</ValueAnnotation>' . PHP_EOL;
         $writer->endDocument();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertEquals(self::normalizeLineEndings($expected), self::normalizeLineEndings($actual));
     }
 
     public function testProcessAnnotationsNameMismatch()
@@ -964,7 +964,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $expected = '<?xml version="1.0"?>' . PHP_EOL;
         $writer->endDocument();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertEquals(self::normalizeLineEndings($expected), self::normalizeLineEndings($actual));
     }
 
     public function testProcessAnnotationsNameMatch()
@@ -993,7 +993,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $expected = '<?xml version="1.0"?>' . PHP_EOL . '<Documentation/>' . PHP_EOL;
         $writer->endDocument();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertEquals(self::normalizeLineEndings($expected), self::normalizeLineEndings($actual));
     }
 
     public function testProcessReferentialConstraintWithDependentProperties()
@@ -1028,7 +1028,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $expected .= '</ReferentialConstraint>' . PHP_EOL;
         $writer->endDocument();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertEquals(self::normalizeLineEndings($expected), self::normalizeLineEndings($actual));
     }
 
     public function testProcessPropertyConstructor()
@@ -1064,7 +1064,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $expected .= '</PropertyValue>' . PHP_EOL;
         $writer->endDocument();
         $actual = $writer->outputMemory(true);
-        $this->assertEquals($expected, $actual);
+        $this->assertEquals(self::normalizeLineEndings($expected), self::normalizeLineEndings($actual));
     }
 
     /**
