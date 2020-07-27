@@ -24,7 +24,8 @@ class StructuredTypePropertyNameAlreadyDefined extends StructuredTypeRule
     {
         assert($structuredType instanceof IStructuredType);
         $propertyNames = new HashSetInternal();
-        foreach ($structuredType->properties() as $property) {
+        $properties = $structuredType->getDeclaredProperties();
+        foreach ($properties as $property) {
             // We only want to report the properties that are declared in this type. Otherwise properties will get
             // reported multiple times due to inheritance.
             if ($property != null) {

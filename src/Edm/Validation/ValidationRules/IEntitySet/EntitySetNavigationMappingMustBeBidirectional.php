@@ -23,7 +23,8 @@ class EntitySetNavigationMappingMustBeBidirectional extends EntitySetRule
     public function __invoke(ValidationContext $context, ?IEdmElement $set)
     {
         assert($set instanceof IEntitySet);
-        foreach ($set->getNavigationTargets() as $mapping) {
+        $mappings = $set->getNavigationTargets();
+        foreach ($mappings as $mapping) {
             $property = $mapping->getNavigationProperty();
 
             $opposingTarget = $mapping->getTargetEntitySet()->findNavigationTarget($property->getPartner());

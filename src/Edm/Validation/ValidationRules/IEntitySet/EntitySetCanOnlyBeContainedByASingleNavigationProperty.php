@@ -23,8 +23,10 @@ class EntitySetCanOnlyBeContainedByASingleNavigationProperty extends EntitySetRu
     {
         assert($set instanceof IEntitySet);
         $containmentFound = false;
-        foreach ($set->getContainer()->entitySets() as $otherSet) {
-            foreach ($otherSet->getNavigationTargets() as $mapping) {
+        $entitySets = $set->getContainer()->entitySets();
+        foreach ($entitySets as $otherSet) {
+            $mappings = $otherSet->getNavigationTargets();
+            foreach ($mappings as $mapping) {
                 $property = $mapping->getNavigationProperty();
 
                 if ($mapping->getTargetEntitySet() === $set && $property->containsTarget()) {

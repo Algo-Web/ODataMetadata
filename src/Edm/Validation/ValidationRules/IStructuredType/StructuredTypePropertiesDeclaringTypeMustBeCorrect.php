@@ -22,7 +22,8 @@ class StructuredTypePropertiesDeclaringTypeMustBeCorrect extends StructuredTypeR
     public function __invoke(ValidationContext $context, ?IEdmElement $structuredType)
     {
         assert($structuredType instanceof IStructuredType);
-        foreach ($structuredType->getDeclaredProperties() as $property) {
+        $properties = $structuredType->getDeclaredProperties();
+        foreach ($properties as $property) {
             if ($property != null) {
                 if ($property->getDeclaringType() !== $structuredType) {
                     EdmUtil::checkArgumentNull($property->location(), 'property->Location');

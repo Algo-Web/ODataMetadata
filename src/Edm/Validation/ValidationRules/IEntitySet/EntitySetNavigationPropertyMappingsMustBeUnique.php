@@ -24,8 +24,9 @@ class EntitySetNavigationPropertyMappingsMustBeUnique extends EntitySetRule
     {
         assert($set instanceof IEntitySet);
         $mappedPropertySet = new HashSetInternal();
-        foreach ($set->getNavigationTargets() as $mapping) {
-            if ($mappedPropertySet->add($mapping->getNavigationProperty())) {
+        $mappings = $set->getNavigationTargets();
+        foreach ($mappings as $mapping) {
+            if (!$mappedPropertySet->add($mapping->getNavigationProperty())) {
                 EdmUtil::checkArgumentNull($set->location(), 'set->Location');
                 $context->addError(
                     $set->location(),

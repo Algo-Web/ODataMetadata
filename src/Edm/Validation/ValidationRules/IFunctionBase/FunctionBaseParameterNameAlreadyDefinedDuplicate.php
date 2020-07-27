@@ -25,7 +25,8 @@ class FunctionBaseParameterNameAlreadyDefinedDuplicate extends FunctionBaseRule
         assert($edmFunction instanceof IFunctionBase);
         $parameterList = new HashSetInternal();
         if (null !== $edmFunction->getParameters()) {
-            foreach ($edmFunction->getParameters() as $parameter) {
+            $parameters = $edmFunction->getParameters();
+            foreach ($parameters as $parameter) {
                 ValidationHelper::addMemberNameToHashSet(
                     $parameter,
                     $parameterList,

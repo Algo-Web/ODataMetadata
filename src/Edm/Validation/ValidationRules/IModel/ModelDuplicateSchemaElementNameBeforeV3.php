@@ -29,7 +29,8 @@ class ModelDuplicateSchemaElementNameBeforeV3 extends ModelRule
         assert($model instanceof IModel);
         $nonFunctionNameList = new HashSetInternal();
         $functionDictionary  = [];
-        foreach ($model->getSchemaElements() as $item) {
+        $items = $model->getSchemaElements();
+        foreach ($items as $item) {
             $duplicate = false;
             $fullName  = $item->fullName();
             if (!$item->getSchemaElementKind()->isEntityContainer()) {

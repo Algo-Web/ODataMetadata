@@ -22,7 +22,8 @@ class FunctionImportParametersIncorrectTypeBeforeV3 extends FunctionImportRule
     public function __invoke(ValidationContext $context, ?IEdmElement $functionImport)
     {
         assert($functionImport instanceof IFunctionImport);
-        foreach ($functionImport->getParameters() as $functionParameter) {
+        $parameters = $functionImport->getParameters();
+        foreach ($parameters as $functionParameter) {
             $type = $functionParameter->getType();
             if (!$type->isPrimitive() && !$type->isComplex() && !$context->checkIsBad($type->getDefinition())
             ) {

@@ -28,7 +28,8 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
         assert($entityContainer instanceof IEntityContainer);
         $nonFunctionNameList = new HashSetInternal();
         $functionDictionary  = [];
-        foreach ($entityContainer->getElements() as $item) {
+        $elements = $entityContainer->getElements();
+        foreach ($elements as $item) {
             EdmUtil::checkArgumentNull($item->location(), 'item->Location');
             if ($item instanceof IFunctionImport) {
                 $function = $item;

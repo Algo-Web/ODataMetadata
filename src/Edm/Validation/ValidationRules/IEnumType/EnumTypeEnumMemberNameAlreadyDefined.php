@@ -24,7 +24,8 @@ class EnumTypeEnumMemberNameAlreadyDefined extends EnumTypeRule
     {
         assert($enumType instanceof IEnumType);
         $memberNames = new HashSetInternal();
-        foreach ($enumType->getMembers() as $member) {
+        $members = $enumType->getMembers();
+        foreach ($members as $member) {
             // We only want to report the properties that are declared in this type. Otherwise properties will get
             // reported multiple times due to inheritance.
             if ($member != null) {

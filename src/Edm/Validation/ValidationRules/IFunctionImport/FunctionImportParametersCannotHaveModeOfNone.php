@@ -22,7 +22,8 @@ class FunctionImportParametersCannotHaveModeOfNone extends FunctionImportRule
     public function __invoke(ValidationContext $context, ?IEdmElement $function)
     {
         assert($function instanceof IFunctionImport);
-        foreach ($function->getParameters() as $parameter) {
+        $parameters = $function->getParameters();
+        foreach ($parameters as $parameter) {
             if ($parameter->getMode()->isNone() && !$context->checkIsBad($function)) {
                 EdmUtil::checkArgumentNull($parameter->location(), 'parameter->Location');
                 $context->addError(

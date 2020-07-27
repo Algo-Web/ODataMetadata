@@ -24,7 +24,8 @@ class EntityTypeKeyPropertyMustBelongToEntity extends EntityTypeRule
     {
         assert($entityType instanceof IEntityType);
         if (null !== $entityType->getDeclaredKey()) {
-            foreach ($entityType->getDeclaredKey() as $key) {
+            $items = $entityType->getDeclaredKey();
+            foreach ($items as $key) {
                 assert($key instanceof IStructuralProperty);
                 // Key must be one of the declared properties.
                 if ($key->getDeclaringType() !== $entityType && !$context->checkIsBad($key)) {

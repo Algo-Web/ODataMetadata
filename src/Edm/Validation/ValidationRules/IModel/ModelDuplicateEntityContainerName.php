@@ -25,7 +25,8 @@ class ModelDuplicateEntityContainerName extends ModelRule
     {
         assert($model instanceof IModel);
         $entityContainerNameList = new HashSetInternal();
-        foreach ($model->getSchemaElements() as $item) {
+        $items = $model->getSchemaElements();
+        foreach ($items as $item) {
             if (!$item instanceof IEntityContainer) {
                 continue;
             }

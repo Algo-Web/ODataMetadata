@@ -23,7 +23,8 @@ class EntitySetRecursiveNavigationPropertyMappingsMustPointBackToSourceEntitySet
     public function __invoke(ValidationContext $context, ?IEdmElement $set)
     {
         assert($set instanceof IEntitySet);
-        foreach ($set->getNavigationTargets() as $mapping) {
+        $mappings = $set->getNavigationTargets();
+        foreach ($mappings as $mapping) {
             if ($mapping->getNavigationProperty()->containsTarget() &&
                 $mapping->getNavigationProperty()->getDeclaringType()->isOrInheritsFrom($mapping->getNavigationProperty()->toEntityType()) &&
                 $mapping->getTargetEntitySet() !== $set) {

@@ -23,7 +23,8 @@ class FunctionOnlyInputParametersAllowedInFunctions extends FunctionRule
     public function __invoke(ValidationContext $context, ?IEdmElement $function)
     {
         assert($function instanceof IFunction);
-        foreach ($function->getParameters() as $parameter) {
+        $parameters = $function->getParameters();
+        foreach ($parameters as $parameter) {
             assert($parameter instanceof IFunctionParameter);
             if (!$parameter->getMode()->isIn()) {
                 EdmUtil::checkArgumentNull($parameter->location(), 'parameter->Location');

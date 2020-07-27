@@ -22,7 +22,8 @@ class EntitySetNavigationPropertyMappingMustPointToValidTargetForProperty extend
     public function __invoke(ValidationContext $context, ?IEdmElement $set)
     {
         assert($set instanceof IEntitySet);
-        foreach ($set->getNavigationTargets() as $mapping) {
+        $mappings = $set->getNavigationTargets();
+        foreach ($mappings as $mapping) {
             if (!(
                 $mapping->getTargetEntitySet()->getElementType()->isOrInheritsFrom(
                     $mapping->getNavigationProperty()->toEntityType()
