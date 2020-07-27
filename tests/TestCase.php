@@ -9,13 +9,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * @param $object
      * @param $methodName
-     * @param  mixed                ...$args
-     * @throws \ReflectionException
+     * @param mixed ...$args
      * @return mixed
+     * @throws \ReflectionException
      */
     public function callPrivateMethod($object, $methodName, ...$args)
     {
-        $reflectionClass  = new \ReflectionClass($object);
+        $reflectionClass = new \ReflectionClass($object);
         $reflectionMethod = $reflectionClass->getMethod($methodName);
         $reflectionMethod->setAccessible(true);
 
@@ -38,5 +38,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
         }, null, get_class($object));
         $propertyValue = &$closure($object);
         $propertyValue = $newValue;
+    }
+
+    public static function normalizeLineEndings($str)
+    {
+        return $str = preg_replace('~\r\n?~', "\n", $str);
     }
 }
