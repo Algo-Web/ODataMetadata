@@ -59,14 +59,14 @@ class ValidationHelperTest extends TestCase
     {
         $result = [];
 
-        $result[] = [false, false, false, false];
-        $result[] = [true, false, false, false];
-        $result[] = [false, true, false, true];
-        $result[] = [true, true, false, true];
-        $result[] = [false, false, true, false];
-        $result[] = [true, false, true, false];
-        $result[] = [false, true, true, true];
-        $result[] = [true, true, true, true];
+        $result[] = [false, false, false, true];
+        $result[] = [true, false, false, true];
+        $result[] = [false, true, false, false];
+        $result[] = [true, true, false, false];
+        $result[] = [false, false, true, true];
+        $result[] = [true, false, true, true];
+        $result[] = [false, true, true, false];
+        $result[] = [true, true, true, false];
 
         return $result;
     }
@@ -107,8 +107,42 @@ class ValidationHelperTest extends TestCase
         $actual = ValidationHelper::addMemberNameToHashSet($item, $memList, $context, $code, 'errString', $suppressError);
         $this->assertEquals($expected, $actual);
 
-        $expectedErrors = intval(!$inArray && !$suppressError);
+        $expectedErrors = intval($inArray && !$suppressError);
         $this->assertEquals($expectedErrors, count($context->getErrors()));
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
+    public function testAddMemberNameToHashSetTriplicatedGivesTwoErrors()
+    {
+        $suppressError = false;
+        $model   = m::mock(IModel::class);
+        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $code    = EdmErrorCode::InvalidElementAnnotation();
+
+        $loc = m::mock(ILocation::class)->makePartial();
+
+        $item = m::mock(INamedElement::class)->makePartial();
+        $item->shouldReceive('getName')->andReturn('Name');
+        $item->shouldReceive('Location')->andReturn($loc);
+
+        $memList = new HashSetInternal();
+        $expected = [true, false, false];
+
+        for ($i = 0; $i < 3; $i++) {
+            $actual = ValidationHelper::addMemberNameToHashSet(
+                $item,
+                $memList,
+                $context,
+                $code,
+                'errString',
+                $suppressError
+            );
+
+            $this->assertEquals($expected[$i], $actual);
+            $this->assertEquals($i, count($context->getErrors()));
+        }
     }
 
     public function testAllPropertiesAreNullableEmptyArray()

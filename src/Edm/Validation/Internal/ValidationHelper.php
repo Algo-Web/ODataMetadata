@@ -41,9 +41,9 @@ abstract class ValidationHelper
         EdmErrorCode $errorCode,
         string $errorString,
         bool $suppressError
-    ) {
+    ): bool {
         $name = $item instanceof ISchemaElement ? $item->fullName() : $item->getName();
-        if ($memberNameList->add($name)) {
+        if (!$memberNameList->add($name)) {
             if (!$suppressError) {
                 EdmUtil::checkArgumentNull($item->location(), 'item->Location');
                 $context->addError($item->location(), $errorCode, $errorString);
