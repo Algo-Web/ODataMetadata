@@ -12,7 +12,7 @@ use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\StringConst;
-use SplObjectStorage;
+use AlgoWeb\ODataMetadata\Structure\HashSetInternal;
 
 /**
  * Validates that if an entity does not directly contain itself, it cannot contain itself through a containment loop.
@@ -29,8 +29,8 @@ class NavigationPropertyEntityMustNotIndirectlyContainItself extends NavigationP
             if (ValidationHelper::typeIndirectlyContainsTarget(
                 $property->toEntityType(),
                 $property->declaringEntityType(),
-                new SplObjectStorage()
-                /*new HashSetInternal()*/,
+                /*new SplObjectStorage()*/
+                new HashSetInternal(),
                 $context->getModel()
             )) {
                 EdmUtil::checkArgumentNull($property->location(), 'property->Location');

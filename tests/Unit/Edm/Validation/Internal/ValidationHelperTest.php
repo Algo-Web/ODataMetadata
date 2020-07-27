@@ -505,7 +505,7 @@ class ValidationHelperTest extends TestCase
         $target = m::mock(IEntityType::class);
 
         $context = m::mock(IModel::class)->makePartial();
-        $visited = new \SplObjectStorage();
+        $visited = new HashSetInternal();
 
         $expected = true;
         $actual   = ValidationHelper::typeIndirectlyContainsTarget($source, $target, $visited, $context);
@@ -539,7 +539,7 @@ class ValidationHelperTest extends TestCase
         $target = m::mock(IEntityType::class);
 
         $context = m::mock(IModel::class)->makePartial();
-        $visited = new \SplObjectStorage();
+        $visited = new HashSetInternal();
 
         $expected = true;
         $actual   = ValidationHelper::typeIndirectlyContainsTarget($source, $target, $visited, $context);
@@ -563,7 +563,7 @@ class ValidationHelperTest extends TestCase
 
         $target = m::mock(IEntityType::class);
 
-        $visited = new \SplObjectStorage();
+        $visited = new HashSetInternal();
 
         $expected = true;
         $actual   = ValidationHelper::typeIndirectlyContainsTarget($source, $target, $visited, $context);

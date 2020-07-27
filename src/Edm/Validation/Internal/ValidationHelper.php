@@ -234,12 +234,10 @@ abstract class ValidationHelper
     public static function typeIndirectlyContainsTarget(
         IEntityType $source,
         IEntityType $target,
-        SplObjectStorage $visited,
+        HashSetInternal $visited,
         IModel $context
     ): bool {
-        if (!$visited->offsetExists($source)) {
-            $visited->offsetSet($source, true);
-            $visited[$source] = true;
+        if ($visited->add($source)) {
             if ($source->isOrInheritsFrom($target)) {
                 return true;
             }
