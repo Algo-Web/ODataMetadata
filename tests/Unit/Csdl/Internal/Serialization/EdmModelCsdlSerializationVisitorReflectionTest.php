@@ -34,7 +34,6 @@ use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceType;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityReferenceTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IEntitySet;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
-use AlgoWeb\ODataMetadata\Interfaces\IEntityTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
 use AlgoWeb\ODataMetadata\Interfaces\IEnumType;
 use AlgoWeb\ODataMetadata\Interfaces\IFunction;
@@ -57,6 +56,8 @@ use AlgoWeb\ODataMetadata\Interfaces\Values\IPrimitiveValue;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 use AlgoWeb\ODataMetadata\Version;
 use Mockery as m;
+use ReflectionClass;
+use ReflectionException;
 
 class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 {
@@ -64,19 +65,22 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
      * @param $element
      * @param string $methodName
      * @param $expected
-     * @throws \ReflectionException
      * @dataProvider processElementProvider
      */
-    public function testProcessElement($element, string $methodName, $expected){
+    public function testProcessElement($element, string $methodName, $expected)
+    {
         $model = $this->getModel();
 
-        $writer  = $this->getWriter();
+        $writer = $this->getWriter();
         $version = Version::v3();
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod($methodName);
+        try {
+            $reflec = new ReflectionClass($foo);
+            $method = $reflec->getMethod($methodName);
+        } catch (ReflectionException $exception) {
+            $this->fail($exception->getMessage());
+        }
         $method->setAccessible(true);
 
         $method->invoke($foo, $element);
@@ -378,7 +382,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $reflec = new \ReflectionClass($foo);
+        $reflec = new ReflectionClass($foo);
         $method = $reflec->getMethod('ProcessValueTerm');
         $method->setAccessible(true);
 
@@ -407,7 +411,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $reflec = new \ReflectionClass($foo);
+        $reflec = new ReflectionClass($foo);
         $method = $reflec->getMethod('ProcessFunctionImport');
         $method->setAccessible(true);
 
@@ -424,20 +428,22 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
      * @param $thatSet
      * @param $thatProp
      * @param $expected
-     * @throws \ReflectionException
      * @dataProvider sharesAssociationSetProvider
      */
-    public function testSharesAssociationSet($model, $thisSet, $thisProp, $thatSet, $thatProp,$expected){
-
-        $writer  = $this->getWriter();
+    public function testSharesAssociationSet($model, $thisSet, $thisProp, $thatSet, $thatProp,$expected)
+    {
+        $writer = $this->getWriter();
         $version = Version::v3();
-        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('SharesAssociationSet');
+        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        try {
+            $reflec = new ReflectionClass($foo);
+            $method = $reflec->getMethod('SharesAssociationSet');
+        } catch (ReflectionException $exception) {
+            $this->fail($exception->getMessage());
+        }
         $method->setAccessible(true);
 
-        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
+        $actual = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
         $this->assertEquals($expected, $actual);
     }
 
@@ -472,154 +478,64 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $associationEndNameSameSetNameDifferentModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
         $associationEndNameSameSetNameDifferentModel->shouldReceive('GetAssociationEndName')->andReturn('foo', 'bar')->times(2);
 
+        $associationEndNameSameSetNameDifferentThisSet = clone $thisSet;
+        $associationEndNameSameSetNameDifferentThisSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $associationEndNameSameSetNameDifferentThatSet = clone $thatSet;
+        $associationEndNameSameSetNameDifferentThatSet->shouldReceive('getName')->andReturn('bar')->times(1);
 
-        /*$associationBothOtherSetsNullModel = $this->getModel();
+        $associationBothOtherSetsNullModel = $this->getModel();
         $associationBothOtherSetsNullModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
         $associationBothOtherSetsNullModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
         $associationBothOtherSetsNullModel->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
-        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);*/
+        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
+        $associationBothOtherSetsNullThisSet = clone $thisSet;
+        $associationBothOtherSetsNullThisSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $associationBothOtherSetsNullThisSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
+        $associationBothOtherSetsNullThatSet = clone $thatSet;
+        $associationBothOtherSetsNullThatSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $associationBothOtherSetsNullThatSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
+
+        $associationOtherSetsNullityMismatchModel = $this->getModel();
+        $associationOtherSetsNullityMismatchModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $associationOtherSetsNullityMismatchModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $associationOtherSetsNullityMismatchModel->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
+        $associationOtherSetsNullityMismatchModel->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
+        $nuSet = m::mock(IEntitySet::class);
+        $associationOtherSetsNullityMismatchThisSet = clone $thisSet;
+        $associationOtherSetsNullityMismatchThisSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $associationOtherSetsNullityMismatchThisSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
+        $associationOtherSetsNullityMismatchThatSet =clone $thatSet;
+        $associationOtherSetsNullityMismatchThatSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $associationOtherSetsNullityMismatchThatSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
+
+
+        $associationOtherSetsNotNullEndNamesDifferentModel = $this->getModel();
+        $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationEndName')->andReturn('foobar', 'foobar', 'foo', 'bar')->times(4);
+        $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationSetANnotations')->andReturn(null)->times(2);
+        $associationOtherSetsNotNullEndNamesDifferentThisSet = clone $thisSet;
+        $associationOtherSetsNotNullEndNamesDifferentThatSet =clone $thatSet;
+        $associationOtherSetsNotNullEndNamesDifferentThisSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $associationOtherSetsNotNullEndNamesDifferentThisSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
+        $associationOtherSetsNotNullEndNamesDifferentThatSet->shouldReceive('getName')->andReturn('foo')->times(1);
+        $associationOtherSetsNotNullEndNamesDifferentThatSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
+        $associationOtherSetsNotNullEndNamesDifferentThisProp = clone $thisProp;
+        $associationOtherSetsNotNullEndNamesDifferentThisProp->shouldReceive('getPartner')->andReturn($associationOtherSetsNotNullEndNamesDifferentThisProp);
+        $associationOtherSetsNotNullEndNamesDifferentThatProp = clone $thatProp;
+        $associationOtherSetsNotNullEndNamesDifferentThatProp->shouldReceive('getPartner')->andReturn($associationOtherSetsNotNullEndNamesDifferentThatProp);
         return[
             'Identity' => [$this->getModel(), $thisSet,$thisProp,$thisSet, $thisProp, true],
             'Association Set Name Different Model' => [$associationSetNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
             'AssociationSetNameDifferent' => [$associationSetNameDifferent, $thisSet, $thisProp,$thatSet,$thatProp, false],
             'Association Full Name Different Model' => [$associationFullNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
             'Association End Name Different' => [$associationEndNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
-            'Association End Name Same Set Name Different' => [$associationEndNameSameSetNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
-            //'Association Both Other Sets Null' => [$associationBothOtherSetsNullModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
-
+            'Association End Name Same Set Name Different' => [$associationEndNameSameSetNameDifferentModel, $associationEndNameSameSetNameDifferentThisSet, $thisProp,$associationEndNameSameSetNameDifferentThatSet,$thatProp, false],
+            'Association Both Other Sets Null' => [$associationBothOtherSetsNullModel, $associationBothOtherSetsNullThisSet, $thisProp,$associationBothOtherSetsNullThatSet,$thatProp, true],
+            'Association Other Sets Nullity Mismatch' => [clone $associationOtherSetsNullityMismatchModel, clone $associationOtherSetsNullityMismatchThisSet, $thisProp, clone $associationOtherSetsNullityMismatchThatSet, $thatProp, false],
+            'Association Other Sets Nullity Mismatch Reverse' => [clone $associationOtherSetsNullityMismatchModel, clone $associationOtherSetsNullityMismatchThatSet, $thisProp, clone  $associationOtherSetsNullityMismatchThisSet, $thatProp, false],
+            'Association Other Sets Not Null End Names Different' => [clone $associationOtherSetsNotNullEndNamesDifferentModel, clone $associationOtherSetsNotNullEndNamesDifferentThisSet, $associationOtherSetsNotNullEndNamesDifferentThisProp, clone  $associationOtherSetsNotNullEndNamesDifferentThatSet, $associationOtherSetsNotNullEndNamesDifferentThatProp, false],
         ];
-    }
-
-    public function testSharesAssociationSetAssociationBothOtherSetsNull()
-    {
-        $model = $this->getModel();
-        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $model->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
-        $model->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('SharesAssociationSet');
-        $method->setAccessible(true);
-
-        $thisSet = m::mock(IEntitySet::class);
-        $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $thisSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
-        $thisProp = m::mock(INavigationProperty::class);
-
-        $thatSet = m::mock(IEntitySet::class);
-        $thatSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $thatSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
-        $thatProp = m::mock(INavigationProperty::class);
-
-        $expected = true;
-        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
-        $this->assertEquals($expected, $actual);
-    }
-
-    public function testSharesAssociationSetAssociationOtherSetsNullityMismatch()
-    {
-        $model = $this->getModel();
-        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $model->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
-        $model->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('SharesAssociationSet');
-        $method->setAccessible(true);
-
-        $nuSet = m::mock(IEntitySet::class);
-
-        $thisSet = m::mock(IEntitySet::class);
-        $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $thisSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
-        $thisProp = m::mock(INavigationProperty::class);
-
-        $thatSet = m::mock(IEntitySet::class);
-        $thatSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $thatSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
-        $thatProp = m::mock(INavigationProperty::class);
-
-        $expected = false;
-        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
-        $this->assertEquals($expected, $actual);
-    }
-
-    public function testSharesAssociationSetAssociationOtherSetsNullityMismatchReverse()
-    {
-        $model = $this->getModel();
-        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $model->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
-        $model->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('SharesAssociationSet');
-        $method->setAccessible(true);
-
-        $nuSet = m::mock(IEntitySet::class);
-
-        $thisSet = m::mock(IEntitySet::class);
-        $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $thisSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
-        $thisProp = m::mock(INavigationProperty::class);
-
-        $thatSet = m::mock(IEntitySet::class);
-        $thatSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $thatSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
-        $thatProp = m::mock(INavigationProperty::class);
-
-        $expected = false;
-        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
-        $this->assertEquals($expected, $actual);
-    }
-
-    public function testSharesAssociationSetAssociationOtherSetsNotNullEndNamesDifferent()
-    {
-        $model = $this->getModel();
-        $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $model->shouldReceive('GetAssociationEndName')->andReturn('foobar', 'foobar', 'foo', 'bar')->times(4);
-        $model->shouldReceive('GetAssociationSetANnotations')->andReturn(null)->times(2);
-
-        $writer  = $this->getWriter();
-        $version = Version::v3();
-        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
-
-        $reflec = new \ReflectionClass($foo);
-        $method = $reflec->getMethod('SharesAssociationSet');
-        $method->setAccessible(true);
-
-        $nuSet = m::mock(IEntitySet::class);
-
-        $thisSet = m::mock(IEntitySet::class);
-        $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $thisSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
-        $thisProp = m::mock(INavigationProperty::class);
-        $thisProp->shouldReceive('getPartner')->andReturn($thisProp);
-
-        $thatSet = m::mock(IEntitySet::class);
-        $thatSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $thatSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
-        $thatProp = m::mock(INavigationProperty::class);
-        $thatProp->shouldReceive('getPartner')->andReturn($thatProp);
-
-        $expected = false;
-        $actual   = $method->invoke($foo, $thisSet, $thisProp, $thatSet, $thatProp);
-        $this->assertEquals($expected, $actual);
     }
 
     public function testSharesReferentialConstraintEndCountMismatch()
@@ -629,7 +545,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $version = Version::v3();
         $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $reflec = new \ReflectionClass($foo);
+        $reflec = new ReflectionClass($foo);
         $method = $reflec->getMethod('SharesReferentialConstraintEnd');
         $method->setAccessible(true);
 
@@ -650,7 +566,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $version = Version::v3();
         $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $reflec = new \ReflectionClass($foo);
+        $reflec = new ReflectionClass($foo);
         $method = $reflec->getMethod('SharesReferentialConstraintEnd');
         $method->setAccessible(true);
 
@@ -674,7 +590,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $version = Version::v3();
         $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $reflec = new \ReflectionClass($foo);
+        $reflec = new ReflectionClass($foo);
         $method = $reflec->getMethod('SharesReferentialConstraintEnd');
         $method->setAccessible(true);
 
@@ -698,7 +614,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $version = Version::v3();
         $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $reflec = new \ReflectionClass($foo);
+        $reflec = new ReflectionClass($foo);
         $method = $reflec->getMethod('VisitElementVocabularyAnnotations');
         $method->setAccessible(true);
 
@@ -722,7 +638,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $version = Version::v3();
         $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $reflec = new \ReflectionClass($foo);
+        $reflec = new ReflectionClass($foo);
         $method = $reflec->getMethod('VisitElementVocabularyAnnotations');
         $method->setAccessible(true);
 
@@ -771,7 +687,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $version = Version::v3();
         $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $reflec = new \ReflectionClass($foo);
+        $reflec = new ReflectionClass($foo);
         $method = $reflec->getMethod('ProcessAnnotations');
         $method->setAccessible(true);
 
@@ -798,7 +714,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $version = Version::v3();
         $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $reflec = new \ReflectionClass($foo);
+        $reflec = new ReflectionClass($foo);
         $method = $reflec->getMethod('ProcessAnnotations');
         $method->setAccessible(true);
 
@@ -829,7 +745,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $version = Version::v3();
         $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $reflec = new \ReflectionClass($foo);
+        $reflec = new ReflectionClass($foo);
         $method = $reflec->getMethod('ProcessReferentialConstraint');
         $method->setAccessible(true);
 
@@ -863,7 +779,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $version = Version::v3();
         $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
 
-        $reflec = new \ReflectionClass($foo);
+        $reflec = new ReflectionClass($foo);
         $method = $reflec->getMethod('ProcessPropertyConstructor');
         $method->setAccessible(true);
 
@@ -905,7 +821,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     }
 
     /**
-     * @return IModel
+     * @return IModel| m\Mock
      */
     protected function getModel(): IModel
     {
