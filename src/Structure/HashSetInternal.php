@@ -7,7 +7,7 @@ namespace AlgoWeb\ODataMetadata\Structure;
 
 use Iterator;
 
-class HashSetInternal implements Iterator
+class HashSetInternal implements Iterator, \Countable
 {
     private $wrappedDictionary = [];
 
@@ -28,6 +28,12 @@ class HashSetInternal implements Iterator
         }
         $this->wrappedDictionary[] = $value;
         return true;
+    }
+
+    public function remove($value): void
+    {
+        $index = array_search($value, $this->wrappedDictionary);
+        unset($this->wrappedDictionary[$index]);
     }
 
     public function tryGetValue($key, &$output)
@@ -98,5 +104,13 @@ class HashSetInternal implements Iterator
     public function rewind()
     {
         reset($this->wrappedDictionary);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function count()
+    {
+        return count($this->wrappedDictionary);
     }
 }

@@ -11,6 +11,7 @@ use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\StringConst;
+use AlgoWeb\ODataMetadata\Structure\HashSetInternal;
 
 class VisitorOfIStructuredType extends VisitorOfT
 {
@@ -27,12 +28,12 @@ class VisitorOfIStructuredType extends VisitorOfT
         );
 
         if (null !== $type->getBaseType()) {
-            $visitedTypes   = [];
-            $visitedTypes[] = $type;
+            $visitedTypes   = new HashSetInternal();
+            $visitedTypes->add($type);
             /** @var IStructuredType|null $currentBaseType */
             for ($currentBaseType = $type->getBaseType(); null !== $currentBaseType; $currentBaseType = $currentBaseType->getBaseType()
             ) {
-                if (in_array($currentBaseType, $visitedTypes)) {
+                if ($visitedTypes->contains($currentBaseType)) {
                     $typeName = $type instanceof ISchemaType ? $type->fullName() : get_class($type);
                     InterfaceValidator::collectErrors(
                         new EdmError(

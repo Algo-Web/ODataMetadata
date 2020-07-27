@@ -26,6 +26,7 @@ use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveType;
 use AlgoWeb\ODataMetadata\Interfaces\IPrimitiveTypeReference;
 use AlgoWeb\ODataMetadata\Interfaces\ITypeReference;
 use AlgoWeb\ODataMetadata\StringConst;
+use AlgoWeb\ODataMetadata\Structure\HashSetInternal;
 
 class InterfaceValidator
 {
@@ -39,19 +40,19 @@ class InterfaceValidator
     }
 
     /**
-     * @var array
+     * @var HashSetInternal
      */
     private $visited = [];
     /**
-     * @var array
+     * @var HashSetInternal
      */
     private $visitedBad = [];
     /**
-     * @var array
+     * @var HashSetInternal
      */
     private $danglingReferences = [];
     /**
-     * @var array|null
+     * @var HashSetInternal|null
      */
     private $skipVisitation;
     /**
@@ -65,9 +66,12 @@ class InterfaceValidator
 
     private function __construct(?iterable $skipVisitation, ?IModel $model, bool $validateDirectValueAnnotations)
     {
-        $this->skipVisitation                 = iterable_to_array($skipVisitation);
+        $this->skipVisitation                 = null === $skipVisitation ? null : new HashSetInternal(iterable_to_array($skipVisitation));
         $this->model                          = $model;
         $this->validateDirectValueAnnotations = $validateDirectValueAnnotations;
+        $this->visited = new HashSetInternal();
+        $this->visitedBad = new HashSetInternal();
+        $this->danglingReferences = new HashSetInternal();
     }
 
     /**
@@ -103,12 +107,12 @@ class InterfaceValidator
         $semanticValidationContext = new ValidationContext(
             $model,
             function (IEdmElement $item) use ($modelValidator, $referencesValidator): bool {
-                return in_array($item, $modelValidator->visitedBad) || in_array($item, $referencesValidator->visitedBad);
+                return $modelValidator->visitedBad->contains($item) || $referencesValidator->visitedBad->contains($item);
             }
         );
         $concreteTypeSemanticInterfaceVisitors = [];
         foreach ($modelValidator->visited as $item) {
-            if (!in_array($item, $modelValidator->visitedBad)) {
+            if (!$modelValidator->visitedBad->contains($item)) {
                 /** * @var ValidationRule $rule */
                 foreach (self::getSemanticInterfaceVisitorsForObject(
                     get_class($item),
@@ -326,16 +330,15 @@ class InterfaceValidator
      */
     private function validateStructure($item): iterable
     {
-        if ($item instanceof IEdmValidCoreModelElement || in_array($item, $this->visited) || ($this->skipVisitation != null && in_array($item, $this->skipVisitation))) {
+        if ($item instanceof IEdmValidCoreModelElement || $this->visited->contains($item) || ($this->skipVisitation != null && $this->skipVisitation->contains($item))) {
             // If we already visited this object, then errors (if any) have already been reported.
             return [];
         }
 
-        $this->visited[] = $item;
-        if (in_array($item, $this->danglingReferences)) {
+        $this->visited->add($item);
+        if ($this->danglingReferences->contains($item)) {
             // If this edm element is visited, then it is no longer a dangling reference.
-            $index = array_search($item, $this->danglingReferences);
-            unset($this->danglingReferences[$index]);
+            $this->danglingReferences->remove($item);
         }
 
         //// First pass: collect immediate errors for each interface and collect followup objects for the second pass.
@@ -402,8 +405,8 @@ class InterfaceValidator
     private function collectReference($reference): void
     {
         if (!($reference instanceof IEdmValidCoreModelElement) &&
-            !in_array($reference, $this->visited) &&
-            ($this->skipVisitation == null || !in_array($reference, $this->skipVisitation))) {
+            !$this->visited->contains($reference) &&
+            ($this->skipVisitation == null || !$this->skipVisitation->contains($reference))) {
             $this->danglingReferences[] = $reference;
         }
     }
