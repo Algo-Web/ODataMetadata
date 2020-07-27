@@ -29,18 +29,17 @@ class NavigationPropertyDependentEndMultiplicity extends NavigationPropertyRule
         assert($navigationProperty instanceof INavigationProperty);
         EdmUtil::checkArgumentNull($navigationProperty->location(), 'navigationProperty->Location');
         $dependentProperties = $navigationProperty->getDependentProperties();
-        if ($dependentProperties != null) {
+        if (null !== $dependentProperties && !empty($dependentProperties)) {
             EdmUtil::checkArgumentNull(
                 $navigationProperty->declaringEntityType()->key(),
                 'navigationProperty->DeclaringEntityType->Key'
             );
+            $mult = $navigationProperty->multiplicity();
             if (ValidationHelper::propertySetsAreEquivalent(
                 $navigationProperty->declaringEntityType()->key(),
                 $dependentProperties
             )) {
-                if (!$navigationProperty->multiplicity()->isZeroOrOne() &&
-                    !$navigationProperty->multiplicity()->isOne()
-                ) {
+                if (!($mult->isZeroOrOne() || $mult->isOne())) {
                     $context->addError(
                         $navigationProperty->location(),
                         EdmErrorCode::InvalidMultiplicityOfDependentEnd(),
@@ -49,7 +48,7 @@ class NavigationPropertyDependentEndMultiplicity extends NavigationPropertyRule
                         )
                     );
                 }
-            } elseif ($navigationProperty->multiplicity()->isMany()) {
+            } elseif (!$mult->isMany()) {
                 $context->addError(
                     $navigationProperty->location(),
                     EdmErrorCode::InvalidMultiplicityOfDependentEnd(),
