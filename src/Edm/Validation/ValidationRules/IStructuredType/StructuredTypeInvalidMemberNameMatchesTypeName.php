@@ -28,20 +28,24 @@ class StructuredTypeInvalidMemberNameMatchesTypeName extends StructuredTypeRule
         assert($schemaType instanceof ISchemaType);
 
         $properties = $structuredType->properties();
+        $properties = array_filter(
+            $properties,
+            function ($property) {
+                return null !== $property;
+            }
+        );
         if (count($properties) > 0) {
             foreach ($properties as $property) {
-                if ($property != null) {
-                    assert($property instanceof IProperty);
-                    if ($property->getName() === $schemaType->getName()) {
-                        EdmUtil::checkArgumentNull($structuredType->location(), 'structuredType->Location');
-                        $context->addError(
-                            $property->location(),
-                            EdmErrorCode::BadProperty(),
-                            StringConst::EdmModel_Validator_Semantic_InvalidMemberNameMatchesTypeName(
-                                $property->getName()
-                            )
-                        );
-                    }
+                assert($property instanceof IProperty);
+                if ($property->getName() === $schemaType->getName()) {
+                    EdmUtil::checkArgumentNull($structuredType->location(), 'structuredType->Location');
+                    $context->addError(
+                        $property->location(),
+                        EdmErrorCode::BadProperty(),
+                        StringConst::EdmModel_Validator_Semantic_InvalidMemberNameMatchesTypeName(
+                            $property->getName()
+                        )
+                    );
                 }
             }
         }

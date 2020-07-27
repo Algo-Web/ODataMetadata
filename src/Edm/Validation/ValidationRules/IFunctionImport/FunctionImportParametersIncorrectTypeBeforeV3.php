@@ -10,6 +10,7 @@ use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
 use AlgoWeb\ODataMetadata\EdmUtil;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IFunctionImport;
+use AlgoWeb\ODataMetadata\Interfaces\IFunctionParameter;
 use AlgoWeb\ODataMetadata\StringConst;
 
 /**
@@ -23,20 +24,24 @@ class FunctionImportParametersIncorrectTypeBeforeV3 extends FunctionImportRule
     {
         assert($functionImport instanceof IFunctionImport);
         $parameters = $functionImport->getParameters();
+        $parameters = array_filter(
+            $parameters,
+            function (IFunctionParameter $parameter) use ($context) {
+                $type = $parameter->getType();
+                return !$type->isPrimitive() && !$type->isComplex() && !$context->checkIsBad($type->getDefinition());
+            }
+        );
         foreach ($parameters as $functionParameter) {
             $type = $functionParameter->getType();
-            if (!$type->isPrimitive() && !$type->isComplex() && !$context->checkIsBad($type->getDefinition())
-            ) {
-                EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
-                $context->addError(
-                    $functionParameter->location(),
-                    EdmErrorCode::FunctionImportParameterIncorrectType(),
-                    StringConst::EdmModel_Validator_Semantic_FunctionImportParameterIncorrectType(
-                        $type->fullName(),
-                        $functionParameter->getName()
-                    )
-                );
-            }
+            EdmUtil::checkArgumentNull($functionImport->location(), 'functionImport->Location');
+            $context->addError(
+                $functionParameter->location(),
+                EdmErrorCode::FunctionImportParameterIncorrectType(),
+                StringConst::EdmModel_Validator_Semantic_FunctionImportParameterIncorrectType(
+                    $type->fullName(),
+                    $functionParameter->getName()
+                )
+            );
         }
     }
 }

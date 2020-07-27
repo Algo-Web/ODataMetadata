@@ -24,16 +24,20 @@ class FunctionOnlyInputParametersAllowedInFunctions extends FunctionRule
     {
         assert($function instanceof IFunction);
         $parameters = $function->getParameters();
+        $parameters = array_filter(
+            $parameters,
+            function (IFunctionParameter $parameter) {
+                return !$parameter->getMode()->isIn();
+            }
+        );
         foreach ($parameters as $parameter) {
             assert($parameter instanceof IFunctionParameter);
-            if (!$parameter->getMode()->isIn()) {
-                EdmUtil::checkArgumentNull($parameter->location(), 'parameter->Location');
-                $context->addError(
-                    $parameter->location(),
-                    EdmErrorCode::OnlyInputParametersAllowedInFunctions(),
-                    StringConst::EdmModel_Validator_Semantic_OnlyInputParametersAllowedInFunctions($parameter->getName(), $function->getName())
-                );
-            }
+            EdmUtil::checkArgumentNull($parameter->location(), 'parameter->Location');
+            $context->addError(
+                $parameter->location(),
+                EdmErrorCode::OnlyInputParametersAllowedInFunctions(),
+                StringConst::EdmModel_Validator_Semantic_OnlyInputParametersAllowedInFunctions($parameter->getName(), $function->getName())
+            );
         }
     }
 }

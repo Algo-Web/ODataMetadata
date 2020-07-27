@@ -24,17 +24,19 @@ class EntityTypeInvalidKeyNullablePart extends EntityTypeRule
         assert($entityType instanceof IEntityType);
         $rawKey = $entityType->key();
         if (null !== $rawKey) {
-            foreach ($rawKey as $key) {
-                if ($key->getType()->isPrimitive()) {
-                    if ($key->getType()->getNullable()) {
-                        EdmUtil::checkArgumentNull($key->location(), 'key->Location');
-                        $context->addError(
-                            $key->location(),
-                            EdmErrorCode::InvalidKey(),
-                            StringConst::EdmModel_Validator_Semantic_InvalidKeyNullablePart($key->getName(), $entityType->getName())
-                        );
-                    }
+            $rawKey = array_filter(
+                $rawKey,
+                function ($key) {
+                    return $key->getType()->isPrimitive() && $key->getType()->getNullable();
                 }
+            );
+            foreach ($rawKey as $key) {
+                EdmUtil::checkArgumentNull($key->location(), 'key->Location');
+                $context->addError(
+                    $key->location(),
+                    EdmErrorCode::InvalidKey(),
+                    StringConst::EdmModel_Validator_Semantic_InvalidKeyNullablePart($key->getName(), $entityType->getName())
+                );
             }
         }
     }

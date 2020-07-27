@@ -25,19 +25,23 @@ class EnumTypeEnumMemberNameAlreadyDefined extends EnumTypeRule
         assert($enumType instanceof IEnumType);
         $memberNames = new HashSetInternal();
         $members = $enumType->getMembers();
+        $members = array_filter(
+            $members,
+            function ($member) {
+                return null !== $member;
+            }
+        );
         foreach ($members as $member) {
             // We only want to report the properties that are declared in this type. Otherwise properties will get
             // reported multiple times due to inheritance.
-            if ($member != null) {
-                ValidationHelper::addMemberNameToHashSet(
-                    $member,
-                    $memberNames,
-                    $context,
-                    EdmErrorCode::AlreadyDefined(),
-                    StringConst::EdmModel_Validator_Semantic_EnumMemberNameAlreadyDefined($member->getName()),
-                    false
-                );
-            }
+            ValidationHelper::addMemberNameToHashSet(
+                $member,
+                $memberNames,
+                $context,
+                EdmErrorCode::AlreadyDefined(),
+                StringConst::EdmModel_Validator_Semantic_EnumMemberNameAlreadyDefined($member->getName()),
+                false
+            );
         }
     }
 }

@@ -25,17 +25,18 @@ class EntityTypeKeyPropertyMustBelongToEntity extends EntityTypeRule
         assert($entityType instanceof IEntityType);
         if (null !== $entityType->getDeclaredKey()) {
             $items = $entityType->getDeclaredKey();
+            $items = array_filter($items, function (IStructuralProperty $key) use ($entityType, $context) {
+                return $key->getDeclaringType() !== $entityType && !$context->checkIsBad($key);
+            });
             foreach ($items as $key) {
                 assert($key instanceof IStructuralProperty);
                 // Key must be one of the declared properties.
-                if ($key->getDeclaringType() !== $entityType && !$context->checkIsBad($key)) {
-                    EdmUtil::checkArgumentNull($entityType->location(), 'entityType->Location');
-                    $context->addError(
-                        $entityType->location(),
-                        EdmErrorCode::KeyPropertyMustBelongToEntity(),
-                        StringConst::EdmModel_Validator_Semantic_KeyPropertyMustBelongToEntity($key->getName(), $entityType->getName())
-                    );
-                }
+                EdmUtil::checkArgumentNull($entityType->location(), 'entityType->Location');
+                $context->addError(
+                    $entityType->location(),
+                    EdmErrorCode::KeyPropertyMustBelongToEntity(),
+                    StringConst::EdmModel_Validator_Semantic_KeyPropertyMustBelongToEntity($key->getName(), $entityType->getName())
+                );
             }
         }
     }
