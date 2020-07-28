@@ -456,82 +456,52 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $thatProp = m::mock(INavigationProperty::class);
 
         $nuSet = m::mock(IEntitySet::class);
-        $setNamedFoo = function(){
+        $setNamedFoo = (function(){
             $thisSet  = m::mock(IEntitySet::class);
             $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
             return $thisSet;
-        };
+        })->bindTo($this);;
 
-        $setNamedFooNavTarget = function($nuSet = null) use ($setNamedFoo){
+        $setNamedFooNavTarget = (function($nuSet = null) use ($setNamedFoo){
             $thisSet  = $setNamedFoo();
             $thisSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
             return $thisSet;
-        };
+        })->bindTo($this);;
 
 
 
-        $fullnameModel = function(){
+        $fullnameModel = (function(){
             $m = $this->getModel();
             $m->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
             $m->shouldReceive('GetAssociationFullName')->andReturn('foo', 'bar')->times(2);
             return $m;
-        };
+        })->bindTo($this);
 
-        $differentModel = function(){
+        $differentModel = (function(){
             $m = $this->getModel();
             $m->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
             $m->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
             $m->shouldReceive('GetAssociationEndName')->andReturn('foo', 'bar')->times(2);
             return $m;
-        };
+        })->bindTo($this);
 
-        $nullModelAndMismatch = function(){
-            $doc = m::mock(IDocumentation::class)->makePartial();
-            $doc->shouldReceive('getSummary')->andReturn('');
-            $doc->shouldReceive('getDescription')->andReturn('');
-
-            $model = m::mock(IModel::class)->makePartial();
-            $model->shouldReceive('GetNamespaceAliases')->andReturn([]);
-            $model->shouldReceive('getDirectValueAnnotationsManager->GetDirectValueAnnotations')->andReturn([]);
-            $model->shouldReceive('findDeclaredVocabularyAnnotations')->andReturn([]);
-            $model->shouldReceive('GetAnnotationValue')->andReturn($doc);
+        $nullModelAndMismatch = (function(){
+            $model = $this->getModel();
             $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
             $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
             $model->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
             $model->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
             return $model;
-        };
+        })->bindTo($this);
 
         $associationSetNameDifferentModel = $this->getModel();
         $associationSetNameDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo', 'bar')->times(2);
-
-        $associationSetNameDifferent = $fullnameModel();
-        $associationFullNameDifferentModel = $fullnameModel();
-        $associationEndNameDifferentModel = $differentModel();
-
-        $associationEndNameSameSetNameDifferentModel =  $differentModel();
-        $associationEndNameSameSetNameDifferentThisSet = $setNamedFoo();
-        $associationEndNameSameSetNameDifferentThatSet = $setNamedFoo();
-
-        $associationBothOtherSetsNullModel = $nullModelAndMismatch();
-        $associationBothOtherSetsNullThisSet = $setNamedFooNavTarget();
-        $associationBothOtherSetsNullThatSet = $setNamedFooNavTarget();
-
-        $associationOtherSetsNullityMismatchModel = $nullModelAndMismatch();
-
-        $associationOtherSetsNullityMismatchThisSet = $setNamedFooNavTarget($nuSet);
-        $associationOtherSetsNullityMismatchThatSet =clone $thatSet;
-        $associationOtherSetsNullityMismatchThatSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $associationOtherSetsNullityMismatchThatSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
-
 
         $associationOtherSetsNotNullEndNamesDifferentModel = $this->getModel();
         $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
         $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
         $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationEndName')->andReturn('foobar', 'foobar', 'foo', 'bar')->times(4);
         $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
-        $associationOtherSetsNotNullEndNamesDifferentThisSet = $setNamedFooNavTarget($nuSet);
-        $associationOtherSetsNotNullEndNamesDifferentThatSet = $setNamedFooNavTarget($nuSet);
         $associationOtherSetsNotNullEndNamesDifferentThisProp = clone $thisProp;
         $associationOtherSetsNotNullEndNamesDifferentThisProp->shouldReceive('getPartner')->andReturn($associationOtherSetsNotNullEndNamesDifferentThisProp);
         $associationOtherSetsNotNullEndNamesDifferentThatProp = clone $thatProp;
@@ -539,14 +509,14 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         return[
             'Identity' => [$this->getModel(), $thisSet,$thisProp,$thisSet, $thisProp, true],
             'Association Set Name Different Model' => [$associationSetNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
-            'AssociationSetNameDifferent' => [$associationSetNameDifferent, $thisSet, $thisProp,$thatSet,$thatProp, false],
-            'Association Full Name Different Model' => [$associationFullNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
-            'Association End Name Different' => [$associationEndNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
-            'Association End Name Same Set Name Different' => [$associationEndNameSameSetNameDifferentModel, $associationEndNameSameSetNameDifferentThisSet, $thisProp,$associationEndNameSameSetNameDifferentThatSet,$thatProp, false],
-            'Association Both Other Sets Null' => [$associationBothOtherSetsNullModel, $associationBothOtherSetsNullThisSet, $thisProp,$associationBothOtherSetsNullThatSet,$thatProp, true],
-            'Association Other Sets Nullity Mismatch' => [clone $associationOtherSetsNullityMismatchModel, clone $associationOtherSetsNullityMismatchThisSet, $thisProp, clone $associationOtherSetsNullityMismatchThatSet, $thatProp, false],
-            'Association Other Sets Nullity Mismatch Reverse' => [clone $associationOtherSetsNullityMismatchModel, clone $associationOtherSetsNullityMismatchThatSet, $thisProp, clone  $associationOtherSetsNullityMismatchThisSet, $thatProp, false],
-            'Association Other Sets Not Null End Names Different' => [clone $associationOtherSetsNotNullEndNamesDifferentModel, clone $associationOtherSetsNotNullEndNamesDifferentThisSet, $associationOtherSetsNotNullEndNamesDifferentThisProp, clone  $associationOtherSetsNotNullEndNamesDifferentThatSet, $associationOtherSetsNotNullEndNamesDifferentThatProp, false],
+            'AssociationSetNameDifferent' => [$fullnameModel(), $thisSet, $thisProp,$thatSet,$thatProp, false],
+            'Association Full Name Different Model' => [$fullnameModel(), $thisSet, $thisProp,$thatSet,$thatProp, false],
+            'Association End Name Different' => [$differentModel(), $thisSet, $thisProp,$thatSet,$thatProp, false],
+            'Association End Name Same Set Name Different' => [$differentModel(), $setNamedFoo(), $thisProp, $setNamedFoo(),$thatProp, false],
+            'Association Both Other Sets Null' => [$nullModelAndMismatch(), $setNamedFooNavTarget(), $thisProp, $setNamedFooNavTarget(),$thatProp, true],
+            'Association Other Sets Nullity Mismatch' => [clone($nullModelAndMismatch()), clone($setNamedFooNavTarget($nuSet)), $thisProp, clone($setNamedFooNavTarget(null)), $thatProp, false],
+            'Association Other Sets Nullity Mismatch Reverse' => [clone($nullModelAndMismatch()), clone($setNamedFooNavTarget(null)), $thisProp, clone($setNamedFooNavTarget($nuSet)), $thatProp, false],
+            'Association Other Sets Not Null End Names Different' => [clone $associationOtherSetsNotNullEndNamesDifferentModel, clone($setNamedFooNavTarget($nuSet)), $associationOtherSetsNotNullEndNamesDifferentThisProp, clone($setNamedFooNavTarget($nuSet)), $associationOtherSetsNotNullEndNamesDifferentThatProp, false],
         ];
     }
 
@@ -847,19 +817,6 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $model->shouldReceive('findDeclaredVocabularyAnnotations')->andReturn([]);
         $model->shouldReceive('GetAnnotationValue')->andReturn($doc);
         return $model;
-    }
-
-    /**
-     * @return IModel|m\Mock
-     */
-    protected function nullModel()
-    {
-        $associationBothOtherSetsNullModel = $this->getModel();
-        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
-        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
-        return $associationBothOtherSetsNullModel;
     }
 
 
