@@ -507,92 +507,93 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         return[
             'Identity' =>
                 [
-                    $this->getModel(),
-                    $thisSet,
-                    $thisProp,
-                    $thisSet,
-                    $thisProp,
-                    true
+                    /** $model */$this->getModel(),
+                    /** $thisSet */$thisSet,
+                    /** $thisProp */$thisProp,
+                    /** $thatSet */$thisSet,
+                    /** $thatProp */$thisProp,
+                    /** $expected */true
                 ],
             'Association Set Name Different Model' =>
                 [
-                    $associationSetNameDifferentModel,
-                    $thisSet,
-                    $thisProp,
-                    $thatSet,
-                    $thatProp,
-                    false
+                    /** $model */$associationSetNameDifferentModel,
+                    /** $thisSet */$thisSet,
+                    /** $thisProp */$thisProp,
+                    /** $thatSet */$thatSet,
+                    /** $thatProp */$thatProp,
+                    /** $expected */false
                 ],
             'Association Set Name Different' =>
                 [
-                    $fullnameModel(),
-                    $thisSet,
-                    $thisProp,
-                    $thatSet,
-                    $thatProp,
-                    false
+                    /** $model */$fullnameModel(),
+                    /** $thisSet */$thisSet,
+                    /** $thisProp */$thisProp,
+                    /** $thatSet */$thatSet,
+                    /** $thatProp */$thatProp,
+                    /** $expected */false
                 ],
             'Association Full Name Different Model' =>
                 [
-                    $fullnameModel(),
-                    $thisSet,
-                    $thisProp,
-                    $thatSet,
-                    $thatProp,
-                    false],
+                    /** $model */$fullnameModel(),
+                    /** $thisSet */$thisSet,
+                    /** $thisProp */$thisProp,
+                    /** $thatSet */$thatSet,
+                    /** $thatProp */$thatProp,
+                    /** $expected */false
+                ],
             'Association End Name Different' =>
                 [
-                    $differentModel(),
-                    $thisSet,
-                    $thisProp,
-                    $thatSet,
-                    $thatProp,
-                    false
+                    /** $model */$differentModel(),
+                    /** $thisSet */$thisSet,
+                    /** $thisProp */$thisProp,
+                    /** $thatSet */$thatSet,
+                    /** $thatProp */$thatProp,
+                    /** $expected */false
                 ],
             'Association End Name Same Set Name Different' =>
                 [
-                    $differentModel(),
-                    $setNamedFoo(),
-                    $thisProp,
-                    $setNamedFoo(),
-                    $thatProp,
-                    false
+                    /** $model */$differentModel(),
+                    /** $thisSet */$setNamedFoo(),
+                    /** $thisProp */$thisProp,
+                    /** $thatSet */$setNamedFoo(),
+                    /** $thatProp */$thatProp,
+                    /** $expected */false
                 ],
             'Association Both Other Sets Null' =>
                 [
-                    $nullModelAndMismatch(),
-                    $setNamedFooNavTarget(),
-                    $thisProp,
-                    $setNamedFooNavTarget(),
-                    $thatProp,
-                    true
+                    /** $model */$nullModelAndMismatch(),
+                    /** $thisSet */$setNamedFooNavTarget(),
+                    /** $thisProp */$thisProp,
+                    /** $thatSet */$setNamedFooNavTarget(),
+                    /** $thatProp */$thatProp,
+                    /** $expected */true
                 ],
             'Association Other Sets Nullity Mismatch' =>
                 [
-                    $nullModelAndMismatch(),
-                    $setNamedFooNavTarget($nuSet),
-                    $thisProp,
-                    $setNamedFooNavTarget(null),
-                    $thatProp,
-                    false
+                    /** $model */$nullModelAndMismatch(),
+                    /** $thisSet */$setNamedFooNavTarget($nuSet),
+                    /** $thisProp */$thisProp,
+                    /** $thatSet */$setNamedFooNavTarget(null),
+                    /** $thatProp */$thatProp,
+                    /** $expected */false
                 ],
             'Association Other Sets Nullity Mismatch Reverse' =>
                 [
-                    $nullModelAndMismatch(),
-                    $setNamedFooNavTarget(null),
-                    $thisProp,
-                    $setNamedFooNavTarget($nuSet),
-                    $thatProp,
-                    false
+                    /** $model */$nullModelAndMismatch(),
+                    /** $thisSet */$setNamedFooNavTarget(null),
+                    /** $thisProp */$thisProp,
+                    /** $thatSet */$setNamedFooNavTarget($nuSet),
+                    /** $thatProp */$thatProp,
+                    /** $expected */false
                 ],
             'Association Other Sets Not Null End Names Different' =>
                 [
-                    $nullModelAndMismatch(['foobar', 'foobar', 'foo', 'bar'], 4),
-                    $setNamedFooNavTarget($nuSet),
-                    $propPartnerSelf(),
-                    $setNamedFooNavTarget($nuSet),
-                    $propPartnerSelf(),
-                    false
+                    /** $model */$nullModelAndMismatch(['foobar', 'foobar', 'foo', 'bar'], 4),
+                    /** $thisSet */$setNamedFooNavTarget($nuSet),
+                    /** $thisProp */$propPartnerSelf(),
+                    /** $thatSet */$setNamedFooNavTarget($nuSet),
+                    /** $thatProp */$propPartnerSelf(),
+                    /** $expected */false
                 ],
         ];
     }
