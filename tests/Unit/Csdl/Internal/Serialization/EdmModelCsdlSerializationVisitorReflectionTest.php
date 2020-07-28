@@ -485,38 +485,115 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
             return $m;
         })->bindTo($this);
 
-        $nullModelAndMismatch = (function(){
+        $nullModelAndMismatch = (function($endName = ['foo'], $endTimes = 2){
             $model = $this->getModel();
             $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
             $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-            $model->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
+            $model->shouldReceive('GetAssociationEndName')->andReturn(...$endName)->times($endTimes);
             $model->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
             return $model;
+        })->bindTo($this);
+
+        $propPartnerSelf = (function(){
+            $associationOtherSetsNotNullEndNamesDifferentThisProp = m::mock(INavigationProperty::class);
+            $associationOtherSetsNotNullEndNamesDifferentThisProp->shouldReceive('getPartner')->andReturn($associationOtherSetsNotNullEndNamesDifferentThisProp);
+            return $associationOtherSetsNotNullEndNamesDifferentThisProp;
         })->bindTo($this);
 
         $associationSetNameDifferentModel = $this->getModel();
         $associationSetNameDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo', 'bar')->times(2);
 
-        $associationOtherSetsNotNullEndNamesDifferentModel = $this->getModel();
-        $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationEndName')->andReturn('foobar', 'foobar', 'foo', 'bar')->times(4);
-        $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
-        $associationOtherSetsNotNullEndNamesDifferentThisProp = clone $thisProp;
-        $associationOtherSetsNotNullEndNamesDifferentThisProp->shouldReceive('getPartner')->andReturn($associationOtherSetsNotNullEndNamesDifferentThisProp);
-        $associationOtherSetsNotNullEndNamesDifferentThatProp = clone $thatProp;
-        $associationOtherSetsNotNullEndNamesDifferentThatProp->shouldReceive('getPartner')->andReturn($associationOtherSetsNotNullEndNamesDifferentThatProp);
+
         return[
-            'Identity' => [$this->getModel(), $thisSet,$thisProp,$thisSet, $thisProp, true],
-            'Association Set Name Different Model' => [$associationSetNameDifferentModel, $thisSet, $thisProp,$thatSet,$thatProp, false],
-            'AssociationSetNameDifferent' => [$fullnameModel(), $thisSet, $thisProp,$thatSet,$thatProp, false],
-            'Association Full Name Different Model' => [$fullnameModel(), $thisSet, $thisProp,$thatSet,$thatProp, false],
-            'Association End Name Different' => [$differentModel(), $thisSet, $thisProp,$thatSet,$thatProp, false],
-            'Association End Name Same Set Name Different' => [$differentModel(), $setNamedFoo(), $thisProp, $setNamedFoo(),$thatProp, false],
-            'Association Both Other Sets Null' => [$nullModelAndMismatch(), $setNamedFooNavTarget(), $thisProp, $setNamedFooNavTarget(),$thatProp, true],
-            'Association Other Sets Nullity Mismatch' => [clone($nullModelAndMismatch()), clone($setNamedFooNavTarget($nuSet)), $thisProp, clone($setNamedFooNavTarget(null)), $thatProp, false],
-            'Association Other Sets Nullity Mismatch Reverse' => [clone($nullModelAndMismatch()), clone($setNamedFooNavTarget(null)), $thisProp, clone($setNamedFooNavTarget($nuSet)), $thatProp, false],
-            'Association Other Sets Not Null End Names Different' => [clone $associationOtherSetsNotNullEndNamesDifferentModel, clone($setNamedFooNavTarget($nuSet)), $associationOtherSetsNotNullEndNamesDifferentThisProp, clone($setNamedFooNavTarget($nuSet)), $associationOtherSetsNotNullEndNamesDifferentThatProp, false],
+            'Identity' =>
+                [
+                    $this->getModel(),
+                    $thisSet,
+                    $thisProp,
+                    $thisSet,
+                    $thisProp,
+                    true
+                ],
+            'Association Set Name Different Model' =>
+                [
+                    $associationSetNameDifferentModel,
+                    $thisSet,
+                    $thisProp,
+                    $thatSet,
+                    $thatProp,
+                    false
+                ],
+            'Association Set Name Different' =>
+                [
+                    $fullnameModel(),
+                    $thisSet,
+                    $thisProp,
+                    $thatSet,
+                    $thatProp,
+                    false
+                ],
+            'Association Full Name Different Model' =>
+                [
+                    $fullnameModel(),
+                    $thisSet,
+                    $thisProp,
+                    $thatSet,
+                    $thatProp,
+                    false],
+            'Association End Name Different' =>
+                [
+                    $differentModel(),
+                    $thisSet,
+                    $thisProp,
+                    $thatSet,
+                    $thatProp,
+                    false
+                ],
+            'Association End Name Same Set Name Different' =>
+                [
+                    $differentModel(),
+                    $setNamedFoo(),
+                    $thisProp,
+                    $setNamedFoo(),
+                    $thatProp,
+                    false
+                ],
+            'Association Both Other Sets Null' =>
+                [
+                    $nullModelAndMismatch(),
+                    $setNamedFooNavTarget(),
+                    $thisProp,
+                    $setNamedFooNavTarget(),
+                    $thatProp,
+                    true
+                ],
+            'Association Other Sets Nullity Mismatch' =>
+                [
+                    $nullModelAndMismatch(),
+                    $setNamedFooNavTarget($nuSet),
+                    $thisProp,
+                    $setNamedFooNavTarget(null),
+                    $thatProp,
+                    false
+                ],
+            'Association Other Sets Nullity Mismatch Reverse' =>
+                [
+                    $nullModelAndMismatch(),
+                    $setNamedFooNavTarget(null),
+                    $thisProp,
+                    $setNamedFooNavTarget($nuSet),
+                    $thatProp,
+                    false
+                ],
+            'Association Other Sets Not Null End Names Different' =>
+                [
+                    $nullModelAndMismatch(['foobar', 'foobar', 'foo', 'bar'], 4),
+                    $setNamedFooNavTarget($nuSet),
+                    $propPartnerSelf(),
+                    $setNamedFooNavTarget($nuSet),
+                    $propPartnerSelf(),
+                    false
+                ],
         ];
     }
 
