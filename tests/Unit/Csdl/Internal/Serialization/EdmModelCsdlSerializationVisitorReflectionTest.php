@@ -452,58 +452,74 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $thisSet  = m::mock(IEntitySet::class);
         $thisProp = m::mock(INavigationProperty::class);
-
         $thatSet  = m::mock(IEntitySet::class);
         $thatProp = m::mock(INavigationProperty::class);
 
+        $nuSet = m::mock(IEntitySet::class);
+        $setNamedFoo = function(){
+            $thisSet  = m::mock(IEntitySet::class);
+            $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
+            return $thisSet;
+        };
+
+        $setNamedFooNavTarget = function($nuSet = null) use ($setNamedFoo){
+            $thisSet  = $setNamedFoo();
+            $thisSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
+            return $thisSet;
+        };
+
+
+
+        $fullnameModel = function(){
+            $m = $this->getModel();
+            $m->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+            $m->shouldReceive('GetAssociationFullName')->andReturn('foo', 'bar')->times(2);
+            return $m;
+        };
+
+        $differentModel = function(){
+            $m = $this->getModel();
+            $m->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+            $m->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+            $m->shouldReceive('GetAssociationEndName')->andReturn('foo', 'bar')->times(2);
+            return $m;
+        };
+
+        $nullModelAndMismatch = function(){
+            $doc = m::mock(IDocumentation::class)->makePartial();
+            $doc->shouldReceive('getSummary')->andReturn('');
+            $doc->shouldReceive('getDescription')->andReturn('');
+
+            $model = m::mock(IModel::class)->makePartial();
+            $model->shouldReceive('GetNamespaceAliases')->andReturn([]);
+            $model->shouldReceive('getDirectValueAnnotationsManager->GetDirectValueAnnotations')->andReturn([]);
+            $model->shouldReceive('findDeclaredVocabularyAnnotations')->andReturn([]);
+            $model->shouldReceive('GetAnnotationValue')->andReturn($doc);
+            $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+            $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+            $model->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
+            $model->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
+            return $model;
+        };
 
         $associationSetNameDifferentModel = $this->getModel();
         $associationSetNameDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo', 'bar')->times(2);
 
-        $associationSetNameDifferent = $this->getModel();
-        $associationSetNameDifferent->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $associationSetNameDifferent->shouldReceive('GetAssociationFullName')->andReturn('foo', 'bar')->times(2);
+        $associationSetNameDifferent = $fullnameModel();
+        $associationFullNameDifferentModel = $fullnameModel();
+        $associationEndNameDifferentModel = $differentModel();
 
-        $associationFullNameDifferentModel = $this->getModel();
-        $associationFullNameDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $associationFullNameDifferentModel->shouldReceive('GetAssociationFullName')->andReturn('foo', 'bar')->times(2);
+        $associationEndNameSameSetNameDifferentModel =  $differentModel();
+        $associationEndNameSameSetNameDifferentThisSet = $setNamedFoo();
+        $associationEndNameSameSetNameDifferentThatSet = $setNamedFoo();
 
-        $associationEndNameDifferentModel = $this->getModel();
-        $associationEndNameDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $associationEndNameDifferentModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $associationEndNameDifferentModel->shouldReceive('GetAssociationEndName')->andReturn('foo', 'bar')->times(2);
+        $associationBothOtherSetsNullModel = $nullModelAndMismatch();
+        $associationBothOtherSetsNullThisSet = $setNamedFooNavTarget();
+        $associationBothOtherSetsNullThatSet = $setNamedFooNavTarget();
 
-        $associationEndNameSameSetNameDifferentModel = $this->getModel();
-        $associationEndNameSameSetNameDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $associationEndNameSameSetNameDifferentModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $associationEndNameSameSetNameDifferentModel->shouldReceive('GetAssociationEndName')->andReturn('foo', 'bar')->times(2);
+        $associationOtherSetsNullityMismatchModel = $nullModelAndMismatch();
 
-        $associationEndNameSameSetNameDifferentThisSet = clone $thisSet;
-        $associationEndNameSameSetNameDifferentThisSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $associationEndNameSameSetNameDifferentThatSet = clone $thatSet;
-        $associationEndNameSameSetNameDifferentThatSet->shouldReceive('getName')->andReturn('bar')->times(1);
-
-        $associationBothOtherSetsNullModel = $this->getModel();
-        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
-        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
-        $associationBothOtherSetsNullThisSet = clone $thisSet;
-        $associationBothOtherSetsNullThisSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $associationBothOtherSetsNullThisSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
-        $associationBothOtherSetsNullThatSet = clone $thatSet;
-        $associationBothOtherSetsNullThatSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $associationBothOtherSetsNullThatSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
-
-        $associationOtherSetsNullityMismatchModel = $this->getModel();
-        $associationOtherSetsNullityMismatchModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
-        $associationOtherSetsNullityMismatchModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
-        $associationOtherSetsNullityMismatchModel->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
-        $associationOtherSetsNullityMismatchModel->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
-        $nuSet = m::mock(IEntitySet::class);
-        $associationOtherSetsNullityMismatchThisSet = clone $thisSet;
-        $associationOtherSetsNullityMismatchThisSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $associationOtherSetsNullityMismatchThisSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
+        $associationOtherSetsNullityMismatchThisSet = $setNamedFooNavTarget($nuSet);
         $associationOtherSetsNullityMismatchThatSet =clone $thatSet;
         $associationOtherSetsNullityMismatchThatSet->shouldReceive('getName')->andReturn('foo')->times(1);
         $associationOtherSetsNullityMismatchThatSet->shouldReceive('findNavigationTarget')->andReturn(null)->once();
@@ -513,13 +529,9 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
         $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
         $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationEndName')->andReturn('foobar', 'foobar', 'foo', 'bar')->times(4);
-        $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationSetANnotations')->andReturn(null)->times(2);
-        $associationOtherSetsNotNullEndNamesDifferentThisSet = clone $thisSet;
-        $associationOtherSetsNotNullEndNamesDifferentThatSet =clone $thatSet;
-        $associationOtherSetsNotNullEndNamesDifferentThisSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $associationOtherSetsNotNullEndNamesDifferentThisSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
-        $associationOtherSetsNotNullEndNamesDifferentThatSet->shouldReceive('getName')->andReturn('foo')->times(1);
-        $associationOtherSetsNotNullEndNamesDifferentThatSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
+        $associationOtherSetsNotNullEndNamesDifferentModel->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
+        $associationOtherSetsNotNullEndNamesDifferentThisSet = $setNamedFooNavTarget($nuSet);
+        $associationOtherSetsNotNullEndNamesDifferentThatSet = $setNamedFooNavTarget($nuSet);
         $associationOtherSetsNotNullEndNamesDifferentThisProp = clone $thisProp;
         $associationOtherSetsNotNullEndNamesDifferentThisProp->shouldReceive('getPartner')->andReturn($associationOtherSetsNotNullEndNamesDifferentThisProp);
         $associationOtherSetsNotNullEndNamesDifferentThatProp = clone $thatProp;
@@ -835,6 +847,19 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $model->shouldReceive('findDeclaredVocabularyAnnotations')->andReturn([]);
         $model->shouldReceive('GetAnnotationValue')->andReturn($doc);
         return $model;
+    }
+
+    /**
+     * @return IModel|m\Mock
+     */
+    protected function nullModel()
+    {
+        $associationBothOtherSetsNullModel = $this->getModel();
+        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
+        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
+        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationEndName')->andReturn('foobar')->times(2);
+        $associationBothOtherSetsNullModel->shouldReceive('GetAssociationSetAnnotations')->andReturn(null)->times(2);
+        return $associationBothOtherSetsNullModel;
     }
 
 
