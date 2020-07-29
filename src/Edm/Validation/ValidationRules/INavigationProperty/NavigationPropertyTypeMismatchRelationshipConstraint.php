@@ -29,23 +29,26 @@ class NavigationPropertyTypeMismatchRelationshipConstraint extends NavigationPro
             $dependentPropertiesCount = count($dependentProperties);
             $principalEntityType      = $navigationProperty->getPartner()->declaringEntityType();
             $principalKey             = $principalEntityType->key();
+            $location                 = $navigationProperty->location();
+            EdmUtil::checkArgumentNull($location, 'navigationProperty->Location');
             if ($dependentPropertiesCount == count($principalKey)) {
                 for ($i = 0; $i < $dependentPropertiesCount; $i++) {
+                    $depProp = $navigationProperty->getDependentProperties()[$i];
+
                     if (!EdmElementComparer::isEquivalentTo(
-                        $navigationProperty->getDependentProperties()[$i]->getType()->getDefinition(),
+                        $depProp->getType()->getDefinition(),
                         $principalKey[$i]->getType()->getDefinition()
                     )) {
                         $errorMessage = StringConst::EdmModel_Validator_Semantic_TypeMismatchRelationshipConstraint(
-                            $navigationProperty->getDependentProperties()[$i]->getName(),
+                            $depProp->getName(),
                             $navigationProperty->declaringEntityType()->fullName(),
                             $principalKey[$i]->getName(),
                             $principalEntityType->getName(),
                             'Dingus'
                         );
 
-                        EdmUtil::checkArgumentNull($navigationProperty->location(), 'navigationProperty->Location');
                         $context->addError(
-                            $navigationProperty->location(),
+                            $location,
                             EdmErrorCode::TypeMismatchRelationshipConstraint(),
                             $errorMessage
                         );
