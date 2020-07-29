@@ -69,9 +69,9 @@ class InterfaceValidator
         $this->skipVisitation                 = null === $skipVisitation ? null : new HashSetInternal(iterable_to_array($skipVisitation));
         $this->model                          = $model;
         $this->validateDirectValueAnnotations = $validateDirectValueAnnotations;
-        $this->visited = new HashSetInternal();
-        $this->visitedBad = new HashSetInternal();
-        $this->danglingReferences = new HashSetInternal();
+        $this->visited                        = new HashSetInternal();
+        $this->visitedBad                     = new HashSetInternal();
+        $this->danglingReferences             = new HashSetInternal();
     }
 
     /**

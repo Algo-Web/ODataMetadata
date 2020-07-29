@@ -107,7 +107,7 @@ class HashSetInternal implements Iterator, \Countable
     }
 
     /**
-     * @inheritDoc
+     * {@inheritdoc}
      */
     public function count()
     {
