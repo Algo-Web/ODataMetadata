@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEdmElement;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -23,7 +22,7 @@ class ElementDirectValueAnnotationFullNameMustBeUnique extends EdmElementRule
     {
         EdmUtil::checkArgumentNull($item, 'item');
         $annotationNameSet = new HashSetInternal();
-        $annotations = $context->getModel()->getDirectValueAnnotationsManager()->getDirectValueAnnotations($item);
+        $annotations       = $context->getModel()->getDirectValueAnnotationsManager()->getDirectValueAnnotations($item);
         foreach ($annotations as $annotation) {
             assert($annotation instanceof IDirectValueAnnotation);
             EdmUtil::checkArgumentNull($annotation->location(), 'annotation->Location');

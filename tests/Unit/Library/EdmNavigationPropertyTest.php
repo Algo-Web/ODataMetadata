@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Date: 6/07/20
  * Time: 3:39 AM.
  */
+
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Library;
 
 use AlgoWeb\ODataMetadata\Enums\Multiplicity;

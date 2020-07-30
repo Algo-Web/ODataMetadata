@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: alex
  * Date: 26/07/20
- * Time: 5:49 PM
+ * Time: 5:49 PM.
  */
 
 declare(strict_types=1);
@@ -30,10 +30,12 @@ class NavigationPropertyCorrectTypeTest extends TestCase
      */
     public function testEntityTypeMismatch()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
 
         $model = m::mock(IModel::class);
-        $foo = new NavigationPropertyCorrectType();
+        $foo   = new NavigationPropertyCorrectType();
 
         $oneType = m::mock(IEntityType::class);
         $twoType = m::mock(IEntityType::class);
@@ -53,18 +55,18 @@ class NavigationPropertyCorrectTypeTest extends TestCase
         $foo->__invoke($context, $prop);
         $errors = $context->getErrors();
         $this->assertEquals(1, count($errors));
-        $error = $errors[0];
+        $error     = $errors[0];
         $errorCode = EdmErrorCode::InvalidNavigationPropertyType();
         $this->assertEquals($errorCode, $error->getErrorCode());
         $expected = 'The type of the navigation property \'name\' is invalid. The navigation target type must be an'
-                    .' entity type or a collection of entity type. The navigation target entity type must match the'
-                    .' declaring type of the partner property.';
+                    . ' entity type or a collection of entity type. The navigation target entity type must match the'
+                    . ' declaring type of the partner property.';
         $this->assertEquals($expected, $error->getErrorMessage());
     }
 
     public function multiplicityProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [Multiplicity::Many(), true, true, 0];
         $result[] = [Multiplicity::Many(), true, false, 0];
         $result[] = [Multiplicity::Many(), false, true, 1];
@@ -84,18 +86,20 @@ class NavigationPropertyCorrectTypeTest extends TestCase
     /**
      * @dataProvider multiplicityProvider
      *
-     * @param Multiplicity $mult
-     * @param bool $isCollection
-     * @param bool $isNullable
-     * @param int $numErrors
+     * @param  Multiplicity         $mult
+     * @param  bool                 $isCollection
+     * @param  bool                 $isNullable
+     * @param  int                  $numErrors
      * @throws \ReflectionException
      */
     public function testMultiplicity(Multiplicity $mult, bool $isCollection, bool $isNullable, int $numErrors)
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
 
         $model = m::mock(IModel::class);
-        $foo = new NavigationPropertyCorrectType();
+        $foo   = new NavigationPropertyCorrectType();
 
         $oneType = m::mock(IEntityType::class);
 
@@ -122,7 +126,7 @@ class NavigationPropertyCorrectTypeTest extends TestCase
         $errors = $context->getErrors();
         $this->assertEquals($numErrors, count($errors));
         if (1 === $numErrors) {
-            $error = $errors[0];
+            $error     = $errors[0];
             $errorCode = EdmErrorCode::InvalidNavigationPropertyType();
             $this->assertEquals($errorCode, $error->getErrorCode());
             $expected = 'The type of the navigation property \'name\' is invalid. The navigation target type must be an'

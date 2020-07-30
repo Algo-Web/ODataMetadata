@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Date: 1/07/20
  * Time: 9:23 PM.
  */
+
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\FunctionParameterMode;

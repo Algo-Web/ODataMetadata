@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 11:43 PM
+ * Time: 11:43 PM.
  */
 
 declare(strict_types=1);
@@ -29,7 +29,9 @@ class EntityContainerDuplicateEntityContainerMemberNameTest extends TestCase
     public function testInvokeSingleFunctionImport()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc = m::mock(ILocation::class);
 
@@ -53,7 +55,9 @@ class EntityContainerDuplicateEntityContainerMemberNameTest extends TestCase
     public function testInvokeDuplicatedFunctionImport()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc = m::mock(ILocation::class);
 
@@ -74,7 +78,9 @@ class EntityContainerDuplicateEntityContainerMemberNameTest extends TestCase
     public function testInvokeSingleNonFunctionImport()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc = m::mock(ILocation::class);
 
@@ -96,7 +102,9 @@ class EntityContainerDuplicateEntityContainerMemberNameTest extends TestCase
     public function testInvokeDuplicatedNonFunctionImport()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc = m::mock(ILocation::class);
 
@@ -118,7 +126,9 @@ class EntityContainerDuplicateEntityContainerMemberNameTest extends TestCase
     public function testInvokeFunctionImportThenDuplicateNonFunctionImport()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc = m::mock(ILocation::class);
 
@@ -144,7 +154,9 @@ class EntityContainerDuplicateEntityContainerMemberNameTest extends TestCase
     public function testInvokeNonFunctionImportThenDuplicateFunctionImport()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc = m::mock(ILocation::class);
 

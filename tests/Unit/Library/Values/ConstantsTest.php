@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Date: 24/06/20
  * Time: 1:59 AM.
  */
+
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;

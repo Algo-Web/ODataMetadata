@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 3:41 AM
+ * Time: 3:41 AM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
@@ -21,14 +23,16 @@ use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 use Mockery as m;
 
-class NavigationPropertyWithecursiveContainmentSourceMustBeFromZeroOrOneTest extends TestCase
+class NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOneTest extends TestCase
 {
     /**
      * @throws \ReflectionException
      */
     public function testInvokeBadMultiplicity()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -54,13 +58,13 @@ class NavigationPropertyWithecursiveContainmentSourceMustBeFromZeroOrOneTest ext
         $foo->__invoke($context, $element);
 
         $this->assertEquals(1, count($context->getErrors()));
-        $error = $context->getErrors()[0];
+        $error     = $context->getErrors()[0];
         $errorCode = EdmErrorCode::NavigationPropertyWithRecursiveContainmentSourceMustBeFromZeroOrOne();
         $this->assertEquals($errorCode, $error->getErrorCode());
 
         $expected = 'The source multiplicity of the navigation property \'navProp\' is invalid. If a navigation'
-                    .' property has \'ContainsTarget\' set to true and declaring entity type of the property is the'.
-                    ' same or inherits from the target entity type, then the property represents a recursive'.
+                    . ' property has \'ContainsTarget\' set to true and declaring entity type of the property is the' .
+                    ' same or inherits from the target entity type, then the property represents a recursive' .
                     ' containment and the multiplicity of the navigation source must be zero or one.';
         $actual = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);

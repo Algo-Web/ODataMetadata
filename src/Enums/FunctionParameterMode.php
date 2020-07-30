@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Enums;
 
 /**
@@ -11,14 +10,14 @@ namespace AlgoWeb\ODataMetadata\Enums;
  * Enumerates the modes of parameters of EDM functions.
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Enums
- * @method static self None() Denotes that a parameter with an unknown or error directionality.
- * @method bool isNone()
- * @method static self In() Denotes that a parameter is used for input.
- * @method bool isIn()
- * @method static self Out() Denotes that a parameter is used for output.
- * @method bool isOut()
+ * @method static self None()  Denotes that a parameter with an unknown or error directionality.
+ * @method bool   isNone()
+ * @method static self In()    Denotes that a parameter is used for input.
+ * @method bool   isIn()
+ * @method static self Out()   Denotes that a parameter is used for output.
+ * @method bool   isOut()
  * @method static self InOut() Denotes that a parameter is used for input and output.
- * @method bool isInOut()
+ * @method bool   isInOut()
  */
 class FunctionParameterMode extends Enum
 {

@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 9:54 PM
+ * Time: 9:54 PM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation;
@@ -29,7 +31,7 @@ class EdmValidatorTest extends TestCase
         $model->shouldReceive('getDirectValueAnnotationsManager')->andReturn($annotate);
         $model->shouldReceive('getSchemaElements')->andReturn([]);
 
-        $errors = [];
+        $errors  = [];
         $version = Version::v1point1();
 
         $res = EdmValidator::validate($model, $version, $errors);

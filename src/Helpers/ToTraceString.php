@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\EdmConstants;
@@ -53,7 +52,7 @@ abstract class ToTraceString
             case $element instanceof IProperty:
                 assert($element instanceof IProperty);
                 $type = $element->getType();
-                return $element->getName() ?? '' . ':' . ($type !== null ? self::toTraceString($type) :'');
+                return $element->getName() ?? '' . ':' . ($type !== null ? self::toTraceString($type) : '');
             case $element instanceof IEntityReferenceType:
                 assert($element instanceof IEntityReferenceType);
                 return strval(TypeKind::EntityReference()->getKey()) . '(' . (null !== $element->getEntityType() ?
@@ -188,7 +187,7 @@ abstract class ToTraceString
             $sb,
             EdmConstants::FacetName_Srid,
             null !== $type->getSpatialReferenceIdentifier()
-                ? $type->getSpatialReferenceIdentifier(): EdmConstants::Value_SridVariable
+                ? $type->getSpatialReferenceIdentifier() : EdmConstants::Value_SridVariable
         );
         return $sb;
     }

@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Date: 9/07/20
  * Time: 12:55 AM.
  */
+
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\Internal;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;

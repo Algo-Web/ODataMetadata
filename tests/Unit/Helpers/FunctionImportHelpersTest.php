@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 26/07/20
- * Time: 11:56 AM
+ * Time: 11:56 AM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Helpers;
@@ -25,10 +27,10 @@ class FunctionImportHelpersTest extends TestCase
 {
     public function tryGetStaticEntitySetProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [null, false];
-        $result[] = [m::mock(IExpression::class . ', '. IFunctionImport::class), false];
-        $result[] = [m::mock(IExpression::class . ', '. IFunctionImport::class . ', ' . IEntitySet::class), true];
+        $result[] = [m::mock(IExpression::class . ', ' . IFunctionImport::class), false];
+        $result[] = [m::mock(IExpression::class . ', ' . IFunctionImport::class . ', ' . IEntitySet::class), true];
 
         return $result;
     }
@@ -62,8 +64,8 @@ class FunctionImportHelpersTest extends TestCase
         $foo->shouldReceive('getEntitySet')->andReturn(null);
 
         $model = m::mock(IModel::class);
-        $parm = null;
-        $path = null;
+        $parm  = null;
+        $path  = null;
 
         $expected = false;
 
@@ -82,8 +84,8 @@ class FunctionImportHelpersTest extends TestCase
         $foo->shouldReceive('getEntitySet')->andReturn($eSet);
 
         $model = m::mock(IModel::class);
-        $parm = null;
-        $path = null;
+        $parm  = null;
+        $path  = null;
 
         $expected = false;
 
@@ -103,8 +105,8 @@ class FunctionImportHelpersTest extends TestCase
         $foo->shouldReceive('findParameter')->withArgs(['foo'])->andReturn(null)->once();
 
         $model = m::mock(IModel::class);
-        $parm = null;
-        $path = null;
+        $parm  = null;
+        $path  = null;
 
         $expected = false;
 
@@ -126,8 +128,8 @@ class FunctionImportHelpersTest extends TestCase
         $foo->shouldReceive('findParameter')->withArgs(['foo'])->andReturn($parm)->once();
 
         $model = m::mock(IModel::class);
-        $parm = null;
-        $path = null;
+        $parm  = null;
+        $path  = null;
 
         $expected = true;
 
@@ -158,8 +160,8 @@ class FunctionImportHelpersTest extends TestCase
         $foo->shouldReceive('findParameter')->withArgs(['foo'])->andReturn($parm)->once();
 
         $model = m::mock(IModel::class);
-        $parm = null;
-        $path = null;
+        $parm  = null;
+        $path  = null;
 
         $expected = false;
 
@@ -199,8 +201,8 @@ class FunctionImportHelpersTest extends TestCase
         $foo->shouldReceive('findParameter')->withArgs(['foo'])->andReturn($parm)->once();
 
         $model = m::mock(IModel::class);
-        $parm = null;
-        $path = null;
+        $parm  = null;
+        $path  = null;
 
         $expected = true;
 

@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Date: 5/07/20
  * Time: 2:04 PM.
  */
+
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\Internal;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator\VisitorOfIPropertyConstructor;

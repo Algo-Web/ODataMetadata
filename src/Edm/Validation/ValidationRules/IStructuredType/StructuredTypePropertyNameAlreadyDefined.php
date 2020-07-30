@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -24,8 +23,8 @@ class StructuredTypePropertyNameAlreadyDefined extends StructuredTypeRule
     {
         assert($structuredType instanceof IStructuredType);
         $propertyNames = new HashSetInternal();
-        $properties = $structuredType->getDeclaredProperties();
-        $properties = array_filter(
+        $properties    = $structuredType->getDeclaredProperties();
+        $properties    = array_filter(
             $properties,
             function ($property) {
                 return null !== $property;

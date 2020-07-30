@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Library\Expressions;
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
@@ -18,7 +17,6 @@ use AlgoWeb\ODataMetadata\Library\EdmElement;
  */
 class EdmValueTermReferenceExpression extends EdmElement implements IValueTermReferenceExpression
 {
-
     /**
      * @var IExpression
      */

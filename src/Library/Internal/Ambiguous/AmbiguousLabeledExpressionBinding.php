@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Library\Internal\Ambiguous;
 
 use AlgoWeb\ODataMetadata\Enums\ExpressionKind;
@@ -17,7 +16,6 @@ use AlgoWeb\ODataMetadata\Library\Values\EdmNullExpression;
  */
 class AmbiguousLabeledExpressionBinding extends AmbiguousBinding implements ILabeledExpression
 {
-
     /**
      * Gets the kind of this expression.
      *

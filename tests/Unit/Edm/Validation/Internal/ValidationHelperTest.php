@@ -101,7 +101,9 @@ class ValidationHelperTest extends TestCase
         }
 
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
         $code    = EdmErrorCode::InvalidElementAnnotation();
 
         $actual = ValidationHelper::addMemberNameToHashSet($item, $memList, $context, $code, 'errString', $suppressError);
@@ -118,7 +120,9 @@ class ValidationHelperTest extends TestCase
     {
         $suppressError = false;
         $model         = m::mock(IModel::class);
-        $context       = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context       = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
         $code          = EdmErrorCode::InvalidElementAnnotation();
 
         $loc = m::mock(ILocation::class)->makePartial();

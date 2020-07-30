@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 2:15 PM
+ * Time: 2:15 PM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\IStructuredType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType\StructuredTypeInvalidMemberNameMatchesTypeName;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\ILocation;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
@@ -18,7 +21,6 @@ use AlgoWeb\ODataMetadata\Interfaces\IProperty;
 use AlgoWeb\ODataMetadata\Interfaces\ISchemaType;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
-use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IStructuredType\StructuredTypeInvalidMemberNameMatchesTypeName;
 use Mockery as m;
 
 class StructuredTypeInvalidMemberNameMatchesTypeNameTest extends TestCase
@@ -28,7 +30,9 @@ class StructuredTypeInvalidMemberNameMatchesTypeNameTest extends TestCase
      */
     public function testInvokePropertiesActuallyEmpty()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -52,7 +56,9 @@ class StructuredTypeInvalidMemberNameMatchesTypeNameTest extends TestCase
      */
     public function testInvokePropertiesFilteredEmpty()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -76,7 +82,9 @@ class StructuredTypeInvalidMemberNameMatchesTypeNameTest extends TestCase
      */
     public function testInvokePropertiesNameMismatchEmpty()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -103,7 +111,9 @@ class StructuredTypeInvalidMemberNameMatchesTypeNameTest extends TestCase
      */
     public function testInvokePropertiesNameMatchNotEmpty()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -134,7 +144,7 @@ class StructuredTypeInvalidMemberNameMatchesTypeNameTest extends TestCase
         $errorCode = EdmErrorCode::BadProperty();
         $this->assertEquals($errorCode, $error->getErrorCode());
 
-        $expected = 'The member name \'element\' cannot be used in a type with the same name. Member names cannot be'.
+        $expected = 'The member name \'element\' cannot be used in a type with the same name. Member names cannot be' .
                     ' the same as their enclosing type.';
         $this->assertEquals($expected, $error->getErrorMessage());
     }

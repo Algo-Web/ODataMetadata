@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Date: 17/06/20
  * Time: 11:14 PM.
  */
+
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Csdl\Internal\Serialization;
 
 use AlgoWeb\ODataMetadata\Csdl\Internal\Serialization\EdmModelCsdlSerializationVisitor;

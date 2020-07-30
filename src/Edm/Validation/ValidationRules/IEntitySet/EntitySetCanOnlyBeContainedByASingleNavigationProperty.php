@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntitySet;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -23,7 +22,7 @@ class EntitySetCanOnlyBeContainedByASingleNavigationProperty extends EntitySetRu
     {
         assert($set instanceof IEntitySet);
         $containmentFound = false;
-        $entitySets = $set->getContainer()->entitySets();
+        $entitySets       = $set->getContainer()->entitySets();
         foreach ($entitySets as $otherSet) {
             $mappings = $otherSet->getNavigationTargets();
             foreach ($mappings as $mapping) {

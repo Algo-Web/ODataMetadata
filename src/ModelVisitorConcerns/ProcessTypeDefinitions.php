@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\ModelVisitorConcerns;
 
 use AlgoWeb\ODataMetadata\EdmModelVisitor;

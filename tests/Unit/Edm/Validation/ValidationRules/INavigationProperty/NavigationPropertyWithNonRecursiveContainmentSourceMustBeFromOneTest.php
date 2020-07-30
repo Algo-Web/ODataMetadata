@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 3:41 AM
+ * Time: 3:41 AM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
@@ -28,7 +30,9 @@ class NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOneTest exten
      */
     public function testInvokeBadMultiplicity()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -54,13 +58,13 @@ class NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOneTest exten
         $foo->__invoke($context, $element);
 
         $this->assertEquals(1, count($context->getErrors()));
-        $error = $context->getErrors()[0];
+        $error     = $context->getErrors()[0];
         $errorCode = EdmErrorCode::NavigationPropertyWithNonRecursiveContainmentSourceMustBeFromOne();
         $this->assertEquals($errorCode, $error->getErrorCode());
 
         $expected = 'The source multiplicity of the navigation property \'navProp\' is invalid. If a navigation'
-                    .' property has \'ContainsTarget\' set to true and declaring entity type of the property is not'
-                    .' the same as the target entity type, then the property represents a non-recursive containment'.
+                    . ' property has \'ContainsTarget\' set to true and declaring entity type of the property is not'
+                    . ' the same as the target entity type, then the property represents a non-recursive containment' .
                     ' and the multiplicity of the navigation source must be exactly one.';
         $actual = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);

@@ -37,7 +37,9 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
     public function testInvokeWithNullLocation()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
         $import  = m::mock(IFunctionImport::class);
         $import->shouldReceive('Location')->andReturn(null);
 
@@ -68,7 +70,9 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
     public function testInvokeWithIncompleteEntitySetAndOrType(bool $nullSet, bool $nullType)
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc    = m::mock(ILocation::class);
         $import = m::mock(IFunctionImport::class);
@@ -97,7 +101,9 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
     public function testInvokeWithFunctionImportReturnTypeNotCollectionNotEntity()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc    = m::mock(ILocation::class);
         $import = m::mock(IFunctionImport::class);
@@ -134,7 +140,9 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
     public function testInvokeWithFunctionImportReturnTypeNotCollectionNotEntityCheckedIsBad()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return true; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return true;
+        });
 
         $loc    = m::mock(ILocation::class);
         $import = m::mock(IFunctionImport::class);
@@ -165,7 +173,9 @@ class FunctionImportEntityTypeDoesNotMatchEntitySetTest extends TestCase
     public function testInvokeWithFunctionImportReturnTypeNotCollectionNotEntityCheckedIsBadNullDefinition()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return true; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return true;
+        });
 
         $loc    = m::mock(ILocation::class);
         $import = m::mock(IFunctionImport::class);

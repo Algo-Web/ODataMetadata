@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 2:01 AM
+ * Time: 2:01 AM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
@@ -30,7 +32,9 @@ class NavigationPropertyTypeMismatchRelationshipConstraintTest extends TestCase
      */
     public function testInvokeNullDependentProperties()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -50,7 +54,9 @@ class NavigationPropertyTypeMismatchRelationshipConstraintTest extends TestCase
      */
     public function testInvokeSingleDependentPropertiesMatchKey()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -83,7 +89,9 @@ class NavigationPropertyTypeMismatchRelationshipConstraintTest extends TestCase
      */
     public function testInvokeSingleDependentPropertiesMisMatchKey()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -126,9 +134,9 @@ class NavigationPropertyTypeMismatchRelationshipConstraintTest extends TestCase
         $errorCode = EdmErrorCode::TypeMismatchRelationshipConstraint();
         $this->assertEquals($errorCode, $error->getErrorCode());
 
-        $expected = 'The types of all properties in the dependent role of a referential constraint must be the same'.
-                    ' as the corresponding property types in the principal role. The type of property \'prop\' on'.
-                    ' entity \'fullName\' does not match the type of property \'nuProp\' on entity \'fullName\' in'.
+        $expected = 'The types of all properties in the dependent role of a referential constraint must be the same' .
+                    ' as the corresponding property types in the principal role. The type of property \'prop\' on' .
+                    ' entity \'fullName\' does not match the type of property \'nuProp\' on entity \'fullName\' in' .
                     ' the referential constraint \'Dingus\'.';
         $this->assertEquals($expected, $error->getErrorMessage());
     }

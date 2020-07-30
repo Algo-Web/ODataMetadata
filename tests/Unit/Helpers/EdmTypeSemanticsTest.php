@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Date: 29/06/20
  * Time: 11:26 PM.
  */
+
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;

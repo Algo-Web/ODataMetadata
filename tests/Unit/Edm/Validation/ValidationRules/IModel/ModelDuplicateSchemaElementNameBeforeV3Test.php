@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 11:21 PM
+ * Time: 11:21 PM.
  */
 
 declare(strict_types=1);
@@ -31,7 +31,9 @@ class ModelDuplicateSchemaElementNameBeforeV3Test extends TestCase
     public function testInvokeSingleFunction()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $schema = m::mock(IFunction::class);
         $schema->shouldReceive('fullName')->andReturn('schema');
@@ -55,7 +57,9 @@ class ModelDuplicateSchemaElementNameBeforeV3Test extends TestCase
     public function testInvokeDuplicatedFunction()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc = m::mock(ILocation::class);
 
@@ -82,7 +86,9 @@ class ModelDuplicateSchemaElementNameBeforeV3Test extends TestCase
     public function testInvokeSingleNonFunction()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $schema = m::mock(ISchemaElement::class);
         $schema->shouldReceive('fullName')->andReturn('schema');
@@ -106,7 +112,9 @@ class ModelDuplicateSchemaElementNameBeforeV3Test extends TestCase
     public function testInvokeDuplicateNonFunction()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc = m::mock(ILocation::class);
 
@@ -133,7 +141,9 @@ class ModelDuplicateSchemaElementNameBeforeV3Test extends TestCase
     public function testInvokeNonFunctionThenDuplicateFunction()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc = m::mock(ILocation::class);
 

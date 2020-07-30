@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 26/07/20
- * Time: 4:16 PM
+ * Time: 4:16 PM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Library\Internal\Ambiguous;
@@ -27,7 +29,7 @@ class AmbiguousFunctionImportBindingTest extends TestCase
         $foo = new AmbiguousFunctionImportBinding($imp1, $imp2);
 
         $expected = ContainerElementKind::FunctionImport();
-        $actual = $foo->getContainerElementKind();
+        $actual   = $foo->getContainerElementKind();
 
         $this->assertEquals($expected, $actual);
     }
@@ -43,7 +45,7 @@ class AmbiguousFunctionImportBindingTest extends TestCase
         $foo = new AmbiguousFunctionImportBinding($imp1, $imp2);
 
         $expected = null;
-        $actual = $foo->getContainer();
+        $actual   = $foo->getContainer();
 
         $this->assertEquals($expected, $actual);
     }
@@ -58,7 +60,7 @@ class AmbiguousFunctionImportBindingTest extends TestCase
         $foo = new AmbiguousFunctionImportBinding($imp1, $imp2);
 
         $expected = null;
-        $actual = $foo->getReturnType();
+        $actual   = $foo->getReturnType();
 
         $this->assertEquals($expected, $actual);
     }
@@ -74,7 +76,7 @@ class AmbiguousFunctionImportBindingTest extends TestCase
         $foo = new AmbiguousFunctionImportBinding($imp1, $imp2);
 
         $expected = [];
-        $actual = $foo->getParameters();
+        $actual   = $foo->getParameters();
 
         $this->assertEquals($expected, $actual);
     }
@@ -92,7 +94,7 @@ class AmbiguousFunctionImportBindingTest extends TestCase
         $foo = new AmbiguousFunctionImportBinding($imp1, $imp2);
 
         $expected = $parm;
-        $actual = $foo->findParameter('parm');
+        $actual   = $foo->findParameter('parm');
 
         $this->assertEquals($expected, $actual);
     }
@@ -108,7 +110,7 @@ class AmbiguousFunctionImportBindingTest extends TestCase
         $foo = new AmbiguousFunctionImportBinding($imp1, $imp2);
 
         $expected = null;
-        $actual = $foo->findParameter('parm');
+        $actual   = $foo->findParameter('parm');
 
         $this->assertEquals($expected, $actual);
     }

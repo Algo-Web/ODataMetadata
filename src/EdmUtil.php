@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata;
 
 use AlgoWeb\ODataMetadata\Csdl\Internal\Semantics\BadElements\UnresolvedFunction;

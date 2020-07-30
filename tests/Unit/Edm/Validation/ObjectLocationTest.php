@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 9:51 PM
+ * Time: 9:51 PM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation;
@@ -23,7 +25,7 @@ class ObjectLocationTest extends TestCase
         $foo = new ObjectLocation($obj);
 
         $expected = 'rhubarb';
-        $actual = $foo->__toString();
+        $actual   = $foo->__toString();
         $this->assertEquals($expected, $actual);
 
         $actual = $foo->getObject()->__toString();

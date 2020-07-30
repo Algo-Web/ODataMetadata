@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Csdl\Internal\Serialization;
 
 use AlgoWeb\ODataMetadata\EdmConstants;
@@ -13,7 +12,6 @@ use AlgoWeb\ODataMetadata\Interfaces\ISchemaElement;
 
 class EdmSchema
 {
-
     /**
      * @var string
      */

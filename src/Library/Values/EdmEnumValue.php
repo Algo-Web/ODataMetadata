@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Library\Values;
 
 use AlgoWeb\ODataMetadata\Enums\ValueKind;
@@ -26,7 +25,7 @@ class EdmEnumValue extends EdmValue implements IEnumValue
     public function __construct($value, ?IEnumTypeReference $type = null)
     {
         parent::__construct($type);
-        $value = $value instanceof IEnumMember ? $value->getValue(): $value;
+        $value = $value instanceof IEnumMember ? $value->getValue() : $value;
         assert($value instanceof IPrimitiveValue);
         $this->value = $value;
     }

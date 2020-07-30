@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace Unit\Util;
 
 use AlgoWeb\ODataMetadata\Tests\TestCase;

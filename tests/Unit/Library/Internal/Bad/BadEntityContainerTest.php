@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Date: 10/07/20
  * Time: 6:37 PM.
  */
+
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Library\Internal\Bad;
 
 use AlgoWeb\ODataMetadata\Enums\SchemaElementKind;

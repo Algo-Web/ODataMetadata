@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 11:10 AM
+ * Time: 11:10 AM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
@@ -24,7 +26,7 @@ class NavigationPropertyInvalidOperationMultipleEndsInAssociationTest extends Te
 {
     public function onDeleteProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [OnDeleteAction::Cascade(), OnDeleteAction::Cascade(), 1];
         $result[] = [OnDeleteAction::None(), OnDeleteAction::Cascade(), 0];
         $result[] = [OnDeleteAction::Cascade(), OnDeleteAction::None(), 0];
@@ -36,14 +38,16 @@ class NavigationPropertyInvalidOperationMultipleEndsInAssociationTest extends Te
     /**
      * @dataProvider onDeleteProvider
      *
-     * @param OnDeleteAction $onDelete
-     * @param OnDeleteAction $partnerDelete
-     * @param int $numErrors
+     * @param  OnDeleteAction       $onDelete
+     * @param  OnDeleteAction       $partnerDelete
+     * @param  int                  $numErrors
      * @throws \ReflectionException
      */
     public function testInvokeWithOnDelete(OnDeleteAction $onDelete, OnDeleteAction $partnerDelete, int $numErrors)
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -65,7 +69,7 @@ class NavigationPropertyInvalidOperationMultipleEndsInAssociationTest extends Te
 
         $this->assertEquals($numErrors, count($context->getErrors()));
         if (1 === $numErrors) {
-            $error = $context->getErrors()[0];
+            $error     = $context->getErrors()[0];
             $errorCode = EdmErrorCode::InvalidAction();
             $this->assertEquals($errorCode, $error->getErrorCode());
 

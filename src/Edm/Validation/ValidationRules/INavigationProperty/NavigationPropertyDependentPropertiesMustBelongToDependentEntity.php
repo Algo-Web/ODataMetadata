@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -25,7 +24,7 @@ class NavigationPropertyDependentPropertiesMustBelongToDependentEntity extends N
         assert($navigationProperty instanceof INavigationProperty);
         $dependentProperties = $navigationProperty->getDependentProperties();
         if (null !== $dependentProperties) {
-            $dependentEntity = $navigationProperty->declaringEntityType();
+            $dependentEntity     = $navigationProperty->declaringEntityType();
             $dependentProperties = array_filter(
                 $dependentProperties,
                 function ($prop) use ($context) {

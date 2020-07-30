@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 10:10 PM
+ * Time: 10:10 PM.
  */
 
 declare(strict_types=1);
@@ -26,7 +26,9 @@ class ModelDuplicateEntityContainerNameTest extends TestCase
     public function testInvokeWithFilteredItems()
     {
         $model   = m::mock(IModel::class);
-        $context = new ValidationContext($model, function (IEdmElement $one): bool { return false; });
+        $context = new ValidationContext($model, function (IEdmElement $one): bool {
+            return false;
+        });
 
         $loc = m::mock(ILocation::class);
 

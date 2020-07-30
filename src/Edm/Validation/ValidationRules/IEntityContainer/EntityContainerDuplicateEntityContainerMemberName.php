@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityContainer;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -28,7 +27,7 @@ class EntityContainerDuplicateEntityContainerMemberName extends EntityContainerR
         assert($entityContainer instanceof IEntityContainer);
         $nonFunctionNameList = new HashSetInternal();
         $functionDictionary  = [];
-        $elements = $entityContainer->getElements();
+        $elements            = $entityContainer->getElements();
         foreach ($elements as $item) {
             EdmUtil::checkArgumentNull($item->location(), 'item->Location');
             if ($item instanceof IFunctionImport) {

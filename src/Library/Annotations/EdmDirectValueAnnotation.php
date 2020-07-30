@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Library\Annotations;
 
 use AlgoWeb\ODataMetadata\EdmUtil;

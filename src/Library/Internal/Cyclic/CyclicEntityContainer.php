@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Library\Internal\Cyclic;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;

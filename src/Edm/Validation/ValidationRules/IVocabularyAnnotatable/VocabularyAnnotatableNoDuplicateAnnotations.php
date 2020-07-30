@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IVocabularyAnnotatable;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -24,7 +23,7 @@ class VocabularyAnnotatableNoDuplicateAnnotations extends VocabularyAnnotatableR
     {
         assert($annotatable instanceof IVocabularyAnnotatable);
         $annotationSet = new HashSetInternal();
-        $annotations = $annotatable->vocabularyAnnotations($context->getModel());
+        $annotations   = $annotatable->vocabularyAnnotations($context->getModel());
         foreach ($annotations as $annotation) {
             if (!$annotationSet->add($annotation->getTerm()->fullName() . ':' . $annotation->getQualifier())) {
                 EdmUtil::checkArgumentNull($annotation->location(), 'annotation->Location');

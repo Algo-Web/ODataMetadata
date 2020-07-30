@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 26/07/20
- * Time: 3:27 AM
+ * Time: 3:27 AM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Helpers;

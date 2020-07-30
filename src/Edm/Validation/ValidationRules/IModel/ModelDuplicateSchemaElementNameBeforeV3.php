@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IModel;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -29,7 +28,7 @@ class ModelDuplicateSchemaElementNameBeforeV3 extends ModelRule
         assert($model instanceof IModel);
         $nonFunctionNameList = new HashSetInternal();
         $functionDictionary  = [];
-        $items = $model->getSchemaElements();
+        $items               = $model->getSchemaElements();
         foreach ($items as $item) {
             $duplicate = false;
             $fullName  = $item->fullName();

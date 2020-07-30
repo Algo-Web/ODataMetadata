@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 27/07/20
- * Time: 4:00 AM
+ * Time: 4:00 AM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
@@ -29,12 +31,14 @@ class NavigationPropertyWithRecursiveContainmentTargetMustBeOptionalTest extends
      */
     public function testInvokeWithNullLocation()
     {
-        $contains = true;
+        $contains     = true;
         $isOrInherits = true;
         $isCollection = false;
-        $isNullable = false;
+        $isNullable   = false;
 
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -62,7 +66,7 @@ class NavigationPropertyWithRecursiveContainmentTargetMustBeOptionalTest extends
 
     public function invokeProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [true, true, false, false, 1];
         $result[] = [true, true, false, true, 0];
         $result[] = [true, true, true, false, 0];
@@ -86,11 +90,11 @@ class NavigationPropertyWithRecursiveContainmentTargetMustBeOptionalTest extends
     /**
      * @dataProvider invokeProvider
      *
-     * @param bool $contains
-     * @param bool $isOrInherits
-     * @param bool $isCollection
-     * @param bool $isNullable
-     * @param int $numErrors
+     * @param  bool                 $contains
+     * @param  bool                 $isOrInherits
+     * @param  bool                 $isCollection
+     * @param  bool                 $isNullable
+     * @param  int                  $numErrors
      * @throws \ReflectionException
      */
     public function testInvokeRecursiveContainment(
@@ -100,7 +104,9 @@ class NavigationPropertyWithRecursiveContainmentTargetMustBeOptionalTest extends
         bool $isNullable,
         int $numErrors
     ) {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -128,14 +134,14 @@ class NavigationPropertyWithRecursiveContainmentTargetMustBeOptionalTest extends
         $errors = $context->getErrors();
         $this->assertEquals($numErrors, count($errors));
         if (1 === $numErrors) {
-            $error = $errors[0];
+            $error     = $errors[0];
             $errorCode = EdmErrorCode::NavigationPropertyWithRecursiveContainmentTargetMustBeOptional();
             $this->assertEquals($errorCode, $error->getErrorCode());
             $expected = 'The target multiplicity of the navigation property \'navProp\' is invalid. If a navigation'
-                        .' property has \'ContainsTarget\' set to true and declaring entity type of the property is the'
-                        .' same or inherits from the target entity type, then the property represents a recursive'
-                        .' containment and it must have an optional target represented by a collection or a nullable'
-                        .' entity type.';
+                        . ' property has \'ContainsTarget\' set to true and declaring entity type of the property is the'
+                        . ' same or inherits from the target entity type, then the property represents a recursive'
+                        . ' containment and it must have an optional target represented by a collection or a nullable'
+                        . ' entity type.';
             $actual = $error->getErrorMessage();
             $this->assertEquals($expected, $actual);
         }

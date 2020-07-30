@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEnumMember;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRule;

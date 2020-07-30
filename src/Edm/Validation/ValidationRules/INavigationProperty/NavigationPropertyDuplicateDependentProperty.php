@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -25,7 +24,7 @@ class NavigationPropertyDuplicateDependentProperty extends NavigationPropertyRul
         assert($navigationProperty instanceof INavigationProperty);
         $dependentProperties = $navigationProperty->getDependentProperties();
         if (null !== $dependentProperties) {
-            $propertyNames = new HashSetInternal();
+            $propertyNames       = new HashSetInternal();
             $dependentProperties = array_filter(
                 $dependentProperties,
                 function ($property) {

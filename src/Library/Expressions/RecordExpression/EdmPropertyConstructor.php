@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Library\Expressions\RecordExpression;
 
 use AlgoWeb\ODataMetadata\Interfaces\Expressions\IExpression;

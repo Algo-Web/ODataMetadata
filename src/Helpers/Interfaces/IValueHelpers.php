@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Date: 22/07/20
  * Time: 8:13 PM.
  */
+
 namespace AlgoWeb\ODataMetadata\Helpers\Interfaces;
 
 use AlgoWeb\ODataMetadata\Interfaces\IModel;

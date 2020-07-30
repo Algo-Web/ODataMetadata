@@ -1,22 +1,24 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 5:39 PM
+ * Time: 5:39 PM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty\NavigationPropertyAssociationNameIsValid;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\ILocation;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
-use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty\NavigationPropertyAssociationNameIsValid;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
 use Mockery as m;
 
@@ -24,7 +26,7 @@ class NavigationPropertyAssociationNameIsValidTest extends TestCase
 {
     public function principalProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [true, 1];
         $result[] = [false, 0];
 
@@ -34,13 +36,15 @@ class NavigationPropertyAssociationNameIsValidTest extends TestCase
     /**
      * @dataProvider principalProvider
      *
-     * @param bool $isPrincipal
-     * @param int $numErrors
+     * @param  bool                 $isPrincipal
+     * @param  int                  $numErrors
      * @throws \ReflectionException
      */
     public function testInvokePrincipal(bool $isPrincipal, int $numErrors)
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
         $model->shouldReceive('getAssociationName')->andReturn(' Thats Not\/My/Name');
 
@@ -59,7 +63,7 @@ class NavigationPropertyAssociationNameIsValidTest extends TestCase
 
         $this->assertEquals($numErrors, count($context->getErrors()));
         if (1 === $numErrors) {
-            $error = $context->getErrors()[0];
+            $error     = $context->getErrors()[0];
             $errorCode = EdmErrorCode::InvalidName();
             $this->assertEquals($errorCode, $error->getErrorCode());
 

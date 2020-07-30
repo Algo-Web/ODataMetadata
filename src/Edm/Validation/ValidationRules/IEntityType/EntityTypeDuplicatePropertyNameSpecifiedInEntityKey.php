@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntityType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -26,7 +25,7 @@ class EntityTypeDuplicatePropertyNameSpecifiedInEntityKey extends EntitySetRule
         assert($entityType instanceof IEntityType);
         if (null !== $entityType->getDeclaredKey()) {
             $keyPropertyNameList = new HashSetInternal();
-            $items = $entityType->getDeclaredKey();
+            $items               = $entityType->getDeclaredKey();
             foreach ($items as $item) {
                 ValidationHelper::addMemberNameToHashSet(
                     $item,

@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Enums;
 
 /**
@@ -12,11 +11,11 @@ namespace AlgoWeb\ODataMetadata\Enums;
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Enums
  * @method static self None()  Represents a term implementing
- * @method bool isNone()
- * @method static self Type() Represents a term implementing @see IStructuredType and @see ISchemaType.
- * @method bool isType()
+ * @method bool   isNone()
+ * @method static self Type()  Represents a term implementing @see IStructuredType and @see ISchemaType.
+ * @method bool   isType()
  * @method static self Value() Represents a term implementing @see IValueTerm.
- * @method bool isValue()
+ * @method bool   isValue()
  */
 class TermKind extends Enum
 {

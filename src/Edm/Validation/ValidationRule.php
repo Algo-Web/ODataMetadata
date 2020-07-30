@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation;
 
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
@@ -16,7 +15,6 @@ use ReflectionMethod;
  */
 abstract class ValidationRule
 {
-
     /** @noinspection PhpDocMissingThrowsInspection */
     /**
      * Initializes a new instance of the ValidationRule class.

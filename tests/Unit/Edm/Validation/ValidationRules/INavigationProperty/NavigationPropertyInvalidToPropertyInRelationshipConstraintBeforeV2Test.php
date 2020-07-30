@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 4:24 PM
+ * Time: 4:24 PM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty\NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\ILocation;
@@ -17,7 +20,6 @@ use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuralProperty;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
-use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty\NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2;
 use Mockery as m;
 
 class NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2Test extends TestCase
@@ -27,7 +29,9 @@ class NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2Test ex
      */
     public function testInvokeNullDependentProperties()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -47,7 +51,9 @@ class NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2Test ex
      */
     public function testInvokeIsNotSubset()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -73,11 +79,11 @@ class NavigationPropertyInvalidToPropertyInRelationshipConstraintBeforeV2Test ex
         $foo->__invoke($context, $element);
 
         $this->assertEquals(1, count($context->getErrors()));
-        $error = $context->getErrors()[0];
+        $error     = $context->getErrors()[0];
         $errorCode = EdmErrorCode::InvalidPropertyInRelationshipConstraint();
         $this->assertEquals($errorCode, $error->getErrorCode());
         $expected = 'The properties referred by the dependent role \'navprop\' must be a subset of the key of the'
-                    .' entity type \'entity\'.';
+                    . ' entity type \'entity\'.';
         $this->assertEquals($expected, $error->getErrorMessage());
     }
 }

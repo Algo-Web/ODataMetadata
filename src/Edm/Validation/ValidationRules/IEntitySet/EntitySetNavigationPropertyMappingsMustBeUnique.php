@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEntitySet;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -24,7 +23,7 @@ class EntitySetNavigationPropertyMappingsMustBeUnique extends EntitySetRule
     {
         assert($set instanceof IEntitySet);
         $mappedPropertySet = new HashSetInternal();
-        $mappings = $set->getNavigationTargets();
+        $mappings          = $set->getNavigationTargets();
         foreach ($mappings as $mapping) {
             if (!$mappedPropertySet->add($mapping->getNavigationProperty())) {
                 EdmUtil::checkArgumentNull($set->location(), 'set->Location');

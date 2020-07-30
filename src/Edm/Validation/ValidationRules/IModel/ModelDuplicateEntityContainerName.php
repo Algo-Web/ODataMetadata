@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IModel;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -25,8 +24,8 @@ class ModelDuplicateEntityContainerName extends ModelRule
     {
         assert($model instanceof IModel);
         $entityContainerNameList = new HashSetInternal();
-        $items = $model->getSchemaElements();
-        $items = array_filter(
+        $items                   = $model->getSchemaElements();
+        $items                   = array_filter(
             $items,
             function ($item) {
                 return $item instanceof IEntityContainer;

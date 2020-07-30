@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 26/07/20
- * Time: 6:41 PM
+ * Time: 6:41 PM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
@@ -30,7 +32,9 @@ class NavigationPropertyPrincipalEndMultiplicityTest extends TestCase
      */
     public function testInvokeNullDependentProperties()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -47,7 +51,9 @@ class NavigationPropertyPrincipalEndMultiplicityTest extends TestCase
 
     public function testInvokeNullLocation()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -68,12 +74,14 @@ class NavigationPropertyPrincipalEndMultiplicityTest extends TestCase
      */
     public function testInvokeAllNullableButNotZeroOrOne()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
 
-        $loc = m::mock(ILocation::class);
+        $loc     = m::mock(ILocation::class);
         $partner = m::mock(INavigationProperty::class);
         $partner->shouldReceive('location')->andReturn($loc);
         $partner->shouldReceive('multiplicity')->andReturn(Multiplicity::Unknown());
@@ -93,11 +101,11 @@ class NavigationPropertyPrincipalEndMultiplicityTest extends TestCase
         $foo->__invoke($context, $element);
 
         $this->assertEquals(1, count($context->getErrors()));
-        $error = $context->getErrors()[0];
+        $error     = $context->getErrors()[0];
         $errorCode = EdmErrorCode::InvalidMultiplicityOfPrincipalEnd();
         $this->assertEquals($errorCode, $error->getErrorCode());
 
-        $expected = 'The multiplicity of the principal end \'partner\' is not valid. Because all dependent properties'.
+        $expected = 'The multiplicity of the principal end \'partner\' is not valid. Because all dependent properties' .
                     ' of the end \'element\' are nullable, the multiplicity of the principal end must be \'0..1\'.';
         $actual = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
@@ -108,12 +116,14 @@ class NavigationPropertyPrincipalEndMultiplicityTest extends TestCase
      */
     public function testInvokeNoneNullableButNotOne()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
 
-        $loc = m::mock(ILocation::class);
+        $loc     = m::mock(ILocation::class);
         $partner = m::mock(INavigationProperty::class);
         $partner->shouldReceive('location')->andReturn($loc);
         $partner->shouldReceive('multiplicity')->andReturn(Multiplicity::Unknown());
@@ -137,11 +147,11 @@ class NavigationPropertyPrincipalEndMultiplicityTest extends TestCase
         $foo->__invoke($context, $element);
 
         $this->assertEquals(1, count($context->getErrors()));
-        $error = $context->getErrors()[0];
+        $error     = $context->getErrors()[0];
         $errorCode = EdmErrorCode::InvalidMultiplicityOfPrincipalEnd();
         $this->assertEquals($errorCode, $error->getErrorCode());
 
-        $expected = 'The multiplicity of the principal end \'partner\' is not valid. Because all dependent properties'.
+        $expected = 'The multiplicity of the principal end \'partner\' is not valid. Because all dependent properties' .
                     ' of the end \'element\' are non-nullable, the multiplicity of the principal end must be \'1\'.';
         $actual = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
@@ -152,12 +162,14 @@ class NavigationPropertyPrincipalEndMultiplicityTest extends TestCase
      */
     public function testInvokeSomeNullableButNotMany()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
 
-        $loc = m::mock(ILocation::class);
+        $loc     = m::mock(ILocation::class);
         $partner = m::mock(INavigationProperty::class);
         $partner->shouldReceive('location')->andReturn($loc);
         $partner->shouldReceive('multiplicity')->andReturn(Multiplicity::Unknown());
@@ -183,12 +195,12 @@ class NavigationPropertyPrincipalEndMultiplicityTest extends TestCase
         $foo->__invoke($context, $element);
 
         $this->assertEquals(1, count($context->getErrors()));
-        $error = $context->getErrors()[0];
+        $error     = $context->getErrors()[0];
         $errorCode = EdmErrorCode::InvalidMultiplicityOfPrincipalEnd();
         $this->assertEquals($errorCode, $error->getErrorCode());
 
         $expected = 'The principal navigation property \'element\' has an invalid multiplicity. Valid values for the'
-                    .' multiplicity of a principal end are \'0..1\' or \'1\'.';
+                    . ' multiplicity of a principal end are \'0..1\' or \'1\'.';
         $actual = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }

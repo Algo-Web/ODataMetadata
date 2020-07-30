@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 /** @noinspection ALL */
+
 namespace AlgoWeb\ODataMetadata\Tests\StructuralTests;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRule;

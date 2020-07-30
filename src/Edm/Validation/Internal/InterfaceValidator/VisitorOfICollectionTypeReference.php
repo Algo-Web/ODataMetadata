@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\Internal\InterfaceValidator;
@@ -15,7 +14,7 @@ class VisitorOfICollectionTypeReference extends VisitorOfT
         assert($typeRef instanceof ICollectionTypeReference);
         return null !== $typeRef->getDefinition() &&
                !$typeRef->getDefinition()->getTypeKind()->isCollection() ?
-            [ InterfaceValidator::createTypeRefInterfaceTypeKindValueMismatchError($typeRef)]: null;
+            [ InterfaceValidator::createTypeRefInterfaceTypeKindValueMismatchError($typeRef)] : null;
     }
 
     public function forType(): string

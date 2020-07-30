@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;
@@ -36,6 +35,6 @@ trait PrimitiveTypeReferenceHelpers
     public function primitiveKind(): PrimitiveTypeKind
     {
         $primitive = $this->primitiveDefinition();
-        return $primitive !== null ? $primitive->getPrimitiveKind(): PrimitiveTypeKind::None();
+        return $primitive !== null ? $primitive->getPrimitiveKind() : PrimitiveTypeKind::None();
     }
 }

@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Library\Internal\Bad\Concerns;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmError;

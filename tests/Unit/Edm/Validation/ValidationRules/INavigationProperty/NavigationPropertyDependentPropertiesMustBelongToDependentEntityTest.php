@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 27/07/20
- * Time: 2:40 AM
+ * Time: 2:40 AM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
@@ -27,7 +29,9 @@ class NavigationPropertyDependentPropertiesMustBelongToDependentEntityTest exten
      */
     public function testInvokeNullDependentProperties()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -47,7 +51,9 @@ class NavigationPropertyDependentPropertiesMustBelongToDependentEntityTest exten
      */
     public function testInvokeFiltersOutBadProperties()
     {
-        $callable = function (IEdmElement $one): bool { return $one->getType()->getNullable(); };
+        $callable = function (IEdmElement $one): bool {
+            return $one->getType()->getNullable();
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -80,12 +86,12 @@ class NavigationPropertyDependentPropertiesMustBelongToDependentEntityTest exten
         $foo->__invoke($context, $element);
 
         $this->assertEquals(1, count($context->getErrors()));
-        $error = $context->getErrors()[0];
+        $error     = $context->getErrors()[0];
         $errorCode = EdmErrorCode::DependentPropertiesMustBelongToDependentEntity();
         $this->assertEquals($errorCode, $error->getErrorCode());
 
         $expected = 'The dependent property \'prop1\' must belong to the dependent entity \'eType\'.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 }

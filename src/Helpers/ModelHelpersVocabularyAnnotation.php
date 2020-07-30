@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Date: 22/07/20
  * Time: 10:26 PM.
  */
+
 namespace AlgoWeb\ODataMetadata\Helpers;
 
 use AlgoWeb\ODataMetadata\EdmUtil;
@@ -26,8 +27,8 @@ trait ModelHelpersVocabularyAnnotation
      * @param  string|null                      $qualifier qualifier to apply
      * @param  string|null                      $type      type of the annotation being returned
      * @return iterable|IVocabularyAnnotation[] annotations attached to the element by this model or by models
-     *                                                      referenced by this model that bind the term with the given
-     *                                                      qualifier
+     *                                                    referenced by this model that bind the term with the given
+     *                                                    qualifier
      */
     public function findVocabularyAnnotations(
         IVocabularyAnnotatable $element,
@@ -64,7 +65,7 @@ trait ModelHelpersVocabularyAnnotation
                             $qualifier == $annotation->getQualifier()
                         )
                     ) {
-                       yield $annotation;
+                        yield $annotation;
                     }
                 }
             }

@@ -7,6 +7,7 @@ declare(strict_types=1);
  * Date: 2/07/20
  * Time: 2:45 PM.
  */
+
 namespace AlgoWeb\ODataMetadata\Tests\Unit;
 
 use AlgoWeb\ODataMetadata\Csdl\Internal\Semantics\BadElements\UnresolvedFunction;

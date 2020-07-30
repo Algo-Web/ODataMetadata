@@ -1,29 +1,31 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 5:54 PM
+ * Time: 5:54 PM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty\NavigationPropertyAssociationEndNameIsValid;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty\NavigationPropertyAssociationNameIsValid;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\ILocation;
 use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
-use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty\NavigationPropertyAssociationEndNameIsValid;
 use Mockery as m;
 
 class NavigationPropertyAssociationEndNameIsValidTest extends TestCase
 {
     public function nameProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = ['name', 0];
         $result[] = ['  ', 1];
         $result[] = ['', 1];
@@ -34,13 +36,15 @@ class NavigationPropertyAssociationEndNameIsValidTest extends TestCase
     /**
      * @dataProvider nameProvider
      *
-     * @param string|null $name
-     * @param int $numErrors
+     * @param  string|null          $name
+     * @param  int                  $numErrors
      * @throws \ReflectionException
      */
     public function testInvokeValidName(?string $name, int $numErrors)
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
         $model->shouldReceive('getAssociationEndName')->andReturn($name);
 
@@ -58,7 +62,7 @@ class NavigationPropertyAssociationEndNameIsValidTest extends TestCase
 
         $this->assertEquals($numErrors, count($context->getErrors()));
         if (1 === $numErrors) {
-            $error = $context->getErrors()[0];
+            $error     = $context->getErrors()[0];
             $errorCode = EdmErrorCode::InvalidName();
             $this->assertEquals($errorCode, $error->getErrorCode());
 

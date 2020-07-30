@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace AlgoWeb\ODataMetadata\Tests\Northwind\Facets;
 
 use AlgoWeb\ODataMetadata\Enums\PrimitiveTypeKind;

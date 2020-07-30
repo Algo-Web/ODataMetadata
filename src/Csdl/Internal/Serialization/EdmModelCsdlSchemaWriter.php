@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Csdl\Internal\Serialization;
 
 use AlgoWeb\ODataMetadata\Csdl\Internal\EdmValueWriter;
@@ -1487,7 +1486,7 @@ class EdmModelCsdlSchemaWriter implements IEdmModelCsdlSchemaWriter
 
     private static function sridAsXml(?int $i): string
     {
-        return $i !== null ? strval($i) :  CsdlConstants::Value_SridVariable;
+        return $i !== null ? strval($i) : CsdlConstants::Value_SridVariable;
     }
 
     /**

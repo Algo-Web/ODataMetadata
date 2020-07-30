@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 27/07/20
- * Time: 10:53 AM
+ * Time: 10:53 AM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
@@ -25,7 +27,9 @@ class NavigationPropertyDuplicateDependentPropertyTest extends TestCase
      */
     public function testInvokeNullDependentProperties()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -42,7 +46,9 @@ class NavigationPropertyDuplicateDependentPropertyTest extends TestCase
 
     public function testInvokeFiltersNullProperties()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);

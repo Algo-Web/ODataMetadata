@@ -3,7 +3,7 @@
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 9:41 PM
+ * Time: 9:41 PM.
  */
 
 declare(strict_types=1);
@@ -25,20 +25,20 @@ class EdmErrorTest extends TestCase
         $foo = new EdmError(null, $errorCode, '');
 
         $expected = 'FunctionImportEntityTypeDoesNotMatchEntitySet=149:';
-        $actual = $foo->__toString();
+        $actual   = $foo->__toString();
         $this->assertEquals($expected, $actual);
     }
 
     public function testToStringWithLocation()
     {
         $errorCode = EdmErrorCode::FunctionImportEntityTypeDoesNotMatchEntitySet();
-        $loc = m::mock(ILocation::class);
+        $loc       = m::mock(ILocation::class);
         $loc->shouldReceive('__toString')->andReturn('rhubarb');
 
         $foo = new EdmError($loc, $errorCode, '');
 
         $expected = 'FunctionImportEntityTypeDoesNotMatchEntitySet=149::rhubarb';
-        $actual = $foo->__toString();
+        $actual   = $foo->__toString();
         $this->assertEquals($expected, $actual);
     }
 }

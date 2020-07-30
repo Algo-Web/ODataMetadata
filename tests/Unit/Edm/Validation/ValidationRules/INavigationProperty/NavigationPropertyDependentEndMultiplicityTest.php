@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 27/07/20
- * Time: 5:10 PM
+ * Time: 5:10 PM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
@@ -29,7 +31,9 @@ class NavigationPropertyDependentEndMultiplicityTest extends TestCase
      */
     public function testInvokeNullDependentProperties()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -52,7 +56,9 @@ class NavigationPropertyDependentEndMultiplicityTest extends TestCase
      */
     public function testInvokeEmptyDependentProperties()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -72,7 +78,7 @@ class NavigationPropertyDependentEndMultiplicityTest extends TestCase
 
     public function equivalentProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [Multiplicity::One(), 0];
         $result[] = [Multiplicity::ZeroOrOne(), 0];
         $result[] = [Multiplicity::Many(), 1];
@@ -83,13 +89,15 @@ class NavigationPropertyDependentEndMultiplicityTest extends TestCase
     /**
      * @dataProvider equivalentProvider
      *
-     * @param Multiplicity $mult
-     * @param int $numErrors
+     * @param  Multiplicity         $mult
+     * @param  int                  $numErrors
      * @throws \ReflectionException
      */
     public function testInvokeEquivalentDependentProperties(Multiplicity $mult, int $numErrors)
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -115,19 +123,19 @@ class NavigationPropertyDependentEndMultiplicityTest extends TestCase
         $errors = $context->getErrors();
         $this->assertEquals($numErrors, count($errors));
         if (1 === $numErrors) {
-            $error = $errors[0];
+            $error     = $errors[0];
             $errorCode = EdmErrorCode::InvalidMultiplicityOfDependentEnd();
             $this->assertEquals($errorCode, $error->getErrorCode());
             $expected = 'The multiplicity of the dependent end \'navProp\' is not valid. Because the dependent'
-                        .' properties represent the dependent end key, the multiplicity of the dependent end'
-                        .' must be \'0..1\' or \'1\'.';
+                        . ' properties represent the dependent end key, the multiplicity of the dependent end'
+                        . ' must be \'0..1\' or \'1\'.';
             $this->assertEquals($expected, $error->getErrorMessage());
         }
     }
 
     public function nonEquivalentProvider(): array
     {
-        $result = [];
+        $result   = [];
         $result[] = [Multiplicity::One(), 1];
         $result[] = [Multiplicity::ZeroOrOne(), 1];
         $result[] = [Multiplicity::Many(), 0];
@@ -138,13 +146,15 @@ class NavigationPropertyDependentEndMultiplicityTest extends TestCase
     /**
      * @dataProvider nonEquivalentProvider
      *
-     * @param Multiplicity $mult
-     * @param int $numErrors
+     * @param  Multiplicity         $mult
+     * @param  int                  $numErrors
      * @throws \ReflectionException
      */
     public function testInvokeNonEquivalentDependentProperties(Multiplicity $mult, int $numErrors)
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -170,12 +180,12 @@ class NavigationPropertyDependentEndMultiplicityTest extends TestCase
         $errors = $context->getErrors();
         $this->assertEquals($numErrors, count($errors));
         if (1 === $numErrors) {
-            $error = $errors[0];
+            $error     = $errors[0];
             $errorCode = EdmErrorCode::InvalidMultiplicityOfDependentEnd();
             $this->assertEquals($errorCode, $error->getErrorCode());
             $expected = 'The multiplicity of the dependent end \'navProp\' is not valid. Because the dependent'
-                        .' properties don\'t represent the dependent end key, the the multiplicity of the dependent'
-                        .' end must be \'*\'.';
+                        . ' properties don\'t represent the dependent end key, the the multiplicity of the dependent'
+                        . ' end must be \'*\'.';
             $this->assertEquals($expected, $error->getErrorMessage());
         }
     }

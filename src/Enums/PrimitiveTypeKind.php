@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Enums;
 
 /**
@@ -12,7 +11,7 @@ namespace AlgoWeb\ODataMetadata\Enums;
  *
  * @package AlgoWeb\ODataMetadata\MetadataV3\Enums
  * @method static self None() Represents a primitive type of unknown kind.
- * @method bool isNone()
+ * @method bool   isNone()
  * @method static self Binary(): self Represents a Binary type.
  * @method bool isBinary()
  * @method static self Boolean(): self Represents a Boolean type.

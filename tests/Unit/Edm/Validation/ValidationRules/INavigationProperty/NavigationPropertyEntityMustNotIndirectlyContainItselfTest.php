@@ -1,15 +1,18 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 30/07/20
- * Time: 3:16 AM
+ * Time: 3:16 AM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Edm\Validation\ValidationRules\INavigationProperty;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
 use AlgoWeb\ODataMetadata\Edm\Validation\ValidationContext;
+use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty\NavigationPropertyEntityMustNotIndirectlyContainItself;
 use AlgoWeb\ODataMetadata\Interfaces\IEdmElement;
 use AlgoWeb\ODataMetadata\Interfaces\IEntityType;
 use AlgoWeb\ODataMetadata\Interfaces\ILocation;
@@ -17,7 +20,6 @@ use AlgoWeb\ODataMetadata\Interfaces\IModel;
 use AlgoWeb\ODataMetadata\Interfaces\INavigationProperty;
 use AlgoWeb\ODataMetadata\Interfaces\IStructuredType;
 use AlgoWeb\ODataMetadata\Tests\TestCase;
-use AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\INavigationProperty\NavigationPropertyEntityMustNotIndirectlyContainItself;
 use Mockery as m;
 
 class NavigationPropertyEntityMustNotIndirectlyContainItselfTest extends TestCase
@@ -27,7 +29,9 @@ class NavigationPropertyEntityMustNotIndirectlyContainItselfTest extends TestCas
      */
     public function testInvokeDoesContainSelf()
     {
-        $callable = function (IEdmElement $one): bool { return false; };
+        $callable = function (IEdmElement $one): bool {
+            return false;
+        };
         $model = m::mock(IModel::class);
 
         $context = new ValidationContext($model, $callable);
@@ -52,12 +56,12 @@ class NavigationPropertyEntityMustNotIndirectlyContainItselfTest extends TestCas
         $foo->__invoke($context, $element);
 
         $this->assertEquals(1, count($context->getErrors()));
-        $error = $context->getErrors()[0];
+        $error     = $context->getErrors()[0];
         $errorCode = EdmErrorCode::NavigationPropertyEntityMustNotIndirectlyContainItself();
         $this->assertEquals($errorCode, $error->getErrorCode());
 
         $expected = 'The navigation property \'navProp\' is invalid because it indirectly contains itself.';
-        $actual = $error->getErrorMessage();
+        $actual   = $error->getErrorMessage();
         $this->assertEquals($expected, $actual);
     }
 }

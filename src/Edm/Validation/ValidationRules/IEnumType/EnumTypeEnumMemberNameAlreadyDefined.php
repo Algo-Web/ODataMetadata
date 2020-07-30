@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Edm\Validation\ValidationRules\IEnumType;
 
 use AlgoWeb\ODataMetadata\Edm\Validation\EdmErrorCode;
@@ -24,8 +23,8 @@ class EnumTypeEnumMemberNameAlreadyDefined extends EnumTypeRule
     {
         assert($enumType instanceof IEnumType);
         $memberNames = new HashSetInternal();
-        $members = $enumType->getMembers();
-        $members = array_filter(
+        $members     = $enumType->getMembers();
+        $members     = array_filter(
             $members,
             function ($member) {
                 return null !== $member;

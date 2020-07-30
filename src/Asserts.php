@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata;
 
 use AlgoWeb\ODataMetadata\Exception\ArgumentException;

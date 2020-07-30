@@ -1,9 +1,11 @@
 <?php
+
+declare(strict_types=1);
 /**
  * Created by PhpStorm.
  * User: alex
  * Date: 26/07/20
- * Time: 5:17 PM
+ * Time: 5:17 PM.
  */
 
 namespace AlgoWeb\ODataMetadata\Tests\Unit\Csdl\Internal\Serialization;
@@ -19,7 +21,7 @@ class SerializationValidatorTest extends TestCase
 {
     public function testInterfaceCriticalIsSignificantToSerialization()
     {
-        $code = EdmErrorCode::InterfaceCriticalPropertyValueMustNotBeNull();
+        $code  = EdmErrorCode::InterfaceCriticalPropertyValueMustNotBeNull();
         $error = m::mock(EdmError::class);
         $error->shouldReceive('getErrorCode')->andReturn($code);
 
@@ -30,7 +32,7 @@ class SerializationValidatorTest extends TestCase
         $method->setAccessible(true);
 
         $expected = true;
-        $actual = $method->invoke(null, $error);
+        $actual   = $method->invoke(null, $error);
         $this->assertEquals($expected, $actual);
     }
 
@@ -57,7 +59,7 @@ class SerializationValidatorTest extends TestCase
             EdmErrorCode::EnumMemberTypeMustMatchEnumUnderlyingType(),];
 
 
-        $result = [];
+        $result   = [];
         $result[] = [EdmErrorCode::InvalidErrorCodeValue(), false];
 
         foreach ($rawCodes as $code) {
@@ -70,8 +72,8 @@ class SerializationValidatorTest extends TestCase
     /**
      * @dataProvider isSignificantProvider
      *
-     * @param EdmErrorCode $code
-     * @param bool $expected
+     * @param  EdmErrorCode         $code
+     * @param  bool                 $expected
      * @throws \ReflectionException
      */
     public function testIsSignificantToSerialization(EdmErrorCode $code, bool $expected)

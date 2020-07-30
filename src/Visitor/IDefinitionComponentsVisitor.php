@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace AlgoWeb\ODataMetadata\Visitor;
 
 use AlgoWeb\ODataMetadata\Interfaces\IEnumMember;
