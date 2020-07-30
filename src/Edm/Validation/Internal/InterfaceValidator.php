@@ -42,15 +42,15 @@ class InterfaceValidator
     /**
      * @var HashSetInternal
      */
-    private $visited = [];
+    private $visited;
     /**
      * @var HashSetInternal
      */
-    private $visitedBad = [];
+    private $visitedBad;
     /**
      * @var HashSetInternal
      */
-    private $danglingReferences = [];
+    private $danglingReferences;
     /**
      * @var HashSetInternal|null
      */
@@ -330,7 +330,8 @@ class InterfaceValidator
      */
     private function validateStructure($item): iterable
     {
-        if ($item instanceof IEdmValidCoreModelElement || $this->visited->contains($item) || ($this->skipVisitation != null && $this->skipVisitation->contains($item))) {
+        if ($item instanceof IEdmValidCoreModelElement || $this->visited->contains($item) ||
+            ($this->skipVisitation != null && $this->skipVisitation->contains($item))) {
             // If we already visited this object, then errors (if any) have already been reported.
             return [];
         }
@@ -367,7 +368,7 @@ class InterfaceValidator
 
         // End of the first pass: if there are immediate errors, return them without doing the second pass.
         if ($immediateErrors !== null) {
-            $this->visitedBad[] = $item;
+            $this->visitedBad->add($item);
             return $immediateErrors;
         }
 
@@ -407,7 +408,7 @@ class InterfaceValidator
         if (!($reference instanceof IEdmValidCoreModelElement) &&
             !$this->visited->contains($reference) &&
             ($this->skipVisitation == null || !$this->skipVisitation->contains($reference))) {
-            $this->danglingReferences[] = $reference;
+            $this->danglingReferences->add($reference);
         }
     }
 }

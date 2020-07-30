@@ -32,7 +32,7 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
      */
     private $name;
     /**
-     * @var array<IStructuralProperty>
+     * @var array<IStructuralProperty|IStructuralProperty[]>
      */
     private $declaredKey = [];
 
@@ -110,10 +110,6 @@ class EdmEntityType extends EdmStructuredType implements IEntityType
     public function addKeys(array ...$keyProperties): void
     {
         foreach ($keyProperties as $property) {
-            if ($this->declaredKey === null) {
-                $this->declaredKey = [];
-            }
-
             $this->declaredKey[] = $property;
         }
     }
