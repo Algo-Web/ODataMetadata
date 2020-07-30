@@ -24,9 +24,9 @@ class FunctionImportParametersCannotHaveModeOfNone extends FunctionImportRule
     {
         assert($function instanceof IFunctionImport);
         $parameters = $function->getParameters();
-        $parameters = array_filter(
+        $parameters = !$parameters ? [] : array_filter(
             $parameters,
-            function (IFunctionParameter $parameter) use ($context) {
+            function (IFunctionParameter $parameter) {
                 return $parameter->getMode()->isNone();
             }
         );

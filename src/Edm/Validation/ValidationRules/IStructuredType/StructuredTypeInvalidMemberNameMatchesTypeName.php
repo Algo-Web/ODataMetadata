@@ -27,7 +27,7 @@ class StructuredTypeInvalidMemberNameMatchesTypeName extends StructuredTypeRule
         $schemaType = $structuredType;
         assert($schemaType instanceof ISchemaType);
 
-        $properties = $structuredType->properties();
+        $properties = iterable_to_array($structuredType->properties());
         $properties = array_filter(
             $properties,
             function ($property) {

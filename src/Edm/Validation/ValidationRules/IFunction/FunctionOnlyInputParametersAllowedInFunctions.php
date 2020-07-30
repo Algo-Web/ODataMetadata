@@ -24,7 +24,7 @@ class FunctionOnlyInputParametersAllowedInFunctions extends FunctionRule
     {
         assert($function instanceof IFunction);
         $parameters = $function->getParameters();
-        $parameters = array_filter(
+        $parameters = !$parameters ? [] : array_filter(
             $parameters,
             function (IFunctionParameter $parameter) {
                 return !$parameter->getMode()->isIn();

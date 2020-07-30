@@ -24,11 +24,12 @@ class FunctionImportParametersIncorrectTypeBeforeV3 extends FunctionImportRule
     {
         assert($functionImport instanceof IFunctionImport);
         $parameters = $functionImport->getParameters();
-        $parameters = array_filter(
+        $parameters = !$parameters ? [] : array_filter(
             $parameters,
             function (IFunctionParameter $parameter) use ($context) {
                 $type = $parameter->getType();
-                return !$type->isPrimitive() && !$type->isComplex() && !$context->checkIsBad($type->getDefinition());
+                $def  = $type->getDefinition();
+                return !$type->isPrimitive() && !$type->isComplex() && (null !== $def) && !$context->checkIsBad($def);
             }
         );
         foreach ($parameters as $functionParameter) {
