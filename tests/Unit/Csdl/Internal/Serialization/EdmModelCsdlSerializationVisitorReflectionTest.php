@@ -71,7 +71,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
     {
         $model = $this->getModel();
 
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
 
         $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
@@ -108,7 +108,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         ];
     }
 
-    protected function complexTypeData(){
+    protected function complexTypeData()
+    {
         $element = m::mock(IComplexType::class)->makePartial();
         $element->shouldReceive('getName')->andReturn('name');
         $element->shouldReceive('BaseComplexType')->andReturn(null);
@@ -121,7 +122,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         return [$element, 'ProcessComplexType', $expected];
     }
 
-    protected function enumTypeData(){
+    protected function enumTypeData()
+    {
         $primType = m::mock(IPrimitiveType::class);
         $primType->shouldReceive('getPrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
 
@@ -150,7 +152,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         return [$element, 'ProcessEnumType', $expected];
     }
 
-    protected function functionNoReturnTypeNoDefiningExpressionData(){
+    protected function functionNoReturnTypeNoDefiningExpressionData()
+    {
         $element = m::mock(IFunction::class)->makePartial();
         $element->shouldReceive('getName')->andReturn('name');
         $element->shouldReceive('getReturnType')->andReturn(null);
@@ -163,7 +166,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         return [$element, 'ProcessFunction', $expected];
     }
 
-    protected function functionNoReturnTypeWithDefiningExpressionData(){
+    protected function functionNoReturnTypeWithDefiningExpressionData()
+    {
         $element = m::mock(IFunction::class)->makePartial();
         $element->shouldReceive('getName')->andReturn('name');
         $element->shouldReceive('getReturnType')->andReturn(null);
@@ -177,7 +181,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         return [$element, 'ProcessFunction', $expected];
     }
 
-    protected function functionReturnTypeWithNoDefiningExpressionData(){
+    protected function functionReturnTypeWithNoDefiningExpressionData()
+    {
         $rPrim = m::mock(IPrimitiveTypeReference::class);
         $rPrim->shouldReceive('PrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
 
@@ -203,7 +208,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         return [$element, 'ProcessFunction', $expected];
     }
 
-    protected function functionParameterData(){
+    protected function functionParameterData()
+    {
         $rPrim = m::mock(IPrimitiveTypeReference::class);
         $rPrim->shouldReceive('PrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
 
@@ -229,8 +235,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         return [$element, 'ProcessFunctionParameter', $expected];
     }
 
-    protected function collectionTypeData(){
-
+    protected function collectionTypeData()
+    {
         $rPrim = m::mock(IPrimitiveTypeReference::class);
         $rPrim->shouldReceive('PrimitiveKind')->andReturn(PrimitiveTypeKind::Int32());
 
@@ -257,7 +263,8 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         return [$element, 'ProcessCollectionType', $expected];
     }
 
-    protected function rowTypeData(){
+    protected function rowTypeData()
+    {
         $element = m::mock(IRowType::class)->makePartial();
         $element->shouldReceive('getDeclaredProperties')->andReturn([]);
 
@@ -298,7 +305,6 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $expected = '<?xml version="1.0"?>' . PHP_EOL . '<FunctionImport IsBindable="true" IsComposable="true" Name="Name" ReturnType="Ref(FullName)">' . PHP_EOL;
         $expected .= '<Documentation/>' . PHP_EOL . '</FunctionImport>';
         return [$element, 'ProcessFunctionImport', $expected];
-
     }
 
     public function valueAnnotationData()
@@ -430,11 +436,11 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
      * @param $expected
      * @dataProvider sharesAssociationSetProvider
      */
-    public function testSharesAssociationSet($model, $thisSet, $thisProp, $thatSet, $thatProp,$expected)
+    public function testSharesAssociationSet($model, $thisSet, $thisProp, $thatSet, $thatProp, $expected)
     {
-        $writer = $this->getWriter();
+        $writer  = $this->getWriter();
         $version = Version::v3();
-        $foo = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
+        $foo     = new EdmModelCsdlSerializationVisitor($model, $writer, $version);
         try {
             $reflec = new ReflectionClass($foo);
             $method = $reflec->getMethod('SharesAssociationSet');
@@ -455,29 +461,31 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $thatSet  = m::mock(IEntitySet::class);
         $thatProp = m::mock(INavigationProperty::class);
 
-        $nuSet = m::mock(IEntitySet::class);
-        $setNamedFoo = (function(){
+        $nuSet       = m::mock(IEntitySet::class);
+        $setNamedFoo = (function () {
             $thisSet  = m::mock(IEntitySet::class);
             $thisSet->shouldReceive('getName')->andReturn('foo')->times(1);
             return $thisSet;
-        })->bindTo($this);;
+        })->bindTo($this);
+        ;
 
-        $setNamedFooNavTarget = (function($nuSet = null) use ($setNamedFoo){
+        $setNamedFooNavTarget = (function ($nuSet = null) use ($setNamedFoo) {
             $thisSet  = $setNamedFoo();
             $thisSet->shouldReceive('findNavigationTarget')->andReturn($nuSet)->once();
             return $thisSet;
-        })->bindTo($this);;
+        })->bindTo($this);
+        ;
 
 
 
-        $fullnameModel = (function(){
+        $fullnameModel = (function () {
             $m = $this->getModel();
             $m->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
             $m->shouldReceive('GetAssociationFullName')->andReturn('foo', 'bar')->times(2);
             return $m;
         })->bindTo($this);
 
-        $differentModel = (function(){
+        $differentModel = (function () {
             $m = $this->getModel();
             $m->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
             $m->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
@@ -485,7 +493,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
             return $m;
         })->bindTo($this);
 
-        $nullModelAndMismatch = (function($endName = ['foo'], $endTimes = 2){
+        $nullModelAndMismatch = (function ($endName = ['foo'], $endTimes = 2) {
             $model = $this->getModel();
             $model->shouldReceive('GetAssociationSetName')->andReturn('foo')->times(2);
             $model->shouldReceive('GetAssociationFullName')->andReturn('bar')->times(2);
@@ -494,7 +502,7 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
             return $model;
         })->bindTo($this);
 
-        $propPartnerSelf = (function(){
+        $propPartnerSelf = (function () {
             $associationOtherSetsNotNullEndNamesDifferentThisProp = m::mock(INavigationProperty::class);
             $associationOtherSetsNotNullEndNamesDifferentThisProp->shouldReceive('getPartner')->andReturn($associationOtherSetsNotNullEndNamesDifferentThisProp);
             return $associationOtherSetsNotNullEndNamesDifferentThisProp;
@@ -896,6 +904,4 @@ class EdmModelCsdlSerializationVisitorReflectionTest extends TestCase
         $model->shouldReceive('GetAnnotationValue')->andReturn($doc);
         return $model;
     }
-
-
 }
