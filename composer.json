@@ -1,7 +1,7 @@
 {
   "name": "bim/o-data-metadata",
   "description": "Package responsible for OData feed metadata description",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "type": "library",
   "keywords": [
     "OData",
@@ -25,7 +25,7 @@
     }
   ],
   "require": {
-    "php": "^7.1",
+    "php": "^7.1|^8.0",
     "doctrine/inflector": ">=1.1",
     "jms/serializer": "^3.0|^2.0|^1.7"
   },
