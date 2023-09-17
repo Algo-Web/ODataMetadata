@@ -12,6 +12,7 @@ before_script:
   - pecl install pcov
   - phpenv config-rm xdebug.ini
   - composer global require hirak/prestissimo
+  - composer require pcov/clobber
   - composer config minimum-stability ${STABILITY}
   - COMPOSER_MEMORY_LIMIT=-1 composer install
   - vendor/bin/pcov clobber
@@ -34,7 +35,6 @@ env: # important!
 matrix:
   allow_failures:
     - php: nightly
-    - php: 7.4
 
 #notifications:
 #  webhooks:

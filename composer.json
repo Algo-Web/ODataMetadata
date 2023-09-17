@@ -26,11 +26,13 @@
   ],
   "require": {
     "php": "^7.1|^8.0",
-    "doctrine/inflector": ">=1.1",
-    "jms/serializer": "^3.0|^2.0|^1.7"
+    "myclabs/php-enum": "dev-master",
+    "ext-dom": "*",
+    "ext-xmlwriter": "*",
+    "ext-xmlreader": "*"
   },
   "require-dev": {
-    "mockery/mockery": "0.9.*|^1.0@dev",
+    "mockery/mockery": "^1.6",
     "phpunit/phpunit": "^9.5"
   },
   "scripts": {
@@ -40,7 +42,8 @@
   "autoload": {
     "psr-4": {
       "AlgoWeb\\ODataMetadata\\": "src/"
-    }
+    },
+    "files": ["src/polyfill.php"]
   },
   "autoload-dev": {
     "classmap": [

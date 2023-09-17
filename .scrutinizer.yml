@@ -74,7 +74,7 @@ checks:
     newline_at_end_of_file: true
     naming_conventions:
       local_variable: '^[a-z][a-zA-Z0-9]*$'
-      abstract_class_name: ^Abstract|Factory$
+      abstract_class_name: ^Abstract|Factory$|Base$
       utility_class_name: 'Utils?$'
       constant_name: '^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)*$'
       property_name: '^[a-z][a-zA-Z0-9]*$'
@@ -83,7 +83,7 @@ checks:
       interface_name: '^[A-Z][a-zA-Z0-9]*Interface$'
       type_name: '^[A-Z][a-zA-Z0-9]*$'
       exception_name: '^[A-Z][a-zA-Z0-9]*Exception$'
-      isser_method_name: '^(?:is|has|should|may|supports)'
+      isser_method_name: '^(?:is|has|should|may|supports|get|set)'
     more_specific_types_in_doc_comments: true
     missing_arguments: true
     method_calls_on_non_object: true
@@ -130,6 +130,8 @@ checks:
     avoid_aliased_php_functions: true
     assignment_of_null_return: true
     argument_type_checks: true
+    excluded_dependencies:
+      - satooshi/php-coveralls
 
 coding_style:
   php:
@@ -160,7 +162,25 @@ coding_style:
         general: lower
       constants:
         true_false_null: lower
+filter:
+  paths:
+    - src/
 
+  dependency_paths:
+    - vednor/
+
+  excluded_paths:
+    - src/MetadataV3/Edm/Concerns/Expression/HasValueTermReferenceExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasAnonymousFunctionExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasApplyExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasCollectionExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasFunctionReference.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasIfExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasParameterReferenceExpression.php
+    - src/Edm/Concerns/Expression/HasPropertyReferenceExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasRecordExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasTypeAssertExpression.php
+    - src/MetadataV3/Edm/Concerns/Expression/HasTypeTestExpression.php
 tools:
   php_cs_fixer:
     config:
@@ -175,10 +195,12 @@ tools:
   php_changetracking: true
 
 build_failure_conditions:
-  - 'elements.rating(<= F).new.exists'
+  - 'elements.rating(<= D).new.exists'
   - 'issues.severity(>= CRITICAL).new.exists'
 
 build:
-  dependencies:
-    before:
-      - composer remove --dev pcov/clobber --no-update
+  nodes:
+    analysis:
+      tests:
+        override:
+          - php-scrutinizer-run

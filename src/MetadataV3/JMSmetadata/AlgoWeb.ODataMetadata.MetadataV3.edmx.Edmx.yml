@@ -1,9 +1,0 @@
-AlgoWeb\ODataMetadata\MetadataV3\edmx\Edmx:
-    xml_root_name: edmx:Edmx
-    xml_root_namespace: http://schemas.microsoft.com/ado/2007/06/edmx
-    xml_namespaces:
-        edmx: http://schemas.microsoft.com/ado/2007/06/edmx
-        "": http://schemas.microsoft.com/ado/2009/11/edm
-        cg: http://schemas.microsoft.com/ado/2006/04/codegeneration
-        annotation: http://schemas.microsoft.com/ado/2009/02/edm/annotation
-        m: http://schemas.microsoft.com/ado/2007/08/dataservices/metadata
