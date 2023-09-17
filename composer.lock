@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9db8af242172e36e1d8c8cb685923b37",
+    "content-hash": "7398023ae280fccca511e004f072e729",
     "packages": [
         {
             "name": "myclabs/php-enum",
@@ -195,16 +195,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "1.7.x-dev",
+            "version": "1.6.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mockery/mockery.git",
-                "reference": "5916d9a2409a9b9bf48951594c2200affa7e4293"
+                "reference": "b8e0bb7d8c604046539c1115994632c74dcb361e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mockery/mockery/zipball/5916d9a2409a9b9bf48951594c2200affa7e4293",
-                "reference": "5916d9a2409a9b9bf48951594c2200affa7e4293",
+                "url": "https://api.github.com/repos/mockery/mockery/zipball/b8e0bb7d8c604046539c1115994632c74dcb361e",
+                "reference": "b8e0bb7d8c604046539c1115994632c74dcb361e",
                 "shasum": ""
             },
             "require": {
@@ -216,7 +216,10 @@
                 "phpunit/phpunit": "<8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": ">=9.6.11 <10.4"
+                "phpunit/phpunit": "^8.5 || ^9.6.10",
+                "psalm/plugin-phpunit": "^0.18.4",
+                "symplify/easy-coding-standard": "^11.5.0",
+                "vimeo/psalm": "^4.30"
             },
             "type": "library",
             "autoload": {
@@ -273,7 +276,7 @@
                 "security": "https://github.com/mockery/mockery/security/advisories",
                 "source": "https://github.com/mockery/mockery"
             },
-            "time": "2023-09-06T21:24:36+00:00"
+            "time": "2023-08-09T00:03:52+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -1941,8 +1944,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "myclabs/php-enum": 20,
-        "mockery/mockery": 20
+        "myclabs/php-enum": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

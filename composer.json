@@ -32,7 +32,7 @@
     "ext-xmlreader": "*"
   },
   "require-dev": {
-    "mockery/mockery": "^1.0@dev",
+    "mockery/mockery": "^1.6",
     "phpunit/phpunit": "^9.5"
   },
   "scripts": {
