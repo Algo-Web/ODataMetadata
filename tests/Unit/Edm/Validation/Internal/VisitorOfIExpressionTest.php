@@ -91,7 +91,7 @@ class VisitorOfIExpressionTest extends TestCase
         $expected = 'AlgoWeb_ODataMetadata_Interfaces_Expressions_IExpression.ExpressionKind\' is not' .
                     ' semantically valid. A semantically valid model must not contain elements of kind \'\'.';
         $actual = $error->getErrorMessage();
-        $this->assertContains($expected, $actual);
+        $this->assertStringContainsString($expected, $actual);
     }
 
     public function expressionKindProvider(): array
@@ -155,6 +155,6 @@ class VisitorOfIExpressionTest extends TestCase
 
         $expected = 'IExpression.ExpressionKind\' property must implement \'' . $mustImplement . '\' interface.';
         $actual   = $error->getErrorMessage();
-        $this->assertContains($expected, $actual);
+        $this->assertStringContainsString($expected, $actual);
     }
 }

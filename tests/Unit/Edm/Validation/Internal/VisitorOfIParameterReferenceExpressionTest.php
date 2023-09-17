@@ -39,7 +39,7 @@ class VisitorOfIParameterReferenceExpressionTest extends TestCase
         $expectedErrorCode = EdmErrorCode::InterfaceCriticalPropertyValueMustNotBeNull();
         $this->assertEquals($expectedErrorCode, $error->getErrorCode());
         $expected = 'ODataMetadata_Interfaces_Expressions_IParameterReferenceExpression.ReferencedParameter\' must not be null.';
-        $this->assertContains($expected, $error->getErrorMessage());
+        $this->assertStringContainsString($expected, $error->getErrorMessage());
     }
 
     public function testVisitWithNonNullReferencedParameter()

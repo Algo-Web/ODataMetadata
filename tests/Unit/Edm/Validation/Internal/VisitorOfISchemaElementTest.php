@@ -58,7 +58,7 @@ class VisitorOfISchemaElementTest extends TestCase
         $errorCode = EdmErrorCode::InterfaceCriticalEnumPropertyValueOutOfRange();
         $this->assertEquals($errorCode, $error->getErrorCode());
         $expected = 'that is not a valid enum member.';
-        $this->assertContains($expected, $error->getErrorMessage());
+        $this->assertStringContainsString($expected, $error->getErrorMessage());
     }
 
     public function schemaElementKindProvider(): array
@@ -97,6 +97,6 @@ class VisitorOfISchemaElementTest extends TestCase
         $errorCode = EdmErrorCode::InterfaceCriticalKindValueMismatch();
         $this->assertEquals($errorCode, $error->getErrorCode());
         $expected = 'property must implement \'' . $mustImplement . '\' interface.';
-        $this->assertContains($expected, $error->getErrorMessage());
+        $this->assertStringContainsString($expected, $error->getErrorMessage());
     }
 }

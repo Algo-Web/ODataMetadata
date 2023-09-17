@@ -65,7 +65,7 @@ class InterfaceValidatorTest extends TestCase
 
         $expected = 'interface has type definition of kind \'42\'. The type reference interface must match to the kind of the  definition.';
         $actual   = $result->getErrorMessage();
-        $this->assertContains($expected, $actual);
+        $this->assertStringContainsString($expected, $actual);
     }
 
     public function testCreatePrimitiveTypeRefInterfaceTypeKindValueMismatchErrorWithNullDefinition()
@@ -91,7 +91,7 @@ class InterfaceValidatorTest extends TestCase
 
         $expected = 'interface has type definition of kind \'None\'. The type reference interface must match to the kind of the  definition.';
         $actual   = $result->getErrorMessage();
-        $this->assertContains($expected, $actual);
+        $this->assertStringContainsString($expected, $actual);
     }
 
     public function testProcessEnumerableWithNullEnumerable()
@@ -112,7 +112,7 @@ class InterfaceValidatorTest extends TestCase
 
         $expected = 'must not be null.';
         $actual   = $result->getErrorMessage();
-        $this->assertContains($expected, $actual);
+        $this->assertStringContainsString($expected, $actual);
     }
 
     public function testProcessEnumerableWithEmptyEnumerable()

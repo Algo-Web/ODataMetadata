@@ -290,7 +290,7 @@ class ToTraceStringTest extends TestCase
         $result[] = [false, true, 10, null, null, '[UnknownType Nullable=TRUE MaxLength=Max]'];
         $result[] = [null, false, null, true, 'collate', '[UnknownType Nullable=TRUE Unicode=TRUE Collation=collate]'];
         $result[] = [true, false, 10, true, null, '[UnknownType Nullable=TRUE FixedLength=TRUE MaxLength=10 Unicode=TRUE]'];
-        $result[] = [false, false, true, null, 'collate', '[UnknownType Nullable=TRUE MaxLength=1 Collation=collate]'];
+        $result[] = [false, false, 1, null, 'collate', '[UnknownType Nullable=TRUE MaxLength=1 Collation=collate]'];
         $result[] = [null, true, 10, false, null, '[UnknownType Nullable=TRUE MaxLength=Max]'];
         $result[] = [true, true, null, false, 'collate', '[UnknownType Nullable=TRUE FixedLength=TRUE MaxLength=Max Collation=collate]'];
         $result[] = [false, true, 10, false, null, '[UnknownType Nullable=TRUE MaxLength=Max]'];

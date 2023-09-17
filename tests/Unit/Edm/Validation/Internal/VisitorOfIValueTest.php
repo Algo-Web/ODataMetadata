@@ -84,7 +84,7 @@ class VisitorOfIValueTest extends TestCase
         $errorCode = EdmErrorCode::InterfaceCriticalKindValueMismatch();
         $this->assertEquals($errorCode, $error->getErrorCode());
         $expected = 'property must implement \'' . $mustImplement . '\' interface.';
-        $this->assertContains($expected, $error->getErrorMessage());
+        $this->assertStringContainsString($expected, $error->getErrorMessage());
         $this->assertEquals(1, count($followUp));
     }
 
@@ -113,7 +113,7 @@ class VisitorOfIValueTest extends TestCase
         $errorCode = EdmErrorCode::InterfaceCriticalKindValueUnexpected();
         $this->assertEquals($errorCode, $error->getErrorCode());
         $expected = 'A semantically valid model must not contain elements of kind \'FAIL\'.';
-        $this->assertContains($expected, $error->getErrorMessage());
+        $this->assertStringContainsString($expected, $error->getErrorMessage());
         $this->assertEquals(0, count($followUp));
     }
 
