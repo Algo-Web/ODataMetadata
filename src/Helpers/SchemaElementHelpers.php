@@ -21,7 +21,7 @@ trait SchemaElementHelpers
     abstract public function getName(): ?string;
 
     /**
-     * @return string gets the namespace this schema element belongs to
+     * @return string|null gets the namespace this schema element belongs to
      */
-    abstract public function getNamespace(): string;
+    abstract public function getNamespace(): ?string;
 }
