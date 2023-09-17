@@ -380,9 +380,9 @@ class TTypeTestExpressionType extends IsOK
             return false;
         }
 
-        $count = 0 < count($this->collectionType) ? 1 : 0
-                 + 0 < count($this->referenceType) ? 1 : 0
-                 + 0 < count($this->rowType) ? 1 : 0;
+        $count =( 0 < count($this->collectionType) ? 1 : 0)
+                 + (0 < count($this->referenceType) ? 1 : 0)
+                 + (0 < count($this->rowType) ? 1 : 0);
         if (1 < $count) {
             $msg = 'At most one of collection type, reference type and row type can be set';
             return false;
